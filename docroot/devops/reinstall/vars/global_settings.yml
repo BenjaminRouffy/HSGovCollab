@@ -30,6 +30,8 @@ local_backup_environment: 'staging'
 # htpasswd protection for securing backups.
 backup_user: propeople
 backup_pass: givemebackup
+# Stage hash_salt key
+hash_salt: ZunPn4qWYDhQ1FEwGWlI2aQNNcAEZ5UdSob7R9Z0IeFIQPW5_pFt7wPVlpbrwEfqdWOLAxcUUA
 # Source backup database that will be downloaded to build site.
 # In many cases this is production dump.
 source_backup_name: latest_prod.sql.gz

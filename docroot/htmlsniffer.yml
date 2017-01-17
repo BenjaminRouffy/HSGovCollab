@@ -9,7 +9,7 @@
     # this variable will be overridden from jenkins.
     workspace_root: .
     artifacts_file: commentinfo.md
-    webroot: http://drupal.192.168.56.132.xip.io
+    webroot: http://drupal.p4h.xip.io
     installation_profile_name: pp
     htmlcs_path: /root/.composer/vendor/podarok/HTML_CodeSniffer/Contrib/PhantomJS/HTMLCS_Run.js
 
@@ -25,6 +25,6 @@
     sudo: yes
     ignore_errors: yes
     shell: 'echo "Acessibility Sniffer: {{ item[0].name }} page checking {{ item[1] }} {{ webroot }}/{{ item[0].name }}{{ item[1] }}htmlcs.txt" >> {{ workspace_root }}/{{ artifacts_file }} && phantomjs --web-security=false {{ htmlcs_path }} {{ webroot }}{{ item[0].path }} {{ item[1] }} >> {{ item[0].name }}{{ item[1] }}htmlcs.txt'
-    with_nested: 
+    with_nested:
       - htmlcs_paths
       - htmlcs_standards

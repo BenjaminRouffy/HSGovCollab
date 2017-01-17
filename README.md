@@ -31,17 +31,17 @@ Windows users
 ```sh
 sh reinstall.sh --windows
 ```
-By default your site will be accessible by using this url. 
+By default your site will be accessible by using this url.
 
 ```
-http://drupal.192.168.56.132.xip.io/
+http://drupal.p4h.xip.io/
 ```
 
 
 If ```xip.io``` not working - create row with
 
 ```hosts
-192.168.56.132 drupal.192.168.56.132.xip.io
+192.168.56.132 drupal.p4h.xip.io
 ```
 
 in ```/etc/hosts``` or just use another ServerName in apache.yml
@@ -73,7 +73,7 @@ Tools
 Adminer for mysql administration (credentials drupal:drupal and root:root)
 
 ```
-http://192.168.56.132.xip.io/adminer.php
+http://p4h.xip.io/adminer.php
 ```
 
 ##PHP Profiler XHProf

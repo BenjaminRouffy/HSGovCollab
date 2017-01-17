@@ -65,6 +65,17 @@ AddEncoding gzip svgz
   FallbackResource /index.php
 </IfModule>
 
+###### apache_custom.conf ######
+# Various rewrite rules.       #
+################################
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+###### apache_custom.conf ######
+
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
   RewriteEngine on

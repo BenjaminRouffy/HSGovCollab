@@ -6,4 +6,6 @@ global_env:
   modules: []
   drush_commands: []
   post_settings:
+    - { name: '$settings["hash_salt"]', status: true, value: '{{ hash_salt }}' }
+    - { name: '$config_directories[CONFIG_SYNC_DIRECTORY]', status: true, value: 'sites/default/config/staging' }
     - { name: '$settings["pp_environment"]', status: true, value: "{{ pp_environment }}" }

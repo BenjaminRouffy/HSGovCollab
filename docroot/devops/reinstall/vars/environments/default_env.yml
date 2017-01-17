@@ -10,7 +10,8 @@ env:
   drush_commands:
     - { name: 'sqlq', status: true, arguments: "\"UPDATE users_field_data SET name='{{ drupal_user }}' WHERE uid=1\"" }
     - { name: 'upwd', status: true, arguments: "{{ drupal_user }} --password={{ drupal_pass }}" }
-    - { name: 'config-set', status: false, arguments: "system.site uuid USER_YOUR_UUID_HERE -y" }
+    - { name: 'cset', status: true, arguments: "system.site uuid b0409d58-21df-4959-aec9-4b93adf7d064 -y" }
+    - { name: 'cim', status: true, arguments: "-y" }
     # Plese do not use drush for importing configs. See https://www.youtube.com/watch?v=vFsgNjhGr4Y for how to use http://dgo.to/confi
     - { name: 'cr', status: true, arguments: "" }
     - { name: 'search-index', status: false, arguments: "" }

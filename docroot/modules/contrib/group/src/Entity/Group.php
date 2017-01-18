@@ -40,6 +40,7 @@ use Drupal\user\UserInterface;
  *     },
  *     "access" = "Drupal\group\Entity\Access\GroupAccessControlHandler",
  *   },
+ *   admin_permission = "administer group",
  *   base_table = "groups",
  *   data_table = "groups_field_data",
  *   translatable = TRUE,
@@ -54,7 +55,7 @@ use Drupal\user\UserInterface;
  *     "add-form" = "/group/add/{group_type}",
  *     "add-page" = "/group/add",
  *     "canonical" = "/group/{group}",
- *     "collection" = "/group/list",
+ *     "collection" = "/admin/group",
  *     "edit-form" = "/group/{group}/edit",
  *     "delete-form" = "/group/{group}/delete"
  *   },
@@ -150,7 +151,7 @@ class Group extends ContentEntityBase implements GroupInterface {
    */
   public function addContent(ContentEntityInterface $entity, $plugin_id, $values = []) {
     $plugin = $this->getGroupType()->getContentPlugin($plugin_id);
-    
+
     // Only add the entity if the provided plugin supports it.
     // @todo Verify bundle as well and throw exceptions?
     if ($entity->getEntityTypeId() == $plugin->getEntityTypeId()) {
@@ -305,7 +306,7 @@ class Group extends ContentEntityBase implements GroupInterface {
           'weight' => 30,
         ))
         ->setDisplayConfigurable('form', TRUE)
-        ->setCustomStorage(TRUE);
+        ->setComputed(TRUE);
     }
 
     return $fields;
@@ -330,10 +331,9 @@ class Group extends ContentEntityBase implements GroupInterface {
     parent::postSave($storage, $update);
 
     // If a new group is created, add the creator as a member by default.
-    // @todo Add creator roles by passing in a second parameter like this:
-    // ['group_roles' => ['foo', 'bar']].
     if ($update === FALSE) {
-      $this->addMember($this->getOwner());
+      $values = ['group_roles' => $this->getGroupType()->getCreatorRoleIds()];
+      $this->addMember($this->getOwner(), $values);
     }
   }
 

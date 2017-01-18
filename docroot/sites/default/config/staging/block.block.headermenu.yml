@@ -1,0 +1,24 @@
+uuid: 46207121-bddd-4902-a04e-4ea1b3d2ae06
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.header-menu
+  module:
+    - system
+  theme:
+    - stark
+id: headermenu
+theme: stark
+region: header
+weight: -5
+provider: null
+plugin: 'system_menu_block:header-menu'
+settings:
+  id: 'system_menu_block:header-menu'
+  label: 'Header Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }

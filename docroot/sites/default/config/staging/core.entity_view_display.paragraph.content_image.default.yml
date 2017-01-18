@@ -1,0 +1,33 @@
+uuid: 38543626-f7d7-4a46-b1d2-5e7cc17d49c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_image.field_content_image
+    - field.field.paragraph.content_image.field_description
+    - paragraphs.paragraphs_type.content_image
+  module:
+    - image
+id: paragraph.content_image.default
+targetEntityType: paragraph
+bundle: content_image
+mode: default
+content:
+  field_content_image:
+    weight: 0
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_description:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true

@@ -1,0 +1,24 @@
+uuid: 1b231ad6-55b7-43f3-b528-6bae71bba3ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.user-menu
+  module:
+    - system
+  theme:
+    - stark
+id: usermenu
+theme: stark
+region: header
+weight: -3
+provider: null
+plugin: 'system_menu_block:user-menu'
+settings:
+  id: 'system_menu_block:user-menu'
+  label: 'User menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }

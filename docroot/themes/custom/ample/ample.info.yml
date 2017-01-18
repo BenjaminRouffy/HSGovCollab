@@ -1,0 +1,19 @@
+name: Ample
+type: theme
+description: A theme which rocks.
+core: 8.x
+# Defines the base theme
+base theme: stable
+screenshot: ample.png
+stylesheets-remove:
+  - core/assets/vendor/normalize-css/normalize.css
+libraries:
+ - ample/global-styling
+regions:
+  header: 'Header'
+  menu_main: 'Main menu'
+  breadcrumb: 'Breadcrumb'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  footer: 'Footer'

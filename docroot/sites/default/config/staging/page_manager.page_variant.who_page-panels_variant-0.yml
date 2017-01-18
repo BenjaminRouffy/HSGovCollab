@@ -1,0 +1,56 @@
+uuid: 493e68d2-2556-4110-a4f1-c7cabc297d3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.who_page
+    - views.view.members_list
+  content:
+    - 'block_content:headline_description:ae6255f3-19d6-4fed-b6f6-33bee1027abc'
+  module:
+    - block_content
+    - panels
+    - views
+id: who_page-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    7a6ceeb5-46dd-435c-952c-10010c0f23b6:
+      id: 'views_block:members_list-block_1'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: left
+      weight: 0
+      uuid: 7a6ceeb5-46dd-435c-952c-10010c0f23b6
+      context_mapping: {  }
+    c9424db3-522a-40b1-a485-948cd2087c8b:
+      id: 'block_content:ae6255f3-19d6-4fed-b6f6-33bee1027abc'
+      label: 'Members headline'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: left
+      weight: 0
+      uuid: c9424db3-522a-40b1-a485-948cd2087c8b
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 4dfa2c41-d7e8-4a1f-a9ab-2c5b327fcaee
+  label: null
+  weight: 0
+  layout: twocol
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: who_page-panels_variant-0
+  builder: standard
+page: who_page
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

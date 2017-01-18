@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.member.body
     - field.field.node.member.field_content_paragraph
+    - field.field.node.member.field_country
     - field.field.node.member.field_member_category
     - field.field.node.member.field_member_image
     - field.field.node.member.field_member_link
@@ -34,6 +35,13 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+  field_country:
+    weight: 106
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_member_category:
     weight: 103
     label: above

@@ -30,28 +30,28 @@ content:
   field_content_paragraph:
     type: entity_reference_revisions_entity_view
     weight: 104
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
   field_country:
     weight: 106
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_member_category:
     weight: 103
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_member_image:
     weight: 102
-    label: above
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
@@ -59,7 +59,7 @@ content:
     type: image
   field_member_link:
     weight: 105
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -70,5 +70,7 @@ content:
     type: link
   links:
     weight: 100
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   langcode: true

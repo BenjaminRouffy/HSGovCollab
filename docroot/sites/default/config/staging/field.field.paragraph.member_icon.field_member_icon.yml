@@ -1,0 +1,38 @@
+uuid: aeb86062-1ea7-4ed7-87ca-67d00dfec43a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_member_icon
+    - paragraphs.paragraphs_type.member_icon
+  module:
+    - image
+id: paragraph.member_icon.field_member_icon
+field_name: field_member_icon
+entity_type: paragraph
+bundle: member_icon
+label: 'Member icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

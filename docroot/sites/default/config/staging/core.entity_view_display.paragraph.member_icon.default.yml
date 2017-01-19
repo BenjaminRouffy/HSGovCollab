@@ -1,0 +1,38 @@
+uuid: f7adb60b-6c99-43ea-8321-33d62abc4bc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.member_icon.field_member_icon
+    - field.field.paragraph.member_icon.field_member_link
+    - paragraphs.paragraphs_type.member_icon
+  module:
+    - image
+    - link
+id: paragraph.member_icon.default
+targetEntityType: paragraph
+bundle: member_icon
+mode: default
+content:
+  field_member_icon:
+    weight: 0
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_member_link:
+    weight: 1
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+hidden:
+  created: true
+  uid: true

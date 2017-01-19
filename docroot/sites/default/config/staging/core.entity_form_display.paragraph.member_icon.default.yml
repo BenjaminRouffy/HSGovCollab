@@ -1,0 +1,35 @@
+uuid: 2c80941a-b5e0-46fe-bce9-58ca5309b9bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.member_icon.field_member_icon
+    - field.field.paragraph.member_icon.field_member_link
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.member_icon
+  module:
+    - image
+    - link
+id: paragraph.member_icon.default
+targetEntityType: paragraph
+bundle: member_icon
+mode: default
+content:
+  field_member_icon:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_member_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+hidden:
+  created: true
+  status: true
+  uid: true

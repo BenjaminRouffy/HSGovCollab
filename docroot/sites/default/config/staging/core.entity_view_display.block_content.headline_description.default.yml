@@ -1,0 +1,30 @@
+uuid: fd19cc8a-d6a6-41ef-907c-cb19dd4ac12d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.headline_description
+    - field.field.block_content.headline_description.field_description
+    - field.field.block_content.headline_description.field_title
+  module:
+    - text
+id: block_content.headline_description.default
+targetEntityType: block_content
+bundle: headline_description
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  langcode: true

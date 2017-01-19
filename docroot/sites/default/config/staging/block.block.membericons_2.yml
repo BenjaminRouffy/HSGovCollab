@@ -1,0 +1,25 @@
+uuid: 31349b53-218e-486c-b4cd-5ec1bf89295d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:member_icons:6108a3c4-b7c8-4847-8a1a-e726385a8965'
+  module:
+    - block_content
+  theme:
+    - stark
+id: membericons_2
+theme: stark
+region: footer
+weight: 0
+provider: null
+plugin: 'block_content:6108a3c4-b7c8-4847-8a1a-e726385a8965'
+settings:
+  id: 'block_content:6108a3c4-b7c8-4847-8a1a-e726385a8965'
+  label: 'Member icons'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: footer
+visibility: {  }

@@ -1,0 +1,33 @@
+uuid: 95130d31-258c-48e4-af68-c6cb17754e19
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.member_icons
+    - core.entity_view_mode.block_content.footer
+    - field.field.block_content.member_icons.field_copyright_text
+    - field.field.block_content.member_icons.field_member_icons
+  module:
+    - entity_reference_revisions
+id: block_content.member_icons.footer
+targetEntityType: block_content
+bundle: member_icons
+mode: footer
+content:
+  field_copyright_text:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_member_icons:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true

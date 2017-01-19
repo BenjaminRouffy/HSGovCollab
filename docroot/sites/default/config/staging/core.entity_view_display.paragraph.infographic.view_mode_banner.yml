@@ -1,0 +1,24 @@
+uuid: db8ee96e-0b16-4216-898b-bcce78055b75
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.view_mode_banner
+    - field.field.paragraph.infographic.field_infographic_item
+    - paragraphs.paragraphs_type.infographic
+  module:
+    - field_collection
+id: paragraph.infographic.view_mode_banner
+targetEntityType: paragraph
+bundle: infographic
+mode: view_mode_banner
+content:
+  field_infographic_item:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_items
+hidden:
+  created: true
+  uid: true

@@ -1,0 +1,23 @@
+uuid: 9373989c-7bbb-4f06-b067-b550ed23ccb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.infographic.field_infographic_item
+    - paragraphs.paragraphs_type.infographic
+  module:
+    - field_collection
+id: paragraph.infographic.default
+targetEntityType: paragraph
+bundle: infographic
+mode: default
+content:
+  field_infographic_item:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
+hidden:
+  created: true
+  status: true
+  uid: true

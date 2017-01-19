@@ -1,0 +1,46 @@
+uuid: 7ed360ac-47a8-421c-bbbe-e8857cab43ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_infographic_item.field_description
+    - field.field.field_collection_item.field_infographic_item.field_infographic_icon
+    - field.field.field_collection_item.field_infographic_item.field_title
+    - field.field.field_collection_item.field_infographic_item.field_value
+    - field_collection.field_collection.field_infographic_item
+  module:
+    - image
+id: field_collection_item.field_infographic_item.default
+targetEntityType: field_collection_item
+bundle: field_infographic_item
+mode: default
+content:
+  field_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_infographic_icon:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_value:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden: {  }

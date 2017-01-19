@@ -4,8 +4,13 @@ status: true
 dependencies:
   config:
     - node.type.member
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
 id: node.member
 target_entity_type_id: node
 target_bundle: member
-default_langcode: site_default
-language_alterable: false
+default_langcode: current_interface
+language_alterable: true

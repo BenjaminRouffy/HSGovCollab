@@ -1,0 +1,16 @@
+uuid: 0663fb44-23ed-4737-b42d-8ee962f13e4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.link
+target_entity_type_id: block_content
+target_bundle: link
+default_langcode: current_interface
+language_alterable: true

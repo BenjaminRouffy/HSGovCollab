@@ -1,0 +1,28 @@
+uuid: 18008e59-7270-413d-b713-47ab87f30a15
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+    - core.entity_view_mode.block_content.view_mode_registration_block
+    - field.field.block_content.link.field_link
+  module:
+    - link
+id: block_content.link.view_mode_registration_block
+targetEntityType: block_content
+bundle: link
+mode: view_mode_registration_block
+content:
+  field_link:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+hidden:
+  langcode: true

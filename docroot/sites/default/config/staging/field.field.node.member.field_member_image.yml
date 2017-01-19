@@ -6,7 +6,14 @@ dependencies:
     - field.storage.node.field_member_image
     - node.type.member
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 id: node.member.field_member_image
 field_name: field_member_image
 entity_type: node
@@ -14,7 +21,7 @@ bundle: member
 label: 'Member image'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

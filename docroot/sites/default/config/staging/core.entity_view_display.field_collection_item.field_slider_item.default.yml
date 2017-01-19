@@ -1,0 +1,30 @@
+uuid: f64bacd0-6432-4e3c-9826-cb28a16583bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_slider_item.field_description
+    - field.field.field_collection_item.field_slider_item.field_slider_image
+    - field_collection.field_collection.field_slider_item
+  module:
+    - image
+id: field_collection_item.field_slider_item.default
+targetEntityType: field_collection_item
+bundle: field_slider_item
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_slider_image:
+    weight: 0
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden: {  }

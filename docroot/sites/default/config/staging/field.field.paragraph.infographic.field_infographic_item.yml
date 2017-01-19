@@ -1,0 +1,23 @@
+uuid: 38bc802f-f708-4228-ab83-bebdfd4be761
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_infographic_item
+    - paragraphs.paragraphs_type.infographic
+  module:
+    - field_collection
+id: paragraph.infographic.field_infographic_item
+field_name: field_infographic_item
+entity_type: paragraph
+bundle: infographic
+label: 'Infographic item'
+description: ''
+required: false
+translatable: true
+default_value:
+  - {  }
+  - {  }
+default_value_callback: ''
+settings: {  }
+field_type: field_collection

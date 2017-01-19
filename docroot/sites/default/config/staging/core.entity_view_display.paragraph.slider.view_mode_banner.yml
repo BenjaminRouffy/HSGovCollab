@@ -1,0 +1,24 @@
+uuid: 272fa3c5-78bf-4f5e-8633-b28903032f99
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.view_mode_banner
+    - field.field.paragraph.slider.field_slider_item
+    - paragraphs.paragraphs_type.slider
+  module:
+    - field_collection
+id: paragraph.slider.view_mode_banner
+targetEntityType: paragraph
+bundle: slider
+mode: view_mode_banner
+content:
+  field_slider_item:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_list
+hidden:
+  created: true
+  uid: true

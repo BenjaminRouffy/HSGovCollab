@@ -1,0 +1,24 @@
+uuid: fd431bcf-90a6-4f9a-9e76-09b50d002b05
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+id: country-admin
+label: Admin
+weight: 100
+internal: false
+audience: member
+group_type: country
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'administer group'
+  - 'administer members'
+  - 'delete group'
+  - 'edit group'
+  - 'edit own group_membership content'
+  - 'leave group'
+  - 'view group'
+  - 'view group_membership content'
+  - 'access group_node overview'

@@ -5,9 +5,31 @@ global-styling:
       css/main.css: {}
   js:
     js/main.js: {}
+    js/background-video.js: {weight: -1}
   dependencies:
     - core/jquery
     - core/jquery.once
     - core/drupal
     - core/backbone
     - core/drupalSettings
+
+youtube:
+  js:
+    //www.youtube.com/iframe_api:
+      type: external
+
+vimeo:
+  js:
+    //player.vimeo.com/api/player.js:
+      type: external
+
+plyr:
+  css:
+    theme:
+      bower/plyr/dist/plyr.css: {}
+  js:
+    bower/plyr/dist/plyr.js: { weight: -2 }
+  dependencies:
+    - global-styling
+    - youtube
+    - vimeo

@@ -1,0 +1,25 @@
+<div class="main-wrapper">
+  {% if content.top|without('#prefix', '#suffix')is not empty %}
+    <div class="top-region">
+      {{ content.top|without('#prefix', '#suffix') }}
+    </div>
+  {% endif %}
+
+  <div class="content-region">
+    <div class="content">
+      {{ content.content|without('#prefix', '#suffix') }}
+    </div>
+
+    {% if content.right_sidebar is not null %}
+      <div class="right-sidebar">
+        {{ content.right_sidebar|without('#prefix', '#suffix') }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if content.bottom|without('#prefix', '#suffix') is not empty %}
+    <div class="bottom-region">
+      {{ content.bottom|without('#prefix', '#suffix') }}
+    </div>
+  {% endif %}
+</div>

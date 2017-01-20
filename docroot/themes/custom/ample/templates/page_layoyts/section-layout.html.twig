@@ -14,7 +14,7 @@
           </div>
 
           {% if content['right_sidebar' ~ i] is not null %}
-            <div class="left-sidebar">
+            <div class="right-sidebar">
               {{ content['right_sidebar' ~ i]|without('#prefix', '#suffix') }}
             </div>
           {% endif %}

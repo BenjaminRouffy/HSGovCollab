@@ -1,0 +1,89 @@
+uuid: eff82f21-140a-4bff-bb99-3313859c4a1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.body
+    - field.field.node.event.field_date
+    - field.field.node.event.field_event_link
+    - field.field.node.event.field_location
+    - field.field.node.event.field_time
+    - field.field.node.event.field_time_text
+    - field.field.node.event.field_timezone
+    - node.type.event
+  module:
+    - datetime_range
+    - link
+    - options
+    - text
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+  field_date:
+    weight: 1
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: event_date
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+  field_event_link:
+    weight: 7
+    label: hidden
+    settings:
+      trim_length: 80
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
+    type: link
+  field_location:
+    weight: 5
+    label: above
+    settings:
+      trim_length: 80
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
+    type: link
+  field_time:
+    weight: 2
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: event_time
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+  field_time_text:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_timezone:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

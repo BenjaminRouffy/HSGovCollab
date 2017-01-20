@@ -1,0 +1,102 @@
+uuid: b7e36b45-67ee-4761-9b36-95e7c05630aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_timezone
+field_name: field_timezone
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'UTC−12:00'
+      label: 'UTC−12:00'
+    -
+      value: 'UTC−11:00'
+      label: 'UTC−11:00'
+    -
+      value: 'UTC−10:00'
+      label: 'UTC−10:00'
+    -
+      value: 'UTC−09:00'
+      label: 'UTC−09:00'
+    -
+      value: 'UTC−08:00'
+      label: 'UTC−08:00'
+    -
+      value: 'UTC−07:00'
+      label: 'UTC−07:00'
+    -
+      value: 'UTC−06:00'
+      label: 'UTC−06:00'
+    -
+      value: 'UTC−05:00'
+      label: 'UTC−05:00'
+    -
+      value: 'UTC−04:00'
+      label: 'UTC−04:00'
+    -
+      value: 'UTC−03:00'
+      label: 'UTC−03:00'
+    -
+      value: 'UTC−02:00'
+      label: 'UTC−02:00'
+    -
+      value: 'UTC−01:00'
+      label: 'UTC−01:00'
+    -
+      value: 'UTC±00:00'
+      label: 'UTC±00:00'
+    -
+      value: 'UTC+01:00'
+      label: 'UTC+01:00'
+    -
+      value: 'UTC+02:00'
+      label: 'UTC+02:00'
+    -
+      value: 'UTC+03:00'
+      label: 'UTC+03:00'
+    -
+      value: 'UTC+04:00'
+      label: 'UTC+04:00'
+    -
+      value: 'UTC+05:00'
+      label: 'UTC+05:00'
+    -
+      value: 'UTC+06:00'
+      label: 'UTC+06:00'
+    -
+      value: 'UTC+07:00'
+      label: 'UTC+07:00'
+    -
+      value: 'UTC+08:00'
+      label: 'UTC+08:00'
+    -
+      value: 'UTC+09:00'
+      label: 'UTC+09:00'
+    -
+      value: 'UTC+10:00'
+      label: 'UTC+10:00'
+    -
+      value: 'UTC+11:00'
+      label: 'UTC+11:00'
+    -
+      value: 'UTC+12:00'
+      label: 'UTC+12:00'
+    -
+      value: 'UTC+13:00'
+      label: 'UTC+13:00'
+    -
+      value: 'UTC+14:00'
+      label: 'UTC+14:00'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

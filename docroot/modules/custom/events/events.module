@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * This is the Custom Events module.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function events_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  $type = $entity->getType();
+  $user = Drupal::currentUser();
+  if ('event' == $type && 'default' == $view_mode && TRUE === $user->isAnonymous()) {
+    $build['signup_link'] = [
+      '#title' => t('Sign up for event'),
+      '#type' => 'link',
+      '#url' => Url::fromRoute('user.login'),
+      '#weight' => -10,
+    ];
+  }
+}

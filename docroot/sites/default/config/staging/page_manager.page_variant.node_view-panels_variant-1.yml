@@ -1,0 +1,82 @@
+uuid: 68fda018-9de7-499b-a98a-5689684745ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+  module:
+    - ctools
+    - ctools_block
+    - node
+    - panels
+id: node_view-panels_variant-1
+label: 'Basic page'
+variant: panels_variant
+variant_settings:
+  blocks:
+    001ee8f4-f9cf-4ad0-93b8-1fcc68931159:
+      id: 'entity_field:node:field_banner'
+      label: Banner
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_revisions_entity_view
+        settings:
+          view_mode: view_mode_banner
+        third_party_settings: {  }
+        weight: 0
+      region: top
+      weight: 0
+      uuid: 001ee8f4-f9cf-4ad0-93b8-1fcc68931159
+      context_mapping:
+        entity: node
+    098a62c6-b208-4ad0-af63-50bf52443b08:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: 0
+      uuid: 098a62c6-b208-4ad0-af63-50bf52443b08
+      context_mapping:
+        entity: node
+    faa10c1e-c3e5-4ae1-99a1-9f2c3b243bd9:
+      id: 'entity_field:node:field_time_line'
+      label: 'Time line'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: field_collection_items
+        settings: {  }
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: faa10c1e-c3e5-4ae1-99a1-9f2c3b243bd9
+      context_mapping:
+        entity: node
+  id: panels_variant
+  uuid: a4e95dba-bbbc-4daa-86e1-f8c74bfc1868
+  label: null
+  weight: 0
+  layout: default_layout
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-1
+  builder: standard
+page: node_view
+weight: 0
+selection_criteria:
+  -
+    id: node_type
+    bundles:
+      basic_page: basic_page
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }

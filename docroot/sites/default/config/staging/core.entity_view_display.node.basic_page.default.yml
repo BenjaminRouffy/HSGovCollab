@@ -4,10 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.basic_page.body
+    - field.field.node.basic_page.field_author
+    - field.field.node.basic_page.field_banner
     - field.field.node.basic_page.field_content_paragraph
+    - field.field.node.basic_page.field_time_line
     - node.type.basic_page
   module:
     - entity_reference_revisions
+    - field_collection
     - text
     - user
 id: node.basic_page.default
@@ -18,17 +22,38 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
+  field_author:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_banner:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: view_mode_banner
+      link: ''
+    third_party_settings: {  }
   field_content_paragraph:
-    weight: 3
-    label: above
+    weight: 4
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+  field_time_line:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_items
   links:
     weight: 0
     settings: {  }

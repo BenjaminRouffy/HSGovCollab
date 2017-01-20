@@ -1,0 +1,41 @@
+uuid: fac919d9-9ff5-4ad7-ac06-86a08e7433b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_time_line.field_headline
+    - field.field.field_collection_item.field_time_line.field_time_line_item
+    - field.field.field_collection_item.field_time_line.field_title
+    - field_collection.field_collection.field_time_line
+  module:
+    - paragraphs
+id: field_collection_item.field_time_line.default
+targetEntityType: field_collection_item
+bundle: field_time_line
+mode: default
+content:
+  field_headline:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_time_line_item:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden: {  }

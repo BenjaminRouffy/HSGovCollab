@@ -1,0 +1,23 @@
+uuid: 19e2735c-46bb-49a7-853f-4fe164a91353
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.exist_content.field_content
+    - paragraphs.paragraphs_type.exist_content
+id: paragraph.exist_content.default
+targetEntityType: paragraph
+bundle: exist_content
+mode: default
+content:
+  field_content:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+hidden:
+  created: true
+  uid: true

@@ -1,0 +1,24 @@
+uuid: ebeedc99-ce08-424a-9c79-7b50009661e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.exist_content.field_content
+    - paragraphs.paragraphs_type.exist_content
+id: paragraph.exist_content.default
+targetEntityType: paragraph
+bundle: exist_content
+mode: default
+content:
+  field_content:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+hidden:
+  created: true
+  status: true
+  uid: true

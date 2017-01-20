@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.member.field_member_category
     - field.field.node.member.field_member_image
     - field.field.node.member.field_member_link
+    - image.style.test
     - node.type.member
   module:
     - entity_reference_revisions
@@ -53,7 +54,7 @@ content:
     weight: 102
     label: hidden
     settings:
-      image_style: ''
+      image_style: test
       image_link: ''
     third_party_settings: {  }
     type: image

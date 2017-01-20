@@ -1,0 +1,21 @@
+uuid: c41e01f4-4ea8-4660-b534-001b7af049b7
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - field_collection
+    - paragraphs
+id: field_collection_item.field_time_line_item
+field_name: field_time_line_item
+entity_type: field_collection_item
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

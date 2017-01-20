@@ -1,0 +1,49 @@
+uuid: 2f13eaa2-7f81-497c-b3de-95def6b9d980
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner
+    - node.type.basic_page
+    - paragraphs.paragraphs_type.infographic
+    - paragraphs.paragraphs_type.slider
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.basic_page.field_banner
+field_name: field_banner
+entity_type: node
+bundle: basic_page
+label: Banner
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      infographic: infographic
+      slider: slider
+      video: video
+    target_bundles_drag_drop:
+      content_image:
+        weight: 7
+        enabled: false
+      content_text:
+        weight: 8
+        enabled: false
+      infographic:
+        enabled: true
+        weight: 9
+      member_icon:
+        weight: 10
+        enabled: false
+      slider:
+        enabled: true
+        weight: 11
+      video:
+        enabled: true
+        weight: 12
+field_type: entity_reference_revisions

@@ -35,9 +35,10 @@ content:
   field_date:
     weight: 4
     settings:
+      date_type: date_only
       date_format: event_date
     third_party_settings: {  }
-    type: daterange_dateonly
+    type: daterange_eventdaterange
   field_event_author:
     weight: 3
     settings:
@@ -72,9 +73,10 @@ content:
   field_time:
     weight: 5
     settings:
+      date_type: time_only
       date_format: event_time
     third_party_settings: {  }
-    type: daterange_time
+    type: daterange_eventdaterange
   field_time_text:
     weight: 6
     settings:

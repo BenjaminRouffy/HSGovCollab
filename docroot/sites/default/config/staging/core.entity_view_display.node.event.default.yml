@@ -5,7 +5,9 @@ dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.field_date
+    - field.field.node.event.field_event_author
     - field.field.node.event.field_event_link
+    - field.field.node.event.field_event_slider
     - field.field.node.event.field_location
     - field.field.node.event.field_time
     - field.field.node.event.field_time_text
@@ -13,6 +15,7 @@ dependencies:
     - node.type.event
   module:
     - datetime_range
+    - entity_reference_revisions
     - link
     - options
     - text
@@ -25,11 +28,11 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 6
+    weight: 8
     settings: {  }
     third_party_settings: {  }
   field_date:
-    weight: 1
+    weight: 3
     label: above
     settings:
       timezone_override: ''
@@ -37,8 +40,15 @@ content:
       separator: '-'
     third_party_settings: {  }
     type: daterange_default
+  field_event_author:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_event_link:
-    weight: 7
+    weight: 9
     label: hidden
     settings:
       trim_length: 80
@@ -48,8 +58,16 @@ content:
       rel: '0'
     third_party_settings: {  }
     type: link
+  field_event_slider:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   field_location:
-    weight: 5
+    weight: 7
     label: above
     settings:
       trim_length: 80
@@ -60,8 +78,8 @@ content:
     third_party_settings: {  }
     type: link
   field_time:
-    weight: 2
-    label: above
+    weight: 4
+    label: hidden
     settings:
       timezone_override: ''
       format_type: event_time
@@ -69,14 +87,14 @@ content:
     third_party_settings: {  }
     type: daterange_default
   field_time_text:
-    weight: 3
+    weight: 5
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_timezone:
-    weight: 4
+    weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }

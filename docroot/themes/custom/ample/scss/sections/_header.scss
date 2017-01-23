@@ -1,0 +1,79 @@
+header {
+  background: $white;
+  letter-spacing: 1px;
+  position: relative;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.header-static {
+  max-width: 1260px;
+  min-height: 120px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 500;
+
+  .logo-wrapper {
+    .logo {
+      background: $white;
+      border-bottom: 2px solid $red;
+      box-shadow: 0 1px 3px 0 rgba($black, .25);
+      padding: 15px 10px 0 20px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 150px;
+      width: 180px;
+    }
+
+    img {
+      height: 113px;
+      width: 134px;
+    }
+  }
+
+  .social-links {
+    position: absolute;
+    top: 22px;
+    right: 0;
+  }
+
+  .service-links {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    height: 60px;
+    overflow: hidden;
+
+    ul,
+    li {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    a {
+      @include font-size(12.6);
+      display: block;
+      color: $navy-dark;
+      font-family: $oswald;
+      padding: 32px 5px 15px;
+      text-decoration: none;
+
+      &.active {
+        color: $red-dark;
+      }
+
+      &:hover {
+        background: rgba($navy, .08);
+        opacity: .7;
+      }
+    }
+  }
+
+  .language {
+    text-transform: uppercase;
+  }
+}

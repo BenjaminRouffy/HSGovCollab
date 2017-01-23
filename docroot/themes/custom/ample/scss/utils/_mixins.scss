@@ -1,0 +1,256 @@
+//------------------------------------------------------------------------------
+// include_font
+
+@mixin includefont($name) {
+  $url: unquote("../fonts/" + $name);
+
+  @font-face {
+    font-family: $name;
+    src: url($url + ".eot");
+    src: url($url + ".eot?#iefix") format("embedded-opentype"),
+    url($url + ".woff") format("woff"),
+    url($url + ".ttf") format("truetype"),
+    url($url + ".svg#" + $name) format("svg");
+  }
+}
+
+//-------------------------------------------------------------------------------
+// Font icon mixin
+
+@mixin icon($content, $font) {
+  &::before {
+    font-family: $font;
+    content: $content;
+    @content;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Font resizing
+@mixin font-size($size-value: 16) {
+  font-size: ($size-value / 16) + rem;
+}
+
+//------------------------------------------------------------------------------
+// Font resizing
+
+@mixin font-size($size-value: 16) {
+  font-size: ($size-value / 16) + rem;
+}
+
+//------------------------------------------------------------------------------
+// BG opacity
+
+@mixin background-opacity($color, $opacity: .3) {
+  background: rgba($color, $opacity);
+}
+
+
+//------------------------------------------------------------------------------
+// Box-Shadow
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+// Psevdo Element
+
+@mixin psevdo-el($type, $h:auto, $w:auto) {
+  &:#{$type} {
+    content: "";
+    display: block;
+    height: $h;
+    width: $w;
+    @content;
+  }
+}
+
+// =============================================================================
+// Breakpoints
+
+// CSS3 Media Queries
+//
+// Result of:
+//   @include breakpoint(".components", (from: 1024px, to: 1360px)) {
+//     body {
+//       background: red;
+//     }
+//   }
+// will be the next:
+//   @media (max-width: 1360px) and (min-width: 1024px) {
+//     body {
+//       background: red;
+//     }
+//   }
+//
+// Also, you can define the breakpoints with human-readable names in
+// single "$breakpoints" variable and use an object keys as value of
+// some breakpoint.
+//
+// Result of:
+//   $breakpoints: (
+//     first: 1360px,
+//     second: 1024px,
+//   );
+//
+//   @include breakpoint(".components", (from: second, to: first)) {
+//     body {
+//       background: red;
+//     }
+//   }
+// will be the same as in first example.
+@mixin breakpoint-for($root, $map) {
+  $directions: (from: min, to: max);
+  $query: "";
+
+  @each $direction, $breakpoint in $map {
+    @if map_has_key($directions, $direction) {
+      @if $query != "" {
+        $query: $query + ") and (";
+      }
+
+      @if variable-exists(breakpoints) and map_has_key($breakpoints, $breakpoint) {
+        $breakpoint: map_get($breakpoints, $breakpoint);
+      }
+
+      $query: $query + map_get($directions, $direction) + "-width: " + $breakpoint;
+    }
+  }
+
+  @if $query != "" {
+    @media #{"(" + $query + ")"} {
+      #{$root} {
+        @content;
+      }
+    }
+  }
+}
+
+
+//-------------------------------------------------------------------------------
+// All style mixin
+
+@mixin reset-style-all() {
+  // Box-model
+  display: block;
+  float: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+
+  // Typography
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  text-align: center;
+
+  // Visual
+  border: 0 none;
+  border-radius: 0;
+
+  // Misc
+  opacity: 1;
+}
+
+//------------------------------------------------------------------------------
+// Group for most useful font rules: "font-size", "line-height" and "font-weight";
+//
+// Second argument of this mixin processed for "font-weight" value.
+//
+// @example:
+//   @font(12px, bold);
+//   @font(12px, 30px, thin);
+@mixin font($size, $line-height: false, $weight: false) {
+  font-size: $size;
+
+  // Try to get a value from "font-weights" map.
+  $possible-weight: font-weight($line-height);
+
+  @if $possible-weight == null {
+    // Check for one of defaults value.
+    $defaults: bold, bolder, lighter, normal;
+    $index: index($defaults, $line-height);
+
+    @if $index != null {
+      $possible-weight: nth($defaults, $index);
+    }
+  }
+
+  @if $possible-weight != null {
+    $line-height: false;
+    font-weight: $possible-weight;
+  }
+  @elseif $weight != false {
+    $value: font-weight($weight);
+
+    @if $value == null {
+      $value: $weight;
+    }
+
+    font-weight: $value;
+  }
+
+  @if $line-height != false {
+    line-height: $line-height;
+  }
+}
+
+// =============================================================================
+// Custom
+
+@mixin full-width($position: absolute) {
+  position: $position;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin user-select($value: none) {
+  @include vendor-prefixes(user-select, $value, webkit, moz, ms);
+}
+
+@mixin box-sizing($value: border-box) {
+  @include vendor-prefixes(box-sizing, $value, webkit, moz);
+}
+
+@mixin box-shadow($value) {
+  @include vendor-prefixes(box-shadow, $value, webkit, moz);
+}
+
+@mixin inline-block($align: top) {
+  display: inline-block;
+  vertical-align: $align;
+}
+
+@mixin same($value, $properties...) {
+  @each $property in $properties {
+    #{$property}: $value;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Clearfix
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Headings
+@function headings($from: 1, $to: 6) {
+  @if $from == $to {
+    @return 'h#{$from}';
+  } @else {
+    @return 'h#{$from},' + headings($from + 1, $to);
+  }
+}

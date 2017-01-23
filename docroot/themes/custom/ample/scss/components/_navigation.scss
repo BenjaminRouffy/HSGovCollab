@@ -1,0 +1,38 @@
+.main-menu {
+  text-align: center;
+
+  li {
+    display: inline-block;
+    vertical-align: top;
+
+    &:last-child {
+      a {
+        color: $red;
+
+        &:after {
+          @include font-size(19.6);
+          content: 'T';
+          font-family: $p4h;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+
+  a {
+    @include font-size(14);
+    color: $navy-dark;
+    display: block;
+    font-family: $oswald;
+    font-weight: 400;
+    height: 63px;
+    padding: 25px 30px 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      background: rgba($navy, .08);
+      opacity: .7;
+    }
+  }
+}

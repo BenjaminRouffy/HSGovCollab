@@ -72,15 +72,6 @@ class EventDateRangeWidget extends DateRangeWidgetBase implements ContainerFacto
       '#required' => TRUE,
     ];
 
-    $element['date_format'] = [
-      '#type' => 'select',
-      '#options' => $formats,
-      '#multiple' => FALSE,
-      '#title' => $this->t('Date format'),
-      '#default_value' => $this->getSetting('date_format'),
-      '#required' => TRUE,
-    ];
-
     return $element;
   }
 
@@ -89,9 +80,11 @@ class EventDateRangeWidget extends DateRangeWidgetBase implements ContainerFacto
    */
   public function settingsSummary() {
     $summary = parent::settingsSummary();
-    $pattern = $this->dateStorage->load($this->getSetting('date_format'))->getPattern();
-    $summary[] = $this->t('Date type: @type', ['@type' => $this->getSetting('date_type')]);
-    $summary[] = $this->t('Date format: @format', ['@format' => $pattern]);
+    $date_types = [
+      self::DATERANGE_TYPE_DATEONLY => $this->t('Date only'),
+      self::DATERANGE_TYPE_TIMEONLY => $this->t('Time only'),
+    ];
+    $summary[] = $this->t('Date type: @type', ['@type' => $date_types[$this->getSetting('date_type')]]);
 
     return $summary;
   }
@@ -130,20 +123,19 @@ class EventDateRangeWidget extends DateRangeWidgetBase implements ContainerFacto
       case self::DATERANGE_TYPE_TIMEONLY:
         $date_type = 'none';
         $time_type = 'time';
-        $date_format = $this->dateStorage->load('html_date')->getPattern();
-        $time_format = $this->dateStorage->load($this->getSetting('date_format'))->getPattern();
         break;
 
       case self::DATERANGE_TYPE_DATEONLY:
         $date_type = 'date';
         $time_type = 'none';
-        $date_format = $this->dateStorage->load($this->getSetting('date_format'))->getPattern();
-        $time_format = $this->dateStorage->load('html_time')->getPattern();
         break;
 
       default:
         break;
     }
+
+    $date_format = $this->dateStorage->load('html_date')->getPattern();
+    $time_format = $this->dateStorage->load('html_time')->getPattern();
 
     $element['value'] += [
       '#date_date_format' => $date_format,

@@ -1,0 +1,49 @@
+uuid: ad8bc422-581e-43f0-80be-e4f730ddd33c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_paragraph
+    - node.type.basic_page
+    - paragraphs.paragraphs_type.content_image
+    - paragraphs.paragraphs_type.content_text
+    - paragraphs.paragraphs_type.slider
+  module:
+    - entity_reference_revisions
+id: node.basic_page.field_content_paragraph
+field_name: field_content_paragraph
+entity_type: node
+bundle: basic_page
+label: 'Content paragraph'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_image: content_image
+      content_text: content_text
+      slider: slider
+    target_bundles_drag_drop:
+      content_image:
+        enabled: true
+        weight: 7
+      content_text:
+        enabled: true
+        weight: 8
+      infographic:
+        weight: 9
+        enabled: false
+      member_icon:
+        weight: 10
+        enabled: false
+      slider:
+        enabled: true
+        weight: 11
+      video:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,31 @@
+<div class="main-wrapper">
+  {% if content.top_banner is not null %}
+    <div class="top-banner-region">
+      {{ content.top_banner|without('#prefix', '#suffix') }}
+    </div>
+  {% endif %}
+
+  <div class="content-region">
+    {% for i in 1..4 %}
+      {% if content['content' ~ i] is not null %}
+        <div class="content-wrapper">
+          <div class="content">
+            {{ content['content' ~ i]|without('#prefix', '#suffix') }}
+          </div>
+
+          {% if content['right_sidebar' ~ i] is not null %}
+            <div class="right-sidebar">
+              {{ content['right_sidebar' ~ i]|without('#prefix', '#suffix') }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if content['banner' ~ i] is not null %}
+        <div class="banner-region">
+          {{ content['banner' ~ i]|without('#prefix', '#suffix') }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

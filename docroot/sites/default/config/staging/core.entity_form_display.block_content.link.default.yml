@@ -1,0 +1,32 @@
+uuid: 9432ac6a-f434-4121-9e50-8287237dd250
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+    - field.field.block_content.link.field_link
+  module:
+    - link
+id: block_content.link.default
+targetEntityType: block_content
+bundle: link
+mode: default
+content:
+  field_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  info:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+hidden:
+  langcode: true

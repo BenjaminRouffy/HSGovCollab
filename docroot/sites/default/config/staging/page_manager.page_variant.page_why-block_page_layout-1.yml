@@ -1,0 +1,85 @@
+uuid: df837a8c-53f7-44ce-963f-9c24752d42f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.page_why
+  content:
+    - 'block_content:banner:9b7e1cf4-cb29-4816-a8d1-dbe71bf9420f'
+    - 'block_content:link:92c1d4fb-1308-4d49-95ee-f764ab26a4fd'
+  module:
+    - block_content
+    - block_page_layout
+    - ctools
+id: page_why-block_page_layout-1
+label: Default
+variant: block_page_layout
+variant_settings:
+  blocks:
+    800a230d-0fc8-457d-b047-e8eac511add6:
+      id: 'block_content:9b7e1cf4-cb29-4816-a8d1-dbe71bf9420f'
+      label: 'Why banner'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: top_banner
+      weight: -10
+      uuid: 800a230d-0fc8-457d-b047-e8eac511add6
+      context_mapping: {  }
+    ff7db8c3-922b-4072-939d-3797a45f402e:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: view_mode_for_section_page
+      region: content1
+      weight: 0
+      uuid: ff7db8c3-922b-4072-939d-3797a45f402e
+      context_mapping:
+        entity: node_1
+    e5cacf57-d11d-4110-9e31-c321fe069a55:
+      id: 'block_content:92c1d4fb-1308-4d49-95ee-f764ab26a4fd'
+      label: 'Registration link (Why page)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: right_sidebar1
+      weight: 0
+      uuid: e5cacf57-d11d-4110-9e31-c321fe069a55
+      context_mapping: {  }
+  id: block_page_layout
+  uuid: 05664e37-0b67-4129-ae62-4003077f0cab
+  label: null
+  weight: 0
+  page_title: ''
+  layout: section_layout
+  layout_settings: {  }
+page: page_why
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context:
+  node_1:
+    label: 'Node 1'
+    type: 'entity:node'
+    description: ''
+    value: 7e3f5ddc-9d33-4896-b3a8-3b106907b933
+  node_2:
+    label: 'Node 2'
+    type: 'entity:node'
+    description: ''
+    value: 7444f5ac-0d9f-4d25-8303-ca77fe0d1f05
+  node_3:
+    label: 'Node 3'
+    type: 'entity:node'
+    description: ''
+    value: 8c25551a-474f-48cb-80ae-1afa1ca896e3
+  node_4:
+    label: 'Node 4'
+    type: 'entity:node'
+    description: ''
+    value: a7addb0d-f4f5-4b12-88ab-75c146750218

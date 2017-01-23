@@ -1,0 +1,22 @@
+uuid: 11c04f4d-dbac-4545-909d-9892051d0edd
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.member_icon
+id: paragraph.member_icon.status
+field_name: status
+entity_type: paragraph
+bundle: member_icon
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

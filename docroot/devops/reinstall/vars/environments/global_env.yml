@@ -7,6 +7,9 @@ global_env:
   drush_commands:
       - { name: 'cset', status: true, arguments: "system.site uuid b0409d58-21df-4959-aec9-4b93adf7d064 -y" }
       - { name: 'cim', status: true, arguments: "-y" }
+      # @todo Remove this
+      - { name: 'cr', status: true, arguments: "-y" }
+      - { name: 'cim', status: true, arguments: "-y" }
   post_settings:
     - { name: '$settings["hash_salt"]', status: true, value: '{{ hash_salt }}' }
     - { name: '$config_directories[CONFIG_SYNC_DIRECTORY]', status: true, value: 'sites/default/config/staging' }

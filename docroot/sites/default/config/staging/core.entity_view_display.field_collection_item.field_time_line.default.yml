@@ -1,0 +1,39 @@
+uuid: 65a88dc9-f2da-4f2a-bf5f-02222d4b522e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_time_line.field_headline
+    - field.field.field_collection_item.field_time_line.field_time_line_item
+    - field.field.field_collection_item.field_time_line.field_title
+    - field_collection.field_collection.field_time_line
+  module:
+    - entity_reference_revisions
+id: field_collection_item.field_time_line.default
+targetEntityType: field_collection_item
+bundle: field_time_line
+mode: default
+content:
+  field_headline:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_time_line_item:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden: {  }

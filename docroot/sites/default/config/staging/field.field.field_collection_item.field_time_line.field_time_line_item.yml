@@ -1,0 +1,53 @@
+uuid: cf7f7587-50fc-4680-bc29-c7cbc4f1e97d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_time_line_item
+    - field_collection.field_collection.field_time_line
+    - paragraphs.paragraphs_type.custom_content
+    - paragraphs.paragraphs_type.exist_content
+  module:
+    - entity_reference_revisions
+id: field_collection_item.field_time_line.field_time_line_item
+field_name: field_time_line_item
+entity_type: field_collection_item
+bundle: field_time_line
+label: 'Time line item'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      custom_content: custom_content
+      exist_content: exist_content
+    target_bundles_drag_drop:
+      content_image:
+        weight: 9
+        enabled: false
+      content_text:
+        weight: 10
+        enabled: false
+      custom_content:
+        enabled: true
+        weight: 11
+      exist_content:
+        enabled: true
+        weight: 12
+      infographic:
+        weight: 13
+        enabled: false
+      member_icon:
+        weight: 14
+        enabled: false
+      slider:
+        weight: 15
+        enabled: false
+      video:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

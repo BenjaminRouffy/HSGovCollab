@@ -1,0 +1,18 @@
+uuid: 73fc2bb3-bab3-4564-8207-61b102d8d324
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.infographic
+id: paragraph.infographic.created
+field_name: created
+entity_type: paragraph
+bundle: infographic
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

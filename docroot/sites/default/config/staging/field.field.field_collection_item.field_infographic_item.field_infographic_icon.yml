@@ -1,0 +1,38 @@
+uuid: 55f3bc86-6641-4959-b715-9cfb39fd83bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_infographic_icon
+    - field_collection.field_collection.field_infographic_item
+  module:
+    - image
+id: field_collection_item.field_infographic_item.field_infographic_icon
+field_name: field_infographic_icon
+entity_type: field_collection_item
+bundle: field_infographic_item
+label: Icon
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

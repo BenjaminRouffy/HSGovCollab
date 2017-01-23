@@ -4,8 +4,13 @@ status: true
 dependencies:
   config:
     - block_content.type.headline_description
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
 id: block_content.headline_description
 target_entity_type_id: block_content
 target_bundle: headline_description
-default_langcode: site_default
-language_alterable: false
+default_langcode: current_interface
+language_alterable: true

@@ -1,0 +1,15 @@
+<div class="video-wrapper">
+  {% if content.field_title|field_value or content.field_description|field_value %}
+    <div class="overlay-wpapper">
+      <h1 role="heading">
+        {{ content.field_title }}
+      </h1>
+
+      <div class="description">
+        {{ content.field_description }}
+      </div>
+    </div>
+  {% endif %}
+
+  {{ content.field_video_link }}
+</div>

@@ -1,0 +1,11 @@
+<div class="image-wrapper">
+  {{ content.field_content_image|field_value }}
+
+  {% if content.field_description %}
+    <div class="description">
+      <p>
+        {{ content.field_description|field_value }}
+      </p>
+    </div>
+  {% endif %}
+</div>

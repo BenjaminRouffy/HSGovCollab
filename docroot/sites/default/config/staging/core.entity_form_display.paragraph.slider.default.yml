@@ -1,0 +1,25 @@
+uuid: 73ee3f0a-d6a9-4067-a14f-094f7f4f2bdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.slider.field_slider_item
+    - paragraphs.paragraphs_type.slider
+  module:
+    - field_collection
+id: paragraph.slider.default
+targetEntityType: paragraph
+bundle: slider
+mode: default
+content:
+  field_slider_item:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
+  translation:
+    weight: 10
+hidden:
+  created: true
+  status: true
+  uid: true

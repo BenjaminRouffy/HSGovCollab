@@ -1,0 +1,34 @@
+uuid: ba7be473-cd0d-43bb-85ac-24cc16ff8274
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.view_mode_banner
+    - field.field.paragraph.content_image.field_content_image
+    - field.field.paragraph.content_image.field_description
+    - paragraphs.paragraphs_type.content_image
+  module:
+    - image
+id: paragraph.content_image.view_mode_banner
+targetEntityType: paragraph
+bundle: content_image
+mode: view_mode_banner
+content:
+  field_content_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_description:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true

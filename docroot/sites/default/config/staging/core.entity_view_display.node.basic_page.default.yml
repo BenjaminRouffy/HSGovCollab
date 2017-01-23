@@ -1,0 +1,49 @@
+uuid: 57ae361b-b9e7-40af-ab94-33e7f98d1e28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.basic_page.body
+    - field.field.node.basic_page.field_author
+    - field.field.node.basic_page.field_banner
+    - field.field.node.basic_page.field_content_paragraph
+    - field.field.node.basic_page.field_time_line
+    - node.type.basic_page
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.basic_page.default
+targetEntityType: node
+bundle: basic_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_author:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_content_paragraph:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_banner: true
+  field_time_line: true
+  langcode: true

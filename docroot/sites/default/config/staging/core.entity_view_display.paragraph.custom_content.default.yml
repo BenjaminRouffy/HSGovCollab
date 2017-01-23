@@ -1,0 +1,33 @@
+uuid: 29a5f186-be5c-469b-a854-1a1781b3eac1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.custom_content.field_body
+    - field.field.paragraph.custom_content.field_date
+    - paragraphs.paragraphs_type.custom_content
+  module:
+    - datetime
+    - text
+id: paragraph.custom_content.default
+targetEntityType: paragraph
+bundle: custom_content
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_date:
+    weight: 0
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
+    type: datetime_default
+hidden:
+  created: true
+  uid: true

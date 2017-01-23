@@ -1,16 +1,51 @@
-raw_single_column:
-  label: Raw single column
+default_layout:
+  label: Default layout
   category: Ample
-  template: templates/page_layoyts/raw-single-column
+  template: templates/page_layoyts/default-layout
   regions:
-    middle:
-      label: Middle content
+    top:
+      label: Top region
+    content:
+      label: Content
+    right:
+      label: Right sidebar
+    bottom:
+      label: Bottom region
 two_column:
   label: Two column
   category: Ample
-  template: templates/page_layoyts/two_column
+  template: templates/page_layoyts/two-column
   regions:
     left_sidebar:
      label: Left sidebar
     right_sidebar:
      label: Right sidebar
+section_layout:
+  label: Section layout
+  category: Ample
+  template: templates/page_layoyts/section-layout
+  regions:
+    top_banner:
+      label: Top banner
+    content1:
+      label: Content (Node 1)
+    right_sidebar1:
+      label: Right sidebar (Node 1)
+    banner1:
+      label: Banner
+    content2:
+      label: Content (Node 2)
+    right_sidebar2:
+      label: Right sidebar (Node 2)
+    banner2:
+      label: Banner
+    content3:
+      label: Content (Node 3)
+    right_sidebar3:
+      label: Right sidebar (Node 3)
+    banner3:
+      label: Banner
+    content4:
+      label: Content (Node 4)
+    right_sidebar4:
+      label: Right sidebar (Node 4)

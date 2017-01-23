@@ -59,8 +59,8 @@ content:
   field_member_image:
     weight: 1
     settings:
-      progress_indicator: throbber
       preview_image_style: thumbnail
+      progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
   field_member_link:
@@ -98,6 +98,10 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

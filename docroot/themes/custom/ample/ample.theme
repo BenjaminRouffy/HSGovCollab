@@ -5,12 +5,13 @@
  * ample.theme
  */
 
+use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Additional settings for ample setting form.
  */
-function ample_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
+function ample_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state, $form_id = NULL) {
   // Work-around for a core bug affecting admin themes. See issue #943212.
   if (isset($form_id)) {
     return;
@@ -22,12 +23,43 @@ function ample_form_system_theme_settings_alter(&$form, FormStateInterface $form
 /**
  * Implements hook_preprocess_HOOK().
  */
-function ample_preprocess_html(&$variables) {
+function ample_preprocess_html(array &$variables) {
   // An exception might be thrown.
   try {
     $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
   }
   catch (Exception $e) {
     $variables['is_front'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function ample_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  if ($hook == 'block' && $variables['elements']['#base_plugin_id'] == 'block_content') {
+    $element = $variables['elements'];
+
+    if (isset($element['content']['#block_content'])) {
+      /* @var BlockContent $block_content */
+      $block_content = $element['content']['#block_content'];
+
+      $suggestions[] = 'block__block_content__' . $block_content->bundle();
+      $suggestions[] = 'block__block_content__' . $block_content->bundle() . '__' . $element['content']['#view_mode'];
+    }
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function ample_preprocess_field(array &$variables) {
+  if ('field_video_link' === $variables['field_name']) {
+    foreach ($variables['items'] as $i => $item) {
+      $variables['items'][$i]['content']['children']['#attributes']['data-type'] = $item['content']['children']['#provider'];
+    }
+
+    $variables['#attached']['library'][] = 'ample/plyr';
   }
 }

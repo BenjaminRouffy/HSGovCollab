@@ -6,15 +6,22 @@ dependencies:
     - field.storage.paragraph.field_content_image
     - paragraphs.paragraphs_type.content_image
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 id: paragraph.content_image.field_content_image
 field_name: field_content_image
 entity_type: paragraph
 bundle: content_image
 label: 'Content Image'
 description: ''
-required: false
-translatable: false
+required: true
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

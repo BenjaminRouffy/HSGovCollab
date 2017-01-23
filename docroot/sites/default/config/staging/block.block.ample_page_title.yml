@@ -2,6 +2,8 @@ uuid: c8d59199-2760-4fb6-8c78-4352f9d34dff
 langcode: en
 status: true
 dependencies:
+  module:
+    - ctools
   theme:
     - ample
 _core:
@@ -9,7 +11,7 @@ _core:
 id: ample_page_title
 theme: ample
 region: content
-weight: -30
+weight: -3
 provider: null
 plugin: page_title_block
 settings:
@@ -17,4 +19,11 @@ settings:
   label: 'Page title'
   provider: core
   label_display: '0'
-visibility: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      basic_page: basic_page
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'

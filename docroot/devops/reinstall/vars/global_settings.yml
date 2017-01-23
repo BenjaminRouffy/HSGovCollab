@@ -18,7 +18,7 @@ origin_site_url: 'http://p4h.xip.io/'
 pp_environment: 'default'
 # This variable allows select type of installation. Can be overridden by CI server.
 # From installation profile = 'profile', from sql dump = 'sql'.
-workflow_type: 'profile'
+workflow_type: 'sql'
 is_windows: false
 ci_server_username: 'jenkins'
 # This variable allows make backup from CI environment before processing.
@@ -26,17 +26,17 @@ ci_server_username: 'jenkins'
 make_backup: false
 rebuild_registry: false
 # Local environment that will be used from backup.
-local_backup_environment: 'staging'
+local_backup_environment: 'stage'
 # htpasswd protection for securing backups.
-backup_user: propeople
-backup_pass: givemebackup
+backup_user: admin
+backup_pass: 4a2bf8DjyUCynFdc
 # Stage hash_salt key
 hash_salt: ZunPn4qWYDhQ1FEwGWlI2aQNNcAEZ5UdSob7R9Z0IeFIQPW5_pFt7wPVlpbrwEfqdWOLAxcUUA
 # Source backup database that will be downloaded to build site.
 # In many cases this is production dump.
-source_backup_name: latest_prod.sql.gz
+source_backup_name: latest_local_stage.sql.gz
 # URL to the source database. Can be overridden by CI server.
-source_database: http://{{ backup_user }}:{{ backup_pass }}@192.168.56.132/backup/{{ source_backup_name }}
+source_database: http://{{ backup_user }}:{{ backup_pass }}@cibox07.m2.propeople.com.ua/backup/{{ source_backup_name }}
 # Path where settings.php should be placed.
 settings_file_path: sites/default/settings.php
 settings_default_file_path: sites/default/default.settings.php

@@ -29,10 +29,19 @@
     padding: 25px 30px 15px;
     text-transform: uppercase;
     text-decoration: none;
+    transition: opacity .2s ease, color .2s ease;
 
-    &:hover {
-      background: rgba($navy, .08);
-      opacity: .7;
+    .header-static & {
+      &:hover {
+        background: rgba($navy, .08);
+        opacity: .7;
+      }
+    }
+
+    .header-fixed & {
+      &:hover {
+        color: rgba($white, .56);
+      }
     }
   }
 }

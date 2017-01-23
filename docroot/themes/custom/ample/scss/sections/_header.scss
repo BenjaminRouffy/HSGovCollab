@@ -7,38 +7,11 @@ header {
     margin: 0;
     padding: 0;
   }
-}
 
-.header-static {
-  max-width: 1260px;
-  min-height: 120px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 500;
-
-  .logo-wrapper {
-    .logo {
-      background: $white;
-      border-bottom: 2px solid $red;
-      box-shadow: 0 1px 3px 0 rgba($black, .25);
-      padding: 15px 10px 0 20px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 150px;
-      width: 180px;
-    }
-
-    img {
-      height: 113px;
-      width: 134px;
-    }
-  }
-
-  .social-links {
-    position: absolute;
-    top: 22px;
-    right: 0;
+  .wrapper {
+    max-width: 1260px;
+    margin: 0 auto;
+    position: relative;
   }
 
   .service-links {
@@ -72,8 +45,93 @@ header {
       }
     }
   }
+}
+
+.header-static {
+  background: $white;
+  min-height: 120px;
+  position: relative;
+  z-index: 500;
+
+  .logo-wrapper {
+    .logo {
+      background: $white;
+      border-bottom: 2px solid $red;
+      box-shadow: 0 1px 3px 0 rgba($black, .25);
+      padding: 15px 10px 0 20px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 150px;
+      width: 180px;
+    }
+
+    img {
+      height: 113px;
+      width: 134px;
+    }
+  }
+
+  .social-links {
+    position: absolute;
+    top: 22px;
+    right: 0;
+  }
 
   .language {
     text-transform: uppercase;
+  }
+}
+
+.header-fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 400;
+
+  .top-head {
+    background-image: linear-gradient(180deg, #334c58, $navy-dark);
+    box-shadow: 0 1px 8px rgba($black, .16);
+    height: 60px;
+  }
+
+  .logo-wrapper {
+    float: left;
+
+    .logo {
+      background: $white;
+      border-bottom: 2px solid $red;
+      box-shadow: 0 1px 3px rgba($black, .25);
+      display: inline-block;
+      height: 70px;
+      padding-top: 6px;
+      width: 93px;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 63px;
+    }
+  }
+
+  .main-menu {
+    a {
+      color: $white;
+      font-weight: 200;
+      padding: 20px 30px;
+    }
+  }
+
+  .service-links {
+    right: 0;
+    top: 0;
+    position: absolute;
+
+    a {
+      @include font-size(14);
+      color: $white;
+      font-weight: 200;
+      padding: 20px 5px;
+    }
   }
 }

@@ -208,10 +208,8 @@ p {
 strong {
   font-weight: 600; }
 
-a {
-  transition: opacity .2s ease; }
-  a:focus {
-    outline: 0; }
+a:focus {
+  outline: 0; }
 
 blockquote {
   margin: 0 0 10px 0;
@@ -299,10 +297,13 @@ img {
     height: 63px;
     padding: 25px 30px 15px;
     text-transform: uppercase;
-    text-decoration: none; }
-    .main-menu a:hover {
+    text-decoration: none;
+    transition: opacity .2s ease, color .2s ease; }
+    .header-static .main-menu a:hover {
       background: rgba(76, 126, 150, 0.08);
       opacity: .7; }
+    .header-fixed .main-menu a:hover {
+      color: rgba(255, 255, 255, 0.56); }
 
 .social-links ul {
   display: flex;
@@ -381,11 +382,36 @@ header {
   header ul {
     margin: 0;
     padding: 0; }
+  header .wrapper {
+    max-width: 1260px;
+    margin: 0 auto;
+    position: relative; }
+  header .service-links {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    height: 60px;
+    overflow: hidden; }
+    header .service-links ul,
+    header .service-links li {
+      display: inline-block;
+      vertical-align: top; }
+    header .service-links a {
+      font-size: 0.7875rem;
+      display: block;
+      color: #283b44;
+      font-family: Oswald, sans-serif;
+      padding: 32px 5px 15px;
+      text-decoration: none; }
+      header .service-links a.active {
+        color: #8c2222; }
+      header .service-links a:hover {
+        background: rgba(76, 126, 150, 0.08);
+        opacity: .7; }
 
 .header-static {
-  max-width: 1260px;
+  background: #fff;
   min-height: 120px;
-  margin: 0 auto;
   position: relative;
   z-index: 500; }
   .header-static .logo-wrapper .logo {
@@ -405,30 +431,44 @@ header {
     position: absolute;
     top: 22px;
     right: 0; }
-  .header-static .service-links {
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-    height: 60px;
-    overflow: hidden; }
-    .header-static .service-links ul,
-    .header-static .service-links li {
-      display: inline-block;
-      vertical-align: top; }
-    .header-static .service-links a {
-      font-size: 0.7875rem;
-      display: block;
-      color: #283b44;
-      font-family: Oswald, sans-serif;
-      padding: 32px 5px 15px;
-      text-decoration: none; }
-      .header-static .service-links a.active {
-        color: #8c2222; }
-      .header-static .service-links a:hover {
-        background: rgba(76, 126, 150, 0.08);
-        opacity: .7; }
   .header-static .language {
     text-transform: uppercase; }
+
+.header-fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 400; }
+  .header-fixed .top-head {
+    background-image: linear-gradient(180deg, #334c58, #283b44);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
+    height: 60px; }
+  .header-fixed .logo-wrapper {
+    float: left; }
+    .header-fixed .logo-wrapper .logo {
+      background: #fff;
+      border-bottom: 2px solid #ea3a32;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      display: inline-block;
+      height: 70px;
+      padding-top: 6px;
+      width: 93px; }
+    .header-fixed .logo-wrapper img {
+      display: block;
+      margin: 0 auto;
+      width: 63px; }
+  .header-fixed .main-menu a {
+    color: #fff;
+    font-weight: 200;
+    padding: 20px 30px; }
+  .header-fixed .service-links {
+    right: 0;
+    top: 0;
+    position: absolute; }
+    .header-fixed .service-links a {
+      font-size: 0.875rem;
+      color: #fff;
+      font-weight: 200;
+      padding: 20px 5px; }
 
 footer {
   font-size: 0.7875rem;

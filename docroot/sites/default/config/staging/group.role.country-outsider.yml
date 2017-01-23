@@ -11,4 +11,7 @@ internal: true
 audience: outsider
 group_type: country
 permissions_ui: true
-permissions: {  }
+permissions:
+  - 'access group_node overview'
+  - 'join group'
+  - 'view group'

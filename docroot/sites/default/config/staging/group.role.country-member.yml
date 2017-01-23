@@ -11,4 +11,8 @@ internal: true
 audience: member
 group_type: country
 permissions_ui: true
-permissions: {  }
+permissions:
+  0: 'view group_node:news content'
+  1: 'view news node'
+  2: 'view group'
+  6: 'access group_node overview'

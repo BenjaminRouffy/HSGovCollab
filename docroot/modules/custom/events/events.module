@@ -17,7 +17,7 @@ function events_node_view(array &$build, EntityInterface $entity, EntityViewDisp
   $user = Drupal::currentUser();
   if ('event' == $type && 'default' == $view_mode && TRUE === $user->isAnonymous()) {
     $build['signup_link'] = [
-      '#title' => t('Sign up for event'),
+      '#title' => Drupal::t('Sign up for event'),
       '#type' => 'link',
       '#url' => Url::fromRoute('user.login'),
       '#weight' => -10,

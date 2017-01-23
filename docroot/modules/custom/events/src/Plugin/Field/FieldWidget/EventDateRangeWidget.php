@@ -8,22 +8,27 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\datetime_range\Plugin\Field\FieldType\DateRangeItem;
 use Drupal\datetime_range\Plugin\Field\FieldWidget\DateRangeWidgetBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Plugin implementation of the 'daterange_dateonly' widget.
+ * Plugin implementation of the 'daterange_eventdaterange' widget.
  *
  * @FieldWidget(
- *   id = "daterange_dateonly",
- *   label = @Translation("Date only range"),
+ *   id = "daterange_eventdaterange",
+ *   label = @Translation("Event date range"),
  *   field_types = {
  *     "daterange"
  *   }
  * )
  */
-class DateOnlyRangeWidget extends DateRangeWidgetBase implements ContainerFactoryPluginInterface {
+class EventDateRangeWidget extends DateRangeWidgetBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Values for the 'date_type' setting.
+   */
+  const DATERANGE_TYPE_DATEONLY = 'date_only';
+  const DATERANGE_TYPE_TIMEONLY = 'time_only';
 
   /**
    * The date format storage.
@@ -38,6 +43,7 @@ class DateOnlyRangeWidget extends DateRangeWidgetBase implements ContainerFactor
   public static function defaultSettings() {
     return [
       'date_format' => 'html_date',
+      'date_type' => 'date_only',
     ] + parent::defaultSettings();
   }
 
@@ -52,11 +58,25 @@ class DateOnlyRangeWidget extends DateRangeWidgetBase implements ContainerFactor
       $formats[$key] = $value->label();
     }
 
+    $date_types = [
+      self::DATERANGE_TYPE_DATEONLY => $this->t('Date only'),
+      self::DATERANGE_TYPE_TIMEONLY => $this->t('Time only'),
+    ];
+
+    $element['date_type'] = [
+      '#type' => 'select',
+      '#options' => $date_types,
+      '#multiple' => FALSE,
+      '#title' => $this->t('Date type'),
+      '#default_value' => $this->getSetting('date_type'),
+      '#required' => TRUE,
+    ];
+
     $element['date_format'] = [
       '#type' => 'select',
       '#options' => $formats,
       '#multiple' => FALSE,
-      '#title' => t('Date format'),
+      '#title' => $this->t('Date format'),
       '#default_value' => $this->getSetting('date_format'),
       '#required' => TRUE,
     ];
@@ -70,7 +90,8 @@ class DateOnlyRangeWidget extends DateRangeWidgetBase implements ContainerFactor
   public function settingsSummary() {
     $summary = parent::settingsSummary();
     $pattern = $this->dateStorage->load($this->getSetting('date_format'))->getPattern();
-    $summary[] = t('Date format: @format', ['@format' => $pattern]);
+    $summary[] = $this->t('Date type: @type', ['@type' => $this->getSetting('date_type')]);
+    $summary[] = $this->t('Date format: @format', ['@format' => $pattern]);
 
     return $summary;
   }
@@ -105,20 +126,22 @@ class DateOnlyRangeWidget extends DateRangeWidgetBase implements ContainerFactor
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
     // Identify the type of date and time elements to use.
-    switch ($this->getFieldSetting('datetime_type')) {
-      case DateRangeItem::DATETIME_TYPE_DATE:
-      case DateRangeItem::DATETIME_TYPE_ALLDAY:
-        $date_type = 'date';
-        $time_type = 'none';
+    switch ($this->getSetting('date_type')) {
+      case self::DATERANGE_TYPE_TIMEONLY:
+        $date_type = 'none';
+        $time_type = 'time';
         $date_format = $this->dateStorage->load('html_date')->getPattern();
-        $time_format = '';
+        $time_format = $this->dateStorage->load($this->getSetting('date_format'))->getPattern();
         break;
 
-      default:
+      case self::DATERANGE_TYPE_DATEONLY:
         $date_type = 'date';
         $time_type = 'none';
         $date_format = $this->dateStorage->load($this->getSetting('date_format'))->getPattern();
         $time_format = $this->dateStorage->load('html_time')->getPattern();
+        break;
+
+      default:
         break;
     }
 

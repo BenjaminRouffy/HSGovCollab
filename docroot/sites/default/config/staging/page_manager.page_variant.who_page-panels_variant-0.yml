@@ -5,10 +5,7 @@ dependencies:
   config:
     - page_manager.page.who_page
     - views.view.members_list
-  content:
-    - 'block_content:headline_description:ae6255f3-19d6-4fed-b6f6-33bee1027abc'
   module:
-    - block_content
     - panels
     - views
 id: who_page-panels_variant-0
@@ -16,8 +13,8 @@ label: Panels
 variant: panels_variant
 variant_settings:
   blocks:
-    7a6ceeb5-46dd-435c-952c-10010c0f23b6:
-      id: 'views_block:members_list-block_1'
+    9d190eed-bdc3-4598-bf88-27594afc171a:
+      id: 'views_block:members_list-members_list'
       label: ''
       provider: views
       label_display: '0'
@@ -25,19 +22,7 @@ variant_settings:
       items_per_page: none
       region: middle
       weight: 0
-      uuid: 7a6ceeb5-46dd-435c-952c-10010c0f23b6
-      context_mapping: {  }
-    c9424db3-522a-40b1-a485-948cd2087c8b:
-      id: 'block_content:ae6255f3-19d6-4fed-b6f6-33bee1027abc'
-      label: 'Members headline'
-      provider: block_content
-      label_display: '0'
-      status: true
-      info: ''
-      view_mode: full
-      region: middle
-      weight: 0
-      uuid: c9424db3-522a-40b1-a485-948cd2087c8b
+      uuid: 9d190eed-bdc3-4598-bf88-27594afc171a
       context_mapping: {  }
   id: panels_variant
   uuid: 4dfa2c41-d7e8-4a1f-a9ab-2c5b327fcaee

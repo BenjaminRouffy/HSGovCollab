@@ -11,8 +11,12 @@
   width: 100%;
 }
 
+.region-wrapper {
+  @include clearfix();
+}
+
 .content-with-sidebar {
-  overflow: hidden;
+  @include clearfix();
 
   .content {
     float: left;
@@ -35,15 +39,28 @@
 }
 
 .title-wrapper {
-  &:after {
-    background: $red;
-    content: "";
-    display: block;
-    height: 2px;
-    margin: 20px 0 40px;
-    width: 180px;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  position: relative;
+
+  h1 {
+    ~ h2 {
+      margin-bottom: 0;
+    }
   }
 
+  .line {
+    background: $red;
+    display: block;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 180px;
+  }
+}
+
+.content {
   h1 {
     @include font-size(49);
     line-height: 48px;
@@ -56,19 +73,15 @@
     line-height: 48px;
     margin: 0 0 21px;
   }
-}
 
-
-.content {
   .content-summary {
-    margin: 20px 0;
-
     p {
       @include font-size(22.4);
       color: $navy;
       font-family: $fira;
       font-weight: 300;
       line-height: 31px;
+      margin: 20px 0;
     }
   }
 
@@ -100,5 +113,48 @@
     font-style: italic;
     line-height: 29px;
     margin-top: 5px;
+  }
+
+  li {
+    @include font-size(18.2);
+    font-family: $fira;
+    color: $navy;
+    font-weight: 400;
+    line-height: 29px;
+    margin-top: 10px;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  blockquote {
+    @extend .corners;
+    @include font-size(28);
+    border: none;
+    color: $navy;
+    font-family: $oswald;
+    font-weight: 300;
+    line-height: 35px;
+    margin: 41px 0 62px;
+    padding: 20px 50px;
+    position: relative;
+    left: -46px;
+
+    .content-with-sidebar & {
+      width: 70%;
+    }
+
+    p {
+      @include font-size(28);
+      color: $navy;
+      font-family: $oswald;
+      font-weight: 300;
+      line-height: 35px;
+    }
   }
 }

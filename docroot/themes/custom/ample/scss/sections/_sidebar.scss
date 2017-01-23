@@ -25,7 +25,8 @@
   }
 }
 
-.news-events-list {
+.news-events-list,
+.related-docs {
   margin-bottom: 50px;
 
   &.corners {
@@ -74,7 +75,7 @@
     }
   }
 
-  a:not(.read-more) {
+  a:not(.read-more):not(.download) {
     display: block;
     color: $navy-dark;
     text-decoration: none;
@@ -89,6 +90,25 @@
       @include font-size(24);
       color: $navy-dark;
       text-decoration: none;
+    }
+  }
+
+  .doc-icon {
+    span {
+      @include font-size(28);
+      color: $navy;
+      display: block;
+      padding-top: 3px;
+    }
+  }
+
+  .download {
+    color: $red;
+    margin-left: 37px;
+    text-decoration: none;
+
+    &:hover {
+      color: $red-dark;
     }
   }
 
@@ -124,5 +144,17 @@
   .hash {
     color: $red-dark;
     text-decoration: none;
+  }
+}
+
+.related-docs {
+  h2 {
+    background: url(../images/docs-icon.svg) left center no-repeat;
+    background-size: 40px;
+    padding-left: 60px;
+  }
+  
+  li {
+    cursor: default;
   }
 }

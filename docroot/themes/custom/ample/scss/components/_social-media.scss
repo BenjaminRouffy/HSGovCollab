@@ -1,0 +1,29 @@
+.social-links {
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  .twitter-icon {
+    margin-top: 2px;
+  }
+
+  a {
+    @include font-size(22);
+    display: block;
+    color: $navy-dark;
+    text-decoration: none;
+    transition: color .2s ease;
+
+    &:hover {
+      color: $navy-light;
+    }
+  }
+
+  header & {
+    .font-social-icon {
+      margin-right: 5px;
+    }
+  }
+}

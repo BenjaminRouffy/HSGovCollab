@@ -1,0 +1,42 @@
+.top-right-icon {
+  text-align: center;
+}
+
+.red-btn-link {
+  @include font-size(21);
+  border: 1px solid transparent;
+  color: $red;
+  display: inline-block;
+  font-family: $oswald;
+  font-weight: 400;
+  margin: 30px 0 10px;
+  padding: 20px 40px;
+  text-align: center;
+  text-decoration: none;
+  transition: border .3s ease;
+
+  &:hover {
+    border-color: $red;
+  }
+
+  &:after {
+    @include font-size(29.4);
+    margin-left: 4px;
+  }
+}
+
+.read-more {
+  @include font-size(14);
+  border: 1px solid transparent;
+  color: $red;
+  display: inline-block;
+  font-family: $oswald;
+  margin: 10px 0;
+  padding: 15px 40px;
+  text-decoration: none;
+  transition: border .3s ease;
+
+  &:hover {
+    border-color: $red;
+  }
+}

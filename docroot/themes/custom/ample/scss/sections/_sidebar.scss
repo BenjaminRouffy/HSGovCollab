@@ -1,0 +1,160 @@
+.teaser {
+  background: $navy;
+  color: $white;
+  margin-bottom: 40px;
+  padding: 40px 30px;
+  transition: background .3s ease;
+
+  &:hover {
+    background: rgba($red, .85);
+  }
+
+  a {
+    @include font-size(30.8);
+    color: $white-with-rose-shade;
+    display: block;
+    font-family: $oswald;
+    font-weight: 400;
+    line-height: 40px;
+    text-decoration: none;
+    transition: all .2s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.news-events-list,
+.related-docs {
+  margin-bottom: 50px;
+
+  &.corners {
+    padding: 30px 0 20px;
+    margin-bottom: 40px;
+
+    li {
+      border-color: $navy;
+      padding: 20px 15px 10px;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  h2 {
+    @include font-size(25.2);
+    line-height: 48px;
+    margin: 0 0 21px 15px;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    border-bottom: 1px solid $white-dark;
+    cursor: pointer;
+    font-family: $fira;
+    padding: 15px;
+
+    &:hover {
+      background: $white-dark;
+      border-color: $red;
+    }
+
+    &:last-child {
+      border-color: transparent;
+
+      &:hover {
+        border-color: $red;
+      }
+    }
+  }
+
+  a:not(.read-more):not(.download) {
+    display: block;
+    color: $navy-dark;
+    text-decoration: none;
+  }
+
+  .font-social-icon {
+    float: left;
+    margin-left: -4px;
+    margin-right: 10px;
+
+    span {
+      @include font-size(24);
+      color: $navy-dark;
+      text-decoration: none;
+    }
+  }
+
+  .doc-icon {
+    span {
+      @include font-size(28);
+      color: $navy;
+      display: block;
+      padding-top: 3px;
+    }
+  }
+
+  .download {
+    color: $red;
+    margin-left: 37px;
+    text-decoration: none;
+
+    &:hover {
+      color: $red-dark;
+    }
+  }
+
+  .facebook-icon {
+    margin-left: -6px;
+  }
+
+  time {
+    @include font-size(12.6);
+    color: $navy;
+    font-weight: 700;
+  }
+
+  h4 {
+    @include font-size(16.8);
+    letter-spacing: .5px;
+    line-height: 22px;
+    margin: 0 0 10px;
+  }
+
+  p {
+    @include font-size(15.4);
+    color: $navy-dark;
+    clear: both;
+    line-height: 21px;
+  }
+
+  .tweet {
+    line-height: 26px;
+    margin-top: 5px;
+  }
+
+  .hash {
+    color: $red-dark;
+    text-decoration: none;
+  }
+}
+
+.related-docs {
+  h2 {
+    background: url(../images/docs-icon.svg) left center no-repeat;
+    background-size: 40px;
+    padding-left: 60px;
+  }
+  
+  li {
+    cursor: default;
+  }
+}

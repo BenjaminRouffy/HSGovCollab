@@ -1,0 +1,26 @@
+%font-social-icon {
+  &::after,
+  &::before {
+    font-family: $p4h;
+  }
+}
+
+.font-social-icon {
+  > * {
+    @extend %font-social-icon;
+  }
+}
+
+@each $type, $content in (
+  facebook: 'Q',
+  linkedin: 'W',
+  twitter: 'E',
+  top-right: 'T',
+  doc: 'u'
+) {
+  .#{$type}-icon {
+    > *::after {
+      content: $content;
+    }
+  }
+}

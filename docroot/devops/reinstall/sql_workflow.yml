@@ -4,12 +4,17 @@
 # - Importing to database
 # - Running registry rebuild (when modules have been moved to new directory)
 # - Running database updates
-- name: Start the MySQL service
-  service: 
-    name: mysql 
-    state: started
-    enabled: true
-    
+#
+# Failed:
+# [localhost] => {"cmd": "initctl version", "failed": true, "rc": 2}
+# [Errno 2] No such file or directory
+#
+#- name: Start the MySQL service
+#  service:
+#    name: mysql
+#    state: started
+#    enabled: true
+
 - name: Droping drupal database
   mysql_db: name={{ mysql_db }} state=absent login_user={{ mysql_user }} login_password={{ mysql_pass }}
   when: pp_environment == "demo" or pp_environment == "default"
@@ -51,6 +56,7 @@
 # Run registry rebuild.
 - name: Check if registry_rebuild is installed
   shell: "{{ php_env_vars }} drush | grep -c registry_rebuild"
+  when: rebuild_registry
   register: registry_rebuild_installed
   ignore_errors: true
 

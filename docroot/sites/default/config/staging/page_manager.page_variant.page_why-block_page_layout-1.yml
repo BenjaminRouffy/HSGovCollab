@@ -5,43 +5,48 @@ dependencies:
   config:
     - page_manager.page.page_why
   content:
-    - 'block_content:banner:9b7e1cf4-cb29-4816-a8d1-dbe71bf9420f'
-    - 'block_content:link:92c1d4fb-1308-4d49-95ee-f764ab26a4fd'
+    - 'block_content:link:027b7ed4-4f77-4449-a2f4-09e6afe9d7ee'
   module:
     - block_content
     - block_page_layout
     - ctools
+    - ctools_block
 id: page_why-block_page_layout-1
 label: Default
 variant: block_page_layout
 variant_settings:
   blocks:
-    800a230d-0fc8-457d-b047-e8eac511add6:
-      id: 'block_content:9b7e1cf4-cb29-4816-a8d1-dbe71bf9420f'
-      label: 'Why banner'
-      provider: block_content
-      label_display: '0'
-      status: true
-      info: ''
-      view_mode: full
-      region: top_banner
-      weight: -10
-      uuid: 800a230d-0fc8-457d-b047-e8eac511add6
-      context_mapping: {  }
     ff7db8c3-922b-4072-939d-3797a45f402e:
       id: 'entity_view:node'
       label: 'Entity view (Content)'
       provider: ctools
       label_display: '0'
-      view_mode: view_mode_for_section_page
+      view_mode: default
       region: content1
       weight: 0
       uuid: ff7db8c3-922b-4072-939d-3797a45f402e
       context_mapping:
         entity: node_1
-    e5cacf57-d11d-4110-9e31-c321fe069a55:
-      id: 'block_content:92c1d4fb-1308-4d49-95ee-f764ab26a4fd'
-      label: 'Registration link (Why page)'
+    affe49fb-119b-442c-be1d-b07f2dfd0dec:
+      id: 'entity_field:node:field_banner'
+      label: Banner
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_revisions_entity_view
+        settings:
+          view_mode: view_mode_banner
+        third_party_settings: {  }
+        weight: 0
+      region: top_banner
+      weight: 0
+      uuid: affe49fb-119b-442c-be1d-b07f2dfd0dec
+      context_mapping:
+        entity: node_1
+    5d26f015-544c-4bfb-b446-285de5617f51:
+      id: 'block_content:027b7ed4-4f77-4449-a2f4-09e6afe9d7ee'
+      label: 'Why link'
       provider: block_content
       label_display: '0'
       status: true
@@ -49,8 +54,36 @@ variant_settings:
       view_mode: view_mode_registration_block
       region: right_sidebar1
       weight: 0
-      uuid: e5cacf57-d11d-4110-9e31-c321fe069a55
+      uuid: 5d26f015-544c-4bfb-b446-285de5617f51
       context_mapping: {  }
+    607211a6-12cf-4855-8dde-1dcf61b5e68f:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content2
+      weight: 0
+      uuid: 607211a6-12cf-4855-8dde-1dcf61b5e68f
+      context_mapping:
+        entity: node_2
+    67f789cc-302f-41dd-bb5d-1fd6010c1633:
+      id: 'entity_field:node:field_banner'
+      label: Banner
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_revisions_entity_view
+        settings:
+          view_mode: view_mode_banner
+        third_party_settings: {  }
+        weight: 0
+      region: banner1
+      weight: 0
+      uuid: 67f789cc-302f-41dd-bb5d-1fd6010c1633
+      context_mapping:
+        entity: node_2
   id: block_page_layout
   uuid: 05664e37-0b67-4129-ae62-4003077f0cab
   label: null
@@ -67,12 +100,12 @@ static_context:
     label: 'Node 1'
     type: 'entity:node'
     description: ''
-    value: 7e3f5ddc-9d33-4896-b3a8-3b106907b933
+    value: 6dcc067e-8158-404d-ba79-c4b063f61f1c
   node_2:
     label: 'Node 2'
     type: 'entity:node'
     description: ''
-    value: 7444f5ac-0d9f-4d25-8303-ca77fe0d1f05
+    value: 51a66945-0adb-4324-a66e-8f9e3fc0498d
   node_3:
     label: 'Node 3'
     type: 'entity:node'

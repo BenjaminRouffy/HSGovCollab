@@ -1,0 +1,32 @@
+uuid: 67ee6916-21fa-4681-8e4f-9c808b0b34d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_view_mode
+    - paragraphs.paragraphs_type.content_image
+  module:
+    - view_mode_selector
+id: paragraph.content_image.field_view_mode
+field_name: field_view_mode
+entity_type: paragraph
+bundle: content_image
+label: 'View mode'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: view_mode_banner
+default_value_callback: ''
+settings:
+  view_modes:
+    default:
+      enable: 0
+      hide_title: 0
+      icon: {  }
+    view_mode_banner:
+      enable: 1
+      hide_title: 0
+      icon: {  }
+field_type: view_mode_selector

@@ -1,0 +1,7 @@
+{% for item in items %}
+  <a href="{{ item.content['#url'] }}">
+    <h2 role="heading">
+      {{ item.content['#title'] }}
+    </h2>
+  </a>
+{% endfor %}

@@ -7,8 +7,7 @@ Drupal Vagrant Dev box for CIBox support
 * Useful Vagrant's plugins
   * [Hosts Updater](https://github.com/cogitatio/vagrant-hostsupdater)
   * [vbguest](https://github.com/dotless-de/vagrant-vbguest)
-
-
+* [Migrate to php 7.1]
 #Usage
 
 ```sh
@@ -195,3 +194,19 @@ sh reinstall.sh
 for drupal reinstall from scratch.
 
 Configure Stage File Proxy to use the files from the correct source.
+
+#Migrate to php 7.1
+
+Download and import a new box:
+```
+rsync -avz -e 'ssh -p2207'  root@cibox07.m2.propeople.com.ua:/var/www/backup/ubuntu14.04provisionedCIBox.php7-1.box  ubuntu14.04provisionedCIBox.php7-1.box
+vagrant box add Ubuntu_14_04__CIBox_VM_provisioned_php71 ubuntu14.04provisionedCIBox.php7-1.box
+rm -rf ubuntu14.04provisionedCIBox.php7-1.box
+```
+Recreate VBox
+
+```
+vagrant destroy
+vagrant box remove Ubuntu_14_04__CIBox_VM_provisioned
+vagrant up
+```

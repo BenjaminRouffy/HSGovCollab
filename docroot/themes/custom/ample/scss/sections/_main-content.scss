@@ -22,7 +22,7 @@
     float: left;
     width: 66.64%;
 
-    > * {
+    > *:not(.node-pager) {
       width: 80%;
     }
   }
@@ -61,6 +61,12 @@
 }
 
 .content {
+  @include font-size(18.2);
+  color: $navy-dark;
+  font-family: $fira;
+  font-weight: 300;
+  line-height: 28px;
+
   h1 {
     @include font-size(49);
     line-height: 48px;
@@ -78,18 +84,9 @@
     p {
       @include font-size(22.4);
       color: $navy;
-      font-family: $fira;
-      font-weight: 300;
       line-height: 31px;
       margin: 20px 0;
     }
-  }
-
-  p {
-    @include font-size(18.2);
-    color: $navy-dark;
-    font-family: $fira;
-    line-height: 28px;
   }
 
   h4 {
@@ -156,5 +153,31 @@
       font-weight: 300;
       line-height: 35px;
     }
+  }
+
+  a {
+    color: $red;
+    font-weight: 400;
+    text-decoration: none;
+  }
+}
+
+.post-info {
+  @include font-size(15.4);
+  color: $navy;
+  font-family: $fira;
+  margin-bottom: 20px;
+
+  > *:not(:last-child) {
+    &:after {
+      content: "|";
+      font-weight: normal;
+      margin: 0 2px 0 6px;
+    }
+  }
+
+  time,
+  .country {
+    font-weight: 700;
   }
 }

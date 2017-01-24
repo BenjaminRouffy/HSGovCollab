@@ -261,22 +261,37 @@ img {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.font-social-icon > ::after, .font-social-icon > ::before {
+.font-social-icon > a::after,
+.font-social-icon > span::after, .font-social-icon > a::before,
+.font-social-icon > span::before {
   font-family: P4h, sans-serif; }
 
-.facebook-icon > *::after {
+.facebook-icon > a::after,
+.facebook-icon > span::after {
   content: "Q"; }
 
-.linkedin-icon > *::after {
+.linkedin-icon > a::after,
+.linkedin-icon > span::after {
   content: "W"; }
 
-.twitter-icon > *::after {
+.twitter-icon > a::after,
+.twitter-icon > span::after {
   content: "E"; }
 
-.top-right-icon > *::after {
+.top-right-icon > a::after,
+.top-right-icon > span::after {
   content: "T"; }
 
-.doc-icon > *::after {
+.arrow-left-icon > a::after,
+.arrow-left-icon > span::after {
+  content: "8"; }
+
+.arrow-right-icon > a::after,
+.arrow-right-icon > span::after {
+  content: "9"; }
+
+.doc-icon > a::after,
+.doc-icon > span::after {
   content: "u"; }
 
 .main-menu {
@@ -454,6 +469,37 @@ header .social-links .font-social-icon {
       line-height: 23px;
       margin: 20px 0 0; }
 
+.node-pager {
+  font-size: 0.875rem;
+  border-top: 1px solid #80aabe;
+  color: #4c7e96;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 50px;
+  padding: 20px 0;
+  width: 90%; }
+  .node-pager > div {
+    transition: opacity .2s ease;
+    width: 45%; }
+    .node-pager > div:hover {
+      opacity: .69; }
+  .node-pager p {
+    line-height: 22px; }
+
+.prev-wrapper {
+  float: left; }
+  .prev-wrapper a:after {
+    margin-left: 4px; }
+
+.next-wrapper {
+  float: right;
+  text-align: right; }
+  .next-wrapper a:after {
+    display: none; }
+  .next-wrapper a:before {
+    content: '9';
+    margin-right: 4px; }
+
 header {
   background: #fff;
   letter-spacing: 1px;
@@ -587,7 +633,7 @@ footer {
 .content-with-sidebar .content {
   float: left;
   width: 66.64%; }
-  .content-with-sidebar .content > * {
+  .content-with-sidebar .content > *:not(.node-pager) {
     width: 80%; }
 
 .content-with-sidebar .sidebar {
@@ -613,84 +659,90 @@ footer {
     left: 0;
     width: 180px; }
 
-.content h1 {
-  font-size: 3.0625rem;
-  line-height: 48px;
-  margin: 20px 0 21px;
-  padding: 0; }
-
-.content h2 {
-  font-size: 1.575rem;
-  line-height: 48px;
-  margin: 0 0 21px; }
-
-.content .content-summary p {
-  font-size: 1.4rem;
-  color: #4c7e96;
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 300;
-  line-height: 31px;
-  margin: 20px 0; }
-
-.content p {
+.content {
   font-size: 1.1375rem;
   color: #283b44;
   font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
   line-height: 28px; }
-
-.content h4 {
-  font-size: 1.225rem;
-  color: #283b44;
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 700;
-  line-height: 24px;
-  margin: 30px 0 10px; }
-
-.content figure {
-  clear: both;
-  margin: 30px 0; }
-
-.content figcaption {
-  font-size: 0.875rem;
-  color: #4c7e96;
-  font-family: "Fira Sans", sans-serif;
-  font-style: italic;
-  line-height: 29px;
-  margin-top: 5px; }
-
-.content li {
-  font-size: 1.1375rem;
-  font-family: "Fira Sans", sans-serif;
-  color: #4c7e96;
-  font-weight: 400;
-  line-height: 29px;
-  margin-top: 10px; }
-
-.content ul {
-  list-style-type: disc; }
-
-.content ol {
-  list-style-type: decimal; }
-
-.content blockquote {
-  font-size: 1.75rem;
-  border: none;
-  color: #4c7e96;
-  font-family: Oswald, sans-serif;
-  font-weight: 300;
-  line-height: 35px;
-  margin: 41px 0 62px;
-  padding: 20px 50px;
-  position: relative;
-  left: -46px; }
-  .content-with-sidebar .content blockquote {
-    width: 70%; }
-  .content blockquote p {
+  .content h1 {
+    font-size: 3.0625rem;
+    line-height: 48px;
+    margin: 20px 0 21px;
+    padding: 0; }
+  .content h2 {
+    font-size: 1.575rem;
+    line-height: 48px;
+    margin: 0 0 21px; }
+  .content .content-summary p {
+    font-size: 1.4rem;
+    color: #4c7e96;
+    line-height: 31px;
+    margin: 20px 0; }
+  .content h4 {
+    font-size: 1.225rem;
+    color: #283b44;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 30px 0 10px; }
+  .content figure {
+    clear: both;
+    margin: 30px 0; }
+  .content figcaption {
+    font-size: 0.875rem;
+    color: #4c7e96;
+    font-family: "Fira Sans", sans-serif;
+    font-style: italic;
+    line-height: 29px;
+    margin-top: 5px; }
+  .content li {
+    font-size: 1.1375rem;
+    font-family: "Fira Sans", sans-serif;
+    color: #4c7e96;
+    font-weight: 400;
+    line-height: 29px;
+    margin-top: 10px; }
+  .content ul {
+    list-style-type: disc; }
+  .content ol {
+    list-style-type: decimal; }
+  .content blockquote {
     font-size: 1.75rem;
+    border: none;
     color: #4c7e96;
     font-family: Oswald, sans-serif;
     font-weight: 300;
-    line-height: 35px; }
+    line-height: 35px;
+    margin: 41px 0 62px;
+    padding: 20px 50px;
+    position: relative;
+    left: -46px; }
+    .content-with-sidebar .content blockquote {
+      width: 70%; }
+    .content blockquote p {
+      font-size: 1.75rem;
+      color: #4c7e96;
+      font-family: Oswald, sans-serif;
+      font-weight: 300;
+      line-height: 35px; }
+  .content a {
+    color: #ea3a32;
+    font-weight: 400;
+    text-decoration: none; }
+
+.post-info {
+  font-size: 0.9625rem;
+  color: #4c7e96;
+  font-family: "Fira Sans", sans-serif;
+  margin-bottom: 20px; }
+  .post-info > *:not(:last-child):after {
+    content: "|";
+    font-weight: normal;
+    margin: 0 2px 0 6px; }
+  .post-info time,
+  .post-info .country {
+    font-weight: 700; }
 
 .teaser {
   background: #4c7e96;

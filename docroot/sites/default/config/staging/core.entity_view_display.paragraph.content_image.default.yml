@@ -9,7 +9,6 @@ dependencies:
     - paragraphs.paragraphs_type.content_image
   module:
     - image
-    - view_mode_selector
 id: paragraph.content_image.default
 targetEntityType: paragraph
 bundle: content_image
@@ -30,12 +29,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_view_mode:
-    weight: 2
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: view_mode_selector
 hidden:
   created: true
+  field_view_mode: true
   uid: true

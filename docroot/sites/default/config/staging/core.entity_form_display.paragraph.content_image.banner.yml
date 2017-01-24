@@ -7,9 +7,11 @@ dependencies:
     - entity_browser.browser.browse_files_modal
     - field.field.paragraph.content_image.field_content_image
     - field.field.paragraph.content_image.field_description
+    - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
   module:
     - entity_browser
+    - view_mode_selector
 id: paragraph.content_image.banner
 targetEntityType: paragraph
 bundle: content_image
@@ -34,8 +36,15 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_view_mode:
+    type: view_mode_selector_select
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   status: true

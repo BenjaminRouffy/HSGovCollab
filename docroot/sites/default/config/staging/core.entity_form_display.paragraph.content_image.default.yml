@@ -10,7 +10,6 @@ dependencies:
     - paragraphs.paragraphs_type.content_image
   module:
     - entity_browser
-    - view_mode_selector
 id: paragraph.content_image.default
 targetEntityType: paragraph
 bundle: content_image
@@ -35,16 +34,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_view_mode:
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
-    type: view_mode_selector_radios
   translation:
-    weight: 10
+    weight: 2
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
+  field_view_mode: true
   status: true
   uid: true

@@ -1,0 +1,14 @@
+@import "utils/mixins";
+@import "utils/variables";
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-left: 40px;
+
+  li {
+    color: $navy;
+    margin-top: 10px;
+  }
+}

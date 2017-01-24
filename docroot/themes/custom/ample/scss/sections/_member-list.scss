@@ -1,0 +1,17 @@
+.members-list {
+  margin-top: 50px;
+
+  > h2 {
+    @include font-size(25.2);
+    line-height: 48px;
+    margin: 0 0 15px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+}

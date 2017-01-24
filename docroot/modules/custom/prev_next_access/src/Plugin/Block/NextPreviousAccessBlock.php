@@ -1,10 +1,7 @@
 <?php
-/**
- * @file
- * Contains \Drupal\prev_next_access\Plugin\Block\NextPreviousAccessBlock.
- */
 
 namespace Drupal\prev_next_access\Plugin\Block;
+
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
@@ -27,9 +24,9 @@ class NextPreviousAccessBlock extends BlockBase {
   public function build() {
     $node = \Drupal::request()->attributes->get('node');
     $link = "";
-    $link .= $this->generateNextPrevious('prev', $node);
-    $link .= $this->generateNextPrevious('next', $node);
-    
+    $link .= $this->generateNextPrevious($node, 'prev');
+    $link .= $this->generateNextPrevious($node);
+
     return [
       '#markup' => $link,
       '#cache' => [
@@ -45,15 +42,15 @@ class NextPreviousAccessBlock extends BlockBase {
   /**
    * Lookup the next or previous node.
    *
-   * @param  string $direction either 'next' or 'previous'
-   *   Direction for search.
    * @param \Drupal\node\Entity\Node $node
    *   Target node.
+   * @param string $direction
+   *   Direction for search('next' or 'prev').
    *
    * @return string
    *   Rendered result.
    */
-  private function generateNextPrevious($direction = 'next', Node $node) {
+  private function generateNextPrevious(Node $node, $direction = 'next') {
     $comparison_operator = $sort = $display_text = '';
 
     if ($direction === 'next') {
@@ -88,4 +85,5 @@ class NextPreviousAccessBlock extends BlockBase {
 
     return '';
   }
+
 }

@@ -1,7 +1,10 @@
 .main-wrapper {
-  background: $white;
   border-top: 1px solid #e9e6e6;
   box-shadow: inset 0 0 8px rgba($black, .11);
+
+  body:not(.who) & {
+    background: $white;
+  }
 }
 
 .content-container {
@@ -78,15 +81,6 @@
     @include font-size(25.2);
     line-height: 48px;
     margin: 0 0 21px;
-  }
-
-  .content-summary {
-    p {
-      @include font-size(22.4);
-      color: $navy;
-      line-height: 31px;
-      margin: 20px 0;
-    }
   }
 
   h4 {
@@ -179,5 +173,16 @@
   time,
   .country {
     font-weight: 700;
+  }
+}
+
+.summary-text {
+  p {
+    @include font-size(22.4);
+    color: $navy;
+    font-family: $fira;
+    font-weight: 300;
+    line-height: 31px;
+    margin: 20px 0;
   }
 }

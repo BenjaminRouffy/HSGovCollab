@@ -2,26 +2,50 @@
   background: $navy;
   color: $white;
   margin-bottom: 40px;
-  padding: 40px 30px;
   transition: background .3s ease;
 
   &:hover {
     background: rgba($red, .85);
   }
 
+  .full-width & {
+    margin-bottom: 0;
+    text-align: center;
+
+    h2 {
+      @include font-size(56);
+      line-height: 40px;
+    }
+  }
+
   a {
+    @include font-size(22.4);
+    color: $white-dark;
+    display: block;
+    font-family: $fira;
+    font-weight: 300;
+    padding: 40px 30px;
+    text-decoration: none;
+  }
+
+  h2 {
     @include font-size(30.8);
     color: $white-with-rose-shade;
     display: block;
     font-family: $oswald;
     font-weight: 400;
     line-height: 40px;
+    margin: 0;
     text-decoration: none;
     transition: all .2s ease;
 
     &:hover {
       transform: scale(1.02);
     }
+  }
+
+  p {
+    margin: 30px 0 0;
   }
 }
 
@@ -153,8 +177,92 @@
     background-size: 40px;
     padding-left: 60px;
   }
-  
+
   li {
     cursor: default;
+  }
+}
+
+.member-block {
+  display: flex;
+  width: 33.33%;
+
+  .block-content {
+    background: $white;
+    box-shadow: 0 0 6px rgba($black, .1);
+    margin: 10px;
+    padding: 30px 20px 68px;
+    position: relative;
+  }
+
+  img {
+    float: left;
+    height: 80px;
+    padding: 8px 0 5px;
+    margin: 0 10px 20px 0;
+    width: 60px;
+  }
+
+  .country {
+    @include font-size(12.6);
+    color: $red;
+    font-family: $fira;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .title-wrapper {
+    float: left;
+    margin-bottom: 20px;
+    padding: 0 0 10px;
+    width: 75%;
+  }
+
+  h2 {
+    @include font-size(22.4);
+    letter-spacing: 1.5px;
+    line-height: 32px;
+    margin: 10px 0 5px;
+    text-transform: uppercase;
+  }
+
+  p {
+    @include font-size(15.4);
+    color: $navy-dark;
+    clear: both;
+    font-family: $fira;
+    line-height: 21px;
+  }
+
+  .external-link {
+    border-bottom: 2px solid transparent;
+    color: $navy-dark;
+    font-family: $oswald;
+    letter-spacing: .5px;
+    min-height: 50px;
+    padding: 13px 20px 5px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-decoration: none;
+    transition: border .3s ease, color .3s ease;
+    width: 100%;
+
+    &:hover {
+      border-color: $red;
+      color: rgba($navy-dark, .66);
+    }
+
+    &:after {
+      display: none;
+    }
+
+    &:before {
+      @include font-size(22.4);
+      content: "y";
+      color: $red;
+      position: relative;
+      top: 5px;
+    }
   }
 }

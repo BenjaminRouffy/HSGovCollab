@@ -1,0 +1,21 @@
+.top-text-region {
+  margin: 0 auto 50px;
+  text-align: center;
+  width: 66.64%;
+
+  .title-wrapper {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    @include font-size(70);
+    line-height: 78px;
+    padding-top: 0;
+  }
+
+  .line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

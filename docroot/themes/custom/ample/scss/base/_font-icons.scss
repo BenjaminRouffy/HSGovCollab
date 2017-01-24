@@ -6,7 +6,8 @@
 }
 
 .font-social-icon {
-  > * {
+  > a,
+  > span {
     @extend %font-social-icon;
   }
 }
@@ -16,10 +17,14 @@
   linkedin: 'W',
   twitter: 'E',
   top-right: 'T',
+  down-right: 'y',
+  arrow-left: '8',
+  arrow-right: '9',
   doc: 'u'
 ) {
   .#{$type}-icon {
-    > *::after {
+    > a::after,
+    > span::after {
       content: $content;
     }
   }

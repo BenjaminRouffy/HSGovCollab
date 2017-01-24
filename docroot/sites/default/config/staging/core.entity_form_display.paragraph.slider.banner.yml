@@ -1,34 +1,30 @@
-uuid: 73ee3f0a-d6a9-4067-a14f-094f7f4f2bdd
+uuid: b3dfd20c-15be-4889-8793-7d64e17a2591
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.banner
     - field.field.paragraph.slider.field_slider_item
     - field.field.paragraph.slider.field_view_mode
     - paragraphs.paragraphs_type.slider
   module:
     - field_collection
-    - view_mode_selector
-id: paragraph.slider.default
+id: paragraph.slider.banner
 targetEntityType: paragraph
 bundle: slider
-mode: default
+mode: banner
 content:
   field_slider_item:
     weight: 0
     settings: {  }
     third_party_settings: {  }
     type: field_collection_embed
-  field_view_mode:
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
-    type: view_mode_selector_select
   translation:
-    weight: 10
+    weight: 1
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
+  field_view_mode: true
   status: true
   uid: true

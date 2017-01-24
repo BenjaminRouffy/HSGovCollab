@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files_modal
     - field.field.paragraph.member_icon.field_member_icon
     - field.field.paragraph.member_icon.field_member_link
-    - image.style.thumbnail
     - paragraphs.paragraphs_type.member_icon
   module:
-    - image
+    - entity_browser
     - link
 id: paragraph.member_icon.default
 targetEntityType: paragraph
@@ -18,10 +18,15 @@ content:
   field_member_icon:
     weight: 0
     settings:
-      progress_indicator: throbber
+      entity_browser: browse_files_modal
+      field_widget_remove: true
+      selection_mode: selection_append
       preview_image_style: thumbnail
+      field_widget_edit: true
+      open: false
+      view_mode: default
     third_party_settings: {  }
-    type: image_image
+    type: entity_browser_file
   field_member_link:
     weight: 1
     settings:
@@ -31,6 +36,8 @@ content:
     type: link_default
   translation:
     weight: 10
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   status: true

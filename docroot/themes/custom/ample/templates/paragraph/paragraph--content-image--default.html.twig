@@ -1,0 +1,6 @@
+<figure>
+  {{ content.field_content_image|field_value }}
+  {% if content.field_description %}
+    <figcaption>{{ content.field_description|field_value }}</figcaption>
+  {% endif %}
+</figure>

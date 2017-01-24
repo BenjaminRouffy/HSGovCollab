@@ -1,0 +1,11 @@
+<div class="logo-wrapper">
+  <a href="{{ content.field_header_logo_link.0['#url'] }}" class="logo">
+    {% if content.field_header_static_logo %}
+      {{ content.field_header_static_logo|field_value }}
+    {% endif %}
+
+    {% if content.field_header_fixed_logo %}
+      {{ content.field_header_fixed_logo|field_value }}
+    {% endif %}
+  </a>
+</div>

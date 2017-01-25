@@ -1,0 +1,13 @@
+<div class="timeline-content-item">
+  <div class="font-social-icon custom-content-icon">
+    <span></span>
+  </div>
+
+  {% if content.field_date|field_value %}
+    <time>
+      {{ content.field_date|field_value }}
+    </time>
+  {% endif %}
+
+  {{ content.field_body|field_value }}
+</div>

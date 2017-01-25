@@ -1,0 +1,21 @@
+<div class="timeline-content-item">
+  <div class="font-social-icon {{ node.bundle() }}-icon">
+    <span></span>
+  </div>
+
+  {% if content.field_date|field_value %}
+    <time>
+      {{ content.field_date.0.start_date }}
+    </time>
+  {% else %}
+    <time datetime="{{ node.createdtime | date("Y-m-d") }}">
+      {{ node.createdtime|format_date('time_line') }}
+    </time>
+  {% endif %}
+
+  <h4 role="heading">
+    {{ label }}
+  </h4>
+
+  {{ content.body|field_value }}
+</div>

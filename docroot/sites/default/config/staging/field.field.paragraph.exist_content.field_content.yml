@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_content
     - node.type.event
+    - node.type.news
     - paragraphs.paragraphs_type.exist_content
 id: paragraph.exist_content.field_content
 field_name: field_content
@@ -21,8 +22,9 @@ settings:
   handler_settings:
     target_bundles:
       event: event
+      news: news
     sort:
       field: _none
     auto_create: false
-    auto_create_bundle: basic_page
+    auto_create_bundle: event
 field_type: entity_reference

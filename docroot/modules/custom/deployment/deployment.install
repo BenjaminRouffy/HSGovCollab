@@ -148,3 +148,24 @@ function deployment_update_8005() {
     'page_manager.page_variant.who_page-panels_variant-0',
   ]);
 }
+
+/**
+ * Add view mode "Time line" and new view mode for "Image" paragraph.
+ */
+function deployment_update_8006() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_view_display.node.event.time_line',
+    'core.entity_view_display.node.news.time_line',
+    'core.entity_view_display.paragraph.exist_content.default',
+    'core.entity_form_display.paragraph.content_image.default',
+    'core.entity_view_display.node.basic_page.default',
+    'core.entity_view_display.paragraph.content_image.view_mode_banner',
+    'core.entity_view_display.paragraph.content_image.with_quote',
+    'core.entity_view_mode.paragraph.with_quote',
+    'core.entity_view_mode.node.time_line',
+    'field.field.paragraph.content_image.field_view_mode',
+    'field.field.paragraph.exist_content.field_content',
+    'editor.editor.minimal',
+    'filter.format.minimal',
+  ]);
+}

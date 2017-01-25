@@ -9,7 +9,7 @@
     </time>
   {% else %}
     <time datetime="{{ node.createdtime | date("Y-m-d") }}">
-      {{ node.createdtime| date("d M. Y") }}
+      {{ node.createdtime|format_date('time_line') }}
     </time>
   {% endif %}
 

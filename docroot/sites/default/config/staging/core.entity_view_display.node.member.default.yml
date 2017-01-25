@@ -24,33 +24,33 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 4
     settings: {  }
     third_party_settings: {  }
   field_content_paragraph:
     type: entity_reference_revisions_entity_view
-    weight: 104
+    weight: 5
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
   field_country:
-    weight: 106
+    weight: 3
     label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
   field_member_category:
-    weight: 103
+    weight: 2
     label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
   field_member_image:
-    weight: 102
+    weight: 1
     label: hidden
     settings:
       image_style: ''
@@ -58,18 +58,18 @@ content:
     third_party_settings: {  }
     type: image
   field_member_link:
-    weight: 105
+    weight: 6
     label: hidden
     settings:
       trim_length: 80
+      target: _blank
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
+      rel: '0'
     third_party_settings: {  }
-    type: link
+    type: link_separate
   links:
-    weight: 100
+    weight: 0
     settings: {  }
     third_party_settings: {  }
 hidden:

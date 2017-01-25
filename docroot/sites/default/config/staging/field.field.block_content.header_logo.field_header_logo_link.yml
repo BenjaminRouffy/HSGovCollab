@@ -1,0 +1,28 @@
+uuid: 281d0059-e752-4183-b80f-d264159f5a8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.header_logo
+    - field.storage.block_content.field_header_logo_link
+  module:
+    - link
+id: block_content.header_logo.field_header_logo_link
+field_name: field_header_logo_link
+entity_type: block_content
+bundle: header_logo
+label: 'Header logo link'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/'
+    title: ''
+    options: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

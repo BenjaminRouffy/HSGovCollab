@@ -1,9 +1,11 @@
-<div class="main-wrapper">
-  <div class="left-sidebar">
-    {{ content.left_sidebar|without('#prefix', '#suffix') }}
-  </div>
+<div class="content-wrapper">
+  <section class="content-container content-with-sidebar">
+    <section class="content">
+      {{ content.left_sidebar|without('#prefix', '#suffix') }}
+    </section>
 
-  <div class="right-sidebar">
-    {{ content.right_sidebar|without('#prefix', '#suffix') }}
-  </div>
+    <aside class="sidebar">
+      {{ content.right_sidebar|without('#prefix', '#suffix') }}
+    </aside>
+  </section>
 </div>

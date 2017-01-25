@@ -1,6 +1,6 @@
 uuid: 80ed63c2-0c60-4244-b851-e69c1f0e373e
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - user
@@ -10,7 +10,7 @@ _core:
   default_config_hash: 4QlSnWBcxxKMIFRM8sbu_MjSkcp3NjGgnVrc-lynQHI
 id: ample_login
 theme: ample
-region: header
+region: '-1'
 weight: -4
 provider: null
 plugin: user_login_block

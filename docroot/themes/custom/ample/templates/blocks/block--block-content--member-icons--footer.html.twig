@@ -1,0 +1,13 @@
+<p><strong>{{ 'P4H Members'|t }}:</strong></p>
+
+<div class="partners">
+  <ul class="item-list">
+    {% if content.field_member_icons|field_value %}
+      {{ content.field_member_icons|field_value }}
+    {% endif %}
+  </ul>
+</div>
+
+{% if content.field_copyright_text|field_value %}
+  <p>{{ content.field_copyright_text|field_value }}</p>
+{% endif %}

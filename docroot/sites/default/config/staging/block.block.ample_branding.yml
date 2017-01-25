@@ -1,6 +1,6 @@
 uuid: 1e3828a6-6610-4996-8ba3-03cc583ee71c
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,8 +10,8 @@ _core:
   default_config_hash: fRKXNB91UxDvEMkzCR8ZBsawfC6Fqbme2gtobei3gu4
 id: ample_branding
 theme: ample
-region: header
-weight: -5
+region: '-1'
+weight: -3
 provider: null
 plugin: system_branding_block
 settings:

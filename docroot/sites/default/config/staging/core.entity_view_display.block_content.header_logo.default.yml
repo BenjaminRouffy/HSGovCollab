@@ -1,0 +1,39 @@
+uuid: 5bbf46ac-60fc-4c15-86d1-e4d868f4aa99
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.header_logo
+    - field.field.block_content.header_logo.field_header_fixed_logo
+    - field.field.block_content.header_logo.field_header_logo_link
+    - field.field.block_content.header_logo.field_header_static_logo
+  module:
+    - image
+    - link
+id: block_content.header_logo.default
+targetEntityType: block_content
+bundle: header_logo
+mode: default
+content:
+  field_header_fixed_logo:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_header_logo_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+hidden:
+  field_header_static_logo: true
+  langcode: true

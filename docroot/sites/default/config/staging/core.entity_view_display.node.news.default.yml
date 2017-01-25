@@ -5,9 +5,12 @@ dependencies:
   config:
     - field.field.node.news.body
     - field.field.node.news.field_author
+    - field.field.node.news.field_content_paragraph
     - field.field.node.news.field_image
+    - field.field.node.news.field_join_block
     - node.type.news
   module:
+    - entity_reference_revisions
     - image
     - text
     - user
@@ -29,6 +32,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_content_paragraph:
+    weight: 106
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
   field_image:
     weight: 103
     label: above
@@ -37,6 +48,13 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_join_block:
+    weight: 105
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   links:
     weight: 100
 hidden:

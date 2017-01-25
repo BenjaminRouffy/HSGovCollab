@@ -1,4 +1,4 @@
-uuid: f6366e26-c6ea-46a2-a8d9-1d52f6c6bda7
+uuid: aa6f86dc-aebe-4b71-a9eb-cc052ebdfa57
 langcode: en
 status: true
 dependencies:
@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.node_view
   module:
     - ctools
+    - ctools_block
     - panels
     - prev_next_access
 id: node_view-panels_variant-0
@@ -13,7 +14,7 @@ label: News
 variant: panels_variant
 variant_settings:
   blocks:
-    e03319e6-6430-4ec5-98b9-43d38d75c835:
+    556e3d6d-af8b-47c0-acf6-2b09a583234d:
       id: 'entity_view:node'
       label: 'Entity view (Content)'
       provider: ctools
@@ -21,20 +22,37 @@ variant_settings:
       view_mode: default
       region: left_sidebar
       weight: 0
-      uuid: e03319e6-6430-4ec5-98b9-43d38d75c835
+      uuid: 556e3d6d-af8b-47c0-acf6-2b09a583234d
       context_mapping:
         entity: node
-    29a4851c-acd7-427c-a073-b597ba98fcab:
+    27403746-8d8c-4494-98cb-e1060ed5ad17:
       id: next_previous_access_block
       label: 'Next Previous Access Block'
       provider: prev_next_access
       label_display: '0'
       region: left_sidebar
       weight: 0
-      uuid: 29a4851c-acd7-427c-a073-b597ba98fcab
+      uuid: 27403746-8d8c-4494-98cb-e1060ed5ad17
       context_mapping: {  }
+    f178750d-7143-4fcc-8e3f-ecdad06d4168:
+      id: 'entity_field:node:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: default
+        third_party_settings: {  }
+        weight: 0
+      region: right_sidebar
+      weight: 0
+      uuid: f178750d-7143-4fcc-8e3f-ecdad06d4168
+      context_mapping:
+        entity: node
   id: panels_variant
-  uuid: a40a342a-7333-4e14-b301-79b787beacbb
+  uuid: ef040892-a3ec-4a3f-acbe-1cbaa357f1e7
   label: null
   weight: 0
   layout: two_column

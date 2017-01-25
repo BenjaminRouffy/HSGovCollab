@@ -1,0 +1,23 @@
+uuid: c1518da5-2316-4455-a9df-ca5e64ba6fd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_links
+    - field.storage.block_content.field_twitter
+  module:
+    - link
+id: block_content.social_links.field_twitter
+field_name: field_twitter
+entity_type: block_content
+bundle: social_links
+label: Twitter
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

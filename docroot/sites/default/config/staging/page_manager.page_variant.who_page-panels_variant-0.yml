@@ -5,7 +5,10 @@ dependencies:
   config:
     - page_manager.page.who_page
     - views.view.members_list
+  content:
+    - 'block_content:headline_description:a4ec2eaf-d92e-4662-8a8c-8ca43d787750'
   module:
+    - block_content
     - panels
     - views
 id: who_page-panels_variant-0
@@ -21,8 +24,20 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: middle
-      weight: 0
+      weight: 1
       uuid: 9d190eed-bdc3-4598-bf88-27594afc171a
+      context_mapping: {  }
+    11982faa-0392-4c13-a23b-e9e9b9ce72bc:
+      id: 'block_content:a4ec2eaf-d92e-4662-8a8c-8ca43d787750'
+      label: 'P4H members '
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: 0
+      uuid: 11982faa-0392-4c13-a23b-e9e9b9ce72bc
       context_mapping: {  }
   id: panels_variant
   uuid: 4dfa2c41-d7e8-4a1f-a9ab-2c5b327fcaee

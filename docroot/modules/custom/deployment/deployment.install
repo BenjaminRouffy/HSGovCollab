@@ -113,3 +113,13 @@ function deployment_update_8003() {
     'user.role.authenticated',
   ]);
 }
+
+/**
+ * News.
+ */
+function deployment_update_8004() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'page_manager.page_variant.node_view-panels_variant-3',
+    'page_manager.page_variant.who_page-panels_variant-0',
+  ]);
+}

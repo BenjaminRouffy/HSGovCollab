@@ -6,9 +6,11 @@ dependencies:
     - entity_browser.browser.browse_files_modal
     - field.field.node.news.body
     - field.field.node.news.field_author
+    - field.field.node.news.field_category
     - field.field.node.news.field_content_paragraph
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
+    - field.field.node.news.field_organization
     - node.type.news
   module:
     - entity_browser
@@ -40,6 +42,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_category:
+    weight: 37
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_content_paragraph:
     weight: 36
     settings:
@@ -64,6 +74,14 @@ content:
     type: entity_browser_file
   field_join_block:
     weight: 35
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_organization:
+    weight: 38
     settings:
       match_operator: CONTAINS
       size: 60

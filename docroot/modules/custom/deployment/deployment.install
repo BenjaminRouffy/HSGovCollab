@@ -127,5 +127,14 @@ function deployment_update_8004() {
       'field.field.node.news.field_content_paragraph',
       'core.date_format.medium',
       'core.date_format.time_line',
+      'core.extension',
+      'field.field.node.news.field_category',
+      'field.field.node.news.field_organization',
+      'field.storage.node.field_category',
+      'field.storage.node.field_organization',
+      'language.content_settings.taxonomy_term.categories',
+      'language.content_settings.taxonomy_term.organizations',
+      'taxonomy.vocabulary.categories',
+      'taxonomy.vocabulary.organizations',
   ]);
 }

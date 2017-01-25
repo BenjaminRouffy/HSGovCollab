@@ -5,13 +5,11 @@ dependencies:
   config:
     - entity_browser.browser.browse_files_modal
     - field.field.node.news.body
+    - field.field.node.news.field_author
     - field.field.node.news.field_image
-    - field.field.node.news.field_interest_become_member
-    - field.field.node.news.field_link
     - node.type.news
   module:
     - entity_browser
-    - link
     - path
     - text
 id: node.news.default
@@ -32,6 +30,13 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_author:
+    weight: 34
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_image:
     weight: 33
     settings:
@@ -44,19 +49,6 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_browser_file
-  field_interest_become_member:
-    weight: 34
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-  field_link:
-    weight: 32
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
   langcode:
     type: language_select
     weight: 2

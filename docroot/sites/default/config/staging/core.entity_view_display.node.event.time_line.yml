@@ -1,0 +1,51 @@
+uuid: 3ade0cbe-c5cd-4130-9e36-c51ef6b3d89f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.time_line
+    - field.field.node.event.body
+    - field.field.node.event.field_date
+    - field.field.node.event.field_event_author
+    - field.field.node.event.field_event_link
+    - field.field.node.event.field_event_slider
+    - field.field.node.event.field_location
+    - field.field.node.event.field_time
+    - field.field.node.event.field_time_text
+    - field.field.node.event.field_timezone
+    - node.type.event
+  module:
+    - datetime_range
+    - text
+    - user
+id: node.event.time_line
+targetEntityType: node
+bundle: event
+mode: time_line
+content:
+  body:
+    label: hidden
+    type: text_trimmed
+    weight: 1
+    settings:
+      trim_length: 300
+    third_party_settings: {  }
+  field_date:
+    weight: 0
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+hidden:
+  field_event_author: true
+  field_event_link: true
+  field_event_slider: true
+  field_location: true
+  field_time: true
+  field_time_text: true
+  field_timezone: true
+  langcode: true
+  links: true

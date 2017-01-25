@@ -1,0 +1,22 @@
+uuid: 6259d401-5cbf-4178-bc2f-152647377d13
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+  theme:
+    - ample
+id: groupoperations
+theme: ample
+region: content
+weight: -1
+provider: null
+plugin: group_operations
+settings:
+  id: group_operations
+  label: 'Group operations'
+  provider: group
+  label_display: visible
+  context_mapping:
+    group: '@group.group_route_context:group'
+visibility: {  }

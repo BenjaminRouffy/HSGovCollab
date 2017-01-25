@@ -1,14 +1,16 @@
-uuid: 24fe4419-4804-4f81-baf8-3bacd5c872f2
+uuid: 7237bf4d-f1ad-4870-ac50-884455fe12f1
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_interest_become_member
-field_name: field_interest_become_member
+    - taxonomy
+id: node.field_category
+field_name: field_category
 entity_type: node
-type: boolean
-settings: {  }
+type: entity_reference
+settings:
+  target_type: taxonomy_term
 module: core
 locked: false
 cardinality: 1

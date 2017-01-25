@@ -1,0 +1,33 @@
+#block-ample-local-tasks {
+  margin-top: 20px;
+
+  > ul {
+    @include font-size(0);
+    padding: 0;
+    text-align: center;
+
+    li {
+      display: inline-block;
+    }
+
+    a {
+      @include font-size(20);
+      border-bottom: 1px solid $navy-light;
+      color: $navy;
+      display: block;
+      font-family: $oswald;
+      padding: 20px 30px;
+      text-decoration: none;
+      transition: background .3s ease;
+
+      &:hover {
+        background: $white-dark;
+        border-bottom: 2px solid $navy-light;
+      }
+
+      &.is-active {
+        border-bottom: 2px solid $red;
+      }
+    }
+  }
+}

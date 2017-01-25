@@ -84,3 +84,14 @@ function deployment_update_8002() {
     'page_manager.page_variant.node_view-panels_variant-3',
   ]);
 }
+
+/**
+ * News.
+ */
+function deployment_update_8003() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'field.field.node.news.field_author',
+    'core.entity_view_display.node.news.default',
+    'core.entity_form_display.node.news.default',
+  ]);
+}

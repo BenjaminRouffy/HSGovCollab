@@ -28,6 +28,14 @@ class NextPreviousAccessBlock extends BlockBase {
     $links[] = $this->generateNextPrevious($node, 'prev');
     $links[] = $this->generateNextPrevious($node);
 
+    if (!empty($links)) {
+      $links['#attributes'] = [
+        'class' => [
+          'node-pager',
+        ],
+      ];
+    }
+
     return [
       $links,
       '#cache' => [
@@ -35,11 +43,6 @@ class NextPreviousAccessBlock extends BlockBase {
         'contexts' => [
           'user',
           'route',
-        ],
-      ],
-      '#attributes' => [
-        'class' => [
-          'node-pager',
         ],
       ],
     ];
@@ -72,7 +75,7 @@ class NextPreviousAccessBlock extends BlockBase {
       $direction_arrow = 'left';
     }
 
-    $display_text = new FormattableMarkup('@display_text<p>@text</p>', [
+    $display_text = new FormattableMarkup('<span>@display_text</span><p>@text</p>', [
       '@display_text' => $display_text,
       '@text' => $node->getTitle(),
     ]);
@@ -93,9 +96,7 @@ class NextPreviousAccessBlock extends BlockBase {
       $next = array_shift($next);
       $url = Url::fromRoute('entity.node.canonical', ['node' => $next], ['absolute' => TRUE]);
 
-      return [
-        Link::fromTextAndUrl($display_text, $url)->toRenderable(),
-        '#type' => 'container',
+      return Link::fromTextAndUrl($display_text, $url)->toRenderable() + [
         '#attributes' => [
           'class' => [
             "$direction-wrapper",

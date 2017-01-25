@@ -1,11 +1,9 @@
-<div class="image-wrapper">
+<div class="fullcontent-image">
   {{ content.field_content_image|field_value }}
 
   {% if content.field_description %}
-    <div class="description">
-      <p>
-        {{ content.field_description|field_value }}
-      </p>
-    </div>
+    <p class="image-text">
+      {{ content.field_description|field_value }}
+    </p>
   {% endif %}
 </div>

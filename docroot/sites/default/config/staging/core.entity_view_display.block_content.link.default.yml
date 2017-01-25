@@ -5,6 +5,7 @@ dependencies:
   config:
     - block_content.type.link
     - field.field.block_content.link.field_link
+    - field.field.block_content.link.field_link_description
   module:
     - link
 id: block_content.link.default
@@ -23,5 +24,12 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+  field_link_description:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
 hidden:
   langcode: true

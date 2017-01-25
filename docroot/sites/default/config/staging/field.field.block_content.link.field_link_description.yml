@@ -1,0 +1,19 @@
+uuid: 907da135-25f9-4e9e-818c-9460821cfcda
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+    - field.storage.block_content.field_link_description
+id: block_content.link.field_link_description
+field_name: field_link_description
+entity_type: block_content
+bundle: link
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

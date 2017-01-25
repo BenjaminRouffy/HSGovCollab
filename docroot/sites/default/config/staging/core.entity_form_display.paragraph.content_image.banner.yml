@@ -1,8 +1,9 @@
-uuid: 741257ad-f56b-4c3a-b9cf-de18445a9f4a
+uuid: 9e41abe8-509a-49d6-b31c-0d59d0eaa252
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.banner
     - entity_browser.browser.browse_files_modal
     - field.field.paragraph.content_image.field_content_image
     - field.field.paragraph.content_image.field_description
@@ -10,10 +11,11 @@ dependencies:
     - paragraphs.paragraphs_type.content_image
   module:
     - entity_browser
-id: paragraph.content_image.default
+    - view_mode_selector
+id: paragraph.content_image.banner
 targetEntityType: paragraph
 bundle: content_image
-mode: default
+mode: banner
 content:
   field_content_image:
     weight: 0
@@ -34,12 +36,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_view_mode:
+    type: view_mode_selector_select
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
   translation:
     weight: 2
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
-  field_view_mode: true
   status: true
   uid: true

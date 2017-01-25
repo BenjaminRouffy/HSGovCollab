@@ -8,7 +8,9 @@ screenshot: ample.png
 stylesheets-remove:
   - core/assets/vendor/normalize-css/normalize.css
 libraries:
- - ample/global-styling
+  - ample/global-styling
+ckeditor_stylesheets:
+  - css/ckeditor_style.css
 regions:
   header: 'Header'
   menu_main: 'Main menu'

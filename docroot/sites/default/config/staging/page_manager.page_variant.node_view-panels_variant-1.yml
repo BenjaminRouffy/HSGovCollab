@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - page_manager.page.node_view
+  content:
+    - 'block_content:link:027b7ed4-4f77-4449-a2f4-09e6afe9d7ee'
   module:
+    - block_content
     - ctools
     - ctools_block
     - node
@@ -31,17 +34,6 @@ variant_settings:
       uuid: 001ee8f4-f9cf-4ad0-93b8-1fcc68931159
       context_mapping:
         entity: node
-    098a62c6-b208-4ad0-af63-50bf52443b08:
-      id: 'entity_view:node'
-      label: 'Entity view (Content)'
-      provider: ctools
-      label_display: '0'
-      view_mode: default
-      region: content
-      weight: 0
-      uuid: 098a62c6-b208-4ad0-af63-50bf52443b08
-      context_mapping:
-        entity: node
     faa10c1e-c3e5-4ae1-99a1-9f2c3b243bd9:
       id: 'entity_field:node:field_time_line'
       label: 'Time line'
@@ -56,6 +48,29 @@ variant_settings:
       region: bottom
       weight: 0
       uuid: faa10c1e-c3e5-4ae1-99a1-9f2c3b243bd9
+      context_mapping:
+        entity: node
+    f93c4b4c-002e-4e93-9e04-d53c2f08bee2:
+      id: 'block_content:027b7ed4-4f77-4449-a2f4-09e6afe9d7ee'
+      label: 'Why link'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: right
+      weight: 0
+      uuid: f93c4b4c-002e-4e93-9e04-d53c2f08bee2
+      context_mapping: {  }
+    92764935-e47c-433b-9fd4-0ae17de4ca06:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: 0
+      uuid: 92764935-e47c-433b-9fd4-0ae17de4ca06
       context_mapping:
         entity: node
   id: panels_variant

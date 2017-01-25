@@ -6,6 +6,7 @@ dependencies:
     - block_content.type.link
     - core.entity_view_mode.block_content.view_mode_registration_block
     - field.field.block_content.link.field_link
+    - field.field.block_content.link.field_link_description
   module:
     - link
 id: block_content.link.view_mode_registration_block
@@ -20,9 +21,16 @@ content:
       trim_length: 80
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
+      rel: '0'
+      target: '0'
     third_party_settings: {  }
-    type: link
+    type: link_separate
+  field_link_description:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   langcode: true

@@ -5,6 +5,7 @@ dependencies:
   config:
     - block_content.type.link
     - field.field.block_content.link.field_link
+    - field.field.block_content.link.field_link_description
   module:
     - link
 id: block_content.link.default
@@ -19,6 +20,13 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+  field_link_description:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   info:
     type: string_textfield
     weight: 0

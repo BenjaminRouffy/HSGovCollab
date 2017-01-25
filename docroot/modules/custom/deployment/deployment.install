@@ -12,6 +12,7 @@ use Drupal\field\Entity\FieldConfig;
  */
 function deployment_install() {
   deployment_update_8001();
+  deployment_update_8002();
 }
 
 /**
@@ -65,5 +66,21 @@ function deployment_delete_fields($entity_type, $bundle, array $fields) {
 function deployment_update_8001() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'ample.settings',
+  ]);
+}
+
+/**
+ * News.
+ */
+function deployment_update_8002() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.date_format.medium',
+    'core.entity_form_display.node.news.default',
+    'core.entity_view_display.node.news.default',
+    'field.field.node.news.field_author',
+    'image.style.538x359',
+    'page_manager.page_variant.node_view-block_page_layout-0',
+    'page_manager.page_variant.node_view-panels_variant-1',
+    'page_manager.page_variant.node_view-panels_variant-3',
   ]);
 }

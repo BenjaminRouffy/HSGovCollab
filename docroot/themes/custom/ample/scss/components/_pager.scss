@@ -1,16 +1,15 @@
 .node-pager {
   @include font-size(14);
   border-top: 1px solid $navy-light;
-  color: $navy;
   font-weight: 400;
   line-height: 20px;
   margin-top: 50px;
   padding: 20px 0;
   width: 90%;
 
-  > div {
+  > a {
     transition: opacity .2s ease;
-    width: 45%;
+    max-width: 50%;
 
     &:hover {
       opacity: .69;
@@ -18,23 +17,26 @@
   }
 
   p {
+    color: $navy;
     line-height: 22px;
   }
 }
 
 .prev-wrapper {
   float: left;
+  padding-right: 10px;
 
-  a:after {
+  span:after {
     margin-left: 4px;
   }
 }
 
 .next-wrapper {
   float: right;
+  padding-left: 10px;
   text-align: right;
 
-  a {
+  span {
     &:after {
       display: none;
     }

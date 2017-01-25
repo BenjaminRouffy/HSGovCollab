@@ -1,31 +1,29 @@
-<div class="main-wrapper">
-  {% if content.top_banner is not null %}
-    <div class="top-banner-region">
-      {{ content.top_banner|without('#prefix', '#suffix') }}
-    </div>
-  {% endif %}
+{% if content.top_banner is not null %}
+  <div class="top-banner-region">
+    {{ content.top_banner|without('#prefix', '#suffix') }}
+  </div>
+{% endif %}
 
-  <section class="content-container content-with-sidebar">
-    <div class="region-wrapper">
-      {% for i in 1..4 %}
-        {% if content['content' ~ i] is not null %}
-          <section class="content">
-            {{ content['content' ~ i]|without('#prefix', '#suffix') }}
-          </section>
+<section class="content-container content-with-sidebar">
+  <div class="region-wrapper">
+    {% for i in 1..4 %}
+      {% if content['content' ~ i] is not null %}
+        <section class="content">
+          {{ content['content' ~ i]|without('#prefix', '#suffix') }}
+        </section>
 
-          {% if content['right_sidebar' ~ i] is not null %}
-            <aside class="sidebar">
-              {{ content['right_sidebar' ~ i]|without('#prefix', '#suffix') }}
-            </aside>
-          {% endif %}
+        {% if content['right_sidebar' ~ i] is not null %}
+          <aside class="sidebar">
+            {{ content['right_sidebar' ~ i]|without('#prefix', '#suffix') }}
+          </aside>
         {% endif %}
+      {% endif %}
 
-        {% if content['banner' ~ i] is not null %}
-          <div class="banner-wrapper clearfix">
-            {{ content['banner' ~ i]|without('#prefix', '#suffix') }}
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
-</div>
+      {% if content['banner' ~ i] is not null %}
+        <div class="banner-wrapper clearfix">
+          {{ content['banner' ~ i]|without('#prefix', '#suffix') }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

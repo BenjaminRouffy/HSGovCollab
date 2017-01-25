@@ -725,26 +725,32 @@ header {
     max-width: 1260px;
     margin: 0 auto;
     position: relative; }
-  header .service-links {
+  header .service-links,
+  header .links {
     position: absolute;
     bottom: 10px;
     right: 0;
     height: 60px;
     overflow: hidden; }
     header .service-links ul,
-    header .service-links li {
+    header .service-links li,
+    header .links ul,
+    header .links li {
       display: inline-block;
       vertical-align: top; }
-    header .service-links a {
+    header .service-links a,
+    header .links a {
       font-size: 0.7875rem;
       display: block;
       color: #283b44;
       font-family: Oswald, sans-serif;
       padding: 32px 5px 15px;
       text-decoration: none; }
-      header .service-links a.active {
+      header .service-links a.active,
+      header .links a.active {
         color: #8c2222; }
-      header .service-links a:hover {
+      header .service-links a:hover,
+      header .links a:hover {
         background: rgba(76, 126, 150, 0.08);
         opacity: .7; }
 
@@ -770,8 +776,10 @@ header {
     position: absolute;
     top: 22px;
     right: 0; }
-  .header-static .language {
+  .header-static .links {
     text-transform: uppercase; }
+    .header-static .links ~ .service-links {
+      right: 50px; }
 
 .header-fixed {
   position: fixed;

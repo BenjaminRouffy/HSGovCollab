@@ -1,0 +1,17 @@
+uuid: 7bd4c066-c449-4adc-b5e3-d572962f24ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+id: country-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: country
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'join group'
+  - 'view group'

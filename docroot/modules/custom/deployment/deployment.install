@@ -119,23 +119,33 @@ function deployment_update_8003() {
  */
 function deployment_update_8004() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
-      'field.field.node.news.field_author',
-      'core.entity_view_display.node.news.default',
-      'core.entity_form_display.node.news.default',
-      'page_manager.page_variant.node_view-panels_variant-0',
-      'field.field.node.news.field_join_block',
-      'field.field.node.news.field_content_paragraph',
-      'core.date_format.medium',
-      'core.date_format.time_line',
-      'core.extension',
-      'field.field.node.news.field_category',
-      'field.field.node.news.field_organization',
-      'field.storage.node.field_category',
-      'field.storage.node.field_organization',
-      'language.content_settings.taxonomy_term.categories',
-      'language.content_settings.taxonomy_term.organizations',
-      'taxonomy.vocabulary.categories',
-      'taxonomy.vocabulary.organizations',
+    'field.field.node.news.field_author',
+    'core.entity_view_display.node.news.default',
+    'core.entity_form_display.node.news.default',
+    'page_manager.page_variant.node_view-panels_variant-0',
+    'field.field.node.news.field_join_block',
+    'field.field.node.news.field_content_paragraph',
+    'core.date_format.medium',
+    'core.date_format.time_line',
+    'core.extension',
+    'field.field.node.news.field_category',
+    'field.field.node.news.field_organization',
+    'field.storage.node.field_category',
+    'field.storage.node.field_organization',
+    'language.content_settings.taxonomy_term.categories',
+    'language.content_settings.taxonomy_term.organizations',
+    'taxonomy.vocabulary.categories',
+    'taxonomy.vocabulary.organizations',
+  ]);
+}
+
+/**
+ * Member page.
+ */
+function deployment_update_8005() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'page_manager.page_variant.node_view-panels_variant-3',
+    'page_manager.page_variant.who_page-panels_variant-0',
   ]);
 }
 

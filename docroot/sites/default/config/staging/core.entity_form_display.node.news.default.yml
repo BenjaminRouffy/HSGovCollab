@@ -44,12 +44,9 @@ content:
     type: string_textfield
   field_category:
     weight: 37
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
   field_content_paragraph:
     weight: 36
     settings:
@@ -74,20 +71,14 @@ content:
     type: entity_browser_file
   field_join_block:
     weight: 35
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
   field_organization:
     weight: 38
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
   langcode:
     type: language_select
     weight: 2

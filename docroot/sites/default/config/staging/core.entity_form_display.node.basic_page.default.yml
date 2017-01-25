@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.basic_page.field_author
     - field.field.node.basic_page.field_banner
     - field.field.node.basic_page.field_content_paragraph
+    - field.field.node.basic_page.field_join_block
     - field.field.node.basic_page.field_time_line
     - node.type.basic_page
   module:
@@ -21,7 +22,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 9
+    weight: 11
     settings:
       rows: 9
       summary_rows: 3
@@ -29,7 +30,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 5
+    weight: 7
     settings: {  }
     third_party_settings: {  }
   field_author:
@@ -50,7 +51,7 @@ content:
       form_display_mode: banner
     third_party_settings: {  }
   field_content_paragraph:
-    weight: 11
+    weight: 13
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -59,32 +60,40 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
-  field_time_line:
+  field_join_block:
     weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_time_line:
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: field_collection_embed
   langcode:
     type: language_select
-    weight: 3
+    weight: 5
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 8
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 8
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 9
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -94,12 +103,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 12
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60

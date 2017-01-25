@@ -2,6 +2,8 @@
 
 namespace Drupal\prev_next_access\Plugin\Block;
 
+use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
@@ -23,17 +25,21 @@ class NextPreviousAccessBlock extends BlockBase {
    */
   public function build() {
     $node = \Drupal::request()->attributes->get('node');
-    $link = "";
-    $link .= $this->generateNextPrevious($node, 'prev');
-    $link .= $this->generateNextPrevious($node);
+    $links[] = $this->generateNextPrevious($node, 'prev');
+    $links[] = $this->generateNextPrevious($node);
 
     return [
-      '#markup' => $link,
+      $links,
       '#cache' => [
         // For different users we will have different access rules.
         'contexts' => [
           'user',
           'route',
+        ],
+      ],
+      '#attributes' => [
+        'class' => [
+          'node-pager',
         ],
       ],
     ];
@@ -51,18 +57,25 @@ class NextPreviousAccessBlock extends BlockBase {
    *   Rendered result.
    */
   private function generateNextPrevious(Node $node, $direction = 'next') {
-    $comparison_operator = $sort = $display_text = '';
+    $comparison_operator = $sort = $display_text = $direction_arrow = '';
 
     if ($direction === 'next') {
       $comparison_operator = '>';
       $sort = 'ASC';
       $display_text = t('Next story');
+      $direction_arrow = 'right';
     }
     elseif ($direction === 'prev') {
       $comparison_operator = '<';
       $sort = 'DESC';
       $display_text = t('Previous story');
+      $direction_arrow = 'left';
     }
+
+    $display_text = new FormattableMarkup('@display_text<p>@text</p>', [
+      '@display_text' => $display_text,
+      '@text' => $node->getTitle(),
+    ]);
 
     // Lookup 1 node younger (or older) than the current node.
     $query = \Drupal::entityQuery('node');
@@ -80,10 +93,20 @@ class NextPreviousAccessBlock extends BlockBase {
       $next = array_shift($next);
       $url = Url::fromRoute('entity.node.canonical', ['node' => $next], ['absolute' => TRUE]);
 
-      return Link::fromTextAndUrl($display_text, $url)->toString();
+      return [
+        Link::fromTextAndUrl($display_text, $url)->toRenderable(),
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => [
+            "$direction-wrapper",
+            'font-social-icon',
+            "arrow-$direction_arrow-icon",
+          ],
+        ],
+      ];
     }
 
-    return '';
+    return [];
   }
 
 }

@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Contains deployment.install.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+
+/**
+ * Install and configure contrib modules.
+ */
+function deployment_install() {
+  deployment_update_8001();
+}
+
+/**
+ * Update configs in a directory.
+ *
+ * @param string $type
+ *   The type of config directory to return. Drupal core provides the
+ *   CONFIG_SYNC_DIRECTORY constant to access the sync directory.
+ * @param string[] $configs
+ *   A list of configs to update.
+ * @param string[] $regexps
+ *   Deprecated.
+ */
+function deployment_import_configs($type, array $configs, array $regexps = []) {
+  $importer = Drupal::service('config_import.importer');
+  // Set storage where configs located.
+  $importer->setDirectory($type);
+  // For new one configs.
+  $importer->importConfigs($configs);
+  $directory = $importer->getDirectory();
+
+  // For override old one configs.
+  foreach ($configs as $config) {
+    Drupal::service('config_devel.auto_import_subscriber')->importOne("$directory/$config.yml");
+  }
+}
+
+/**
+ * Delete fields.
+ *
+ * @param string $entity_type
+ *   Entity type ID.
+ * @param string $bundle
+ *   Bundle name.
+ * @param array $fields
+ *   List of field names.
+ */
+function deployment_delete_fields($entity_type, $bundle, array $fields) {
+  foreach ($fields as $field_name) {
+    $field = FieldConfig::loadByName($entity_type, $bundle, $field_name);
+
+    if (NULL !== $field) {
+      $field->delete();
+    }
+  }
+}
+
+/**
+ * Install and configure contrib modules.
+ */
+function deployment_update_8001() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'ample.settings',
+  ]);
+}

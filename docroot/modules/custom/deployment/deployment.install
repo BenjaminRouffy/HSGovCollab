@@ -86,17 +86,46 @@ function deployment_update_8002() {
 }
 
 /**
- * News.
+ * Update paragraph "Text" add permission and install "Stage file proxy".
  */
 function deployment_update_8003() {
+  Drupal::service('module_installer')->install(['stage_file_proxy']);
+
+  deployment_delete_fields('node', 'basic_page', ['body']);
+
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
-    'field.field.node.news.field_author',
-    'core.entity_view_display.node.news.default',
-    'core.entity_form_display.node.news.default',
-    'page_manager.page_variant.node_view-panels_variant-0',
-    'field.field.node.news.field_join_block',
-    'field.field.node.news.field_content_paragraph',
-    'core.date_format.medium',
-    'core.date_format.time_line',
+    'core.entity_form_display.node.basic_page.default',
+    'core.entity_form_display.paragraph.content_text.default',
+    'core.entity_form_display.paragraph.content_text.with_title',
+    'core.entity_form_mode.paragraph.with_title',
+    'core.entity_view_display.node.basic_page.default',
+    'core.entity_view_display.node.basic_page.teaser',
+    'core.entity_view_display.paragraph.content_text.default',
+    'field.field.node.basic_page.field_banner',
+    'field.field.paragraph.content_image.field_content_image',
+    'field.field.paragraph.content_text.field_content_text',
+    'field.field.paragraph.content_text.field_title',
+    'field.field.paragraph.custom_content.field_body',
+    'field.storage.paragraph.field_content_text',
+    'field.storage.paragraph.field_body',
+    'stage_file_proxy.settings',
+    'user.role.anonymous',
+    'user.role.authenticated',
+  ]);
+}
+
+/**
+ * News.
+ */
+function deployment_update_8004() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+      'field.field.node.news.field_author',
+      'core.entity_view_display.node.news.default',
+      'core.entity_form_display.node.news.default',
+      'page_manager.page_variant.node_view-panels_variant-0',
+      'field.field.node.news.field_join_block',
+      'field.field.node.news.field_content_paragraph',
+      'core.date_format.medium',
+      'core.date_format.time_line',
   ]);
 }

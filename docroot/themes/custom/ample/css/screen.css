@@ -479,31 +479,33 @@ header .social-links .font-social-icon {
 .node-pager {
   font-size: 0.875rem;
   border-top: 1px solid #80aabe;
-  color: #4c7e96;
   font-weight: 400;
   line-height: 20px;
   margin-top: 50px;
   padding: 20px 0;
   width: 90%; }
-  .node-pager > div {
+  .node-pager > a {
     transition: opacity .2s ease;
-    width: 45%; }
-    .node-pager > div:hover {
+    max-width: 50%; }
+    .node-pager > a:hover {
       opacity: .69; }
   .node-pager p {
+    color: #4c7e96;
     line-height: 22px; }
 
 .prev-wrapper {
-  float: left; }
-  .prev-wrapper a:after {
+  float: left;
+  padding-right: 10px; }
+  .prev-wrapper span:after {
     margin-left: 4px; }
 
 .next-wrapper {
   float: right;
+  padding-left: 10px;
   text-align: right; }
-  .next-wrapper a:after {
+  .next-wrapper span:after {
     display: none; }
-  .next-wrapper a:before {
+  .next-wrapper span:before {
     content: '9';
     margin-right: 4px; }
 
@@ -713,6 +715,59 @@ header .social-links .font-social-icon {
       color: #ea3a32;
       position: relative;
       top: 5px; }
+
+form {
+  font-size: 1.1375rem;
+  font-family: Oswald, sans-serif; }
+  form label {
+    color: #283b44;
+    display: block;
+    margin-bottom: 10px;
+    letter-spacing: .5px; }
+  form .description {
+    font-size: 0.875rem;
+    color: #ea3a32;
+    font-family: "Fira Sans", sans-serif;
+    margin: 0 20px 5px 0; }
+
+.form-text {
+  border: 1px solid #75a8c0;
+  color: #4c7e96;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  height: 50px;
+  line-height: 26px;
+  margin-bottom: 25px;
+  padding: 1px 12px;
+  transition: all .2s ease;
+  width: 100%; }
+  .form-text:hover {
+    box-shadow: 0 0 6px 0 rgba(40, 59, 68, 0.38); }
+  .form-text:focus {
+    border-color: #3898EC;
+    outline: none; }
+  .form-text::-webkit-input-placeholder, .form-text::-moz-placeholder, .form-text:-ms-input-placeholder, .form-text:-moz-placeholder {
+    color: #999; }
+
+.form-submit {
+  background: #fff;
+  border: 1px solid transparent;
+  color: #ea3a32;
+  letter-spacing: 1px;
+  padding: 15px 41px;
+  text-transform: uppercase;
+  transition: border .3s ease; }
+  .form-submit:hover {
+    border-color: #ea3a32;
+    transform: scale(1.04); }
+
+.user-login-form {
+  overflow: hidden;
+  margin: 40px auto 15px;
+  padding: 20px 40px;
+  max-width: 50%; }
+  .user-login-form .form-submit {
+    float: right; }
 
 header {
   background: #fff;

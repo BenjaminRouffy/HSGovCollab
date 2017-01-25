@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.basic_page.body
     - field.field.node.basic_page.field_author
     - field.field.node.basic_page.field_banner
     - field.field.node.basic_page.field_content_paragraph
@@ -12,19 +11,12 @@ dependencies:
     - node.type.basic_page
   module:
     - entity_reference_revisions
-    - text
     - user
 id: node.basic_page.default
 targetEntityType: node
 bundle: basic_page
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
   field_content_paragraph:
     weight: 2
     label: hidden

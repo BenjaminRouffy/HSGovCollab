@@ -7,4 +7,6 @@ env:
     - { name: 'sqlq', status: true, arguments: "\"UPDATE users_field_data SET name='{{ drupal_user }}' WHERE uid=1\"" }
     - { name: 'upwd', status: true, arguments: "{{ drupal_user }} --password={{ drupal_pass }}" }
     - { name: 'search-index', status: false, arguments: "" }
-  post_settings: []
+  post_settings:
+    - { name: '$config["stage_file_proxy.settings"]["origin"]', status: true, value: '{{ origin_site_url }}' }
+    - { name: '$config["stage_file_proxy.settings"]["hotlink"]', status: true, value: '1' }

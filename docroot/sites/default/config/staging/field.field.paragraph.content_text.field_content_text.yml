@@ -1,4 +1,4 @@
-uuid: 286e6e1d-bb18-4a3f-bba9-90584ff19c0c
+uuid: 7f614634-eb40-47ce-b4cb-5eec3d936bff
 langcode: en
 status: true
 dependencies:
@@ -14,8 +14,9 @@ bundle: content_text
 label: 'Content text'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: text_long
+settings:
+  display_summary: true
+field_type: text_with_summary

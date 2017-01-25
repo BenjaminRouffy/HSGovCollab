@@ -1,31 +1,39 @@
-uuid: e1600eab-f730-4f6a-9733-5f6e21db94cf
+uuid: 3dfaab9e-a211-433e-9e11-cf5508657bae
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.with_title
     - field.field.paragraph.content_text.field_content_text
     - field.field.paragraph.content_text.field_title
     - paragraphs.paragraphs_type.content_text
   module:
     - text
-id: paragraph.content_text.default
+id: paragraph.content_text.with_title
 targetEntityType: paragraph
 bundle: content_text
-mode: default
+mode: with_title
 content:
   field_content_text:
     weight: 1
-    label: hidden
-    settings: {  }
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
     third_party_settings: {  }
-    type: text_default
+    type: text_textarea_with_summary
   field_title:
     weight: 0
-    label: hidden
     settings:
-      link_to_entity: false
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: string
+    type: string_textfield
+  translation:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
+  status: true
   uid: true

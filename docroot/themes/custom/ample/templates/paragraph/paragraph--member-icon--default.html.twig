@@ -1,6 +1,6 @@
 <li>
   {% if content.field_member_link|field_value %}
-    <a href="{{ content.field_member_link.0['#url'] }}">
+    <a href="{{ content.field_member_link.0['#url'] }}" target="_blank">
       {{ content.field_member_icon|field_value }}
     </a>
   {% else %}

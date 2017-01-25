@@ -1,19 +1,19 @@
-uuid: ba7be473-cd0d-43bb-85ac-24cc16ff8274
+uuid: fc789ac6-7f0c-47b0-9f16-20fb24900546
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - core.entity_view_mode.paragraph.view_mode_banner
+    - core.entity_view_mode.paragraph.with_quote
     - field.field.paragraph.content_image.field_content_image
     - field.field.paragraph.content_image.field_description
     - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
   module:
     - image
-id: paragraph.content_image.view_mode_banner
+id: paragraph.content_image.with_quote
 targetEntityType: paragraph
 bundle: content_image
-mode: view_mode_banner
+mode: with_quote
 content:
   field_content_image:
     weight: 0

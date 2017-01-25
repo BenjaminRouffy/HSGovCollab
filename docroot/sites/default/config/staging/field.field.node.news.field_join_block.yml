@@ -1,0 +1,28 @@
+uuid: e2bf0564-44bf-46eb-acf1-26f02b769056
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+    - field.storage.node.field_join_block
+    - node.type.news
+id: node.news.field_join_block
+field_name: field_join_block
+entity_type: node
+bundle: news
+label: 'Join block'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      link: link
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

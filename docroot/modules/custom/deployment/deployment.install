@@ -115,9 +115,34 @@ function deployment_update_8003() {
 }
 
 /**
- * Add view mode "Time line" and new view mode for "Image" paragraph.
+ * News.
  */
 function deployment_update_8004() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+      'field.field.node.news.field_author',
+      'core.entity_view_display.node.news.default',
+      'core.entity_form_display.node.news.default',
+      'page_manager.page_variant.node_view-panels_variant-0',
+      'field.field.node.news.field_join_block',
+      'field.field.node.news.field_content_paragraph',
+      'core.date_format.medium',
+      'core.date_format.time_line',
+      'core.extension',
+      'field.field.node.news.field_category',
+      'field.field.node.news.field_organization',
+      'field.storage.node.field_category',
+      'field.storage.node.field_organization',
+      'language.content_settings.taxonomy_term.categories',
+      'language.content_settings.taxonomy_term.organizations',
+      'taxonomy.vocabulary.categories',
+      'taxonomy.vocabulary.organizations',
+  ]);
+}
+
+/**
+ * Add view mode "Time line" and new view mode for "Image" paragraph.
+ */
+function deployment_update_8005() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'core.entity_view_display.node.event.time_line',
     'core.entity_view_display.node.news.time_line',

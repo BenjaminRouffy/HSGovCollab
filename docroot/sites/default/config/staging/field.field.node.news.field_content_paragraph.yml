@@ -1,0 +1,49 @@
+uuid: f14e300e-a81d-478a-8bd7-32f047d1acaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_paragraph
+    - node.type.news
+  module:
+    - entity_reference_revisions
+id: node.news.field_content_paragraph
+field_name: field_content_paragraph
+entity_type: node
+bundle: news
+label: 'Content paragraph'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    target_bundles_drag_drop:
+      content_image:
+        weight: 9
+        enabled: false
+      content_text:
+        weight: 10
+        enabled: false
+      custom_content:
+        weight: 11
+        enabled: false
+      exist_content:
+        weight: 12
+        enabled: false
+      infographic:
+        weight: 13
+        enabled: false
+      member_icon:
+        weight: 14
+        enabled: false
+      slider:
+        weight: 15
+        enabled: false
+      video:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

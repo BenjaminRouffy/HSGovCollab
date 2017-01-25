@@ -5,13 +5,16 @@ dependencies:
   config:
     - entity_browser.browser.browse_files_modal
     - field.field.node.news.body
+    - field.field.node.news.field_author
+    - field.field.node.news.field_category
+    - field.field.node.news.field_content_paragraph
     - field.field.node.news.field_image
-    - field.field.node.news.field_interest_become_member
-    - field.field.node.news.field_link
+    - field.field.node.news.field_join_block
+    - field.field.node.news.field_organization
     - node.type.news
   module:
     - entity_browser
-    - link
+    - paragraphs
     - path
     - text
 id: node.news.default
@@ -32,6 +35,31 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_author:
+    weight: 34
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_category:
+    weight: 37
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_content_paragraph:
+    weight: 36
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
   field_image:
     weight: 33
     settings:
@@ -44,19 +72,22 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_browser_file
-  field_interest_become_member:
-    weight: 34
+  field_join_block:
+    weight: 35
     settings:
-      display_label: true
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: boolean_checkbox
-  field_link:
-    weight: 32
+    type: entity_reference_autocomplete
+  field_organization:
+    weight: 38
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: link_default
+    type: entity_reference_autocomplete
   langcode:
     type: language_select
     weight: 2

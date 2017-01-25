@@ -1,0 +1,24 @@
+uuid: dfbdd3e0-2af4-406c-be8f-bb7587e7d9fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.user-menu
+  module:
+    - system
+  theme:
+    - ample
+id: usermenu_2
+theme: ample
+region: header_static
+weight: -5
+provider: null
+plugin: 'system_menu_block:user-menu'
+settings:
+  id: 'system_menu_block:user-menu'
+  label: 'User menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }

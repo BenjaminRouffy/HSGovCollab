@@ -1,0 +1,24 @@
+uuid: 381d7bb3-d5e3-4e6f-b7df-8e721fbdae94
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.header-menu
+  module:
+    - system
+  theme:
+    - ample
+id: headermenu_2
+theme: ample
+region: header_static
+weight: -6
+provider: null
+plugin: 'system_menu_block:header-menu'
+settings:
+  id: 'system_menu_block:header-menu'
+  label: 'Header Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }

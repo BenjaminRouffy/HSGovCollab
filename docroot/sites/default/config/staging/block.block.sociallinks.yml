@@ -1,0 +1,25 @@
+uuid: 003c718d-955e-49af-bb2d-826975d8f14a
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:social_links:3504cf80-c7b9-4531-b42f-83c0cccd5513'
+  module:
+    - block_content
+  theme:
+    - ample
+id: sociallinks
+theme: ample
+region: header_static
+weight: -3
+provider: null
+plugin: 'block_content:3504cf80-c7b9-4531-b42f-83c0cccd5513'
+settings:
+  id: 'block_content:3504cf80-c7b9-4531-b42f-83c0cccd5513'
+  label: 'Social links'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

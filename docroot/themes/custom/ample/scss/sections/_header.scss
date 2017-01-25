@@ -14,7 +14,8 @@ header {
     position: relative;
   }
 
-  .service-links {
+  .service-links,
+  .links {
     position: absolute;
     bottom: 10px;
     right: 0;
@@ -78,8 +79,12 @@ header {
     right: 0;
   }
 
-  .language {
+  .links {
     text-transform: uppercase;
+
+    ~ .service-links {
+      right: 50px;
+    }
   }
 }
 

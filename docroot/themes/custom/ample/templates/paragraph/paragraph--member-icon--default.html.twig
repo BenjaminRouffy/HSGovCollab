@@ -1,5 +1,9 @@
 <li>
-  <a href="{{ content.field_member_link.0['#url'] }}">
+  {% if content.field_member_link|field_value %}
+    <a href="{{ content.field_member_link.0['#url'] }}">
+      {{ content.field_member_icon|field_value }}
+    </a>
+  {% else %}
     {{ content.field_member_icon|field_value }}
-  </a>
+  {% endif %}
 </li>

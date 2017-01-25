@@ -2,7 +2,9 @@
 
 <div class="partners">
   <ul class="item-list">
-    {{content.field_member_icons|field_value}}
+    {% if content.field_member_icons|field_value %}
+      {{ content.field_member_icons|field_value }}
+    {% endif %}
   </ul>
 </div>
 

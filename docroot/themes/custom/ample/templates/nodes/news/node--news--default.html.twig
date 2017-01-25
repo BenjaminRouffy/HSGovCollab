@@ -6,7 +6,7 @@
 
 {% if display_submitted %}
     <div class="post-info">
-        <time datetime="{{ node.createdtime | date("Y-m-d") }}">{{ date }}</time>
+        <time datetime="{{ node.createdtime | date("Y-m-d") }}">{{ node.createdtime | format_date('time_line') }}</time>
         {#<span class="country"></span>#}
         {% if content.field_author|field_value %}
             <span class="author">{% trans %}By: {% endtrans %} {{ content.field_author|field_value}}</span>

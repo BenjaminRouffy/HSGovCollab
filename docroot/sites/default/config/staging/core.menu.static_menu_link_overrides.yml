@@ -1,3 +1,69 @@
-definitions: {  }
+definitions:
+  block__admin_display:
+    weight: -78
+    menu_name: admin
+    parent: system.admin_structure
+    enabled: true
+    expanded: false
+  entity__comment_type__collection:
+    weight: -74
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  entity__contact_form__collection:
+    weight: -73
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  entity__node_type__collection:
+    weight: -72
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  field_ui__display_mode:
+    weight: -71
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  field_collection__overview_field_collections:
+    weight: -70
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  entity__menu__collection:
+    weight: -77
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  entity__page__collection:
+    weight: -76
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  entity__paragraphs_type__collection:
+    weight: -69
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  entity__taxonomy_vocabulary__collection:
+    weight: -75
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
+  entity__view__collection:
+    weight: -68
+    menu_name: admin
+    parent: system.admin_structure
+    expanded: false
+    enabled: true
 _core:
   default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM

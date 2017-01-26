@@ -1,0 +1,32 @@
+uuid: e0944116-f179-4c62-a5bc-0391c9edae58
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.recent_news
+  module:
+    - ctools
+    - views
+  theme:
+    - ample
+id: views_block__recent_news_block_1
+theme: ample
+region: pre_footer
+weight: 0
+provider: null
+plugin: 'views_block:recent_news-block_1'
+settings:
+  id: 'views_block:recent_news-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      news: news
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

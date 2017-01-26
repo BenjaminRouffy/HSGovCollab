@@ -1,7 +1,7 @@
 {% set anchor = content.field_title|field_value ? 1 : 0 %}
 
 {%  if anchor %}
-<div data-anchor-id="paragraph-{{ paragraph.id() }}" id="paragraph-{{ paragraph.id() }}">
+<div data-anchor-id="paragraph-{{ paragraph.id() }}">
   <h1 class="page-title anchor-title" role="heading">
     {{ content.field_title|field_value }}
   </h1>

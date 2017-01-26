@@ -224,3 +224,12 @@ function deployment_update_8010() {
     'views.view.members_list',
   ]);
 }
+
+/**
+ * Fix Who page.
+ */
+function deployment_update_8011() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'views.view.members_list',
+  ]);
+}

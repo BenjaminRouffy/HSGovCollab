@@ -6,9 +6,11 @@ dependencies:
     - field.field.node.member.body
     - field.field.node.member.field_content_paragraph
     - field.field.node.member.field_country
+    - field.field.node.member.field_join_block
     - field.field.node.member.field_member_category
     - field.field.node.member.field_member_image
     - field.field.node.member.field_member_link
+    - image.style.174x174
     - node.type.member
   module:
     - entity_reference_revisions
@@ -42,6 +44,13 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
+  field_join_block:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_member_category:
     weight: 2
     label: hidden
@@ -53,7 +62,7 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: ''
+      image_style: 174x174
       image_link: ''
     third_party_settings: {  }
     type: image

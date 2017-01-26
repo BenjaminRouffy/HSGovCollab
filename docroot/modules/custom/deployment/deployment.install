@@ -169,3 +169,27 @@ function deployment_update_8006() {
     'filter.format.minimal',
   ]);
 }
+
+/**
+ * Update Member list view.
+ */
+function deployment_update_8007() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'image.style.60x60',
+    'views.view.members_list',
+  ]);
+}
+
+/**
+ * Update Member content type and Member page.
+ */
+function deployment_update_8008() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'field.field.node.member.field_join_block',
+    'image.style.174x174',
+    'core.entity_form_display.node.member.default',
+    'core.entity_view_display.node.member.default',
+    'field.field.node.member.field_member_image',
+    'page_manager.page_variant.node_view-panels_variant-3',
+  ]);
+}

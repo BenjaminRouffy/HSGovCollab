@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.member.body
     - field.field.node.member.field_content_paragraph
     - field.field.node.member.field_country
+    - field.field.node.member.field_join_block
     - field.field.node.member.field_member_category
     - field.field.node.member.field_member_image
     - field.field.node.member.field_member_link
@@ -45,6 +46,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_join_block:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
   field_member_category:
     weight: 2
     settings: {  }
@@ -71,25 +77,25 @@ content:
     type: link_default
   langcode:
     type: language_select
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 9
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 10
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -99,7 +105,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 12
     settings: {  }
     third_party_settings: {  }
 hidden:

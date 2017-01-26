@@ -1,0 +1,22 @@
+{% if fields.field_member_image.content %}
+  {{ fields.field_member_image.content }}
+{% endif %}
+
+  {% if fields.field_country.content %}
+    <div class="country">{{ fields.field_country.content }}</div>
+  {% endif %}
+
+<div class="title-wrapper">
+  <h2>{{ fields.title.content }}</h2>
+  <div class="line"></div>
+</div>
+
+{% if fields.body.content %}
+  <p>{{ fields.body.content }}</p>
+{% endif %}
+
+{% if fields.field_member_link.content %}
+  <div class="font-social-icon down-right-icon">
+    {{ fields.field_member_link.content }}
+  </div>
+{% endif %}

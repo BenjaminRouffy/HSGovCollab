@@ -1,0 +1,28 @@
+uuid: 5319909e-a76c-4ad5-9b5e-828ef69c23cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+    - field.storage.node.field_join_block
+    - node.type.member
+id: node.member.field_join_block
+field_name: field_join_block
+entity_type: node
+bundle: member
+label: 'Join block'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      link: link
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

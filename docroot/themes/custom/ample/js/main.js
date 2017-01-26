@@ -54,7 +54,6 @@
           showRelated();
         });
       }
-
     }
   };
 
@@ -77,6 +76,14 @@
           $bottomHead.find('.anchor-links').append('<a href="#' + id + '">' + title + '</a>');
         });
       }
+    }
+  };
+
+  Drupal.behaviors.overlay = {
+    attach: function(context, settings) {
+      $('.overlay-wpapper').delay(3000).queue(function() {
+        $(this).css('opacity', 0).dequeue();
+      });
     }
   };
 

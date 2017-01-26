@@ -484,6 +484,51 @@ header .social-links .font-social-icon {
       line-height: 23px;
       margin: 20px 0 0; }
 
+.video-wrapper {
+  position: relative; }
+
+.overlay-wpapper {
+  background: rgba(0, 0, 0, 0.53);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: opacity 2s ease;
+  width: 100%;
+  z-index: 100; }
+  .overlay-wpapper > * {
+    width: 80%; }
+  .overlay-wpapper h1 {
+    font-size: 4.375rem;
+    color: #fff;
+    letter-spacing: 1.5px;
+    line-height: 72px;
+    margin: 20px 0 10px;
+    padding: 0;
+    text-transform: uppercase; }
+  .overlay-wpapper .description {
+    font-size: 2.0125rem;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 300;
+    line-height: 50px;
+    margin-top: 30px; }
+
+.w-background-video .plyr {
+  max-height: 60vh;
+  overflow: hidden; }
+
+.w-background-video .plyr__video-embed {
+  margin-top: -23vh; }
+
+.video-embed-field-responsive-video:after {
+  content: none; }
+
 .node-pager {
   font-size: 0.875rem;
   border-top: 1px solid #80aabe;

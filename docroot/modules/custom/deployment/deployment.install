@@ -169,3 +169,13 @@ function deployment_update_8006() {
     'filter.format.minimal',
   ]);
 }
+
+/**
+ * Update Member list view.
+ */
+function deployment_update_8007() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'image.style.60x60',
+    'views.view.members_list',
+  ]);
+}

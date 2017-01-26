@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_member_category
     - field.storage.node.field_member_image
     - field.storage.node.field_member_link
+    - image.style.60x60
     - node.type.member
   module:
     - image
@@ -237,7 +238,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_style: ''
+            image_style: 60x60
             image_link: ''
           group_column: ''
           group_columns: {  }
@@ -317,53 +318,6 @@ display:
           id: title
           table: node_field_data
           field: title
-          entity_type: node
-          entity_field: title
-          label: ''
-          alter:
-            alter_text: false
-            make_link: false
-            absolute: false
-            trim: false
-            word_boundary: false
-            ellipsis: false
-            strip_tags: false
-            html: false
-          hide_empty: false
-          empty_zero: false
-          settings:
-            link_to_entity: true
-          plugin_id: field
-          relationship: none
-          group_type: group
-          admin_label: ''
-          exclude: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        body:
-          id: body
-          table: node__body
-          field: body
           relationship: none
           group_type: group
           admin_label: ''
@@ -387,8 +341,8 @@ display:
             target: ''
             nl2br: false
             max_length: 0
-            word_boundary: true
-            ellipsis: true
+            word_boundary: false
+            ellipsis: false
             more_link: false
             more_link_text: ''
             more_link_path: ''
@@ -408,10 +362,75 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: summary
-          type: text_summary_or_trimmed
+          click_sort_column: value
+          type: string
           settings:
-            trim_length: 600
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ body__summary }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 230
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: true
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: summary
+          type: text_trimmed
+          settings:
+            trim_length: 50
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -434,20 +453,20 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: ''
-            make_link: false
-            path: ''
+            text: '{{ field_member_link__uri }}'
+            make_link: true
+            path: '{{ field_member_link__uri }}'
             absolute: false
             external: false
             replace_spaces: false
             path_case: none
             trim_whitespace: false
-            alt: ''
+            alt: '{{ field_member_link__uri }}'
             rel: ''
-            link_class: ''
+            link_class: external-link
             prefix: ''
             suffix: ''
-            target: ''
+            target: _blank
             nl2br: false
             max_length: 0
             word_boundary: true
@@ -476,9 +495,9 @@ display:
           settings:
             trim_length: 80
             url_only: true
-            url_plain: false
+            url_plain: true
             rel: '0'
-            target: '0'
+            target: _blank
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -511,7 +530,19 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-      sorts: {  }
+      sorts:
+        field_member_category_target_id:
+          id: field_member_category_target_id
+          table: node__field_member_category
+          field: field_member_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
       title: 'Members list'
       header: {  }
       footer: {  }

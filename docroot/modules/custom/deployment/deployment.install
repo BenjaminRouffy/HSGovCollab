@@ -214,3 +214,13 @@ function deployment_update_8009() {
     'views.view.recent_news',
   ]);
 }
+
+/**
+ * Update Who page.
+ */
+function deployment_update_8010() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'page_manager.page_variant.who_page-panels_variant-0',
+    'views.view.members_list',
+  ]);
+}

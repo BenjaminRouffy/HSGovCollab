@@ -92,7 +92,7 @@ class Group extends ContentEntityBase implements GroupInterface {
    * @return \Drupal\group\Entity\Storage\GroupRoleStorageInterface
    */
   protected function groupRoleStorage() {
-    return $this->entityTypeManager()->getStorage('`group_role`');
+    return $this->entityTypeManager()->getStorage('group_role');
   }
 
   /**

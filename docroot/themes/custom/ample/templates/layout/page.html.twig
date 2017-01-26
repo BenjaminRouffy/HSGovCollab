@@ -31,6 +31,10 @@
 
 </main>
 
+{% if page.pre_footer %}
+  {{ page.pre_footer }}
+{% endif %}
+
 {% if page.footer %}
   <footer role="contentinfo">
     {{ page.footer }}

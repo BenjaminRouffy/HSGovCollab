@@ -188,8 +188,17 @@
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     margin: 10px;
-    padding: 30px 20px 68px;
     position: relative;
+  }
+
+  a {
+    display: block;
+    padding: 30px 20px 68px;
+    text-decoration: none;
+
+    &:after {
+      display: none;
+    }
   }
 
   img {

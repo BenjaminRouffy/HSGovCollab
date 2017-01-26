@@ -7,6 +7,7 @@ dependencies:
     - views.view.members_list
   content:
     - 'block_content:headline_description:a4ec2eaf-d92e-4662-8a8c-8ca43d787750'
+    - 'block_content:link:60106b30-44a4-42a2-8f5b-19069e947a84'
   module:
     - block_content
     - panels
@@ -24,7 +25,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: middle
-      weight: 1
+      weight: -9
       uuid: 9d190eed-bdc3-4598-bf88-27594afc171a
       context_mapping: {  }
     11982faa-0392-4c13-a23b-e9e9b9ce72bc:
@@ -36,14 +37,26 @@ variant_settings:
       info: ''
       view_mode: full
       region: middle
-      weight: 0
+      weight: -10
       uuid: 11982faa-0392-4c13-a23b-e9e9b9ce72bc
+      context_mapping: {  }
+    ac8cb9a1-6d47-416a-bada-fa6147097165:
+      id: 'block_content:60106b30-44a4-42a2-8f5b-19069e947a84'
+      label: 'Interested in joining the P4H Network?'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: bottom
+      weight: -1
+      uuid: ac8cb9a1-6d47-416a-bada-fa6147097165
       context_mapping: {  }
   id: panels_variant
   uuid: 4dfa2c41-d7e8-4a1f-a9ab-2c5b327fcaee
   label: null
   weight: 0
-  layout: onecol
+  layout: separate_column
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager

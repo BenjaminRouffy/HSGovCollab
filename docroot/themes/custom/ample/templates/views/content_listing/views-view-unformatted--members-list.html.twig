@@ -1,10 +1,15 @@
-<h2>{{ title }}</h2>
-<ul>
-  {% for row in rows %}
-    <li class="member-block">
-      <div class="block-content">
-        {{ row.content }}
-      </div>
-    </li>
-  {% endfor %}
-</ul>
+<div data-anchor-id="member-list">
+  <div class="title-wrapper">
+    <h2 class="anchor-title">{{ title }}</h2>
+    <div class="line"></div>
+  </div>
+  <ul>
+    {% for row in rows %}
+      <li class="member-block">
+        <div class="block-content">
+          {{ row.content }}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -86,7 +86,7 @@
 
           $('html, body').animate({
             scrollTop: $('[id="' + $.attr(this, 'href').substr(1) + '"]').offset().top - totalHeaderHegiht
-          }, 500);
+          }, 1000);
         });
       }
     }

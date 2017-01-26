@@ -758,8 +758,13 @@ header .social-links .font-social-icon {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     margin: 10px;
-    padding: 30px 20px 68px;
     position: relative; }
+  .member-block a {
+    display: block;
+    padding: 30px 20px 68px;
+    text-decoration: none; }
+    .member-block a:after {
+      display: none; }
   .member-block img {
     float: left;
     height: 80px;
@@ -1270,12 +1275,18 @@ footer {
 
 .members-list {
   margin-top: 50px; }
-  .members-list > h2 {
-    font-size: 1.575rem;
-    line-height: 48px;
-    margin: 0 0 15px;
-    text-align: center;
-    text-transform: uppercase; }
+  .members-list > .title-wrapper {
+    margin-bottom: 20px;
+    padding-bottom: 10px; }
+    .members-list > .title-wrapper h2 {
+      font-size: 1.575rem;
+      line-height: 48px;
+      margin: 0 0 15px;
+      text-align: center;
+      text-transform: uppercase; }
+    .members-list > .title-wrapper .line {
+      left: 50%;
+      transform: translateX(-50%); }
   .members-list ul {
     display: flex;
     flex-wrap: wrap;

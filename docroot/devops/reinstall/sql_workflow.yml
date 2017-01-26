@@ -81,6 +81,10 @@
   shell: "{{ php_env_vars }} drush -dvy updb -l {{ site_url }}"
   register: updates
 
+- name: Rebuilding cache
+  sudo: yes
+  shell: "{{ php_env_vars }} drush -y cr -l {{ site_url }} || true"
+
 - name: Apply pending entity schema updates
   sudo: yes
   shell: "{{ php_env_vars }} drush -y entup -l {{ site_url }}"

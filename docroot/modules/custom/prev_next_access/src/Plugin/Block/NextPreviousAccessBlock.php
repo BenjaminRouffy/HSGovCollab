@@ -34,6 +34,7 @@ class NextPreviousAccessBlock extends BlockBase {
           'node-pager',
         ],
       ];
+      $links['#type'] = 'container';
     }
 
     return [

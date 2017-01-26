@@ -45,3 +45,22 @@
     }
   }
 }
+
+.anchor-links {
+  text-align: center;
+
+  a {
+    @include font-size(16.8);
+    font-family: $oswald;
+    font-weight: 400;
+    color: $red;
+    letter-spacing: .5px;
+    padding: 15px 30px;
+    text-decoration: none;
+    transition: color .3s ease;
+
+    &:hover {
+      color: $navy;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<h2>{{ title }}</h2>
+<ul>
+  {% for row in rows %}
+    <li class="member-block">
+      <div class="block-content">
+        {{ row.content }}
+      </div>
+    </li>
+  {% endfor %}
+</ul>

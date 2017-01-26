@@ -7,6 +7,7 @@
 
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Additional settings for ample setting form.
@@ -46,6 +47,22 @@ function ample_theme_suggestions_alter(array &$suggestions, array $variables, $h
 
       $suggestions[] = 'block__block_content__' . $block_content->bundle();
       $suggestions[] = 'block__block_content__' . $block_content->bundle() . '__' . $element['content']['#view_mode'];
+    }
+  }
+
+  /* @var ViewExecutable $view */
+  if (
+    (strpos($hook, 'views_') !== FALSE) &&
+    ($view = $variables['view']) &&
+    (!empty($view->storage))
+  ) {
+    $suggestions[] = "{$hook}__" . $view->storage->id();
+    if (!empty($view->current_display)) {
+      $suggestions[] = "{$hook}__" . $view->storage->id() . '__' . $view->current_display;
+
+      if (isset($variables['field'])) {
+        $suggestions[] = "{$hook}__" . $view->storage->id() . '__' . $view->current_display . '__' . $variables['field']->field;
+      }
     }
   }
 }

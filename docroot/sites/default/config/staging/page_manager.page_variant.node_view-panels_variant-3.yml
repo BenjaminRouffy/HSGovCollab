@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.node_view
   module:
     - ctools
+    - ctools_block
     - panels
 id: node_view-panels_variant-3
 label: Member
@@ -21,6 +22,23 @@ variant_settings:
       region: left_sidebar
       weight: 0
       uuid: ce26ae60-5c05-4283-bbfa-0e0414e539d3
+      context_mapping:
+        entity: node
+    71863e4a-d51c-458a-8713-7712522d25d8:
+      id: 'entity_field:node:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: view_mode_registration_block
+        third_party_settings: {  }
+        weight: 0
+      region: right_sidebar
+      weight: 0
+      uuid: 71863e4a-d51c-458a-8713-7712522d25d8
       context_mapping:
         entity: node
   id: panels_variant

@@ -72,6 +72,7 @@
           // Remove  special characters from string.
           id = id.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '_');
           id = id.toLowerCase();
+          element.id = id;
 
           $bottomHead.find('.anchor-links').append('<a href="#' + id + '">' + title + '</a>');
         });

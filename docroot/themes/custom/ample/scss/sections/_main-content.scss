@@ -25,7 +25,7 @@
     float: left;
     width: 66.64%;
 
-    > *:not(.node-pager) {
+    > *:not(.node-pager):not(.event-info) {
       width: 80%;
     }
   }
@@ -60,6 +60,10 @@
     bottom: 0;
     left: 0;
     width: 180px;
+  }
+
+  ~ .event-info {
+    margin-top: -20px;
   }
 }
 

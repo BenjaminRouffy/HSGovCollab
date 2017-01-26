@@ -193,3 +193,24 @@ function deployment_update_8008() {
     'page_manager.page_variant.node_view-panels_variant-3',
   ]);
 }
+
+/**
+ * Recent news block.
+ */
+function deployment_update_8009() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'block.block.views_block__recent_news_block_1',
+    'core.entity_view_display.node.news.default',
+    'core.entity_view_display.node.news.small_teaser',
+    'core.entity_view_mode.node.small_teaser',
+    'core.extension',
+    'field.storage.group_content.group_roles',
+    'image.style.65x65',
+    'language.content_settings.node.news',
+    'page_manager.page.page_why',
+    'views.settings',
+    'views.view.group_members',
+    'views.view.group_nodes',
+    'views.view.recent_news',
+  ]);
+}

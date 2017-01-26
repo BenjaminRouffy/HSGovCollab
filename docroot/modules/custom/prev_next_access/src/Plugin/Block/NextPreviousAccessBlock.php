@@ -62,6 +62,8 @@ class NextPreviousAccessBlock extends BlockBase {
   private function generateNextPrevious(Node $node, $direction = 'next') {
     $comparison_operator = $sort = $display_text = $direction_arrow = '';
 
+    $lang_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
     if ($direction === 'next') {
       $comparison_operator = '>';
       $sort = 'ASC';
@@ -75,18 +77,13 @@ class NextPreviousAccessBlock extends BlockBase {
       $direction_arrow = 'left';
     }
 
-    $display_text = new FormattableMarkup('<span>@display_text</span><p>@text</p>', [
-      '@display_text' => $display_text,
-      '@text' => $node->getTitle(),
-    ]);
-
     // Lookup 1 node younger (or older) than the current node.
     $query = \Drupal::entityQuery('node');
-
-    $next = $query->condition('created', $node->getCreatedTime(), $comparison_operator)
+    $next = $query->condition('nid', $node->id(), $comparison_operator)
       ->condition('type', $node->getType())
       ->sort('created', $sort)
       ->range(0, 1)
+      ->condition('langcode', $lang_code)
       ->accessCheck()
       ->execute();
 
@@ -94,7 +91,13 @@ class NextPreviousAccessBlock extends BlockBase {
     if (!empty($next) && is_array($next)) {
       $next = array_values($next);
       $next = array_shift($next);
+      $result_node = Node::load($next);
       $url = Url::fromRoute('entity.node.canonical', ['node' => $next], ['absolute' => TRUE]);
+
+      $display_text = new FormattableMarkup('<span>@display_text</span><p>@text</p>', [
+        '@display_text' => $display_text,
+        '@text' => $result_node->getTranslation($lang_code)->getTitle(),
+      ]);
 
       return Link::fromTextAndUrl($display_text, $url)->toRenderable() + [
         '#attributes' => [

@@ -58,4 +58,26 @@
     }
   };
 
+  Drupal.behaviors.anchorLink = {
+    attach: function(context, settings) {
+      var $bottomHead = $('.bottom-head', context);
+      var $anchorLink = $('[data-anchor-id]', context);
+
+      if ($anchorLink.length) {
+        $bottomHead.append('<div class="anchor-links"></div>');
+
+        $anchorLink.each(function(index, element) {
+          var title = $(element).find('.anchor-title').first().text();
+          var id = title.trim();
+
+          // Remove  special characters from string.
+          id = id.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '_');
+          id = id.toLowerCase();
+
+          $bottomHead.find('.anchor-links').append('<a href="#' + id + '">' + title + '</a>');
+        });
+      }
+    }
+  };
+
 })(jQuery, Drupal);

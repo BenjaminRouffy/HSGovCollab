@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_author
     - field.field.node.news.field_category
+    - field.field.node.news.field_content_date
     - field.field.node.news.field_content_paragraph
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
@@ -24,33 +25,33 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 1
     settings: {  }
     third_party_settings: {  }
   field_author:
-    weight: 104
+    weight: 3
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_category:
-    weight: 107
+    weight: 6
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_content_paragraph:
-    weight: 106
+    weight: 5
     label: above
     settings:
-      view_mode: default
+      view_mode: view_mode_selector
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
   field_image:
-    weight: 103
+    weight: 2
     label: above
     settings:
       image_style: ''
@@ -58,22 +59,23 @@ content:
     third_party_settings: {  }
     type: image
   field_join_block:
-    weight: 105
+    weight: 4
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_organization:
-    weight: 108
+    weight: 7
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   links:
-    weight: 100
+    weight: 0
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_content_date: true
   langcode: true

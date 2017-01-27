@@ -16,10 +16,8 @@
       </aside>
     {% endif %}
   </div>
-</section>
 
-{% if content.bottom|without('#prefix', '#suffix') is not empty %}
-  <div class="bottom-region">
+  {% if content.bottom|without('#prefix', '#suffix') is not empty %}
     {{ content.bottom|without('#prefix', '#suffix') }}
-  </div>
-{% endif %}
+  {% endif %}
+</section>

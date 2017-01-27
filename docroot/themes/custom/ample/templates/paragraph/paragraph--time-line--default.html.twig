@@ -1,8 +1,10 @@
 <div class="timeline" data-anchor-id="paragraph_{{ paragraph.bundle }}-{{ paragraph.id() }}">
-  <h2 class="anchor-title" role="heading">
-    {{ content.field_title }}
-  </h2>
-  <div class="red-line"></div>
+  <div class="title-wrapper">
+    <h2 class="anchor-title" role="heading">
+      {{ content.field_title }}
+    </h2>
+    <div class="line"></div>
+  </div>
 
   <div class="timeline-wrapper">
     {% if content.field_headline|field_value %}

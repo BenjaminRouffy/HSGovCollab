@@ -1,7 +1,7 @@
 {% for item in items %}
-  <a href="{{ item.content['#url'] }}">
-    <h4 class="anchor-title" role="heading">
+  <div class="bottom-link">
+    <a href="{{ item.content['#url'] }}" class="red-btn-link">
       {{ item.content['#title'] }}
-    </h4>
-  </a>
+    </a>
+  </div>
 {% endfor %}

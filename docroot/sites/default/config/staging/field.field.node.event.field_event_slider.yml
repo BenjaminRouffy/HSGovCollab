@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_event_slider
     - node.type.event
+    - paragraphs.paragraphs_type.content_image
     - paragraphs.paragraphs_type.slider
   module:
     - entity_reference_revisions
@@ -22,11 +23,12 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      content_image: content_image
       slider: slider
     target_bundles_drag_drop:
       content_image:
+        enabled: true
         weight: 9
-        enabled: false
       content_text:
         weight: 10
         enabled: false
@@ -45,7 +47,13 @@ settings:
       slider:
         enabled: true
         weight: 15
+      link:
+        weight: 16
+        enabled: false
       video:
         weight: 16
+        enabled: false
+      time_line:
+        weight: 19
         enabled: false
 field_type: entity_reference_revisions

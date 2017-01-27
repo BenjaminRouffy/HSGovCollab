@@ -284,3 +284,22 @@ function deployment_update_8013() {
     'paragraphs.paragraphs_type.time_line',
   ]);
 }
+
+/**
+ * Fix Event.
+ */
+function deployment_update_8014() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'block.block.logos',
+    'block.block.logosstatic',
+    'field.field.node.event.field_event_slider',
+    'image.style.60x60',
+    'core.entity_form_display.node.event.default',
+    'core.entity_form_display.paragraph.content_image.simple_image',
+    'core.entity_form_mode.paragraph.simple_image',
+    'block_content.type.link',
+    'core.entity_view_display.block_content.link.link',
+    'core.entity_view_mode.block_content.link',
+    'page_manager.page_variant.who_page-panels_variant-0',
+  ]);
+}

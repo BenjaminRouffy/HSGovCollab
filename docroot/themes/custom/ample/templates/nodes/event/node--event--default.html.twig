@@ -28,7 +28,7 @@
 
   {% if (content.field_time|field_value or content.field_time_text|field_value) %}
     <div class="row">
-      <span class="label">{{ 'When'|t }}:</span>
+      <span class="label">{{ 'Time'|t }}:</span>
       <span class="value">
         {{ content.field_time|field_value ? content.field_time|field_value : '' }} {{ content.field_time_text|field_value ? content.field_time_text|field_value : '' }}
       </span>

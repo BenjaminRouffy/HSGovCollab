@@ -12,8 +12,8 @@
   <div class="line"></div>
 </div>
 
-{% if node.body.summary|field_value %}
-  <div class="content-summary">
+{% if node.body.summary %}
+  <div class="summary-text">
     <p>{{ node.body.summary }}</p>
   </div>
 {% endif %}

@@ -284,3 +284,15 @@ function deployment_update_8013() {
     'paragraphs.paragraphs_type.time_line',
   ]);
 }
+
+/**
+ * Fix Event.
+ */
+function deployment_update_8014() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'block.block.logos',
+    'block.block.logosstatic',
+    'field.field.node.event.field_event_slider',
+    'image.style.60x60',
+  ]);
+}

@@ -306,6 +306,26 @@ img {
 .pin-icon > span::after {
   content: "f"; }
 
+.news-icon > a::after,
+.news-icon > span::after {
+  content: "s"; }
+
+.event-icon > a::after,
+.event-icon > span::after {
+  content: "x"; }
+
+.country-icon > a::after,
+.country-icon > span::after {
+  content: "j"; }
+
+.project-icon > a::after,
+.project-icon > span::after {
+  content: "i"; }
+
+.person-icon > a::after,
+.person-icon > span::after {
+  content: "a"; }
+
 .main-menu {
   text-align: center; }
   .main-menu li {
@@ -383,9 +403,14 @@ header .social-links .font-social-icon {
     margin: 0 12px;
     padding: 10px 0 7px; }
   .partners img {
-    height: 100% !important; }
+    height: 100% !important;
+    width: auto; }
 
 .top-right-icon {
+  text-align: center; }
+
+.bottom-link {
+  margin: 30px 0 10px;
   text-align: center; }
 
 .red-btn-link {
@@ -744,6 +769,112 @@ header .social-links .font-social-icon {
     line-height: 26px;
     margin-top: 5px; }
 
+.timeline .title-wrapper {
+  margin-bottom: 20px; }
+  .timeline .title-wrapper h2 {
+    font-size: 3.0625rem;
+    line-height: 48px;
+    margin: 20px 0 21px; }
+
+.timeline h2 {
+  margin-left: 0;
+  text-transform: none; }
+
+.timeline .timeline-content h4 {
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  clear: both;
+  letter-spacing: .5px;
+  line-height: 25px; }
+
+.timeline .timeline-content p {
+  line-height: 26px; }
+
+.timeline-wrapper {
+  margin-top: 50px; }
+  .timeline-wrapper > h2 {
+    font-size: 1.75rem;
+    color: #4c7e96;
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 48px;
+    margin: 0 0 15px;
+    text-align: center; }
+  .timeline-wrapper .paragraph {
+    border: none;
+    cursor: auto;
+    margin-bottom: 50px;
+    padding: 0;
+    position: relative;
+    width: 50%; }
+    .timeline-wrapper .paragraph:hover {
+      background: none; }
+    .timeline-wrapper .paragraph:before, .timeline-wrapper .paragraph:after {
+      content: "";
+      display: block;
+      position: absolute; }
+    .timeline-wrapper .paragraph:before {
+      background: #4c7e96;
+      height: 1px;
+      top: 50%;
+      width: calc(25% - 13px); }
+    .timeline-wrapper .paragraph:after {
+      height: 26px;
+      width: 26px;
+      border: 2px solid #ea3a32;
+      border-radius: 50%;
+      top: calc(50% - 13px); }
+    .timeline-wrapper .paragraph:nth-child(odd) {
+      float: left;
+      clear: left; }
+      .timeline-wrapper .paragraph:nth-child(odd):before {
+        right: 13px; }
+      .timeline-wrapper .paragraph:nth-child(odd):after {
+        right: -13px; }
+    .timeline-wrapper .paragraph:nth-child(even) {
+      float: right;
+      clear: right; }
+      .timeline-wrapper .paragraph:nth-child(even):before {
+        left: 13px; }
+      .timeline-wrapper .paragraph:nth-child(even):after {
+        left: -13px; }
+      .timeline-wrapper .paragraph:nth-child(even) .timeline-content-item {
+        float: right; }
+    .timeline-wrapper .paragraph:first-child {
+      margin-top: 50px; }
+    .timeline-wrapper .paragraph:nth-child(2) {
+      margin-top: 150px; }
+
+.timeline-content {
+  overflow: hidden;
+  position: relative; }
+  .timeline-content:after {
+    background: #4c7e96;
+    content: "";
+    height: 90%;
+    margin-left: -1px;
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    width: 2px; }
+  .timeline-content .font-social-icon span {
+    font-size: 1.75rem;
+    color: #4c7e96; }
+
+.timeline-content-item {
+  background: #f5f5f5;
+  border: 1px solid #4c7e96;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  padding: 20px 30px;
+  transition: border .3s ease;
+  width: 75%; }
+  .timeline-content-item:hover {
+    border-color: #ea3a32; }
+  .timeline-content-item time {
+    transition: color .2s ease; }
+    .timeline-content-item time:hover {
+      color: #ea3a32; }
+
 .related-docs h2 {
   background: url(../images/docs-icon.svg) left center no-repeat;
   background-size: 40px;
@@ -759,7 +890,8 @@ header .social-links .font-social-icon {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     margin: 10px;
-    position: relative; }
+    position: relative;
+    width: 100%; }
   .member-block a {
     display: block;
     padding: 30px 20px 68px;
@@ -823,6 +955,11 @@ header .social-links .font-social-icon {
 .visible {
   transform: translateY(0) !important;
   opacity: 1 !important; }
+
+.faded {
+  transition: opacity .5s, transform 1s;
+  opacity: 1 !important;
+  transform: translateY(0) !important; }
 
 .related-wrapper {
   background: #faf7f7;

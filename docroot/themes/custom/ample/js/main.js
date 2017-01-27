@@ -4,8 +4,9 @@
   Drupal.behaviors.fadeOut = {
     attach: function(context, settings) {
       var $blockquote = $('blockquote');
+      var $timelineItem = $('.timeline-content').find('.paragraph');
 
-      $blockquote.each(function(i, el) {
+      $blockquote.add($timelineItem).each(function(i, el) {
         var $el = $(el);
 
         if (!$el.isVisible(true)) {
@@ -17,6 +18,20 @@
       });
 
       $(window).scroll(function() {
+        var $window = $(window);
+        var eighthDocHeight = $(document).height() / 8;
+        var viewTop = $window.scrollTop();
+        var viewBottom = viewTop + $window.height();
+
+        $timelineItem.each(function(i, el) {
+          var $el = $(el);
+          var elemTopPos = $el.offset().top;
+
+          if ($el.isVisible(true) && elemTopPos < (viewBottom - eighthDocHeight)) {
+            $el.addClass("faded");
+          }
+        });
+
         $blockquote.each(function(i, el) {
           var $el = $(el);
 

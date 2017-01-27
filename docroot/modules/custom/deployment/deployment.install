@@ -224,3 +224,27 @@ function deployment_update_8010() {
     'views.view.members_list',
   ]);
 }
+
+/**
+ * Fix Who page.
+ */
+function deployment_update_8011() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'views.view.members_list',
+  ]);
+}
+
+/**
+ * Event page and update event content type.
+ */
+function deployment_update_8012() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'field.field.node.event.field_category',
+    'field.field.node.event.field_join_block',
+    'field.field.node.event.field_organization',
+    'core.entity_form_display.node.event.default',
+    'core.entity_view_display.node.event.default',
+    'field.field.node.event.field_date',
+    'page_manager.page_variant.node_view-panels_variant-2',
+  ]);
+}

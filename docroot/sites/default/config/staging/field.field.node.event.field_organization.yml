@@ -1,0 +1,28 @@
+uuid: 7ddb66fd-c70c-422c-9e11-9029b60a3018
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_organization
+    - node.type.event
+    - taxonomy.vocabulary.organizations
+id: node.event.field_organization
+field_name: field_organization
+entity_type: node
+bundle: event
+label: Organization
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      organizations: organizations
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -3,29 +3,34 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.slider.field_slider_item
+    - field.field.paragraph.slider.field_slider
     - field.field.paragraph.slider.field_view_mode
     - paragraphs.paragraphs_type.slider
   module:
-    - field_collection
+    - paragraphs
     - view_mode_selector
 id: paragraph.slider.default
 targetEntityType: paragraph
 bundle: slider
 mode: default
 content:
-  field_slider_item:
+  field_slider:
+    type: entity_reference_paragraphs
     weight: 0
-    settings: {  }
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
     third_party_settings: {  }
-    type: field_collection_embed
   field_view_mode:
-    weight: 11
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: view_mode_selector_select
   translation:
-    weight: 10
+    weight: 1
     settings: {  }
     third_party_settings: {  }
 hidden:

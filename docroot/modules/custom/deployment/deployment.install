@@ -334,3 +334,41 @@ function deployment_update_8016() {
     'page_manager.page_variant.node_view-panels_variant-1',
   ]);
 }
+
+/**
+ * Recent events.
+ */
+function deployment_update_8017() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'ample.settings',
+    'block.block.logos',
+    'block.block.logos_2',
+    'block.block.views_block__recent_news_block_2',
+    'core.entity_form_display.paragraph.slider.banner',
+    'core.entity_form_display.paragraph.slider.default',
+    'core.entity_form_display.paragraph.slider_item.default',
+    'core.entity_view_display.node.basic_page.teaser',
+    'core.entity_view_display.node.basic_page.view_mode_for_section_page',
+    'core.entity_view_display.node.event.small_teaser',
+    'core.entity_view_display.paragraph.slider.default',
+    'core.entity_view_display.paragraph.slider.small_teaser',
+    'core.entity_view_display.paragraph.slider.view_mode_banner',
+    'core.entity_view_display.paragraph.slider.view_mode_thumbnail',
+    'core.entity_view_display.paragraph.slider_item.default',
+    'core.entity_view_display.paragraph.slider_item.small_teaser',
+    'core.entity_view_mode.paragraph.small_teaser',
+    'field.field.node.news.field_content_paragraph',
+    'field.field.paragraph.slider.field_slider',
+    'field.field.paragraph.slider_item.field_content_image',
+    'field.field.paragraph.slider_item.field_description',
+    'field.storage.paragraph.field_slider',
+    'language.entity.en',
+    'language.entity.fr',
+    'page_manager.page_variant.node_view-panels_variant-2',
+    'paragraphs.paragraphs_type.slider_item',
+    'system.site',
+    'views.view.group_members',
+    'views.view.group_nodes',
+    'views.view.recent_news',
+  ]);
+}

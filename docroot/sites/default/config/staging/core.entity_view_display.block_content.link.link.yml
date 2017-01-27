@@ -1,0 +1,30 @@
+uuid: 4d86383c-34ae-4a01-a05f-692dd2ffa1c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+    - core.entity_view_mode.block_content.link
+    - field.field.block_content.link.field_link
+    - field.field.block_content.link.field_link_description
+  module:
+    - link
+id: block_content.link.link
+targetEntityType: block_content
+bundle: link
+mode: link
+content:
+  field_link:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+hidden:
+  field_link_description: true
+  langcode: true

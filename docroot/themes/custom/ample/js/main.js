@@ -1,6 +1,85 @@
 (function($, Drupal) {
   'use strict';
 
+  Drupal.behaviors.accordionExposedFilter = {
+    attach: function(context, settings) {
+      var settings = jQuery.extend(true, settings, {
+        'defaultFormSelector': 'form.views-exposed-form',
+        'defaultAttributeSelector': 'data-drupal-selector',
+        'defaultAccordionTab': '.click-item',
+        'defaultAccordionTabText': '.text-label',
+        'defaultFieldsetLegend': '.fieldset-legend',
+        'defaultClosed': 'closed'
+      });
+      var $form = $(settings.defaultFormSelector, context);
+
+      var applyCheckboxesLabel = function (parent) {
+        var parentAttribute = $(parent)
+          .attr(settings.defaultAttributeSelector);
+
+        // Get all tags of accordion.
+        $(settings.defaultAccordionTab, $form)
+        // Fitter that related to parent fieldset element.
+          .filter('[' + settings.defaultAttributeSelector + '="' + parentAttribute + '"]')
+          // Change a label of tab.
+          .find(settings.defaultAccordionTabText).html(function () {
+            // Gets all checked inputs and ...
+            return $('input:checked + label', parent).map(function () {
+                // ... and gets its labels.
+                return $(this).html();
+              })
+              // Return all labels or default value of tab.
+              .get().join() || $(settings.defaultFieldsetLegend, parent).html()
+          });
+
+      };
+      var addLabel = function(form, parent) {
+        var legend = $(settings.defaultFieldsetLegend, parent)
+          .hide()
+          .html();
+        $(parent).hide()
+        var template = '<div class="wrapper ' + settings.defaultAccordionTab.substr(1) + '">' +
+                          '<div class="text">' +
+                            '<span class="' + settings.defaultAccordionTabText.substr(1) + '"></span>' +
+                            '<span class="button"></span>' +
+                          '</div>' +
+                        '</div>';
+
+        var parentAttribute = $(parent)
+          .attr(settings.defaultAttributeSelector);
+        var new_div = $(template)
+          .addClass(settings.defaultAccordionTab.substr(1))
+          .addClass(settings.defaultClosed)
+          .attr(settings.defaultAttributeSelector, parentAttribute);
+        $(new_div).find(settings.defaultAccordionTabText).html(legend);
+        $(form).prepend(new_div);
+        applyCheckboxesLabel(parent);
+      }
+
+
+      var _this = this;
+      $('fieldset', $form)
+        .filter('[' + settings.defaultAttributeSelector + ']').each(function () {
+          addLabel($form, this);
+        });
+
+      $(".click-item", $form).click(function()
+      {
+        var attr = $(this).attr(settings.defaultAttributeSelector);
+        $('fieldset')
+          .filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(300).siblings("fieldset").slideUp("slow");
+        $(this).toggleClass(settings.defaultClosed).siblings(settings.defaultAccordionTab).addClass(settings.defaultClosed);
+
+      });
+
+      $('fieldset[' + settings.defaultAttributeSelector + '] input', $form).change(function () {
+        var parent = $(this).parents('fieldset');
+        applyCheckboxesLabel(parent);
+      });
+
+    }
+  };
+
   Drupal.behaviors.fadeOut = {
     attach: function(context, settings) {
       var $blockquote = $('blockquote');

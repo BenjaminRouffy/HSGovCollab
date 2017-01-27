@@ -1,4 +1,9 @@
 {#@todo: add event slider.#}
+{% if content.field_event_slider %}
+  <div class="header-image">
+    {{ content.field_event_slider|field_value }}
+  </div>
+{% endif %}
 
 <div class="post-info">
   <time>
@@ -21,9 +26,9 @@
     <span class="value">{{ content.field_date|field_value }}</span>
   </div>
 
-  {% if content.field_timezone|field_value %}
+  {% if (content.field_time|field_value or content.field_time_text|field_value) %}
     <div class="row">
-      <span class="label">{{ content.field_time['#title'] }}:</span>
+      <span class="label">{{ 'When'|t }}:</span>
       <span class="value">
         {{ content.field_time|field_value ? content.field_time|field_value : '' }} {{ content.field_time_text|field_value ? content.field_time_text|field_value : '' }}
       </span>
@@ -44,7 +49,7 @@
         <span class="font-social-icon pin-icon">
           <span></span>
         </span>
-        <a href="{{ content.field_location[0]['#url'] }}">{{ content.field_location[0]['#title'] }}</a>
+        <a href="{{ content.field_location[0]['#url'] }}" target="_blank">{{ content.field_location[0]['#title'] }}</a>
       </span>
     </div>
   {% endif %}

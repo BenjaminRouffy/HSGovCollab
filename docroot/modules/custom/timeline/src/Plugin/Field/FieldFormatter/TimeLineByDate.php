@@ -1,0 +1,104 @@
+<?php
+
+namespace Drupal\timeline\Plugin\Field\FieldFormatter;
+
+use Drupal\entity_reference_revisions\Plugin\Field\FieldFormatter\EntityReferenceRevisionsEntityFormatter;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+
+/**
+ * Plugin implementation of the 'Timeline_by_date' formatter.
+ *
+ * @FieldFormatter(
+ *   id = "Timeline_by_date",
+ *   label = @Translation("Time line (Sort by date)"),
+ *   field_types = {
+ *     "entity_reference_revisions"
+ *   }
+ * )
+ */
+class TimeLineByDate extends EntityReferenceRevisionsEntityFormatter {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function viewElements(FieldItemListInterface $items, $langcode) {
+    /* @var Paragraph $entity */
+    foreach ($this->getEntitiesToView($items, $langcode) as $delta => &$entity) {
+      if ($entity->hasField('field_sort_by_date') && !empty($entity->get('field_sort_by_date')->getValue()[0]['value'])) {
+        $contents = $entity->get('field_time_line_item')->getValue();
+        $render_item = [];
+
+        foreach ($contents as $index => $item) {
+          /* @var Paragraph $time_line_item */
+          $time_line_item = \Drupal::entityTypeManager()->getStorage('paragraph')->load($item['target_id']);
+
+          switch ($time_line_item->bundle()) {
+            case 'custom_content':
+              $render_item[$index] = strtotime($time_line_item->get('field_date')->getValue()[0]['value']);
+              break;
+
+            case 'exist_content':
+              /* @var Paragraph $exist_content */
+              $exist_content = \Drupal::entityTypeManager()->getStorage('paragraph')->load($item['target_id']);
+              $exist_content = $exist_content->get('field_content')->getValue();
+
+              if (!empty($exist_content)) {
+                $exist_content = \Drupal::entityTypeManager()->getStorage('node')->load(reset($exist_content)['target_id']);
+
+                if (!empty($exist_content)) {
+                  switch ($exist_content->bundle()) {
+                    case 'event':
+                      if ($exist_content->hasField('field_date')) {
+                        $date = $exist_content->get('field_date')->getValue();
+                      }
+                      break;
+
+                    default:
+                      if ($exist_content->hasField('field_content_date')) {
+                        $date = $exist_content->get('field_content_date')->getValue();
+                      }
+                  }
+
+                  if (!empty($date)) {
+                    $render_item[$index] = strtotime(reset($date)['value']);
+                  }
+                }
+              }
+              break;
+          }
+        }
+
+        arsort($render_item);
+        $entity->get('field_time_line_item')->setValue($this->sortItem($contents, $render_item));
+      }
+    }
+
+    return parent::viewElements($items, $langcode);
+  }
+
+  /**
+   * Sort array by keys based on another array.
+   *
+   * @param array $items
+   *   Default items.
+   * @param array $order
+   *   Order array.
+   *
+   * @return array
+   *   The array after sorting.
+   */
+  private function sortItem(array $items, array $order) {
+    $ordered = [];
+
+    foreach ($order as $key => $value) {
+      if (array_key_exists($key, $items)) {
+        $ordered[$key] = $items[$key];
+        unset($items[$key]);
+      }
+    }
+
+    return $ordered + $items;
+  }
+
+}

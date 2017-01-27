@@ -3,13 +3,13 @@
     <span></span>
   </div>
 
-  {% if content.field_date|field_value %}
-    <time>
+  {% if node.bundle() == 'event' %}
+    <time datetime="{{ content.field_date.0.start_date|field_raw }}">
       {{ content.field_date.0.start_date }}
     </time>
   {% else %}
-    <time datetime="{{ node.createdtime | date("Y-m-d") }}">
-      {{ node.createdtime|format_date('time_line') }}
+    <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+      {{ content.field_content_date|field_value }}
     </time>
   {% endif %}
 

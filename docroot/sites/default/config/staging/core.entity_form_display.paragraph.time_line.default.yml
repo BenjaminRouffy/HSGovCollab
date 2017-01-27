@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.time_line.field_headline
+    - field.field.paragraph.time_line.field_sort_by_date
     - field.field.paragraph.time_line.field_time_line_item
     - field.field.paragraph.time_line.field_title
     - paragraphs.paragraphs_type.time_line
@@ -21,9 +22,15 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_sort_by_date:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   field_time_line_item:
     type: entity_reference_paragraphs
-    weight: 2
+    weight: 3
     settings:
       title: Paragraph
       title_plural: Paragraphs

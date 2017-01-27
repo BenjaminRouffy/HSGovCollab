@@ -7,12 +7,14 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_author
     - field.field.node.news.field_category
+    - field.field.node.news.field_content_date
     - field.field.node.news.field_content_paragraph
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_organization
     - node.type.news
   module:
+    - datetime
     - text
     - user
 id: node.news.time_line
@@ -26,6 +28,14 @@ content:
     weight: 0
     settings:
       trim_length: 300
+    third_party_settings: {  }
+  field_content_date:
+    type: datetime_default
+    weight: 1
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
     third_party_settings: {  }
 hidden:
   field_author: true

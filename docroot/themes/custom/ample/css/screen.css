@@ -322,6 +322,10 @@ img {
 .project-icon > span::after {
   content: "i"; }
 
+.person-icon > a::after,
+.person-icon > span::after {
+  content: "a"; }
+
 .main-menu {
   text-align: center; }
   .main-menu li {
@@ -772,11 +776,22 @@ header .social-links .font-social-icon {
   margin-left: 0;
   text-transform: none; }
 
+.timeline .timeline-content h4 {
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  clear: both;
+  letter-spacing: .5px;
+  line-height: 25px; }
+
+.timeline .timeline-content p {
+  line-height: 26px; }
+
 .timeline-wrapper {
   margin-top: 50px; }
   .timeline-wrapper > h2 {
     font-size: 1.75rem;
     color: #4c7e96;
+    font-weight: 400;
     letter-spacing: .5px;
     line-height: 48px;
     margin: 0 0 15px;
@@ -838,13 +853,23 @@ header .social-links .font-social-icon {
     top: 13px;
     left: 50%;
     width: 2px; }
+  .timeline-content .font-social-icon span {
+    font-size: 1.75rem;
+    color: #4c7e96; }
 
 .timeline-content-item {
   background: #f5f5f5;
   border: 1px solid #4c7e96;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   padding: 20px 30px;
+  transition: border .3s ease;
   width: 75%; }
+  .timeline-content-item:hover {
+    border-color: #ea3a32; }
+  .timeline-content-item time {
+    transition: color .2s ease; }
+    .timeline-content-item time:hover {
+      color: #ea3a32; }
 
 .related-docs h2 {
   background: url(../images/docs-icon.svg) left center no-repeat;

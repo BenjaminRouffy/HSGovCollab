@@ -183,6 +183,20 @@
     margin-left: 0;
     text-transform: none;
   }
+
+  .timeline-content {
+    h4 {
+      font-family: $oswald;
+      font-weight: 400;
+      clear: both;
+      letter-spacing: .5px;
+      line-height: 25px;
+    }
+
+    p {
+      line-height: 26px;
+    }
+  }
 }
 
 .timeline-wrapper {
@@ -191,6 +205,7 @@
   > h2 {
     @include font-size(28);
     color: $navy;
+    font-weight: 400;
     letter-spacing: .5px;
     line-height: 48px;
     margin: 0 0 15px;
@@ -284,6 +299,13 @@
     left: 50%;
     width: 2px;
   }
+
+  .font-social-icon {
+    span {
+      @include font-size(28);
+      color: $navy;
+    }
+  }
 }
 
 .timeline-content-item {
@@ -291,7 +313,20 @@
   border: 1px solid $navy;
   box-shadow: 0 0 6px rgba($black, .2);
   padding: 20px 30px;
+  transition: border .3s ease;
   width: 75%;
+
+  &:hover {
+    border-color: $red;
+  }
+
+  time {
+    transition: color .2s ease;
+
+    &:hover {
+      color: $red;
+    }
+  }
 }
 
 .related-docs {

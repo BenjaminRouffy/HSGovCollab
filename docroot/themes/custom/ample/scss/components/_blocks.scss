@@ -439,6 +439,12 @@
   opacity: 1 !important;
 }
 
+.faded {
+  transition: opacity .5s, transform 1s;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
 .related-wrapper {
   background: $white-with-rose-shade;
   border-top: 1px solid #e4dfdf;

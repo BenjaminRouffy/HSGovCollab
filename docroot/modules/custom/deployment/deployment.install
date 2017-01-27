@@ -248,3 +248,39 @@ function deployment_update_8012() {
     'page_manager.page_variant.node_view-panels_variant-2',
   ]);
 }
+
+/**
+ * Remove field collection "Time line" and add link to "Basic page".
+ */
+function deployment_update_8013() {
+  deployment_delete_fields('node', 'basic_page', ['field_time_line']);
+
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_form_display.node.basic_page.default',
+    'core.entity_form_display.node.news.default',
+    'core.entity_form_display.paragraph.link.default',
+    'core.entity_form_display.paragraph.time_line.default',
+    'core.entity_view_display.node.basic_page.default',
+    'core.entity_view_display.node.basic_page.teaser',
+    'core.entity_view_display.node.basic_page.view_mode_for_section_page',
+    'core.entity_view_display.node.news.default',
+    'core.entity_view_display.paragraph.link.default',
+    'core.entity_view_display.paragraph.time_line.default',
+    'field.field.node.basic_page.field_bottom_link',
+    'field.field.node.basic_page.field_time_line',
+    'field.field.node.news.field_content_date',
+    'field.field.paragraph.link.field_link',
+    'field.field.paragraph.time_line.field_headline',
+    'field.field.paragraph.time_line.field_time_line_item',
+    'field.field.paragraph.time_line.field_title',
+    'field.storage.node.field_bottom_link',
+    'field.storage.node.field_content_date',
+    'field.storage.node.field_time_line',
+    'field.storage.paragraph.field_headline',
+    'field.storage.paragraph.field_link',
+    'field.storage.paragraph.field_time_line_item',
+    'page_manager.page_variant.node_view-panels_variant-1',
+    'paragraphs.paragraphs_type.link',
+    'paragraphs.paragraphs_type.time_line',
+  ]);
+}

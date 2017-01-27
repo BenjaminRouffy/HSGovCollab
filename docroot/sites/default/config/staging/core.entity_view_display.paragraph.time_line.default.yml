@@ -1,17 +1,17 @@
-uuid: 65a88dc9-f2da-4f2a-bf5f-02222d4b522e
+uuid: d567474d-bd15-417c-94f3-cfef5116b825
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.field_collection_item.field_time_line.field_headline
-    - field.field.field_collection_item.field_time_line.field_time_line_item
-    - field.field.field_collection_item.field_time_line.field_title
-    - field_collection.field_collection.field_time_line
+    - field.field.paragraph.time_line.field_headline
+    - field.field.paragraph.time_line.field_time_line_item
+    - field.field.paragraph.time_line.field_title
+    - paragraphs.paragraphs_type.time_line
   module:
     - entity_reference_revisions
-id: field_collection_item.field_time_line.default
-targetEntityType: field_collection_item
-bundle: field_time_line
+id: paragraph.time_line.default
+targetEntityType: paragraph
+bundle: time_line
 mode: default
 content:
   field_headline:
@@ -36,4 +36,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-hidden: {  }
+hidden:
+  created: true
+  uid: true

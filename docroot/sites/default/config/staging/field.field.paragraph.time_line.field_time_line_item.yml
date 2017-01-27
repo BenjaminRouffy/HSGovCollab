@@ -1,21 +1,21 @@
-uuid: cf7f7587-50fc-4680-bc29-c7cbc4f1e97d
+uuid: fa1a890d-501a-43ea-8520-a3c3308591d0
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.field_collection_item.field_time_line_item
-    - field_collection.field_collection.field_time_line
+    - field.storage.paragraph.field_time_line_item
     - paragraphs.paragraphs_type.custom_content
     - paragraphs.paragraphs_type.exist_content
+    - paragraphs.paragraphs_type.time_line
   module:
     - entity_reference_revisions
-id: field_collection_item.field_time_line.field_time_line_item
+id: paragraph.time_line.field_time_line_item
 field_name: field_time_line_item
-entity_type: field_collection_item
-bundle: field_time_line
+entity_type: paragraph
+bundle: time_line
 label: 'Time line item'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -23,31 +23,34 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      custom_content: custom_content
       exist_content: exist_content
+      custom_content: custom_content
     target_bundles_drag_drop:
+      time_line:
+        weight: -19
+        enabled: false
       content_image:
-        weight: 9
+        weight: -18
         enabled: false
       content_text:
-        weight: 10
+        weight: -17
         enabled: false
-      custom_content:
-        enabled: true
-        weight: 11
       exist_content:
         enabled: true
-        weight: 12
+        weight: -16
+      custom_content:
+        enabled: true
+        weight: -15
       infographic:
-        weight: 13
+        weight: -14
         enabled: false
       member_icon:
-        weight: 14
+        weight: -13
         enabled: false
       slider:
-        weight: 15
+        weight: -12
         enabled: false
       video:
-        weight: 16
+        weight: -11
         enabled: false
 field_type: entity_reference_revisions

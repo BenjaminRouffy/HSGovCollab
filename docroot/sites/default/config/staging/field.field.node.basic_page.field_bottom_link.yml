@@ -1,18 +1,18 @@
-uuid: 4e42e803-16e4-475f-8f81-53245fdd5de7
+uuid: 5caaccfa-fd2b-40a4-8d27-feb6860a9c9e
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_time_line
+    - field.storage.node.field_bottom_link
     - node.type.basic_page
-    - paragraphs.paragraphs_type.time_line
+    - paragraphs.paragraphs_type.link
   module:
     - entity_reference_revisions
-id: node.basic_page.field_time_line
-field_name: field_time_line
+id: node.basic_page.field_bottom_link
+field_name: field_bottom_link
 entity_type: node
 bundle: basic_page
-label: 'Time line'
+label: 'Bottom link'
 description: ''
 required: false
 translatable: false
@@ -22,33 +22,36 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      time_line: time_line
+      link: link
     target_bundles_drag_drop:
-      content_image:
-        weight: 10
-        enabled: false
-      content_text:
+      link:
+        enabled: true
         weight: 11
-        enabled: false
-      custom_content:
+      content_image:
         weight: 12
         enabled: false
-      exist_content:
+      content_text:
         weight: 13
         enabled: false
-      infographic:
+      custom_content:
         weight: 14
         enabled: false
-      member_icon:
+      exist_content:
         weight: 15
         enabled: false
-      slider:
+      infographic:
         weight: 16
         enabled: false
-      time_line:
-        enabled: true
+      member_icon:
         weight: 17
-      video:
+        enabled: false
+      slider:
         weight: 18
+        enabled: false
+      time_line:
+        weight: 19
+        enabled: false
+      video:
+        weight: 20
         enabled: false
 field_type: entity_reference_revisions

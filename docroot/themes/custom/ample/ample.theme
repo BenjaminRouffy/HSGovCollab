@@ -79,3 +79,16 @@ function ample_preprocess_field(array &$variables) {
     $variables['#attached']['library'][] = 'ample/plyr';
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ample_preprocess_links(array &$variables) {
+  if ($variables['theme_hook_original'] === 'links__language_block') {
+    // According to the design, we need to change the links of the navigation block 
+    // to the two characters instead of the language name.
+    foreach ($variables['links'] as $key => $language) {
+      $variables['links'][$key]['link']['#title'] = substr($language['link']['#title'], 0, 2);
+    }
+  }
+}

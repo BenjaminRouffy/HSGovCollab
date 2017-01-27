@@ -508,3 +508,19 @@ function deployment_update_8025() {
     'field.field.block_content.social_links.field_facebook',
   ]);
 }
+
+/**
+ * News & Event.
+ */
+function deployment_update_8019() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_view_display.node.news.default',
+    'core.entity_view_display.node.news.news_events_listing',
+    'core.entity_view_mode.node.news_events_listing',
+    'field.field.node.news.field_content_paragraph',
+    'page_manager.page.news_events',
+    'page_manager.page_variant.news_events-panels_variant-0',
+    'views.view.news_events',
+    'views.view.recent_news',
+  ]);
+}

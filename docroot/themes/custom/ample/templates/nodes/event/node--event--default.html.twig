@@ -1,0 +1,71 @@
+{#@todo: add event slider.#}
+
+<div class="post-info">
+  <time>
+    {{ content.field_date[0]['start_date'] }}
+  </time>
+  {#<span class="country"></span>#}
+  {% if content.field_event_author|field_value %}
+    <span class="author">{% trans %}By: {% endtrans %} {{ content.field_event_author|field_value }}</span>
+  {% endif %}
+</div>
+
+<div class="title-wrapper">
+  <h1 class="page-title">{{ label }}</h1>
+  <div class="line"></div>
+</div>
+
+<div class="event-info">
+  <div class="row">
+    <span class="label">{{ content.field_date['#title'] }}:</span>
+    <span class="value">{{ content.field_date|field_value }}</span>
+  </div>
+
+  {% if content.field_timezone|field_value %}
+    <div class="row">
+      <span class="label">{{ content.field_time['#title'] }}:</span>
+      <span class="value">
+        {{ content.field_time|field_value ? content.field_time|field_value : '' }} {{ content.field_time_text|field_value ? content.field_time_text|field_value : '' }}
+      </span>
+    </div>
+  {% endif %}
+
+  {% if content.field_timezone|field_value %}
+    <div class="row">
+      <span class="label">{{ content.field_timezone['#title'] }}:</span>
+      <span class="value">{{ content.field_timezone|field_value }}</span>
+    </div>
+  {% endif %}
+
+  {% if content.field_location|field_value %}
+    <div class="row">
+      <span class="label">{{ content.field_location['#title'] }}:</span>
+      <span class="value">
+        <span class="font-social-icon pin-icon">
+          <span></span>
+        </span>
+        <a href="{{ content.field_location[0]['#url'] }}">{{ content.field_location[0]['#title'] }}</a>
+      </span>
+    </div>
+  {% endif %}
+
+  {% if content.signup_link %}
+    <div class="row sign-up">
+      <a href="{{ content.signup_link['#url'] }}" class="red-btn-link">
+        {{ content.signup_link['#title'] }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% if node.body.summary %}
+  <div class="summary-text">
+    <p>{{ node.body.summary }}</p>
+  </div>
+{% endif %}
+
+{{ content.body }}
+
+{% if content.field_event_link|field_value %}
+  {{ content.field_event_link|field_value }}
+{% endif %}

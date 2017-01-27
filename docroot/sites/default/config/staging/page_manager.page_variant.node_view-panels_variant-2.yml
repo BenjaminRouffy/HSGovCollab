@@ -7,7 +7,9 @@ dependencies:
     - views.view.related_events
   module:
     - ctools
+    - ctools_block
     - panels
+    - prev_next_access
     - views
 id: node_view-panels_variant-2
 label: Event
@@ -36,6 +38,32 @@ variant_settings:
       weight: 0
       uuid: aa0d2195-8073-4a51-a780-23e406a43470
       context_mapping: {  }
+    90a62d8f-3689-485f-b040-81cfd84d968b:
+      id: next_previous_access_block
+      label: 'Next Previous Access Block'
+      provider: prev_next_access
+      label_display: '0'
+      region: left_sidebar
+      weight: 0
+      uuid: 90a62d8f-3689-485f-b040-81cfd84d968b
+      context_mapping: {  }
+    e486ef32-22c8-49b5-82e1-52044bbb2bed:
+      id: 'entity_field:node:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: default
+        third_party_settings: {  }
+        weight: 0
+      region: right_sidebar
+      weight: 0
+      uuid: e486ef32-22c8-49b5-82e1-52044bbb2bed
+      context_mapping:
+        entity: node
   id: panels_variant
   uuid: 76a1f3ee-747e-4f12-a884-90568b049c4a
   label: null

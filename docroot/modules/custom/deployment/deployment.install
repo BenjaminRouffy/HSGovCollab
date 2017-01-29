@@ -305,9 +305,19 @@ function deployment_update_8014() {
 }
 
 /**
- * Sort time line.
+ * Add custom formatter.
  */
 function deployment_update_8015() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.extension',
+    'views.view.members_list',
+  ]);
+}
+
+/**
+ * Sort time line.
+ */
+function deployment_update_8016() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'core.entity_form_display.paragraph.time_line.default',
     'core.entity_view_display.node.basic_page.teaser',

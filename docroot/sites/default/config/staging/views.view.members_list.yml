@@ -13,8 +13,8 @@ dependencies:
   module:
     - image
     - link
+    - members
     - node
-    - text
     - user
 id: members_list
 label: 'Members list'
@@ -338,7 +338,7 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: true
+            alter_text: false
             text: '{{ body__summary }}'
             make_link: false
             path: ''
@@ -361,7 +361,7 @@ display:
             more_link_text: ''
             more_link_path: ''
             strip_tags: false
-            trim: true
+            trim: false
             preserve_tags: ''
             html: false
           element_type: ''
@@ -377,9 +377,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: summary
-          type: text_trimmed
+          type: summarybody_trimmed
           settings:
-            trim_length: 50
+            trim_length: '230'
           group_column: value
           group_columns: {  }
           group_rows: true

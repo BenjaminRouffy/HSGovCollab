@@ -15,7 +15,7 @@ dependencies:
     - node.type.news
   module:
     - datetime
-    - text
+    - members
     - user
 id: node.news.time_line
 targetEntityType: node
@@ -24,10 +24,10 @@ mode: time_line
 content:
   body:
     label: hidden
-    type: text_trimmed
+    type: summarybody_trimmed
     weight: 0
     settings:
-      trim_length: 300
+      trim_length: '350'
     third_party_settings: {  }
   field_content_date:
     type: datetime_default

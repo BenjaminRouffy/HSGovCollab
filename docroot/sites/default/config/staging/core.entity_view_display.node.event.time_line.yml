@@ -5,18 +5,21 @@ dependencies:
   config:
     - core.entity_view_mode.node.time_line
     - field.field.node.event.body
+    - field.field.node.event.field_category
     - field.field.node.event.field_date
     - field.field.node.event.field_event_author
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
+    - field.field.node.event.field_join_block
     - field.field.node.event.field_location
+    - field.field.node.event.field_organization
     - field.field.node.event.field_time
     - field.field.node.event.field_time_text
     - field.field.node.event.field_timezone
     - node.type.event
   module:
     - datetime_range
-    - text
+    - members
     - user
 id: node.event.time_line
 targetEntityType: node
@@ -25,10 +28,10 @@ mode: time_line
 content:
   body:
     label: hidden
-    type: text_trimmed
+    type: summarybody_trimmed
     weight: 1
     settings:
-      trim_length: 300
+      trim_length: '350'
     third_party_settings: {  }
   field_date:
     weight: 0
@@ -40,10 +43,13 @@ content:
     third_party_settings: {  }
     type: daterange_default
 hidden:
+  field_category: true
   field_event_author: true
   field_event_link: true
   field_event_slider: true
+  field_join_block: true
   field_location: true
+  field_organization: true
   field_time: true
   field_time_text: true
   field_timezone: true

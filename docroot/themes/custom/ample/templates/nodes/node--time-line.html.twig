@@ -22,4 +22,8 @@
   </h4>
 
   {{ plainBody|striptags }}
+
+  <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}" role="link">
+    {{ 'Read more'|t }}
+  </a>
 </div>

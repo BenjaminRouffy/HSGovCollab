@@ -303,3 +303,13 @@ function deployment_update_8014() {
     'page_manager.page_variant.who_page-panels_variant-0',
   ]);
 }
+
+/**
+ * Add custom formatter.
+ */
+function deployment_update_8015() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.extension',
+    'views.view.members_list',
+  ]);
+}

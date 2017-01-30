@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.news.field_organization
     - node.type.news
   module:
+    - datetime
     - entity_reference_revisions
     - image
     - text
@@ -29,21 +30,29 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_author:
-    weight: 3
+    weight: 4
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_category:
-    weight: 6
+    weight: 7
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_content_date:
+    type: datetime_default
+    weight: 3
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
   field_content_paragraph:
-    weight: 5
+    weight: 6
     label: above
     settings:
       view_mode: view_mode_selector
@@ -59,14 +68,14 @@ content:
     third_party_settings: {  }
     type: image
   field_join_block:
-    weight: 4
+    weight: 5
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_organization:
-    weight: 7
+    weight: 8
     label: above
     settings:
       link: true
@@ -77,5 +86,4 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_content_date: true
   langcode: true

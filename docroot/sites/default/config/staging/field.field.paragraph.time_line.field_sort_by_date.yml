@@ -1,0 +1,23 @@
+uuid: ef45bb47-e971-462b-a5e7-746e6736a774
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sort_by_date
+    - paragraphs.paragraphs_type.time_line
+id: paragraph.time_line.field_sort_by_date
+field_name: field_sort_by_date
+entity_type: paragraph
+bundle: time_line
+label: 'Sort by date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean

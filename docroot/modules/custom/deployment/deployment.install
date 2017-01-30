@@ -313,3 +313,24 @@ function deployment_update_8015() {
     'views.view.members_list',
   ]);
 }
+
+/**
+ * Sort time line.
+ */
+function deployment_update_8016() {
+  Drupal::service('module_installer')->install(['timeline']);
+
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_form_display.paragraph.time_line.default',
+    'core.entity_view_display.node.event.time_line',
+    'core.entity_view_display.node.basic_page.teaser',
+    'core.entity_view_display.node.news.default',
+    'core.entity_view_display.node.news.time_line',
+    'core.entity_view_display.paragraph.time_line.default',
+    'core.entity_view_display.paragraph.custom_content.default',
+    'core.extension',
+    'field.field.paragraph.time_line.field_sort_by_date',
+    'field.storage.paragraph.field_sort_by_date',
+    'page_manager.page_variant.node_view-panels_variant-1',
+  ]);
+}

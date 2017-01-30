@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.time_line.field_headline
+    - field.field.paragraph.time_line.field_sort_by_date
     - field.field.paragraph.time_line.field_time_line_item
     - field.field.paragraph.time_line.field_title
     - paragraphs.paragraphs_type.time_line
@@ -38,4 +39,5 @@ content:
     type: string
 hidden:
   created: true
+  field_sort_by_date: true
   uid: true

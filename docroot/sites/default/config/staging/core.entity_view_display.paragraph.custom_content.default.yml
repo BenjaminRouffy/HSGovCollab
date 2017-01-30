@@ -17,9 +17,10 @@ content:
   field_body:
     weight: 1
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: 350
     third_party_settings: {  }
-    type: text_default
+    type: text_trimmed
   field_date:
     weight: 0
     label: hidden

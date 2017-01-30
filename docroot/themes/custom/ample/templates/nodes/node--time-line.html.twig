@@ -1,15 +1,19 @@
+{% set plainBody %}
+  {{ content.body|field_value }}
+{% endset %}
+
 <div class="timeline-content-item">
   <div class="font-social-icon {{ node.bundle() }}-icon">
     <span></span>
   </div>
 
-  {% if content.field_date|field_value %}
-    <time>
+  {% if node.bundle() == 'event' %}
+    <time datetime="{{ content.field_date.0.start_date|field_raw }}">
       {{ content.field_date.0.start_date }}
     </time>
   {% else %}
-    <time datetime="{{ node.createdtime | date("Y-m-d") }}">
-      {{ node.createdtime|format_date('time_line') }}
+    <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+      {{ content.field_content_date|field_value }}
     </time>
   {% endif %}
 
@@ -17,5 +21,11 @@
     {{ label }}
   </h4>
 
-  {{ content.body|field_value }}
+  <p>
+    {{ plainBody|striptags }}
+  </p>
+
+  <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}" role="link">
+    {{ 'Read more'|t }}
+  </a>
 </div>

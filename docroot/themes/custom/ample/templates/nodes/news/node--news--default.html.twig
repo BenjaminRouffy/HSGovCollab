@@ -1,32 +1,38 @@
 {% if content.field_image %}
-    <div class="header-image">
-        {{ content.field_image|field_value }}
-    </div>
+  <div class="header-image">
+    {{ content.field_image|field_value }}
+  </div>
 {% endif %}
 
 {% if display_submitted %}
-    <div class="post-info">
-        <time datetime="{{ node.createdtime | date("Y-m-d") }}">{{ node.createdtime | format_date('time_line') }}</time>
-        {#<span class="country"></span>#}
-        {% if content.field_author|field_value %}
-            <span class="author">{% trans %}By: {% endtrans %} {{ content.field_author|field_value}}</span>
-        {% endif %}
-    </div>
+  <div class="post-info">
+    <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+      {{ content.field_content_date|field_value }}
+    </time>
+    {#<span class="country"></span>#}
+    {% if content.field_author|field_value %}
+      <span class="author">
+        {% trans %}By: {% endtrans %} {{ content.field_author|field_value}}
+      </span>
+    {% endif %}
+  </div>
 {% endif %}
 
 <div class="title-wrapper">
-    <h1 class="page-title">{{ label }}</h1>
-    <div class="line"></div>
+  <h1 class="page-title">
+    {{ label }}
+  </h1>
+  <div class="line"></div>
 </div>
 
 {% if node.body.summary|field_value %}
-    <div class="content-summary">
-        <p>{{ node.body.summary }}</p>
-    </div>
+  <div class="content-summary">
+    <p>{{ node.body.summary }}</p>
+  </div>
 {% endif %}
 
 {{ content.body }}
 
 {% if content.field_content_paragraph|field_value %}
-    {{ content.field_content_paragraph|field_value }}
+  {{ content.field_content_paragraph|field_value }}
 {% endif %}

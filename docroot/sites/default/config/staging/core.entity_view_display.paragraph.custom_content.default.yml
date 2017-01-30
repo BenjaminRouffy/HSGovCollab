@@ -5,9 +5,11 @@ dependencies:
   config:
     - field.field.paragraph.custom_content.field_body
     - field.field.paragraph.custom_content.field_date
+    - field.field.paragraph.custom_content.field_link
     - paragraphs.paragraphs_type.custom_content
   module:
     - datetime
+    - link
     - text
 id: paragraph.custom_content.default
 targetEntityType: paragraph
@@ -29,6 +31,17 @@ content:
       format_type: time_line
     third_party_settings: {  }
     type: datetime_default
+  field_link:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: true
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
 hidden:
   created: true
   uid: true

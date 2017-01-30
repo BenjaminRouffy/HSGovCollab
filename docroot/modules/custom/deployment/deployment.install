@@ -393,7 +393,7 @@ function deployment_update_8019() {
 }
 
 /**
- * Add custom formatter.
+ * Install "File entity" and add image category.
  */
 function deployment_update_8020() {
   Drupal::service('module_installer')->install(['file_entity', 'admin_customizations']);
@@ -448,4 +448,14 @@ function deployment_update_8020() {
   ]);
 
   \Drupal::database()->update('file_managed')->fields(['type' => 'image'])->execute();
+}
+
+/**
+ * Add link to paragraph "Custom content".
+ */
+function deployment_update_8021() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_form_display.paragraph.custom_content.default',
+    'core.entity_view_display.paragraph.custom_content.default',
+  ]);
 }

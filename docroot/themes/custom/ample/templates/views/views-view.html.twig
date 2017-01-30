@@ -12,7 +12,7 @@
 
 {% if without_wrapper is not defined %}
 <div{{ attributes.addClass(classes) }}>
-{% endif %}
+  {% endif %}
   {{ title_prefix }}
   {{ title }}
   {{ title_suffix }}
@@ -28,15 +28,15 @@
   {{ more }}
 
   {% if footer %}
-    {% if footer_without_wrapper is not defined %}
-      <{{ footer_tag|default('footer') }}{{ footer_classes }}>
-        {{ footer }}
-      </{{ footer_tag|default('footer') }}>
-    {% else %}
-      {{ footer }}
+  {% if footer_without_wrapper is not defined %}
+  <{{ footer_tag|default('footer') }}{{ footer_classes }}>
+  {{ footer }}
+</{{ footer_tag|default('footer') }}>
+  {% else %}
+    {{ footer }}
     {% endif %}
   {% endif %}
 
 {% if without_wrapper is not defined %}
-</div>
+  </div>
 {% endif %}

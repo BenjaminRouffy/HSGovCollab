@@ -1,24 +1,24 @@
 {% set anchor = content.field_title|field_value ? 1 : 0 %}
 
-{%  if anchor %}
+{% if anchor %}
 <div data-anchor-id="paragraph_{{ paragraph.bundle }}-{{ paragraph.id() }}">
   <h1 class="page-title anchor-title" role="heading">
     {{ content.field_title|field_value }}
   </h1>
-{% endif %}
+  {% endif %}
 
-{% if paragraph.field_content_text.summary|raw %}
-  <div class="summary-text">
-    <p>
-      {{ paragraph.field_content_text.summary|raw }}
-    </p>
-  </div>
-{% endif %}
+  {% if paragraph.field_content_text.summary|raw %}
+    <div class="summary-text">
+      <p>
+        {{ paragraph.field_content_text.summary|raw }}
+      </p>
+    </div>
+  {% endif %}
 
-{% if content.field_content_text|field_value %}
-  {{ content.field_content_text|field_value }}
-{% endif %}
+  {% if content.field_content_text|field_value %}
+    {{ content.field_content_text|field_value }}
+  {% endif %}
 
-{% if anchor %}
+  {% if anchor %}
 </div>
 {% endif %}

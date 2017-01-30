@@ -451,18 +451,6 @@ function deployment_update_8020() {
 }
 
 /**
- * Fix Events and News language selector.
- */
-function deployment_update_8021() {
-  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
-    'language.content_settings.node.event',
-    'language.content_settings.node.news',
-    'core.entity_form_display.node.event.default',
-    'core.entity_view_display.node.event.default',
-  ]);
-}
-
-/**
  * Slider gallery.
  */
 function deployment_update_8021() {
@@ -481,5 +469,17 @@ function deployment_update_8021() {
 function deployment_update_8022() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'page_manager.page_variant.node_view-panels_variant-1',
+  ]);
+}
+
+/**
+ * Fix Events and News language selector.
+ */
+function deployment_update_8023() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'language.content_settings.node.event',
+    'language.content_settings.node.news',
+    'core.entity_form_display.node.event.default',
+    'core.entity_view_display.node.event.default',
   ]);
 }

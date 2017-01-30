@@ -449,3 +449,16 @@ function deployment_update_8020() {
 
   \Drupal::database()->update('file_managed')->fields(['type' => 'image'])->execute();
 }
+
+/**
+ * Slider gallery.
+ */
+function deployment_update_8021() {
+  Drupal::service('module_installer')->install(['field_formater_render_twice']);
+
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_view_display.paragraph.slider.view_mode_thumbnail',
+    'core.entity_view_display.paragraph.slider_item.view_mode_banner',
+    'core.entity_view_display.paragraph.slider_item.view_mode_thumbnail',
+  ]);
+}

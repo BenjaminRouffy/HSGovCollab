@@ -4,13 +4,11 @@ status: true
 dependencies:
   config:
     - page_manager.page.node_view
-    - views.view.related_events
   module:
     - ctools
     - ctools_block
     - panels
     - prev_next_access
-    - views
 id: node_view-panels_variant-2
 label: Event
 variant: panels_variant
@@ -27,17 +25,6 @@ variant_settings:
       uuid: 2512a80f-b255-4959-a205-efdd70cd1ede
       context_mapping:
         entity: node
-    aa0d2195-8073-4a51-a780-23e406a43470:
-      id: 'views_block:related_events-related_events'
-      label: ''
-      provider: views
-      label_display: visible
-      views_label: ''
-      items_per_page: none
-      region: left_sidebar
-      weight: 0
-      uuid: aa0d2195-8073-4a51-a780-23e406a43470
-      context_mapping: {  }
     90a62d8f-3689-485f-b040-81cfd84d968b:
       id: next_previous_access_block
       label: 'Next Previous Access Block'

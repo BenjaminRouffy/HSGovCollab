@@ -336,9 +336,18 @@ function deployment_update_8016() {
 }
 
 /**
- * Recent events.
+ * Fix image style.
  */
 function deployment_update_8017() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'image.style.174x174',
+  ]);
+}
+
+/**
+ * Recent events.
+ */
+function deployment_update_8018() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'ample.settings',
     'block.block.logos',

@@ -451,9 +451,22 @@ function deployment_update_8020() {
 }
 
 /**
- * Add link to paragraph "Custom content".
+ * Slider gallery.
  */
 function deployment_update_8021() {
+  Drupal::service('module_installer')->install(['field_formater_render_twice']);
+
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_view_display.paragraph.slider.view_mode_thumbnail',
+    'core.entity_view_display.paragraph.slider_item.view_mode_banner',
+    'core.entity_view_display.paragraph.slider_item.view_mode_thumbnail',
+  ]);
+}
+
+/**
+ * Add link to paragraph "Custom content".
+ */
+function deployment_update_8022() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'core.entity_form_display.paragraph.custom_content.default',
     'core.entity_view_display.paragraph.custom_content.default',

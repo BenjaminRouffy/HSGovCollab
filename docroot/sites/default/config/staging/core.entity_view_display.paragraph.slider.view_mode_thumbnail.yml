@@ -7,13 +7,23 @@ dependencies:
     - field.field.paragraph.slider.field_slider
     - field.field.paragraph.slider.field_view_mode
     - paragraphs.paragraphs_type.slider
+  module:
+    - field_formater_render_twice
 id: paragraph.slider.view_mode_thumbnail
 targetEntityType: paragraph
 bundle: slider
 mode: view_mode_thumbnail
-content: {  }
+content:
+  field_slider:
+    type: render_twice
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: view_mode_banner
+      view_mode_twice: view_mode_thumbnail
+      link: false
+    third_party_settings: {  }
 hidden:
   created: true
-  field_slider: true
   field_view_mode: true
   uid: true

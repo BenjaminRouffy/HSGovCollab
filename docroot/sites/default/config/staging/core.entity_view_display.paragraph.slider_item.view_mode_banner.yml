@@ -1,0 +1,34 @@
+uuid: f5e01bb9-d40b-4f4f-a8b4-b09b3a49c9fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.view_mode_banner
+    - field.field.paragraph.slider_item.field_content_image
+    - field.field.paragraph.slider_item.field_description
+    - paragraphs.paragraphs_type.slider_item
+  module:
+    - image
+id: paragraph.slider_item.view_mode_banner
+targetEntityType: paragraph
+bundle: slider_item
+mode: view_mode_banner
+content:
+  field_content_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_description:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true

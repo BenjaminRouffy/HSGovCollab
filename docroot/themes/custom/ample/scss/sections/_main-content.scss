@@ -28,6 +28,12 @@
     > *:not(.node-pager):not(.event-info):not(.header-image) {
       width: 80%;
     }
+
+    .header-image {
+      figure {
+        margin: 0;
+      }
+    }
   }
 
   .sidebar {

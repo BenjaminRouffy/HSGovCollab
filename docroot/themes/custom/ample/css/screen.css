@@ -1181,6 +1181,7 @@ header {
   background: #fff;
   min-height: 120px;
   position: relative;
+  text-align: center;
   z-index: 500; }
   .header-static .logo-wrapper .logo {
     background: #fff;
@@ -1193,8 +1194,11 @@ header {
     height: 150px;
     width: 180px; }
   .header-static .logo-wrapper img {
+    display: block;
     height: 113px;
     width: 134px; }
+  .header-static .partners {
+    display: inline-block; }
   .header-static .social-links {
     position: absolute;
     top: 22px;
@@ -1291,6 +1295,8 @@ footer {
   width: 66.64%; }
   .content-with-sidebar .content > *:not(.node-pager):not(.event-info):not(.header-image) {
     width: 80%; }
+  .content-with-sidebar .content .header-image figure {
+    margin: 0; }
 
 .content-with-sidebar .sidebar {
   float: left;

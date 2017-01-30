@@ -52,6 +52,7 @@ header {
   background: $white;
   min-height: 120px;
   position: relative;
+  text-align: center;
   z-index: 500;
 
   .logo-wrapper {
@@ -68,9 +69,14 @@ header {
     }
 
     img {
+      display: block;
       height: 113px;
       width: 134px;
     }
+  }
+
+  .partners {
+    display: inline-block;
   }
 
   .social-links {

@@ -457,6 +457,8 @@ function deployment_update_8021() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'language.content_settings.node.event',
     'language.content_settings.node.news',
+    'core.entity_form_display.node.event.default',
+    'core.entity_view_display.node.event.default',
   ]);
 }
 

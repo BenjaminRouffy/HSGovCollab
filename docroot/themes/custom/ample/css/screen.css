@@ -898,7 +898,10 @@ header .social-links .font-social-icon {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     margin: 10px;
     position: relative;
+    transition: box-shadow .3s ease;
     width: 100%; }
+    .member-block .block-content:hover {
+      box-shadow: 0 0 6px 1px rgba(234, 58, 50, 0.5); }
   .member-block a {
     display: block;
     padding: 30px 20px 68px;
@@ -1418,24 +1421,26 @@ footer {
     left: 50%;
     transform: translateX(-50%); }
 
-.members-list {
+.members-list > div {
   margin-top: 50px; }
-  .members-list div > .title-wrapper {
-    margin-bottom: 20px;
-    padding-bottom: 10px; }
-    .members-list div > .title-wrapper h2 {
-      font-size: 1.575rem;
-      line-height: 48px;
-      margin: 0 0 15px;
-      text-align: center;
-      text-transform: uppercase; }
-    .members-list div > .title-wrapper .line {
-      left: 50%;
-      transform: translateX(-50%); }
-  .members-list ul {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0; }
+
+.members-list div > .title-wrapper {
+  margin-bottom: 20px;
+  padding-bottom: 10px; }
+  .members-list div > .title-wrapper h2 {
+    font-size: 1.575rem;
+    line-height: 48px;
+    margin: 0 0 15px;
+    text-align: center;
+    text-transform: uppercase; }
+  .members-list div > .title-wrapper .line {
+    left: 50%;
+    transform: translateX(-50%); }
+
+.members-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0; }
 
 .slider-item-wrapper {
   position: relative; }

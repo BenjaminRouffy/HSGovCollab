@@ -356,7 +356,12 @@
     box-shadow: 0 0 6px rgba($black, .1);
     margin: 10px;
     position: relative;
+    transition: box-shadow .3s ease;
     width: 100%;
+
+    &:hover {
+      box-shadow: 0 0 6px 1px rgba($red, .5);
+    }
   }
 
   a {

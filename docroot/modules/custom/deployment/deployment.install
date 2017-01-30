@@ -334,3 +334,12 @@ function deployment_update_8016() {
     'page_manager.page_variant.node_view-panels_variant-1',
   ]);
 }
+
+/**
+ * Fix image style.
+ */
+function deployment_update_8017() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'image.style.174x174',
+  ]);
+}

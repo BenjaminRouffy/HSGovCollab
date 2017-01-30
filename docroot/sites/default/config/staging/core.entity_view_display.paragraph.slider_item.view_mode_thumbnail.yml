@@ -1,0 +1,29 @@
+uuid: 192cb2c0-1265-4cb2-9d57-f738bc03eaeb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.view_mode_thumbnail
+    - field.field.paragraph.slider_item.field_content_image
+    - field.field.paragraph.slider_item.field_description
+    - image.style.60x60
+    - paragraphs.paragraphs_type.slider_item
+  module:
+    - image
+id: paragraph.slider_item.view_mode_thumbnail
+targetEntityType: paragraph
+bundle: slider_item
+mode: view_mode_thumbnail
+content:
+  field_content_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: 60x60
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  created: true
+  field_description: true
+  uid: true

@@ -384,7 +384,7 @@ function deployment_update_8018() {
  * Add custom formatter.
  */
 function deployment_update_8019() {
-  Drupal::service('module_installer')->install(['file_entity']);
+  Drupal::service('module_installer')->install(['file_entity', 'admin_customizations']);
 
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
       'core.entity_form_display.file.image.default',

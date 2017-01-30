@@ -1,0 +1,26 @@
+uuid: c7b48632-63de-4a83-ae61-e95693886254
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.file.image.field_category
+    - field.field.file.image.field_image_alt_text
+    - field.field.file.image.field_image_title_text
+    - file_entity.type.image
+_core:
+  default_config_hash: HYzof_QiEoo7449yRhD_uJoLXMEAmSafqexxGS9OmjQ
+id: file.image.default
+targetEntityType: file
+bundle: image
+mode: default
+content:
+  field_category:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+hidden:
+  field_image_alt_text: true
+  field_image_title_text: true
+  filename: true
+  langcode: true

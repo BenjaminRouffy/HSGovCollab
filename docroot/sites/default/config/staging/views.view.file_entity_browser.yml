@@ -2,6 +2,8 @@ uuid: dfb9543e-2f6c-4603-8191-afbb0a88a511
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.file_category
   enforced:
     module:
       - file_browser
@@ -9,6 +11,8 @@ dependencies:
     - entity_browser
     - file
     - file_browser
+    - file_entity
+    - taxonomy
     - user
 _core:
   default_config_hash: dsyvpT_ph70ppfoWLJpITIm1cptOKreQRlWwYMA2G0U
@@ -446,6 +450,50 @@ display:
           entity_type: file
           entity_field: filemime
           plugin_id: string
+        field_category_target_id:
+          id: field_category_target_id
+          table: file__field_category
+          field: field_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_category_target_id_op
+            label: Category
+            description: ''
+            use_operator: false
+            operator: field_category_target_id_op
+            identifier: field_category_target_id
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: file_category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts:
         created:
           id: created
@@ -506,6 +554,7 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
+        - user
         - user.permissions
       cacheable: false
       max-age: -1
@@ -525,6 +574,7 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - 'url.query_args:sort_order'
+        - user
         - user.permissions
       cacheable: false
       max-age: -1

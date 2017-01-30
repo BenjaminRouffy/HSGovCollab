@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Admin Customizations.
+ */
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function admin_customizations_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ('file_image_edit_form' === $form_id) {
+    unset($form['uid'], $form['replace_upload']);
+  }
+}

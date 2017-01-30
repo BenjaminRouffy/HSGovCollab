@@ -4,8 +4,10 @@
       {{ content.field_link[0]['#title'] }}
     </h2>
 
-    <p>
-      {{ content.field_link_description|field_value }}
-    </p>
+    {% if content.field_link_description|field_value %}
+      <p>
+        {{ content.field_link_description|field_value }}
+      </p>
+    {% endif %}
   </a>
 </div>

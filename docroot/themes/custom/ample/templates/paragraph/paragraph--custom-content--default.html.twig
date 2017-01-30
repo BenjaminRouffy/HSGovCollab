@@ -11,5 +11,11 @@
     {% endif %}
 
     {{ content.field_body|field_value }}
+
+    {% if content.field_link|field_value %}
+      <a href="{{ content.field_link.0['#url'] }}" role="link">
+        {{ 'Read more'|t }}
+      </a>
+    {% endif %}
   </div>
 </div>

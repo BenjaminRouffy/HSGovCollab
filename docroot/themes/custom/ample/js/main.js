@@ -77,7 +77,7 @@
       var $bottomHead = $('.bottom-head', context);
       var $anchorLink = $('[data-anchor-id]', context);
 
-      if ($anchorLink.length) {
+      if ($anchorLink.length && $anchorLink.length > 1) {
         $bottomHead.append('<div class="anchor-links"></div>');
 
         $anchorLink.each(function(index, element) {

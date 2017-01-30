@@ -448,6 +448,17 @@ function deployment_update_8020() {
   ]);
 
   \Drupal::database()->update('file_managed')->fields(['type' => 'image'])->execute();
+  ]);
+}
+
+/**
+ * Fix Events and News language selector.
+ */
+function deployment_update_8021() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'language.content_settings.node.event',
+    'language.content_settings.node.news',
+  ]);
 }
 
 /**

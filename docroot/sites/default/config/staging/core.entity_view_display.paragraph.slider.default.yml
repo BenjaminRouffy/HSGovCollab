@@ -7,19 +7,21 @@ dependencies:
     - field.field.paragraph.slider.field_view_mode
     - paragraphs.paragraphs_type.slider
   module:
-    - view_mode_selector
+    - entity_reference_revisions
 id: paragraph.slider.default
 targetEntityType: paragraph
 bundle: slider
 mode: default
 content:
-  field_view_mode:
-    weight: 1
+  field_slider:
+    type: entity_reference_revisions_entity_view
+    weight: 0
     label: hidden
-    settings: {  }
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: view_mode_selector
 hidden:
   created: true
-  field_slider: true
+  field_view_mode: true
   uid: true

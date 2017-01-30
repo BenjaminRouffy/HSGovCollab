@@ -494,3 +494,14 @@ function deployment_update_8024() {
     'field.field.paragraph.custom_content.field_link',
   ]);
 }
+
+/**
+ * Update node view.
+ */
+function deployment_update_8025() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'page_manager.page_variant.node_view-panels_variant-0',
+    'page_manager.page_variant.node_view-panels_variant-2',
+    'page_manager.page_variant.node_view-panels_variant-3',
+  ]);
+}

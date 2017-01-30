@@ -430,5 +430,8 @@ function deployment_update_8019() {
       'views.view.file_entity_browser',
       'views.view.file_entity_files',
       'views.view.files',
+      'core.entity_form_display.file.document.default',
+      'core.entity_view_display.file.document.default',
+      'field.field.file.document.field_category',
   ]);
 }

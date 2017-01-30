@@ -8,7 +8,7 @@ dependencies:
     - field.field.file.image.field_image_alt_text
     - field.field.file.image.field_image_title_text
     - file_entity.type.image
-    - image.style.thumbnail
+    - image.style.file_entity_browser_small
   module:
     - file_entity
 _core:
@@ -23,7 +23,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: thumbnail
+      image_style: file_entity_browser_small
       title: _none
       alt: _none
       image_link: ''

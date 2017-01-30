@@ -1,0 +1,20 @@
+uuid: fe018c56-10d5-435f-b91c-36e1b2ed41ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.file.document.field_category
+    - file_entity.type.document
+id: file.document.default
+targetEntityType: file
+bundle: document
+mode: default
+content:
+  field_category:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+hidden:
+  filename: true
+  langcode: true

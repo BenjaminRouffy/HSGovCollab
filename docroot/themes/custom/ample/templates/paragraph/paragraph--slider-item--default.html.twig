@@ -1,0 +1,7 @@
+<div class="slider-item-wrapper" style="background-image: url({{ content.field_content_image|render|striptags }})">
+  {% if content.field_description|field_value %}
+    <p class="image-text">
+      {{ content.field_description|field_value }}
+    </p>
+  {% endif %}
+</div>

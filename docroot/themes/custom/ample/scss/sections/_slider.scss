@@ -1,9 +1,28 @@
 .slider-wrapper {
+  overflow: hidden;
   position: relative;
+
+  .top-banner-region & {
+    height: 650px;
+  }
+
+  .header-image & {
+    height: 500px;
+  }
 }
 
 .slider-item-wrapper {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
   position: relative;
+
+  .header-image & {
+    .image-text {
+      width: 80%;
+    }
+  }
 }
 
 .owl-stage-outer {
@@ -72,24 +91,6 @@
 
     &.active {
       background: $white;
-    }
-  }
-}
-
-.header-image {
-  .slider-wrapper {
-    height: 500px;
-    overflow: hidden;
-  }
-
-  .slider-item-wrapper {
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-
-    .image-text {
-      width: 80%;
     }
   }
 }

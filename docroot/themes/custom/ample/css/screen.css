@@ -1444,10 +1444,21 @@ footer {
   padding: 0; }
 
 .slider-wrapper {
+  overflow: hidden;
   position: relative; }
+  .top-banner-region .slider-wrapper {
+    height: 650px; }
+  .header-image .slider-wrapper {
+    height: 500px; }
 
 .slider-item-wrapper {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
   position: relative; }
+  .header-image .slider-item-wrapper .image-text {
+    width: 80%; }
 
 .owl-stage-outer {
   overflow: hidden; }
@@ -1502,15 +1513,3 @@ footer {
     margin: 0 3px 7px; }
     .owl-dots > div.active {
       background: #fff; }
-
-.header-image .slider-wrapper {
-  height: 500px;
-  overflow: hidden; }
-
-.header-image .slider-item-wrapper {
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%; }
-  .header-image .slider-item-wrapper .image-text {
-    width: 80%; }

@@ -2,8 +2,11 @@ uuid: afed3979-ba85-4b98-9e56-a5964c9baf1b
 langcode: en
 status: true
 dependencies:
+  config:
+    - views.view.recent_news
   module:
     - ctools
+    - views
   theme:
     - ample
 id: views_block__recent_news_block_2

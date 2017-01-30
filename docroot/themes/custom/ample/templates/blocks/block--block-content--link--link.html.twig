@@ -1,5 +1,9 @@
-<div class="bottom-link">
-  <a href="{{ content.field_link[0]['#url'] }}" class="red-btn-link">
-    {{ content.field_link[0]['#title'] }}
-  </a>
+<div{{ attributes }}>
+  <div class="bottom-link">
+    {{ title_prefix }}
+    <a href="{{ content.field_link[0]['#url'] }}" class="red-btn-link">
+      {{ content.field_link[0]['#title'] }}
+    </a>
+    {{ title_suffix }}
+  </div>
 </div>

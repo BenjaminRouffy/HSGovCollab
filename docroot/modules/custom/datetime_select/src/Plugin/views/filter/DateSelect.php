@@ -6,11 +6,7 @@ use DateTime;
 use Drupal\Core\Datetime\DateHelper;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Plugin\views\filter\NumericFilter as NumericFilterDefault;
-use Drupal\views\Plugin\views\query\Sql;
-use Drupal\views\ViewExecutable;
-
 
 /**
  * Date/time views filter.
@@ -24,13 +20,21 @@ use Drupal\views\ViewExecutable;
  */
 class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginInterface {
 
-  /* @var \Drupal\views\Plugin\views\query\Sql */
+  /**
+   * @var \Drupal\views\Plugin\views\query\Sql
+   */
   protected $query;
 
+  /**
+   * Mark form as extra setting form.
+   */
   public function hasExtraOptions() {
     return TRUE;
   }
 
+  /**
+   * Default settings.
+   */
   protected function defineOptions() {
     $options = parent::defineOptions();
 
@@ -41,6 +45,9 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
     return $options;
   }
 
+  /**
+   * Extra settings form.
+   */
   public function buildExtraOptionsForm(&$form, FormStateInterface $form_state) {
 
     $form['type'] = array(
@@ -48,11 +55,10 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
       '#title' => $this->t('Selection type'),
       '#options' => array(
         'select' => $this->t('Select'),
-        'textfield' => $this->t('Textfield')
+        'textfield' => $this->t('Textfield'),
       ),
       '#default_value' => $this->options['type'],
     );
-
 
     $form['granularity'] = array(
       '#title' => t('Filter Granularity'),
@@ -66,11 +72,10 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
       '#default_value' => $this->options['year_range'],
     );
 
-
   }
 
   /**
-   * Add a type selector to the value form
+   * Add a type selector to the value form.
    */
   protected function valueForm(&$form, FormStateInterface $form_state) {
     $form['value']['#tree'] = TRUE;
@@ -80,19 +85,13 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
     // not rendered, we can't render dependencies; instead we only
     // render the form items we need.
     $which = 'all';
-    if (!empty($form['operator'])) {
-      $source = ':input[name="options[operator]"]';
-    }
 
     if ($exposed = $form_state->get('exposed')) {
       $identifier = $this->options['expose']['identifier'];
 
       if (empty($this->options['expose']['use_operator']) || empty($this->options['expose']['operator_id'])) {
-        // exposed and locked.
+        // Exposed and locked.
         $which = in_array($this->operator, $this->operatorValues(2)) ? 'minmax' : 'value';
-      }
-      else {
-        $source = ':input[name="' . $this->options['expose']['operator_id'] . '"]';
       }
     }
 
@@ -100,11 +99,11 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
     if ($which == 'value') {
       // When exposed we drop the value-value and just do value if
       // the operator is locked.
-
       $form['value'] = array(
         '#type' => 'select',
         '#title' => !$exposed ? $this->t('Value') : '',
-        '#options' => $this->selectOptions(), //array_combine($year, $year),
+      // array_combine($year, $year),.
+        '#options' => $this->selectOptions(),
         '#empty_option' => $this->granularityOptions()[$this->options['granularity']],
         '#default_value' => $this->value['value'],
       );
@@ -113,17 +112,13 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
         $form_state->setUserInput($user_input);
       }
     }
-
-
   }
 
   /**
-   * Make some translations to a form item to make it more suitable to
-   * exposing.
+   * Make some translations to a form item to make it more suitable to exposing.
    */
   protected function exposedTranslate(&$form, $type) {
     parent::exposedTranslate($form, $type);
-
 
     if ($type == 'value' && empty($this->always_required) && empty($this->options['expose']['required']) && $form['#type'] == 'select' && empty($form['#multiple'])) {
       unset($form['#options']['All']);
@@ -131,8 +126,10 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
 
   }
 
-
-  function operators() {
+  /**
+   * Helper operation filter.
+   */
+  public function operators() {
     $operators = array(
       '=' => array(
         'title' => $this->t('Is equal to'),
@@ -145,6 +142,9 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
     return $operators;
   }
 
+  /**
+   * Helper select value filter.
+   */
   private function selectOptions() {
     $options = [];
     switch ($this->options['granularity']) {
@@ -160,6 +160,7 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
         $options = array_combine($year, $year);
         asort($options);
         break;
+
       case 'month':
         $options = DateHelper::monthNamesUntranslated();
         break;
@@ -167,7 +168,9 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
     return $options;
   }
 
-
+  /**
+   * Singe operator query alter.
+   */
   protected function opSimple($field) {
     if ($this->value['value']) {
       $key = ':value' . rand(100, 999);
@@ -176,14 +179,14 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
     }
   }
 
+  /**
+   * Helper granularity option.
+   */
   private function granularityOptions() {
     return array(
       'year' => t('Year', array(), array('context' => 'datetime')),
       'month' => t('Month', array(), array('context' => 'datetime')),
-      //'day' => t('Day', array(), array('context' => 'datetime')),
-      /*'hour' => t('Hour', array(), array('context' => 'datetime')),
-      'minute' => t('Minute', array(), array('context' => 'datetime')),
-      'second' => t('Second', array(), array('context' => 'datetime')),*/
     );
   }
+
 }

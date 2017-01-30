@@ -4,21 +4,26 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.paragraph.banner
-    - field.field.paragraph.slider.field_slider_item
+    - field.field.paragraph.slider.field_slider
     - field.field.paragraph.slider.field_view_mode
     - paragraphs.paragraphs_type.slider
   module:
-    - field_collection
+    - paragraphs
 id: paragraph.slider.banner
 targetEntityType: paragraph
 bundle: slider
 mode: banner
 content:
-  field_slider_item:
+  field_slider:
+    type: entity_reference_paragraphs
     weight: 0
-    settings: {  }
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
     third_party_settings: {  }
-    type: field_collection_embed
   translation:
     weight: 1
     settings: {  }

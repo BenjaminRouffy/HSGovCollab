@@ -5,6 +5,9 @@ dependencies:
   config:
     - field.storage.node.field_content_paragraph
     - node.type.news
+    - paragraphs.paragraphs_type.content_image
+    - paragraphs.paragraphs_type.content_text
+    - paragraphs.paragraphs_type.slider
   module:
     - entity_reference_revisions
 id: node.news.field_content_paragraph
@@ -20,14 +23,17 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles: null
+    target_bundles:
+      content_image: content_image
+      content_text: content_text
+      slider: slider
     target_bundles_drag_drop:
       content_image:
+        enabled: true
         weight: 9
-        enabled: false
       content_text:
+        enabled: true
         weight: 10
-        enabled: false
       custom_content:
         weight: 11
         enabled: false
@@ -41,8 +47,8 @@ settings:
         weight: 14
         enabled: false
       slider:
+        enabled: true
         weight: 15
-        enabled: false
       video:
         weight: 16
         enabled: false

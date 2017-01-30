@@ -1,0 +1,29 @@
+uuid: 83b16cd4-83da-4371-9204-fc5955ef9465
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.small_teaser
+    - field.field.paragraph.slider_item.field_content_image
+    - field.field.paragraph.slider_item.field_description
+    - image.style.65x65
+    - paragraphs.paragraphs_type.slider_item
+  module:
+    - image
+id: paragraph.slider_item.small_teaser
+targetEntityType: paragraph
+bundle: slider_item
+mode: small_teaser
+content:
+  field_content_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: 65x65
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  created: true
+  field_description: true
+  uid: true

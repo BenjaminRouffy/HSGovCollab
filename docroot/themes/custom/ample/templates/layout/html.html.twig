@@ -1,32 +1,32 @@
 {% spaceless %}
-{% set classes = [] %}
+  {% set classes = [] %}
 
-{% if logged_in %}
-  {% set classes = ['logged']|merge(classes) %}
-{% endif %}
+  {% if logged_in %}
+    {% set classes = ['logged']|merge(classes) %}
+  {% endif %}
 
-{% if is_front %}
-  {% set classes = ['front']|merge(classes) %}
-{% endif %}
+  {% if is_front %}
+    {% set classes = ['front']|merge(classes) %}
+  {% endif %}
 
-{% if root_path %}
-  {% set classes = [root_path|clean_class]|merge(classes) %}
-{% endif %}
+  {% if root_path %}
+    {% set classes = [root_path|clean_class]|merge(classes) %}
+  {% endif %}
 {% endspaceless %}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
-  <head>
-    <head-placeholder token="{{ placeholder_token|raw }}">
+<head>
+  <head-placeholder token="{{ placeholder_token|raw }}">
     <title>
       {{ head_title|safe_join(' | ') }}
     </title>
     <css-placeholder token="{{ placeholder_token|raw }}">
-    <js-placeholder token="{{ placeholder_token|raw }}">
-  </head>
-  <body{{ attributes.addClass(classes) }} role="document">
-    {{ page_top }}
-    {{ page }}
-    {{ page_bottom }}
-    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
-  </body>
+      <js-placeholder token="{{ placeholder_token|raw }}">
+        </head>
+<body{{ attributes.addClass(classes) }} role="document">
+{{ page_top }}
+{{ page }}
+{{ page_bottom }}
+<js-bottom-placeholder token="{{ placeholder_token|raw }}">
+</body>
 </html>

@@ -381,9 +381,21 @@ function deployment_update_8018() {
 }
 
 /**
- * Add custom formatter.
+ * Slider background.
  */
 function deployment_update_8019() {
+  Drupal::service('module_installer')->install(['image_url_formatter']);
+
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_view_display.paragraph.slider.default',
+    'core.entity_view_display.paragraph.slider_item.default',
+  ]);
+}
+
+/**
+ * Add custom formatter.
+ */
+function deployment_update_8020() {
   Drupal::service('module_installer')->install(['file_entity', 'admin_customizations']);
 
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [

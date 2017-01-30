@@ -19,7 +19,7 @@
 
       $(window).scroll(function() {
         var $window = $(window);
-        var eighthDocHeight = $(document).height() / 8;
+        var thirdhWinHeight = $window.height() / 3;
         var viewTop = $window.scrollTop();
         var viewBottom = viewTop + $window.height();
 
@@ -27,7 +27,7 @@
           var $el = $(el);
           var elemTopPos = $el.offset().top;
 
-          if ($el.isVisible(true) && elemTopPos < (viewBottom - eighthDocHeight)) {
+          if ($el.isVisible(true) && elemTopPos < (viewBottom - thirdhWinHeight)) {
             $el.addClass("faded");
           }
         });

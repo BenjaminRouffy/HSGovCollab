@@ -386,9 +386,18 @@ function deployment_update_8018() {
  */
 function deployment_update_8019() {
   Drupal::service('module_installer')->install(['image_url_formatter']);
-  
+
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'core.entity_view_display.paragraph.slider.default',
     'core.entity_view_display.paragraph.slider_item.default',
+  ]);
+}
+
+/**
+ * Update Node page variant.
+ */
+function deployment_update_8020() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'page_manager.page_variant.node_view-panels_variant-1',
   ]);
 }

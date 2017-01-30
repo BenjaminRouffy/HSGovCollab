@@ -448,7 +448,6 @@ function deployment_update_8020() {
   ]);
 
   \Drupal::database()->update('file_managed')->fields(['type' => 'image'])->execute();
-  ]);
 }
 
 /**

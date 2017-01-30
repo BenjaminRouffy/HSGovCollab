@@ -1289,7 +1289,7 @@ footer {
 .content-with-sidebar .content {
   float: left;
   width: 66.64%; }
-  .content-with-sidebar .content > *:not(.node-pager):not(.event-info) {
+  .content-with-sidebar .content > *:not(.node-pager):not(.event-info):not(.header-image) {
     width: 80%; }
 
 .content-with-sidebar .sidebar {
@@ -1298,7 +1298,8 @@ footer {
   width: 33.33%; }
 
 .header-image {
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  width: 95%; }
 
 .title-wrapper {
   margin-bottom: 40px;
@@ -1442,5 +1443,74 @@ footer {
   flex-wrap: wrap;
   padding: 0; }
 
+.slider-wrapper {
+  position: relative; }
+
 .slider-item-wrapper {
   position: relative; }
+
+.owl-stage-outer {
+  overflow: hidden; }
+
+.owl-stage-outer,
+.owl-stage,
+.owl-item {
+  height: 100%; }
+
+.owl-stage {
+  position: relative; }
+
+.owl-item {
+  float: left; }
+
+.owl-nav {
+  width: 100%; }
+  .owl-nav > div {
+    height: 50px;
+    width: 50px;
+    background: rgba(0, 0, 0, 0.34) url(../images/slider-arrows.png) left top no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    text-indent: -9999px;
+    transition: all .2s ease; }
+    .owl-nav > div:hover {
+      background-color: rgba(0, 0, 0, 0.58);
+      transform: scale(1.04); }
+  .owl-nav .owl-prev {
+    background-position: 7px -48px;
+    left: 0; }
+  .owl-nav .owl-next {
+    background-position: 8px 1px;
+    right: 0; }
+
+.owl-dots {
+  height: 30px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%; }
+  .owl-dots > div {
+    height: 14px;
+    width: 14px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 3px 7px; }
+    .owl-dots > div.active {
+      background: #fff; }
+
+.header-image .slider-wrapper {
+  height: 500px;
+  overflow: hidden; }
+
+.header-image .slider-item-wrapper {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%; }
+  .header-image .slider-item-wrapper .image-text {
+    width: 80%; }

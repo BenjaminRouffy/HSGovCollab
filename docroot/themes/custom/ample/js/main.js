@@ -115,4 +115,14 @@
     }
   };
 
+  Drupal.behaviors.carousel = {
+    attach: function(context, settings) {
+      $('.slider-wrapper').owlCarousel({
+        loop: true,
+        items: 1,
+        smartSpeed: 500
+      });
+    }
+  };
+
 })(jQuery, Drupal);

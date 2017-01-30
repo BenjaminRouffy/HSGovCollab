@@ -52,7 +52,7 @@
           .addClass(settings.defaultClosed)
           .attr(settings.defaultAttributeSelector, parentAttribute);
         $(new_div).find(settings.defaultAccordionTabText).html(legend);
-        $(form).prepend(new_div);
+        $('.wrapper-filters', form).prepend(new_div);
         applyCheckboxesLabel(parent);
       }
 

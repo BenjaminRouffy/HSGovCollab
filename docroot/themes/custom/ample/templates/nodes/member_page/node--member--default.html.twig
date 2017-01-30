@@ -4,30 +4,34 @@
   </div>
 {% endif %}
 
-<div class="title-wrapper">
-  <h1 class="page-title">{{ label|field_value }}</h1>
-  {% if content.field_member_category|field_value %}
-    <h2>{{ content.field_member_category|field_value }}</h2>
+<article{{ attributes }} role="article">
+  {{ title_prefix }}
+  <div class="title-wrapper">
+    <h1 class="page-title">{{ label|field_value }}</h1>
+    {% if content.field_member_category|field_value %}
+      <h2>{{ content.field_member_category|field_value }}</h2>
+    {% endif %}
+    <div class="line"></div>
+  </div>
+  {{ title_suffix }}
+
+  {% if node.body.summary %}
+    <div class="summary-text">
+      <p>{{ node.body.summary }}</p>
+    </div>
   {% endif %}
-  <div class="line"></div>
-</div>
 
-{% if node.body.summary %}
-  <div class="summary-text">
-    <p>{{ node.body.summary }}</p>
-  </div>
-{% endif %}
+  {{ content.body }}
 
-{{ content.body }}
+  {% if content.field_content_paragraph|field_value %}
+    {{ content.field_content_paragraph|field_value }}
+  {% endif %}
 
-{% if content.field_content_paragraph|field_value %}
-  {{ content.field_content_paragraph|field_value }}
-{% endif %}
-
-{% if content.field_member_link|field_value %}
-  <div class="font-social-icon top-right-icon">
-    <a href="{{ content.field_member_link.0['#url'] }}" class="red-btn-link">
-      {{ content.field_member_link.0['#title'] ? content.field_member_link.0['#title'] : content.field_member_link.0['#url'] }}
-    </a>
-  </div>
-{% endif %}
+  {% if content.field_member_link|field_value %}
+    <div class="font-social-icon top-right-icon">
+      <a href="{{ content.field_member_link.0['#url'] }}" class="red-btn-link">
+        {{ content.field_member_link.0['#title'] ? content.field_member_link.0['#title'] : content.field_member_link.0['#url'] }}
+      </a>
+    </div>
+  {% endif %}
+</article>

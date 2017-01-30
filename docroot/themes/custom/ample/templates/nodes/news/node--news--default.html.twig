@@ -4,35 +4,39 @@
   </div>
 {% endif %}
 
-{% if display_submitted %}
-  <div class="post-info">
-    <time datetime="{{ content.field_content_date|field_value|field_raw }}">
-      {{ content.field_content_date|field_value }}
-    </time>
-    {#<span class="country"></span>#}
-    {% if content.field_author|field_value %}
-      <span class="author">
+<article{{ attributes }} role="article">
+  {% if display_submitted %}
+    <div class="post-info">
+      <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+        {{ content.field_content_date|field_value }}
+      </time>
+      {#<span class="country"></span>#}
+      {% if content.field_author|field_value %}
+        <span class="author">
         {% trans %}By: {% endtrans %} {{ content.field_author|field_value }}
       </span>
-    {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {{ title_prefix }}
+  <div class="title-wrapper">
+    <h1 class="page-title">
+      {{ label }}
+    </h1>
+    <div class="line"></div>
   </div>
-{% endif %}
+  {{ title_suffix }}
 
-<div class="title-wrapper">
-  <h1 class="page-title">
-    {{ label }}
-  </h1>
-  <div class="line"></div>
-</div>
+  {% if node.body.summary|field_value %}
+    <div class="content-summary">
+      <p>{{ node.body.summary }}</p>
+    </div>
+  {% endif %}
 
-{% if node.body.summary|field_value %}
-  <div class="content-summary">
-    <p>{{ node.body.summary }}</p>
-  </div>
-{% endif %}
+  {{ content.body }}
 
-{{ content.body }}
-
-{% if content.field_content_paragraph|field_value %}
-  {{ content.field_content_paragraph|field_value }}
-{% endif %}
+  {% if content.field_content_paragraph|field_value %}
+    {{ content.field_content_paragraph|field_value }}
+  {% endif %}
+</article>

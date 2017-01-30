@@ -25,8 +25,14 @@
     float: left;
     width: 66.64%;
 
-    > *:not(.node-pager):not(.event-info) {
+    > *:not(.node-pager):not(.event-info):not(.header-image) {
       width: 80%;
+    }
+
+    .header-image {
+      figure {
+        margin: 0;
+      }
     }
   }
 
@@ -39,6 +45,7 @@
 
 .header-image {
   margin-bottom: 50px;
+  width: 95%;
 }
 
 .title-wrapper {

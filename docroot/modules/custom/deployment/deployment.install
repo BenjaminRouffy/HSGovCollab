@@ -464,9 +464,30 @@ function deployment_update_8021() {
 }
 
 /**
- * Add link to paragraph "Custom content".
+ * Update Node page variant.
  */
 function deployment_update_8022() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'page_manager.page_variant.node_view-panels_variant-1',
+  ]);
+}
+
+/**
+ * Fix Events and News language selector.
+ */
+function deployment_update_8023() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'language.content_settings.node.event',
+    'language.content_settings.node.news',
+    'core.entity_form_display.node.event.default',
+    'core.entity_view_display.node.event.default',
+  ]);
+}
+
+/**
+ * Add link to paragraph "Custom content".
+ */
+function deployment_update_8024() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'core.entity_form_display.paragraph.custom_content.default',
     'core.entity_view_display.paragraph.custom_content.default',

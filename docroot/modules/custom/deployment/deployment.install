@@ -462,3 +462,12 @@ function deployment_update_8021() {
     'core.entity_view_display.paragraph.slider_item.view_mode_thumbnail',
   ]);
 }
+
+/**
+ * Update Node page variant.
+ */
+function deployment_update_8022() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'page_manager.page_variant.node_view-panels_variant-1',
+  ]);
+}

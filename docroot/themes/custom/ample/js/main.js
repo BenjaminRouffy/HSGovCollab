@@ -115,4 +115,18 @@
     }
   };
 
+  Drupal.behaviors.carousel = {
+    attach: function(context, settings) {
+      $('.slider-wrapper').each(function(i, el) {
+        var $slider = $(el);
+
+        $slider.owlCarousel({
+          loop: true,
+          items: 1,
+          smartSpeed: 500
+        });
+      });
+    }
+  };
+
 })(jQuery, Drupal);

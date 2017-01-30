@@ -66,6 +66,17 @@ function config_import_drush_command() {
     ],
   ]);
 
+  $commands['config-import-multiple'] = new Command('confimport', [
+    'description' => dt('Import configuration from array.'),
+    'options' => [
+      'names' => TRUE,
+    ],
+    'examples' => [
+      '--names=views.view.news_events' => dt('Add a description here'),
+      '--names=views.view.news_events,core.extension' => dt('Add a description here.'),
+    ],
+  ]);
+
   foreach ($commands as $command => $instance) {
     $commands[$command] = $instance->getDefinition();
   }
@@ -230,6 +241,45 @@ function drush_config_import_import() {
   }
 }
 
+
+/**
+ * Implements drush_COMMAND().
+ */
+function drush_config_import_multiple() {
+  try {
+    $options = _drush_config_import_get_options();
+
+    // @TODO Validate the names option here.
+    $import_confirmed = TRUE;
+
+    if (TRUE == $import_confirmed) {
+      // Inspired by deployment_import_configs.
+      $importer = Drupal::service('config_import.importer');
+      // Set storage where configs located.
+      $importer->setDirectory(CONFIG_SYNC_DIRECTORY);
+
+      $configs = (array) explode(',', $options['names']);
+      // For new one configs.
+      $importer->importConfigs($configs);
+      $directory = $importer->getDirectory();
+
+      // For override old one configs.
+      foreach ($configs as $config) {
+        Drupal::service('config_devel.auto_import_subscriber')->importOne("$directory/$config.yml");
+      }
+
+      // @TODO Add success message.
+    }
+    else {
+      // @TODO Add error message.
+    }
+
+    drush_log('Import was finished successful.', 'status');
+  }
+  catch (Exception $e) {
+    drush_log($e->getMessage(), 'error');
+  }
+}
 /**
  * Output table into command line.
  *

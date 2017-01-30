@@ -1,0 +1,3 @@
+---
+  - shell: cd {{source}} && git diff origin/master HEAD --name-status | grep 'config/staging' | sed 's/{{ project_docroot_folder }}\///g' > {{source}}/config_stage_changes.log
+  - shell: pwd

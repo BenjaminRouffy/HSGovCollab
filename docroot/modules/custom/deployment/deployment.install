@@ -515,5 +515,6 @@ function deployment_update_8025() {
 function deployment_update_8026() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'field.field.block_content.member_icons.field_member_icons',
+    'field.field.paragraph.member_icon.field_member_icon'
   ]);
 }

@@ -20,10 +20,9 @@ header {
     bottom: 10px;
     right: 0;
     height: 60px;
-    overflow: hidden;
 
-    ul,
-    li {
+    ul:not(.contextual-links),
+    ul:not(.contextual-links) li {
       display: inline-block;
       vertical-align: top;
     }
@@ -90,6 +89,11 @@ header {
 
     ~ .service-links {
       right: 50px;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: top;
     }
   }
 }

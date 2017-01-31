@@ -12,4 +12,5 @@
     destination: "{{ server_docroot_folder }}/build{{ build_number }}"
 
   roles:
+    - { role: ../custom/cibox-git-diff, tags: [ 'gitlog' ] }
     - { role: ../custom/cibox-code-deploy }

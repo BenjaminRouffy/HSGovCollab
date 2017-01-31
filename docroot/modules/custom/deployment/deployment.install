@@ -27,6 +27,7 @@ function deployment_install() {
  *   Deprecated.
  */
 function deployment_import_configs($type, array $configs, array $regexps = []) {
+  /* @var $importer \Drupal\config_import\ConfigImporterService */
   $importer = Drupal::service('config_import.importer');
   // Set storage where configs located.
   $importer->setDirectory($type);

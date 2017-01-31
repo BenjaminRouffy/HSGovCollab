@@ -1,0 +1,9 @@
+---
+  # @TODO Ensure that an origin remote is correct.
+  - name: Get the latest tag.
+    shell: cd {{ source }} && git describe --tags `git rev-list --tags --max-count=1` 2> /dev/null || echo 'origin/master'
+    register: latest_tag
+
+  # @TODO Config path (config/staging) should be taken from drupal config, but we haven't a drupal instalation here yet.
+  - name: Create git status file.
+    shell: cd {{ source }} && git diff {{ latest_tag.stdout }} HEAD --name-status | grep '{{ config_path }}' | sed 's/{{ project_docroot_folder }}\///g' > {{ source }}/config_stage_changes.log

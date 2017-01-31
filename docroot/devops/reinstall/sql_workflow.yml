@@ -75,6 +75,10 @@
   shell: "{{ php_env_vars }} drush -y rr -l {{ site_url }} || true"
   when: rebuild_registry
 
+- name: Drush clear command cache
+  sudo: yes
+  shell: "{{ php_env_vars }} drush -y cc drush -l {{ site_url }} || true"
+
 - name: Rebuilding cache
   sudo: yes
   shell: "{{ php_env_vars }} drush -y cr -l {{ site_url }} || true"

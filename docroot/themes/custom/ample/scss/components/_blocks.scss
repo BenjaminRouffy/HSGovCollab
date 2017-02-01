@@ -608,4 +608,12 @@
       }
     }
   }
+
+  h2 {
+    @include font-size(16.2);
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 25px;
+    margin: 0 0 10px;
+  }
 }

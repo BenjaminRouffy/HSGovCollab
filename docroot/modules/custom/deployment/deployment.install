@@ -514,4 +514,9 @@ function deployment_update_8025() {
  */
 function deployment_update_8026() {
   deployment_delete_fields('paragraph', 'infographic', ['field_infographic_item']);
+  field_purge_batch(500);
+
+  \Drupal::database()->delete('field_collection_item')->execute();
+  \Drupal::database()->delete('field_collection_item_revision')->execute();
+  \Drupal::service('module_installer')->uninstall(['field_collection']);
 }

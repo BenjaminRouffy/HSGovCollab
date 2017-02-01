@@ -1,7 +1,12 @@
 <div class="partners">
-  <ul class="item-list">
-    {% if content.field_member_icons|field_value %}
-      {{ content.field_member_icons|field_value }}
-    {% endif %}
-  </ul>
+  <div{{ attributes }}>
+    {{ title_prefix }}
+    <ul class="item-list">
+      {% if content.field_member_icons|field_value %}
+        {{ content.field_member_icons|field_value }}
+      {% endif %}
+    </ul>
+    {{ title_suffix }}
+  </div>
 </div>
+

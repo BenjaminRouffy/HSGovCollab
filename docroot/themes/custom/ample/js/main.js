@@ -156,7 +156,7 @@
       var $bottomHead = $('.bottom-head', context);
       var $anchorLink = $('[data-anchor-id]', context);
 
-      if ($anchorLink.length) {
+      if ($anchorLink.length && $anchorLink.length > 1) {
         $bottomHead.append('<div class="anchor-links"></div>');
 
         $anchorLink.each(function(index, element) {
@@ -190,6 +190,20 @@
     attach: function(context, settings) {
       $('.overlay-wpapper').delay(3000).queue(function() {
         $(this).css('opacity', 0).dequeue();
+      });
+    }
+  };
+
+  Drupal.behaviors.carousel = {
+    attach: function(context, settings) {
+      $('.slider-wrapper').each(function(i, el) {
+        var $slider = $(el);
+
+        $slider.owlCarousel({
+          loop: true,
+          items: 1,
+          smartSpeed: 500
+        });
       });
     }
   };

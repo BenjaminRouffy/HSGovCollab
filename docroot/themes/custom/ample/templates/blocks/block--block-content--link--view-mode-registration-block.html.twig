@@ -1,11 +1,17 @@
 <div class="teaser corners">
-  <a href="{{ content.field_link[0]['#url'] }}">
-    <h2 role="heading">
-      {{ content.field_link[0]['#title'] }}
-    </h2>
+  <div{{ attributes }}>
+    {{ title_prefix }}
+    <a href="{{ content.field_link[0]['#url'] }}">
+      <h2 role="heading">
+        {{ content.field_link[0]['#title'] }}
+      </h2>
 
-    <p>
-      {{ content.field_link_description|field_value }}
-    </p>
-  </a>
+      {% if content.field_link_description|field_value %}
+        <p>
+          {{ content.field_link_description|field_value }}
+        </p>
+      {% endif %}
+    </a>
+    {{ title_suffix }}
+  </div>
 </div>

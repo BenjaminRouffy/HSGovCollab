@@ -36,7 +36,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_category:
-    weight: 26
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -54,13 +54,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_event_link:
-    weight: 9
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
   field_event_slider:
     type: entity_reference_paragraphs
     weight: 1
@@ -72,7 +65,7 @@ content:
       form_display_mode: simple_image
     third_party_settings: {  }
   field_join_block:
-    weight: 10
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -84,7 +77,7 @@ content:
     third_party_settings: {  }
     type: link_default
   field_organization:
-    weight: 27
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -109,25 +102,25 @@ content:
     type: options_select
   langcode:
     type: language_select
-    weight: 11
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 15
+    weight: 14
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 12
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 13
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -137,9 +130,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 12
+    weight: 11
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
+  field_event_link: true
   uid: true

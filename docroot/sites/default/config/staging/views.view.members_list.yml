@@ -15,6 +15,7 @@ dependencies:
     - link
     - members
     - node
+    - taxonomy
     - user
 id: members_list
 label: 'Members list'
@@ -546,23 +547,34 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts:
-        field_member_category_target_id:
-          id: field_member_category_target_id
-          table: node__field_member_category
-          field: field_member_category_target_id
-          relationship: none
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_member_category
           group_type: group
           admin_label: ''
           order: ASC
           exposed: false
           expose:
             label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
           plugin_id: standard
       title: 'Members list'
       header: {  }
       footer: {  }
       empty: {  }
-      relationships: {  }
+      relationships:
+        field_member_category:
+          id: field_member_category
+          table: node__field_member_category
+          field: field_member_category
+          relationship: none
+          group_type: group
+          admin_label: 'field_member_category: Taxonomy term'
+          required: false
+          plugin_id: standard
       arguments: {  }
       display_extenders: {  }
     cache_metadata:

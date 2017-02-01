@@ -8,12 +8,14 @@
     margin: 0 auto 20px;
     max-width: 1160px;
     padding: 100px 0 50px;
+
+    .paragraph {
+      text-align: center;
+      width: 25%;
+    }
   }
 
   .paragraph {
-    text-align: center;
-    width: 25%;
-
     &:hover {
       .infooverlay {
         top: 0;
@@ -32,10 +34,10 @@
       height: 100px;
       margin: 0 auto 30px;
       width: 50%;
-    }
 
-    img {
-      max-width: 67px;
+      img {
+        max-width: 67px;
+      }
     }
 
     h2 {

@@ -1,21 +1,25 @@
 <div class="social-links">
-  <ul>
-    {% if content.field_facebook|field_value %}
-      <li class="font-social-icon facebook-icon">
-        <a href="{{ content.field_facebook.0['#url'] }}"></a>
-      </li>
-    {% endif %}
+  <div{{ attributes }}>
+    {{ title_prefix }}
+    <ul class="menu">
+      {% if content.field_facebook|field_value %}
+        <li class="font-social-icon facebook-icon">
+          <a href="{{ content.field_facebook.0['#url'] }}"></a>
+        </li>
+      {% endif %}
 
-    {% if content.field_linkedin|field_value %}
-      <li class="font-social-icon linkedin-icon">
-        <a href="{{ content.field_linkedin.0['#url'] }}"></a>
-      </li>
-    {% endif %}
+      {% if content.field_linkedin|field_value %}
+        <li class="font-social-icon linkedin-icon">
+          <a href="{{ content.field_linkedin.0['#url'] }}"></a>
+        </li>
+      {% endif %}
 
-    {% if content.field_twitter|field_value %}
-      <li class="font-social-icon twitter-icon">
-        <a href="{{ content.field_twitter.0['#url'] }}"></a>
-      </li>
-    {% endif %}
-  </ul>
+      {% if content.field_twitter|field_value %}
+        <li class="font-social-icon twitter-icon">
+          <a href="{{ content.field_twitter.0['#url'] }}"></a>
+        </li>
+      {% endif %}
+    </ul>
+    {{ title_suffix }}
+  </div>
 </div>

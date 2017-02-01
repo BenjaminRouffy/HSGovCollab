@@ -1,0 +1,96 @@
+.slider-wrapper {
+  overflow: hidden;
+  position: relative;
+
+  .top-banner-region & {
+    height: 650px;
+  }
+
+  .header-image & {
+    height: 500px;
+  }
+}
+
+.slider-item-wrapper {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  position: relative;
+
+  .header-image & {
+    .image-text {
+      width: 80%;
+    }
+  }
+}
+
+.owl-stage-outer {
+  overflow: hidden;
+}
+
+.owl-stage-outer,
+.owl-stage,
+.owl-item {
+  height: 100%;
+}
+
+.owl-stage {
+  position: relative;
+}
+
+.owl-item {
+  float: left;
+}
+
+.owl-nav {
+  width: 100%;
+
+  > div {
+    @include same(50px, height, width);
+    background: rgba($black, .34) url(../images/slider-arrows.png) left top no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    text-indent: -9999px;
+    transition: all .2s ease;
+
+    &:hover {
+      background-color: rgba($black, .58);
+      transform: scale(1.04);
+    }
+  }
+
+  .owl-prev {
+    background-position: 7px -48px;
+    left: 0;
+  }
+
+  .owl-next {
+    background-position: 8px 1px;
+    right: 0;
+  }
+}
+
+.owl-dots {
+  height: 30px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+
+  > div {
+    @include same(14px, height, width);
+    background: rgba($white, .4);
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 3px 7px;
+
+    &.active {
+      background: $white;
+    }
+  }
+}

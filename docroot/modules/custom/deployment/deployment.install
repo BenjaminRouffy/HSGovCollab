@@ -27,6 +27,7 @@ function deployment_install() {
  *   Deprecated.
  */
 function deployment_import_configs($type, array $configs, array $regexps = []) {
+  /* @var $importer \Drupal\config_import\ConfigImporterService */
   $importer = Drupal::service('config_import.importer');
   // Set storage where configs located.
   $importer->setDirectory($type);
@@ -382,18 +383,129 @@ function deployment_update_8018() {
 }
 
 /**
- * News & Event.
+ * Slider background.
  */
 function deployment_update_8019() {
+  Drupal::service('module_installer')->install(['image_url_formatter']);
+
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
-    'core.entity_view_display.node.news.default',
-    'core.entity_view_display.node.news.news_events_listing',
-    'core.entity_view_mode.node.news_events_listing',
+    'core.entity_view_display.paragraph.slider.default',
+    'core.entity_view_display.paragraph.slider_item.default',
+  ]);
+}
+
+/**
+ * Install "File entity" and add image category.
+ */
+function deployment_update_8020() {
+  Drupal::service('module_installer')->install(['file_entity', 'admin_customizations']);
+
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_form_display.file.image.default',
+    'core.entity_view_display.file.audio.thumbnail',
+    'core.entity_view_display.file.document.thumbnail',
+    'core.entity_view_display.file.image.default',
+    'core.entity_view_display.file.image.thumbnail',
+    'core.entity_view_display.file.video.thumbnail',
+    'core.entity_view_mode.block.token',
+    'core.entity_view_mode.block_content.token',
+    'core.entity_view_mode.comment.token',
+    'core.entity_view_mode.contact_message.token',
+    'core.entity_view_mode.file.thumbnail',
+    'core.entity_view_mode.file.token',
+    'core.entity_view_mode.group.token',
+    'core.entity_view_mode.group_content.token',
+    'core.entity_view_mode.menu_link_content.token',
+    'core.entity_view_mode.node.token',
+    'core.entity_view_mode.page_variant.token',
+    'core.entity_view_mode.paragraph.token',
+    'core.entity_view_mode.shortcut.token',
+    'core.entity_view_mode.taxonomy_term.token',
+    'core.entity_view_mode.user.token',
     'core.extension',
-    'field.field.node.news.field_content_paragraph',
-    'page_manager.page.news_events',
-    'page_manager.page_variant.news_events-panels_variant-0',
-    'views.view.news_events',
-    'views.view.recent_news',
+    'field.field.file.image.field_category',
+    'field.field.file.image.field_image_alt_text',
+    'field.field.file.image.field_image_title_text',
+    'field.storage.file.field_category',
+    'field.storage.file.field_image_alt_text',
+    'field.storage.file.field_image_title_text',
+    'file_entity.settings',
+    'file_entity.type.audio',
+    'file_entity.type.document',
+    'file_entity.type.image',
+    'file_entity.type.video',
+    'language.content_settings.taxonomy_term.file_category',
+    'system.action.file_delete_action',
+    'system.action.file_permanent_action',
+    'system.action.file_temporary_action',
+    'taxonomy.vocabulary.file_category',
+    'user.role.anonymous',
+    'user.role.authenticated',
+    'views.view.file_entity_browser',
+    'views.view.file_entity_files',
+    'views.view.files',
+    'core.entity_form_display.file.document.default',
+    'core.entity_view_display.file.document.default',
+    'field.field.file.document.field_category',
+  ]);
+
+  \Drupal::database()->update('file_managed')->fields(['type' => 'image'])->execute();
+}
+
+/**
+ * Slider gallery.
+ */
+function deployment_update_8021() {
+  Drupal::service('module_installer')->install(['field_formater_render_twice']);
+
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_view_display.paragraph.slider.view_mode_thumbnail',
+    'core.entity_view_display.paragraph.slider_item.view_mode_banner',
+    'core.entity_view_display.paragraph.slider_item.view_mode_thumbnail',
+  ]);
+}
+
+/**
+ * Update Node page variant.
+ */
+function deployment_update_8022() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'page_manager.page_variant.node_view-panels_variant-1',
+  ]);
+}
+
+/**
+ * Fix Events and News language selector.
+ */
+function deployment_update_8023() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'language.content_settings.node.event',
+    'language.content_settings.node.news',
+    'core.entity_form_display.node.event.default',
+    'core.entity_view_display.node.event.default',
+  ]);
+}
+
+/**
+ * Add link to paragraph "Custom content".
+ */
+function deployment_update_8024() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'core.entity_form_display.paragraph.custom_content.default',
+    'core.entity_view_display.paragraph.custom_content.default',
+    'field.field.paragraph.custom_content.field_link',
+  ]);
+}
+
+/**
+ * Fix social link field in "Social links" block.
+ */
+function deployment_update_8025() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'field.field.paragraph.member_icon.field_member_link',
+    'views.view.members_list',
+    'field.field.block_content.social_links.field_twitter',
+    'field.field.block_content.social_links.field_linkedin',
+    'field.field.block_content.social_links.field_facebook',
   ]);
 }

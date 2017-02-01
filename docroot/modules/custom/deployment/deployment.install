@@ -508,3 +508,10 @@ function deployment_update_8025() {
     'field.field.block_content.social_links.field_facebook',
   ]);
 }
+
+/**
+ * Remove field collection "Infographic item".
+ */
+function deployment_update_8026() {
+  deployment_delete_fields('paragraph', 'infographic', ['field_infographic_item']);
+}

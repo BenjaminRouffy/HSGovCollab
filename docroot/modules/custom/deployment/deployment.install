@@ -495,3 +495,16 @@ function deployment_update_8024() {
     'field.field.paragraph.custom_content.field_link',
   ]);
 }
+
+/**
+ * Fix social link field in "Social links" block.
+ */
+function deployment_update_8025() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'field.field.paragraph.member_icon.field_member_link',
+    'views.view.members_list',
+    'field.field.block_content.social_links.field_twitter',
+    'field.field.block_content.social_links.field_linkedin',
+    'field.field.block_content.social_links.field_facebook',
+  ]);
+}

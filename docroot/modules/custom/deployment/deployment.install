@@ -510,7 +510,7 @@ function deployment_update_8025() {
 }
 
 /**
- * Remove field collection "Infographic item".
+ * Remove field collection "Infographic item" and uninstall "Field collection".
  */
 function deployment_update_8026() {
   deployment_delete_fields('paragraph', 'infographic', ['field_infographic_item']);

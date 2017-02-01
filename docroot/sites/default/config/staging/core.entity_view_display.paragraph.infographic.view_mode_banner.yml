@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.paragraph.view_mode_banner
+    - field.field.paragraph.infographic.field_infographic_item
     - paragraphs.paragraphs_type.infographic
 id: paragraph.infographic.view_mode_banner
 targetEntityType: paragraph
@@ -12,4 +13,5 @@ mode: view_mode_banner
 content: {  }
 hidden:
   created: true
+  field_infographic_item: true
   uid: true

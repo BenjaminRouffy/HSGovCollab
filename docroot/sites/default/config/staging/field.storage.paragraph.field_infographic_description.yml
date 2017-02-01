@@ -1,12 +1,12 @@
-uuid: ec0f51fa-f236-47d7-acd6-a8617cfd45ce
+uuid: 1ee77752-53be-4689-9ff7-ccc56b8067b2
 langcode: en
 status: true
 dependencies:
   module:
-    - field_collection
-id: field_collection_item.field_description
-field_name: field_description
-entity_type: field_collection_item
+    - paragraphs
+id: paragraph.field_infographic_description
+field_name: field_infographic_description
+entity_type: paragraph
 type: string_long
 settings:
   case_sensitive: false

@@ -1,14 +1,14 @@
-uuid: 1bc2e4c9-559c-431a-93fe-83fb35a202ca
+uuid: ca6dbb98-8e16-402c-9287-a64effd2aafc
 langcode: en
 status: true
 dependencies:
   module:
-    - field_collection
     - file
     - image
-id: field_collection_item.field_infographic_icon
-field_name: field_infographic_icon
-entity_type: field_collection_item
+    - taxonomy
+id: taxonomy_term.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
 type: image
 settings:
   uri_scheme: public

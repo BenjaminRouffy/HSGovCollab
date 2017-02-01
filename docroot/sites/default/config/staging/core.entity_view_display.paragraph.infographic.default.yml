@@ -6,18 +6,20 @@ dependencies:
     - field.field.paragraph.infographic.field_infographic_item
     - paragraphs.paragraphs_type.infographic
   module:
-    - field_collection
+    - entity_reference_revisions
 id: paragraph.infographic.default
 targetEntityType: paragraph
 bundle: infographic
 mode: default
 content:
   field_infographic_item:
+    type: entity_reference_revisions_entity_view
     weight: 0
-    label: hidden
-    settings: {  }
+    label: above
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: field_collection_items
 hidden:
   created: true
   uid: true

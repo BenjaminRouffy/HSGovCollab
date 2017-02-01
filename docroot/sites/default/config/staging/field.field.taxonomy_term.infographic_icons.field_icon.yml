@@ -1,25 +1,25 @@
-uuid: 55f3bc86-6641-4959-b715-9cfb39fd83bb
+uuid: 04087b13-d6d1-41d0-b291-159e3439ea61
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.field_collection_item.field_infographic_icon
-    - field_collection.field_collection.field_infographic_item
+    - field.storage.taxonomy_term.field_icon
+    - taxonomy.vocabulary.infographic_icons
   module:
     - image
-id: field_collection_item.field_infographic_item.field_infographic_icon
-field_name: field_infographic_icon
-entity_type: field_collection_item
-bundle: field_infographic_item
+id: taxonomy_term.infographic_icons.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: infographic_icons
 label: Icon
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'png gif jpg jpeg'
+  file_extensions: 'png gif jpg jpeg svg'
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''

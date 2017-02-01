@@ -23,7 +23,7 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
   /**
    * @var \Drupal\views\Plugin\views\query\Sql
    */
-  protected $query;
+  public $query;
 
   /**
    * Mark form as extra setting form.

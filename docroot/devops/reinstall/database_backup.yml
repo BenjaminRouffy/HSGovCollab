@@ -12,14 +12,12 @@
 - name: Creating backup folder for environment
   sudo: yes
   file: path={{ backup_folder }}/{{ local_backup_environment }}_local state=directory recurse=yes
-  when: op == "before"
 
 - name: Making regular backup from {{ local_backup_environment }} environment
   sudo: yes
-  mysql_db: name={{ local_backup_environment }} state=dump target={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}.sql.gz login_user={{ mysql_user }} login_password={{ mysql_pass }}
-  when: op == "before"
+  mysql_db: name={{ local_backup_environment }} state=dump target={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql.gz login_user={{ mysql_user }} login_password={{ mysql_pass }}
 
 - name: Make new backup as latest
   sudo: yes
-  copy: src={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}.sql.gz dest={{ backup_folder }}//latest_local_{{ local_backup_environment }}.sql.gz force=yes mode=0777
+  copy: src={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql.gz dest={{ backup_folder }}//latest_local_{{ local_backup_environment }}.sql.gz force=yes mode=0777
   when: op == "after"

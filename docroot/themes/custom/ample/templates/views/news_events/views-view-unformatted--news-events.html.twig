@@ -1,11 +1,11 @@
-<ul>
+<ul class="news-and-events-list">
   {% for row in rows %}
     {% set row_classes = [
       default_row_class ? 'views-row',
       loop.first ? 'views-grid-6' : 'views-grid-3'
     ] %}
-    <div{{ row.attributes.addClass(row_classes) }}>
+    <li{{ row.attributes.addClass(row_classes) }}>
       {{ row.content }}
-    </div>
+    </li>
   {% endfor %}
 </ul>

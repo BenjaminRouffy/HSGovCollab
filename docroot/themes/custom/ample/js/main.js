@@ -38,7 +38,7 @@
           .hide()
           .html();
         $(parent).hide()
-        var template = '<div class="wrapper ' + settings.defaultAccordionTab.substr(1) + '">' +
+        var template = '<div class="wrapper accordion-button ' + settings.defaultAccordionTab.substr(1) + '">' +
                           '<div class="text">' +
                             '<span class="' + settings.defaultAccordionTabText.substr(1) + '"></span>' +
                             '<span class="button"></span>' +

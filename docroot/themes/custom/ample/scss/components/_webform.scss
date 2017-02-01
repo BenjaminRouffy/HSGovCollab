@@ -47,6 +47,38 @@ form {
   }
 }
 
+.js-form-type-select {
+  background-color: $white;
+  background-image: linear-gradient($white 0, #f3f3f3 100%);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.form-select {
+  @include font-size(16.8);
+  background: url(../images/select-arrows.png) right center no-repeat;
+  border: 1px solid #75a8c0;
+  border-radius: 4px;
+  color: $grey-dark;
+  font-family: $fira;
+  height: 50px;
+  padding: 1px 12px;
+  width: 100%;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &:focus {
+    border-color: #3898EC;
+    outline: none;
+  }
+}
+
+.form-checkbox {
+  appearance: checkbox;
+}
+
 .form-submit {
   background: $white;
   border: 1px solid transparent;

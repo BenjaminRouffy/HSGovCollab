@@ -11,7 +11,7 @@
   <div class="post-info">
     <time datetime="{{ node.createdtime | date("Y-m-d") }}">{{ node.createdtime | format_date('time_line') }}</time>
     {% if content.field_category|field_value %}
-      <span class="country">{% trans %}| {% endtrans %} {{ content.field_category|field_value}}</span>
+      <span class="country">{% trans %} {% endtrans %} {{ content.field_category|field_value}}</span>
     {% endif %}
   </div>
 {% endif %}

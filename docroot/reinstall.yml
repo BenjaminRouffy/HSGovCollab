@@ -14,7 +14,8 @@
     include_vars: "devops/reinstall/vars/environments/{{ pp_environment }}_env.yml"
     tags: [ 'settings', 'pre-settings', 'post-settings', 'modules-enable', 'drush-commands' ]
 
-  - include: devops/reinstall/database_backup.yml
+  - name: Prepare backup
+    include: devops/reinstall/database_backup.yml op="before"
     when: make_backup
     tags: [ 'database-backup' ]
 
@@ -44,3 +45,8 @@
 
   - include: devops/reinstall/drush_commands.yml
     tags: [ 'drush-commands' ]
+
+  - name: Store backup as latest
+    include: devops/reinstall/database_backup.yml op="after"
+    when: make_backup
+    tags: [ 'database-backup' ]

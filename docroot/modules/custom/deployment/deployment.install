@@ -508,14 +508,3 @@ function deployment_update_8025() {
     'field.field.block_content.social_links.field_facebook',
   ]);
 }
-
-/**
- * Add event link field to "Event".
- */
-function deployment_update_8026() {
-  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
-    'core.entity_form_display.node.event.default',
-    'core.entity_view_display.node.event.default',
-    'field.field.node.event.field_event_link',
-  ]);
-}

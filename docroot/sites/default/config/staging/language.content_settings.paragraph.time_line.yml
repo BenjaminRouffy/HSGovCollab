@@ -1,0 +1,16 @@
+uuid: b6a07d57-d0a2-4aa2-a1da-076682d9049d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.time_line
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.time_line
+target_entity_type_id: paragraph
+target_bundle: time_line
+default_langcode: current_interface
+language_alterable: true

@@ -509,3 +509,16 @@ function deployment_update_8025() {
     'field.field.block_content.social_links.field_facebook',
   ]);
 }
+
+/**
+ * Remove field collection "Infographic item" and uninstall "Field collection".
+ */
+function deployment_update_8026() {
+  deployment_delete_fields('paragraph', 'infographic', ['field_infographic_item']);
+  field_purge_batch(500);
+
+  \Drupal::database()->delete('field_collection_item')->execute();
+  \Drupal::database()->delete('field_collection_item_revision')->execute();
+  \Drupal::service('module_installer')->uninstall(['field_collection']);
+  \Drupal::service('module_installer')->install(['linkit']);
+}

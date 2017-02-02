@@ -1,0 +1,16 @@
+uuid: 10f2b289-289b-49c5-9caf-80248bed071e
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.infographic_item
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.infographic_item
+target_entity_type_id: paragraph
+target_bundle: infographic_item
+default_langcode: current_interface
+language_alterable: true

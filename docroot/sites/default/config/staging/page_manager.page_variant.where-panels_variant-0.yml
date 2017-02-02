@@ -1,0 +1,43 @@
+uuid: 3e362b02-ff48-4298-a27c-ccb9052151fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.where
+  content:
+    - 'block_content:headline_description:6d427de4-4a4c-4fe1-800d-733c1ef23a27'
+  module:
+    - block_content
+    - panels
+id: where-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    6c13052e-9046-4981-8427-bf996017a6f2:
+      id: 'block_content:6d427de4-4a4c-4fe1-800d-733c1ef23a27'
+      label: 'Countries in P4H'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: 0
+      uuid: 6c13052e-9046-4981-8427-bf996017a6f2
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 4ae1af58-df00-4acc-9fd0-bb6f093daff3
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: 'Where?'
+  storage_type: page_manager
+  storage_id: where-panels_variant-0
+  builder: standard
+page: where
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

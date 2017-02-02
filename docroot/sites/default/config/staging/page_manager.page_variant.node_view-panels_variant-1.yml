@@ -64,23 +64,6 @@ variant_settings:
       uuid: 2fd7a6ee-36de-4b8a-b73f-6358b09fb2f4
       context_mapping:
         entity: node
-    3748d910-c48c-4869-9c8b-97bcb2f56475:
-      id: 'entity_field:node:field_time_line'
-      label: 'Time line'
-      provider: ctools_block
-      label_display: '0'
-      formatter:
-        label: hidden
-        type: entity_reference_revisions_entity_view
-        settings:
-          view_mode: default
-        third_party_settings: {  }
-        weight: 0
-      region: bottom
-      weight: 0
-      uuid: 3748d910-c48c-4869-9c8b-97bcb2f56475
-      context_mapping:
-        entity: node
   id: panels_variant
   uuid: a4e95dba-bbbc-4daa-86e1-f8c74bfc1868
   label: null

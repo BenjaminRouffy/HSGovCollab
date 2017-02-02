@@ -552,12 +552,14 @@
       color: $navy;
       display: inline-block;
       line-height: 27px;
+      max-width: calc(100% - 28px);
       padding-left: 5px;
     }
   }
 
   .font-social-icon {
     @include font-size(28);
+    float: left;
   }
 
   .sign-up {

@@ -24,6 +24,16 @@
       }
     }
 
+    .header-static & {
+      @include font-size(0);
+
+      .active {
+        a {
+          border-bottom: 2px solid $red;
+        }
+      }
+    }
+
     a {
       @include font-size(14);
       color: $navy-dark;

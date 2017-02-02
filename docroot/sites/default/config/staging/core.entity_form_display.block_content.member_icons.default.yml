@@ -6,42 +6,40 @@ dependencies:
     - block_content.type.member_icons
     - field.field.block_content.member_icons.field_copyright_text
     - field.field.block_content.member_icons.field_member_icons
-  module:
-    - paragraphs
 id: block_content.member_icons.default
 targetEntityType: block_content
 bundle: member_icons
 mode: default
 content:
   field_copyright_text:
-    weight: 4
+    weight: 2
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_member_icons:
-    type: entity_reference_paragraphs
-    weight: 3
+    weight: 1
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
+      match_operator: CONTAINS
+      size: 60
+      placeholder: 'Member title'
     third_party_settings: {  }
+    type: entity_reference_autocomplete
   info:
     type: string_textfield
-    weight: -5
+    weight: 0
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

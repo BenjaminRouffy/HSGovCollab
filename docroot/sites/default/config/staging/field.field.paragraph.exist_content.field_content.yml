@@ -4,8 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_content
-    - node.type.event
-    - node.type.news
     - paragraphs.paragraphs_type.exist_content
 id: paragraph.exist_content.field_content
 field_name: field_content
@@ -18,13 +16,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: views
   handler_settings:
-    target_bundles:
-      event: event
-      news: news
-    sort:
-      field: _none
-    auto_create: false
-    auto_create_bundle: event
+    view:
+      view_name: time_line_exist_content_
+      display_name: entity_reference_1
+      arguments: {  }
 field_type: entity_reference

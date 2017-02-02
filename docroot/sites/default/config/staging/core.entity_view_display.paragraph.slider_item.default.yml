@@ -6,8 +6,6 @@ dependencies:
     - field.field.paragraph.slider_item.field_content_image
     - field.field.paragraph.slider_item.field_description
     - paragraphs.paragraphs_type.slider_item
-  module:
-    - image_url_formatter
 id: paragraph.slider_item.default
 targetEntityType: paragraph
 bundle: slider_item
@@ -17,11 +15,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      url_type: '1'
-      image_style: ''
-      image_link: ''
+      view_mode: file_uri
+      link: false
     third_party_settings: {  }
-    type: image_url
+    type: entity_reference_entity_view
   field_description:
     weight: 0
     label: hidden

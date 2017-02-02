@@ -14,23 +14,6 @@ label: 'Basic page'
 variant: panels_variant
 variant_settings:
   blocks:
-    001ee8f4-f9cf-4ad0-93b8-1fcc68931159:
-      id: 'entity_field:node:field_banner'
-      label: Banner
-      provider: ctools_block
-      label_display: '0'
-      formatter:
-        label: hidden
-        type: entity_reference_revisions_entity_view
-        settings:
-          view_mode: default
-        third_party_settings: {  }
-        weight: 0
-      region: top
-      weight: 0
-      uuid: 001ee8f4-f9cf-4ad0-93b8-1fcc68931159
-      context_mapping:
-        entity: node
     92764935-e47c-433b-9fd4-0ae17de4ca06:
       id: 'entity_view:node'
       label: 'Entity view (Content)'
@@ -59,26 +42,31 @@ variant_settings:
       uuid: d8d51977-af96-41e2-a7db-96c3be9316d4
       context_mapping:
         entity: node
-    c2bec112-82f3-4bc0-bad9-1d26c09ceb8f:
-      id: 'entity_field:node:field_time_line'
-      label: 'Time line'
-      provider: ctools_block
+    5c328cbf-86a0-44ea-aac5-d020cb151de8:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
       label_display: '0'
-      formatter:
-        label: hidden
-        type: Timeline_by_date
-        settings:
-          view_mode: default
-        third_party_settings: {  }
-        weight: 0
-      region: bottom
-      weight: -2
-      uuid: c2bec112-82f3-4bc0-bad9-1d26c09ceb8f
+      view_mode: banner
+      region: top
+      weight: -1
+      uuid: 5c328cbf-86a0-44ea-aac5-d020cb151de8
       context_mapping:
         entity: node
-    86533e5c-fe6a-4c64-bcf0-36454bbdf72c:
-      id: 'entity_field:node:field_bottom_link'
-      label: 'Bottom link'
+    2fd7a6ee-36de-4b8a-b73f-6358b09fb2f4:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: bottom
+      region: bottom
+      weight: -9
+      uuid: 2fd7a6ee-36de-4b8a-b73f-6358b09fb2f4
+      context_mapping:
+        entity: node
+    3748d910-c48c-4869-9c8b-97bcb2f56475:
+      id: 'entity_field:node:field_time_line'
+      label: 'Time line'
       provider: ctools_block
       label_display: '0'
       formatter:
@@ -89,8 +77,8 @@ variant_settings:
         third_party_settings: {  }
         weight: 0
       region: bottom
-      weight: -1
-      uuid: 86533e5c-fe6a-4c64-bcf0-36454bbdf72c
+      weight: 0
+      uuid: 3748d910-c48c-4869-9c8b-97bcb2f56475
       context_mapping:
         entity: node
   id: panels_variant

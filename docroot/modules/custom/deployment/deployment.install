@@ -519,4 +519,5 @@ function deployment_update_8026() {
   \Drupal::database()->delete('field_collection_item')->execute();
   \Drupal::database()->delete('field_collection_item_revision')->execute();
   \Drupal::service('module_installer')->uninstall(['field_collection']);
+  \Drupal::service('module_installer')->install(['linkit']);
 }

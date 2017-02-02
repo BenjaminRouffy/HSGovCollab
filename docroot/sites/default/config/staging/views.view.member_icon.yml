@@ -3,10 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_member_image
     - node.type.member
   module:
-    - image
     - node
     - user
 id: member_icon
@@ -59,10 +57,10 @@ display:
       row:
         type: fields
       fields:
-        field_member_image:
-          id: field_member_image
-          table: node__field_member_image
-          field: field_member_image
+        title:
+          id: title
+          table: node_field_data
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
@@ -107,12 +105,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: image
+          click_sort_column: value
+          type: string
           settings:
-            image_style: ''
-            image_link: ''
-          group_column: ''
+            link_to_entity: false
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -122,6 +119,8 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: node
+          entity_field: title
           plugin_id: field
       filters:
         status:
@@ -199,8 +198,7 @@ display:
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:field.storage.node.field_member_image'
+      tags: {  }
   entity_reference_member_icon:
     display_plugin: entity_reference
     id: entity_reference_member_icon
@@ -212,7 +210,7 @@ display:
         type: entity_reference
         options:
           search_fields:
-            field_member_image: field_member_image
+            title: title
       pager:
         type: some
         options:
@@ -225,5 +223,4 @@ display:
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:field.storage.node.field_member_image'
+      tags: {  }

@@ -1,0 +1,60 @@
+diff --git a/paragraphs.install b/paragraphs.install
+index 4f43355..dc8ed76 100644
+--- a/paragraphs.install
++++ b/paragraphs.install
+@@ -10,6 +10,15 @@ use Drupal\field\Entity\FieldStorageConfig;
+ use Drupal\paragraphs\ParagraphStorageSchema;
+ 
+ /**
++ * Implements hook_install().
++ */
++function paragraphs_install() {
++  // Assign a weight 1 higher than content_translation to ensure paragraphs_module_implements_alter
++  // runs after content_translation_module_implements_alter.
++  module_set_weight('paragraphs', 11);
++}
++
++/**
+  * Add status field.
+  */
+ function paragraphs_update_8001() {
+@@ -165,3 +174,10 @@ function paragraphs_update_8008() {
+   // Regenerate entity type indexes.
+   $manager->updateEntityType($entity_type);
+ }
++
++/**
++ * Set the weight to 11 to override content_translation's hook_module_implements_alter implementation
++ */
++function paragraphs_update_8009() {
++  module_set_weight('paragraphs', 11);
++}
+\ No newline at end of file
+diff --git a/paragraphs.module b/paragraphs.module
+index 77d2ccc..00b32b3 100644
+--- a/paragraphs.module
++++ b/paragraphs.module
+@@ -146,6 +146,23 @@ function paragraphs_form_field_config_edit_form_alter(&$form,  \Drupal\Core\Form
+   );
+ }
+ 
++/**
++ * Implements hook_module_implements_alter().
++ *
++ * Our paragraphs_form_field_config_edit_form_alter() needs to be run after
++ * that of the content_translation module in order to see the current state
++ * of the translation field.
++ *
++ * The hook here can't be more specific, as the $hook that's passed in to this
++ * function is form_alter, and not form_FORM_ID_alter.
++ */
++function paragraphs_module_implements_alter(&$implementations, $hook) {
++  if ($hook == 'form_alter' && isset($implementations['paragraphs'])) {
++    $group = $implementations['paragraphs'];
++    unset($implementations['paragraphs']);
++    $implementations['paragraphs'] = $group;
++  }
++}
+ 
+ /**
+  * Implements hook_form_FORM_ID_alter().

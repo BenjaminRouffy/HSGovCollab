@@ -7,13 +7,7 @@
 
 <article{{ attributes }} role="article">
   <div class="post-info">
-    <time>
-      {{ content.field_date[0]['start_date'] }}
-      {% if content.field_date[0]['end_date'] %}
-        {{ content.field_date[0]['separator'] }}
-        {{ content.field_date[0]['end_date'] }}
-      {% endif %}
-    </time>
+    {{ content.field_date }}
     {#<span class="country"></span>#}
     {% if content.field_event_author|field_value %}
       <span class="author">{% trans %}By: {% endtrans %} {{ content.field_event_author|field_value }}</span>

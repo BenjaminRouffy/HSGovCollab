@@ -45,3 +45,38 @@
     border-color: $red;
   }
 }
+
+.accordion-button {
+  @include font-size(15.4);
+  background: $white;
+  border: 1px solid #75a8c0;
+  border-radius: 2px;
+  color: $navy-dark;
+  cursor: pointer;
+  font-family: $fira;
+  font-weight: 700;
+  height: 50px;
+  padding: 15px 50px 0 0;
+  position: relative;
+  text-align: center;
+  transition: box-shadow .2s ease;
+
+  &:after {
+    @include font-size(28);
+    content: "´";
+    color: $red;
+    font-family: $p4h;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: transform .2s ease;
+  }
+
+  &:hover {
+    box-shadow: 0 0 6px rgba($navy-dark, .38);
+
+    &:after {
+      transform: rotate(45deg);
+    }
+  }
+}

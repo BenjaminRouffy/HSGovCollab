@@ -1,0 +1,20 @@
+<div class="item news">
+  <a href="{{ url }}" rel="bookmark">
+    {% if content.field_image %}
+      <div class="image-wrapper">
+        {{ content.field_image|field_value }}
+      </div>
+    {% endif %}
+
+    {% if display_submitted %}
+      <div class="post-info">
+        <time datetime="{{ node.createdtime | date("Y-m-d") }}">{{ node.createdtime | format_date('time_line') }}</time>
+        {% if content.field_category|field_value %}
+          <span class="country">{% trans %} {% endtrans %} {{ content.field_category|field_value}}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <h2>{{ label }}</h2>
+  </a>
+</div>

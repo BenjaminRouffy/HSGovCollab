@@ -7,13 +7,7 @@
 
 <article{{ attributes }} role="article">
   <div class="post-info">
-    <time>
-      {{ content.field_date[0]['start_date'] }}
-      {% if content.field_date[0]['end_date'] %}
-        {{ content.field_date[0]['separator'] }}
-        {{ content.field_date[0]['end_date'] }}
-      {% endif %}
-    </time>
+    {{ content.field_date }}
     {#<span class="country"></span>#}
     {% if content.field_event_author|field_value %}
       <span class="author">{% trans %}By: {% endtrans %} {{ content.field_event_author|field_value }}</span>
@@ -61,10 +55,10 @@
       </div>
     {% endif %}
 
-    {% if content.signup_link %}
+    {% if content.field_event_link|field_value %}
       <div class="row sign-up">
-        <a href="{{ content.signup_link['#url'] }}" class="red-btn-link">
-          {{ content.signup_link['#title'] }}
+        <a href="{{ content.field_event_link[0]['#url'] }}" class="red-btn-link">
+          {{ content.field_event_link[0]['#title'] ? content.field_event_link[0]['#title'] : content.field_event_link[0]['#url'] }}
         </a>
       </div>
     {% endif %}
@@ -77,8 +71,4 @@
   {% endif %}
 
   {{ content.body }}
-
-  {% if content.field_event_link|field_value %}
-    {{ content.field_event_link|field_value }}
-  {% endif %}
 </article>

@@ -1151,33 +1151,54 @@ header .social-links .font-social-icon {
     margin: 10px auto; }
 
 .news-and-events-list {
-  font-size: 0rem;
-  margin: 0;
-  padding: 0; }
-  .news-and-events-list > li {
+  font-size: 0rem; }
+  .news-and-events-list .item {
     font-size: 0.9625rem;
-    border-bottom: 2px solid transparent;
     display: inline-block;
-    margin-bottom: 20px;
-    padding: 10px 10px 30px;
-    -webkit-transition: background .2s ease;
-    transition: background .2s ease;
     vertical-align: top;
     width: 25%; }
-    .news-and-events-list > li:hover {
+    .news-and-events-list .item:first-child {
+      margin-bottom: 20px;
+      width: 50%; }
+    .news-and-events-list .item > a {
+      border-bottom: 2px solid transparent;
+      -webkit-transition: background .2s ease, border .2s ease;
+      transition: background .2s ease, border .2s ease; }
+      .news-and-events-list .item > a:hover {
+        border-color: #ea3a32; }
+  .news-and-events-list .news > a {
+    padding: 10px 10px 30px; }
+    .news-and-events-list .news > a:hover {
       background: #fff;
       border-color: #ea3a32; }
-    .news-and-events-list > li:first-child {
-      width: 50%; }
+  .news-and-events-list .event {
+    padding: 10px; }
+    .news-and-events-list .event > a {
+      background: rgba(234, 58, 50, 0.09) url(../images/calendar-icon.svg) 20px 40px no-repeat;
+      background-size: 41px;
+      padding: 40px 20px 40px 71px; }
+      .news-and-events-list .event > a:hover {
+        background-color: rgba(234, 58, 50, 0.07);
+        border-color: #ea3a32; }
+  .news-and-events-list a {
+    display: block;
+    text-decoration: none; }
+  .news-and-events-list .image-wrapper {
+    margin-bottom: 20px;
+    overflow: hidden; }
+  .news-and-events-list img {
+    -webkit-transition: -webkit-transform .4s ease;
+    transition: -webkit-transform .4s ease;
+    transition: transform .4s ease;
+    transition: transform .4s ease, -webkit-transform .4s ease; }
+    .news-and-events-list img:hover {
+      -webkit-transform: scale(1.06);
+              transform: scale(1.06); }
   .news-and-events-list .post-info {
-    font-size: 0.7875rem; }
-    .news-and-events-list .post-info a {
-      color: #4c7e96;
-      text-decoration: none; }
-      .news-and-events-list .post-info a:hover {
-        color: #ea3a32; }
+    font-size: 0.7875rem;
+    margin: 0; }
   .news-and-events-list h2 {
-    font-size: 1.0125rem;
+    font-size: 1.05rem;
     font-weight: 400;
     letter-spacing: .5px;
     line-height: 25px;
@@ -1593,10 +1614,13 @@ footer {
   color: #4c7e96;
   font-family: "Fira Sans", sans-serif;
   margin-bottom: 20px; }
-  .post-info > *:not(:last-child):after {
-    content: "|";
-    font-weight: normal;
-    margin: 0 2px 0 6px; }
+  .post-info > *:not(:last-child) {
+    display: inline-block;
+    vertical-align: top; }
+    .post-info > *:not(:last-child):after {
+      content: "|";
+      font-weight: normal;
+      margin: 0 2px 0 6px; }
   .post-info time,
   .post-info .country {
     font-weight: 700; }

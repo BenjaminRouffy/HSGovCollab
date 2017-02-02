@@ -573,44 +573,79 @@
 
 .news-and-events-list {
   @include font-size(0);
-  margin: 0;
-  padding: 0;
 
-  > li {
+  .item {
     @include font-size(15.4);
-    border-bottom: 2px solid transparent;
     display: inline-block;
-    margin-bottom: 20px;
-    padding: 10px 10px 30px;
-    transition: background .2s ease;
     vertical-align: top;
     width: 25%;
 
-    &:hover {
-      background: $white;
-      border-color: $red;
+    &:first-child {
+      margin-bottom: 20px;
+      width: 50%;
     }
 
-    &:first-child {
-      width: 50%;
+    > a {
+      border-bottom: 2px solid transparent;
+      transition: background .2s ease, border .2s ease;
+
+      &:hover {
+        border-color: $red;
+      }
+    }
+  }
+
+  .news {
+    > a {
+      padding: 10px 10px 30px;
+
+      &:hover {
+        background: $white;
+        border-color: $red;
+      }
+    }
+  }
+
+  .event {
+    padding: 10px;
+
+    > a {
+      background: rgba($red, .09) url(../images/calendar-icon.svg) 20px 40px no-repeat;
+      background-size: 41px;
+      padding: 40px 20px 40px 71px;
+
+      &:hover {
+        background-color: rgba($red, .07);;
+        border-color: $red;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+
+  .image-wrapper {
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  img {
+    transition: transform .4s ease;
+
+    &:hover {
+      transform: scale(1.06);
     }
   }
 
   .post-info {
     @include font-size(12.6);
-
-    a {
-      color: $navy;
-      text-decoration: none;
-
-      &:hover {
-        color: $red;
-      }
-    }
+    margin: 0;
   }
 
   h2 {
-    @include font-size(16.2);
+    @include font-size(16.8);
     font-weight: 400;
     letter-spacing: .5px;
     line-height: 25px;

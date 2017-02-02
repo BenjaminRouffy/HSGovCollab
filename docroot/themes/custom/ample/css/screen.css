@@ -343,6 +343,10 @@ img {
         content: 'T';
         font-family: P4h, sans-serif;
         margin-left: 4px; }
+  .header-static .main-menu ul:not(.contextual-links) {
+    font-size: 0rem; }
+    .header-static .main-menu ul:not(.contextual-links) .active a {
+      border-bottom: 2px solid #ea3a32; }
   .main-menu ul:not(.contextual-links) a {
     font-size: 0.875rem;
     color: #283b44;

@@ -28,7 +28,7 @@ class NextPreviousAccessBlock extends BlockBase {
     $links[] = $this->generateNextPrevious($node, 'prev');
     $links[] = $this->generateNextPrevious($node);
 
-    if (!empty($links)) {
+    if (!(empty($links[0]) && empty($links[1]))) {
       $links['#attributes'] = [
         'class' => [
           'node-pager',

@@ -1,0 +1,39 @@
+uuid: e5064c64-ee21-4081-96ff-c98e92da2b1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.member_icons
+    - field.field.node.member.body
+    - field.field.node.member.field_content_paragraph
+    - field.field.node.member.field_country
+    - field.field.node.member.field_join_block
+    - field.field.node.member.field_member_category
+    - field.field.node.member.field_member_image
+    - field.field.node.member.field_member_link
+    - node.type.member
+  module:
+    - image
+    - user
+id: node.member.member_icons
+targetEntityType: node
+bundle: member
+mode: member_icons
+content:
+  field_member_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: content
+    third_party_settings: {  }
+    type: image
+hidden:
+  body: true
+  field_content_paragraph: true
+  field_country: true
+  field_join_block: true
+  field_member_category: true
+  field_member_link: true
+  langcode: true
+  links: true

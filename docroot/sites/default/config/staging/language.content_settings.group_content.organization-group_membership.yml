@@ -1,0 +1,16 @@
+uuid: dc98767b-06ad-4932-b5b3-64a4741325c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.organization-group_membership
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: group_content.organization-group_membership
+target_entity_type_id: group_content
+target_bundle: organization-group_membership
+default_langcode: site_default
+language_alterable: false

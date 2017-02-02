@@ -14,8 +14,8 @@ entity_type: block_content
 bundle: member_icons
 label: 'Member Icons'
 description: ''
-required: false
-translatable: true
+required: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -27,4 +27,34 @@ settings:
       member_icon:
         enabled: true
         weight: 2
+      content_image:
+        weight: 12
+        enabled: false
+      content_text:
+        weight: 13
+        enabled: false
+      custom_content:
+        weight: 14
+        enabled: false
+      exist_content:
+        weight: 15
+        enabled: false
+      infographic:
+        weight: 16
+        enabled: false
+      link:
+        weight: 17
+        enabled: false
+      slider:
+        weight: 19
+        enabled: false
+      slider_item:
+        weight: 20
+        enabled: false
+      time_line:
+        weight: 21
+        enabled: false
+      video:
+        weight: 22
+        enabled: false
 field_type: entity_reference_revisions

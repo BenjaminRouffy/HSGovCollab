@@ -1,13 +1,10 @@
-uuid: 81c74501-dee8-4eb7-8cc4-c533d61cf69c
+uuid: 8674dda4-9be8-429c-a271-cdcd4ac98eca
 langcode: en
 status: true
 dependencies:
   config:
     - block_content.type.member_icons
     - field.storage.block_content.field_member_icons
-    - paragraphs.paragraphs_type.member_icon
-  module:
-    - entity_reference_revisions
 id: block_content.member_icons.field_member_icons
 field_name: field_member_icons
 entity_type: block_content
@@ -15,46 +12,14 @@ bundle: member_icons
 label: 'Member Icons'
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph'
+  handler: views
   handler_settings:
-    target_bundles:
-      member_icon: member_icon
-    target_bundles_drag_drop:
-      member_icon:
-        enabled: true
-        weight: 2
-      content_image:
-        weight: 12
-        enabled: false
-      content_text:
-        weight: 13
-        enabled: false
-      custom_content:
-        weight: 14
-        enabled: false
-      exist_content:
-        weight: 15
-        enabled: false
-      infographic:
-        weight: 16
-        enabled: false
-      link:
-        weight: 17
-        enabled: false
-      slider:
-        weight: 19
-        enabled: false
-      slider_item:
-        weight: 20
-        enabled: false
-      time_line:
-        weight: 21
-        enabled: false
-      video:
-        weight: 22
-        enabled: false
-field_type: entity_reference_revisions
+    view:
+      view_name: member_icon
+      display_name: entity_reference_member_icon
+      arguments: {  }
+field_type: entity_reference

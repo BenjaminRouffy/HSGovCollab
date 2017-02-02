@@ -65,6 +65,11 @@ function ample_theme_suggestions_alter(array &$suggestions, array $variables, $h
       }
     }
   }
+  elseif ($variables['theme_hook_original'] == 'field') {
+    $suggestions[] = "{$hook}__{$variables['element']['#entity_type']}__{$variables['element']['#field_name']}__{$variables['element']['#bundle']}__{$variables['element']['#view_mode']}";
+    //$variables['element']['#view_mode']
+  }
+
 }
 
 /**

@@ -1,0 +1,47 @@
+.view-news-and-events {
+  .wrapper-filters {
+    display: flex;
+
+    > div {
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 100%;
+    }
+  }
+
+  fieldset {
+    margin: 0;
+  }
+
+  .fieldset-wrapper {
+    background: $white;
+    box-shadow: 0 0 6px rgba($black, .09);
+    margin: 0 10px 10px;
+    padding: 30px 30px 45px;
+  }
+
+  .form-checkboxes {
+    overflow: hidden;
+
+    .form-item {
+      float: left;
+      padding: 0 10px;
+      width: 16.6%;
+    }
+
+    .form-checkbox {
+      display: inline-block;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    label {
+      @include font-size(15.4);
+      display: inline-block;
+      font-family: $fira;
+      letter-spacing: normal;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+  }
+}

@@ -1217,8 +1217,6 @@ header {
       vertical-align: top; }
 
 .header-fixed {
-  background: #e9ecee;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
   z-index: 400; }
@@ -1255,12 +1253,15 @@ header {
       padding: 20px 5px; }
 
 .bottom-head {
-  margin: 0 auto;
-  max-width: 1260px;
-  min-height: 60px;
-  padding-top: 20px; }
-  .bottom-head:empty {
-    display: none; }
+  background: #e9ecee;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+  .bottom-head .wrapper {
+    margin: 0 auto;
+    max-width: 1260px;
+    min-height: 60px;
+    padding-top: 20px; }
+    .bottom-head .wrapper:empty {
+      display: none; }
 
 footer {
   font-size: 0.7875rem;

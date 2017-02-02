@@ -65,6 +65,11 @@ function ample_theme_suggestions_alter(array &$suggestions, array $variables, $h
       }
     }
   }
+  elseif ($variables['theme_hook_original'] == 'field') {
+    $suggestions[] = "{$hook}__{$variables['element']['#entity_type']}__{$variables['element']['#field_name']}__{$variables['element']['#bundle']}__{$variables['element']['#view_mode']}";
+    //$variables['element']['#view_mode']
+  }
+
 }
 
 /**
@@ -85,7 +90,7 @@ function ample_preprocess_field(array &$variables) {
  */
 function ample_preprocess_links(array &$variables) {
   if ($variables['theme_hook_original'] === 'links__language_block') {
-    // According to the design, we need to change the links of the navigation block 
+    // According to the design, we need to change the links of the navigation block
     // to the two characters instead of the language name.
     foreach ($variables['links'] as $key => $language) {
       $variables['links'][$key]['link']['#title'] = substr($language['link']['#title'], 0, 2);

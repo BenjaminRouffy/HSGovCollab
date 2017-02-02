@@ -74,7 +74,7 @@
 
   Drupal.behaviors.anchorLink = {
     attach: function(context, settings) {
-      var $bottomHead = $('.bottom-head', context);
+      var $bottomHead = $('.bottom-head .wrapper', context);
       var $anchorLink = $('[data-anchor-id]', context);
 
       if ($anchorLink.length && $anchorLink.length > 1) {

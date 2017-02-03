@@ -1,0 +1,9 @@
+entity.group.canonical:
+  path: '/group/{group}'
+  defaults:
+    _entity_view: 'group.full'
+    _title: 'Group'
+    _title_callback: '\Drupal\country\Controller\CountryGroupMembershipController::groupTitle'
+  requirements:
+    _group_member: 'TRUE'
+    group: \d+

@@ -20,35 +20,17 @@ two_column:
      label: Left sidebar
     right_sidebar:
      label: Right sidebar
-section_layout:
-  label: Section layout
+stacked:
+  label: Stacked
   category: Ample
-  template: templates/page_layouts/section-layout
+  template: templates/page_layouts/stacked
   regions:
-    top_banner:
-      label: Top banner
-    content1:
-      label: Content (Node 1)
-    right_sidebar1:
-      label: Right sidebar (Node 1)
-    banner1:
+    banner:
       label: Banner
-    content2:
-      label: Content (Node 2)
-    right_sidebar2:
-      label: Right sidebar (Node 2)
-    banner2:
-      label: Banner
-    content3:
-      label: Content (Node 3)
-    right_sidebar3:
-      label: Right sidebar (Node 3)
-    banner3:
-      label: Banner
-    content4:
-      label: Content (Node 4)
-    right_sidebar4:
-      label: Right sidebar (Node 4)
+    content:
+      label: Content
+    bottom:
+      label: Bottom
 separate_column:
   label: Separate column
   category: Ample

@@ -1,0 +1,20 @@
+uuid: a903ffaa-9b03-4c41-bfad-014091fde1cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - group
+id: group.field_join_block
+field_name: field_join_block
+entity_type: group
+type: entity_reference
+settings:
+  target_type: block_content
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

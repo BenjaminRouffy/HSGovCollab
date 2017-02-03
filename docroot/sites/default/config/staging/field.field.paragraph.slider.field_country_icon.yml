@@ -1,19 +1,19 @@
-uuid: 57749ba6-92e9-4a0b-9256-64a24c1d7177
+uuid: fa8a2eb1-ea03-4138-a4c7-42e38212dcb7
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_content_image
-    - paragraphs.paragraphs_type.slider_item
+    - field.storage.paragraph.field_country_icon
+    - paragraphs.paragraphs_type.slider
   module:
     - image
-id: paragraph.slider_item.field_content_image
-field_name: field_content_image
+id: paragraph.slider.field_country_icon
+field_name: field_country_icon
 entity_type: paragraph
-bundle: slider_item
-label: Image
+bundle: slider
+label: 'Country icon'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

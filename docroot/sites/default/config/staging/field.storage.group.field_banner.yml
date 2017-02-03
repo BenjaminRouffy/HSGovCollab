@@ -1,0 +1,21 @@
+uuid: b5f92a23-368d-40e6-8ff5-fb21249f46a4
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - group
+    - paragraphs
+id: group.field_banner
+field_name: field_banner
+entity_type: group
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

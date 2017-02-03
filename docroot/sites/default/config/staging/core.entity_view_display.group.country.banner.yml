@@ -1,0 +1,35 @@
+uuid: 7fb54b32-98a6-4a50-8d0e-3007e2f2115e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.banner
+    - field.field.group.country.field_banner
+    - field.field.group.country.field_content
+    - field.field.group.country.field_infographic
+    - field.field.group.country.field_summary
+    - group.type.country
+  module:
+    - entity_reference_revisions
+id: group.country.banner
+targetEntityType: group
+bundle: country
+mode: banner
+content:
+  field_banner:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: view_mode_banner
+      link: ''
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  field_content: true
+  field_infographic: true
+  field_summary: true
+  label: true
+  langcode: true
+  uid: true

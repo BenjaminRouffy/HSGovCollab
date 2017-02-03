@@ -1,0 +1,76 @@
+uuid: 0282c625-9132-4ed0-a1f6-b9379d2453cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.country.field_banner
+    - field.field.group.country.field_content
+    - field.field.group.country.field_infographic
+    - field.field.group.country.field_join_block
+    - field.field.group.country.field_summary
+    - group.type.country
+  module:
+    - paragraphs
+    - text
+id: group.country.default
+targetEntityType: group
+bundle: country
+mode: default
+content:
+  field_banner:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: country
+    third_party_settings: {  }
+  field_content:
+    type: entity_reference_paragraphs
+    weight: 6
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: private_content
+    third_party_settings: {  }
+  field_infographic:
+    type: entity_reference_paragraphs
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+  field_join_block:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_summary:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  label:
+    type: string_textfield
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  path: true
+  uid: true

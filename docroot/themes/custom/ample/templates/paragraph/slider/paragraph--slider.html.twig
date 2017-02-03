@@ -1,3 +1,11 @@
-<div class="slider-wrapper">
-  {{ content.field_slider|field_value }}
+<div class="slider-main">
+  <div class="content-slider-wrapper">
+    {{ content.field_slider.0 }}
+  </div>
+
+  {% if content.field_slider.1 is not empty %}
+    <div class="thumb-slider-wrapper">
+      {{ content.field_slider.1 }}
+    </div>
+  {% endif %}
 </div>

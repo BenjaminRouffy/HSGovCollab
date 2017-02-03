@@ -1475,6 +1475,16 @@ footer {
   .header-image .slider-wrapper {
     height: 500px; }
 
+.content-slider-wrapper,
+.thumb-slider-wrapper {
+  position: relative; }
+
+.content-slider-wrapper .owl-nav {
+  display: none; }
+
+.thumb-slider-wrapper .owl-nav.disabled {
+  display: block; }
+
 .slider-item-wrapper {
   background-position: 50%;
   background-repeat: no-repeat;
@@ -1500,6 +1510,8 @@ footer {
 
 .owl-nav {
   width: 100%; }
+  .owl-nav.disabled {
+    display: none; }
   .owl-nav > div {
     height: 50px;
     width: 50px;
@@ -1527,6 +1539,8 @@ footer {
   bottom: 0;
   text-align: center;
   width: 100%; }
+  .owl-dots.disabled {
+    display: none; }
   .owl-dots > div {
     height: 14px;
     width: 14px;

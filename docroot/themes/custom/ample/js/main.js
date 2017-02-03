@@ -129,4 +129,33 @@
     }
   };
 
+  Drupal.behaviors.thumbCarousel = {
+    attach: function(context, settings) {
+      $('.slider-main').each(function(i, el) {
+        var $slider = $(el).find('.content-slider-wrapper', context);
+        var $thumbs = $(el).find('.thumb-slider-wrapper', context);
+
+        $thumbs.owlCarousel({
+          loop: true,
+          items: 3,
+          dots: false,
+          nav: true,
+          smartSpeed: 500
+        });
+
+        $slider.owlCarousel({
+          loop: true,
+          items: 1,
+          smartSpeed: 500,
+          dots: false,
+          nav: true
+        });
+
+        $thumbs.on('changed.owl.carousel',function(property) {
+          $slider.trigger('to.owl.carousel', [property.item.index + 1, 500, false]);
+        });
+      });
+    }
+  };
+
 })(jQuery, Drupal);

@@ -35,13 +35,17 @@ header {
       padding: 32px 5px 15px;
       text-decoration: none;
 
-      &.is-active {
-        color: $red-dark;
-      }
-
       &:hover {
         background: rgba($navy, .08);
         opacity: .7;
+      }
+    }
+  }
+
+  .links {
+    a {
+      &.is-active {
+        color: $red-dark;
       }
     }
   }

@@ -13,5 +13,7 @@
 </section>
 
 {% if content.bottom|without('#prefix', '#suffix') is not empty %}
-  {{ content.bottom|without('#prefix', '#suffix') }}
+  <div class="full-width">
+    {{ content.bottom|without('#prefix', '#suffix') }}
+  </div>
 {% endif %}

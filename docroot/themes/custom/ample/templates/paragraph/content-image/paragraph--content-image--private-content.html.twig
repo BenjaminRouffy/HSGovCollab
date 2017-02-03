@@ -1,0 +1,11 @@
+{% if private_content is null %}
+  <div class="fullcontent-image">
+    {{ content.field_content_image|field_value }}
+
+    {% if content.field_description %}
+      <p class="image-text">
+        {{ content.field_description|field_value }}
+      </p>
+    {% endif %}
+  </div>
+{% endif %}

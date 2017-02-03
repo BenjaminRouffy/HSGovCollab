@@ -1,0 +1,13 @@
+{% if private_content is null %}
+  {% if paragraph.field_content_text.summary|raw %}
+    <div class="summary-text">
+      <p>
+        {{ paragraph.field_content_text.summary|raw }}
+      </p>
+    </div>
+  {% endif %}
+
+  {% if content.field_content_text|field_value %}
+    {{ content.field_content_text|field_value }}
+  {% endif %}
+{% endif %}

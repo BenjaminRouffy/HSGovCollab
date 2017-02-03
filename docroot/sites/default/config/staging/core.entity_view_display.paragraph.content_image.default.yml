@@ -24,14 +24,6 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
-  field_country_icon:
-    weight: 3
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
   field_description:
     weight: 1
     label: hidden
@@ -41,7 +33,7 @@ content:
     type: string
   field_private_content:
     weight: 2
-    label: above
+    label: hidden
     settings:
       format: default
       format_custom_false: ''
@@ -50,5 +42,6 @@ content:
     type: boolean
 hidden:
   created: true
+  field_country_icon: true
   field_view_mode: true
   uid: true

@@ -1,0 +1,39 @@
+uuid: 120b5c00-0867-440b-b49b-db65f391216a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.country
+    - field.field.paragraph.slider.field_country_icon
+    - field.field.paragraph.slider.field_slider
+    - field.field.paragraph.slider.field_view_mode
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.slider
+  module:
+    - entity_reference_revisions
+    - image
+id: paragraph.slider.country
+targetEntityType: paragraph
+bundle: slider
+mode: country
+content:
+  field_country_icon:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
+  field_slider:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_view_mode: true
+  uid: true

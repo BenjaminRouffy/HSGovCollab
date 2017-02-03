@@ -1,0 +1,48 @@
+uuid: f95e10ae-eaab-483d-b649-030b81a5b2ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.country
+    - field.field.paragraph.content_image.field_content_image
+    - field.field.paragraph.content_image.field_country_icon
+    - field.field.paragraph.content_image.field_description
+    - field.field.paragraph.content_image.field_private_content
+    - field.field.paragraph.content_image.field_view_mode
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.content_image
+  module:
+    - image
+id: paragraph.content_image.country
+targetEntityType: paragraph
+bundle: content_image
+mode: country
+content:
+  field_content_image:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: file_uri
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_country_icon:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
+  field_description:
+    type: string
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_private_content: true
+  field_view_mode: true
+  uid: true

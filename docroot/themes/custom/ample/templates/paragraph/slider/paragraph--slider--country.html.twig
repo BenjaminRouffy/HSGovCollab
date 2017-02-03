@@ -1,0 +1,23 @@
+<div class="slider-wrapper country-slider">
+  {% for key, item in content.field_slider %}
+    {% if key|first != '#'  %}
+      <div class="slider-item-wrapper{{ key == 0 ? ' first-slide' : '' }}">
+        {% if key == 0 %}
+          <div class="country-icon-wrapper">
+            {% if content.field_country_icon|field_value %}
+              {{ content.field_country_icon|field_value }}
+            {% else %}
+              <img src="/{{ base_path ~ directory }}/images/default_country_icon.png">
+            {% endif %}
+
+            <h1 role="heading">
+              {{ group_label }}
+            </h1>
+          </div>
+        {% endif %}
+
+        {{ item }}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.file.document.field_category
     - file_entity.type.document
 id: file.document.default
 targetEntityType: file

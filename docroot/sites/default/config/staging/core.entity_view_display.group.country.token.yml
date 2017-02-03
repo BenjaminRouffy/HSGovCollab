@@ -1,0 +1,24 @@
+uuid: 3c744df9-9e26-4c7b-af6a-de5268fe015e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.token
+    - group.type.country
+id: group.country.token
+targetEntityType: group
+bundle: country
+mode: token
+content:
+  label:
+    type: string
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  langcode: true
+  uid: true

@@ -1,25 +1,24 @@
-uuid: 741257ad-f56b-4c3a-b9cf-de18445a9f4a
+uuid: 63958784-4965-4afd-9089-2acf0f12d42b
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.private_content
     - entity_browser.browser.browse_files_modal
     - field.field.paragraph.content_image.field_content_image
-    - field.field.paragraph.content_image.field_country_icon
     - field.field.paragraph.content_image.field_description
     - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
   module:
     - entity_browser
-    - view_mode_selector
-id: paragraph.content_image.default
+id: paragraph.content_image.private_content
 targetEntityType: paragraph
 bundle: content_image
-mode: default
+mode: private_content
 content:
   field_content_image:
-    weight: 0
+    weight: 1
     settings:
       entity_browser: browse_files_modal
       field_widget_remove: true
@@ -31,24 +30,25 @@ content:
     third_party_settings: {  }
     type: entity_browser_file
   field_description:
-    weight: 1
+    weight: 2
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_view_mode:
-    type: view_mode_selector_select
-    weight: 3
-    settings: {  }
+  field_private_content:
+    weight: 0
+    settings:
+      display_label: true
     third_party_settings: {  }
+    type: boolean_checkbox
   translation:
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
   field_country_icon: true
-  field_private_content: true
+  field_view_mode: true
   status: true
   uid: true

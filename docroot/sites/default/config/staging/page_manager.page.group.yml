@@ -1,0 +1,16 @@
+uuid: b20d62ee-4e8c-4e4d-986e-cf642deed58d
+langcode: en
+status: true
+dependencies: {  }
+id: group
+label: Group
+description: ''
+use_admin_theme: false
+path: '/group/{group}'
+access_logic: and
+access_conditions: {  }
+parameters:
+  group:
+    machine_name: group
+    type: 'entity:group'
+    label: Group

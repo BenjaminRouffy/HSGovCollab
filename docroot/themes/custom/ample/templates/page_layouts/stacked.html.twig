@@ -1,0 +1,17 @@
+{% if content.banner|without('#prefix', '#suffix') is not empty %}
+  <div class="top-banner-region">
+    {{ content.banner|without('#prefix', '#suffix') }}
+  </div>
+{% endif %}
+
+<section class="content-container content-with-sidebar">
+  <div class="region-wrapper">
+    <section class="content">
+      {{ content.content|without('#prefix', '#suffix') }}
+    </section>
+  </div>
+</section>
+
+{% if content.bottom|without('#prefix', '#suffix') is not empty %}
+  {{ content.bottom|without('#prefix', '#suffix') }}
+{% endif %}

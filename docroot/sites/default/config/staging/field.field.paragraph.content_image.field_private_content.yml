@@ -1,0 +1,23 @@
+uuid: c5a16ddb-cfbf-4b17-ad02-2a22434f0bd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_private_content
+    - paragraphs.paragraphs_type.content_image
+id: paragraph.content_image.field_private_content
+field_name: field_private_content
+entity_type: paragraph
+bundle: content_image
+label: 'Private content'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean

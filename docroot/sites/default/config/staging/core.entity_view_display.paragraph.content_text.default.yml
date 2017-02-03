@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.content_text.field_content_text
+    - field.field.paragraph.content_text.field_private_content
     - field.field.paragraph.content_text.field_title
     - paragraphs.paragraphs_type.content_text
   module:
@@ -19,6 +20,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  field_private_content:
+    weight: 2
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
   field_title:
     weight: 0
     label: hidden

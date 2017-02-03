@@ -13,6 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.content_image
   module:
     - entity_browser
+    - view_mode_selector
 id: paragraph.content_image.private_content
 targetEntityType: paragraph
 bundle: content_image
@@ -43,13 +44,17 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-  translation:
+  field_view_mode:
+    type: view_mode_selector_select
     weight: 3
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 4
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
   field_country_icon: true
-  field_view_mode: true
   status: true
   uid: true

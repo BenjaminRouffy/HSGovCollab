@@ -1,33 +1,36 @@
-uuid: e1600eab-f730-4f6a-9733-5f6e21db94cf
+uuid: 22feb776-8c04-43f6-894f-01c8ea8258ea
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.private_content
     - field.field.paragraph.content_text.field_content_text
     - field.field.paragraph.content_text.field_private_content
     - field.field.paragraph.content_text.field_title
     - paragraphs.paragraphs_type.content_text
   module:
     - text
-id: paragraph.content_text.default
+id: paragraph.content_text.private_content
 targetEntityType: paragraph
 bundle: content_text
-mode: default
+mode: private_content
 content:
   field_content_text:
-    weight: 1
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_title:
-    weight: 0
+  field_private_content:
+    type: boolean
+    weight: 1
     label: hidden
     settings:
-      link_to_entity: false
+      format: default
+      format_custom_true: ''
+      format_custom_false: ''
     third_party_settings: {  }
-    type: string
 hidden:
   created: true
-  field_private_content: true
+  field_title: true
   uid: true

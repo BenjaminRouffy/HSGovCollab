@@ -6,14 +6,7 @@ dependencies:
     - field.storage.paragraph.field_content_image
     - paragraphs.paragraphs_type.slider_item
   module:
-    - content_translation
     - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      file: '0'
-      alt: '0'
-      title: '0'
 id: paragraph.slider_item.field_content_image
 field_name: field_content_image
 entity_type: paragraph
@@ -21,7 +14,7 @@ bundle: slider_item
 label: Image
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

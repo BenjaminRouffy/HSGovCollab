@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files_modal
     - field.field.paragraph.slider_item.field_content_image
     - field.field.paragraph.slider_item.field_description
-    - image.style.thumbnail
     - paragraphs.paragraphs_type.slider_item
   module:
-    - image
+    - entity_browser
 id: paragraph.slider_item.default
 targetEntityType: paragraph
 bundle: slider_item
@@ -17,10 +17,15 @@ content:
   field_content_image:
     weight: 1
     settings:
-      progress_indicator: throbber
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
       preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
+    type: entity_browser_file
   field_description:
     weight: 0
     settings:
@@ -28,6 +33,8 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  translation:
+    weight: 10
 hidden:
   created: true
   status: true

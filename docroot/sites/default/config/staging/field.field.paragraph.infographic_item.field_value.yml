@@ -1,0 +1,19 @@
+uuid: 0b9d28c5-5475-4bac-804e-6f19d3db6b8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_value
+    - paragraphs.paragraphs_type.infographic_item
+id: paragraph.infographic_item.field_value
+field_name: field_value
+entity_type: paragraph
+bundle: infographic_item
+label: Value
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

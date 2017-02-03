@@ -5,6 +5,8 @@
  * Admin Customizations.
  */
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 
 /**
  * Implements hook_form_alter().
@@ -12,5 +14,19 @@ use Drupal\Core\Form\FormStateInterface;
 function admin_customizations_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ('file_image_edit_form' === $form_id) {
     unset($form['uid'], $form['replace_upload']);
+  }
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function admin_customizations_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if (
+    $entity->getEntityTypeId() === 'file' &&
+    $entity->getMimeType() === 'image/svg+xml' &&
+    isset($build['uri'])
+  ) {
+    $build['uri'][0]['#theme'] = 'image';
+    unset($build['uri'][0]['#image_style']);
   }
 }

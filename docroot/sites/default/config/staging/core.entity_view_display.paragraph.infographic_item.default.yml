@@ -1,0 +1,46 @@
+uuid: 137105ed-1a17-4446-ba4e-e55abcaa2442
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.infographic_item.field_icon
+    - field.field.paragraph.infographic_item.field_infographic_description
+    - field.field.paragraph.infographic_item.field_title
+    - field.field.paragraph.infographic_item.field_value
+    - paragraphs.paragraphs_type.infographic_item
+id: paragraph.infographic_item.default
+targetEntityType: paragraph
+bundle: infographic_item
+mode: default
+content:
+  field_icon:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_infographic_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_value:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true

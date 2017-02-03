@@ -1,12 +1,13 @@
-uuid: 38bc802f-f708-4228-ab83-bebdfd4be761
+uuid: 67d685f0-845a-4c12-8815-b0e107038f80
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_infographic_item
     - paragraphs.paragraphs_type.infographic
+    - paragraphs.paragraphs_type.infographic_item
   module:
-    - field_collection
+    - entity_reference_revisions
 id: paragraph.infographic.field_infographic_item
 field_name: field_infographic_item
 entity_type: paragraph
@@ -14,10 +15,49 @@ bundle: infographic
 label: 'Infographic item'
 description: ''
 required: false
-translatable: true
-default_value:
-  - {  }
-  - {  }
+translatable: false
+default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: field_collection
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      infographic_item: infographic_item
+    target_bundles_drag_drop:
+      content_image:
+        weight: 13
+        enabled: false
+      content_text:
+        weight: 14
+        enabled: false
+      custom_content:
+        weight: 15
+        enabled: false
+      exist_content:
+        weight: 16
+        enabled: false
+      infographic:
+        weight: 17
+        enabled: false
+      infographic_item:
+        enabled: true
+        weight: 18
+      link:
+        weight: 19
+        enabled: false
+      member_icon:
+        weight: 20
+        enabled: false
+      slider:
+        weight: 21
+        enabled: false
+      slider_item:
+        weight: 22
+        enabled: false
+      time_line:
+        weight: 23
+        enabled: false
+      video:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

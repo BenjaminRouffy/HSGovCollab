@@ -1,0 +1,24 @@
+uuid: b30c84e5-80e3-4177-8de3-dd24fedd7e1a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: default
+label: Default
+description: ''
+attributes: {  }
+matchers:
+  7ca6bdbf-5291-4cee-aec2-8ee5b0925adb:
+    uuid: 7ca6bdbf-5291-4cee-aec2-8ee5b0925adb
+    id: 'entity:node'
+    weight: 0
+    settings:
+      result_description: ''
+      bundles:
+        basic_page: basic_page
+        event: event
+        member: member
+        news: news
+      group_by_bundle: false
+      include_unpublished: false

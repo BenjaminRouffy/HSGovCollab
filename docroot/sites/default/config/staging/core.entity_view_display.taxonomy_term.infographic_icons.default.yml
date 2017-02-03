@@ -1,0 +1,25 @@
+uuid: e3e13ce5-d3bd-4c41-a475-a784da5c5ffb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.infographic_icons.field_icon
+    - taxonomy.vocabulary.infographic_icons
+  module:
+    - image
+id: taxonomy_term.infographic_icons.default
+targetEntityType: taxonomy_term
+bundle: infographic_icons
+mode: default
+content:
+  field_icon:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  description: true
+  langcode: true

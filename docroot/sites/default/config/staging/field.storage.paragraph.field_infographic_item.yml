@@ -1,16 +1,17 @@
-uuid: 3d0a2021-ac87-4bc7-9983-60fb9a6175a2
+uuid: 20004790-513e-49da-94b8-9ce78ac4c5a9
 langcode: en
 status: true
 dependencies:
   module:
-    - field_collection
+    - entity_reference_revisions
     - paragraphs
 id: paragraph.field_infographic_item
 field_name: field_infographic_item
 entity_type: paragraph
-type: field_collection
-settings: {  }
-module: field_collection
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
 locked: false
 cardinality: -1
 translatable: true

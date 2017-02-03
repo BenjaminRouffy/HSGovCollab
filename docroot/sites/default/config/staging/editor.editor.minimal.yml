@@ -22,7 +22,7 @@ settings:
         -
           name: Links
           items:
-            - DrupalLink
+            - Linkit
             - DrupalUnlink
         -
           name: Lists
@@ -33,6 +33,7 @@ settings:
           name: Tools
           items:
             - Source
+            - Maximize
         -
           name: Media
           items:
@@ -42,6 +43,8 @@ settings:
       language_list: un
     stylescombo:
       styles: 'span.hash|Hash Tag'
+    linkit:
+      linkit_profile: default
 image_upload:
   status: false
   scheme: public

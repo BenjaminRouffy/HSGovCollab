@@ -8,7 +8,6 @@ use Drupal\Component\Utility\Xss;
 
 /**
  * Provides group membership route controllers.
- *
  */
 class CountryGroupMembershipController extends GroupMembershipController {
 
@@ -24,4 +23,5 @@ class CountryGroupMembershipController extends GroupMembershipController {
   public function groupTitle(GroupInterface $group) {
     return ['#markup' => $group->label(), '#allowed_tags' => Xss::getHtmlTagList()];
   }
+
 }

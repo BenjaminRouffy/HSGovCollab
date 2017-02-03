@@ -36,7 +36,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_category:
-    weight: 16
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -84,7 +84,7 @@ content:
     third_party_settings: {  }
     type: link_default
   field_organization:
-    weight: 17
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -114,20 +114,8 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 15
-    settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 13
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 14
+    settings: {  }
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -142,4 +130,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  promote: true
+  sticky: true
   uid: true

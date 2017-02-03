@@ -82,20 +82,8 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 9
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 10
+    settings: {  }
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -105,9 +93,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 12
+    weight: 10
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
+  promote: true
+  sticky: true
   uid: true

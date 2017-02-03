@@ -41,6 +41,7 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
     $options['type'] = array('default' => 'textfield');
     $options['granularity'] = array('default' => 'month');
     $options['year_range'] = array('default' => '-3:+0');
+    $options['from_unixtime'] = array('default' => TRUE);
 
     return $options;
   }
@@ -65,6 +66,11 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
       '#type' => 'radios',
       '#default_value' => $this->options['granularity'],
       '#options' => $this->granularityOptions(),
+    );
+    $form['from_unixtime'] = array(
+      '#title' => t('From Unixtime'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->options['from_unixtime'],
     );
     $form['year_range'] = array(
       '#title' => t('Year Range'),
@@ -174,8 +180,10 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
   protected function opSimple($field) {
     if ($this->value['value']) {
       $key = ':value' . rand(100, 999);
-      $granularity = $this->value['granularity'];
-      $this->query->addWhereExpression($this->options['group'], "$granularity(from_unixtime($field)) = $key", [$key => $this->value['value']]);
+      $granularity = $this->options['granularity'];
+      $from_unixtime = $this->options['from_unixtime'] ? 'from_unixtime' : '';
+
+      $this->query->addWhereExpression($this->options['group'], "$granularity($from_unixtime($field)) = $key", [$key => $this->value['value']]);
     }
   }
 

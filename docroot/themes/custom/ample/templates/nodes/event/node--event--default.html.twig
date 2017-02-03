@@ -57,7 +57,7 @@
 
     {% if content.field_event_link|field_value %}
       <div class="row sign-up">
-        <a href="{{ content.field_event_link[0]['#url'] }}" class="red-btn-link">
+        <a href="{{ content.field_event_link[0]['#url'] }}" target="_blank" class="red-btn-link">
           {{ content.field_event_link[0]['#title'] ? content.field_event_link[0]['#title'] : content.field_event_link[0]['#url'] }}
         </a>
       </div>

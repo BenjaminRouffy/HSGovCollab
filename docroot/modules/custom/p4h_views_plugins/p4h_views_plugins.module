@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Contains p4h_views_plugins.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function p4h_views_plugins_theme() {
+  \Drupal::moduleHandler()
+    ->loadInclude('p4h_views_plugins', 'inc', 'p4h_views_plugins.theme');
+  return [
+    'p4h_views_plugins' => [
+      'file' => 'p4h_views_plugins.theme.inc',
+      'template' => 'p4h_views_plugins',
+      'variables' => [
+        'tags' => [],
+        'options' => [],
+        'quantity' => 9,
+        'element' => 0,
+        'parameters' => []
+      ],
+    ],
+  ];
+}

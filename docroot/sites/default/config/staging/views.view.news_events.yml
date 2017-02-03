@@ -16,6 +16,7 @@ dependencies:
     - datetime_select
     - image
     - node
+    - p4h_views_plugins
     - taxonomy
     - user
 id: news_events
@@ -62,8 +63,8 @@ display:
             general:
               allow_secondary: false
               secondary_label: 'Advanced options'
-              autosubmit: false
-              autosubmit_hide: false
+              autosubmit: true
+              autosubmit_hide: true
             field_category_target_id:
               bef_format: bef
               more_options:
@@ -93,22 +94,22 @@ display:
                 rewrite:
                   filter_rewrite_values: ''
       pager:
-        type: mini
+        type: mini_with_items
         options:
-          items_per_page: 11
+          items_per_page: 7
           offset: 0
-          id: 0
-          total_pages: null
+          id: '0'
+          total_pages: ''
           tags:
             previous: ‹
             next: ›
           expose:
-            items_per_page: false
+            items_per_page: 0
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
+            items_per_page_options_all: 0
             items_per_page_options_all_label: '- All -'
-            offset: false
+            offset: 0
             offset_label: Offset
       style:
         type: default
@@ -495,6 +496,7 @@ display:
           type: select
           granularity: year
           year_range: '-3:+0'
+          from_unixtime: 0
           reduce_duplicates: false
           plugin_id: datetime
         field_content_date_value_1:
@@ -539,6 +541,7 @@ display:
           type: select
           granularity: month
           year_range: '-3:+3'
+          from_unixtime: 0
           plugin_id: datetime
       sorts:
         created:

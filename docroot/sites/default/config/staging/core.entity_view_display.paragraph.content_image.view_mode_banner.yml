@@ -1,11 +1,13 @@
 uuid: ba7be473-cd0d-43bb-85ac-24cc16ff8274
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_view_mode.paragraph.view_mode_banner
     - field.field.paragraph.content_image.field_content_image
+    - field.field.paragraph.content_image.field_country_icon
     - field.field.paragraph.content_image.field_description
+    - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
   module:
@@ -16,15 +18,23 @@ bundle: content_image
 mode: view_mode_banner
 content:
   field_content_image:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_country_icon:
+    type: entity_reference_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
   field_description:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       link_to_entity: false
@@ -32,5 +42,6 @@ content:
     type: string
 hidden:
   created: true
+  field_private_content: true
   field_view_mode: true
   uid: true

@@ -1,0 +1,55 @@
+uuid: 92bef6e6-0758-40ae-8072-38d9f621a03b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.country.field_banner
+    - field.field.group.country.field_content
+    - field.field.group.country.field_infographic
+    - field.field.group.country.field_join_block
+    - field.field.group.country.field_summary
+    - group.type.country
+  module:
+    - entity_reference_revisions
+    - text
+id: group.country.default
+targetEntityType: group
+bundle: country
+mode: default
+content:
+  field_content:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_infographic:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_summary:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  label:
+    type: string
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_join_block: true
+  langcode: true
+  uid: true

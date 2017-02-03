@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.content_text.field_content_text
+    - field.field.paragraph.content_text.field_private_content
     - field.field.paragraph.content_text.field_title
     - paragraphs.paragraphs_type.content_text
   module:
@@ -21,6 +22,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea_with_summary
+  field_private_content:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   translation:
     weight: 1
     settings: {  }

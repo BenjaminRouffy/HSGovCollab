@@ -5,7 +5,9 @@ dependencies:
   config:
     - entity_browser.browser.browse_files_modal
     - field.field.paragraph.content_image.field_content_image
+    - field.field.paragraph.content_image.field_country_icon
     - field.field.paragraph.content_image.field_description
+    - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
   module:
@@ -46,5 +48,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_country_icon: true
+  field_private_content: true
   status: true
   uid: true

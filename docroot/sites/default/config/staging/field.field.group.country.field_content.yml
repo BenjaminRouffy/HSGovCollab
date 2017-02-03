@@ -1,0 +1,65 @@
+uuid: 0802d7cd-63a9-448c-9a12-2fa5491382db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_content
+    - group.type.country
+    - paragraphs.paragraphs_type.content_image
+    - paragraphs.paragraphs_type.content_text
+  module:
+    - entity_reference_revisions
+id: group.country.field_content
+field_name: field_content
+entity_type: group
+bundle: country
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_image: content_image
+      content_text: content_text
+    target_bundles_drag_drop:
+      content_image:
+        enabled: true
+        weight: 13
+      content_text:
+        enabled: true
+        weight: 14
+      custom_content:
+        weight: 15
+        enabled: false
+      exist_content:
+        weight: 16
+        enabled: false
+      infographic:
+        weight: 17
+        enabled: false
+      infographic_item:
+        weight: 18
+        enabled: false
+      link:
+        weight: 19
+        enabled: false
+      member_icon:
+        weight: 20
+        enabled: false
+      slider:
+        weight: 21
+        enabled: false
+      slider_item:
+        weight: 22
+        enabled: false
+      time_line:
+        weight: 23
+        enabled: false
+      video:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

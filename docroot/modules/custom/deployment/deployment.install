@@ -522,3 +522,10 @@ function deployment_update_8026() {
   \Drupal::service('module_installer')->uninstall(['field_collection']);
   \Drupal::service('module_installer')->install(['linkit']);
 }
+
+/**
+ * Install module "Country".
+ */
+function deployment_update_8027() {
+  \Drupal::service('module_installer')->install(['country']);
+}

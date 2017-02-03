@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.content_image.field_content_image
+    - field.field.paragraph.content_image.field_country_icon
     - field.field.paragraph.content_image.field_description
+    - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
   module:
@@ -22,6 +24,14 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_country_icon:
+    weight: 3
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
   field_description:
     weight: 1
     label: hidden
@@ -29,6 +39,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_private_content:
+    weight: 2
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
 hidden:
   created: true
   field_view_mode: true

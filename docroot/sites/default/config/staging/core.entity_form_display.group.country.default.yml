@@ -7,9 +7,11 @@ dependencies:
     - field.field.group.country.field_content
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
+    - field.field.group.country.field_location
     - field.field.group.country.field_summary
     - group.type.country
   module:
+    - geolocation
     - paragraphs
     - text
 id: group.country.default
@@ -52,6 +54,34 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_location:
+    weight: 2
+    settings:
+      default_longitude: '13.4050'
+      default_latitude: '52.5200'
+      google_map_settings:
+        type: ROADMAP
+        zoom: '10'
+        mapTypeControl: 1
+        streetViewControl: 1
+        zoomControl: 1
+        scrollwheel: 1
+        gestureHandling: auto
+        draggable: 1
+        style: ''
+        height: 400px
+        width: 100%
+        info_auto_display: 1
+        disableAutoPan: 1
+        preferScrollingToZooming: 0
+        disableDoubleClickZoom: 0
+      auto_client_location: '0'
+      auto_client_location_marker: '0'
+      allow_override_map_settings: 0
+      populate_address_field: ''
+      target_address_field: null
+    third_party_settings: {  }
+    type: geolocation_googlegeocoder
   field_summary:
     weight: 4
     settings:
@@ -68,7 +98,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
 hidden:

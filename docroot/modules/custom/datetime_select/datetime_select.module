@@ -6,21 +6,3 @@
  */
 use Drupal\Core\Form\FormStateInterface;
 
-/**
- * Implements hook_form_alter().
- */
-function datetime_select_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ($form_id == 'views_exposed_form' &&
-    $form['#id'] == 'views-exposed-form-news-events-block-1'
-  ) {
-    $form['wrap'] = [
-      '#prefix' => '<div class="wrapper-filters">',
-      '#suffix' => '</div>',
-      '#weight' => -100,
-    ];
-    $form['wrap']['year'] = $form['year'];
-    $form['wrap']['month'] = $form['month'];
-    unset($form['year'], $form['month']);
-
-  }
-}

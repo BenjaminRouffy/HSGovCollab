@@ -46,3 +46,19 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
   }
 }
 
+/**
+ * Implements hook_views_plugins_filter_alter().
+ */
+function p4h_views_plugins_views_plugins_filter_alter(array &$plugins) {
+  $plugins['datetime']['class'] = 'Drupal\p4h_views_plugins\Plugin\views\filter\DateSelect';
+  $plugins['combine']['class'] = 'Drupal\p4h_views_plugins\Plugin\views\filter\CustomCombine';
+}
+
+/**
+ * Implements hook_better_exposed_filters_display_options_alter().
+ */
+function p4h_views_plugins_better_exposed_filters_display_options_alter(&$display_options, $filter) {
+  if (is_a($filter, 'Drupal\p4h_views_plugins\Plugin\views\filter\CustomCombine')) {
+    $display_options['bef_ul'] = t('Alphabet Filter');
+  }
+}

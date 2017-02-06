@@ -5,7 +5,10 @@ dependencies:
   config:
     - page_manager.page.news_events
     - views.view.news_events
+  content:
+    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
   module:
+    - block_content
     - panels
     - views
 id: news_events-panels_variant-0
@@ -25,6 +28,18 @@ variant_settings:
       uuid: f568fc3c-6722-4fcc-822a-490aefbdff1b
       context_mapping: {  }
       pager: view
+    395d3216-e01e-4e41-bc65-c6abe8906507:
+      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
+      label: 'Interested in becoming a member?'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: middle
+      weight: 1
+      uuid: 395d3216-e01e-4e41-bc65-c6abe8906507
+      context_mapping: {  }
   id: panels_variant
   uuid: eaeb3784-5374-4391-be51-155d735587eb
   label: null

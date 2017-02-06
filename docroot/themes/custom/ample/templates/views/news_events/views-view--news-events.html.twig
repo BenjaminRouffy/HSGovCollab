@@ -1,21 +1,22 @@
 {% set classes = [dom_id ? 'js-view-dom-id-' ~ dom_id] %}
 
-{% if header %}
-  {% if header_without_wrapper is not defined %}
-    <{{ header_tag|default('header') }}{{ header_classes }}>
-    {{ header }}
-    </{{ header_tag|default('header') }}>
-  {% else %}
-    {{ header }}
-  {% endif %}
-{% endif %}
-
 {% if without_wrapper is not defined %}
 <div{{ attributes.addClass(classes) }}>
 {% endif %}
-  {{ title_prefix }}
-  {{ title }}
-  {{ title_suffix }}
+  <div class="title-wrapper">
+    <h1>{{ view.getTitle()|raw }}</h1>
+    <div class="line"></div>
+  </div>
+
+  {% if header %}
+    {% if header_without_wrapper is not defined %}
+      <{{ header_tag|default('h2') }}{{ header_classes }}>
+      {{ header }}
+      </{{ header_tag|default('h2') }}>
+    {% else %}
+      {{ header }}
+    {% endif %}
+  {% endif %}
 
   {{ exposed }}
   {{ attachment_before }}

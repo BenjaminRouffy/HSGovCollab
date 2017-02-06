@@ -9,20 +9,11 @@ dependencies:
     - paragraphs.paragraphs_type.slider
   module:
     - entity_reference_revisions
-    - image
 id: paragraph.slider.default
 targetEntityType: paragraph
 bundle: slider
 mode: default
 content:
-  field_country_icon:
-    weight: 1
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
   field_slider:
     type: entity_reference_revisions_entity_view
     weight: 0
@@ -33,5 +24,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_country_icon: true
   field_view_mode: true
   uid: true

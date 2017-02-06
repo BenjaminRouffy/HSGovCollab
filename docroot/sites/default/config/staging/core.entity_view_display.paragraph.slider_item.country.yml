@@ -1,0 +1,32 @@
+uuid: 6ff9b5c6-1dd4-4bee-a5c8-0ab0616a01bc
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.country
+    - field.field.paragraph.slider_item.field_content_image
+    - field.field.paragraph.slider_item.field_description
+    - paragraphs.paragraphs_type.slider_item
+id: paragraph.slider_item.country
+targetEntityType: paragraph
+bundle: slider_item
+mode: country
+content:
+  field_content_image:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: file_uri
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_description:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true

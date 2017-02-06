@@ -529,3 +529,10 @@ function deployment_update_8026() {
 function deployment_update_8027() {
   \Drupal::service('module_installer')->install(['country']);
 }
+
+/**
+ * Install module "Geolocation".
+ */
+function deployment_update_8028() {
+  \Drupal::service('module_installer')->install(['geolocation']);
+}

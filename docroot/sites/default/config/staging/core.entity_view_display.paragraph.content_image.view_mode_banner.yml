@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.view_mode_banner
     - field.field.paragraph.content_image.field_content_image
-    - field.field.paragraph.content_image.field_country_icon
     - field.field.paragraph.content_image.field_description
     - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
@@ -25,14 +24,6 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
-  field_country_icon:
-    type: entity_reference_entity_view
-    weight: 0
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
   field_description:
     weight: 2
     label: hidden

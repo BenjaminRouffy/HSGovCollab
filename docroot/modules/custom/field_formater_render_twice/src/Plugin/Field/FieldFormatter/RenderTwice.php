@@ -89,11 +89,9 @@ class RenderTwice extends EntityReferenceRevisionsEntityFormatter {
 
     return [
       [
-        '#type' => 'container',
         $elements,
       ],
       [
-        '#type' => 'container',
         $elements_twice,
       ]
     ];

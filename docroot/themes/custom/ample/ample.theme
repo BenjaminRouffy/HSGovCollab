@@ -7,8 +7,11 @@
 
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
 use Drupal\taxonomy\Entity\Term;
 use \Drupal\paragraphs\Entity\Paragraph;
+use \Drupal\group\Entity\Group;
 use Drupal\views\ViewExecutable;
 
 /**
@@ -103,10 +106,26 @@ function ample_preprocess_paragraph(array &$variables) {
     in_array($variables['paragraph']->bundle(), ['slider', 'content_image']) &&
     'country' === $variables['view_mode']
   ) {
+    /* @var Group $entity */
     $entity = $variables['paragraph']->getParentEntity();
 
     if ('group' === $entity->getEntityTypeId()) {
       $variables['group_label'] = $entity->label();
+    }
+
+    if ($entity->hasField('field_country_icon')) {
+      $icon = $entity->get('field_country_icon')->getValue();
+
+      if (is_array($icon) && !empty($icon)) {
+        /* @var File $file */
+        $icon = File::load($icon[0]['target_id'])->getFileUri();
+        $style = ImageStyle::load('100x100');
+        $variables['country_icon'] = $style->buildUrl($icon);
+      }
+      else {
+        $theme = \Drupal::theme()->getActiveTheme();
+        $variables['country_icon'] = file_url_transform_relative(file_create_url($theme->getPath() . '/images/default_country_icon.png'));
+      }
     }
   }
 
@@ -114,7 +133,9 @@ function ample_preprocess_paragraph(array &$variables) {
     $private = $variables['paragraph']->get('field_private_content')->getValue();
 
     if (is_array($private)) {
-      if (!empty(reset($private)['value']) && \Drupal::currentUser()->isAnonymous()) {
+      $user = \Drupal::currentUser();
+
+      if (!empty(reset($private)['value']) && !$user->hasPermission('view private content')) {
         $variables['private_content'] = TRUE;
       }
     }

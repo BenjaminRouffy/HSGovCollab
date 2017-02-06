@@ -6,10 +6,9 @@ dependencies:
     - core.entity_view_mode.paragraph.view_mode_thumbnail
     - field.field.paragraph.slider_item.field_content_image
     - field.field.paragraph.slider_item.field_description
-    - image.style.60x60
     - paragraphs.paragraphs_type.slider_item
   module:
-    - image
+    - image_url_formatter
 id: paragraph.slider_item.view_mode_thumbnail
 targetEntityType: paragraph
 bundle: slider_item
@@ -21,8 +20,9 @@ content:
     settings:
       image_style: 60x60
       image_link: ''
+      url_type: ''
     third_party_settings: {  }
-    type: image
+    type: image_url
 hidden:
   created: true
   field_description: true

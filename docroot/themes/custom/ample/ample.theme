@@ -58,6 +58,7 @@ function ample_theme_suggestions_alter(array &$suggestions, array $variables, $h
   /* @var ViewExecutable $view */
   if (
     (strpos($hook, 'views_') !== FALSE) &&
+    (isset($variables['view'])) &&
     ($view = $variables['view']) &&
     (!empty($view->storage))
   ) {

@@ -6,8 +6,15 @@ dependencies:
     - field.storage.group.field_country_icon
     - group.type.country
   module:
+    - content_translation
     - image
-id: group.country.field_country_icon
+third_party_settings:
+  content_translation:
+    translation_sync:
+      file: file
+      alt: '0'
+      title: '0'
+id: paragraph.slider.field_country_icon
 field_name: field_country_icon
 entity_type: group
 bundle: country

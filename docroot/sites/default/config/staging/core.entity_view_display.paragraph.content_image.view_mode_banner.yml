@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.view_mode_banner
     - field.field.paragraph.content_image.field_content_image
-    - field.field.paragraph.content_image.field_country_icon
     - field.field.paragraph.content_image.field_description
     - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
@@ -34,7 +33,6 @@ content:
     type: string
 hidden:
   created: true
-  field_country_icon: true
   field_private_content: true
   field_view_mode: true
   uid: true

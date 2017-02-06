@@ -3,14 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files_modal
     - field.field.group.country.field_banner
     - field.field.group.country.field_content
+    - field.field.group.country.field_country_icon
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
     - field.field.group.country.field_summary
     - group.type.country
   module:
+    - entity_browser
     - geolocation
     - paragraphs
     - text
@@ -27,11 +30,11 @@ content:
       title_plural: Paragraphs
       edit_mode: closed
       add_mode: dropdown
-      form_display_mode: country
+      form_display_mode: banner
     third_party_settings: {  }
   field_content:
     type: entity_reference_paragraphs
-    weight: 6
+    weight: 7
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -39,9 +42,21 @@ content:
       add_mode: dropdown
       form_display_mode: private_content
     third_party_settings: {  }
+  field_country_icon:
+    weight: 2
+    settings:
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: entity_browser_file
   field_infographic:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 6
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -50,12 +65,12 @@ content:
       form_display_mode: default
     third_party_settings: {  }
   field_join_block:
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_location:
-    weight: 2
+    weight: 3
     settings:
       default_longitude: '13.4050'
       default_latitude: '52.5200'
@@ -83,7 +98,7 @@ content:
     third_party_settings: {  }
     type: geolocation_googlegeocoder
   field_summary:
-    weight: 4
+    weight: 5
     settings:
       rows: 5
       placeholder: ''
@@ -98,7 +113,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
 hidden:

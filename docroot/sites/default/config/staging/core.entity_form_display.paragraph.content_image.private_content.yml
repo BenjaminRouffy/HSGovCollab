@@ -6,7 +6,6 @@ dependencies:
     - core.entity_form_mode.paragraph.private_content
     - entity_browser.browser.browse_files_modal
     - field.field.paragraph.content_image.field_content_image
-    - field.field.paragraph.content_image.field_country_icon
     - field.field.paragraph.content_image.field_description
     - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
@@ -55,6 +54,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_country_icon: true
   status: true
   uid: true

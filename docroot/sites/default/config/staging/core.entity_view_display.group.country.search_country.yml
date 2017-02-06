@@ -6,18 +6,30 @@ dependencies:
     - core.entity_view_mode.group.search_country
     - field.field.group.country.field_banner
     - field.field.group.country.field_content
+    - field.field.group.country.field_country_icon
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
+    - field.field.group.country.field_regions
     - field.field.group.country.field_summary
     - group.type.country
+    - image.style.174x174
   module:
     - entity_reference_revisions
+    - image
 id: group.country.search_country
 targetEntityType: group
 bundle: country
 mode: search_country
 content:
+  field_country_icon:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: 174x174
+      image_link: ''
+    third_party_settings: {  }
   field_infographic:
     type: entity_reference_revisions_entity_view
     weight: 0
@@ -25,6 +37,13 @@ content:
     settings:
       view_mode: search_for_a_country
       link: ''
+    third_party_settings: {  }
+  field_regions:
+    type: entity_reference_label
+    weight: 0
+    label: hidden
+    settings:
+      link: false
     third_party_settings: {  }
 hidden:
   changed: true

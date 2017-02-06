@@ -1,0 +1,28 @@
+diff --git a/core/includes/form.inc b/core/includes/form.inc
+index b4c6a71..36da21c 100644
+--- a/core/includes/form.inc
++++ b/core/includes/form.inc
+@@ -250,7 +250,9 @@ function template_preprocess_details(&$variables) {
+     $variables['summary_attributes']['aria-expanded'] = !empty($element['#attributes']['open']) ? 'true' : 'false';
+     $variables['summary_attributes']['aria-pressed'] = $variables['summary_attributes']['aria-expanded'];
+   }
+-  $variables['title'] = (!empty($element['#title'])) ? $element['#title'] : '';
++  if (!empty($element['#title'])) {
++    $variables['title'] = ['#markup' => $element['#title']];
++  }
+   $variables['description'] = (!empty($element['#description'])) ? $element['#description'] : '';
+   $variables['children'] = (isset($element['#children'])) ? $element['#children'] : '';
+   $variables['value'] = (isset($element['#value'])) ? $element['#value'] : '';
+diff --git a/core/includes/theme.inc b/core/includes/theme.inc
+index f180cbd..dde2afc 100644
+--- a/core/includes/theme.inc
++++ b/core/includes/theme.inc
+@@ -570,7 +570,7 @@ function template_preprocess_datetime_wrapper(&$variables) {
+   $element = $variables['element'];
+ 
+   if (!empty($element['#title'])) {
+-    $variables['title'] = $element['#title'];
++    $variables['title'] = ['#markup' => $element['#title']];
+   }
+ 
+   // Suppress error messages.

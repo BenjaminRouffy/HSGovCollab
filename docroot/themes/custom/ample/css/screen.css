@@ -1686,20 +1686,67 @@ footer {
 .slider-wrapper {
   overflow: hidden;
   position: relative; }
+  .slider-wrapper.background-image {
+    height: 409px; }
   .top-banner-region .slider-wrapper {
     height: 650px; }
   .header-image .slider-wrapper {
     height: 500px; }
 
+.slider-main {
+  margin: 50px 0; }
+
 .content-slider-wrapper,
 .thumb-slider-wrapper {
+  overflow: hidden;
   position: relative; }
 
-.content-slider-wrapper .owl-nav {
-  display: none; }
+.content-slider-wrapper {
+  height: 438px; }
+  .content-slider-wrapper .owl-nav {
+    display: none; }
 
-.thumb-slider-wrapper .owl-nav.disabled {
-  display: block; }
+.thumb-slider-wrapper {
+  height: 90px;
+  padding: 10px 36px; }
+  .thumb-slider-wrapper .current .slider-item-thumb {
+    border-bottom: 2px solid #ea3a32; }
+    .thumb-slider-wrapper .current .slider-item-thumb .thumb-overlay {
+      background: none; }
+  .thumb-slider-wrapper .owl-nav > div {
+    background-color: transparent;
+    background-size: 18px;
+    height: 40px;
+    margin-top: -20px;
+    width: 20px; }
+    .thumb-slider-wrapper .owl-nav > div:hover {
+      background-color: transparent;
+      -webkit-transform: scale(1);
+              transform: scale(1); }
+  .thumb-slider-wrapper .owl-nav .owl-prev {
+    background-position: 0 -22px; }
+  .thumb-slider-wrapper .owl-nav .owl-next {
+    background-position: 0 8px; }
+
+.slider-item-thumb {
+  background-position: 50%;
+  background-size: cover;
+  cursor: pointer;
+  height: 100%;
+  margin: 0 5px;
+  position: relative;
+  width: 68px; }
+  .slider-item-thumb .thumb-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    -webkit-transition: background .2s ease;
+    transition: background .2s ease;
+    width: 100%; }
+    .slider-item-thumb .thumb-overlay:hover {
+      background: rgba(0, 0, 0, 0.05); }
 
 .slider-item-wrapper {
   background-position: 50%;
@@ -1743,6 +1790,8 @@ footer {
       background-color: rgba(0, 0, 0, 0.58);
       -webkit-transform: scale(1.04);
               transform: scale(1.04); }
+    .owl-nav > div.disabled {
+      display: none; }
   .owl-nav .owl-prev {
     background-position: 7px -48px;
     left: 0; }

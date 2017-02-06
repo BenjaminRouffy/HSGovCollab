@@ -14,7 +14,7 @@ entity_type: paragraph
 bundle: slider
 label: Slider
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -48,7 +48,16 @@ settings:
       slider:
         weight: 17
         enabled: false
+      infographic_item:
+        weight: 18
+        enabled: false
       video:
         weight: 18
+        enabled: false
+      link:
+        weight: 19
+        enabled: false
+      time_line:
+        weight: 23
         enabled: false
 field_type: entity_reference_revisions

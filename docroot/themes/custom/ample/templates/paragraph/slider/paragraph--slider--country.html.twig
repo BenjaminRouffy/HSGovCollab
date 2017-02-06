@@ -4,11 +4,7 @@
       <div class="slider-item-wrapper{{ key == 0 ? ' first-slide' : '' }}">
         {% if key == 0 %}
           <div class="country-icon-wrapper">
-            {% if content.field_country_icon|field_value %}
-              {{ content.field_country_icon|field_value }}
-            {% else %}
-              <img src="/{{ base_path ~ directory }}/images/default_country_icon.png">
-            {% endif %}
+            <img src="{{ country_icon }}">
 
             <h1 role="heading">
               {{ group_label }}

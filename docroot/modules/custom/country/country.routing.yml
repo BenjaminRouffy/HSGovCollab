@@ -5,5 +5,4 @@ entity.group.canonical:
     _title: 'Group'
     _title_callback: '\Drupal\country\Controller\CountryGroupMembershipController::groupTitle'
   requirements:
-    _group_member: 'TRUE'
     group: \d+

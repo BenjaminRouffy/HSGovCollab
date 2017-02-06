@@ -536,3 +536,12 @@ function deployment_update_8027() {
 function deployment_update_8028() {
   \Drupal::service('module_installer')->install(['geolocation']);
 }
+
+/**
+ * Delete field "Country icon".
+ */
+function deployment_update_8029() {
+  deployment_delete_fields('paragraph', 'slider', ['field_country_icon']);
+  deployment_delete_fields('paragraph', 'content_image', ['field_country_icon']);
+  field_purge_batch(500);
+}

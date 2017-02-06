@@ -1,10 +1,10 @@
-uuid: fa8a2eb1-ea03-4138-a4c7-42e38212dcb7
+uuid: 35550f18-79a0-4eed-80e9-07c8830206a5
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_country_icon
-    - paragraphs.paragraphs_type.slider
+    - field.storage.group.field_country_icon
+    - group.type.country
   module:
     - content_translation
     - image
@@ -16,12 +16,12 @@ third_party_settings:
       title: '0'
 id: paragraph.slider.field_country_icon
 field_name: field_country_icon
-entity_type: paragraph
-bundle: slider
-label: 'Country icon'
+entity_type: group
+bundle: country
+label: Icon
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

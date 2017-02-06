@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.slider.field_country_icon
     - field.field.paragraph.slider.field_slider
     - field.field.paragraph.slider.field_view_mode
     - paragraphs.paragraphs_type.slider
@@ -36,6 +35,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_country_icon: true
   status: true
   uid: true

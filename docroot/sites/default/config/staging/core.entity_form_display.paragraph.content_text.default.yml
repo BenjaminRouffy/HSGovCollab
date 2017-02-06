@@ -22,18 +22,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea_with_summary
-  field_private_content:
-    weight: 2
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
   translation:
     weight: 1
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
+  field_private_content: true
   field_title: true
   status: true
   uid: true

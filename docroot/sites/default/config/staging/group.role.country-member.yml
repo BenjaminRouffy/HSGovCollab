@@ -12,7 +12,7 @@ audience: member
 group_type: country
 permissions_ui: true
 permissions:
-  0: 'view group_node:news content'
-  1: 'view news node'
-  2: 'view group'
-  6: 'access group_node overview'
+  - 'view group_node:news content'
+  - 'view news node'
+  - 'view group'
+  - 'access group_node overview'

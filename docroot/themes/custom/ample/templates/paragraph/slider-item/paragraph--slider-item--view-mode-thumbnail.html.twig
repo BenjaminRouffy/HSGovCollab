@@ -1,3 +1,3 @@
-<div class="slider-item-thumb">
-  {{ content.field_content_image|field_value }}
+<div class="slider-item-thumb" style="background-image: url({{ file_url(content.field_content_image|render|striptags|trim) }});">
+  <div class="thumb-overlay"></div>
 </div>

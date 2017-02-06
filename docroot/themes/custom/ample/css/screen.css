@@ -679,6 +679,34 @@ header .social-links .font-social-icon {
     content: '9';
     margin-right: 4px; }
 
+.js-pager__items {
+  font-size: 0rem;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  width: 200px; }
+  .js-pager__items li {
+    font-size: 1.05rem;
+    color: #4c7e96;
+    font-weight: 400;
+    font-family: "Fira Sans", sans-serif;
+    display: inline-block;
+    letter-spacing: 1px;
+    vertical-align: top;
+    width: 60%; }
+  .js-pager__items .font-social-icon {
+    width: 20%; }
+    .js-pager__items .font-social-icon span {
+      display: none; }
+  .js-pager__items a {
+    font-size: 1.4rem;
+    color: #ea3a32;
+    text-decoration: none;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease; }
+    .js-pager__items a:hover {
+      color: #8c2222; }
+
 .teaser {
   background: #4c7e96;
   color: #fff;
@@ -1157,7 +1185,8 @@ header .social-links .font-social-icon {
     margin: 10px auto; }
 
 .news-and-events-list {
-  font-size: 0rem; }
+  font-size: 0rem;
+  margin-bottom: 30px; }
   .news-and-events-list .item {
     font-size: 0.9625rem;
     display: inline-block;
@@ -1318,6 +1347,22 @@ form {
       #block-ample-local-tasks > ul a.is-active {
         border-bottom: 2px solid #ea3a32; }
 
+.view-news-and-events .title-wrapper {
+  padding-bottom: 10px;
+  text-align: center; }
+  .view-news-and-events .title-wrapper h1 {
+    padding-top: 0; }
+  .view-news-and-events .title-wrapper .line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+
+.view-news-and-events > h2 {
+  font-size: 1.575rem;
+  line-height: 48px;
+  margin-bottom: 15px;
+  text-align: center; }
+
 .view-news-and-events .wrapper-filters {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1385,13 +1430,12 @@ header {
       font-family: Oswald, sans-serif;
       padding: 32px 5px 15px;
       text-decoration: none; }
-      header .service-links a.is-active,
-      header .links a.is-active {
-        color: #8c2222; }
       header .service-links a:hover,
       header .links a:hover {
         background: rgba(76, 126, 150, 0.08);
         opacity: .7; }
+  header .links a.is-active {
+    color: #8c2222; }
 
 .header-static {
   background: #fff;
@@ -1687,10 +1731,67 @@ footer {
 .slider-wrapper {
   overflow: hidden;
   position: relative; }
+  .slider-wrapper.background-image {
+    height: 409px; }
   .top-banner-region .slider-wrapper {
     height: 650px; }
   .header-image .slider-wrapper {
     height: 500px; }
+
+.slider-main {
+  margin: 50px 0; }
+
+.content-slider-wrapper,
+.thumb-slider-wrapper {
+  overflow: hidden;
+  position: relative; }
+
+.content-slider-wrapper {
+  height: 438px; }
+  .content-slider-wrapper .owl-nav {
+    display: none; }
+
+.thumb-slider-wrapper {
+  height: 90px;
+  padding: 10px 36px; }
+  .thumb-slider-wrapper .current .slider-item-thumb {
+    border-bottom: 2px solid #ea3a32; }
+    .thumb-slider-wrapper .current .slider-item-thumb .thumb-overlay {
+      background: none; }
+  .thumb-slider-wrapper .owl-nav > div {
+    background-color: transparent;
+    background-size: 18px;
+    height: 40px;
+    margin-top: -20px;
+    width: 20px; }
+    .thumb-slider-wrapper .owl-nav > div:hover {
+      background-color: transparent;
+      -webkit-transform: scale(1);
+              transform: scale(1); }
+  .thumb-slider-wrapper .owl-nav .owl-prev {
+    background-position: 0 -22px; }
+  .thumb-slider-wrapper .owl-nav .owl-next {
+    background-position: 0 8px; }
+
+.slider-item-thumb {
+  background-position: 50%;
+  background-size: cover;
+  cursor: pointer;
+  height: 100%;
+  margin: 0 5px;
+  position: relative;
+  width: 68px; }
+  .slider-item-thumb .thumb-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    -webkit-transition: background .2s ease;
+    transition: background .2s ease;
+    width: 100%; }
+    .slider-item-thumb .thumb-overlay:hover {
+      background: rgba(0, 0, 0, 0.05); }
 
 .slider-item-wrapper {
   background-position: 50%;
@@ -1717,6 +1818,8 @@ footer {
 
 .owl-nav {
   width: 100%; }
+  .owl-nav.disabled {
+    display: none; }
   .owl-nav > div {
     height: 50px;
     width: 50px;
@@ -1732,6 +1835,8 @@ footer {
       background-color: rgba(0, 0, 0, 0.58);
       -webkit-transform: scale(1.04);
               transform: scale(1.04); }
+    .owl-nav > div.disabled {
+      display: none; }
   .owl-nav .owl-prev {
     background-position: 7px -48px;
     left: 0; }
@@ -1746,6 +1851,8 @@ footer {
   bottom: 0;
   text-align: center;
   width: 100%; }
+  .owl-dots.disabled {
+    display: none; }
   .owl-dots > div {
     height: 14px;
     width: 14px;

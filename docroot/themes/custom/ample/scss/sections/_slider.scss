@@ -2,12 +2,96 @@
   overflow: hidden;
   position: relative;
 
+  &.background-image {
+    height: 409px;
+  }
+
   .top-banner-region & {
     height: 650px;
   }
 
   .header-image & {
     height: 500px;
+  }
+}
+
+.slider-main {
+  margin: 50px 0;
+}
+
+.content-slider-wrapper,
+.thumb-slider-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.content-slider-wrapper {
+  height: 438px;
+
+  .owl-nav {
+    display: none;
+  }
+}
+
+.thumb-slider-wrapper {
+  height: 90px;
+  padding: 10px 36px;
+
+  .current {
+    .slider-item-thumb {
+      border-bottom: 2px solid $red;
+
+      .thumb-overlay {
+        background: none;
+      }
+    }
+  }
+
+  .owl-nav {
+    > div {
+      background-color: transparent;
+      background-size: 18px;
+      height: 40px;
+      margin-top: -20px;
+      width: 20px;
+
+      &:hover {
+        background-color: transparent;
+        transform: scale(1);
+      }
+    }
+
+    .owl-prev {
+      background-position: 0 -22px;
+    }
+
+    .owl-next {
+      background-position: 0 8px;
+    }
+  }
+}
+
+.slider-item-thumb {
+  background-position: 50%;
+  background-size: cover;
+  cursor: pointer;
+  height: 100%;
+  margin: 0 5px;
+  position: relative;
+  width: 68px;
+
+  .thumb-overlay {
+    background: rgba($black, .4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: background .2s ease;
+    width: 100%;
+
+    &:hover {
+      background: rgba($black, .05);
+    }
   }
 }
 
@@ -46,6 +130,10 @@
 .owl-nav {
   width: 100%;
 
+  &.disabled {
+    display: none;
+  }
+
   > div {
     @include same(50px, height, width);
     background: rgba($black, .34) url(../images/slider-arrows.png) left top no-repeat;
@@ -59,6 +147,10 @@
     &:hover {
       background-color: rgba($black, .58);
       transform: scale(1.04);
+    }
+
+    &.disabled {
+      display: none;
     }
   }
 
@@ -80,6 +172,10 @@
   bottom: 0;
   text-align: center;
   width: 100%;
+
+  &.disabled {
+    display: none;
+  }
 
   > div {
     @include same(14px, height, width);

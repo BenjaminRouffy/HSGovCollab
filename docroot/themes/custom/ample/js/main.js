@@ -202,7 +202,62 @@
         $slider.owlCarousel({
           loop: true,
           items: 1,
+          nav: true,
           smartSpeed: 500
+        });
+      });
+    }
+  };
+
+  Drupal.behaviors.thumbCarousel = {
+    attach: function(context, settings) {
+      $('.slider-main', context).each(function(i, el) {
+        var $slider = $(el).find('.content-slider-wrapper', context);
+        var $thumbs = $(el).find('.thumb-slider-wrapper', context);
+        var thumbNumber = $thumbs.find('.slider-item-thumb').length;
+        var maxThumbs = 7;
+        var speed = 500;
+
+        $slider.owlCarousel({
+          loop: true,
+          items: 1,
+          smartSpeed: speed,
+          dots: false,
+          nav: true,
+          navSpeed: speed,
+          dotsSpeed: speed
+        });
+
+        $thumbs.owlCarousel({
+          loop: true,
+          items: thumbNumber > maxThumbs ? maxThumbs : thumbNumber,
+          smartSpeed: speed,
+          dots: false,
+          nav: thumbNumber > maxThumbs ? true : false,
+          navSpeed: speed,
+          dotsSpeed: speed,
+          autoWidth: true,
+          slideBy: thumbNumber > maxThumbs ? thumbNumber % maxThumbs : 1,
+          touchDrag: false,
+          mouseDrag: false
+        });
+
+        $thumbs.find('.active').first().addClass('current');
+
+        $thumbs.on('click', '.owl-item', function(property) {
+          console.log($(property.target).parents('.owl-item').index());
+
+          $(this).addClass('current').siblings().removeClass('current');
+          $slider.trigger('to.owl.carousel', [$(property.target).parents('.owl-item').index() + 2, speed, true]);
+        });
+
+        $slider.on('click', '.owl-item', function(property) {
+          console.log($(this).index());
+        });
+
+        $thumbs.on('changed.owl.carousel', function(property) {
+          console.log(property.item.index);
+          //$slider.trigger('to.owl.carousel', [property.item.index + 1, speed, true]);
         });
       });
     }

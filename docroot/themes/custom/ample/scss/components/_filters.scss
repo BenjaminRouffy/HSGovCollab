@@ -1,4 +1,25 @@
 .view-news-and-events {
+  .title-wrapper {
+    padding-bottom: 10px;
+    text-align: center;
+
+    h1 {
+      padding-top: 0;
+    }
+
+    .line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  > h2 {
+    @include font-size(25.2);
+    line-height: 48px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
   .wrapper-filters {
     display: flex;
 

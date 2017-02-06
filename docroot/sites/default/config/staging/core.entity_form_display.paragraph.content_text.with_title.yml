@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_form_mode.paragraph.with_title
     - field.field.paragraph.content_text.field_content_text
+    - field.field.paragraph.content_text.field_private_content
     - field.field.paragraph.content_text.field_title
     - paragraphs.paragraphs_type.content_text
   module:
@@ -35,5 +36,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_private_content: true
   status: true
   uid: true

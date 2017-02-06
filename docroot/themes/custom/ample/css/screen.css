@@ -679,6 +679,34 @@ header .social-links .font-social-icon {
     content: '9';
     margin-right: 4px; }
 
+.js-pager__items {
+  font-size: 0rem;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  width: 200px; }
+  .js-pager__items li {
+    font-size: 1.05rem;
+    color: #4c7e96;
+    font-weight: 400;
+    font-family: "Fira Sans", sans-serif;
+    display: inline-block;
+    letter-spacing: 1px;
+    vertical-align: top;
+    width: 60%; }
+  .js-pager__items .font-social-icon {
+    width: 20%; }
+    .js-pager__items .font-social-icon span {
+      display: none; }
+  .js-pager__items a {
+    font-size: 1.4rem;
+    color: #ea3a32;
+    text-decoration: none;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease; }
+    .js-pager__items a:hover {
+      color: #8c2222; }
+
 .teaser {
   background: #4c7e96;
   color: #fff;
@@ -1157,7 +1185,8 @@ header .social-links .font-social-icon {
     margin: 10px auto; }
 
 .news-and-events-list {
-  font-size: 0rem; }
+  font-size: 0rem;
+  margin-bottom: 30px; }
   .news-and-events-list .item {
     font-size: 0.9625rem;
     display: inline-block;

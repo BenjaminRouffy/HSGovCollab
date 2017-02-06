@@ -1,0 +1,18 @@
+uuid: 1ef0965d-100a-4e5c-88a8-58d0411a3308
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+id: group.country.created
+field_name: created
+entity_type: group
+bundle: country
+label: 'Created on'
+description: 'The time that the group was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,19 @@
+uuid: 3d8285d9-88d5-4312-8221-716f7fcd533a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_label
+    - paragraphs.paragraphs_type.country_option
+id: paragraph.country_option.field_label
+field_name: field_label
+entity_type: paragraph
+bundle: country_option
+label: Label
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

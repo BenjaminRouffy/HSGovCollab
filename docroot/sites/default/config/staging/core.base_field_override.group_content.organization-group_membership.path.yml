@@ -1,0 +1,20 @@
+uuid: bee63a68-c18a-43fb-b058-4680d215761b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.organization-group_membership
+  module:
+    - path
+id: group_content.organization-group_membership.path
+field_name: path
+entity_type: group_content
+bundle: organization-group_membership
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

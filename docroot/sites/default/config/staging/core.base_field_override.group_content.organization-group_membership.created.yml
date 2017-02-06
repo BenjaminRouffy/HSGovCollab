@@ -1,0 +1,18 @@
+uuid: 10178090-4d30-460e-a1ef-f616ca124fdb
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.organization-group_membership
+id: group_content.organization-group_membership.created
+field_name: created
+entity_type: group_content
+bundle: organization-group_membership
+label: 'Created on'
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

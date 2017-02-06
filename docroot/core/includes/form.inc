@@ -250,7 +250,9 @@ function template_preprocess_details(&$variables) {
     $variables['summary_attributes']['aria-expanded'] = !empty($element['#attributes']['open']) ? 'true' : 'false';
     $variables['summary_attributes']['aria-pressed'] = $variables['summary_attributes']['aria-expanded'];
   }
-  $variables['title'] = (!empty($element['#title'])) ? $element['#title'] : '';
+  if (!empty($element['#title'])) {
+    $variables['title'] = ['#markup' => $element['#title']];
+  }
   $variables['description'] = (!empty($element['#description'])) ? $element['#description'] : '';
   $variables['children'] = (isset($element['#children'])) ? $element['#children'] : '';
   $variables['value'] = (isset($element['#value'])) ? $element['#value'] : '';

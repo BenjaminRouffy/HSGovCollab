@@ -4,7 +4,9 @@
 <div{{ attributes.addClass(classes) }}>
 {% endif %}
   <div class="title-wrapper">
-    <h1>{{ view.getTitle()|raw }}</h1>
+    {{ title_prefix }}
+      <h1>{{ view.getTitle()|raw }}</h1>
+    {{ title_suffix }}
     <div class="line"></div>
   </div>
 

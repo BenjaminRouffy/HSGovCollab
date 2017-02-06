@@ -1,0 +1,36 @@
+uuid: 2e49e904-6bef-4a39-a4bf-fa862298e387
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.search_for_a_country
+    - field.field.paragraph.infographic_item.field_icon
+    - field.field.paragraph.infographic_item.field_infographic_description
+    - field.field.paragraph.infographic_item.field_title
+    - field.field.paragraph.infographic_item.field_value
+    - paragraphs.paragraphs_type.infographic_item
+id: paragraph.infographic_item.search_for_a_country
+targetEntityType: paragraph
+bundle: infographic_item
+mode: search_for_a_country
+content:
+  field_icon:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+  field_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  field_infographic_description: true
+  field_value: true
+  uid: true

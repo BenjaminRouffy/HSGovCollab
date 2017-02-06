@@ -83,12 +83,16 @@ display:
             previous: ‹‹
             next: ››
       style:
-        type: default
+        type: grid
         options:
           grouping: {  }
-          row_class: ''
-          default_row_class: true
-          uses_fields: false
+          columns: 4
+          automatic_width: true
+          alignment: horizontal
+          col_class_default: true
+          col_class_custom: ''
+          row_class_default: true
+          row_class_custom: ''
       row:
         type: fields
         options:
@@ -220,14 +224,14 @@ display:
           field: combine
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: 'Search for a country or region'
           operator: starts
           value: ''
           group: 1
           exposed: true
           expose:
             operator_id: combine_1_op
-            label: 'Combine fields filter'
+            label: 'Search for a country or region'
             description: ''
             use_operator: false
             operator: combine_1_op
@@ -260,14 +264,14 @@ display:
           field: combine
           relationship: none
           group_type: group
-          admin_label: 'Search for a country or region'
+          admin_label: 'Alphabet filter'
           operator: starts
-          value: ABC
+          value: GHI
           group: 1
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Search for a country or region'
+            label: ''
             description: ''
             use_operator: false
             operator: combine_op
@@ -304,7 +308,7 @@ display:
       filter_groups:
         operator: AND
         groups:
-          1: AND
+          1: OR
     cache_metadata:
       max-age: -1
       contexts:

@@ -4,7 +4,9 @@
   Drupal.behaviors.accordionExposedFilter = {
     attach: function(context, settings) {
       var settings = jQuery.extend(true, settings, {
-        'defaultFormSelector': 'form.views-exposed-form',
+        // @TODO Add this setting.
+        //'defaultFormSelector': 'form#views-exposed-form-news-events-block-1',
+        //'defaultFormSelector': 'form.views-exposed-form',
         'defaultAttributeSelector': 'data-drupal-selector',
         'defaultAccordionTab': '.click-item',
         'defaultAccordionTabText': '.text-label',

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\datetime_select\Plugin\views\filter;
+namespace Drupal\p4h_views_plugins\Plugin\views\filter;
 
 use DateTime;
 use Drupal\Core\Datetime\DateHelper;
@@ -84,39 +84,14 @@ class DateSelect extends NumericFilterDefault implements ContainerFactoryPluginI
    * Add a type selector to the value form.
    */
   protected function valueForm(&$form, FormStateInterface $form_state) {
-    $form['value']['#tree'] = TRUE;
+    parent::valueForm($form, $form_state);
 
-    // We have to make some choices when creating this as an exposed
-    // filter form. For example, if the operator is locked and thus
-    // not rendered, we can't render dependencies; instead we only
-    // render the form items we need.
-    $which = 'all';
+    if ($exposed = $form_state->get('exposed') && $this->options['type'] == 'select') {
+      $form['value']['#type'] = 'select';
+      $form['value']['#options'] = $this->selectOptions();
+      $form['value']['#empty_option'] = $this->granularityOptions()[$this->options['granularity']];
+      $form['value']['#size'] = 1;
 
-    if ($exposed = $form_state->get('exposed')) {
-      $identifier = $this->options['expose']['identifier'];
-
-      if (empty($this->options['expose']['use_operator']) || empty($this->options['expose']['operator_id'])) {
-        // Exposed and locked.
-        $which = in_array($this->operator, $this->operatorValues(2)) ? 'minmax' : 'value';
-      }
-    }
-
-    $user_input = $form_state->getUserInput();
-    if ($which == 'value') {
-      // When exposed we drop the value-value and just do value if
-      // the operator is locked.
-      $form['value'] = array(
-        '#type' => 'select',
-        '#title' => !$exposed ? $this->t('Value') : '',
-      // array_combine($year, $year),.
-        '#options' => $this->selectOptions(),
-        '#empty_option' => $this->granularityOptions()[$this->options['granularity']],
-        '#default_value' => $this->value['value'],
-      );
-      if ($exposed && !isset($user_input[$identifier])) {
-        $user_input[$identifier] = $this->value['value'];
-        $form_state->setUserInput($user_input);
-      }
     }
   }
 

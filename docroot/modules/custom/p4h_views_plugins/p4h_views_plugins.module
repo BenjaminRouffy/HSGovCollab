@@ -3,6 +3,7 @@
  * @file
  * Contains p4h_views_plugins.module.
  */
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_theme().
@@ -23,4 +24,41 @@ function p4h_views_plugins_theme() {
       ],
     ],
   ];
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'views_exposed_form'
+    && $form['#id'] == 'views-exposed-form-news-events-block-1'
+  ) {
+    $form['wrap'] = [
+      '#prefix' => '<div class="wrapper-filters">',
+      '#suffix' => '</div>',
+      '#weight' => -100,
+    ];
+    $form['wrap']['year'] = $form['year'];
+    $form['wrap']['month'] = $form['month'];
+    unset($form['year'], $form['month']);
+    $form['#attached']['drupalSettings'] = ['defaultFormSelector' => '#' . $form['#id']];
+  }
+}
+
+/**
+ * Implements hook_views_plugins_filter_alter().
+ */
+function p4h_views_plugins_views_plugins_filter_alter(array &$plugins) {
+  $plugins['datetime']['class'] = 'Drupal\p4h_views_plugins\Plugin\views\filter\DateSelect';
+  $plugins['combine']['class'] = 'Drupal\p4h_views_plugins\Plugin\views\filter\CustomCombine';
+}
+
+/**
+ * Implements hook_better_exposed_filters_display_options_alter().
+ */
+function p4h_views_plugins_better_exposed_filters_display_options_alter(&$display_options, $filter) {
+  if (is_a($filter, 'Drupal\p4h_views_plugins\Plugin\views\filter\CustomCombine')) {
+    $display_options['bef_ul'] = t('Alphabet Filter');
+  }
 }

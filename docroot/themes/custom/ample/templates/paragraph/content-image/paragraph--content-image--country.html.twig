@@ -7,8 +7,8 @@
     </h1>
 
     {% if logged_in %}
-      <span>
-        {{ 'Follow'|t ~ group_label }}
+      <span class="follow-link">
+        {{ 'Follow @country'|t({'@country': group_label}) }}
       </span>
     {% endif %}
   </div>

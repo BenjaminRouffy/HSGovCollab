@@ -1,0 +1,82 @@
+uuid: 3e362b02-ff48-4298-a27c-ccb9052151fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.where
+    - views.view.search_for_a_country_or_region
+  content:
+    - 'block_content:headline_description:b1a69eb0-294e-4599-bb30-4c0c817b615a'
+    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
+    - 'block_content:link:a1771701-eceb-40f1-bc27-f4c5a8ed6b47'
+  module:
+    - block_content
+    - panels
+    - views
+id: where-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    31656c91-cbbb-446a-9f4f-25cd5fb6add3:
+      id: 'views_block:search_for_a_country_or_region-block_1'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 31656c91-cbbb-446a-9f4f-25cd5fb6add3
+      context_mapping: {  }
+    bf006474-142e-485f-a15b-03f08970425c:
+      id: 'block_content:b1a69eb0-294e-4599-bb30-4c0c817b615a'
+      label: 'Countries in P4H'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: 0
+      uuid: bf006474-142e-485f-a15b-03f08970425c
+      context_mapping: {  }
+    57f803bb-8dd2-4268-8604-fe5fae7c538a:
+      id: 'block_content:a1771701-eceb-40f1-bc27-f4c5a8ed6b47'
+      label: 'Get in touch with P4H'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: link
+      region: middle
+      weight: 0
+      uuid: 57f803bb-8dd2-4268-8604-fe5fae7c538a
+      context_mapping: {  }
+    fa994fb9-a406-42e5-8d14-d6eb2705dc3e:
+      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
+      label: 'Interested in becoming a member?'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: bottom
+      weight: 0
+      uuid: fa994fb9-a406-42e5-8d14-d6eb2705dc3e
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 4ae1af58-df00-4acc-9fd0-bb6f093daff3
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: 'Where?'
+  storage_type: page_manager
+  storage_id: where-panels_variant-0
+  builder: standard
+page: where
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

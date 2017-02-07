@@ -1,0 +1,26 @@
+uuid: cc4f8458-8c00-4f34-ba76-be0d77714cc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.search_for_a_country
+    - field.field.paragraph.infographic.field_infographic_item
+    - paragraphs.paragraphs_type.infographic
+  module:
+    - entity_reference_revisions
+id: paragraph.infographic.search_for_a_country
+targetEntityType: paragraph
+bundle: infographic
+mode: search_for_a_country
+content:
+  field_infographic_item:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: search_for_a_country
+      link: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  uid: true

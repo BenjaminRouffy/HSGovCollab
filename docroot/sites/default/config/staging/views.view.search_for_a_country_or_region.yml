@@ -83,16 +83,11 @@ display:
             previous: ‹‹
             next: ››
       style:
-        type: grid
+        type: default
         options:
           grouping: {  }
-          columns: 4
-          automatic_width: true
-          alignment: horizontal
-          col_class_default: true
-          col_class_custom: ''
-          row_class_default: true
-          row_class_custom: ''
+          row_class: country-item
+          default_row_class: false
       row:
         type: fields
         options:
@@ -319,9 +314,9 @@ display:
         - url.query_args
       tags:
         - 'config:core.entity_view_display.group.country.banner'
-        - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.token'
   block_1:
     display_plugin: block
     id: block_1

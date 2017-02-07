@@ -211,25 +211,25 @@
 
   Drupal.behaviors.thumbCarousel = {
     attach: function(context, settings) {
+      var maxThumbs = 7;
+      var speed = 500;
+      var sliderSettings = {
+        items: 1,
+        smartSpeed: speed,
+        dots: false,
+        nav: true,
+        navSpeed: speed,
+        dotsSpeed: speed
+      };
+
       $('.slider-main', context).each(function(i, el) {
         var $slider = $(el).find('.content-slider-wrapper', context);
         var $thumbs = $(el).find('.thumb-slider-wrapper', context);
         var thumbNumber = $thumbs.find('.slider-item-thumb').length;
-        var maxThumbs = 7;
-        var speed = 500;
 
-        $slider.owlCarousel({
-          loop: true,
-          items: 1,
-          smartSpeed: speed,
-          dots: false,
-          nav: true,
-          navSpeed: speed,
-          dotsSpeed: speed
-        });
+        $slider.owlCarousel(sliderSettings);
 
         $thumbs.owlCarousel({
-          loop: true,
           items: thumbNumber > maxThumbs ? maxThumbs : thumbNumber,
           smartSpeed: speed,
           dots: false,
@@ -245,20 +245,47 @@
         $thumbs.find('.active').first().addClass('current');
 
         $thumbs.on('click', '.owl-item', function(property) {
-          console.log($(property.target).parents('.owl-item').index());
-
           $(this).addClass('current').siblings().removeClass('current');
-          $slider.trigger('to.owl.carousel', [$(property.target).parents('.owl-item').index() + 2, speed, true]);
+          $slider.trigger('to.owl.carousel', [$(property.target).parents('.owl-item').index(), speed, true]);
         });
 
-        $slider.on('click', '.owl-item', function(property) {
-          console.log($(this).index());
+        $slider.on('changed.owl.carousel', function(property) {
+          $thumbs.trigger('to.owl.carousel', [property.item.index, speed, true]);
+          $thumbs.find('.owl-item').eq(property.item.index).addClass('current')
+            .siblings().removeClass('current');
         });
+      });
 
-        $thumbs.on('changed.owl.carousel', function(property) {
-          console.log(property.item.index);
-          //$slider.trigger('to.owl.carousel', [property.item.index + 1, speed, true]);
+      $('.trigger-full-page', context).on('click', function() {
+        var $this = $(this);
+        var $slider = $this.siblings('.content-slider-wrapper');
+        var $thumbs = $this.siblings('.thumb-slider-wrapper');
+        var thumbNumber = $thumbs.find('.slider-item-thumb').length;
+        var sliderCurrentIndex = $slider.find('.active').index();
+        var thumbCurrentIndex = $thumbs.find('.current').index();
+
+        $('#slider-overlay').fadeToggle(300);
+        $this.parent($('.slider-main')).add($('body')).toggleClass('fixed');
+
+        $slider.add($thumbs).trigger('destroy.owl.carousel');
+
+        $slider.owlCarousel(sliderSettings);
+        $slider.trigger('to.owl.carousel', [sliderCurrentIndex, 0, true]);
+
+        $thumbs.owlCarousel({
+          items: thumbNumber > maxThumbs ? maxThumbs : thumbNumber,
+          smartSpeed: speed,
+          dots: false,
+          nav: thumbNumber > maxThumbs ? true : false,
+          navSpeed: speed,
+          dotsSpeed: speed,
+          autoWidth: true,
+          slideBy: thumbNumber > maxThumbs ? thumbNumber % maxThumbs : 1,
+          touchDrag: false,
+          mouseDrag: false
         });
+        $thumbs.trigger('to.owl.carousel', [thumbCurrentIndex, 0, true]);
+        $thumbs.find('.owl-item').eq(thumbCurrentIndex).addClass('current');
       });
     }
   };

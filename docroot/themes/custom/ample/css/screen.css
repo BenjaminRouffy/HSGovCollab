@@ -170,6 +170,8 @@ body {
   height: 100%;
   line-height: 20px;
   min-height: 100%; }
+  body.fixed {
+    overflow: hidden; }
 
 h1, h2, h3 {
   color: #283b44;
@@ -268,6 +270,16 @@ img {
 
 .quickedit {
   display: none; }
+
+#slider-overlay {
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 600; }
 
 @font-face {
   font-family: "P4h";
@@ -1739,7 +1751,15 @@ footer {
     height: 500px; }
 
 .slider-main {
-  margin: 50px 0; }
+  margin: 50px 0;
+  position: relative; }
+  .slider-main.fixed {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 700; }
 
 .content-slider-wrapper,
 .thumb-slider-wrapper {
@@ -1748,16 +1768,37 @@ footer {
 
 .content-slider-wrapper {
   height: 438px; }
+  .fixed .content-slider-wrapper {
+    height: 84vh;
+    margin-top: 2vh; }
+    .fixed .content-slider-wrapper .owl-nav {
+      display: block; }
+      .fixed .content-slider-wrapper .owl-nav > div {
+        height: 100%;
+        margin-top: -34px;
+        opacity: .5;
+        top: 0;
+        width: 68px; }
+        .fixed .content-slider-wrapper .owl-nav > div:hover {
+          opacity: 1; }
+    .fixed .content-slider-wrapper .owl-prev {
+      background: url(../images/slider-arrow-left.svg) center no-repeat; }
+    .fixed .content-slider-wrapper .owl-next {
+      background: url(../images/slider-arrow-right.svg) center no-repeat; }
   .content-slider-wrapper .owl-nav {
     display: none; }
 
 .thumb-slider-wrapper {
   height: 90px;
   padding: 10px 36px; }
-  .thumb-slider-wrapper .current .slider-item-thumb {
+  .fixed .thumb-slider-wrapper {
+    height: 120px; }
+    .fixed .thumb-slider-wrapper .owl-stage {
+      margin: 0 auto; }
+  .thumb-slider-wrapper .current .slider-item-thumb .thumb-image {
     border-bottom: 2px solid #ea3a32; }
-    .thumb-slider-wrapper .current .slider-item-thumb .thumb-overlay {
-      background: none; }
+  .thumb-slider-wrapper .current .slider-item-thumb .thumb-overlay {
+    background: none; }
   .thumb-slider-wrapper .owl-nav > div {
     background-color: transparent;
     background-size: 18px;
@@ -1774,13 +1815,17 @@ footer {
     background-position: 0 8px; }
 
 .slider-item-thumb {
-  background-position: 50%;
-  background-size: cover;
   cursor: pointer;
   height: 100%;
-  margin: 0 5px;
-  position: relative;
-  width: 68px; }
+  width: 78px; }
+  .fixed .slider-item-thumb {
+    width: 10vh; }
+  .slider-item-thumb .thumb-image {
+    background-position: 50%;
+    background-size: cover;
+    height: 100%;
+    margin: 0 5px;
+    position: relative; }
   .slider-item-thumb .thumb-overlay {
     background: rgba(0, 0, 0, 0.4);
     position: absolute;
@@ -1798,7 +1843,33 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  position: relative; }
+  position: relative;
+  text-align: center; }
+  .fixed .slider-item-wrapper {
+    height: auto;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+    .fixed .slider-item-wrapper .image-text {
+      font-size: 1.0625rem;
+      font-family: "Fira Sans", sans-serif;
+      font-style: italic;
+      color: #4c7e96;
+      line-height: 20.4px;
+      margin: 0;
+      padding: 9px 17px;
+      left: 0;
+      bottom: 0;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%; }
+      .fixed .slider-item-wrapper .image-text:before, .fixed .slider-item-wrapper .image-text:after {
+        content: none; }
+  .slider-item-wrapper .slide-content {
+    display: inline-block;
+    position: relative; }
   .header-image .slider-item-wrapper .image-text {
     width: 80%; }
 
@@ -1863,3 +1934,24 @@ footer {
     margin: 0 3px 7px; }
     .owl-dots > div.active {
       background: #fff; }
+
+.trigger-full-page {
+  height: 29px;
+  width: 29px;
+  background: url(../images/expand.svg) left top no-repeat;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 10; }
+  .fixed .trigger-full-page {
+    background: url(../images/close-icon.svg) center no-repeat;
+    height: 44px;
+    opacity: .8;
+    top: 2vh;
+    right: 0;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
+    width: 68px; }
+    .fixed .trigger-full-page:hover {
+      opacity: 1; }

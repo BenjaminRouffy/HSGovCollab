@@ -23,6 +23,6 @@ abstract class RelatedContentBase extends PluginBase implements RelatedContentIn
   /**
    * {@inheritdoc}
    */
-  abstract public function order(array $extras);
+  abstract public function getOptions();
 
 }

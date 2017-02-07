@@ -1,10 +1,11 @@
 <?php
 
-namespace Drupal\plugin_type_example\Plugin\Sandwich;
+namespace Drupal\rel_content\Plugin\RelatedContent;
 
 use Drupal\plugin_type_example\SandwichBase;
 use Drupal\rel_content\Annotation\RelatedContent;
 use Drupal\rel_content\RelatedContentBase;
+use Drupal\views\Views;
 
 /**
  * Provides a taxonomy term related content plugin.
@@ -17,21 +18,43 @@ use Drupal\rel_content\RelatedContentBase;
 class TaxonomyTermRelatedContent extends RelatedContentBase {
 
   /**
-   * Place an order for a sandwich.
-   *
-   * This is just an example method on our plugin that we can call to get
-   * something back.
-   *
-   * @param array $extras
-   *   Array of extras to include with this order.
-   *
-   * @return string
-   *   A description of the sandwich ordered.
+   * @inheritdoc
    */
-  public function order(array $extras) {
-    $ingredients = array('ham, mustard', 'rocket', 'sun-dried tomatoes');
-    $sandwich = array_merge($ingredients, $extras);
-    return 'You ordered an ' . implode(', ', $sandwich) . ' sandwich. Enjoy!';
+  public function getOptions() {
+    $options = [];
+
+    foreach ($this->configuration['items'] as $item) {
+      $field_definitions = \Drupal::entityManager()->getFieldDefinitions($item->getFieldDefinition()->getTargetEntityTypeId(), $item->getFieldDefinition()->getTargetBundle());
+
+      foreach ($field_definitions as $definition) {
+        if ('default:taxonomy_term' == $definition->getSetting('handler')) {
+          $options[$definition->getName()] = 'Taxonomy: ' . $definition->getLabel();
+        }
+      }
+    }
+    return $options;
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function viewsAlteration(&$data) {
+    $table = $data->ensureMyTable();
+
+    $definition = array(
+      'table' => 'taxonomy_index',
+      'field' => 'nid',
+      'left_table' => $table,
+      'left_field' => 'nid',
+    );
+
+    $join = Views::pluginManager('join')->createInstance('standard', $definition);
+    $data->query->addRelationship('taxonomy_index', $join, 'taxonomy_index');
+    $field = $data->currentNode->get($this->configuration['id']);
+
+    foreach ($field->getValue() as $value) {
+      $data->query->addWhereExpression(0, "taxonomy_index.tid = :taxonomy_index_tid", array(':taxonomy_index_tid' => $value['target_id']));
+    }
   }
 
 }

@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.event.field_join_block
     - field.field.node.event.field_location
     - field.field.node.event.field_organization
+    - field.field.node.event.field_related_content_selector
     - field.field.node.event.field_time
     - field.field.node.event.field_time_text
     - field.field.node.event.field_timezone
@@ -21,6 +22,7 @@ dependencies:
     - entity_reference_revisions
     - link
     - options
+    - rel_content
     - text
     - user
 id: node.event.default
@@ -101,6 +103,12 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_related_content_selector:
+    weight: 13
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_rel_content_id
   field_time:
     weight: 4
     label: hidden

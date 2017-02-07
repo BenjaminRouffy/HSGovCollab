@@ -11,11 +11,13 @@ dependencies:
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_organization
+    - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
     - datetime
     - entity_reference_revisions
     - image
+    - rel_content
     - text
     - user
 id: node.news.default
@@ -81,6 +83,12 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_related_content_selector:
+    weight: 9
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_rel_content_id
   links:
     weight: 0
     settings: {  }

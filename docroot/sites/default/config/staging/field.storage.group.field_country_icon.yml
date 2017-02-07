@@ -1,14 +1,14 @@
-uuid: b64d72fc-9c9c-40d0-8a74-f87a669c5996
+uuid: 0e82248c-56a7-4e5b-acc7-f06bf5d95e49
 langcode: en
 status: true
 dependencies:
   module:
     - file
+    - group
     - image
-    - paragraphs
-id: paragraph.field_country_icon
+id: group.field_country_icon
 field_name: field_country_icon
-entity_type: paragraph
+entity_type: group
 type: image
 settings:
   uri_scheme: public

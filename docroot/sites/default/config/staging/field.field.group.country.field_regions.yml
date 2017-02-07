@@ -1,16 +1,16 @@
-uuid: 7ddb66fd-c70c-422c-9e11-9029b60a3018
+uuid: 6bb9831a-341b-488d-ab3d-0f3dd41c4a04
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_organization
-    - node.type.event
-    - taxonomy.vocabulary.organizations
-id: node.event.field_organization
-field_name: field_organization
-entity_type: node
-bundle: event
-label: Organization
+    - field.storage.group.field_regions
+    - group.type.country
+    - taxonomy.vocabulary.regions
+id: group.country.field_regions
+field_name: field_regions
+entity_type: group
+bundle: country
+label: Regions
 description: ''
 required: false
 translatable: false
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      organizations: organizations
+      regions: regions
     sort:
       field: _none
     auto_create: false

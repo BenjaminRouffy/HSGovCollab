@@ -4,6 +4,12 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.group.token
+    - field.field.group.country.field_banner
+    - field.field.group.country.field_content
+    - field.field.group.country.field_infographic
+    - field.field.group.country.field_join_block
+    - field.field.group.country.field_location
+    - field.field.group.country.field_summary
     - group.type.country
 id: group.country.token
 targetEntityType: group
@@ -20,5 +26,11 @@ content:
 hidden:
   changed: true
   created: true
+  field_banner: true
+  field_content: true
+  field_infographic: true
+  field_join_block: true
+  field_location: true
+  field_summary: true
   langcode: true
   uid: true

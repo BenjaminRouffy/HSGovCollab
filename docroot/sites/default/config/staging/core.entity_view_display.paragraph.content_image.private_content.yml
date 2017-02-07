@@ -1,8 +1,9 @@
-uuid: 38543626-f7d7-4a46-b1d2-5e7cc17d49c9
+uuid: 5fe09f49-3c6b-4a33-9d1d-c0624f351a3d
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.private_content
     - field.field.paragraph.content_image.field_content_image
     - field.field.paragraph.content_image.field_description
     - field.field.paragraph.content_image.field_private_content
@@ -10,10 +11,10 @@ dependencies:
     - paragraphs.paragraphs_type.content_image
   module:
     - image
-id: paragraph.content_image.default
+id: paragraph.content_image.private_content
 targetEntityType: paragraph
 bundle: content_image
-mode: default
+mode: private_content
 content:
   field_content_image:
     weight: 0
@@ -30,8 +31,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_private_content:
+    type: boolean
+    weight: 2
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
 hidden:
   created: true
-  field_private_content: true
   field_view_mode: true
   uid: true

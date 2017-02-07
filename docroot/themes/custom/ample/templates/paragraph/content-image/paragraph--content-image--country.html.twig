@@ -3,8 +3,14 @@
     <img src="{{ country_icon }}">
 
     <h1 role="heading">
-      {{ group_label }}
+      {{ group_label|upper }}
     </h1>
+
+    {% if logged_in %}
+      <span>
+        {{ 'Follow'|t ~ group_label }}
+      </span>
+    {% endif %}
   </div>
 
   <div class="banner-image" style="background-image: url({{ file_url(content.field_content_image|render|striptags|trim) }})">

@@ -1,0 +1,16 @@
+uuid: 5451092e-c196-4bab-8340-8f5c705e192d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.country_icon
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.country_icon
+target_entity_type_id: taxonomy_term
+target_bundle: country_icon
+default_langcode: current_interface
+language_alterable: true

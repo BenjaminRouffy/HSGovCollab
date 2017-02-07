@@ -354,6 +354,10 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
       if (!empty($filter->options['expose']['label'])) {
         $identifier .= $this->t(' (Filter label: "@fl")', array('@fl' => $filter->options['expose']['label']));
       }
+
+      // Alter the list of available display options for this filter.
+      \Drupal::moduleHandler()->alter('better_exposed_filters_display_options', $display_options, $filter);
+
       $bef_options[$label]['bef_format'] = array(
         '#type' => 'select',
         '#title' => $this->t('Display @identifier exposed filter as', array('@identifier' => $identifier)),
@@ -518,9 +522,6 @@ Off|No
       );
     }
     /* Ends: foreach ($filters as $filter) { */
-
-    // Alter the list of available display options for this filter.
-    \Drupal::moduleHandler()->alter('better_exposed_filters_display_options', $display_options, $filter);
 
     // Add BEF form elements to the exposed form options form.
     $form['bef'] = $bef_options;

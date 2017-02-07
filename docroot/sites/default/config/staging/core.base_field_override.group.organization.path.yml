@@ -1,0 +1,20 @@
+uuid: dc4f5185-1863-41f4-bac3-edb47acb86b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+  module:
+    - path
+id: group.organization.path
+field_name: path
+entity_type: group
+bundle: organization
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

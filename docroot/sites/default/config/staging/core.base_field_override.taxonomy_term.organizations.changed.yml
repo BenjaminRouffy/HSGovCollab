@@ -1,0 +1,18 @@
+uuid: e06d6945-e38b-4977-bc4c-13ad72b554e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.organizations
+id: taxonomy_term.organizations.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: organizations
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

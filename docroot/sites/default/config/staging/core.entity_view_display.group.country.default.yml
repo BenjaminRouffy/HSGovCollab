@@ -6,6 +6,7 @@ dependencies:
     - field.field.group.country.field_banner
     - field.field.group.country.field_content
     - field.field.group.country.field_country_icon
+    - field.field.group.country.field_country_options
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
@@ -22,7 +23,7 @@ mode: default
 content:
   field_content:
     type: entity_reference_revisions_entity_view
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       view_mode: private_content
@@ -30,19 +31,12 @@ content:
     third_party_settings: {  }
   field_infographic:
     type: entity_reference_revisions_entity_view
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-  field_regions:
-    weight: 3
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
   field_summary:
     weight: 0
     label: hidden
@@ -54,8 +48,10 @@ hidden:
   created: true
   field_banner: true
   field_country_icon: true
+  field_country_options: true
   field_join_block: true
   field_location: true
+  field_regions: true
   label: true
   langcode: true
   uid: true

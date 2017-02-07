@@ -1,0 +1,18 @@
+uuid: 1a2105a7-ed0f-405c-84f5-9a3616e070e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.organizations
+id: taxonomy_term.organizations.name
+field_name: name
+entity_type: taxonomy_term
+bundle: organizations
+label: Name
+description: 'The term name.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

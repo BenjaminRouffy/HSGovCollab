@@ -1,0 +1,30 @@
+uuid: a8b7c207-3cae-4b27-9a2c-be5873e27865
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.country_option.field_label
+    - field.field.paragraph.country_option.field_value
+    - paragraphs.paragraphs_type.country_option
+id: paragraph.country_option.default
+targetEntityType: paragraph
+bundle: country_option
+mode: default
+content:
+  field_label:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_value:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true

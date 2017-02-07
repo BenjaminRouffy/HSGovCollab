@@ -1,0 +1,18 @@
+uuid: 0a8f5e41-3a85-4b91-b778-12b5f272ebda
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_links
+id: block_content.social_links.changed
+field_name: changed
+entity_type: block_content
+bundle: social_links
+label: Changed
+description: 'The time that the custom block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

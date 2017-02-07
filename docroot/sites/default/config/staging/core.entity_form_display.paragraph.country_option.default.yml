@@ -1,0 +1,31 @@
+uuid: 172da55c-44bb-4679-bf1d-5369468190c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.country_option.field_label
+    - field.field.paragraph.country_option.field_value
+    - paragraphs.paragraphs_type.country_option
+id: paragraph.country_option.default
+targetEntityType: paragraph
+bundle: country_option
+mode: default
+content:
+  field_label:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_value:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  status: true
+  uid: true

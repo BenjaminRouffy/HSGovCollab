@@ -38,7 +38,7 @@ class GroupRelatedContent extends RelatedContentBase {
   /**
    * @inheritdoc
    */
-  public function viewsAlteration(&$data) {
+  public function viewsAlteration(RelatedContentFilter &$data) {
     $current_gid = \Drupal::entityTypeManager()
       ->getStorage('group_content')
       ->loadByProperties([

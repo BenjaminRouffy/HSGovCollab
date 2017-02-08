@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.browse_files_modal
     - field.field.group.country.field_banner
     - field.field.group.country.field_content
     - field.field.group.country.field_country_icon
@@ -15,7 +14,6 @@ dependencies:
     - field.field.group.country.field_summary
     - group.type.country
   module:
-    - entity_browser
     - geolocation
     - paragraphs
     - text
@@ -46,16 +44,9 @@ content:
     third_party_settings: {  }
   field_country_icon:
     weight: 2
-    settings:
-      entity_browser: browse_files_modal
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      view_mode: default
-      open: false
-      preview_image_style: thumbnail
+    settings: {  }
     third_party_settings: {  }
-    type: entity_browser_file
+    type: options_select
   field_country_options:
     type: entity_reference_paragraphs
     weight: 9
@@ -74,7 +65,7 @@ content:
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
-      form_display_mode: default
+      form_display_mode: private_content
     third_party_settings: {  }
   field_join_block:
     weight: 10
@@ -111,12 +102,9 @@ content:
     type: geolocation_googlegeocoder
   field_regions:
     weight: 4
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
   field_summary:
     weight: 6
     settings:
@@ -134,6 +122,10 @@ content:
   langcode:
     type: language_select
     weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 11
     settings: {  }
     third_party_settings: {  }
 hidden:

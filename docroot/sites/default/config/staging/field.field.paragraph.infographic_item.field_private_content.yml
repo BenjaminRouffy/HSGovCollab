@@ -1,0 +1,23 @@
+uuid: 9151cdf4-26f0-4f37-81b1-4fd2881221ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_private_content
+    - paragraphs.paragraphs_type.infographic_item
+id: paragraph.infographic_item.field_private_content
+field_name: field_private_content
+entity_type: paragraph
+bundle: infographic_item
+label: 'Private content'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean

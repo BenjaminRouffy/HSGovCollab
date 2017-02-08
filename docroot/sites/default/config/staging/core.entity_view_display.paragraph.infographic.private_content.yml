@@ -1,0 +1,26 @@
+uuid: f61eb7a0-0ff3-43c1-8cbc-8fb434228967
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.private_content
+    - field.field.paragraph.infographic.field_infographic_item
+    - paragraphs.paragraphs_type.infographic
+  module:
+    - entity_reference_revisions
+id: paragraph.infographic.private_content
+targetEntityType: paragraph
+bundle: infographic
+mode: private_content
+content:
+  field_infographic_item:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  uid: true

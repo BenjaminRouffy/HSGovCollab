@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.infographic_item.field_icon
     - field.field.paragraph.infographic_item.field_infographic_description
+    - field.field.paragraph.infographic_item.field_private_content
     - field.field.paragraph.infographic_item.field_title
     - field.field.paragraph.infographic_item.field_value
     - paragraphs.paragraphs_type.infographic_item
@@ -43,4 +44,5 @@ content:
     type: string
 hidden:
   created: true
+  field_private_content: true
   uid: true

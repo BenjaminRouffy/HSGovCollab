@@ -1,51 +1,57 @@
-uuid: 9a5e3e23-2ce7-463c-82a2-e9dd93569c84
+uuid: 5e7a0071-b19f-43bc-b54c-59f862bba11f
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.private_content
     - field.field.paragraph.infographic_item.field_icon
     - field.field.paragraph.infographic_item.field_infographic_description
     - field.field.paragraph.infographic_item.field_private_content
     - field.field.paragraph.infographic_item.field_title
     - field.field.paragraph.infographic_item.field_value
     - paragraphs.paragraphs_type.infographic_item
-id: paragraph.infographic_item.default
+id: paragraph.infographic_item.private_content
 targetEntityType: paragraph
 bundle: infographic_item
-mode: default
+mode: private_content
 content:
   field_icon:
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_infographic_description:
-    weight: 2
+    weight: 3
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
-  field_title:
+  field_private_content:
     weight: 0
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_title:
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_value:
-    weight: 3
+    weight: 4
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   translation:
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
-  field_private_content: true
   status: true
   uid: true

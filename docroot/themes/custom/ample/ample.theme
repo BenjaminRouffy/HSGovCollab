@@ -118,14 +118,12 @@ function ample_preprocess_paragraph(array &$variables) {
       $icon = $entity->get('field_country_icon')->getValue();
 
       if (is_array($icon) && !empty($icon)) {
-        /* @var File $file */
-        $icon = File::load($icon[0]['target_id'])->getFileUri();
-        $style = ImageStyle::load('100x100');
-        $variables['country_icon'] = $style->buildUrl($icon);
-      }
-      else {
-        $theme = \Drupal::theme()->getActiveTheme();
-        $variables['country_icon'] = file_url_transform_relative(file_create_url($theme->getPath() . '/images/default_country_icon.png'));
+        $icon = \Drupal::entityTypeManager()
+          ->getStorage('taxonomy_term')
+          ->load($icon[0]['target_id']);
+        $view_builder = \Drupal::entityTypeManager()->getViewBuilder($icon->getEntityTypeId());
+
+        $variables['country_icon'] = $view_builder->view($icon, 'default');
       }
     }
   }

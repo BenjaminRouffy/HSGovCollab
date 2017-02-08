@@ -1260,17 +1260,19 @@ header .social-links .font-social-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start; }
   .country-list .country-item {
+    padding: 10px;
     width: 33.33%; }
   .country-list .country-content {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     height: 100%;
-    margin: 10px;
-    padding: 30px 20px;
+    padding: 30px 20px 50px;
     position: relative; }
     .country-list .country-content:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }

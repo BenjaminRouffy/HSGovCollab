@@ -3,6 +3,8 @@
  * @file
  * Contains p4h_views_plugins.module.
  */
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -26,6 +28,21 @@ function p4h_views_plugins_theme() {
   ];
 }
 
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function p4h_views_plugins_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if($entity_type->id() == 'node') {
+    $fields['computed_date'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Computed date'))
+      ->setDescription(t('Computed date'))
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'weight' => -5,
+      ));
+    return $fields;
+  }
+}
 
 /**
  * Implements hook_form_alter().
@@ -60,5 +77,20 @@ function p4h_views_plugins_views_plugins_filter_alter(array &$plugins) {
 function p4h_views_plugins_better_exposed_filters_display_options_alter(&$display_options, $filter) {
   if (is_a($filter, 'Drupal\p4h_views_plugins\Plugin\views\filter\CustomCombine')) {
     $display_options['bef_ul'] = t('Alphabet Filter');
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function p4h_views_plugins_node_presave(Drupal\Core\Entity\EntityInterface $entity) {
+  $manager = \Drupal::service('plugin.manager.computed_date');
+  $plugins = $manager->getDefinitions($entity->bundle());
+  if (in_array($entity->bundle(), array_keys($plugins))) {
+
+    /* @var $plugin Drupal\p4h_views_plugins\ComputedDateInterface */
+    $plugin = $manager->createInstance($entity->bundle(), ['entity' => $entity]);
+    $plugin->setValue();
+
   }
 }

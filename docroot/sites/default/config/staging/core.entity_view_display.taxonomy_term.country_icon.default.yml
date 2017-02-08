@@ -1,0 +1,25 @@
+uuid: 0198267c-79d5-4349-b3d0-50b8bc5c7994
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.country_icon.field_icon
+    - taxonomy.vocabulary.country_icon
+  module:
+    - image
+id: taxonomy_term.country_icon.default
+targetEntityType: taxonomy_term
+bundle: country_icon
+mode: default
+content:
+  field_icon:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  description: true
+  langcode: true

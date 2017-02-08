@@ -1,10 +1,16 @@
 <div class="banner-image-wrapper">
   <div class="country-icon-wrapper">
-    <img src="{{ country_icon }}">
+    {{ country_icon }}
 
     <h1 role="heading">
-      {{ group_label }}
+      {{ group_label|upper }}
     </h1>
+
+    {% if logged_in %}
+      <span class="follow-link">
+        {{ 'Follow @country'|t({'@country': group_label}) }}
+      </span>
+    {% endif %}
   </div>
 
   <div class="banner-image" style="background-image: url({{ file_url(content.field_content_image|render|striptags|trim) }})">

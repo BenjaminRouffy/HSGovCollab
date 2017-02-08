@@ -4,11 +4,17 @@
       <div class="slider-item-wrapper{{ key == 0 ? ' first-slide' : '' }}">
         {% if key == 0 %}
           <div class="country-icon-wrapper">
-            <img src="{{ country_icon }}">
+            {{ country_icon }}
 
             <h1 role="heading">
-              {{ group_label }}
+              {{ group_label|upper }}
             </h1>
+
+            {% if logged_in %}
+              <span class="follow-link">
+                {{ 'Follow @country'|t({'@country': group_label}) }}
+              </span>
+            {% endif %}
           </div>
         {% endif %}
 

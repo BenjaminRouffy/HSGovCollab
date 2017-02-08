@@ -1,45 +1,28 @@
-uuid: 35550f18-79a0-4eed-80e9-07c8830206a5
+uuid: 2d563660-e5b3-4254-b0ac-f21303e72d34
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.group.field_country_icon
     - group.type.country
-  module:
-    - content_translation
-    - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      alt: alt
-      title: title
-      file: '0'
+    - taxonomy.vocabulary.country_icon
 id: group.country.field_country_icon
 field_name: field_country_icon
 entity_type: group
 bundle: country
-label: Icon
+label: 'Country icon'
 description: ''
-required: false
-translatable: true
+required: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'png gif jpg jpeg'
-  max_filesize: ''
-  max_resolution: ''
-  min_resolution: ''
-  alt_field: true
-  alt_field_required: false
-  title_field: false
-  title_field_required: false
-  default_image:
-    uuid: ''
-    alt: ''
-    title: ''
-    width: null
-    height: null
-  handler: 'default:file'
-  handler_settings: {  }
-field_type: image
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      country_icon: country_icon
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

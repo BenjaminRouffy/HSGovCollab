@@ -19,6 +19,7 @@ use Drupal\Core\Field\FieldItemListInterface;
  * )
  */
 class SummaryBodyTrimmedFormatter extends TextTrimmedFormatter {
+
   /**
    * {@inheritdoc}
    */
@@ -56,4 +57,5 @@ class SummaryBodyTrimmedFormatter extends TextTrimmedFormatter {
 
     return $elements;
   }
+
 }

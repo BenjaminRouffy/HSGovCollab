@@ -1,0 +1,22 @@
+uuid: f5b9e49f-3f1d-4fec-9734-c615ec1c057f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - rel_content
+id: node.field_related_content_selector
+field_name: field_related_content_selector
+entity_type: node
+type: list_rel_content
+settings:
+  list_rel_content:
+    group_rel_content: group_rel_content
+    taxonomy_term_rel_content: taxonomy_term_rel_content
+module: rel_content
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

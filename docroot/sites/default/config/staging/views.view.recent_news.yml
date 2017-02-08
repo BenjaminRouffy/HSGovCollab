@@ -12,6 +12,7 @@ dependencies:
     - datetime
     - image
     - node
+    - rel_content
     - user
 id: recent_news
 label: 'Recent content (static, 3 items)'
@@ -258,6 +259,43 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        related_content_filter:
+          id: related_content_filter
+          table: node_field_data
+          field: related_content_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: related_content_filter
       sorts: {  }
       title: 'Related news'
       header: {  }
@@ -337,6 +375,7 @@ display:
           plugin_id: datetime
       defaults:
         sorts: false
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -454,6 +493,43 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
+        related_content_filter:
+          id: related_content_filter
+          table: node_field_data
+          field: related_content_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          plugin_id: related_content_filter
       filter_groups:
         operator: AND
         groups:
@@ -508,6 +584,7 @@ display:
           entity_type: node
           entity_field: nid
           plugin_id: node_nid
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:

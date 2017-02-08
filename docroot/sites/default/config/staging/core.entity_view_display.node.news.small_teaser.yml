@@ -7,13 +7,16 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_author
     - field.field.node.news.field_category
+    - field.field.node.news.field_content_date
     - field.field.node.news.field_content_paragraph
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_organization
+    - field.field.node.news.field_related_content_selector
     - image.style.65x65
     - node.type.news
   module:
+    - datetime
     - image
     - user
 id: node.news.small_teaser
@@ -21,8 +24,16 @@ targetEntityType: node
 bundle: news
 mode: small_teaser
 content:
+  field_content_date:
+    type: datetime_default
+    weight: 1
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
   field_image:
-    weight: 103
+    weight: 0
     label: hidden
     settings:
       image_style: 65x65
@@ -36,5 +47,6 @@ hidden:
   field_content_paragraph: true
   field_join_block: true
   field_organization: true
+  field_related_content_selector: true
   langcode: true
   links: true

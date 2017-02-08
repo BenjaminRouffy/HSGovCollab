@@ -37,6 +37,7 @@ function events_tokens($type, $tokens, array $data, array $options, BubbleableMe
             $event_slider_reference = $event_slider->get('entity');
             $entity_adapter = $event_slider_reference->getTarget();
             $slider = $entity_adapter->getValue();
+            $image_entity = NULL;
 
             if ($slider->hasField('field_slider')) {
               // Get image from nested paragraph "Slider".
@@ -48,8 +49,10 @@ function events_tokens($type, $tokens, array $data, array $options, BubbleableMe
               $image_entity = get_nested_paragraph_entity($slider, 'field_content_image');
             }
 
-            $image = $image_entity->getFileUri();
-            $replacements[$original] = file_create_url($image);
+            if (!empty($image_entity)) {
+              $image = $image_entity->getFileUri();
+              $replacements[$original] = file_create_url($image);
+            }
           }
 
           break;

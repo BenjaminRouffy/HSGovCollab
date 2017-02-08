@@ -509,7 +509,8 @@
     margin-right: 20px;
   }
 
-  p {
+  p,
+  time {
     @include font-size(15.4);
     color: $navy-dark;
     font-family: $fira;
@@ -725,13 +726,56 @@
       opacity: .66;
     }
   }
+
+  .section-info {
+    .paragraph {
+      overflow: hidden;
+      padding: 5px 0;
+
+      a {
+        border-bottom: 2px solid transparent;
+        display: inline-block;
+        transition: border .3s ease;
+        vertical-align: top;
+        position: relative;
+        z-index: 5;
+
+        &:hover {
+          border-color: $red;
+
+          .icon-wrapper,
+          h3 {
+            opacity: .66;
+          }
+        }
+      }
+    }
+
+    .icon-wrapper {
+      float: left;
+      height: 40px;
+      margin-right: 10px;
+      transition: opacity .3s ease;
+      width: 26px;
+    }
+
+    h3 {
+      @include font-size(14);
+      font-weight: 400;
+      float: left;
+      letter-spacing: .5px;
+      line-height: 20px;
+      margin: 8px 0 0;
+      transition: opacity .3s ease;
+    }
+  }
 }
 
 .country-title {
   margin-bottom: 20px;
   overflow: hidden;
 
-  .flag {
+  .country-icon-wrapper {
     float: left;
     margin-right: 20px;
     width: 40px;
@@ -742,48 +786,5 @@
     line-height: 32px;
     margin: 10px 0 5px;
     text-transform: uppercase;
-  }
-}
-
-.section-info {
-  .paragraph {
-    overflow: hidden;
-    padding: 5px 0;
-
-    a {
-      border-bottom: 2px solid transparent;
-      display: inline-block;
-      transition: border .3s ease;
-      vertical-align: top;
-      position: relative;
-      z-index: 5;
-
-      &:hover {
-        border-color: $red;
-
-        .icon-wrapper,
-        h3 {
-          opacity: .66;
-        }
-      }
-    }
-  }
-
-  .icon-wrapper {
-    float: left;
-    height: 40px;
-    margin-right: 10px;
-    transition: opacity .3s ease;
-    width: 26px;
-  }
-
-  h3 {
-    @include font-size(14);
-    font-weight: 400;
-    float: left;
-    letter-spacing: .5px;
-    line-height: 20px;
-    margin: 8px 0 0;
-    transition: opacity .3s ease;
   }
 }

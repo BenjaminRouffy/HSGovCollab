@@ -292,4 +292,18 @@
     }
   };
 
+  Drupal.behaviors.showMoreLink = {
+    attach: function(context, settings) {
+      var hiddenContent = $('.more-content');
+
+      if (!hiddenContent.children().length) {
+        hiddenContent.parent().remove();
+      }
+
+      $('.show-more').on('click', function() {
+        hiddenContent.slideToggle(300);
+      });
+    }
+  };
+
 })(jQuery, Drupal);

@@ -65,4 +65,5 @@ class GroupRelatedContent extends RelatedContentBase {
       }
     }
   }
+
 }

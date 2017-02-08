@@ -19,7 +19,7 @@ abstract class RelatedContentBase extends PluginBase implements RelatedContentIn
     // Retrieve the @description property from the annotation and return it.
     return $this->pluginDefinition['description'];
   }
-  
+
   /**
    * {@inheritdoc}
    */

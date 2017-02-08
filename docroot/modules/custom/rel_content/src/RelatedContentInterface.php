@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\rel_content;
+
 use Drupal\rel_content\Plugin\views\filter\RelatedContentFilter;
 
 /**
@@ -25,8 +26,11 @@ interface RelatedContentInterface {
   public function getOptions();
 
   /**
-   * Alter view. TODO change
+   * Add relation + where operation for view query.
+   *
    * @param RelatedContentFilter $date
+   *   Views filter $this.
    */
-  public function viewsAlteration(&$date);
+  public function viewsAlteration(RelatedContentFilter &$date);
+
 }

@@ -6,6 +6,7 @@ use Drupal\Component\Annotation\Plugin;
 
 /**
  * Defines a RelatedContent annotation object.
+ *
  * @see \Drupal\rel_content\RelatedContentPluginManager
  * @see plugin_api
  *

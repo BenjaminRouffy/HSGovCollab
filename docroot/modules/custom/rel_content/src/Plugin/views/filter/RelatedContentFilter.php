@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\d8views\Plugin\views\filter\NodeTitles.
- */
-
 namespace Drupal\rel_content\Plugin\views\filter;
 
 use Drupal\Core\Field\FieldDefinitionInterface;
@@ -34,7 +29,7 @@ class RelatedContentFilter extends FilterPluginBase {
   /**
    * Current node.
    *
-   * @var Node
+   * @var \Drupal\node\Entity\Node
    */
   public $currentNode;
 
@@ -57,7 +52,7 @@ class RelatedContentFilter extends FilterPluginBase {
       $plugin_id,
       $plugin_definition,
       $container->get('plugin.manager.rel_content'),
-    //TODO change
+      // TODO change
       \Drupal::routeMatch()->getParameter('node')
     );
   }

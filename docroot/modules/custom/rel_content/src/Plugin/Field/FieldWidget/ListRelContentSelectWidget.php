@@ -34,7 +34,7 @@ class ListRelContentSelectWidget extends WidgetBase {
     $manager = \Drupal::getContainer()->get('plugin.manager.rel_content');
 
     foreach ($settings as $plugin_machine_name) {
-      /** @var RelatedContentInterface $instance */
+      /** @var \Drupal\rel_content\RelatedContentInterface $instance */
       $instance = $manager->createInstance($plugin_machine_name, ['items' => $items, 'delta' => $delta]);
       $result = $instance->getOptions();
 
@@ -44,9 +44,9 @@ class ListRelContentSelectWidget extends WidgetBase {
     }
 
     $element['value'] = $element + [
-        '#type' => 'radios',
-        '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
-        '#options' => $options,
+      '#type' => 'radios',
+      '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
+      '#options' => $options,
     ];
 
     return $element;

@@ -37,8 +37,7 @@ class NextPreviousAccessBlock extends BlockBase {
       $links['#type'] = 'container';
     }
 
-    return [
-      $links,
+    return $links + [
       '#cache' => [
         // For different users we will have different access rules.
         'contexts' => [

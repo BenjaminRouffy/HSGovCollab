@@ -23,7 +23,7 @@ use Drupal\Core\TypedData\OptionsProviderInterface;
  *   default_formatter = "list_rel_content_id",
  * )
  */
-class ListRelContent extends FieldItemBase  {
+class ListRelContent extends FieldItemBase {
 
   /**
    * {@inheritdoc}
@@ -46,7 +46,6 @@ class ListRelContent extends FieldItemBase  {
 
     return $properties;
   }
-
 
   /**
    * {@inheritdoc}
@@ -109,4 +108,5 @@ class ListRelContent extends FieldItemBase  {
     $value = $this->get('value')->getValue();
     return $value === NULL || $value === '';
   }
+
 }

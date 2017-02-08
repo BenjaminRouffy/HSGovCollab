@@ -33,26 +33,49 @@ function events_tokens($type, $tokens, array $data, array $options, BubbleableMe
         case 'paragraphs_first_image':
           // Get slider entity.
           $event_slider = $data['node']->get('field_event_slider')->first();
-          $event_slider_reference = $event_slider->get('entity');
-          $entity_adapter = $event_slider_reference->getTarget();
-          $slider = $entity_adapter->getValue();
-          // Get slider item entity.
-          $slider_item = $slider->get('field_slider')->first();
-          $slider_reference = $slider_item->get('entity');
-          $slider_entity_adapter = $slider_reference->getTarget();
-          $slider_item_entity = $slider_entity_adapter->getValue();
-          // Get image entity.
-          $slider_item_image = $slider_item_entity->get('field_content_image')->first();
-          $slider_item_image_reference = $slider_item_image->get('entity');
-          $slider_item_image_entity_adapter = $slider_item_image_reference->getTarget();
-          $slider_item_image_entity = $slider_item_image_entity_adapter->getValue();
-          $image = $slider_item_image_entity->getFileUri();
+          if (!empty($event_slider)) {
+            $event_slider_reference = $event_slider->get('entity');
+            $entity_adapter = $event_slider_reference->getTarget();
+            $slider = $entity_adapter->getValue();
 
-          $replacements[$original] = file_create_url($image);
+            if ($slider->hasField('field_slider')) {
+              // Get image from nested paragraph "Slider".
+              $slider_entity = get_nested_paragraph_entity($slider, 'field_slider');
+              $image_entity = get_nested_paragraph_entity($slider_entity, 'field_content_image');
+            }
+            elseif ($slider->hasField('field_content_image')) {
+              // Get image from paragraph "Image".
+              $image_entity = get_nested_paragraph_entity($slider, 'field_content_image');
+            }
+
+            $image = $image_entity->getFileUri();
+            $replacements[$original] = file_create_url($image);
+          }
+
           break;
       }
     }
   }
 
   return $replacements;
+}
+
+/**
+ * Get nested entity from paragraph's entity field.
+ *
+ * @param object $entity
+ *   Paragraph's entity object.
+ * @param string $field
+ *   Entity Field name.
+ *
+ * return $nested_entity
+ *   Return nested entity object.
+ */
+function get_nested_paragraph_entity($entity, string $field) {
+  $slider_item_image = $entity->get($field)->first();
+  $slider_item_image_reference = $slider_item_image->get('entity');
+  $slider_item_image_entity_adapter = $slider_item_image_reference->getTarget();
+  $nested_entity = $slider_item_image_entity_adapter->getValue();
+
+  return $nested_entity;
 }

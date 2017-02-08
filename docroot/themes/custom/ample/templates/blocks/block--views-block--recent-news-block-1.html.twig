@@ -1,8 +1,10 @@
-<div class="related-wrapper">
-  <div class="related-content">
-    <h3>{{ label }}</h3>
-    {% block content %}
-      {{ content }}
-    {% endblock %}
+{% if content.view_build['#rows'] %}
+  <div class="related-wrapper">
+    <div class="related-content">
+      <h3>{{ label }}</h3>
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+    </div>
   </div>
-</div>
+{% endif %}

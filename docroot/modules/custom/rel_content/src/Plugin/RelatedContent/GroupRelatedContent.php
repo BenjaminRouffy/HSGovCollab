@@ -46,20 +46,23 @@ class GroupRelatedContent extends RelatedContentBase {
         'entity_id' => $data->currentNode->id(),
       ]);
     $current_gid = array_shift($current_gid);
-    $table = $data->ensureMyTable();
+    if (!empty($current_gid)) {
+      $table = $data->ensureMyTable();
 
-    $definition = array(
-      'table' => 'group_content_field_data',
-      'field' => 'entity_id',
-      'left_table' => $table,
-      'left_field' => 'nid',
-    );
+      $definition = array(
+        'table' => 'group_content_field_data',
+        'field' => 'entity_id',
+        'left_table' => $table,
+        'left_field' => 'nid',
+      );
 
-    $join = Views::pluginManager('join')->createInstance('standard', $definition);
-    $data->query->addRelationship('group_content_field_data', $join, 'group_content_field_data');
+      $join = Views::pluginManager('join')
+        ->createInstance('standard', $definition);
+      $data->query->addRelationship('group_content_field_data', $join, 'group_content_field_data');
 
-    foreach ($current_gid->get('gid')->getValue() as $value) {
-      $data->query->addWhereExpression(0, "group_content_field_data.gid = :group_content_field_data_gid", array(':group_content_field_data_gid' => $value['target_id']));
+      foreach ($current_gid->get('gid')->getValue() as $value) {
+        $data->query->addWhereExpression(0, "group_content_field_data.gid = :group_content_field_data_gid", array(':group_content_field_data_gid' => $value['target_id']));
+      }
     }
   }
 }

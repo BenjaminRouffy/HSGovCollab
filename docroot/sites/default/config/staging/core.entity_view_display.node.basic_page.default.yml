@@ -18,8 +18,15 @@ targetEntityType: node
 bundle: basic_page
 mode: default
 content:
-  field_content_paragraph:
+  field_author:
+    type: string
     weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_content_paragraph:
+    weight: 2
     label: hidden
     settings:
       view_mode: view_mode_selector
@@ -31,7 +38,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_author: true
   field_banner: true
   field_bottom_link: true
   field_join_block: true

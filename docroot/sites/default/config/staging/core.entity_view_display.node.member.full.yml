@@ -1,0 +1,87 @@
+uuid: 9b19b28b-f656-496b-b059-a728e12584d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.member.body
+    - field.field.node.member.field_content_paragraph
+    - field.field.node.member.field_country
+    - field.field.node.member.field_join_block
+    - field.field.node.member.field_member_category
+    - field.field.node.member.field_member_image
+    - field.field.node.member.field_member_link
+    - image.style.174x174
+    - node.type.member
+  module:
+    - entity_reference_revisions
+    - image
+    - link
+    - text
+    - user
+id: node.member.full
+targetEntityType: node
+bundle: member
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+  field_content_paragraph:
+    type: entity_reference_revisions_entity_view
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_country:
+    weight: 3
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_join_block:
+    weight: 7
+    label: above
+    settings:
+      view_mode: view_mode_registration_block
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_member_category:
+    weight: 2
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_member_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: 174x174
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_member_link:
+    weight: 6
+    label: hidden
+    settings:
+      trim_length: 80
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
+    type: link_separate
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

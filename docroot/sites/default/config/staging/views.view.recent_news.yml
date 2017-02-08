@@ -375,6 +375,7 @@ display:
           plugin_id: datetime
       defaults:
         sorts: false
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -583,6 +584,7 @@ display:
           entity_type: node
           entity_field: nid
           plugin_id: node_nid
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:

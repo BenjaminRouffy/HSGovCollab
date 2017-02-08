@@ -1,0 +1,53 @@
+<div class="content-wrapper">
+  <section class="content-container content-with-sidebar">
+    <section class="content">
+      {% if content.field_member_image %}
+        <div class="header-image">
+          {{ content.field_member_image|field_value }}
+        </div>
+      {% endif %}
+
+      <article{{ attributes }} role="article">
+        <div class="title-wrapper">
+          <h1 class="page-title">
+            {{ label|field_value }}
+          </h1>
+
+          {% if content.field_member_category|field_value %}
+            <h2>{{ content.field_member_category|field_value }}</h2>
+          {% endif %}
+          <div class="line"></div>
+        </div>
+
+        {% if node.body.summary %}
+          <div class="summary-text">
+            <p>
+              {{ node.body.summary }}
+            </p>
+          </div>
+        {% endif %}
+
+        {{ content.body }}
+
+        {% if content.field_content_paragraph|field_value %}
+          {{ content.field_content_paragraph|field_value }}
+        {% endif %}
+
+        {% if content.field_member_link|field_value %}
+          <div class="font-social-icon top-right-icon">
+            <a href="{{ content.field_member_link.0['#url'] }}" class="red-btn-link" target="_blank">
+              {{ content.field_member_link.0['#title'] ? content.field_member_link.0['#title'] : content.field_member_link.0['#url'] }}
+            </a>
+          </div>
+        {% endif %}
+      </article>
+    </section>
+
+    <aside class="sidebar">
+      <div class="teaser corners">
+        {{ content.field_join_block }}
+      </div>
+    </aside>
+  </section>
+</div>
+

@@ -7,7 +7,6 @@ dependencies:
   module:
     - ctools
     - ctools_block
-    - node
     - panels
 id: node_view-panels_variant-1
 label: 'Basic page'
@@ -77,8 +76,8 @@ variant_settings:
 page: node_view
 weight: 0
 selection_criteria:
-  -
-    id: node_type
+  1:
+    id: 'entity_bundle:node'
     bundles:
       basic_page: basic_page
     negate: false

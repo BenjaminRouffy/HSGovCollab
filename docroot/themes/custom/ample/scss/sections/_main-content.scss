@@ -2,7 +2,7 @@
   border-top: 1px solid #e9e6e6;
   box-shadow: inset 0 0 8px rgba($black, .11);
 
-  body:not(.who):not(.news-and-events) & {
+  body:not(.who):not(.news-and-events):not(.where):not(.group) & {
     background: $white;
   }
 }
@@ -79,7 +79,8 @@
   }
 }
 
-.content {
+.content,
+.more-content {
   @include font-size(18.2);
   color: $navy-dark;
   font-family: $fira;
@@ -204,5 +205,14 @@
     font-weight: 300;
     line-height: 31px;
     margin: 20px 0;
+  }
+}
+
+.more-content-wrapper {
+  padding-top: 10px;
+
+  .more-content {
+    display: none;
+    padding: 20px 0;
   }
 }

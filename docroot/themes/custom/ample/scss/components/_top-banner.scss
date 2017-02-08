@@ -1,17 +1,26 @@
 .top-banner-region {
   background: $white-dark;
-  border-bottom: 1px solid #e9e6e6;
-  box-shadow: 0 0 8px rgba($black, .11);
+
+  body:not(.group) {
+    border-bottom: 1px solid #e9e6e6;
+    box-shadow: 0 0 8px rgba($black, .11);
+  }
+
+  ~ .content-container {
+    padding-top: 40px;
+  }
 
   .section-info {
     display: flex;
+    justify-content: center;
     margin: 0 auto 20px;
     max-width: 1160px;
     padding: 100px 0 50px;
 
     .paragraph {
+      max-width: 33.33%;
       text-align: center;
-      width: 25%;
+      width: 100%;
     }
   }
 
@@ -24,6 +33,7 @@
 
     a {
       display: block;
+      height: 100%;
       overflow: hidden;
       padding: 20px;
       position: relative;
@@ -52,6 +62,7 @@
       display: block;
       font-family: $oswald;
       font-weight: 700;
+      line-height: 60px;
       margin-top: 20px;
       padding: 25px 0;
     }
@@ -81,6 +92,57 @@
       font-family: $fira;
       line-height: 23px;
       margin: 20px 0 0;
+    }
+  }
+}
+
+.banner-image-wrapper {
+  height: 650px;
+  position: relative;
+}
+
+.country-content-wrapper {
+  max-width: 1200px;
+  padding-top: 10%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  text-align: left;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 10;
+
+  .country-icon-wrapper {
+    @include same(100px, height, width);
+    float: left;
+    margin-right: 20px;
+  }
+
+  h1 {
+    @include font-size(80);
+    color: $white;
+    letter-spacing: 1.5px;
+    line-height: 72px;
+    margin: 20px 0 10px;
+    padding: 0;
+  }
+
+  .follow-link {
+    @include font-size(24);
+    border: 1px solid $white;
+    color: $white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $oswald;
+    letter-spacing: .5px;
+    margin-top: 40px;
+    margin-left: 10px;
+    padding: 15px 40px;
+    transform: scale(1.06);
+    transition: background .2s ease;
+
+    &:hover {
+      background: $red;
     }
   }
 }

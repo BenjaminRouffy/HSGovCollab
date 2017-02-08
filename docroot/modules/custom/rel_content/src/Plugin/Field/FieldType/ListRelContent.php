@@ -29,9 +29,9 @@ class ListRelContent extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function defaultStorageSettings() {
-    return array(
+    return [
       'list_rel_content' => [],
-    ) + parent::defaultStorageSettings();
+    ] + parent::defaultStorageSettings();
   }
 
   /**

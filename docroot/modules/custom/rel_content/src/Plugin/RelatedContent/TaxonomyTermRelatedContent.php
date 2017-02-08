@@ -4,6 +4,7 @@ namespace Drupal\rel_content\Plugin\RelatedContent;
 
 use Drupal\plugin_type_example\SandwichBase;
 use Drupal\rel_content\Annotation\RelatedContent;
+use Drupal\rel_content\Plugin\views\filter\RelatedContentFilter;
 use Drupal\rel_content\RelatedContentBase;
 use Drupal\views\Views;
 
@@ -38,7 +39,7 @@ class TaxonomyTermRelatedContent extends RelatedContentBase {
   /**
    * @inheritdoc
    */
-  public function viewsAlteration(&$data) {
+  public function viewsAlteration(RelatedContentFilter &$data) {
     $table = $data->ensureMyTable();
 
     $definition = array(

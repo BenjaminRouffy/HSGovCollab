@@ -1,0 +1,13 @@
+diff --git a/src/Plugin/DisplayBuilder/StandardDisplayBuilder.php b/src/Plugin/DisplayBuilder/StandardDisplayBuilder.php
+index 5ba0952..77bd983 100644
+--- a/src/Plugin/DisplayBuilder/StandardDisplayBuilder.php
++++ b/src/Plugin/DisplayBuilder/StandardDisplayBuilder.php
+@@ -138,7 +138,7 @@ class StandardDisplayBuilder extends DisplayBuilderBase implements PluginWizardI
+             $cacheable_metadata = CacheableMetadata::createFromObject($block_render_array);
+             $cacheable_metadata->applyTo($block_render_array);
+             if (isset($content['#cache'])) {
+-              $block_render_array += $content['#cache'];
++              $block_render_array['#cache'] += $content['#cache'];
+             }
+           }
+ 

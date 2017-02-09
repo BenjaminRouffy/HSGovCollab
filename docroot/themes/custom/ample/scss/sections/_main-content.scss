@@ -5,6 +5,11 @@
   body:not(.who):not(.news-and-events):not(.where):not(.group) & {
     background: $white;
   }
+
+  > .top-banner-region {
+    position: relative;
+    z-index: 100;
+  }
 }
 
 .content-container {

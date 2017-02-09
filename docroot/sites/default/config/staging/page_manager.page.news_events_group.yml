@@ -1,0 +1,16 @@
+uuid: 6886069d-784d-451f-ac99-fb27cb928094
+langcode: en
+status: true
+dependencies: {  }
+id: news_events_group
+label: 'News & Events (Group)'
+description: ''
+use_admin_theme: false
+path: '/group/{group}/news-and-events'
+access_logic: and
+access_conditions: {  }
+parameters:
+  group:
+    machine_name: group
+    type: 'entity:group'
+    label: Group

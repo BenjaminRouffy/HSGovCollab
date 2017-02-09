@@ -18,15 +18,19 @@ targetEntityType: node
 bundle: basic_page
 mode: default
 content:
+  addtoany:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
   field_author:
     type: string
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_content_paragraph:
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       view_mode: view_mode_selector

@@ -1,0 +1,99 @@
+.addtoany-wrapper {
+  background: $white;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 150px;
+  text-align: center;
+  z-index: 50;
+
+  .toolbar-fixed & {
+    top: 190px;
+  }
+
+  .toolbar-tray-open & {
+    top: 230px;
+  }
+
+  .toggle-sharing-btn {
+    @include font-size(22.4);
+    @include same(40px, height, width);
+    background: $white;
+    color: $red;
+    cursor: pointer;
+    display: block;
+    line-height: 40px;
+    position: relative;
+    z-index: 10;
+  }
+}
+
+.addtoany_list {
+  display: block;
+  transform: translateY(-100%);
+  transition: transform .2s ease;
+
+  &.expanded {
+    transform: translateY(0);
+  }
+
+  &:after {
+    display: none;
+  }
+
+  a {
+    @include same(40px, height, widht);
+    display: block;
+
+    &:after {
+      @include font-size(22.4);
+      color: $navy-dark;
+      font-family: $p4h;
+      line-height: 40px;
+      transition: color .3s ease;
+    }
+
+    &:hover:after {
+      color: $navy-light;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  .a2a_button_email {
+    &:after {
+      content: "o";
+    }
+  }
+
+  .a2a_button_facebook {
+  }
+
+  .a2a_button_twitter {
+    &:after {
+      content: "W";
+    }
+  }
+
+  .a2a_button_linkedin {
+    &:after {
+      content: "E";
+    }
+  }
+
+  .a2a_button_google_plus {
+    background: url(../images/google-plus.svg) center 12px no-repeat;
+    background-size: 20px;
+
+    &:hover {
+      background-position: center -22px;
+    }
+
+    &:after {
+      content: none;
+    }
+  }
+}
+

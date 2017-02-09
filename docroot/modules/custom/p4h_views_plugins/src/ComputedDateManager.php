@@ -10,7 +10,7 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
 
-class ComputedDateManager extends DefaultPluginManager {
+class ComputedDateManager extends DefaultPluginManager implements ComputedDateManagerInterface {
 
   /**
    * {@inheritdoc}
@@ -21,4 +21,12 @@ class ComputedDateManager extends DefaultPluginManager {
     $this->setCacheBackend($cache_backend, 'p4h_views_plugins_computed_date');
   }
 
+  /**
+   * @param $datetime \Datetime
+   *
+   * @return string
+   */
+  public function getTimestamp($datetime) {
+    return $datetime->format('Y-m-d');
+  }
 }

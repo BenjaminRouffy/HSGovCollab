@@ -1,9 +1,11 @@
 <?php
 /**
  * @file
+ * Provides Drupal\p4h_views_plugins\Plugin\ComputedDate\News
  */
 namespace Drupal\p4h_views_plugins\Plugin\ComputedDate;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\p4h_views_plugins\ComputedDateBase;
 use Drupal\Core\Entity\EntityInterface;
 
@@ -16,14 +18,18 @@ use Drupal\Core\Entity\EntityInterface;
 class News extends ComputedDateBase {
 
   /**
-   * {@inheritdoc}
+   * @return \Drupal\Core\Datetime\DrupalDateTime
    */
-  public function setValue() {
+  public function getValue() {
     /* @var $entity EntityInterface */
     $entity = $this->getEntity();
-    if (isset($entity->field_content_date)) {
-      $new_date = $entity->field_content_date->date->format('d-m-Y');
-      $entity->set('computed_date', $new_date);
+    if (!empty($entity->created) && isset($entity->created->value)) {
+      $created = new DrupalDateTime(date('Y-m-d h:i:s',$entity->created->value));
+      return $created;
+    }
+    if (!empty($entity->field_content_date) && isset($entity->field_content_date->date)) {
+      /* @var \Drupal\Core\Datetime\DrupalDateTime */
+      return $entity->field_content_date->date;
     }
   }
 

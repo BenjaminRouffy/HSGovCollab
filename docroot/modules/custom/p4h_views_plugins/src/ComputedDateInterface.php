@@ -11,8 +11,8 @@ use Drupal\Component\Plugin\PluginInspectionInterface;
 interface ComputedDateInterface extends PluginInspectionInterface {
 
   /**
-   * {@inheritdoc}
+   * @return \Drupal\Core\Datetime\DrupalDateTime
    */
-  public function setValue();
+  public function getValue();
 
 }

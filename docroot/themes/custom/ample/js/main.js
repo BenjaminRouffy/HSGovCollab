@@ -306,4 +306,12 @@
     }
   };
 
+  Drupal.behaviors.showSharing = {
+    attach: function(context, settings) {
+      $('.toggle-sharing-btn', context).on('click', function() {
+        $(this).next().toggleClass('expanded');
+      });
+    }
+  };
+
 })(jQuery, Drupal);

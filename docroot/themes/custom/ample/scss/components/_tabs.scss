@@ -1,5 +1,9 @@
 #block-ample-local-tasks {
-  margin-top: 20px;
+  background: inherit;
+  margin: 0;
+  padding: 0 0 20px;
+  position: relative;
+  z-index: 100;
 
   > ul {
     @include font-size(0);

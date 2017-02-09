@@ -442,6 +442,11 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
             reduce: 0
           is_grouped: false
           group_info:
@@ -456,9 +461,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: 0
+          gid: country
           type: select
           limit: true
-          vid: categories
+          vid: country
           hierarchy: 0
           error_message: 1
           entity_type: group_content

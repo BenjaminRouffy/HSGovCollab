@@ -355,6 +355,14 @@ img {
 .person-icon > span::after {
   content: "a"; }
 
+.social-icon > a::after,
+.social-icon > span::after {
+  content: "R"; }
+
+.mail-icon > a::after,
+.mail-icon > span::after {
+  content: "o"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -1524,7 +1532,11 @@ form {
     float: right; }
 
 #block-ample-local-tasks {
-  margin-top: 20px; }
+  background: inherit;
+  margin: 0;
+  padding: 0 0 20px;
+  position: relative;
+  z-index: 100; }
   #block-ample-local-tasks > ul {
     font-size: 0rem;
     padding: 0;
@@ -1653,6 +1665,72 @@ form {
   width: 70px;
   background: rgba(0, 0, 0, 0.3) url(../images/throbber.svg) center no-repeat;
   background-size: cover; }
+
+.addtoany-wrapper {
+  background: #fff;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 150px;
+  text-align: center;
+  z-index: 50; }
+  .toolbar-fixed .addtoany-wrapper {
+    top: 190px; }
+  .toolbar-tray-open .addtoany-wrapper {
+    top: 230px; }
+  .addtoany-wrapper .toggle-sharing-btn {
+    font-size: 1.4rem;
+    height: 40px;
+    width: 40px;
+    background: #fff;
+    color: #ea3a32;
+    cursor: pointer;
+    display: block;
+    line-height: 40px;
+    position: relative;
+    z-index: 10; }
+
+.addtoany_list {
+  display: block;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease, -webkit-transform .2s ease; }
+  .addtoany_list.expanded {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  .addtoany_list:after {
+    display: none; }
+  .addtoany_list a {
+    height: 40px;
+    widht: 40px;
+    display: block; }
+    .addtoany_list a:after {
+      font-size: 1.4rem;
+      color: #283b44;
+      font-family: P4h, sans-serif;
+      line-height: 40px;
+      -webkit-transition: color .3s ease;
+      transition: color .3s ease; }
+    .addtoany_list a:hover:after {
+      color: #80aabe; }
+    .addtoany_list a span {
+      display: none; }
+  .addtoany_list .a2a_button_email:after {
+    content: "o"; }
+  .addtoany_list .a2a_button_twitter:after {
+    content: "W"; }
+  .addtoany_list .a2a_button_linkedin:after {
+    content: "E"; }
+  .addtoany_list .a2a_button_google_plus {
+    background: url(../images/google-plus.svg) center 12px no-repeat;
+    background-size: 20px; }
+    .addtoany_list .a2a_button_google_plus:hover {
+      background-position: center -22px; }
+    .addtoany_list .a2a_button_google_plus:after {
+      content: none; }
 
 header {
   background: #fff;
@@ -1793,6 +1871,9 @@ footer {
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.11); }
   body:not(.who):not(.news-and-events):not(.where):not(.group) .main-wrapper {
     background: #fff; }
+  .main-wrapper > .top-banner-region {
+    position: relative;
+    z-index: 100; }
 
 .content-container {
   margin: 0 auto;

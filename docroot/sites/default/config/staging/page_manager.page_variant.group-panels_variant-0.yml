@@ -5,6 +5,7 @@ dependencies:
   config:
     - page_manager.page.group
   module:
+    - addtoany
     - ctools
     - ctools_block
     - group
@@ -53,6 +54,15 @@ variant_settings:
       uuid: 14e94d42-c917-4267-83c5-65623aeebf19
       context_mapping:
         entity: group
+    bed5e72d-db52-4762-b392-e45a06cac43f:
+      id: addtoany_block
+      label: 'AddToAny buttons'
+      provider: addtoany
+      label_display: '0'
+      region: content
+      weight: 0
+      uuid: bed5e72d-db52-4762-b392-e45a06cac43f
+      context_mapping: {  }
   id: panels_variant
   uuid: 14af9b0f-c8d4-49af-b2d0-16c80419c1b1
   label: null

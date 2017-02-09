@@ -1,8 +1,8 @@
 diff --git a/group.services.yml b/group.services.yml
-index a26a87f..d82c9da 100644
+index 44776bd..4c56979 100644
 --- a/group.services.yml
 +++ b/group.services.yml
-@@ -70,7 +70,7 @@ services:
+@@ -78,7 +78,7 @@ services:
        - { name: 'context_provider' }
    group.membership_loader:
      class: 'Drupal\group\GroupMembershipLoader'
@@ -1097,10 +1097,10 @@ index 0000000..2e251ff
 +}
 diff --git a/modules/ggroup/src/Controller/SubgroupController.php b/modules/ggroup/src/Controller/SubgroupController.php
 new file mode 100644
-index 0000000..ae38acb
+index 0000000..842be7b
 --- /dev/null
 +++ b/modules/ggroup/src/Controller/SubgroupController.php
-@@ -0,0 +1,88 @@
+@@ -0,0 +1,83 @@
 +<?php
 +
 +namespace Drupal\ggroup\Controller;
@@ -1111,6 +1111,7 @@ index 0000000..ae38acb
 +use Drupal\group\Entity\Controller\GroupContentController;
 +use Drupal\group\Entity\GroupInterface;
 +use Drupal\group\Plugin\GroupContentEnablerManagerInterface;
++use Drupal\user\PrivateTempStoreFactory;
 +use Symfony\Component\DependencyInjection\ContainerInterface;
 +
 +/**
@@ -1130,6 +1131,8 @@ index 0000000..ae38acb
 +   *
 +   * @param \Drupal\group\Plugin\GroupContentEnablerManagerInterface $plugin_manager
 +   *   The group content plugin manager.
++   * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
++   *   The private store factory.
 +   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
 +   *   The entity type manager.
 +   * @param \Drupal\Core\Entity\EntityFormBuilderInterface $entity_form_builder
@@ -1137,8 +1140,8 @@ index 0000000..ae38acb
 +   * @param \Drupal\Core\Render\RendererInterface $renderer
 +   *   The renderer.
 +   */
-+  public function __construct(GroupContentEnablerManagerInterface $plugin_manager, EntityTypeManagerInterface $entity_type_manager, EntityFormBuilderInterface $entity_form_builder, RendererInterface $renderer) {
-+    parent::__construct($entity_type_manager, $entity_form_builder, $renderer);
++  public function __construct(GroupContentEnablerManagerInterface $plugin_manager, PrivateTempStoreFactory $temp_store_factory, EntityTypeManagerInterface $entity_type_manager, EntityFormBuilderInterface $entity_form_builder, RendererInterface $renderer) {
++    parent::__construct($temp_store_factory, $entity_type_manager, $entity_form_builder, $renderer);
 +    $this->pluginManager = $plugin_manager;
 +  }
 +
@@ -1148,6 +1151,7 @@ index 0000000..ae38acb
 +  public static function create(ContainerInterface $container) {
 +    return new static(
 +      $container->get('plugin.manager.group_content_enabler'),
++      $container->get('user.private_tempstore'),
 +      $container->get('entity_type.manager'),
 +      $container->get('entity.form_builder'),
 +      $container->get('renderer')
@@ -1157,7 +1161,7 @@ index 0000000..ae38acb
 +  /**
 +   * {@inheritdoc}
 +   */
-+  protected function addPageBundles(GroupInterface $group) {
++  protected function addPageBundles(GroupInterface $group, $create_mode) {
 +    $bundles = [];
 +
 +    // Retrieve all subgroup plugins for the group's type.
@@ -1177,15 +1181,6 @@ index 0000000..ae38acb
 +    }
 +
 +    return $bundles;
-+  }
-+
-+  /**
-+   * {@inheritdoc}
-+   */
-+  protected function addPageBundleMessage(GroupInterface $group) {
-+    // We do not set the 'add_bundle_message' variable because we deny access to
-+    // the add page if no bundle is available.
-+    return FALSE;
 +  }
 +
 +}
@@ -2224,7 +2219,7 @@ index 0000000..6036545
 \ No newline at end of file
 diff --git a/modules/ggroup/src/GroupHierarchyManagerInterface.php b/modules/ggroup/src/GroupHierarchyManagerInterface.php
 new file mode 100644
-index 0000000..758b9ee
+index 0000000..fc0b5dd
 --- /dev/null
 +++ b/modules/ggroup/src/GroupHierarchyManagerInterface.php
 @@ -0,0 +1,83 @@
@@ -2255,7 +2250,7 @@ index 0000000..758b9ee
 +   *   The group content representing the subgroup relationship.
 +   */
 +  public function removeSubgroup(GroupContentInterface $group_content);
-+  
++
 +  /**
 +   * Checks if a given group has another group as a subgroup anywhere in its
 +   * descendent subgroups.
@@ -2311,7 +2306,6 @@ index 0000000..758b9ee
 +  public function getGroupSupergroupIds(GroupInterface $group);
 +
 +}
-\ No newline at end of file
 diff --git a/modules/ggroup/src/GroupMembershipSubscriber.php b/modules/ggroup/src/GroupMembershipSubscriber.php
 new file mode 100644
 index 0000000..024657a
@@ -2764,7 +2758,7 @@ index 0000000..90b5d08
 \ No newline at end of file
 diff --git a/modules/ggroup/src/Plugin/Validation/Constraint/GroupSubgroupConstraintValidator.php b/modules/ggroup/src/Plugin/Validation/Constraint/GroupSubgroupConstraintValidator.php
 new file mode 100644
-index 0000000..e6febd4
+index 0000000..c035051
 --- /dev/null
 +++ b/modules/ggroup/src/Plugin/Validation/Constraint/GroupSubgroupConstraintValidator.php
 @@ -0,0 +1,79 @@
@@ -2838,7 +2832,7 @@ index 0000000..e6febd4
 +
 +    // If the child group already has the parent group as a subgroup, then
 +    // adding the relationship will cause a circular reference.
-+    if ($this->groupHierarchyManager->groupHasSubgroup($child_group, $parent_group)) {
++    if ($parent_group && $child_group && $this->groupHierarchyManager->groupHasSubgroup($child_group, $parent_group)) {
 +      $this->context->buildViolation($constraint->message)
 +        ->setParameter('%parent_group_label', $parent_group->label())
 +        ->setParameter('%child_group_label', $child_group->label())

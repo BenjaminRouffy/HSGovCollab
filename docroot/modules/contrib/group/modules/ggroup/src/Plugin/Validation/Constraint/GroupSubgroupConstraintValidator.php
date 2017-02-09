@@ -68,7 +68,7 @@ class GroupSubgroupConstraintValidator extends ConstraintValidator implements Co
 
     // If the child group already has the parent group as a subgroup, then
     // adding the relationship will cause a circular reference.
-    if ($this->groupHierarchyManager->groupHasSubgroup($child_group, $parent_group)) {
+    if ($parent_group && $child_group && $this->groupHierarchyManager->groupHasSubgroup($child_group, $parent_group)) {
       $this->context->buildViolation($constraint->message)
         ->setParameter('%parent_group_label', $parent_group->label())
         ->setParameter('%child_group_label', $child_group->label())

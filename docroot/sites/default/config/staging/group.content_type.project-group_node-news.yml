@@ -1,0 +1,21 @@
+uuid: ea02c9b3-307b-4509-8532-b125fcd5d6bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project
+    - node.type.news
+  module:
+    - gnode
+    - node
+id: project-group_node-news
+label: 'Project: Group node (News)'
+description: 'Adds <em class="placeholder">News</em> content to groups both publicly and privately.'
+group_type: project
+content_plugin: 'group_node:news'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  info_text:
+    value: "<p>By submitting this form you will add this content to the group.<br />\r\nIt will then be subject to the access control settings that were configured for the group.<br />\r\nPlease fill out any available fields to describe the relation between the content and the group.</p>\r\n"
+    format: minimal

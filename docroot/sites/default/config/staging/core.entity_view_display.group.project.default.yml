@@ -1,0 +1,42 @@
+uuid: b4a0ec23-ac91-4a45-b2e7-766c6b6ef4e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.project.field_content
+    - field.field.group.project.field_summary
+    - group.type.project
+  module:
+    - entity_reference_revisions
+    - text
+id: group.project.default
+targetEntityType: group
+bundle: project
+mode: default
+content:
+  field_content:
+    weight: -3
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+  field_summary:
+    weight: -4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  langcode: true
+  uid: true

@@ -1,0 +1,47 @@
+uuid: ba680d8a-be22-479e-b3c7-1c0ad443e18d
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group
+  module:
+    - ctools
+    - panels
+id: group-panels_variant-1
+label: Project
+variant: panels_variant
+variant_settings:
+  blocks:
+    0ee320c5-d2c5-4345-b4cd-0e91669d1c35:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: 0
+      uuid: 0ee320c5-d2c5-4345-b4cd-0e91669d1c35
+      context_mapping:
+        entity: group
+  id: panels_variant
+  uuid: d585427d-2897-4e92-80b4-69d09393c773
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group-panels_variant-1
+  builder: standard
+page: group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      project: project
+    negate: false
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

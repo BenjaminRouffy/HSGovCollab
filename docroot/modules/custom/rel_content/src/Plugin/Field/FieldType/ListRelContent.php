@@ -66,21 +66,6 @@ class ListRelContent extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
-  public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
-    $values = NULL;
-    if (\Drupal::getContainer()->has('plugin.manager.' . $field_definition->getSetting('target_type'))) {
-      $definitions = \Drupal::getContainer()
-        ->get('plugin.manager.' . $field_definition->getSetting('target_type'))
-        ->getDefinitions();
-      shuffle($definitions);
-      $values['value'] = key($definitions);
-    }
-    return $values;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function storageSettingsForm(array &$form, FormStateInterface $form_state, $has_data) {
     $list_rel_content = $this->getSetting('list_rel_content');
     $options = [];

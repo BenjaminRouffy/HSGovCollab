@@ -32,14 +32,10 @@ function p4h_views_plugins_theme() {
  * Implements hook_entity_base_field_info().
  */
 function p4h_views_plugins_entity_base_field_info(EntityTypeInterface $entity_type) {
-  if($entity_type->id() == 'node') {
+  if ($entity_type->id() == 'node') {
     $fields['computed_date'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Computed date'))
-      ->setDescription(t('Computed date'))
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'weight' => -5,
-      ));
+      ->setDescription(t('Computed date'));
     return $fields;
   }
 }
@@ -59,7 +55,9 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
     $form['wrap']['year'] = $form['year'];
     $form['wrap']['month'] = $form['month'];
     unset($form['year'], $form['month']);
-    $form['#attached']['drupalSettings'] = ['defaultFormSelector' => '#' . $form['#id']];
+    $form['#attached']['drupalSettings'] = [
+      'defaultFormSelector' => '#' . $form['#id']
+    ];
   }
 }
 
@@ -90,7 +88,15 @@ function p4h_views_plugins_node_presave(Drupal\Core\Entity\EntityInterface $enti
 
     /* @var $plugin Drupal\p4h_views_plugins\ComputedDateInterface */
     $plugin = $manager->createInstance($entity->bundle(), ['entity' => $entity]);
-    $plugin->setValue();
+    $plugin->updateValue();
 
   }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function p4h_views_plugins_views_data_alter(array &$data) {
+  $data['node_field_data']['computed_date']['filter']['id'] = 'computed_date';
+  $data['group_content_field_data']['gid']['filter']['id'] = 'taxonomy_index_tid';
 }

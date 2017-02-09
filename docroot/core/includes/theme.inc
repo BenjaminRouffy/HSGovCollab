@@ -570,7 +570,7 @@ function template_preprocess_datetime_wrapper(&$variables) {
   $element = $variables['element'];
 
   if (!empty($element['#title'])) {
-    $variables['title'] = ['#markup' => $element['#title']];
+    $variables['title'] = $element['#title'];
   }
 
   // Suppress error messages.

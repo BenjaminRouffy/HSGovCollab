@@ -44,9 +44,12 @@ content:
     third_party_settings: {  }
   field_country_icon:
     weight: 2
-    settings: {  }
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: Country
     third_party_settings: {  }
-    type: options_select
+    type: entity_reference_autocomplete
   field_country_options:
     type: entity_reference_paragraphs
     weight: 9

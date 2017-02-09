@@ -1,5 +1,5 @@
 <div class="banner-image-wrapper">
-  <div class="country-icon-wrapper">
+  <div class="country-content-wrapper">
     {{ country_icon }}
 
     <h1 role="heading">
@@ -7,9 +7,9 @@
     </h1>
 
     {% if logged_in %}
-      <span class="follow-link">
+      <div class="follow-link">
         {{ 'Follow @country'|t({'@country': group_label}) }}
-      </span>
+      </div>
     {% endif %}
   </div>
 

@@ -1,9 +1,11 @@
 <div class="slider-item-wrapper">
-  {{ content.field_content_image|field_value }}
+  <div class="slide-content">
+    {{ content.field_content_image|field_value }}
 
-  {% if content.field_description|field_value %}
-    <p class="image-text">
-      {{ content.field_description|field_value }}
-    </p>
-  {% endif %}
+    {% if content.field_description|field_value %}
+      <p class="image-text">
+        {{ content.field_description|field_value }}
+      </p>
+    {% endif %}
+  </div>
 </div>

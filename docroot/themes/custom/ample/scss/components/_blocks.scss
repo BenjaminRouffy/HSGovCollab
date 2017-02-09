@@ -499,7 +499,12 @@
     }
 
     a {
+      color: $navy-dark;
       text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -509,12 +514,14 @@
     margin-right: 20px;
   }
 
-  p {
+  p,
+  time {
     @include font-size(15.4);
     color: $navy-dark;
     font-family: $fira;
     line-height: 21px;
     margin-top: 10px;
+    margin-bottom: 0;
   }
 }
 
@@ -653,5 +660,137 @@
     letter-spacing: .5px;
     line-height: 25px;
     margin: 0 0 10px;
+  }
+}
+
+.country-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .country-item {
+    padding: 10px;
+    width: 33.33%;
+  }
+
+  .country-content {
+    background: $white;
+    box-shadow: 0 0 6px rgba($black, .1);
+    height: 100%;
+    padding: 30px 20px 50px;
+    position: relative;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba($black, .2);
+    }
+  }
+
+  .country-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .project-link {
+    @include font-size(14);
+    color: $navy-dark;
+    border-top: 1px solid #afb7bb;
+    font-family: $oswald;
+    letter-spacing: .5px;
+    padding: 15px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: opacity .3s ease;
+    width: 100%;
+    z-index: 5;
+
+    span {
+      display: block;
+
+      &:after {
+        content: none;
+      }
+
+      &:before {
+        @include font-size(28);
+        content: "j";
+        color: $navy;
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: bottom;
+      }
+    }
+
+    &:hover {
+      opacity: .66;
+    }
+  }
+
+  .section-info {
+    .paragraph {
+      overflow: hidden;
+      padding: 5px 0;
+
+      a {
+        border-bottom: 2px solid transparent;
+        display: inline-block;
+        transition: border .3s ease;
+        vertical-align: top;
+        position: relative;
+        z-index: 5;
+
+        &:hover {
+          border-color: $red;
+
+          .icon-wrapper,
+          h3 {
+            opacity: .66;
+          }
+        }
+      }
+    }
+
+    .icon-wrapper {
+      float: left;
+      height: 40px;
+      margin-right: 10px;
+      transition: opacity .3s ease;
+      width: 26px;
+    }
+
+    h3 {
+      @include font-size(14);
+      font-weight: 400;
+      float: left;
+      letter-spacing: .5px;
+      line-height: 20px;
+      margin: 8px 0 0;
+      transition: opacity .3s ease;
+    }
+  }
+}
+
+.country-title {
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  .country-icon-wrapper {
+    float: left;
+    margin-right: 20px;
+    width: 40px;
+  }
+
+  h3 {
+    @include font-size(22.4);
+    line-height: 32px;
+    margin: 10px 0 5px;
+    text-transform: uppercase;
   }
 }

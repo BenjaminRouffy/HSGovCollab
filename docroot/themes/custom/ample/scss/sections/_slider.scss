@@ -17,6 +17,16 @@
 
 .slider-main {
   margin: 50px 0;
+  position: relative;
+
+  &.fixed {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 700;
+  }
 }
 
 .content-slider-wrapper,
@@ -28,6 +38,35 @@
 .content-slider-wrapper {
   height: 438px;
 
+  .fixed & {
+    height: 84vh;
+    margin-top: 2vh;
+
+    .owl-nav {
+      display: block;
+
+      > div {
+        height: 100%;
+        margin-top: -34px;
+        opacity: .5;
+        top: 0;
+        width: 68px;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .owl-prev {
+      background: url(../images/slider-arrow-left.svg) center no-repeat;
+    }
+
+    .owl-next {
+      background: url(../images/slider-arrow-right.svg) center no-repeat;
+    }
+  }
+
   .owl-nav {
     display: none;
   }
@@ -37,9 +76,19 @@
   height: 90px;
   padding: 10px 36px;
 
+  .fixed & {
+    height: 120px;
+
+    .owl-stage {
+      margin: 0 auto;
+    }
+  }
+
   .current {
     .slider-item-thumb {
-      border-bottom: 2px solid $red;
+      .thumb-image {
+        border-bottom: 2px solid $red;
+      }
 
       .thumb-overlay {
         background: none;
@@ -72,13 +121,25 @@
 }
 
 .slider-item-thumb {
-  background-position: 50%;
-  background-size: cover;
   cursor: pointer;
   height: 100%;
-  margin: 0 5px;
-  position: relative;
-  width: 68px;
+  width: 78px;
+
+  .fixed & {
+    width: 10vh;
+  }
+
+  .thumb-image {
+    background-position: 50%;
+    background-size: cover;
+    height: 100%;
+    margin: 0 5px;
+    position: relative;
+
+    .fixed & {
+
+    }
+  }
 
   .thumb-overlay {
     background: rgba($black, .4);
@@ -95,12 +156,47 @@
   }
 }
 
-.slider-item-wrapper {
+.slider-item-wrapper,
+.banner-image {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
   position: relative;
+  text-align: center;
+
+  .fixed & {
+    height: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .image-text {
+      @include font-size(17);
+      font-family: $fira;
+      font-style: italic;
+      color: $navy;
+      line-height: 20.4px;
+      margin: 0;
+      padding: 9px 17px;
+      left: 0;
+      bottom: 0;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+
+      &:before,
+      &:after {
+        content: none;
+      }
+    }
+  }
+
+  .slide-content {
+    display: inline-block;
+    position: relative;
+  }
 
   .header-image & {
     .image-text {
@@ -187,6 +283,30 @@
 
     &.active {
       background: $white;
+    }
+  }
+}
+
+.trigger-full-page {
+  @include same(29px, height, width);
+  background: url(../images/expand.svg) left top no-repeat;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 10;
+
+  .fixed & {
+    background: url(../images/close-icon.svg) center no-repeat;
+    height: 44px;
+    opacity: .8;
+    top: 2vh;
+    right: 0;
+    transition: opacity .3s;
+    width: 68px;
+
+    &:hover {
+      opacity: 1;
     }
   }
 }

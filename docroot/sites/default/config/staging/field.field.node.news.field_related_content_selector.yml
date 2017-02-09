@@ -1,0 +1,21 @@
+uuid: 9c2d6c72-8299-481a-a865-334efc0ff0d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_content_selector
+    - node.type.news
+  module:
+    - rel_content
+id: node.news.field_related_content_selector
+field_name: field_related_content_selector
+entity_type: node
+bundle: news
+label: 'Related content selector'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_rel_content

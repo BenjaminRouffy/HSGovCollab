@@ -66,3 +66,72 @@
     }
   }
 }
+
+.view-country {
+  margin-top: 40px;
+
+  .js-form-type-textfield {
+    background: $white;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 20px;
+
+    label {
+      @include font-size(22.4);
+      float: left;
+      line-height: 31px;
+      margin-top: 10px;
+      width: 33.33%;
+    }
+
+    .form-text {
+      @include font-size(23.52);
+      border-color: rgba($navy-dark, .32);
+      float: left;
+      font-weight: 300;
+      margin-top: 20px;
+      padding-left: 20px;
+      width: 45.5%;
+    }
+  }
+
+  div[id^='edit-combine'] {
+    padding: 20px 0 28px;
+    text-align: center;
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      @include same(50px, height, width);
+      background: $white;
+      display: inline-block;
+      margin: 0 1px;
+      text-align: center;
+      vertical-align: top;
+
+      &:hover {
+        background: #ffe9e9;
+      }
+    }
+
+    .form-radio:checked {
+      ~ label {
+        border-bottom: 2px solid $red;
+      }
+    }
+
+    label {
+      @include font-size(14);
+      color: $red;
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      margin: 0;
+      vertical-align: top;
+      width: 100%;
+    }
+  }
+}

@@ -46,6 +46,12 @@
   }
 }
 
+.show-more {
+  @include font-size(15.4);
+  cursor: pointer;
+  display: block;
+}
+
 .accordion-button {
   @include font-size(15.4);
   background: $white;

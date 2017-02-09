@@ -1,0 +1,21 @@
+uuid: 7a58aee6-4e0d-44da-a374-fe56799acb19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_content_selector
+    - node.type.event
+  module:
+    - rel_content
+id: node.event.field_related_content_selector
+field_name: field_related_content_selector
+entity_type: node
+bundle: event
+label: 'Related content selector'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_rel_content

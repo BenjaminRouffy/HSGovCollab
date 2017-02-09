@@ -98,5 +98,5 @@ function p4h_views_plugins_node_presave(Drupal\Core\Entity\EntityInterface $enti
  */
 function p4h_views_plugins_views_data_alter(array &$data) {
   $data['node_field_data']['computed_date']['filter']['id'] = 'computed_date';
-  $data['group_content_field_data']['gid']['filter']['id'] = 'taxonomy_index_tid';
+  $data['group_content_field_data']['gid']['filter']['id'] = 'group_index_gid';
 }

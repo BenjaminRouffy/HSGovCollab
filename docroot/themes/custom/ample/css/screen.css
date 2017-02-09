@@ -1212,7 +1212,10 @@ header .social-links .font-social-icon {
       padding: 15px 20px 15px 0;
       width: 33.33%; }
     .related-wrapper .item-list a {
+      color: #283b44;
       text-decoration: none; }
+      .related-wrapper .item-list a:hover {
+        text-decoration: underline; }
   .related-wrapper img {
     height: 65px;
     width: 65px;
@@ -1636,6 +1639,12 @@ form {
       margin: 0;
       vertical-align: top;
       width: 100%; }
+
+.ajax-progress {
+  height: 70px;
+  width: 70px;
+  background: rgba(0, 0, 0, 0.3) url(../images/throbber.svg) center no-repeat;
+  background-size: cover; }
 
 header {
   background: #fff;

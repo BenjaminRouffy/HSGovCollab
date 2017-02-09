@@ -1,0 +1,5 @@
+.ajax-progress {
+  @include same(70px, height, width);
+  background: rgba($black, .3) url(../images/throbber.svg) center no-repeat;
+  background-size: cover;
+}

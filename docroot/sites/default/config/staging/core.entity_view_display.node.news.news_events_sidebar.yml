@@ -16,7 +16,7 @@ dependencies:
     - node.type.news
   module:
     - datetime
-    - text
+    - members
     - user
 id: node.news.news_events_sidebar
 targetEntityType: node
@@ -25,7 +25,7 @@ mode: news_events_sidebar
 content:
   body:
     label: hidden
-    type: text_summary_or_trimmed
+    type: summarybody_trimmed
     weight: 2
     settings:
       trim_length: 100

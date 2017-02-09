@@ -20,7 +20,7 @@ dependencies:
     - node.type.event
   module:
     - datetime_range
-    - text
+    - members
     - user
 id: node.event.news_events_sidebar
 targetEntityType: node
@@ -29,7 +29,7 @@ mode: news_events_sidebar
 content:
   body:
     label: hidden
-    type: text_summary_or_trimmed
+    type: summarybody_trimmed
     weight: 2
     settings:
       trim_length: 100

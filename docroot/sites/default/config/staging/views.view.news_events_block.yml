@@ -53,7 +53,7 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 5
+          items_per_page: 3
           offset: 0
       style:
         type: default
@@ -252,7 +252,18 @@ display:
           plugin_id: language
       sorts: {  }
       title: 'News & Events Block'
-      header: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: 'News & Events'
+          plugin_id: text_custom
       footer: {  }
       empty: {  }
       relationships:

@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - page_manager.page.group
+    - views.view.news_and_events_group
   module:
     - addtoany
     - ctools
     - ctools_block
     - group
     - panels
+    - views
 id: group-panels_variant-0
 label: Country
 variant: panels_variant
@@ -62,6 +64,17 @@ variant_settings:
       region: content
       weight: 0
       uuid: bed5e72d-db52-4762-b392-e45a06cac43f
+    3ffc9377-2730-4618-9d08-26e42ac3fae4:
+      id: 'views_block:news_and_events_group-news_and_events_with_out_filter'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 3ffc9377-2730-4618-9d08-26e42ac3fae4
+      pager: view
       context_mapping: {  }
   id: panels_variant
   uuid: 14af9b0f-c8d4-49af-b2d0-16c80419c1b1

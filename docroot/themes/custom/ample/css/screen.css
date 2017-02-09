@@ -729,11 +729,13 @@ header .social-links .font-social-icon {
   margin-top: 50px;
   padding: 20px 0;
   width: 90%; }
-  .node-pager > a {
+  .node-pager .prev-wrapper,
+  .node-pager .next-wrapper {
     -webkit-transition: opacity .2s ease;
     transition: opacity .2s ease;
     max-width: 50%; }
-    .node-pager > a:hover {
+    .node-pager .prev-wrapper:hover,
+    .node-pager .next-wrapper:hover {
       opacity: .69; }
   .node-pager p {
     color: #4c7e96;
@@ -1209,13 +1211,15 @@ header .social-links .font-social-icon {
     margin: 0;
     padding: 0; }
     .related-wrapper .item-list li {
+      border-bottom: 1px solid transparent;
       padding: 15px 20px 15px 0;
       width: 33.33%; }
+      .related-wrapper .item-list li:hover {
+        border-bottom: 1px solid #ea3a32;
+        opacity: .75; }
     .related-wrapper .item-list a {
       color: #283b44;
       text-decoration: none; }
-      .related-wrapper .item-list a:hover {
-        text-decoration: underline; }
   .related-wrapper img {
     height: 65px;
     width: 65px;

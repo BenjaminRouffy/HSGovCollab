@@ -499,7 +499,12 @@
     }
 
     a {
+      color: $navy-dark;
       text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 

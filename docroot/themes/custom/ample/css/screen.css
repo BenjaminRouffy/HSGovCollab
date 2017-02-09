@@ -505,7 +505,7 @@ header .social-links .font-social-icon {
   font-family: "Fira Sans", sans-serif;
   font-weight: 700;
   height: 50px;
-  padding: 15px 50px 0 0;
+  padding: 15px 50px 0 10px;
   position: relative;
   text-align: center;
   -webkit-transition: box-shadow .2s ease;
@@ -527,6 +527,10 @@ header .social-links .font-social-icon {
     .accordion-button:hover:after {
       -webkit-transform: rotate(45deg);
               transform: rotate(45deg); }
+  .accordion-button .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
 
 .banner-wrapper {
   clear: both; }

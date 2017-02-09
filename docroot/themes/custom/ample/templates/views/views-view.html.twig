@@ -15,7 +15,7 @@
   {% endif %}
   {{ title_prefix }}
   {{ title }}
-  {{ title_suffix }}
+  {{ title_suffix|without('contextual_links') }}
 
   {{ exposed }}
   {{ attachment_before }}

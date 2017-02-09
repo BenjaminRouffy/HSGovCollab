@@ -32,7 +32,7 @@ function p4h_views_plugins_theme() {
  */
 function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'views_exposed_form'
-    && $form['#id'] == 'views-exposed-form-news-events-block-1'
+    && in_array($form['#id'], ['views-exposed-form-news-events-block-1', 'views-exposed-form-news-and-events-group-news-and-events-by-group'])
   ) {
     $form['wrap'] = [
       '#prefix' => '<div class="wrapper-filters">',

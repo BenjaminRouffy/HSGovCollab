@@ -29,6 +29,17 @@ function deployment_drush_command() {
     ],
   ]);
 
+
+  $commands['nodes-resave'] = new Command('nodes_resave', [
+    'description' => dt('Invoke presave/save process.'),
+    'options' => [
+      'types' => TRUE,
+    ],
+    'examples' => [
+      '--types=news,events' => dt('Add a description here'),
+    ],
+  ]);
+
   foreach ($commands as $command => $instance) {
     $commands[$command] = $instance->getDefinition();
   }
@@ -73,6 +84,23 @@ function drush_deployment_config_import_multiple() {
   catch (Exception $e) {
     drush_log($e->getMessage(), 'error');
   }
+}
+
+/**
+ * Implements drush_COMMAND().
+ */
+function drush_deployment_nodes_resave() {
+  $nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', ['news', 'event'], 'in')
+    ->execute()
+    ->fetchCol();
+  $nodes = node_load_multiple($nids, TRUE);
+  foreach ($nodes as $node) {
+    /* @var $node \Drupal\node\Entity\Node */
+    $node->save();
+  }
+  drush_print_r(array_keys($nodes));
 }
 
 /**

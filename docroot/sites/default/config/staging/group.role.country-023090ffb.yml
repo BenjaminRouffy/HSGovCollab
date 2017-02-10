@@ -1,0 +1,19 @@
+uuid: 158095af-9547-4c1a-8ae7-09320f6fb518
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.administration_users
+id: country-023090ffb
+label: 'Administration users'
+weight: 2
+internal: true
+audience: outsider
+group_type: country
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,19 @@
+uuid: b3dd07a0-b45f-4288-a2b4-94def0597fea
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.administration_users
+id: project-023090ffb
+label: 'Administration users'
+weight: 2
+internal: true
+audience: outsider
+group_type: project
+permissions_ui: false
+permissions: {  }

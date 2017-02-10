@@ -1,0 +1,16 @@
+uuid: a1f92cc8-c995-4027-b480-5215e15fe331
+langcode: en
+status: true
+dependencies: {  }
+id: projects_list_group
+label: 'Projects list (Group)'
+description: ''
+use_admin_theme: false
+path: '/group/{group}/projects'
+access_logic: and
+access_conditions: {  }
+parameters:
+  group:
+    machine_name: group
+    type: 'entity:group'
+    label: Group

@@ -1,0 +1,19 @@
+uuid: 2c12d969-8279-4924-9c1e-486be49bddd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.governance_group_users
+id: project-1f9d39d58
+label: 'Governance group users'
+weight: 5
+internal: true
+audience: outsider
+group_type: project
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,19 @@
+uuid: f5698122-9c75-4a76-9282-876e54213bf7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.coordination_desk_users
+id: country-1879bad9c
+label: 'Coordination desk users'
+weight: 6
+internal: true
+audience: outsider
+group_type: country
+permissions_ui: false
+permissions: {  }

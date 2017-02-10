@@ -8,6 +8,8 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 
+define('PUBLIC_GROUP', 9999);
+
 /**
  * Implements hook_node_access().
  */
@@ -21,6 +23,33 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
   }
 
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_node_access_records_alter().
+ */
+function country_node_access_records_alter(array &$grants, NodeInterface $node) {
+  $public_content = $node->get('public_content')->getValue();
+
+  if (!empty($public_content) && !empty(reset($public_content)['value'])) {
+    $grants[] = [
+      'realm' => 'public_group',
+      'gid' => PUBLIC_GROUP,
+      'grant_view' => 1,
+      'grant_update' => 0,
+      'grant_delete' => 0,
+      'priority' => 0,
+    ];
+  }
+}
+
+/**
+ * Implements hook_node_grants_alter().
+ */
+function country_node_grants_alter(array &$grants, AccountInterface $account, $op) {
+  if ($op == 'view') {
+    $grants['public_group'] = [PUBLIC_GROUP];
+  }
 }
 
 /**

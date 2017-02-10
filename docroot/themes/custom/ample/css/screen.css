@@ -1513,6 +1513,16 @@ header .social-links .font-social-icon {
     margin: 10px 0 5px;
     text-transform: uppercase; }
 
+.view-list-of-projects .title-wrapper {
+  padding-bottom: 10px;
+  text-align: center; }
+  .view-list-of-projects .title-wrapper h1 {
+    padding-top: 0; }
+  .view-list-of-projects .title-wrapper .line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+
 form {
   font-size: 1.1375rem;
   font-family: Oswald, sans-serif; }

@@ -812,3 +812,19 @@
     text-transform: uppercase;
   }
 }
+
+.view-list-of-projects {
+  .title-wrapper {
+    padding-bottom: 10px;
+    text-align: center;
+
+    h1 {
+      padding-top: 0;
+    }
+
+    .line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}

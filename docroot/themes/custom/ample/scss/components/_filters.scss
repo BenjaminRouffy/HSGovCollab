@@ -135,3 +135,16 @@
     }
   }
 }
+
+.empty-result {
+  @include font-size(20);
+  background: #ffdede;
+  font-family: $oswald;
+  margin: 30px auto;
+  padding: 15px 0;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}

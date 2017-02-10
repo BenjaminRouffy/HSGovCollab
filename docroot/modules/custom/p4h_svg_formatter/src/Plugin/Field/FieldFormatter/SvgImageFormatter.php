@@ -202,7 +202,13 @@ class SvgImageFormatter extends ImageFormatterBase implements ContainerFactoryPl
      $path = $this->file_system->realpath($image_uri);
      $elements[$delta] = [
        // @TODO Stage file proxy support?
-       '#markup' => file_get_contents($path),
+       [
+         '#type' => 'inline_template',
+         '#template' => '{{ somecontent | raw }}',
+         '#context' => [
+           'somecontent' => file_get_contents($path)
+         ]
+        ]
      ];
    }
 

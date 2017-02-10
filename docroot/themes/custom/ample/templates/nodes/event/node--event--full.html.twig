@@ -1,0 +1,100 @@
+<div class="content-wrapper">
+  <section class="content-container content-with-sidebar">
+    <section class="content">
+      {% if content.field_event_slider %}
+        <div class="header-image">
+          {{ content.field_event_slider|field_value }}
+        </div>
+      {% endif %}
+
+      <article{{ attributes }} role="article">
+        <div class="post-info">
+          {{ content.field_date }}
+          {% if content.field_event_author|field_value %}
+            <span class="author">
+              {% trans %}By: {% endtrans %} {{ content.field_event_author|field_value }}
+            </span>
+          {% endif %}
+        </div>
+
+        <div class="title-wrapper">
+          <h1 class="page-title">
+            {{ label }}
+          </h1>
+
+          <div class="line"></div>
+        </div>
+
+        <div class="event-info">
+          <div class="row">
+            <span class="label">
+              {{ content.field_date['#title'] }}:
+            </span>
+            <span class="value">
+              {{ content.field_date|field_value }}
+            </span>
+          </div>
+
+          {% if (content.field_time|field_value or content.field_time_text|field_value) %}
+            <div class="row">
+              <span class="label">
+                {{ 'Time'|t }}:
+              </span>
+              <span class="value">
+                {{ content.field_time|field_value ? content.field_time|field_value : '' }} {{ content.field_time_text|field_value ? content.field_time_text|field_value : '' }}
+              </span>
+            </div>
+          {% endif %}
+
+          {% if content.field_timezone|field_value %}
+            <div class="row">
+              <span class="label">
+                {{ content.field_timezone['#title'] }}:
+              </span>
+              <span class="value">
+                {{ content.field_timezone|field_value }}
+              </span>
+            </div>
+          {% endif %}
+
+          {% if content.field_location|field_value %}
+            <div class="row">
+              <span class="label">
+                {{ content.field_location['#title'] }}:
+              </span>
+              <span class="value">
+                <span class="font-social-icon pin-icon">
+                  <span></span>
+                </span>
+                <a href="{{ content.field_location[0]['#url'] }}" target="_blank">{{ content.field_location[0]['#title'] }}</a>
+              </span>
+            </div>
+          {% endif %}
+
+          {% if content.field_event_link|field_value %}
+            <div class="row sign-up">
+              <a href="{{ content.field_event_link[0]['#url'] }}" target="_blank" class="red-btn-link">
+                {{ content.field_event_link[0]['#title'] ? content.field_event_link[0]['#title'] : content.field_event_link[0]['#url'] }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+        {% if node.body.summary %}
+          <div class="summary-text">
+            <p>{{ node.body.summary }}</p>
+          </div>
+        {% endif %}
+
+        {{ content.body }}
+      </article>
+
+    </section>
+
+    <aside class="sidebar">
+      <div class="teaser corners">
+        {{ content.field_join_block }}
+      </div>
+    </aside>
+  </section>
+</div>

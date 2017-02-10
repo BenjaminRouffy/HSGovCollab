@@ -1,4 +1,12 @@
 <article{{ attributes }} data-anchor-id="node-{{ node.id }}" role="article">
+  <div class="post-info">
+    {% if content.field_author|field_value %}
+      <span class="author">
+        {% trans %}By: {% endtrans %} {{ content.field_author|field_value }}
+      </span>
+    {% endif %}
+  </div>
+
   {{ title_prefix }}
   <div class="title-wrapper">
     <h1 class="anchor-title page-title" role="heading">

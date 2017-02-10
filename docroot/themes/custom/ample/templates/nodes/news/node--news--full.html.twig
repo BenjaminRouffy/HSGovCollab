@@ -1,0 +1,55 @@
+<div class="content-wrapper">
+  <section class="content-container content-with-sidebar">
+    <section class="content">
+      {% if content.field_image %}
+        <div class="header-image">
+          {{ content.field_image|field_value }}
+        </div>
+      {% endif %}
+
+      <article{{ attributes }} role="article">
+        {% if display_submitted %}
+          <div class="post-info">
+            <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+              {{ content.field_content_date|field_value }}
+            </time>
+
+            {% if content.field_author|field_value %}
+              <span class="author">
+                {% trans %}By: {% endtrans %} {{ content.field_author|field_value }}
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="title-wrapper">
+          <h1 class="page-title">
+            {{ label }}
+          </h1>
+          <div class="line"></div>
+        </div>
+
+        {% if node.body.summary|field_value %}
+          <div class="content-summary">
+            <p>
+              {{ node.body.summary }}
+            </p>
+          </div>
+        {% endif %}
+
+        {{ content.body }}
+
+        {% if content.field_content_paragraph|field_value %}
+          {{ content.field_content_paragraph|field_value }}
+        {% endif %}
+      </article>
+    </section>
+
+    <aside class="sidebar">
+      <div class="teaser corners">
+        {{ content.field_join_block }}
+      </div>
+    </aside>
+  </section>
+</div>
+

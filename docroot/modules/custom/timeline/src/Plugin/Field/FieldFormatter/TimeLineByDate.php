@@ -47,21 +47,10 @@ class TimeLineByDate extends EntityReferenceRevisionsEntityFormatter {
                 $exist_content = \Drupal::entityTypeManager()->getStorage('node')->load(reset($exist_content)['target_id']);
 
                 if (!empty($exist_content)) {
-                  switch ($exist_content->bundle()) {
-                    case 'event':
-                      if ($exist_content->hasField('field_date')) {
-                        $date = $exist_content->get('field_date')->getValue();
-                      }
-                      break;
-
-                    default:
-                      if ($exist_content->hasField('field_content_date')) {
-                        $date = $exist_content->get('field_content_date')->getValue();
-                      }
-                  }
+                  $date = $exist_content->get('computed_date')->getValue();
 
                   if (!empty($date)) {
-                    $render_item[$index] = strtotime(reset($date)['value']);
+                    $render_item[$index] = reset($date)['value'];
                   }
                 }
               }

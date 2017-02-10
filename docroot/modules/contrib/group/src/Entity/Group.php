@@ -34,6 +34,7 @@ use Drupal\user\UserInterface;
  *       "html" = "Drupal\group\Entity\Routing\GroupRouteProvider",
  *     },
  *     "form" = {
+ *       "default" = "Drupal\group\Entity\Form\GroupForm",
  *       "add" = "Drupal\group\Entity\Form\GroupForm",
  *       "edit" = "Drupal\group\Entity\Form\GroupForm",
  *       "delete" = "Drupal\group\Entity\Form\GroupDeleteForm",

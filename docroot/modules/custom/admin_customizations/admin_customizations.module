@@ -12,9 +12,20 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 /**
  * Implements hook_form_alter().
  */
-function admin_customizations_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function admin_customizations_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
   if ('file_image_edit_form' === $form_id) {
     unset($form['uid'], $form['replace_upload']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function admin_customizations_preprocess_page(array &$variables) {
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+
+  if ($is_admin) {
+    $variables['#attached']['library'][] = 'ample/admin-page';
   }
 }
 

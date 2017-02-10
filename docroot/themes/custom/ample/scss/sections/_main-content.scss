@@ -185,14 +185,22 @@
   font-family: $fira;
   margin-bottom: 20px;
 
-  > *:not(:last-child) {
+  > *:not(:first-child) {
     display: inline-block;
     vertical-align: top;
 
-    &:after {
+    &:before {
       content: "|";
       font-weight: normal;
-      margin: 0 2px 0 6px;
+      margin: 0 6px 0 2px;
+    }
+  }
+
+  time {
+    ~ time {
+      &:before {
+        display: none;
+      }
     }
   }
 

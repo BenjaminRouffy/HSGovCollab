@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6d283568df8609524554d028766b6742",
-    "content-hash": "5a1efe7dd070dbdf5d5b1ae72d105ce5",
+    "hash": "6e903f3f51799247de28f0f059ccf858",
+    "content-hash": "d27b6e1b143584f6bf8f0089e10a2df8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -818,7 +818,8 @@
             "type": "drupal-core",
             "extra": {
                 "patches_applied": {
-                    "views_query_views_alter() does not handle IN queries": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch"
+                    "views_query_views_alter() does not handle IN queries": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch",
+                    "Title for details form elements is not set as '#markup'": "https://www.drupal.org/files/issues/2652850-17.patch"
                 }
             },
             "autoload": {

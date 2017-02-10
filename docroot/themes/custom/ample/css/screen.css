@@ -379,7 +379,8 @@ img {
     display: inline-block;
     vertical-align: top; }
     .main-menu ul:not(.contextual-links) li:last-child a {
-      color: #ea3a32; }
+      color: #ea3a32;
+      line-height: 12px; }
       .main-menu ul:not(.contextual-links) li:last-child a:after {
         font-size: 1.225rem;
         content: 'T';
@@ -1753,9 +1754,9 @@ form {
   .addtoany_list .a2a_button_facebook:after {
     content: "Q"; }
   .addtoany_list .a2a_button_twitter:after {
-    content: "W"; }
-  .addtoany_list .a2a_button_linkedin:after {
     content: "E"; }
+  .addtoany_list .a2a_button_linkedin:after {
+    content: "W"; }
   .addtoany_list .a2a_button_google_plus {
     background: url(../images/google-plus.svg) center 12px no-repeat;
     background-size: 20px; }

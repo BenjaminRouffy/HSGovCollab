@@ -15,6 +15,13 @@ global-styling:
     - core/backbone
     - core/drupalSettings
 
+admin-page:
+  css:
+    theme:
+      css/admin.css: {}
+  dependencies:
+    - ample/global-styling
+
 youtube:
   js:
     //www.youtube.com/iframe_api:

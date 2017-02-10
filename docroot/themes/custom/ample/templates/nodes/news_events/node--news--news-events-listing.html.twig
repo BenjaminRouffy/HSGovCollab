@@ -9,7 +9,8 @@
 
     {% if display_submitted %}
       <div class="post-info">
-        <time datetime="{{ node.createdtime | date("Y-m-d") }}">{{ node.createdtime | format_date('time_line') }}</time>
+        {% set datetime = node.field_content_date.value | date("U") %}
+        <time datetime="{{ datetime | date("Y-m-d") }}">{{ datetime | format_date('time_line') }}</time>
         {% if content.field_category|field_value %}
           <span class="country">{% trans %} {% endtrans %} {{ content.field_category|field_value}}</span>
         {% endif %}

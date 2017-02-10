@@ -27,6 +27,6 @@ class ComputedDateManager extends DefaultPluginManager implements ComputedDateMa
    * @return string
    */
   public function getTimestamp($datetime) {
-    return $datetime->format('Y-m-d');
+    return $datetime->getTimestamp();
   }
 }

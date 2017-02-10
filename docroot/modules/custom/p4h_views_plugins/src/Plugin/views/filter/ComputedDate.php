@@ -92,7 +92,7 @@ class ComputedDate extends ManyToOne {
     $granularity = $this->options['granularity'];
     $placeholder = $this->placeholder();
 
-    $this->query->addWhereExpression($this->options['group'], "$granularity($field) {$this->operator} ({$placeholder}[])", [
+    $this->query->addWhereExpression($this->options['group'], "$granularity(from_unixtime($field)) {$this->operator} ({$placeholder}[])", [
       "{$placeholder}[]" => array_values($this->value)
     ]);
   }
@@ -102,8 +102,8 @@ class ComputedDate extends ManyToOne {
    */
   private function granularityOptions() {
     return array(
-      'year' => t('Year', array(), array('context' => 'datetime')),
-      'month' => t('Month', array(), array('context' => 'datetime')),
+      'year' => t('Year'),
+      'month' => t('Month'),
     );
   }
 
@@ -127,7 +127,7 @@ class ComputedDate extends ManyToOne {
         break;
 
       case 'month':
-        $options = DateHelper::monthNamesUntranslated();
+        $options = DateHelper::monthNames(TRUE);
         break;
     }
     return $options;
@@ -138,4 +138,33 @@ class ComputedDate extends ManyToOne {
     return $this->valueOptions;
   }
 
+  /**
+   * Add a type selector to the value form.
+   */
+  protected function valueForm(&$form, FormStateInterface $form_state) {
+    parent::valueForm($form, $form_state);
+
+    if ($exposed = $form_state->get('exposed') && $this->options['type'] == 'select') {
+      $form['value']['#type'] = 'select';
+      $form['value']['#options'] = $this->selectOptions();
+      $form['value']['#empty_option'] = $this->granularityOptions()[$this->options['granularity']];
+      $form['value']['#empty_value'] = 'All';
+      $form['value']['#size'] = 1;
+
+    }
+  }
+  /**
+   * Make some translations to a form item to make it more suitable to exposing.
+   */
+  protected function exposedTranslate(&$form, $type) {
+    parent::exposedTranslate($form, $type);
+
+    if ($type == 'value' && empty($this->always_required)
+      && empty($this->options['expose']['required'])
+      && $form['#type'] == 'select'
+      && empty($form['#multiple'])) {
+        unset($form['#options']['All']);
+    }
+
+  }
 }

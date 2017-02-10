@@ -1,7 +1,12 @@
-<div class="country-title">
-  {{ content.field_country_icon }}
-  <h3 role="heading">{{ label }}</h3>
-</div>
-
-{{ content.field_infographic }}
-{{ content.field_regions }}
+<a href="{{ url }}">
+  <div class="country-title">
+    {{ content.field_country_icon }}
+    <h3 role="heading">{{ label }}</h3>
+  </div>
+  {% if logged_in %}
+    {{ content.field_infographic }}
+  {% else %}
+    {# Add embed view and uncomment this block for anonymous user#}
+  {% endif %}
+  {{ content.field_regions }}
+</a>

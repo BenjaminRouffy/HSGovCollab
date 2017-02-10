@@ -315,4 +315,12 @@
     }
   };
 
+  Drupal.behaviors.mobileMenu = {
+    attach: function(context, settings) {
+      $('.mobile-menu-btn', context).on('click', function() {
+        $(this).toggleClass('opened');
+      });
+    }
+  };
+
 })(jQuery, Drupal);

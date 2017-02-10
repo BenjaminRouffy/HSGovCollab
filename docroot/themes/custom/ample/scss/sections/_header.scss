@@ -36,7 +36,7 @@ header {
       text-decoration: none;
 
       &:hover {
-        background: rgba($navy, .08);
+        //background: rgba($navy, .08);
         opacity: .7;
       }
     }
@@ -69,6 +69,7 @@ header {
       top: 0;
       height: 150px;
       width: 180px;
+      z-index: 10;
     }
 
     img {
@@ -98,6 +99,109 @@ header {
     li {
       display: inline-block;
       vertical-align: top;
+    }
+  }
+}
+
+.mobile-service-links {
+  display: none;
+}
+
+.mobile-menu-btn {
+  @include font-size(28);
+  @include same(80px, height, width);
+  color: $navy-dark;
+  cursor: pointer;
+  display: none;
+  float: right;
+  padding-top: 26px;
+  transition: color .2s ease;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+@include breakpoint-for('.header-static', (to: laptop-small)) {
+  min-height: 80px;
+  text-align: left;
+
+  .partners {
+    display: none;
+  }
+
+  .links,
+  .service-links,
+  .social-links {
+    position: static;
+  }
+
+  .desktop-service-links {
+    display: none;
+  }
+
+  .mobile-service-links {
+    display: block;
+  }
+
+  .service-links {
+    height: auto;
+
+    ul:not(.contextual-links) {
+      display: block;
+
+      li {
+        display: block;
+      }
+
+      a {
+        @include font-size(18.2);
+        color: $navy-dark;
+        height: auto;
+        padding: 30px;
+
+        &:hover {
+          background: $white-dark;
+          color: $red;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-wrapper {
+    background: #e9ecee;
+    box-shadow: -1px 7px 14px rgba($black, .11);
+    height: calc(100% - 80px);
+    position: fixed;
+    top: 80px;
+    right: 0;
+    transform: translateX(110%);
+    transition: transform .4s ease-in-out;
+    width: 50%;
+  }
+
+  .social-links {
+    padding: 22px 20px;
+
+    li {
+      margin-right: 30px;
+    }
+
+    a {
+      @include font-size(28);
+    }
+  }
+
+  .mobile-menu-btn {
+    display: block;
+
+    &.opened {
+      color: $red;
+
+      ~ .mobile-menu-wrapper {
+        transform: translateX(0);
+      }
     }
   }
 }

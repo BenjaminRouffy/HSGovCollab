@@ -1327,15 +1327,15 @@ header .social-links .font-social-icon {
     display: inline-block;
     vertical-align: top;
     width: 25%; }
-    .news-and-events-list .item:first-child {
-      margin-bottom: 20px;
-      width: 50%; }
     .news-and-events-list .item > a {
       border-bottom: 2px solid transparent;
       -webkit-transition: background .2s ease, border .2s ease;
       transition: background .2s ease, border .2s ease; }
       .news-and-events-list .item > a:hover {
         border-color: #ea3a32; }
+  .news-and-events-list .news:first-child {
+    margin-bottom: 20px;
+    width: 50%; }
   .news-and-events-list .news > a {
     padding: 10px 10px 30px; }
     .news-and-events-list .news > a:hover {

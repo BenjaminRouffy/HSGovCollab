@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.event.field_join_block
     - field.field.node.event.field_location
     - field.field.node.event.field_organization
+    - field.field.node.event.field_related_content_selector
     - field.field.node.event.field_time
     - field.field.node.event.field_time_text
     - field.field.node.event.field_timezone
@@ -130,4 +131,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  addtoany: true
+  field_related_content_selector: true
   langcode: true

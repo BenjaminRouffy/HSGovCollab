@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_organization
+    - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
     - datetime
@@ -88,4 +89,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  addtoany: true
+  field_related_content_selector: true
   langcode: true

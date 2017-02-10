@@ -1,0 +1,19 @@
+uuid: 4fcaf494-302f-4c00-a526-11288ff5fc97
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.projects_managers
+id: project-128ade90e
+label: 'Projects managers'
+weight: 4
+internal: true
+audience: outsider
+group_type: project
+permissions_ui: false
+permissions: {  }

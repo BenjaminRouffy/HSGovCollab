@@ -1,0 +1,56 @@
+uuid: f587f684-74f8-4a90-a2c5-467e31a0a80c
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.projects_list_group
+    - views.view.list_of_projects
+  content:
+    - 'block_content:headline_description:e9b9126f-cc33-4ab2-a62c-6638cc0b8d49'
+  module:
+    - block_content
+    - panels
+    - views
+id: projects_list_group-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    4ffab8ab-20d5-4c4d-95fa-a34cca38943d:
+      id: 'views_block:list_of_projects-block_full'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 4ffab8ab-20d5-4c4d-95fa-a34cca38943d
+      context_mapping: {  }
+    5b8fc5c1-4182-4679-95d3-c7e92a0ccac7:
+      id: 'block_content:e9b9126f-cc33-4ab2-a62c-6638cc0b8d49'
+      label: 'Country projects headline'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: 0
+      uuid: 5b8fc5c1-4182-4679-95d3-c7e92a0ccac7
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 9ffd340c-6de7-4ee3-b794-74353c111427
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: projects_list_group-panels_variant-0
+  builder: standard
+page: projects_list_group
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

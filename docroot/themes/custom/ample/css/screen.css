@@ -1377,7 +1377,8 @@ header .social-links .font-social-icon {
     line-height: 25px;
     margin: 0 0 10px; }
 
-.country-list {
+.country-list,
+.project-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1386,26 +1387,46 @@ header .social-links .font-social-icon {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start; }
-  .country-list .country-item {
+  .country-list .country-item,
+  .country-list .project-item,
+  .project-list .country-item,
+  .project-list .project-item {
     padding: 10px;
     width: 33.33%; }
-  .country-list .country-content {
+  .country-list .country-content,
+  .country-list .project-content,
+  .project-list .country-content,
+  .project-list .project-content {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     height: 100%;
     padding: 30px 20px 50px;
     position: relative; }
-    .country-list .country-content:hover {
+    .country-list .country-content:hover,
+    .country-list .project-content:hover,
+    .project-list .country-content:hover,
+    .project-list .project-content:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
-  .country-list .country-link {
+  .country-list .summary,
+  .project-list .summary {
+    font-size: 0.9625rem;
+    color: #283b44;
+    font-family: "Fira Sans", sans-serif;
+    line-height: 21px; }
+  .country-list .country-link,
+  .country-list .project-link,
+  .project-list .country-link,
+  .project-list .project-link {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%; }
-  .country-list a {
+  .country-list a,
+  .project-list a {
     text-decoration: none; }
-  .country-list .project-link {
+  .country-list .project-bottom-link,
+  .project-list .project-bottom-link {
     font-size: 0.875rem;
     color: #283b44;
     border-top: 1px solid #afb7bb;
@@ -1419,23 +1440,29 @@ header .social-links .font-social-icon {
     transition: opacity .3s ease;
     width: 100%;
     z-index: 5; }
-    .country-list .project-link span {
+    .country-list .project-bottom-link span,
+    .project-list .project-bottom-link span {
       display: block; }
-      .country-list .project-link span:after {
+      .country-list .project-bottom-link span:after,
+      .project-list .project-bottom-link span:after {
         content: none; }
-      .country-list .project-link span:before {
+      .country-list .project-bottom-link span:before,
+      .project-list .project-bottom-link span:before {
         font-size: 1.75rem;
         content: "j";
         color: #4c7e96;
         display: inline-block;
         margin-right: 10px;
         vertical-align: bottom; }
-    .country-list .project-link:hover {
+    .country-list .project-bottom-link:hover,
+    .project-list .project-bottom-link:hover {
       opacity: .66; }
-  .country-list .section-info .paragraph {
+  .country-list .section-info .paragraph,
+  .project-list .section-info .paragraph {
     overflow: hidden;
     padding: 5px 0; }
-    .country-list .section-info .paragraph a {
+    .country-list .section-info .paragraph a,
+    .project-list .section-info .paragraph a {
       border-bottom: 2px solid transparent;
       display: inline-block;
       -webkit-transition: border .3s ease;
@@ -1443,19 +1470,24 @@ header .social-links .font-social-icon {
       vertical-align: top;
       position: relative;
       z-index: 5; }
-      .country-list .section-info .paragraph a:hover {
+      .country-list .section-info .paragraph a:hover,
+      .project-list .section-info .paragraph a:hover {
         border-color: #ea3a32; }
         .country-list .section-info .paragraph a:hover .icon-wrapper,
-        .country-list .section-info .paragraph a:hover h3 {
+        .country-list .section-info .paragraph a:hover h3,
+        .project-list .section-info .paragraph a:hover .icon-wrapper,
+        .project-list .section-info .paragraph a:hover h3 {
           opacity: .66; }
-  .country-list .section-info .icon-wrapper {
+  .country-list .section-info .icon-wrapper,
+  .project-list .section-info .icon-wrapper {
     float: left;
     height: 40px;
     margin-right: 10px;
     -webkit-transition: opacity .3s ease;
     transition: opacity .3s ease;
     width: 26px; }
-  .country-list .section-info h3 {
+  .country-list .section-info h3,
+  .project-list .section-info h3 {
     font-size: 0.875rem;
     font-weight: 400;
     float: left;
@@ -1465,18 +1497,35 @@ header .social-links .font-social-icon {
     -webkit-transition: opacity .3s ease;
     transition: opacity .3s ease; }
 
-.country-title {
+.country-title,
+.project-title {
   margin-bottom: 20px;
   overflow: hidden; }
-  .country-title .country-icon-wrapper {
+  .country-title .country-icon-wrapper,
+  .project-title .country-icon-wrapper {
     float: left;
     margin-right: 20px;
     width: 40px; }
-  .country-title h3 {
+  .country-title h3,
+  .project-title h3 {
     font-size: 1.4rem;
     line-height: 32px;
     margin: 10px 0 5px;
     text-transform: uppercase; }
+
+.view-list-of-projects .title-wrapper {
+  padding-bottom: 10px;
+  text-align: center; }
+  .view-list-of-projects .title-wrapper h1 {
+    padding-top: 0; }
+    .group .view-list-of-projects .title-wrapper h1 {
+      font-size: 2.625rem;
+      line-height: 48px;
+      padding-top: 30px; }
+  .view-list-of-projects .title-wrapper .line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
 
 form {
   font-size: 1.1375rem;
@@ -1596,6 +1645,10 @@ form {
   text-align: center; }
   .view-news-and-events .title-wrapper h1 {
     padding-top: 0; }
+    .group .view-news-and-events .title-wrapper h1 {
+      font-size: 2.625rem;
+      line-height: 48px;
+      padding-top: 30px; }
   .view-news-and-events .title-wrapper .line {
     left: 50%;
     -webkit-transform: translateX(-50%);

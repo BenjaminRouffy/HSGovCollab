@@ -669,17 +669,20 @@
   }
 }
 
-.country-list {
+.country-list,
+.project-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 
-  .country-item {
+  .country-item,
+  .project-item {
     padding: 10px;
     width: 33.33%;
   }
 
-  .country-content {
+  .country-content,
+  .project-content {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     height: 100%;
@@ -691,7 +694,15 @@
     }
   }
 
-  .country-link {
+  .summary {
+    @include font-size(15.4);
+    color: $navy-dark;
+    font-family: $fira;
+    line-height: 21px;
+  }
+
+  .country-link,
+  .project-link {
     position: absolute;
     top: 0;
     left: 0;
@@ -703,7 +714,7 @@
     text-decoration: none;
   }
 
-  .project-link {
+  .project-bottom-link {
     @include font-size(14);
     color: $navy-dark;
     border-top: 1px solid #afb7bb;
@@ -783,7 +794,8 @@
   }
 }
 
-.country-title {
+.country-title,
+.project-title {
   margin-bottom: 20px;
   overflow: hidden;
 
@@ -798,5 +810,27 @@
     line-height: 32px;
     margin: 10px 0 5px;
     text-transform: uppercase;
+  }
+}
+
+.view-list-of-projects {
+  .title-wrapper {
+    padding-bottom: 10px;
+    text-align: center;
+
+    h1 {
+      padding-top: 0;
+
+      .group & {
+        @include font-size(42);
+        line-height: 48px;
+        padding-top: 30px;
+      }
+    }
+
+    .line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }

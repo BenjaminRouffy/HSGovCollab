@@ -28,9 +28,11 @@
   {{ pager }}
 
   {{ rows }}
-  <div class="empty-result">
-    {{ empty }}
-  </div>
+  {% if empty %}
+    <div class="empty-result">
+      {{ empty }}
+    </div>
+  {% endif %}
   {{ pager }}
 
   {{ attachment_after }}

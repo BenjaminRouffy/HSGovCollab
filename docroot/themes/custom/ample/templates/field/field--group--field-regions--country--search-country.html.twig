@@ -1,7 +1,7 @@
 {% for item in items %}
   {% set region = item.content|render %}
   {% if region is not empty %}
-    <a href="#" {{ item.attributes.addClass('project-link font-social-icon country-icon') }}>
+    <a href="#" {{ item.attributes.addClass('project-bottom-link font-social-icon country-icon') }}>
       <span>{{ "Part of the @region Region"|t({ '@region': region }) }}</span>
     </a>
   {% endif %}

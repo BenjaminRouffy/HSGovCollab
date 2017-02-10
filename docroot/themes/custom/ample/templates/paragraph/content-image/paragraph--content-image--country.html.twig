@@ -3,12 +3,12 @@
     {{ country_icon }}
 
     <h1 role="heading">
-      {{ group_label|upper }}
+      {{ group_label|t|upper }}
     </h1>
 
     {% if logged_in %}
       <div class="follow-link">
-        {{ 'Follow @country'|t({'@country': group_label}) }}
+        {{ 'Follow @country'|t({'@country': group_label|t}) }}
       </div>
     {% endif %}
   </div>

@@ -1,0 +1,68 @@
+uuid: 4303a63b-f6e0-4cfc-bf11-0d12b9c0e3b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_content
+    - group.type.project
+    - paragraphs.paragraphs_type.content_image
+    - paragraphs.paragraphs_type.content_text
+  module:
+    - entity_reference_revisions
+id: group.project.field_content
+field_name: field_content
+entity_type: group
+bundle: project
+label: Content
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_image: content_image
+      content_text: content_text
+    target_bundles_drag_drop:
+      content_image:
+        enabled: true
+        weight: 14
+      content_text:
+        enabled: true
+        weight: 15
+      country_option:
+        weight: 16
+        enabled: false
+      custom_content:
+        weight: 17
+        enabled: false
+      exist_content:
+        weight: 18
+        enabled: false
+      infographic:
+        weight: 19
+        enabled: false
+      infographic_item:
+        weight: 20
+        enabled: false
+      link:
+        weight: 21
+        enabled: false
+      member_icon:
+        weight: 22
+        enabled: false
+      slider:
+        weight: 23
+        enabled: false
+      slider_item:
+        weight: 24
+        enabled: false
+      time_line:
+        weight: 25
+        enabled: false
+      video:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

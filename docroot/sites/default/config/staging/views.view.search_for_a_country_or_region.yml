@@ -83,11 +83,16 @@ display:
             previous: ‹‹
             next: ››
       style:
-        type: default
+        type: grid
         options:
           grouping: {  }
-          row_class: ''
-          default_row_class: false
+          columns: 4
+          automatic_width: true
+          alignment: horizontal
+          col_class_default: true
+          col_class_custom: ''
+          row_class_default: true
+          row_class_custom: ''
       row:
         type: fields
         options:
@@ -304,7 +309,6 @@ display:
         operator: AND
         groups:
           1: OR
-      css_class: view-country
     cache_metadata:
       max-age: -1
       contexts:
@@ -317,7 +321,6 @@ display:
         - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.token'
-        - 'config:core.entity_view_display.group.country.default'
   block_1:
     display_plugin: block
     id: block_1

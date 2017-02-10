@@ -513,7 +513,7 @@ header .social-links .font-social-icon {
   font-family: "Fira Sans", sans-serif;
   font-weight: 700;
   height: 50px;
-  padding: 15px 50px 0 0;
+  padding: 15px 50px 0 10px;
   position: relative;
   text-align: center;
   -webkit-transition: box-shadow .2s ease;
@@ -535,6 +535,10 @@ header .social-links .font-social-icon {
     .accordion-button:hover:after {
       -webkit-transform: rotate(45deg);
               transform: rotate(45deg); }
+  .accordion-button .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
 
 .banner-wrapper {
   clear: both; }
@@ -2134,8 +2138,8 @@ footer {
   padding: 10px 36px; }
   .fixed .thumb-slider-wrapper {
     height: 120px; }
-    .fixed .thumb-slider-wrapper .owl-stage {
-      margin: 0 auto; }
+  .thumb-slider-wrapper .owl-stage {
+    margin: 0 auto; }
   .thumb-slider-wrapper .current .slider-item-thumb .thumb-image {
     border-bottom: 2px solid #ea3a32; }
   .thumb-slider-wrapper .current .slider-item-thumb .thumb-overlay {
@@ -2160,7 +2164,7 @@ footer {
   height: 100%;
   width: 78px; }
   .fixed .slider-item-thumb {
-    width: 10vh; }
+    width: 110px; }
   .slider-item-thumb .thumb-image {
     background-position: 50%;
     background-size: cover;
@@ -2206,8 +2210,6 @@ footer {
       left: 0;
       bottom: 0;
       text-align: left;
-      text-overflow: ellipsis;
-      white-space: nowrap;
       width: 100%; }
       .fixed .slider-item-wrapper .image-text:before, .fixed .slider-item-wrapper .image-text:after, .fixed
       .banner-image .image-text:before, .fixed

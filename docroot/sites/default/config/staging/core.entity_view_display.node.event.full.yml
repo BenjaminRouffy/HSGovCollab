@@ -1,0 +1,133 @@
+uuid: 1e7ec212-4036-4ae2-8145-a9904aa1c2b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.event.body
+    - field.field.node.event.field_category
+    - field.field.node.event.field_date
+    - field.field.node.event.field_event_author
+    - field.field.node.event.field_event_link
+    - field.field.node.event.field_event_slider
+    - field.field.node.event.field_join_block
+    - field.field.node.event.field_location
+    - field.field.node.event.field_organization
+    - field.field.node.event.field_time
+    - field.field.node.event.field_time_text
+    - field.field.node.event.field_timezone
+    - node.type.event
+  module:
+    - datetime_range
+    - entity_reference_revisions
+    - link
+    - options
+    - text
+    - user
+id: node.event.full
+targetEntityType: node
+bundle: event
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+  field_category:
+    weight: 11
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_date:
+    weight: 3
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+  field_event_author:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_event_link:
+    type: link_separate
+    weight: 8
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_event_slider:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_join_block:
+    weight: 10
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_location:
+    weight: 7
+    label: hidden
+    settings:
+      trim_length: 80
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
+    type: link
+  field_organization:
+    weight: 12
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_time:
+    weight: 4
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: event_time
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+  field_time_text:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_timezone:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

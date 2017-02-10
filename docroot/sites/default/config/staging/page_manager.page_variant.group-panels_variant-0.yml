@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - page_manager.page.group
-    - views.view.country_projects_news_events
     - views.view.list_of_projects
+    - views.view.news_and_events_group
   module:
     - addtoany
     - ctools
@@ -76,8 +76,8 @@ variant_settings:
       weight: 0
       uuid: 12839f20-16fc-4d17-a8d6-b09d4647662b
       context_mapping: {  }
-    380e290f-34e5-4f64-aaea-b6dd766aa4dc:
-      id: 'views_block:country_projects_news_events-block_1'
+    7f324896-62e3-4c75-af68-8b34cf0bb035:
+      id: 'views_block:news_and_events_group-news_and_events_with_out_filter'
       label: ''
       provider: views
       label_display: '0'
@@ -85,7 +85,8 @@ variant_settings:
       items_per_page: none
       region: content
       weight: 0
-      uuid: 380e290f-34e5-4f64-aaea-b6dd766aa4dc
+      uuid: 7f324896-62e3-4c75-af68-8b34cf0bb035
+      pager: view
       context_mapping: {  }
   id: panels_variant
   uuid: 14af9b0f-c8d4-49af-b2d0-16c80419c1b1

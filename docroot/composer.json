@@ -39,7 +39,8 @@
         "enable-patching": true,
         "patches": {
             "drupal/core": {
-                "views_query_views_alter() does not handle IN queries": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch"
+                "views_query_views_alter() does not handle IN queries": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch",
+                "Title for details form elements is not set as '#markup'": "https://www.drupal.org/files/issues/2652850-17.patch"
             }
         }
     },

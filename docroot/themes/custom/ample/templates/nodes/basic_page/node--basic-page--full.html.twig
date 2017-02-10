@@ -1,0 +1,49 @@
+{% if content.field_banner|field_value %}
+  <div class="top-banner-region">
+    {{ content.field_banner }}
+  </div>
+{% endif %}
+
+<section class="content-container content-with-sidebar">
+  <div class="region-wrapper">
+    <section class="content">
+      <article{{ attributes }} data-anchor-id="node-{{ node.id }}" role="article">
+        <div class="post-info">
+          {% if content.field_author|field_value %}
+            <span class="author">
+              {% trans %}By: {% endtrans %} {{ content.field_author|field_value }}
+            </span>
+          {% endif %}
+        </div>
+
+        <div class="title-wrapper">
+          <h1 class="anchor-title page-title" role="heading">
+            {{ label|field_value }}
+          </h1>
+          <div class="line"></div>
+        </div>
+
+        {% if node.body.summary|raw %}
+          <div class="content-summary">
+            <p>
+              {{ node.body.summary }}
+            </p>
+          </div>
+        {% endif %}
+
+        {{ content.field_content_paragraph }}
+      </article>
+    </section>
+
+    {% if content.field_join_block|field_value %}
+      <aside class="sidebar">
+        <div class="teaser corners">
+          {{ content.field_join_block }}
+        </div>
+      </aside>
+    {% endif %}
+  </div>
+
+  {{ content.field_time_line }}
+  {{ content.field_bottom_link }}
+</section>

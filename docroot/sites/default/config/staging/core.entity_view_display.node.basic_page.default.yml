@@ -19,8 +19,15 @@ bundle: basic_page
 mode: default
 content:
   addtoany:
-    weight: 2
+    weight: 3
     settings: {  }
+    third_party_settings: {  }
+  field_author:
+    type: string
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
   field_content_paragraph:
     weight: 1
@@ -35,7 +42,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_author: true
   field_banner: true
   field_bottom_link: true
   field_join_block: true

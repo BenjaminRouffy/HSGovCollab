@@ -34,7 +34,6 @@ use Drupal\user\UserInterface;
  *       "html" = "Drupal\group\Entity\Routing\GroupRouteProvider",
  *     },
  *     "form" = {
- *       "default" = "Drupal\group\Entity\Form\GroupForm",
  *       "add" = "Drupal\group\Entity\Form\GroupForm",
  *       "edit" = "Drupal\group\Entity\Form\GroupForm",
  *       "delete" = "Drupal\group\Entity\Form\GroupDeleteForm",
@@ -198,6 +197,15 @@ class Group extends ContentEntityBase implements GroupInterface {
   public function addMember(UserInterface $account, $values = []) {
     if (!$this->getMember($account)) {
       $this->addContent($account, 'group_membership', $values);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function removeMember(UserInterface $account) {
+    if ($member = $this->getMember($account)) {
+      $member->getGroupContent()->delete();
     }
   }
 

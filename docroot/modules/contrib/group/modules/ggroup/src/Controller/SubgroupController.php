@@ -8,6 +8,7 @@ use Drupal\Core\Render\RendererInterface;
 use Drupal\group\Entity\Controller\GroupContentController;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group\Plugin\GroupContentEnablerManagerInterface;
+use Drupal\user\PrivateTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -27,6 +28,8 @@ class SubgroupController extends GroupContentController {
    *
    * @param \Drupal\group\Plugin\GroupContentEnablerManagerInterface $plugin_manager
    *   The group content plugin manager.
+   * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
+   *   The private store factory.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\Core\Entity\EntityFormBuilderInterface $entity_form_builder
@@ -34,8 +37,8 @@ class SubgroupController extends GroupContentController {
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
    */
-  public function __construct(GroupContentEnablerManagerInterface $plugin_manager, EntityTypeManagerInterface $entity_type_manager, EntityFormBuilderInterface $entity_form_builder, RendererInterface $renderer) {
-    parent::__construct($entity_type_manager, $entity_form_builder, $renderer);
+  public function __construct(GroupContentEnablerManagerInterface $plugin_manager, PrivateTempStoreFactory $temp_store_factory, EntityTypeManagerInterface $entity_type_manager, EntityFormBuilderInterface $entity_form_builder, RendererInterface $renderer) {
+    parent::__construct($temp_store_factory, $entity_type_manager, $entity_form_builder, $renderer);
     $this->pluginManager = $plugin_manager;
   }
 
@@ -45,6 +48,7 @@ class SubgroupController extends GroupContentController {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('plugin.manager.group_content_enabler'),
+      $container->get('user.private_tempstore'),
       $container->get('entity_type.manager'),
       $container->get('entity.form_builder'),
       $container->get('renderer')
@@ -54,7 +58,7 @@ class SubgroupController extends GroupContentController {
   /**
    * {@inheritdoc}
    */
-  protected function addPageBundles(GroupInterface $group) {
+  protected function addPageBundles(GroupInterface $group, $create_mode) {
     $bundles = [];
 
     // Retrieve all subgroup plugins for the group's type.
@@ -74,15 +78,6 @@ class SubgroupController extends GroupContentController {
     }
 
     return $bundles;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function addPageBundleMessage(GroupInterface $group) {
-    // We do not set the 'add_bundle_message' variable because we deny access to
-    // the add page if no bundle is available.
-    return FALSE;
   }
 
 }

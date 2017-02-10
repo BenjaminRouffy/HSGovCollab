@@ -1304,15 +1304,17 @@ header .social-links .font-social-icon {
     padding-left: 10px;
     width: 66.66%; }
     .event-info .value a {
-      border-bottom: 2px solid #4c7e96;
       color: #4c7e96;
       display: inline-block;
       line-height: 27px;
       max-width: calc(100% - 28px);
-      padding-left: 5px; }
+      padding-left: 5px;
+      text-decoration: underline; }
   .event-info .font-social-icon {
     font-size: 1.75rem;
     float: left; }
+    .event-info .font-social-icon ~ a {
+      margin-top: 10px; }
   .event-info .sign-up {
     text-align: center; }
   .event-info .red-btn-link {

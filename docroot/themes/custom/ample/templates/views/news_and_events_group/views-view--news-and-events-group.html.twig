@@ -5,18 +5,20 @@
   {% endif %}
   <div class="title-wrapper">
     {{ title_prefix }}
-    <h1>{{ view.getTitle()|raw }}</h1>
-    {{ title_suffix }}
+    <h1>
+      {{ view.getTitle()|raw }}
+    </h1>
+    {{ title_suffix|without('contextual_links') }}
     <div class="line"></div>
   </div>
 
   {% if header %}
-  {% if header_without_wrapper is not defined %}
-  <{{ header_tag|default('h2') }}{{ header_classes }}>
-  {{ header }}
-</{{ header_tag|default('h2') }}>
-  {% else %}
-    {{ header }}
+    {% if header_without_wrapper is not defined %}
+      <{{ header_tag|default('h2') }}{{ header_classes }}>
+        {{ header }}
+      </{{ header_tag|default('h2') }}>
+    {% else %}
+      {{ header }}
     {% endif %}
   {% endif %}
 
@@ -26,11 +28,16 @@
   {{ pager }}
 
   {{ rows }}
-  {{ empty }}
+  <div class="empty-result">
+    {{ empty }}
+  </div>
   {{ pager }}
 
   {{ attachment_after }}
-  {{ more }}
+
+  <div class="bottom-link">
+    {{ more }}
+  </div>
 
   {% if footer %}
     {% if footer_without_wrapper is not defined %}

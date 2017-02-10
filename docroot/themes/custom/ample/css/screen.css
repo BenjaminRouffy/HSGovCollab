@@ -2124,13 +2124,15 @@ footer {
   color: #4c7e96;
   font-family: "Fira Sans", sans-serif;
   margin-bottom: 20px; }
-  .post-info > *:not(:last-child) {
+  .post-info > *:not(:first-child) {
     display: inline-block;
     vertical-align: top; }
-    .post-info > *:not(:last-child):after {
+    .post-info > *:not(:first-child):before {
       content: "|";
       font-weight: normal;
-      margin: 0 2px 0 6px; }
+      margin: 0 6px 0 2px; }
+  .post-info time ~ time:before {
+    display: none; }
   .post-info time,
   .post-info .country {
     font-weight: 700; }

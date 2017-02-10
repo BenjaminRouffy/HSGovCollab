@@ -62,6 +62,42 @@
   }
 }
 
+@include breakpoint-for('.header-static', (to: laptop-small)) {
+  .main-menu {
+    text-align: left;
+
+    > div {
+      display: block;
+    }
+
+    ul:not(.contextual-links) {
+      li {
+        display: block;
+
+        &.active {
+          a {
+            border: none;
+            border-left: 3px solid $red;
+          }
+        }
+      }
+
+      a {
+        @include font-size(18.2);
+        color: $navy-dark;
+        height: auto;
+        padding: 30px;
+
+        &:hover {
+          background: $white-dark;
+          color: $red;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
 .anchor-links {
   text-align: center;
 

@@ -669,17 +669,20 @@
   }
 }
 
-.country-list {
+.country-list,
+.project-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 
-  .country-item {
+  .country-item,
+  .project-item {
     padding: 10px;
     width: 33.33%;
   }
 
-  .country-content {
+  .country-content,
+  .project-content {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     height: 100%;
@@ -691,7 +694,8 @@
     }
   }
 
-  .country-link {
+  .country-link,
+  .project-link {
     position: absolute;
     top: 0;
     left: 0;
@@ -703,7 +707,7 @@
     text-decoration: none;
   }
 
-  .project-link {
+  .project-bottom-link {
     @include font-size(14);
     color: $navy-dark;
     border-top: 1px solid #afb7bb;

@@ -1,0 +1,14 @@
+uuid: 9829cf6c-1493-441f-86ba-b59275a7b8a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.governance_group_users
+  module:
+    - user
+id: user_remove_role_action.governance_group_users
+label: 'Remove the Governance group users role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: governance_group_users

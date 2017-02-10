@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.news_events
     - views.view.news_events
   content:
+    - 'block_content:headline_description:b1a69eb0-294e-4599-bb30-4c0c817b615a'
     - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
   module:
     - block_content
@@ -36,15 +37,27 @@ variant_settings:
       status: true
       info: ''
       view_mode: view_mode_registration_block
-      region: middle
-      weight: 1
+      region: bottom
+      weight: 0
       uuid: 395d3216-e01e-4e41-bc65-c6abe8906507
+      context_mapping: {  }
+    8086b8a5-2d0d-4390-a823-6dab89203239:
+      id: 'block_content:b1a69eb0-294e-4599-bb30-4c0c817b615a'
+      label: 'Countries in P4H'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: -1
+      uuid: 8086b8a5-2d0d-4390-a823-6dab89203239
       context_mapping: {  }
   id: panels_variant
   uuid: eaeb3784-5374-4391-be51-155d735587eb
   label: null
   weight: 0
-  layout: onecol
+  layout: separate_column
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager

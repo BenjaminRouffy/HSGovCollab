@@ -1,0 +1,14 @@
+uuid: 660913b8-fcc8-4788-9c69-80d27222554f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.country_managers
+  module:
+    - user
+id: user_add_role_action.country_managers
+label: 'Add the Country managers role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: country_managers

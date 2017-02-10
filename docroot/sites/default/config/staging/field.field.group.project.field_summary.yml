@@ -1,0 +1,21 @@
+uuid: 26470b22-4817-4ef3-ba62-e3e1498ba709
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_summary
+    - group.type.project
+  module:
+    - text
+id: group.project.field_summary
+field_name: field_summary
+entity_type: group
+bundle: project
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

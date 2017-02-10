@@ -25,7 +25,7 @@ interface GroupHierarchyManagerInterface {
    *   The group content representing the subgroup relationship.
    */
   public function removeSubgroup(GroupContentInterface $group_content);
-  
+
   /**
    * Checks if a given group has another group as a subgroup anywhere in its
    * descendent subgroups.

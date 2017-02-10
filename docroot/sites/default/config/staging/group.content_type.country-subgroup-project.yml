@@ -1,0 +1,18 @@
+uuid: 453b6f8c-c9a1-4065-959e-600aa954089d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+    - group.type.project
+id: country-subgroup-project
+label: 'Country: Subgroup (Project)'
+description: 'Adds <em class="placeholder">Project</em> groups to groups both publicly and privately.'
+group_type: country
+content_plugin: 'subgroup:project'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  info_text:
+    value: "<p>By submitting this form you will add this subgroup to the group.<br />\r\nIt will then be subject to the access control settings that were configured for the group.<br />\r\nPlease fill out any available fields to describe the relation between the subgroup and the group.</p>\r\n"
+    format: minimal

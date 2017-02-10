@@ -694,6 +694,13 @@
     }
   }
 
+  .summary {
+    @include font-size(15.4);
+    color: $navy-dark;
+    font-family: $fira;
+    line-height: 21px;
+  }
+
   .country-link,
   .project-link {
     position: absolute;
@@ -787,7 +794,8 @@
   }
 }
 
-.country-title {
+.country-title,
+.project-title {
   margin-bottom: 20px;
   overflow: hidden;
 

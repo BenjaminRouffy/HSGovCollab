@@ -1,13 +1,15 @@
-<div class="country-content">
+<div class="project-content">
   <div{{ attributes }}>
     {{ title_prefix }}
-    <div class="country-title">
+    <div class="project-title">
       <h3 role="heading">
         {{ label }}
       </h3>
+      <div class="summary">
+        {{ content.field_summary }}
+      </div>
     </div>
     {{ title_suffix }}
-    {{ content.field_summary }}
   </div>
-  <a href="{{ url }}" class="country-link"></a>
+  <a href="{{ url }}" class="project-link"></a>
 </div>

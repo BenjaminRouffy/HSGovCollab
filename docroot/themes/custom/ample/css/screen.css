@@ -1407,6 +1407,12 @@ header .social-links .font-social-icon {
     .project-list .country-content:hover,
     .project-list .project-content:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+  .country-list .summary,
+  .project-list .summary {
+    font-size: 0.9625rem;
+    color: #283b44;
+    font-family: "Fira Sans", sans-serif;
+    line-height: 21px; }
   .country-list .country-link,
   .country-list .project-link,
   .project-list .country-link,
@@ -1491,14 +1497,17 @@ header .social-links .font-social-icon {
     -webkit-transition: opacity .3s ease;
     transition: opacity .3s ease; }
 
-.country-title {
+.country-title,
+.project-title {
   margin-bottom: 20px;
   overflow: hidden; }
-  .country-title .country-icon-wrapper {
+  .country-title .country-icon-wrapper,
+  .project-title .country-icon-wrapper {
     float: left;
     margin-right: 20px;
     width: 40px; }
-  .country-title h3 {
+  .country-title h3,
+  .project-title h3 {
     font-size: 1.4rem;
     line-height: 32px;
     margin: 10px 0 5px;

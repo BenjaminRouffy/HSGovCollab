@@ -3,9 +3,7 @@
 namespace Drupal\p4h_views_plugins\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\views\Plugin\views\filter\Combine as DefaultCombine;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Filter handler which allows to search on multiple fields.
@@ -14,36 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @ViewsFilter("combine")
  */
-class CustomCombine extends DefaultCombine implements ContainerFactoryPluginInterface {
-
-  /**
-   * Constructs a new Date handler.
-   *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin ID for the plugin instance.
-   * @param mixed $plugin_definition
-   *   The plugin implementation definition.
-   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
-   *   The date formatter service.
-   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
-   *   The request stack used to determine the current time.
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition
-    );
-  }
+class CustomCombine extends DefaultCombine {
 
   /**
    * Mark form as extra setting form.
@@ -94,12 +63,14 @@ class CustomCombine extends DefaultCombine implements ContainerFactoryPluginInte
     if(empty($this->options['alphabet'])) {
       return parent::opStartsWith($expression);
     }
-    // @TODO A REGEXP might be more efficient, but you'd have to benchmark it to be sure, e.g.
-    /* @var $or \Drupal\Core\Database\Query\Condition */
-    $this->query->setWhereGroup('OR', 'alphabet');
-    foreach (str_split($this->value, 1) as $item) {
+    // @TODO Remove this weird hard code.
+    if(empty($query->where[1]['conditions'][0]['value'][':views_combine'])) {
       $placeholder = $this->placeholder();
-      $query->addWhereExpression('alphabet', "$expression LIKE $placeholder", array($placeholder => db_like($item) . '%'));
+      $expression = "SUBSTR({$expression},1,1) IN ({$placeholder}[])";
+      $query->addWhereExpression($this->options['group'], $expression, [
+        "{$placeholder}[]" => str_split($this->value, 1)
+      ]);
+
     }
   }
 

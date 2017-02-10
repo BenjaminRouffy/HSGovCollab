@@ -1,0 +1,14 @@
+uuid: 1441df58-f691-4f5b-b070-2b516e34a107
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.country_managers
+  module:
+    - user
+id: user_remove_role_action.country_managers
+label: 'Remove the Country managers role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: country_managers

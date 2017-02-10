@@ -1,0 +1,14 @@
+uuid: f4741e3d-bb47-42b6-be49-59cf400425a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.governance_group_users
+  module:
+    - user
+id: user_add_role_action.governance_group_users
+label: 'Add the Governance group users role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: governance_group_users

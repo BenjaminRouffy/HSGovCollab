@@ -262,7 +262,7 @@ display:
           group_type: group
           admin_label: 'Alphabet filter'
           operator: starts
-          value: GHI
+          value: ABC
           group: 1
           exposed: true
           expose:
@@ -278,6 +278,11 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -356,6 +361,8 @@ display:
         - url.query_args
       tags:
         - 'config:core.entity_view_display.group.country.banner'
+        - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.token'
@@ -381,4 +388,7 @@ display:
         - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.default'
+<<<<<<< 23e09e26618ee06dc71d0af4581fde6d9a7d4a81
         - 'config:core.entity_view_display.group.project.teaser'
+=======
+>>>>>>> Change default value of alphabet filter

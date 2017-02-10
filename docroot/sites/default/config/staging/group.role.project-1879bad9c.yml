@@ -1,0 +1,19 @@
+uuid: f904d6f4-5fb5-4855-80fd-ce723e9cd4c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.coordination_desk_users
+id: project-1879bad9c
+label: 'Coordination desk users'
+weight: 6
+internal: true
+audience: outsider
+group_type: project
+permissions_ui: false
+permissions: {  }

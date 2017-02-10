@@ -301,7 +301,7 @@
         hiddenContent.parent().remove();
       }
 
-      $('.show-more').on('click', function() {
+      $('.show-more', context).on('click', function() {
         hiddenContent.slideToggle(300);
       });
     }

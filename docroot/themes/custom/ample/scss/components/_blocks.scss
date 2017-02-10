@@ -592,11 +592,6 @@
     vertical-align: top;
     width: 25%;
 
-    &:first-child {
-      margin-bottom: 20px;
-      width: 50%;
-    }
-
     > a {
       border-bottom: 2px solid transparent;
       transition: background .2s ease, border .2s ease;
@@ -608,6 +603,11 @@
   }
 
   .news {
+    &:first-child {
+      margin-bottom: 20px;
+      width: 50%;
+    }
+
     > a {
       padding: 10px 10px 30px;
 

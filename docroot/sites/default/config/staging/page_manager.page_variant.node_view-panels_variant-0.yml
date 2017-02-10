@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - page_manager.page.node_view
-    - views.view.news_events_block
+    - views.view.news_events_sidebar
   module:
     - ctools
     - ctools_block
@@ -53,8 +53,8 @@ variant_settings:
       uuid: f178750d-7143-4fcc-8e3f-ecdad06d4168
       context_mapping:
         entity: node
-    ca399761-1828-401c-b7ee-41da4e918565:
-      id: 'views_block:news_events_block-block_news_events'
+    fdb31b92-9b89-46af-93da-7681ac778130:
+      id: 'views_block:news_events_sidebar-sidebar'
       label: ''
       provider: views
       label_display: '0'
@@ -62,7 +62,7 @@ variant_settings:
       items_per_page: none
       region: right_sidebar
       weight: 0
-      uuid: ca399761-1828-401c-b7ee-41da4e918565
+      uuid: fdb31b92-9b89-46af-93da-7681ac778130
       context_mapping: {  }
   id: panels_variant
   uuid: ef040892-a3ec-4a3f-acbe-1cbaa357f1e7

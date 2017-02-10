@@ -1,23 +1,22 @@
-uuid: 4d831198-2114-4ff0-b03f-a42fa7bbeb79
+uuid: 83d92e6f-012a-4379-8934-8fc4fc5f9065
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.group_content.news_events_block
-    - group.content_type.country-group_node-event
-    - group.content_type.country-group_node-news
+    - core.entity_view_mode.node.news_events_sidebar
     - node.type.event
     - node.type.news
   module:
     - group
     - node
-id: news_events_block
-label: 'News & Events Block'
+    - user
+id: news_events_sidebar
+label: 'News & Events Sidebar'
 module: views
 description: ''
 tag: ''
-base_table: group_content_field_data
-base_field: id
+base_table: node_field_data
+base_field: nid
 core: 8.x
 display:
   default:
@@ -27,8 +26,9 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -53,55 +53,41 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 3
+          items_per_page: 10
           offset: 0
       style:
         type: default
       row:
-        type: 'entity:group_content'
+        type: 'entity:node'
         options:
           relationship: none
-          view_mode: news_events_block
+          view_mode: news_events_sidebar
       fields:
-        label:
-          table: group_content_field_data
-          field: label
-          id: label
-          entity_type: null
-          entity_field: label
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            trim: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: true
           plugin_id: field
           relationship: none
           group_type: group
           admin_label: ''
-          label: ''
           exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
           element_type: ''
           element_class: ''
           element_label_type: ''
@@ -111,12 +97,9 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
-          empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
           type: string
-          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -128,52 +111,22 @@ display:
           separator: ', '
           field_api_classes: false
       filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
         type:
           id: type
-          table: group_content_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value:
-            country-group_node-event: country-group_node-event
-            country-group_node-news: country-group_node-news
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: group_content
-          entity_field: type
-          plugin_id: bundle
-        type_1:
-          id: type_1
           table: node_field_data
           field: type
-          relationship: gc__node
+          relationship: none
           group_type: group
           admin_label: ''
           operator: in
@@ -214,7 +167,7 @@ display:
           id: langcode
           table: node_field_data
           field: langcode
-          relationship: gc__node
+          relationship: none
           group_type: group
           admin_label: ''
           operator: in
@@ -251,61 +204,66 @@ display:
           entity_field: langcode
           plugin_id: language
       sorts: {  }
-      title: 'News & Events Block'
-      header:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content: 'News & Events'
-          plugin_id: text_custom
+      title: 'News & Events Sidebar'
+      header: {  }
       footer: {  }
       empty: {  }
       relationships:
-        gc__node:
-          id: gc__node
-          table: group_content_field_data
-          field: gc__node
+        group_content:
+          id: group_content
+          table: node_field_data
+          field: group_content
           relationship: none
           group_type: group
-          admin_label: 'Group content Content'
-          required: true
+          admin_label: 'Content group content'
+          required: false
           group_content_plugins:
+            'group_node:event': 'group_node:event'
+            'group_node:news': 'group_node:news'
             'group_node:basic_page': '0'
-            'group_node:event': '0'
             'group_node:member': '0'
-            'group_node:news': '0'
+          entity_type: node
+          plugin_id: group_content_to_entity_reverse
+        gc__group:
+          id: gc__group
+          table: group_content_field_data
+          field: gc__group
+          relationship: group_content
+          group_type: group
+          admin_label: 'Group content Group'
+          required: false
+          group_content_plugins:
+            'subgroup:country': 'subgroup:country'
+            'subgroup:project': 'subgroup:project'
           entity_type: group_content
           plugin_id: group_content_to_entity
       arguments: {  }
       display_extenders: {  }
-      use_more: true
-      use_more_always: false
-      use_more_text: 'See all events'
       link_url: news-and-events
       link_display: custom_url
+      use_more: true
+      use_more_always: true
+      use_more_text: 'See all events'
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
       tags: {  }
-  block_news_events:
+  sidebar:
     display_plugin: block
-    id: block_news_events
+    id: sidebar
     display_title: Block
     position: 1
     display_options:
       display_extenders: {  }
-      rendering_language: '***LANGUAGE_entity_translation***'
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
       tags: {  }

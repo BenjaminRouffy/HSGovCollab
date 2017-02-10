@@ -4,12 +4,10 @@ status: true
 dependencies:
   config:
     - page_manager.page.node_view
-    - views.view.news_events_block
   module:
     - ctools
     - ctools_block
     - panels
-    - views
 id: node_view-panels_variant-3
 label: Member
 variant: panels_variant
@@ -43,17 +41,6 @@ variant_settings:
       uuid: 71863e4a-d51c-458a-8713-7712522d25d8
       context_mapping:
         entity: node
-    e5a85afc-05e8-433a-87a8-de24ebddae50:
-      id: 'views_block:news_events_block-block_news_events'
-      label: ''
-      provider: views
-      label_display: '0'
-      views_label: ''
-      items_per_page: none
-      region: right_sidebar
-      weight: 0
-      uuid: e5a85afc-05e8-433a-87a8-de24ebddae50
-      context_mapping: {  }
   id: panels_variant
   uuid: a6c8fb99-9fbb-40ef-a766-b44d64d97062
   label: null

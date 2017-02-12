@@ -25,19 +25,16 @@
   }
 
   .paragraph {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+
     &:hover {
       .infooverlay {
         top: 0;
       }
-    }
-
-    a {
-      display: block;
-      height: 100%;
-      overflow: hidden;
-      padding: 20px;
-      position: relative;
-      text-decoration: none;
     }
 
     .icon-wrapper {

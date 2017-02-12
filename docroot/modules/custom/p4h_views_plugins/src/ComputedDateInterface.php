@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Provides Drupal\p4h_views_plugins\ComputedDateInterface
- */
 
 namespace Drupal\p4h_views_plugins;
 

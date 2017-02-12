@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * ComputedDateManager Plugin Type.
- */
 
 namespace Drupal\p4h_views_plugins;
 
@@ -22,11 +18,11 @@ class ComputedDateManager extends DefaultPluginManager implements ComputedDateMa
   }
 
   /**
-   * @param $datetime \Datetime
-   *
-   * @return string
+   * @param \Datetime $datetime
+   * @return int
    */
   public function getTimestamp($datetime) {
     return $datetime->getTimestamp();
   }
+
 }

@@ -17,12 +17,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class GroupIndexGid extends ManyToOne {
 
-  public $group_type;
+  public $groupType;
   public $group;
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigEntityStorageInterface $group_type, SqlEntityStorageInterface $group) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->group_type = $group_type;
+    $this->groupType = $group_type;
     $this->group = $group;
   }
 
@@ -39,8 +42,16 @@ class GroupIndexGid extends ManyToOne {
     );
   }
 
-  public function hasExtraOptions() { return TRUE; }
+  /**
+   * {@inheritdoc}
+   */
+  public function hasExtraOptions() {
+    return TRUE;
+  }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function defineOptions() {
     $options = parent::defineOptions();
 
@@ -49,8 +60,11 @@ class GroupIndexGid extends ManyToOne {
     return $options;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function buildExtraOptionsForm(&$form, FormStateInterface $form_state) {
-    $group_type = $this->group_type->loadMultiple();
+    $group_type = $this->groupType->loadMultiple();
     $options = array();
     foreach ($group_type as $entity_type) {
       $options[$entity_type->id()] = $entity_type->label();
@@ -65,10 +79,13 @@ class GroupIndexGid extends ManyToOne {
 
   }
 
-  function valueForm(&$form, FormStateInterface $form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function valueForm(array &$form, FormStateInterface $form_state) {
     parent::valueForm($form, $form_state);
 
-    $group_type = $this->group_type->load($this->options['gid']);
+    $group_type = $this->groupType->load($this->options['gid']);
 
     $options = array();
     $query = \Drupal::entityQuery('group')
@@ -78,8 +95,11 @@ class GroupIndexGid extends ManyToOne {
     $query->condition('type', $group_type->id());
     $groups = $this->group->loadMultiple($query->execute());
     foreach ($groups as $group) {
-      $options[$group->id()] = \Drupal::entityManager()->getTranslationFromContext($group)->label();
+      $options[$group->id()] = \Drupal::entityManager()
+        ->getTranslationFromContext($group)
+        ->label();
     }
+    asort($options);
 
     $default_value = (array) $this->value;
 
@@ -128,6 +148,5 @@ class GroupIndexGid extends ManyToOne {
       $form_state->setUserInput($user_input);
     }
   }
-
 
 }

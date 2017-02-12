@@ -3,10 +3,12 @@
     {{ content.field_country_icon }}
     <h3 role="heading">{{ label }}</h3>
   </div>
-  {% if logged_in %}
+  {% if not logged_in %}
     {{ content.field_infographic }}
   {% else %}
-    {# Add embed view and uncomment this block for anonymous user#}
+</a>
+  {{ drupal_view('last_news', 'embed_1', group.id.value) }}
+<a href="{{ url }}">
   {% endif %}
   {{ content.field_regions }}
 </a>

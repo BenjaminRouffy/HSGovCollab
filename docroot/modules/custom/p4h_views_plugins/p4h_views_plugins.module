@@ -1,8 +1,11 @@
 <?php
+
 /**
  * @file
  * Contains p4h_views_plugins.module.
  */
+
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
@@ -45,7 +48,10 @@ function p4h_views_plugins_entity_base_field_info(EntityTypeInterface $entity_ty
  */
 function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'views_exposed_form'
-    && in_array($form['#id'], ['views-exposed-form-news-events-block-1', 'views-exposed-form-news-and-events-group-news-and-events-by-group'])
+    && in_array($form['#id'], [
+      'views-exposed-form-news-events-block-1',
+      'views-exposed-form-news-and-events-group-news-and-events-by-group'
+    ])
   ) {
     $form['wrap'] = [
       '#prefix' => '<div class="wrapper-filters">',
@@ -80,8 +86,10 @@ function p4h_views_plugins_better_exposed_filters_display_options_alter(&$displa
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
  */
-function p4h_views_plugins_node_presave(Drupal\Core\Entity\EntityInterface $entity) {
+function p4h_views_plugins_node_presave(EntityInterface $entity) {
   $manager = \Drupal::service('plugin.manager.computed_date');
   $plugins = $manager->getDefinitions($entity->bundle());
   if (in_array($entity->bundle(), array_keys($plugins))) {

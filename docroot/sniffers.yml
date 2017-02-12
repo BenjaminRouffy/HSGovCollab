@@ -70,7 +70,7 @@
     scsslint_folders:
       - { name: 'themes', path: 'themes/custom', exclude: ['bower'] }
 
-    sniffers_update: true
+    sniffers_update: false
 
   roles:
     - { role: devops/roles/cibox-security-testing, when: scan_security == true }

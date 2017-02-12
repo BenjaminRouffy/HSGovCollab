@@ -210,3 +210,18 @@ vagrant destroy
 vagrant box remove Ubuntu_14_04__CIBox_VM_provisioned
 vagrant up
 ```
+
+# Phantomjs Server Run
+```
+docker run -d -p 4444:8910 --restart=always \ 
+    --name phantomjs wernight/phantomjs \ 
+    --webdriver 8910 \ 
+    --ignore-ssl-errors=true \ 
+    --ssl-protocol=any
+```
+## manual
+```
+$ cd /var/lib/jenkins/jobs/PR_BUILDER/workspace/sourcecode/tests/behat
+$ bin/behat -c behat-console.yml features
+
+```

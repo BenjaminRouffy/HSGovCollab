@@ -1,3 +1,4 @@
+@javascript
 Feature: Frontpage feature
 
   Scenario: Check frontpage is accessible

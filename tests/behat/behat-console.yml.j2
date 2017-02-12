@@ -1,8 +1,4 @@
 default:
-  formatters:
-    pretty: true
-    html:
-      output_path: {{ drupal_root }}/build_reports
   suites:
     default:
       contexts:
@@ -12,13 +8,6 @@ default:
         - Drupal\DrupalExtension\Context\MarkupContext: ~
         - Drupal\DrupalExtension\Context\MessageContext: ~
   extensions:
-    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
-      name: html
-      renderer: Twig,Behat2
-      file_name: index
-      print_args: true
-      print_outp: true
-      loop_break: true
     Behat\MinkExtension:
       goutte:
         guzzle_parameters:

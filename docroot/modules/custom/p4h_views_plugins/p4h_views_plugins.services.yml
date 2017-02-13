@@ -1,0 +1,4 @@
+services:
+  plugin.manager.computed_date:
+    class: Drupal\p4h_views_plugins\ComputedDateManager
+    parent: default_plugin_manager

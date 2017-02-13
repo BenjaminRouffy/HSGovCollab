@@ -545,3 +545,10 @@ function deployment_update_8029() {
   deployment_delete_fields('paragraph', 'content_image', ['field_country_icon']);
   field_purge_batch(500);
 }
+
+/**
+ * Install module "Custom public options".
+ */
+function deployment_update_8030() {
+  \Drupal::service('module_installer')->install(['custom_pub']);
+}

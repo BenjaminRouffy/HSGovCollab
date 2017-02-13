@@ -1,8 +1,13 @@
 <?php
+
 /**
  * @file
  * Contains p4h_views_plugins.module.
  */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -26,13 +31,27 @@ function p4h_views_plugins_theme() {
   ];
 }
 
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function p4h_views_plugins_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if ($entity_type->id() == 'node') {
+    $fields['computed_date'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Computed date'))
+      ->setDescription(t('Computed date'));
+    return $fields;
+  }
+}
 
 /**
  * Implements hook_form_alter().
  */
 function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'views_exposed_form'
-    && in_array($form['#id'], ['views-exposed-form-news-events-block-1', 'views-exposed-form-news-and-events-group-news-and-events-by-group'])
+    && in_array($form['#id'], [
+      'views-exposed-form-news-events-block-1',
+      'views-exposed-form-news-and-events-group-news-and-events-by-group'
+    ])
   ) {
     $form['wrap'] = [
       '#prefix' => '<div class="wrapper-filters">',
@@ -42,7 +61,9 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
     $form['wrap']['year'] = $form['year'];
     $form['wrap']['month'] = $form['month'];
     unset($form['year'], $form['month']);
-    $form['#attached']['drupalSettings'] = ['defaultFormSelector' => '#' . $form['#id']];
+    $form['#attached']['drupalSettings'] = [
+      'defaultFormSelector' => '#' . $form['#id']
+    ];
   }
 }
 
@@ -61,4 +82,29 @@ function p4h_views_plugins_better_exposed_filters_display_options_alter(&$displa
   if (is_a($filter, 'Drupal\p4h_views_plugins\Plugin\views\filter\CustomCombine')) {
     $display_options['bef_ul'] = t('Alphabet Filter');
   }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ */
+function p4h_views_plugins_node_presave(EntityInterface $entity) {
+  $manager = \Drupal::service('plugin.manager.computed_date');
+  $plugins = $manager->getDefinitions($entity->bundle());
+  if (in_array($entity->bundle(), array_keys($plugins))) {
+
+    /* @var $plugin Drupal\p4h_views_plugins\ComputedDateInterface */
+    $plugin = $manager->createInstance($entity->bundle(), ['entity' => $entity]);
+    $plugin->updateValue();
+
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function p4h_views_plugins_views_data_alter(array &$data) {
+  $data['node_field_data']['computed_date']['filter']['id'] = 'computed_date';
+  $data['group_content_field_data']['gid']['filter']['id'] = 'group_index_gid';
 }

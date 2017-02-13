@@ -5,6 +5,12 @@
 
     h1 {
       padding-top: 0;
+
+      .group & {
+        @include font-size(42);
+        line-height: 48px;
+        padding-top: 30px;
+      }
     }
 
     .line {
@@ -123,6 +129,10 @@
       }
     }
 
+    .form-radio {
+      display: none;
+    }
+
     label {
       @include font-size(14);
       color: $red;
@@ -133,5 +143,18 @@
       vertical-align: top;
       width: 100%;
     }
+  }
+}
+
+.empty-result {
+  @include font-size(20);
+  background: #ffdede;
+  font-family: $oswald;
+  margin: 30px auto;
+  padding: 15px 0;
+  text-align: center;
+
+  p {
+    margin: 0;
   }
 }

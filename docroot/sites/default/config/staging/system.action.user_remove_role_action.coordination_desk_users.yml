@@ -1,0 +1,14 @@
+uuid: df4368aa-b1cd-485c-a8f6-d7a3b92944ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.coordination_desk_users
+  module:
+    - user
+id: user_remove_role_action.coordination_desk_users
+label: 'Remove the Coordination desk users role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: coordination_desk_users

@@ -1,30 +1,30 @@
 definitions:
   block__admin_display:
-    weight: -78
+    weight: -83
     menu_name: admin
     parent: system.admin_structure
     enabled: true
     expanded: false
   entity__comment_type__collection:
-    weight: -74
+    weight: -77
     menu_name: admin
     parent: system.admin_structure
     expanded: false
     enabled: true
   entity__contact_form__collection:
-    weight: -73
+    weight: -76
     menu_name: admin
     parent: system.admin_structure
     expanded: false
     enabled: true
   entity__node_type__collection:
-    weight: -72
+    weight: -79
     menu_name: admin
     parent: system.admin_structure
     expanded: false
     enabled: true
   field_ui__display_mode:
-    weight: -71
+    weight: -75
     menu_name: admin
     parent: system.admin_structure
     expanded: false
@@ -36,31 +36,37 @@ definitions:
     expanded: false
     enabled: true
   entity__menu__collection:
-    weight: -77
+    weight: -82
     menu_name: admin
     parent: system.admin_structure
     expanded: false
     enabled: true
   entity__page__collection:
-    weight: -76
+    weight: -81
     menu_name: admin
     parent: system.admin_structure
     expanded: false
     enabled: true
   entity__paragraphs_type__collection:
-    weight: -69
+    weight: -74
     menu_name: admin
     parent: system.admin_structure
     expanded: false
     enabled: true
   entity__taxonomy_vocabulary__collection:
-    weight: -75
+    weight: -80
     menu_name: admin
     parent: system.admin_structure
     expanded: false
     enabled: true
   entity__view__collection:
-    weight: -68
+    weight: -78
+    parent: system.admin_structure
+    menu_name: admin
+    enabled: true
+    expanded: false
+  file_entity__types:
+    weight: -73
     menu_name: admin
     parent: system.admin_structure
     expanded: false

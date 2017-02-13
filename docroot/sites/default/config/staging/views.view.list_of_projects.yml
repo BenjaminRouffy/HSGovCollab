@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.group.teaser
     - group.content_type.country-subgroup-project
   module:
     - group
@@ -54,15 +55,17 @@ display:
         type: default
       row:
         type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: false
       fields:
-        label:
-          table: group_content_field_data
-          field: label
-          id: label
-          entity_type: null
-          entity_field: label
-          plugin_id: field
-          relationship: none
+        rendered_entity:
+          id: rendered_entity
+          table: groups
+          field: rendered_entity
+          relationship: gc__group
           group_type: group
           admin_label: ''
           label: ''
@@ -98,7 +101,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -106,19 +109,9 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
+          view_mode: teaser
+          entity_type: group
+          plugin_id: rendered_entity
       filters:
         type:
           id: type
@@ -161,7 +154,7 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts: {  }
-      title: 'List of projects'
+      title: Projects
       header: {  }
       footer: {  }
       empty: {  }
@@ -220,16 +213,21 @@ display:
       use_more: true
       use_more_always: true
       use_more_text: 'See all projects'
-      link_url: test
+      link_url: 'group/{{ raw_arguments.gid }}/projects'
       link_display: custom_url
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
-      tags: {  }
+      tags:
+        - 'config:core.entity_view_display.group.country.banner'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'
   block_1:
     display_plugin: block
     id: block_1
@@ -237,11 +235,58 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
+      block_hide_empty: true
+      css_class: view-list-of-projects
+      defaults:
+        css_class: false
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
-      tags: {  }
+      tags:
+        - 'config:core.entity_view_display.group.country.banner'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'
+  block_full:
+    display_plugin: block
+    id: block_full
+    display_title: 'Full block'
+    position: 3
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      pager:
+        type: none
+        options:
+          offset: 0
+      defaults:
+        pager: false
+        link_display: false
+        link_url: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+      block_hide_empty: true
+      link_display: '0'
+      link_url: 'group/{{ arguments.gid }}/projects'
+      use_more: false
+      use_more_always: true
+      use_more_text: 'See all projects'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - route
+        - url
+      tags:
+        - 'config:core.entity_view_display.group.country.banner'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'

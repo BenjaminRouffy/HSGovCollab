@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.paragraph.view_mode_banner
     - field.field.paragraph.slider_item.field_content_image
     - field.field.paragraph.slider_item.field_description
+    - image.style.1300x900
     - paragraphs.paragraphs_type.slider_item
   module:
     - image
@@ -18,7 +19,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
+      image_style: 1300x900
       image_link: ''
     third_party_settings: {  }
     type: image

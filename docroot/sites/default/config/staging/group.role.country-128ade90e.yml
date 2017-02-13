@@ -1,0 +1,19 @@
+uuid: 8005f128-4357-4f7d-8cc5-d5aab7ed07ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.projects_managers
+id: country-128ade90e
+label: 'Projects managers'
+weight: 4
+internal: true
+audience: outsider
+group_type: country
+permissions_ui: false
+permissions: {  }

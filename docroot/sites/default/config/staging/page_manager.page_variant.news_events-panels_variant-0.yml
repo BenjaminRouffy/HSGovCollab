@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.news_events
     - views.view.news_events
   content:
+    - 'block_content:headline_description:5b9a02c8-1ab5-477f-b12a-e706cbbac419'
     - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
   module:
     - block_content
@@ -36,15 +37,27 @@ variant_settings:
       status: true
       info: ''
       view_mode: view_mode_registration_block
-      region: middle
-      weight: 1
+      region: bottom
+      weight: 0
       uuid: 395d3216-e01e-4e41-bc65-c6abe8906507
+      context_mapping: {  }
+    7da9eb6b-89de-44d6-9fb2-f34ef50d0bc5:
+      id: 'block_content:5b9a02c8-1ab5-477f-b12a-e706cbbac419'
+      label: 'P4H news'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: -1
+      uuid: 7da9eb6b-89de-44d6-9fb2-f34ef50d0bc5
       context_mapping: {  }
   id: panels_variant
   uuid: eaeb3784-5374-4391-be51-155d735587eb
   label: null
   weight: 0
-  layout: onecol
+  layout: separate_column
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager

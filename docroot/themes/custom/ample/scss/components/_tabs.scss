@@ -1,5 +1,5 @@
 #block-ample-local-tasks {
-  background: inherit;
+  background: $white;
   margin: 0;
   padding: 0 0 20px;
   position: relative;
@@ -7,6 +7,7 @@
 
   > ul {
     @include font-size(0);
+    margin: 0;
     padding: 0;
     text-align: center;
 

@@ -25,13 +25,14 @@
           .filter('[' + settings.defaultAttributeSelector + '="' + parentAttribute + '"]')
           // Change a label of tab.
           .find(settings.defaultAccordionTabText).html(function () {
+            return $(settings.defaultFieldsetLegend, parent).html();
             // Gets all checked inputs and ...
-            return $('input:checked + label', parent).map(function () {
+            /*return $('input:checked + label', parent).map(function () {
                 // ... and gets its labels.
                 return $(this).html();
               })
               // Return all labels or default value of tab.
-              .get().join() || $(settings.defaultFieldsetLegend, parent).html()
+              .get().join() || $(settings.defaultFieldsetLegend, parent).html()*/
           });
 
       };
@@ -69,7 +70,7 @@
       {
         var attr = $(this).attr(settings.defaultAttributeSelector);
         $('fieldset')
-          .filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(300).siblings("fieldset").slideUp("slow");
+          .filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings("fieldset").slideUp(100);
         $(this).toggleClass(settings.defaultClosed).siblings(settings.defaultAccordionTab).addClass(settings.defaultClosed);
 
       });
@@ -300,7 +301,7 @@
         hiddenContent.parent().remove();
       }
 
-      $('.show-more').on('click', function() {
+      $('.show-more', context).on('click', function() {
         hiddenContent.slideToggle(300);
       });
     }
@@ -310,6 +311,20 @@
     attach: function(context, settings) {
       $('.toggle-sharing-btn', context).on('click', function() {
         $(this).next().toggleClass('expanded');
+      });
+    }
+  };
+
+  Drupal.behaviors.mobileMenu = {
+    attach: function(context, settings) {
+      $('.mobile-menu-btn', context).on('click', function() {
+        $(this).toggleClass('opened');
+      });
+
+      $.resizeAction(function() {
+        return window.innerWidth <= 991;
+      }, function(state) {
+        $('.mobile-menu-btn', context).removeClass('opened');
       });
     }
   };

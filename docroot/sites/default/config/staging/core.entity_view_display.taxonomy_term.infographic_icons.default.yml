@@ -6,7 +6,7 @@ dependencies:
     - field.field.taxonomy_term.infographic_icons.field_icon
     - taxonomy.vocabulary.infographic_icons
   module:
-    - image
+    - p4h_svg_formatter
 id: taxonomy_term.infographic_icons.default
 targetEntityType: taxonomy_term
 bundle: infographic_icons
@@ -19,7 +19,7 @@ content:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: svg_image_formatter
 hidden:
   description: true
   langcode: true

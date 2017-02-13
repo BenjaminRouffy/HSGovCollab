@@ -1,2 +1,7 @@
 ---
 # File contains pre tasks for behat tests.
+
+  - name: Set fake display
+    set_fact:
+      display: ':99'
+    when: xvfb == 'yes'

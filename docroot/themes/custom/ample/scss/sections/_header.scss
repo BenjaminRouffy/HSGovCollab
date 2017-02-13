@@ -36,7 +36,7 @@ header {
       text-decoration: none;
 
       &:hover {
-        background: rgba($navy, .08);
+        //background: rgba($navy, .08);
         opacity: .7;
       }
     }
@@ -69,6 +69,7 @@ header {
       top: 0;
       height: 150px;
       width: 180px;
+      z-index: 10;
     }
 
     img {
@@ -80,6 +81,12 @@ header {
 
   .partners {
     display: inline-block;
+  }
+
+  .mobile-menu-wrapper {
+    .partners {
+      display: none;
+    }
   }
 
   .social-links {
@@ -102,6 +109,200 @@ header {
   }
 }
 
+.mobile-service-links {
+  display: none;
+}
+
+.mobile-menu-btn {
+  @include font-size(28);
+  @include same(80px, height, width);
+  color: $navy-dark;
+  cursor: pointer;
+  display: none;
+  float: right;
+  padding-top: 26px;
+  text-align: center;
+  transition: color .2s ease;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+@include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {
+  min-height: 80px;
+
+  .logo-wrapper {
+    .logo {
+      height: 107px;
+      width: 145px;
+    }
+
+    img {
+      height: 86px;
+      width: 103px;
+    }
+  }
+
+  .links,
+  .service-links,
+  .social-links {
+    position: static;
+  }
+
+  .desktop-service-links {
+    display: none;
+  }
+
+  .mobile-service-links {
+    display: block;
+  }
+
+  .service-links {
+    height: auto;
+    text-align: left;
+
+    ul:not(.contextual-links) {
+      display: block;
+
+      li {
+        display: block;
+      }
+
+      a {
+        @include font-size(18.2);
+        color: $navy-dark;
+        height: auto;
+        padding: 30px;
+
+        &:hover {
+          background: $white-dark;
+          color: $red;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-wrapper {
+    background: #e9ecee;
+    box-shadow: -1px 7px 14px rgba($black, .11);
+    height: calc(100% - 80px);
+    position: fixed;
+    top: 80px;
+    right: -60%;
+    transform: translateX(100%);
+    transition: transform .4s ease-in-out, right .4s ease-in-out;
+    width: 50%;
+  }
+
+  .social-links {
+    padding: 22px 20px;
+
+    li {
+      margin-right: 30px;
+    }
+
+    a {
+      @include font-size(28);
+    }
+  }
+
+  .mobile-menu-btn {
+    display: block;
+
+    &.opened {
+      color: $red;
+
+      ~ .mobile-menu-wrapper {
+        right: 0;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.header-static, .header-fixed', (to: tablet)) {
+  min-height: 60px;
+
+  .logo-wrapper {
+    .logo {
+      padding: 5px 10px 0;
+      height: 80px;
+      width: 100px;
+    }
+
+    img {
+      height: 63px;
+      width: 74px;
+    }
+  }
+
+  .partners {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    height: 60px;
+    padding-top: 20px;
+  }
+
+  .mobile-menu-wrapper{
+    height: calc(100% - 60px);
+    top: 60px;
+    right: -85%;
+    width: 75%;
+
+    .partners {
+      display: block;
+      margin-left: 28px;
+      padding-top: 50px;
+      text-align: left;
+
+      .item-list {
+        display: block;
+      }
+
+      li {
+        height: 57px;
+        margin-left: 10px;
+        margin-right: 4%;
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.header-static, .header-fixed', (to: mobileL)) {
+  .logo-wrapper {
+    .logo {
+      padding: 8px 10px 10px 15px;
+      width: 102px;
+    }
+
+    img {
+      height: 60px;
+      width: 72px;
+    }
+  }
+
+  .mobile-menu-btn {
+    width: 60px;
+  }
+
+  .mobile-menu-wrapper {
+    width: 100%;
+
+    .partners {
+      margin-left: 9px;
+
+      li {
+        height: 47px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
 .header-fixed {
   position: fixed;
   width: 100%;
@@ -114,7 +315,9 @@ header {
   }
 
   .logo-wrapper {
-    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
 
     .logo {
       background: $white;
@@ -157,6 +360,23 @@ header {
   }
 }
 
+@include breakpoint-for('.header-fixed', (to: laptop-small)) {
+  .mobile-menu-btn {
+    color: $white;
+    height: 60px;
+    padding-top: 20px;
+  }
+
+  .mobile-menu-wrapper {
+    height: calc(100% - 60px);
+    top: 60px;
+  }
+
+  .service-links {
+    position: static;
+  }
+}
+
 .bottom-head {
   background: #e9ecee;
   box-shadow: 0 1px 3px rgba($black, .1);
@@ -164,8 +384,8 @@ header {
   .wrapper {
     margin: 0 auto;
     max-width: 1260px;
-    min-height: 60px;
-    padding-top: 20px;
+    height: 60px;
+    padding-top: 7px;
 
     &:empty {
       display: none;

@@ -76,18 +76,6 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            field_content_date_value:
-              bef_format: default
-              more_options:
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
-            field_content_date_value_1:
-              bef_format: default
-              more_options:
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
       pager:
         type: mini_with_items
         options:
@@ -343,94 +331,6 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        field_content_date_value:
-          id: field_content_date_value
-          table: node__field_content_date
-          field: field_content_date_value
-          relationship: gc__node
-          group_type: group
-          admin_label: Year
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_content_date_value_op
-            label: Year
-            description: ''
-            use_operator: false
-            operator: field_content_date_value_op
-            identifier: year
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          type: select
-          granularity: year
-          year_range: '-3:+0'
-          from_unixtime: 0
-          plugin_id: datetime
-        field_content_date_value_1:
-          id: field_content_date_value_1
-          table: node__field_content_date
-          field: field_content_date_value
-          relationship: gc__node
-          group_type: group
-          admin_label: Month
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_content_date_value_1_op
-            label: Month
-            description: ''
-            use_operator: false
-            operator: field_content_date_value_1_op
-            identifier: month
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          type: select
-          granularity: month
-          year_range: '-3:+0'
-          from_unixtime: 0
-          plugin_id: datetime
         langcode:
           id: langcode
           table: node_field_data
@@ -471,23 +371,8 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
-      sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-      title: 'News & Events'
+      sorts: {  }
+      title: 'Country News & Events'
       header:
         area_text_custom:
           id: area_text_custom
@@ -617,6 +502,336 @@ display:
           perm: 'access content'
       defaults:
         access: false
+        filters: false
+        filter_groups: false
+        sorts: false
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            event: event
+            news: news
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+        field_category_target_id:
+          id: field_category_target_id
+          table: node__field_category
+          field: field_category_target_id
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_category_target_id_op
+            label: 'Select category'
+            description: ''
+            use_operator: false
+            operator: field_category_target_id_op
+            identifier: category
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: categories
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_organization_target_id:
+          id: field_organization_target_id
+          table: node__field_organization
+          field: field_organization_target_id
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_organization_target_id_op
+            label: 'Select organization'
+            description: ''
+            use_operator: false
+            operator: field_organization_target_id_op
+            identifier: organization
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: organizations
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        computed_date:
+          id: computed_date
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: Year
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: computed_date_op
+            label: Year
+            description: ''
+            use_operator: false
+            operator: computed_date_op
+            identifier: year
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          type: select
+          granularity: year
+          year_range: '-3:+0'
+          from_unixtime: 0
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: computed_date
+        computed_date_1:
+          id: computed_date_1
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: Month
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: computed_date_1_op
+            label: Month
+            description: ''
+            use_operator: false
+            operator: computed_date_1_op
+            identifier: month
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          type: select
+          granularity: month
+          year_range: '-3:+0'
+          from_unixtime: 0
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: computed_date
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      sorts:
+        computed_date:
+          id: computed_date
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
@@ -659,6 +874,7 @@ display:
         access: false
         empty: false
         arguments: false
+        sorts: false
       filters:
         type:
           id: type
@@ -837,6 +1053,21 @@ display:
           entity_type: group_content
           entity_field: gid
           plugin_id: group_id
+      sorts:
+        computed_date:
+          id: computed_date
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:

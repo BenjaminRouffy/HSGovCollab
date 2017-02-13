@@ -1,0 +1,14 @@
+uuid: 20c56362-4b8e-4bce-b69f-8f261bd236d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.coordination_desk_users
+  module:
+    - user
+id: user_add_role_action.coordination_desk_users
+label: 'Add the Coordination desk users role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: coordination_desk_users

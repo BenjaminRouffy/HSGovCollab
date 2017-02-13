@@ -1,4 +1,5 @@
-<div class="item event">
+<div{{ attributes.addClass('item').addClass('event') }}>
+  {{ title_suffix.contextual_links|render }}
   <a href="{{ url }}" rel="bookmark">
     {% if content.field_image %}
       {{ content.field_image|field_value }}

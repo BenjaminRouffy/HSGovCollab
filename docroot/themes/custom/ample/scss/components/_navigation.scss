@@ -100,17 +100,22 @@
 }
 
 .anchor-links {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
   text-align: center;
+  white-space: nowrap;
 
   a {
     @include font-size(16.8);
+    color: $red;
+    display: inline-block;
     font-family: $oswald;
     font-weight: 400;
-    color: $red;
     letter-spacing: .5px;
     padding: 15px 30px;
     text-decoration: none;
     transition: color .3s ease;
+    vertical-align: top;
 
     &:hover {
       color: $navy;

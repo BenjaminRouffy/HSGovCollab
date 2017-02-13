@@ -49,6 +49,18 @@
   }
 }
 
+@include breakpoint-for('.teaser', (to: laptop-small)) {
+  a {
+    padding: 30px 15px;
+  }
+
+  h2 {
+    @include font-size(28);
+    font-weight: 300;
+    line-height: 35px;
+  }
+}
+
 .news-events-list,
 .related-docs,
 .timeline {
@@ -205,6 +217,22 @@
   }
 }
 
+@include breakpoint-for('.timeline', (to: laptop-small)) {
+  .title-wrapper {
+    h2 {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@include breakpoint-for('.timeline', (to: mobileL)) {
+  .title-wrapper {
+    h2 {
+      @include font-size(36.4);
+    }
+  }
+}
+
 .timeline-wrapper {
   margin-top: 50px;
 
@@ -291,6 +319,38 @@
   }
 }
 
+@include breakpoint-for('.timeline-wrapper', (to: mobileL)) {
+  .paragraph {
+    width: 100%;
+
+    &:nth-child(n) {
+      float: none;
+      margin: 0 0 50px;
+      position: relative;
+      z-index: 10;
+
+      &:after {
+        background: $white;
+        right: calc(50% - 13px);
+        top: calc(100% - 13px);
+        left: auto;
+      }
+
+      .timeline-content-item {
+        float: none;
+      }
+    }
+
+    &:first-child {
+      margin-top: 50px;
+    }
+
+    &:before {
+      content: none;
+    }
+  }
+}
+
 .timeline-content {
   overflow: hidden;
   position: relative;
@@ -333,6 +393,10 @@
       color: $red;
     }
   }
+}
+
+@include breakpoint-for('.timeline-content-item', (to: mobileL)) {
+  width: 100%;
 }
 
 .related-docs {

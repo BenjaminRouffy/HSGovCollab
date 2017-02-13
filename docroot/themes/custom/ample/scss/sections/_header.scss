@@ -315,7 +315,9 @@ header {
   }
 
   .logo-wrapper {
-    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
 
     .logo {
       background: $white;
@@ -382,8 +384,8 @@ header {
   .wrapper {
     margin: 0 auto;
     max-width: 1260px;
-    min-height: 60px;
-    padding-top: 20px;
+    height: 60px;
+    padding-top: 7px;
 
     &:empty {
       display: none;

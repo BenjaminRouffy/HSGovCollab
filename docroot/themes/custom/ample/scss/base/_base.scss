@@ -40,6 +40,10 @@ h2 {
   @include font-size(22);
   line-height: 48px;
   margin: 20px 0 21px;
+
+  @include mq(mobileL) {
+    @include font-size(36.4);
+  }
 }
 
 h3 {
@@ -142,6 +146,14 @@ svg {
     background: url(../images/CornerDownLeft.svg) left top no-repeat;
     bottom: 0;
     right: 0;
+  }
+}
+
+@include breakpoint-for('.corners', (to: laptop-small)) {
+  &:before,
+  &:after {
+    height: 23px;
+    width: 20px;
   }
 }
 

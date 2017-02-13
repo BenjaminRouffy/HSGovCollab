@@ -19,6 +19,11 @@
   width: 100%;
 }
 
+@include breakpoint-for('.content-container', (to: laptop-small)) {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .region-wrapper {
   @include clearfix();
 }
@@ -53,6 +58,25 @@
   }
 }
 
+@include breakpoint-for('.content-with-sidebar', (to: tablet)) {
+  .content,
+  .sidebar {
+    float: none;
+    width: 100%;
+  }
+
+  .content {
+    > *:not(.node-pager):not(.event-info):not(.header-image) {
+      width: 100%;
+    }
+  }
+
+  .sidebar {
+    margin-top: 40px;
+    padding-left: 0;
+  }
+}
+
 .header-image {
   margin-bottom: 50px;
   width: 95%;
@@ -84,6 +108,11 @@
   }
 }
 
+@include breakpoint-for('.title-wrapper', (to: mobileL)) {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
 .content,
 .more-content {
   @include font-size(18.2);
@@ -97,6 +126,11 @@
     line-height: 48px;
     margin: 20px 0 21px;
     padding: 0;
+
+    @include mq(mobileL) {
+      @include font-size(36.4);
+      margin-bottom: 10px;
+    }
   }
 
   h2 {
@@ -176,6 +210,22 @@
     color: $red;
     font-weight: 400;
     text-decoration: none;
+  }
+}
+
+@include breakpoint-for('.content, .more-content', (to: laptop-small)) {
+  .content-with-sidebar & {
+    blockquote {
+      width: 100%;
+    }
+  }
+}
+
+@include breakpoint-for('.content, .more-content', (to: tablet)) {
+  .content-with-sidebar & {
+    blockquote {
+      left: 0;
+    }
   }
 }
 

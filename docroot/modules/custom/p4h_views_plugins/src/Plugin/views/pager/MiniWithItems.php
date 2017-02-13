@@ -21,7 +21,6 @@ use Drupal\views\Plugin\views\pager\Mini;
  */
 class MiniWithItems extends Mini {
 
-
   /**
    * {@inheritdoc}
    */

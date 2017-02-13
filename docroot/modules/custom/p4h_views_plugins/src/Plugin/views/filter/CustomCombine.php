@@ -45,7 +45,7 @@ class CustomCombine extends DefaultCombine {
   }
 
   /**
-   * Provide a simple textfield for equality
+   * Provide a simple textfield for equality.
    */
   protected function valueForm(&$form, FormStateInterface $form_state) {
     parent::valueForm($form, $form_state);
@@ -57,14 +57,17 @@ class CustomCombine extends DefaultCombine {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function opStartsWith($expression) {
     /* @var $query \Drupal\views\Plugin\views\query\Sql */
     $query = &$this->query;
-    if(empty($this->options['alphabet'])) {
+    if (empty($this->options['alphabet'])) {
       return parent::opStartsWith($expression);
     }
     // @TODO Remove this weird hard code.
-    if(empty($query->where[1]['conditions'][0]['value'][':views_combine'])) {
+    if (empty($query->where[1]['conditions'][0]['value'][':views_combine'])) {
       $placeholder = $this->placeholder();
       $expression = "SUBSTR({$expression},1,1) IN ({$placeholder}[])";
       $query->addWhereExpression($this->options['group'], $expression, [

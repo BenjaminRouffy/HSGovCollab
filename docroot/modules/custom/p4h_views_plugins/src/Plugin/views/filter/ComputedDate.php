@@ -9,6 +9,8 @@ use Drupal\views\Plugin\views\filter\ManyToOne;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
+ * Class ComputedDate.
+ *
  * @ingroup views_filter_handlers
  * @ViewsFilter("computed_date")
  */
@@ -27,6 +29,7 @@ class ComputedDate extends ManyToOne {
 
     return $options;
   }
+
   /**
    * Mark form as extra setting form.
    */
@@ -67,7 +70,11 @@ class ComputedDate extends ManyToOne {
     );
 
   }
-  function operators() {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function operators() {
     $operators = array(
       'in' => array(
         'title' => $this->t('Is one of'),
@@ -81,6 +88,9 @@ class ComputedDate extends ManyToOne {
     return $operators;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function opSimple() {
     if (empty($this->value)) {
       return;
@@ -133,6 +143,9 @@ class ComputedDate extends ManyToOne {
     return $options;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getValueOptions() {
     $this->valueOptions = $this->selectOptions();
     return $this->valueOptions;
@@ -153,6 +166,7 @@ class ComputedDate extends ManyToOne {
 
     }
   }
+
   /**
    * Make some translations to a form item to make it more suitable to exposing.
    */
@@ -162,9 +176,11 @@ class ComputedDate extends ManyToOne {
     if ($type == 'value' && empty($this->always_required)
       && empty($this->options['expose']['required'])
       && $form['#type'] == 'select'
-      && empty($form['#multiple'])) {
-        unset($form['#options']['All']);
+      && empty($form['#multiple'])
+    ) {
+      unset($form['#options']['All']);
     }
 
   }
+
 }

@@ -1,0 +1,7 @@
+services:
+  p4h_stage_file_proxy.fetch_manager:
+    class: Drupal\p4h_svg_formatter\FetchManager
+    arguments:
+      - '@file_system'
+      - '@stream_wrapper_manager'
+      - '@config.factory'

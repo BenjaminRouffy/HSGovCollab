@@ -137,7 +137,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"icon-wrapper\"></div>\n<a href=\"{{ path('entity.node.canonical', {'node': nid}) }}\"><h3>{{ title }}</h3></a>"
+            text: "<div class=\"font-social-icon news-icon\"><span></span></div>\n<a href=\"{{ path('entity.node.canonical', {'node': nid}) }}\"><h3>{{ title }}</h3></a>"
             make_link: false
             path: ''
             absolute: false

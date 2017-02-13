@@ -733,6 +733,24 @@
   }
 }
 
+@include breakpoint-for('.news-and-events-list', (to: laptop-small)) {
+  .item {
+    width: 33.33%;
+  }
+}
+
+@include breakpoint-for('.news-and-events-list', (to: tablet)) {
+  .item {
+    width: 50%;
+  }
+}
+
+@include breakpoint-for('.news-and-events-list', (to: mobileL)) {
+  .item {
+    width: 100%;
+  }
+}
+
 .country-list,
 .project-list {
   display: flex;

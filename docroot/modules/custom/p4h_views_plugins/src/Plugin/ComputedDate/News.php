@@ -1,8 +1,5 @@
 <?php
-/**
- * @file
- * Provides Drupal\p4h_views_plugins\Plugin\ComputedDate\News
- */
+
 namespace Drupal\p4h_views_plugins\Plugin\ComputedDate;
 
 use Drupal\Core\Datetime\DrupalDateTime;

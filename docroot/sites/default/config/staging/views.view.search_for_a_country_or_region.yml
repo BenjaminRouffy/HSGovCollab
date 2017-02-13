@@ -262,7 +262,7 @@ display:
           group_type: group
           admin_label: 'Alphabet filter'
           operator: starts
-          value: GHI
+          value: ABC
           group: 1
           exposed: true
           expose:
@@ -278,6 +278,11 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
           is_grouped: false
           group_info:
             label: ''

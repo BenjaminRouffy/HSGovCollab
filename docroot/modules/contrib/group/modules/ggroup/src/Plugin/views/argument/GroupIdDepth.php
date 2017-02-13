@@ -36,7 +36,7 @@ class GroupIdDepth extends ArgumentPluginBase implements ContainerFactoryPluginI
       '#title' => $this->t('Depth'),
       '#default_value' => $this->options['depth'],
       '#options' => [
-        '-1' => $this->t('Content from parent group'),
+        '-1' => $this->t('Content from target group'),
         '0' => $this->t('Subgroup 1 level'),
         '1' => $this->t('Subgroup 2 level'),
         '2' => $this->t('Subgroup 3 level'),
@@ -79,7 +79,7 @@ class GroupIdDepth extends ArgumentPluginBase implements ContainerFactoryPluginI
    * @inheritdoc
    */
   public function query($group_by = FALSE) {
-    $table = $this->view->storage->get('base_table');
+    $table = $this->ensureMyTable();
 
     $definition = array(
       'table' => 'group_graph',

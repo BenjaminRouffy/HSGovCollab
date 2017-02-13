@@ -2458,31 +2458,30 @@ footer {
   overflow: hidden;
   position: relative; }
 
-.content-slider-wrapper {
-  height: 438px; }
-  .fixed .content-slider-wrapper {
-    height: 84vh;
-    margin-top: 2vh; }
-    .fixed .content-slider-wrapper .slide-content {
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-              transform: translateY(-50%); }
-    .fixed .content-slider-wrapper .owl-nav {
-      display: block; }
-      .fixed .content-slider-wrapper .owl-nav > div {
-        height: 100%;
-        margin-top: -34px;
-        opacity: .5;
-        top: 0;
-        width: 68px; }
-        .fixed .content-slider-wrapper .owl-nav > div:hover {
-          opacity: 1; }
-    .fixed .content-slider-wrapper .owl-prev {
-      background: url(../images/slider-arrow-left.svg) center no-repeat; }
-    .fixed .content-slider-wrapper .owl-next {
-      background: url(../images/slider-arrow-right.svg) center no-repeat; }
-  .content-slider-wrapper .owl-nav {
-    display: none; }
+.fixed .content-slider-wrapper {
+  height: 84vh;
+  margin-top: 2vh; }
+  .fixed .content-slider-wrapper .slide-content {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  .fixed .content-slider-wrapper .owl-nav {
+    display: block; }
+    .fixed .content-slider-wrapper .owl-nav > div {
+      height: 100%;
+      margin-top: -34px;
+      opacity: .5;
+      top: 0;
+      width: 68px; }
+      .fixed .content-slider-wrapper .owl-nav > div:hover {
+        opacity: 1; }
+  .fixed .content-slider-wrapper .owl-prev {
+    background: url(../images/slider-arrow-left.svg) center no-repeat; }
+  .fixed .content-slider-wrapper .owl-next {
+    background: url(../images/slider-arrow-right.svg) center no-repeat; }
+
+.content-slider-wrapper .owl-nav {
+  display: none; }
 
 .thumb-slider-wrapper {
   height: 90px;
@@ -2574,10 +2573,7 @@ footer {
   .banner-image .slide-content {
     display: inline-block;
     max-height: 100%;
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); }
+    position: relative; }
   .header-image .slider-item-wrapper .image-text, .header-image
   .banner-image .image-text {
     width: 80%; }

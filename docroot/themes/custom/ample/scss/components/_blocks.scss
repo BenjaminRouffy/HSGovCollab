@@ -784,7 +784,7 @@
     border-top: 1px solid #afb7bb;
     font-family: $oswald;
     letter-spacing: .5px;
-    padding: 15px 20px;
+    padding: 14px 20px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -794,6 +794,9 @@
 
     span {
       display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       &:after {
         content: none;
@@ -805,6 +808,7 @@
         color: $navy;
         display: inline-block;
         margin-right: 10px;
+        padding-top: 2px;
         vertical-align: bottom;
       }
     }
@@ -853,12 +857,34 @@
     h3 {
       @include font-size(14);
       font-weight: 400;
-      float: left;
       letter-spacing: .5px;
       line-height: 20px;
       margin: 8px 0 0;
       transition: opacity .3s ease;
     }
+  }
+}
+
+@include breakpoint-for('.country-list, .project-list', (to: laptop-small)) {
+  .country-item,
+  .project-item {
+    width: 50%;
+  }
+}
+
+@include breakpoint-for('.country-list, .project-list', (to: tablet)) {
+  .country-item,
+  .project-item {
+    padding: 5px;
+  }
+}
+
+@include breakpoint-for('.country-list, .project-list', (to: mobileL)) {
+  .country-item,
+  .project-item {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
   }
 }
 

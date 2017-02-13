@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+@include breakpoint-for('.bottom-link', (to: laptop-small)) {
+  margin-top: 0;
+}
+
 .red-btn-link {
   @include font-size(21);
   border: 1px solid transparent;
@@ -28,6 +32,13 @@
     @include font-size(29.4);
     margin-left: 4px;
   }
+}
+
+@include breakpoint-for('.red-btn-link', (to: laptop-small)) {
+  @include font-size(16.8);
+  margin-top: 0;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .read-more {

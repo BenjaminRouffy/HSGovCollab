@@ -1,7 +1,7 @@
 .top-banner-region {
   background: $white-dark;
 
-  body:not(.group) {
+  body:not(.group) & {
     border-bottom: 1px solid #e9e6e6;
     box-shadow: 0 0 8px rgba($black, .11);
   }
@@ -89,6 +89,53 @@
       font-family: $fira;
       line-height: 23px;
       margin: 20px 0 0;
+    }
+  }
+}
+
+@include breakpoint-for('.top-banner-region', (to: laptop-small)) {
+  .section-info {
+    flex-wrap: wrap;
+    margin-bottom: 0;
+
+    .paragraph {
+      max-width: 50%;
+
+      h2 {
+        @include font-size(28);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.top-banner-region', (to: tablet)) {
+  .section-info {
+    padding: 40px 0 0;
+
+    .paragraph {
+      .icon-wrapper {
+        height: 75px;
+        margin-bottom: 15px;
+      }
+
+      h2 {
+        @include font-size(21);
+        line-height: 29px;
+      }
+
+      .value {
+        @include font-size(36.4);
+        line-height: 49px;
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.top-banner-region', (to: mobileL)) {
+  .section-info {
+    .paragraph {
+      max-width: 100%;
     }
   }
 }

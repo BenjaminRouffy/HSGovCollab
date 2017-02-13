@@ -10,6 +10,7 @@
 
   h1 {
     @include font-size(70);
+    letter-spacing: 1.5px;
     line-height: 78px;
     padding-top: 0;
   }
@@ -21,5 +22,32 @@
 
   .summary-text {
     margin-bottom: 30px;
+  }
+}
+
+@include breakpoint-for('.top-text-region', (to: laptop-small)) {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+@include breakpoint-for('.top-text-region', (to: tablet)) {
+  h1 {
+    @include font-size(53.2);
+    padding-top: 20px;
+  }
+
+  .summary-text,
+  .summary-text p {
+    @include font-size(19.6);
+    line-height: 27px;
+    margin-bottom: 0;
+  }
+}
+
+@include breakpoint-for('.top-text-region', (to: mobileL)) {
+  h1 {
+    @include font-size(35);
+    letter-spacing: 0;
+    line-height: 50px;
   }
 }

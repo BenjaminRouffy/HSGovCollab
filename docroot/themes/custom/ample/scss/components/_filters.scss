@@ -114,7 +114,7 @@
       @include same(50px, height, width);
       background: $white;
       display: inline-block;
-      margin: 0 1px;
+      margin: 0 1px 2px;
       text-align: center;
       vertical-align: top;
 
@@ -142,6 +142,30 @@
       margin: 0;
       vertical-align: top;
       width: 100%;
+    }
+  }
+}
+
+@include breakpoint-for('.view-country', (to: laptop-small)) {
+  .js-form-type-textfield {
+    margin-bottom: 0;
+
+    label,
+    .form-text {
+      float: none;
+      width: 100%;
+    }
+
+    .form-text {
+      margin: 0;
+    }
+  }
+}
+
+@include breakpoint-for('.view-country', (to: tablet)) {
+  .js-form-type-textfield {
+    label {
+      text-align: center;
     }
   }
 }

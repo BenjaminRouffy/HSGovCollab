@@ -320,6 +320,12 @@
       $('.mobile-menu-btn', context).on('click', function() {
         $(this).toggleClass('opened');
       });
+
+      $.resizeAction(function() {
+        return window.innerWidth <= 991;
+      }, function(state) {
+        $('.mobile-menu-btn', context).removeClass('opened');
+      });
     }
   };
 

@@ -63,7 +63,7 @@
   }
 }
 
-@include breakpoint-for('.header-static', (to: laptop-small)) {
+@include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {
   .main-menu {
     text-align: left;
 

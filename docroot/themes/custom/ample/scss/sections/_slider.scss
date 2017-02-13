@@ -125,6 +125,10 @@
   }
 }
 
+@include breakpoint-for('.thumb-slider-wrapper', (to: tablet)) {
+  display: none;
+}
+
 .slider-item-thumb {
   cursor: pointer;
   height: 100%;

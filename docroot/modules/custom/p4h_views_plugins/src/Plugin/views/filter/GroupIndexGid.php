@@ -79,10 +79,7 @@ class GroupIndexGid extends ManyToOne {
 
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function valueForm(array &$form, FormStateInterface $form_state) {
+  protected function valueForm(&$form, FormStateInterface $form_state) {
     parent::valueForm($form, $form_state);
 
     $group_type = $this->groupType->load($this->options['gid']);

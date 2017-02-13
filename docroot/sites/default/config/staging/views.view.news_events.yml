@@ -599,7 +599,7 @@ display:
           reduce_duplicates: 0
           type: select
           granularity: year
-          year_range: '-3:+0'
+          year_range: '-3:+2'
           from_unixtime: 1
           entity_type: node
           entity_field: computed_date
@@ -659,7 +659,9 @@ display:
           admin_label: ''
           operator: in
           value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
+            und: und
+            zxx: zxx
           group: 1
           exposed: false
           expose:

@@ -860,12 +860,23 @@
       }
     }
 
+    .font-social-icon,
     .icon-wrapper {
       float: left;
       height: 40px;
       margin-right: 10px;
       transition: opacity .3s ease;
       width: 26px;
+      > span {
+        margin: 8px 0 0;
+        @include font-size(28);
+        color: $navy;
+      }
+    }
+    .font-social-icon{
+      height: initial;
+      top: 9px;
+      position: relative;
     }
 
     path {

@@ -9,6 +9,7 @@ dependencies:
     - taxonomy.vocabulary.organizations
   module:
     - better_exposed_filters
+    - ggroup
     - group
     - node
     - p4h_views_plugins
@@ -427,10 +428,10 @@ display:
           entity_type: group_content
           plugin_id: group_content_to_entity
       arguments:
-        gid:
-          id: gid
+        group_id_depth:
+          id: group_id_depth
           table: group_content_field_data
-          field: gid
+          field: group_id_depth
           relationship: none
           group_type: group
           admin_label: ''
@@ -458,11 +459,11 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
-          break_phrase: false
-          not: false
+          depth:
+            -1: '-1'
+            0: '0'
           entity_type: group_content
-          entity_field: gid
-          plugin_id: group_id
+          plugin_id: group_id_depth
       display_extenders: {  }
       use_ajax: true
       css_class: view-news-and-events
@@ -1009,7 +1010,7 @@ display:
       use_more_always: true
       use_more_text: 'Read more news'
       link_display: custom_url
-      link_url: 'group/{{ raw_arguments.gid }}/news-and-events'
+      link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
       block_hide_empty: true
       access:
         type: perm
@@ -1017,10 +1018,10 @@ display:
           perm: 'access content'
       empty: {  }
       arguments:
-        gid:
-          id: gid
+        group_id_depth:
+          id: group_id_depth
           table: group_content_field_data
-          field: gid
+          field: group_id_depth
           relationship: none
           group_type: group
           admin_label: ''
@@ -1048,11 +1049,11 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
-          break_phrase: false
-          not: false
+          depth:
+            -1: '-1'
+            0: '0'
           entity_type: group_content
-          entity_field: gid
-          plugin_id: group_id
+          plugin_id: group_id_depth
       sorts:
         computed_date:
           id: computed_date

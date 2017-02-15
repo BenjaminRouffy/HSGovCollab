@@ -1,0 +1,63 @@
+uuid: ae2b9e95-4e3c-43b2-8fe5-de959984c79b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.news_events_sidebar
+    - field.field.node.event.body
+    - field.field.node.event.field_category
+    - field.field.node.event.field_date
+    - field.field.node.event.field_event_author
+    - field.field.node.event.field_event_link
+    - field.field.node.event.field_event_slider
+    - field.field.node.event.field_join_block
+    - field.field.node.event.field_location
+    - field.field.node.event.field_organization
+    - field.field.node.event.field_related_content_selector
+    - field.field.node.event.field_time
+    - field.field.node.event.field_time_text
+    - field.field.node.event.field_timezone
+    - node.type.event
+  module:
+    - datetime_range
+    - members
+    - user
+id: node.event.news_events_sidebar
+targetEntityType: node
+bundle: event
+mode: news_events_sidebar
+content:
+  body:
+    label: hidden
+    type: summarybody_trimmed
+    weight: 2
+    settings:
+      trim_length: 100
+    third_party_settings: {  }
+  field_date:
+    weight: 1
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_category: true
+  field_event_author: true
+  field_event_link: true
+  field_event_slider: true
+  field_join_block: true
+  field_location: true
+  field_organization: true
+  field_related_content_selector: true
+  field_time: true
+  field_time_text: true
+  field_timezone: true
+  langcode: true

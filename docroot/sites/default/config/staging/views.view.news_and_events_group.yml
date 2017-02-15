@@ -1007,7 +1007,7 @@ display:
           items_per_page: 7
           offset: 0
       use_more: true
-      use_more_always: true
+      use_more_always: false
       use_more_text: 'Read more news'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'

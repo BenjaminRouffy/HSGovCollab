@@ -1,19 +1,19 @@
-uuid: cecfaa41-3983-422b-bc08-2c597018a46f
+uuid: c8051937-ec15-4c9f-9e7d-0b32f5d6e402
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_description
+    - field.storage.paragraph.field_cd_user_description
     - paragraphs.paragraphs_type.cd_user
-id: paragraph.cd_user.field_description
-field_name: field_description
+id: paragraph.cd_user.field_cd_user_description
+field_name: field_cd_user_description
 entity_type: paragraph
 bundle: cd_user
 label: 'CD User Description'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: string_long

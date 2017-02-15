@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.cd_user.field_cd_user
-    - field.field.paragraph.cd_user.field_description
+    - field.field.paragraph.cd_user.field_cd_user_description
     - paragraphs.paragraphs_type.cd_user
 id: paragraph.cd_user.default
 targetEntityType: paragraph
@@ -19,13 +19,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-  field_description:
+  field_cd_user_description:
     weight: 1
     settings:
-      size: 150
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: string_textarea
 hidden:
   created: true
   status: true

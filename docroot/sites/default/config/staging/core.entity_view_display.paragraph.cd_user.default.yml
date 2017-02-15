@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.cd_user.field_cd_user
-    - field.field.paragraph.cd_user.field_description
+    - field.field.paragraph.cd_user.field_cd_user_description
     - paragraphs.paragraphs_type.cd_user
 id: paragraph.cd_user.default
 targetEntityType: paragraph
@@ -19,13 +19,12 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
-  field_description:
+  field_cd_user_description:
     weight: 1
     label: hidden
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: basic_string
 hidden:
   created: true
   uid: true

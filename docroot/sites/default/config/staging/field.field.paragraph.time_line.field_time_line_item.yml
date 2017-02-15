@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_time_line_item
+    - paragraphs.paragraphs_type.country_and_project
     - paragraphs.paragraphs_type.custom_content
     - paragraphs.paragraphs_type.exist_content
     - paragraphs.paragraphs_type.time_line
@@ -25,6 +26,7 @@ settings:
     target_bundles:
       exist_content: exist_content
       custom_content: custom_content
+      country_and_project: country_and_project
     target_bundles_drag_drop:
       time_line:
         weight: -19
@@ -52,5 +54,20 @@ settings:
         enabled: false
       video:
         weight: -11
+        enabled: false
+      country_and_project:
+        enabled: true
+        weight: 15
+      country_option:
+        weight: 18
+        enabled: false
+      infographic_item:
+        weight: 22
+        enabled: false
+      link:
+        weight: 23
+        enabled: false
+      slider_item:
+        weight: 26
         enabled: false
 field_type: entity_reference_revisions

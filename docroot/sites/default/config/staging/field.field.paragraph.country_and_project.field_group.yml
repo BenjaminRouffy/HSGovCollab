@@ -1,0 +1,25 @@
+uuid: 12f9fe2a-2fbe-4737-b826-ca74fc055ddc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_group
+    - paragraphs.paragraphs_type.country_and_project
+id: paragraph.country_and_project.field_group
+field_name: field_group
+entity_type: paragraph
+bundle: country_and_project
+label: Group
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: group_reference
+      display_name: group_reference
+      arguments: {  }
+field_type: entity_reference

@@ -1,17 +1,17 @@
-uuid: 19e2735c-46bb-49a7-853f-4fe164a91353
+uuid: 01d34f3f-05c4-4132-8d0c-80980ff35679
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.exist_content.field_node
-    - paragraphs.paragraphs_type.exist_content
-id: paragraph.exist_content.default
+    - field.field.paragraph.country_and_project.field_group
+    - paragraphs.paragraphs_type.country_and_project
+id: paragraph.country_and_project.default
 targetEntityType: paragraph
-bundle: exist_content
+bundle: country_and_project
 mode: default
 content:
-  field_node:
-    weight: 1
+  field_group:
+    weight: 0
     label: hidden
     settings:
       view_mode: time_line

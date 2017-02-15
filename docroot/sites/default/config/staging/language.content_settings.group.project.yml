@@ -1,0 +1,16 @@
+uuid: 1079cb72-8446-4bc7-8efe-363884f83225
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: group.project
+target_entity_type_id: group
+target_bundle: project
+default_langcode: site_default
+language_alterable: false

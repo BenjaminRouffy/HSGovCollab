@@ -1,0 +1,16 @@
+uuid: 5570df81-7912-4c47-8afd-b9a52babb195
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cd_user_block
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.cd_user_block
+target_entity_type_id: block_content
+target_bundle: cd_user_block
+default_langcode: site_default
+language_alterable: true

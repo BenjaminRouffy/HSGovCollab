@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.cd_user
     - field.field.paragraph.cd_user.field_cd_user
+    - field.field.paragraph.cd_user.field_cd_user_description
     - paragraphs.paragraphs_type.cd_user
 id: paragraph.cd_user.cd_user
 targetEntityType: paragraph
@@ -19,6 +20,12 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
+  field_cd_user_description:
+    type: basic_string
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   uid: true

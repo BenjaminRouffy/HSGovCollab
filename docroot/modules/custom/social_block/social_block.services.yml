@@ -1,0 +1,4 @@
+services:
+  plugin.manager.social_network.content_fetcher:
+    class: Drupal\social_block\SocialNetwork\ContentFetcherPluginManager
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler']

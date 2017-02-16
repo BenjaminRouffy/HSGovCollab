@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Facebook SDK.
+ */
+
+use Drupal\sdk_facebook\Sdk\FacebookForm;
+use Drupal\sdk_facebook\Sdk\FacebookDeriver;
+
+/**
+ * Implements hook_sdk_types().
+ */
+function sdk_facebook_sdk_types() {
+  $types = [];
+
+  $types['facebook'] = [
+    'label' => t('Facebook'),
+    'classes' => [
+      'form' => FacebookForm::class,
+      'deriver' => FacebookDeriver::class,
+    ],
+  ];
+
+  return $types;
+}

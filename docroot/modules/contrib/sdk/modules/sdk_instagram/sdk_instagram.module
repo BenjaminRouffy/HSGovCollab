@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Instagram SDK.
+ */
+
+use Drupal\sdk_instagram\Sdk\InstagramForm;
+use Drupal\sdk_instagram\Sdk\InstagramDeriver;
+
+/**
+ * Implements hook_sdk_types().
+ */
+function sdk_instagram_sdk_types() {
+  $types = [];
+
+  $types['instagram'] = [
+    'label' => t('Instagram'),
+    'classes' => [
+      'form' => InstagramForm::class,
+      'deriver' => InstagramDeriver::class,
+    ],
+  ];
+
+  return $types;
+}

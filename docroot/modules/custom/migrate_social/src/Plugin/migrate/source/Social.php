@@ -1,0 +1,70 @@
+<?php
+
+namespace Drupal\migrate_social\Plugin\migrate\source;
+
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate_plus\Plugin\migrate\source\SourcePluginExtension;
+
+/**
+ * Source plugin for retrieving data from social networks.
+ *
+ * @MigrateSource(
+ *   id = "social"
+ * )
+ */
+class Social extends SourcePluginExtension {
+  
+  /**
+   * The social network plugin.
+   *
+   * @var \Drupal\migrate_plus\DataParserPluginInterface
+   */
+  protected $socialNetworkPlugin;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration) {
+    if (!is_array($configuration['urls'])) {
+      $configuration['urls'] = [$configuration['urls']];
+    }
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $migration);
+
+  }
+
+  /**
+   * Return a string representing the source URLs.
+   *
+   * @return string
+   *   Comma-separated list of URLs being imported.
+   */
+  public function __toString() {
+    // This could cause a problem when using a lot of urls, may need to hash.
+    $urls = implode(', ', $this->sourceUrls);
+    return $urls;
+  }
+
+  /**
+   * Returns the initialized data parser plugin.
+   *
+   * @return \Drupal\migrate_plus\DataParserPluginInterface
+   *   The data parser plugin.
+   */
+  public function getSocialNetworkPlugin() {
+    if (!isset($this->socialNetworkPlugin)) {
+      $this->socialNetworkPlugin = \Drupal::service('plugin.manager.migrate_social.social_network')->createInstance($this->configuration['social_network_plugin'], $this->configuration);
+    }
+    return $this->socialNetworkPlugin;
+  }
+
+  /**
+   * Creates and returns a filtered Iterator over the documents.
+   *
+   * @return \Iterator
+   *   An iterator over the documents providing source rows that match the
+   *   configured item_selector.
+   */
+  protected function initializeIterator() {
+    return $this->getSocialNetworkPlugin();
+  }
+}

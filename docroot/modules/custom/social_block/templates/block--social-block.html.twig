@@ -1,0 +1,63 @@
+{#
+/**
+ * @file
+ * Template for Social block.
+ *
+ * Variables:
+ * - content:
+ *   - links: An array where keys - are names of social networks, values - URls.
+ *   - posts:
+ *     - text: Text of a post.
+ *     - link: Absolute URL of a post.
+ *     - image: Absolute URL of image, if it attached to a post. Might be empty.
+ *     - network: Machine name of a social network from which post was obtained.
+ *     - timestamp: UNIX timestamp of a post creation date.
+ */
+#}
+{% if content.posts %}
+  <section class="social-block" role="region">
+    {% if label %}
+      <h5 class="title-section" role="heading">
+        {{ label }}
+      </h5>
+    {% endif %}
+
+    {% if content.links %}
+      <ul role="list">
+        {% for network, link in content.links %}
+          <li role="listitem">
+            <a href="{{ link }}" class="{{ network }}-icon" target="_blank">
+              {{ network }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <ol role="list">
+      {% for post in content.posts %}
+        {% set color %}
+          {% if loop.index is odd %}
+            red
+          {% elseif loop.index % 3 %}
+            yellow
+          {% else %}
+            cyan
+          {% endif %}
+        {% endset %}
+
+        <li class="{{ post.network }}-post {{ color }}" role="listitem">
+          {% if post.image %}
+            <img src="{{ post.image }}" alt="" role="img" />
+          {% endif %}
+
+          <div class="text">
+            <a href="{{ post.link }}" target="_blank"></a>
+
+            {{ post.text|raw }}
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endif %}

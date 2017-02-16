@@ -5,6 +5,7 @@ dependencies:
   content:
     - 'block_content:member_icons:a1887c5f-607d-47bb-be75-503da2a0abe9'
   module:
+    - admin_customizations
     - block_content
   theme:
     - ample
@@ -22,4 +23,11 @@ settings:
   status: true
   info: ''
   view_mode: footer
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }

@@ -2,6 +2,8 @@ uuid: 8b9d87cd-b753-462f-950e-fec7c07f2431
 langcode: en
 status: true
 dependencies:
+  module:
+    - admin_customizations
   theme:
     - ample
 _core:
@@ -19,4 +21,9 @@ settings:
   label_display: '0'
   primary: true
   secondary: true
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }

@@ -1,15 +1,16 @@
-uuid: 553653eb-4ad6-461a-83a6-47f095fb7a8e
+uuid: b070ce5a-480b-4d2f-bd4b-ea18308d9bec
 langcode: en
 status: true
 dependencies:
   module:
+    - admin_customizations
     - language
   theme:
     - ample
 id: languageswitchercontent
 theme: ample
 region: header_static
-weight: -6
+weight: 0
 provider: null
 plugin: 'language_block:language_content'
 settings:
@@ -17,4 +18,11 @@ settings:
   label: 'Language switcher (Content)'
   provider: language
   label_display: '0'
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }

@@ -52,12 +52,7 @@ class Map extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $build = [];
-
-    $build['#markup'] = '<div id="map"></div>';
-    $build['#attached']['drupalSettings']['map'] = $this->configuration;
-
-    return $build;
+    return ['#theme' => 'block-map'];
   }
 
 }

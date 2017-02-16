@@ -10,7 +10,6 @@ dependencies:
     - field.field.block_content.error_page_block.field_logo
     - field.field.block_content.error_page_block.field_title
   module:
-    - image_url_formatter
     - link
     - text
 id: block_content.error_page_block.error_page
@@ -39,11 +38,10 @@ content:
     weight: 3
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
-      url_type: ''
+      view_mode: file_uri
+      link: false
     third_party_settings: {  }
-    type: image_url
+    type: entity_reference_entity_view
   field_title:
     weight: 0
     label: hidden

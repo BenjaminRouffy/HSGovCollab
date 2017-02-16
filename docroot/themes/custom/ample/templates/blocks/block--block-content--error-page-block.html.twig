@@ -2,7 +2,7 @@
   {{ title_prefix }}
 
   {% if content.field_logo %}
-    <img src="{{ content.field_logo }}">
+    <img src="{{ file_url(content.field_logo|render|striptags|trim) }}"/>
   {% endif %}
 
   <div class="top-text-region">

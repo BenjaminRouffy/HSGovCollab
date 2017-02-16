@@ -1,0 +1,28 @@
+uuid: c8c19f0f-0f84-494d-8074-d2d5522baaa7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.country_and_project.field_group
+    - paragraphs.paragraphs_type.country_and_project
+id: paragraph.country_and_project.default
+targetEntityType: paragraph
+bundle: country_and_project
+mode: default
+content:
+  field_group:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

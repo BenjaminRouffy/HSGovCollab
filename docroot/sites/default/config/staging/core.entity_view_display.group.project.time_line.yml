@@ -1,0 +1,40 @@
+uuid: 01993c4b-bd10-4317-933c-eafae38719ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.time_line
+    - field.field.group.project.field_content
+    - field.field.group.project.field_date
+    - field.field.group.project.field_summary
+    - group.type.project
+  module:
+    - datetime
+    - text
+id: group.project.time_line
+targetEntityType: group
+bundle: project
+mode: time_line
+content:
+  field_date:
+    type: datetime_default
+    weight: 1
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
+  field_summary:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 150
+    third_party_settings: {  }
+    type: text_trimmed
+hidden:
+  changed: true
+  created: true
+  field_content: true
+  label: true
+  langcode: true
+  uid: true

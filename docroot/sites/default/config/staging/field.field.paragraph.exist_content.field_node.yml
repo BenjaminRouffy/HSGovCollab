@@ -1,12 +1,12 @@
-uuid: 70b96fd5-b9b8-459a-8b4d-611131ba9efc
+uuid: 2fe1112f-7828-4250-b4e3-017944b3dae8
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_content
+    - field.storage.paragraph.field_node
     - paragraphs.paragraphs_type.exist_content
-id: paragraph.exist_content.field_content
-field_name: field_content
+id: paragraph.exist_content.field_node
+field_name: field_node
 entity_type: paragraph
 bundle: exist_content
 label: Content

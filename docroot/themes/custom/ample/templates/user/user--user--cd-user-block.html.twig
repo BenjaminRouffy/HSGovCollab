@@ -1,0 +1,14 @@
+<article{{ attributes }}>
+  {% if content %}
+    <img src="{{ content.field_avatar }}">
+    {% if content.field_first_name %}
+      {{ content.field_first_name }}
+    {% endif %}
+    {% if content.field_last_name %}
+      {{ content.field_last_name }}
+    {% endif %}
+    {% if content.field_organisation %}
+      {{ content.field_organisation }}
+    {% endif %}
+  {% endif %}
+</article>

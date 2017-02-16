@@ -1,5 +1,13 @@
-{{ content.field_cd_user }}
+{% if logged_in %}
+  <a href="#">
+{% endif %}
 
-{% if content.field_cd_user_description|field_value %}
-  {{ content.field_cd_user_description|field_value }}
+  {{ content.field_cd_user }}
+
+  {% if content.field_cd_user_description|field_value %}
+    {{ content.field_cd_user_description|field_value }}
+  {% endif %}
+
+{% if logged_in %}
+  </a>
 {% endif %}

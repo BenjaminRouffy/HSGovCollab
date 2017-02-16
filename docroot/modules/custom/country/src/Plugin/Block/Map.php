@@ -52,7 +52,13 @@ class Map extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    return ['#theme' => 'block-map'];
+    $build = [];
+
+    $build['#markup'] = '<div id="map"></div>';
+
+    $build['#attached']['library'][] = "ample/map";
+
+    return $build;
   }
 
 }

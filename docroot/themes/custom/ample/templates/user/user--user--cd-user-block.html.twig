@@ -1,6 +1,6 @@
 <article{{ attributes }}>
   {% if content %}
-    <img src="{{ content.field_avatar }}">
+    <img src="{{ file_url(content.field_avatar|render|striptags|trim) }}"/>
     {% if content.field_first_name %}
       {{ content.field_first_name }}
     {% endif %}

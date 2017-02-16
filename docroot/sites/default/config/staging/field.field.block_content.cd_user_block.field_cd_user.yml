@@ -1,0 +1,69 @@
+uuid: 7f38b788-727f-4d62-9317-ca2897b2ae6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cd_user_block
+    - field.storage.block_content.field_cd_user
+    - paragraphs.paragraphs_type.cd_user
+  module:
+    - entity_reference_revisions
+id: block_content.cd_user_block.field_cd_user
+field_name: field_cd_user
+entity_type: block_content
+bundle: cd_user_block
+label: 'CD user'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cd_user: cd_user
+    target_bundles_drag_drop:
+      cd_user:
+        enabled: true
+        weight: 15
+      content_image:
+        weight: 16
+        enabled: false
+      content_text:
+        weight: 17
+        enabled: false
+      country_option:
+        weight: 18
+        enabled: false
+      custom_content:
+        weight: 19
+        enabled: false
+      exist_content:
+        weight: 20
+        enabled: false
+      infographic:
+        weight: 21
+        enabled: false
+      infographic_item:
+        weight: 22
+        enabled: false
+      link:
+        weight: 23
+        enabled: false
+      member_icon:
+        weight: 24
+        enabled: false
+      slider:
+        weight: 25
+        enabled: false
+      slider_item:
+        weight: 26
+        enabled: false
+      time_line:
+        weight: 27
+        enabled: false
+      video:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions

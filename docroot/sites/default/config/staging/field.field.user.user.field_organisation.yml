@@ -1,0 +1,29 @@
+uuid: ae744fa4-b25e-44e9-b742-31dceef363ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_organisation
+    - taxonomy.vocabulary.organizations
+  module:
+    - user
+id: user.user.field_organisation
+field_name: field_organisation
+entity_type: user
+bundle: user
+label: Organisation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      organizations: organizations
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

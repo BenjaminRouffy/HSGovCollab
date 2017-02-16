@@ -1,0 +1,25 @@
+uuid: ca00e3b9-63c3-4794-96c9-f7c5a3b820e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cd_user
+    - paragraphs.paragraphs_type.cd_user
+id: paragraph.cd_user.field_cd_user
+field_name: field_cd_user
+entity_type: paragraph
+bundle: cd_user
+label: 'CD user'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: cd_user_view
+      display_name: entity_reference_cd_user
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,25 @@
+<div{{ attributes }}>
+  {{ title_prefix }}
+
+  {% if content.field_logo %}
+    <img src="{{ content.field_logo }}">
+  {% endif %}
+
+  <div class="top-text-region">
+    {% if content.field_title|field_value %}
+      <div class="title-wrapper">
+        <h1>{{ content.field_title|field_value }}</h1>
+      </div>
+    {% endif %}
+
+    <div class="summary-text">
+      {% if content.field_description|field_value %}
+        <p>{{ content.field_description|field_value }}</p>
+      {% endif %}
+    </div>
+
+    {{ content.field_links }}
+
+  </div>
+  {{ title_suffix }}
+</div>

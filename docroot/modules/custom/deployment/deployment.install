@@ -552,3 +552,15 @@ function deployment_update_8029() {
 function deployment_update_8030() {
   \Drupal::service('module_installer')->install(['custom_pub']);
 }
+
+
+/**
+ * Install modules "REST", "Serialization" and  "Views GeoJSON".
+ */
+function deployment_update_8031() {
+  \Drupal::service('module_installer')->install([
+    'rest',
+    'serialization',
+    'views_geojson',
+  ]);
+}

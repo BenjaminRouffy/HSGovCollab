@@ -18,7 +18,7 @@ header {
   .links {
     position: absolute;
     bottom: 10px;
-    right: 56px;
+    right: 0;
     height: 60px;
 
     ul:not(.contextual-links),
@@ -43,7 +43,6 @@ header {
   }
 
   .links {
-    right: 0;
     a {
       &.is-active {
         color: $red-dark;

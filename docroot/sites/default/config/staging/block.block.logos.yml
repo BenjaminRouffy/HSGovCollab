@@ -5,13 +5,14 @@ dependencies:
   content:
     - 'block_content:header_logo:2b299f2d-1e36-420e-8953-0d42aaaf28cf'
   module:
+    - admin_customizations
     - block_content
   theme:
     - ample
 id: logos
 theme: ample
 region: header_static
-weight: -8
+weight: -9
 provider: null
 plugin: 'block_content:2b299f2d-1e36-420e-8953-0d42aaaf28cf'
 settings:
@@ -22,4 +23,11 @@ settings:
   status: true
   info: ''
   view_mode: header_static
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }

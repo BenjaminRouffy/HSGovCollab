@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - admin_customizations
     - ctools
   theme:
     - ample
@@ -27,3 +28,8 @@ visibility:
     negate: true
     context_mapping:
       node: '@node.node_route_context:node'
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }

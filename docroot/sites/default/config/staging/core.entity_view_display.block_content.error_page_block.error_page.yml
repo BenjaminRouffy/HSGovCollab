@@ -1,0 +1,55 @@
+uuid: 5424531e-1275-4b4b-8862-db6c000b2828
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.error_page_block
+    - core.entity_view_mode.block_content.error_page
+    - field.field.block_content.error_page_block.field_description
+    - field.field.block_content.error_page_block.field_links
+    - field.field.block_content.error_page_block.field_logo
+    - field.field.block_content.error_page_block.field_title
+  module:
+    - image_url_formatter
+    - link
+    - text
+id: block_content.error_page_block.error_page
+targetEntityType: block_content
+bundle: error_page_block
+mode: error_page
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_links:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+  field_logo:
+    weight: 3
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+      url_type: ''
+    third_party_settings: {  }
+    type: image_url
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  langcode: true

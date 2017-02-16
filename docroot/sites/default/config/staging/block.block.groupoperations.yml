@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - admin_customizations
     - group
   theme:
     - ample
@@ -18,4 +19,9 @@ settings:
   provider: group
   label_display: visible
   context_mapping: {  }
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }

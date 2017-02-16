@@ -12,6 +12,7 @@ dependencies:
     - 'block_content:link:a1771701-eceb-40f1-bc27-f4c5a8ed6b47'
   module:
     - block_content
+    - country
     - panels
     - views
 id: where-panels_variant-0
@@ -27,7 +28,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: middle
-      weight: 1
+      weight: 2
       uuid: 31656c91-cbbb-446a-9f4f-25cd5fb6add3
       context_mapping: {  }
     bf006474-142e-485f-a15b-03f08970425c:
@@ -39,7 +40,7 @@ variant_settings:
       info: ''
       view_mode: full
       region: middle
-      weight: -1
+      weight: 0
       uuid: bf006474-142e-485f-a15b-03f08970425c
       context_mapping: {  }
     57f803bb-8dd2-4268-8604-fe5fae7c538a:
@@ -51,7 +52,7 @@ variant_settings:
       info: ''
       view_mode: link
       region: middle
-      weight: 0
+      weight: 1
       uuid: 57f803bb-8dd2-4268-8604-fe5fae7c538a
       context_mapping: {  }
     fa994fb9-a406-42e5-8d14-d6eb2705dc3e:
@@ -74,8 +75,18 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: middle
-      weight: -2
+      weight: -1
       uuid: fc249b3c-c67b-4f2c-bc9b-c0dcc0a21777
+      context_mapping: {  }
+    5f1ee8d8-153e-4e3c-88d9-e8f710a7de85:
+      id: map
+      label: Map
+      provider: country
+      label_display: '0'
+      key: AIzaSyAFeqJ06IJ9av4A6BbJfhJ0x-Dua4HUFFk
+      region: middle
+      weight: -2
+      uuid: 5f1ee8d8-153e-4e3c-88d9-e8f710a7de85
       context_mapping: {  }
   id: panels_variant
   uuid: 4ae1af58-df00-4acc-9fd0-bb6f093daff3

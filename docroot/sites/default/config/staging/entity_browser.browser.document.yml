@@ -1,0 +1,46 @@
+uuid: 58b52135-1811-4a6e-a64a-40da9fb5d80b
+langcode: en
+status: true
+dependencies:
+  module:
+    - dropzonejs_eb_widget
+    - views
+name: document
+label: Document
+display: modal
+display_configuration:
+  width: '1100'
+  height: '600'
+  link_text: 'Select document'
+  auto_open: false
+selection_display: multi_step_display
+selection_display_configuration:
+  entity_type: file
+  display: thumbnail
+  display_settings:
+    image_style: file_entity_browser_small
+  select_text: 'Use selected'
+  selection_hidden: true
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  ccdf5fee-4d44-44b4-a325-1f36916ec2d0:
+    settings:
+      view: file_entity_browser
+      view_display: entity_browser_2
+      submit_text: 'Select document'
+    uuid: ccdf5fee-4d44-44b4-a325-1f36916ec2d0
+    weight: -9
+    label: 'Document listing'
+    id: view
+  9e803ca6-df97-4735-9311-f73adc4f630b:
+    settings:
+      upload_location: 'private://[date:custom:Y]-[date:custom:m]'
+      dropzone_description: 'Drop files here to upload them'
+      max_filesize: 100M
+      extensions: 'txt doc docx xls xlsx pdf ppt pptx'
+      submit_text: 'Select document'
+    uuid: 9e803ca6-df97-4735-9311-f73adc4f630b
+    weight: -10
+    label: 'Upload files'
+    id: dropzonejs

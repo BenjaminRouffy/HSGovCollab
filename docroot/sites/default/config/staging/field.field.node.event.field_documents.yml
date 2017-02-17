@@ -1,0 +1,25 @@
+uuid: 19cfb9e9-ff21-4938-836b-b82ddb0a9e9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_documents
+    - node.type.event
+id: node.event.field_documents
+field_name: field_documents
+entity_type: node
+bundle: event
+label: 'Related documents'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: content_reference
+      display_name: document_content_reference
+      arguments: {  }
+field_type: entity_reference

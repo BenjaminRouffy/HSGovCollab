@@ -1,0 +1,25 @@
+uuid: 8761ecfb-c8fb-4271-87c0-bfed6db35742
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_documents
+    - node.type.news
+id: node.news.field_documents
+field_name: field_documents
+entity_type: node
+bundle: news
+label: 'Replated documents'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: content_reference
+      display_name: document_content_reference
+      arguments: {  }
+field_type: entity_reference

@@ -1,26 +1,30 @@
-uuid: f7c0acb9-cb34-412d-b22d-37ad58f03745
+uuid: aaefd191-e97a-40a6-a939-b1431fbf1049
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.file.related_document
     - field.field.file.document.field_category
     - file_entity.type.document
-id: file.document.default
+  module:
+    - file
+id: file.document.related_document
 targetEntityType: file
 bundle: document
-mode: default
+mode: related_document
 content:
-  filename:
-    type: string
-    weight: 0
+  uri:
+    type: file_uri
     label: hidden
+    weight: 0
     settings:
-      link_to_entity: false
+      link_to_file: true
+      file_download_path: false
     third_party_settings: {  }
 hidden:
   field_category: true
   filemime: true
+  filename: true
   filesize: true
   langcode: true
   uid: true
-  uri: true

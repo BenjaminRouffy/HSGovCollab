@@ -1,0 +1,25 @@
+uuid: 806d27a6-4002-4f10-beca-84091a0f8546
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_to_file.field_link
+    - paragraphs.paragraphs_type.link_to_file
+  module:
+    - link
+id: paragraph.link_to_file.default
+targetEntityType: paragraph
+bundle: link_to_file
+mode: default
+content:
+  field_link:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+hidden:
+  created: true
+  status: true
+  uid: true

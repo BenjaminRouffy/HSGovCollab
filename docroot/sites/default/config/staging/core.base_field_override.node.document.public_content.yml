@@ -1,0 +1,22 @@
+uuid: e6524097-bbf8-4765-9043-f824c85869a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.document
+id: node.document.public_content
+field_name: public_content
+entity_type: node
+bundle: document
+label: 'Public content'
+description: 'For making the page public'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -25,6 +25,7 @@
     drupal_core_test_group: 'group,groups,separated,by,comma'
     run_behat_tests: 'yes'
     run_drupal_core_tests: 'no'
+    run_drupal_custom_tests: 'no'
     xvfb: 'no'
     display: ''
     selenium_external: 'yes'
@@ -37,6 +38,9 @@
   - include: devops/tests/drupal_core/pre_tasks/drupal_core.yml
     when: run_drupal_core_tests == 'yes'
 
+  - include: devops/tests/drupal_custom/pre_tasks/drupal_custom.yml
+    when: run_drupal_custom_tests == 'yes'
+
   tasks:
   - include: devops/tests/behat/tasks/behat.yml
     when: run_behat_tests == 'yes'
@@ -44,9 +48,15 @@
   - include: devops/tests/drupal_core/tasks/drupal_core.yml
     when: run_drupal_core_tests == 'yes'
 
+  - include: devops/tests/drupal_custom/tasks/drupal_custom.yml
+    when: run_drupal_custom_tests == 'yes'
+
   post_tasks:
   - include: devops/tests/behat/post_tasks/behat.yml
     when: run_behat_tests == 'yes'
 
   - include: devops/tests/drupal_core/post_tasks/drupal_core.yml
     when: run_drupal_core_tests == 'yes'
+
+  - include: devops/tests/drupal_custom/post_tasks/drupal_custom.yml
+    when: run_drupal_custom_tests == 'yes'

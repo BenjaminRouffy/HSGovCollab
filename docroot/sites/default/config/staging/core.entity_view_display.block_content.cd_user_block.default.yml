@@ -1,0 +1,24 @@
+uuid: f659d84f-77b7-4fff-b9b4-81871253e776
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cd_user_block
+    - field.field.block_content.cd_user_block.field_cd_user
+  module:
+    - entity_reference_revisions
+id: block_content.cd_user_block.default
+targetEntityType: block_content
+bundle: cd_user_block
+mode: default
+content:
+  field_cd_user:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: cd_user
+      link: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true

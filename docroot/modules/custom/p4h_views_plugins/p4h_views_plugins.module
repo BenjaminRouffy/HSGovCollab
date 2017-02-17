@@ -35,10 +35,11 @@ function p4h_views_plugins_theme() {
  * Implements hook_entity_base_field_info().
  */
 function p4h_views_plugins_entity_base_field_info(EntityTypeInterface $entity_type) {
-  if ($entity_type->id() == 'node') {
+  if (in_array($entity_type->id(), ['node', 'group'])) {
     $fields['computed_date'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Computed date'))
       ->setDescription(t('Computed date'));
+
     return $fields;
   }
 }
@@ -85,19 +86,18 @@ function p4h_views_plugins_better_exposed_filters_display_options_alter(&$displa
 }
 
 /**
- * Implements hook_ENTITY_TYPE_presave().
- *
- * @param \Drupal\Core\Entity\EntityInterface $entity
+ * Implements hook_entity_presave().
  */
-function p4h_views_plugins_node_presave(EntityInterface $entity) {
-  $manager = \Drupal::service('plugin.manager.computed_date');
-  $plugins = $manager->getDefinitions($entity->bundle());
-  if (in_array($entity->bundle(), array_keys($plugins))) {
+function p4h_views_plugins_entity_presave(EntityInterface $entity) {
+  if (in_array($entity->getEntityTypeId(), ['node', 'group'])) {
+    $manager = \Drupal::service('plugin.manager.computed_date');
+    $plugins = $manager->getDefinitions($entity->bundle());
 
-    /* @var $plugin Drupal\p4h_views_plugins\ComputedDateInterface */
-    $plugin = $manager->createInstance($entity->bundle(), ['entity' => $entity]);
-    $plugin->updateValue();
-
+    if (in_array($entity->bundle(), array_keys($plugins))) {
+      /* @var $plugin Drupal\p4h_views_plugins\ComputedDateInterface */
+      $plugin = $manager->createInstance($entity->bundle(), ['entity' => $entity]);
+      $plugin->updateValue();
+    }
   }
 }
 
@@ -106,5 +106,6 @@ function p4h_views_plugins_node_presave(EntityInterface $entity) {
  */
 function p4h_views_plugins_views_data_alter(array &$data) {
   $data['node_field_data']['computed_date']['filter']['id'] = 'computed_date';
+  $data['group_field_data']['computed_date']['filter']['id'] = 'computed_date';
   $data['group_content_field_data']['gid']['filter']['id'] = 'group_index_gid';
 }

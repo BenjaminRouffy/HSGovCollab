@@ -102,6 +102,10 @@ class ComposerStaticInitDrupal8
             'Behat\\Mink\\Driver\\' => 18,
             'Behat\\Mink\\' => 11,
         ),
+        'A' => 
+        array (
+            'Ajgl\\Twig\\Extension\\' => 20,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -306,6 +310,10 @@ class ComposerStaticInitDrupal8
         'Behat\\Mink\\' => 
         array (
             0 => __DIR__ . '/..' . '/behat/mink/src',
+        ),
+        'Ajgl\\Twig\\Extension\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ajgl/breakpoint-twig-extension/src',
         ),
     );
 

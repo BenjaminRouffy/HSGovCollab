@@ -1,0 +1,11 @@
+<div{{ attributes }}>
+  {{ title_prefix }}
+  <div class="top-text-region" id="contact-us">
+    <div class="summary-text">
+      {% if content.field_description|field_value %}
+        <p>{{ content.field_description|field_value }}</p>
+      {% endif %}
+    </div>
+  </div>
+  {{ title_suffix }}
+</div>

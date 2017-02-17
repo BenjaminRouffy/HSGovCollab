@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - admin_customizations
     - system
   theme:
     - ample
@@ -19,4 +20,9 @@ settings:
   label: 'Status messages'
   provider: system
   label_display: '0'
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }

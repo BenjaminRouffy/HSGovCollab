@@ -40,6 +40,15 @@ class BetterExposedFilters extends ExposedFormPluginBase {
 
     if (!empty($settings['general']['autosubmit'])) {
       $this->view->setAjaxEnabled(TRUE);
+      $this->view->element['#attached']['drupalSettings']['bef'] = array(
+        'ajaxViews' => array(
+          'views_dom_id:' . $this->view->dom_id => array(
+            'view_name' => $this->view->storage->id(),
+            'view_display_id' => $this->view->current_display,
+            'general' => $settings['general']
+          ),
+        ),
+      );
     }
   }
 
@@ -88,16 +97,26 @@ class BetterExposedFilters extends ExposedFormPluginBase {
       '#default_value' => $existing['general']['autosubmit'],
     );
 
+    $autosubmit_states = array(
+      'visible' => array(
+        ':input[name="exposed_form_options[bef][general][autosubmit]"]' => array('checked' => TRUE),
+      ),
+    );
+
+    $bef_options['general']['timeout'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Timeout'),
+      '#description' => $this->t('Add a timeout on change/click checkbox/radio elements.'),
+      '#default_value' => $existing['general']['timeout'],
+      '#states' => $autosubmit_states
+    );
+
     $bef_options['general']['autosubmit_hide'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Hide submit button'),
       '#description' => $this->t('Hide submit button if javascript is enabled.'),
       '#default_value' => $existing['general']['autosubmit_hide'],
-      '#states' => array(
-        'visible' => array(
-          ':input[name="exposed_form_options[bef][general][autosubmit]"]' => array('checked' => TRUE),
-        ),
-      ),
+      '#states' => $autosubmit_states
     );
 
     /*
@@ -1321,6 +1340,7 @@ Off|No
         'allow_secondary' => FALSE,
         'secondary_label' => $this->t('Advanced options'),
         'autosubmit' => FALSE,
+        'timeout' => 100,
         'autosubmit_hide' => FALSE,
       ),
       'sort' => array(

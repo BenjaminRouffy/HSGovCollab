@@ -552,3 +552,10 @@ function deployment_update_8029() {
 function deployment_update_8030() {
   \Drupal::service('module_installer')->install(['custom_pub']);
 }
+
+/**
+ * Install module "Twig xDebug".
+ */
+function deployment_update_8031() {
+  \Drupal::service('module_installer')->install(['twig_xdebug']);
+}

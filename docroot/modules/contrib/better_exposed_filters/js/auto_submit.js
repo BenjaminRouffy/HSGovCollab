@@ -40,13 +40,24 @@
    * supported. We probably could use additional support for HTML5 input types.
    */
   Drupal.behaviors.betterExposedFiltersAutoSubmit = {
-    attach: function(context) {
+    attach: function(context, drupalSettings) {
+
       // 'this' references the form element.
       function triggerSubmit (e) {
         $(this).find('[data-bef-auto-submit-click]').click();
       }
+    $.each(drupalSettings.bef.ajaxViews, function (viewId, viewSettings) {
+      // @TODO There is need to get single form wrapper.
+      //   $form_wrapper = $(viewId, context);
+      // @TODO Maybe this extending can be removed as redundant.
+      var options = jQuery.extend(true, {
+        'general': {
+          'timeout': 100
+        }
+      }, viewSettings);
 
       // The change event bubbles so we only need to bind it to the outer form.
+      var timeoutIDSelect = 0;
       $('form[data-bef-auto-submit-full-form]', context)
         .add('[data-bef-auto-submit]', context)
         .filter('form, select, input:not(:text, :submit)')
@@ -54,7 +65,12 @@
         .change(function (e) {
           // don't trigger on text change for full-form
           if ($(e.target).is(':not(:text, :submit, [data-bef-auto-submit-exclude])')) {
-            triggerSubmit.call(e.target.form);
+            (function (targetForm, options) {
+              window.clearTimeout(timeoutIDSelect);
+              timeoutIDSelect = window.setTimeout(function(){
+                triggerSubmit.call(targetForm);
+              }, options.general.timeout);
+            })(e.target.form, options);
           }
         });
 
@@ -90,15 +106,16 @@
             })
             .keyup(function(e) {
               if ($.inArray(e.keyCode, discardKeyCode) === -1) {
-                timeoutID = setTimeout($.proxy(triggerSubmit, this.form), 500);
+                timeoutID = setTimeout($.proxy(triggerSubmit, this.form), options.general.timeout);
               }
             })
             .bind('change', function (e) {
               if ($.inArray(e.keyCode, discardKeyCode) === -1) {
-                timeoutID = setTimeout($.proxy(triggerSubmit, this.form), 500);
+                timeoutID = setTimeout($.proxy(triggerSubmit, this.form), options.general.timeout);
               }
             });
         });
+      });
     }
   }
 

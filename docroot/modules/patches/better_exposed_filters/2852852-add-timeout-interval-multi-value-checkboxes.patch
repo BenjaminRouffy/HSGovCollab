@@ -1,0 +1,123 @@
+diff --git a/js/auto_submit.js b/js/auto_submit.js
+index 7ef638b..4c06c35 100644
+--- a/js/auto_submit.js
++++ b/js/auto_submit.js
+@@ -40,13 +40,24 @@
+    * supported. We probably could use additional support for HTML5 input types.
+    */
+   Drupal.behaviors.betterExposedFiltersAutoSubmit = {
+-    attach: function(context) {
++    attach: function(context, drupalSettings) {
++
+       // 'this' references the form element.
+       function triggerSubmit (e) {
+         $(this).find('[data-bef-auto-submit-click]').click();
+       }
++    $.each(drupalSettings.bef.ajaxViews, function (viewId, viewSettings) {
++      // @TODO There is need to get single form wrapper.
++      //   $form_wrapper = $(viewId, context);
++      // @TODO Maybe this extending can be removed as redundant.
++      var options = jQuery.extend(true, {
++        'general': {
++          'timeout': 100
++        }
++      }, viewSettings);
+ 
+       // The change event bubbles so we only need to bind it to the outer form.
++      var timeoutIDSelect = 0;
+       $('form[data-bef-auto-submit-full-form]', context)
+         .add('[data-bef-auto-submit]', context)
+         .filter('form, select, input:not(:text, :submit)')
+@@ -54,7 +65,12 @@
+         .change(function (e) {
+           // don't trigger on text change for full-form
+           if ($(e.target).is(':not(:text, :submit, [data-bef-auto-submit-exclude])')) {
+-            triggerSubmit.call(e.target.form);
++            (function (targetForm, options) {
++              window.clearTimeout(timeoutIDSelect);
++              timeoutIDSelect = window.setTimeout(function(){
++                triggerSubmit.call(targetForm);
++              }, options.general.timeout);
++            })(e.target.form, options);
+           }
+         });
+ 
+@@ -90,15 +106,16 @@
+             })
+             .keyup(function(e) {
+               if ($.inArray(e.keyCode, discardKeyCode) === -1) {
+-                timeoutID = setTimeout($.proxy(triggerSubmit, this.form), 500);
++                timeoutID = setTimeout($.proxy(triggerSubmit, this.form), options.general.timeout);
+               }
+             })
+             .bind('change', function (e) {
+               if ($.inArray(e.keyCode, discardKeyCode) === -1) {
+-                timeoutID = setTimeout($.proxy(triggerSubmit, this.form), 500);
++                timeoutID = setTimeout($.proxy(triggerSubmit, this.form), options.general.timeout);
+               }
+             });
+         });
++      });
+     }
+   }
+ 
+diff --git a/src/Plugin/views/exposed_form/BetterExposedFilters.php b/src/Plugin/views/exposed_form/BetterExposedFilters.php
+index 638d281..0a89d96 100644
+--- a/src/Plugin/views/exposed_form/BetterExposedFilters.php
++++ b/src/Plugin/views/exposed_form/BetterExposedFilters.php
+@@ -40,6 +40,15 @@ public function preExecute() {
+ 
+     if (!empty($settings['general']['autosubmit'])) {
+       $this->view->setAjaxEnabled(TRUE);
++      $this->view->element['#attached']['drupalSettings']['bef'] = array(
++        'ajaxViews' => array(
++          'views_dom_id:' . $this->view->dom_id => array(
++            'view_name' => $this->view->storage->id(),
++            'view_display_id' => $this->view->current_display,
++            'general' => $settings['general']
++          ),
++        ),
++      );
+     }
+   }
+ 
+@@ -88,16 +97,26 @@ public function buildOptionsForm(&$form, FormStateInterface $form_state) {
+       '#default_value' => $existing['general']['autosubmit'],
+     );
+ 
++    $autosubmit_states = array(
++      'visible' => array(
++        ':input[name="exposed_form_options[bef][general][autosubmit]"]' => array('checked' => TRUE),
++      ),
++    );
++
++    $bef_options['general']['timeout'] = array(
++      '#type' => 'textfield',
++      '#title' => $this->t('Timeout'),
++      '#description' => $this->t('Add a timeout on change/click checkbox/radio elements.'),
++      '#default_value' => $existing['general']['timeout'],
++      '#states' => $autosubmit_states
++    );
++
+     $bef_options['general']['autosubmit_hide'] = array(
+       '#type' => 'checkbox',
+       '#title' => $this->t('Hide submit button'),
+       '#description' => $this->t('Hide submit button if javascript is enabled.'),
+       '#default_value' => $existing['general']['autosubmit_hide'],
+-      '#states' => array(
+-        'visible' => array(
+-          ':input[name="exposed_form_options[bef][general][autosubmit]"]' => array('checked' => TRUE),
+-        ),
+-      ),
++      '#states' => $autosubmit_states
+     );
+ 
+     /*
+@@ -1321,6 +1340,7 @@ protected function bef_get_settings() {
+         'allow_secondary' => FALSE,
+         'secondary_label' => $this->t('Advanced options'),
+         'autosubmit' => FALSE,
++        'timeout' => 100,
+         'autosubmit_hide' => FALSE,
+       ),
+       'sort' => array(

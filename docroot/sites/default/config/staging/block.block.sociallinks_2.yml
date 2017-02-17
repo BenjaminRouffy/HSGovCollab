@@ -5,13 +5,14 @@ dependencies:
   content:
     - 'block_content:social_links:df1384ff-6757-4475-a105-445191f983ec'
   module:
+    - admin_customizations
     - block_content
   theme:
     - ample
 id: sociallinks_2
 theme: ample
 region: header_static
-weight: -3
+weight: -4
 provider: null
 plugin: 'block_content:df1384ff-6757-4475-a105-445191f983ec'
 settings:
@@ -22,4 +23,11 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }

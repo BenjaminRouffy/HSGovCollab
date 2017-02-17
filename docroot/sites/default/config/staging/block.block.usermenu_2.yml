@@ -5,13 +5,14 @@ dependencies:
   config:
     - system.menu.user-menu
   module:
+    - admin_customizations
     - system
   theme:
     - ample
 id: usermenu_2
 theme: ample
 region: header_static
-weight: -4
+weight: -5
 provider: null
 plugin: 'system_menu_block:user-menu'
 settings:
@@ -21,4 +22,11 @@ settings:
   label_display: '0'
   level: 1
   depth: 0
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }

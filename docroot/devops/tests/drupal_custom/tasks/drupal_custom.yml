@@ -1,0 +1,19 @@
+---
+# File contains tasks for drupal_core tests.
+
+- name: Create dynamic phpunit.xml.dist
+  sudo: yes
+  template: src={{ drupal_root }}/phpunit.xml.dist.j2 dest={{ drupal_root }}/phpunit.xml.dist
+
+- name: Run PHPUnit tests
+  ignore_errors: yes
+  shell: "vendor/bin/phpunit --bootstrap core/tests/bootstrap.php --coverage-html '{{ build_reports_dir }}/clover_html' --coverage-text='{{ build_reports_dir }}/coveragesummary.txt' >> {{ build_reports_dir }}/phpunitreport.txt"
+
+- name: PHP PHPUnit reports build
+  shell: 'if grep "FAILURES!" {{ build_reports_dir }}/phpunitreport.txt; then cat {{ build_reports_dir }}/phpunitreport.txt >> {{ workspace_root }}/{{ artifacts_file }} && exit 1; fi;'
+
+- name: Report coverage summary
+  shell: 'head -n 10 {{ build_reports_dir }}/coveragesummary.txt >> {{ workspace_root }}/{{ artifacts_file }}'
+
+- name: Report coverage build
+  shell: 'echo "PHPUnit report: {{ webroot }}/{{ build_reports_dir }}/clover_html/index.html" >> {{ workspace_root }}/{{ artifacts_file }}'

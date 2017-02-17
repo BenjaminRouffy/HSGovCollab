@@ -1,0 +1,16 @@
+uuid: 9b218ca2-8cb2-4936-a81d-46d66728f506
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.non_member_organisation
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.non_member_organisation
+target_entity_type_id: taxonomy_term
+target_bundle: non_member_organisation
+default_langcode: site_default
+language_alterable: true

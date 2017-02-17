@@ -1,0 +1,65 @@
+uuid: 62db08fe-027d-4a73-9f30-1ce85fb4663a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_avatar
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_organisation
+    - image.style.thumbnail
+  module:
+    - image
+    - user
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  contact:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+  field_avatar:
+    weight: 7
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_first_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_last_name:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_organisation:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  language:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

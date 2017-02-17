@@ -553,11 +553,18 @@ function deployment_update_8030() {
   \Drupal::service('module_installer')->install(['custom_pub']);
 }
 
+/**
+ * Install module "Twig xDebug".
+ */
+function deployment_update_8031() {
+  \Drupal::service('module_installer')->install(['twig_xdebug']);
+
+}
 
 /**
  * Install modules "REST", "Serialization" and  "Views GeoJSON".
  */
-function deployment_update_8031() {
+function deployment_update_8032() {
   \Drupal::service('module_installer')->install([
     'rest',
     'serialization',

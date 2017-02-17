@@ -1,0 +1,30 @@
+uuid: 7f767159-e140-4603-863a-60b7922f1391
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cd_user.field_cd_user
+    - field.field.paragraph.cd_user.field_cd_user_description
+    - paragraphs.paragraphs_type.cd_user
+id: paragraph.cd_user.default
+targetEntityType: paragraph
+bundle: cd_user
+mode: default
+content:
+  field_cd_user:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: cd_user_block
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_cd_user_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+hidden:
+  created: true
+  uid: true

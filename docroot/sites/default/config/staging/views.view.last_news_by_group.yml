@@ -2,6 +2,8 @@ uuid: 6691ea93-b2bd-4ad3-afec-bc035c056be2
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.entity_view_mode.node.single_line_with_icon
   module:
     - group
     - node
@@ -54,11 +56,14 @@ display:
       style:
         type: default
         options:
-          grouping: {  }
-          row_class: paragraph
+          row_class: ''
           default_row_class: false
+          uses_fields: false
       row:
-        type: fields
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: single_line_with_icon
       fields:
         nid:
           id: nid
@@ -268,7 +273,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
-      css_class: section-info
+      css_class: ''
     cache_metadata:
       max-age: -1
       contexts:

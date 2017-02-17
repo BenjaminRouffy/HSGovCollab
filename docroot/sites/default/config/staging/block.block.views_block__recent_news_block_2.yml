@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.recent_news
   module:
+    - admin_customizations
     - ctools
     - views
   theme:
@@ -30,3 +31,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }

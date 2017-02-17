@@ -234,12 +234,12 @@
       sudo: yes
       lineinfile: dest={{ workspace_root }}/{{ artifacts_file }} line="Build site installed at {{ webroot }}" create=yes state=present
 
-    - name: Finding prototype credentials files
-      shell: "find `find . -name prototype` -name *.html | sed 's#^./#{{ webroot }}/#g'"
-      register: registry_rebuild_installed
-
-    - name: Prototype credentials
-      sudo: yes
-      when: registry_rebuild_installed is defined and registry_rebuild_installed.stdout != ""
-      lineinfile: dest={{ workspace_root }}/{{ artifacts_file }} line="Prototype site installed at {{ registry_rebuild_installed.stdout }}" create=yes state=present
-
+#    - name: Finding prototype credentials files
+#      shell: "find `find . -name prototype` -name *.html | sed 's#^./#{{ webroot }}/#g'"
+#      register: registry_rebuild_installed
+#
+#    - name: Prototype credentials
+#      sudo: yes
+#      when: registry_rebuild_installed is defined and registry_rebuild_installed.stdout != ""
+#      lineinfile: dest={{ workspace_root }}/{{ artifacts_file }} line="Prototype site installed at {{ registry_rebuild_installed.stdout }}" create=yes state=present
+#

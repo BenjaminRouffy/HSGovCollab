@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - page_manager.page.where
-    - views.view.map
     - views.view.search_for_a_country_or_region
   content:
     - 'block_content:headline_description:b1a69eb0-294e-4599-bb30-4c0c817b615a'
@@ -27,8 +26,8 @@ variant_settings:
       label_display: visible
       views_label: ''
       items_per_page: none
-      region: middle
-      weight: 2
+      region: content
+      weight: -7
       uuid: 31656c91-cbbb-446a-9f4f-25cd5fb6add3
       context_mapping: {  }
     bf006474-142e-485f-a15b-03f08970425c:
@@ -39,8 +38,8 @@ variant_settings:
       status: true
       info: ''
       view_mode: full
-      region: middle
-      weight: 0
+      region: content
+      weight: -9
       uuid: bf006474-142e-485f-a15b-03f08970425c
       context_mapping: {  }
     57f803bb-8dd2-4268-8604-fe5fae7c538a:
@@ -51,8 +50,8 @@ variant_settings:
       status: true
       info: ''
       view_mode: link
-      region: middle
-      weight: 1
+      region: content
+      weight: -8
       uuid: 57f803bb-8dd2-4268-8604-fe5fae7c538a
       context_mapping: {  }
     fa994fb9-a406-42e5-8d14-d6eb2705dc3e:
@@ -67,24 +66,13 @@ variant_settings:
       weight: 0
       uuid: fa994fb9-a406-42e5-8d14-d6eb2705dc3e
       context_mapping: {  }
-    fc249b3c-c67b-4f2c-bc9b-c0dcc0a21777:
-      id: 'views_block:map-country_map'
-      label: ''
-      provider: views
-      label_display: '0'
-      views_label: ''
-      items_per_page: none
-      region: middle
-      weight: -1
-      uuid: fc249b3c-c67b-4f2c-bc9b-c0dcc0a21777
-      context_mapping: {  }
     5f1ee8d8-153e-4e3c-88d9-e8f710a7de85:
       id: map
       label: Map
       provider: country
       label_display: '0'
       key: AIzaSyAFeqJ06IJ9av4A6BbJfhJ0x-Dua4HUFFk
-      region: middle
+      region: banner
       weight: -2
       uuid: 5f1ee8d8-153e-4e3c-88d9-e8f710a7de85
       context_mapping: {  }
@@ -92,7 +80,7 @@ variant_settings:
   uuid: 4ae1af58-df00-4acc-9fd0-bb6f093daff3
   label: null
   weight: 0
-  layout: separate_column
+  layout: stacked
   layout_settings: {  }
   page_title: Where
   storage_type: page_manager

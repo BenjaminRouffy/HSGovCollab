@@ -1,0 +1,26 @@
+uuid: 9c3ee5f5-a477-4432-b4ef-53b89eab652f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.map
+    - field.field.paragraph.infographic.field_infographic_item
+    - paragraphs.paragraphs_type.infographic
+  module:
+    - entity_reference_revisions
+id: paragraph.infographic.map
+targetEntityType: paragraph
+bundle: infographic
+mode: map
+content:
+  field_infographic_item:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: map
+      link: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  uid: true

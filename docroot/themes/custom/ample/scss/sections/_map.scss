@@ -49,13 +49,33 @@
     padding: 0;
 
     .paragraph {
-      padding: 10px 0;
       max-width: 100%;
+      padding: 10px 0;
+      text-align: left;
     }
 
-    h2 {
+    .icon-wrapper {
+      float: left;
+      height: 35px;
+      margin: 0 20px 0 0;
+      max-width: 40px;
+      width: 100%;
+    }
+
+    path {
+      fill: $white;
+    }
+
+    h2,
+    .value {
       @include font-size(18.2);
       color: $white;
+      display: inline-block;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 20px;
+      margin: 12px 0 0;
+      padding: 0;
     }
   }
 }

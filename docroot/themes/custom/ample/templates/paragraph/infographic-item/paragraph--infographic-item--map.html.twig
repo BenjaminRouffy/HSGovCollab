@@ -1,15 +1,15 @@
 {% if private_content is null %}
   <div class="paragraph">
-    <div class="icon-wrapper" role="presentation">
-      {{ content.field_icon|field_value }}
-    </div>
+    {{ content.field_icon|field_value }}
 
     <h2 role="heading">
       {{ content.field_title|field_value }}
     </h2>
 
-    <span class="value">
-      {{ content.field_value|field_value }}
-    </span>
+    {% if content.field_value %}
+      <span class="value">
+        : {{ content.field_value|field_value }}
+      </span>
+    {% endif %}
   </div>
 {% endif %}

@@ -20,7 +20,7 @@
   function initMap() {
     var lightColoredMap = new google.maps.StyledMapType(lightStyles, {name: "Light colored"});
     var darkColoredMap = new google.maps.StyledMapType(darkStyles, {name: "Dark colored"});
-    var mapCenter = {lat: 37.4430681, lng: 31.3592876};
+    var mapCenter = {lat: 23.8577076, lng: 7.0058832};
     var mapOptions = {
       zoom: 3,
       center: mapCenter,

@@ -22,6 +22,8 @@ class Map extends BlockBase {
   public function defaultConfiguration() {
     return [
       'key' => '',
+      'header' => '',
+      'description' => '',
     ];
   }
 
@@ -34,6 +36,20 @@ class Map extends BlockBase {
       '#title' => $this->t('Google API key'),
       '#required' => TRUE,
       '#default_value' => $this->configuration['key'],
+    ];
+
+    $form['header'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Header'),
+      '#required' => TRUE,
+      '#default_value' => $this->configuration['header'],
+    ];
+
+    $form['description'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Description'),
+      '#required' => TRUE,
+      '#default_value' => $this->configuration['description'],
     ];
 
     return $form;
@@ -52,13 +68,7 @@ class Map extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $build = [];
-
-    $build['#markup'] = '<div id="map"></div>';
-
-    $build['#attached']['library'][] = "ample/map";
-
-    return $build;
+    return ['#theme' => 'block-map'];
   }
 
 }

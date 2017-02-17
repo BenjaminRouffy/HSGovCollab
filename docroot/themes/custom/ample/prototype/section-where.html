@@ -760,15 +760,16 @@
         animation: google.maps.Animation.DROP
       });
 
-
-      google.maps.event.addListener(marker, 'mouseover', function () {
-        this.style.color = "red";
-      });
-
       (function (marker, data) {
         google.maps.event.addListener(marker, "click", function (e) {
           infoWindow.setContent(data.description);
           infoWindow.open(map, marker);
+        });
+      })(marker, data);
+
+      (function (marker, data) {
+        google.maps.event.addListener(marker, "mouseover", function (e) {
+
         });
       })(marker, data);
 
@@ -827,7 +828,6 @@
 //    }));
 //  }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFeqJ06IJ9av4A6BbJfhJ0x-Dua4HUFFk&callback=initMap">
-</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFeqJ06IJ9av4A6BbJfhJ0x-Dua4HUFFk&callback=initMap"></script>
 </body>
 </html>

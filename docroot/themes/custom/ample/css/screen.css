@@ -2818,3 +2818,54 @@ footer {
     width: 68px; }
     .fixed .trigger-full-page:hover {
       opacity: 1; }
+
+#map {
+  height: 75vh;
+  width: 100%; }
+
+.marker-info {
+  background: rgba(234, 58, 50, 0.93);
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 20px 30px;
+  -webkit-transform: translateX(110%);
+          transform: translateX(110%);
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease, -webkit-transform .2s ease;
+  width: 30%; }
+  .marker-info.active {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); }
+  .marker-info .country-title {
+    font-size: 3.0625rem;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 15px 0 40px;
+    overflow: visible; }
+  .marker-info .country-options {
+    font-size: 1.4rem;
+    margin-bottom: 30px; }
+  .marker-info .option-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    padding: 15px 0; }
+    .marker-info .option-item > div {
+      width: 50%; }
+  .marker-info .section-info {
+    display: block;
+    padding: 0; }
+    .marker-info .section-info .paragraph {
+      padding: 10px 0;
+      max-width: 100%; }
+    .marker-info .section-info h2 {
+      font-size: 1.1375rem;
+      color: #fff; }

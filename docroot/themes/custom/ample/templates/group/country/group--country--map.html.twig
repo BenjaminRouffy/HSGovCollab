@@ -1,5 +1,5 @@
-<div class="country-item">
-  <h2 role="heading">
+<div class="marker-info" id="{{ label|lower }}">
+  <h2 role="heading" class="country-title">
     {{ label }}
   </h2>
 
@@ -14,8 +14,4 @@
       {{ content.field_infographic|field_value }}
     </div>
   {% endif %}
-</div>
-
-<div class="country-location" data-country-id="{{ group.id() }}">
-  {{ content.field_location }}
 </div>

@@ -1,18 +1,21 @@
 (function($) {
   var markers = [];
+  var imagesPath = '/themes/custom/ample/images/';
 
-  Drupal.behaviors.markers = {
-    attach: function(context, settings) {
-      $('.country-location').each(function(i, el) {
-        var $el = $(el);
-        var lat = $el.find('meta[itemprop="latitude"]').attr('content');
-        var lng = $el.find('meta[itemprop="longitude"]').attr('content');
-        //console.log($(this).find('meta[itemprop="latitude"]').attr('content'));
-        markers.push({'lat': lat, 'lng': lng});
-      });
-      console.log(markers);
+  $.getJSON('/points', function(data) {
+    for (var i = 0; i < data.features.length; i++) {
+      var lat = data.features[i].geometry.coordinates[0];
+      var lng = data.features[i].geometry.coordinates[1];
+      var markerInfo = data.features[i].properties.description;
+      var countryName = data.features[i].properties.name.toLowerCase();
+
+      markers.push({'lat': lat, 'lng': lng, 'countryId': countryName});
+
+      $('#map').after(markerInfo);
     }
-  };
+
+    initMap();
+  });
 
   function initMap() {
     var lightColoredMap = new google.maps.StyledMapType(lightStyles, {name: "Light colored"});
@@ -40,23 +43,34 @@
     var i = 0;
     var interval = setInterval(function() {
       var data = markers[i];
+      var countryId = data.countryId;
       var myLatlng = new google.maps.LatLng(data.lat, data.lng);
       var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
-        icon: '../images/pin.svg',
-        title: data.title,
-        animation: google.maps.Animation.DROP
+        icon: imagesPath + 'pin.svg',
+        animation: google.maps.Animation.DROP,
+        id: countryId
       });
 
       google.maps.event.addListener(marker, 'mouseover', function() {
-        this.style.color = "red";
+        this.setIcon = imagesPath + 'calendar-icon.svg';
       });
 
       (function(marker, data) {
         google.maps.event.addListener(marker, "click", function(e) {
-          infoWindow.setContent(data.description);
-          infoWindow.open(map, marker);
+          //infoWindow.setContent(data.description);
+          //infoWindow.open(map, marker);
+          var elementId = $('#' + this.id);
+          var markerInfo = $('.marker-info');
+
+          if (!elementId.is('.active')) {
+            markerInfo.removeClass('active');
+            elementId.addClass('active');
+          }
+          else {
+            elementId.removeClass('active');
+          }
         });
       })(marker, data);
 
@@ -65,6 +79,6 @@
       if (i == markers.length) {
         clearInterval(interval);
       }
-    }, 200);
+    }, 300);
   }
 })(jQuery);

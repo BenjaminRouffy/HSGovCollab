@@ -1591,9 +1591,7 @@ header .social-links .font-social-icon {
         .project-list .section-info .paragraph a:hover .icon-wrapper,
         .project-list .section-info .paragraph a:hover h3 {
           opacity: .66; }
-  .country-list .section-info .font-social-icon,
   .country-list .section-info .icon-wrapper,
-  .project-list .section-info .font-social-icon,
   .project-list .section-info .icon-wrapper {
     float: left;
     height: 40px;
@@ -1601,18 +1599,6 @@ header .social-links .font-social-icon {
     -webkit-transition: opacity .3s ease;
     transition: opacity .3s ease;
     width: 26px; }
-    .country-list .section-info .font-social-icon > span,
-    .country-list .section-info .icon-wrapper > span,
-    .project-list .section-info .font-social-icon > span,
-    .project-list .section-info .icon-wrapper > span {
-      margin: 8px 0 0;
-      font-size: 1.75rem;
-      color: #4c7e96; }
-  .country-list .section-info .font-social-icon,
-  .project-list .section-info .font-social-icon {
-    height: initial;
-    top: 9px;
-    position: relative; }
   .country-list .section-info path,
   .project-list .section-info path {
     fill: #4c7e96; }
@@ -1690,7 +1676,8 @@ form {
     font-family: "Fira Sans", sans-serif;
     margin: 0 20px 5px 0; }
 
-.form-text {
+.form-text, .form-textarea,
+.form-email {
   border: 1px solid #75a8c0;
   color: #4c7e96;
   font-family: "Fira Sans", sans-serif;
@@ -1702,13 +1689,23 @@ form {
   -webkit-transition: all .2s ease;
   transition: all .2s ease;
   width: 100%; }
-  .form-text:hover {
+  .form-text:hover, .form-textarea:hover,
+  .form-email:hover {
     box-shadow: 0 0 6px 0 rgba(40, 59, 68, 0.38); }
-  .form-text:focus {
+  .form-text:focus, .form-textarea:focus,
+  .form-email:focus {
     border-color: #3898EC;
     outline: none; }
-  .form-text::-webkit-input-placeholder, .form-text::-moz-placeholder, .form-text:-ms-input-placeholder, .form-text:-moz-placeholder {
+  .form-text::-webkit-input-placeholder, .form-textarea::-webkit-input-placeholder, .form-text::-moz-placeholder, .form-textarea::-moz-placeholder, .form-text:-ms-input-placeholder, .form-textarea:-ms-input-placeholder, .form-text:-moz-placeholder, .form-textarea:-moz-placeholder,
+  .form-email::-webkit-input-placeholder,
+  .form-email::-moz-placeholder,
+  .form-email:-ms-input-placeholder,
+  .form-email:-moz-placeholder {
     color: #999; }
+
+.form-textarea {
+  height: auto;
+  padding: 8px 12px; }
 
 .js-form-type-select {
   background-color: #fff;
@@ -1759,6 +1756,51 @@ form {
   max-width: 50%; }
   .user-login-form .form-submit {
     float: right; }
+
+.form-contact-us {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  .form-contact-us .webform-left-column,
+  .form-contact-us .webform-right-column {
+    padding: 20px 40px;
+    width: 50%; }
+  .form-contact-us .inner-top-column {
+    overflow: hidden;
+    margin-bottom: 20px; }
+  .form-contact-us .form-item-title {
+    float: left;
+    width: 33.33%; }
+  .form-contact-us .form-item-organisation {
+    float: left;
+    padding-left: 20px;
+    width: 66.64%; }
+  .form-contact-us .inner-bottom-column {
+    margin-top: 55px; }
+  .form-contact-us .captcha {
+    margin-bottom: 25px; }
+  .form-contact-us .terms .field-suffix {
+    font-size: 0.9625rem;
+    cursor: help;
+    font-family: "Fira Sans", sans-serif;
+    padding-left: 10px; }
+  .form-contact-us .terms a {
+    color: #283b44;
+    text-decoration: none; }
+    .form-contact-us .terms a:hover {
+      text-decoration: underline; }
+  .form-contact-us .form-textarea {
+    min-height: 275px; }
+  .form-contact-us .form-actions {
+    margin-top: 10px;
+    text-align: center;
+    width: 50%; }
+  .form-contact-us .form-submit {
+    border-color: #ea3a32;
+    font-weight: 700;
+    text-transform: none; }
 
 #block-ample-local-tasks {
   background: #fff;
@@ -1877,7 +1919,7 @@ form {
       line-height: 31px;
       margin-top: 10px;
       width: 33.33%; }
-    .view-country .js-form-type-textfield .form-text {
+    .view-country .js-form-type-textfield .form-text, .view-country .js-form-type-textfield .form-textarea {
       font-size: 1.47rem;
       border-color: rgba(40, 59, 68, 0.32);
       float: left;
@@ -1919,10 +1961,11 @@ form {
   .view-country .js-form-type-textfield {
     margin-bottom: 0; }
     .view-country .js-form-type-textfield label,
-    .view-country .js-form-type-textfield .form-text {
+    .view-country .js-form-type-textfield .form-text,
+    .view-country .js-form-type-textfield .form-textarea {
       float: none;
       width: 100%; }
-    .view-country .js-form-type-textfield .form-text {
+    .view-country .js-form-type-textfield .form-text, .view-country .js-form-type-textfield .form-textarea {
       margin: 0; } }
 
 @media (max-width: 767px) {
@@ -2025,33 +2068,31 @@ header {
     max-width: 1260px;
     margin: 0 auto;
     position: relative; }
-  header .service-links,
-  header .links {
+  header .desktop-service-links,
+  header .language-switcher-language-url {
     position: absolute;
     bottom: 10px;
-    right: 56px;
+    right: 0;
     height: 60px; }
-    header .service-links ul:not(.contextual-links),
-    header .service-links ul:not(.contextual-links) li,
-    header .links ul:not(.contextual-links),
-    header .links ul:not(.contextual-links) li {
+    header .desktop-service-links ul:not(.contextual-links),
+    header .desktop-service-links ul:not(.contextual-links) li,
+    header .language-switcher-language-url ul:not(.contextual-links),
+    header .language-switcher-language-url ul:not(.contextual-links) li {
       display: inline-block;
       vertical-align: top; }
-    header .service-links a,
-    header .links a {
+    header .desktop-service-links a,
+    header .language-switcher-language-url a {
       font-size: 0.7875rem;
       display: block;
       color: #283b44;
       font-family: Oswald, sans-serif;
       padding: 32px 5px 15px;
       text-decoration: none; }
-      header .service-links a:hover,
-      header .links a:hover {
+      header .desktop-service-links a:hover,
+      header .language-switcher-language-url a:hover {
         opacity: .7; }
-  header .links {
-    right: 0; }
-    header .links a.is-active {
-      color: #8c2222; }
+  header .links a.is-active {
+    color: #8c2222; }
 
 .header-static {
   background: #fff;
@@ -2082,11 +2123,11 @@ header {
     position: absolute;
     top: 22px;
     right: 0; }
-  .header-static .links {
+  .header-static .language-switcher-language-url {
     text-transform: uppercase; }
-    .header-static .links ~ .service-links {
+    .header-static .language-switcher-language-url ~ .desktop-service-links {
       right: 50px; }
-    .header-static .links li {
+    .header-static .language-switcher-language-url li {
       display: inline-block;
       vertical-align: top; }
 

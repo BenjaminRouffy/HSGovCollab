@@ -14,8 +14,8 @@ header {
     position: relative;
   }
 
-  .service-links,
-  .links {
+  .desktop-service-links,
+  .language-switcher-language-url {
     position: absolute;
     bottom: 10px;
     right: 0;
@@ -95,10 +95,10 @@ header {
     right: 0;
   }
 
-  .links {
+  .language-switcher-language-url {
     text-transform: uppercase;
 
-    ~ .service-links {
+    ~ .desktop-service-links {
       right: 50px;
     }
 

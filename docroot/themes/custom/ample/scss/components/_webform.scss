@@ -18,7 +18,8 @@ form {
   }
 }
 
-.form-text {
+.form-text,
+.form-email {
   border: 1px solid #75a8c0;
   color: $navy;
   font-family: $fira;
@@ -45,6 +46,12 @@ form {
   &:-moz-placeholder {
     color: #999;
   }
+}
+
+.form-textarea {
+  @extend .form-text;
+  height: auto;
+  padding: 8px 12px;
 }
 
 .js-form-type-select {
@@ -103,5 +110,75 @@ form {
 
   .form-submit {
     float: right;
+  }
+}
+
+// Contact form
+.form-contact-us {
+  display: flex;
+  flex-wrap: wrap;
+
+  .webform-left-column,
+  .webform-right-column {
+    padding: 20px 40px;
+    width: 50%;
+  }
+
+  .inner-top-column {
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .form-item-title {
+    float: left;
+    width: 33.33%;
+  }
+
+  .form-item-organisation {
+    float: left;
+    padding-left: 20px;
+    width: 66.64%;
+  }
+
+  .inner-bottom-column {
+    margin-top: 55px;
+  }
+
+  .captcha {
+    margin-bottom: 25px;
+  }
+
+  .terms {
+    .field-suffix {
+      @include font-size(15.4);
+      cursor: help;
+      font-family: $fira;
+      padding-left: 10px;
+    }
+
+    a {
+      color: $navy-dark;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .form-textarea {
+    min-height: 275px;
+  }
+
+  .form-actions {
+    margin-top: 10px;
+    text-align: center;
+    width: 50%;
+  }
+
+  .form-submit {
+    border-color: $red;
+    font-weight: 700;
+    text-transform: none;
   }
 }

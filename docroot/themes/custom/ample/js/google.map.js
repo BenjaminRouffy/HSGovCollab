@@ -39,7 +39,6 @@
     map.mapTypes.set('dark_style', darkColoredMap);
     map.setMapTypeId('dark_style');
 
-    var infoWindow = new google.maps.InfoWindow();
     var i = 0;
     var interval = setInterval(function() {
       var data = markers[i];
@@ -54,25 +53,29 @@
       });
 
       google.maps.event.addListener(marker, 'mouseover', function() {
-        this.setIcon = imagesPath + 'calendar-icon.svg';
+        marker.setIcon(imagesPath + 'pin-active.svg');
       });
 
-      (function(marker, data) {
-        google.maps.event.addListener(marker, "click", function(e) {
-          //infoWindow.setContent(data.description);
-          //infoWindow.open(map, marker);
-          var elementId = $('#' + this.id);
-          var markerInfo = $('.marker-info');
+      google.maps.event.addListener(marker, 'mouseout', function() {
+        marker.setIcon(imagesPath + 'pin.svg');
+      });
 
-          if (!elementId.is('.active')) {
-            markerInfo.removeClass('active');
-            elementId.addClass('active');
-          }
-          else {
-            elementId.removeClass('active');
-          }
-        });
-      })(marker, data);
+      google.maps.event.addListener(marker, "click", function() {
+        var elementId = $('#' + this.id);
+        var markerInfo = $('.marker-info');
+
+        if (!elementId.is('.active')) {
+          markerInfo.removeClass('active');
+          elementId.addClass('active');
+        }
+        else {
+          elementId.removeClass('active');
+        }
+      });
+
+      $('.close-btn').on('click', function() {
+        $(this).parent('.marker-info').removeClass('active');
+      });
 
       i++;
 

@@ -767,7 +767,7 @@ header .social-links .font-social-icon {
 .video-wrapper {
   position: relative; }
 
-.overlay-wpapper {
+.overlay-wrapper {
   background: rgba(0, 0, 0, 0.53);
   color: #fff;
   display: -webkit-box;
@@ -788,13 +788,11 @@ header .social-links .font-social-icon {
   top: 0;
   left: 0;
   height: 100%;
-  -webkit-transition: opacity 2s ease;
-  transition: opacity 2s ease;
   width: 100%;
   z-index: 100; }
-  .overlay-wpapper > * {
+  .overlay-wrapper > * {
     width: 80%; }
-  .overlay-wpapper h1 {
+  .overlay-wrapper h1 {
     font-size: 4.375rem;
     color: #fff;
     letter-spacing: 1.5px;
@@ -802,7 +800,7 @@ header .social-links .font-social-icon {
     margin: 20px 0 10px;
     padding: 0;
     text-transform: uppercase; }
-  .overlay-wpapper .description {
+  .overlay-wrapper .description {
     font-size: 2.0125rem;
     font-family: "Fira Sans", sans-serif;
     font-weight: 300;
@@ -1591,9 +1589,7 @@ header .social-links .font-social-icon {
         .project-list .section-info .paragraph a:hover .icon-wrapper,
         .project-list .section-info .paragraph a:hover h3 {
           opacity: .66; }
-  .country-list .section-info .font-social-icon,
   .country-list .section-info .icon-wrapper,
-  .project-list .section-info .font-social-icon,
   .project-list .section-info .icon-wrapper {
     float: left;
     height: 40px;
@@ -1601,18 +1597,6 @@ header .social-links .font-social-icon {
     -webkit-transition: opacity .3s ease;
     transition: opacity .3s ease;
     width: 26px; }
-    .country-list .section-info .font-social-icon > span,
-    .country-list .section-info .icon-wrapper > span,
-    .project-list .section-info .font-social-icon > span,
-    .project-list .section-info .icon-wrapper > span {
-      margin: 8px 0 0;
-      font-size: 1.75rem;
-      color: #4c7e96; }
-  .country-list .section-info .font-social-icon,
-  .project-list .section-info .font-social-icon {
-    height: initial;
-    top: 9px;
-    position: relative; }
   .country-list .section-info path,
   .project-list .section-info path {
     fill: #4c7e96; }
@@ -2029,7 +2013,7 @@ header {
   header .links {
     position: absolute;
     bottom: 10px;
-    right: 56px;
+    right: 0;
     height: 60px; }
     header .service-links ul:not(.contextual-links),
     header .service-links ul:not(.contextual-links) li,
@@ -2048,10 +2032,8 @@ header {
       header .service-links a:hover,
       header .links a:hover {
         opacity: .7; }
-  header .links {
-    right: 0; }
-    header .links a.is-active {
-      color: #8c2222; }
+  header .links a.is-active {
+    color: #8c2222; }
 
 .header-static {
   background: #fff;
@@ -2839,6 +2821,16 @@ footer {
   .marker-info.active {
     -webkit-transform: translateX(0);
             transform: translateX(0); }
+  .marker-info .close-btn {
+    height: 20px;
+    width: 20px;
+    background: url(../images/close-btn.svg) center no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px; }
+    .marker-info .close-btn:hover {
+      opacity: .79; }
   .marker-info .country-title {
     font-size: 3.0625rem;
     color: #fff;

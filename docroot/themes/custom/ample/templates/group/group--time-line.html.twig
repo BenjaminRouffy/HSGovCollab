@@ -1,0 +1,27 @@
+{% set plainBody %}
+  {{ content.field_summary|field_value }}
+{% endset %}
+
+<div class="timeline-content-item">
+  <div class="font-social-icon {{ group.bundle() }}-icon">
+    <span></span>
+  </div>
+
+  {% if content.field_date|field_value %}
+    <time datetime="{{ content.field_date|field_value|field_raw }}">
+      {{ content.field_date|field_value }}
+    </time>
+  {% endif %}
+
+  <h4 role="heading">
+    {{ label }}
+  </h4>
+
+  <p>
+    {{ plainBody|striptags }}
+  </p>
+
+  <a href="{{ path('entity.group.canonical', {'group': group.id()}) }}" role="link">
+    {{ 'Read more'|t }}
+  </a>
+</div>

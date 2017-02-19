@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.exist_content.field_content
+    - field.field.paragraph.exist_content.field_node
     - paragraphs.paragraphs_type.exist_content
 id: paragraph.exist_content.default
 targetEntityType: paragraph
 bundle: exist_content
 mode: default
 content:
-  field_content:
+  field_node:
     weight: 0
     settings:
       match_operator: CONTAINS
@@ -18,6 +18,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  translation:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   status: true

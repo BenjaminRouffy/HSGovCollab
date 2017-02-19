@@ -32,19 +32,22 @@ class TimeLineByDate extends EntityReferenceRevisionsEntityFormatter {
         foreach ($contents as $index => $item) {
           /* @var Paragraph $time_line_item */
           $time_line_item = \Drupal::entityTypeManager()->getStorage('paragraph')->load($item['target_id']);
+          $bundle = $time_line_item->bundle();
 
-          switch ($time_line_item->bundle()) {
+          switch ($bundle) {
             case 'custom_content':
               $render_item[$index] = strtotime($time_line_item->get('field_date')->getValue()[0]['value']);
               break;
 
             case 'exist_content':
+            case 'country_and_project':
+              $entity_type = 'country_and_project' === $bundle ? 'group' : 'node';
               /* @var Paragraph $exist_content */
               $exist_content = \Drupal::entityTypeManager()->getStorage('paragraph')->load($item['target_id']);
-              $exist_content = $exist_content->get('field_content')->getValue();
+              $exist_content = $exist_content->get("field_$entity_type")->getValue();
 
               if (!empty($exist_content)) {
-                $exist_content = \Drupal::entityTypeManager()->getStorage('node')->load(reset($exist_content)['target_id']);
+                $exist_content = \Drupal::entityTypeManager()->getStorage($entity_type)->load(reset($exist_content)['target_id']);
 
                 if (!empty($exist_content)) {
                   $date = $exist_content->get('computed_date')->getValue();

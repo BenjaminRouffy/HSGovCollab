@@ -3,15 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.exist_content.field_content
+    - field.field.paragraph.exist_content.field_node
     - paragraphs.paragraphs_type.exist_content
 id: paragraph.exist_content.default
 targetEntityType: paragraph
 bundle: exist_content
 mode: default
 content:
-  field_content:
-    weight: 0
+  field_node:
+    weight: 1
     label: hidden
     settings:
       view_mode: time_line

@@ -1,0 +1,16 @@
+uuid: ca46de7d-f64b-484f-85ed-855b94fce5c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.project-group_node-news
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: group_content.project-group_node-news
+target_entity_type_id: group_content
+target_bundle: project-group_node-news
+default_langcode: site_default
+language_alterable: false

@@ -2,6 +2,8 @@ uuid: 105aa192-9df3-481f-8179-1ab4515aa20c
 langcode: en
 status: true
 dependencies:
+  module:
+    - admin_customizations
   theme:
     - ample
 _core:
@@ -17,4 +19,9 @@ settings:
   label: 'Primary admin actions'
   provider: core
   label_display: '0'
-visibility: {  }
+visibility:
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }

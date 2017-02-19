@@ -1,0 +1,23 @@
+uuid: 01d34f3f-05c4-4132-8d0c-80980ff35679
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.country_and_project.field_group
+    - paragraphs.paragraphs_type.country_and_project
+id: paragraph.country_and_project.default
+targetEntityType: paragraph
+bundle: country_and_project
+mode: default
+content:
+  field_group:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: time_line
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+hidden:
+  created: true
+  uid: true

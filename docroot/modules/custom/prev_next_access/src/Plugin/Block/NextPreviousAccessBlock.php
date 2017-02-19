@@ -59,9 +59,9 @@ class NextPreviousAccessBlock extends BlockBase {
    * @return string
    *   Rendered result.
    */
-  private function generateNextPrevious(Node $node, $direction = 'next') {
+  public function generateNextPrevious(Node $node, $direction = 'next') {
     $comparison_operator = $sort = $display_text = $direction_arrow = '';
-
+    
     $lang_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     if ($direction === 'next') {

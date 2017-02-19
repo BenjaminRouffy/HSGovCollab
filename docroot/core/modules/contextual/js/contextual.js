@@ -157,6 +157,7 @@
       // Collect the IDs for all contextual links placeholders.
       var ids = [];
       $placeholders.each(function () {
+        if ($.inArray($(this).attr('data-contextual-id'), ids) < 0)
         ids.push($(this).attr('data-contextual-id'));
       });
 

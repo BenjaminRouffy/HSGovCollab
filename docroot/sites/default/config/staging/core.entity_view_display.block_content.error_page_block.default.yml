@@ -1,0 +1,53 @@
+uuid: d9b59a9e-b645-46b9-9594-868b38a76ef4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.error_page_block
+    - field.field.block_content.error_page_block.field_description
+    - field.field.block_content.error_page_block.field_links
+    - field.field.block_content.error_page_block.field_logo
+    - field.field.block_content.error_page_block.field_title
+  module:
+    - image
+    - link
+    - text
+id: block_content.error_page_block.default
+targetEntityType: block_content
+bundle: error_page_block
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_links:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_logo:
+    weight: 3
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  langcode: true

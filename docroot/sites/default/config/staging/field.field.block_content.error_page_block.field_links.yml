@@ -1,0 +1,23 @@
+uuid: db04c2aa-3f86-4157-86be-1b8ff2874775
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.error_page_block
+    - field.storage.block_content.field_links
+  module:
+    - link
+id: block_content.error_page_block.field_links
+field_name: field_links
+entity_type: block_content
+bundle: error_page_block
+label: Links
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 1
+  title: 2
+field_type: link

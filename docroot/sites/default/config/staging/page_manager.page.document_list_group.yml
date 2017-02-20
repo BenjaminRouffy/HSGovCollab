@@ -1,0 +1,16 @@
+uuid: e9d925d9-04a4-4411-80fa-8b6f02362711
+langcode: en
+status: true
+dependencies: {  }
+id: document_list_group
+label: 'Document list (Group)'
+description: ''
+use_admin_theme: false
+path: '/group/{group}/documents'
+access_logic: and
+access_conditions: {  }
+parameters:
+  group:
+    machine_name: group
+    type: 'entity:group'
+    label: Group

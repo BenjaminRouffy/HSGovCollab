@@ -4,7 +4,11 @@ status: true
 dependencies:
   config:
     - page_manager.page.contact_us
+  content:
+    - 'block_content:cd_user_block:21f5f481-8c07-435b-9aa1-9ecaee4eb2f4'
+    - 'block_content:headline_description:c720e9e7-2173-40d7-9183-ad1992e1dbca'
   module:
+    - block_content
     - panels
     - webform
 id: contact_us-panels_variant-0
@@ -20,8 +24,32 @@ variant_settings:
       webform_id: contact_us
       default_data: ''
       region: middle
-      weight: 0
+      weight: 1
       uuid: 3b12d50d-cb29-48af-98b6-e219b01927d6
+      context_mapping: {  }
+    4fc2faec-a87f-43af-980b-d7bd3e4e359d:
+      id: 'block_content:c720e9e7-2173-40d7-9183-ad1992e1dbca'
+      label: 'Contact us - headline'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: -1
+      uuid: 4fc2faec-a87f-43af-980b-d7bd3e4e359d
+      context_mapping: {  }
+    12ecd407-f7f3-4270-ba25-f045cac96ab1:
+      id: 'block_content:21f5f481-8c07-435b-9aa1-9ecaee4eb2f4'
+      label: 'CD user block 1'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: 0
+      uuid: 12ecd407-f7f3-4270-ba25-f045cac96ab1
       context_mapping: {  }
   id: panels_variant
   uuid: 9867eca0-7412-4a3a-b05c-bae4dec7c502

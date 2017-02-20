@@ -78,6 +78,7 @@ third_party_settings:
         - field_time_text
         - field_timezone
         - field_location
+        - field_event_link
       parent_name: group_tabs_panel
       weight: 22
       format_type: tab
@@ -90,7 +91,6 @@ third_party_settings:
       label: 'Event date/time'
     group_bo:
       children:
-        - field_event_link
         - field_join_block
         - field_category
         - field_organization

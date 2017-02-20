@@ -1,0 +1,23 @@
+{% set plainBody %}
+  {{ content.body|field_value }}
+{% endset %}
+
+<div class="timeline-content-item">
+  <div class="font-social-icon {{ node.bundle() }}-icon">
+    <span></span>
+  </div>
+
+  <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+    {{ content.field_content_date|field_value }}
+  </time>
+
+  <h4 role="heading">
+    {{ label }}
+  </h4>
+
+  <p>
+    {{ plainBody|striptags }}
+  </p>
+
+  {{ content.field_document|field_value }}
+</div>

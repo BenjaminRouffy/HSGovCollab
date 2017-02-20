@@ -147,7 +147,7 @@ function ample_preprocess_paragraph(array &$variables) {
     }
   }
 
-  if ($variables['paragraph']->bundle() === 'file' && isset($variables['content']['field_file'][0])) {
+  if ($variables['paragraph']->bundle() === 'file' && 'default' === $variables['view_mode'] && isset($variables['content']['field_file'][0])) {
     $variables['document_type'] = file_icon_class($variables['content']['field_file'][0]['#file']->getMimeType());
   }
 

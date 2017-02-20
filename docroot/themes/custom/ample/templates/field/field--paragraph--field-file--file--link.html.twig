@@ -1,0 +1,5 @@
+{% for item in items %}
+  <a href="{{ item.content['#markup'] }}" role="link" download>
+    {{ 'Download'|t }}
+  </a>
+{% endfor %}

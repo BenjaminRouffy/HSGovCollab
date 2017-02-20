@@ -1,6 +1,10 @@
 .top-banner-region {
   background: $white-dark;
 
+  .contact-us & {
+    padding-top: 120px;
+  }
+
   body:not(.group) & {
     border-bottom: 1px solid #e9e6e6;
     box-shadow: 0 0 8px rgba($black, .11);
@@ -21,6 +25,10 @@
       max-width: 33.33%;
       text-align: center;
       width: 100%;
+    }
+
+    a {
+      text-decoration: none;
     }
   }
 
@@ -53,6 +61,13 @@
       margin: 0 0 15px;
     }
 
+    h3 {
+      @include font-size(22.4);
+      font-weight: 400;
+      line-height: 31px;
+      margin: 10px 0;
+    }
+
     .value {
       @include font-size(56);
       color: $navy;
@@ -62,6 +77,26 @@
       line-height: 60px;
       margin-top: 20px;
       padding: 25px 0;
+    }
+  }
+
+  .user-info {
+    flex-wrap: wrap;
+    padding-top: 0;
+
+    .paragraph {
+      max-width: 25%;
+    }
+
+    .icon-wrapper {
+      @include same(150px, height, width);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+      }
     }
   }
 

@@ -1015,3 +1015,44 @@
   border-radius: 50%;
   overflow: hidden;
 }
+
+.last-news-by-group {
+  margin-bottom: 5px;
+
+  .item {
+    clear: both;
+
+    a {
+      border-bottom: 2px solid transparent;
+      display: inline-block;
+      min-height: 50px;
+      padding: 5px 0;
+      position: relative;
+      transition: border .2s ease;
+      vertical-align: top;
+      z-index: 10;
+
+      &:hover {
+        border-color: $red;
+      }
+    }
+  }
+
+  .font-social-icon {
+    @include font-size(28);
+    color: $navy;
+    display: inline-block;
+    margin-right: 10px;
+    padding-top: 10px;
+    vertical-align: top;
+  }
+
+  h3 {
+    @include font-size(14);
+    display: inline-block;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 8px 0 0;
+    vertical-align: top;
+  }
+}

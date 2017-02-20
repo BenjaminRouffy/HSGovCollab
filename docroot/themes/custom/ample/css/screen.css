@@ -1753,6 +1753,37 @@ header .social-links .font-social-icon {
   border-radius: 50%;
   overflow: hidden; }
 
+.last-news-by-group {
+  margin-bottom: 5px; }
+  .last-news-by-group .item {
+    clear: both; }
+    .last-news-by-group .item a {
+      border-bottom: 2px solid transparent;
+      display: inline-block;
+      min-height: 50px;
+      padding: 5px 0;
+      position: relative;
+      -webkit-transition: border .2s ease;
+      transition: border .2s ease;
+      vertical-align: top;
+      z-index: 10; }
+      .last-news-by-group .item a:hover {
+        border-color: #ea3a32; }
+  .last-news-by-group .font-social-icon {
+    font-size: 1.75rem;
+    color: #4c7e96;
+    display: inline-block;
+    margin-right: 10px;
+    padding-top: 10px;
+    vertical-align: top; }
+  .last-news-by-group h3 {
+    font-size: 0.875rem;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 8px 0 0;
+    vertical-align: top; }
+
 form {
   font-size: 1.1375rem;
   font-family: Oswald, sans-serif; }

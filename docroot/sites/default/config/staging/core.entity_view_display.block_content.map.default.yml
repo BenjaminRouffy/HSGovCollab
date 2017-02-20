@@ -1,0 +1,37 @@
+uuid: 3e4853af-9005-4e26-9cf1-da8dda7c4942
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.map
+    - field.field.block_content.map.field_google_api_key
+    - field.field.block_content.map.field_map_description
+    - field.field.block_content.map.field_title
+id: block_content.map.default
+targetEntityType: block_content
+bundle: map
+mode: default
+content:
+  field_google_api_key:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_map_description:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  langcode: true

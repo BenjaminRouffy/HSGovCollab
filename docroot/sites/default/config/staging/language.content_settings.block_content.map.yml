@@ -1,0 +1,16 @@
+uuid: 665955dc-aabb-4fb4-b188-0464834e5748
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.map
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.map
+target_entity_type_id: block_content
+target_bundle: map
+default_langcode: current_interface
+language_alterable: true

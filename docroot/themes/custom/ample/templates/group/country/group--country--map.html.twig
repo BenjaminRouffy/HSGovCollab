@@ -1,0 +1,18 @@
+<div class="marker-info" id="{{ label|lower }}">
+  <div class="close-btn"></div>
+  <h2 role="heading" class="country-title">
+    {{ label }}
+  </h2>
+
+  {% if content.field_country_options|field_value %}
+    <div class="country-options">
+      {{ content.field_country_options|field_value }}
+    </div>
+  {% endif %}
+
+  {% if content.field_infographic|field_value %}
+    <div class="country-infographic">
+      {{ content.field_infographic|field_value }}
+    </div>
+  {% endif %}
+</div>

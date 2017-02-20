@@ -2,3 +2,93 @@
   height: 75vh;
   width: 100%;
 }
+
+.marker-info {
+  background: rgba($red, .93);
+  color: $white;
+  font-family: $oswald;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 20px 30px;
+  transform: translateX(110%);
+  transition: transform .2s ease;
+  width: 30%;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  .close-btn {
+    @include same(20px, height, width);
+    background: url(../images/close-btn.svg) center no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    &:hover {
+      opacity: .79;
+    }
+  }
+
+  .country-title {
+    @include font-size(49);
+    color: $white;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 15px 0 40px;
+    overflow: visible;
+  }
+
+  .country-options {
+    @include font-size(22.4);
+    margin-bottom: 30px;
+  }
+
+  .option-item {
+    display: flex;
+    overflow: hidden;
+    padding: 15px 0;
+
+    > div {
+      width: 50%;
+    }
+  }
+
+  .section-info {
+    display: block;
+    padding: 0;
+
+    .paragraph {
+      max-width: 100%;
+      padding: 10px 0;
+      text-align: left;
+    }
+
+    .icon-wrapper {
+      float: left;
+      height: 35px;
+      margin: 0 20px 0 0;
+      max-width: 40px;
+      width: 100%;
+    }
+
+    path {
+      fill: $white;
+    }
+
+    h2,
+    .value {
+      @include font-size(18.2);
+      color: $white;
+      display: inline-block;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 20px;
+      margin: 12px 0 0;
+      padding: 0;
+    }
+  }
+}

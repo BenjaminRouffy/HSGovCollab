@@ -795,7 +795,7 @@ header .social-links .font-social-icon {
 .video-wrapper {
   position: relative; }
 
-.overlay-wpapper {
+.overlay-wrapper {
   background: rgba(0, 0, 0, 0.53);
   color: #fff;
   display: -webkit-box;
@@ -816,13 +816,11 @@ header .social-links .font-social-icon {
   top: 0;
   left: 0;
   height: 100%;
-  -webkit-transition: opacity 2s ease;
-  transition: opacity 2s ease;
   width: 100%;
   z-index: 100; }
-  .overlay-wpapper > * {
+  .overlay-wrapper > * {
     width: 80%; }
-  .overlay-wpapper h1 {
+  .overlay-wrapper h1 {
     font-size: 4.375rem;
     color: #fff;
     letter-spacing: 1.5px;
@@ -830,7 +828,7 @@ header .social-links .font-social-icon {
     margin: 20px 0 10px;
     padding: 0;
     text-transform: uppercase; }
-  .overlay-wpapper .description {
+  .overlay-wrapper .description {
     font-size: 2.0125rem;
     font-family: "Fira Sans", sans-serif;
     font-weight: 300;
@@ -2978,3 +2976,76 @@ footer {
 #map {
   height: 75vh;
   width: 100%; }
+
+.marker-info {
+  background: rgba(234, 58, 50, 0.93);
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 20px 30px;
+  -webkit-transform: translateX(110%);
+          transform: translateX(110%);
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease, -webkit-transform .2s ease;
+  width: 30%; }
+  .marker-info.active {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); }
+  .marker-info .close-btn {
+    height: 20px;
+    width: 20px;
+    background: url(../images/close-btn.svg) center no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px; }
+    .marker-info .close-btn:hover {
+      opacity: .79; }
+  .marker-info .country-title {
+    font-size: 3.0625rem;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 15px 0 40px;
+    overflow: visible; }
+  .marker-info .country-options {
+    font-size: 1.4rem;
+    margin-bottom: 30px; }
+  .marker-info .option-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    padding: 15px 0; }
+    .marker-info .option-item > div {
+      width: 50%; }
+  .marker-info .section-info {
+    display: block;
+    padding: 0; }
+    .marker-info .section-info .paragraph {
+      max-width: 100%;
+      padding: 10px 0;
+      text-align: left; }
+    .marker-info .section-info .icon-wrapper {
+      float: left;
+      height: 35px;
+      margin: 0 20px 0 0;
+      max-width: 40px;
+      width: 100%; }
+    .marker-info .section-info path {
+      fill: #fff; }
+    .marker-info .section-info h2,
+    .marker-info .section-info .value {
+      font-size: 1.1375rem;
+      color: #fff;
+      display: inline-block;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 20px;
+      margin: 12px 0 0;
+      padding: 0; }

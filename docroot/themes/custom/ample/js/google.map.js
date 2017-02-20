@@ -1,6 +1,6 @@
 (function($) {
   var markers = [];
-  var imagesPath = '/themes/custom/ample/images/';
+  var imagesPath = drupalSettings.path.baseUrl + 'themes/custom/ample/images/';
 
   $.getJSON(drupalSettings.path.baseUrl + 'points', function(data) {
     for (var i = 0; i < data.features.length; i++) {

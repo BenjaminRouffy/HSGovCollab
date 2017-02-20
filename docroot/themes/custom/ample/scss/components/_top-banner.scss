@@ -81,6 +81,13 @@
   }
 
   .user-info {
+    flex-wrap: wrap;
+    padding-top: 0;
+
+    .paragraph {
+      max-width: 25%;
+    }
+
     .icon-wrapper {
       @include same(150px, height, width);
       border-radius: 50%;

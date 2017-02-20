@@ -146,10 +146,6 @@ form {
     width: 66.64%;
   }
 
-  .inner-bottom-column {
-    margin-top: 55px;
-  }
-
   .captcha {
     margin-bottom: 25px;
   }
@@ -185,5 +181,17 @@ form {
     border-color: $red;
     font-weight: 700;
     text-transform: none;
+  }
+
+  label {
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
+      }
+    }
   }
 }

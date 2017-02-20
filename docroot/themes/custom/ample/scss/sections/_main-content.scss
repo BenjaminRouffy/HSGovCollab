@@ -17,6 +17,12 @@
   max-width: 1160px;
   padding: 80px 0 40px;
   width: 100%;
+
+  .contact-us & {
+    .top-text-region {
+      margin-bottom: 30px;
+    }
+  }
 }
 
 @include breakpoint-for('.content-container', (to: laptop-small)) {

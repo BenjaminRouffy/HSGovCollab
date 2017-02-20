@@ -2,7 +2,7 @@
   var markers = [];
   var imagesPath = '/themes/custom/ample/images/';
 
-  $.getJSON('/points', function(data) {
+  $.getJSON(drupalSettings.path.baseUrl + 'points', function(data) {
     for (var i = 0; i < data.features.length; i++) {
       var lat = data.features[i].geometry.coordinates[0];
       var lng = data.features[i].geometry.coordinates[1];

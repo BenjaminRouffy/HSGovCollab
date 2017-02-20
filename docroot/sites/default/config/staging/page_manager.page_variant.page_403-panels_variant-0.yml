@@ -4,13 +4,28 @@ status: true
 dependencies:
   config:
     - page_manager.page.page_403
+  content:
+    - 'block_content:error_page_block:4c8d9334-3c1a-4f67-9cc3-82728ebc442a'
   module:
+    - block_content
     - panels
 id: page_403-panels_variant-0
 label: Panels
 variant: panels_variant
 variant_settings:
-  blocks: {  }
+  blocks:
+    31764e76-ad4e-4526-b491-30ed2186c4b2:
+      id: 'block_content:4c8d9334-3c1a-4f67-9cc3-82728ebc442a'
+      label: 'Page not found'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: error_page
+      region: middle
+      weight: 0
+      uuid: 31764e76-ad4e-4526-b491-30ed2186c4b2
+      context_mapping: {  }
   id: panels_variant
   uuid: 409595cc-7dcc-4da9-9081-03062289d41f
   label: null

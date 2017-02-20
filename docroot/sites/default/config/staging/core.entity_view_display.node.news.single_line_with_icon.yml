@@ -15,23 +15,18 @@ dependencies:
     - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
-    - datetime
-    - entity_reference_revisions
-    - image
-    - rel_content
-    - text
     - user
 id: node.news.single_line_with_icon
 targetEntityType: node
 bundle: news
 mode: single_line_with_icon
-content: {}
+content: {  }
 hidden:
-  field_content_date: true
   addtoany: true
   body: true
   field_author: true
   field_category: true
+  field_content_date: true
   field_content_paragraph: true
   field_image: true
   field_join_block: true

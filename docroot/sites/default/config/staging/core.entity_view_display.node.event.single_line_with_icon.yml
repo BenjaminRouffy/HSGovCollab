@@ -19,18 +19,12 @@ dependencies:
     - field.field.node.event.field_timezone
     - node.type.event
   module:
-    - datetime_range
-    - entity_reference_revisions
-    - link
-    - options
-    - rel_content
-    - text
     - user
 id: node.event.single_line_with_icon
 targetEntityType: node
 bundle: event
 mode: single_line_with_icon
-content: {}
+content: {  }
 hidden:
   addtoany: true
   body: true
@@ -46,5 +40,5 @@ hidden:
   field_time: true
   field_time_text: true
   field_timezone: true
-  links: true
   langcode: true
+  links: true

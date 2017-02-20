@@ -33,7 +33,7 @@ display:
         type: views_query
         options:
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_comment: ''
           query_tags: {  }
@@ -384,7 +384,18 @@ display:
       sorts: {  }
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: "<div class=\"empty-result\">\n      <p>Nothing has been found</p>\n\n    </div>"
+          plugin_id: text_custom
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
@@ -394,6 +405,7 @@ display:
           1: OR
           2: AND
       css_class: view-country
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:

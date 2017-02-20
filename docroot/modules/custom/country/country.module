@@ -5,8 +5,13 @@
  * Contains country.module.
  */
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultForbidden;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 
 define('PUBLIC_GROUP', 9999);
 
@@ -23,6 +28,52 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
   }
 
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function country_file_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if (in_array($operation, ['download', 'view'])) {
+    $file = \Drupal::entityTypeManager()
+      ->getStorage('file')
+      ->loadByProperties(['uri' => $entity->getFileUri()]);
+
+    if (!empty($file)) {
+      /* @var File $file */
+      $file = reset($file);
+
+      $usages = \Drupal::service('file.usage')->listUsage($file);
+
+      foreach ($usages as $module => $entity_types) {
+        if ('file' === $module) {
+          foreach ($entity_types as $entity_type => $value) {
+            if ('paragraph' === $entity_type) {
+              /* @var Paragraph $paragraph */
+              $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->load(key($value));
+              /* @var Node $node */
+              $node = $paragraph->getParentEntity();
+
+              if ($node->hasField('public_content')) {
+                $public_content = $node->get('public_content')->getValue();
+                $gnode_access = gnode_node_access($node, 'view', $account);
+
+                if ($gnode_access instanceof AccessResultForbidden) {
+                  if (!empty($public_content) && !empty(reset($public_content)['value'])) {
+                    return AccessResult::allowed();
+                  }
+
+                  return $gnode_access;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return AccessResult::allowed();
 }
 
 /**

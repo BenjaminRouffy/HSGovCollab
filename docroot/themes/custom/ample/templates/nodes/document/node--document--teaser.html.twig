@@ -1,0 +1,19 @@
+{% set plainBody %}
+  {{ content.body|field_value }}
+{% endset %}
+
+<article{{ attributes.addClass('document-reaser') }}>
+  {{ title_prefix }}
+  <h4 role="heading">
+    {{ label|field_value }}
+  </h4>
+  {{ title_suffix }}
+
+  {% if content.body|field_value %}
+    <p>
+      {{ plainBody|striptags }}
+    </p>
+  {% endif %}
+
+  {{ content.field_document|field_value }}
+</article>

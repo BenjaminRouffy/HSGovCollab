@@ -15,9 +15,11 @@
     {{ label }}
   </h4>
 
-  <p>
-    {{ plainBody|striptags }}
-  </p>
+  {% if content.body|field_value %}
+    <p>
+      {{ plainBody|striptags }}
+    </p>
+  {% endif %}
 
   {{ content.field_document|field_value }}
 </div>

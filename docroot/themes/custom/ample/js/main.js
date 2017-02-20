@@ -191,9 +191,15 @@
 
   Drupal.behaviors.overlay = {
     attach: function(context, settings) {
-      $('.overlay-wpapper').delay(3000).queue(function() {
-        $(this).css('opacity', 0).dequeue();
-      });
+      var bannerOverlay = $('.overlay-wrapper');
+
+      setTimeout(function() {
+        bannerOverlay.animate({'opacity': 0}, 2000, function() {
+          if (bannerOverlay.siblings($('#map'))) {
+            bannerOverlay.remove();
+          }
+        });
+      }, 3000);
     }
   };
 

@@ -1,0 +1,14 @@
+{{ attach_library('ample/map') }}
+<script async defer src="//maps.googleapis.com/maps/api/js?key={{ content.field_google_api_key|render|striptags|trim }}"></script>
+
+<div id="map"></div>
+
+<div class="overlay-wrapper">
+  <h1 role="heading">
+    {{ content.field_title|field_value }}
+  </h1>
+
+  <div class="description">
+    {{ content.field_map_description|field_value }}
+  </div>
+</div>

@@ -1,13 +1,19 @@
-{% if logged_in %}
-  <a href="#">
-{% endif %}
-
-  {{ content.field_cd_user }}
-
-  {% if content.field_cd_user_description|field_value %}
-    {{ content.field_cd_user_description|field_value }}
+<div class="paragraph">
+  {% if logged_in %}
+    <a href="#">
   {% endif %}
 
-{% if logged_in %}
-  </a>
-{% endif %}
+    {{ content.field_cd_user }}
+
+    {% if content.field_cd_user_description|field_value %}
+      <div class="infooverlay">
+        <p>
+          {{ content.field_cd_user_description|field_value }}
+        </p>
+      </div>
+    {% endif %}
+
+  {% if logged_in %}
+    </a>
+  {% endif %}
+</div>

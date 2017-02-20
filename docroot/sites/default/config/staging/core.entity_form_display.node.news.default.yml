@@ -17,10 +17,99 @@ dependencies:
   module:
     - datetime
     - entity_browser
+    - field_group
     - paragraphs
     - path
     - rel_content
     - text
+third_party_settings:
+  field_group:
+    group_tabs_panel:
+      children:
+        - group_b
+        - group_s
+        - group_content
+        - group_bottom
+        - group_related_content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: 'Tabs panel'
+    group_b:
+      children:
+        - title
+        - field_image
+        - field_content_date
+      parent_name: group_tabs_panel
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Banner
+    group_s:
+      children:
+        - field_author
+        - body
+        - langcode
+      parent_name: group_tabs_panel
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Summary
+    group_content:
+      children:
+        - field_content_paragraph
+      parent_name: group_tabs_panel
+      weight: 22
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+    group_bottom:
+      children:
+        - field_join_block
+        - field_category
+        - field_organization
+      parent_name: group_tabs_panel
+      weight: 23
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Bottom
+    group_related_content:
+      children:
+        - field_related_content_selector
+      parent_name: group_tabs_panel
+      weight: 24
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Related content'
 id: node.news.default
 targetEntityType: node
 bundle: news
@@ -28,14 +117,14 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 5
+    weight: 9
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
   field_author:
-    weight: 7
+    weight: 8
     settings:
       size: 60
       placeholder: ''
@@ -47,12 +136,12 @@ content:
     third_party_settings: {  }
     type: options_select
   field_content_date:
-    weight: 4
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
   field_content_paragraph:
-    weight: 9
+    weight: 10
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -62,7 +151,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs
   field_image:
-    weight: 6
+    weight: 2
     settings:
       entity_browser: browse_files_modal
       field_widget_remove: true
@@ -74,7 +163,7 @@ content:
     third_party_settings: {  }
     type: entity_browser_file
   field_join_block:
-    weight: 8
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -84,29 +173,35 @@ content:
     third_party_settings: {  }
     type: options_select
   field_related_content_selector:
-    weight: 26
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: list_rel_content_select
   langcode:
     type: language_select
-    weight: 1
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 3
+    weight: 4
     settings: {  }
+    third_party_settings: {  }
+  public_content:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 13
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
 hidden:

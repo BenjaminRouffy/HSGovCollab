@@ -1902,8 +1902,6 @@ form {
     float: left;
     padding-left: 20px;
     width: 66.64%; }
-  .form-contact-us .inner-bottom-column {
-    margin-top: 55px; }
   .form-contact-us .captcha {
     margin-bottom: 25px; }
   .form-contact-us .terms .field-suffix {
@@ -1926,6 +1924,10 @@ form {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
+  .form-contact-us label:after {
+    content: ":"; }
+  .form-contact-us label.form-required:after {
+    content: ": *"; }
 
 #block-ample-local-tasks {
   background: #fff;

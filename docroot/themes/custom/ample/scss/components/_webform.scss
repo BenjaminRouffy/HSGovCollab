@@ -157,17 +157,16 @@ form {
   .terms {
     .field-suffix {
       @include font-size(15.4);
-      cursor: help;
       font-family: $fira;
       padding-left: 10px;
     }
 
     a {
       color: $navy-dark;
-      text-decoration: none;
+      transition: color .2s ease;
 
       &:hover {
-        text-decoration: underline;
+        color: $red;
       }
     }
   }

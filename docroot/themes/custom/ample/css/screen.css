@@ -1908,14 +1908,14 @@ form {
     margin-bottom: 25px; }
   .form-contact-us .terms .field-suffix {
     font-size: 0.9625rem;
-    cursor: help;
     font-family: "Fira Sans", sans-serif;
     padding-left: 10px; }
   .form-contact-us .terms a {
     color: #283b44;
-    text-decoration: none; }
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease; }
     .form-contact-us .terms a:hover {
-      text-decoration: underline; }
+      color: #ea3a32; }
   .form-contact-us .form-textarea {
     min-height: 275px; }
   .form-contact-us .form-actions {

@@ -512,6 +512,8 @@ header .social-links .font-social-icon {
 .bottom-link {
   margin: 30px 0 10px;
   text-align: center; }
+  .contact-us .bottom-link {
+    margin: 0 0 20px; }
 
 @media (max-width: 991px) {
   .bottom-link {
@@ -530,6 +532,9 @@ header .social-links .font-social-icon {
   text-decoration: none;
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
+  .contact-us .red-btn-link {
+    border-color: #ea3a32;
+    margin: 0; }
   .red-btn-link:hover {
     border-color: #ea3a32; }
   .red-btn-link:after {
@@ -622,6 +627,8 @@ header .social-links .font-social-icon {
 
 .top-banner-region {
   background: #f5f5f5; }
+  .contact-us .top-banner-region {
+    padding-top: 120px; }
   body:not(.group) .top-banner-region {
     border-bottom: 1px solid #e9e6e6;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.11); }
@@ -641,6 +648,8 @@ header .social-links .font-social-icon {
       max-width: 33.33%;
       text-align: center;
       width: 100%; }
+    .top-banner-region .section-info a {
+      text-decoration: none; }
   .top-banner-region .paragraph {
     display: block;
     height: 100%;
@@ -659,6 +668,11 @@ header .social-links .font-social-icon {
       font-size: 1.925rem;
       line-height: 48px;
       margin: 0 0 15px; }
+    .top-banner-region .paragraph h3 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 31px;
+      margin: 10px 0; }
     .top-banner-region .paragraph .value {
       font-size: 3.5rem;
       color: #4c7e96;
@@ -668,6 +682,14 @@ header .social-links .font-social-icon {
       line-height: 60px;
       margin-top: 20px;
       padding: 25px 0; }
+  .top-banner-region .user-info .icon-wrapper {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    overflow: hidden; }
+    .top-banner-region .user-info .icon-wrapper img {
+      max-width: 100%; }
   .top-banner-region .infooverlay {
     background: #fff;
     height: 100%;
@@ -2360,6 +2382,8 @@ footer {
   max-width: 1160px;
   padding: 80px 0 40px;
   width: 100%; }
+  .contact-us .content-container .top-text-region {
+    margin-bottom: 30px; }
 
 @media (max-width: 991px) {
   .content-container {
@@ -2566,6 +2590,11 @@ footer {
   margin: 0 auto 50px;
   text-align: center;
   width: 66.64%; }
+  .contact-us .top-text-region {
+    margin-bottom: 20px;
+    max-width: 773px; }
+    .contact-us .top-text-region .summary-text {
+      margin-bottom: 0; }
   .top-text-region .title-wrapper {
     padding-bottom: 10px;
     margin-bottom: 20px; }

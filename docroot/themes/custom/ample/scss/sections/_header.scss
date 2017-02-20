@@ -348,14 +348,25 @@ header {
 
   .service-links {
     right: 0;
-    top: 0;
+    top: 20px;
     position: absolute;
+
+    ul:not(.contextual-links) li {
+      display: inline-block;
+      vertical-align: top;
+    }
 
     a {
       @include font-size(14);
       color: $white;
+      font-family: $oswald;
       font-weight: 200;
       padding: 20px 5px;
+      text-decoration: none;
+
+      &:hover {
+        opacity: .56;
+      }
     }
   }
 }

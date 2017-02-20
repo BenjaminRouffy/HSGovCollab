@@ -2293,13 +2293,20 @@ header {
     padding: 20px 30px; }
   .header-fixed .service-links {
     right: 0;
-    top: 0;
+    top: 20px;
     position: absolute; }
+    .header-fixed .service-links ul:not(.contextual-links) li {
+      display: inline-block;
+      vertical-align: top; }
     .header-fixed .service-links a {
       font-size: 0.875rem;
       color: #fff;
+      font-family: Oswald, sans-serif;
       font-weight: 200;
-      padding: 20px 5px; }
+      padding: 20px 5px;
+      text-decoration: none; }
+      .header-fixed .service-links a:hover {
+        opacity: .56; }
 
 @media (max-width: 991px) {
   .header-fixed .mobile-menu-btn {

@@ -4,8 +4,8 @@
 
   $.getJSON(drupalSettings.path.baseUrl + 'points', function(data) {
     for (var i = 0; i < data.features.length; i++) {
-      var lat = data.features[i].geometry.coordinates[0];
-      var lng = data.features[i].geometry.coordinates[1];
+      var lng = data.features[i].geometry.coordinates[0];
+      var lat = data.features[i].geometry.coordinates[1];
       var markerInfo = data.features[i].properties.description;
       var countryName = data.features[i].properties.name.toLowerCase();
 

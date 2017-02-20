@@ -15,9 +15,11 @@
 
   <div class="banner-image" style="background-image: url({{ file_url(content.field_content_image|render|striptags|trim) }})">
     {% if content.field_description|field_value %}
-      <p class="image-text">
-        {{ content.field_description|field_value }}
-      </p>
+      <div class="country-desc">
+        <p class="image-text">
+          {{ content.field_description|field_value }}
+        </p>
+      </div>
     {% endif %}
   </div>
 </div>

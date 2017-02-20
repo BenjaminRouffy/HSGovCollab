@@ -1,8 +1,9 @@
-uuid: c8c58eb8-73b5-4640-aaff-101768c4b818
+uuid: 27022e79-be67-427f-936b-6270ebe84af9
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.time_line
     - field.field.node.document.body
     - field.field.node.document.field_category
     - field.field.node.document.field_content_date
@@ -10,26 +11,41 @@ dependencies:
     - field.field.node.document.field_organization
     - node.type.document
   module:
+    - datetime
     - entity_reference_revisions
+    - text
     - user
-id: node.document.default
+id: node.document.time_line
 targetEntityType: node
 bundle: document
-mode: default
+mode: time_line
 content:
-  field_document:
-    type: entity_reference_revisions_entity_view
+  body:
+    type: text_trimmed
     weight: 0
     label: hidden
     settings:
-      view_mode: default
+      trim_length: 150
+    third_party_settings: {  }
+  field_content_date:
+    type: datetime_default
+    weight: 1
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
+  field_document:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: link
       link: ''
     third_party_settings: {  }
 hidden:
   addtoany: true
-  body: true
   field_category: true
-  field_content_date: true
   field_organization: true
   langcode: true
   links: true

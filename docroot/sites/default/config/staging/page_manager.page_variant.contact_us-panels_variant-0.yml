@@ -23,8 +23,8 @@ variant_settings:
       label_display: '0'
       webform_id: contact_us
       default_data: ''
-      region: middle
-      weight: 1
+      region: content
+      weight: -9
       uuid: 3b12d50d-cb29-48af-98b6-e219b01927d6
       context_mapping: {  }
     4fc2faec-a87f-43af-980b-d7bd3e4e359d:
@@ -35,7 +35,7 @@ variant_settings:
       status: true
       info: ''
       view_mode: full
-      region: middle
+      region: banner
       weight: -1
       uuid: 4fc2faec-a87f-43af-980b-d7bd3e4e359d
       context_mapping: {  }
@@ -47,7 +47,7 @@ variant_settings:
       status: true
       info: ''
       view_mode: full
-      region: middle
+      region: banner
       weight: 0
       uuid: 12ecd407-f7f3-4270-ba25-f045cac96ab1
       context_mapping: {  }
@@ -55,7 +55,7 @@ variant_settings:
   uuid: 9867eca0-7412-4a3a-b05c-bae4dec7c502
   label: null
   weight: 0
-  layout: onecol
+  layout: stacked
   layout_settings: {  }
   page_title: 'Contact us'
   storage_type: page_manager

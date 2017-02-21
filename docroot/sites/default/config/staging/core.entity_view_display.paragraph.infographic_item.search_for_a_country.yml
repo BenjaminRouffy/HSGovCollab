@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.paragraph.search_for_a_country
     - field.field.paragraph.infographic_item.field_icon
     - field.field.paragraph.infographic_item.field_infographic_description
+    - field.field.paragraph.infographic_item.field_private_content
     - field.field.paragraph.infographic_item.field_title
     - field.field.paragraph.infographic_item.field_value
     - paragraphs.paragraphs_type.infographic_item
@@ -29,8 +30,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_value:
+    type: string
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   created: true
   field_infographic_description: true
-  field_value: true
+  field_private_content: true
   uid: true

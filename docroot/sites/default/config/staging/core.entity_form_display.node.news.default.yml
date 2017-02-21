@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.news.field_category
     - field.field.node.news.field_content_date
     - field.field.node.news.field_content_paragraph
+    - field.field.node.news.field_documents
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_organization
@@ -150,6 +151,14 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
+  field_documents:
+    weight: 13
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_image:
     weight: 2
     settings:

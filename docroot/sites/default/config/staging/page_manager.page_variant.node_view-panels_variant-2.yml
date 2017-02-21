@@ -23,7 +23,7 @@ variant_settings:
       label_display: '0'
       view_mode: default
       region: left_sidebar
-      weight: 0
+      weight: -10
       uuid: 2512a80f-b255-4959-a205-efdd70cd1ede
       context_mapping:
         entity: node
@@ -33,7 +33,7 @@ variant_settings:
       provider: prev_next_access
       label_display: '0'
       region: left_sidebar
-      weight: 0
+      weight: -9
       uuid: 90a62d8f-3689-485f-b040-81cfd84d968b
       context_mapping: {  }
     e486ef32-22c8-49b5-82e1-52044bbb2bed:
@@ -49,7 +49,7 @@ variant_settings:
         third_party_settings: {  }
         weight: 0
       region: right_sidebar
-      weight: 0
+      weight: -2
       uuid: e486ef32-22c8-49b5-82e1-52044bbb2bed
       context_mapping:
         entity: node
@@ -61,9 +61,26 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: right_sidebar
-      weight: 0
+      weight: -1
       uuid: 2c66513d-9d02-4568-8a86-3e2d05e3d3b8
       context_mapping: {  }
+    9784f80a-214b-4d21-b934-43e21db88976:
+      id: 'entity_field:node:field_documents'
+      label: Documents
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: default
+        third_party_settings: {  }
+        weight: 0
+      region: right_sidebar
+      weight: 0
+      uuid: 9784f80a-214b-4d21-b934-43e21db88976
+      context_mapping:
+        entity: node
   id: panels_variant
   uuid: 76a1f3ee-747e-4f12-a884-90568b049c4a
   label: null

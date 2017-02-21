@@ -1,0 +1,31 @@
+uuid: 261340f9-f3d8-4709-bd22-b27e26b5fbe0
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.document
+    - field.field.paragraph.file.field_file
+    - paragraphs.paragraphs_type.file
+  module:
+    - entity_browser
+id: paragraph.file.default
+targetEntityType: paragraph
+bundle: file
+mode: default
+content:
+  field_file:
+    weight: 0
+    settings:
+      entity_browser: document
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: entity_browser_file
+hidden:
+  created: true
+  status: true
+  uid: true

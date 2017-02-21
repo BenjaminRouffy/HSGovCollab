@@ -1,0 +1,22 @@
+uuid: 6ab9bf8a-991a-4228-be42-21e81974f302
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.country-group_node-document
+id: group_content.country-group_node-document.default
+targetEntityType: group_content
+bundle: country-group_node-document
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

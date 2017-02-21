@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_category
     - field.field.node.event.field_date
+    - field.field.node.event.field_documents
     - field.field.node.event.field_event_author
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
@@ -31,7 +32,7 @@ bundle: event
 mode: default
 content:
   addtoany:
-    weight: 13
+    weight: 14
     settings: {  }
     third_party_settings: {  }
   body:
@@ -140,4 +141,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_documents: true
   langcode: true

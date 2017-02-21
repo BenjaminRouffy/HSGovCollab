@@ -1,0 +1,14 @@
+<div class="related-docs">
+  <h2 role="heading">
+    {{ label }}
+  </h2>
+
+  <ul role="list">
+    {% for item in items %}
+      <li role="listitem">
+        {{ item.content }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+

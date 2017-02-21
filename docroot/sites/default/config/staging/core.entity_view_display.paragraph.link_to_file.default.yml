@@ -1,0 +1,28 @@
+uuid: a51afb24-6c2f-480a-8e7f-41c2d61033d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_to_file.field_link
+    - paragraphs.paragraphs_type.link_to_file
+  module:
+    - link
+id: paragraph.link_to_file.default
+targetEntityType: paragraph
+bundle: link_to_file
+mode: default
+content:
+  field_link:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link_separate
+hidden:
+  created: true
+  uid: true

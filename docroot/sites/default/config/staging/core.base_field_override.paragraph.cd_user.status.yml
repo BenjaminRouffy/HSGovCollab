@@ -1,0 +1,22 @@
+uuid: a956cf74-1a80-4c37-ace3-046800613d54
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.cd_user
+id: paragraph.cd_user.status
+field_name: status
+entity_type: paragraph
+bundle: cd_user
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

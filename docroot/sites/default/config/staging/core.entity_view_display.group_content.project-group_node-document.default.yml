@@ -1,0 +1,22 @@
+uuid: 716a1af1-86f1-4e5d-a2e0-3e9b75b1193f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.project-group_node-document
+id: group_content.project-group_node-document.default
+targetEntityType: group_content
+bundle: project-group_node-document
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

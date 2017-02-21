@@ -20,13 +20,16 @@
   </testsuites>
   <!-- Filter for coverage reports. -->
   <filter>
-    <whitelist processUncoveredFilesFromWhitelist="true">
+    <whitelist>
       <directory suffix=".php">./modules/custom</directory>
       <directory suffix=".module">./modules/custom</directory>
 
       <!-- Exclude core -->
       <exclude>
         <directory>core</directory>
+        <!-- By definition test classes have no tests. -->
+        <directory suffix="Test.php">./</directory>
+        <directory suffix="TestBase.php">./</directory>
       </exclude>
     </whitelist>
   </filter>

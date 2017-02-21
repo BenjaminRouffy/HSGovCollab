@@ -15,8 +15,13 @@ function custom_validation_form_webform_submission_contact_us_form_alter(&$form)
 
 /**
  * Form validation handler.
+ *
+ * @param array $form
+ *   An associative array containing the structure of the form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form.
  */
-function _custom_validation_email_validation (&$form, FormStateInterface $form_state) {
+function _custom_validation_email_validation(&$form, FormStateInterface $form_state) {
   $values = $form_state->getValues();
   $email = trim($values['email']);
   $email_check = (bool) filter_var($email, FILTER_VALIDATE_EMAIL);

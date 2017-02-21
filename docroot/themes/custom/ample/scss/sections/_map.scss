@@ -91,4 +91,13 @@
       padding: 0;
     }
   }
+
+  .read-more {
+    color: $white;
+    transform: scale(1.06);
+
+    &:hover {
+      border-color: $white;
+    }
+  }
 }

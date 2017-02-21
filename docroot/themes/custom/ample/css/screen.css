@@ -534,8 +534,13 @@ header .social-links .font-social-icon {
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
   .contact-us .red-btn-link {
-    border-color: #ea3a32;
-    margin: 0; }
+    font-size: 1.3125rem;
+    margin: 0;
+    padding: 20px 40px;
+    -webkit-transition: border .3s ease;
+    transition: border .3s ease; }
+    .contact-us .red-btn-link:hover {
+      color: #ea3a32; }
   .red-btn-link:hover {
     border-color: #ea3a32; }
   .red-btn-link:after {
@@ -3088,3 +3093,9 @@ footer {
       line-height: 20px;
       margin: 12px 0 0;
       padding: 0; }
+  .marker-info .read-more {
+    color: #fff;
+    -webkit-transform: scale(1.06);
+            transform: scale(1.06); }
+    .marker-info .read-more:hover {
+      border-color: #fff; }

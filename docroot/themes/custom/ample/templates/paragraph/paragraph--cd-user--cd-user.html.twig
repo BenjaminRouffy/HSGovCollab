@@ -7,6 +7,15 @@
 
     {% if content.field_cd_user_description|field_value %}
       <div class="infooverlay">
+        <h3>
+          {% if content.field_cd_user[0]['#user'].field_first_name[0].value %}
+            {{ content.field_cd_user[0]['#user'].field_first_name[0].value }}
+          {% endif %}
+          {% if content.field_cd_user[0]['#user'].field_last_name[0].value %}
+            {{ content.field_cd_user[0]['#user'].field_last_name[0].value }}
+          {% endif %}
+        </h3>
+
         <p>
           {{ content.field_cd_user_description|field_value }}
         </p>

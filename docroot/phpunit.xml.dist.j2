@@ -20,8 +20,10 @@
   </testsuites>
   <!-- Filter for coverage reports. -->
   <filter>
-    <whitelist>
-      <directory>./modules/custom</directory>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">./modules/custom</directory>
+      <directory suffix=".module">./modules/custom</directory>
+
       <!-- Exclude core -->
       <exclude>
         <directory>core</directory>

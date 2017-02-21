@@ -5,12 +5,7 @@ namespace Drupal\Tests\country\Kernel;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\file\Entity\File;
-use Drupal\group\Entity\Group;
-use Drupal\group\Entity\GroupTypeInterface;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
-use Drupal\group\Entity\Storage\GroupContentTypeStorageInterface;
-use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\paragraphs\Entity\ParagraphsType;
 use Drupal\simpletest\ContentTypeCreationTrait;
 use Drupal\simpletest\NodeCreationTrait;
 use Drupal\user\Entity\User;
@@ -73,16 +68,11 @@ class FileAccessTest extends EntityKernelTestBase {
    * @var array
    */
   public static $modules = [
-    'group',
-    'group_test_config',
-    'gnode',
     'node',
     'filter',
     'field',
     'file',
     'file_entity',
-    'paragraphs',
-    'entity_reference_revisions',
     'country',
   ];
 
@@ -94,59 +84,36 @@ class FileAccessTest extends EntityKernelTestBase {
 
     $this->entityTypeManager = $this->container->get('entity_type.manager');
 
-    $this->installConfig(['group', 'node', 'group_test_config', 'filter']);
+    $this->installConfig(['node', 'filter']);
     $this->installSchema('file', ['file_usage']);
     $this->installSchema('file_entity', ['file_metadata']);
     $this->installSchema('node', ['node_access']);
     $this->installEntitySchema('file');
-    $this->installEntitySchema('group');
-    $this->installEntitySchema('group_type');
-    $this->installEntitySchema('group_content');
-    $this->installEntitySchema('group_content_type');
-    $this->installEntitySchema('paragraph');
-    \Drupal::moduleHandler()->loadInclude('paragraphs', 'install');
   }
 
   /**
    * Tests file access by group access.
    */
-  public function testFileAccessInGroup() {
+  public function testFileAccess() {
     $anonymous = User::create(array(
       'name' => '',
       'uid' => 0,
     ));
 
-    $this->attachNodeTypeToGroup();
     $this->generateEntity();
 
     $access = country_file_access($this->file, 'view',  $anonymous);
-    $this->assertEquals($access->isAllowed(), TRUE, 'File view is blocked.');
+    $this->assertEquals($access->isNeutral(), TRUE, 'File access neutral.');
 
     $access = country_file_access($this->file, 'download',  $anonymous);
-    $this->assertEquals($access->isAllowed(), TRUE, 'File download is blocked.');
-
-    /* @var Group $group */
-    $group = $this->entityTypeManager->getStorage('group')->create([
-      'type' => 'default',
-      'uid' => $this->account->id(),
-      'label' => $this->randomMachineName(),
-    ]);
-    $group->save();
-
-    // Attach node to group.
-    $group->addContent($this->node, 'group_node:' . $this->contentType->id());
-
-    $access = country_file_access($this->file, 'view',  $anonymous);
-    $this->assertEquals($access->isForbidden(), TRUE, 'File view is blocked.');
-
-    $access = country_file_access($this->file, 'download',  $anonymous);
-    $this->assertEquals($access->isForbidden(), TRUE, 'File download is blocked.');
+    $this->assertEquals($access->isNeutral(), TRUE, 'File download access is neutral.');
   }
 
+
   /**
-   * Install group plugin.
+   * Create File entity.
    */
-  public function attachNodeTypeToGroup() {
+  public function generateEntity() {
     // Create a node type.
     $this->contentType = $this->drupalCreateContentType([
       'type' => 'page',
@@ -154,81 +121,36 @@ class FileAccessTest extends EntityKernelTestBase {
       'display_submitted' => FALSE,
     ]);
 
-    /* @var GroupTypeInterface $group_type */
-    $group_type = $this->entityTypeManager->getStorage('group_type')->load('default');
-
-    // Install some node types on some group types.
-    /** @var GroupContentTypeStorageInterface $storage */
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
-    $storage->createFromPlugin($group_type, 'group_node:' . $this->contentType->id())->save();
-  }
-
-  /**
-   * Create File entity.
-   */
-  public function generateEntity() {
     $file_name = $this->randomMachineName() . '.txt';
-    file_put_contents("public://$file_name", $this->randomString());
 
     $this->file = File::create([
       'uri' => "public://$file_name",
     ]);
     $this->file->save();
 
-    $paragraph_type = ParagraphsType::create(array(
-      'label' => 'File',
-      'id' => 'file',
-    ));
-    $paragraph_type->save();
-
     // Attach a file field to the node type.
     $file_field_storage = FieldStorageConfig::create([
       'type' => 'file',
-      'entity_type' => 'paragraph',
+      'entity_type' => 'node',
       'field_name' => 'field_file',
     ]);
     $file_field_storage->save();
 
     $file_field_instance = FieldConfig::create([
       'field_storage' => $file_field_storage,
-      'entity_type' => 'paragraph',
-      'bundle' => $paragraph_type->id(),
+      'entity_type' => 'node',
+      'bundle' => $this->contentType->id(),
     ]);
-
     $file_field_instance->save();
 
-    $paragraph1 = Paragraph::create([
-      'title' => 'Paragraph',
-      'type' => 'file',
+    // Create some node.
+    $this->node = $this->drupalCreateNode([
+      'title' => 'A node with a file',
       'field_file' => [
         'target_id' => $this->file->id(),
         'display' => 0,
         'description' => 'An attached file',
       ]
-    ]);
-
-    // Add a paragraph field to the article.
-    $field_storage = FieldStorageConfig::create(array(
-      'field_name' => 'node_paragraph_field',
-      'entity_type' => 'node',
-      'type' => 'entity_reference_revisions',
-      'cardinality' => '-1',
-      'settings' => array(
-        'target_type' => 'paragraph'
-      ),
-    ));
-
-    $field_storage->save();
-    $field = FieldConfig::create(array(
-      'field_storage' => $field_storage,
-      'bundle' => $this->contentType->id(),
-    ));
-    $field->save();
-
-    // Create some node.
-    $this->node = $this->drupalCreateNode([
-      'title' => 'A node with a file',
-      'node_paragraph_field' => [$paragraph1],
     ]);
   }
 

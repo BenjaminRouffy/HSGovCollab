@@ -5,6 +5,7 @@ namespace Drupal\Tests\country\Kernel;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\file\Entity\File;
+use Drupal\file_entity\Entity\FileType;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupTypeInterface;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
@@ -120,10 +121,10 @@ class FileAccessByGroupTest extends EntityKernelTestBase {
     $this->generateEntity();
 
     $access = country_file_access($this->file, 'view',  $anonymous);
-    $this->assertEquals($access->isAllowed(), TRUE, 'File view is blocked.');
+    $this->assertEquals($access->isAllowed(), TRUE, 'File view is allowed.');
 
     $access = country_file_access($this->file, 'download',  $anonymous);
-    $this->assertEquals($access->isAllowed(), TRUE, 'File download is blocked.');
+    $this->assertEquals($access->isAllowed(), TRUE, 'File download is allowed.');
 
     /* @var Group $group */
     $group = $this->entityTypeManager->getStorage('group')->create([
@@ -167,9 +168,14 @@ class FileAccessByGroupTest extends EntityKernelTestBase {
    * Create File entity.
    */
   public function generateEntity() {
+    $file_type = FileType::create(['id' => 'document']);
+    $file_type->save();
+
     $file_name = $this->randomMachineName() . '.txt';
+    file_put_contents("public://$file_name", $this->randomString());
 
     $this->file = File::create([
+      'type' => $file_type->id(),
       'uri' => "public://$file_name",
     ]);
     $this->file->save();

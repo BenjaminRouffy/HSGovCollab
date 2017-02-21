@@ -9,7 +9,6 @@ dependencies:
     - field.field.user.user.field_last_name
     - field.field.user.user.field_organisation
   module:
-    - image_url_formatter
     - user
 id: user.user.cd_user_block
 targetEntityType: user
@@ -17,13 +16,12 @@ bundle: user
 mode: cd_user_block
 content:
   field_avatar:
-    type: image_url
+    type: entity_reference_entity_view
     weight: 3
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
-      url_type: ''
+      view_mode: file_uri
+      link: false
     third_party_settings: {  }
   field_first_name:
     weight: 0

@@ -20,11 +20,105 @@ dependencies:
     - node.type.event
   module:
     - events
+    - field_group
     - link
     - paragraphs
     - path
     - rel_content
     - text
+third_party_settings:
+  field_group:
+    group_tabs_panel:
+      children:
+        - group_ba
+        - group_summary
+        - group_event_date_time
+        - group_bo
+        - group_related_content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: 'Tabs panel'
+    group_ba:
+      children:
+        - title
+        - field_event_slider
+        - field_event_author
+      parent_name: group_tabs_panel
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Banner
+    group_summary:
+      children:
+        - body
+        - langcode
+      parent_name: group_tabs_panel
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Summary
+    group_event_date_time:
+      children:
+        - field_date
+        - field_time
+        - field_time_text
+        - field_timezone
+        - field_location
+        - field_event_link
+      parent_name: group_tabs_panel
+      weight: 22
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Event date/time'
+    group_bo:
+      children:
+        - field_join_block
+        - field_category
+        - field_organization
+      parent_name: group_tabs_panel
+      weight: 23
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Bottom
+    group_related_content:
+      children:
+        - field_related_content_selector
+        - public_content
+      parent_name: group_tabs_panel
+      weight: 24
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Related content'
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -32,19 +126,19 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 2
+    weight: 3
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
   field_category:
-    weight: 14
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_date:
-    weight: 4
+    weight: 5
     settings:
       date_type: date_only
       date_format: html_year
@@ -67,14 +161,14 @@ content:
     type: string_textfield
   field_event_link:
     type: link_default
-    weight: 9
+    weight: 10
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
   field_event_slider:
     type: entity_reference_paragraphs
-    weight: 1
+    weight: 2
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -83,19 +177,19 @@ content:
       form_display_mode: simple_image
     third_party_settings: {  }
   field_join_block:
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_location:
-    weight: 8
+    weight: 9
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
   field_organization:
-    weight: 15
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -105,49 +199,49 @@ content:
     third_party_settings: {  }
     type: list_rel_content_select
   field_time:
-    weight: 5
+    weight: 6
     settings:
       date_type: time_only
       date_format: event_time
     third_party_settings: {  }
     type: daterange_eventdaterange
   field_time_text:
-    weight: 6
+    weight: 7
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_timezone:
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_select
   langcode:
     type: language_select
-    weight: 11
+    weight: 4
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 13
+    weight: 14
     settings: {  }
     third_party_settings: {  }
   public_content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 19
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 12
+    weight: 13
     settings: {  }
     third_party_settings: {  }
 hidden:

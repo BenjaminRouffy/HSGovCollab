@@ -687,6 +687,7 @@ header .social-links .font-social-icon {
         flex-wrap: wrap;
     padding-top: 0; }
     .top-banner-region .user-info .paragraph {
+      height: auto;
       max-width: 25%; }
     .top-banner-region .user-info .icon-wrapper {
       height: 150px;
@@ -1751,6 +1752,37 @@ header .social-links .font-social-icon {
   border-radius: 50%;
   overflow: hidden; }
 
+.last-news-by-group {
+  margin-bottom: 5px; }
+  .last-news-by-group .item {
+    clear: both; }
+    .last-news-by-group .item a {
+      border-bottom: 2px solid transparent;
+      display: inline-block;
+      min-height: 50px;
+      padding: 5px 0;
+      position: relative;
+      -webkit-transition: border .2s ease;
+      transition: border .2s ease;
+      vertical-align: top;
+      z-index: 10; }
+      .last-news-by-group .item a:hover {
+        border-color: #ea3a32; }
+  .last-news-by-group .font-social-icon {
+    font-size: 1.75rem;
+    color: #4c7e96;
+    display: inline-block;
+    margin-right: 10px;
+    padding-top: 10px;
+    vertical-align: top; }
+  .last-news-by-group h3 {
+    font-size: 0.875rem;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 8px 0 0;
+    vertical-align: top; }
+
 form {
   font-size: 1.1375rem;
   font-family: Oswald, sans-serif; }
@@ -1870,20 +1902,18 @@ form {
     float: left;
     padding-left: 20px;
     width: 66.64%; }
-  .form-contact-us .inner-bottom-column {
-    margin-top: 55px; }
   .form-contact-us .captcha {
     margin-bottom: 25px; }
   .form-contact-us .terms .field-suffix {
     font-size: 0.9625rem;
-    cursor: help;
     font-family: "Fira Sans", sans-serif;
     padding-left: 10px; }
   .form-contact-us .terms a {
     color: #283b44;
-    text-decoration: none; }
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease; }
     .form-contact-us .terms a:hover {
-      text-decoration: underline; }
+      color: #ea3a32; }
   .form-contact-us .form-textarea {
     min-height: 275px; }
   .form-contact-us .form-actions {
@@ -1894,6 +1924,10 @@ form {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
+  .form-contact-us label:after {
+    content: ":"; }
+  .form-contact-us label.form-required:after {
+    content: ": *"; }
 
 #block-ample-local-tasks {
   background: #fff;
@@ -1961,25 +1995,29 @@ form {
   background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.09);
   margin: 0 10px 10px;
-  padding: 30px 30px 45px; }
+  padding: 30px 30px; }
 
 .view-news-and-events .form-checkboxes {
-  overflow: hidden; }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow: hidden;
+  width: 100%; }
   .view-news-and-events .form-checkboxes .form-item {
-    float: left;
-    padding: 0 10px;
+    padding: 0 10px 30px;
     width: 16.6%; }
   .view-news-and-events .form-checkboxes .form-checkbox {
-    display: inline-block;
-    margin-right: 5px;
-    vertical-align: middle; }
+    float: left;
+    margin-right: 8px; }
   .view-news-and-events .form-checkboxes label {
     font-size: 0.9625rem;
-    display: inline-block;
+    float: left;
     font-family: "Fira Sans", sans-serif;
     letter-spacing: normal;
     margin-bottom: 0;
-    vertical-align: middle; }
+    width: calc(100% - 25px); }
 
 @media (max-width: 991px) {
   .view-news-and-events .wrapper-filters {

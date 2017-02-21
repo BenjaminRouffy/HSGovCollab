@@ -16,9 +16,99 @@ dependencies:
     - group.type.country
   module:
     - datetime
+    - field_group
     - geolocation
     - paragraphs
     - text
+third_party_settings:
+  field_group:
+    group_t:
+      children:
+        - group_banner
+        - group_s
+        - group_content
+        - group_infographic_timeline
+        - group_bottom
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: 'Tabs panel'
+    group_banner:
+      children:
+        - field_banner
+        - label
+        - field_country_icon
+      parent_name: group_t
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Banner
+    group_s:
+      children:
+        - field_date
+        - field_location
+        - langcode
+        - field_regions
+      parent_name: group_t
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Summary
+    group_content:
+      children:
+        - field_summary
+        - field_content
+      parent_name: group_t
+      weight: 22
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+    group_infographic_timeline:
+      children:
+        - field_infographic
+      parent_name: group_t
+      weight: 23
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Infographic/Timeline
+    group_bottom:
+      children:
+        - field_join_block
+        - field_country_options
+      parent_name: group_t
+      weight: 24
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Bottom
 id: group.country.default
 targetEntityType: group
 bundle: country
@@ -26,7 +116,7 @@ mode: default
 content:
   field_banner:
     type: entity_reference_paragraphs
-    weight: 0
+    weight: 1
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -36,7 +126,7 @@ content:
     third_party_settings: {  }
   field_content:
     type: entity_reference_paragraphs
-    weight: 9
+    weight: 8
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -45,7 +135,7 @@ content:
       form_display_mode: private_content
     third_party_settings: {  }
   field_country_icon:
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -54,7 +144,7 @@ content:
     type: entity_reference_autocomplete
   field_country_options:
     type: entity_reference_paragraphs
-    weight: 10
+    weight: 13
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -63,13 +153,13 @@ content:
       form_display_mode: default
     third_party_settings: {  }
   field_date:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
   field_infographic:
     type: entity_reference_paragraphs
-    weight: 8
+    weight: 9
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -78,12 +168,12 @@ content:
       form_display_mode: private_content
     third_party_settings: {  }
   field_join_block:
-    weight: 11
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_location:
-    weight: 4
+    weight: 5
     settings:
       default_longitude: '13.4050'
       default_latitude: '52.5200'
@@ -111,7 +201,7 @@ content:
     third_party_settings: {  }
     type: geolocation_googlegeocoder
   field_regions:
-    weight: 5
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -124,7 +214,7 @@ content:
     type: text_textarea
   label:
     type: string_textfield
-    weight: 1
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -135,7 +225,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   translation:
-    weight: 12
+    weight: 13
     settings: {  }
     third_party_settings: {  }
 hidden:

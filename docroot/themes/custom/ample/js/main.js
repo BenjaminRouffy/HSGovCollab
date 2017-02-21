@@ -159,32 +159,34 @@
       var $bottomHead = $('.bottom-head .wrapper', context);
       var $anchorLink = $('[data-anchor-id]', context);
 
-      if ($anchorLink.length && $anchorLink.length > 1) {
-        $bottomHead.append('<div class="anchor-links"></div>');
+      if (!$('body').is('.group.logged')) {
+        if ($anchorLink.length && $anchorLink.length > 1) {
+          $bottomHead.append('<div class="anchor-links"></div>');
 
-        $anchorLink.each(function(index, element) {
-          var title = $(element).find('.anchor-title').first().text();
-          var id = title.trim();
+          $anchorLink.each(function(index, element) {
+            var title = $(element).find('.anchor-title').first().text();
+            var id = title.trim();
 
-          // Remove  special characters from string.
-          id = id.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '_');
-          id = id.toLowerCase();
-          element.id = id;
+            // Remove  special characters from string.
+            id = id.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '_');
+            id = id.toLowerCase();
+            element.id = id;
 
-          $bottomHead.find('.anchor-links').append('<a href="#' + id + '">' + title + '</a>');
-        });
+            $bottomHead.find('.anchor-links').append('<a href="#' + id + '">' + title + '</a>');
+          });
 
-        $('.anchor-links').on('click', 'a', function(event) {
-          var headerHeight = $('.header-fixed').height();
-          var adminMenuHeight = parseInt($('body').css('padding-top'));
-          var totalHeaderHegiht = headerHeight + adminMenuHeight;
+          $('.anchor-links').on('click', 'a', function(event) {
+            var headerHeight = $('.header-fixed').height();
+            var adminMenuHeight = parseInt($('body').css('padding-top'));
+            var totalHeaderHegiht = headerHeight + adminMenuHeight;
 
-          event.preventDefault();
+            event.preventDefault();
 
-          $('html, body').animate({
-            scrollTop: $('[id="' + $.attr(this, 'href').substr(1) + '"]').offset().top - totalHeaderHegiht
-          }, 1000);
-        });
+            $('html, body').animate({
+              scrollTop: $('[id="' + $.attr(this, 'href').substr(1) + '"]').offset().top - totalHeaderHegiht
+            }, 1000);
+          });
+        }
       }
     }
   };

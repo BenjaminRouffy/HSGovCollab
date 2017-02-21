@@ -155,10 +155,10 @@ function ample_preprocess_paragraph(array &$variables) {
     $link = $variables['content']['field_link'][0]['#url']->getUri();
     $parse = parse_url($link);
 
-    if (strpos($parse['host'], 'google')) {
+    if (strpos($parse['host'], 'google') !== FALSE ) {
       $variables['document_type'] = 'google-drive';
     }
-    elseif(strpos($parse['host'], 'intellectait')) {
+    elseif(strpos($parse['host'], 'intellectait') !== FALSE ) {
       $variables['document_type'] = 'onedrive';
     }
   }

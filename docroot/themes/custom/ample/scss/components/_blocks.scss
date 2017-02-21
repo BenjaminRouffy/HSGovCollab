@@ -676,6 +676,13 @@
       width: 50%;
     }
 
+    .front & {
+      &:nth-child(2) {
+        margin-bottom: 20px;
+        width: 50%;
+      }
+    }
+
     > a {
       padding: 10px 10px 30px;
 

@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * This is the Custom Validation module.
+ */
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function custom_validation_form_webform_submission_contact_us_form_alter(&$form) {
+  $form['#validate'][] = '_custom_validation_email_validation';
+}
+
+/**
+ * Form validation handler.
+ */
+function _custom_validation_email_validation (&$form, FormStateInterface $form_state) {
+  $values = $form_state->getValues();
+  $email = trim($values['email']);
+  $email_check = (bool) filter_var($email, FILTER_VALIDATE_EMAIL);
+
+  if (!$email_check) {
+    $form_state->setErrorByName('email', t('The email address %mail is not valid.', array('%mail' => $email)));
+  }
+}

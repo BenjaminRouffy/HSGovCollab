@@ -15,4 +15,10 @@
       {{ content.field_infographic|field_value }}
     </div>
   {% endif %}
+
+  <div class="bottom-link">
+    <a href="{{ path('entity.group.canonical', {'group': group.id()}) }}" role="link" class="read-more">
+      {{ 'Go to country page'|t }}
+    </a>
+  </div>
 </div>

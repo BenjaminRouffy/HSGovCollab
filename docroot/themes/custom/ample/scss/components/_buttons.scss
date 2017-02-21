@@ -29,8 +29,14 @@
   transition: border .3s ease;
 
   .contact-us & {
-    border-color: $red;
+    @include font-size(21);
     margin: 0;
+    padding: 20px 40px;
+    transition: border .3s ease;
+
+    &:hover {
+      color: $red;
+    }
   }
 
   &:hover {

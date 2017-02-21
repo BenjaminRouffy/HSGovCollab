@@ -8,6 +8,12 @@
   <div class="region-wrapper">
     {{ content.content|without('#prefix', '#suffix') }}
   </div>
+
+  {% if content.right|without('#prefix', '#suffix') is not empty %}
+    <aside class="sidebar">
+      {{ content.right|without('#prefix', '#suffix') }}
+    </aside>
+  {% endif %}
 </section>
 
 {% if content.bottom|without('#prefix', '#suffix') is not empty %}

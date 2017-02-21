@@ -7,6 +7,7 @@ dependencies:
     - views.view.news_events
   content:
     - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
+    - 'block_content:map:88f5fb11-3c7b-4152-a2c0-5a7ba2d6b7d7'
     - 'block_content:social_links:df1384ff-6757-4475-a105-445191f983ec'
   module:
     - block_content
@@ -48,16 +49,28 @@ variant_settings:
       label_display: '0'
       views_label: ''
       items_per_page: none
-      region: left
+      region: content
       weight: 0
       uuid: 8541392a-5791-4d60-9dbc-64b79df10dd1
       pager: view
+      context_mapping: {  }
+    e3d0b99a-0ef6-4e1b-85fb-c9a45ece63ae:
+      id: 'block_content:88f5fb11-3c7b-4152-a2c0-5a7ba2d6b7d7'
+      label: Map
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: banner
+      weight: 0
+      uuid: e3d0b99a-0ef6-4e1b-85fb-c9a45ece63ae
       context_mapping: {  }
   id: panels_variant
   uuid: 73741361-9a0a-4f97-b5ed-a202074df3b0
   label: null
   weight: 0
-  layout: twocol_stacked
+  layout: stacked
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager

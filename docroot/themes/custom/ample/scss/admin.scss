@@ -1,3 +1,12 @@
 img[src$="svg"] {
   max-height: 70px;
 }
+
+.container-inline {
+  label,
+  .label {
+    &:after {
+      content: none;
+    }
+  }
+}

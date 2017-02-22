@@ -1,0 +1,62 @@
+.document-list {
+  background: $white;
+  margin: 50px auto 30px;
+  padding: 20px;
+  width: 80%;
+
+  .document-teaser {
+    border-bottom: 1px solid #e9ecee;
+    margin: 10px 0;
+    padding: 20px 0 20px 60px;
+    position: relative;
+  }
+
+  h4 {
+    @include font-size(16.8);
+    font-family: $oswald;
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 25px;
+    margin: 0 0 5px;
+  }
+
+  .font-social-icon {
+    @include font-size(49);
+    color: $navy;
+    position: absolute;
+    top: 27px;
+    left: 0;
+  }
+
+  p {
+    @include font-size(15.4);
+    font-family: $fira;
+    line-height: 22px;
+    margin-top: 5px;
+  }
+
+  .download {
+    color: $navy-dark;
+    display: inline-block;
+    font-family: $oswald;
+    letter-spacing: .5px;
+    margin: 15px 0;
+    text-decoration: none;
+    transition: opacity .3s ease;
+    vertical-align: top;
+
+    &:before {
+      @include font-size(28);
+      color: $navy;
+      content: 'F';
+      font-family: $p4h;
+      margin-right: 6px;
+      position: relative;
+      top: 7px;
+    }
+
+    &:hover {
+      opacity: .66;
+    }
+  }
+}

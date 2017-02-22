@@ -12,7 +12,9 @@
   {{ rows }}
 
   {% if more %}
-    <a href="{{ more["#url"] }}" class="read-more">{{ more["#title"] }}</a>
+    <div class="bottom-link">
+      <a href="{{ more["#url"] }}" class="read-more">{{ more["#title"] }}</a>
+    </div>
   {% endif %}
 
 </div>

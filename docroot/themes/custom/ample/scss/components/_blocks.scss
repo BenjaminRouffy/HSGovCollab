@@ -403,11 +403,33 @@
   h2 {
     background: url(../images/docs-icon.svg) left center no-repeat;
     background-size: 40px;
+    margin-left: 0;
     padding-left: 60px;
   }
 
   li {
     cursor: default;
+    position: relative;
+  }
+
+  h4 {
+    margin-left: 40px;
+  }
+
+  .font-social-icon {
+    margin-left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    span {
+      @include font-size(30);
+      color: $navy;
+    }
+  }
+
+  .download {
+    margin-left: 44px;
   }
 }
 

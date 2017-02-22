@@ -386,6 +386,26 @@ svg {
 .close-icon > span::after {
   content: "w"; }
 
+.onedrive-icon > a::after,
+.onedrive-icon > span::after {
+  content: "J"; }
+
+.google-icon > a::after,
+.google-icon > span::after {
+  content: "K"; }
+
+.application-pdf-icon > a::after,
+.application-pdf-icon > span::after {
+  content: "A"; }
+
+.x-office-spreadsheet-icon > a::after,
+.x-office-spreadsheet-icon > span::after {
+  content: "S"; }
+
+.x-office-document-icon > a::after,
+.x-office-document-icon > span::after {
+  content: "D"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -1250,10 +1270,27 @@ header .social-links .font-social-icon {
 .related-docs h2 {
   background: url(../images/docs-icon.svg) left center no-repeat;
   background-size: 40px;
+  margin-left: 0;
   padding-left: 60px; }
 
 .related-docs li {
-  cursor: default; }
+  cursor: default;
+  position: relative; }
+
+.related-docs h4 {
+  margin-left: 40px; }
+
+.related-docs .font-social-icon {
+  margin-left: 0;
+  position: absolute;
+  top: 0;
+  left: 0; }
+  .related-docs .font-social-icon span {
+    font-size: 1.875rem;
+    color: #4c7e96; }
+
+.related-docs .download {
+  margin-left: 44px; }
 
 .member-block {
   display: -webkit-box;
@@ -2557,9 +2594,10 @@ footer {
     margin: 0; }
 
 .main-wrapper {
-  border-top: 1px solid #e9e6e6;
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.11);
   overflow-x: hidden; }
+  body:not(.front) .main-wrapper {
+    border-top: 1px solid #e9e6e6; }
   body:not(.who):not(.news-and-events):not(.where):not(.group):not(.front) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {

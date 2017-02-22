@@ -16,7 +16,7 @@
     with "Always display the more link" option of core module.
     See a renderMoreLink function of DisplayPluginBase.
   #}
-  {% if rows is not empty and more and is_anonymous is not defined %}
+  {% if rows is not empty and more and is_anonymous %}
     <a href="{{ more["#url"] }}" class="read-more">{{ more["#title"] }}</a>
   {% endif %}
 

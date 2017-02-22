@@ -19,6 +19,10 @@
   padding: 80px 0 40px;
   width: 100%;
 
+  .front & {
+    max-width: 1260px;
+  }
+
   .contact-us & {
     .top-text-region {
       margin-bottom: 30px;
@@ -37,6 +41,14 @@
 
 .content-with-sidebar {
   @include clearfix();
+
+  .front & {
+    .region-wrapper {
+      float: left;
+      padding-right: 20px;
+      width: 66.64%;
+    }
+  }
 
   .content {
     float: left;

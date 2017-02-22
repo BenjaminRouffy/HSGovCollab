@@ -1,19 +1,21 @@
-{{ "Follow us"|t }}
+<div class="follow-us">
+  <h5>{{ "Follow us on"|t }}:</h5>
 
-{% if content.field_facebook|field_value %}
-  <div class="font-social-icon facebook-icon">
-    <a href="{{ content.field_facebook.0['#url'] }}" target="_blank"></a>
-  </div>
-{% endif %}
+  {% if content.field_facebook|field_value %}
+    <div class="font-social-icon facebook-icon">
+      <a href="{{ content.field_facebook.0['#url'] }}" target="_blank"></a>
+    </div>
+  {% endif %}
 
-{% if content.field_linkedin|field_value %}
-  <div class="font-social-icon linkedin-icon">
-    <a href="{{ content.field_linkedin.0['#url'] }}" target="_blank"></a>
-  </div>
-{% endif %}
+  {% if content.field_linkedin|field_value %}
+    <div class="font-social-icon linkedin-icon">
+      <a href="{{ content.field_linkedin.0['#url'] }}" target="_blank"></a>
+    </div>
+  {% endif %}
 
-{% if content.field_twitter|field_value %}
-  <div class="font-social-icon twitter-icon">
-    <a href="{{ content.field_twitter.0['#url'] }}" target="_blank"></a>
-  </div>
-{% endif %}
+  {% if content.field_twitter|field_value %}
+    <div class="font-social-icon twitter-icon">
+      <a href="{{ content.field_twitter.0['#url'] }}" target="_blank"></a>
+    </div>
+  {% endif %}
+</div>

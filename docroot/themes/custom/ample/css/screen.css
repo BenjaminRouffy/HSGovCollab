@@ -1460,6 +1460,8 @@ header .social-links .font-social-icon {
     display: inline-block;
     vertical-align: top;
     width: 25%; }
+    .front .news-and-events-list .item {
+      width: 33.33%; }
     .news-and-events-list .item > a {
       border-bottom: 2px solid transparent;
       -webkit-transition: background .2s ease, border .2s ease;
@@ -1791,6 +1793,38 @@ header .social-links .font-social-icon {
     line-height: 20px;
     margin: 8px 0 0;
     vertical-align: top; }
+
+.follow-us {
+  margin-top: 20px;
+  text-align: center; }
+  .follow-us h5 {
+    font-size: 0.9rem;
+    color: #4c7e96;
+    margin: 0;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease; }
+    .follow-us h5:hover {
+      color: #ea3a32; }
+  .follow-us .font-social-icon {
+    height: 40px;
+    width: 40px;
+    font-size: 1.875rem;
+    background: #fff;
+    border: 1px solid #283b44;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 40px;
+    margin: 20px 3px;
+    overflow: hidden; }
+  .follow-us a {
+    color: #283b44;
+    display: block;
+    text-decoration: none;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease; }
+    .follow-us a:hover {
+      border-color: #4c7e96;
+      color: #4c7e96; }
 
 form {
   font-size: 1.1375rem;
@@ -2519,6 +2553,8 @@ footer {
   max-width: 1160px;
   padding: 80px 0 40px;
   width: 100%; }
+  .front .content-container {
+    max-width: 1260px; }
   .contact-us .content-container .top-text-region {
     margin-bottom: 30px; }
 
@@ -2536,6 +2572,11 @@ footer {
   content: "";
   display: table;
   clear: both; }
+
+.front .content-with-sidebar .region-wrapper {
+  float: left;
+  padding-right: 20px;
+  width: 66.64%; }
 
 .content-with-sidebar .content {
   float: left;

@@ -17,7 +17,9 @@
     See a renderMoreLink function of DisplayPluginBase.
   #}
   {% if rows is not empty and more and is_anonymous %}
-    <a href="{{ more["#url"] }}" class="read-more">{{ more["#title"] }}</a>
+    <div class="bottom-link">
+      <a href="{{ more["#url"] }}" class="read-more">{{ more["#title"] }}</a>
+    </div>
   {% endif %}
 
 </div>

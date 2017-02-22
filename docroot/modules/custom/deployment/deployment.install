@@ -571,3 +571,20 @@ function deployment_update_8032() {
     'views_geojson',
   ]);
 }
+
+/**
+ * Install modules.
+ */
+function deployment_update_8033() {
+  \Drupal::service('module_installer')->install([
+    'group_dashboard',
+    'admin_theme',
+  ]);
+}
+
+/**
+ * Install module "Views Default Arguments".
+ */
+function deployment_update_8034() {
+  \Drupal::service('module_installer')->install(['views_default_arguments']);
+}

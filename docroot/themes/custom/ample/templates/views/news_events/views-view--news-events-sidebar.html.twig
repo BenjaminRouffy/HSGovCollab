@@ -11,7 +11,12 @@
 
   {{ rows }}
 
-  {% if more %}
+  {# @TODO It would better to fix core:
+    There is condition to non-empty roews has been added because some wrong
+    with "Always display the more link" option of core module.
+    See a renderMoreLink function of DisplayPluginBase.
+  #}
+  {% if rows is not empty and more and is_anonymous %}
     <a href="{{ more["#url"] }}" class="read-more">{{ more["#title"] }}</a>
   {% endif %}
 

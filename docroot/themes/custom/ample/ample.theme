@@ -156,7 +156,7 @@ function ample_preprocess_paragraph(array &$variables) {
     $parse = parse_url($link);
 
     if (strpos($parse['host'], 'google') !== FALSE ) {
-      $variables['document_type'] = 'google-drive';
+      $variables['document_type'] = 'google';
     }
     elseif(strpos($parse['host'], 'intellectait') !== FALSE ) {
       $variables['document_type'] = 'onedrive';

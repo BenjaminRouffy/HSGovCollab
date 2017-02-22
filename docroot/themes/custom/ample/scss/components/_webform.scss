@@ -16,6 +16,36 @@ form {
     font-family: $fira;
     margin: 0 20px 5px 0;
   }
+
+  .form-item {
+    position: relative;
+  }
+
+  input,
+  textarea {
+    &.error,
+    &.error:focus {
+      border-color: $red;
+    }
+
+    &.error {
+      animation: blink 2s linear infinite;
+    }
+
+    ~ label.error {
+      @include font-size(16);
+      color: $red;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-shadow: 1px 1px 0 $red-dark;
+
+      &:after {
+        content: none;
+      }
+    }
+  }
 }
 
 .form-text,
@@ -90,6 +120,7 @@ form {
 
 .form-checkbox {
   appearance: checkbox;
+  animation: none !important;
 }
 
 .form-submit {
@@ -146,11 +177,10 @@ form {
     width: 66.64%;
   }
 
-  .captcha {
-    margin-bottom: 25px;
-  }
 
   .terms {
+    padding-top: 25px;
+
     .field-suffix {
       @include font-size(15.4);
       font-family: $fira;
@@ -163,6 +193,14 @@ form {
 
       &:hover {
         color: $red;
+      }
+    }
+
+    input {
+      ~ label.error {
+        left: 0;
+        right: auto;
+        top: 5px;
       }
     }
   }

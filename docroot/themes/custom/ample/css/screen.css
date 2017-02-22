@@ -406,6 +406,10 @@ svg {
 .x-office-document-icon > span::after {
   content: "D"; }
 
+.download-icon > a::after,
+.download-icon > span::after {
+  content: "F"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -3218,3 +3222,52 @@ footer {
             transform: scale(1.06); }
     .marker-info .read-more:hover {
       border-color: #fff; }
+
+.document-list {
+  background: #fff;
+  margin: 50px auto 30px;
+  padding: 20px;
+  width: 80%; }
+  .document-list .document-teaser {
+    border-bottom: 1px solid #e9ecee;
+    margin: 10px 0;
+    padding: 20px 0 20px 60px;
+    position: relative; }
+  .document-list h4 {
+    font-size: 1.05rem;
+    font-family: Oswald, sans-serif;
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 25px;
+    margin: 0 0 5px; }
+  .document-list .font-social-icon {
+    font-size: 3.0625rem;
+    color: #4c7e96;
+    position: absolute;
+    top: 27px;
+    left: 0; }
+  .document-list p {
+    font-size: 0.9625rem;
+    font-family: "Fira Sans", sans-serif;
+    line-height: 22px;
+    margin-top: 5px; }
+  .document-list .download {
+    color: #283b44;
+    display: inline-block;
+    font-family: Oswald, sans-serif;
+    letter-spacing: .5px;
+    margin: 15px 0;
+    text-decoration: none;
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
+    vertical-align: top; }
+    .document-list .download:before {
+      font-size: 1.75rem;
+      color: #4c7e96;
+      content: 'F';
+      font-family: P4h, sans-serif;
+      margin-right: 6px;
+      position: relative;
+      top: 7px; }
+    .document-list .download:hover {
+      opacity: .66; }

@@ -1,2 +1,6 @@
 img[src$="svg"] {
   max-height: 70px; }
+
+.container-inline label:after,
+.container-inline .label:after {
+  content: none; }

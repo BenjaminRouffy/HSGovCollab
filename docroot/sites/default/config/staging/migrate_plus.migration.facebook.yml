@@ -1,0 +1,36 @@
+uuid: 05c7a2c3-a02a-4fa0-90e2-af2b02b65c82
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_social_implementation
+id: facebook
+migration_tags: null
+migration_group: social_networks
+label: 'Migrate facebook feed into Drupal nodes'
+source:
+  plugin: social_network
+  track_changes: true
+  social_network_plugin: facebook
+process:
+  id: id
+  title:
+    plugin: get
+    source:
+      - story
+      - message
+  created:
+    plugin: callback
+    source: created_time
+    callable: strtotime
+  type:
+    plugin: default_value
+    default_value: social
+  field_social_type:
+    plugin: default_value
+    default_value: facebook
+  field_media: full_picture
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

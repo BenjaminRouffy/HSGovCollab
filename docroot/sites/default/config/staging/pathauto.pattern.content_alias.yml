@@ -1,0 +1,24 @@
+uuid: 0ef9861f-af13-422a-89cb-b93d4105f922
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: content_alias
+label: 'Content alias'
+type: 'canonical_entities:node'
+pattern: '[node:content-type:name]/[node:title]'
+selection_criteria:
+  b2f1c1d1-3afb-4add-9684-26a21e0e7991:
+    id: node_type
+    bundles:
+      event: event
+      member: member
+      news: news
+    negate: false
+    context_mapping:
+      node: node
+    uuid: b2f1c1d1-3afb-4add-9684-26a21e0e7991
+selection_logic: and
+weight: -5
+relationships: {  }

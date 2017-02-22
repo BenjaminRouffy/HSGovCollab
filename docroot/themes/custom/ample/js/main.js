@@ -327,6 +327,7 @@
   Drupal.behaviors.mobileMenu = {
     attach: function(context, settings) {
       $('.mobile-menu-btn', context).on('click', function() {
+        $('body').toggleClass('fixed');
         $(this).toggleClass('opened');
       });
 

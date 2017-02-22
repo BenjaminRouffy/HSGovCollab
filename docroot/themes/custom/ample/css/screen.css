@@ -994,7 +994,7 @@ header .social-links .font-social-icon {
       .more-content blockquote.related-docs li:hover,
       .timeline.corners li:hover, .timeline.image-text li:hover, .content blockquote.timeline li:hover,
       .more-content blockquote.timeline li:hover {
-        background: transparent; }
+        background: #fff; }
   .news-events-list h2,
   .related-docs h2,
   .timeline h2 {
@@ -2341,6 +2341,52 @@ header {
   .mobile-menu-btn:hover {
     color: #ea3a32; }
 
+.header-fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 400; }
+  .header-fixed .top-head {
+    background-image: -webkit-linear-gradient(top, #334c58, #283b44);
+    background-image: linear-gradient(180deg, #334c58, #283b44);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
+    height: 60px; }
+  .header-fixed .logo-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .header-fixed .logo-wrapper .logo {
+      background: #fff;
+      border-bottom: 2px solid #ea3a32;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      display: inline-block;
+      height: 70px;
+      padding-top: 6px;
+      width: 93px; }
+    .header-fixed .logo-wrapper img {
+      display: block;
+      margin: 0 auto;
+      width: 63px; }
+  .header-fixed .main-menu ul a {
+    color: #fff;
+    font-weight: 200;
+    padding: 20px 30px; }
+  .header-fixed .service-links {
+    right: 0;
+    top: 20px;
+    position: absolute; }
+    .header-fixed .service-links ul:not(.contextual-links) li {
+      display: inline-block;
+      vertical-align: top; }
+    .header-fixed .service-links a {
+      font-size: 0.875rem;
+      color: #fff;
+      font-family: Oswald, sans-serif;
+      font-weight: 200;
+      padding: 20px 5px;
+      text-decoration: none; }
+      .header-fixed .service-links a:hover {
+        opacity: .56; }
+
 @media (max-width: 991px) {
   .header-static, .header-fixed {
     min-height: 80px; }
@@ -2350,16 +2396,31 @@ header {
     .header-static .logo-wrapper img, .header-fixed .logo-wrapper img {
       height: 86px;
       width: 103px; }
-    .header-static .links,
+    .header-static .language-switcher-language-url,
     .header-static .service-links,
-    .header-static .social-links, .header-fixed .links,
+    .header-static .social-links, .header-fixed .language-switcher-language-url,
     .header-fixed .service-links,
     .header-fixed .social-links {
-      position: static; }
+      position: static;
+      text-align: left; }
     .header-static .desktop-service-links, .header-fixed .desktop-service-links {
       display: none; }
     .header-static .mobile-service-links, .header-fixed .mobile-service-links {
       display: block; }
+      .header-static .mobile-service-links a, .header-fixed .mobile-service-links a {
+        font-family: Oswald, sans-serif;
+        display: block;
+        text-decoration: none;
+        text-transform: uppercase; }
+    .header-static .language-switcher-language-url, .header-fixed .language-switcher-language-url {
+      height: auto; }
+    .header-static .links a, .header-fixed .links a {
+      font-size: 1.1375rem;
+      padding: 30px; }
+      .header-static .links a:hover, .header-fixed .links a:hover {
+        background: #f5f5f5;
+        color: #ea3a32;
+        opacity: 1; }
     .header-static .service-links, .header-fixed .service-links {
       height: auto;
       text-align: left; }
@@ -2370,6 +2431,7 @@ header {
         .header-static .service-links ul:not(.contextual-links) a, .header-fixed .service-links ul:not(.contextual-links) a {
           font-size: 1.1375rem;
           color: #283b44;
+          display: block;
           height: auto;
           padding: 30px; }
           .header-static .service-links ul:not(.contextual-links) a:hover, .header-fixed .service-links ul:not(.contextual-links) a:hover {
@@ -2380,6 +2442,8 @@ header {
       background: #e9ecee;
       box-shadow: -1px 7px 14px rgba(0, 0, 0, 0.11);
       height: calc(100% - 80px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       position: fixed;
       top: 80px;
       right: -60%;
@@ -2453,52 +2517,6 @@ header {
       .header-static .mobile-menu-wrapper .partners li, .header-fixed .mobile-menu-wrapper .partners li {
         height: 47px;
         margin-right: 10px; } }
-
-.header-fixed {
-  position: fixed;
-  width: 100%;
-  z-index: 400; }
-  .header-fixed .top-head {
-    background-image: -webkit-linear-gradient(top, #334c58, #283b44);
-    background-image: linear-gradient(180deg, #334c58, #283b44);
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
-    height: 60px; }
-  .header-fixed .logo-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0; }
-    .header-fixed .logo-wrapper .logo {
-      background: #fff;
-      border-bottom: 2px solid #ea3a32;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-      display: inline-block;
-      height: 70px;
-      padding-top: 6px;
-      width: 93px; }
-    .header-fixed .logo-wrapper img {
-      display: block;
-      margin: 0 auto;
-      width: 63px; }
-  .header-fixed .main-menu ul a {
-    color: #fff;
-    font-weight: 200;
-    padding: 20px 30px; }
-  .header-fixed .service-links {
-    right: 0;
-    top: 20px;
-    position: absolute; }
-    .header-fixed .service-links ul:not(.contextual-links) li {
-      display: inline-block;
-      vertical-align: top; }
-    .header-fixed .service-links a {
-      font-size: 0.875rem;
-      color: #fff;
-      font-family: Oswald, sans-serif;
-      font-weight: 200;
-      padding: 20px 5px;
-      text-decoration: none; }
-      .header-fixed .service-links a:hover {
-        opacity: .56; }
 
 @media (max-width: 991px) {
   .header-fixed .mobile-menu-btn {

@@ -129,6 +129,74 @@ header {
   }
 }
 
+.header-fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 400;
+
+  .top-head {
+    background-image: linear-gradient(180deg, #334c58, $navy-dark);
+    box-shadow: 0 1px 8px rgba($black, .16);
+    height: 60px;
+  }
+
+  .logo-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .logo {
+      background: $white;
+      border-bottom: 2px solid $red;
+      box-shadow: 0 1px 3px rgba($black, .25);
+      display: inline-block;
+      height: 70px;
+      padding-top: 6px;
+      width: 93px;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 63px;
+    }
+  }
+
+  .main-menu {
+    ul {
+      a {
+        color: $white;
+        font-weight: 200;
+        padding: 20px 30px;
+      }
+    }
+  }
+
+  .service-links {
+    right: 0;
+    top: 20px;
+    position: absolute;
+
+    ul:not(.contextual-links) li {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    a {
+      @include font-size(14);
+      color: $white;
+      font-family: $oswald;
+      font-weight: 200;
+      padding: 20px 5px;
+      text-decoration: none;
+
+      &:hover {
+        opacity: .56;
+      }
+    }
+  }
+}
+
 @include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {
   min-height: 80px;
 
@@ -144,10 +212,11 @@ header {
     }
   }
 
-  .links,
+  .language-switcher-language-url,
   .service-links,
   .social-links {
     position: static;
+    text-align: left;
   }
 
   .desktop-service-links {
@@ -156,6 +225,30 @@ header {
 
   .mobile-service-links {
     display: block;
+
+    a {
+      font-family: $oswald;
+      display: block;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+
+  .language-switcher-language-url {
+    height: auto;
+  }
+
+  .links {
+    a {
+      @include font-size(18.2);
+      padding: 30px;
+
+      &:hover {
+        background: $white-dark;
+        color: $red;
+        opacity: 1;
+      }
+    }
   }
 
   .service-links {
@@ -172,6 +265,7 @@ header {
       a {
         @include font-size(18.2);
         color: $navy-dark;
+        display: block;
         height: auto;
         padding: 30px;
 
@@ -188,6 +282,8 @@ header {
     background: #e9ecee;
     box-shadow: -1px 7px 14px rgba($black, .11);
     height: calc(100% - 80px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     position: fixed;
     top: 80px;
     right: -60%;
@@ -303,73 +399,6 @@ header {
   }
 }
 
-.header-fixed {
-  position: fixed;
-  width: 100%;
-  z-index: 400;
-
-  .top-head {
-    background-image: linear-gradient(180deg, #334c58, $navy-dark);
-    box-shadow: 0 1px 8px rgba($black, .16);
-    height: 60px;
-  }
-
-  .logo-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    .logo {
-      background: $white;
-      border-bottom: 2px solid $red;
-      box-shadow: 0 1px 3px rgba($black, .25);
-      display: inline-block;
-      height: 70px;
-      padding-top: 6px;
-      width: 93px;
-    }
-
-    img {
-      display: block;
-      margin: 0 auto;
-      width: 63px;
-    }
-  }
-
-  .main-menu {
-    ul {
-      a {
-        color: $white;
-        font-weight: 200;
-        padding: 20px 30px;
-      }
-    }
-  }
-
-  .service-links {
-    right: 0;
-    top: 20px;
-    position: absolute;
-
-    ul:not(.contextual-links) li {
-      display: inline-block;
-      vertical-align: top;
-    }
-
-    a {
-      @include font-size(14);
-      color: $white;
-      font-family: $oswald;
-      font-weight: 200;
-      padding: 20px 5px;
-      text-decoration: none;
-
-      &:hover {
-        opacity: .56;
-      }
-    }
-  }
-}
 
 @include breakpoint-for('.header-fixed', (to: laptop-small)) {
   .mobile-menu-btn {

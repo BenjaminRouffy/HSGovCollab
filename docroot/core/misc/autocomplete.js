@@ -201,7 +201,7 @@
    */
   function renderItem(ul, item) {
     return $('<li>')
-      .append($('<a>').html(item.label))
+      .append($('<span>').html(item.label))
       .appendTo(ul);
   }
 

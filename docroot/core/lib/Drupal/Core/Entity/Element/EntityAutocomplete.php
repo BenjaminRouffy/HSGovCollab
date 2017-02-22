@@ -294,7 +294,7 @@ class EntityAutocomplete extends Textfield {
       // More helpful error if there are only a few matching entities.
       $multiples = array();
       foreach ($entities as $id => $name) {
-        $multiples[] = $name . ' (' . $id . ')';
+        $multiples[] = strip_tags($name) . ' (' . $id . ')';
       }
       $params['@id'] = $id;
       $form_state->setError($element, t('Multiple entities match this reference; "%multiple". Specify the one you want by appending the id in parentheses, like "@value (@id)".', array('%multiple' => implode('", "', $multiples)) + $params));

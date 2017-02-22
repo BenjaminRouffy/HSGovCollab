@@ -9,6 +9,7 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\views\Views;
@@ -48,6 +49,13 @@ class ViewsSelection extends PluginBase implements SelectionInterface, Container
   protected $currentUser;
 
   /**
+   * The renderer.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected $renderer;
+
+  /**
    * Constructs a new SelectionBase object.
    *
    * @param array $configuration
@@ -62,13 +70,16 @@ class ViewsSelection extends PluginBase implements SelectionInterface, Container
    *   The module handler service.
    * @param \Drupal\Core\Session\AccountInterface $current_user
    *   The current user.
+   * @param \Drupal\Core\Render\RendererInterface $renderer
+   *   The current renderer service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityManagerInterface $entity_manager, ModuleHandlerInterface $module_handler, AccountInterface $current_user) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityManagerInterface $entity_manager, ModuleHandlerInterface $module_handler, AccountInterface $current_user, RendererInterface $renderer) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->entityManager = $entity_manager;
     $this->moduleHandler = $module_handler;
     $this->currentUser = $current_user;
+    $this->renderer = $renderer;
   }
 
   /**
@@ -81,7 +92,8 @@ class ViewsSelection extends PluginBase implements SelectionInterface, Container
       $plugin_definition,
       $container->get('entity.manager'),
       $container->get('module_handler'),
-      $container->get('current_user')
+      $container->get('current_user'),
+      $container->get('renderer')
     );
   }
 
@@ -222,9 +234,9 @@ class ViewsSelection extends PluginBase implements SelectionInterface, Container
 
     $return = array();
     if ($result) {
-      foreach ($this->view->result as $row) {
-        $entity = $row->_entity;
-        $return[$entity->bundle()][$entity->id()] = $entity->label();
+      foreach ($result as $id => $row) {
+        $entity = $row['#row']->_entity;
+        $return[$entity->bundle()][$id] = $this->renderer->renderPlain($row);
       }
     }
     return $return;

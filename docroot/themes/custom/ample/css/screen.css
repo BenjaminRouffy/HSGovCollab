@@ -301,6 +301,22 @@ svg {
   width: 100%;
   z-index: 600; }
 
+@-webkit-keyframes blink {
+  0% {
+    box-shadow: 0 0 5px #ea3a32; }
+  50% {
+    box-shadow: 0 0 0 #ea3a32; }
+  100% {
+    box-shadow: 0 0 5px #ea3a32; } }
+
+@keyframes blink {
+  0% {
+    box-shadow: 0 0 5px #ea3a32; }
+  50% {
+    box-shadow: 0 0 0 #ea3a32; }
+  100% {
+    box-shadow: 0 0 5px #ea3a32; } }
+
 @font-face {
   font-family: "P4h";
   src: url("../fonts/p4h.ttf") format("truetype");
@@ -1880,6 +1896,28 @@ form {
     color: #ea3a32;
     font-family: "Fira Sans", sans-serif;
     margin: 0 20px 5px 0; }
+  form .form-item {
+    position: relative; }
+  form input.error, form input.error:focus,
+  form textarea.error,
+  form textarea.error:focus {
+    border-color: #ea3a32; }
+  form input.error,
+  form textarea.error {
+    -webkit-animation: blink 2s linear infinite;
+            animation: blink 2s linear infinite; }
+  form input ~ label.error,
+  form textarea ~ label.error {
+    font-size: 1rem;
+    color: #ea3a32;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-shadow: 1px 1px 0 #8c2222; }
+    form input ~ label.error:after,
+    form textarea ~ label.error:after {
+      content: none; }
 
 .form-text, .form-textarea,
 .form-email {
@@ -1942,7 +1980,9 @@ form {
 .form-checkbox {
   -webkit-appearance: checkbox;
      -moz-appearance: checkbox;
-          appearance: checkbox; }
+          appearance: checkbox;
+  -webkit-animation: none !important;
+          animation: none !important; }
 
 .form-submit {
   background: #fff;
@@ -1986,18 +2026,22 @@ form {
     float: left;
     padding-left: 20px;
     width: 66.64%; }
-  .form-contact-us .captcha {
-    margin-bottom: 25px; }
-  .form-contact-us .terms .field-suffix {
-    font-size: 0.9625rem;
-    font-family: "Fira Sans", sans-serif;
-    padding-left: 10px; }
-  .form-contact-us .terms a {
-    color: #283b44;
-    -webkit-transition: color .2s ease;
-    transition: color .2s ease; }
-    .form-contact-us .terms a:hover {
-      color: #ea3a32; }
+  .form-contact-us .terms {
+    padding-top: 25px; }
+    .form-contact-us .terms .field-suffix {
+      font-size: 0.9625rem;
+      font-family: "Fira Sans", sans-serif;
+      padding-left: 10px; }
+    .form-contact-us .terms a {
+      color: #283b44;
+      -webkit-transition: color .2s ease;
+      transition: color .2s ease; }
+      .form-contact-us .terms a:hover {
+        color: #ea3a32; }
+    .form-contact-us .terms input ~ label.error {
+      left: 0;
+      right: auto;
+      top: 5px; }
   .form-contact-us .form-textarea {
     min-height: 275px; }
   .form-contact-us .form-actions {

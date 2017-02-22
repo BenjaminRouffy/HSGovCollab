@@ -172,3 +172,11 @@ svg {
   width: 100%;
   z-index: 600;
 }
+
+//------------------------------------------------------------------------------
+// Keyframes
+@keyframes blink {
+  0% { box-shadow: 0 0 5px $red; }
+  50% { box-shadow: 0 0 0 $red; }
+  100% { box-shadow: 0 0 5px $red; }
+}

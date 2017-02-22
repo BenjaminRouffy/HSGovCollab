@@ -2,6 +2,8 @@
 
 namespace Drupal\field\Tests\EntityReference\Views;
 
+use Drupal\Component\Utility\Crypt;
+use Drupal\Core\Site\Settings;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\simpletest\WebTestBase;
 use Drupal\views\Views;
@@ -17,11 +19,18 @@ class SelectionTest extends WebTestBase {
   public static $modules = ['node', 'views', 'entity_reference_test', 'entity_test'];
 
   /**
-   * Nodes for testing.
+   * An array of node titles, keyed by content type and node ID.
    *
    * @var array
    */
-  protected $nodes = array();
+  protected $nodeTitles = [];
+
+  /**
+   * An array of node entities.
+   *
+   * @var \Drupal\node\NodeInterface[]
+   */
+  protected $nodes = [];
 
   /**
    * The entity reference field to test.
@@ -36,14 +45,17 @@ class SelectionTest extends WebTestBase {
   protected function setUp() {
     parent::setUp();
 
-    // Create nodes.
-    $type = $this->drupalCreateContentType()->id();
-    $node1 = $this->drupalCreateNode(array('type' => $type));
-    $node2 = $this->drupalCreateNode(array('type' => $type));
-    $node3 = $this->drupalCreateNode();
+    // Create content types and nodes.
+    $type1 = $this->drupalCreateContentType()->id();
+    $type2 = $this->drupalCreateContentType()->id();
+
+    $node1 = $this->drupalCreateNode(['type' => $type1, 'title' => 'Test first node']);
+    $node2 = $this->drupalCreateNode(['type' => $type1, 'title' => 'Test second node']);
+    $node3 = $this->drupalCreateNode(['type' => $type2, 'title' => 'Test third node']);
 
     foreach (array($node1, $node2, $node3) as $node) {
-      $this->nodes[$node->getType()][$node->id()] = $node->label();
+      $this->nodes[] = $node;
+      $this->nodeTitles[$node->getType()][$node->id()] = $node->label();
     }
 
     // Create a field.
@@ -77,6 +89,50 @@ class SelectionTest extends WebTestBase {
   }
 
   /**
+   * Tests that the Views selection handles the views output properly.
+   */
+  public function testAutocompleteOutput() {
+    // Reset any internal static caching.
+    \Drupal::service('entity_type.manager')->getStorage('node')->resetCache();
+
+    $view = Views::getView('test_entity_reference');
+    $view->setDisplay();
+
+    // Enable the display of the 'type' field so we can test that the output
+    // does not contain only the entity label.
+    $fields = $view->displayHandlers->get('default')->getOption('fields');
+    $fields['type']['exclude'] = FALSE;
+    $view->displayHandlers->get('default')->setOption('fields', $fields);
+    $view->save();
+
+    // Prepare the selection settings key needed by the entity reference
+    // autocomplete route.
+    $target_type = 'node';
+    $selection_handler = $this->field->getSetting('handler');
+    $selection_settings = $this->field->getSetting('handler_settings');
+    $selection_settings_key = Crypt::hmacBase64(serialize($selection_settings) . $target_type . $selection_handler, Settings::getHashSalt());
+    \Drupal::keyValue('entity_autocomplete')->set($selection_settings_key, $selection_settings);
+
+    $result = $this->drupalGetJSON('entity_reference_autocomplete/' . $target_type . '/' . $selection_handler . '/' . $selection_settings_key, ['query' => ['q' => 't']]);
+
+    $expected = [
+      0 => [
+        'value' => $this->nodes[0]->bundle() . ': ' . $this->nodes[0]->label() . ' (' . $this->nodes[0]->id() . ')',
+        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[0]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content"><a href="' . $this->nodes[0]->toUrl()->toString() . '" hreflang="en">' . $this->nodes[0]->label() . '</a></span></span>',
+      ],
+      1 => [
+        'value' => $this->nodes[1]->bundle() . ': ' . $this->nodes[1]->label() . ' (' . $this->nodes[1]->id() . ')',
+        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[1]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content"><a href="' . $this->nodes[1]->toUrl()->toString() . '" hreflang="en">' . $this->nodes[1]->label() . '</a></span></span>',
+      ],
+      2 => [
+        'value' => $this->nodes[2]->bundle() . ': ' . $this->nodes[2]->label() . ' (' . $this->nodes[2]->id() . ')',
+        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[2]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content"><a href="' . $this->nodes[2]->toUrl()->toString() . '" hreflang="en">' . $this->nodes[2]->label() . '</a></span></span>',
+      ],
+    ];
+    $this->assertEqual($result, $expected, 'The autocomplete result of the Views entity reference selection handler contains the proper output.');
+  }
+
+  /**
    * Confirm the expected results are returned.
    *
    * @param array $result
@@ -86,7 +142,7 @@ class SelectionTest extends WebTestBase {
     $success = FALSE;
     foreach ($result as $node_type => $values) {
       foreach ($values as $nid => $label) {
-        if (!$success = $this->nodes[$node_type][$nid] == trim(strip_tags($label))) {
+        if (!$success = $this->nodeTitles[$node_type][$nid] == trim(strip_tags($label))) {
           // There was some error, so break.
           break;
         }

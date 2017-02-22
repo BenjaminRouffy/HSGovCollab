@@ -23,7 +23,10 @@
         ],
         "merge-plugin": {
             "include": [
-                "core/composer.json"
+                "core/composer.json",
+                "modules/contrib/sdk/modules/sdk_facebook/composer.json",
+                "modules/contrib/sdk/modules/sdk_linkedin/composer.json",
+                "modules/contrib/sdk/modules/sdk_twitter/composer.json"
             ],
             "recurse": false,
             "replace": false,
@@ -42,7 +45,8 @@
             "drupal/core": {
                 "views_query_views_alter() does not handle IN queries": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch",
                 "Title for details form elements is not set as '#markup'": "https://www.drupal.org/files/issues/2652850-17.patch",
-                "Contextual links double trigger (https://www.drupal.org/node/2834346)": "https://www.drupal.org/files/issues/contextual-2834346-D8.patch"
+                "Contextual links double trigger (https://www.drupal.org/node/2834346)": "https://www.drupal.org/files/issues/contextual-2834346-D8.patch",
+                "View output is not used for entityreference options": "https://www.drupal.org/files/issues/view_output_is_not_used-2174633-93.patch"
             }
         }
     },

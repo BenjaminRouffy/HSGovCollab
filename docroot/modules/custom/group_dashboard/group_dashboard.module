@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Contains group_dashboard.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function group_dashboard_entity_type_alter(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  $entity_types['group_content']->setListBuilderClass('\Drupal\group_dashboard\Controller\GroupRelatedEntitiesListBuilder');
+  $entity_types['group']->setListBuilderClass('\Drupal\group_dashboard\Controller\GroupAdminListBuilder');
+}

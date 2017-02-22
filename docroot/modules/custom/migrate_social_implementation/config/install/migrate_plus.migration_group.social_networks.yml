@@ -1,0 +1,8 @@
+id: social_networks
+label: Social networks
+description: Import from social networks like Facebook.
+source_type: SocialNetworks
+dependencies:
+  enforced:
+    module:
+      - migrate_social_implementation

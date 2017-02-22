@@ -2,6 +2,7 @@
 
 namespace Drupal\migrate_social\Plugin\migrate\source;
 
+use Drupal\migrate\Plugin\migrate\source\SourcePluginBase;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate_plus\Plugin\migrate\source\SourcePluginExtension;
 
@@ -9,11 +10,11 @@ use Drupal\migrate_plus\Plugin\migrate\source\SourcePluginExtension;
  * Source plugin for retrieving data from social networks.
  *
  * @MigrateSource(
- *   id = "social"
+ *   id = "social_network"
  * )
  */
-class Social extends SourcePluginExtension {
-  
+class Social extends SourcePluginBase {
+
   /**
    * The social network plugin.
    *
@@ -24,12 +25,11 @@ class Social extends SourcePluginExtension {
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration) {
-    if (!is_array($configuration['urls'])) {
-      $configuration['urls'] = [$configuration['urls']];
-    }
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $migration);
+  public function fields() {
+    $this->getSocialNetworkPlugin();
+    $this->socialNetworkPlugin->next();
 
+    return $this->socialNetworkPlugin->current();
   }
 
   /**
@@ -40,7 +40,7 @@ class Social extends SourcePluginExtension {
    */
   public function __toString() {
     // This could cause a problem when using a lot of urls, may need to hash.
-    $urls = implode(', ', $this->sourceUrls);
+    $urls = implode(', ', [1]);
     return $urls;
   }
 
@@ -66,5 +66,18 @@ class Social extends SourcePluginExtension {
    */
   protected function initializeIterator() {
     return $this->getSocialNetworkPlugin();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getIds() {
+    return [
+       'id' => [
+         'type' => 'string',
+         'max_length' => 64,
+         'is_ascii' => TRUE,
+       ],
+     ];
   }
 }

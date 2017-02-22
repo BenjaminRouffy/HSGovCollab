@@ -1,0 +1,9 @@
+<a href="#">
+  <div class="font-social-icon facebook-icon">
+    <span></span>
+  </div>
+  <time datetime="{{ node.createdtime | date("Y-m-d") }}">
+    {{ node.createdtime | format_date('time_line') }}
+  </time>
+  <p class="tweet">{{ label }}</p>
+</a>

@@ -1,5 +1,5 @@
 <a href="#">
-  <div class="font-social-icon facebook-icon">
+  <div class="font-social-icon {{ content.field_social_type|render|striptags|trim }}-icon">
     <span></span>
   </div>
   <time datetime="{{ node.createdtime | date("Y-m-d") }}">

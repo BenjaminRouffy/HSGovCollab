@@ -1,0 +1,53 @@
+id: twitter
+label: Migrate twitter feed into Drupal nodes
+migration_group: social_networks
+source:
+  plugin: social_network
+  track_changes: true
+  social_network_plugin: twitter
+destination:
+  plugin: entity:node
+
+process:
+  # Note that the source field names here (machine_name and friendly_name) were
+  # defined by the 'fields' configuration for the source plugin above.
+  id: id
+  title:
+    plugin: get
+    source:
+      - text
+  created:
+    plugin: callback
+    source: created_at
+    callable: strtotime
+
+  # Hardcode the destination node type.
+  type:
+    plugin: default_value
+    default_value: social
+
+  # Hardcode the social type.
+  field_social_type:
+    plugin: default_value
+    default_value: twitter
+
+  # Twiiter return or null or array in array.
+  field_media:
+    - plugin: iterator
+      source: extended_entities
+      process:
+        media:
+          plugin: get
+          source: '0'
+
+    - plugin: extract
+      default: ''
+      index:
+        - media
+        - media
+        - media_url
+
+dependencies:
+  enforced:
+    module:
+      - migrate_social_implementation

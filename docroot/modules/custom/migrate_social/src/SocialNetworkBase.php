@@ -13,7 +13,17 @@ use Drupal\migrate_social\SocialNetworkInterface;
  */
 abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInterface {
   private $currentItem;
+  protected $instance;
+  protected $iterator;
 
+  /**
+   * @inheritdoc
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->instance = sdk($this->pluginId);
+  }
+  
   /**
    * {@inheritdoc}
    */
@@ -37,18 +47,6 @@ abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInte
     // At this point, we have a valid open source url, try to fetch a row from
     // it.
     $this->fetchNextRow();
-    // If there was no valid row there, try the next url (if any).
-    if (is_null($this->currentItem)) {
-      if ($this->nextSource()) {
-        $this->fetchNextRow();
-      }
-    }
-//    if ($this->valid()) {
-//      $i=1;
-////      foreach ($this->getIds as $id_field_name => $id_info) {
-////        $this->currentId[$id_field_name] = $this->currentItem[$id_field_name];
-////      }
-//    }
   }
   /**
    * {@inheritdoc}

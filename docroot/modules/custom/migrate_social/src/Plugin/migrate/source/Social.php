@@ -28,8 +28,13 @@ class Social extends SourcePluginBase {
   public function fields() {
     $this->getSocialNetworkPlugin();
     $this->socialNetworkPlugin->next();
+    $result = [];
+    foreach ($this->socialNetworkPlugin->current() as $name => $value) {
+      $result[$name] = print_r($value,true);
 
-    return $this->socialNetworkPlugin->current();
+    }
+
+    return $result;
   }
 
   /**

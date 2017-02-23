@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Twitter SDK.
+ */
+
+use Drupal\sdk_twitter\Sdk\TwitterForm;
+use Drupal\sdk_twitter\Sdk\TwitterDeriver;
+
+/**
+ * Implements hook_sdk_types().
+ */
+function sdk_twitter_sdk_types() {
+  $types = [];
+
+  $types['twitter'] = [
+    'label' => t('Twitter'),
+    'classes' => [
+      'form' => TwitterForm::class,
+      'deriver' => TwitterDeriver::class,
+    ],
+  ];
+
+  return $types;
+}

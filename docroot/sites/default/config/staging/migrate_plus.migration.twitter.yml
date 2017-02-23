@@ -1,0 +1,49 @@
+uuid: 4cd729e0-ddf7-4ce2-b9ff-f698a30b6e8b
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_social_implementation
+id: twitter
+migration_tags: null
+migration_group: social_networks
+label: 'Migrate twitter feed into Drupal nodes'
+source:
+  plugin: social_network
+  track_changes: true
+  social_network_plugin: twitter
+process:
+  id: id
+  title:
+    plugin: get
+    source:
+      - text
+  created:
+    plugin: callback
+    source: created_at
+    callable: strtotime
+  type:
+    plugin: default_value
+    default_value: social
+  field_social_type:
+    plugin: default_value
+    default_value: twitter
+  field_media:
+    -
+      plugin: iterator
+      source: extended_entities
+      process:
+        media:
+          plugin: get
+          source: '0'
+    -
+      plugin: extract
+      default: ''
+      index:
+        - media
+        - media
+        - media_url
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

@@ -1,0 +1,18 @@
+uuid: 01d32017-1227-484a-9a5d-0781b94341fc
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Social
+type: social
+description: 'Social network items, migrated programmatically from third-party-service. '
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

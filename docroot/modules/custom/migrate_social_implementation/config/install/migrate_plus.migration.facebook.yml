@@ -1,0 +1,60 @@
+id: facebook
+label: Migrate facebook feed into Drupal nodes
+migration_group: social_networks
+source:
+  plugin: social_network
+  track_changes: true
+  social_network_plugin: facebook
+destination:
+  plugin: entity:node
+
+process:
+  # Note that the source field names here (machine_name and friendly_name) were
+  # defined by the 'fields' configuration for the source plugin above.
+  id: id
+  title:
+    plugin: get
+    source:
+      - story
+      - message
+  created:
+    plugin: callback
+    source: created_time
+    callable: strtotime
+
+  # Hardcode the destination node type.
+  type:
+    plugin: default_value
+    default_value: social
+
+  # Hardcode the social type.
+  field_social_type:
+    plugin: default_value
+    default_value: facebook
+
+  field_media: full_picture
+#  status:
+#    plugin: membercare_company
+#    method: existValidMembership
+#    source: company_id
+#
+#  field_company_interest:
+#    - plugin: membercare_company
+#      method: companyInterests
+#      source: company_id
+#    - plugin: migration
+#      migration: companies_interest_terms
+#
+#  'field_formatted_address/value':
+#    plugin: callback
+#    callable: nl2br
+#    source: formatted_address
+#
+#  'field_formatted_address/format':
+#    plugin: default_value
+#    default_value: basic_html
+
+dependencies:
+  enforced:
+    module:
+      - migrate_social_implementation

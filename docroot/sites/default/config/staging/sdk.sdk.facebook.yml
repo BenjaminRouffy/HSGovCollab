@@ -1,0 +1,12 @@
+langcode: en
+type: facebook
+label: Facebook
+settings:
+  app_id: '404539786576704'
+  app_secret: 7f0952b3400d17dd796da77dc2478608
+  api_version: '2.8'
+  scope:
+    public_profile: public_profile
+    user_photos: user_photos
+    user_posts: user_posts
+callbackUri: /en/sdk/facebook/callback

@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @file
+ * Social Network API.
+ */
+
+use Drupal\sdk\Api\Form\BaseForm;
+use Drupal\sdk\Api\Deriver\BaseDeriver;
+use Drupal\sdk\Entity\SdkInterface;
+
+/**
+ * Derive an instance of SDK.
+ *
+ * @param string $type
+ *   One of SDK types.
+ *
+ * @return object
+ *   An instance of SDK.
+ */
+function sdk($type) {
+  return sdk_deriver($type)->derive();
+}
+
+/**
+ * Instantiate SDK deriver.
+ *
+ * @param string $type
+ *   One of SDK types.
+ *
+ * @return BaseDeriver
+ *   An instance of SDK deriver.
+ */
+function sdk_deriver($type) {
+  if (empty($type)) {
+    throw new InvalidArgumentException('You must specify the type of SDK.');
+  }
+
+  $types = sdk_types();
+
+  if (empty($types[$type])) {
+    throw new InvalidArgumentException(sprintf('SDK of "%s" type is undefined.', $type));
+  }
+
+  $entity = Drupal::entityTypeManager()
+    ->getStorage(SdkInterface::ENTITY_TYPE)
+    ->load($type);
+
+  if (NULL === $entity) {
+    throw new RuntimeException(sprintf('SDK of "%s" type is not configured.', $type));
+  }
+
+  return new $types[$type]['classes']['deriver']($entity);
+}
+
+/**
+ * Get list of defined SDK types.
+ *
+ * @return array[]
+ *   SDK type definitions.
+ *
+ * @see hook_sdk_types()
+ */
+function sdk_types() {
+  $cache_bin = Drupal::cache();
+  $cache_item = $cache_bin->get(__FUNCTION__);
+  $sdk_types = [];
+
+  if (FALSE === $cache_item) {
+    foreach (Drupal::moduleHandler()->invokeAll(__FUNCTION__) as $sdk => $info) {
+      if (
+        isset($info['label'], $info['classes']['form'], $info['classes']['deriver']) &&
+        is_subclass_of($info['classes']['form'], BaseForm::class) &&
+        is_subclass_of($info['classes']['deriver'], BaseDeriver::class)
+      ) {
+        $sdk_types[$sdk] = $info;
+      }
+    }
+
+    $cache_bin->set(__FUNCTION__, $sdk_types);
+  }
+  else {
+    $sdk_types = $cache_item->data;
+  }
+
+  return $sdk_types;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sdk_preprocess_page(array &$variables) {
+  if (Drupal::currentUser()->isAuthenticated() && Drupal::service('router.admin_context')->isAdminRoute()) {
+    foreach (sdk_types() as $type => $info) {
+      try {
+        $deriver = sdk_deriver($type);
+      }
+      catch (Exception $e) {
+        continue;
+      }
+
+      if ($deriver->isLoginCallbackOverridden()) {
+        $expired_at = $deriver->getTokenExpiration();
+
+        if ($expired_at instanceof DateTime) {
+          $date_diff = date_diff($expired_at, date_create(NULL, $expired_at->getTimezone()));
+
+          if ($date_diff->days < 7) {
+            $entity = $deriver->getEntity();
+
+            drupal_set_message(t('Access token for @label will be expired in @days days. Click on "@button" button <a href=":url">here</a> to renew it!', [
+              ':url' => $entity->url('edit-form'),
+              '@days' => $date_diff->days,
+              '@label' => $entity->label(),
+              '@button' => t('Save'),
+            ]), 'warning');
+          }
+        }
+      }
+    }
+  }
+}

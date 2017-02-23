@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * LinkedIn SDK.
+ */
+
+use Drupal\sdk_linkedin\Sdk\LinkedInForm;
+use Drupal\sdk_linkedin\Sdk\LinkedInDeriver;
+
+/**
+ * Implements hook_sdk_types().
+ */
+function sdk_linkedin_sdk_types() {
+  $types = [];
+
+  $types['linkedin'] = [
+    'label' => t('LinkedIn'),
+    'classes' => [
+      'form' => LinkedInForm::class,
+      'deriver' => LinkedInDeriver::class,
+    ],
+  ];
+
+  return $types;
+}

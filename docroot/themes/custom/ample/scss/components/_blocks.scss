@@ -1134,3 +1134,26 @@
     }
   }
 }
+
+.status-message {
+  font-family: $oswald;
+  padding: 10px;
+  text-align: center;
+
+  &.status {
+    background: #ddd;
+  }
+
+  &.error {
+    background: #ffdede;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}

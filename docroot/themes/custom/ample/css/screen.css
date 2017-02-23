@@ -1887,6 +1887,20 @@ header .social-links .font-social-icon {
       border-color: #4c7e96;
       color: #4c7e96; }
 
+.status-message {
+  font-family: Oswald, sans-serif;
+  padding: 10px;
+  text-align: center; }
+  .status-message.status {
+    background: #ddd; }
+  .status-message.error {
+    background: #ffdede; }
+  .status-message ul {
+    margin: 0;
+    padding: 0; }
+  .status-message li:not(:last-child) {
+    margin-bottom: 5px; }
+
 form {
   font-size: 1.1375rem;
   font-family: Oswald, sans-serif; }

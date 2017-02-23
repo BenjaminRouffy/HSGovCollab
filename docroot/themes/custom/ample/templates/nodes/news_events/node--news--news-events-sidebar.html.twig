@@ -5,7 +5,7 @@
 
     <h4>{{ label }}</h4>
 
-    {{ content.body }}
+    {{ content.body|render|striptags|trim }}
 
   </a>
 </li>

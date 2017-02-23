@@ -7,6 +7,8 @@ Feature: Contact us feature - checking elements, validation
     Then I should see "Welcome to the P4H platform" in the "h1" element
     And I should see the link "Contact us"
     And I should see an "div.user-info" element
+    When I select "Non-member organisation" from "edit-organisation"
+    Then I should see an "#edit-non-member-organisation" element
     When I click on "edit-submit"
     Then I should see "First name is required." in the "#edit-sender-name-first-error" element
     And I should see "Last name is required." in the "#edit-sender-name-last-error" element

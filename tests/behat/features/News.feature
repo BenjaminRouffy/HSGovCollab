@@ -44,3 +44,19 @@ Feature: News feature
     And I should see "Summary of the Content text paragraph"
     And I should see "Content text in News AT feature"
     And I should see "Interested in joining the P4H Network?"
+    #Next - checking Event appearance on the News&Events page
+    And I am on "user/logout"
+    When I am on "/news-and-events"
+    Then I should see "News and events" in the "h1" element
+    And I should see an "div[data-drupal-selector='edit-gid']" element
+    And I should see an "select#edit-year" element
+    And I should see an "select#edit-month" element
+    And I should see an "a[href='/en/join-the-network']" element
+    When I click on "div[data-drupal-selector='edit-category']"
+    And I check the box "Health Financing"
+    And I wait until AJAX is finished
+    Then I should see "AT News feature 1"
+    When I click on "div[data-drupal-selector='edit-organization']"
+    And I check the box "World Bank"
+    And I wait until AJAX is finished
+    Then I should see "AT News feature 1"

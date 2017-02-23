@@ -6,6 +6,7 @@ Feature: Events feature
     Given I am logged in with credentials:
       | username | admin     |
       | password | propeople |
+    And I should use the "1600x1200" screen resolution
     When I am on "node/add/event"
     Then I should see "Create Event" in the "h1" element
     When I fill "edit-title-0-value" with "AT Event feature 1"
@@ -29,6 +30,10 @@ Feature: Events feature
     And fill "edit-field-location-0-title" with "Google site"
     And fill "edit-field-event-link-0-uri" with "https://www.facebook.com"
     And fill "edit-field-event-link-0-title" with "Event link"
+    And I click on "a[href='#edit-group-bo']"
+    And I select "Interested in joining the P4H Network?" from "edit-field-join-block"
+    And I select "Health Financing" from "edit-field-category"
+    And I select "World Bank" from "edit-field-organization"
     And I click on "Save and publish"
     Then I should see "Event AT Event feature 1 has been created."
     And I should see "12 Oct. 2018" in the "time" element
@@ -37,6 +42,7 @@ Feature: Events feature
     And I should see "Time field text"
     And I should see "Summary for Event in Events feature" in the "div.summary-text" element
     And I should see "Body text in Events AT feature"
+    And I should see "Interested in joining the P4H Network?"
     When I click on "Event link"
     And I switch to opened window
     Then I should be on "https://www.facebook.com"
@@ -45,3 +51,19 @@ Feature: Events feature
     And I switch to opened window
     Then I should be on "https://www.google.com.ua"
     And I switch back to main window
+    #Next - checking Event appearance on the News&Events page
+    And I am on "user/logout"
+    When I am on "/news-and-events"
+    Then I should see "News and events" in the "h1" element
+    And I should see an "div[data-drupal-selector='edit-gid']" element
+    And I should see an "select#edit-year" element
+    And I should see an "select#edit-month" element
+    And I should see an "a[href='/en/join-the-network']" element
+    When I click on "div[data-drupal-selector='edit-category']"
+    And I check the box "Health Financing"
+    And I wait until AJAX is finished
+    Then I should see "AT Event feature 1"
+    When I click on "div[data-drupal-selector='edit-organization']"
+    And I check the box "World Bank"
+    And I wait until AJAX is finished
+    Then I should see "AT Event feature 1"

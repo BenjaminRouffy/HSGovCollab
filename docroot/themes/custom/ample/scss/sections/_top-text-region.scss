@@ -24,6 +24,17 @@
     padding-top: 0;
   }
 
+  &.big-title {
+    .title-wrapper {
+      h1 {
+        .group & {
+          @include font-size(63);
+          line-height: 78px;
+        }
+      }
+    }
+  }
+
   .line {
     left: 50%;
     transform: translateX(-50%);

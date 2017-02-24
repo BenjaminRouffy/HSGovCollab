@@ -649,6 +649,22 @@ header .social-links .font-social-icon {
     text-overflow: ellipsis;
     white-space: nowrap; }
 
+.color-switcher {
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  font-family: Oswald, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  padding: 9px 15px;
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease; }
+  .color-switcher:hover {
+    color: #ea3a32; }
+
 .banner-wrapper {
   clear: both; }
 

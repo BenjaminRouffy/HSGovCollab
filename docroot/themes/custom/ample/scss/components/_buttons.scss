@@ -117,3 +117,21 @@
     white-space: nowrap;
   }
 }
+
+.color-switcher {
+  @include font-size(16);
+  color: $white;
+  cursor: pointer;
+  font-family: $oswald;
+  font-weight: 300;
+  letter-spacing: 1px;
+  padding: 9px 15px;
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  transition: color .3s ease;
+
+  &:hover {
+    color: $red;
+  }
+}

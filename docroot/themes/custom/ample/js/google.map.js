@@ -18,27 +18,26 @@
   });
 
   function initMap() {
-    var lightColoredMap = new google.maps.StyledMapType(lightStyles, {name: "Light colored"});
-    var darkColoredMap = new google.maps.StyledMapType(darkStyles, {name: "Dark colored"});
+    var lightColoredMap = new google.maps.StyledMapType(lightStyles, {name: "Light"});
+    var darkColoredMap = new google.maps.StyledMapType(darkStyles, {name: "Dark"});
     var mapCenter = {lat: 23.8577076, lng: 7.0058832};
     var mapOptions = {
       zoom: 3,
       center: mapCenter,
       scrollwheel: false,
       disableDoubleClickZoom: true,
-      zoomControl: false,
-      streetViewControl: false,
+      disableDefaultUI: true,
       mapTypeControlOptions: {
-        mapTypeIds: ['dark_style', 'light_style'],
+        mapTypeIds: ['dark', 'light'],
         position: google.maps.ControlPosition.RIGHT_BOTTOM
       }
     };
 
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    map.mapTypes.set('light_style', lightColoredMap);
-    map.setMapTypeId('light_style');
-    map.mapTypes.set('dark_style', darkColoredMap);
-    map.setMapTypeId('dark_style');
+    map.mapTypes.set('light', lightColoredMap);
+    map.setMapTypeId('light');
+    map.mapTypes.set('dark', darkColoredMap);
+    map.setMapTypeId('dark');
 
     var i = 0;
     var pins = [];
@@ -98,5 +97,16 @@
         clearInterval(interval);
       }
     }, 200);
+
+    $('.color-switcher').on('click', function() {
+      if (map.getMapTypeId() === 'dark') {
+        map.mapTypes.set('light', lightColoredMap);
+        map.setMapTypeId('light');
+      }
+      else {
+        map.mapTypes.set('dark', darkColoredMap);
+        map.setMapTypeId('dark');
+      }
+    });
   }
 })(jQuery);

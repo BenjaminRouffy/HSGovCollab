@@ -15,4 +15,10 @@ class CurrentCountryMenuLink extends MenuLinkDefault implements ContainerFactory
     return empty($group) ? parent::getTitle() : $group->label();
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheMaxAge() {
+    return 0;
+  }
 }

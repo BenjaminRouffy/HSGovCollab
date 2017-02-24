@@ -2144,7 +2144,10 @@ form {
 .view-news-and-events .wrapper-filters {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
   .view-news-and-events .wrapper-filters > div {
     margin-left: 10px;
     margin-right: 10px;

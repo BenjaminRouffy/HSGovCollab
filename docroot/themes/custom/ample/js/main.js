@@ -156,7 +156,7 @@
 
   Drupal.behaviors.anchorLink = {
     attach: function(context, settings) {
-      var $bottomHead = $('.bottom-head .wrapper', context);
+      var $bottomHead = $('.bottom-head', context);
       var $anchorLink = $('[data-anchor-id]', context);
 
       if (!$('body').is('.group.logged')) {

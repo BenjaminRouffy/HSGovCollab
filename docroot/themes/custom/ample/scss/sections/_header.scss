@@ -425,14 +425,10 @@ header {
   background: #e9ecee;
   box-shadow: 0 1px 3px rgba($black, .1);
 
-  .wrapper {
+  .anchor-links {
     margin: 0 auto;
     max-width: 1260px;
     height: 60px;
     padding-top: 7px;
-
-    &:empty {
-      display: none;
-    }
   }
 }

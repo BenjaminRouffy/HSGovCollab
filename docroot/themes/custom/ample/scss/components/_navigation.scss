@@ -101,6 +101,7 @@
 
 .anchor-links {
   ul {
+    height: 100%;
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
     text-align: center;
@@ -109,7 +110,12 @@
 
   li {
     display: inline-block;
+    height: 100%;
     vertical-align: top;
+
+    &.active {
+      border-bottom: 2px solid $red;
+    }
   }
 
   a {
@@ -118,6 +124,7 @@
     display: block;
     font-family: $oswald;
     font-weight: 400;
+    height: 100%;
     letter-spacing: .5px;
     padding: 15px 30px;
     text-decoration: none;

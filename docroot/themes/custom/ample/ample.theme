@@ -7,7 +7,8 @@
 
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\file\Entity\File;
+use Drupal\Core\Routing\RouteProvider;
+use Drupal\Core\Url;
 use Drupal\taxonomy\Entity\Term;
 use \Drupal\paragraphs\Entity\Paragraph;
 use \Drupal\group\Entity\Group;
@@ -182,15 +183,41 @@ function ample_preprocess_links(array &$variables) {
  */
 function ample_preprocess_menu(&$variables, $hook) {
   if ($hook == 'menu') {
-
     // Get the current path.
     $current_path = \Drupal::request()->getRequestUri();
-    $items = $variables['items'];
+    $items = &$variables['items'];
+
+    if ('country-menu' === $variables['menu_name']) {
+      foreach ($items as $key => $item) {
+        /* @var Url $url */
+        $url = $item['url'];
+        /* @var Group $group */
+        $group = \Drupal::routeMatch()->getParameter('group');
+
+        if ($url->isRouted()) {
+          $route = $url->getRouteName();
+
+          switch ($route) {
+            case 'fake.current_group':
+              $items[$key]['url'] = Url::fromUri('internal:/group/' . $group->id());
+              break;
+
+            default:
+              $route_parameters = explode('.', $route);
+
+              if ('fake' === current($route_parameters)) {
+                $items[$key]['url'] = Url::fromUri('internal:/group/' . $group->id() . '/' . str_replace('_', '-', end($route_parameters)));
+              }
+          }
+        }
+      }
+    }
+
     foreach ($items as $key => $item) {
       // If path is current_path, set active to li.
       if ($item['url']->toString() == $current_path) {
         // Add active link.
-        $variables['items'][$key]['attributes']['class'] = 'active';
+        $items[$key]['attributes']['class'] = 'active';
       }
     }
   }

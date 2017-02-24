@@ -194,7 +194,7 @@ function ample_preprocess_menu(&$variables, $hook) {
         /* @var Group $group */
         $group = \Drupal::routeMatch()->getParameter('group');
 
-        if ($url->isRouted()) {
+        if ($url->isRouted() && !empty($group)) {
           $route = $url->getRouteName();
 
           switch ($route) {

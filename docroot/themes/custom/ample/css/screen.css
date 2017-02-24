@@ -1607,7 +1607,7 @@ header .social-links .font-social-icon {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     height: 100%;
-    padding: 30px 20px 50px;
+    padding: 30px 0 20px;
     position: relative; }
     .country-list .country-content:hover,
     .country-list .project-content:hover,
@@ -1639,20 +1639,24 @@ header .social-links .font-social-icon {
     border-top: 1px solid #afb7bb;
     font-family: Oswald, sans-serif;
     letter-spacing: .5px;
-    padding: 14px 20px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    -webkit-transition: opacity .3s ease;
-    transition: opacity .3s ease;
+    padding: 14px 20px 0;
+    position: relative;
     width: 100%;
     z-index: 5; }
+    .country-list .project-bottom-link .font-social-icon:not(:last-child),
+    .project-list .project-bottom-link .font-social-icon:not(:last-child) {
+      margin-bottom: 10px; }
     .country-list .project-bottom-link span,
     .project-list .project-bottom-link span {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease;
       white-space: nowrap; }
+      .country-list .project-bottom-link span:hover,
+      .project-list .project-bottom-link span:hover {
+        opacity: .66; }
       .country-list .project-bottom-link span:after,
       .project-list .project-bottom-link span:after {
         content: none; }
@@ -1665,50 +1669,50 @@ header .social-links .font-social-icon {
         margin-right: 10px;
         padding-top: 2px;
         vertical-align: bottom; }
-    .country-list .project-bottom-link:hover,
-    .project-list .project-bottom-link:hover {
-      opacity: .66; }
-  .country-list .section-info .paragraph,
-  .project-list .section-info .paragraph {
-    overflow: hidden;
-    padding: 5px 0; }
-    .country-list .section-info .paragraph a,
-    .project-list .section-info .paragraph a {
-      border-bottom: 2px solid transparent;
-      display: inline-block;
-      -webkit-transition: border .3s ease;
-      transition: border .3s ease;
-      vertical-align: top;
-      position: relative;
-      z-index: 5; }
-      .country-list .section-info .paragraph a:hover,
-      .project-list .section-info .paragraph a:hover {
-        border-color: #ea3a32; }
-        .country-list .section-info .paragraph a:hover .icon-wrapper,
-        .country-list .section-info .paragraph a:hover h3,
-        .project-list .section-info .paragraph a:hover .icon-wrapper,
-        .project-list .section-info .paragraph a:hover h3 {
-          opacity: .66; }
-  .country-list .section-info .icon-wrapper,
-  .project-list .section-info .icon-wrapper {
-    float: left;
-    height: 40px;
-    margin-right: 10px;
-    -webkit-transition: opacity .3s ease;
-    transition: opacity .3s ease;
-    width: 26px; }
-  .country-list .section-info path,
-  .project-list .section-info path {
-    fill: #4c7e96; }
-  .country-list .section-info h3,
-  .project-list .section-info h3 {
-    font-size: 0.875rem;
-    font-weight: 400;
-    letter-spacing: .5px;
-    line-height: 20px;
-    margin: 8px 0 0;
-    -webkit-transition: opacity .3s ease;
-    transition: opacity .3s ease; }
+  .country-list .section-info,
+  .project-list .section-info {
+    padding: 0 20px; }
+    .country-list .section-info .paragraph,
+    .project-list .section-info .paragraph {
+      overflow: hidden;
+      padding: 5px 0; }
+      .country-list .section-info .paragraph a,
+      .project-list .section-info .paragraph a {
+        border-bottom: 2px solid transparent;
+        display: inline-block;
+        -webkit-transition: border .3s ease;
+        transition: border .3s ease;
+        vertical-align: top;
+        position: relative;
+        z-index: 5; }
+        .country-list .section-info .paragraph a:hover,
+        .project-list .section-info .paragraph a:hover {
+          border-color: #ea3a32; }
+          .country-list .section-info .paragraph a:hover .icon-wrapper,
+          .country-list .section-info .paragraph a:hover h3,
+          .project-list .section-info .paragraph a:hover .icon-wrapper,
+          .project-list .section-info .paragraph a:hover h3 {
+            opacity: .66; }
+    .country-list .section-info .icon-wrapper,
+    .project-list .section-info .icon-wrapper {
+      float: left;
+      height: 40px;
+      margin-right: 10px;
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease;
+      width: 26px; }
+    .country-list .section-info path,
+    .project-list .section-info path {
+      fill: #4c7e96; }
+    .country-list .section-info h3,
+    .project-list .section-info h3 {
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 20px;
+      margin: 8px 0 0;
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease; }
 
 @media (max-width: 991px) {
   .country-list .country-item,
@@ -1733,7 +1737,11 @@ header .social-links .font-social-icon {
 .country-title,
 .project-title {
   margin-bottom: 20px;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 0 20px; }
+  .country-title + div,
+  .project-title + div {
+    min-height: 150px; }
   .country-title .country-icon-wrapper,
   .project-title .country-icon-wrapper {
     float: left;
@@ -1824,7 +1832,8 @@ header .social-links .font-social-icon {
   overflow: hidden; }
 
 .last-news-by-group {
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  padding: 0 20px; }
   .last-news-by-group .item {
     clear: both; }
     .last-news-by-group .item a {

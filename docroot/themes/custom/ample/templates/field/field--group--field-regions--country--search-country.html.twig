@@ -1,8 +1,12 @@
-{% for item in items %}
-  {% set region = item.content|render %}
-  {% if region is not empty %}
-    <span {{ item.attributes.addClass('project-bottom-link font-social-icon country-icon') }}>
-      <span>{{ "Part of the @region Region"|t({ '@region': region }) }}</span>
-    </span>
-  {% endif %}
-{% endfor %}
+{% if items is not empty %}
+  <div class="project-bottom-link">
+    {% for item in items %}
+      {% set region = item.content|render %}
+      {% if region is not empty %}
+        <div {{ item.attributes.addClass('font-social-icon country-icon') }}>
+          <span>{{ "Part of the @region Region"|t({ '@region': region }) }}</span>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}

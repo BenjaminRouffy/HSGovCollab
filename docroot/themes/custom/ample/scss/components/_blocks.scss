@@ -806,7 +806,7 @@
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     height: 100%;
-    padding: 30px 20px 50px;
+    padding: 30px 0 20px;
     position: relative;
 
     &:hover {
@@ -840,19 +840,25 @@
     border-top: 1px solid #afb7bb;
     font-family: $oswald;
     letter-spacing: .5px;
-    padding: 14px 20px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transition: opacity .3s ease;
+    padding: 14px 20px 0;
+    position: relative;
     width: 100%;
     z-index: 5;
+
+    .font-social-icon:not(:last-child) {
+      margin-bottom: 10px;
+    }
 
     span {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
+      transition: opacity .3s ease;
       white-space: nowrap;
+
+      &:hover {
+        opacity: .66;
+      }
 
       &:after {
         content: none;
@@ -868,13 +874,11 @@
         vertical-align: bottom;
       }
     }
-
-    &:hover {
-      opacity: .66;
-    }
   }
 
   .section-info {
+    padding: 0 20px;
+    
     .paragraph {
       overflow: hidden;
       padding: 5px 0;
@@ -948,6 +952,11 @@
 .project-title {
   margin-bottom: 20px;
   overflow: hidden;
+  padding: 0 20px;
+
+  + div {
+    min-height: 150px;
+  }
 
   .country-icon-wrapper {
     float: left;
@@ -1056,6 +1065,7 @@
 
 .last-news-by-group {
   margin-bottom: 5px;
+  padding: 0 20px;
 
   .item {
     clear: both;

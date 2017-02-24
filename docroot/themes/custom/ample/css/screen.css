@@ -2728,9 +2728,9 @@ footer {
 .content-with-sidebar .content {
   float: left;
   width: 66.64%; }
-  .content-with-sidebar .content > *:not(.node-pager):not(.event-info):not(.header-image) {
+  .content-with-sidebar .content:not(.top-text-region) > *:not(.node-pager):not(.event-info):not(.header-image) {
     width: 80%; }
-    .content-with-sidebar .content > *:not(.node-pager):not(.event-info):not(.header-image) .fullcontent-image {
+    .content-with-sidebar .content:not(.top-text-region) > *:not(.node-pager):not(.event-info):not(.header-image) .fullcontent-image {
       margin-top: 30px;
       width: 120%; }
   .content-with-sidebar .content .header-image figure {
@@ -3312,6 +3312,48 @@ footer {
             transform: scale(1.06); }
     .marker-info .read-more:hover {
       border-color: #fff; }
+
+.dashboard {
+  background: #f5f5f5;
+  margin-bottom: 20px;
+  padding-bottom: 50px; }
+  .dashboard .top-text-region {
+    padding: 40px 100px 0; }
+  .dashboard .title-wrapper h1 {
+    font-size: 3.9375rem;
+    line-height: 78px;
+    margin: 0;
+    padding: 30px 0; }
+  .dashboard .sidebar {
+    background-color: #4c7e96;
+    color: #fff;
+    padding: 40px; }
+    .dashboard .sidebar h2 {
+      font-size: 1.925rem;
+      color: #fff;
+      line-height: 48px;
+      margin: 0 0 15px; }
+    .dashboard .sidebar ul {
+      margin: 0;
+      padding: 0; }
+    .dashboard .sidebar li {
+      display: inline-block;
+      min-height: 60px;
+      padding: 10px 0;
+      vertical-align: top; }
+    .dashboard .sidebar .font-social-icon {
+      font-size: 2.1875rem;
+      display: inline-block;
+      margin-right: 16px;
+      padding-top: 7px;
+      vertical-align: top; }
+    .dashboard .sidebar .name {
+      font-size: 1.1375rem;
+      font-family: Oswald, sans-serif;
+      display: inline-block;
+      letter-spacing: .5px;
+      margin-top: 8px;
+      vertical-align: top; }
 
 .document-list {
   background: #fff;

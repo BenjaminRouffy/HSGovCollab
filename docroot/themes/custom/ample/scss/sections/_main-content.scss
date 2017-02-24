@@ -53,7 +53,7 @@
     float: left;
     width: 66.64%;
 
-    > *:not(.node-pager):not(.event-info):not(.header-image) {
+    &:not(.top-text-region) > *:not(.node-pager):not(.event-info):not(.header-image) {
       width: 80%;
 
       .fullcontent-image {

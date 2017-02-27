@@ -117,6 +117,12 @@
       max-width: calc(50% - 20px);
     }
   }
+
+  .front & {
+    .title-wrapper {
+      margin: -40px 0 3px -20px;
+    }
+  }
 }
 
 @include breakpoint-for('.view-news-and-events', (to: mobileL)) {

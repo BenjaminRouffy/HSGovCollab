@@ -15,6 +15,7 @@
   transform: translateX(110%);
   transition: transform .2s ease;
   width: 30%;
+  z-index: 5;
 
   &.active {
     transform: translateX(0);

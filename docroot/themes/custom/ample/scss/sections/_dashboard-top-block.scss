@@ -34,10 +34,23 @@
     }
 
     li {
+      display: block;
+      vertical-align: top;
+    }
+
+    a {
+      border-bottom: 2px solid transparent;
+      color: $white;
       display: inline-block;
       min-height: 60px;
-      padding: 10px 0;
-      vertical-align: top;
+      padding: 10px 20px 10px 0;
+      text-decoration: none;
+      transition: opacity .3s ease, border .3s ease;
+
+      &:hover {
+        border-color: $white;
+        opacity: .66;
+      }
     }
 
     .font-social-icon {

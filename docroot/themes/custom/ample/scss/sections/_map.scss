@@ -11,6 +11,8 @@
   top: 0;
   right: 0;
   height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 20px 30px;
   transform: translateX(110%);
   transition: transform .2s ease;
@@ -90,6 +92,7 @@
       line-height: 20px;
       margin: 12px 0 0;
       padding: 0;
+      width: calc(100% - 60px);
     }
   }
 
@@ -101,4 +104,34 @@
       border-color: $white;
     }
   }
+}
+
+@include breakpoint-for('.marker-info', (to: laptop-small)) {
+  width: 50%;
+
+  .section-info {
+    .paragraph {
+      h2 {
+        @include font-size(18.2);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.marker-info', (to: tablet)) {
+  width: 75%;
+
+  .section-info {
+    .paragraph {
+      .icon-wrapper {
+        height: 35px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+@include breakpoint-for('.marker-info', (to: mobileL)) {
+  width: 100%;
 }

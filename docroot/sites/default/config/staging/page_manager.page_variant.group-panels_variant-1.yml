@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - page_manager.page.group
+    - views.view.group_users
   module:
     - ctools
     - panels
+    - views
 id: group-panels_variant-1
 label: Project
 variant: panels_variant
@@ -18,11 +20,22 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: default
-      region: content
+      region: dashboard
       weight: 0
       uuid: 0ee320c5-d2c5-4345-b4cd-0e91669d1c35
       context_mapping:
         entity: group
+    5ca8da22-1f84-483b-9335-fc0e1c292f80:
+      id: 'views_block:group_users-block_project_managers'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: dashboard_sidebar
+      weight: 0
+      uuid: 5ca8da22-1f84-483b-9335-fc0e1c292f80
+      context_mapping: {  }
   id: panels_variant
   uuid: d585427d-2897-4e92-80b4-69d09393c773
   label: null

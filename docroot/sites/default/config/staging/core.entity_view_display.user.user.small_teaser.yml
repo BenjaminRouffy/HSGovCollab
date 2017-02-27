@@ -1,0 +1,36 @@
+uuid: d30fdede-1017-47a6-9a53-35f4d0cf3244
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.small_teaser
+    - field.field.user.user.field_avatar
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_organisation
+  module:
+    - user
+id: user.user.small_teaser
+targetEntityType: user
+bundle: user
+mode: small_teaser
+content:
+  field_first_name:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_last_name:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  field_avatar: true
+  field_organisation: true
+  langcode: true
+  member_for: true

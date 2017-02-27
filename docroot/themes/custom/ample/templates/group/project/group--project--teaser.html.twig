@@ -6,7 +6,11 @@
         {{ label }}
       </h3>
       <div class="summary">
-        {{ content.field_summary }}
+        {% if not logged_in %}
+          {{ content.field_summary_public }}
+        {% else %}
+          {{ content.field_summary }}
+        {% endif %}
       </div>
     </div>
     {{ title_suffix }}
@@ -19,6 +23,6 @@
     </div>
   {% else %}
     {{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}
+    <a href="{{ url }}" class="project-link"></a>
   {% endif %}
-  <a href="{{ url }}" class="project-link"></a>
 </div>

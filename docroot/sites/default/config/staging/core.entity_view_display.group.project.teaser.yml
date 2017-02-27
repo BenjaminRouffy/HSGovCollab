@@ -5,7 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.group.teaser
     - field.field.group.project.field_content
+    - field.field.group.project.field_date
     - field.field.group.project.field_summary
+    - field.field.group.project.field_summary_public
     - group.type.project
   module:
     - text
@@ -21,6 +23,13 @@ content:
       trim_length: 300
     third_party_settings: {  }
     type: text_trimmed
+  field_summary_public:
+    type: text_trimmed
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 300
+    third_party_settings: {  }
   label:
     label: hidden
     type: string
@@ -32,5 +41,6 @@ hidden:
   changed: true
   created: true
   field_content: true
+  field_date: true
   langcode: true
   uid: true

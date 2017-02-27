@@ -6,6 +6,7 @@ dependencies:
     - field.field.group.project.field_content
     - field.field.group.project.field_date
     - field.field.group.project.field_summary
+    - field.field.group.project.field_summary_public
     - group.type.project
   module:
     - datetime
@@ -39,6 +40,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+  field_summary_public:
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
   label:
     type: string_textfield
     weight: 0
@@ -56,5 +64,7 @@ content:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+  translation:
+    weight: 10
 hidden:
   uid: true

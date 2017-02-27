@@ -1326,6 +1326,18 @@ header .social-links .font-social-icon {
     transition: color .2s ease; }
     .timeline-content-item time:hover {
       color: #ea3a32; }
+  .timeline-content-item.documents {
+    position: relative; }
+    .timeline-content-item.documents .font-social-icon {
+      position: absolute;
+      top: 20px;
+      left: 30px; }
+    .timeline-content-item.documents time {
+      margin-left: 35px; }
+    .timeline-content-item.documents h4 {
+      margin-top: 5px; }
+    .timeline-content-item.documents .download {
+      margin-left: 0; }
 
 @media (max-width: 479px) {
   .timeline-content-item {

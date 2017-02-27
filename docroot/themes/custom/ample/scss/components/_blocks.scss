@@ -426,6 +426,28 @@
       color: $red;
     }
   }
+
+  &.documents {
+    position: relative;
+
+    .font-social-icon {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+    }
+
+    time {
+      margin-left: 35px;
+    }
+
+    h4 {
+      margin-top: 5px;
+    }
+
+    .download {
+      margin-left: 0;
+    }
+  }
 }
 
 @include breakpoint-for('.timeline-content-item', (to: mobileL)) {

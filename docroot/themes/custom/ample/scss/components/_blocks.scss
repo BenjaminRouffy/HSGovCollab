@@ -216,6 +216,16 @@
 .timeline {
   .title-wrapper {
     margin-bottom: 20px;
+    padding-bottom: 5px;
+
+    .group & {
+      text-align: center;
+
+      .line {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
 
     h2 {
       @include font-size(49);
@@ -424,6 +434,28 @@
 
     &:hover {
       color: $red;
+    }
+  }
+
+  &.documents {
+    position: relative;
+
+    .font-social-icon {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+    }
+
+    time {
+      margin-left: 35px;
+    }
+
+    h4 {
+      margin-top: 5px;
+    }
+
+    .download {
+      margin-left: 0;
     }
   }
 }

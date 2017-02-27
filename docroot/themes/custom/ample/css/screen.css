@@ -1189,7 +1189,14 @@ header .social-links .font-social-icon {
     margin: 0; }
 
 .timeline .title-wrapper {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  padding-bottom: 5px; }
+  .group .timeline .title-wrapper {
+    text-align: center; }
+    .group .timeline .title-wrapper .line {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
   .timeline .title-wrapper h2 {
     font-size: 3.0625rem;
     line-height: 48px;
@@ -1326,6 +1333,18 @@ header .social-links .font-social-icon {
     transition: color .2s ease; }
     .timeline-content-item time:hover {
       color: #ea3a32; }
+  .timeline-content-item.documents {
+    position: relative; }
+    .timeline-content-item.documents .font-social-icon {
+      position: absolute;
+      top: 20px;
+      left: 30px; }
+    .timeline-content-item.documents time {
+      margin-left: 35px; }
+    .timeline-content-item.documents h4 {
+      margin-top: 5px; }
+    .timeline-content-item.documents .download {
+      margin-left: 0; }
 
 @media (max-width: 479px) {
   .timeline-content-item {

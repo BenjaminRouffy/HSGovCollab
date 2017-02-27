@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.group.country.field_banner
+    - field.field.group.country.field_bottom_link
     - field.field.group.country.field_content
     - field.field.group.country.field_country_icon
     - field.field.group.country.field_country_options
@@ -13,6 +14,7 @@ dependencies:
     - field.field.group.country.field_location
     - field.field.group.country.field_regions
     - field.field.group.country.field_summary
+    - field.field.group.country.field_time_line
     - group.type.country
   module:
     - datetime
@@ -54,6 +56,7 @@ third_party_settings:
       label: Banner
     group_s:
       children:
+        - field_country_options
         - field_date
         - field_location
         - langcode
@@ -85,6 +88,7 @@ third_party_settings:
     group_infographic_timeline:
       children:
         - field_infographic
+        - field_time_line
       parent_name: group_t
       weight: 23
       format_type: tab
@@ -98,7 +102,7 @@ third_party_settings:
     group_bottom:
       children:
         - field_join_block
-        - field_country_options
+        - field_bottom_link
       parent_name: group_t
       weight: 24
       format_type: tab
@@ -124,6 +128,16 @@ content:
       add_mode: dropdown
       form_display_mode: banner
     third_party_settings: {  }
+  field_bottom_link:
+    type: entity_reference_paragraphs
+    weight: 27
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
   field_content:
     type: entity_reference_paragraphs
     weight: 8
@@ -144,7 +158,7 @@ content:
     type: entity_reference_autocomplete
   field_country_options:
     type: entity_reference_paragraphs
-    weight: 13
+    weight: 6
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -153,7 +167,7 @@ content:
       form_display_mode: default
     third_party_settings: {  }
   field_date:
-    weight: 4
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -168,12 +182,12 @@ content:
       form_display_mode: private_content
     third_party_settings: {  }
   field_join_block:
-    weight: 12
+    weight: 26
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_location:
-    weight: 5
+    weight: 8
     settings:
       default_longitude: '13.4050'
       default_latitude: '52.5200'
@@ -201,7 +215,7 @@ content:
     third_party_settings: {  }
     type: geolocation_googlegeocoder
   field_regions:
-    weight: 7
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -212,6 +226,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+  field_time_line:
+    type: entity_reference_paragraphs
+    weight: 10
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
   label:
     type: string_textfield
     weight: 2
@@ -221,7 +245,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 6
+    weight: 9
     settings: {  }
     third_party_settings: {  }
   translation:

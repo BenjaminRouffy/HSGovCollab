@@ -12,54 +12,28 @@ dependencies:
     - field.field.group.project.field_time_line
     - group.type.project
   module:
-    - entity_reference_revisions
-    - text
+    - timeline
 id: group.project.bottom
 targetEntityType: group
 bundle: project
 mode: bottom
 content:
-  field_content:
-    weight: 2
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-  field_join_block:
-    weight: 4
-    label: hidden
-    settings:
-      view_mode: view_mode_registration_block
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-  field_summary:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
   field_time_line:
-    weight: 3
+    weight: 0
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-  label:
-    label: hidden
-    type: string
-    weight: 0
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
+    type: Timeline_by_date
 hidden:
   changed: true
   created: true
+  field_content: true
   field_date: true
+  field_join_block: true
+  field_summary: true
   field_summary_public: true
+  label: true
   langcode: true
   uid: true

@@ -1,0 +1,78 @@
+uuid: d0196cc7-4b8d-45bf-8ee5-aa4ad08dbe25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_time_line
+    - group.type.project
+    - paragraphs.paragraphs_type.time_line
+  module:
+    - entity_reference_revisions
+id: group.project.field_time_line
+field_name: field_time_line
+entity_type: group
+bundle: project
+label: 'Time line'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      time_line: time_line
+    target_bundles_drag_drop:
+      cd_user:
+        weight: 18
+        enabled: false
+      content_image:
+        weight: 19
+        enabled: false
+      content_text:
+        weight: 20
+        enabled: false
+      country_and_project:
+        weight: 21
+        enabled: false
+      country_option:
+        weight: 22
+        enabled: false
+      custom_content:
+        weight: 23
+        enabled: false
+      exist_content:
+        weight: 24
+        enabled: false
+      file:
+        weight: 25
+        enabled: false
+      infographic:
+        weight: 26
+        enabled: false
+      infographic_item:
+        weight: 27
+        enabled: false
+      link:
+        weight: 28
+        enabled: false
+      link_to_file:
+        weight: 29
+        enabled: false
+      member_icon:
+        weight: 30
+        enabled: false
+      slider:
+        weight: 31
+        enabled: false
+      slider_item:
+        weight: 32
+        enabled: false
+      time_line:
+        enabled: true
+        weight: 33
+      video:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions

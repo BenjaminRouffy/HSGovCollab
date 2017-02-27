@@ -2,10 +2,8 @@
   {{ content.body|field_value }}
 {% endset %}
 
-<div class="timeline-content-item">
-  <time datetime="{{ content.field_content_date|field_value|field_raw }}">
-    {{ content.field_content_date|field_value }}
-  </time>
+<div class="timeline-content-item documents">
+  {{ content.field_content_date|field_value }}
 
   <h4 role="heading">
     {{ label }}

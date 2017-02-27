@@ -369,20 +369,7 @@ class SocialLoginAdminSettings extends ConfigFormBase {
         }
       }
 
-      $oaslsid = db_select('oneall_social_login_settings', 'o')->fields('o', [
-        'oaslsid',
-      ])->condition('setting', $setting, '=')->execute()->fetchField();
-      if (is_numeric($oaslsid)) {
-        db_update('oneall_social_login_settings')->fields([
-          'value' => $value,
-        ])->condition('oaslsid', $oaslsid, '=')->execute();
-      }
-      else {
-        db_insert('oneall_social_login_settings')->fields([
-          'setting' => $setting,
-          'value' => $value,
-        ])->execute();
-      }
+      \Drupal::configFactory()->getEditable('social_login.settings')->set($setting, $value)->save();
     }
     drupal_set_message(t('Settings saved successfully'), 'status social_login');
 

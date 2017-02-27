@@ -913,13 +913,14 @@ function social_login_get_settings() {
   $settings['enabled_providers'] = array();
 
   // Read settings.
-  $results = db_query("SELECT setting, value FROM {oneall_social_login_settings}");
-  foreach ($results as $result) {
-    $settings[$result->setting] = $result->value;
-    if (substr($result->setting, 0, 8) == 'provider' && !empty($result->value)) {
-      $settings['enabled_providers'][] = substr($result->setting, 9, strlen($result->setting));
+  $conf = \Drupal::config('social_login.settings')->get();
+  foreach ($conf as $setting => $value) {
+    $settings[$setting] = $value;
+    if (substr($setting, 0, 8) == 'provider' && !empty($value)) {
+      $settings['enabled_providers'][] = substr($setting, 9, strlen($setting));
     }
   }
+
   return $settings;
 }
 

@@ -5,10 +5,12 @@
  * Admin Customizations.
  */
 
+use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Url;
+use Drupal\group\Entity\Group;
 
 /**
  * Implements hook_form_alter().
@@ -32,6 +34,27 @@ function admin_customizations_form_alter(array &$form, FormStateInterface $form_
         }
       }
       break;
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function admin_customizations_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  /* @var FieldItemList $items */
+  $items = $context['items'];
+
+  if (
+    'field_node' === $items->getName() &&
+    'paragraph' === $items->getEntity()->getEntityTypeId() &&
+    'exist_content' === $items->getEntity()->getType()
+  ) {
+    /* @var Group $group */
+    $group = \Drupal::routeMatch()->getParameter('group');
+
+    if (!empty($group)) {
+      array_unshift($element['target_id']['#selection_settings']['view']['arguments'], $group->id());
+    }
   }
 }
 

@@ -11,5 +11,14 @@
     </div>
     {{ title_suffix }}
   </div>
+  {% if not logged_in %}
+    <div class="bottom-link">
+      <a href="{{ path('user.login') }}" class="read-more">
+        {{ 'Signup to know more'|t }}
+      </a>
+    </div>
+  {% else %}
+    {{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}
+  {% endif %}
   <a href="{{ url }}" class="project-link"></a>
 </div>

@@ -131,8 +131,18 @@ header {
 
 .header-fixed {
   position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   z-index: 400;
+
+  .toolbar-fixed & {
+    top: 39px;
+  }
+
+  .toolbar-tray-open & {
+    top: 79px;
+  }
 
   .top-head {
     background-image: linear-gradient(180deg, #334c58, $navy-dark);
@@ -430,7 +440,7 @@ header {
     max-width: 1260px;
     height: 60px;
     padding-top: 7px;
-    
+
     a {
       display: block;
     }

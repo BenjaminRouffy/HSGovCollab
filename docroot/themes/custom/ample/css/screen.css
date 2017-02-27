@@ -1189,7 +1189,14 @@ header .social-links .font-social-icon {
     margin: 0; }
 
 .timeline .title-wrapper {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  padding-bottom: 5px; }
+  .group .timeline .title-wrapper {
+    text-align: center; }
+    .group .timeline .title-wrapper .line {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
   .timeline .title-wrapper h2 {
     font-size: 3.0625rem;
     line-height: 48px;

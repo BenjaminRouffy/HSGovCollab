@@ -216,6 +216,16 @@
 .timeline {
   .title-wrapper {
     margin-bottom: 20px;
+    padding-bottom: 5px;
+
+    .group & {
+      text-align: center;
+
+      .line {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
 
     h2 {
       @include font-size(49);

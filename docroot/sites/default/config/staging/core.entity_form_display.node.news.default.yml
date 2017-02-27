@@ -101,6 +101,7 @@ third_party_settings:
     group_related_content:
       children:
         - field_related_content_selector
+        - field_documents
       parent_name: group_tabs_panel
       weight: 24
       format_type: tab
@@ -152,7 +153,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs
   field_documents:
-    weight: 13
+    weight: 15
     settings:
       match_operator: CONTAINS
       size: 60

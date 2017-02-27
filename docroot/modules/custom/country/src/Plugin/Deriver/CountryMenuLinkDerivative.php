@@ -26,7 +26,7 @@ class CountryMenuLinkDerivative extends DeriverBase implements ContainerDeriverI
       'projects' => $this->t('Projects'),
       'news_and_events' => $this->t('News&Events'),
       'documents' => $this->t('Documents'),
-      'contact' => $this->t('Contact'),
+      'contacts' => $this->t('Contacts'),
       'faq' => $this->t('FAQ'),
     ];
     $links = [];

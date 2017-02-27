@@ -1,0 +1,21 @@
+uuid: 758c650c-6b92-4ba9-b369-823e547286f0
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - group
+    - paragraphs
+id: group.field_bottom_link
+field_name: field_bottom_link
+entity_type: group
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

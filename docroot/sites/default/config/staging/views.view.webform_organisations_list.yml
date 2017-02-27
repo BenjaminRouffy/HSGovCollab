@@ -100,7 +100,7 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -248,6 +248,13 @@ display:
         options:
           search_fields:
             name: name
+      row:
+        type: entity_reference
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: '-'
+          hide_empty: false
     cache_metadata:
       max-age: -1
       contexts:

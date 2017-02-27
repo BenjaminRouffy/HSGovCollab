@@ -156,12 +156,12 @@
 
   Drupal.behaviors.anchorLink = {
     attach: function(context, settings) {
-      var $bottomHead = $('.bottom-head .wrapper', context);
+      var $bottomHead = $('.bottom-head', context);
       var $anchorLink = $('[data-anchor-id]', context);
 
       if (!$('body').is('.group.logged')) {
         if ($anchorLink.length && $anchorLink.length > 1) {
-          $bottomHead.append('<div class="anchor-links"></div>');
+          $bottomHead.append('<div class="anchor-links"><ul></ul></div>');
 
           $anchorLink.each(function(index, element) {
             var title = $(element).find('.anchor-title').first().text();
@@ -172,7 +172,7 @@
             id = id.toLowerCase();
             element.id = id;
 
-            $bottomHead.find('.anchor-links').append('<a href="#' + id + '">' + title + '</a>');
+            $bottomHead.find('.anchor-links ul').append('<li><a href="#' + id + '">' + title + '</a></li>');
           });
         }
 

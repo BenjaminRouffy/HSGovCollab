@@ -100,22 +100,35 @@
 }
 
 .anchor-links {
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
+  ul {
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  li {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+
+    &.active {
+      border-bottom: 2px solid $red;
+    }
+  }
 
   a {
     @include font-size(16.8);
     color: $red;
-    display: inline-block;
+    display: block;
     font-family: $oswald;
     font-weight: 400;
+    height: 100%;
     letter-spacing: .5px;
     padding: 15px 30px;
     text-decoration: none;
     transition: color .3s ease;
-    vertical-align: top;
 
     &:hover {
       color: $navy;

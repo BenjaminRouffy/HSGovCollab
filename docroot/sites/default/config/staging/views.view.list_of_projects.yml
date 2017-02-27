@@ -7,6 +7,7 @@ dependencies:
     - group.content_type.country-subgroup-project
   module:
     - group
+    - p4h_views_plugins
 id: list_of_projects
 label: 'List of projects'
 module: views
@@ -224,10 +225,13 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
+        - 'config:core.entity_view_display.group.project.time_line'
   block_1:
     display_plugin: block
     id: block_1
@@ -239,19 +243,48 @@ display:
       css_class: view-list-of-projects
       defaults:
         css_class: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        pager: false
+      use_more: true
+      use_more_always: false
+      use_more_text: 'See all projects'
+      pager:
+        type: mini_with_items
+        options:
+          items_per_page: 3
+          offset: 0
+          id: '0'
+          total_pages: ''
+          tags:
+            previous: ‹‹
+            next: ››
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
         - route
         - url
+        - url.query_args
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
+        - 'config:core.entity_view_display.group.project.time_line'
   block_full:
     display_plugin: block
     id: block_full
@@ -286,7 +319,10 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
+        - 'config:core.entity_view_display.group.project.time_line'

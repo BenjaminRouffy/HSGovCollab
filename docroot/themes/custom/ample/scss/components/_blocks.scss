@@ -61,6 +61,35 @@
   }
 }
 
+@include breakpoint-for('.teaser', (to: tablet)) {
+  .full-width & {
+    h2 {
+      @include font-size(35);
+    }
+  }
+
+  p {
+    @include font-size(14);
+    margin-top: 10px;
+  }
+}
+
+@include breakpoint-for('.teaser', (to: mobileL)) {
+  a {
+    padding-top: 20px;
+  }
+
+  .full-width & {
+    h2 {
+      @include font-size(28);
+    }
+  }
+
+  p {
+    padding: 0 10px;
+  }
+}
+
 .news-events-list,
 .related-docs,
 .timeline {
@@ -775,6 +804,12 @@
   .item {
     width: 33.33%;
   }
+
+  .front & {
+    .news {
+      width: 50%;
+    }
+  }
 }
 
 @include breakpoint-for('.news-and-events-list', (to: tablet)) {
@@ -786,6 +821,12 @@
 @include breakpoint-for('.news-and-events-list', (to: mobileL)) {
   .item {
     width: 100%;
+  }
+
+  .front & {
+    .news:nth-child(n) {
+      width: 100%;
+    }
   }
 }
 

@@ -1,0 +1,25 @@
+{% set plainBody %}
+  {{ content.body|field_value }}
+{% endset %}
+
+<div class="timeline-content-item">
+  <div class="font-social-icon {{ content.field_social_type|render|striptags|trim }}-icon">
+    <span></span>
+  </div>
+
+  <time datetime="{{ node.createdtime | date("Y-m-d") }}">
+    {{ node.createdtime | format_date('time_line') }}
+  </time>
+
+  <h4 role="heading">
+    {{ label }}
+  </h4>
+
+  <p>
+    {{ plainBody|striptags }}
+  </p>
+
+  <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}" role="link">
+    {{ 'Read more'|t }}
+  </a>
+</div>

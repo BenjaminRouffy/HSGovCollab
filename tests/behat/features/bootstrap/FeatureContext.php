@@ -28,12 +28,21 @@ class FeatureContext extends RawTqContext {
    * @BeforeScenario
    */
   public function beforeScenario() {
-    if (self::$windowResized) {
+        if (self::$windowResized) {
       return;
     }
 
     $this->getSession()->resizeWindow(800, 600, 'current');
     self::$windowResized = TRUE;
+  }
+
+  /**
+   * @Given /^I execute Javascript on "(?P<element>[^"]*)" element$/
+   */
+  public function iExecuteJavascriptOnElement($elmt)
+  {
+    $element = $this->element('*', $elmt);
+    $this->executeJsOnElement($element, "jQuery({{ELEMENT}}).css('top', 0)");
   }
 
   /**

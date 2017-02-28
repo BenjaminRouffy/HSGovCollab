@@ -6,12 +6,15 @@ dependencies:
     - field.field.group.project.field_content
     - field.field.group.project.field_date
     - field.field.group.project.field_join_block
+    - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
     - field.field.group.project.field_summary_public
     - field.field.group.project.field_time_line
     - group.type.project
+    - image.style.100x100
   module:
     - entity_reference_revisions
+    - image
     - text
 id: group.project.default
 targetEntityType: group
@@ -33,6 +36,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_project_icon:
+    weight: 5
+    label: hidden
+    settings:
+      image_style: 100x100
+      image_link: ''
+    third_party_settings: {  }
+    type: image
   field_summary:
     weight: 1
     label: hidden

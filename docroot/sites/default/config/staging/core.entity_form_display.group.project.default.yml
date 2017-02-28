@@ -3,15 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files
     - field.field.group.project.field_content
     - field.field.group.project.field_date
     - field.field.group.project.field_join_block
+    - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
     - field.field.group.project.field_summary_public
     - field.field.group.project.field_time_line
     - group.type.project
   module:
     - datetime
+    - entity_browser
     - field_group
     - paragraphs
     - path
@@ -39,6 +42,7 @@ third_party_settings:
         - langcode
         - translation
         - path
+        - field_project_icon
       parent_name: group_tabs_panel
       weight: 2
       format_type: tab
@@ -55,7 +59,7 @@ third_party_settings:
         - field_summary
         - field_content
       parent_name: group_tabs_panel
-      weight: 3
+      weight: 4
       format_type: tab
       format_settings:
         id: ''
@@ -68,7 +72,7 @@ third_party_settings:
       children:
         - field_time_line
       parent_name: group_tabs_panel
-      weight: 4
+      weight: 5
       format_type: tab
       format_settings:
         id: ''
@@ -81,7 +85,7 @@ third_party_settings:
       children:
         - field_join_block
       parent_name: group_tabs_panel
-      weight: 5
+      weight: 6
       format_type: tab
       format_settings:
         id: ''
@@ -118,6 +122,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_project_icon:
+    weight: 6
+    settings:
+      entity_browser: browse_files
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: entity_browser_file
   field_summary:
     weight: 5
     settings:

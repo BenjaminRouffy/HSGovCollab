@@ -39,7 +39,17 @@ class CountryMenuBlock extends BlockBase {
     return $build;
   }
 
+  /**
+   * Generate links by group
+   *
+   * @param GroupInterface $group
+   *   The group to generate links.
+   *
+   * @return array
+   *   Return links.
+   */
   public function generateLinks(GroupInterface $group) {
+    // @todo Create test.
     $links = [];
 
     if (\Drupal::currentUser()->isAuthenticated()) {

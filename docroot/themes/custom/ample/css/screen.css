@@ -1968,7 +1968,7 @@ header .social-links .font-social-icon {
   padding: 10px;
   text-align: center; }
   .status-message.status {
-    background: #ddd; }
+    background: #80aabe; }
   .status-message.error {
     background: #ffdede; }
   .status-message ul {
@@ -1976,6 +1976,14 @@ header .social-links .font-social-icon {
     padding: 0; }
   .status-message li:not(:last-child) {
     margin-bottom: 5px; }
+  .status-message em {
+    font-style: normal; }
+  .status-message a {
+    color: #8c2222;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease; }
+    .status-message a:hover {
+      color: #ea3a32; }
 
 form {
   font-size: 1.1375rem;
@@ -2007,8 +2015,7 @@ form {
     margin: 0;
     position: absolute;
     top: 0;
-    right: 0;
-    text-shadow: 1px 1px 0 #8c2222; }
+    right: 0; }
     form input ~ label.error:after,
     form textarea ~ label.error:after {
       content: none; }

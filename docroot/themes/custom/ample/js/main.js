@@ -198,7 +198,7 @@
 
       setTimeout(function() {
         bannerOverlay.animate({'opacity': 0}, 2000, function() {
-          if (bannerOverlay.siblings($('#map'))) {
+          if (bannerOverlay.siblings('#map').size()) {
             bannerOverlay.remove();
           }
         });

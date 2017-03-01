@@ -276,7 +276,20 @@
   }
 
   .plyr__video-embed {
+    margin-top: -13%;
+    transition: margin .2s ease;
+  }
+}
+
+@include breakpoint-for('.w-background-video', (to: desktop)) {
+  .plyr__video-embed {
     margin-top: -5%;
+  }
+}
+
+@include breakpoint-for('.w-background-video', (to: laptop)) {
+  .plyr__video-embed {
+    margin-top: 0;
   }
 }
 

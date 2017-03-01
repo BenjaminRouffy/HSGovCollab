@@ -142,6 +142,15 @@
       }
     }
   }
+
+  .user-info {
+    .paragraph {
+      h3 {
+        @include font-size(21);
+        line-height: 29px;
+      }
+    }
+  }
 }
 
 @include breakpoint-for('.top-banner-region', (to: tablet)) {
@@ -166,12 +175,35 @@
       }
     }
   }
+
+  .user-info {
+    .paragraph {
+      width: 50%;
+
+      .icon-wrapper {
+        @include same(150px, height, width);
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        @include font-size(19.6);
+      }
+    }
+  }
 }
 
 @include breakpoint-for('.top-banner-region', (to: mobileL)) {
   .section-info {
     .paragraph {
       max-width: 100%;
+    }
+  }
+
+  .user-info {
+    .paragraph {
+      .icon-wrapper {
+        @include same(100px, height, width);
+      }
     }
   }
 }

@@ -26,11 +26,9 @@ class CountryMenuBlock extends BlockBase {
   public function build() {
     $build = [];
 
-    $build['#cache'] = [
-      'contexts' => $this->getCacheContexts()
-    ];
+    $build['#cache'] = ['contexts' => $this->getCacheContexts()];
 
-    /** @var \Drupal\group\Entity\GroupInterface $group */
+    /* @var GroupInterface $group */
     if (($group = \Drupal::routeMatch()->getParameter('group')) && $group->id()) {
       $links = [];
 

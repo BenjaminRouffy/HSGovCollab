@@ -5,6 +5,7 @@ namespace Drupal\country\Plugin\Block;
 use Drupal\Core\Annotation\Translation;
 use Drupal\Core\Block\Annotation\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\group\Entity\GroupInterface;
@@ -26,10 +27,7 @@ class CountryMenuBlock extends BlockBase {
     $build = [];
 
     $build['#cache'] = [
-      'contexts' => [
-        'route',
-        'group',
-      ],
+      'contexts' => $this->getCacheContexts()
     ];
 
     /** @var \Drupal\group\Entity\GroupInterface $group */
@@ -44,6 +42,13 @@ class CountryMenuBlock extends BlockBase {
     }
 
     return $build;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheContexts() {
+    return Cache::mergeContexts(parent::getCacheContexts(), ['url.path']);
   }
 
   /**

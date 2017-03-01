@@ -1,0 +1,21 @@
+uuid: c93f7e8b-b250-4e0b-8497-0077c9cc1fea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_summary_public
+    - group.type.project
+  module:
+    - text
+id: group.project.field_summary_public
+field_name: field_summary_public
+entity_type: group
+bundle: project
+label: 'Summary public'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -3,22 +3,104 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files
     - field.field.group.project.field_content
     - field.field.group.project.field_date
+    - field.field.group.project.field_join_block
+    - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
+    - field.field.group.project.field_summary_public
+    - field.field.group.project.field_time_line
     - group.type.project
   module:
     - datetime
+    - entity_browser
+    - field_group
     - paragraphs
     - path
     - text
+third_party_settings:
+  field_group:
+    group_tabs_panel:
+      children:
+        - group_summary
+        - group_content
+        - group_timeline
+        - group_bottom
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: 'Tabs panel'
+    group_summary:
+      children:
+        - label
+        - field_date
+        - langcode
+        - translation
+        - path
+        - field_project_icon
+      parent_name: group_tabs_panel
+      weight: 2
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Summary
+    group_content:
+      children:
+        - field_summary_public
+        - field_summary
+        - field_content
+      parent_name: group_tabs_panel
+      weight: 4
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+    group_timeline:
+      children:
+        - field_time_line
+      parent_name: group_tabs_panel
+      weight: 5
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Time line'
+    group_bottom:
+      children:
+        - field_join_block
+      parent_name: group_tabs_panel
+      weight: 6
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Bottom
 id: group.project.default
 targetEntityType: group
 bundle: project
 mode: default
 content:
   field_content:
-    weight: 5
+    weight: 6
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -28,32 +110,73 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs
   field_date:
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+  field_join_block:
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_project_icon:
+    weight: 6
+    settings:
+      entity_browser: browse_files
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: entity_browser_file
   field_summary:
+    weight: 5
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_summary_public:
     weight: 4
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+  field_time_line:
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
   label:
     type: string_textfield
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 3
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 4
     settings: {  }
     third_party_settings: {  }
 hidden:

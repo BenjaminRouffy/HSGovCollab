@@ -1226,7 +1226,9 @@
 .status-message {
   font-family: $oswald;
   padding: 10px;
+  position: relative;
   text-align: center;
+  z-index: 60;
 
   &.status {
     background: $navy-light;

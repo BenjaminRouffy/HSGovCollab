@@ -81,6 +81,9 @@ header {
 
   .partners {
     display: inline-block;
+    max-height: 58px;
+    max-width: 60%;
+    overflow: hidden;
   }
 
   .mobile-menu-wrapper {
@@ -119,8 +122,10 @@ header {
   color: $navy-dark;
   cursor: pointer;
   display: none;
-  float: right;
   padding-top: 26px;
+  position: absolute;
+  right: 0;
+  top: 0;
   text-align: center;
   transition: color .2s ease;
 
@@ -362,6 +367,8 @@ header {
     .partners {
       display: block;
       margin-left: 28px;
+      max-height: 100%;
+      max-width: 100%;
       padding-top: 50px;
       text-align: left;
 

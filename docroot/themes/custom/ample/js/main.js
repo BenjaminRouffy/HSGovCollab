@@ -277,7 +277,8 @@
         var thumbCurrentIndex = $thumbs.find('.current').index();
 
         $('#slider-overlay').fadeToggle(300);
-        $this.parent($('.slider-main')).add($('body')).toggleClass('fixed');
+        $this.parent($('.slider-main')).toggleClass('fixed');
+        $('body').toggleClass('no-scroll');
 
         $slider.add($thumbs).trigger('destroy.owl.carousel');
 
@@ -327,7 +328,7 @@
   Drupal.behaviors.mobileMenu = {
     attach: function(context, settings) {
       $('.mobile-menu-btn', context).on('click', function() {
-        $('body').toggleClass('fixed');
+        $('body').toggleClass('no-scroll');
         $(this).toggleClass('opened');
       });
 

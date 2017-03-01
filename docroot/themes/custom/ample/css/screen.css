@@ -171,7 +171,7 @@ body {
   line-height: 20px;
   min-height: 100%;
   overflow-x: hidden; }
-  body.fixed {
+  body.no-scroll {
     overflow: hidden; }
 
 h1, h2, h3 {
@@ -912,7 +912,7 @@ header .social-links .font-social-icon {
   overflow: hidden; }
 
 .w-background-video .plyr__video-embed {
-  margin-top: -23vh; }
+  margin-top: -5%; }
 
 .video-embed-field-responsive-video:after {
   content: none; }
@@ -1966,7 +1966,9 @@ header .social-links .font-social-icon {
 .status-message {
   font-family: Oswald, sans-serif;
   padding: 10px;
-  text-align: center; }
+  position: relative;
+  text-align: center;
+  z-index: 60; }
   .status-message.status {
     background: #80aabe; }
   .status-message.error {
@@ -2498,7 +2500,10 @@ header {
     height: 113px;
     width: 134px; }
   .header-static .partners {
-    display: inline-block; }
+    display: inline-block;
+    max-height: 58px;
+    max-width: 60%;
+    overflow: hidden; }
   .header-static .mobile-menu-wrapper .partners {
     display: none; }
   .header-static .social-links {
@@ -2523,8 +2528,10 @@ header {
   color: #283b44;
   cursor: pointer;
   display: none;
-  float: right;
   padding-top: 26px;
+  position: absolute;
+  right: 0;
+  top: 0;
   text-align: center;
   -webkit-transition: color .2s ease;
   transition: color .2s ease; }
@@ -2688,6 +2695,8 @@ header {
       .header-static .mobile-menu-wrapper .partners, .header-fixed .mobile-menu-wrapper .partners {
         display: block;
         margin-left: 28px;
+        max-height: 100%;
+        max-width: 100%;
         padding-top: 50px;
         text-align: left; }
         .header-static .mobile-menu-wrapper .partners .item-list, .header-fixed .mobile-menu-wrapper .partners .item-list {
@@ -2812,7 +2821,7 @@ footer {
   .content-with-sidebar .sidebar {
     float: none;
     width: 100%; }
-  .content-with-sidebar .content > *:not(.node-pager):not(.event-info):not(.header-image) {
+  .content-with-sidebar .content:not(.top-text-region) > *:not(.node-pager):not(.event-info):not(.header-image) {
     width: 100%; }
   .content-with-sidebar .sidebar {
     margin-top: 40px;

@@ -84,7 +84,7 @@
   }
 
   .content {
-    > *:not(.node-pager):not(.event-info):not(.header-image) {
+    &:not(.top-text-region) > *:not(.node-pager):not(.event-info):not(.header-image) {
       width: 100%;
     }
   }

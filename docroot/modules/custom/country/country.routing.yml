@@ -7,32 +7,37 @@ entity.group.canonical:
   requirements:
     group: \d+
 
-fake.current_group:
-  path: '/group/fake'
-  defaults:
-    _title: 'Country'
-
-fake.news_and_events:
-  path: '/group/fake_news_and_events'
+group.news_and_event:
+  path: '/group/{group}/news-and-events'
   defaults:
     _title: 'News&Events'
+  requirements:
+    group: \d+
 
-fake.documents:
-  path: '/group/fake_documents'
+group.document:
+  path: '/group/{group}/documents'
   defaults:
     _title: 'Documents'
+  requirements:
+    group: \d+
 
-fake.projects:
-  path: '/group/fake_projects'
+group.project:
+  path: '/group/{group}/projects'
   defaults:
     _title: 'Projects'
+  requirements:
+    group: \d+
 
-fake.contact:
-  path: '/group/fake_contacts'
+group.contact:
+  path: '/group/{group}/contacts'
   defaults:
     _title: 'Contacts'
+  requirements:
+    group: \d+
 
-fake.faq:
-  path: '/group/fake_faq'
+group.faq:
+  path: '/group/{group}/faq'
   defaults:
     _title: 'FAQ'
+  requirements:
+    group: \d+

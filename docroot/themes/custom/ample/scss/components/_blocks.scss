@@ -1229,7 +1229,7 @@
   text-align: center;
 
   &.status {
-    background: #ddd;
+    background: $navy-light;
   }
 
   &.error {
@@ -1243,5 +1243,18 @@
 
   li:not(:last-child) {
     margin-bottom: 5px;
+  }
+
+  em {
+    font-style: normal;
+  }
+
+  a {
+    color: $red-dark;
+    transition: color .2s ease;
+
+    &:hover {
+      color: $red;
+    }
   }
 }

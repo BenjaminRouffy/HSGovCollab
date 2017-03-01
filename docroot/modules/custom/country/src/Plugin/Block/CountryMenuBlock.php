@@ -85,52 +85,28 @@ class CountryMenuBlock extends BlockBase {
       ];
 
       foreach ($entities as $index => $title) {
-        $query = [];
-        $group_ids = \Drupal::database()->select('group_graph', 'group_graph')
-          ->fields('group_graph', ['end_vertex'])
-          ->condition('start_vertex', $group->id())
-          ->condition('hops', 0)
-          ->execute()
-          ->fetchCol();
+        $row = [];
 
         switch($index) {
           case 'news_and_event':
-            $group_ids[] = $group->id();
-
-            foreach (['event', 'news'] as $type) {
-              $query += \Drupal::database()->select('group_content_field_data', 'group_content_field_data')
-                ->fields('group_content_field_data', ['id'])
-                ->condition('gid', $group_ids, 'IN')
-                ->condition('type', "%-group_node-$type", 'LIKE')
-                ->execute()
-                ->fetchCol();
-            }
+            $row = views_get_view_result('news_and_events_group', 'news_and_events_by_group');
             break;
 
           case 'project':
-            if ('project' == $group->bundle()) {
-              continue 2;
-            }
-
-            $query = $group_ids;
-
+            $row = views_get_view_result('list_of_projects', 'block_1');
             break;
 
           case 'document':
+            $row = views_get_view_result('news_and_events_group', 'documents_by_group');
+            break;
+
           case 'contact':
           case 'faq':
-            $group_ids[] = $group->id();
 
-            $query = \Drupal::database()->select('group_content_field_data', 'group_content_field_data')
-              ->fields('group_content_field_data', ['id'])
-              ->condition('gid', $group_ids, 'IN')
-              ->condition('type', '%-group_node-' . $index, 'LIKE')
-              ->execute()
-              ->fetchCol();
             break;
         }
 
-        if (empty($query)) {
+        if (empty($row)) {
           continue;
         }
 

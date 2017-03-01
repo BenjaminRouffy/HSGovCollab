@@ -159,6 +159,11 @@ form {
     width: 50%;
   }
 
+  .inner-bottom-column {
+    padding: 0 40px 30px;
+    width: 100%;
+  }
+
   .inner-top-column {
     overflow: hidden;
     margin-bottom: 20px;
@@ -229,5 +234,43 @@ form {
         content: ": *";
       }
     }
+  }
+}
+
+@include breakpoint-for('.form-contact-us', (to: laptop-small)) {
+  .webform-left-column,
+  .webform-right-column {
+    padding: 20px;
+  }
+
+  .inner-bottom-column {
+    padding: 0 20px 30px;
+  }
+
+  .inner-top-column {
+    margin-bottom: 0;
+  }
+
+  .form-item-title,
+  .form-item-organisation {
+    margin-bottom: 40px;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@include breakpoint-for('.form-contact-us', (to: tablet)) {
+  .webform-left-column,
+  .webform-right-column {
+    padding: 20px 10px;
+    width: 100%;
+  }
+
+  .inner-bottom-column {
+    padding: 0 10px 30px;
+  }
+
+  .form-actions {
+    width: 100%;
   }
 }

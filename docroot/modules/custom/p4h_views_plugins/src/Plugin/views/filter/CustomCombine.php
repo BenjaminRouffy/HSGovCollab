@@ -53,7 +53,7 @@ class CustomCombine extends DefaultCombine {
     if ($exposed = $form_state->get('exposed') && !empty($this->options['alphabet'])) {
       $alphabet = str_split(implode(range('A', 'Z')), 3);
       $form['value']['#type'] = 'select';
-      $form['value']['#options'] = array_combine($alphabet, $alphabet);
+      $form['value']['#options'] = array_merge(['all' => $this->t('ALL')], array_combine($alphabet, $alphabet));
     }
   }
 
@@ -67,7 +67,7 @@ class CustomCombine extends DefaultCombine {
       return parent::opStartsWith($expression);
     }
     // @TODO Remove this weird hard code.
-    if (empty($query->where[1]['conditions'][0]['value'][':views_combine'])) {
+    if (empty($query->where[1]['conditions'][0]['value'][':views_combine']) && "all" != $this->value) {
       $placeholder = $this->placeholder();
       $expression = "SUBSTR({$expression},1,1) IN ({$placeholder}[])";
       $query->addWhereExpression($this->options['group'], $expression, [

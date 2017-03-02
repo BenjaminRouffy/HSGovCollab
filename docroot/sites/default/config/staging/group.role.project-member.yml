@@ -12,7 +12,7 @@ audience: member
 group_type: project
 permissions_ui: true
 permissions:
-  0: 'view group'
-  2: 'view group_node:document entity'
-  3: 'view group_node:event entity'
-  4: 'view group_node:news entity'
+  - 'view group'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'

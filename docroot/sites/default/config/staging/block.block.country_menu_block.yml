@@ -1,35 +1,40 @@
-uuid: a6fde099-4815-4b65-a23d-7ef7da785a3e
+uuid: 1d05c7d6-e517-42d0-b70a-ee409d648cb0
 langcode: en
 status: true
 dependencies:
-  config:
-    - system.menu.country-menu
   module:
     - admin_customizations
+    - country
     - ctools
-    - system
     - user
   theme:
     - ample
-id: countrymenu
+id: country_menu_block
 theme: ample
 region: header
-weight: -7
+weight: 0
 provider: null
-plugin: 'system_menu_block:country-menu'
+plugin: country_menu_block
 settings:
-  id: 'system_menu_block:country-menu'
-  label: 'Country menu'
-  provider: system
+  id: country_menu_block
+  label: 'Country menu block'
+  provider: country
   label_display: '0'
-  level: 1
-  depth: 0
+  context_mapping: {  }
 visibility:
   http_status:
     id: http_status
     negate: false
     code: {  }
     context_mapping: {  }
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    bundles:
+      country: country
+      project: project
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
   user_role:
     id: user_role
     roles:
@@ -37,10 +42,3 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
-  'entity_bundle:group':
-    id: 'entity_bundle:group'
-    bundles:
-      country: country
-    negate: false
-    context_mapping:
-      group: '@group.group_route_context:group'

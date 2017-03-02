@@ -19,7 +19,9 @@
     {{ plainBody|striptags }}
   </p>
 
-  <a href="{{ content.field_permanent_link|field_value }}" role="link" target="_blank">
-    {{ 'Read more'|t }}
-  </a>
+  {% if content.field_permanent_link|field_value %}
+    <a href="{{ content.field_permanent_link|field_value }}" role="link" target="_blank">
+      {{ 'Read more'|t }}
+    </a>
+  {% endif %}
 </div>

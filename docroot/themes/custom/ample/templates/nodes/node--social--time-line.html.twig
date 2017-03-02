@@ -19,7 +19,7 @@
     {{ plainBody|striptags }}
   </p>
 
-  <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}" role="link">
+  <a href="{{ content.field_permanent_link|field_value }}" role="link" target="_blank">
     {{ 'Read more'|t }}
   </a>
 </div>

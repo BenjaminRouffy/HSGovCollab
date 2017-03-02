@@ -41,7 +41,6 @@ class NodeFormGlobalTagAlter extends FormBaseAlterHelper implements FormAlterSer
    * @return mixed
    */
   public function hasMatch(&$form, FormStateInterface $form_state, $form_id) {
-    $r=$form_id;
     return $this->hasWidget($form, 'field_public_content');
   }
 }

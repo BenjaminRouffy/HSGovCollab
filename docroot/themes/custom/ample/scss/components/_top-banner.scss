@@ -221,6 +221,7 @@
   left: 50%;
   text-align: left;
   transform: translateX(-50%);
+  transition: padding .3s ease;
   width: 100%;
   z-index: 10;
 
@@ -256,6 +257,45 @@
     &:hover {
       background: $red;
     }
+  }
+}
+
+@include breakpoint-for('.country-content-wrapper', (to: laptop-small)) {
+  padding: 40px 70px 0;
+
+  h1 {
+    @include font-size(64);
+  }
+}
+
+@include breakpoint-for('.country-content-wrapper', (to: tablet)) {
+  height: 600px;
+
+  h1 {
+    @include font-size(56);
+    line-height: 64px;
+    margin-bottom: 20px;
+  }
+}
+
+@include breakpoint-for('.country-content-wrapper', (to: mobileL)) {
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+
+  .country-icon-wrapper {
+    float: none;
+    margin: 0 auto;
+  }
+
+  h1 {
+    @include font-size(32);
+    line-height: 48px;
+    text-align: center;
+  }
+
+  .follow-link {
+    margin-left: 0;
   }
 }
 

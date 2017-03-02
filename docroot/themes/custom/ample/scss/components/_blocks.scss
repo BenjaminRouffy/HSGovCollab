@@ -59,6 +59,14 @@
     font-weight: 300;
     line-height: 35px;
   }
+
+  .full-width & {
+    h2 {
+      @include font-size(42);
+      font-weight: 300;
+      line-height: 35px;
+    }
+  }
 }
 
 @include breakpoint-for('.teaser', (to: tablet)) {

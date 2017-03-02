@@ -588,3 +588,11 @@ function deployment_update_8033() {
 function deployment_update_8034() {
   \Drupal::service('module_installer')->install(['views_default_arguments']);
 }
+
+/**
+ * Remove image field.
+ */
+function deployment_update_8035() {
+  deployment_delete_fields('node', 'social', ['field_image']);
+  field_purge_batch(500);
+}

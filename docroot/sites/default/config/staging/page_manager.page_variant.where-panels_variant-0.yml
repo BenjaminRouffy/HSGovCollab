@@ -9,6 +9,7 @@ dependencies:
     - 'block_content:headline_description:b1a69eb0-294e-4599-bb30-4c0c817b615a'
     - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
     - 'block_content:link:a1771701-eceb-40f1-bc27-f4c5a8ed6b47'
+    - 'block_content:map:88f5fb11-3c7b-4152-a2c0-5a7ba2d6b7d7'
   module:
     - block_content
     - panels
@@ -65,17 +66,17 @@ variant_settings:
       weight: 0
       uuid: fa994fb9-a406-42e5-8d14-d6eb2705dc3e
       context_mapping: {  }
-    5f1ee8d8-153e-4e3c-88d9-e8f710a7de85:
-      id: map
+    ba5d49d3-041e-4cdf-9e7d-7626e411384d:
+      id: 'block_content:88f5fb11-3c7b-4152-a2c0-5a7ba2d6b7d7'
       label: Map
-      provider: country
+      provider: block_content
       label_display: '0'
-      key: AIzaSyAFeqJ06IJ9av4A6BbJfhJ0x-Dua4HUFFk
-      header: 'Welcome to P4H network'
-      description: 'a global network for Universal Health Coverage and Social Health Protection'
+      status: true
+      info: ''
+      view_mode: full
       region: banner
-      weight: -2
-      uuid: 5f1ee8d8-153e-4e3c-88d9-e8f710a7de85
+      weight: 0
+      uuid: ba5d49d3-041e-4cdf-9e7d-7626e411384d
       context_mapping: {  }
   id: panels_variant
   uuid: 4ae1af58-df00-4acc-9fd0-bb6f093daff3

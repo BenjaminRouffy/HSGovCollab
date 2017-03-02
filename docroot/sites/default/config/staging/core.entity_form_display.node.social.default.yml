@@ -4,13 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.social.body
-    - field.field.node.social.field_image
     - field.field.node.social.field_media
+    - field.field.node.social.field_permalink_url
     - field.field.node.social.field_social_type
-    - image.style.thumbnail
     - node.type.social
   module:
-    - image
     - link
     - path
     - text
@@ -32,15 +30,15 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
-  field_image:
-    weight: 33
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
   field_media:
     weight: 34
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_permalink_url:
+    weight: 35
     settings:
       placeholder_url: ''
       placeholder_title: ''

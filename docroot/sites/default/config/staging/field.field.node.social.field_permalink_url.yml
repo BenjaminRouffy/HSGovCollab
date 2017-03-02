@@ -1,0 +1,23 @@
+uuid: 259f9ee0-f9b4-4996-8050-11a56d825800
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_permalink_url
+    - node.type.social
+  module:
+    - link
+id: node.social.field_permalink_url
+field_name: field_permalink_url
+entity_type: node
+bundle: social
+label: 'Permalink url'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

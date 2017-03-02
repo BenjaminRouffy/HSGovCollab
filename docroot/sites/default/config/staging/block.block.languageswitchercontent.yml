@@ -5,12 +5,13 @@ dependencies:
   module:
     - admin_customizations
     - language
+    - system
   theme:
     - ample
 id: languageswitchercontent
 theme: ample
 region: header_static
-weight: -5
+weight: -4
 provider: null
 plugin: 'language_block:language_content'
 settings:
@@ -25,4 +26,9 @@ visibility:
     code:
       403: '403'
       404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/user/*'
+    negate: true
     context_mapping: {  }

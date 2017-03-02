@@ -12,7 +12,7 @@ dependencies:
 id: headermenu_3
 theme: ample
 region: header_static
-weight: -8
+weight: -7
 provider: null
 plugin: 'system_menu_block:header-menu'
 settings:
@@ -29,4 +29,9 @@ visibility:
     code:
       403: '403'
       404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/user/*'
+    negate: true
     context_mapping: {  }

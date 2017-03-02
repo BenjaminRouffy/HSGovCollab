@@ -7,12 +7,13 @@ dependencies:
   module:
     - admin_customizations
     - block_content
+    - system
   theme:
     - ample
 id: logos
 theme: ample
 region: header_static
-weight: -10
+weight: -9
 provider: null
 plugin: 'block_content:2b299f2d-1e36-420e-8953-0d42aaaf28cf'
 settings:
@@ -30,4 +31,9 @@ visibility:
     code:
       403: '403'
       404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/user/*'
+    negate: true
     context_mapping: {  }

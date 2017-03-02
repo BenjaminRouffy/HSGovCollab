@@ -30,3 +30,8 @@ visibility:
       403: '403'
       404: '404'
     context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/user/*'
+    negate: true
+    context_mapping: {  }

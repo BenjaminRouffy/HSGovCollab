@@ -1,24 +1,24 @@
-uuid: 7184e2d4-b872-4c41-9c61-477171e41c1e
+uuid: 5cdc6413-c6ed-4ca4-9eb4-c0edc389b4bf
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.user-menu
+    - system.menu.header-dashboard-menu
   module:
     - admin_customizations
     - system
     - user
   theme:
     - ample
-id: user_menu
+id: headerdashboardmenu
 theme: ample
-region: header
-weight: -8
+region: header_static
+weight: 0
 provider: null
-plugin: 'system_menu_block:user-menu'
+plugin: 'system_menu_block:header-dashboard-menu'
 settings:
-  id: 'system_menu_block:user-menu'
-  label: 'User menu'
+  id: 'system_menu_block:header-dashboard-menu'
+  label: 'Header dashboard menu'
   provider: system
   label_display: '0'
   level: 1
@@ -34,12 +34,12 @@ visibility:
   request_path:
     id: request_path
     pages: /dashboard
-    negate: true
+    negate: false
     context_mapping: {  }
   user_role:
     id: user_role
     roles:
-      anonymous: anonymous
+      authenticated: authenticated
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'

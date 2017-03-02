@@ -13,6 +13,11 @@ use Drupal\views\Plugin\views\filter\FilterPluginBase;
  * @ViewsFilter("group_admin_filter")
  */
 class GroupAdminFilter extends FilterPluginBase {
+  public function adminSummary() { }
+  protected function operatorForm(&$form, FormStateInterface $form_state) { }
+  public function canExpose() {
+    return FALSE;
+  }
 
   /**
    * {@inheritdoc}

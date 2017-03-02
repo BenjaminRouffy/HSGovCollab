@@ -156,12 +156,12 @@
 
   Drupal.behaviors.anchorLink = {
     attach: function(context, settings) {
-      var $bottomHead = $('.bottom-head .wrapper', context);
+      var $bottomHead = $('.bottom-head', context);
       var $anchorLink = $('[data-anchor-id]', context);
 
       if (!$('body').is('.group.logged')) {
         if ($anchorLink.length && $anchorLink.length > 1) {
-          $bottomHead.append('<div class="anchor-links"></div>');
+          $bottomHead.append('<div class="anchor-links"><ul></ul></div>');
 
           $anchorLink.each(function(index, element) {
             var title = $(element).find('.anchor-title').first().text();
@@ -172,7 +172,7 @@
             id = id.toLowerCase();
             element.id = id;
 
-            $bottomHead.find('.anchor-links').append('<a href="#' + id + '">' + title + '</a>');
+            $bottomHead.find('.anchor-links ul').append('<li><a href="#' + id + '">' + title + '</a></li>');
           });
         }
 
@@ -198,7 +198,7 @@
 
       setTimeout(function() {
         bannerOverlay.animate({'opacity': 0}, 2000, function() {
-          if (bannerOverlay.siblings($('#map'))) {
+          if (bannerOverlay.siblings('#map').size()) {
             bannerOverlay.remove();
           }
         });
@@ -277,7 +277,8 @@
         var thumbCurrentIndex = $thumbs.find('.current').index();
 
         $('#slider-overlay').fadeToggle(300);
-        $this.parent($('.slider-main')).add($('body')).toggleClass('fixed');
+        $this.parent($('.slider-main')).toggleClass('fixed');
+        $('body').toggleClass('no-scroll');
 
         $slider.add($thumbs).trigger('destroy.owl.carousel');
 
@@ -327,7 +328,7 @@
   Drupal.behaviors.mobileMenu = {
     attach: function(context, settings) {
       $('.mobile-menu-btn', context).on('click', function() {
-        $('body').toggleClass('fixed');
+        $('body').toggleClass('no-scroll');
         $(this).toggleClass('opened');
       });
 

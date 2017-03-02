@@ -11,10 +11,13 @@
   top: 0;
   right: 0;
   height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 20px 30px;
   transform: translateX(110%);
   transition: transform .2s ease;
   width: 30%;
+  z-index: 5;
 
   &.active {
     transform: translateX(0);
@@ -39,6 +42,7 @@
     letter-spacing: 1px;
     line-height: 1.1;
     margin: 15px 0 40px;
+    padding: 0;
     overflow: visible;
   }
 
@@ -89,6 +93,7 @@
       line-height: 20px;
       margin: 12px 0 0;
       padding: 0;
+      width: calc(100% - 60px);
     }
   }
 
@@ -100,4 +105,34 @@
       border-color: $white;
     }
   }
+}
+
+@include breakpoint-for('.marker-info', (to: laptop-small)) {
+  width: 50%;
+
+  .section-info {
+    .paragraph {
+      h2 {
+        @include font-size(18.2);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.marker-info', (to: tablet)) {
+  width: 75%;
+
+  .section-info {
+    .paragraph {
+      .icon-wrapper {
+        height: 35px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+@include breakpoint-for('.marker-info', (to: mobileL)) {
+  width: 100%;
 }

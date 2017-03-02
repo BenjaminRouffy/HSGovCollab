@@ -103,6 +103,7 @@
 @include breakpoint-for('.view-news-and-events', (to: laptop-small)) {
   .wrapper-filters {
     flex-wrap: wrap;
+    justify-content: flex-start;
 
     > div {
       max-width: calc(33.33% - 20px);
@@ -115,6 +116,12 @@
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
+    }
+  }
+
+  .front & {
+    .title-wrapper {
+      margin: -40px 0 3px -20px;
     }
   }
 }

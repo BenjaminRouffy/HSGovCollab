@@ -84,7 +84,7 @@
   }
 
   .content {
-    > *:not(.node-pager):not(.event-info):not(.header-image) {
+    &:not(.top-text-region) > *:not(.node-pager):not(.event-info):not(.header-image) {
       width: 100%;
     }
   }
@@ -92,6 +92,14 @@
   .sidebar {
     margin-top: 40px;
     padding-left: 0;
+  }
+
+  .front & {
+    .region-wrapper {
+      float: none;
+      padding-right: 0;
+      width: 100%;
+    }
   }
 }
 

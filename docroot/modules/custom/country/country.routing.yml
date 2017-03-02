@@ -6,3 +6,33 @@ entity.group.canonical:
     _title_callback: '\Drupal\country\Controller\CountryGroupMembershipController::groupTitle'
   requirements:
     group: \d+
+
+fake.current_group:
+  path: '/group/fake'
+  defaults:
+    _title: 'Country'
+
+fake.news_and_events:
+  path: '/group/fake_news_and_events'
+  defaults:
+    _title: 'News&Events'
+
+fake.documents:
+  path: '/group/fake_documents'
+  defaults:
+    _title: 'Documents'
+
+fake.projects:
+  path: '/group/fake_projects'
+  defaults:
+    _title: 'Projects'
+
+fake.contact:
+  path: '/group/fake_contacts'
+  defaults:
+    _title: 'Contacts'
+
+fake.faq:
+  path: '/group/fake_faq'
+  defaults:
+    _title: 'FAQ'

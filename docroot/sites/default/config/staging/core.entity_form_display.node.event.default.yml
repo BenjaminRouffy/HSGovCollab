@@ -109,6 +109,7 @@ third_party_settings:
       children:
         - field_related_content_selector
         - public_content
+        - field_documents
       parent_name: group_tabs_panel
       weight: 24
       format_type: tab
@@ -145,7 +146,7 @@ content:
     third_party_settings: {  }
     type: daterange_eventdaterange
   field_documents:
-    weight: 17
+    weight: 20
     settings:
       match_operator: CONTAINS
       size: 60

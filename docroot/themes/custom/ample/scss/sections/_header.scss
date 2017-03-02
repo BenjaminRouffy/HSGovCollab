@@ -81,6 +81,9 @@ header {
 
   .partners {
     display: inline-block;
+    max-height: 58px;
+    max-width: 60%;
+    overflow: hidden;
   }
 
   .mobile-menu-wrapper {
@@ -119,8 +122,10 @@ header {
   color: $navy-dark;
   cursor: pointer;
   display: none;
-  float: right;
   padding-top: 26px;
+  position: absolute;
+  right: 0;
+  top: 0;
   text-align: center;
   transition: color .2s ease;
 
@@ -131,8 +136,18 @@ header {
 
 .header-fixed {
   position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   z-index: 400;
+
+  .toolbar-fixed & {
+    top: 39px;
+  }
+
+  .toolbar-tray-open & {
+    top: 79px;
+  }
 
   .top-head {
     background-image: linear-gradient(180deg, #334c58, $navy-dark);
@@ -352,6 +367,8 @@ header {
     .partners {
       display: block;
       margin-left: 28px;
+      max-height: 100%;
+      max-width: 100%;
       padding-top: 50px;
       text-align: left;
 
@@ -425,14 +442,14 @@ header {
   background: #e9ecee;
   box-shadow: 0 1px 3px rgba($black, .1);
 
-  .wrapper {
+  .anchor-links {
     margin: 0 auto;
     max-width: 1260px;
     height: 60px;
     padding-top: 7px;
 
-    &:empty {
-      display: none;
+    a {
+      display: block;
     }
   }
 }

@@ -1,0 +1,14 @@
+{% if content %}
+  <div class="font-social-icon person-icon">
+    <span></span>
+  </div>
+  <div class="name">
+    {% if content.field_first_name %}
+      {{ content.field_first_name }}
+    {% endif %}
+
+    {% if content.field_last_name %}
+      {{ content.field_last_name }}
+    {% endif %}
+  </div>
+{% endif %}

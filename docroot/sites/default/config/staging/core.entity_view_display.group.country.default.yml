@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.group.country.field_banner
+    - field.field.group.country.field_bottom_link
     - field.field.group.country.field_content
     - field.field.group.country.field_country_icon
     - field.field.group.country.field_country_options
@@ -13,6 +14,7 @@ dependencies:
     - field.field.group.country.field_location
     - field.field.group.country.field_regions
     - field.field.group.country.field_summary
+    - field.field.group.country.field_time_line
     - group.type.country
   module:
     - entity_reference_revisions
@@ -48,12 +50,14 @@ hidden:
   changed: true
   created: true
   field_banner: true
+  field_bottom_link: true
   field_country_icon: true
   field_country_options: true
   field_date: true
   field_join_block: true
   field_location: true
   field_regions: true
+  field_time_line: true
   label: true
   langcode: true
   uid: true

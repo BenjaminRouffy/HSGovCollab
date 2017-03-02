@@ -5,8 +5,6 @@
  * Contains group_dashboard.module.
  */
 
-use Drupal\Core\Routing\RouteMatchInterface;
-
 /**
  * Implements hook_help().
  */
@@ -14,4 +12,26 @@ function group_dashboard_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
   $entity_types['group_content']->setListBuilderClass('\Drupal\group_dashboard\Controller\GroupRelatedEntitiesListBuilder');
   $entity_types['group']->setListBuilderClass('\Drupal\group_dashboard\Controller\GroupAdminListBuilder');
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function group_dashboard_views_data_alter(array &$data) {
+  $data['groups_field_data']['gid_admin'] = [
+    'real field' => 'gid',
+    'filter' => [
+      'title' => t('Only admin access'),
+      'id' => 'group_admin_filter',
+    ],
+  ];
+
+  $data['node_access']['node_operations'] = [
+    'title' => t('Access by node operations'),
+    'real field' => 'nid',
+    'filter' => [
+      'id' => 'node_operations_access',
+      'help' => t('Filter for content by node access. <strong>Not necessary if you are using node as your base table.</strong>'),
+    ],
+  ];
 }

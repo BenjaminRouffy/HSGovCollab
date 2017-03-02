@@ -846,6 +846,8 @@ header .social-links .font-social-icon {
   text-align: left;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: padding .3s ease;
+  transition: padding .3s ease;
   width: 100%;
   z-index: 10; }
   .country-content-wrapper .country-icon-wrapper {
@@ -877,6 +879,35 @@ header .social-links .font-social-icon {
     transition: background .2s ease; }
     .country-content-wrapper .follow-link:hover {
       background: #ea3a32; }
+
+@media (max-width: 991px) {
+  .country-content-wrapper {
+    padding: 40px 70px 0; }
+    .country-content-wrapper h1 {
+      font-size: 4rem; } }
+
+@media (max-width: 767px) {
+  .country-content-wrapper {
+    height: 600px; }
+    .country-content-wrapper h1 {
+      font-size: 3.5rem;
+      line-height: 64px;
+      margin-bottom: 20px; } }
+
+@media (max-width: 479px) {
+  .country-content-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center; }
+    .country-content-wrapper .country-icon-wrapper {
+      float: none;
+      margin: 0 auto; }
+    .country-content-wrapper h1 {
+      font-size: 2rem;
+      line-height: 48px;
+      text-align: center; }
+    .country-content-wrapper .follow-link {
+      margin-left: 0; } }
 
 .video-wrapper {
   position: relative; }
@@ -1663,17 +1694,17 @@ header .social-links .font-social-icon {
     margin: 0 0 10px; }
 
 @media (max-width: 991px) {
-  .news-and-events-list .item {
+  .news-and-events-list .item:nth-child(n) {
     width: 33.33%; }
   .front .news-and-events-list .news {
     width: 50%; } }
 
 @media (max-width: 767px) {
-  .news-and-events-list .item {
+  .news-and-events-list .item:nth-child(n) {
     width: 50%; } }
 
 @media (max-width: 479px) {
-  .news-and-events-list .item {
+  .news-and-events-list .item:nth-child(n) {
     width: 100%; }
   .front .news-and-events-list .news:nth-child(n) {
     width: 100%; } }
@@ -3298,6 +3329,14 @@ footer {
   .country-desc .image-text {
     left: 0;
     bottom: 50px; }
+
+@media (max-width: 991px) {
+  .country-desc .image-text {
+    width: 75%; } }
+
+@media (max-width: 767px) {
+  .country-desc .image-text {
+    width: 100%; } }
 
 .owl-stage-outer {
   overflow: hidden; }

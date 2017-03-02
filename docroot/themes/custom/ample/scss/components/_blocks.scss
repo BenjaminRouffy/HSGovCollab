@@ -840,7 +840,7 @@
 }
 
 @include breakpoint-for('.news-and-events-list', (to: laptop-small)) {
-  .item {
+  .item:nth-child(n) {
     width: 33.33%;
   }
 
@@ -852,13 +852,13 @@
 }
 
 @include breakpoint-for('.news-and-events-list', (to: tablet)) {
-  .item {
+  .item:nth-child(n) {
     width: 50%;
   }
 }
 
 @include breakpoint-for('.news-and-events-list', (to: mobileL)) {
-  .item {
+  .item:nth-child(n) {
     width: 100%;
   }
 

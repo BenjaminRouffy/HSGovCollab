@@ -31,6 +31,10 @@ process:
     plugin: default_value
     default_value: facebook
   field_media: full_picture
+  field_permalink_url:
+    plugin: callback
+    source: permalink_url
+    callable: urldecode
 destination:
   plugin: 'entity:node'
 migration_dependencies: null

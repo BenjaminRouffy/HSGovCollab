@@ -315,9 +315,11 @@ display:
           required: false
           group_content_plugins:
             'group_node:basic_page': '0'
+            'group_node:document': '0'
             'group_node:event': '0'
             'group_node:member': '0'
             'group_node:news': '0'
+            'group_node:social': '0'
           entity_type: node
           plugin_id: group_content_to_entity_reverse
       arguments:
@@ -438,6 +440,8 @@ display:
         - 'config:core.entity_view_display.node.news.small_teaser'
         - 'config:core.entity_view_display.node.news.teaser'
         - 'config:core.entity_view_display.node.news.time_line'
+        - 'config:core.entity_view_display.node.social.default'
+        - 'config:core.entity_view_display.node.social.teaser'
   sidebar:
     display_plugin: block
     id: sidebar
@@ -483,3 +487,5 @@ display:
         - 'config:core.entity_view_display.node.news.small_teaser'
         - 'config:core.entity_view_display.node.news.teaser'
         - 'config:core.entity_view_display.node.news.time_line'
+        - 'config:core.entity_view_display.node.social.default'
+        - 'config:core.entity_view_display.node.social.teaser'

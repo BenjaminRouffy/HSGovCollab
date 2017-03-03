@@ -6,7 +6,6 @@ Feature: News feature
     Given I am logged in with credentials:
       | username | admin     |
       | password | propeople |
-    And I should use the "1600x1200" screen resolution
     When I am on "node/add/news"
     Then I should see "Create News" in the "h1" element
     When I fill "edit-title-0-value" with "AT News feature 1"

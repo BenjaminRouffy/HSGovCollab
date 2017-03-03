@@ -6,7 +6,6 @@ Feature: Events feature
     Given I am logged in with credentials:
       | username | admin     |
       | password | propeople |
-    And I should use the "1600x1200" screen resolution
     When I am on "node/add/event"
     Then I should see "Create Event" in the "h1" element
     When I fill "edit-title-0-value" with "AT Event feature 1"

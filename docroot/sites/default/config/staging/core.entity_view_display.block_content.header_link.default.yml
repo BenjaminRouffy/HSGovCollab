@@ -1,0 +1,27 @@
+uuid: b9a3509e-12aa-45ef-a206-5a6177a2c518
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.header_link
+    - field.field.block_content.header_link.field_link
+  module:
+    - link
+id: block_content.header_link.default
+targetEntityType: block_content
+bundle: header_link
+mode: default
+content:
+  field_link:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+hidden:
+  langcode: true

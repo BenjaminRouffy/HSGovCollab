@@ -7,6 +7,7 @@ dependencies:
   module:
     - admin_customizations
     - system
+    - user
   theme:
     - ample
 id: user_menu
@@ -30,3 +31,15 @@ visibility:
       403: '403'
       404: '404'
     context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: true
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

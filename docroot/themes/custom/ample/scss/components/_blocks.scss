@@ -59,6 +59,14 @@
     font-weight: 300;
     line-height: 35px;
   }
+
+  .full-width & {
+    h2 {
+      @include font-size(42);
+      font-weight: 300;
+      line-height: 35px;
+    }
+  }
 }
 
 @include breakpoint-for('.teaser', (to: tablet)) {
@@ -575,11 +583,13 @@
     font-family: $oswald;
     letter-spacing: .5px;
     min-height: 50px;
+    overflow: hidden;
     padding: 13px 20px 5px;
     position: absolute;
     left: 0;
     bottom: 0;
     text-decoration: none;
+    text-overflow: ellipsis;
     transition: border .3s ease, color .3s ease;
     width: 100%;
 
@@ -838,7 +848,7 @@
 }
 
 @include breakpoint-for('.news-and-events-list', (to: laptop-small)) {
-  .item {
+  .item:nth-child(n) {
     width: 33.33%;
   }
 
@@ -850,13 +860,13 @@
 }
 
 @include breakpoint-for('.news-and-events-list', (to: tablet)) {
-  .item {
+  .item:nth-child(n) {
     width: 50%;
   }
 }
 
 @include breakpoint-for('.news-and-events-list', (to: mobileL)) {
-  .item {
+  .item:nth-child(n) {
     width: 100%;
   }
 
@@ -1003,9 +1013,10 @@
   }
 }
 
-@include breakpoint-for('.country-list, .project-list', (to: laptop-small)) {
+@include breakpoint-for('.country-list, .project-list, .members-list ul', (to: laptop-small)) {
   .country-item,
-  .project-item {
+  .project-item,
+  .member-block {
     width: 50%;
   }
 }
@@ -1017,12 +1028,18 @@
   }
 }
 
-@include breakpoint-for('.country-list, .project-list', (to: mobileL)) {
+@include breakpoint-for('.country-list, .project-list, .members-list ul', (to: mobileL)) {
   .country-item,
-  .project-item {
+  .project-item,
+  .member-block {
     padding-left: 0;
     padding-right: 0;
     width: 100%;
+
+    .block-content {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }
 
@@ -1226,7 +1243,9 @@
 .status-message {
   font-family: $oswald;
   padding: 10px;
+  position: relative;
   text-align: center;
+  z-index: 60;
 
   &.status {
     background: $navy-light;

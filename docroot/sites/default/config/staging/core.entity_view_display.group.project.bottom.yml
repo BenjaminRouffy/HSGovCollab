@@ -1,0 +1,39 @@
+uuid: aa82e10b-14fb-4dc6-9dcf-415018c08f27
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.bottom
+    - field.field.group.project.field_content
+    - field.field.group.project.field_date
+    - field.field.group.project.field_join_block
+    - field.field.group.project.field_summary
+    - field.field.group.project.field_summary_public
+    - field.field.group.project.field_time_line
+    - group.type.project
+  module:
+    - timeline
+id: group.project.bottom
+targetEntityType: group
+bundle: project
+mode: bottom
+content:
+  field_time_line:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: Timeline_by_date
+hidden:
+  changed: true
+  created: true
+  field_content: true
+  field_date: true
+  field_join_block: true
+  field_summary: true
+  field_summary_public: true
+  label: true
+  langcode: true
+  uid: true

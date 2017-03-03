@@ -1,33 +1,23 @@
 <div{{ attributes }}>
-  <div class="top-text-region">
-    {{ title_prefix }}
-    <div class="title-wrapper">
-      <h1 role="heading">
-        {{ label }}
-      </h1>
+  {{ content.field_project_icon }}
+  {{ title_prefix }}
+  <div class="title-wrapper">
+    <h1 role="heading">
+      {{ label }}
+    </h1>
 
-      <div class="line"></div>
-    </div>
-    {{ title_suffix }}
+    <div class="line"></div>
+  </div>
+  {{ title_suffix }}
 
-    <div class="summary-text">
-      {{ content.field_summary }}
-    </div>
-
-    <div class="more-content-wrapper">
-      <span>
-        {{ 'Read more'|t }}
-      </span>
-
-      <div class="more-content">
-        {{ content.field_content|field_value }}
-      </div>
-    </div>
+  <div class="summary-text">
+    {{ content.field_summary }}
   </div>
 
-  {% if content.field_infographic|field_value %}
-    <div class="top-banner-region">
-      {{ content.field_infographic|field_value }}
+  <div class="more-content-wrapper">
+    <div class="read-more show-more">{{ 'Read more'|t }}</div>
+    <div class="more-content">
+      {{ content.field_content|field_value }}
     </div>
-  {% endif %}
+  </div>
 </div>

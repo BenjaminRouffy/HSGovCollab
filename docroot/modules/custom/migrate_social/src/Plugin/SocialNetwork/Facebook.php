@@ -16,13 +16,13 @@ use Drupal\views\Views;
  * )
  */
 class Facebook extends SocialNetworkBase {
-  
+
   /**
    * {@inheritdoc}
    */
   protected function nextSource() {
     // TODO get this data from mapping.
-    $body = $this->instance->get(sprintf('/me/feed?fields=id,full_picture,link,message,created_time,message_tags,story&limit=10000'))->getDecodedBody();
+    $body = $this->instance->get(sprintf('/me/feed?fields=id,full_picture,link,message,created_time,message_tags,story,permalink_url&limit=10000'))->getDecodedBody();
 
     if (!empty($body['data'])) {
       $this->iterator = new \ArrayIterator($body['data']);

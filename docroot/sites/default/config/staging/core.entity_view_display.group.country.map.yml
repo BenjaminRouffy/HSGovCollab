@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.group.map
     - field.field.group.country.field_banner
+    - field.field.group.country.field_bottom_link
     - field.field.group.country.field_content
     - field.field.group.country.field_country_icon
     - field.field.group.country.field_country_options
@@ -14,6 +15,7 @@ dependencies:
     - field.field.group.country.field_location
     - field.field.group.country.field_regions
     - field.field.group.country.field_summary
+    - field.field.group.country.field_time_line
     - group.type.country
   module:
     - entity_reference_revisions
@@ -49,12 +51,14 @@ hidden:
   changed: true
   created: true
   field_banner: true
+  field_bottom_link: true
   field_content: true
   field_country_icon: true
   field_date: true
   field_join_block: true
   field_regions: true
   field_summary: true
+  field_time_line: true
   label: true
   langcode: true
   uid: true

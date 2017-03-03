@@ -1,3 +1,18 @@
+{% if content.dashboard is not empty %}
+  <section class="content-with-sidebar dashboard">
+    {% if content.dashboard|without('#prefix', '#suffix') is not empty %}
+      <div class="content top-text-region">
+        {{ content.dashboard|without('#prefix', '#suffix') }}
+      </div>
+    {% endif %}
+    {% if content.dashboard_sidebar|without('#prefix', '#suffix')|render is not empty %}
+      <aside class="sidebar">
+        {{ content.dashboard_sidebar|without('#prefix', '#suffix') }}
+      </aside>
+    {% endif %}
+  </section>
+{% endif %}
+
 {% if content.banner|without('#prefix', '#suffix') is not empty %}
   <div class="top-banner-region">
     {{ content.banner|without('#prefix', '#suffix') }}

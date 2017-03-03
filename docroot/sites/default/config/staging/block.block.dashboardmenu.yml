@@ -1,25 +1,24 @@
-uuid: a6fde099-4815-4b65-a23d-7ef7da785a3e
+uuid: 380585be-1cee-4a2a-b121-0de3aba5c0b3
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.country-menu
+    - system.menu.dashboard-menu
   module:
     - admin_customizations
-    - ctools
     - system
     - user
   theme:
     - ample
-id: countrymenu
+id: dashboardmenu
 theme: ample
-region: header
-weight: -7
+region: dashboard_sidebar
+weight: 0
 provider: null
-plugin: 'system_menu_block:country-menu'
+plugin: 'system_menu_block:dashboard-menu'
 settings:
-  id: 'system_menu_block:country-menu'
-  label: 'Country menu'
+  id: 'system_menu_block:dashboard-menu'
+  label: 'Dashboard menu'
   provider: system
   label_display: '0'
   level: 1
@@ -27,8 +26,15 @@ settings:
 visibility:
   http_status:
     id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
     negate: false
-    code: {  }
     context_mapping: {  }
   user_role:
     id: user_role
@@ -37,10 +43,3 @@ visibility:
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'
-  'entity_bundle:group':
-    id: 'entity_bundle:group'
-    bundles:
-      country: country
-    negate: false
-    context_mapping:
-      group: '@group.group_route_context:group'

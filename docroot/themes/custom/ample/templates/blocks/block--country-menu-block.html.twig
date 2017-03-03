@@ -1,0 +1,12 @@
+{%  if content.links is not empty %}
+  <div class="anchor-links">
+    <ul>
+      {% for link in content.links %}
+        <li class="{{ link.active ? 'active' : '' }}">
+          {{ link.link }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+

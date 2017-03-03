@@ -7,12 +7,13 @@ dependencies:
   module:
     - admin_customizations
     - block_content
+    - system
   theme:
     - ample
 id: sociallinks_2
 theme: ample
 region: header_static
-weight: -6
+weight: -5
 provider: null
 plugin: 'block_content:df1384ff-6757-4475-a105-445191f983ec'
 settings:
@@ -22,7 +23,7 @@ settings:
   label_display: '0'
   status: true
   info: ''
-  view_mode: full
+  view_mode: default
 visibility:
   http_status:
     id: http_status
@@ -30,4 +31,9 @@ visibility:
     code:
       403: '403'
       404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: true
     context_mapping: {  }

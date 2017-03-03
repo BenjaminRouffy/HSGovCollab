@@ -1,6 +1,17 @@
 (function($, Drupal) {
   'use strict';
 
+  // Detect IE browser.
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+
+  if (msie > 0) {
+    $('body').addClass('ie ie' + parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+  }
+  else if (!!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+    $('body').addClass('ie ie11');
+  }
+
   Drupal.behaviors.accordionExposedFilter = {
     attach: function(context, settings) {
       var settings = jQuery.extend(true, settings, {
@@ -125,26 +136,25 @@
     }
   };
 
+  function showRelated() {
+    var $window = $(window);
+    var $document = $(document);
+    var scrollTop = $window.scrollTop();
+    var halfDocOffset = $document.height() / 2;
+    var halfWinOffset = $window.height() / 2;
+
+    if ((scrollTop + halfWinOffset) > halfDocOffset) {
+      $relatedContent.addClass('visible');
+    } else {
+      $relatedContent.removeClass('visible');
+    }
+  }
+
   Drupal.behaviors.relatedContent = {
     attach: function(context, settings) {
       var $relatedContent = $('.related-wrapper', context);
 
       if ($relatedContent.length) {
-
-        function showRelated() {
-          var $window = $(window);
-          var $document = $(document);
-          var scrollTop = $window.scrollTop();
-          var halfDocOffset = $document.height() / 2;
-          var halfWinOffset = $window.height() / 2;
-
-          if ((scrollTop + halfWinOffset) > halfDocOffset) {
-            $relatedContent.addClass('visible');
-          } else {
-            $relatedContent.removeClass('visible');
-          }
-        }
-
         showRelated();
 
         $(window).scroll(function() {

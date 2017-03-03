@@ -216,3 +216,23 @@ function ample_preprocess_menu(&$variables, $hook) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function ample_preprocess_block(&$variables) {
+  // Additional process for Custom block type.
+  switch ($variables['base_plugin_id']) {
+    case 'block_content':
+      // In case a BlockContent defined/available.
+      if (isset($variables['content']) && isset($variables['content']['#block_content'])) {
+        $content = &$variables['content'];
+        $block_content = &$content['#block_content'];
+
+        // Designed to invalidate cache on content of block was modified.
+        // Add a "block_content:<entity_id>" cache tag.
+        $variables['#cache']['tags'] = $block_content->getCacheTags();
+      }
+      break;
+  }
+}

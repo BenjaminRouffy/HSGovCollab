@@ -940,7 +940,7 @@ header .social-links .font-social-icon {
     -webkit-box-flex: 0;
         -ms-flex: none;
             flex: none;
-    padding-top: 17%; }
+    padding-top: 15%; }
     .ie .overlay-wrapper > * {
       display: inline-block;
       vertical-align: top; }
@@ -960,6 +960,10 @@ header .social-links .font-social-icon {
     font-weight: 300;
     line-height: 50px;
     margin-top: 30px; }
+
+@media (max-width: 1440px) {
+  .ie .overlay-wrapper {
+    padding-top: 19%; } }
 
 .w-background-video .plyr {
   max-height: 60vh;

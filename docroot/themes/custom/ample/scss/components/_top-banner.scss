@@ -321,7 +321,7 @@
   .ie & {
     display: block;
     flex: none;
-    padding-top: 17%;
+    padding-top: 15%;
 
     > * {
       display: inline-block;
@@ -349,6 +349,12 @@
     font-weight: 300;
     line-height: 50px;
     margin-top: 30px;
+  }
+}
+
+@include breakpoint-for('.overlay-wrapper', (to: desktop)) {
+  .ie & {
+    padding-top: 19%;
   }
 }
 

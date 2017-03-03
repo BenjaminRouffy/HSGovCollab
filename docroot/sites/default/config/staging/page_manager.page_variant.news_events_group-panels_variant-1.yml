@@ -1,4 +1,4 @@
-uuid: f0125487-e1f1-443a-a1b2-eab4b15f12eb
+uuid: 43dc3512-383f-42e8-8bf5-6eed08b27749
 langcode: en
 status: true
 dependencies:
@@ -12,12 +12,12 @@ dependencies:
     - ctools
     - panels
     - views
-id: news_events_group-panels_variant-0
-label: Country
+id: news_events_group-panels_variant-1
+label: Project
 variant: panels_variant
 variant_settings:
   blocks:
-    a573fcc2-5c5a-4469-85c1-647e948aa128:
+    d6633229-2e85-48b2-99b4-58a6cf76698a:
       id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
       label: 'Interested in becoming a member?'
       provider: block_content
@@ -27,29 +27,29 @@ variant_settings:
       view_mode: view_mode_registration_block
       region: bottom
       weight: 0
-      uuid: a573fcc2-5c5a-4469-85c1-647e948aa128
+      uuid: d6633229-2e85-48b2-99b4-58a6cf76698a
       context_mapping: {  }
-    19fa1577-38da-4abe-8892-deb98ddd9c15:
-      id: 'views_block:news_and_events_group-news_and_events_by_group'
+    386eff21-9a84-495b-be0e-beae59ce1273:
+      id: 'views_block:news_and_events_group-block_news_events_project'
       label: ''
       provider: views
       label_display: '0'
       views_label: ''
       items_per_page: none
       region: content
-      weight: -10
-      uuid: 19fa1577-38da-4abe-8892-deb98ddd9c15
+      weight: 0
+      uuid: 386eff21-9a84-495b-be0e-beae59ce1273
       pager: view
       context_mapping: {  }
   id: panels_variant
-  uuid: da684588-c810-4470-b779-3485ef195c3e
+  uuid: 086155e6-7e46-42b5-a018-7ed7d926123a
   label: null
   weight: 0
   layout: stacked
   layout_settings: {  }
-  page_title: null
+  page_title: ''
   storage_type: page_manager
-  storage_id: news_events_group-panels_variant-0
+  storage_id: news_events_group-panels_variant-1
   builder: standard
 page: news_events_group
 weight: 0
@@ -57,7 +57,7 @@ selection_criteria:
   -
     id: 'entity_bundle:group'
     bundles:
-      country: country
+      project: project
     negate: false
     context_mapping:
       group: group

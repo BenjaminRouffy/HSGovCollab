@@ -60,6 +60,7 @@ class NodeAccess extends FilterPluginBase {
    */
   public function query() {
     $account = \Drupal::currentUser();
+
     if (!$account->hasPermission('bypass node access')) {
       $op = $this->options['node_operations'];
 

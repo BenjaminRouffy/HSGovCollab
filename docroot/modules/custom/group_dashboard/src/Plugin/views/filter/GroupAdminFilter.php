@@ -33,9 +33,10 @@ class GroupAdminFilter extends FilterPluginBase {
       ->execute()
       ->fetchCol();
 
-    if (!empty($result)) {
-      $this->query->addWhere(0, "$this->table.id", $result, 'IN');
-    }
+    // Not show any group is user not has admin access.
+    $result = empty($result) ? [0] : $result;
+
+    $this->query->addWhere(0, "$this->table.id", $result, 'IN');
   }
 
 }

@@ -5,8 +5,11 @@
   var ua = window.navigator.userAgent;
   var msie = ua.indexOf("MSIE ");
 
-  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+  if (msie > 0) {
     $('body').addClass('ie ie' + parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+  }
+  else if (!!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+    $('body').addClass('ie ie11');
   }
 
   Drupal.behaviors.accordionExposedFilter = {

@@ -48,8 +48,11 @@
       var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
-        icon: imagesPath + 'pin.svg',
-        scaledSize: new google.maps.Size(100, 100),
+        icon: {
+          imagesPath + 'pin.svg',
+          scaledSize: new google.maps.Size(100, 100)
+        },
+        optimized: false,
         animation: google.maps.Animation.DROP,
         id: countryId
       });

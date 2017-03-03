@@ -1,6 +1,14 @@
 (function($, Drupal) {
   'use strict';
 
+  // Detect IE browser.
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+
+  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+    $body.addClass('ie');
+  }
+
   Drupal.behaviors.accordionExposedFilter = {
     attach: function(context, settings) {
       var settings = jQuery.extend(true, settings, {

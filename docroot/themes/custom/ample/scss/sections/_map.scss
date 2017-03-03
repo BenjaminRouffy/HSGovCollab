@@ -58,6 +58,10 @@
 
     > div {
       width: 50%;
+
+      .ie & {
+        float: left;
+      }
     }
   }
 

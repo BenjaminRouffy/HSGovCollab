@@ -318,6 +318,11 @@
   width: 100%;
   z-index: 100;
 
+  .ie & {
+    display: block;
+    flex: none;
+  }
+
   > * {
     width: 80%;
   }

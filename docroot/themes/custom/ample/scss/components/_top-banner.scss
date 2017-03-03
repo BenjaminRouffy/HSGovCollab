@@ -318,7 +318,7 @@
   width: 100%;
   z-index: 100;
 
-  .ie & {
+  .ie9 & {
     display: block;
     flex: none;
     padding-top: 15%;
@@ -353,7 +353,7 @@
 }
 
 @include breakpoint-for('.overlay-wrapper', (to: desktop)) {
-  .ie & {
+  .ie9 & {
     padding-top: 19%;
   }
 }

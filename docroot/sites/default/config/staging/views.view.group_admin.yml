@@ -74,8 +74,17 @@ display:
           summary: ''
           description: ''
           columns:
+            id: id
             label: label
+            operations: operations
           info:
+            id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             label:
               sortable: false
               default_sort_order: asc
@@ -83,8 +92,13 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
           default: '-1'
-          empty_table: false
+          empty_table: true
       row:
         type: fields
         options:
@@ -447,7 +461,18 @@ display:
       sorts: {  }
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
       relationships: {  }
       arguments: {  }
       display_extenders: {  }

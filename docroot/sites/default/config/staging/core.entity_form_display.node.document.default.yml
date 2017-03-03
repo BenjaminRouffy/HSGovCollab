@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.document.field_content_date
     - field.field.node.document.field_document
     - field.field.node.document.field_organization
+    - field.field.node.document.field_public_content
     - node.type.document
   module:
     - datetime
@@ -52,6 +53,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_public_content:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
   langcode:
     type: language_select
     weight: 2

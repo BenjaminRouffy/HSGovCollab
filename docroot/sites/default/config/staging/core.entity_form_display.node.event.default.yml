@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.event.field_join_block
     - field.field.node.event.field_location
     - field.field.node.event.field_organization
+    - field.field.node.event.field_public_content
     - field.field.node.event.field_related_content_selector
     - field.field.node.event.field_time
     - field.field.node.event.field_time_text
@@ -108,7 +109,6 @@ third_party_settings:
     group_related_content:
       children:
         - field_related_content_selector
-        - public_content
         - field_documents
       parent_name: group_tabs_panel
       weight: 24
@@ -194,6 +194,11 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_public_content:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
   field_related_content_selector:
     weight: 18
     settings: {  }

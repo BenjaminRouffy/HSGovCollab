@@ -49,7 +49,7 @@
         position: myLatlng,
         map: map,
         icon: {
-          url: imagesPath + 'pin.svg',
+          url: imagesPath + 'pin.png',
           scaledSize: new google.maps.Size(15, 23)
         },
         optimized: false,
@@ -60,19 +60,11 @@
       pins.push(marker);
 
       google.maps.event.addListener(marker, 'mouseover', function() {
-        //marker.setIcon(imagesPath + 'pin-active.svg');
-        marker.setIcon({
-          url: imagesPath + 'pin.svg',
-          scaledSize: new google.maps.Size(25, 38)
-        })
+        marker.setIcon(imagesPath + 'pin-active.png');
       });
 
       google.maps.event.addListener(marker, 'mouseout', function() {
-        //marker.setIcon(imagesPath + 'pin.svg');
-        marker.setIcon({
-          url: imagesPath + 'pin.svg',
-          scaledSize: new google.maps.Size(15, 23)
-        })
+        marker.setIcon(imagesPath + 'pin.png');
       });
 
       google.maps.event.addListener(marker, "click", function() {

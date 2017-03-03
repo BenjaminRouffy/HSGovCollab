@@ -50,7 +50,7 @@
         map: map,
         icon: {
           url: imagesPath + 'pin.svg',
-          scaledSize: new google.maps.Size(100, 100)
+          scaledSize: new google.maps.Size(15, 23)
         },
         optimized: false,
         animation: google.maps.Animation.DROP,
@@ -60,11 +60,19 @@
       pins.push(marker);
 
       google.maps.event.addListener(marker, 'mouseover', function() {
-        marker.setIcon(imagesPath + 'pin-active.svg');
+        //marker.setIcon(imagesPath + 'pin-active.svg');
+        marker.setIcon({
+          url: imagesPath + 'pin.svg',
+          scaledSize: new google.maps.Size(25, 38)
+        })
       });
 
       google.maps.event.addListener(marker, 'mouseout', function() {
-        marker.setIcon(imagesPath + 'pin.svg');
+        //marker.setIcon(imagesPath + 'pin.svg');
+        marker.setIcon({
+          url: imagesPath + 'pin.svg',
+          scaledSize: new google.maps.Size(15, 23)
+        })
       });
 
       google.maps.event.addListener(marker, "click", function() {

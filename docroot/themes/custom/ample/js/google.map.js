@@ -49,7 +49,7 @@
         position: myLatlng,
         map: map,
         icon: {
-          imagesPath + 'pin.svg',
+          url: imagesPath + 'pin.svg',
           scaledSize: new google.maps.Size(100, 100)
         },
         optimized: false,

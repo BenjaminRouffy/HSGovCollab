@@ -49,6 +49,7 @@
         position: myLatlng,
         map: map,
         icon: imagesPath + 'pin.svg',
+        scaledSize: new google.maps.Size(100, 100),
         animation: google.maps.Animation.DROP,
         id: countryId
       });

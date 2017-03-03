@@ -2610,8 +2610,7 @@ header {
   .header-static .partners {
     display: inline-block;
     max-height: 58px;
-    max-width: 60%;
-    overflow: hidden; }
+    max-width: 60%; }
   .header-static .mobile-menu-wrapper .partners {
     display: none; }
   .header-static .social-links {
@@ -3480,6 +3479,8 @@ footer {
     padding: 15px 0; }
     .marker-info .option-item > div {
       width: 50%; }
+      .ie .marker-info .option-item > div {
+        float: left; }
   .marker-info .section-info {
     display: block;
     padding: 0; }

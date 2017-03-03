@@ -23,20 +23,24 @@ class GroupAdminFilter extends FilterPluginBase {
    * {@inheritdoc}
    */
   public function query() {
-    $query = \Drupal::database()->select('group_content_field_data', 'group_content_field_data')
-      ->fields('group_content_field_data', ['gid'])
-      ->condition('group_content_field_data.type', '%-group_membership', 'LIKE')
-      ->condition('group_content_field_data.entity_id', \Drupal::currentUser()->id());
+    $user = \Drupal::currentUser();
 
-    $query->leftJoin('group_content__group_roles', 'group_content__group_roles', 'group_content__group_roles.entity_id=group_content_field_data.id');
-    $result = $query->condition('group_content__group_roles.group_roles_target_id', '%-admin', 'LIKE')
-      ->execute()
-      ->fetchCol();
+    if (!$user->hasPermission('all access to groups')) {
+      $query = \Drupal::database()->select('group_content_field_data', 'group_content_field_data')
+        ->fields('group_content_field_data', ['gid'])
+        ->condition('group_content_field_data.type', '%-group_membership', 'LIKE')
+        ->condition('group_content_field_data.entity_id', $user->id());
 
-    // Not show any group is user not has admin access.
-    $result = empty($result) ? [0] : $result;
+      $query->leftJoin('group_content__group_roles', 'group_content__group_roles', 'group_content__group_roles.entity_id=group_content_field_data.id');
+      $result = $query->condition('group_content__group_roles.group_roles_target_id', '%-admin', 'LIKE')
+        ->execute()
+        ->fetchCol();
 
-    $this->query->addWhere(0, "$this->table.id", $result, 'IN');
+      // Not show any group is user not has admin access.
+      $result = empty($result) ? [0] : $result;
+
+      $this->query->addWhere(0, "$this->table.id", $result, 'IN');
+    }
   }
 
 }

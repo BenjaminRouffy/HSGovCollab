@@ -5,6 +5,7 @@
  * Contains group_dashboard.module.
  */
 use Drupal\Core\Session\AccountInterface;
+use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 
 /**
@@ -29,19 +30,26 @@ function group_dashboard_node_grants_alter(array &$grants, AccountInterface $acc
  * Implements hook_menu_local_tasks_alter().
  */
 function group_dashboard_menu_local_tasks_alter(&$data, $route_name) {
-  if (
-    'entity.node.canonical' == $route_name &&
-    !empty($data['tabs']) &&
-    isset($data['tabs'][0][$route_name])
-  ) {
-    $user = \Drupal::currentUser();
+  $user = \Drupal::currentUser();
 
-    $link_params = $data['tabs'][0][$route_name]['#link']['url']->getRouteParameters();
-    $node = Node::load($link_params['node']);
+  switch ($route_name) {
+    case 'entity.node.canonical':
+      $link_params = $data['tabs'][0][$route_name]['#link']['url']->getRouteParameters();
+      $node = Node::load($link_params['node']);
 
-    if (!empty($node) && !$node->access('update', $user)) {
-      unset($data['tabs']);
-    }
+      if (!empty($node) && !$node->access('update', $user)) {
+        unset($data['tabs']);
+      }
+      break;
+
+    case 'entity.group.canonical':
+      $link_params = $data['tabs'][0]['group.view']['#link']['url']->getRouteParameters();
+      $group = Group::load($link_params['group']);
+
+      if (!empty($group) && !$group->access('update', $user)) {
+        unset($data['tabs']);
+      }
+      break;
   }
 }
 

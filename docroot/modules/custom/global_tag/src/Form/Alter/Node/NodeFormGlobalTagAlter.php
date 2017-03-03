@@ -12,7 +12,6 @@ use Drupal\node\Entity\Node;
 class NodeFormGlobalTagAlter extends FormBaseAlterHelper implements FormAlterServiceAlterInterface {
 
   public function formAlter(&$form, FormStateInterface $form_state) {
-
     // Show the fieldset if we have options the user can use.
     $form['custom_publish_options'] = array(
       '#type' => 'details',
@@ -37,6 +36,10 @@ class NodeFormGlobalTagAlter extends FormBaseAlterHelper implements FormAlterSer
       $form['field_public_content']['widget']['#default_value'] = !isset($parent_group) ? 'global' : '_none';
     }
 
+    $global_tag_access = \Drupal::currentUser()
+      ->hasPermission('administer global tag');
+    $form['field_public_content']['#access'] = $global_tag_access;
+    
     $form['field_public_content']['widget']['#options']['_none'] = FieldFilteredMarkup::create('Country');
     $form['field_public_content']['#group'] = 'custom_publish_options';
   }

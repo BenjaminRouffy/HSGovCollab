@@ -63,6 +63,14 @@ display:
               autosubmit: true
               timeout: '1000'
               autosubmit_hide: true
+            gid_sub_group:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
             field_category_target_id:
               bef_format: bef
               more_options:
@@ -79,14 +87,6 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            computed_date:
-              bef_format: default
-              more_options:
-                bef_select_all_none: false
-                bef_collapsible: false
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
             computed_date_1:
               bef_format: default
               more_options:
@@ -95,8 +95,8 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            gid_sub_group:
-              bef_format: bef
+            computed_date:
+              bef_format: default
               more_options:
                 bef_select_all_none: false
                 bef_collapsible: false
@@ -594,10 +594,10 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
-        gid:
-          id: gid
+        gid_sub_group:
+          id: gid_sub_group
           table: group_content_field_data
-          field: gid
+          field: gid_sub_group
           relationship: none
           group_type: group
           admin_label: ''
@@ -606,12 +606,12 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: gid_op
+            operator_id: ''
             label: 'Select location'
             description: ''
             use_operator: false
-            operator: gid_op
-            identifier: gid
+            operator: gid_sub_group_op
+            identifier: gid_sub_group
             required: false
             remember: false
             multiple: true
@@ -637,11 +637,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: 0
-          gid: ''
-          filter_type: by_country_relation
           entity_type: group_content
-          entity_field: gid
-          plugin_id: group_index_gid
+          plugin_id: group_index_gid_subgroup
         field_category_target_id:
           id: field_category_target_id
           table: node__field_category

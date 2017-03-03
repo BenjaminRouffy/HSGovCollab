@@ -66,14 +66,6 @@ display:
               autosubmit: true
               timeout: '1000'
               autosubmit_hide: true
-            gid:
-              bef_format: bef
-              more_options:
-                bef_select_all_none: false
-                bef_collapsible: false
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
             field_organization_target_id:
               bef_format: bef
               more_options:
@@ -100,6 +92,14 @@ display:
                   filter_rewrite_values: ''
             computed_date_1:
               bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            gid:
+              bef_format: bef
               more_options:
                 bef_select_all_none: false
                 bef_collapsible: false
@@ -886,15 +886,9 @@ display:
             group_items: {  }
           reduce_duplicates: 0
           gid: country
-          filter_type: by_group_type
-          type: select
-          limit: true
-          vid: country
-          hierarchy: 0
-          error_message: 1
           entity_type: group_content
           entity_field: gid
-          plugin_id: numeric
+          plugin_id: group_index_gid
         field_organization_target_id:
           id: field_organization_target_id
           table: node__field_organization

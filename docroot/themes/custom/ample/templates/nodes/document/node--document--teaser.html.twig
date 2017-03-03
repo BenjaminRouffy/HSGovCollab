@@ -7,7 +7,9 @@
   <h4 role="heading">
     {{ label|field_value }}
   </h4>
-  {{ title_suffix }}
+  {% if contextual_link_access %}
+    {{ title_suffix }}
+  {% endif %}
 
   {% if content.body|field_value %}
     <p>

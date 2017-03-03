@@ -19,7 +19,9 @@
     <h1 class="page-title">{{ label }}</h1>
     <div class="line"></div>
   </div>
-  {{ title_suffix }}
+  {% if contextual_link_access %}
+    {{ title_suffix }}
+  {% endif %}
 
   <div class="event-info">
     <div class="row">

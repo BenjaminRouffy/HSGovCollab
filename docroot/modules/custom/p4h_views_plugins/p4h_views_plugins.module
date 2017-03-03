@@ -109,4 +109,12 @@ function p4h_views_plugins_views_data_alter(array &$data) {
   $data['node_field_data']['computed_date']['filter']['id'] = 'computed_date';
   $data['group_field_data']['computed_date']['filter']['id'] = 'computed_date';
   $data['group_content_field_data']['gid']['filter']['id'] = 'group_index_gid';
+
+  $data['group_content_field_data']['gid_sub_group'] = array(
+    'real field' => 'gid',
+    'filter' => array(
+      'title' => t('Has group id (with depth)'),
+      'id' => 'group_index_gid_subgroup',
+    ),
+  );
 }

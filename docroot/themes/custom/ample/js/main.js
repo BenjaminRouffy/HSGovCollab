@@ -6,7 +6,7 @@
   var msie = ua.indexOf("MSIE ");
 
   if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-    $body.addClass('ie');
+    $('body').addClass('ie');
   }
 
   Drupal.behaviors.accordionExposedFilter = {

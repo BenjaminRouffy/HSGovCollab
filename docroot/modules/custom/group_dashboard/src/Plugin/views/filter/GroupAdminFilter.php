@@ -33,7 +33,9 @@ class GroupAdminFilter extends FilterPluginBase {
       ->execute()
       ->fetchCol();
 
-    $this->query->addWhere(0, "$this->table.id", $result, 'IN');
+    if (!empty($result)) {
+      $this->query->addWhere(0, "$this->table.id", $result, 'IN');
+    }
   }
 
 }

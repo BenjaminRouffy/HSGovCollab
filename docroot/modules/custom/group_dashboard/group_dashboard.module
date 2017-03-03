@@ -4,6 +4,8 @@
  * @file
  * Contains group_dashboard.module.
  */
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_help().
@@ -12,6 +14,35 @@ function group_dashboard_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
   $entity_types['group_content']->setListBuilderClass('\Drupal\group_dashboard\Controller\GroupRelatedEntitiesListBuilder');
   $entity_types['group']->setListBuilderClass('\Drupal\group_dashboard\Controller\GroupAdminListBuilder');
+}
+
+/**
+ * Implements hook_node_grants_alter().
+ */
+function group_dashboard_node_grants_alter(array &$grants, AccountInterface $account, $op) {
+  if ($account->hasPermission('always access to node view') && 'view' === $op) {
+    $grants['gnode_bypass'][GNODE_MASTER_GRANT_ID] = GNODE_MASTER_GRANT_ID;
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function group_dashboard_menu_local_tasks_alter(&$data, $route_name) {
+  if (
+    'entity.node.canonical' == $route_name &&
+    !empty($data['tabs']) &&
+    isset($data['tabs'][0][$route_name])
+  ) {
+    $user = \Drupal::currentUser();
+
+    $link_params = $data['tabs'][0][$route_name]['#link']['url']->getRouteParameters();
+    $node = Node::load($link_params['node']);
+
+    if (!empty($node) && !$node->access('update', $user)) {
+      unset($data['tabs']);
+    }
+  }
 }
 
 /**

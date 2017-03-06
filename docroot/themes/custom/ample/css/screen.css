@@ -2172,11 +2172,24 @@ form {
   height: 50px;
   padding: 1px 12px;
   width: 100%; }
+  .form-select::-ms-expand {
+    display: none; }
   .form-select:hover {
     box-shadow: none; }
   .form-select:focus {
     border-color: #3898EC;
     outline: none; }
+
+.ie9 .select-wrapper {
+  background: #f5f5f5 url(../images/select-arrows.png) right center no-repeat;
+  border: 1px solid #75a8c0;
+  border-radius: 4px;
+  overflow: hidden; }
+
+.ie9 .form-select {
+  background: transparent;
+  border: none;
+  width: calc(100% + 35px); }
 
 .form-checkbox {
   -webkit-appearance: checkbox;

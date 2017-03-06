@@ -106,6 +106,10 @@ form {
   padding: 1px 12px;
   width: 100%;
 
+  &::-ms-expand {
+    display: none;
+  }
+
   &:hover {
     box-shadow: none;
   }
@@ -113,6 +117,21 @@ form {
   &:focus {
     border-color: #3898EC;
     outline: none;
+  }
+}
+
+.ie9 {
+  .select-wrapper {
+    background: $white-dark url(../images/select-arrows.png) right center no-repeat;
+    border: 1px solid #75a8c0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .form-select {
+    background: transparent;
+    border: none;
+    width: calc(100% + 35px);
   }
 }
 

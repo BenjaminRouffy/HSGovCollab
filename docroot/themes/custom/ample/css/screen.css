@@ -2174,6 +2174,16 @@ form {
   width: 100%; }
   .form-select::-ms-expand {
     display: none; }
+  .ie9 .form-select {
+    background: #f3f3f3;
+    position: relative; }
+    .ie9 .form-select:after {
+      background: grey;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 30px; }
   .form-select:hover {
     box-shadow: none; }
   .form-select:focus {

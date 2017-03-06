@@ -110,6 +110,20 @@ form {
     display: none;
   }
 
+  .ie9 & {
+    background: #f3f3f3;
+    position: relative;
+
+    &:after {
+      background: grey;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 30px;
+    }
+  }
+
   &:hover {
     box-shadow: none;
   }

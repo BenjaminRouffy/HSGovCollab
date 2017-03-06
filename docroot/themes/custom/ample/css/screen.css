@@ -2399,7 +2399,8 @@ form {
             flex: none;
     overflow: hidden; }
     .ie9 .view-news-and-events .wrapper-filters > div {
-      float: left; }
+      float: left;
+      max-width: calc(20% - 20px); }
   .view-news-and-events .wrapper-filters > div {
     margin-left: 10px;
     margin-right: 10px;

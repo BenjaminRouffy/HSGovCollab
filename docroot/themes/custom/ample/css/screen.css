@@ -2172,6 +2172,8 @@ form {
   height: 50px;
   padding: 1px 12px;
   width: 100%; }
+  .form-select::-ms-expand {
+    display: none; }
   .form-select:hover {
     box-shadow: none; }
   .form-select:focus {

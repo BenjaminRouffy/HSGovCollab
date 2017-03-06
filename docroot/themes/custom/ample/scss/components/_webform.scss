@@ -106,6 +106,10 @@ form {
   padding: 1px 12px;
   width: 100%;
 
+  &::-ms-expand {
+    display: none;
+  }
+
   &:hover {
     box-shadow: none;
   }

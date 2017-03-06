@@ -2180,6 +2180,15 @@ form {
     border-color: #3898EC;
     outline: none; }
 
+.ie9 .select-wrapper {
+  background: #f5f5f5;
+  border: 1px solid #75a8c0;
+  border-radius: 4px;
+  overflow: hidden; }
+
+.ie9 .form-select {
+  width: calc(100% + 30px); }
+
 .form-checkbox {
   -webkit-appearance: checkbox;
      -moz-appearance: checkbox;

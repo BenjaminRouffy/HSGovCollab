@@ -122,11 +122,14 @@ form {
 
 .ie9 {
   .select-wrapper {
-
+    background: $white-dark;
+    border: 1px solid #75a8c0;
+    border-radius: 4px;
+    overflow: hidden;
   }
 
   .form-select {
-
+    width: calc(100% + 30px);
   }
 }
 

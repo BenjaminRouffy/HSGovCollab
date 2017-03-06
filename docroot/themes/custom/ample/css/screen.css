@@ -523,6 +523,12 @@ svg {
   display: flex;
   margin: 0;
   padding: 0; }
+  .ie9 .social-links .menu {
+    display: block;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    overflow: hidden; }
 
 .social-links .twitter-icon {
   margin-top: 2px; }
@@ -539,6 +545,8 @@ svg {
 
 header .social-links .font-social-icon {
   margin-right: 5px; }
+  .ie9 header .social-links .font-social-icon {
+    float: left; }
 
 .partners {
   padding-top: 10px;

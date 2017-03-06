@@ -8,6 +8,12 @@
     display: flex;
     margin: 0;
     padding: 0;
+
+    .ie9 & {
+      display: block;
+      flex: none;
+      overflow: hidden;
+    }
   }
 
   .twitter-icon {
@@ -29,6 +35,10 @@
   header & {
     .font-social-icon {
       margin-right: 5px;
+
+      .ie9 & {
+        float: left;
+      }
     }
   }
 }

@@ -1,0 +1,19 @@
+uuid: 34ec12d5-20b1-4486-ac4e-5e4e0624df4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.specific_users
+id: country-d75305099
+label: 'Specific users'
+weight: 7
+internal: true
+audience: outsider
+group_type: country
+permissions_ui: false
+permissions: {  }

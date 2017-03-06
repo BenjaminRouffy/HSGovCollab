@@ -1,5 +1,7 @@
 <div{{ attributes.addClass('item').addClass('news') }}>
-  {{ title_suffix.contextual_links|render }}
+  {% if contextual_link_access %}
+    {{ title_suffix.contextual_links|render }}
+  {% endif %}
   <a href="{{ url }}" rel="bookmark">
     {% if content.field_image %}
       <div class="image-wrapper">

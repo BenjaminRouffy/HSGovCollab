@@ -1,0 +1,23 @@
+uuid: 29b4b19d-2075-4810-8570-f0c6ed5fdea3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_public_content
+    - node.type.news
+  module:
+    - options
+id: node.news.field_public_content
+field_name: field_public_content
+entity_type: node
+bundle: news
+label: 'Public Content'
+description: 'For making the page public'
+required: false
+translatable: false
+default_value:
+  -
+    value: global
+default_value_callback: ''
+settings: {  }
+field_type: list_string

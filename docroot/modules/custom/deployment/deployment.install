@@ -596,3 +596,17 @@ function deployment_update_8035() {
   deployment_delete_fields('node', 'social', ['field_image']);
   field_purge_batch(500);
 }
+
+/**
+ * Enable Global Tag module.
+ */
+function deployment_update_8036() {
+  \Drupal::service('module_installer')->install(['global_tag']);
+}
+
+/**
+ * Install module "Block permissions".
+ */
+function deployment_update_8037() {
+  \Drupal::service('module_installer')->install(['block_permissions']);
+}

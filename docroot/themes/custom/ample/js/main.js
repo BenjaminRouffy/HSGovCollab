@@ -142,6 +142,7 @@
     var scrollTop = $window.scrollTop();
     var halfDocOffset = $document.height() / 2;
     var halfWinOffset = $window.height() / 2;
+    var $relatedContent = $('.related-wrapper');
 
     if ((scrollTop + halfWinOffset) > halfDocOffset) {
       $relatedContent.addClass('visible');

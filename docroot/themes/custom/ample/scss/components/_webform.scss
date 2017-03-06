@@ -77,6 +77,10 @@ form {
   }
 }
 
+:-ms-input-placeholder {
+  color: #999 !important;
+}
+
 .form-textarea {
   @extend .form-text;
   height: auto;

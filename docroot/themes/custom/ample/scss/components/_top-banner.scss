@@ -21,6 +21,16 @@
     max-width: 1160px;
     padding: 100px 0 50px;
 
+    .ie9 & {
+      display: block;
+      flex: none;
+      overflow: hidden;
+
+      .paragraph {
+        float: left;
+      }
+    }
+
     .paragraph {
       max-width: 33.33%;
       text-align: center;

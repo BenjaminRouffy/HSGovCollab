@@ -176,6 +176,17 @@ form {
   display: flex;
   flex-wrap: wrap;
 
+  .ie9 & {
+    display: block;
+    flex: none;
+    overflow: hidden;
+
+    .webform-left-column,
+    .webform-right-column {
+      float: left;
+    }
+  }
+
   .webform-left-column,
   .webform-right-column {
     padding: 20px 40px;

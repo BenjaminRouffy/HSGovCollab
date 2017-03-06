@@ -152,6 +152,10 @@ header {
     background-image: linear-gradient(180deg, #334c58, $navy-dark);
     box-shadow: 0 1px 8px rgba($black, .16);
     height: 60px;
+
+    .ie9 & {
+      background: $navy-dark;
+    }
   }
 
   .logo-wrapper {

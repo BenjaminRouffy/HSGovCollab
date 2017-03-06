@@ -2392,6 +2392,14 @@ form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
+  .ie9 .view-news-and-events .wrapper-filters {
+    display: block;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    overflow: hidden; }
+    .ie9 .view-news-and-events .wrapper-filters > div {
+      float: left; }
   .view-news-and-events .wrapper-filters > div {
     margin-left: 10px;
     margin-right: 10px;

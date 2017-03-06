@@ -54,6 +54,16 @@
     display: flex;
     justify-content: center;
 
+    .ie9 & {
+      display: block;
+      flex: none;
+      overflow: hidden;
+
+      > div {
+        float: left;
+      }
+    }
+
     > div {
       margin-left: 10px;
       margin-right: 10px;

@@ -48,7 +48,11 @@
       var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
-        icon: imagesPath + 'pin.svg',
+        icon: {
+          url: imagesPath + 'pin.png',
+          scaledSize: new google.maps.Size(15, 23)
+        },
+        optimized: false,
         animation: google.maps.Animation.DROP,
         id: countryId
       });
@@ -56,11 +60,11 @@
       pins.push(marker);
 
       google.maps.event.addListener(marker, 'mouseover', function() {
-        marker.setIcon(imagesPath + 'pin-active.svg');
+        marker.setIcon(imagesPath + 'pin-active.png');
       });
 
       google.maps.event.addListener(marker, 'mouseout', function() {
-        marker.setIcon(imagesPath + 'pin.svg');
+        marker.setIcon(imagesPath + 'pin.png');
       });
 
       google.maps.event.addListener(marker, "click", function() {

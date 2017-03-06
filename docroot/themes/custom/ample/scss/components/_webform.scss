@@ -110,22 +110,6 @@ form {
     display: none;
   }
 
-  .ie9 & {
-    background: #f3f3f3;
-    position: relative;
-
-    &:after {
-      background: red;
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 30px;
-      z-index: 10;
-    }
-  }
-
   &:hover {
     box-shadow: none;
   }
@@ -133,6 +117,16 @@ form {
   &:focus {
     border-color: #3898EC;
     outline: none;
+  }
+}
+
+.ie9 {
+  .select-wrapper {
+
+  }
+
+  .form-select {
+
   }
 }
 

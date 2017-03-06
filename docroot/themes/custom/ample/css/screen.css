@@ -715,6 +715,14 @@ header .social-links .font-social-icon {
     margin: 0 auto 20px;
     max-width: 1160px;
     padding: 100px 0 50px; }
+    .ie9 .top-banner-region .section-info {
+      display: block;
+      -webkit-box-flex: 0;
+          -ms-flex: none;
+              flex: none;
+      overflow: hidden; }
+      .ie9 .top-banner-region .section-info .paragraph {
+        float: left; }
     .top-banner-region .section-info .paragraph {
       max-width: 33.33%;
       text-align: center;
@@ -2229,6 +2237,15 @@ form {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
+  .ie9 .form-contact-us {
+    display: block;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    overflow: hidden; }
+    .ie9 .form-contact-us .webform-left-column,
+    .ie9 .form-contact-us .webform-right-column {
+      float: left; }
   .form-contact-us .webform-left-column,
   .form-contact-us .webform-right-column {
     padding: 20px 40px;

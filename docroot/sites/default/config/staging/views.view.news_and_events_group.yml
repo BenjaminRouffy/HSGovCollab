@@ -61,7 +61,16 @@ display:
               allow_secondary: false
               secondary_label: 'Advanced options'
               autosubmit: true
+              timeout: '1000'
               autosubmit_hide: true
+            gid_sub_group:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
             field_category_target_id:
               bef_format: bef
               more_options:
@@ -72,6 +81,22 @@ display:
                   filter_rewrite_values: ''
             field_organization_target_id:
               bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date_1:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date:
+              bef_format: default
               more_options:
                 bef_select_all_none: false
                 bef_collapsible: false
@@ -569,6 +594,51 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
+        gid_sub_group:
+          id: gid_sub_group
+          table: group_content_field_data
+          field: gid_sub_group
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Select location'
+            description: ''
+            use_operator: false
+            operator: gid_sub_group_op
+            identifier: gid_sub_group
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          entity_type: group_content
+          plugin_id: group_index_gid_subgroup
         field_category_target_id:
           id: field_category_target_id
           table: node__field_category
@@ -838,6 +908,14 @@ display:
           plugin_id: group_content_to_entity
       display_description: ''
       title: Documents
+      allow:
+        pager: pager
+        items_per_page: false
+        offset: '0'
+        hide_fields: '0'
+        sort_fields: '0'
+        disable_filters: '0'
+        configure_sorts: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -954,6 +1032,51 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
+        gid_sub_group:
+          id: gid_sub_group
+          table: group_content_field_data
+          field: gid_sub_group
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Select location'
+            description: ''
+            use_operator: false
+            operator: gid_sub_group_op
+            identifier: gid_sub_group
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          entity_type: group_content
+          plugin_id: group_index_gid_subgroup
         field_category_target_id:
           id: field_category_target_id
           table: node__field_category

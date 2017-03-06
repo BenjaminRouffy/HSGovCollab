@@ -2,101 +2,20 @@
 
 namespace Drupal\p4h_views_plugins\Plugin\views\filter;
 
-use Drupal\Core\Config\Entity\ConfigEntityStorageInterface;
-use Drupal\Core\Entity\Sql\SqlEntityStorageInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\filter\ManyToOne;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Filter by term id.
  *
  * @ingroup views_filter_handlers
  *
- * @ViewsFilter("group_index_gid")
  */
-class GroupIndexGid extends ManyToOne {
-
-  public $groupType;
-  public $group;
-
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigEntityStorageInterface $group_type, SqlEntityStorageInterface $group) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->groupType = $group_type;
-    $this->group = $group;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('entity.manager')->getStorage('group_type'),
-      $container->get('entity.manager')->getStorage('group')
-    );
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function hasExtraOptions() {
-    return TRUE;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function defineOptions() {
-    $options = parent::defineOptions();
-
-    $options['gid'] = array('default' => '');
-
-    return $options;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function buildExtraOptionsForm(&$form, FormStateInterface $form_state) {
-    $group_type = $this->groupType->loadMultiple();
-    $options = array();
-    foreach ($group_type as $entity_type) {
-      $options[$entity_type->id()] = $entity_type->label();
-    }
-
-    $form['gid'] = array(
-      '#type' => 'radios',
-      '#title' => $this->t('Group type'),
-      '#options' => $options,
-      '#default_value' => $this->options['vid'],
-    );
-
-  }
-
+abstract class GroupIndexGid extends ManyToOne {
   protected function valueForm(&$form, FormStateInterface $form_state) {
     parent::valueForm($form, $form_state);
 
-    $group_type = $this->groupType->load($this->options['gid']);
-
-    $options = array();
-    $query = \Drupal::entityQuery('group')
-      // @todo Sorting on vocabulary properties -
-      //   https://www.drupal.org/node/1821274.
-      ->addTag('group_access');
-    $query->condition('type', $group_type->id());
-    $groups = $this->group->loadMultiple($query->execute());
-    foreach ($groups as $group) {
-      $options[$group->id()] = \Drupal::entityManager()
-        ->getTranslationFromContext($group)
-        ->label();
-    }
-    asort($options);
+    $options = !empty($form_state->has('filter_options')) ? $form_state->get('filter_options') : [];
 
     $default_value = (array) $this->value;
 
@@ -107,12 +26,15 @@ class GroupIndexGid extends ManyToOne {
         $options = $this->reduceValueOptions($options);
 
         if (!empty($this->options['expose']['multiple']) && empty($this->options['expose']['required'])) {
-          $default_value = array();
+          $default_value = [];
         }
       }
 
       if (empty($this->options['expose']['multiple'])) {
-        if (empty($this->options['expose']['required']) && (empty($default_value) || !empty($this->options['expose']['reduce']))) {
+        if (
+          empty($this->options['expose']['required']) &&
+          (empty($default_value) || !empty($this->options['expose']['reduce']))
+        ) {
           $default_value = 'All';
         }
         elseif (empty($default_value)) {
@@ -121,7 +43,7 @@ class GroupIndexGid extends ManyToOne {
         }
         // Due to #1464174 there is a chance that array('') was saved in the admin ui.
         // Let's choose a safe default value.
-        elseif ($default_value == array('')) {
+        elseif ($default_value == ['']) {
           $default_value = 'All';
         }
         else {
@@ -130,16 +52,19 @@ class GroupIndexGid extends ManyToOne {
         }
       }
     }
-    $form['value'] = array(
+
+    $form['value'] = [
       '#type' => 'select',
-      '#title' => $this->options['limit'] ? $this->t('Select terms from vocabulary @voc', array('@voc' => $group_type->label())) : $this->t('Select terms'),
+      '#title' => $this->t('Select group'),
       '#multiple' => TRUE,
       '#options' => $options,
       '#size' => min(9, count($options)),
       '#default_value' => $default_value,
-    );
+      '#access' => !empty($options),
+    ];
 
     $user_input = $form_state->getUserInput();
+
     if ($exposed && isset($identifier) && !isset($user_input[$identifier])) {
       $user_input[$identifier] = $default_value;
       $form_state->setUserInput($user_input);

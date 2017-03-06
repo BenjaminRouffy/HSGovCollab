@@ -48,11 +48,13 @@ function p4h_views_plugins_entity_base_field_info(EntityTypeInterface $entity_ty
  * Implements hook_form_alter().
  */
 function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // TODO Remove this bebebe restrict.
   if ($form_id == 'views_exposed_form'
     && in_array($form['#id'], [
       'views-exposed-form-news-events-block-1',
       'views-exposed-form-news-and-events-group-news-and-events-by-group',
       'views-exposed-form-news-and-events-group-documents-by-group',
+      'views-exposed-form-news-and-events-group-block-news-events-project',
     ])
   ) {
     $form['wrap'] = [

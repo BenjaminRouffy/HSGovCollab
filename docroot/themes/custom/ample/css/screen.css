@@ -1944,6 +1944,12 @@ header .social-links .font-social-icon {
   height: 100vh;
   max-width: 300px;
   margin: 0 auto; }
+  .ie9 .error-block {
+    display: block;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    margin-top: 100px; }
   .toolbar-horizontal .error-block {
     height: calc(100vh - 41px); }
   .toolbar-tray-open .error-block {
@@ -1989,6 +1995,8 @@ header .social-links .font-social-icon {
   width: 200px;
   border-radius: 50%;
   overflow: hidden; }
+  .ie9 .error-image-wrapper {
+    margin: 0 auto; }
 
 .last-news-by-group {
   margin-bottom: 5px;

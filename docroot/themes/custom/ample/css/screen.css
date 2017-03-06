@@ -2146,7 +2146,10 @@ form {
   .form-email::-moz-placeholder,
   .form-email:-ms-input-placeholder,
   .form-email:-moz-placeholder {
-    color: #999 !important; }
+    color: #999; }
+
+:-ms-input-placeholder {
+  color: #999 !important; }
 
 .form-textarea {
   height: auto;

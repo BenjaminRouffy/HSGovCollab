@@ -73,8 +73,12 @@ form {
   &::-moz-placeholder,
   &:-ms-input-placeholder,
   &:-moz-placeholder {
-    color: #999 !important;
+    color: #999;
   }
+}
+
+:-ms-input-placeholder {
+  color: #999 !important;
 }
 
 .form-textarea {

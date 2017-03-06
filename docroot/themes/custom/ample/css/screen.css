@@ -2181,13 +2181,14 @@ form {
     outline: none; }
 
 .ie9 .select-wrapper {
-  background: #f5f5f5;
+  background: #f5f5f5 url(../images/select-arrows.png) right center no-repeat;
   border: 1px solid #75a8c0;
   border-radius: 4px;
   overflow: hidden; }
 
 .ie9 .form-select {
-  width: calc(100% + 30px); }
+  border: none;
+  width: calc(100% + 35px); }
 
 .form-checkbox {
   -webkit-appearance: checkbox;

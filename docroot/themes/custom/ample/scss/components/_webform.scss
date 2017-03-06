@@ -115,12 +115,14 @@ form {
     position: relative;
 
     &:after {
-      background: grey;
+      background: red;
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
       height: 100%;
       width: 30px;
+      z-index: 10;
     }
   }
 

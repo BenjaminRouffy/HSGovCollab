@@ -1098,6 +1098,12 @@
   max-width: 300px;
   margin: 0 auto;
 
+  .ie9 & {
+    display: block;
+    flex: none;
+    margin-top: 100px;
+  }
+
   .toolbar-horizontal & {
     height: calc(100vh - 41px);
   }
@@ -1156,6 +1162,10 @@
   @include same(200px, height, width);
   border-radius: 50%;
   overflow: hidden;
+
+  .ie9 & {
+    margin: 0 auto;
+  }
 }
 
 .last-news-by-group {

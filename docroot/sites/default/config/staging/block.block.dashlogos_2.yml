@@ -13,8 +13,8 @@ dependencies:
     - ample
 id: dashlogos_2
 theme: ample
-region: header
-weight: 0
+region: dashboard_sidebar
+weight: -13
 provider: null
 plugin: 'block_content:2b299f2d-1e36-420e-8953-0d42aaaf28cf'
 settings:
@@ -24,7 +24,7 @@ settings:
   label_display: '0'
   status: true
   info: ''
-  view_mode: default
+  view_mode: dashboard_logo
 visibility:
   http_status:
     id: http_status

@@ -1,9 +1,10 @@
-uuid: 5bbf46ac-60fc-4c15-86d1-e4d868f4aa99
+uuid: c88480b8-92f3-47ca-b675-6b5a9043e352
 langcode: en
 status: true
 dependencies:
   config:
     - block_content.type.header_logo
+    - core.entity_view_mode.block_content.dashboard_logo
     - field.field.block_content.header_logo.field_dashboard_logo
     - field.field.block_content.header_logo.field_header_fixed_logo
     - field.field.block_content.header_logo.field_header_logo_link
@@ -11,29 +12,29 @@ dependencies:
   module:
     - image
     - link
-id: block_content.header_logo.default
+id: block_content.header_logo.dashboard_logo
 targetEntityType: block_content
 bundle: header_logo
-mode: default
+mode: dashboard_logo
 content:
   field_dashboard_logo:
     weight: 2
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
-  field_header_fixed_logo:
-    weight: 0
     label: hidden
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image
-  field_header_logo_link:
+  field_header_fixed_logo:
+    type: image
     weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_header_logo_link:
+    weight: 0
     label: hidden
     settings:
       trim_length: 80

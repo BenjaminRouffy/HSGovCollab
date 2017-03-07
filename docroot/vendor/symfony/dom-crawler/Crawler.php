@@ -14,7 +14,7 @@ namespace Symfony\Component\DomCrawler;
 use Symfony\Component\CssSelector\CssSelectorConverter;
 
 /**
- * Crawler eases navigation of a list of \DOMElement objects.
+ * Crawler eases navigation of a list of \DOMNode objects.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
@@ -169,7 +169,7 @@ class Crawler extends \SplObjectStorage
         $dom = new \DOMDocument('1.0', $charset);
         $dom->validateOnParse = true;
 
-        set_error_handler(function () {throw new \Exception();});
+        set_error_handler(function () { throw new \Exception(); });
 
         try {
             // Convert charset to HTML-entities to work around bugs in DOMDocument::loadHTML()
@@ -215,8 +215,11 @@ class Crawler extends \SplObjectStorage
      *
      * @param string $content The XML content
      * @param string $charset The charset
+     * @param int    $options Bitwise OR of the libxml option constants
+     *                        LIBXML_PARSEHUGE is dangerous, see
+     *                        http://symfony.com/blog/security-release-symfony-2-0-17-released
      */
-    public function addXmlContent($content, $charset = 'UTF-8')
+    public function addXmlContent($content, $charset = 'UTF-8', $options = LIBXML_NONET)
     {
         // remove the default namespace if it's the only namespace to make XPath expressions simpler
         if (!preg_match('/xmlns:/', $content)) {
@@ -230,7 +233,7 @@ class Crawler extends \SplObjectStorage
         $dom->validateOnParse = true;
 
         if ('' !== trim($content)) {
-            @$dom->loadXML($content, LIBXML_NONET);
+            @$dom->loadXML($content, $options);
         }
 
         libxml_use_internal_errors($internalErrors);
@@ -290,10 +293,6 @@ class Crawler extends \SplObjectStorage
             $node = $node->documentElement;
         }
 
-        if (!$node instanceof \DOMElement) {
-            throw new \InvalidArgumentException(sprintf('Nodes set in a Crawler must be DOMElement or DOMDocument instances, "%s" given.', get_class($node)));
-        }
-
         if (null !== $this->document && $this->document !== $node->ownerDocument) {
             @trigger_error('Attaching DOM nodes from multiple documents in a Crawler is deprecated as of 2.8 and will be forbidden in 3.0.', E_USER_DEPRECATED);
         }
@@ -321,7 +320,7 @@ class Crawler extends \SplObjectStorage
      *
      * @param int $position The position
      *
-     * @return Crawler A new instance of the Crawler with the selected node, or an empty Crawler if it does not exist.
+     * @return self
      */
     public function eq($position)
     {
@@ -366,7 +365,7 @@ class Crawler extends \SplObjectStorage
      * @param int $offset
      * @param int $length
      *
-     * @return Crawler A Crawler instance with the sliced nodes
+     * @return self
      */
     public function slice($offset = 0, $length = -1)
     {
@@ -380,7 +379,7 @@ class Crawler extends \SplObjectStorage
      *
      * @param \Closure $closure An anonymous function
      *
-     * @return Crawler A Crawler instance with the selected nodes.
+     * @return self
      */
     public function reduce(\Closure $closure)
     {
@@ -397,7 +396,7 @@ class Crawler extends \SplObjectStorage
     /**
      * Returns the first node of the current selection.
      *
-     * @return Crawler A Crawler instance with the first selected node
+     * @return self
      */
     public function first()
     {
@@ -407,7 +406,7 @@ class Crawler extends \SplObjectStorage
     /**
      * Returns the last node of the current selection.
      *
-     * @return Crawler A Crawler instance with the last selected node
+     * @return self
      */
     public function last()
     {
@@ -417,7 +416,7 @@ class Crawler extends \SplObjectStorage
     /**
      * Returns the siblings nodes of the current selection.
      *
-     * @return Crawler A Crawler instance with the sibling nodes
+     * @return self
      *
      * @throws \InvalidArgumentException When current node is empty
      */
@@ -433,7 +432,7 @@ class Crawler extends \SplObjectStorage
     /**
      * Returns the next siblings nodes of the current selection.
      *
-     * @return Crawler A Crawler instance with the next sibling nodes
+     * @return self
      *
      * @throws \InvalidArgumentException When current node is empty
      */
@@ -449,7 +448,7 @@ class Crawler extends \SplObjectStorage
     /**
      * Returns the previous sibling nodes of the current selection.
      *
-     * @return Crawler A Crawler instance with the previous sibling nodes
+     * @return self
      *
      * @throws \InvalidArgumentException
      */
@@ -465,7 +464,7 @@ class Crawler extends \SplObjectStorage
     /**
      * Returns the parents nodes of the current selection.
      *
-     * @return Crawler A Crawler instance with the parents nodes of the current selection
+     * @return self
      *
      * @throws \InvalidArgumentException When current node is empty
      */
@@ -479,7 +478,7 @@ class Crawler extends \SplObjectStorage
         $nodes = array();
 
         while ($node = $node->parentNode) {
-            if (1 === $node->nodeType) {
+            if (XML_ELEMENT_NODE === $node->nodeType) {
                 $nodes[] = $node;
             }
         }
@@ -490,7 +489,7 @@ class Crawler extends \SplObjectStorage
     /**
      * Returns the children nodes of the current selection.
      *
-     * @return Crawler A Crawler instance with the children nodes
+     * @return self
      *
      * @throws \InvalidArgumentException When current node is empty
      */
@@ -623,7 +622,7 @@ class Crawler extends \SplObjectStorage
      *
      * @param string $xpath An XPath expression
      *
-     * @return Crawler A new instance of Crawler with the filtered list of nodes
+     * @return self
      */
     public function filterXPath($xpath)
     {
@@ -644,7 +643,7 @@ class Crawler extends \SplObjectStorage
      *
      * @param string $selector A CSS selector
      *
-     * @return Crawler A new instance of Crawler with the filtered list of nodes
+     * @return self
      *
      * @throws \RuntimeException if the CssSelector Component is not available
      */
@@ -665,7 +664,7 @@ class Crawler extends \SplObjectStorage
      *
      * @param string $value The link text
      *
-     * @return Crawler A new instance of Crawler with the filtered list of nodes
+     * @return self
      */
     public function selectLink($value)
     {
@@ -680,7 +679,7 @@ class Crawler extends \SplObjectStorage
      *
      * @param string $value The button text
      *
-     * @return Crawler A new instance of Crawler with the filtered list of nodes
+     * @return self
      */
     public function selectButton($value)
     {
@@ -699,7 +698,7 @@ class Crawler extends \SplObjectStorage
      *
      * @return Link A Link instance
      *
-     * @throws \InvalidArgumentException If the current node list is empty
+     * @throws \InvalidArgumentException If the current node list is empty or the selected node is not instance of DOMElement
      */
     public function link($method = 'get')
     {
@@ -709,6 +708,10 @@ class Crawler extends \SplObjectStorage
 
         $node = $this->getNode(0);
 
+        if (!$node instanceof \DOMElement) {
+            throw new \InvalidArgumentException(sprintf('The selected node should be instance of DOMElement, got "%s".', get_class($node)));
+        }
+
         return new Link($node, $this->baseHref, $method);
     }
 
@@ -716,11 +719,17 @@ class Crawler extends \SplObjectStorage
      * Returns an array of Link objects for the nodes in the list.
      *
      * @return Link[] An array of Link instances
+     *
+     * @throws \InvalidArgumentException If the current node list contains non-DOMElement instances
      */
     public function links()
     {
         $links = array();
         foreach ($this as $node) {
+            if (!$node instanceof \DOMElement) {
+                throw new \InvalidArgumentException(sprintf('The current node list should contain only DOMElement instances, "%s" found.', get_class($node)));
+            }
+
             $links[] = new Link($node, $this->baseHref, 'get');
         }
 
@@ -735,7 +744,7 @@ class Crawler extends \SplObjectStorage
      *
      * @return Form A Form instance
      *
-     * @throws \InvalidArgumentException If the current node list is empty
+     * @throws \InvalidArgumentException If the current node list is empty or the selected node is not instance of DOMElement
      */
     public function form(array $values = null, $method = null)
     {
@@ -743,7 +752,13 @@ class Crawler extends \SplObjectStorage
             throw new \InvalidArgumentException('The current node list is empty.');
         }
 
-        $form = new Form($this->getNode(0), $this->uri, $method, $this->baseHref);
+        $node = $this->getNode(0);
+
+        if (!$node instanceof \DOMElement) {
+            throw new \InvalidArgumentException(sprintf('The selected node should be instance of DOMElement, got "%s".', get_class($node)));
+        }
+
+        $form = new Form($node, $this->uri, $method, $this->baseHref);
 
         if (null !== $values) {
             $form->setValues($values);
@@ -815,7 +830,7 @@ class Crawler extends \SplObjectStorage
             }
         }
 
-        return sprintf('concat(%s)', implode($parts, ', '));
+        return sprintf('concat(%s)', implode(', ', $parts));
     }
 
     /**
@@ -939,23 +954,13 @@ class Crawler extends \SplObjectStorage
     }
 
     /**
-     * @deprecated Using the SplObjectStorage API on the Crawler is deprecated as of 2.8 and will be removed in 3.0.
-     */
-    public function getHash($object)
-    {
-        $this->triggerDeprecation(__METHOD__, true);
-
-        return parent::getHash($object);
-    }
-
-    /**
      * Filters the list of nodes with an XPath expression.
      *
      * The XPath expression should already be processed to apply it in the context of each node.
      *
      * @param string $xpath
      *
-     * @return Crawler
+     * @return self
      */
     private function filterRelativeXPath($xpath)
     {
@@ -965,12 +970,7 @@ class Crawler extends \SplObjectStorage
 
         foreach ($this as $node) {
             $domxpath = $this->createDOMXPath($node->ownerDocument, $prefixes);
-
-            foreach ($domxpath->query($xpath, $node) as $subNode) {
-                if ($subNode->nodeType === 1) {
-                    $crawler->add($subNode);
-                }
-            }
+            $crawler->add($domxpath->query($xpath, $node));
         }
 
         return $crawler;
@@ -990,22 +990,47 @@ class Crawler extends \SplObjectStorage
     {
         $expressions = array();
 
-        $unionPattern = '/\|(?![^\[]*\])/';
         // An expression which will never match to replace expressions which cannot match in the crawler
         // We cannot simply drop
         $nonMatchingExpression = 'a[name() = "b"]';
 
-        // Split any unions into individual expressions.
-        foreach (preg_split($unionPattern, $xpath) as $expression) {
-            $expression = trim($expression);
-            $parenthesis = '';
+        $xpathLen = strlen($xpath);
+        $openedBrackets = 0;
+        $startPosition = strspn($xpath, " \t\n\r\0\x0B");
 
-            // If the union is inside some braces, we need to preserve the opening braces and apply
-            // the change only inside it.
-            if (preg_match('/^[\(\s*]+/', $expression, $matches)) {
-                $parenthesis = $matches[0];
-                $expression = substr($expression, strlen($parenthesis));
+        for ($i = $startPosition; $i <= $xpathLen; ++$i) {
+            $i += strcspn($xpath, '"\'[]|', $i);
+
+            if ($i < $xpathLen) {
+                switch ($xpath[$i]) {
+                    case '"':
+                    case "'":
+                        if (false === $i = strpos($xpath, $xpath[$i], $i + 1)) {
+                            return $xpath; // The XPath expression is invalid
+                        }
+                        continue 2;
+                    case '[':
+                        ++$openedBrackets;
+                        continue 2;
+                    case ']':
+                        --$openedBrackets;
+                        continue 2;
+                }
             }
+            if ($openedBrackets) {
+                continue;
+            }
+
+            if ($startPosition < $xpathLen && '(' === $xpath[$startPosition]) {
+                // If the union is inside some braces, we need to preserve the opening braces and apply
+                // the change only inside it.
+                $j = 1 + strspn($xpath, "( \t\n\r\0\x0B", $startPosition + 1);
+                $parenthesis = substr($xpath, $startPosition, $j);
+                $startPosition += $j;
+            } else {
+                $parenthesis = '';
+            }
+            $expression = rtrim(substr($xpath, $startPosition, $i - $startPosition));
 
             // BC for Symfony 2.4 and lower were elements were adding in a fake _root parent
             if (0 === strpos($expression, '/_root/')) {
@@ -1017,7 +1042,7 @@ class Crawler extends \SplObjectStorage
             }
 
             // add prefix before absolute element selector
-            if (empty($expression)) {
+            if ('' === $expression) {
                 $expression = $nonMatchingExpression;
             } elseif (0 === strpos($expression, '//')) {
                 $expression = 'descendant-or-self::'.substr($expression, 2);
@@ -1035,7 +1060,7 @@ class Crawler extends \SplObjectStorage
                 // '.' is the fake root element in Symfony 2.4 and lower, which is excluded from results
                 $expression = $nonMatchingExpression;
             } elseif (0 === strpos($expression, 'descendant::')) {
-                $expression = 'descendant-or-self::'.substr($expression, strlen('descendant::'));
+                $expression = 'descendant-or-self::'.substr($expression, 12);
             } elseif (preg_match('/^(ancestor|ancestor-or-self|attribute|following|following-sibling|namespace|parent|preceding|preceding-sibling)::/', $expression)) {
                 // the fake root has no parent, preceding or following nodes and also no attributes (even no namespace attributes)
                 $expression = $nonMatchingExpression;
@@ -1043,9 +1068,16 @@ class Crawler extends \SplObjectStorage
                 $expression = 'self::'.$expression;
             }
             $expressions[] = $parenthesis.$expression;
+
+            if ($i === $xpathLen) {
+                return implode(' | ', $expressions);
+            }
+
+            $i += strspn($xpath, " \t\n\r\0\x0B", $i + 1);
+            $startPosition = $i + 1;
         }
 
-        return implode(' | ', $expressions);
+        return $xpath; // The XPath expression is invalid
     }
 
     /**
@@ -1151,6 +1183,7 @@ class Crawler extends \SplObjectStorage
         $crawler = new static($nodes, $this->uri, $this->baseHref);
         $crawler->isHtml = $this->isHtml;
         $crawler->document = $this->document;
+        $crawler->namespaces = $this->namespaces;
 
         return $crawler;
     }

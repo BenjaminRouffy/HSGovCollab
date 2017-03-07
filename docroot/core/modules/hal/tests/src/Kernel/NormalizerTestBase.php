@@ -2,22 +2,9 @@
 
 namespace Drupal\Tests\hal\Kernel;
 
-use Drupal\Core\Cache\MemoryBackend;
 use Drupal\field\Entity\FieldConfig;
-use Drupal\hal\Encoder\JsonEncoder;
-use Drupal\hal\Normalizer\ContentEntityNormalizer;
-use Drupal\hal\Normalizer\EntityReferenceItemNormalizer;
-use Drupal\hal\Normalizer\FieldItemNormalizer;
-use Drupal\hal\Normalizer\FieldNormalizer;
 use Drupal\language\Entity\ConfigurableLanguage;
-use Drupal\rest\LinkManager\LinkManager;
-use Drupal\rest\LinkManager\RelationLinkManager;
-use Drupal\rest\LinkManager\TypeLinkManager;
-use Drupal\serialization\EntityResolver\ChainEntityResolver;
-use Drupal\serialization\EntityResolver\TargetIdResolver;
-use Drupal\serialization\EntityResolver\UuidResolver;
 use Drupal\KernelTests\KernelTestBase;
-use Symfony\Component\Serializer\Serializer;
 use Drupal\field\Entity\FieldStorageConfig;
 
 /**
@@ -30,7 +17,7 @@ abstract class NormalizerTestBase extends KernelTestBase {
    *
    * @var array
    */
-  public static $modules = ['entity_test', 'field', 'hal', 'language', 'rest', 'serialization', 'system', 'text', 'user', 'filter'];
+  public static $modules = ['entity_test', 'field', 'hal', 'language', 'serialization', 'system', 'text', 'user', 'filter'];
 
   /**
    * The mock serializer.
@@ -130,23 +117,7 @@ abstract class NormalizerTestBase extends KernelTestBase {
       'translatable' => TRUE,
     ])->save();
 
-    $entity_manager = \Drupal::entityManager();
-    $link_manager = new LinkManager(new TypeLinkManager(new MemoryBackend('default'), \Drupal::moduleHandler(), \Drupal::service('config.factory'), \Drupal::service('request_stack'), \Drupal::service('entity_type.bundle.info')), new RelationLinkManager(new MemoryBackend('default'), $entity_manager, \Drupal::moduleHandler(), \Drupal::service('config.factory'), \Drupal::service('request_stack')));
-
-    $chain_resolver = new ChainEntityResolver(array(new UuidResolver($entity_manager), new TargetIdResolver()));
-
-    // Set up the mock serializer.
-    $normalizers = array(
-      new ContentEntityNormalizer($link_manager, $entity_manager, \Drupal::moduleHandler()),
-      new EntityReferenceItemNormalizer($link_manager, $chain_resolver),
-      new FieldItemNormalizer(),
-      new FieldNormalizer(),
-    );
-
-    $encoders = array(
-      new JsonEncoder(),
-    );
-    $this->serializer = new Serializer($normalizers, $encoders);
+    $this->serializer = $this->container->get('serializer');
   }
 
 }

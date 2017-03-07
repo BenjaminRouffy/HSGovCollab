@@ -601,7 +601,8 @@ function deployment_update_8035() {
  * Enable Global Tag module.
  */
 function deployment_update_8036() {
-  \Drupal::service('module_installer')->install(['global_tag']);
+  // Lets this update here for backward compatibility,
+  // the global tag module has been reverted.
 }
 
 /**

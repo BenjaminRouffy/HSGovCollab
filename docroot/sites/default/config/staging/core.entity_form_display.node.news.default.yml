@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_organization
-    - field.field.node.news.field_public_content
     - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
@@ -183,11 +182,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
-  field_public_content:
-    type: options_buttons
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
   field_related_content_selector:
     weight: 14
     settings: {  }

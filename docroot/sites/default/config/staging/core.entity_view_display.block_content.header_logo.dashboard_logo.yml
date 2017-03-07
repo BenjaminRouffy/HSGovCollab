@@ -18,13 +18,21 @@ bundle: header_logo
 mode: dashboard_logo
 content:
   field_dashboard_logo:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_header_fixed_logo:
+    type: image
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
   field_header_logo_link:
     weight: 0
     label: hidden
@@ -37,6 +45,5 @@ content:
     third_party_settings: {  }
     type: link
 hidden:
-  field_header_fixed_logo: true
   field_header_static_logo: true
   langcode: true

@@ -187,6 +187,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_rel_content_select
+  global_content:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 10
@@ -216,6 +222,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_public_content: true
   promote: true
   sticky: true
   uid: true

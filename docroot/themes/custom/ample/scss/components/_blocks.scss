@@ -800,6 +800,34 @@
     }
   }
 
+  .social {
+    margin-bottom: 30px;
+    padding: 10px;
+
+    > a {
+      background: $white;
+      padding: 20px;
+
+      &:hover {
+        border-color: $red;
+      }
+    }
+
+    .font-social-icon {
+      @include font-size(24);
+      color: $navy-dark;
+      margin-bottom: 20px;
+    }
+
+    .teaser-text {
+      @include font-size(15.4);
+      color: $navy-dark;
+      font-family: $fira;
+      line-height: 22px;
+      margin: 5px 0 10px;
+    }
+  }
+
   .event {
     padding: 10px;
 

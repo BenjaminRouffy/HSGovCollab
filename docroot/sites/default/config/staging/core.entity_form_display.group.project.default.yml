@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.browse_files
+    - entity_browser.browser.browse_files_modal
     - field.field.group.project.field_content
     - field.field.group.project.field_date
     - field.field.group.project.field_join_block
@@ -75,12 +75,13 @@ third_party_settings:
       weight: 5
       format_type: tab
       format_settings:
-        id: ''
-        classes: ''
+        label: Timeline
         formatter: closed
         description: ''
         required_fields: true
-      label: 'Time line'
+        id: ''
+        classes: ''
+      label: Timeline
     group_bottom:
       children:
         - field_join_block
@@ -106,7 +107,7 @@ content:
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
-      form_display_mode: default
+      form_display_mode: private_content
     third_party_settings: {  }
     type: entity_reference_paragraphs
   field_date:
@@ -125,7 +126,7 @@ content:
   field_project_icon:
     weight: 6
     settings:
-      entity_browser: browse_files
+      entity_browser: browse_files_modal
       field_widget_edit: true
       field_widget_remove: true
       selection_mode: selection_append

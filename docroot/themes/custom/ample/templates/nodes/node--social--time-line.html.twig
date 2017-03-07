@@ -1,0 +1,27 @@
+{% set plainBody %}
+  {{ content.body|field_value }}
+{% endset %}
+
+<div class="timeline-content-item">
+  <div class="font-social-icon {{ content.field_social_type|render|striptags|trim }}-icon">
+    <span></span>
+  </div>
+
+  <time datetime="{{ node.createdtime | date("Y-m-d") }}">
+    {{ node.createdtime | format_date('time_line') }}
+  </time>
+
+  <h4 role="heading">
+    {{ label }}
+  </h4>
+
+  <p>
+    {{ plainBody|striptags }}
+  </p>
+
+  {% if content.field_permalink_url|field_value %}
+    <a href="{{ content.field_permalink_url|field_value }}" role="link" target="_blank">
+      {{ 'Read more'|t }}
+    </a>
+  {% endif %}
+</div>

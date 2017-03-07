@@ -494,7 +494,17 @@ svg {
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 300px; }
+  z-index: 450; }
+  .toolbar-fixed .dashboard-sidebar {
+    padding-top: 39px; }
+  .toolbar-tray-open .dashboard-sidebar {
+    padding-top: 79px; }
+  .dashboard-sidebar .logo-wrapper {
+    background: #fff;
+    border-bottom: 2px solid #ea3a32;
+    height: 150px;
+    margin-bottom: 30px;
+    padding: 35px 10px 0; }
   .dashboard-sidebar ul {
     margin: 0;
     padding: 0; }
@@ -508,20 +518,19 @@ svg {
       font-size: 0rem;
       font-style: normal;
       line-height: 0; }
-  .dashboard-sidebar a {
+  .dashboard-sidebar .sidebar-menu a {
     color: #fff;
     display: block;
     padding: 26px 0 20px 15px;
     text-decoration: none;
     -webkit-transition: background .4s ease;
     transition: background .4s ease; }
-    .dashboard-sidebar a:before {
+    .dashboard-sidebar .sidebar-menu a:before {
       font-size: 2rem;
-      content: '';
       display: block;
       font-family: P4h, sans-serif;
       line-height: 20px; }
-    .dashboard-sidebar a:hover {
+    .dashboard-sidebar .sidebar-menu a:hover {
       background: #345a6d; }
   .dashboard-sidebar .account:before {
     content: 'a'; }

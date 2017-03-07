@@ -117,8 +117,23 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 450;
 
-  padding-top: 300px;
+  .toolbar-fixed & {
+    padding-top: 39px;
+  }
+
+  .toolbar-tray-open & {
+    padding-top: 79px;
+  }
+
+  .logo-wrapper {
+    background: $white;
+    border-bottom: 2px solid $red;
+    height: 150px;
+    margin-bottom: 30px;
+    padding: 35px 10px 0;
+  }
 
   ul {
     margin: 0;
@@ -141,23 +156,24 @@
     }
   }
 
-  a {
-    color: $white;
-    display: block;
-    padding: 26px 0 20px 15px;
-    text-decoration: none;
-    transition: background .4s ease;
-
-    &:before {
-      @include font-size(32);
-      content: '';
+  .sidebar-menu {
+    a {
+      color: $white;
       display: block;
-      font-family: $p4h;
-      line-height: 20px;
-    }
+      padding: 26px 0 20px 15px;
+      text-decoration: none;
+      transition: background .4s ease;
 
-    &:hover {
-      background: #345a6d;
+      &:before {
+        @include font-size(32);
+        display: block;
+        font-family: $p4h;
+        line-height: 20px;
+      }
+
+      &:hover {
+        background: #345a6d;
+      }
     }
   }
 

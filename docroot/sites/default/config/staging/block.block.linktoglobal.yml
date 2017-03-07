@@ -1,0 +1,47 @@
+uuid: 796cb049-5f53-4a80-8564-17735b658035
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:header_link:88950ff4-67fc-4b94-b526-e7d4e140e52f'
+  module:
+    - admin_customizations
+    - block_content
+    - system
+    - user
+  theme:
+    - ample
+id: linktoglobal
+theme: ample
+region: header_static
+weight: 0
+provider: null
+plugin: 'block_content:88950ff4-67fc-4b94-b526-e7d4e140e52f'
+settings:
+  id: 'block_content:88950ff4-67fc-4b94-b526-e7d4e140e52f'
+  label: 'Dashboard header link'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

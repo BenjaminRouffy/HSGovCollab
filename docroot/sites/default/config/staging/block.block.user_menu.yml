@@ -7,7 +7,6 @@ dependencies:
   module:
     - admin_customizations
     - system
-    - user
   theme:
     - ample
 id: user_menu
@@ -36,10 +35,3 @@ visibility:
     pages: /dashboard
     negate: true
     context_mapping: {  }
-  user_role:
-    id: user_role
-    roles:
-      anonymous: anonymous
-    negate: false
-    context_mapping:
-      user: '@user.current_user_context:current_user'

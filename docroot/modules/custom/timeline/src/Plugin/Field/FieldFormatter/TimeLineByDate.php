@@ -40,6 +40,7 @@ class TimeLineByDate extends EntityReferenceRevisionsEntityFormatter {
               break;
 
             case 'exist_content':
+            case 'timeline_social':
             case 'country_and_project':
               $entity_type = 'country_and_project' === $bundle ? 'group' : 'node';
               /* @var Paragraph $exist_content */

@@ -1,0 +1,24 @@
+uuid: 834cd6db-22e1-4c0e-a0aa-93fb8d285aff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_social.field_node
+    - paragraphs.paragraphs_type.timeline_social
+id: paragraph.timeline_social.default
+targetEntityType: paragraph
+bundle: timeline_social
+mode: default
+content:
+  field_node:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+hidden:
+  created: true
+  status: true
+  uid: true

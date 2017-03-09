@@ -11,7 +11,6 @@ dependencies:
     - field.field.group.project.field_summary_public
     - field.field.group.project.field_time_line
     - group.type.project
-    - image.style.100x100
   module:
     - entity_reference_revisions
     - image
@@ -40,7 +39,7 @@ content:
     weight: 5
     label: hidden
     settings:
-      image_style: 100x100
+      image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image

@@ -1085,6 +1085,7 @@
 
   + div {
     min-height: 150px;
+    margin-bottom: 5px;
   }
 
   .project-icon-wrapper {
@@ -1211,7 +1212,6 @@
 }
 
 .last-news-by-group {
-  margin-bottom: 5px;
   padding: 0 20px;
 
   .item {
@@ -1236,10 +1236,9 @@
   .font-social-icon {
     @include font-size(28);
     color: $navy;
-    display: inline-block;
+    float: left;
     margin-right: 10px;
     padding-top: 10px;
-    vertical-align: top;
   }
 
   h3 {
@@ -1248,7 +1247,7 @@
     font-weight: 400;
     line-height: 20px;
     margin: 8px 0 0;
-    max-width: calc(100% - 42px);
+    max-width: calc(100% - 38px);
     vertical-align: top;
   }
 }

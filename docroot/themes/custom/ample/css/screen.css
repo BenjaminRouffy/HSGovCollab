@@ -2019,7 +2019,8 @@ header .social-links .font-social-icon {
   padding: 0 20px; }
   .country-title + div,
   .project-title + div {
-    min-height: 150px; }
+    min-height: 150px;
+    margin-bottom: 5px; }
   .country-title .project-icon-wrapper,
   .project-title .project-icon-wrapper {
     float: left;
@@ -2125,7 +2126,6 @@ header .social-links .font-social-icon {
     margin: 0 auto; }
 
 .last-news-by-group {
-  margin-bottom: 5px;
   padding: 0 20px; }
   .last-news-by-group .item {
     clear: both; }
@@ -2144,17 +2144,16 @@ header .social-links .font-social-icon {
   .last-news-by-group .font-social-icon {
     font-size: 1.75rem;
     color: #4c7e96;
-    display: inline-block;
+    float: left;
     margin-right: 10px;
-    padding-top: 10px;
-    vertical-align: top; }
+    padding-top: 10px; }
   .last-news-by-group h3 {
     font-size: 0.875rem;
     display: inline-block;
     font-weight: 400;
     line-height: 20px;
     margin: 8px 0 0;
-    max-width: calc(100% - 42px);
+    max-width: calc(100% - 38px);
     vertical-align: top; }
 
 .follow-us {

@@ -33,7 +33,7 @@ class ParentGroupFilter extends GroupAdminFilter {
       // Not show any group is user not has admin access.
       $result = empty($result) ? [0] : $result;
 
-      $this->query->addWhere(0, "group_content_field_data_node_field_data.gid", $result, 'IN');
+      $this->query->addWhere(0, "$this->relationship.gid", $result, 'IN');
     }
   }
 }

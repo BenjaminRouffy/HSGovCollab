@@ -13,7 +13,6 @@ dependencies:
     - group
     - group_dashboard
     - node
-    - p4h_views_plugins
     - user
 _core:
   default_config_hash: fUDNcSYKNw6cTMPsX3G9VhsUGov5yUe6_TBHbcnZHyo
@@ -2230,102 +2229,6 @@ display:
           plugin_id: string
           entity_type: node
           entity_field: title
-        gid:
-          id: gid
-          table: group_content_field_data
-          field: gid
-          relationship: group_content
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: gid_op
-            label: 'My countries'
-            description: ''
-            use_operator: false
-            operator: gid_op
-            identifier: gid
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administration_users: '0'
-              country_managers: '0'
-              projects_managers: '0'
-              governance_group_users: '0'
-              coordination_desk_users: '0'
-              specific_users: '0'
-            reduce: 0
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: 0
-          gid: country
-          entity_type: group_content
-          entity_field: gid
-          plugin_id: group_index_gid
-        gid_1:
-          id: gid_1
-          table: group_content_field_data
-          field: gid
-          relationship: group_content
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: gid_1_op
-            label: 'My projects'
-            description: ''
-            use_operator: false
-            operator: gid_1_op
-            identifier: gid_1
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administration_users: '0'
-              country_managers: '0'
-              projects_managers: '0'
-              governance_group_users: '0'
-              coordination_desk_users: '0'
-              specific_users: '0'
-            reduce: 0
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: 0
-          gid: project
-          entity_type: group_content
-          entity_field: gid
-          plugin_id: group_index_gid
         langcode:
           id: langcode
           table: node_field_data
@@ -2412,6 +2315,100 @@ display:
             group_items: {  }
           entity_type: group_content
           plugin_id: parent_group_filter
+        group_select_gid:
+          id: group_select_gid
+          table: group_content_field_data
+          field: group_select_gid
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: group_select_gid_op
+            label: 'My countries'
+            description: ''
+            use_operator: false
+            operator: group_select_gid_op
+            identifier: _gid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          gid: country
+          entity_type: group_content
+          plugin_id: group_select_gid
+        group_select_gid_1:
+          id: group_select_gid_1
+          table: group_content_field_data
+          field: group_select_gid
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: group_select_gid_1_op
+            label: 'My projects'
+            description: ''
+            use_operator: false
+            operator: group_select_gid_1_op
+            identifier: group_select_gid_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          gid: project
+          entity_type: group_content
+          plugin_id: group_select_gid
       filter_groups:
         operator: AND
         groups:

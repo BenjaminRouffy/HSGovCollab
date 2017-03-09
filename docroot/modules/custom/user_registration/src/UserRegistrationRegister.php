@@ -46,6 +46,7 @@ class UserRegistrationRegister extends RegisterForm {
 
     $states = array(
       'visible' => array(
+        // @TODO Change this logic.
         'select[name="field_organisation"]' => array('value' => 485),
       ),
     );

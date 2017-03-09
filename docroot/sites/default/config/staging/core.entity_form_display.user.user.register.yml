@@ -15,14 +15,44 @@ dependencies:
     - field.field.user.user.field_organisation
     - field.field.user.user.field_person_titles
   module:
+    - field_group
     - user
+third_party_settings:
+  field_group:
+    group_right:
+      children:
+        - field_person_titles
+        - field_organisation
+        - field_non_member_organization
+        - field_first_name
+        - field_middle_name
+        - field_last_name
+        - field_job_title
+        - account
+        - field_accept_term_conditions
+        - field_disclose_your_personal_det
+      parent_name: ''
+      weight: 10
+      format_type: html_element
+      format_settings:
+        label: Right
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+        id: right
+        classes: ''
+      label: Right
 id: user.user.register
 targetEntityType: user
 bundle: user
 mode: register
 content:
   account:
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -42,7 +72,7 @@ content:
     third_party_settings: {  }
   field_first_name:
     type: string_textfield
-    weight: 3
+    weight: 4
     region: content
     settings:
       size: 60
@@ -50,7 +80,7 @@ content:
     third_party_settings: {  }
   field_job_title:
     type: string_textfield
-    weight: 6
+    weight: 7
     region: content
     settings:
       size: 60
@@ -58,7 +88,7 @@ content:
     third_party_settings: {  }
   field_last_name:
     type: string_textfield
-    weight: 5
+    weight: 6
     region: content
     settings:
       size: 60
@@ -66,7 +96,7 @@ content:
     third_party_settings: {  }
   field_middle_name:
     type: string_textfield
-    weight: 4
+    weight: 5
     region: content
     settings:
       size: 60
@@ -74,7 +104,7 @@ content:
     third_party_settings: {  }
   field_non_member_organization:
     type: string_textfield
-    weight: 2
+    weight: 3
     region: content
     settings:
       size: 60
@@ -82,13 +112,13 @@ content:
     third_party_settings: {  }
   field_organisation:
     type: options_select
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   field_person_titles:
     type: options_select
-    weight: 0
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }

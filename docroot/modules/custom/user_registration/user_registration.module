@@ -5,6 +5,7 @@
  * Contains user_registration.module.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
@@ -34,5 +35,25 @@ function user_registration_entity_type_alter(array &$entity_types) {
   }
   else {
     throw new Exception('Conflict between two modules.', 0);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function user_registration_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'user_register_form') {
+    $form['actions']['submit']['#value'] = t('Submit');
+
+    $elements = \Drupal\Core\Render\Element::children($form);
+    $match_elements = preg_grep('/^social_login_social_login_providers_([0-9]+)/i', $elements);
+    foreach ($match_elements as $match_element) {
+      $form[$match_element]['#prefix'] = '<div id="left">';
+      $form[$match_element]['#suffix'] = '</div>';
+    }
+    $form['#group_children']['captcha'] = 'group_right';
+    $form['captcha']['#weight'] = 98;
+    $form['field_accept_term_conditions']['#weight'] = 99;
+    $form['field_disclose_your_personal_det']['#weight'] = 100;
   }
 }

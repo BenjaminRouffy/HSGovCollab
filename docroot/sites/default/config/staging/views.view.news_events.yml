@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_time
     - node.type.event
     - node.type.news
+    - node.type.social
     - taxonomy.vocabulary.categories
     - taxonomy.vocabulary.organizations
   module:
@@ -812,6 +813,7 @@ display:
           value:
             event: event
             news: news
+            social: social
           group: 1
           exposed: false
           expose:

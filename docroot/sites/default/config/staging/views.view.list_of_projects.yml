@@ -155,7 +155,7 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts: {  }
-      title: Projects
+      title: ''
       header: {  }
       footer: {  }
       empty: {  }
@@ -223,11 +223,11 @@ display:
         - route
         - url
       tags:
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
         - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'

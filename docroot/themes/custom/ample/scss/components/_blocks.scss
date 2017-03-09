@@ -930,6 +930,12 @@
     }
   }
 
+  .project-content {
+    .summary {
+      padding-top: 20px;
+    }
+  }
+
   .summary {
     @include font-size(15.4);
     color: $navy-dark;
@@ -1079,6 +1085,14 @@
 
   + div {
     min-height: 150px;
+  }
+
+  .project-icon-wrapper {
+    float: left;
+    margin-right: 20px;
+    max-width: 40px;
+    padding-top: 5px;
+    width: 100%;
   }
 
   .country-icon-wrapper {

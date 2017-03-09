@@ -13,12 +13,21 @@ dependencies:
     - field.field.group.project.field_time_line
     - group.type.project
   module:
+    - image
     - text
 id: group.project.teaser
 targetEntityType: group
 bundle: project
 mode: teaser
 content:
+  field_project_icon:
+    type: image
+    weight: 3
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
   field_summary:
     weight: 1
     label: hidden
@@ -46,7 +55,6 @@ hidden:
   field_content: true
   field_date: true
   field_join_block: true
-  field_project_icon: true
   field_time_line: true
   langcode: true
   uid: true

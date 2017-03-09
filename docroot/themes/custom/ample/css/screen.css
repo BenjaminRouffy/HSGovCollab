@@ -1872,6 +1872,9 @@ header .social-links .font-social-icon {
     .project-list .country-content:hover,
     .project-list .project-content:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+  .country-list .project-content .summary,
+  .project-list .project-content .summary {
+    padding-top: 20px; }
   .country-list .summary,
   .project-list .summary {
     font-size: 0.9625rem;
@@ -2017,6 +2020,13 @@ header .social-links .font-social-icon {
   .country-title + div,
   .project-title + div {
     min-height: 150px; }
+  .country-title .project-icon-wrapper,
+  .project-title .project-icon-wrapper {
+    float: left;
+    margin-right: 20px;
+    max-width: 40px;
+    padding-top: 5px;
+    width: 100%; }
   .country-title .country-icon-wrapper,
   .project-title .country-icon-wrapper {
     float: left;

@@ -313,6 +313,21 @@ class SystemTestController extends ControllerBase {
   }
 
   /**
+   * Simple argument echo.
+   *
+   * @param string $text
+   *   Any string for the {text} slug.
+   *
+   * @return array
+   *   A render array.
+   */
+  public function simpleEcho($text) {
+    return [
+      '#plain_text' => $text,
+    ];
+  }
+
+  /**
    * Shows permission-dependent content.
    *
    * @return array
@@ -339,7 +354,7 @@ class SystemTestController extends ControllerBase {
   /**
    * Returns the current date.
    *
-   * @return \Symfony\Component\HttpFoundation\Response $response
+   * @return \Symfony\Component\HttpFoundation\Response
    *   A Response object containing the current date.
    */
   public function getCurrentDate() {
@@ -351,7 +366,7 @@ class SystemTestController extends ControllerBase {
   /**
    * Returns a response with a test header set from the request.
    *
-   * @return \Symfony\Component\HttpFoundation\Response $response
+   * @return \Symfony\Component\HttpFoundation\Response
    *   A Response object containing the test header.
    */
   public function getTestHeader(Request $request) {

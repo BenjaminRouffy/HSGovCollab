@@ -1,0 +1,25 @@
+--- modules/field/tests/src/Functional/EntityReference/Views/SelectionTest.php
++++ modules/field/tests/src/Functional/EntityReference/Views/SelectionTest.php
+@@ -39,14 +42,16 @@ class SelectionTest extends BrowserTestBase {
+   protected function setUp() {
+     parent::setUp();
+ 
+-    // Create nodes.
+-    $type = $this->drupalCreateContentType()->id();
+-    $node1 = $this->drupalCreateNode(['type' => $type]);
+-    $node2 = $this->drupalCreateNode(['type' => $type]);
+-    $node3 = $this->drupalCreateNode();
++    // Create content types and nodes.
++    $type1 = $this->drupalCreateContentType()->id();
++    $type2 = $this->drupalCreateContentType()->id();
++    $node1 = $this->drupalCreateNode(['type' => $type1, 'title' => 'Test first node']);
++    $node2 = $this->drupalCreateNode(['type' => $type1, 'title' => 'Test second node']);
++    $node3 = $this->drupalCreateNode(['type' => $type2, 'title' => 'Test third node']);
+ 
+     foreach ([$node1, $node2, $node3] as $node) {
+-      $this->nodes[$node->getType()][$node->id()] = $node->label();
++      $this->nodes[] = $node;
++      $this->nodeTitles[$node->getType()][$node->id()] = $node->label();
+     }
+ 
+     // Create a field.

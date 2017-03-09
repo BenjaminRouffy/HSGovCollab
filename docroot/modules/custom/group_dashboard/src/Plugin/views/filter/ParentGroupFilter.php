@@ -2,9 +2,6 @@
 
 namespace Drupal\group_dashboard\Plugin\views\filter;
 
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\views\Plugin\views\filter\FilterPluginBase;
-
 /**
  * Filters by admin access.
  *

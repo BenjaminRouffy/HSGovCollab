@@ -73,6 +73,14 @@ function group_dashboard_views_data_alter(array &$data) {
     ],
   ];
 
+  $data['group_content_field_data']['group_select_gid'] = [
+    'real field' => 'gid',
+    'filter' => [
+      'title' => t('Parent group select'),
+      'id' => 'group_select_gid',
+    ],
+  ];
+
   $data['node_access']['node_operations'] = [
     'title' => t('Access by node operations'),
     'real field' => 'nid',

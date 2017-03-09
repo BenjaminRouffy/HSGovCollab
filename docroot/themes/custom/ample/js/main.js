@@ -351,4 +351,14 @@
     }
   };
 
+  Drupal.behaviors.sidebarMenud = {
+    attach: function(context, settings) {
+      var sidebarMenu = $('.dashboard-sidebar', context);
+
+      $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
+        $('.dashboard-sidebar', context).toggleClass('expanded-menu');
+      });
+    }
+  };
+
 })(jQuery, Drupal);

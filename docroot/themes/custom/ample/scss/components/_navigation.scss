@@ -128,11 +128,22 @@
   }
 
   .logo-wrapper {
-    background: $white;
-    border-bottom: 2px solid $red;
-    height: 150px;
-    margin-bottom: 30px;
-    padding: 35px 10px 0;
+    a {
+      background: $white;
+      border-bottom: 2px solid $red;
+      display: block;
+      height: 150px;
+      margin-bottom: 30px;
+      padding: 35px 10px 0;
+    }
+  }
+
+  .dashboard-logo {
+    display: block;
+
+    &.big {
+      display: none;
+    }
   }
 
   ul {
@@ -160,15 +171,20 @@
     a {
       color: $white;
       display: block;
+      min-height: 70px;
       padding: 26px 0 20px 15px;
       text-decoration: none;
       transition: background .4s ease;
 
       &:before {
         @include font-size(32);
-        display: block;
+        display: inline-block;
         font-family: $p4h;
         line-height: 20px;
+        margin-right: 15px;
+        position: relative;
+        top: -4px;
+        vertical-align: top;
       }
 
       &:hover {
@@ -212,6 +228,104 @@
       content: 'j';
     }
   }
+
+  .expand-menu-btn {
+    @include font-size(25.6);
+    background: $navy;
+    color: $white;
+    cursor: pointer;
+    padding: 26px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    transition: background .4s ease;
+    width: 100%;
+
+    &:hover {
+      background: #345a6d;
+    }
+  }
+
+  &.expanded-menu {
+    box-shadow: 0 1px 3px rgba($black, 0.25);
+    min-width: 220px;
+    z-index: 500;
+
+    .logo-wrapper {
+      a {
+        padding: 20px 10px 0 20px;
+      }
+    }
+
+    .dashboard-logo {
+      &.small {
+        display: none;
+      }
+
+      &.big {
+        display: block;
+      }
+    }
+
+    li {
+      a {
+        @include font-size(14);
+        line-height: 20px;
+      }
+
+      .sign-out {
+        @include font-size(12);
+      }
+    }
+
+    .expand-menu-btn {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+@include breakpoint-for('.dashboard-sidebar', (to: tablet)) {
+  padding-top: 60px;
+  left: auto;
+  right: -75%;
+  transition: transform .4s ease;
+  width: 75%;
+
+  &.expanded-menu {
+    transform: translateX(-100%);
+    z-index: 450;
+  }
+
+  .toolbar-vertical & {
+    padding-top: 99px;
+  }
+
+  .logo-wrapper,
+  .expand-menu-btn {
+    display: none;
+  }
+
+  .sidebar-menu {
+    li:nth-child(n) {
+      a {
+        @include font-size(16.8);
+        letter-spacing: .5px;
+        line-height: 20px;
+        padding: 30px;
+
+        &:before {
+          @include font-size(35);
+          position: static;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.dashboard-sidebar', (to: mobileL)) {
+  right: -100%;
+  width: 100%;
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {

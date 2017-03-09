@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Contains user_registration.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function user_registration_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the user_registration module.
+    case 'help.page.user_registration':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('User Registration') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function user_registration_entity_type_alter(array &$entity_types) {
+  /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
+  $base_class = $entity_types['user']->getFormClass('register');
+  if($base_class == 'Drupal\user\RegisterForm') {
+    $entity_types['user']->setFormClass('register', '\Drupal\user_registration\UserRegistrationRegister');
+  }
+  else {
+    throw new Exception('Conflict between two modules.', 0);
+  }
+}

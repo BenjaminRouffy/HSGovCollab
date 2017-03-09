@@ -1,18 +1,18 @@
-uuid: da6249aa-65b3-4efb-9002-cf40e6c0c837
+uuid: f6d07011-b018-4227-ba6a-315d109559cd
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.field_last_name
+    - field.storage.user.field_job_title
   module:
     - user
-id: user.user.field_last_name
-field_name: field_last_name
+id: user.user.field_job_title
+field_name: field_job_title
 entity_type: user
 bundle: user
-label: 'Last name'
+label: 'Job title'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

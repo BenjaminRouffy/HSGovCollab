@@ -1,18 +1,18 @@
-uuid: da6249aa-65b3-4efb-9002-cf40e6c0c837
+uuid: e8968e05-309d-4220-969b-d8bf2927455f
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.field_last_name
+    - field.storage.user.field_middle_name
   module:
     - user
-id: user.user.field_last_name
-field_name: field_last_name
+id: user.user.field_middle_name
+field_name: field_middle_name
 entity_type: user
 bundle: user
-label: 'Last name'
+label: 'Middle name'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

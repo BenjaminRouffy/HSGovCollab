@@ -522,17 +522,20 @@ svg {
   .dashboard-sidebar ul {
     margin: 0;
     padding: 0; }
-  .dashboard-sidebar li {
+  .dashboard-sidebar ul:not(.contextual-links) li {
     font-size: 0.75rem;
     font-family: "Fira Sans", sans-serif;
     font-style: italic;
     font-weight: 300;
     display: block; }
-    .dashboard-sidebar li:not(:last-child) a {
+    .dashboard-sidebar ul:not(.contextual-links) li:not(:last-child) a {
       font-size: 0rem;
       font-style: normal;
       line-height: 0; }
-  .dashboard-sidebar .sidebar-menu a {
+  .dashboard-sidebar .sidebar-menu .contextual-links {
+    border-top-left-radius: 0;
+    right: -76px; }
+  .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) a {
     color: #fff;
     display: block;
     min-height: 70px;
@@ -540,7 +543,7 @@ svg {
     text-decoration: none;
     -webkit-transition: background .4s ease;
     transition: background .4s ease; }
-    .dashboard-sidebar .sidebar-menu a:before {
+    .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) a:before {
       font-size: 2rem;
       display: inline-block;
       font-family: P4h, sans-serif;
@@ -549,7 +552,7 @@ svg {
       position: relative;
       top: -4px;
       vertical-align: top; }
-    .dashboard-sidebar .sidebar-menu a:hover {
+    .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) a:hover {
       background: #345a6d; }
   .dashboard-sidebar .account:before {
     content: 'a'; }
@@ -588,10 +591,10 @@ svg {
       display: none; }
     .dashboard-sidebar.expanded-menu .dashboard-logo.big {
       display: block; }
-    .dashboard-sidebar.expanded-menu li a {
+    .dashboard-sidebar.expanded-menu ul:not(.contextual-links) li a {
       font-size: 0.875rem;
       line-height: 20px; }
-    .dashboard-sidebar.expanded-menu li .sign-out {
+    .dashboard-sidebar.expanded-menu ul:not(.contextual-links) li .sign-out {
       font-size: 0.75rem; }
     .dashboard-sidebar.expanded-menu .expand-menu-btn {
       -webkit-transform: rotate(180deg);
@@ -2908,7 +2911,9 @@ header {
   .header-static .partners {
     display: inline-block;
     max-height: 58px;
-    max-width: 60%; }
+    max-width: 60%;
+    position: relative;
+    z-index: 1; }
   .header-static .mobile-menu-wrapper {
     overflow-x: hidden; }
     .header-static .mobile-menu-wrapper .contextual {

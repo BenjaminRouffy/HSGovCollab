@@ -64,21 +64,6 @@
 }
 
 .dashboard-menu {
-  //.social-links {
-  //  a {
-  //    @include font-size(12.6);
-  //    color: $navy;
-  //    font-family: $oswald;
-  //    letter-spacing: 1px;
-  //    padding: 10px 2px 10px 20px;
-  //
-  //    &:before {
-  //      content: "j";
-  //      font-family: $p4h;
-  //    }
-  //  }
-  //}
-
   ul:not(.contextual-links) {
     li {
       &:last-child {
@@ -99,6 +84,15 @@
 
       a {
         @include font-size(12.6);
+        color: $navy-dark;
+        font-weight: 400;
+
+        .header-fixed & {
+          &:hover {
+            color: $navy-dark;
+            opacity: .7;
+          }
+        }
 
         .header-static & {
           &:hover {

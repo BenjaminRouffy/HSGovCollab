@@ -30,9 +30,9 @@ class UserRegistrationRegister extends RegisterForm {
     }
     $form['account']['mail']['#type'] = 'email_confirm';
 
-    $form['account']['name']['#access'] = FALSE;
     // @TODO Generate user name by email_address.
-    $form['account']['name']['#default_value'] = sprintf('User%s', rand(1000,9999));
+    // $form['account']['name']['#access'] = FALSE;
+    // $form['account']['name']['#default_value'] = sprintf('User%s', rand(1000,9999));
 
 
     foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {

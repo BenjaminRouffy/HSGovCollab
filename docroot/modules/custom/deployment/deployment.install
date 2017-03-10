@@ -618,3 +618,17 @@ function deployment_update_8037() {
 function deployment_update_8038() {
   \Drupal::service('module_installer')->install(['group_customization']);
 }
+
+/**
+ * Install module "Registration page".
+ */
+function deployment_update_8039() {
+  \Drupal::service('module_installer')->install([
+    'email_confirm',
+    'form_mode_manager',
+    'formblock',
+    'social_login',
+    'user_registration',
+    'email_registration',
+  ]);
+}

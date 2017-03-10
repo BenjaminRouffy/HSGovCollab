@@ -1,0 +1,21 @@
+uuid: db47bf5c-519d-43a1-bb52-db264c4a166d
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: sign_up
+label: 'Sign up'
+description: ''
+use_admin_theme: false
+path: /user/sign-up
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: current_user
+parameters: {  }

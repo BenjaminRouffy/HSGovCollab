@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains email_confirm.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function email_confirm_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the email_confirm module.
+    case 'help.page.email_confirm':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('E-mail Confirm Element') . '</p>';
+      return $output;
+
+    default:
+  }
+}

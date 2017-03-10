@@ -1,0 +1,31 @@
+uuid: c23a038d-374b-4765-b1f7-49980dba6adb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.onetime
+    - field.field.user.user.field_avatar
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_organisation
+  module:
+    - user
+id: user.user.onetime
+targetEntityType: user
+bundle: user
+mode: onetime
+content:
+  account:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  contact: true
+  field_avatar: true
+  field_first_name: true
+  field_last_name: true
+  field_organisation: true
+  langcode: true
+  language: true
+  path: true
+  timezone: true

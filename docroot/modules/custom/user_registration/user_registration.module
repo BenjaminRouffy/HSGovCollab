@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Contains user_registration.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function user_registration_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the user_registration module.
+    case 'help.page.user_registration':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('User Registration') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function user_registration_entity_type_alter(array &$entity_types) {
+  /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
+  $base_class = $entity_types['user']->getFormClass('register');
+  if($base_class == 'Drupal\user\RegisterForm') {
+    $entity_types['user']->setFormClass('register', '\Drupal\user_registration\UserRegistrationRegister');
+  }
+  else {
+    throw new Exception('Conflict between two modules.', 0);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function user_registration_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'user_register_form') {
+    $form['actions']['submit']['#value'] = t('Submit');
+
+    $elements = \Drupal\Core\Render\Element::children($form);
+    $match_elements = preg_grep('/^social_login_social_login_providers_([0-9]+)/i', $elements);
+    foreach ($match_elements as $match_element) {
+      $form[$match_element]['#prefix'] = '<div id="left">';
+      $form[$match_element]['#suffix'] = '</div>';
+    }
+    $form['#group_children']['captcha'] = 'group_right';
+    $form['captcha']['#weight'] = 98;
+    $form['field_accept_term_conditions']['#weight'] = 99;
+    $form['field_disclose_your_personal_det']['#weight'] = 100;
+  }
+}

@@ -2516,6 +2516,37 @@ form {
   .form-contact-us .form-actions {
     width: 100%; } }
 
+.view-project form {
+  max-width: 40%;
+  margin: 0 auto;
+  position: relative; }
+
+.view-project .form-text, .view-project .form-textarea {
+  border-color: rgba(40, 59, 68, 0.32);
+  padding-right: 60px; }
+  .view-project .form-text:focus, .view-project .form-textarea:focus {
+    border-color: rgba(56, 152, 236, 0.32); }
+
+.view-project .form-submit {
+  background: url(../images/magnifying-glass.svg) center no-repeat;
+  background-size: 20px 20px;
+  border: none;
+  height: 50px;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-indent: -9999px;
+  -webkit-transition: -webkit-transform .1s ease;
+  transition: -webkit-transform .1s ease;
+  transition: transform .1s ease;
+  transition: transform .1s ease, -webkit-transform .1s ease;
+  width: 60px; }
+  .view-project .form-submit:hover {
+    border: none;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2); }
+
 #block-ample-local-tasks {
   background: #fff;
   margin: 0;

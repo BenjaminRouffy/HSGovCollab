@@ -308,3 +308,39 @@ form {
     width: 100%;
   }
 }
+
+.view-project {
+  form {
+    max-width: 40%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .form-text {
+    border-color: rgba($navy-dark, .32);
+    padding-right: 60px;
+
+    &:focus {
+      border-color: rgba(#3898EC, .32);
+    }
+  }
+
+  .form-submit {
+    background: url(../images/magnifying-glass.svg) center no-repeat;
+    background-size: 20px 20px;
+    border: none;
+    height: 50px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-indent: -9999px;
+    transition: transform .1s ease;
+    width: 60px;
+
+    &:hover {
+      border: none;
+      transform: scale(1.2);
+    }
+  }
+}

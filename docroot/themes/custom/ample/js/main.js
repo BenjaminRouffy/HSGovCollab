@@ -338,25 +338,51 @@
 
   Drupal.behaviors.mobileMenu = {
     attach: function(context, settings) {
-      $('.mobile-menu-btn', context).on('click', function() {
-        $('body').toggleClass('no-scroll');
-        $(this).toggleClass('opened');
+      var mobileMenuBtn = $('.mobile-menu-btn', context);
+      var $body = $('body');
+
+      mobileMenuBtn.on('click', function() {
+        var $this = $(this);
+
+        $('.dashboard-sidebar').is('.expanded-menu') ? closeMobileMenu(context) : false;
+
+        if (!$this.is('.opened')) {
+          mobileMenuBtn.removeClass('opened');
+          $body.removeClass('no-scroll');
+        }
+
+        $body.toggleClass('no-scroll');
+        $this.toggleClass('opened');
       });
 
       $.resizeAction(function() {
-        return window.innerWidth <= 991;
+        return window.innerWidth >= 991;
       }, function(state) {
-        $('.mobile-menu-btn', context).removeClass('opened');
+        mobileMenuBtn.removeClass('opened');
       });
     }
   };
+
+  function closeMobileMenu(context) {
+    $('body', context).removeClass('no-scroll');
+    $('.mobile-menu-btn', context).removeClass('opened');
+    $('.dashboard-sidebar', context).removeClass('expanded-menu');
+  }
 
   Drupal.behaviors.sidebarMenud = {
     attach: function(context, settings) {
       var sidebarMenu = $('.dashboard-sidebar', context);
 
       $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
-        $('.dashboard-sidebar', context).toggleClass('expanded-menu');
+        $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
+
+        sidebarMenu.toggleClass('expanded-menu');
+      });
+
+      $.resizeAction(function() {
+        return window.innerWidth >= 767;
+      }, function(state) {
+        sidebarMenu.removeClass('expanded-menu');
       });
     }
   };

@@ -145,7 +145,7 @@
     padding: 0;
   }
 
-  li {
+  ul:not(.contextual-links) li {
     @include font-size(12);
     font-family: $fira;
     font-style: italic;
@@ -162,27 +162,34 @@
   }
 
   .sidebar-menu {
-    a {
-      color: $white;
-      display: block;
-      min-height: 70px;
-      padding: 26px 0 20px 15px;
-      text-decoration: none;
-      transition: background .4s ease;
+    .contextual-links {
+      border-top-left-radius: 0;
+      right: -76px;
+    }
 
-      &:before {
-        @include font-size(32);
-        display: inline-block;
-        font-family: $p4h;
-        line-height: 20px;
-        margin-right: 15px;
-        position: relative;
-        top: -4px;
-        vertical-align: top;
-      }
+    ul:not(.contextual-links) {
+      a {
+        color: $white;
+        display: block;
+        min-height: 70px;
+        padding: 26px 0 20px 15px;
+        text-decoration: none;
+        transition: background .4s ease;
 
-      &:hover {
-        background: #345a6d;
+        &:before {
+          @include font-size(32);
+          display: inline-block;
+          font-family: $p4h;
+          line-height: 20px;
+          margin-right: 15px;
+          position: relative;
+          top: -4px;
+          vertical-align: top;
+        }
+
+        &:hover {
+          background: #345a6d;
+        }
       }
     }
   }
@@ -262,14 +269,16 @@
       }
     }
 
-    li {
-      a {
-        @include font-size(14);
-        line-height: 20px;
-      }
+    ul:not(.contextual-links) {
+      li {
+        a {
+          @include font-size(14);
+          line-height: 20px;
+        }
 
-      .sign-out {
-        @include font-size(12);
+        .sign-out {
+          @include font-size(12);
+        }
       }
     }
 

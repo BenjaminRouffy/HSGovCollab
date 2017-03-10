@@ -487,7 +487,12 @@ svg {
     text-transform: none; }
 
 .dashboard-menu ul:not(.contextual-links) li a {
-  font-size: 0.7875rem; }
+  font-size: 0.7875rem;
+  color: #283b44;
+  font-weight: 400; }
+  .header-fixed .dashboard-menu ul:not(.contextual-links) li a:hover {
+    color: #283b44;
+    opacity: .7; }
   .header-static .dashboard-menu ul:not(.contextual-links) li a:hover {
     background: none; }
 
@@ -674,6 +679,9 @@ svg {
   vertical-align: top; }
   .anchor-links a:hover {
     color: #4c7e96; }
+
+body {
+  min-height: 200vh; }
 
 .social-links .trigger,
 .social-links .contextual-links {
@@ -2880,6 +2888,7 @@ header {
 
 .header-static {
   background: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   min-height: 120px;
   position: relative;
   text-align: center;
@@ -2990,6 +2999,8 @@ header {
     background-image: linear-gradient(180deg, #334c58, #283b44);
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
     height: 60px; }
+    .dashboard .header-fixed .top-head {
+      background: #fff; }
     .ie9 .header-fixed .top-head {
       background: #283b44; }
   .header-fixed .logo-wrapper {

@@ -223,8 +223,10 @@ p {
 strong {
   font-weight: 600; }
 
-a:focus {
-  outline: 0; }
+a {
+  color: #283b44; }
+  a:focus {
+    outline: 0; }
 
 blockquote {
   margin: 0 0 10px 0;
@@ -2476,7 +2478,6 @@ form {
       font-family: "Fira Sans", sans-serif;
       padding-left: 10px; }
     .form-contact-us .terms a {
-      color: #283b44;
       -webkit-transition: color .2s ease;
       transition: color .2s ease; }
       .form-contact-us .terms a:hover {

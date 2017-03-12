@@ -181,7 +181,7 @@ form {
 
 @include breakpoint-for('.user-login-form', (to: tablet)) {
   flex-direction: column-reverse;
-  
+
   .social_login,
   .login-wrapper {
     width: 100%;
@@ -370,18 +370,14 @@ form {
   flex-wrap: wrap;
   justify-content: flex-end;
 
-  #left,
-  #right {
-    margin-top: 40px;
+  .social_login,
+  .login-wrapper {
     width: 50%;
-  }
-
-  #left {
-    padding: 0 40px;
   }
 
   .social_login {
     margin: 0 !important;
+    padding: 0 40px;
     overflow: hidden;
   }
 
@@ -442,8 +438,8 @@ form {
 }
 
 @include breakpoint-for('.user-register-form', (to: laptop-small)) {
-  #left,
-  #right {
+  .social_login,
+  .login-wrapper {
     padding: 0 20px;
   }
 
@@ -458,13 +454,12 @@ form {
 @include breakpoint-for('.user-register-form', (to: tablet)) {
   flex-direction: column;
 
-  #left,
-  #right,
-  .form-actions {
+  .social_login,
+  .login-wrapper {
     width: 100%;
   }
 
-  #right {
+  .login-wrapper {
     padding: 0 10px;
   }
 }

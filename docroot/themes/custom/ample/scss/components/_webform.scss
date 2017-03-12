@@ -225,7 +225,6 @@ form {
     }
 
     a {
-      color: $navy-dark;
       transition: color .2s ease;
 
       &:hover {
@@ -360,18 +359,22 @@ form {
     padding: 0 40px;
   }
 
-  #title-wrapper {
+  .social_login {
+    margin: 0 !important;
     overflow: hidden;
-    margin-bottom: 20px;
+  }
+
+  .field--name-field-person-titles,
+  .field--name-field-organisation {
+    float: left;
+    margin-bottom: 40px;
   }
 
   .field--name-field-person-titles {
-    float: left;
     width: 33.33%;
   }
 
   .field--name-field-organisation {
-    float: left;
     padding-left: 20px;
     width: 66.64%;
   }
@@ -407,12 +410,40 @@ form {
 
   .js-form-type-email-confirm,
   .captcha {
-    margin-top: 20px;
+    margin: 20px 0;
   }
 
   .form-actions {
     margin-top: 30px;
     text-align: center;
     width: 50%;
+  }
+}
+
+@include breakpoint-for('.user-register-form', (to: laptop-small)) {
+  #left,
+  #right {
+    padding: 0 20px;
+  }
+
+  .field--name-field-person-titles,
+  .field--name-field-organisation {
+    float: none;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@include breakpoint-for('.user-register-form', (to: tablet)) {
+  flex-direction: column;
+
+  #left,
+  #right,
+  .form-actions {
+    width: 100%;
+  }
+
+  #right {
+    padding: 0 10px;
   }
 }

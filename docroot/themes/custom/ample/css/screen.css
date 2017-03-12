@@ -223,8 +223,10 @@ p {
 strong {
   font-weight: 600; }
 
-a:focus {
-  outline: 0; }
+a {
+  color: #283b44; }
+  a:focus {
+    outline: 0; }
 
 blockquote {
   margin: 0 0 10px 0;
@@ -2476,7 +2478,6 @@ form {
       font-family: "Fira Sans", sans-serif;
       padding-left: 10px; }
     .form-contact-us .terms a {
-      color: #283b44;
       -webkit-transition: color .2s ease;
       transition: color .2s ease; }
       .form-contact-us .terms a:hover {
@@ -2570,14 +2571,16 @@ form {
     width: 50%; }
   .user-register-form #left {
     padding: 0 40px; }
-  .user-register-form #title-wrapper {
-    overflow: hidden;
-    margin-bottom: 20px; }
-  .user-register-form .field--name-field-person-titles {
-    float: left;
-    width: 33.33%; }
+  .user-register-form .social_login {
+    margin: 0 !important;
+    overflow: hidden; }
+  .user-register-form .field--name-field-person-titles,
   .user-register-form .field--name-field-organisation {
     float: left;
+    margin-bottom: 40px; }
+  .user-register-form .field--name-field-person-titles {
+    width: 33.33%; }
+  .user-register-form .field--name-field-organisation {
     padding-left: 20px;
     width: 66.64%; }
   .user-register-form label {
@@ -2597,11 +2600,34 @@ form {
         content: none; }
   .user-register-form .js-form-type-email-confirm,
   .user-register-form .captcha {
-    margin-top: 20px; }
+    margin: 20px 0; }
   .user-register-form .form-actions {
     margin-top: 30px;
     text-align: center;
     width: 50%; }
+
+@media (max-width: 991px) {
+  .user-register-form #left,
+  .user-register-form #right {
+    padding: 0 20px; }
+  .user-register-form .field--name-field-person-titles,
+  .user-register-form .field--name-field-organisation {
+    float: none;
+    padding: 0;
+    width: 100%; } }
+
+@media (max-width: 767px) {
+  .user-register-form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .user-register-form #left,
+    .user-register-form #right,
+    .user-register-form .form-actions {
+      width: 100%; }
+    .user-register-form #right {
+      padding: 0 10px; } }
 
 #block-ample-local-tasks {
   background: #fff;

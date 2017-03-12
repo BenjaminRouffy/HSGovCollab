@@ -7,6 +7,7 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_help().
@@ -52,9 +53,17 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     }
     unset($form['account']['mail']['#title']);
     $form['#group_children']['captcha'] = 'group_right';
-    $form['captcha']['#weight'] = 98;
-    $form['field_accept_term_conditions']['#weight'] = 99;
-    $form['field_disclose_your_personal_det']['#weight'] = 100;
+    //$form['captcha']['#weight'] = 98;
+    //$form['field_accept_term_conditions']['#weight'] = 99;
+    //$form['field_disclose_your_personal_det']['#weight'] = 100;
+    $title = &$form['field_accept_term_conditions']['widget']['value']['#title'];
+    $title = \Drupal::l($title, new Url('<front>', [], [
+      '_target' => 'blank'
+    ]));
+    $title = &$form['field_disclose_your_personal_det']['widget']['value']['#title'];
+    $title = \Drupal::l($title, new Url('<front>', [], [
+      '_target' => 'blank'
+    ]));
   }
   if($form_id == 'user_onetime_form') {
     $form['actions']['submit']['#value'] = t('Undersstod, I am ready to start');
@@ -72,9 +81,15 @@ function user_registration_entity_extra_field_info_alter(&$info) {
   $user_form = &$info['user']['user']['form'];
   $user_form['info_block'] = array(
     'label' => t('Info block'),
-    'description' => t('helper text block.'),
+    'description' => t('Helper text block.'),
     'weight' => -10,
   );
+  $user_form['captcha'] = array(
+    'label' => t('Captcha block'),
+    'description' => t('Helper captcha block.'),
+    'weight' => -10,
+  );
+
 }
 
 /**

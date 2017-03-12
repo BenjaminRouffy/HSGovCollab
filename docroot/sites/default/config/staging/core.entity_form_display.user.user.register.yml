@@ -6,6 +6,8 @@ dependencies:
     - core.entity_form_mode.user.register
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
+    - field.field.user.user.field_category
+    - field.field.user.user.field_country
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_job_title
@@ -14,6 +16,7 @@ dependencies:
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_regions
   module:
     - field_group
     - user
@@ -28,6 +31,7 @@ third_party_settings:
         - field_last_name
         - field_job_title
         - account
+        - captcha
         - field_accept_term_conditions
         - field_disclose_your_personal_det
       parent_name: ''
@@ -70,27 +74,32 @@ bundle: user
 mode: register
 content:
   account:
-    weight: 28
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  captcha:
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   field_accept_term_conditions:
     type: boolean_checkbox
-    weight: 29
+    weight: 28
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_disclose_your_personal_det:
     type: boolean_checkbox
-    weight: 30
+    weight: 29
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_first_name:
     type: string_textfield
-    weight: 24
+    weight: 22
     region: content
     settings:
       size: 60
@@ -98,7 +107,7 @@ content:
     third_party_settings: {  }
   field_job_title:
     type: string_textfield
-    weight: 27
+    weight: 25
     region: content
     settings:
       size: 60
@@ -106,7 +115,7 @@ content:
     third_party_settings: {  }
   field_last_name:
     type: string_textfield
-    weight: 26
+    weight: 24
     region: content
     settings:
       size: 60
@@ -114,7 +123,7 @@ content:
     third_party_settings: {  }
   field_middle_name:
     type: string_textfield
-    weight: 25
+    weight: 23
     region: content
     settings:
       size: 60
@@ -122,7 +131,7 @@ content:
     third_party_settings: {  }
   field_non_member_organization:
     type: string_textfield
-    weight: 23
+    weight: 21
     region: content
     settings:
       size: 60
@@ -143,6 +152,10 @@ content:
 hidden:
   contact: true
   field_avatar: true
+  field_category: true
+  field_country: true
+  field_regions: true
+  info_block: true
   langcode: true
   language: true
   path: true

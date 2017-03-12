@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
+    - field.field.user.user.field_category
+    - field.field.user.user.field_country
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_job_title
@@ -13,6 +15,7 @@ dependencies:
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_regions
     - image.style.thumbnail
   module:
     - image
@@ -25,16 +28,16 @@ mode: default
 content:
   account:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   contact:
     weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_accept_term_conditions:
-    weight: 35
+    weight: 13
     settings:
       display_label: true
     third_party_settings: {  }
@@ -48,8 +51,26 @@ content:
     third_party_settings: {  }
     type: image_image
     region: content
+  field_category:
+    weight: 17
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_country:
+    weight: 15
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_disclose_your_personal_det:
-    weight: 36
+    weight: 14
     settings:
       display_label: true
     third_party_settings: {  }
@@ -64,7 +85,7 @@ content:
     type: string_textfield
     region: content
   field_job_title:
-    weight: 32
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -80,7 +101,7 @@ content:
     type: string_textfield
     region: content
   field_middle_name:
-    weight: 31
+    weight: 9
     settings:
       size: 60
       placeholder: ''
@@ -88,7 +109,7 @@ content:
     type: string_textfield
     region: content
   field_non_member_organization:
-    weight: 33
+    weight: 11
     settings:
       size: 60
       placeholder: ''
@@ -105,7 +126,16 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_person_titles:
-    weight: 34
+    weight: 12
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_regions:
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -115,19 +145,20 @@ content:
     region: content
   language:
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   path:
     type: path
-    weight: 30
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     region: content
   timezone:
     weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
+  info_block: true
   langcode: true

@@ -14,7 +14,6 @@ use Drupal\user\RegisterForm;
  */
 class UserRegistrationRegister extends RegisterForm {
 
-
   /**
    * {@inheritdoc}
    */

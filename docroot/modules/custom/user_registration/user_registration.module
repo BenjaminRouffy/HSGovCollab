@@ -42,6 +42,10 @@ function user_registration_entity_type_alter(array &$entity_types) {
  * Implements hook_form_alter().
  */
 function user_registration_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id = 'user_login_form') {
+    $form['name']['#prefix'] = '<div class="login-wrapper">';
+    $form['actions']['#suffix'] = '</div>';
+  }
   if($form_id == 'user_register_form') {
     $form['actions']['submit']['#value'] = t('Submit');
 

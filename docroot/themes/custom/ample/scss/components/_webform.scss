@@ -344,3 +344,75 @@ form {
     }
   }
 }
+
+.user-register-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+  #left,
+  #right {
+    margin-top: 40px;
+    width: 50%;
+  }
+
+  #left {
+    padding: 0 40px;
+  }
+
+  #title-wrapper {
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .field--name-field-person-titles {
+    float: left;
+    width: 33.33%;
+  }
+
+  .field--name-field-organisation {
+    float: left;
+    padding-left: 20px;
+    width: 66.64%;
+  }
+
+  label {
+    display: inline-block;
+    vertical-align: top;
+
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
+      }
+    }
+  }
+
+  .js-form-type-checkbox {
+    margin-bottom: 10px;
+
+    label {
+      @include font-size(15.4);
+      font-family: $fira;
+      margin: 5px 0 0 5px;
+
+      &:after {
+        content: none;
+      }
+    }
+  }
+
+  .js-form-type-email-confirm,
+  .captcha {
+    margin-top: 20px;
+  }
+
+  .form-actions {
+    margin-top: 30px;
+    text-align: center;
+    width: 50%;
+  }
+}

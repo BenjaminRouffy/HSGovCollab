@@ -2555,6 +2555,54 @@ form {
     -webkit-transform: scale(1.2);
             transform: scale(1.2); }
 
+.user-register-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+  .user-register-form #left,
+  .user-register-form #right {
+    margin-top: 40px;
+    width: 50%; }
+  .user-register-form #left {
+    padding: 0 40px; }
+  .user-register-form #title-wrapper {
+    overflow: hidden;
+    margin-bottom: 20px; }
+  .user-register-form .field--name-field-person-titles {
+    float: left;
+    width: 33.33%; }
+  .user-register-form .field--name-field-organisation {
+    float: left;
+    padding-left: 20px;
+    width: 66.64%; }
+  .user-register-form label {
+    display: inline-block;
+    vertical-align: top; }
+    .user-register-form label:after {
+      content: ":"; }
+    .user-register-form label.form-required:after {
+      content: ": *"; }
+  .user-register-form .js-form-type-checkbox {
+    margin-bottom: 10px; }
+    .user-register-form .js-form-type-checkbox label {
+      font-size: 0.9625rem;
+      font-family: "Fira Sans", sans-serif;
+      margin: 5px 0 0 5px; }
+      .user-register-form .js-form-type-checkbox label:after {
+        content: none; }
+  .user-register-form .js-form-type-email-confirm,
+  .user-register-form .captcha {
+    margin-top: 20px; }
+  .user-register-form .form-actions {
+    margin-top: 30px;
+    text-align: center;
+    width: 50%; }
+
 #block-ample-local-tasks {
   background: #fff;
   margin: 0;

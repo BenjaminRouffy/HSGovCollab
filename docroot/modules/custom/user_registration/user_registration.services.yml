@@ -1,0 +1,6 @@
+services:
+  user_registration.reset_login:
+    class: Drupal\user_registration\Routing\UserRegistrationResetLogin
+    tags:
+      - { name: event_subscriber }
+

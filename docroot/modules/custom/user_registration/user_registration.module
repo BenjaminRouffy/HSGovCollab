@@ -29,12 +29,11 @@ function user_registration_help($route_name, RouteMatchInterface $route_match) {
  */
 function user_registration_entity_type_alter(array &$entity_types) {
   /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
-  $base_class = $entity_types['user']->getFormClass('register');
-  if($base_class == 'Drupal\user\RegisterForm') {
+  if($entity_types['user']->getFormClass('register') == 'Drupal\user\RegisterForm') {
     $entity_types['user']->setFormClass('register', '\Drupal\user_registration\UserRegistrationRegister');
   }
-  else {
-    throw new Exception('Conflict between two modules.', 0);
+  if($entity_types['user']->getFormClass('onetime') == 'Drupal\user\ProfileForm') {
+    $entity_types['user']->setFormClass('onetime', '\Drupal\user_registration\ProfileOnetimeForm');
   }
 }
 
@@ -56,4 +55,44 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_accept_term_conditions']['#weight'] = 99;
     $form['field_disclose_your_personal_det']['#weight'] = 100;
   }
+  if($form_id == 'user_onetime_form') {
+    $form['actions']['submit']['#value'] = t('Undersstod, I am ready to start');
+    $form['field_country']['widget']['#title'] = t('Select country of interest');
+    $form['field_regions']['widget']['#title'] = t('Select regions of interest');
+    $form['field_category']['widget']['#title'] = t('Select categories in the Knowledge Vault');
+    unset($form['account']['pass']['#description']);
+  }
+}
+
+/**
+ * Implements hook_entity_extra_field_info_alter().
+ */
+function user_registration_entity_extra_field_info_alter(&$info) {
+  $user_form = &$info['user']['user']['form'];
+  $user_form['info_block'] = array(
+    'label' => t('Info block'),
+    'description' => t('helper text block.'),
+    'weight' => -10,
+  );
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function user_registration_element_info_alter(array &$types) {
+  if (isset($types['password_confirm'])) {
+    $types['password_confirm']['#process'][] = 'user_registration_form_process_password_confirm';
+  }
+}
+
+/**
+ * Form element process handler for client-side password validation.
+ *
+ * This #process handler is automatically invoked for 'password_confirm' form
+ * elements to add the JavaScript and string translations for dynamic password
+ * validation.
+ */
+function user_registration_form_process_password_confirm($element) {
+  unset($element['#attached']['drupalSettings']['password']);
+  return $element;
 }

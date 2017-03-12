@@ -2,17 +2,9 @@
 
 namespace Drupal\user_registration;
 
-use Drupal\block\Entity\Block;
 use Drupal\block_content\Entity\BlockContent;
-use Drupal\Component\Datetime\TimeInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
-use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\Core\Render\Element;
-use Drupal\formblock\Plugin\Block\UserRegisterBlock;
 use Drupal\user\ProfileForm;
-use Drupal\user\RegisterForm;
 
 /**
  * Class ModuleHandlerAlterRegister.
@@ -44,9 +36,12 @@ class ProfileOnetimeForm extends ProfileForm {
     return $form;
   }
 
-  public function __construct(\Drupal\Core\Entity\EntityManagerInterface $entity_manager, \Drupal\Core\Language\LanguageManagerInterface $language_manager, \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info, \Drupal\Component\Datetime\TimeInterface $time) {
-    parent::__construct($entity_manager, $language_manager, $entity_type_bundle_info, $time);
-
-
+  public function save(array $form, FormStateInterface $form_state) {
+    parent::save($form, $form_state);
+    $form_state->setRedirect('entity.user.canonical', array(
+      'user' => $this->getEntity()
+        ->id()
+    ));
   }
+
 }

@@ -3,16 +3,12 @@
 namespace Drupal\user_registration\Controller;
 
 use Drupal\Component\Utility\Crypt;
-use Drupal\Component\Utility\Xss;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Datetime\DateFormatterInterface;
-use Drupal\user\Form\UserPasswordResetForm;
 use Drupal\user\UserDataInterface;
-use Drupal\user\UserInterface;
 use Drupal\user\UserStorageInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
@@ -130,7 +126,7 @@ class UserController extends ControllerBase {
       $token = Crypt::randomBytesBase64(55);
       $_SESSION['pass_reset_' . $user->id()] = $token;
       return $this->redirect(
-        'page_manager.page_view_sign_up_confirmation',
+        $user->getLastLoginTime() > 0 ? 'entity.user.edit_form' : 'page_manager.page_view_sign_up_confirmation',
         ['user' => $user->id()],
         [
           'query' => ['pass-reset-token' => $token],

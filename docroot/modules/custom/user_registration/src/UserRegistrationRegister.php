@@ -51,6 +51,30 @@ class UserRegistrationRegister extends RegisterForm {
     );
     $form['field_non_member_organization']['#states'] = $states;
 
+
+    $account = $this->getEntity();
+    $user = $this->currentUser();
+    $config = \Drupal::config('user.settings');
+
+
+    $register = $account->isAnonymous();
+    $admin = $user->hasPermission('administer users');
+
+    if ($admin || !$register) {
+      $status = $account->get('status')->value;
+    }
+    else {
+      $status = $config->get('register') == USER_REGISTER_VISITORS && $mail_match = TRUE ? 1 : 0;
+    }
+
+    $form['account']['status'] = array(
+      '#type' => 'radios',
+      '#title' => $this->t('Status'),
+      '#default_value' => $status,
+      '#options' => array($this->t('Blocked'), $this->t('Active')),
+      '#access' => $admin,
+    );
+
     return $form;
   }
 
@@ -70,42 +94,45 @@ class UserRegistrationRegister extends RegisterForm {
     $form_state->set('user', $account);
     $form_state->setValue('uid', $account->id());
 
-    $this->logger('user')
-      ->notice('New user: %name %email.', array(
-        '%name' => $form_state->getValue('name'),
-        '%email' => '<' . $form_state->getValue('mail') . '>',
-        'type' => $account->link($this->t('Edit'), 'edit-form')
-      ));
+    $this->logger('user')->notice('New user: %name %email.', array('%name' => $form_state->getValue('name'), '%email' => '<' . $form_state->getValue('mail') . '>', 'type' => $account->link($this->t('Edit'), 'edit-form')));
 
     // Add plain text password into user account to generate mail tokens.
     $account->password = $pass;
 
     // New administrative account without notification.
     if ($admin && !$notify) {
-      // @TODO Implements of admin invitation without mail.
+      drupal_set_message($this->t('Created a new user account for <a href=":url">%name</a>. No email has been sent.', array(':url' => $account->url(), '%name' => $account->getUsername())));
     }
     // No email verification required; log in user immediately.
-    elseif (!$admin && !\Drupal::config('user.settings')
-        ->get('verify_mail') && $account->isActive()
-    ) {
-      // _user_mail_notify('register_no_approval_required', $account);
-      // user_login_finalize($account);
-      // @TODO Implements of redirect to approved page.
+    elseif (!$admin && !\Drupal::config('user.settings')->get('verify_mail') && $account->isActive()) {
+      _user_mail_notify('register_no_approval_required', $account);
+      user_login_finalize($account);
+      drupal_set_message($this->t('Registration successful. You are now logged in.'));
+      $form_state->setRedirect('<front>');
     }
     // No administrator approval required.
     elseif ($account->isActive() || $notify) {
       if (!$account->getEmail() && $notify) {
-        // @TODO Implements of admin invitation without mail.
+        drupal_set_message($this->t('The new user <a href=":url">%name</a> was created without an email address, so no welcome message was sent.', array(':url' => $account->url(), '%name' => $account->getUsername())));
       }
       else {
         $op = $notify ? 'register_admin_created' : 'register_no_approval_required';
-        // @TODO Implements of normal registration.
+        if (_user_mail_notify($op, $account)) {
+          if ($notify) {
+            drupal_set_message($this->t('A welcome message with further instructions has been emailed to the new user <a href=":url">%name</a>.', array(':url' => $account->url(), '%name' => $account->getUsername())));
+          }
+          else {
+            drupal_set_message($this->t('A welcome message with further instructions has been sent to your email address.'));
+            $form_state->setRedirect('<front>');
+          }
+        }
       }
     }
     // Administrator approval required.
     else {
       _user_mail_notify('register_pending_approval', $account);
-      // @TODO Implements of pending approval registration.
+      drupal_set_message($this->t('Thank you for applying for an account. Your account is currently pending approval by the site administrator.<br />In the meantime, a welcome message with further instructions has been sent to your email address.'));
+      $form_state->setRedirect('<front>');
     }
   }
 

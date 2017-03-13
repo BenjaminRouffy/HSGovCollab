@@ -38,10 +38,13 @@ class ProfileOnetimeForm extends ProfileForm {
 
   public function save(array $form, FormStateInterface $form_state) {
     parent::save($form, $form_state);
-    $form_state->setRedirect('entity.user.canonical', array(
+    /*$form_state->setRedirect('entity.user.canonical', array(
       'user' => $this->getEntity()
         ->id()
-    ));
+    ));*/
+    // @TODO Temporary redirect to front page.
+    $form_state->setRedirect('<front>');
+
   }
 
 }

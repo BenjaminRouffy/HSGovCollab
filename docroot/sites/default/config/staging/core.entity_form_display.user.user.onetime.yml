@@ -18,41 +18,84 @@ dependencies:
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_regions
   module:
+    - field_group
     - user
+third_party_settings:
+  field_group:
+    group_fields_wrapper:
+      children:
+        - account
+        - group_catagories_wrapper
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        label: 'Fields Wrapper'
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+        id: fields-wrapper
+        classes: fields-wrapper
+      label: 'Fields Wrapper'
+    group_catagories_wrapper:
+      children:
+        - field_country
+        - field_regions
+        - field_category
+      parent_name: group_fields_wrapper
+      weight: 2
+      format_type: html_element
+      format_settings:
+        label: 'Catagories wrapper'
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+        id: catagories-wrapper
+        classes: catagories-wrapper
+      label: 'Catagories wrapper'
 id: user.user.onetime
 targetEntityType: user
 bundle: user
 mode: onetime
 content:
   account:
-    weight: 0
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   field_category:
     type: options_select
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   field_country:
     type: options_select
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   field_regions:
     type: options_select
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   info_block:
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  captcha: true
   contact: true
   field_accept_term_conditions: true
   field_avatar: true

@@ -2,14 +2,14 @@
   var markers = [];
   var imagesPath = drupalSettings.path.baseUrl + 'themes/custom/ample/images/';
 
-  $.getJSON(drupalSettings.path.baseUrl + 'points', function(data) {
+  $.getJSON(drupalSettings.path.baseUrl + drupalSettings.path.pathPrefix + 'points', function(data) {
     for (var i = 0; i < data.features.length; i++) {
       var lng = data.features[i].geometry.coordinates[0];
       var lat = data.features[i].geometry.coordinates[1];
       var markerInfo = data.features[i].properties.description;
-      var countryName = data.features[i].properties.name.toLowerCase();
+      var countryID = data.features[i].properties.id;
 
-      markers.push({'lat': lat, 'lng': lng, 'countryId': countryName});
+      markers.push({'lat': lat, 'lng': lng, 'countryId': 'country_' + countryID});
 
       $('#map').after(markerInfo);
     }

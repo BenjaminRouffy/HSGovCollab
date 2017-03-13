@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Link;
 
 /**
  * Implements hook_form_alter().
@@ -66,5 +67,23 @@ function admin_customizations_entity_view_alter(array &$build, EntityInterface $
  * @see admin_customizations_form_alter()
  */
 function admin_customizations_document_form_submit(array $form, FormStateInterface $form_state) {
+  $build_info = $form_state->getBuildInfo();
+  $node = $build_info['callback_object']->getEntity();
+  $insert = $node->isNew();
+  $link = Link::createFromRoute($node->label(), 'entity.node.edit_form', ['node' => $node->id()]);
+  $t_args = [
+    '@type' => node_get_type_label($node),
+    '%title' => $link->toString(),
+  ];
+
+  drupal_get_messages();
+
+  if ($insert) {
+    drupal_set_message(t('@type %title has been created.', $t_args));
+  }
+  else {
+    drupal_set_message(t('@type %title has been updated.', $t_args));
+  }
+
   $form_state->setRedirectUrl(Url::fromRoute('system.admin_content'));
 }

@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - admin_customizations
+    - group_dashboard
     - system
   theme:
     - ample
@@ -33,3 +34,15 @@ visibility:
     pages: "/user/sign-up\r\n/user/sign-up/*"
     negate: true
     context_mapping: {  }
+  access_by_user_role:
+    id: access_by_user_role
+    roles:
+      administration_users: administration_users
+      country_managers: country_managers
+      projects_managers: projects_managers
+      governance_group_users: governance_group_users
+      coordination_desk_users: coordination_desk_users
+      specific_users: specific_users
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

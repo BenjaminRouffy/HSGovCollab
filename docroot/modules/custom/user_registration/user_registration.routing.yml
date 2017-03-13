@@ -1,0 +1,7 @@
+user_registration.admin_settings_form:
+  path: '/admin/config/people/mail_settings'
+  defaults:
+    _form: 'Drupal\user_registration\Form\UserRegistrationMailSettingsForm'
+    _title: 'Mail settings'
+  requirements:
+    _permission: 'administer user registration'

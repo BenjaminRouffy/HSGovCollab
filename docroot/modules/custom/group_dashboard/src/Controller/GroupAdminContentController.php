@@ -37,12 +37,15 @@ class GroupAdminContentController extends GroupContentController {
     }
 
     // Redirect if there's only one bundle available.
+    $destination = Url::fromRoute('entity.group_content.collection', ['group' => $group->id()]);
     if (count($bundle_names) == 1) {
       reset($bundle_names);
       $route_params = ['group' => $group->id(), 'plugin_id' => key($bundle_names)];
       $url = Url::fromRoute($form_route, $route_params, [
         'absolute' => TRUE,
-        'query' => ['destination' => '/group/' . $group->id() . '/content'],
+        'query' => [
+          'destination' => $destination->toString(),
+        ],
       ]);
       return new RedirectResponse($url->toString());
     }
@@ -60,7 +63,7 @@ class GroupAdminContentController extends GroupContentController {
           'group' => $group->id(),
           'plugin_id' => $plugin_id
         ],
-          ['query' => ['destination' => '/group/' . $group->id() . '/content']]
+          ['query' => ['destination' => $destination->toString()]]
         ),
       ];
     }

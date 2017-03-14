@@ -53,4 +53,25 @@ class UserRegistrationMailSettingsForm extends ConfigFormBase {
     parent::submitForm($form, $form_state);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $email_list = str_replace(["\r\n", "\n", "\n\r"], "|", trim($form_state->getValue('user_registration_pattern')));
+    $email_list = explode("|", $email_list);
+    $email_list = array_filter($email_list);
+    $wrong_emails = [];
+
+    foreach ($email_list as $email) {
+      $pattern = '/^[\@](?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/is';
+      if (empty(preg_match($pattern, $email))) {
+        $wrong_emails[] = $email;
+      }
+    }
+
+    if ((bool) count($wrong_emails)) {
+      $form_state->setErrorByName('user_registration_pattern', $this->t('Those email domains %mail are not valid.', ['%mail' => implode(", ", $wrong_emails)]));
+    }
+  }
+
 }

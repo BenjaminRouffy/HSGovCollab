@@ -27,13 +27,15 @@ class EmailChecker {
    */
   public function isApprove($email) {
     $approved_emails = preg_quote(trim($this->approvedEmails), '@');
-    $approved_emails = str_replace(["\r\n", "\n", "\n\r"], "|", $approved_emails);
+    $approved_emails = str_replace(["\r\n", "\n", "\n\r", "\r"], "|", $approved_emails);
+    $approved_emails = array_filter(explode("|", $approved_emails));
+    $approved_emails = implode("|", $approved_emails);
     $pattern = '/(' . $approved_emails . ')$/is';
 
-    if (preg_match($pattern, $email) !== FALSE) {
-      return TRUE;
+    if (empty(preg_match($pattern, $email))) {
+      return FALSE;
     }
 
-    return FALSE;
+    return TRUE;
   }
 }

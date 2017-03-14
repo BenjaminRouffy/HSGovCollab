@@ -11,12 +11,8 @@
     {{ node.createdtime | format_date('time_line') }}
   </time>
 
-  <h4 role="heading">
-    {{ label }}
-  </h4>
-
   <p>
-    {{ plainBody|striptags }}
+    {{ label }}
   </p>
 
   {% if content.field_permalink_url|field_value %}

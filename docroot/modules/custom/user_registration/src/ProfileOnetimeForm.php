@@ -32,10 +32,7 @@ class ProfileOnetimeForm extends ProfileForm {
     // The user may only change their own password without their current
     // password if they logged in via a one-time login link.
     if (!$form_state->get('user_pass_reset')) {
-      $form['account']['current_pass']['#description'] = $this->t('Required if you want to change the %pass below. <a href=":request_new_url" title="Send password reset instructions via email.">Reset your password</a>.', array(
-        '%pass' => $this->t('Password'),
-        ':request_new_url' => $this->url('user.pass'),
-      ));
+      unset($form['account']['current_pass']['#description']);
     }
     return $form;
   }

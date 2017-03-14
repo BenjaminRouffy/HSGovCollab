@@ -1,0 +1,13 @@
+diff --git a/realname.module b/realname.module
+index e6c71f3..b777e52 100644
+--- a/realname.module
++++ b/realname.module
+@@ -371,7 +371,7 @@ function realname_autocomplete_access_callback($field_name, $entity_type, $bundl
+  * of type 'user'.
+  */
+ function realname_field_widget_form_alter(&$element, &$form_state, $context) {
+-  if ($context['field']['type'] == 'entityreference') {
++  if (isset($context['field']['type']) && $context['field']['type'] == 'entityreference') {
+     if ($context['field']['settings']['target_type'] == 'user') {
+       $element['target_id']['#autocomplete_path'] = 'realname/autocomplete/' . $context['field']['field_name'] . '/' . $context['instance']['entity_type'] . '/' . $context['instance']['bundle'];
+     }

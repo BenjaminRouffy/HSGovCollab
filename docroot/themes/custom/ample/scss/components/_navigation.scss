@@ -107,10 +107,10 @@
 .dashboard-sidebar {
   background: $navy-dark;
   height: 100%;
-  min-width: 80px;
   position: fixed;
   top: 0;
   left: 0;
+  width: 80px;
   z-index: 450;
 
   .toolbar-fixed & {
@@ -129,6 +129,22 @@
       height: 150px;
       margin-bottom: 30px;
       padding: 35px 10px 0;
+    }
+  }
+
+  .ie & {
+    .dashboard-logo {
+      &.small {
+        img {
+          height: 49px !important;
+        }
+      }
+
+      &.big {
+        img {
+          height: 94px !important;
+        }
+      }
     }
   }
 
@@ -250,7 +266,7 @@
 
   &.expanded-menu {
     box-shadow: 0 1px 3px rgba($black, 0.25);
-    min-width: 220px;
+    width: 220px;
     z-index: 500;
 
     .logo-wrapper {

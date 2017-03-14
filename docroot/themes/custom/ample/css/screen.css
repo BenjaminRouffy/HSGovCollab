@@ -501,10 +501,10 @@ svg {
 .dashboard-sidebar {
   background: #283b44;
   height: 100%;
-  min-width: 80px;
   position: fixed;
   top: 0;
   left: 0;
+  width: 80px;
   z-index: 450; }
   .toolbar-fixed .dashboard-sidebar {
     padding-top: 39px; }
@@ -517,6 +517,10 @@ svg {
     height: 150px;
     margin-bottom: 30px;
     padding: 35px 10px 0; }
+  .ie .dashboard-sidebar .dashboard-logo.small img {
+    height: 49px !important; }
+  .ie .dashboard-sidebar .dashboard-logo.big img {
+    height: 94px !important; }
   .dashboard-sidebar .dashboard-logo {
     display: block; }
     .dashboard-sidebar .dashboard-logo.big {
@@ -585,7 +589,7 @@ svg {
       background: #345a6d; }
   .dashboard-sidebar.expanded-menu {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-    min-width: 220px;
+    width: 220px;
     z-index: 500; }
     .dashboard-sidebar.expanded-menu .logo-wrapper a {
       padding: 20px 10px 0 20px; }

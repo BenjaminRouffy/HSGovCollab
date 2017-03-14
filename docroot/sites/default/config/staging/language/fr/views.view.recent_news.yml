@@ -1,0 +1,10 @@
+display:
+  default:
+    display_options:
+      fields:
+        title:
+          alter:
+            text: "{{ field_image }}\r\n<p>{{ title }}</p>"
+  block_2:
+    display_options:
+      title: 'Autres événements'

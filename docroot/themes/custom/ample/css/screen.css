@@ -501,10 +501,10 @@ svg {
 .dashboard-sidebar {
   background: #283b44;
   height: 100%;
-  min-width: 80px;
   position: fixed;
   top: 0;
   left: 0;
+  width: 80px;
   z-index: 450; }
   .toolbar-fixed .dashboard-sidebar {
     padding-top: 39px; }
@@ -585,7 +585,7 @@ svg {
       background: #345a6d; }
   .dashboard-sidebar.expanded-menu {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-    min-width: 220px;
+    width: 220px;
     z-index: 500; }
     .dashboard-sidebar.expanded-menu .logo-wrapper a {
       padding: 20px 10px 0 20px; }

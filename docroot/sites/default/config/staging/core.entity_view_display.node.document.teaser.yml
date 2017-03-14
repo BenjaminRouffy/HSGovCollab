@@ -26,6 +26,7 @@ content:
     settings:
       trim_length: 200
     third_party_settings: {  }
+    region: content
   field_document:
     type: entity_reference_revisions_entity_view
     weight: 1
@@ -34,6 +35,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
 hidden:
   addtoany: true
   field_category: true

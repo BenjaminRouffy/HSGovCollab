@@ -23,6 +23,7 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_private_content:
     type: boolean
     weight: 3
@@ -32,6 +33,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: content
   field_title:
     weight: 1
     label: hidden
@@ -39,6 +41,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_value:
     weight: 2
     label: hidden
@@ -46,6 +49,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   created: true
   field_infographic_description: true

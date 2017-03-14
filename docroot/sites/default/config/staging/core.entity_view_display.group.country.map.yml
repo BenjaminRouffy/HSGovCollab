@@ -33,6 +33,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_infographic:
     type: entity_reference_revisions_entity_view
     weight: 1
@@ -41,12 +42,14 @@ content:
       view_mode: map
       link: ''
     third_party_settings: {  }
+    region: content
   field_location:
     type: geolocation_latlng
     weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   changed: true
   created: true

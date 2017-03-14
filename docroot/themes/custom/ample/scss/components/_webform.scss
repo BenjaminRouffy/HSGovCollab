@@ -528,3 +528,29 @@ form {
     width: 100%;
   }
 }
+
+.user-pass {
+  margin: 0 auto 15px;
+  padding: 20px 40px;
+  width: 50%;
+
+  .captcha {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  .form-actions {
+    margin-top: 25px;
+    text-align: center;
+  }
+}
+
+@include breakpoint-for('.user-pass', (to: laptop-small)) {
+  padding: 20px;
+}
+
+@include breakpoint-for('.user-pass', (to: tablet)) {
+  padding: 20px 10px;
+  width: 100%;
+}

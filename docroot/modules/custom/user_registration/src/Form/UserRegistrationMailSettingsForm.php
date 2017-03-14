@@ -64,7 +64,8 @@ class UserRegistrationMailSettingsForm extends ConfigFormBase {
 
     foreach ($email_list as $email) {
       $pattern = '/^[\@](?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/is';
-      if (empty(preg_match($pattern, $email))) {
+
+      if (preg_match($pattern, $email)) {
         $wrong_emails[] = $email;
       }
     }

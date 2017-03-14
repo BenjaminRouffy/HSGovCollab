@@ -32,7 +32,7 @@ class EmailChecker {
     $approved_emails = implode("|", $approved_emails);
     $pattern = '/(' . $approved_emails . ')$/is';
 
-    if (empty(preg_match($pattern, $email))) {
+    if (preg_match($pattern, $email)) {
       return FALSE;
     }
 

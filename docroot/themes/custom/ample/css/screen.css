@@ -2108,6 +2108,14 @@ header .social-links .font-social-icon {
     padding-left: 0;
     padding-right: 0;
     width: 100%; }
+    .ie9 .country-list .country-item, .ie9
+    .country-list .project-item, .ie9
+    .country-list .member-block, .ie9 .project-list .country-item, .ie9
+    .project-list .project-item, .ie9
+    .project-list .member-block, .ie9 .members-list ul .country-item, .ie9
+    .members-list ul .project-item, .ie9
+    .members-list ul .member-block {
+      width: 100%; }
     .country-list .country-item .block-content,
     .country-list .project-item .block-content,
     .country-list .member-block .block-content, .project-list .country-item .block-content,
@@ -2116,15 +2124,7 @@ header .social-links .font-social-icon {
     .members-list ul .project-item .block-content,
     .members-list ul .member-block .block-content {
       margin-left: 0;
-      margin-right: 0; }
-      .ie9 .country-list .country-item .block-content, .ie9
-      .country-list .project-item .block-content, .ie9
-      .country-list .member-block .block-content, .ie9 .project-list .country-item .block-content, .ie9
-      .project-list .project-item .block-content, .ie9
-      .project-list .member-block .block-content, .ie9 .members-list ul .country-item .block-content, .ie9
-      .members-list ul .project-item .block-content, .ie9
-      .members-list ul .member-block .block-content {
-        width: 100%; } }
+      margin-right: 0; } }
 
 .country-title,
 .project-title {

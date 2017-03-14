@@ -1088,13 +1088,13 @@
     padding-right: 0;
     width: 100%;
 
+    .ie9 & {
+      width: 100%;
+    }
+
     .block-content {
       margin-left: 0;
       margin-right: 0;
-
-      .ie9 & {
-        width: 100%;
-      }
     }
   }
 }

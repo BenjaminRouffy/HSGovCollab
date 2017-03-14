@@ -1644,6 +1644,10 @@ header .social-links .font-social-icon {
   display: -ms-flexbox;
   display: flex;
   width: 33.33%; }
+  .ie9 .member-block {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33.33% - 4px); }
   .member-block .block-content {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
@@ -1652,6 +1656,9 @@ header .social-links .font-social-icon {
     -webkit-transition: box-shadow .3s ease;
     transition: box-shadow .3s ease;
     width: 100%; }
+    .ie10 .member-block .block-content,
+    .ie9 .member-block .block-content {
+      width: calc(100% - 20px); }
     .member-block .block-content:hover {
       box-shadow: 0 0 6px 1px rgba(234, 58, 50, 0.5); }
   .member-block a {
@@ -2074,7 +2081,15 @@ header .social-links .font-social-icon {
   .project-list .member-block, .members-list ul .country-item,
   .members-list ul .project-item,
   .members-list ul .member-block {
-    width: 50%; } }
+    width: 50%; }
+    .ie9 .country-list .country-item, .ie9
+    .country-list .project-item, .ie9
+    .country-list .member-block, .ie9 .project-list .country-item, .ie9
+    .project-list .project-item, .ie9
+    .project-list .member-block, .ie9 .members-list ul .country-item, .ie9
+    .members-list ul .project-item, .ie9
+    .members-list ul .member-block {
+      width: calc(50% - 4px); } }
 
 @media (max-width: 767px) {
   .country-list .country-item,
@@ -2093,6 +2108,14 @@ header .social-links .font-social-icon {
     padding-left: 0;
     padding-right: 0;
     width: 100%; }
+    .ie9 .country-list .country-item, .ie9
+    .country-list .project-item, .ie9
+    .country-list .member-block, .ie9 .project-list .country-item, .ie9
+    .project-list .project-item, .ie9
+    .project-list .member-block, .ie9 .members-list ul .country-item, .ie9
+    .members-list ul .project-item, .ie9
+    .members-list ul .member-block {
+      width: 100%; }
     .country-list .country-item .block-content,
     .country-list .project-item .block-content,
     .country-list .member-block .block-content, .project-list .country-item .block-content,
@@ -2101,7 +2124,30 @@ header .social-links .font-social-icon {
     .members-list ul .project-item .block-content,
     .members-list ul .member-block .block-content {
       margin-left: 0;
-      margin-right: 0; } }
+      margin-right: 0; }
+      .ie10 .country-list .country-item .block-content,
+      .ie9 .country-list .country-item .block-content, .ie10
+      .country-list .project-item .block-content,
+      .ie9
+      .country-list .project-item .block-content, .ie10
+      .country-list .member-block .block-content,
+      .ie9
+      .country-list .member-block .block-content, .ie10 .project-list .country-item .block-content,
+      .ie9 .project-list .country-item .block-content, .ie10
+      .project-list .project-item .block-content,
+      .ie9
+      .project-list .project-item .block-content, .ie10
+      .project-list .member-block .block-content,
+      .ie9
+      .project-list .member-block .block-content, .ie10 .members-list ul .country-item .block-content,
+      .ie9 .members-list ul .country-item .block-content, .ie10
+      .members-list ul .project-item .block-content,
+      .ie9
+      .members-list ul .project-item .block-content, .ie10
+      .members-list ul .member-block .block-content,
+      .ie9
+      .members-list ul .member-block .block-content {
+        width: 100%; } }
 
 .country-title,
 .project-title {

@@ -515,6 +515,12 @@
   display: flex;
   width: 33.33%;
 
+  .ie9 & {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33.33% - 4px);
+  }
+
   .block-content {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
@@ -522,6 +528,11 @@
     position: relative;
     transition: box-shadow .3s ease;
     width: 100%;
+
+    .ie10 &,
+    .ie9 & {
+      width: calc(100% - 20px);
+    }
 
     &:hover {
       box-shadow: 0 0 6px 1px rgba($red, .5);
@@ -1055,6 +1066,10 @@
   .project-item,
   .member-block {
     width: 50%;
+
+    .ie9 & {
+      width: calc(50% - 4px);
+    }
   }
 }
 
@@ -1073,9 +1088,18 @@
     padding-right: 0;
     width: 100%;
 
+    .ie9 & {
+      width: 100%;
+    }
+
     .block-content {
       margin-left: 0;
       margin-right: 0;
+
+      .ie10 &,
+      .ie9 & {
+        width: 100%;
+      }
     }
   }
 }

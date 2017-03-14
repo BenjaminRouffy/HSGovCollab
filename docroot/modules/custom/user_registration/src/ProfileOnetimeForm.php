@@ -20,10 +20,14 @@ class ProfileOnetimeForm extends ProfileForm {
     $form['account']['status']['#access'] = FALSE;
     $form['account']['notify']['#access'] = FALSE;
 
-    $block = BlockContent::load(5);
+    $block = BlockContent::load(22);
     $form['info_block'] = \Drupal::entityManager()
       ->getViewBuilder('block_content')
       ->view($block);
+
+    $form['info_block']['field_title']['#theme_wrappers'][] = 'good_to_know';
+    $form['info_block']['#prefix'] = '<div class="content top-text-region">';
+    $form['info_block']['#suffix'] = '</div>';
 
     // The user may only change their own password without their current
     // password if they logged in via a one-time login link.

@@ -118,3 +118,15 @@ function user_registration_form_process_password_confirm($element) {
   unset($element['#attached']['drupalSettings']['password']);
   return $element;
 }
+
+/**
+ * Implements hook_theme().
+ */
+function user_registration_theme() {
+  return [
+    'good_to_know' => [
+      'template' => 'good_to_know',
+      'render element' => 'element',
+    ],
+  ];
+}

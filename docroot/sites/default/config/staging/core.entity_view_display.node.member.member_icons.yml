@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.member.field_member_category
     - field.field.node.member.field_member_image
     - field.field.node.member.field_member_link
+    - image.style.scale_autox31
     - node.type.member
   module:
     - image
@@ -24,11 +25,13 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
+      image_style: scale_autox31
       image_link: content
     third_party_settings: {  }
     type: image
+    region: content
 hidden:
+  addtoany: true
   body: true
   field_content_paragraph: true
   field_country: true

@@ -381,6 +381,10 @@ form {
     overflow: hidden;
   }
 
+  #title-wrapper {
+    overflow: hidden;
+  }
+
   .field--name-field-person-titles,
   .field--name-field-organisation {
     float: left;
@@ -461,5 +465,45 @@ form {
 
   .login-wrapper {
     padding: 0 10px;
+  }
+}
+
+.user-onetime-form {
+  #fields-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #edit-account,
+  #catagories-wrapper {
+    padding: 10px;
+    width: 50%;
+  }
+
+  .form-actions {
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+@include breakpoint-for('.user-onetime-form', (to: tablet)) {
+  #edit-account {
+    padding-left: 0;
+  }
+
+  #catagories-wrapper {
+    padding-right: 0;
+  }
+}
+
+@include breakpoint-for('.user-onetime-form', (to: mobileL)) {
+  #edit-account {
+    margin-bottom: 45px;
+  }
+
+  #edit-account,
+  #catagories-wrapper {
+    padding: 10px 0;
+    width: 100%;
   }
 }

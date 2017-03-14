@@ -2596,6 +2596,8 @@ form {
     margin: 0 !important;
     padding: 0 40px;
     overflow: hidden; }
+  .user-register-form #title-wrapper {
+    overflow: hidden; }
   .user-register-form .field--name-field-person-titles,
   .user-register-form .field--name-field-organisation {
     float: left;
@@ -2649,6 +2651,36 @@ form {
       width: 100%; }
     .user-register-form .login-wrapper {
       padding: 0 10px; } }
+
+.user-onetime-form #fields-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+.user-onetime-form #edit-account,
+.user-onetime-form #catagories-wrapper {
+  padding: 10px;
+  width: 50%; }
+
+.user-onetime-form .form-actions {
+  margin-top: 30px;
+  text-align: center; }
+
+@media (max-width: 767px) {
+  .user-onetime-form #edit-account {
+    padding-left: 0; }
+  .user-onetime-form #catagories-wrapper {
+    padding-right: 0; } }
+
+@media (max-width: 479px) {
+  .user-onetime-form #edit-account {
+    margin-bottom: 45px; }
+  .user-onetime-form #edit-account,
+  .user-onetime-form #catagories-wrapper {
+    padding: 10px 0;
+    width: 100%; } }
 
 #block-ample-local-tasks {
   background: #fff;

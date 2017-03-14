@@ -132,6 +132,22 @@
     }
   }
 
+  .ie & {
+    .dashboard-logo {
+      &.small {
+        img {
+          height: 49px !important;
+        }
+      }
+
+      &.big {
+        img {
+          height: 94px !important;
+        }
+      }
+    }
+  }
+
   .dashboard-logo {
     display: block;
 

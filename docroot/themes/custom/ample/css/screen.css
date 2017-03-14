@@ -2745,6 +2745,31 @@ form {
     padding: 10px 0;
     width: 100%; } }
 
+.user-pass {
+  margin: 0 auto 15px;
+  padding: 20px 40px;
+  width: 50%; }
+  .user-pass .captcha {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 25px; }
+  .user-pass .form-actions {
+    margin-top: 25px;
+    text-align: center; }
+
+@media (max-width: 991px) {
+  .user-pass {
+    padding: 20px; } }
+
+@media (max-width: 767px) {
+  .user-pass {
+    padding: 20px 10px;
+    width: 100%; } }
+
 #block-ample-local-tasks {
   background: #fff;
   margin: 0;

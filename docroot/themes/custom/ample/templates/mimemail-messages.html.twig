@@ -22,9 +22,13 @@
     {% endif %}
 
     <style type="text/css">
-      <!--
-      {{ css }}
-      -->
+      body {
+        background-color: #e9ecee;
+        color: #416170;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        line-height: 20px;
+      }
       #mimemail-body {
         margin-left: auto;
         margin-right: auto;
@@ -37,6 +41,12 @@
         margin: 0 auto;
         height: 150px;
         width: 200px;
+      }
+      #members {
+        display: table;
+      }
+      #members img {
+        display: table-cell;
       }
     </style>
   </head>
@@ -51,6 +61,14 @@
       </div>
     </div>
 
-    <div id="footer"></div>
+    <div id="footer">
+      <h3>P4H Members:</h3>
+      <div id="members">
+        <img src="{{ url('<front>') }}/themes/custom/ample/images/WHO._blue.svg" alt="">
+        <img src="{{ url('<front>') }}/themes/custom/ample/images/theworldbank2_blue.png" alt="">
+        <img src="{{ url('<front>') }}/themes/custom/ample/images/african-development-bank_blue.svg" alt="">
+        <img src="{{ url('<front>') }}/themes/custom/ample/images/ilo-logo-vector_blue.svg" alt="">
+      </div>
+    </div>
   </body>
 </html>

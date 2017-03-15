@@ -39,7 +39,7 @@ class GroupContentItem extends FieldItemBase {
     // TODO Values from DB its to easy for us.
     $parent_entity = $this->getParent()->getParent()->getValue();
 
-    if (!empty($parent_entity->id()) && empty($values['test'])) {
+    if (!empty($parent_entity->id()) && empty($values['from_widget'])) {
       $membership_loader = \Drupal::service('group.membership_loader');
       $memberships = $membership_loader->loadByUser($parent_entity, [$this->getSetting('gid')]);
 
@@ -125,7 +125,7 @@ class GroupContentItem extends FieldItemBase {
       // TODO Need user id here.
       $entity->save();
     }
-    elseif (!empty($value['test'])) {
+    elseif (!empty($value['from_widget'])) {
       $value = $this->getValue();
       $value_gid = $value['entity_gids'];
 

@@ -63,7 +63,7 @@ class GroupSelectWidget extends WidgetBase {
 
     if ($key_exists) {
       foreach ($values as $delta => &$value) {
-        $form_state->getValues()[$field_name][$delta]['test'] = TRUE;
+        $form_state->getValues()[$field_name][$delta]['from_widget'] = TRUE;
       }
     }
 

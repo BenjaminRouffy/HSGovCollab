@@ -166,6 +166,7 @@ form {
   flex-wrap: wrap;
   margin: 0 auto 40px;
   max-width: 1160px;
+  padding: 0 20px;
 
   .social_login {
     margin: 40px 0 0 !important;
@@ -177,10 +178,35 @@ form {
     margin-top: 40px;
     width: 50%;
   }
+
+  a {
+    @include font-size(14);
+    color: $red;
+    display: inline-block;
+    font-family: $fira;
+    margin: 0 20px 5px 0;
+    text-decoration: none;
+    vertical-align: top;
+
+    &:hover {
+      color: $red-dark;
+    }
+  }
+
+  .form-actions {
+    margin-top: 20px;
+  }
+}
+
+@include breakpoint-for('.user-login-form', (to: laptop-small)) {
+  .social_login {
+    padding: 0 20px;
+  }
 }
 
 @include breakpoint-for('.user-login-form', (to: tablet)) {
   flex-direction: column-reverse;
+  padding: 0;
 
   .social_login,
   .login-wrapper {
@@ -188,7 +214,14 @@ form {
   }
 
   .login-wrapper {
-    padding: 0 30px;
+    padding: 0 10px;
+  }
+}
+
+@include breakpoint-for('.user-login-form', (to: mobileL)) {
+  .social_login,
+  .login-wrapper {
+    padding: 0;
   }
 }
 

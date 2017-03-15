@@ -1,5 +1,7 @@
-<div class="bottom-link">
-  <a href="{{ element['#url'] }}" class="read-more">
-    {{ element['#title'] }}
-  </a>
-</div>
+{% if logged_in %}
+  <div class="bottom-link">
+    <a href="{{ element['#url'] }}" class="read-more">
+      {{ element['#title'] }}
+    </a>
+  </div>
+{% endif %}

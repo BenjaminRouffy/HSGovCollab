@@ -2491,7 +2491,8 @@ form {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 0 auto 40px;
-  max-width: 1160px; }
+  max-width: 1160px;
+  padding: 0 20px; }
   .user-login-form .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;
@@ -2499,18 +2500,40 @@ form {
   .user-login-form .login-wrapper {
     margin-top: 40px;
     width: 50%; }
+  .user-login-form a {
+    font-size: 0.875rem;
+    color: #ea3a32;
+    display: inline-block;
+    font-family: "Fira Sans", sans-serif;
+    margin: 0 20px 5px 0;
+    text-decoration: none;
+    vertical-align: top; }
+    .user-login-form a:hover {
+      color: #8c2222; }
+  .user-login-form .form-actions {
+    margin-top: 20px; }
+
+@media (max-width: 991px) {
+  .user-login-form .social_login {
+    padding: 0 20px; } }
 
 @media (max-width: 767px) {
   .user-login-form {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse; }
+            flex-direction: column-reverse;
+    padding: 0; }
     .user-login-form .social_login,
     .user-login-form .login-wrapper {
       width: 100%; }
     .user-login-form .login-wrapper {
-      padding: 0 30px; } }
+      padding: 0 10px; } }
+
+@media (max-width: 479px) {
+  .user-login-form .social_login,
+  .user-login-form .login-wrapper {
+    padding: 0; } }
 
 .form-contact-us {
   display: -webkit-box;

@@ -1,16 +1,24 @@
-{% set classes = [dom_id ? 'js-view-dom-id-' ~ dom_id] %}
+{%
+  set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'view-project',
+  ]
+%}
 
 {% if without_wrapper is not defined %}
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
   {% if view.getTitle()|raw is not empty %}
-    <div class="title-wrapper">
-      {{ title_prefix }}
-      <h1>
-        {{ view.getTitle()|raw }}
-      </h1>
-      {{ title_suffix|without('contextual_links') }}
-      <div class="line"></div>
+    <div class="top-text-region">
+      <div class="title-wrapper">
+        {{ title_prefix }}
+        <h1 role="heading">
+          {{ view.getTitle()|raw }}
+        </h1>
+        {{ title_suffix|without('contextual_links') }}
+
+        <div class="line"></div>
+      </div>
     </div>
   {% endif %}
 

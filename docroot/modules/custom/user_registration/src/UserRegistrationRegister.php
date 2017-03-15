@@ -50,6 +50,7 @@ class UserRegistrationRegister extends RegisterForm {
       ),
     );
     $form['field_non_member_organization']['#states'] = $states;
+
     return $form;
   }
 

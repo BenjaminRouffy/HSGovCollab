@@ -50,31 +50,6 @@ class UserRegistrationRegister extends RegisterForm {
       ),
     );
     $form['field_non_member_organization']['#states'] = $states;
-
-
-    $account = $this->getEntity();
-    $user = $this->currentUser();
-    $config = \Drupal::config('user.settings');
-
-
-    $register = $account->isAnonymous();
-    $admin = $user->hasPermission('administer users');
-
-    if ($admin || !$register) {
-      $status = $account->get('status')->value;
-    }
-    else {
-      $status = $config->get('register') == USER_REGISTER_VISITORS && $mail_match = TRUE ? 1 : 0;
-    }
-
-    $form['account']['status'] = array(
-      '#type' => 'radios',
-      '#title' => $this->t('Status'),
-      '#default_value' => $status,
-      '#options' => array($this->t('Blocked'), $this->t('Active')),
-      '#access' => $admin,
-    );
-
     return $form;
   }
 
@@ -87,6 +62,25 @@ class UserRegistrationRegister extends RegisterForm {
     $admin = $form_state->getValue('administer_users');
     $notify = !$form_state->isValueEmpty('notify');
 
+
+
+    $account = $this->getEntity();
+    // $user = $this->currentUser();
+    $config = \Drupal::config('user.settings');
+
+
+    $register = $account->isAnonymous();
+    // $admin = $user->hasPermission('administer users');
+    $mail_match = \Drupal::service("user_registration.email_checker")
+      ->isApprove($form_state->getValue('mail'));
+    //
+    if ($admin || !$register) {
+      $status = $account->get('status')->value;
+    }
+    else {
+      $status = $config->get('register') == USER_REGISTER_VISITORS && $mail_match ? 1 : 0;
+    }
+    $account->set('status', ['value' => $status]);
     // Save has no return value so this cannot be tested.
     // Assume save has gone through correctly.
     $account->save();

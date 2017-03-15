@@ -186,7 +186,7 @@ display:
             alter_text: false
             text: ''
             make_link: true
-            path: '/group/{{ id }}/content'
+            path: '/group/{{ id }}'
             absolute: false
             external: false
             replace_spaces: false
@@ -237,6 +237,137 @@ display:
           field_api_classes: false
           entity_type: null
           entity_field: label
+          plugin_id: field
+        type:
+          id: type
+          table: groups_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Group type'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: group
+          entity_field: type
+          plugin_id: field
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Translation language'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: language
+          settings:
+            link_to_entity: false
+            native_language: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: group
+          entity_field: langcode
           plugin_id: field
         operations:
           id: operations
@@ -290,33 +421,35 @@ display:
           entity_type: group
           plugin_id: entity_operations
       filters:
-        langcode:
-          id: langcode
+        label:
+          id: label
           table: groups_field_data
-          field: langcode
+          field: label
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
-            und: und
-            zxx: zxx
+          operator: word
+          value: ''
           group: 1
-          exposed: false
+          exposed: true
           expose:
-            operator_id: ''
-            label: ''
+            operator_id: label_op
+            label: Title
             description: ''
             use_operator: false
-            operator: ''
-            identifier: ''
+            operator: label_op
+            identifier: label
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -330,8 +463,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: group
-          entity_field: langcode
-          plugin_id: language
+          entity_field: label
+          plugin_id: string
         type:
           id: type
           table: groups_field_data
@@ -377,24 +510,28 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        label:
-          id: label
+        langcode:
+          id: langcode
           table: groups_field_data
-          field: label
+          field: langcode
           relationship: none
           group_type: group
           admin_label: ''
-          operator: word
-          value: ''
+          operator: in
+          value:
+            en: en
+            fr: fr
+            und: und
+            zxx: zxx
           group: 1
           exposed: true
           expose:
-            operator_id: label_op
-            label: Title
+            operator_id: langcode_op
+            label: 'Translation language'
             description: ''
             use_operator: false
-            operator: label_op
-            identifier: label
+            operator: langcode_op
+            identifier: langcode
             required: false
             remember: false
             multiple: false
@@ -406,6 +543,8 @@ display:
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
+            reduce: true
           is_grouped: false
           group_info:
             label: ''
@@ -419,8 +558,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: group
-          entity_field: label
-          plugin_id: string
+          entity_field: langcode
+          plugin_id: language
         gid_admin:
           id: gid_admin
           table: groups_field_data
@@ -476,6 +615,10 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: 0
       contexts:

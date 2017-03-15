@@ -8,6 +8,7 @@ dependencies:
     - field.field.user.user.field_avatar
     - field.field.user.user.field_category
     - field.field.user.user.field_country
+    - field.field.user.user.field_country_manager
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_job_title
@@ -16,6 +17,7 @@ dependencies:
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_project_manager
     - field.field.user.user.field_regions
   module:
     - field_group
@@ -154,6 +156,8 @@ hidden:
   field_avatar: true
   field_category: true
   field_country: true
+  field_country_manager: true
+  field_project_manager: true
   field_regions: true
   info_block: true
   langcode: true

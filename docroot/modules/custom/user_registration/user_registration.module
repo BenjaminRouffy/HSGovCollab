@@ -59,7 +59,10 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
       $form[$match_element]['#prefix'] = '<div id="left">';
       $form[$match_element]['#suffix'] = '</div>';
     }*/
-    unset($form['account']['mail']['#title']);
+    unset(
+      $form['account']['mail']['#title'],
+      $form['account']['notify']
+    );
     $form['#group_children']['captcha'] = 'group_right';
     //$form['captcha']['#weight'] = 98;
     //$form['field_accept_term_conditions']['#weight'] = 99;

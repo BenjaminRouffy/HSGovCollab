@@ -1,0 +1,24 @@
+Index: src/Controller/SocialLoginCore.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Controller/SocialLoginCore.php	(date 1489580729000)
++++ src/Controller/SocialLoginCore.php	(revision )
+@@ -433,14 +433,14 @@
+                       // Redirect to registration page (register manually).
+                       drupal_set_message(t('Error while creating your user account, please try to register manually.'), 'error');
+                       \Drupal::logger('social_login')->error('Unable to automatically register the new user.');
+-                      return new RedirectResponse(\Drupal::url('user.register'));
++                      return new RedirectResponse(\Drupal::url('page_manager.page_view_sign_up'));
+                     }
+                   }
+ 
+                   // Use the legacy registration form?
+                   if ($registration_method == 'manual') {
+                     // Go to the registration page (+ prepopulate form).
+-                    return new RedirectResponse(\Drupal::url('user.register'));
++                    return new RedirectResponse(\Drupal::url('page_manager.page_view_sign_up'));
+                   }
+                 }
+                 // Registration disabled.

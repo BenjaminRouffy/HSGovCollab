@@ -26,6 +26,9 @@
       #mimemail-body {
         background: #ffffff;
       }
+      #mimemail-body a {
+        color: #416170;
+      }
       #mail-wrapper {
         background-color: #e9ecee;
         color: #416170;
@@ -68,6 +71,9 @@
       #members img {
         height: 35px;
       }
+      #unsubscribe {
+        font-size: 12px;;
+      }
     </style>
   </head>
   <body id="mimemail-body" {% if ( module | length > 0 ) and ( key | length > 0 ) %}  {% set class = 'class="' ~ module ~ '-' ~ key ~ '"' %} {% endif %} >
@@ -96,6 +102,9 @@
             </tr>
           </tbody>
         </table>
+        <div id="unsubscribe">
+          <a href="#">Unsubscribe</a> © by P4H-network 2017© by P4H-network 2017
+        </div>
       </div>
     </div>
   </body>

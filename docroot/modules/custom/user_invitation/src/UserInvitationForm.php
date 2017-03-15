@@ -19,7 +19,6 @@ class UserInvitationForm extends UserRegistrationRegister {
     // Start with the default user account fields.
     $form = parent::form($form, $form_state);
 
-    $form['account']['mail']['#required'] = TRUE;
     $form['account']['pass']['#access'] = FALSE;
     $form['account']['pass']['#required'] = FALSE;
 

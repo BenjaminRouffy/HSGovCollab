@@ -11,3 +11,4 @@ services:
 
   user_registration.email_checker:
     class: Drupal\user_registration\EmailChecker
+    arguments: [@config.factory]

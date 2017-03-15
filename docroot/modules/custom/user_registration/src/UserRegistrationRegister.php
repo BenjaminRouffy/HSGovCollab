@@ -27,7 +27,10 @@ class UserRegistrationRegister extends RegisterForm {
         unset($form['account'][$children]['#description']);
       }
     }
+
     $form['account']['mail']['#type'] = 'email_confirm';
+    $form['account']['mail']['#title_display'] = 'invisible';
+    $form['account']['mail']['#required'] = TRUE;
 
     // @TODO Generate user name by email_address.
     // $form['account']['name']['#access'] = FALSE;

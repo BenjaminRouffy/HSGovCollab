@@ -78,8 +78,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
       '#items' => $items,
     );*/
     $form['user_links']['#weight'] = 9;
-    $form['name']['#attributes']['placeholder'] = t('Enter your email');
-    $form['pass']['#attributes']['placeholder'] = t('Enter password');
+    $form['name']['#attributes']['placeholder'] = t('Please enter your email');
+    $form['pass']['#attributes']['placeholder'] = t('Please enter your password');
     $form['actions']['#weight'] = 10;
   }
   if($form_id == 'user_register_form') {
@@ -99,13 +99,15 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     //$form['field_accept_term_conditions']['#weight'] = 99;
     //$form['field_disclose_your_personal_det']['#weight'] = 100;
     $title = &$form['field_accept_term_conditions']['widget']['value']['#title'];
+    $title = t('Accept @link', [
+      '@link' => \Drupal::l(t('term & conditions'), new Url('<front>', [], [
+        '_target' => 'blank'
+      ]))
+    ]);
+    /*$title = &$form['field_disclose_your_personal_det']['widget']['value']['#title'];
     $title = \Drupal::l($title, new Url('<front>', [], [
       '_target' => 'blank'
-    ]));
-    $title = &$form['field_disclose_your_personal_det']['widget']['value']['#title'];
-    $title = \Drupal::l($title, new Url('<front>', [], [
-      '_target' => 'blank'
-    ]));
+    ]));*/
   }
   if($form_id == 'user_onetime_form') {
     $form['actions']['submit']['#value'] = t('Understood, I am ready to start');

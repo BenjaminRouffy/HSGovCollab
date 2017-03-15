@@ -7,6 +7,7 @@ dependencies:
     - entity_browser.browser.browse_files_modal
     - field.field.paragraph.content_image.field_content_image
     - field.field.paragraph.content_image.field_description
+    - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
   module:
@@ -28,9 +29,11 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_browser_file
+    region: content
 hidden:
   created: true
   field_description: true
+  field_private_content: true
   field_view_mode: true
   status: true
   translation: true

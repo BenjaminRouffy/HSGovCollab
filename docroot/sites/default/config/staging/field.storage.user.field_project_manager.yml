@@ -1,0 +1,20 @@
+uuid: cbb7b6ef-30ce-4acc-aab0-51e6c91c2b92
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_content_field
+    - user
+id: user.field_project_manager
+field_name: field_project_manager
+entity_type: user
+type: group_content_item
+settings:
+  gid: project-admin
+module: group_content_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

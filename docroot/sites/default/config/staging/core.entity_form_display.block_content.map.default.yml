@@ -19,6 +19,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_map_description:
     weight: 13
     settings:
@@ -26,6 +27,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_title:
     weight: 12
     settings:
@@ -33,6 +35,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   info:
     type: string_textfield
     weight: -5
@@ -40,11 +43,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   langcode:
     type: language_select
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   translation:
     weight: 10
+    region: content
 hidden: {  }

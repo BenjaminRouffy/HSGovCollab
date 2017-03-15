@@ -29,6 +29,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_browser_file
+    region: content
   field_description:
     weight: 1
     settings:
@@ -36,15 +37,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_view_mode:
     type: view_mode_selector_select
     weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: content
   translation:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   field_private_content: true

@@ -21,6 +21,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_title:
     weight: 1
     label: hidden
@@ -28,6 +29,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_video_link:
     weight: 0
     label: hidden
@@ -38,6 +40,7 @@ content:
       autoplay: true
     third_party_settings: {  }
     type: video_embed_field_video
+    region: content
 hidden:
   created: true
   uid: true

@@ -23,11 +23,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_date:
     weight: 0
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_link:
     weight: 2
     settings:
@@ -35,6 +37,10 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  translation:
+    weight: 10
+    region: content
 hidden:
   created: true
   status: true

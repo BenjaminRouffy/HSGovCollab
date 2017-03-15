@@ -1,0 +1,23 @@
+uuid: 4ca16ae6-acc7-4e7c-8751-2fa760e28dc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_project_manager
+  module:
+    - group_content_field
+    - user
+id: user.user.field_project_manager
+field_name: field_project_manager
+entity_type: user
+bundle: user
+label: 'Project manager'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

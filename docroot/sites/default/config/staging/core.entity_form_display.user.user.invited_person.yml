@@ -1,0 +1,128 @@
+uuid: b787260d-a90a-4935-8f91-cdc56873144d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.invited_person
+    - field.field.user.user.field_accept_term_conditions
+    - field.field.user.user.field_avatar
+    - field.field.user.user.field_category
+    - field.field.user.user.field_country
+    - field.field.user.user.field_country_manager
+    - field.field.user.user.field_disclose_your_personal_det
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_job_title
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_middle_name
+    - field.field.user.user.field_non_member_organization
+    - field.field.user.user.field_organisation
+    - field.field.user.user.field_person_titles
+    - field.field.user.user.field_project_manager
+    - field.field.user.user.field_regions
+  module:
+    - group_content_field
+    - user
+id: user.user.invited_person
+targetEntityType: user
+bundle: user
+mode: invited_person
+content:
+  account:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  captcha:
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  contact:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_manager:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
+    region: content
+  field_first_name:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_job_title:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_last_name:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_middle_name:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_non_member_organization:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_organisation:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_person_titles:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_project_manager:
+    type: group_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  language:
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_accept_term_conditions: true
+  field_avatar: true
+  field_category: true
+  field_country: true
+  field_disclose_your_personal_det: true
+  field_regions: true
+  info_block: true
+  langcode: true
+  path: true

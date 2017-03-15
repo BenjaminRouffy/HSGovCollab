@@ -33,6 +33,17 @@ function admin_customizations_form_alter(array &$form, FormStateInterface $form_
         }
       }
       break;
+
+    case 'user_form':
+      // @todo Change to Form Alter Service after merge https://github.com/propeopleua/p4h/pull/313
+      if (
+        isset($form['language']) &&
+        isset($form['language']['preferred_admin_langcode']) &&
+        !$form['language']['preferred_admin_langcode']['#access']
+      ) {
+        unset($form['language']);
+      }
+      break;
   }
 }
 

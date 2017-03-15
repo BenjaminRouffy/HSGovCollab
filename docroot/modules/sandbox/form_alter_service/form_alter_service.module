@@ -1,0 +1,36 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\form_alter_service\Interfaces\FormAlterServiceAlterInterface;
+use Drupal\form_alter_service\Interfaces\FormAlterServiceBaseInterface;
+use Drupal\form_alter_service\Interfaces\FormAlterServiceSubmitInterface;
+use Drupal\form_alter_service\Interfaces\FormAlterServiceValidateInterface;
+use Drupal\form_alter_service\Service\FormAlterServiceAlter;
+
+/**
+ * Implements hook_form_alter().
+ */
+function form_alter_service_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $service = Drupal::service('form_alter_service.alter');
+  /* @var FormAlterServiceAlter $service */
+  $alters = $service->getFormAlter($form_id) + $service->getFormAlter('match');
+  /** @var FormAlterServiceBaseInterface[] $alter */
+  foreach ($alters as $alter) {
+    if ($alter instanceof FormAlterServiceBaseInterface && $alter->hasMatch($form, $form_state, $form_id)) {
+      if ($alter instanceof FormAlterServiceAlterInterface) {
+        $alter->formAlter($form, $form_state);
+      }
+      if ($alter instanceof FormAlterServiceValidateInterface) {
+        // @TODO Add a possibility to add callbacks to submit button.
+        $form['#validate'][] = [$alter, 'formValidate'];
+      }
+      if ($alter instanceof FormAlterServiceSubmitInterface) {
+        // @TODO Add a possibility to add deferments submit callbacks.
+        $form['actions']['submit']['#submit'][] = [$alter, 'formSubmit'];
+        $form['#submit'][] = [$alter, 'formSubmit'];
+      }
+    }
+    if ($alter instanceof FormAlterServiceAlterInterface && $alter->hasMatch($form, $form_state, $form_id)) {
+    }
+  }
+}

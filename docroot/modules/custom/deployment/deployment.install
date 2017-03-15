@@ -632,3 +632,12 @@ function deployment_update_8039() {
     'email_registration',
   ]);
 }
+
+/**
+ * Add view "Content" to Groups admin page.
+ */
+function deployment_update_8040() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'views.view.content',
+  ]);
+}

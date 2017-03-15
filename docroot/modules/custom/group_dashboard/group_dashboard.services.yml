@@ -1,0 +1,5 @@
+services:
+ group_dashboard.group_content_subscriber:
+    class: Drupal\group_dashboard\Routing\GroupContentSubscriber
+    tags:
+      - { name: event_subscriber }

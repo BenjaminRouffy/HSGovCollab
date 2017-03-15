@@ -1,19 +1,83 @@
 <html>
   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      {% if css %}
-      <style type="text/css">
-          <!--
-          {{ css }}
-         -->
-      </style>
-      {% endif %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% if css %}
+    <style type="text/css">
+        <!--
+        {{ css }}
+       -->
+      #mimemail-body {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px 10px 0;
+        max-width: 600px;
+        width: 100%;
+      }
+      #header img {
+        margin: 0 auto;
+        height: 150px;
+        width: 200px;
+      }
+    </style>
+    {% endif %}
+
+    <style type="text/css">
+      body {
+        background-color: #e9ecee;
+        color: #416170;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        line-height: 20px;
+      }
+      #mimemail-body {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px 10px 0;
+        max-width: 600px;
+        width: 100%;
+      }
+      #header img {
+        display: block;
+        margin: 0 auto;
+        height: 150px;
+        width: 200px;
+      }
+      #footer {
+        background: #f5f5f5;
+        text-align: center;
+      }
+      #footer h3 {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 20px 0;
+      }
+      #footer img {
+        color: transparent;
+      }
+    </style>
   </head>
   <body id="mimemail-body" {% if ( module | length > 0 ) and ( key | length > 0 ) %}  {% set class = 'class="' ~ module ~ '-' ~ key ~ '"' %} {% endif %} >
-    <div id="center">
-      <div id="main">
-        {{ body|raw }}
+    <div id="mail-wrapper">
+      <div id="header">
+        <img src="https://cibox07.m2.propeople.com.ua/stage/themes/custom/ample/images/P4H_logo.7.svg" alt="Logo">
       </div>
+
+      <div id="center">
+        <div id="main">
+          {{ body|raw }}
+        </div>
+      </div>
+
+      <table id="footer">
+        <tbody>
+          <tr>
+            <td><img src="https://cibox07.m2.propeople.com.ua/build1085/en/themes/custom/ample/images/WHO._blue.svg" alt=""></td>
+            <td><img src="https://cibox07.m2.propeople.com.ua/build1085/en/themes/custom/ample/images/theworldbank2_blue.png" alt=""></td>
+            <td><img src="https://cibox07.m2.propeople.com.ua/build1085/en/themes/custom/ample/images/african-development-bank_blue.svg" alt=""></td>
+            <td><img src="https://cibox07.m2.propeople.com.ua/build1085/en/themes/custom/ample/images/ilo-logo-vector_blue.svg" alt=""></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </body>
 </html>

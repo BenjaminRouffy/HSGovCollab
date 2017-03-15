@@ -105,6 +105,7 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   field_content_paragraph:
     type: entity_reference_paragraphs
     weight: 6
@@ -115,21 +116,25 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_country:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_join_block:
     weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_member_category:
     weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_member_image:
     weight: 2
     settings:
@@ -142,6 +147,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_browser_file
+    region: content
   field_member_link:
     weight: 9
     settings:
@@ -149,16 +155,19 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   langcode:
     type: language_select
     weight: 6
     settings: {  }
     third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 10
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 1
@@ -166,12 +175,15 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   translation:
     weight: 11
+    region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
+  global_content: true
   promote: true
   public_content: true
   sticky: true

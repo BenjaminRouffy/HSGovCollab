@@ -515,6 +515,12 @@
   display: flex;
   width: 33.33%;
 
+  .ie9 & {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33.33% - 4px);
+  }
+
   .block-content {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
@@ -522,6 +528,11 @@
     position: relative;
     transition: box-shadow .3s ease;
     width: 100%;
+
+    .ie10 &,
+    .ie9 & {
+      width: calc(100% - 20px);
+    }
 
     &:hover {
       box-shadow: 0 0 6px 1px rgba($red, .5);
@@ -646,12 +657,11 @@
     font-weight: 400;
     line-height: 20px;
     margin: 0;
-    padding: 8px 20px;
+    padding: 8px 50px 8px 20px;
     position: absolute;
     left: 0;
     top: -38px;
     text-transform: uppercase;
-    width: 180px;
   }
 
   .item-list {
@@ -698,28 +708,30 @@
   @include clearfix();
   border: 2px solid #e9ecee;
   font-family: $oswald;
-  line-height: 48px;
+  line-height: 32px;
   margin-bottom: 40px;
   padding: 40px 40px 20px;
   width: 94%;
 
   .label {
-    display: block;
+    margin-left: -4px;
+    display: inline-block;
     font-weight: 700;
-    float: left;
     margin-bottom: 15px;
-    padding-right: 10px;
+    padding: 8px 10px 8px 0;
     text-transform: uppercase;
+    vertical-align: top;
     width: 33.33%;
   }
 
   .value {
+    margin-left: -4px;
     color: $navy;
-    display: block;
+    display: inline-block;
     font-weight: 400;
-    float: left;
     margin-bottom: 15px;
-    padding-left: 10px;
+    padding: 8px 0 8px 10px;
+    vertical-align: bottom;
     width: 66.66%;
 
     a {
@@ -735,10 +747,6 @@
   .font-social-icon {
     @include font-size(28);
     float: left;
-
-    ~ a {
-      margin-top: 10px;
-    }
   }
 
   .sign-up {
@@ -1052,6 +1060,10 @@
   .project-item,
   .member-block {
     width: 50%;
+
+    .ie9 & {
+      width: calc(50% - 4px);
+    }
   }
 }
 
@@ -1070,9 +1082,18 @@
     padding-right: 0;
     width: 100%;
 
+    .ie9 & {
+      width: 100%;
+    }
+
     .block-content {
       margin-left: 0;
       margin-right: 0;
+
+      .ie10 &,
+      .ie9 & {
+        width: 100%;
+      }
     }
   }
 }

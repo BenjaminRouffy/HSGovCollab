@@ -45,6 +45,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
   if($form_id == 'user_login_form') {
     $form['name']['#prefix'] = '<div class="login-wrapper">';
     $form['actions']['#suffix'] = '</div>';
+    unset($form['name']['#description']);
+    unset($form['pass']['#description']);
   }
   if($form_id == 'user_register_form') {
     $form['name']['#prefix'] = '<div class="login-wrapper register-wrapper">';
@@ -117,4 +119,16 @@ function user_registration_element_info_alter(array &$types) {
 function user_registration_form_process_password_confirm($element) {
   unset($element['#attached']['drupalSettings']['password']);
   return $element;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function user_registration_theme() {
+  return [
+    'good_to_know' => [
+      'template' => 'good_to_know',
+      'render element' => 'element',
+    ],
+  ];
 }

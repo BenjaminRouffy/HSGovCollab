@@ -38,6 +38,8 @@ function ample_preprocess_html(array &$variables) {
   catch (Exception $e) {
     $variables['is_front'] = FALSE;
   }
+
+  $variables['attributes']['class'][] = strtolower(\Drupal::languageManager()->getCurrentLanguage()->getId());
 }
 
 /**

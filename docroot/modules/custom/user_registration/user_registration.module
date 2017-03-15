@@ -47,6 +47,40 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['actions']['#suffix'] = '</div>';
     unset($form['name']['#description']);
     unset($form['pass']['#description']);
+
+    // @TODO Copy/Paste
+    $form['user_links'] = array();
+    if (\Drupal::config('user.settings')->get('register') != USER_REGISTER_ADMINISTRATORS_ONLY) {
+      $form['user_links']['request_password'] = [
+        '#type' => 'link',
+        '#title' => t('Forgot password'),
+        '#url' => Url::fromRoute('user.pass', [], [
+          'attributes' => [
+            'title' => t('Send password reset instructions via email.'),
+            'class' => ['request-password-link'],
+          ],
+        ]),
+      ];
+      $form['user_links']['create_account'] = [
+        '#type' => 'link',
+        '#title' => t('Not a member yet? Sign up here'),
+        '#url' => Url::fromRoute('page_manager.page_view_sign_up', [], [
+          'attributes' => [
+            'title' => t('Not a member yet? Sign up here'),
+            'class' => ['create-account-link'],
+          ],
+        ]),
+      ];
+    }
+    $form['actions']['submit']['#value'] = t('Submit');
+    /*$form['user_links'] = array(
+      '#theme' => 'item_list',
+      '#items' => $items,
+    );*/
+    $form['user_links']['#weight'] = 9;
+    $form['name']['#attributes']['placeholder'] = t('Enter your email');
+    $form['pass']['#attributes']['placeholder'] = t('Enter password');
+    $form['actions']['#weight'] = 10;
   }
   if($form_id == 'user_register_form') {
     $form['name']['#prefix'] = '<div class="login-wrapper register-wrapper">';
@@ -74,7 +108,7 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     ]));
   }
   if($form_id == 'user_onetime_form') {
-    $form['actions']['submit']['#value'] = t('Undersstod, I am ready to start');
+    $form['actions']['submit']['#value'] = t('Understood, I am ready to start');
     $form['field_country']['widget']['#title'] = t('Select country of interest');
     $form['field_regions']['widget']['#title'] = t('Select regions of interest');
     $form['field_category']['widget']['#title'] = t('Select categories in the Knowledge Vault');

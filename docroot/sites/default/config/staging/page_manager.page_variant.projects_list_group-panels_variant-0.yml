@@ -5,11 +5,9 @@ dependencies:
   config:
     - page_manager.page.projects_list_group
     - views.view.list_of_projects
-  content:
-    - 'block_content:headline_description:e779615a-fd92-47e8-b8a6-15c72e264150'
   module:
-    - block_content
     - panels
+    - user
     - views
 id: projects_list_group-panels_variant-0
 label: Panels
@@ -27,18 +25,6 @@ variant_settings:
       weight: 1
       uuid: 4ffab8ab-20d5-4c4d-95fa-a34cca38943d
       context_mapping: {  }
-    0a6b08b0-cb19-4cb7-9d04-d3ff80ce2d5f:
-      id: 'block_content:e779615a-fd92-47e8-b8a6-15c72e264150'
-      label: 'Country projects headline'
-      provider: block_content
-      label_display: '0'
-      status: true
-      info: ''
-      view_mode: full
-      region: middle
-      weight: 0
-      uuid: 0a6b08b0-cb19-4cb7-9d04-d3ff80ce2d5f
-      context_mapping: {  }
   id: panels_variant
   uuid: 9ffd340c-6de7-4ee3-b794-74353c111427
   label: null
@@ -51,6 +37,13 @@ variant_settings:
   builder: standard
 page: projects_list_group
 weight: 0
-selection_criteria: {  }
+selection_criteria:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

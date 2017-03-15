@@ -117,7 +117,7 @@ class UserRegistrationRegister extends RegisterForm {
             drupal_set_message($this->t('A welcome message with further instructions has been emailed to the new user <a href=":url">%name</a>.', array(':url' => $account->url(), '%name' => $account->getUsername())));
           }
           else {
-            drupal_set_message($this->t('A welcome message with further instructions has been sent to your email address.'));
+            drupal_set_message($this->t('We welcome you to the P4H social health protection network and are looking forward to your collaboration.'));
             $form_state->setRedirect('<front>');
           }
         }
@@ -126,7 +126,7 @@ class UserRegistrationRegister extends RegisterForm {
     // Administrator approval required.
     else {
       _user_mail_notify('register_pending_approval', $account);
-      drupal_set_message($this->t('Thank you for applying for an account. Your account is currently pending approval by the site administrator.<br />In the meantime, a welcome message with further instructions has been sent to your email address.'));
+      drupal_set_message($this->t('Thank you for your interest in the P4H social health protection network! We will check your application and will get back to you shortly.'));
       $form_state->setRedirect('<front>');
     }
   }

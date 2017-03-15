@@ -1,0 +1,20 @@
+uuid: b72f5b90-ce62-41f0-9573-e04170cc7088
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_content_field
+    - user
+id: user.field_country_manager
+field_name: field_country_manager
+entity_type: user
+type: group_content_item
+settings:
+  gid: country-admin
+module: group_content_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

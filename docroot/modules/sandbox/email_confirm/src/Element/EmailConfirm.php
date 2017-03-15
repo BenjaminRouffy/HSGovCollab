@@ -60,7 +60,10 @@ class EmailConfirm extends FormElement   {
       '#title' => t('Email'),
       '#value' => empty($element['#value']) ? NULL : $element['#value']['mail1'],
       '#required' => $element['#required'],
-      '#attributes' => array('class' => array('email-field', 'js-email-field')),
+      '#attributes' => [
+        'class' => ['email-field', 'js-email-field'],
+        'placeholder' => t('Enter your email'),
+      ],
       '#error_no_message' => TRUE,
     );
     $element['mail2'] = array(
@@ -68,7 +71,10 @@ class EmailConfirm extends FormElement   {
       '#title' => t('Confirm email'),
       '#value' => empty($element['#value']) ? NULL : $element['#value']['mail2'],
       '#required' => $element['#required'],
-      '#attributes' => array('class' => array('email-confirm', 'js-email-confirm')),
+      '#attributes' => [
+        'class' => ['email-confirm', 'js-email-confirm'],
+        'placeholder' => t('Retype your email address'),
+      ],
       '#error_no_message' => TRUE,
     );
     $element['#element_validate'] = array(array(get_called_class(), 'validateEmailConfirm'));

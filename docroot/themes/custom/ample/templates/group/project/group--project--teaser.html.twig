@@ -20,9 +20,8 @@
   </div>
   {% if not logged_in %}
     <div class="bottom-link">
-      <a href="{{ path('user.login') }}" class="read-more">
-        {{ 'Signup to know more'|t }}
-      </a>
+      {# TODO Should use here a router.#}
+      {{ link('Signup to know more'|t, 'base:user/sign-up', { 'class':[ 'read-more' ] }) }}
     </div>
   {% else %}
     {{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}

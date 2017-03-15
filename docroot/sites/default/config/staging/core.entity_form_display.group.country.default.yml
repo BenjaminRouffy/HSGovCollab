@@ -128,6 +128,7 @@ content:
       add_mode: dropdown
       form_display_mode: banner
     third_party_settings: {  }
+    region: content
   field_bottom_link:
     type: entity_reference_paragraphs
     weight: 27
@@ -138,6 +139,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_content:
     type: entity_reference_paragraphs
     weight: 8
@@ -148,6 +150,7 @@ content:
       add_mode: dropdown
       form_display_mode: private_content
     third_party_settings: {  }
+    region: content
   field_country_icon:
     weight: 3
     settings:
@@ -156,6 +159,7 @@ content:
       placeholder: Country
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   field_country_options:
     type: entity_reference_paragraphs
     weight: 6
@@ -166,11 +170,13 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_date:
     weight: 7
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_infographic:
     type: entity_reference_paragraphs
     weight: 9
@@ -181,11 +187,13 @@ content:
       add_mode: dropdown
       form_display_mode: private_content
     third_party_settings: {  }
+    region: content
   field_join_block:
     weight: 26
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_location:
     weight: 8
     settings:
@@ -214,11 +222,13 @@ content:
       target_address_field: null
     third_party_settings: {  }
     type: geolocation_googlegeocoder
+    region: content
   field_regions:
     weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_summary:
     weight: 7
     settings:
@@ -226,6 +236,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_time_line:
     type: entity_reference_paragraphs
     weight: 10
@@ -236,6 +247,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   label:
     type: string_textfield
     weight: 2
@@ -243,15 +255,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   langcode:
     type: language_select
     weight: 9
     settings: {  }
     third_party_settings: {  }
+    region: content
   translation:
     weight: 13
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   path: true
   uid: true

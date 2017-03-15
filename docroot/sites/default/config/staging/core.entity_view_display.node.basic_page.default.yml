@@ -22,6 +22,7 @@ content:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_author:
     type: string
     weight: 2
@@ -29,6 +30,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
   field_content_paragraph:
     weight: 1
     label: hidden
@@ -37,10 +39,12 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   field_banner: true
   field_bottom_link: true

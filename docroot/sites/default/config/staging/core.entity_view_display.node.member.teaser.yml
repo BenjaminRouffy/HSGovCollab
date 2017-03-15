@@ -5,6 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.member.body
+    - field.field.node.member.field_content_paragraph
+    - field.field.node.member.field_country
+    - field.field.node.member.field_join_block
+    - field.field.node.member.field_member_category
+    - field.field.node.member.field_member_image
+    - field.field.node.member.field_member_link
     - node.type.member
   module:
     - text
@@ -21,11 +27,15 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
+  addtoany: true
   field_content_paragraph: true
   field_country: true
+  field_join_block: true
   field_member_category: true
   field_member_image: true
   field_member_link: true

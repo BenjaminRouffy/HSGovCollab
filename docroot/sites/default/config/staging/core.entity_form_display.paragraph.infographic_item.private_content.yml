@@ -20,6 +20,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_infographic_description:
     weight: 3
     settings:
@@ -27,12 +28,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_private_content:
     weight: 0
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_title:
     weight: 1
     settings:
@@ -40,6 +43,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_value:
     weight: 4
     settings:
@@ -47,10 +51,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   translation:
     weight: 5
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   status: true

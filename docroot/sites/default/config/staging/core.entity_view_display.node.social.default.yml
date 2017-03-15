@@ -24,6 +24,7 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_media:
     weight: 104
     label: hidden
@@ -35,6 +36,7 @@ content:
       target: '0'
     third_party_settings: {  }
     type: link
+    region: content
   field_permalink_url:
     weight: 105
     label: hidden
@@ -46,16 +48,19 @@ content:
       rel: '0'
     third_party_settings: {  }
     type: link
+    region: content
   field_social_type:
     weight: 102
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_key
+    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   addtoany: true
   langcode: true

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_category
     - field.field.node.event.field_date
+    - field.field.node.event.field_documents
     - field.field.node.event.field_event_author
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
@@ -36,6 +37,7 @@ content:
     weight: 9
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_category:
     weight: 11
     label: hidden
@@ -43,6 +45,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_date:
     weight: 3
     label: hidden
@@ -52,6 +55,7 @@ content:
       separator: '-'
     third_party_settings: {  }
     type: daterange_default
+    region: content
   field_event_author:
     weight: 2
     label: hidden
@@ -59,6 +63,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_event_link:
     type: link_separate
     weight: 8
@@ -70,6 +75,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    region: content
   field_event_slider:
     type: entity_reference_revisions_entity_view
     weight: 1
@@ -78,6 +84,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_join_block:
     weight: 10
     label: hidden
@@ -86,6 +93,7 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_location:
     weight: 7
     label: hidden
@@ -97,6 +105,7 @@ content:
       rel: '0'
     third_party_settings: {  }
     type: link
+    region: content
   field_organization:
     weight: 12
     label: hidden
@@ -104,6 +113,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_time:
     weight: 4
     label: hidden
@@ -113,6 +123,7 @@ content:
       separator: '-'
     third_party_settings: {  }
     type: daterange_default
+    region: content
   field_time_text:
     weight: 5
     label: hidden
@@ -120,17 +131,21 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_timezone:
     weight: 6
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   addtoany: true
+  field_documents: true
   field_related_content_selector: true
   langcode: true

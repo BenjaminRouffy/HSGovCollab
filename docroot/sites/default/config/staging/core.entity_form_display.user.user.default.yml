@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_avatar
     - field.field.user.user.field_category
     - field.field.user.user.field_country
+    - field.field.user.user.field_country_manager
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_job_title
@@ -15,9 +16,11 @@ dependencies:
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_project_manager
     - field.field.user.user.field_regions
     - image.style.thumbnail
   module:
+    - group_content_field
     - image
     - path
     - user
@@ -28,6 +31,11 @@ mode: default
 content:
   account:
     weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  captcha:
+    weight: -10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -68,6 +76,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_country_manager:
+    weight: 18
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
     region: content
   field_disclose_your_personal_det:
     weight: 14
@@ -133,6 +147,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_project_manager:
+    weight: 19
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
     region: content
   field_regions:
     weight: 16

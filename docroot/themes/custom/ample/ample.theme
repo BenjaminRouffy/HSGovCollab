@@ -192,18 +192,10 @@ function ample_preprocess_paragraph(array &$variables) {
  */
 function ample_preprocess_links(array &$variables) {
   if ($variables['theme_hook_original'] === 'links__language_block') {
-    // Check current language.
-    $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     // According to the design, we need to change the links of the navigation block
     // to the two characters instead of the language name.
     foreach ($variables['links'] as $key => $language) {
-      // Set off core active class option, becouse it's breaking by current language detection settings.
-      $variables['links'][$key]['link']['#options']['set_active_class'] = FALSE;
       $variables['links'][$key]['link']['#title'] = substr($language['link']['#title'], 0, 2);
-
-      if ($key == $current_language) {
-        $variables['links'][$key]['link']['#options']['attributes']['class'][] = 'is-active';
-      }
     }
   }
 }

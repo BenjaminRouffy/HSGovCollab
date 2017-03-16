@@ -176,10 +176,9 @@ function user_registration_theme() {
 }
 
 /**
- * Implements hook_preprocess().
+ * Implements hook_preprocess_input().
  */
-function user_registration_preprocess(&$variables, $hook) {
-  $vars = $variables;
+function user_registration_preprocess_input(&$variables, $hook) {
   if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass')) {
     if ('pass[pass1]' == $variables['attributes']['name']) {
       $variables['attributes']['placeholder'] = t('Please enter your password');

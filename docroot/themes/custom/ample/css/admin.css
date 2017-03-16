@@ -7,3 +7,12 @@ img[src$="svg"] {
 
 #edit-language .form-item-preferred-langcode {
   display: none; }
+
+.user-invited-person-form .field--name-field-country-manager,
+.user-invited-person-form .field--name-field-project-manager {
+  height: 0;
+  overflow: hidden; }
+  .user-invited-person-form .field--name-field-country-manager.active,
+  .user-invited-person-form .field--name-field-project-manager.active {
+    height: 100%;
+    overflow: visible; }

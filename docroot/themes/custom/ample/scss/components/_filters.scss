@@ -74,6 +74,7 @@
   }
 
   fieldset {
+    display: none;
     margin: 0;
   }
 
@@ -93,6 +94,12 @@
     .form-item {
       padding: 0 10px 30px;
       width: 16.6%;
+
+      .ie9 & {
+        display: inline-block;
+        margin-left: -4px;
+        vertical-align: top;
+      }
     }
 
     .form-checkbox {
@@ -121,6 +128,12 @@
       margin-bottom: 20px;
     }
   }
+
+  .form-checkboxes {
+    .form-item {
+      width: 33.33%;
+    }
+  }
 }
 
 @include breakpoint-for('.view-news-and-events', (to: tablet)) {
@@ -135,6 +148,12 @@
       margin: -40px 0 3px -20px;
     }
   }
+
+  .form-checkboxes {
+    .form-item {
+      width: 50%;
+    }
+  }
 }
 
 @include breakpoint-for('.view-news-and-events', (to: mobileL)) {
@@ -143,6 +162,12 @@
       max-width: 100%;
       margin-left: 0;
       margin-right: 0;
+    }
+  }
+
+  .form-checkboxes {
+    .form-item {
+      width: 100%;
     }
   }
 }

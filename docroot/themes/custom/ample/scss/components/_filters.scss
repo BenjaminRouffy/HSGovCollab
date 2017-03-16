@@ -65,6 +65,12 @@
       }
     }
 
+    .ie10 & {
+      > div {
+        max-width: calc(20% - 20px);
+      }
+    }
+
     > div {
       margin-left: 10px;
       margin-right: 10px;
@@ -131,6 +137,12 @@
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px;
     }
+
+    .ie9 & {
+      > div {
+        max-width: calc(33.33% - 20px);
+      }
+    }
   }
 
   .form-checkboxes {
@@ -144,6 +156,12 @@
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
+    }
+
+    .ie9 & {
+      > div {
+        max-width: calc(50% - 20px);
+      }
     }
   }
 
@@ -166,6 +184,12 @@
       max-width: 100%;
       margin-left: 0;
       margin-right: 0;
+    }
+
+    .ie9 & {
+      > div {
+        max-width: 100%;
+      }
     }
   }
 

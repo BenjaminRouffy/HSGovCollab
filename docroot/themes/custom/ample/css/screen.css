@@ -2876,6 +2876,8 @@ form {
     .ie9 .view-news-and-events .wrapper-filters > div {
       float: left;
       max-width: calc(20% - 20px); }
+  .ie10 .view-news-and-events .wrapper-filters > div {
+    max-width: calc(20% - 20px); }
   .view-news-and-events .wrapper-filters > div {
     margin-left: 10px;
     margin-right: 10px;
@@ -2930,11 +2932,15 @@ form {
     .view-news-and-events .wrapper-filters > div {
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px; }
+    .ie9 .view-news-and-events .wrapper-filters > div {
+      max-width: calc(33.33% - 20px); }
   .view-news-and-events .form-checkboxes .form-item {
     width: 33.33%; } }
 
 @media (max-width: 767px) {
   .view-news-and-events .wrapper-filters > div {
+    max-width: calc(50% - 20px); }
+  .ie9 .view-news-and-events .wrapper-filters > div {
     max-width: calc(50% - 20px); }
   .front .view-news-and-events .title-wrapper {
     margin: -40px 0 3px -20px; }
@@ -2946,6 +2952,8 @@ form {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0; }
+  .ie9 .view-news-and-events .wrapper-filters > div {
+    max-width: 100%; }
   .view-news-and-events .form-checkboxes .form-item {
     width: 100%; } }
 

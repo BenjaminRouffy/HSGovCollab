@@ -105,6 +105,10 @@
     .form-checkbox {
       float: left;
       margin-right: 8px;
+
+      .ie & {
+        margin-top: 3px;
+      }
     }
 
     label {

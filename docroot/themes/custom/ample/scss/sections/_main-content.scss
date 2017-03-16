@@ -3,6 +3,10 @@
   min-height: calc(100% - 196px);
   overflow-x: hidden;
 
+  .user & {
+    min-height: calc(100% - 316px);
+  }
+
   body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.front) & {
     background: $white;
   }

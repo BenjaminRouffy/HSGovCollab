@@ -65,6 +65,12 @@
       }
     }
 
+    .ie10 & {
+      > div {
+        max-width: calc(20% - 20px);
+      }
+    }
+
     > div {
       margin-left: 10px;
       margin-right: 10px;
@@ -74,6 +80,7 @@
   }
 
   fieldset {
+    display: none;
     margin: 0;
   }
 
@@ -93,11 +100,21 @@
     .form-item {
       padding: 0 10px 30px;
       width: 16.6%;
+
+      .ie9 & {
+        display: inline-block;
+        margin-left: -4px;
+        vertical-align: top;
+      }
     }
 
     .form-checkbox {
       float: left;
       margin-right: 8px;
+
+      .ie & {
+        margin-top: 3px;
+      }
     }
 
     label {
@@ -120,6 +137,18 @@
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px;
     }
+
+    .ie9 & {
+      > div {
+        max-width: calc(33.33% - 20px);
+      }
+    }
+  }
+
+  .form-checkboxes {
+    .form-item {
+      width: 33.33%;
+    }
   }
 }
 
@@ -128,11 +157,23 @@
     > div {
       max-width: calc(50% - 20px);
     }
+
+    .ie9 & {
+      > div {
+        max-width: calc(50% - 20px);
+      }
+    }
   }
 
   .front & {
     .title-wrapper {
       margin: -40px 0 3px -20px;
+    }
+  }
+
+  .form-checkboxes {
+    .form-item {
+      width: 50%;
     }
   }
 }
@@ -143,6 +184,18 @@
       max-width: 100%;
       margin-left: 0;
       margin-right: 0;
+    }
+
+    .ie9 & {
+      > div {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .form-checkboxes {
+    .form-item {
+      width: 100%;
     }
   }
 }

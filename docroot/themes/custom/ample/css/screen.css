@@ -2876,6 +2876,8 @@ form {
     .ie9 .view-news-and-events .wrapper-filters > div {
       float: left;
       max-width: calc(20% - 20px); }
+  .ie10 .view-news-and-events .wrapper-filters > div {
+    max-width: calc(20% - 20px); }
   .view-news-and-events .wrapper-filters > div {
     margin-left: 10px;
     margin-right: 10px;
@@ -2883,6 +2885,7 @@ form {
     width: 100%; }
 
 .view-news-and-events fieldset {
+  display: none;
   margin: 0; }
 
 .view-news-and-events .fieldset-wrapper {
@@ -2902,9 +2905,15 @@ form {
   .view-news-and-events .form-checkboxes .form-item {
     padding: 0 10px 30px;
     width: 16.6%; }
+    .ie9 .view-news-and-events .form-checkboxes .form-item {
+      display: inline-block;
+      margin-left: -4px;
+      vertical-align: top; }
   .view-news-and-events .form-checkboxes .form-checkbox {
     float: left;
     margin-right: 8px; }
+    .ie .view-news-and-events .form-checkboxes .form-checkbox {
+      margin-top: 3px; }
   .view-news-and-events .form-checkboxes label {
     font-size: 0.9625rem;
     float: left;
@@ -2922,19 +2931,31 @@ form {
             justify-content: flex-start; }
     .view-news-and-events .wrapper-filters > div {
       max-width: calc(33.33% - 20px);
-      margin-bottom: 20px; } }
+      margin-bottom: 20px; }
+    .ie9 .view-news-and-events .wrapper-filters > div {
+      max-width: calc(33.33% - 20px); }
+  .view-news-and-events .form-checkboxes .form-item {
+    width: 33.33%; } }
 
 @media (max-width: 767px) {
   .view-news-and-events .wrapper-filters > div {
     max-width: calc(50% - 20px); }
+  .ie9 .view-news-and-events .wrapper-filters > div {
+    max-width: calc(50% - 20px); }
   .front .view-news-and-events .title-wrapper {
-    margin: -40px 0 3px -20px; } }
+    margin: -40px 0 3px -20px; }
+  .view-news-and-events .form-checkboxes .form-item {
+    width: 50%; } }
 
 @media (max-width: 479px) {
   .view-news-and-events .wrapper-filters > div {
     max-width: 100%;
     margin-left: 0;
-    margin-right: 0; } }
+    margin-right: 0; }
+  .ie9 .view-news-and-events .wrapper-filters > div {
+    max-width: 100%; }
+  .view-news-and-events .form-checkboxes .form-item {
+    width: 100%; } }
 
 .view-country {
   margin-top: 40px; }

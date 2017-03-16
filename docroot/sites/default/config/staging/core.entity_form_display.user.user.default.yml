@@ -30,12 +30,12 @@ bundle: user
 mode: default
 content:
   account:
-    weight: 0
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   captcha:
-    weight: -10
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -91,7 +91,7 @@ content:
     type: boolean_checkbox
     region: content
   field_first_name:
-    weight: 1
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -107,7 +107,7 @@ content:
     type: string_textfield
     region: content
   field_last_name:
-    weight: 2
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -164,7 +164,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   language:
-    weight: 3
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }

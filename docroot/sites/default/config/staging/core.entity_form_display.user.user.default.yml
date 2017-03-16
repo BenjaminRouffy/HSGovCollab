@@ -163,11 +163,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  language:
-    weight: 20
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   path:
     type: path
     weight: 8
@@ -182,3 +177,4 @@ content:
 hidden:
   info_block: true
   langcode: true
+  language: true

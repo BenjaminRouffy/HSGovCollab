@@ -28,8 +28,8 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
    *   The processed path.
    */
   public function processInbound($path, Request $request) {
-    if(strpos($path, '/user/register') === 0) {
-      return '/user/sign-up';
+    if(preg_match('~/user/(register|login)~is', $path, $match) === 1) {
+      return "/user/" . $this->getPath($match[1]);
     }
    return $path;
   }
@@ -71,9 +71,21 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
    */
   public function processOutbound($path, &$options = array(), Request $request = NULL, BubbleableMetadata $bubbleable_metadata = NULL) {
 
-    if (strpos($path, '/user/register') === 0) {
-      return '/user/sign-up';
+    if(preg_match('~/user/(register|login)~is', $path, $match) === 1) {
+      return "/user/" . $this->getPath($match[1]);
     }
     return $path;
+  }
+
+  /**
+   * @param string $match_path
+   *
+   * @return string
+   */
+  private function getPath(string $match_path) {
+    return [
+      'register' => 'sign-up',
+      'login' => 'sign-in',
+    ][$match_path];
   }
 }

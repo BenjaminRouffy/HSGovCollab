@@ -180,7 +180,7 @@ function user_registration_theme() {
  */
 function user_registration_preprocess(&$variables, $hook) {
   $vars = $variables;
-  if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass')) {
+  if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass') && isset($variables['attributes']['name'])) {
     if ('pass[pass1]' == $variables['attributes']['name']) {
       $variables['attributes']['placeholder'] = t('Please enter your password');
     }

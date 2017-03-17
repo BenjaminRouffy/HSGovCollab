@@ -1,0 +1,45 @@
+uuid: 0cb1282b-4e9d-49e3-9685-9f0a4583ccea
+langcode: en
+status: true
+dependencies:
+  module:
+    - admin_customizations
+    - group_dashboard
+    - language
+  theme:
+    - ample
+id: logoutpopup
+theme: ample
+region: popup
+weight: -13
+provider: null
+plugin: logout_popup
+settings:
+  id: logout_popup
+  label: 'Logout popup (EN)'
+  provider: group_dashboard
+  label_display: '0'
+  message: 'You will be logout. Do you want to proceed?'
+  continue: Continue
+  cancel: Cancel
+  header: 'You are going to the public website'
+visibility:
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }
+  access_by_user_role:
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: true
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  language:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_content'

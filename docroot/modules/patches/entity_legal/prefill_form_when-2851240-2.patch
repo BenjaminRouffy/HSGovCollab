@@ -1,0 +1,41 @@
+diff --git a/src/Form/EntityLegalDocumentVersionForm.php b/src/Form/EntityLegalDocumentVersionForm.php
+index a13b961..79964b1 100644
+--- a/src/Form/EntityLegalDocumentVersionForm.php
++++ b/src/Form/EntityLegalDocumentVersionForm.php
+@@ -9,6 +9,7 @@ namespace Drupal\entity_legal\Form;
+ 
+ use Drupal\Core\Entity\ContentEntityForm;
+ use Drupal\Core\Form\FormStateInterface;
++use Drupal\entity_legal\EntityLegalDocumentInterface;
+ 
+ /**
+  * Class EntityLegalDocumentVersionForm.
+@@ -27,6 +28,28 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
+   /**
+    * {@inheritdoc}
+    */
++  public function buildForm(array $form, FormStateInterface $form_state) {
++    // Provide default values if a published version already exists.
++    if ($this->entity && $this->entity->isNew()) {
++      $document = $this->entity->getDocument();
++      if ($document instanceof EntityLegalDocumentInterface) {
++        $published_version = $document->getPublishedVersion();
++        if ($published_version) {
++          $clone = $published_version->createDuplicate();
++          // Unset properties that shouldn't be copied over.
++          $clone->set('name', NULL);
++          $clone->set('created', REQUEST_TIME);
++          $clone->set('changed', REQUEST_TIME);
++          $this->setEntity($clone);
++        }
++      }
++    }
++    return parent::buildForm($form, $form_state);
++  }
++
++  /**
++   * {@inheritdoc}
++   */
+   public function form(array $form, FormStateInterface $form_state) {
+     $form['label'] = [
+       '#title'         => t('Title'),

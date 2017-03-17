@@ -36,7 +36,10 @@
   application-pdf: 'A',
   x-office-spreadsheet: 'S',
   x-office-document: 'D',
-  download: 'F'
+  download: 'F',
+  search: 't',
+  bell: 'm',
+  expand: 'h'
 ) {
   .#{$type}-icon {
     > a::after,

@@ -27,6 +27,7 @@ content:
     settings:
       trim_length: 150
     third_party_settings: {  }
+    region: content
   field_content_date:
     type: datetime_default
     weight: 1
@@ -35,6 +36,7 @@ content:
       timezone_override: ''
       format_type: time_line
     third_party_settings: {  }
+    region: content
   field_document:
     type: entity_reference_revisions_entity_view
     weight: 2
@@ -43,6 +45,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
 hidden:
   addtoany: true
   field_category: true

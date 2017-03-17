@@ -23,16 +23,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea_with_summary
+    region: content
   field_private_content:
     weight: 0
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   translation:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   field_title: true

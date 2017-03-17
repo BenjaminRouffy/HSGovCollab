@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.news.field_category
     - field.field.node.news.field_content_date
     - field.field.node.news.field_content_paragraph
+    - field.field.node.news.field_documents
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_organization
@@ -32,6 +33,7 @@ content:
       timezone_override: ''
       format_type: time_line
     third_party_settings: {  }
+    region: content
   field_image:
     weight: 0
     label: hidden
@@ -40,11 +42,14 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
 hidden:
+  addtoany: true
   body: true
   field_author: true
   field_category: true
   field_content_paragraph: true
+  field_documents: true
   field_join_block: true
   field_organization: true
   field_related_content_selector: true

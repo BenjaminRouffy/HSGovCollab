@@ -10,3 +10,22 @@ img[src$="svg"] {
     }
   }
 }
+
+#edit-language {
+  .form-item-preferred-langcode {
+    display: none;
+  }
+}
+
+.user-invited-person-form {
+  .field--name-field-country-manager,
+  .field--name-field-project-manager {
+    height: 0;
+    overflow: hidden;
+
+    &.active {
+      height: 100%;
+      overflow: visible;
+    }
+  }
+}

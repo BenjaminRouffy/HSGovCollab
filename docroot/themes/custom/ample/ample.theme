@@ -9,6 +9,7 @@ use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteProvider;
 use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use \Drupal\paragraphs\Entity\Paragraph;
 use \Drupal\group\Entity\Group;
@@ -37,6 +38,8 @@ function ample_preprocess_html(array &$variables) {
   catch (Exception $e) {
     $variables['is_front'] = FALSE;
   }
+
+  $variables['attributes']['class'][] = strtolower(\Drupal::languageManager()->getCurrentLanguage()->getId());
 }
 
 /**
@@ -86,6 +89,25 @@ function ample_theme_suggestions_alter(array &$suggestions, array $variables, $h
     /* @var Term $term  */
     $term = $variables['elements']['#user'];
     $suggestions[] = "{$hook}__{$term->bundle()}__{$variables['elements']['#view_mode']}";
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function ample_preprocess_node(array &$variables) {
+  /* @var Node $node */
+  $node = $variables['node'];
+
+  if (in_array($node->bundle(), ['news', 'event', 'document'])) {
+    $user = \Drupal::currentUser();
+    $update_access = gnode_node_access($node, 'update', $user);
+    $update_access = $update_access->isAllowed() || $update_access->isNeutral() ? TRUE : FALSE;
+
+    $delete_access = gnode_node_access($node, 'delete', $user);
+    $delete_access = $delete_access->isAllowed() || $delete_access->isNeutral() ? TRUE : FALSE;
+
+    $variables['contextual_link_access'] = $update_access || $delete_access;
   }
 }
 
@@ -187,32 +209,6 @@ function ample_preprocess_menu(&$variables, $hook) {
     $current_path = \Drupal::request()->getRequestUri();
     $items = &$variables['items'];
 
-    if ('country-menu' === $variables['menu_name']) {
-      foreach ($items as $key => $item) {
-        /* @var Url $url */
-        $url = $item['url'];
-        /* @var Group $group */
-        $group = \Drupal::routeMatch()->getParameter('group');
-
-        if ($url->isRouted() && !empty($group)) {
-          $route = $url->getRouteName();
-
-          switch ($route) {
-            case 'fake.current_group':
-              $items[$key]['url'] = Url::fromUri('internal:/group/' . $group->id());
-              break;
-
-            default:
-              $route_parameters = explode('.', $route);
-
-              if ('fake' === current($route_parameters)) {
-                $items[$key]['url'] = Url::fromUri('internal:/group/' . $group->id() . '/' . str_replace('_', '-', end($route_parameters)));
-              }
-          }
-        }
-      }
-    }
-
     foreach ($items as $key => $item) {
       // If path is current_path, set active to li.
       if ($item['url']->toString() == $current_path) {
@@ -220,5 +216,25 @@ function ample_preprocess_menu(&$variables, $hook) {
         $items[$key]['attributes']['class'] = 'active';
       }
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function ample_preprocess_block(&$variables) {
+  // Additional process for Custom block type.
+  switch ($variables['base_plugin_id']) {
+    case 'block_content':
+      // In case a BlockContent defined/available.
+      if (isset($variables['content']) && isset($variables['content']['#block_content'])) {
+        $content = &$variables['content'];
+        $block_content = &$content['#block_content'];
+
+        // Designed to invalidate cache on content of block was modified.
+        // Add a "block_content:<entity_id>" cache tag.
+        $variables['#cache']['tags'] = $block_content->getCacheTags();
+      }
+      break;
   }
 }

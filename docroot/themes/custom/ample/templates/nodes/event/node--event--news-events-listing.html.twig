@@ -1,0 +1,16 @@
+<div{{ attributes.addClass('item').addClass('event') }}>
+  {% if contextual_link_access %}
+    {{ title_suffix.contextual_links|render }}
+  {% endif %}
+  <a href="{{ url }}" rel="bookmark">
+    {% if content.field_image %}
+      {{ content.field_image|field_value }}
+    {% endif %}
+
+    <div class="post-info">
+      {{ content.field_date }}
+    </div>
+
+    <h2>{{ label }}</h2>
+  </a>
+</div>

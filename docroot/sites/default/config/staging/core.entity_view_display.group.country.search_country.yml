@@ -5,14 +5,17 @@ dependencies:
   config:
     - core.entity_view_mode.group.search_country
     - field.field.group.country.field_banner
+    - field.field.group.country.field_bottom_link
     - field.field.group.country.field_content
     - field.field.group.country.field_country_icon
     - field.field.group.country.field_country_options
+    - field.field.group.country.field_date
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
     - field.field.group.country.field_regions
     - field.field.group.country.field_summary
+    - field.field.group.country.field_time_line
     - group.type.country
   module:
     - entity_reference_revisions
@@ -29,6 +32,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
   field_infographic:
     type: entity_reference_revisions_entity_view
     weight: 1
@@ -37,6 +41,7 @@ content:
       view_mode: search_for_a_country
       link: ''
     third_party_settings: {  }
+    region: content
   field_regions:
     type: entity_reference_label
     weight: 2
@@ -44,15 +49,19 @@ content:
     settings:
       link: false
     third_party_settings: {  }
+    region: content
 hidden:
   changed: true
   created: true
   field_banner: true
+  field_bottom_link: true
   field_content: true
   field_country_options: true
+  field_date: true
   field_join_block: true
   field_location: true
   field_summary: true
+  field_time_line: true
   label: true
   langcode: true
   uid: true

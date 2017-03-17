@@ -1,0 +1,24 @@
+uuid: 26adb185-e18e-4943-8d26-ee95e928e50b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_disclose_your_personal_det
+  module:
+    - user
+id: user.user.field_disclose_your_personal_det
+field_name: field_disclose_your_personal_det
+entity_type: user
+bundle: user
+label: 'Disclose your personal details'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

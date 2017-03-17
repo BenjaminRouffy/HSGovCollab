@@ -33,26 +33,11 @@ process:
     default_value: facebook
 
   field_media: full_picture
-#  status:
-#    plugin: membercare_company
-#    method: existValidMembership
-#    source: company_id
-#
-#  field_company_interest:
-#    - plugin: membercare_company
-#      method: companyInterests
-#      source: company_id
-#    - plugin: migration
-#      migration: companies_interest_terms
-#
-#  'field_formatted_address/value':
-#    plugin: callback
-#    callable: nl2br
-#    source: formatted_address
-#
-#  'field_formatted_address/format':
-#    plugin: default_value
-#    default_value: basic_html
+
+  field_permalink_url:
+    plugin: callback
+    source: permalink_url
+    callable: html_entity_decode
 
 dependencies:
   enforced:

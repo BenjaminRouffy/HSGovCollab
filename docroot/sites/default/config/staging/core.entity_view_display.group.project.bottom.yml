@@ -7,6 +7,7 @@ dependencies:
     - field.field.group.project.field_content
     - field.field.group.project.field_date
     - field.field.group.project.field_join_block
+    - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
     - field.field.group.project.field_summary_public
     - field.field.group.project.field_time_line
@@ -26,12 +27,14 @@ content:
       link: ''
     third_party_settings: {  }
     type: Timeline_by_date
+    region: content
 hidden:
   changed: true
   created: true
   field_content: true
   field_date: true
   field_join_block: true
+  field_project_icon: true
   field_summary: true
   field_summary_public: true
   label: true

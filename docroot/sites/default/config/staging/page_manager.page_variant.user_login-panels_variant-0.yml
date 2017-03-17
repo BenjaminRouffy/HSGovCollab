@@ -1,0 +1,53 @@
+uuid: cffa9541-6cf1-48b9-be23-40a87f96d988
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.user_login
+  content:
+    - 'block_content:headline_description:218a77a4-abdd-4a87-a72a-b6e15920460c'
+  module:
+    - block_content
+    - panels
+    - user
+id: user_login-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    13fee4ec-35d5-4ab1-b36b-a893070d8315:
+      id: user_login_block
+      label: 'User login'
+      provider: user
+      label_display: '0'
+      region: content
+      weight: 1
+      uuid: 13fee4ec-35d5-4ab1-b36b-a893070d8315
+      context_mapping: {  }
+    ab444ed8-2dd4-4d84-ab49-ec9d522a5187:
+      id: 'block_content:218a77a4-abdd-4a87-a72a-b6e15920460c'
+      label: 'Log in'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: content
+      weight: 0
+      uuid: ab444ed8-2dd4-4d84-ab49-ec9d522a5187
+      context_mapping: {  }
+  id: panels_variant
+  uuid: d1bb8de6-b2b6-403d-954f-965018d95649
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: user_login-panels_variant-0
+  builder: standard
+page: user_login
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

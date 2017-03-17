@@ -9,9 +9,11 @@ dependencies:
     - field.field.node.news.field_category
     - field.field.node.news.field_content_date
     - field.field.node.news.field_content_paragraph
+    - field.field.node.news.field_documents
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_organization
+    - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
     - image
@@ -28,6 +30,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
+    region: content
   field_image:
     type: image
     weight: 0
@@ -36,12 +39,16 @@ content:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
+    region: content
 hidden:
+  addtoany: true
   body: true
   field_author: true
   field_content_date: true
   field_content_paragraph: true
+  field_documents: true
   field_join_block: true
   field_organization: true
+  field_related_content_selector: true
   langcode: true
   links: true

@@ -1,0 +1,20 @@
+uuid: 2dd36664-cedc-4cdc-a428-3e5936aca48d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_non_member_organization
+  module:
+    - user
+id: user.user.field_non_member_organization
+field_name: field_non_member_organization
+entity_type: user
+bundle: user
+label: 'Non-member organization'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

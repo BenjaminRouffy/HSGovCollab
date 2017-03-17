@@ -28,6 +28,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
   field_time_line:
     type: Timeline_by_date
     weight: 0
@@ -36,7 +37,9 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
 hidden:
+  addtoany: true
   field_author: true
   field_banner: true
   field_content_paragraph: true

@@ -1,6 +1,17 @@
 (function($, Drupal) {
   'use strict';
 
+  // Detect IE browser.
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+
+  if (msie > 0) {
+    $('body').addClass('ie ie' + parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+  }
+  else if (!!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+    $('body').addClass('ie ie11');
+  }
+
   Drupal.behaviors.accordionExposedFilter = {
     attach: function(context, settings) {
       var settings = jQuery.extend(true, settings, {
@@ -125,26 +136,26 @@
     }
   };
 
+  function showRelated() {
+    var $window = $(window);
+    var $document = $(document);
+    var scrollTop = $window.scrollTop();
+    var halfDocOffset = $document.height() / 2;
+    var halfWinOffset = $window.height() / 2;
+    var $relatedContent = $('.related-wrapper');
+
+    if ((scrollTop + halfWinOffset) > halfDocOffset) {
+      $relatedContent.addClass('visible');
+    } else {
+      $relatedContent.removeClass('visible');
+    }
+  }
+
   Drupal.behaviors.relatedContent = {
     attach: function(context, settings) {
       var $relatedContent = $('.related-wrapper', context);
 
       if ($relatedContent.length) {
-
-        function showRelated() {
-          var $window = $(window);
-          var $document = $(document);
-          var scrollTop = $window.scrollTop();
-          var halfDocOffset = $document.height() / 2;
-          var halfWinOffset = $window.height() / 2;
-
-          if ((scrollTop + halfWinOffset) > halfDocOffset) {
-            $relatedContent.addClass('visible');
-          } else {
-            $relatedContent.removeClass('visible');
-          }
-        }
-
         showRelated();
 
         $(window).scroll(function() {
@@ -327,15 +338,51 @@
 
   Drupal.behaviors.mobileMenu = {
     attach: function(context, settings) {
-      $('.mobile-menu-btn', context).on('click', function() {
-        $('body').toggleClass('no-scroll');
-        $(this).toggleClass('opened');
+      var mobileMenuBtn = $('.mobile-menu-btn', context);
+      var $body = $('body');
+
+      mobileMenuBtn.on('click', function() {
+        var $this = $(this);
+
+        $('.dashboard-sidebar').is('.expanded-menu') ? closeMobileMenu(context) : false;
+
+        if (!$this.is('.opened')) {
+          mobileMenuBtn.removeClass('opened');
+          $body.removeClass('no-scroll');
+        }
+
+        $body.toggleClass('no-scroll');
+        $this.toggleClass('opened');
       });
 
       $.resizeAction(function() {
-        return window.innerWidth <= 991;
+        return window.innerWidth >= 991;
       }, function(state) {
-        $('.mobile-menu-btn', context).removeClass('opened');
+        mobileMenuBtn.removeClass('opened');
+      });
+    }
+  };
+
+  function closeMobileMenu(context) {
+    $('body', context).removeClass('no-scroll');
+    $('.mobile-menu-btn', context).removeClass('opened');
+    $('.dashboard-sidebar', context).removeClass('expanded-menu');
+  }
+
+  Drupal.behaviors.sidebarMenud = {
+    attach: function(context, settings) {
+      var sidebarMenu = $('.dashboard-sidebar', context);
+
+      $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
+        $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
+
+        sidebarMenu.toggleClass('expanded-menu');
+      });
+
+      $.resizeAction(function() {
+        return window.innerWidth >= 767;
+      }, function(state) {
+        sidebarMenu.removeClass('expanded-menu');
       });
     }
   };

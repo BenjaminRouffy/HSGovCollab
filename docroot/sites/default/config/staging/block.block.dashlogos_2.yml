@@ -1,0 +1,47 @@
+uuid: c246f18b-df6c-403c-a2bb-5fb8bae3c908
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:header_logo:2b299f2d-1e36-420e-8953-0d42aaaf28cf'
+  module:
+    - admin_customizations
+    - block_content
+    - system
+    - user
+  theme:
+    - ample
+id: dashlogos_2
+theme: ample
+region: dashboard_sidebar
+weight: -13
+provider: null
+plugin: 'block_content:2b299f2d-1e36-420e-8953-0d42aaaf28cf'
+settings:
+  id: 'block_content:2b299f2d-1e36-420e-8953-0d42aaaf28cf'
+  label: 'Dashboard Logos'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: dashboard_logo
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

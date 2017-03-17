@@ -12,7 +12,7 @@ dependencies:
 id: usermenu_2
 theme: ample
 region: header_static
-weight: -7
+weight: -6
 provider: null
 plugin: 'system_menu_block:user-menu'
 settings:
@@ -29,4 +29,9 @@ visibility:
     code:
       403: '403'
       404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: true
     context_mapping: {  }

@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.custom_content
     - paragraphs.paragraphs_type.exist_content
     - paragraphs.paragraphs_type.time_line
+    - paragraphs.paragraphs_type.timeline_social
   module:
     - entity_reference_revisions
 id: paragraph.time_line.field_time_line_item
@@ -27,6 +28,7 @@ settings:
       exist_content: exist_content
       custom_content: custom_content
       country_and_project: country_and_project
+      timeline_social: timeline_social
     target_bundles_drag_drop:
       time_line:
         weight: -19
@@ -61,6 +63,12 @@ settings:
       country_option:
         weight: 18
         enabled: false
+      timeline_social:
+        enabled: true
+        weight: 19
+      cd_user:
+        weight: 20
+        enabled: false
       infographic_item:
         weight: 22
         enabled: false
@@ -69,5 +77,11 @@ settings:
         enabled: false
       slider_item:
         weight: 26
+        enabled: false
+      file:
+        weight: 27
+        enabled: false
+      link_to_file:
+        weight: 31
         enabled: false
 field_type: entity_reference_revisions

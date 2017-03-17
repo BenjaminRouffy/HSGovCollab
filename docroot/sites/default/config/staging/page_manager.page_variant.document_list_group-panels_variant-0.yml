@@ -9,6 +9,7 @@ dependencies:
     - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
   module:
     - block_content
+    - group
     - panels
     - views
 id: document_list_group-panels_variant-0
@@ -51,6 +52,14 @@ variant_settings:
   builder: standard
 page: document_list_group
 weight: 0
-selection_criteria: {  }
+selection_criteria:
+  -
+    id: group_type
+    group_types:
+      country: country
+      project: project
+    negate: 0
+    context_mapping:
+      group: group
 selection_logic: and
 static_context: {  }

@@ -7,6 +7,7 @@ dependencies:
   module:
     - admin_customizations
     - block_content
+    - system
   theme:
     - ample
 id: membericons_4
@@ -30,4 +31,9 @@ visibility:
     code:
       403: '403'
       404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: true
     context_mapping: {  }

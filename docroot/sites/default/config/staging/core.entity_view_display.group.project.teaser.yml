@@ -7,17 +7,28 @@ dependencies:
     - field.field.group.project.field_content
     - field.field.group.project.field_date
     - field.field.group.project.field_join_block
+    - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
     - field.field.group.project.field_summary_public
     - field.field.group.project.field_time_line
     - group.type.project
   module:
+    - image
     - text
 id: group.project.teaser
 targetEntityType: group
 bundle: project
 mode: teaser
 content:
+  field_project_icon:
+    type: image
+    weight: 3
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    region: content
   field_summary:
     weight: 1
     label: hidden
@@ -25,6 +36,7 @@ content:
       trim_length: 300
     third_party_settings: {  }
     type: text_trimmed
+    region: content
   field_summary_public:
     type: text_trimmed
     weight: 2
@@ -32,6 +44,7 @@ content:
     settings:
       trim_length: 300
     third_party_settings: {  }
+    region: content
   label:
     label: hidden
     type: string
@@ -39,6 +52,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
 hidden:
   changed: true
   created: true

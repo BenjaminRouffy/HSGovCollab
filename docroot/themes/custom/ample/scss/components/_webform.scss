@@ -77,6 +77,10 @@ form {
   }
 }
 
+:-ms-input-placeholder {
+  color: #999 !important;
+}
+
 .form-textarea {
   @extend .form-text;
   height: auto;
@@ -106,6 +110,10 @@ form {
   padding: 1px 12px;
   width: 100%;
 
+  &::-ms-expand {
+    display: none;
+  }
+
   &:hover {
     box-shadow: none;
   }
@@ -113,6 +121,21 @@ form {
   &:focus {
     border-color: #3898EC;
     outline: none;
+  }
+}
+
+.ie9 {
+  .select-wrapper {
+    background: $white-dark url(../images/select-arrows.png) right center no-repeat;
+    border: 1px solid #75a8c0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .form-select {
+    background: transparent;
+    border: none;
+    width: calc(100% + 35px);
   }
 }
 
@@ -138,13 +161,67 @@ form {
 
 // Form wrappers
 .user-login-form {
-  overflow: hidden;
-  margin: 40px auto 15px;
-  padding: 20px 40px;
-  max-width: 50%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  margin: 0 auto 40px;
+  max-width: 1160px;
+  padding: 0 20px;
 
-  .form-submit {
-    float: right;
+  .social_login {
+    margin: 40px 0 0 !important;
+    padding: 0 40px;
+    width: 50%;
+  }
+
+  .login-wrapper {
+    margin-top: 40px;
+    width: 50%;
+  }
+
+  a {
+    @include font-size(14);
+    color: $red;
+    display: inline-block;
+    font-family: $fira;
+    margin: 0 20px 5px 0;
+    text-decoration: none;
+    vertical-align: top;
+
+    &:hover {
+      color: $red-dark;
+    }
+  }
+
+  .form-actions {
+    margin-top: 20px;
+  }
+}
+
+@include breakpoint-for('.user-login-form', (to: laptop-small)) {
+  .social_login {
+    padding: 0 20px;
+  }
+}
+
+@include breakpoint-for('.user-login-form', (to: tablet)) {
+  flex-direction: column-reverse;
+  padding: 0;
+
+  .social_login,
+  .login-wrapper {
+    width: 100%;
+  }
+
+  .login-wrapper {
+    padding: 0 10px;
+  }
+}
+
+@include breakpoint-for('.user-login-form', (to: mobileL)) {
+  .social_login,
+  .login-wrapper {
+    padding: 0;
   }
 }
 
@@ -152,6 +229,17 @@ form {
 .form-contact-us {
   display: flex;
   flex-wrap: wrap;
+
+  .ie9 & {
+    display: block;
+    flex: none;
+    overflow: hidden;
+
+    .webform-left-column,
+    .webform-right-column {
+      float: left;
+    }
+  }
 
   .webform-left-column,
   .webform-right-column {
@@ -191,7 +279,6 @@ form {
     }
 
     a {
-      color: $navy-dark;
       transition: color .2s ease;
 
       &:hover {
@@ -273,4 +360,230 @@ form {
   .form-actions {
     width: 100%;
   }
+}
+
+.view-project {
+  form {
+    max-width: 40%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .form-text {
+    border-color: rgba($navy-dark, .32);
+    padding-right: 60px;
+
+    &:focus {
+      border-color: rgba(#3898EC, .32);
+    }
+  }
+
+  .form-submit {
+    background: url(../images/magnifying-glass.svg) center no-repeat;
+    background-size: 20px 20px;
+    border: none;
+    height: 50px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-indent: -9999px;
+    transition: transform .1s ease;
+    width: 60px;
+
+    &:hover {
+      border: none;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.user-register-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+  .social_login,
+  .login-wrapper {
+    width: 50%;
+  }
+
+  .social_login {
+    margin: 0 !important;
+    padding: 0 40px;
+    overflow: hidden;
+  }
+
+  #title-wrapper {
+    overflow: hidden;
+  }
+
+  .field--name-field-person-titles,
+  .field--name-field-organisation {
+    float: left;
+    margin-bottom: 40px;
+  }
+
+  .field--name-field-person-titles {
+    width: 33.33%;
+  }
+
+  .field--name-field-organisation {
+    padding-left: 20px;
+    width: 66.64%;
+  }
+
+  label {
+    display: inline-block;
+    vertical-align: top;
+
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
+      }
+    }
+  }
+
+  .js-form-type-checkbox {
+    margin-bottom: 10px;
+
+    label {
+      @include font-size(15.4);
+      font-family: $fira;
+      margin: 5px 0 0 5px;
+
+      &:after {
+        content: none;
+      }
+    }
+  }
+
+  .js-form-type-email-confirm,
+  .captcha {
+    margin: 20px 0;
+  }
+
+  .form-actions {
+    margin: 30px auto 0;
+    text-align: center;
+    width: 50%;
+  }
+}
+
+@include breakpoint-for('.user-register-form', (to: laptop-small)) {
+  .social_login,
+  .login-wrapper {
+    padding: 0 20px;
+  }
+
+  .field--name-field-person-titles,
+  .field--name-field-organisation {
+    float: none;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@include breakpoint-for('.user-register-form', (to: tablet)) {
+  flex-direction: column;
+
+  .social_login,
+  .login-wrapper {
+    width: 100%;
+  }
+
+  .login-wrapper {
+    padding: 0 10px;
+  }
+}
+
+.user-onetime-form {
+  #fields-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #edit-account,
+  #catagories-wrapper {
+    padding: 10px;
+    width: 50%;
+  }
+
+  .content-with-sidebar & {
+    .content {
+      float: none;
+
+      em {
+        @include font-size(22.4);
+        color: $navy;
+        display: inline-block;
+        font-style: normal;
+        line-height: 31px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .form-actions {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .form-submit {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+@include breakpoint-for('.user-onetime-form', (to: tablet)) {
+  #edit-account {
+    padding-left: 0;
+  }
+
+  #catagories-wrapper {
+    padding-right: 0;
+  }
+}
+
+@include breakpoint-for('.user-onetime-form', (to: mobileL)) {
+  #edit-account {
+    margin-bottom: 45px;
+  }
+
+  #edit-account,
+  #catagories-wrapper {
+    padding: 10px 0;
+    width: 100%;
+  }
+}
+
+.user-pass {
+  margin: 0 auto 15px;
+  padding: 20px 40px;
+  width: 50%;
+
+  .captcha {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  .form-actions {
+    margin-top: 25px;
+    text-align: center;
+  }
+}
+
+@include breakpoint-for('.user-pass', (to: laptop-small)) {
+  padding: 20px;
+}
+
+@include breakpoint-for('.user-pass', (to: tablet)) {
+  padding: 20px 10px;
+  width: 100%;
 }

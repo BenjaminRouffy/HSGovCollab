@@ -1,0 +1,21 @@
+<div{{ attributes.addClass('item').addClass('social') }}>
+  {{ title_suffix.contextual_links|render }}
+  <a target="_blank" href="{{ content.field_permalink_url|field_value }}" rel="bookmark">
+    <div class="font-social-icon {{ content.field_social_type|render|striptags|trim }}-icon">
+      <span></span>
+    </div>
+    {% if content.field_media|field_value %}
+      <div class="image-wrapper">
+        <img src="{{ content.field_media|field_value }}" />
+      </div>
+    {% endif %}
+
+    {% if display_submitted %}
+      <div class="post-info">
+        <time datetime="{{ node.createdtime | date("Y-m-d") }}">{{ node.createdtime | format_date('time_line') }}</time>
+      </div>
+    {% endif %}
+
+    <div class="teaser-text">{{ label }}</div>
+  </a>
+</div>

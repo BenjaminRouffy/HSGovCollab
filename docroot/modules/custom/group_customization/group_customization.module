@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function group_customization_preprocess_html(array &$variables) {
+  // Add class to body by group context.
+  if (($group = \Drupal::routeMatch()->getParameter('group')) && $group->id()) {
+    $variables['attributes']['class'][] = 'group-' . $group->bundle();
+  }
+}

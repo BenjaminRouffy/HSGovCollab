@@ -1,0 +1,166 @@
+uuid: 82f10fbf-14c0-43b7-876a-e33ced5d06c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.register
+    - field.field.user.user.field_accept_term_conditions
+    - field.field.user.user.field_avatar
+    - field.field.user.user.field_category
+    - field.field.user.user.field_country
+    - field.field.user.user.field_country_manager
+    - field.field.user.user.field_disclose_your_personal_det
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_job_title
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_middle_name
+    - field.field.user.user.field_non_member_organization
+    - field.field.user.user.field_organisation
+    - field.field.user.user.field_person_titles
+    - field.field.user.user.field_project_manager
+    - field.field.user.user.field_regions
+  module:
+    - field_group
+    - user
+third_party_settings:
+  field_group:
+    group_right:
+      children:
+        - group_title_wrapper
+        - field_non_member_organization
+        - field_first_name
+        - field_middle_name
+        - field_last_name
+        - field_job_title
+        - account
+        - captcha
+        - field_accept_term_conditions
+        - field_disclose_your_personal_det
+      parent_name: ''
+      weight: 10
+      format_type: html_element
+      format_settings:
+        label: Right
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+        id: right
+        classes: ''
+      label: Right
+    group_title_wrapper:
+      children:
+        - field_person_titles
+        - field_organisation
+      parent_name: group_right
+      weight: 20
+      format_type: html_element
+      format_settings:
+        label: 'Title Wrapper'
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+        id: title-wrapper
+        classes: ''
+      label: 'Title Wrapper'
+id: user.user.register
+targetEntityType: user
+bundle: user
+mode: register
+content:
+  account:
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  captcha:
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_accept_term_conditions:
+    type: boolean_checkbox
+    weight: 28
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_disclose_your_personal_det:
+    type: boolean_checkbox
+    weight: 29
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_first_name:
+    type: string_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Please enter your name'
+    third_party_settings: {  }
+  field_job_title:
+    type: string_textfield
+    weight: 25
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Please enter your job title'
+    third_party_settings: {  }
+  field_last_name:
+    type: string_textfield
+    weight: 24
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Please enter your last name'
+    third_party_settings: {  }
+  field_middle_name:
+    type: string_textfield
+    weight: 23
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Please enter your middle name'
+    third_party_settings: {  }
+  field_non_member_organization:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_organisation:
+    type: options_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_person_titles:
+    type: options_select
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  contact: true
+  field_avatar: true
+  field_category: true
+  field_country: true
+  field_country_manager: true
+  field_project_manager: true
+  field_regions: true
+  info_block: true
+  langcode: true
+  language: true
+  path: true
+  timezone: true

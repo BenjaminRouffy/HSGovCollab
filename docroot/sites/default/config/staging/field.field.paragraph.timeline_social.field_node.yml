@@ -1,0 +1,25 @@
+uuid: 65f4005e-b521-4786-b776-504ba85c3540
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_node
+    - paragraphs.paragraphs_type.timeline_social
+id: paragraph.timeline_social.field_node
+field_name: field_node
+entity_type: paragraph
+bundle: timeline_social
+label: Content
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: content_reference
+      display_name: timeline_social_content_reference
+      arguments: {  }
+field_type: entity_reference

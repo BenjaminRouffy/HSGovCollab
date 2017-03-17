@@ -1,0 +1,53 @@
+uuid: e4929d3d-815b-4fee-8540-045a5e3b0da5
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.sign_up
+  content:
+    - 'block_content:headline_description:d2761cbe-44cd-4f2d-9d67-ab130cb27db9'
+  module:
+    - block_content
+    - panels
+    - user
+id: sign_up-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    268b2c9e-270d-4262-aeb6-d94edef0bc1d:
+      id: formblock_user_register
+      label: 'User registration form'
+      provider: user
+      label_display: '0'
+      region: content
+      weight: 1
+      uuid: 268b2c9e-270d-4262-aeb6-d94edef0bc1d
+      context_mapping: {  }
+    a3c62184-a2f2-4dbe-ba44-67472c4e546a:
+      id: 'block_content:d2761cbe-44cd-4f2d-9d67-ab130cb27db9'
+      label: 'Sign up. Join the network'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: content
+      weight: 0
+      uuid: a3c62184-a2f2-4dbe-ba44-67472c4e546a
+      context_mapping: {  }
+  id: panels_variant
+  uuid: ab830694-550b-4261-abe1-7841ac106900
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: sign_up-panels_variant-0
+  builder: standard
+page: sign_up
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

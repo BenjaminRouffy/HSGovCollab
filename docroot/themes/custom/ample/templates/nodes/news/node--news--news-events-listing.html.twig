@@ -1,0 +1,24 @@
+<div{{ attributes.addClass('item').addClass('news') }}>
+  {% if contextual_link_access %}
+    {{ title_suffix.contextual_links|render }}
+  {% endif %}
+  <a href="{{ url }}" rel="bookmark">
+    {% if content.field_image %}
+      <div class="image-wrapper">
+        {{ content.field_image|field_value }}
+      </div>
+    {% endif %}
+
+    {% if display_submitted %}
+      <div class="post-info">
+        {% set datetime = node.field_content_date.value | date("U") %}
+        <time datetime="{{ datetime | date("Y-m-d") }}">{{ datetime | format_date('time_line') }}</time>
+        {% if content.field_category|field_value %}
+          <span class="country">{% trans %} {% endtrans %} {{ content.field_category|field_value}}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <h2>{{ label }}</h2>
+  </a>
+</div>

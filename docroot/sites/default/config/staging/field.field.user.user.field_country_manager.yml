@@ -1,0 +1,23 @@
+uuid: 60e4fab3-83c9-4841-85df-de5dab6a1a11
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_country_manager
+  module:
+    - group_content_field
+    - user
+id: user.user.field_country_manager
+field_name: field_country_manager
+entity_type: user
+bundle: user
+label: 'Country manager'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

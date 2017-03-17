@@ -1,0 +1,53 @@
+uuid: a809b462-aa9e-4775-841c-5ce1c87e6933
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.sign_up_confirmation
+  content:
+    - 'block_content:headline_description:9d130b46-a0fb-4f00-bdf9-22f526a55f4c'
+  module:
+    - block_content
+    - panels
+    - user
+id: sign_up_confirmation-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    921f7ce3-cb42-4a29-9f8c-633e45ce5252:
+      id: formblock_user_onetime
+      label: 'User onetime form'
+      provider: user
+      label_display: '0'
+      region: content
+      weight: 1
+      uuid: 921f7ce3-cb42-4a29-9f8c-633e45ce5252
+      context_mapping: {  }
+    d413d17c-b98b-481d-b06a-21d832230c2c:
+      id: 'block_content:9d130b46-a0fb-4f00-bdf9-22f526a55f4c'
+      label: 'Welcome to the P4H platform'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: content
+      weight: 0
+      uuid: d413d17c-b98b-481d-b06a-21d832230c2c
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 7699ba8b-caad-40b2-9246-60c784a0e969
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: sign_up_confirmation-panels_variant-0
+  builder: standard
+page: sign_up_confirmation
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

@@ -32,6 +32,7 @@ content:
       view_mode: private_content
       link: ''
     third_party_settings: {  }
+    region: content
   field_infographic:
     type: entity_reference_revisions_entity_view
     weight: 2
@@ -40,12 +41,14 @@ content:
       view_mode: private_content
       link: ''
     third_party_settings: {  }
+    region: content
   field_summary:
     weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
 hidden:
   changed: true
   created: true

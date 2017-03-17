@@ -5,7 +5,15 @@
     {% endif %}
 
     {% if content.field_header_fixed_logo %}
-      {{ content.field_header_fixed_logo|field_value }}
+      <span class="dashboard-logo small">
+        {{ content.field_header_fixed_logo|field_value }}
+      </span>
+    {% endif %}
+
+    {% if content.field_dashboard_logo %}
+      <span class="dashboard-logo big">
+        {{ content.field_dashboard_logo|field_value }}
+      </span>
     {% endif %}
   </a>
 </div>

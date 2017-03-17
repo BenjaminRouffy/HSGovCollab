@@ -1,0 +1,14 @@
+uuid: 7e4e18b8-c244-4158-8708-36cf6529d4cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.specific_users
+  module:
+    - user
+id: user_remove_role_action.specific_users
+label: 'Remove the Specific users role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: specific_users

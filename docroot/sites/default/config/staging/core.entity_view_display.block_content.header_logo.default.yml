@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.header_logo
+    - field.field.block_content.header_logo.field_dashboard_logo
     - field.field.block_content.header_logo.field_header_fixed_logo
     - field.field.block_content.header_logo.field_header_logo_link
     - field.field.block_content.header_logo.field_header_static_logo
@@ -23,6 +24,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
   field_header_logo_link:
     weight: 1
     label: hidden
@@ -34,6 +36,8 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
 hidden:
+  field_dashboard_logo: true
   field_header_static_logo: true
   langcode: true

@@ -8,6 +8,8 @@ module:
   block_page_layout: 0
   breakpoint: 0
   captcha: 0
+  chosen: 0
+  chosen_lib: 0
   ckeditor: 0
   clientside_validation: 0
   clientside_validation_jquery: 0
@@ -39,9 +41,12 @@ module:
   dropzonejs_eb_widget: 0
   dynamic_page_cache: 0
   editor: 0
+  email_confirm: 0
+  email_registration: 0
   embed: 0
   entity_browser: 0
   entity_embed: 0
+  entity_legal: 0
   entity_reference_revisions: 0
   events: 0
   field: 0
@@ -52,10 +57,14 @@ module:
   file_browser: 0
   file_entity: 0
   filter: 0
+  form_mode_manager: 0
+  formblock: 0
   geolocation: 0
   gnode: 0
   grolesync: 0
   group: 0
+  group_content_field: 0
+  group_customization: 0
   group_dashboard: 0
   help: 0
   history: 0
@@ -66,7 +75,11 @@ module:
   link: 0
   linkit: 0
   locale: 0
+  mailsystem: 0
+  masquerade: 0
   members: 0
+  menu_item_visibility: 0
+  menu_link_attributes: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
@@ -77,6 +90,7 @@ module:
   migrate_social: 0
   migrate_social_implementation: 0
   migrate_tools: 0
+  mimemail: 0
   node: 0
   options: 0
   p4h_svg_formatter: 0
@@ -91,6 +105,7 @@ module:
   prev_next_access: 0
   quickedit: 0
   rdf: 0
+  realname: 0
   recaptcha: 0
   rel_content: 0
   rest: 0
@@ -101,6 +116,8 @@ module:
   search: 0
   serialization: 0
   shortcut: 0
+  smtp: 0
+  social_login: 0
   stage_file_proxy: 0
   system: 0
   taxonomy: 0
@@ -113,10 +130,11 @@ module:
   twig_xdebug: 0
   update: 0
   user: 0
+  user_invitation: 0
   video_embed_field: 0
   view_mode_selector: 0
-  views_geojson: 0
   views_default_arguments: 0
+  views_geojson: 0
   views_ui: 0
   webform: 0
   webform_ui: 0
@@ -124,6 +142,7 @@ module:
   pathauto: 1
   content_translation: 10
   ggroup: 10
+  user_registration: 10
   views: 10
   pp: 1000
 theme:

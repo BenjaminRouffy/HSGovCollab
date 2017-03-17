@@ -588,3 +588,63 @@ function deployment_update_8033() {
 function deployment_update_8034() {
   \Drupal::service('module_installer')->install(['views_default_arguments']);
 }
+
+/**
+ * Remove image field.
+ */
+function deployment_update_8035() {
+  deployment_delete_fields('node', 'social', ['field_image']);
+  field_purge_batch(500);
+}
+
+/**
+ * Enable Global Tag module.
+ */
+function deployment_update_8036() {
+  // Lets this update here for backward compatibility,
+  // the global tag module has been reverted.
+}
+
+/**
+ * Install module "Block permissions".
+ */
+function deployment_update_8037() {
+  \Drupal::service('module_installer')->install(['block_permissions']);
+}
+
+/**
+ * Install module "Block permissions".
+ */
+function deployment_update_8038() {
+  \Drupal::service('module_installer')->install(['group_customization']);
+}
+
+/**
+ * Install module "Registration page".
+ */
+function deployment_update_8039() {
+  \Drupal::service('module_installer')->install([
+    'email_confirm',
+    'form_mode_manager',
+    'formblock',
+    'social_login',
+    'user_registration',
+    'email_registration',
+  ]);
+}
+
+/**
+ * Add view "Content" to Groups admin page.
+ */
+function deployment_update_8040() {
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'views.view.content',
+  ]);
+}
+
+/**
+ * Install module "Entity legal".
+ */
+function deployment_update_8041() {
+  \Drupal::service('module_installer')->install(['entity_legal']);
+}

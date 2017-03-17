@@ -9,6 +9,7 @@ dependencies:
     - ctools
     - ctools_block
     - panels
+    - user
     - views
 id: group-panels_variant-1
 label: Project
@@ -85,5 +86,12 @@ selection_criteria:
     negate: false
     context_mapping:
       group: group
+  -
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: true
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

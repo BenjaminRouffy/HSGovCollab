@@ -1,8 +1,13 @@
 .main-wrapper {
   box-shadow: inset 0 0 8px rgba($black, .11);
+  min-height: calc(100% - 196px);
   overflow-x: hidden;
 
-  body:not(.who):not(.news-and-events):not(.where):not(.group):not(.front) & {
+  .user & {
+    min-height: calc(100% - 316px);
+  }
+
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.front) & {
     background: $white;
   }
 

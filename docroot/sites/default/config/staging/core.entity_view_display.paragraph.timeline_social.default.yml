@@ -1,0 +1,24 @@
+uuid: 6e787e62-9cb6-4407-a623-1c003f6a04af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_social.field_node
+    - paragraphs.paragraphs_type.timeline_social
+id: paragraph.timeline_social.default
+targetEntityType: paragraph
+bundle: timeline_social
+mode: default
+content:
+  field_node:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: time_line
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  created: true
+  uid: true

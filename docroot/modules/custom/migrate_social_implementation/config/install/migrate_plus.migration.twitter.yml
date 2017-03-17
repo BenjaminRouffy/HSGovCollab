@@ -47,6 +47,18 @@ process:
         - media
         - media_url
 
+  # TODO Temp value to insert it with @ below, may be can do it better.
+  temp_twitter_link:
+    - plugin: default_value
+      default_value: 'https://twitter.com/statuses/'
+
+  field_permalink_url:
+    - plugin: get
+      source:
+        - '@temp_twitter_link'
+        - id_str
+    - plugin: concat
+
 dependencies:
   enforced:
     module:

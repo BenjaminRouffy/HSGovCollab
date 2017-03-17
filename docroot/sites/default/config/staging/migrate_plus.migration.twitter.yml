@@ -44,6 +44,18 @@ process:
         - media
         - media
         - media_url
+  temp_twitter_link:
+    -
+      plugin: default_value
+      default_value: 'https://twitter.com/statuses/'
+  field_permalink_url:
+    -
+      plugin: get
+      source:
+        - '@temp_twitter_link'
+        - id_str
+    -
+      plugin: concat
 destination:
   plugin: 'entity:node'
 migration_dependencies: null

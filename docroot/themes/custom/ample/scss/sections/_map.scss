@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+@include breakpoint-for('#map', (to: tablet)) {
+  height: 600px;
+}
+
 .marker-info {
   background: rgba($red, .93);
   color: $white;
@@ -58,6 +62,10 @@
 
     > div {
       width: 50%;
+
+      .ie & {
+        float: left;
+      }
     }
   }
 

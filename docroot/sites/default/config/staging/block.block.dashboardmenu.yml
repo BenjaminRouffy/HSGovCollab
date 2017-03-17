@@ -1,0 +1,45 @@
+uuid: 380585be-1cee-4a2a-b121-0de3aba5c0b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.dashboard-menu
+  module:
+    - admin_customizations
+    - system
+    - user
+  theme:
+    - ample
+id: dashboardmenu
+theme: ample
+region: dashboard_sidebar
+weight: 0
+provider: null
+plugin: 'system_menu_block:dashboard-menu'
+settings:
+  id: 'system_menu_block:dashboard-menu'
+  label: 'Dashboard menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

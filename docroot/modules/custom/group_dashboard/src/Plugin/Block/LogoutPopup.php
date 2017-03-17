@@ -27,7 +27,7 @@ class LogoutPopup extends BlockBase {
 
     $form['header'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Message'),
+      '#title' => $this->t('Header'),
       '#default_value' => isset($config['header']) ? $config['header'] : '',
       '#required' => TRUE,
     ];

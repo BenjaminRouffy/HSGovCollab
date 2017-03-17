@@ -188,3 +188,15 @@ function user_registration_preprocess_input(&$variables, $hook) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function user_registration_preprocess_block(&$variables) {
+  if(isset($variables['base_plugin_id']) && $variables['base_plugin_id'] == 'user_login_block') {
+    // @TODO Looks like it is core code bug. UselLoginBlock class has hard coding of destination. It is not allowed any changes on submitting alter etc.
+    $redirect = new Url('<current>');
+    // Redirect string will contain a current path, but without destination query.
+    $variables['content']['user_login_form']['#action'] = $redirect->toString();
+  }
+}

@@ -5,7 +5,6 @@ dependencies:
   module:
     - admin_customizations
     - group_dashboard
-    - language
   theme:
     - ample
 id: logoutpopup
@@ -16,13 +15,13 @@ provider: null
 plugin: logout_popup
 settings:
   id: logout_popup
-  label: 'Logout popup (EN)'
+  label: 'Logout popup'
   provider: group_dashboard
   label_display: '0'
+  header: 'You are going to the public website'
   message: 'You will be logout. Do you want to proceed?'
   continue: Continue
   cancel: Cancel
-  header: 'You are going to the public website'
 visibility:
   http_status:
     id: http_status
@@ -36,10 +35,3 @@ visibility:
     negate: true
     context_mapping:
       user: '@user.current_user_context:current_user'
-  language:
-    id: language
-    langcodes:
-      en: en
-    negate: false
-    context_mapping:
-      language: '@language.current_language_context:language_content'

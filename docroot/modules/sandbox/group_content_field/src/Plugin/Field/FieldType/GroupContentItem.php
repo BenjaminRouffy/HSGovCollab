@@ -33,24 +33,25 @@ class GroupContentItem extends FieldItemBase {
   protected $membershipsValues = [];
 
   /**
-   * {@inheritdoc}
+   * @inheritdoc
+   *
+   * TODO Values from DB its to easy for us.
    */
-  public function setValue($values, $notify = TRUE) {
-    // TODO Values from DB its to easy for us.
+  public function getValue() {
     $parent_entity = $this->getParent()->getParent()->getValue();
 
-    if (!empty($parent_entity->id()) && empty($values['from_widget'])) {
+    if (!empty($parent_entity->id()) && empty($this->values['from_widget'])) {
       $membership_loader = \Drupal::service('group.membership_loader');
       $memberships = $membership_loader->loadByUser($parent_entity, [$this->getSetting('gid')]);
 
-      $values['entity_gids'] = [];
+      $this->values['entity_gids'] = [];
       foreach ($memberships as $membership) {
-        $values['entity_gids'][] = $membership->getGroup()->id();
+        $this->values['entity_gids'][] = $membership->getGroup()->id();
       }
-      $this->membershipsValues = $values['entity_gids'];
+      $this->membershipsValues = $this->values['entity_gids'];
     }
 
-    parent::setValue($values, $notify);
+    return parent::getValue();
   }
 
   /**

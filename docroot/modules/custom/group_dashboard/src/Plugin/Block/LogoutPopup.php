@@ -20,35 +20,43 @@ class LogoutPopup extends BlockBase {
   /**
    * {@inheritdoc}
    */
+  public function defaultConfiguration() {
+    return array(
+      'header' => '',
+      'message' => '',
+      'continue' => $this->t('Continue'),
+      'cancel' => $this->t('Cancel'),
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function blockForm($form, FormStateInterface $form_state) {
-    $form = parent::blockForm($form, $form_state);
-
-    $config = $this->getConfiguration();
-
     $form['header'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Header'),
-      '#default_value' => isset($config['header']) ? $config['header'] : '',
+      '#default_value' => $this->configuration['header'],
       '#required' => TRUE,
     ];
 
     $form['message'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Message'),
-      '#default_value' => isset($config['message']) ? $config['message'] : '',
+      '#default_value' => $this->configuration['message'],
       '#required' => TRUE,
     ];
 
     $form['continue'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Text for "Yes" button'),
-      '#default_value' => isset($config['continue']) ? $config['continue'] : 'Continue',
+      '#default_value' => $this->configuration['continue'],
     ];
 
     $form['cancel'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Text for "No" button'),
-      '#default_value' => isset($config['cancel']) ? $config['cancel'] : 'Cancel',
+      '#default_value' => $this->configuration['cancel'],
     ];
 
     return $form;
@@ -60,8 +68,8 @@ class LogoutPopup extends BlockBase {
   public function blockSubmit($form, FormStateInterface $form_state) {
     $this->setConfigurationValue('header', $form_state->getValue('header'));
     $this->setConfigurationValue('message', $form_state->getValue('message'));
-    $this->setConfigurationValue('continue', $form_state->getValue('continue', 'Continue'));
-    $this->setConfigurationValue('cancel', $form_state->getValue('cancel', 'Cancel'));
+    $this->setConfigurationValue('continue', $form_state->getValue('continue'));
+    $this->setConfigurationValue('cancel', $form_state->getValue('cancel'));
   }
 
   /**

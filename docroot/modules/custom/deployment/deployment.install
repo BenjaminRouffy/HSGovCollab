@@ -648,3 +648,10 @@ function deployment_update_8040() {
 function deployment_update_8041() {
   \Drupal::service('module_installer')->install(['entity_legal']);
 }
+
+/**
+ * Install module "Form alter service".
+ */
+function deployment_update_8042() {
+  \Drupal::service('module_installer')->install(['form_alter_service']);
+}

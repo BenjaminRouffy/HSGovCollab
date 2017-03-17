@@ -21,12 +21,12 @@ class LogoutPopup extends BlockBase {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return array(
+    return [
       'header' => '',
       'message' => '',
       'continue' => $this->t('Continue'),
       'cancel' => $this->t('Cancel'),
-    );
+    ];
   }
 
   /**

@@ -5,6 +5,7 @@ dependencies:
   config:
     - page_manager.page.node_view
     - views.view.news_events_sidebar
+    - views.view.social_recent
   module:
     - ctools
     - ctools_block
@@ -75,6 +76,17 @@ variant_settings:
       region: right
       weight: 0
       uuid: 1eb2f149-ccb5-41a1-8e20-0f1374bdeee0
+      context_mapping: {  }
+    8505520c-7a72-4eba-ba29-91231634c99d:
+      id: 'views_block:social_recent-block_1'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: right
+      weight: 0
+      uuid: 8505520c-7a72-4eba-ba29-91231634c99d
       context_mapping: {  }
   id: panels_variant
   uuid: a4e95dba-bbbc-4daa-86e1-f8c74bfc1868

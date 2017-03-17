@@ -42,6 +42,9 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  masquerade:
+    weight: 50
+    region: content
 hidden:
   field_accept_term_conditions: true
   field_avatar: true

@@ -287,7 +287,7 @@
         var sliderCurrentIndex = $slider.find('.active').index();
         var thumbCurrentIndex = $thumbs.find('.current').index();
 
-        $('#slider-overlay').fadeToggle(300);
+        $('#overlay').fadeToggle(300);
         $this.parent($('.slider-main')).toggleClass('fixed');
         $('body').toggleClass('no-scroll');
 

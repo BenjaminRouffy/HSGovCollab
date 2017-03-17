@@ -587,3 +587,42 @@ form {
   padding: 20px 10px;
   width: 100%;
 }
+
+.entity-legal-document-acceptance-form {
+  margin: 0 auto 50px;
+  max-width: 1160px;
+
+  > .form-item {
+    margin: 0 auto;
+    padding-top: 25px;
+    width: 66.64%;
+  }
+
+  .form-checkbox {
+    margin-right: 5px;
+
+    ~ label {
+      display: inline-block;
+      vertical-align: top;
+
+      &.error {
+        right: auto;
+        left: 0;
+      }
+    }
+  }
+
+  .form-submit {
+    margin-top: 30px;
+  }
+}
+
+@include breakpoint-for('.entity-legal-document-acceptance-form', (to: laptop-small)) {
+  padding: 0 20px;
+}
+
+@include breakpoint-for('.entity-legal-document-acceptance-form', (to: tablet)) {
+  > .form-item {
+    width: 100%;
+  }
+}

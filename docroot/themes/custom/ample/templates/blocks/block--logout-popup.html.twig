@@ -1,0 +1,18 @@
+<div class="popup-wrapper logout-popup">
+  <h1 role="heading">
+    {{ configuration.header }}
+  </h1>
+  <div class="line"></div>
+
+  <p>
+    {{ configuration.message }}
+  </p>
+
+  <a href="{{ url('user.logout') }}" class="logout-link">
+    {{ configuration.continue }}
+  </a>
+
+  <a href="#" class="cancel-link">
+    {{ configuration.cancel }}
+  </a>
+</div>

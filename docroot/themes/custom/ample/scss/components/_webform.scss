@@ -588,14 +588,17 @@ form {
   width: 100%;
 }
 
-.entity-legal-document-acceptance-form {
+.acceptance-form {
   margin: 0 auto 50px;
   max-width: 1160px;
 
-  > .form-item {
+  .entity-legal-document-acceptance-form {
     margin: 0 auto;
-    padding-top: 25px;
     width: 66.64%;
+  }
+
+  .form-item {
+    padding-top: 25px;
   }
 
   .form-checkbox {
@@ -617,12 +620,12 @@ form {
   }
 }
 
-@include breakpoint-for('.entity-legal-document-acceptance-form', (to: laptop-small)) {
+@include breakpoint-for('.acceptance-form', (to: laptop-small)) {
   padding: 0 20px;
 }
 
-@include breakpoint-for('.entity-legal-document-acceptance-form', (to: tablet)) {
-  > .form-item {
+@include breakpoint-for('.acceptance-form', (to: tablet)) {
+  .entity-legal-document-acceptance-form {
     width: 100%;
   }
 }

@@ -3093,7 +3093,6 @@ form {
   width: 50%;
   left: 50%;
   top: 50%;
-  padding: 5%;
   -webkit-transform: translate3d(-50%, -50%, 0);
           transform: translate3d(-50%, -50%, 0);
   text-align: center;
@@ -3101,6 +3100,7 @@ form {
   .popup-wrapper.showed {
     height: auto;
     opacity: 1;
+    padding: 5%;
     -webkit-transition: all .4s ease;
     transition: all .4s ease; }
   .popup-wrapper h1 {

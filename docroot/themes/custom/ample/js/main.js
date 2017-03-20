@@ -369,14 +369,14 @@
     $('.dashboard-sidebar', context).removeClass('expanded-menu');
   }
 
-  Drupal.behaviors.sidebarMenud = {
+  Drupal.behaviors.sidebarMenu = {
     attach: function(context, settings) {
       var sidebarMenu = $('.dashboard-sidebar', context);
+      var $body = $('body', context);
 
       $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
 
-        $('body', context).toggleClass('no-scroll');
         sidebarMenu.toggleClass('expanded-menu');
       });
 

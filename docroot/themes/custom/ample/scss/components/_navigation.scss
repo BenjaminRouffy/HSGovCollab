@@ -111,7 +111,7 @@
   top: 0;
   left: 0;
   width: 80px;
-  z-index: 450;
+  z-index: 400;
 
   .toolbar-fixed & {
     padding-top: 39px;
@@ -267,7 +267,6 @@
   &.expanded-menu {
     box-shadow: 0 1px 3px rgba($black, 0.25);
     width: 220px;
-    z-index: 450;
 
     .logo-wrapper {
       a {

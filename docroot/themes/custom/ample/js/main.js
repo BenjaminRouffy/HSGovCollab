@@ -287,7 +287,7 @@
         var sliderCurrentIndex = $slider.find('.active').index();
         var thumbCurrentIndex = $thumbs.find('.current').index();
 
-        $('#slider-overlay').fadeToggle(300);
+        $('#overlay').fadeToggle(300);
         $this.parent($('.slider-main')).toggleClass('fixed');
         $('body').toggleClass('no-scroll');
 
@@ -369,9 +369,10 @@
     $('.dashboard-sidebar', context).removeClass('expanded-menu');
   }
 
-  Drupal.behaviors.sidebarMenud = {
+  Drupal.behaviors.sidebarMenu = {
     attach: function(context, settings) {
       var sidebarMenu = $('.dashboard-sidebar', context);
+      var $body = $('body', context);
 
       $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
@@ -384,6 +385,30 @@
       }, function(state) {
         sidebarMenu.removeClass('expanded-menu');
       });
+    }
+  };
+
+  function hidePopup(context) {
+    $('body', context).on('click', function(e) {
+      var $target = $(e.target);
+
+      if ($target.is('.cancel-link')) {
+        e.preventDefault();
+
+        $('.popup-wrapper').add($('#overlay')).removeClass('showed');
+      }
+    });
+  }
+
+  Drupal.behaviors.themeSwitcher =  {
+    attach: function(context, settings) {
+      $('.theme-switcher', context).on('click', function(e) {
+        e.preventDefault();
+
+        $('.popup-wrapper').add($('#overlay')).addClass('showed');
+      });
+
+      hidePopup(context);
     }
   };
 

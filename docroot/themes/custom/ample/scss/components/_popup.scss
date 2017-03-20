@@ -1,0 +1,72 @@
+.popup-wrapper {
+  background: $white;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  width: 50%;
+  left: 50%;
+  top: 50%;
+  padding: 5%;
+  transform: translate3d(-50%, -50%, 0);
+  text-align: center;
+  z-index: 650;
+
+  &.showed {
+    height: auto;
+    opacity: 1;
+    transition: all .4s ease;
+  }
+
+  h1 {
+    padding-top: 0;
+  }
+
+  .title-wrapper {
+    .line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .action-links {
+    margin-top: 70px;
+
+    a {
+      @include font-size(28);
+      color: $red;
+      font-family: $oswald;
+      text-decoration: none;
+
+      &:hover {
+        opacity: .7;
+      }
+    }
+
+    .logout-link {
+      color: #afb7bb;
+      margin-right: 50px;
+    }
+
+    .cancel-link {
+      margin-left: 50px;
+    }
+  }
+}
+
+@include breakpoint-for('.popup-wrapper', (to: desktop)) {
+  width: 60%;
+}
+
+@include breakpoint-for('.popup-wrapper', (to: laptop)) {
+  width: 80%;
+}
+
+@include breakpoint-for('.popup-wrapper', (to: tablet)) {
+  width: 90%;
+
+  h1 {
+    @include font-size(52);
+    line-height: 1.2;
+  }
+}

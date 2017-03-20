@@ -7,7 +7,7 @@ dependencies:
   module:
     - admin_customizations
     - block_content
-    - system
+    - group_dashboard
     - user
   theme:
     - ample
@@ -33,15 +33,17 @@ visibility:
       403: '403'
       404: '404'
     context_mapping: {  }
-  request_path:
-    id: request_path
-    pages: /dashboard
-    negate: false
-    context_mapping: {  }
   user_role:
     id: user_role
     roles:
       authenticated: authenticated
     negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  access_by_user_role:
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: true
     context_mapping:
       user: '@user.current_user_context:current_user'

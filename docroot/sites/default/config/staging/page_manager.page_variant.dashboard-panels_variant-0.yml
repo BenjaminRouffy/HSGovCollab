@@ -5,6 +5,7 @@ dependencies:
   config:
     - page_manager.page.dashboard
   module:
+    - group_dashboard
     - panels
 id: dashboard-panels_variant-0
 label: Panels
@@ -23,6 +24,13 @@ variant_settings:
   builder: standard
 page: dashboard
 weight: 0
-selection_criteria: {  }
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

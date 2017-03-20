@@ -1,0 +1,51 @@
+diff --git a/entity_legal.tokens.inc b/entity_legal.tokens.inc
+index 020006f..4aad1ac 100644
+--- a/entity_legal.tokens.inc
++++ b/entity_legal.tokens.inc
+@@ -2,9 +2,10 @@
+ 
+ /**
+  * @file
+- * Builds placeholder replacement tokens for taxonomy terms and vocabularies.
++ * Builds placeholder replacement tokens for entity_legal.
+  */
+ 
++use Drupal\Core\Language\LanguageInterface;
+ use Drupal\Core\Render\BubbleableMetadata;
+ 
+ /**
+@@ -41,6 +42,11 @@ function entity_legal_token_info() {
+     'type'        => ENTITY_LEGAL_DOCUMENT_VERSION_ENTITY_NAME,
+   ];
+ 
++  $document['url'] = [
++    'name'        => t('URL'),
++    'description' => t('The URL of the legal document.'),
++  ];
++
+   // Legal document version related tokens.
+   $document_version['acceptance-label'] = [
+     'name'        => t('Acceptance label'),
+@@ -104,6 +110,11 @@ function entity_legal_token_info() {
+ function entity_legal_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+   $token_service = \Drupal::service('token');
+ 
++  $url_options = array('absolute' => TRUE);
++  if (isset($options['langcode'])) {
++    $url_options['language'] = \Drupal::languageManager()->getLanguage($options['langcode']);
++  }
++
+   $replacements = [];
+   switch ($type) {
+     case ENTITY_LEGAL_DOCUMENT_ENTITY_NAME:
+@@ -116,6 +127,10 @@ function entity_legal_tokens($type, $tokens, array $data, array $options, Bubble
+               $replacements[$original] = $entity->label();
+               break;
+ 
++            case 'url':
++              $replacements[$original] = $entity->toUrl('canonical', $url_options)->toString();
++              break;
++
+             case 'published-version':
+               $replacements[$original] = $entity->getPublishedVersion()
+                 ->label();

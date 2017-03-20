@@ -641,3 +641,10 @@ function deployment_update_8040() {
     'views.view.content',
   ]);
 }
+
+/**
+ * Install module "Entity legal".
+ */
+function deployment_update_8041() {
+  \Drupal::service('module_installer')->install(['entity_legal']);
+}

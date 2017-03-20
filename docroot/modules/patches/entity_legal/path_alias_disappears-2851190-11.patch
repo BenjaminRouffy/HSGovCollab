@@ -1,0 +1,36 @@
+diff --git a/src/Form/EntityLegalDocumentForm.php b/src/Form/EntityLegalDocumentForm.php
+index f8e65a1..57ce453 100644
+--- a/src/Form/EntityLegalDocumentForm.php
++++ b/src/Form/EntityLegalDocumentForm.php
+@@ -267,6 +267,13 @@ class EntityLegalDocumentForm extends EntityForm implements ContainerInjectionIn
+       '#parents'          => ['path', 0],
+     ];
+ 
++    $form['path']['langcode'] = array(
++      '#type' => 'language_select',
++      '#title' => t('Language'),
++      '#languages' => LanguageInterface::STATE_ALL,
++      '#default_value' => $this->entity->language()->getId(),
++    );
++
+     $form['path']['alias'] = [
+       '#type'          => 'textfield',
+       '#title'         => t('URL alias'),
+@@ -307,8 +314,11 @@ class EntityLegalDocumentForm extends EntityForm implements ContainerInjectionIn
+ 
+     if (!empty($form_state->getValues()['path'][0]) && (!empty($form_state->getValues()['path'][0]['alias']) || !empty($form_state->getValues()['path'][0]['pid']))) {
+       $path = $form_state->getValues()['path'][0];
++
+       $path['alias'] = trim($path['alias']);
+-      $path['source'] = $this->entity->toUrl()->toString();
++      if (!$path['source']) {
++        $path['source'] = $this->entity->toUrl()->toString();
++      }
+ 
+       // Delete old alias if user erased it.
+       if (!empty($path['pid']) && empty($path['alias'])) {
+@@ -343,3 +353,4 @@ class EntityLegalDocumentForm extends EntityForm implements ContainerInjectionIn
+   }
+ 
+ }
++

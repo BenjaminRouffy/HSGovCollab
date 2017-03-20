@@ -1,8 +1,8 @@
 cancel_confirm:
-  body: "[user:display-name],\r\n\r\nA request to cancel your account has been made at [site:name].\r\n\r\nYou may now cancel your account on [site:url-brief] by clicking this link or copying and pasting it into your browser:\r\n\r\n[user:cancel-url]\r\n\r\nNOTE: The cancellation of your account is not reversible.\r\n\r\nThis link expires in one day and nothing will happen if it is not used.\r\n\r\n--  [site:name] team"
+  body: "[user:display-name],\r\n\r\nA request to cancel your account has been made at [site:name].\r\n\r\nYou may now cancel your account on [site:url-brief] by clicking this link or copying and pasting it into your browser:\r\n\r\n[user:cancel-url]\r\n\r\nNOTE: The cancellation of your account is not reversible.\r\n\r\nThis link expires in one day and nothing will happen if it is not used.\r\n\r\nYours P4H Coordination Desk"
   subject: 'Account cancellation request for [user:display-name] at [site:name]'
 password_reset:
-  body: "Dear [user:display-name], \r\nTo restore your password, please <a href=\"[user:one-time-login-url]\">click here</a>. \r\nYours P4H Coordination Desk"
+  body: "Dear [user:display-name], \r\nTo restore your password, please <a href=\"[user:one-time-login-url]\">click here</a>. \r\n\r\nYours P4H Coordination Desk"
   subject: 'Replacement login information for [user:display-name] at [site:name]'
 register_admin_created:
   body: "Dear [user:display-name], \r\n\r\n[current-user:display-name] has invited to join the P4H social health protection network. \r\nTo follow the invitation, please <a href=\"[user:one-time-login-url]\">click here</a> to sign-up or to get more information.\r\n\r\nP4H is a global network for Universal Health Coverage (UHC) and Social Health Protection (SHP). It is a response to the global challenge that millions of people worldwide cannot affort health care and experience great barriers to access medical care at all. Since 2007, the P4H network serves as platform for knowledge exchange and collaboration and strategically supports countries and regions in the creation and extension of sustainable health and social protection systems for UHC/SHP.\r\n\r\nYours P4H Coordination Desk"
@@ -11,10 +11,10 @@ register_no_approval_required:
   body: "Congratulations, you have been sucessfully signed-up! \r\n\r\nWe welcome you to the P4H social health protection network and are looking forward to your collaboration. \r\nPlease <a href=\"[user:one-time-login-url]\">click here</a> to get started in our network. \r\n\r\nYours P4H Coordination Desk"
   subject: 'Congratulations, you have been sucessfully signed-up!'
 register_pending_approval:
-  body: "[user:display-name],\r\n\r\nThank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.\r\n\r\n\r\n--  [site:name] team"
+  body: "[user:display-name],\r\n\r\nThank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.\r\n\r\n\r\nYours P4H Coordination Desk"
   subject: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
 register_pending_approval_admin:
-  body: "[user:display-name] has applied for an account.\r\n\r\n[user:edit-url]"
+  body: "[user:display-name] has applied for an account.\r\n\r\n[user:edit-url]\r\n\r\nYours P4H Coordination Desk"
   subject: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
 status_activated:
   body: "Congratulations, you have been sucessfully signed-up! \r\n\r\nWe welcome you to the P4H social health protection network and are looking forward to your collaboration. \r\nPlease click here to get started in our network. \r\n[user:one-time-login-url]\r\n\r\nYours P4H Coordination Desk"
@@ -23,7 +23,7 @@ status_blocked:
   body: "[user:display-name],\r\n\r\nYour account on [site:name] has been blocked.\r\n\r\n--  [site:name] team"
   subject: 'Account details for [user:display-name] at [site:name] (blocked)'
 status_canceled:
-  body: "Dear [user:display-name], \r\nThank you for your interest in the P4H social health protection network! Unfortunately we are currently not able to approve your application to join the network. \r\nYours P4H Coordination Desk"
+  body: "Dear [user:display-name], \r\nThank you for your interest in the P4H social health protection network! Unfortunately we are currently not able to approve your application to join the network. \r\n\r\nYours P4H Coordination Desk"
   subject: 'Account details for [user:display-name] at [site:name]'
 langcode: en
 _core:

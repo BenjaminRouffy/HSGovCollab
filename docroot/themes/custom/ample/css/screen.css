@@ -565,6 +565,17 @@ svg {
       vertical-align: top; }
     .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) a:hover {
       background: #345a6d; }
+  .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li {
+    display: inline-block;
+    vertical-align: top; }
+    .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li:last-child a {
+      padding-left: 10px;
+      padding-right: 14px; }
+    .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li a {
+      font-size: 0.875rem;
+      font-style: normal;
+      line-height: 1.2;
+      padding-right: 9px; }
   .dashboard-sidebar .account:before {
     content: 'a'; }
   .dashboard-sidebar .news:before {

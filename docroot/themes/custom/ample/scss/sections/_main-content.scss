@@ -152,6 +152,15 @@
   font-weight: 300;
   line-height: 28px;
 
+  .legal & {
+    margin: 0 auto;
+    width: 66.64%;
+
+    article {
+      margin-right: 20%;
+    }
+  }
+
   h1 {
     @include font-size(49);
     line-height: 48px;
@@ -256,6 +265,14 @@
   .content-with-sidebar & {
     blockquote {
       left: 0;
+    }
+  }
+
+  .legal & {
+    width: 100%;
+
+    article {
+      margin-right: 0;
     }
   }
 }

@@ -157,21 +157,21 @@ class FormModeManagerRouteSubscriber extends RouteSubscriberBase {
             $collection_route_name = $entity_type_id . '.add_form';
           }
           $route_add = $collection->get($collection_route_name);
-          $route_add->addDefaults(['entity_type' => $entity_type]);
+          $route_add->addDefaults(['entity_type' => $entity_type_id]);
           $route_add->setRequirement('_custom_access', '\Drupal\form_mode_manager\Controller\FormModeManagerController::checkAccess');
           // node.add_page route alter.
           $route_list = $collection->get("$entity_type_id.add_page");
-          $route_list->addDefaults(['entity_type' => $entity_type]);
+          $route_list->addDefaults(['entity_type' => $entity_type_id]);
           $route_list->setRequirement('_custom_access', '\Drupal\form_mode_manager\Controller\FormModeManagerController::checkAccess');
           // entity.node.edit_form route alter.
           $route_edit_form = $collection->get("entity.$entity_type_id.edit_form");
-          $route_edit_form->addDefaults(['entity_type' => $entity_type]);
+          $route_edit_form->addDefaults(['entity_type' => $entity_type_id]);
           $route_edit_form->setRequirement('_custom_access', '\Drupal\form_mode_manager\Controller\FormModeManagerController::checkAccess');
           break;
 
         case 'user':
           $route_add = $collection->get("user.register");
-          $route_add->addDefaults(['entity_type' => $entity_type]);
+          $route_add->addDefaults(['entity_type' => $entity_type_id]);
           $route_add->setRequirement('_custom_access', '\Drupal\form_mode_manager\Controller\FormModeManagerController::checkAccess');
           break;
       }

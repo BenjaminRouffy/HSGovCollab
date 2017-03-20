@@ -12,3 +12,14 @@ services:
   user_registration.email_checker:
     class: Drupal\user_registration\EmailChecker
     arguments: [@config.factory]
+
+  user_registration.processor_alias:
+    class: Drupal\user_registration\RegisterPathProcessorAlias
+    tags:
+      - { name: path_processor_inbound, priority: 100 }
+      - { name: path_processor_outbound, priority: 100 }
+
+  user_registration.login_redirect:
+    class: Drupal\user_registration\Form\Alter\RegisterUserLoginAlter
+    tags:
+      - { name: form_alter, form_id: user_login_form }

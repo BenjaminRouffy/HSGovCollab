@@ -171,7 +171,7 @@ class FormModeManagerController extends ControllerBase implements ContainerInjec
   /**
    * Checks access for the Form Mode Manager routes.
    *
-   * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
+   * @param string $entity_type
    *   The entity type definition. Useful when a single class is,
    *   used for multiple, possibly dynamic entity types.
    * @param string $form_display
@@ -180,8 +180,8 @@ class FormModeManagerController extends ControllerBase implements ContainerInjec
    * @return \Drupal\Core\Access\AccessResultInterface
    *   The access result.
    */
-  public function checkAccess(EntityTypeInterface $entity_type, $form_display = 'default') {
-    return AccessResult::allowedIfHasPermission($this->currentUser(), "use {$entity_type->id()}.{$form_display} form mode")
+  public function checkAccess(string $entity_type, $form_display = 'default') {
+    return AccessResult::allowedIfHasPermission($this->currentUser(), "use {$entity_type}.{$form_display} form mode")
       ->cachePerPermissions();
   }
 

@@ -293,15 +293,20 @@ svg {
 .quickedit {
   display: none; }
 
-#slider-overlay {
+#overlay {
   background: rgba(0, 0, 0, 0.9);
-  display: none;
+  height: 0;
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
   z-index: 600; }
+  #overlay.showed {
+    height: 100%;
+    opacity: 1;
+    -webkit-transition: opacity .4s ease;
+    transition: opacity .4s ease; }
 
 @-webkit-keyframes blink {
   0% {
@@ -505,7 +510,7 @@ svg {
   top: 0;
   left: 0;
   width: 80px;
-  z-index: 450; }
+  z-index: 350; }
   .toolbar-fixed .dashboard-sidebar {
     padding-top: 39px; }
   .toolbar-tray-open .dashboard-sidebar {
@@ -619,7 +624,8 @@ svg {
     .dashboard-sidebar.expanded-menu {
       -webkit-transform: translateX(-100%);
               transform: translateX(-100%);
-      z-index: 450; }
+      width: 75%;
+      z-index: 350; }
     .toolbar-vertical .dashboard-sidebar {
       padding-top: 99px; }
     .dashboard-sidebar .logo-wrapper,
@@ -637,7 +643,9 @@ svg {
 @media (max-width: 479px) {
   .dashboard-sidebar {
     right: -100%;
-    width: 100%; } }
+    width: 100%; }
+    .dashboard-sidebar.expanded-menu {
+      width: 100%; } }
 
 @media (max-width: 991px) {
   .header-static .main-menu, .header-fixed .main-menu {
@@ -3066,6 +3074,61 @@ form {
   background: rgba(0, 0, 0, 0.3) url(../images/throbber.svg) center no-repeat;
   background-size: cover; }
 
+.popup-wrapper {
+  background: #fff;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  width: 50%;
+  left: 50%;
+  top: 50%;
+  padding: 5%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  text-align: center;
+  z-index: 650; }
+  .popup-wrapper.showed {
+    height: auto;
+    opacity: 1;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease; }
+  .popup-wrapper h1 {
+    padding-top: 0; }
+  .popup-wrapper .title-wrapper .line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  .popup-wrapper .action-links {
+    margin-top: 70px; }
+    .popup-wrapper .action-links a {
+      font-size: 1.75rem;
+      color: #ea3a32;
+      font-family: Oswald, sans-serif;
+      text-decoration: none; }
+      .popup-wrapper .action-links a:hover {
+        opacity: .7; }
+    .popup-wrapper .action-links .logout-link {
+      color: #afb7bb;
+      margin-right: 50px; }
+    .popup-wrapper .action-links .cancel-link {
+      margin-left: 50px; }
+
+@media (max-width: 1440px) {
+  .popup-wrapper {
+    width: 60%; } }
+
+@media (max-width: 1024px) {
+  .popup-wrapper {
+    width: 80%; } }
+
+@media (max-width: 767px) {
+  .popup-wrapper {
+    width: 90%; }
+    .popup-wrapper h1 {
+      font-size: 3.25rem;
+      line-height: 1.2; } }
+
 .addtoany-wrapper {
   overflow: hidden;
   position: fixed;
@@ -3210,14 +3273,14 @@ header {
     position: absolute;
     top: 22px;
     right: 0; }
-    .dashboard .header-static .social-links {
+    .logged .header-static .social-links {
       top: 10px;
       right: 50%;
       text-align: right;
       -webkit-transform: translateX(50%);
               transform: translateX(50%);
       width: 1029px; }
-      .dashboard .header-static .social-links a {
+      .logged .header-static .social-links a {
         font-size: 0.7875rem;
         color: #4c7e96;
         display: inline-block;
@@ -3227,10 +3290,10 @@ header {
         -webkit-transition: opacity .2s ease;
         transition: opacity .2s ease;
         vertical-align: top; }
-        .dashboard .header-static .social-links a:before {
+        .logged .header-static .social-links a:before {
           content: "j";
           font-family: P4h, sans-serif; }
-        .dashboard .header-static .social-links a:hover {
+        .logged .header-static .social-links a:hover {
           background: rgba(76, 126, 150, 0.08);
           opacity: .7; }
   .header-static .language-switcher-language-url {
@@ -3287,7 +3350,7 @@ header {
     background-image: linear-gradient(180deg, #334c58, #283b44);
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
     height: 60px; }
-    .dashboard .header-fixed .top-head {
+    .logged .header-fixed .top-head {
       background: #fff; }
     .ie9 .header-fixed .top-head {
       background: #283b44; }
@@ -3397,17 +3460,17 @@ header {
       width: 50%; }
     .header-static .social-links, .header-fixed .social-links {
       padding: 22px 20px; }
-      .dashboard .header-static .social-links, .dashboard .header-fixed .social-links {
+      .logged .header-static .social-links, .logged .header-fixed .social-links {
         padding: 0;
         position: relative;
         text-align: left;
         width: auto; }
-        .dashboard .header-static .social-links a, .dashboard .header-fixed .social-links a {
+        .logged .header-static .social-links a, .logged .header-fixed .social-links a {
           font-size: 1.1375rem;
           display: block;
           margin: 0;
           padding: 30px; }
-          .dashboard .header-static .social-links a:hover, .dashboard .header-fixed .social-links a:hover {
+          .logged .header-static .social-links a:hover, .logged .header-fixed .social-links a:hover {
             background: transparent;
             color: #ea3a32;
             opacity: 1; }
@@ -3468,6 +3531,7 @@ header {
         margin-left: 28px;
         max-height: 100%;
         max-width: 100%;
+        overflow: hidden;
         padding-top: 50px;
         text-align: left; }
         .header-static .mobile-menu-wrapper .partners .item-list, .header-fixed .mobile-menu-wrapper .partners .item-list {
@@ -3511,6 +3575,8 @@ header {
     color: #fff;
     height: 60px;
     padding-top: 20px; }
+    .logged .header-fixed .mobile-menu-btn {
+      color: #283b44; }
   .header-fixed .mobile-menu-wrapper {
     height: calc(100% - 60px);
     top: 60px; }
@@ -3556,11 +3622,17 @@ footer {
   overflow-x: hidden; }
   .user .main-wrapper {
     min-height: calc(100% - 316px); }
+  .logged .main-wrapper {
+    padding-left: 80px; }
   body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.front) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
     z-index: 100; }
+
+@media (max-width: 767px) {
+  .logged .main-wrapper {
+    padding-left: 0; } }
 
 .content-container {
   margin: 0 auto;

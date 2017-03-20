@@ -376,6 +376,7 @@
       $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
 
+        $('body', context).toggleClass('no-scroll');
         sidebarMenu.toggleClass('expanded-menu');
       });
 
@@ -384,6 +385,30 @@
       }, function(state) {
         sidebarMenu.removeClass('expanded-menu');
       });
+    }
+  };
+
+  function hidePopup(context) {
+    $('body', context).on('click', function(e) {
+      var $target = $(e.target);
+
+      if ($target.is('.cancel-link')) {
+        e.preventDefault();
+
+        $('.popup-wrapper').add($('#overlay')).removeClass('showed');
+      }
+    });
+  }
+
+  Drupal.behaviors.themeSwitcher =  {
+    attach: function(context, settings) {
+      $('.theme-switcher', context).on('click', function(e) {
+        e.preventDefault();
+
+        $('.popup-wrapper').add($('#overlay')).addClass('showed');
+      });
+
+      hidePopup(context);
     }
   };
 

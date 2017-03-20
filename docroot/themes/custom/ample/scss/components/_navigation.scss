@@ -111,7 +111,7 @@
   top: 0;
   left: 0;
   width: 80px;
-  z-index: 450;
+  z-index: 350;
 
   .toolbar-fixed & {
     padding-top: 39px;
@@ -313,7 +313,8 @@
 
   &.expanded-menu {
     transform: translateX(-100%);
-    z-index: 450;
+    width: 75%;
+    z-index: 350;
   }
 
   .toolbar-vertical & {
@@ -345,6 +346,10 @@
 @include breakpoint-for('.dashboard-sidebar', (to: mobileL)) {
   right: -100%;
   width: 100%;
+
+  &.expanded-menu {
+    width: 100%;
+  }
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {

@@ -34,10 +34,10 @@ third_party_settings:
         - field_job_title
         - account
         - captcha
-        - field_accept_term_conditions
+        - legal_terms_and_conditions
         - field_disclose_your_personal_det
       parent_name: ''
-      weight: 10
+      weight: 1
       format_type: html_element
       format_settings:
         label: Right
@@ -84,13 +84,6 @@ content:
     weight: 27
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_accept_term_conditions:
-    type: boolean_checkbox
-    weight: 28
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   field_disclose_your_personal_det:
     type: boolean_checkbox
@@ -151,8 +144,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  legal_terms_and_conditions:
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   contact: true
+  field_accept_term_conditions: true
   field_avatar: true
   field_category: true
   field_country: true

@@ -18,10 +18,10 @@ dependencies:
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_regions
-    - image.style.thumbnail
+    - image.style.150x150
   module:
     - group_content_field
-    - image
+    - image_widget_crop
     - path
     - user
 id: user.user.default
@@ -54,10 +54,16 @@ content:
   field_avatar:
     weight: 7
     settings:
+      show_default_crop: true
+      preview_image_style: 150x150
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - avatar
       progress_indicator: throbber
-      preview_image_style: thumbnail
+      show_crop_area: false
+      warn_multiple_usages: false
     third_party_settings: {  }
-    type: image_image
+    type: image_widget_crop
     region: content
   field_category:
     weight: 17
@@ -163,6 +169,11 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  legal_terms_and_conditions:
+    weight: -4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 8

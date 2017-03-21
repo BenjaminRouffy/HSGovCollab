@@ -121,6 +121,24 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_category']['widget']['#title'] = t('Select categories in the Knowledge Vault');
     unset($form['account']['pass']['#description']);
   }
+
+  if($form_id == 'user_form') {
+    $current_user = \Drupal::currentUser();
+
+    $form['field_mobilephone']['widget']['add_more']['#value'] = t('Add number');
+    $form['field_telephone']['widget']['add_more']['#value'] = t('Add number');
+    $form['field_skype_or_other']['widget']['add_more']['add_more_button_software_application']['#value'] = t('Add');
+    $form['field_organisation']['widget']['#title'] = t('Main organization') . ':';
+
+    unset(
+      $form['field_skype_or_other']['widget']['text'],
+      $form['field_organisations']['widget']['text']
+    );
+
+    if (!$current_user->hasPermission('change main organisation')) {
+      $form['field_organisation']['widget']['#disabled'] = 'disabled';
+    }
+  }
 }
 
 /**
@@ -148,6 +166,10 @@ function user_registration_element_info_alter(array &$types) {
   if (isset($types['password_confirm'])) {
     $types['password_confirm']['#process'][] = 'user_registration_form_process_password_confirm';
   }
+
+  if (isset($types['table'])) {
+    array_unshift($types['table']['#pre_render'], 'user_registration_form_prerender_table');
+  }
 }
 
 /**
@@ -159,6 +181,26 @@ function user_registration_element_info_alter(array &$types) {
  */
 function user_registration_form_process_password_confirm($element) {
   unset($element['#attached']['drupalSettings']['password']);
+  return $element;
+}
+
+/**
+ * Form element pre render handler for remove "drag and drop" functionality.
+ */
+function user_registration_form_prerender_table(array $element) {
+  if (
+    isset($element['#tabledrag'][0]['group']) &&
+    in_array($element['#tabledrag'][0]['group'], ['field_organisations-delta-order', 'field_mobilephone-delta-order', 'field_telephone-delta-order', 'field_skype_or_other-delta-order'])
+  ) {
+    $element['#tabledrag'] = [];
+    // Unset Order column.
+    array_pop($element['#header']);
+
+    foreach ($element['#rows'] as $index => $row) {
+      array_pop($element['#rows'][$index]['data']);
+    }
+  }
+
   return $element;
 }
 

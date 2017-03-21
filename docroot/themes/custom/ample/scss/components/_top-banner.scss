@@ -316,22 +316,17 @@
 .overlay-wrapper {
   background: rgba($black, .53);
   color: $white;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
-  padding-top: 15%;
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   z-index: 100;
-
-  @supports (display: flex) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
 
   .ie9 & {
     display: block;

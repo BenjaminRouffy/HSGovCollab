@@ -650,8 +650,15 @@ function deployment_update_8041() {
 }
 
 /**
- * Install module "Form alter service".
+ * Install module "Crop".
  */
 function deployment_update_8042() {
+  \Drupal::service('module_installer')->install(['crop', 'image_widget_crop']);
+}
+
+/**
+ * Install module "Form alter service".
+ */
+function deployment_update_8043() {
   \Drupal::service('module_installer')->install(['form_alter_service']);
 }

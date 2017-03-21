@@ -188,7 +188,7 @@
         color: $white;
         display: block;
         min-height: 70px;
-        padding: 26px 0 20px 15px;
+        padding: 26px 15px 20px;
         text-decoration: none;
         transition: background .4s ease;
 
@@ -209,11 +209,16 @@
       }
     }
 
+    .sign-out {
+      word-break: break-all;
+    }
+
     .language-switcher-language-url {
       .links {
         li {
           display: inline-block;
           vertical-align: top;
+          width: 50%;
 
           &:last-child {
             a {
@@ -224,9 +229,10 @@
 
           a {
             @include font-size(14);
-            font-style: normal;
+            font-style: italic;
             line-height: 1.2;
             padding-right: 9px;
+            text-align: center;
           }
         }
       }
@@ -362,6 +368,20 @@
         }
       }
     }
+
+    .language-switcher-language-url {
+      .links {
+        li,
+        li:last-child {
+          width: auto;
+
+          a {
+            padding: 30px;
+            text-align: left;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -420,12 +440,14 @@
   }
 
   li {
+    border-bottom: 2px solid transparent;
     display: inline-block;
     height: 100%;
+    transition: border .4s ease;
     vertical-align: top;
 
     &.active {
-      border-bottom: 2px solid $red;
+      border-color: $red;
     }
   }
 

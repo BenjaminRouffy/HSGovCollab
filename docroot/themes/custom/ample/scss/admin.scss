@@ -17,7 +17,7 @@ img[src$="svg"] {
   }
 }
 
-.user-invited-person-form {
+.user-form {
   .field--name-field-country-manager,
   .field--name-field-project-manager {
     height: 0;
@@ -27,5 +27,11 @@ img[src$="svg"] {
       height: 100%;
       overflow: visible;
     }
+  }
+}
+
+.paragraphs-subform {
+  .form-item-field-content-paragraph-0-subform-field-title-0-value {
+    display: none;
   }
 }

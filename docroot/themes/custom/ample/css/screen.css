@@ -2531,8 +2531,21 @@ form {
     vertical-align: top; }
     .user-login-form a:hover {
       color: #8c2222; }
+  .user-login-form label:after {
+    content: ":"; }
+  .user-login-form label.form-required:after {
+    content: ": *"; }
   .user-login-form .form-actions {
     margin-top: 20px; }
+  .user-login-form .form-submit {
+    border-color: #ea3a32;
+    font-weight: 700;
+    text-transform: none; }
+    .user-login-form .form-submit:hover {
+      border-color: #8c2222;
+      color: #8c2222;
+      -webkit-transform: none;
+              transform: none; }
 
 @media (max-width: 991px) {
   .user-login-form .social_login {
@@ -2717,11 +2730,30 @@ form {
         content: none; }
   .user-register-form .js-form-type-email-confirm,
   .user-register-form .captcha {
-    margin: 20px 0; }
+    margin: 20px 0 10px; }
+  .user-register-form .field--name-field-accept-term-conditions .form-item {
+    padding-top: 25px; }
+  .user-register-form .field--name-field-accept-term-conditions label {
+    display: inline-block;
+    vertical-align: top; }
+    .user-register-form .field--name-field-accept-term-conditions label.error {
+      font-family: Oswald, sans-serif;
+      right: auto;
+      left: 0;
+      margin: 0; }
   .user-register-form .form-actions {
     margin: 30px auto 0;
     text-align: center;
     width: 50%; }
+  .user-register-form .form-submit {
+    border-color: #ea3a32;
+    font-weight: 700;
+    text-transform: none; }
+    .user-register-form .form-submit:hover {
+      border-color: #8c2222;
+      color: #8c2222;
+      -webkit-transform: none;
+              transform: none; }
 
 @media (max-width: 991px) {
   .user-register-form .social_login,
@@ -2745,6 +2777,17 @@ form {
     .user-register-form .login-wrapper {
       padding: 0 10px; } }
 
+.user-onetime-form .good-to-know-icon {
+  background: url(../images/light.svg) center no-repeat;
+  height: 120px;
+  margin-bottom: 30px; }
+
+.user-onetime-form .title-wrapper h1 {
+  font-size: 2.625rem;
+  font-weight: 400;
+  line-height: 48px;
+  margin: 0 0 31px; }
+
 .user-onetime-form #fields-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2758,7 +2801,8 @@ form {
   width: 50%; }
 
 .content-with-sidebar .user-onetime-form .content {
-  float: none; }
+  float: none;
+  margin-top: 45px; }
   .content-with-sidebar .user-onetime-form .content em {
     font-size: 1.4rem;
     color: #4c7e96;
@@ -2766,6 +2810,15 @@ form {
     font-style: normal;
     line-height: 31px;
     margin-bottom: 30px; }
+
+.user-onetime-form .js-form-type-select {
+  margin-bottom: 25px; }
+
+.user-onetime-form label:after {
+  content: ":"; }
+
+.user-onetime-form label.form-required:after {
+  content: ": *"; }
 
 .user-onetime-form .form-actions {
   margin-top: 30px;
@@ -2801,9 +2854,22 @@ form {
         -ms-flex-pack: center;
             justify-content: center;
     margin-top: 25px; }
+  .user-pass label:after {
+    content: ":"; }
+  .user-pass label.form-required:after {
+    content: ": *"; }
   .user-pass .form-actions {
     margin-top: 25px;
     text-align: center; }
+  .user-pass .form-submit {
+    border-color: #ea3a32;
+    font-weight: 700;
+    text-transform: none; }
+    .user-pass .form-submit:hover {
+      border-color: #8c2222;
+      color: #8c2222;
+      -webkit-transform: none;
+              transform: none; }
 
 @media (max-width: 991px) {
   .user-pass {

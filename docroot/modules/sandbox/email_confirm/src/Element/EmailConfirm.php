@@ -58,7 +58,7 @@ class EmailConfirm extends FormElement   {
     $element['mail1'] = array(
       '#type' => 'email',
       '#title' => t('Email'),
-      '#value' => empty($element['#value']) ? NULL : $element['#value']['mail1'],
+      '#value' => empty($element['#value']['mail1']) ? (!empty($element['#default_value']) ? $element['#default_value'] : NULL) : $element['#value']['mail1'],
       '#required' => $element['#required'],
       '#attributes' => [
         'class' => ['email-field', 'js-email-field'],
@@ -69,7 +69,7 @@ class EmailConfirm extends FormElement   {
     $element['mail2'] = array(
       '#type' => 'email',
       '#title' => t('Confirm email'),
-      '#value' => empty($element['#value']) ? NULL : $element['#value']['mail2'],
+      '#value' => empty($element['#value']['mail2']) ? (!empty($element['#default_value']) ? $element['#default_value'] : NULL) : $element['#value']['mail2'],
       '#required' => $element['#required'],
       '#attributes' => [
         'class' => ['email-confirm', 'js-email-confirm'],
@@ -77,6 +77,7 @@ class EmailConfirm extends FormElement   {
       ],
       '#error_no_message' => TRUE,
     );
+    unset($element['#default_value']);
     $element['#element_validate'] = array(array(get_called_class(), 'validateEmailConfirm'));
     $element['#tree'] = TRUE;
 

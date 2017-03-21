@@ -655,3 +655,10 @@ function deployment_update_8041() {
 function deployment_update_8042() {
   \Drupal::service('module_installer')->install(['crop', 'image_widget_crop']);
 }
+
+/**
+ * Install module "Crop".
+ */
+function deployment_update_8043() {
+  \Drupal::service('module_installer')->install(['field_validation']);
+}

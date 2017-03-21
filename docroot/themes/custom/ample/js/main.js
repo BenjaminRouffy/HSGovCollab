@@ -245,13 +245,13 @@
     attach: function(context, settings) {
       var bannerOverlay = $('.overlay-wrapper');
 
-      setTimeout(function() {
-        bannerOverlay.animate({'opacity': 0}, 2000, function() {
-          if (bannerOverlay.siblings('#map').size()) {
-            bannerOverlay.remove();
-          }
-        });
-      }, 3000);
+      //setTimeout(function() {
+      //  bannerOverlay.animate({'opacity': 0}, 2000, function() {
+      //    if (bannerOverlay.siblings('#map').size()) {
+      //      bannerOverlay.remove();
+      //    }
+      //  });
+      //}, 3000);
     }
   };
 

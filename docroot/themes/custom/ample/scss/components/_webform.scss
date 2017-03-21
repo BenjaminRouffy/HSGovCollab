@@ -733,7 +733,8 @@ form {
     padding-top: 25px;
   }
 
-  .form-checkbox {
+  .form-checkbox,
+  .js-form-type-checkbox {
     margin-right: 5px;
 
     ~ label {
@@ -743,6 +744,15 @@ form {
       &.error {
         right: auto;
         left: 0;
+      }
+    }
+
+    a {
+      color: $red;
+      text-decoration: none;
+
+      &:hover {
+        color: $red-dark;
       }
     }
   }

@@ -79,12 +79,7 @@ class EmailConfirm extends FormElement   {
       '#error_no_message' => TRUE,
     );
 
-    if ($account->isAnonymous()) {
-      $element['mail1']['#value'] = empty($element['#value']['mail1']) ? (!empty($element['#default_value']) ? $element['#default_value'] : NULL) : $element['#value']['mail1'];
-      $element['mail2']['#value'] = empty($element['#value']['mail2']) ? (!empty($element['#default_value']) ? $element['#default_value'] : NULL) : $element['#value']['mail2'];
-      unset($element['#default_value']);
-    }
-    else {
+    if (!$account->isAnonymous()) {
       $email_info = self::getUserMailInfo($account);
       $current_email = $email_info['name'];
       $current_domain = $email_info['domain'];

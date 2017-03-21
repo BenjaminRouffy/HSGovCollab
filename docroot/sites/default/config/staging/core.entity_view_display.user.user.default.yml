@@ -18,6 +18,7 @@ dependencies:
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_regions
+    - image.style.150x150
   module:
     - group_content_field
     - image
@@ -29,9 +30,9 @@ mode: default
 content:
   field_avatar:
     weight: 3
-    label: above
+    label: hidden
     settings:
-      image_style: ''
+      image_style: 150x150
       image_link: ''
     third_party_settings: {  }
     type: image
@@ -109,6 +110,8 @@ content:
   masquerade:
     weight: 50
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_accept_term_conditions: true
   field_category: true

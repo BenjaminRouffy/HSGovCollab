@@ -8,6 +8,7 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_help().
@@ -200,5 +201,18 @@ function user_registration_preprocess_block(&$variables) {
     $redirect = new Url('<current>');
     // Redirect string will contain a current path, but without destination query.
     $variables['content']['user_login_form']['#action'] = $redirect->toString();
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function user_registration_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $user = \Drupal::currentUser();
+  $account = $form_state->getFormObject()->getEntity();
+
+  if ($user->id() == $account->id() || $user->hasPermission('administer users')) {
+    $form['account']['mail']['#type'] = 'email_confirm';
+    $form['account']['mail']['#title_display'] = 'invisible';
   }
 }

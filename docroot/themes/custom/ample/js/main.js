@@ -175,10 +175,10 @@
         if ($anchorLink.length && $anchorLink.length > 1) {
           $bottomHead.append('<div class="anchor-links"><ul></ul></div>');
 
-          var headerHeight = $('.header-fixed').height();
+          var headerHeight = $('.header-fixed').height() + 10;
 
           if ($body.is('.logged')) {
-            headerHeight += 80;
+            headerHeight += 90;
           }
 
           $anchorLink.each(function(index, element) {

@@ -2734,6 +2734,11 @@ form .social_login label:after {
       content: ":"; }
     .user-register-form label.form-required:after {
       content: ": *"; }
+    .user-register-form label a {
+      color: #ea3a32;
+      text-decoration: none; }
+      .user-register-form label a:hover {
+        color: #8c2222; }
   .user-register-form .js-form-type-checkbox {
     margin-bottom: 10px; }
     .user-register-form .js-form-type-checkbox label {

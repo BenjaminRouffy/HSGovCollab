@@ -62,7 +62,7 @@ class EmailConfirm extends FormElement   {
       '#required' => $element['#required'],
       '#attributes' => [
         'class' => ['email-field', 'js-email-field'],
-        'placeholder' => t('Enter your email'),
+        'placeholder' => t('Please enter your email address'),
       ],
       '#error_no_message' => TRUE,
     );

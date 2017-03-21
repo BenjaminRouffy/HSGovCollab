@@ -1,7 +1,7 @@
 (function($, Drupal) {
   'use strict';
 
-  var fieldWrapper = $('.user-invited-person-form'),
+  var fieldWrapper = $('.user-form'),
       countryField = fieldWrapper.find('.field--name-field-country-manager'),
       projectField = fieldWrapper.find('.field--name-field-project-manager'),
       countryCheckbox = fieldWrapper.find('#edit-roles-country-managers'),

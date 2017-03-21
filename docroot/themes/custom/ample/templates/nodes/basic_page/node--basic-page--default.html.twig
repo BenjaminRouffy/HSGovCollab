@@ -1,4 +1,4 @@
-<article{{ attributes }} data-anchor-id="node-{{ node.id }}" role="article">
+<article{{ attributes }} role="article">
   <div class="post-info">
     {% if content.field_author|field_value %}
       <span class="author">
@@ -8,7 +8,7 @@
   </div>
 
   {{ title_prefix }}
-  <div class="title-wrapper">
+  <div class="title-wrapper" data-anchor-id="node-{{ node.id }}">
     <h1 class="anchor-title page-title" role="heading">
       {{ label|field_value }}
     </h1>

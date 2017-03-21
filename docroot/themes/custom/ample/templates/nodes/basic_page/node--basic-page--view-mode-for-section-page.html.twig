@@ -1,6 +1,6 @@
-<article{{ attributes }} data-anchor-id="{{ node.id }}" id="{{ node.id }}" role="article">
+<article{{ attributes }} role="article">
   {{ title_prefix }}
-  <div class="title-wrapper">
+  <div class="title-wrapper" data-anchor-id="{{ node.id }}" id="{{ node.id }}">
     <h1 class="anchor-title page-title" role="heading">
       {{ label|field_value }}
     </h1>

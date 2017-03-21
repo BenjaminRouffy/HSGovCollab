@@ -1,0 +1,16 @@
+uuid: 6e5e5752-eb7a-457d-9dc5-2d06a2d64078
+langcode: en
+status: true
+dependencies: {  }
+id: terms_and_conditions
+label: 'Terms and Conditions'
+published_version: terms_and_conditions_1489760399
+require_signup: true
+require_existing: true
+settings:
+  new_users:
+    require: true
+    require_method: form_link
+  existing_users:
+    require: true
+    require_method: message

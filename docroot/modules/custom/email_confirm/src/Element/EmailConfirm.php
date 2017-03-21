@@ -58,29 +58,30 @@ class EmailConfirm extends FormElement   {
     $user = \Drupal::currentUser();
     $account = $form_state->getFormObject()->getEntity();
 
+    $element['mail1'] = array(
+      '#type' => 'email',
+      '#title' => t('Email'),
+      '#required' => $element['#required'],
+      '#attributes' => [
+        'class' => ['email-field', 'js-email-field'],
+        'placeholder' => t('Enter your email'),
+      ],
+      '#error_no_message' => TRUE,
+    );
+    $element['mail2'] = array(
+      '#type' => 'email',
+      '#title' => t('Confirm email'),
+      '#required' => $element['#required'],
+      '#attributes' => [
+        'class' => ['email-confirm', 'js-email-confirm'],
+        'placeholder' => t('Retype your email address'),
+      ],
+      '#error_no_message' => TRUE,
+    );
+
     if ($account->isAnonymous()) {
-      $element['mail1'] = array(
-        '#type' => 'email',
-        '#title' => t('Email'),
-        '#value' => empty($element['#value']['mail1']) ? (!empty($element['#default_value']) ? $element['#default_value'] : NULL) : $element['#value']['mail1'],
-        '#required' => $element['#required'],
-        '#attributes' => [
-          'class' => ['email-field', 'js-email-field'],
-          'placeholder' => t('Enter your email'),
-        ],
-        '#error_no_message' => TRUE,
-      );
-      $element['mail2'] = array(
-        '#type' => 'email',
-        '#title' => t('Confirm email'),
-        '#value' => empty($element['#value']['mail2']) ? (!empty($element['#default_value']) ? $element['#default_value'] : NULL) : $element['#value']['mail2'],
-        '#required' => $element['#required'],
-        '#attributes' => [
-          'class' => ['email-confirm', 'js-email-confirm'],
-          'placeholder' => t('Retype your email address'),
-        ],
-        '#error_no_message' => TRUE,
-      );
+      $element['mail1']['#value'] = empty($element['#value']['mail1']) ? (!empty($element['#default_value']) ? $element['#default_value'] : NULL) : $element['#value']['mail1'];
+      $element['mail2']['#value'] = empty($element['#value']['mail2']) ? (!empty($element['#default_value']) ? $element['#default_value'] : NULL) : $element['#value']['mail2'];
       unset($element['#default_value']);
     }
     else {
@@ -88,31 +89,15 @@ class EmailConfirm extends FormElement   {
       $current_email = $email_info['name'];
       $current_domain = $email_info['domain'];
 
-      if ($user->id() == $account->id() || $user->hasPermission('administer users')) {
-        $element['mail1'] = array(
-          '#type' => 'textfield',
-          '#title' => t('Email'),
-          '#default_value' => $current_email,
-          '#required' => $element['#required'],
-          '#attributes' => [
-            'class' => ['email-field', 'js-email-field'],
-            'placeholder' => t('Enter your email'),
-          ],
-          '#field_suffix' => '<span class="domain-name">' . $current_domain . '</span>',
-          '#error_no_message' => TRUE,
-        );
-        $element['mail2'] = array(
-          '#type' => 'textfield',
-          '#title' => t('Confirm email'),
-          '#default_value' => $current_email,
-          '#required' => $element['#required'],
-          '#attributes' => [
-            'class' => ['email-confirm', 'js-email-confirm'],
-            'placeholder' => t('Retype your email address'),
-          ],
-          '#field_suffix' => '<span class="domain-name">' . $current_domain . '</span>',
-          '#error_no_message' => TRUE,
-        );
+      if ($user->id() == $account->id() && !$user->hasPermission('administer users')) {
+        $element['mail1']['#default_value'] = $current_email;
+        $element['mail1']['#field_suffix'] = '<span class="domain-name">' . $current_domain . '</span>';
+        $element['mail2']['#default_value'] = $current_email;
+        $element['mail2']['#field_suffix'] = '<span class="domain-name">' . $current_domain . '</span>';
+      }
+      elseif ($user->hasPermission('administer users')) {
+        $element['mail1']['#default_value'] = $email_info['full'];
+        $element['mail2']['#default_value'] = $email_info['full'];
       }
     }
     $element['#element_validate'] = array(array(get_called_class(), 'validateEmailConfirm'));
@@ -130,6 +115,7 @@ class EmailConfirm extends FormElement   {
    */
   public static function validateEmailConfirm(&$element, FormStateInterface $form_state, &$complete_form) {
     $account = $form_state->getFormObject()->getEntity();
+    $user = \Drupal::currentUser();
 
     $mail1 = trim($element['mail1']['#value']);
     $mail2 = trim($element['mail2']['#value']);
@@ -148,7 +134,7 @@ class EmailConfirm extends FormElement   {
     $form_state->setValueForElement($element['mail1'], NULL);
     $form_state->setValueForElement($element['mail2'], NULL);
 
-    if ($account->isAnonymous()) {
+    if ($account->isAnonymous() || $user->hasPermission('administer users')) {
       $form_state->setValueForElement($element, $mail1);
     }
     else {
@@ -180,16 +166,18 @@ class EmailConfirm extends FormElement   {
     $email_info = [
       'name' => '',
       'domain' => '',
+      'full' => '',
     ];
 
     if (!empty($user)) {
-      $user_email = $user->getEmail();
+      $full_email = $user->getEmail();
 
-      if (!empty($user_email)) {
-        $user_email = explode('@', $user->getEmail());
+      if (!empty($full_email)) {
+        $user_email = explode('@', $full_email);
         $email_info = [
           'name' => $user_email[0],
           'domain' => '@' . $user_email[1],
+          'full' => $full_email,
         ];
       }
     }

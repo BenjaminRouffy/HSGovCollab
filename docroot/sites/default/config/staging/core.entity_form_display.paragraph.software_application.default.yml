@@ -1,0 +1,31 @@
+uuid: b800bab8-8c51-4da4-8a70-019f67e95f7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.software_application.field_account
+    - field.field.paragraph.software_application.field_type
+    - paragraphs.paragraphs_type.software_application
+id: paragraph.software_application.default
+targetEntityType: paragraph
+bundle: software_application
+mode: default
+content:
+  field_account:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_type:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

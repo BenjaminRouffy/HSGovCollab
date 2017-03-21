@@ -177,8 +177,9 @@ function user_registration_theme() {
 /**
  * Implements hook_preprocess_input().
  */
-function user_registration_preprocess_input(&$variables, $hook) {
-  if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass')) {
+function user_registration_preprocess(&$variables, $hook) {
+  // TODO Not for all calls we will have $variables['attributes']['name'].
+  if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass') && isset($variables['attributes']['name'])) {
     if($variables['attributes']['name'] == 'current_pass') {
       $variables['attributes']['placeholder'] = t('Please enter your current password');
     }

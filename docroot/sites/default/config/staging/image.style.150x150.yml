@@ -1,0 +1,22 @@
+uuid: c4f75fb4-8cd8-41b8-84bf-57036081b344
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+name: 150x150
+label: 'Crop avatar (150x150)'
+effects:
+  6cd42688-f270-48d6-a1fc-cbace9815c37:
+    uuid: 6cd42688-f270-48d6-a1fc-cbace9815c37
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: avatar
+  7c4a5b51-660f-4e93-8520-be56f6ba0511:
+    uuid: 7c4a5b51-660f-4e93-8520-be56f6ba0511
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 150
+      height: 150

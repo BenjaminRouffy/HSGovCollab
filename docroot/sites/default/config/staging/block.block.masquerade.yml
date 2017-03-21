@@ -5,6 +5,7 @@ dependencies:
   module:
     - admin_customizations
     - masquerade
+    - system
   theme:
     - seven
 id: masquerade
@@ -23,4 +24,9 @@ visibility:
     id: http_status
     negate: false
     code: {  }
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /admin/people
+    negate: false
     context_mapping: {  }

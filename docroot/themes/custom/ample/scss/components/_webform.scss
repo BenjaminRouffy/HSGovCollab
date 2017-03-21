@@ -159,6 +159,16 @@ form {
   }
 }
 
+form {
+  .social_login {
+    label {
+      &:after {
+        content: none;
+      }
+    }
+  }
+}
+
 // Form wrappers
 .user-login-form {
   display: flex;
@@ -468,6 +478,15 @@ form {
     &.form-required {
       &:after {
         content: ": *";
+      }
+    }
+
+    a {
+      color: $red;
+      text-decoration: none;
+
+      &:hover {
+        color: $red-dark;
       }
     }
   }

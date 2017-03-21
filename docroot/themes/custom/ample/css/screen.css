@@ -3184,8 +3184,8 @@ form .social_login label:after {
   width: 50%;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-          transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
   text-align: center;
   z-index: 650; }
   .popup-wrapper.showed {
@@ -3229,6 +3229,19 @@ form .social_login label:after {
     .popup-wrapper h1 {
       font-size: 3.25rem;
       line-height: 1.2; } }
+
+@media (max-width: 479px) {
+  .popup-wrapper h1 {
+    font-size: 2.125rem;
+    padding-bottom: 10px; }
+  .popup-wrapper .action-links {
+    margin-top: 40px; }
+    .popup-wrapper .action-links a {
+      font-size: 1.625rem; }
+    .popup-wrapper .action-links .logout-link {
+      margin-right: 10px; }
+    .popup-wrapper .action-links .cancel-link {
+      margin-left: 10px; } }
 
 .addtoany-wrapper {
   overflow: hidden;

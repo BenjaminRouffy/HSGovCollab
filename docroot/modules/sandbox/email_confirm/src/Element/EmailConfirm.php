@@ -57,9 +57,9 @@ class EmailConfirm extends FormElement   {
   public static function processEmailConfirm(&$element, FormStateInterface $form_state, &$complete_form) {
     $user = \Drupal::currentUser();
     $account = $form_state->getFormObject()->getEntity();
-    $registered = $account->isAnonymous();
+    $anonymous = $account->isAnonymous();
 
-    if ($registered) {
+    if ($anonymous) {
       $element['mail1'] = array(
         '#type' => 'email',
         '#title' => t('Email'),
@@ -93,25 +93,25 @@ class EmailConfirm extends FormElement   {
         $element['mail1'] = array(
           '#type' => 'textfield',
           '#title' => t('Email'),
-          '#default_value' => (!$registered ? $current_email : ''),
+          '#default_value' => (!$anonymous ? $current_email : ''),
           '#required' => $element['#required'],
           '#attributes' => [
             'class' => ['email-field', 'js-email-field'],
             'placeholder' => t('Enter your email'),
           ],
-          '#field_suffix' => '<span class="domain-name">' . (!$registered ? $current_domain : '') . '</span>',
+          '#field_suffix' => '<span class="domain-name">' . (!$anonymous ? $current_domain : '') . '</span>',
           '#error_no_message' => TRUE,
         );
         $element['mail2'] = array(
           '#type' => 'textfield',
           '#title' => t('Confirm email'),
-          '#default_value' => (!$registered ? $current_email : ''),
+          '#default_value' => (!$anonymous ? $current_email : ''),
           '#required' => $element['#required'],
           '#attributes' => [
             'class' => ['email-confirm', 'js-email-confirm'],
             'placeholder' => t('Retype your email address'),
           ],
-          '#field_suffix' => '<span class="domain-name">' . (!$registered ? $current_domain : '') . '</span>',
+          '#field_suffix' => '<span class="domain-name">' . (!$anonymous ? $current_domain : '') . '</span>',
           '#error_no_message' => TRUE,
         );
       }

@@ -1,0 +1,19 @@
+uuid: a446e333-c332-4611-907f-c4579b58d39b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_job_title
+    - paragraphs.paragraphs_type.organisation
+id: paragraph.organisation.field_job_title
+field_name: field_job_title
+entity_type: paragraph
+bundle: organisation
+label: 'Job title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

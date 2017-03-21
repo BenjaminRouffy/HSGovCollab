@@ -2605,6 +2605,8 @@ form .social_login label:after {
   .form-contact-us .inner-bottom-column {
     padding: 0 40px 30px;
     width: 100%; }
+    .ie9 .form-contact-us .inner-bottom-column {
+      clear: both; }
   .form-contact-us .inner-top-column {
     overflow: hidden;
     margin-bottom: 20px; }

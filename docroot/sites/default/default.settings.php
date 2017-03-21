@@ -669,6 +669,10 @@ if ($settings['hash_salt']) {
  */
 $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
 
+if (file_exists($app_root . '/' . $site_path . '/services.prod.yml')) {
+  $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.prod.yml';
+}
+
 /**
  * Override the default service container class.
  *

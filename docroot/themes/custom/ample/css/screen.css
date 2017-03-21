@@ -2731,16 +2731,17 @@ form {
   .user-register-form .js-form-type-email-confirm,
   .user-register-form .captcha {
     margin: 20px 0 10px; }
-  .user-register-form .field--name-field-accept-term-conditions .form-item {
-    padding-top: 25px; }
-  .user-register-form .field--name-field-accept-term-conditions label {
-    display: inline-block;
-    vertical-align: top; }
-    .user-register-form .field--name-field-accept-term-conditions label.error {
-      font-family: Oswald, sans-serif;
-      right: auto;
-      left: 0;
-      margin: 0; }
+  .user-register-form .form-item-legal-terms-and-conditions {
+    padding-top: 25px;
+    position: relative; }
+    .user-register-form .form-item-legal-terms-and-conditions label {
+      display: inline-block;
+      vertical-align: top; }
+      .user-register-form .form-item-legal-terms-and-conditions label.error {
+        font-family: Oswald, sans-serif;
+        right: auto;
+        left: 0;
+        margin: 0; }
   .user-register-form .form-actions {
     margin: 30px auto 0;
     text-align: center;

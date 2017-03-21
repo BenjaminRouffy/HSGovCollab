@@ -208,6 +208,29 @@
         }
       }
     }
+
+    .language-switcher-language-url {
+      .links {
+        li {
+          display: inline-block;
+          vertical-align: top;
+
+          &:last-child {
+            a {
+              padding-left: 10px;
+              padding-right: 14px;
+            }
+          }
+
+          a {
+            @include font-size(14);
+            font-style: normal;
+            line-height: 1.2;
+            padding-right: 9px;
+          }
+        }
+      }
+    }
   }
 
   .account {
@@ -397,12 +420,14 @@
   }
 
   li {
+    border-bottom: 2px solid transparent;
     display: inline-block;
     height: 100%;
+    transition: border .4s ease;
     vertical-align: top;
 
     &.active {
-      border-bottom: 2px solid $red;
+      border-color: $red;
     }
   }
 

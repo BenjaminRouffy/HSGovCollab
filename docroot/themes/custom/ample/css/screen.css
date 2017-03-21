@@ -685,11 +685,14 @@ svg {
   white-space: nowrap; }
 
 .anchor-links li {
+  border-bottom: 2px solid transparent;
   display: inline-block;
   height: 100%;
+  -webkit-transition: border .4s ease;
+  transition: border .4s ease;
   vertical-align: top; }
   .anchor-links li.active {
-    border-bottom: 2px solid #ea3a32; }
+    border-color: #ea3a32; }
 
 .anchor-links a {
   font-size: 1.05rem;

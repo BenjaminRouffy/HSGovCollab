@@ -509,7 +509,7 @@ svg {
   position: fixed;
   top: 0;
   left: 0;
-  min-width: 80px;
+  width: 80px;
   z-index: 400; }
   .toolbar-fixed .dashboard-sidebar {
     padding-top: 39px; }
@@ -565,6 +565,8 @@ svg {
       vertical-align: top; }
     .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) a:hover {
       background: #345a6d; }
+  .dashboard-sidebar .sidebar-menu .sign-out {
+    word-break: break-all; }
   .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li {
     display: inline-block;
     vertical-align: top;
@@ -574,7 +576,7 @@ svg {
       padding-right: 14px; }
     .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li a {
       font-size: 0.875rem;
-      font-style: normal;
+      font-style: italic;
       line-height: 1.2;
       padding-right: 9px;
       text-align: center; }

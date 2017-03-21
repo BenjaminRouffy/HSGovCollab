@@ -110,7 +110,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  min-width: 80px;
+  width: 80px;
   z-index: 400;
 
   .toolbar-fixed & {
@@ -209,6 +209,10 @@
       }
     }
 
+    .sign-out {
+      word-break: break-all;
+    }
+
     .language-switcher-language-url {
       .links {
         li {
@@ -225,7 +229,7 @@
 
           a {
             @include font-size(14);
-            font-style: normal;
+            font-style: italic;
             line-height: 1.2;
             padding-right: 9px;
             text-align: center;

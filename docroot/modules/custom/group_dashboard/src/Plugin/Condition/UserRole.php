@@ -2,6 +2,9 @@
 
 namespace Drupal\group_dashboard\Plugin\Condition;
 
+use Drupal\Core\Annotation\ContextDefinition;
+use Drupal\Core\Annotation\Translation;
+use Drupal\Core\Condition\Annotation\Condition;
 use Drupal\user\Plugin\Condition\UserRole as BaseUserRole;
 
 /**
@@ -26,11 +29,6 @@ class UserRole extends BaseUserRole {
     }
 
     $user = $this->getContextValue('user');
-
-    // Check super admin.
-    if ($user->id() == 1) {
-      return TRUE;
-    }
 
     return (bool) array_intersect($this->configuration['roles'], $user->getRoles());
   }

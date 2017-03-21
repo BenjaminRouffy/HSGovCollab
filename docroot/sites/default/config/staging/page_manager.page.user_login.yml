@@ -1,12 +1,21 @@
 uuid: a83cae76-a852-47ea-a682-86736983de21
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - user
 id: user_login
 label: 'User Login'
 description: ''
 use_admin_theme: false
-path: /user/login
+path: /user/sign-in
 access_logic: and
-access_conditions: {  }
+access_conditions:
+  -
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: current_user
 parameters: {  }

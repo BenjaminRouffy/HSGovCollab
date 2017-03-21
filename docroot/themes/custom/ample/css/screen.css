@@ -509,7 +509,7 @@ svg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 80px;
+  min-width: 80px;
   z-index: 400; }
   .toolbar-fixed .dashboard-sidebar {
     padding-top: 39px; }
@@ -550,7 +550,7 @@ svg {
     color: #fff;
     display: block;
     min-height: 70px;
-    padding: 26px 0 20px 15px;
+    padding: 26px 15px 20px;
     text-decoration: none;
     -webkit-transition: background .4s ease;
     transition: background .4s ease; }
@@ -567,7 +567,8 @@ svg {
       background: #345a6d; }
   .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li {
     display: inline-block;
-    vertical-align: top; }
+    vertical-align: top;
+    width: 50%; }
     .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li:last-child a {
       padding-left: 10px;
       padding-right: 14px; }
@@ -575,7 +576,8 @@ svg {
       font-size: 0.875rem;
       font-style: normal;
       line-height: 1.2;
-      padding-right: 9px; }
+      padding-right: 9px;
+      text-align: center; }
   .dashboard-sidebar .account:before {
     content: 'a'; }
   .dashboard-sidebar .news:before {
@@ -648,7 +650,14 @@ svg {
       padding: 30px; }
       .dashboard-sidebar .sidebar-menu li:nth-child(n) a:before {
         font-size: 2.1875rem;
-        position: static; } }
+        position: static; }
+    .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li,
+    .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li:last-child {
+      width: auto; }
+      .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li a,
+      .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li:last-child a {
+        padding: 30px;
+        text-align: left; } }
 
 @media (max-width: 479px) {
   .dashboard-sidebar {
@@ -2500,6 +2509,9 @@ form {
     border-color: #ea3a32;
     -webkit-transform: scale(1.04);
             transform: scale(1.04); }
+
+form .social_login label:after {
+  content: none; }
 
 .user-login-form {
   display: -webkit-box;

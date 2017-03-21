@@ -110,7 +110,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 80px;
+  min-width: 80px;
   z-index: 400;
 
   .toolbar-fixed & {
@@ -188,7 +188,7 @@
         color: $white;
         display: block;
         min-height: 70px;
-        padding: 26px 0 20px 15px;
+        padding: 26px 15px 20px;
         text-decoration: none;
         transition: background .4s ease;
 
@@ -214,6 +214,7 @@
         li {
           display: inline-block;
           vertical-align: top;
+          width: 50%;
 
           &:last-child {
             a {
@@ -227,6 +228,7 @@
             font-style: normal;
             line-height: 1.2;
             padding-right: 9px;
+            text-align: center;
           }
         }
       }
@@ -359,6 +361,20 @@
         &:before {
           @include font-size(35);
           position: static;
+        }
+      }
+    }
+
+    .language-switcher-language-url {
+      .links {
+        li,
+        li:last-child {
+          width: auto;
+
+          a {
+            padding: 30px;
+            text-align: left;
+          }
         }
       }
     }

@@ -159,6 +159,16 @@ form {
   }
 }
 
+form {
+  .social_login {
+    label {
+      &:after {
+        content: none;
+      }
+    }
+  }
+}
+
 // Form wrappers
 .user-login-form {
   display: flex;

@@ -193,8 +193,32 @@ form {
     }
   }
 
+  label {
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
+      }
+    }
+  }
+
   .form-actions {
     margin-top: 20px;
+  }
+
+  .form-submit {
+    border-color: $red;
+    font-weight: 700;
+    text-transform: none;
+
+    &:hover {
+      border-color: $red-dark;
+      color: $red-dark;
+      transform: none;
+    }
   }
 }
 
@@ -464,13 +488,42 @@ form {
 
   .js-form-type-email-confirm,
   .captcha {
-    margin: 20px 0;
+    margin: 20px 0 10px;
+  }
+
+  .form-item-legal-terms-and-conditions {
+    padding-top: 25px;
+    position: relative;
+
+    label {
+      display: inline-block;
+      vertical-align: top;
+
+      &.error {
+        font-family: $oswald;
+        right: auto;
+        left: 0;
+        margin: 0;
+      }
+    }
   }
 
   .form-actions {
     margin: 30px auto 0;
     text-align: center;
     width: 50%;
+  }
+
+  .form-submit {
+    border-color: $red;
+    font-weight: 700;
+    text-transform: none;
+
+    &:hover {
+      border-color: $red-dark;
+      color: $red-dark;
+      transform: none;
+    }
   }
 }
 
@@ -502,6 +555,21 @@ form {
 }
 
 .user-onetime-form {
+  .good-to-know-icon {
+    background: url(../images/light.svg) center no-repeat;
+    height: 120px;
+    margin-bottom: 30px;
+  }
+
+  .title-wrapper {
+    h1 {
+      @include font-size(42);
+      font-weight: 400;
+      line-height: 48px;
+      margin: 0 0 31px;
+    }
+  }
+
   #fields-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -516,6 +584,7 @@ form {
   .content-with-sidebar & {
     .content {
       float: none;
+      margin-top: 45px;
 
       em {
         @include font-size(22.4);
@@ -524,6 +593,22 @@ form {
         font-style: normal;
         line-height: 31px;
         margin-bottom: 30px;
+      }
+    }
+  }
+
+  .js-form-type-select {
+    margin-bottom: 25px;
+  }
+
+  label {
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
       }
     }
   }
@@ -573,9 +658,33 @@ form {
     margin-top: 25px;
   }
 
+  label {
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
+      }
+    }
+  }
+
   .form-actions {
     margin-top: 25px;
     text-align: center;
+  }
+
+  .form-submit {
+    border-color: $red;
+    font-weight: 700;
+    text-transform: none;
+
+    &:hover {
+      border-color: $red-dark;
+      color: $red-dark;
+      transform: none;
+    }
   }
 }
 

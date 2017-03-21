@@ -745,6 +745,15 @@ form {
         left: 0;
       }
     }
+
+    a {
+      color: $red;
+      text-decoration: none;
+
+      &:hover {
+        color: $red-dark;
+      }
+    }
   }
 
   .form-submit {

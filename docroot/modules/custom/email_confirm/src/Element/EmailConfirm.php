@@ -90,8 +90,10 @@ class EmailConfirm extends FormElement   {
       $current_domain = $email_info['domain'];
 
       if ($user->id() == $account->id() && !$user->hasPermission('administer users')) {
+        $element['mail1']['#type'] = 'textfield';
         $element['mail1']['#default_value'] = $current_email;
         $element['mail1']['#field_suffix'] = '<span class="domain-name">' . $current_domain . '</span>';
+        $element['mail2']['#type'] = 'textfield';
         $element['mail2']['#default_value'] = $current_email;
         $element['mail2']['#field_suffix'] = '<span class="domain-name">' . $current_domain . '</span>';
       }

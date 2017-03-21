@@ -284,6 +284,10 @@ form {
   .inner-bottom-column {
     padding: 0 40px 30px;
     width: 100%;
+
+    .ie9 & {
+      clear: both;
+    }
   }
 
   .inner-top-column {

@@ -86,10 +86,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     unset($form['name']['#description']);
   }
   if($form_id == 'user_register_form') {
-    $form['name']['#prefix'] = '<div class="login-wrapper register-wrapper">';
-    $form['actions']['#suffix'] = '</div>';
     $form['actions']['submit']['#value'] = t('Submit');
-
+    $form['#group_children']['actions'] = 'group_right';
     /*$elements = \Drupal\Core\Render\Element::children($form);
     $match_elements = preg_grep('/^social_login_social_login_providers_([0-9]+)/i', $elements);
     foreach ($match_elements as $match_element) {

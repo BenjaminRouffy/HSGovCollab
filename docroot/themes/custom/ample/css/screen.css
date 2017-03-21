@@ -2910,18 +2910,23 @@ form .social_login label:after {
     width: 66.64%; }
   .acceptance-form .form-item {
     padding-top: 25px; }
-  .acceptance-form .form-checkbox {
+  .acceptance-form .form-checkbox,
+  .acceptance-form .js-form-type-checkbox {
     margin-right: 5px; }
-    .acceptance-form .form-checkbox ~ label {
+    .acceptance-form .form-checkbox ~ label,
+    .acceptance-form .js-form-type-checkbox ~ label {
       display: inline-block;
       vertical-align: top; }
-      .acceptance-form .form-checkbox ~ label.error {
+      .acceptance-form .form-checkbox ~ label.error,
+      .acceptance-form .js-form-type-checkbox ~ label.error {
         right: auto;
         left: 0; }
-    .acceptance-form .form-checkbox a {
+    .acceptance-form .form-checkbox a,
+    .acceptance-form .js-form-type-checkbox a {
       color: #ea3a32;
       text-decoration: none; }
-      .acceptance-form .form-checkbox a:hover {
+      .acceptance-form .form-checkbox a:hover,
+      .acceptance-form .js-form-type-checkbox a:hover {
         color: #8c2222; }
   .acceptance-form .form-submit {
     margin-top: 30px; }

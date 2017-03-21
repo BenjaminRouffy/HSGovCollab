@@ -23,3 +23,8 @@ services:
     class: Drupal\user_registration\Form\Alter\RegisterUserLoginAlter
     tags:
       - { name: form_alter, form_id: user_login_form }
+
+  user_registration.user_form_anchor:
+    class: Drupal\user_registration\Form\Alter\DefaultUserEditAlter
+    tags:
+      - { name: form_alter, form_id: user_form }

@@ -28,29 +28,102 @@ dependencies:
     - image_widget_crop
     - paragraphs
     - path
+    - field_group
+    - image
     - user
+third_party_settings:
+  field_group:
+    group_my_profile:
+      children:
+        - field_avatar
+        - field_person_titles
+        - group_user_details
+        - account
+        - field_organisation
+        - field_non_member_organization
+        - field_job_title
+        - field_accept_term_conditions
+        - field_disclose_your_personal_det
+      parent_name: ''
+      weight: -1
+      format_type: html_element
+      format_settings:
+        id: my-profile
+        classes: anchor
+        element: div
+        show_label: true
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'My Profile'
+    group_interest:
+      children:
+        - field_country
+        - field_regions
+      parent_name: ''
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: interest
+        classes: anchor
+        element: div
+        show_label: true
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Interest
+    group_newsletter:
+      children:
+        - field_category
+      parent_name: ''
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: newsletter
+        classes: anchor
+        element: div
+        show_label: true
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Newsletter
+    group_user_details:
+      children:
+        - field_first_name
+        - field_middle_name
+        - field_last_name
+      parent_name: group_my_profile
+      weight: 2
+      format_type: html_element
+      format_settings:
+        id: user-details
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'User details'
 id: user.user.default
 targetEntityType: user
 bundle: user
 mode: default
 content:
   account:
-    weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  captcha:
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  contact:
     weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_accept_term_conditions:
-    weight: 15
+    weight: 10
     settings:
       display_label: true
     third_party_settings: {  }
@@ -71,7 +144,7 @@ content:
     type: image_widget_crop
     region: content
   field_category:
-    weight: 19
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
@@ -80,7 +153,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_country:
-    weight: 17
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
@@ -88,21 +161,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_country_manager:
-    weight: 20
-    settings: {  }
-    third_party_settings: {  }
-    type: group_select
-    region: content
   field_disclose_your_personal_det:
-    weight: 16
+    weight: 11
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_first_name:
-    weight: 4
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -126,7 +193,7 @@ content:
     type: string_textfield
     region: content
   field_middle_name:
-    weight: 12
+    weight: 4
     settings:
       size: 60
       placeholder: ''
@@ -142,7 +209,7 @@ content:
     type: string_textfield
     region: content
   field_non_member_organization:
-    weight: 13
+    weight: 8
     settings:
       size: 60
       placeholder: ''
@@ -150,10 +217,13 @@ content:
     type: string_textfield
     region: content
   field_organisation:
-    weight: 8
-    settings: {  }
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: options_select
+    type: entity_reference_autocomplete
     region: content
   field_organisations:
     type: entity_reference_paragraphs
@@ -167,22 +237,19 @@ content:
     third_party_settings: {  }
     region: content
   field_person_titles:
-    weight: 14
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    weight: 1
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_project_manager:
-    weight: 21
+    weight: 19
     settings: {  }
     third_party_settings: {  }
     type: group_select
     region: content
   field_regions:
-    weight: 18
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -209,27 +276,14 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  info_block:
-    weight: 22
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  legal_terms_and_conditions:
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  path:
-    type: path
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
-    region: content
-  timezone:
-    weight: 7
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  captcha: true
+  contact: true
+  field_country_manager: true
+  field_project_manager: true
+  info_block: true
   langcode: true
   language: true
+  legal_terms_and_conditions: true
+  path: true
+  timezone: true

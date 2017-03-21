@@ -4,18 +4,20 @@ namespace Drupal\user_registration\Plugin\Block;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityFormBuilderInterface;
 
 /**
- * Provides a block for the user onetime form.
+ * Provides a block for the user default form.
  *
  * @Block(
- *   id = "formblock_user_onetime",
- *   admin_label = @Translation("User onetime form"),
+ *   id = "formblock_user_default",
+ *   admin_label = @Translation("User default form"),
  *   provider = "user",
  *   category = @Translation("Forms")
  * )
@@ -25,7 +27,7 @@ use Drupal\Core\Entity\EntityFormBuilderInterface;
  *
  * @deprecated
  */
-class UserOnetimeBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class UserDefaultBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * The entity manager.
@@ -42,6 +44,11 @@ class UserOnetimeBlock extends BlockBase implements ContainerFactoryPluginInterf
   protected $entityFormBuilder;
 
   /**
+   * @var \Drupal\Core\Entity\EntityManagerInterface
+   */
+  protected $entityManager;
+
+  /**
    * Constructs a new UserRegisterBlock plugin.
    *
    * @param array $configuration
@@ -55,8 +62,9 @@ class UserOnetimeBlock extends BlockBase implements ContainerFactoryPluginInterf
    * @param \Drupal\Core\Entity\EntityFormBuilderInterface $entityFormBuilder
    *   The entity form builder.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, EntityFormBuilderInterface $entityFormBuilder) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityManagerInterface $entity_manager, EntityTypeManagerInterface $entityTypeManager, EntityFormBuilderInterface $entityFormBuilder) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->entityManager = $entity_manager;
     $this->entityTypeManager = $entityTypeManager;
     $this->entityFormBuilder = $entityFormBuilder;
   }
@@ -69,9 +77,39 @@ class UserOnetimeBlock extends BlockBase implements ContainerFactoryPluginInterf
       $configuration,
       $plugin_id,
       $plugin_definition,
+      $container->get('entity.manager'),
       $container->get('entity_type.manager'),
       $container->get('entity.form_builder')
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    return [
+      'form_mode' => 'default',
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $form['form_mode'] = [
+      '#type' => 'select',
+      '#options' => $this->entityManager->getFormModeOptions('user'),
+      '#title' => $this->t('Form mode'),
+      '#default_value' => $this->configuration['form_mode'],
+    ];
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    $this->configuration['form_mode'] = $form_state->getValue('form_mode');
   }
 
   /**
@@ -84,7 +122,7 @@ class UserOnetimeBlock extends BlockBase implements ContainerFactoryPluginInterf
     $uid = \Drupal::currentUser()->id();
     $account = user_load($uid);
     // This custom form can be use just edit current user.
-    $build['form'] = $this->entityFormBuilder->getForm($account, 'onetime');
+    $build['form'] = $this->entityFormBuilder->getForm($account, $this->configuration['form_mode']);
 
     return $build;
   }

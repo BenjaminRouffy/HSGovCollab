@@ -50,7 +50,7 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
 
     // @TODO Copy/Paste
     $form['user_links'] = array();
-    /*if (\Drupal::config('user.settings')->get('register') != USER_REGISTER_ADMINISTRATORS_ONLY) {
+    if (\Drupal::config('user.settings')->get('register') != USER_REGISTER_ADMINISTRATORS_ONLY) {
       $form['user_links']['request_password'] = [
         '#type' => 'link',
         '#title' => t('Forgot password'),
@@ -71,7 +71,7 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
           ],
         ]),
       ];
-    }*/
+    }
     $form['actions']['submit']['#value'] = t('Submit');
     /*$form['user_links'] = array(
       '#theme' => 'item_list',
@@ -83,13 +83,12 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['actions']['#weight'] = 10;
   }
   if($form_id == 'user_pass') {
-    unset($form['name']['#description']);
+    $form['name']['#attributes']['placeholder'] = t('Please enter your email');
+    unset($form['name']['#description'], $form['mail']);
   }
   if($form_id == 'user_register_form') {
-    $form['name']['#prefix'] = '<div class="login-wrapper register-wrapper">';
-    $form['actions']['#suffix'] = '</div>';
     $form['actions']['submit']['#value'] = t('Submit');
-
+    $form['#group_children']['actions'] = 'group_right';
     /*$elements = \Drupal\Core\Render\Element::children($form);
     $match_elements = preg_grep('/^social_login_social_login_providers_([0-9]+)/i', $elements);
     foreach ($match_elements as $match_element) {
@@ -176,16 +175,30 @@ function user_registration_theme() {
 }
 
 /**
- * Implements hook_preprocess().
+ * Implements hook_preprocess_input().
  */
-function user_registration_preprocess(&$variables, $hook) {
-  $vars = $variables;
+function user_registration_preprocess_input(&$variables, $hook) {
   if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass')) {
+    if($variables['attributes']['name'] == 'current_pass') {
+      $variables['attributes']['placeholder'] = t('Please enter your current password');
+    }
     if ('pass[pass1]' == $variables['attributes']['name']) {
       $variables['attributes']['placeholder'] = t('Please enter your password');
     }
     if ('pass[pass2]' == $variables['attributes']['name']) {
       $variables['attributes']['placeholder'] = t('Please retype your password');
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function user_registration_preprocess_block(&$variables) {
+  if(isset($variables['base_plugin_id']) && $variables['base_plugin_id'] == 'user_login_block') {
+    // @TODO Looks like it is core code bug. UselLoginBlock class has hard coding of destination. It is not allowed any changes on submitting alter etc.
+    $redirect = new Url('<current>');
+    // Redirect string will contain a current path, but without destination query.
+    $variables['content']['user_login_form']['#action'] = $redirect->toString();
   }
 }

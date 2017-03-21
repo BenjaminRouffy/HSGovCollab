@@ -169,14 +169,22 @@
     attach: function(context, settings) {
       var $bottomHead = $('.bottom-head', context);
       var $anchorLink = $('[data-anchor-id]', context);
+      var $body = $('body');
 
-      if (!$('body').is('.group.logged')) {
+      if (!$body.is('.group.logged')) {
         if ($anchorLink.length && $anchorLink.length > 1) {
           $bottomHead.append('<div class="anchor-links"><ul></ul></div>');
+
+          var headerHeight = $('.header-fixed').height() + 10;
+
+          if ($body.is('.logged')) {
+            headerHeight += 90;
+          }
 
           $anchorLink.each(function(index, element) {
             var title = $(element).find('.anchor-title').first().text();
             var id = title.trim();
+            var lastId;
 
             // Remove  special characters from string.
             id = id.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '_');
@@ -184,6 +192,36 @@
             element.id = id;
 
             $bottomHead.find('.anchor-links ul').append('<li><a href="#' + id + '">' + title + '</a></li>');
+
+            $(window).on('scroll', function() {
+              var menuItems = $('.anchor-links').find("a");
+
+              var scrollItems = menuItems.map(function(){
+                var item = $($(this).attr("href"));
+
+                if (item.length) {
+                  return item;
+                }
+              });
+
+              var fromTop = $(this).scrollTop() + headerHeight;
+              var cur = scrollItems.map(function(){
+                if ($(this).offset().top < fromTop)
+                  return this;
+              });
+
+              cur = cur[cur.length-1];
+
+              var id = cur && cur.length ? cur[0].id : "";
+
+              if (lastId !== id) {
+                lastId = id;
+
+                menuItems
+                  .parent().removeClass("active")
+                  .end().filter("[href='#" + id + "']").parent().addClass("active");
+              }
+            });
           });
         }
 
@@ -369,9 +407,10 @@
     $('.dashboard-sidebar', context).removeClass('expanded-menu');
   }
 
-  Drupal.behaviors.sidebarMenud = {
+  Drupal.behaviors.sidebarMenu = {
     attach: function(context, settings) {
       var sidebarMenu = $('.dashboard-sidebar', context);
+      var $body = $('body', context);
 
       $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
@@ -384,6 +423,30 @@
       }, function(state) {
         sidebarMenu.removeClass('expanded-menu');
       });
+    }
+  };
+
+  function hidePopup(context) {
+    $('body', context).on('click', function(e) {
+      var $target = $(e.target);
+
+      if ($target.is('.cancel-link')) {
+        e.preventDefault();
+
+        $('.popup-wrapper').add($('#overlay')).removeClass('showed');
+      }
+    });
+  }
+
+  Drupal.behaviors.themeSwitcher =  {
+    attach: function(context, settings) {
+      $('.theme-switcher', context).on('click', function(e) {
+        e.preventDefault();
+
+        $('.popup-wrapper').add($('#overlay')).addClass('showed');
+      });
+
+      hidePopup(context);
     }
   };
 

@@ -111,7 +111,7 @@
   top: 0;
   left: 0;
   width: 80px;
-  z-index: 450;
+  z-index: 400;
 
   .toolbar-fixed & {
     padding-top: 39px;
@@ -188,7 +188,7 @@
         color: $white;
         display: block;
         min-height: 70px;
-        padding: 26px 0 20px 15px;
+        padding: 26px 15px 20px;
         text-decoration: none;
         transition: background .4s ease;
 
@@ -205,6 +205,35 @@
 
         &:hover {
           background: #345a6d;
+        }
+      }
+    }
+
+    .sign-out {
+      word-break: break-all;
+    }
+
+    .language-switcher-language-url {
+      .links {
+        li {
+          display: inline-block;
+          vertical-align: top;
+          width: 50%;
+
+          &:last-child {
+            a {
+              padding-left: 10px;
+              padding-right: 14px;
+            }
+          }
+
+          a {
+            @include font-size(14);
+            font-style: italic;
+            line-height: 1.2;
+            padding-right: 9px;
+            text-align: center;
+          }
         }
       }
     }
@@ -267,7 +296,6 @@
   &.expanded-menu {
     box-shadow: 0 1px 3px rgba($black, 0.25);
     width: 220px;
-    z-index: 500;
 
     .logo-wrapper {
       a {
@@ -309,11 +337,12 @@
   left: auto;
   right: -75%;
   transition: transform .4s ease;
+  z-index: 350;
   width: 75%;
 
   &.expanded-menu {
     transform: translateX(-100%);
-    z-index: 450;
+    width: 75%;
   }
 
   .toolbar-vertical & {
@@ -339,12 +368,30 @@
         }
       }
     }
+
+    .language-switcher-language-url {
+      .links {
+        li,
+        li:last-child {
+          width: auto;
+
+          a {
+            padding: 30px;
+            text-align: left;
+          }
+        }
+      }
+    }
   }
 }
 
 @include breakpoint-for('.dashboard-sidebar', (to: mobileL)) {
   right: -100%;
   width: 100%;
+
+  &.expanded-menu {
+    width: 100%;
+  }
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {
@@ -393,12 +440,14 @@
   }
 
   li {
+    border-bottom: 2px solid transparent;
     display: inline-block;
     height: 100%;
+    transition: border .4s ease;
     vertical-align: top;
 
     &.active {
-      border-bottom: 2px solid $red;
+      border-color: $red;
     }
   }
 

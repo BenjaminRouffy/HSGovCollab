@@ -1121,6 +1121,10 @@
     float: left;
     margin-right: 20px;
     width: 40px;
+
+    .ie & {
+      height: 40px;
+    }
   }
 
   h3 {

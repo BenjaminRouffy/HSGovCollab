@@ -1,0 +1,38 @@
+uuid: 3491855f-5d0b-4690-a9ff-b671790ef9b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_region_icon
+    - group.type.region
+  module:
+    - image
+id: group.region.field_region_icon
+field_name: field_region_icon
+entity_type: group
+bundle: region
+label: 'Region icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: svg
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

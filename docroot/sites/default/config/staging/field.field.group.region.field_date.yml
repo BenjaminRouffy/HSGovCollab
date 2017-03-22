@@ -1,0 +1,21 @@
+uuid: f3e4ab21-cc3b-40f0-b05f-ee765ba41bd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_date
+    - group.type.region
+  module:
+    - datetime
+id: group.region.field_date
+field_name: field_date
+entity_type: group
+bundle: region
+label: Date
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

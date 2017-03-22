@@ -28,3 +28,8 @@ services:
     class: Drupal\user_registration\Form\Alter\DefaultUserEditAlter
     tags:
       - { name: form_alter, form_id: user_form }
+
+  user_registration.login_extra_links:
+    class: Drupal\user_registration\Form\Alter\LoginExtraLinksAlter
+    tags:
+      - { name: form_alter, form_id: user_login_form }

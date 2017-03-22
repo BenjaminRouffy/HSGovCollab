@@ -32,18 +32,20 @@ class UserDefaultBlock extends BlockBase implements ContainerFactoryPluginInterf
   /**
    * The entity manager.
    *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface.
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
   /**
    * The entity form builder.
    *
-   * @var \Drupal\Core\Entity\EntityManagerInterface.
+   * @var \Drupal\Core\Entity\EntityFormBuilderInterface
    */
   protected $entityFormBuilder;
 
   /**
+   * The entity manager.
+   *
    * @var \Drupal\Core\Entity\EntityManagerInterface
    */
   protected $entityManager;

@@ -31,10 +31,10 @@ function user_registration_help($route_name, RouteMatchInterface $route_match) {
  */
 function user_registration_entity_type_alter(array &$entity_types) {
   /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
-  if($entity_types['user']->getFormClass('register') == 'Drupal\user\RegisterForm') {
+  if ($entity_types['user']->getFormClass('register') == 'Drupal\user\RegisterForm') {
     $entity_types['user']->setFormClass('register', '\Drupal\user_registration\UserRegistrationRegister');
   }
-  if($entity_types['user']->getFormClass('onetime') == 'Drupal\user\ProfileForm') {
+  if ($entity_types['user']->getFormClass('onetime') == 'Drupal\user\ProfileForm') {
     $entity_types['user']->setFormClass('onetime', '\Drupal\user_registration\ProfileOnetimeForm');
   }
 }
@@ -43,79 +43,38 @@ function user_registration_entity_type_alter(array &$entity_types) {
  * Implements hook_form_alter().
  */
 function user_registration_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if($form_id == 'user_login_form') {
+  if ($form_id == 'user_login_form') {
     $form['name']['#prefix'] = '<div class="login-wrapper">';
     $form['actions']['#suffix'] = '</div>';
     unset($form['name']['#description']);
     unset($form['pass']['#description']);
 
-    // @TODO Copy/Paste
-    $form['user_links'] = array();
-    if (\Drupal::config('user.settings')->get('register') != USER_REGISTER_ADMINISTRATORS_ONLY) {
-      $form['user_links']['request_password'] = [
-        '#type' => 'link',
-        '#title' => t('Forgot password'),
-        '#url' => Url::fromRoute('user.pass', [], [
-          'attributes' => [
-            'title' => t('Send password reset instructions via email.'),
-            'class' => ['request-password-link'],
-          ],
-        ]),
-      ];
-      $form['user_links']['create_account'] = [
-        '#type' => 'link',
-        '#title' => t('Not a member yet? Sign up here'),
-        '#url' => Url::fromRoute('page_manager.page_view_sign_up', [], [
-          'attributes' => [
-            'title' => t('Not a member yet? Sign up here'),
-            'class' => ['create-account-link'],
-          ],
-        ]),
-      ];
-    }
     $form['actions']['submit']['#value'] = t('Submit');
-    /*$form['user_links'] = array(
-      '#theme' => 'item_list',
-      '#items' => $items,
-    );*/
     $form['user_links']['#weight'] = 9;
     $form['name']['#attributes']['placeholder'] = t('Please enter your email');
     $form['pass']['#attributes']['placeholder'] = t('Please enter your password');
     $form['actions']['#weight'] = 10;
   }
-  if($form_id == 'user_pass') {
+  if ($form_id == 'user_pass') {
     $form['name']['#attributes']['placeholder'] = t('Please enter your email');
     unset($form['name']['#description'], $form['mail']);
   }
-  if($form_id == 'user_register_form') {
+  if ($form_id == 'user_register_form') {
     $form['actions']['submit']['#value'] = t('Submit');
     $form['#group_children']['actions'] = 'group_right';
-    /*$elements = \Drupal\Core\Render\Element::children($form);
-    $match_elements = preg_grep('/^social_login_social_login_providers_([0-9]+)/i', $elements);
-    foreach ($match_elements as $match_element) {
-      $form[$match_element]['#prefix'] = '<div id="left">';
-      $form[$match_element]['#suffix'] = '</div>';
-    }*/
     unset(
       $form['account']['mail']['#title'],
       $form['account']['notify']
     );
     $form['#group_children']['captcha'] = 'group_right';
-    //$form['captcha']['#weight'] = 98;
-    //$form['field_accept_term_conditions']['#weight'] = 99;
-    //$form['field_disclose_your_personal_det']['#weight'] = 100;
     $title = &$form['field_accept_term_conditions']['widget']['value']['#title'];
     $title = t('Accept @link', [
       '@link' => \Drupal::l(t('term & conditions'), new Url('<front>', [], [
         '_target' => 'blank'
       ]))
     ]);
-    /*$title = &$form['field_disclose_your_personal_det']['widget']['value']['#title'];
-    $title = \Drupal::l($title, new Url('<front>', [], [
-      '_target' => 'blank'
-    ]));*/
   }
-  if($form_id == 'user_onetime_form') {
+  if ($form_id == 'user_onetime_form') {
     $form['actions']['submit']['#value'] = t('Understood, I am ready to start');
     $form['field_country']['widget']['#title'] = t('Select country of interest');
     $form['field_regions']['widget']['#title'] = t('Select regions of interest');
@@ -123,7 +82,11 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     unset($form['account']['pass']['#description']);
   }
 
-  if($form_id == 'user_form') {
+  if (isset($form['account']['mail'])) {
+    $form['account']['mail']['#type'] = 'email_confirm';
+  }
+
+  if ($form_id == 'user_form') {
     $current_user = \Drupal::currentUser();
 
     $form['field_mobilephone']['widget']['add_more']['#value'] = t('Add number');
@@ -199,7 +162,7 @@ function user_registration_theme() {
 function user_registration_preprocess(&$variables, $hook) {
   // TODO Not for all calls we will have $variables['attributes']['name'].
   if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass') && isset($variables['attributes']['name'])) {
-    if($variables['attributes']['name'] == 'current_pass') {
+    if ($variables['attributes']['name'] == 'current_pass') {
       $variables['attributes']['placeholder'] = t('Please enter your current password');
     }
     if ('pass[pass1]' == $variables['attributes']['name']) {
@@ -215,7 +178,7 @@ function user_registration_preprocess(&$variables, $hook) {
  * Implements hook_preprocess_block().
  */
 function user_registration_preprocess_block(&$variables) {
-  if(isset($variables['base_plugin_id']) && $variables['base_plugin_id'] == 'user_login_block') {
+  if (isset($variables['base_plugin_id']) && $variables['base_plugin_id'] == 'user_login_block') {
     // @TODO Looks like it is core code bug. UselLoginBlock class has hard coding of destination. It is not allowed any changes on submitting alter etc.
     $redirect = new Url('<current>');
     // Redirect string will contain a current path, but without destination query.

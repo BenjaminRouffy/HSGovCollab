@@ -22,7 +22,7 @@ class UserRegistrationResetLogin extends RouteSubscriberBase {
     // The 'user.reset.login' route can be also added for testing.
     foreach (['user.reset'] as $item) {
       if ($route = $collection->get($item)) {
-        /** @var \Symfony\Component\Routing\Route */
+        // @var \Symfony\Component\Routing\Route
         $defaults = $route->getDefaults();
         $defaults['_controller'] = '\Drupal\user_registration\Controller\UserController::resetPassLogin';
         $route->setDefaults($defaults);
@@ -39,9 +39,10 @@ class UserRegistrationResetLogin extends RouteSubscriberBase {
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    // Run after EntityRouteAlterSubscriber.
-    // Wegth should be higher than page_manager rout alter.
+    // Run after EntityRouteAlterSubscriber,
+    // weight should be higher than page_manager rout alter.
     $events[RoutingEvents::ALTER][] = ['onAlterRoutes', -180];
     return $events;
   }
+
 }

@@ -6,8 +6,10 @@ dependencies:
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
     - field.field.user.user.field_category
+    - field.field.user.user.field_city
     - field.field.user.user.field_country
     - field.field.user.user.field_country_manager
+    - field.field.user.user.field_country_text
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_job_title
@@ -21,14 +23,153 @@ dependencies:
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_regions
     - field.field.user.user.field_skype_or_other
+    - field.field.user.user.field_streetname
     - field.field.user.user.field_telephone
+    - field.field.user.user.field_zip_code
     - image.style.150x150
   module:
-    - group_content_field
+    - field_group
     - image_widget_crop
     - paragraphs
-    - path
     - user
+third_party_settings:
+  field_group:
+    group_my_profile:
+      children:
+        - field_avatar
+        - field_person_titles
+        - group_user_details
+        - account
+        - group_organisation_details
+        - field_organisations
+        - group_contact_details
+        - group_address_details
+      parent_name: ''
+      weight: -1
+      format_type: html_element
+      format_settings:
+        id: my-profile
+        classes: anchor
+        element: div
+        show_label: true
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'My Profile'
+    group_interest:
+      children:
+        - field_country
+        - field_regions
+      parent_name: ''
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: interest
+        classes: anchor
+        element: div
+        show_label: true
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Interest
+    group_newsletter:
+      children:
+        - field_category
+      parent_name: ''
+      weight: 21
+      format_type: html_element
+      format_settings:
+        id: newsletter
+        classes: anchor
+        element: div
+        show_label: true
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Newsletter
+    group_user_details:
+      children:
+        - field_first_name
+        - field_middle_name
+        - field_last_name
+      parent_name: group_my_profile
+      weight: 2
+      format_type: html_element
+      format_settings:
+        id: user-details
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'User details'
+    group_organisation_details:
+      children:
+        - field_organisation
+        - field_non_member_organization
+        - field_job_title
+      parent_name: group_my_profile
+      weight: 4
+      format_type: html_element
+      format_settings:
+        id: organisation-details
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Organisation details'
+    group_contact_details:
+      children:
+        - field_skype_or_other
+        - field_mobilephone
+        - field_telephone
+      parent_name: group_my_profile
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: contact-details
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Contact details'
+    group_address_details:
+      children:
+        - field_streetname
+        - field_city
+        - field_zip_code
+        - field_country_text
+      parent_name: group_my_profile
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: address-details
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Address details'
 id: user.user.default
 targetEntityType: user
 bundle: user
@@ -39,23 +180,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  captcha:
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  contact:
-    weight: 6
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_accept_term_conditions:
-    weight: 15
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_avatar:
     weight: 0
     settings:
@@ -71,38 +195,35 @@ content:
     type: image_widget_crop
     region: content
   field_category:
-    weight: 19
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_country:
-    weight: 17
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_country_manager:
-    weight: 20
+    weight: 11
     settings: {  }
     third_party_settings: {  }
-    type: group_select
+    type: options_select
     region: content
-  field_disclose_your_personal_det:
-    weight: 16
+  field_city:
+    weight: 22
     settings:
-      display_label: true
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: boolean_checkbox
+    type: string_textfield
+    region: content
+  field_country:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_country_text:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_first_name:
-    weight: 4
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -110,7 +231,7 @@ content:
     type: string_textfield
     region: content
   field_job_title:
-    weight: 9
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -126,7 +247,7 @@ content:
     type: string_textfield
     region: content
   field_middle_name:
-    weight: 12
+    weight: 4
     settings:
       size: 60
       placeholder: ''
@@ -134,7 +255,7 @@ content:
     type: string_textfield
     region: content
   field_mobilephone:
-    weight: 24
+    weight: 7
     settings:
       size: 60
       placeholder: +
@@ -142,7 +263,7 @@ content:
     type: string_textfield
     region: content
   field_non_member_organization:
-    weight: 13
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -150,14 +271,14 @@ content:
     type: string_textfield
     region: content
   field_organisation:
-    weight: 8
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_organisations:
     type: entity_reference_paragraphs
-    weight: 10
+    weight: 5
     settings:
       title: Organisation
       title_plural: Organisations
@@ -167,32 +288,20 @@ content:
     third_party_settings: {  }
     region: content
   field_person_titles:
-    weight: 14
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_project_manager:
-    weight: 21
+    weight: 1
     settings: {  }
     third_party_settings: {  }
-    type: group_select
+    type: options_select
     region: content
   field_regions:
-    weight: 18
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    weight: 16
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_skype_or_other:
     type: entity_reference_paragraphs
-    weight: 23
+    weight: 6
     settings:
       title: 'Skype or other'
       title_plural: 'Skype or other'
@@ -201,35 +310,40 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     region: content
+  field_streetname:
+    weight: 21
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_telephone:
-    weight: 25
+    weight: 8
     settings:
       size: 60
       placeholder: +
     third_party_settings: {  }
     type: string_textfield
     region: content
-  info_block:
-    weight: 22
-    region: content
-    settings: {  }
+  field_zip_code:
+    weight: 23
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-  legal_terms_and_conditions:
-    weight: 1
+    type: string_textfield
     region: content
-    settings: {  }
-    third_party_settings: {  }
-  path:
-    type: path
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
-    region: content
-  timezone:
-    weight: 7
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  captcha: true
+  contact: true
+  field_accept_term_conditions: true
+  field_country_manager: true
+  field_disclose_your_personal_det: true
+  field_project_manager: true
+  info_block: true
   langcode: true
   language: true
+  legal_terms_and_conditions: true
+  path: true
+  timezone: true

@@ -1,0 +1,20 @@
+uuid: 8d79fc7a-835f-4012-b750-0627cf86a463
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_zip_code
+  module:
+    - user
+id: user.user.field_zip_code
+field_name: field_zip_code
+entity_type: user
+bundle: user
+label: 'ZIP code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

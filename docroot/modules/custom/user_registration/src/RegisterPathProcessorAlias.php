@@ -1,19 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: spheresh
- * Date: 16/03/17
- * Time: 11:09
- */
 
 namespace Drupal\user_registration;
-
 
 use Drupal\Core\PathProcessor\InboundPathProcessorInterface;
 use Drupal\Core\PathProcessor\OutboundPathProcessorInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class RegisterPathProcessorAlias.
+ */
 class RegisterPathProcessorAlias implements InboundPathProcessorInterface, OutboundPathProcessorInterface {
 
   /**
@@ -28,10 +24,10 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
    *   The processed path.
    */
   public function processInbound($path, Request $request) {
-    if(preg_match('~/user/(register|login)~is', $path, $match) === 1) {
+    if (preg_match('~/user/(register|login)~is', $path, $match) === 1) {
       return "/user/" . $this->getPath($match[1]);
     }
-   return $path;
+    return $path;
   }
 
   /**
@@ -70,8 +66,7 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
    *   The processed path.
    */
   public function processOutbound($path, &$options = array(), Request $request = NULL, BubbleableMetadata $bubbleable_metadata = NULL) {
-
-    if(preg_match('~/user/(register|login)~is', $path, $match) === 1) {
+    if (preg_match('~/user/(register|login)~is', $path, $match) === 1) {
       return "/user/" . $this->getPath($match[1]);
     }
     return $path;
@@ -88,4 +83,5 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
       'login' => 'sign-in',
     ][$match_path];
   }
+
 }

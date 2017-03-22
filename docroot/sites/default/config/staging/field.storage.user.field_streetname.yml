@@ -1,0 +1,21 @@
+uuid: 4a70bfe0-7d8b-45f6-b0cb-54bd6761054b
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_streetname
+field_name: field_streetname
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -40,6 +40,7 @@ function ample_preprocess_html(array &$variables) {
   }
 
   $variables['attributes']['class'][] = strtolower(\Drupal::languageManager()->getCurrentLanguage()->getId());
+  $variables['attributes']['class'][] = \Drupal::theme()->getActiveTheme()->getName();
 }
 
 /**

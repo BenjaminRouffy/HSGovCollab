@@ -1,0 +1,84 @@
+uuid: 4f4b6da9-16c2-444d-9413-4ada8cffba58
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_organisations
+    - paragraphs.paragraphs_type.organisation
+  module:
+    - entity_reference_revisions
+    - user
+id: user.user.field_organisations
+field_name: field_organisations
+entity_type: user
+bundle: user
+label: Organisation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      organisation: organisation
+    target_bundles_drag_drop:
+      organisation:
+        enabled: true
+        weight: 20
+      cd_user:
+        weight: 21
+        enabled: false
+      content_image:
+        weight: 22
+        enabled: false
+      content_text:
+        weight: 23
+        enabled: false
+      country_and_project:
+        weight: 24
+        enabled: false
+      country_option:
+        weight: 25
+        enabled: false
+      custom_content:
+        weight: 26
+        enabled: false
+      exist_content:
+        weight: 27
+        enabled: false
+      file:
+        weight: 28
+        enabled: false
+      infographic:
+        weight: 29
+        enabled: false
+      infographic_item:
+        weight: 30
+        enabled: false
+      link:
+        weight: 31
+        enabled: false
+      link_to_file:
+        weight: 32
+        enabled: false
+      member_icon:
+        weight: 33
+        enabled: false
+      slider:
+        weight: 34
+        enabled: false
+      slider_item:
+        weight: 35
+        enabled: false
+      time_line:
+        weight: 36
+        enabled: false
+      timeline_social:
+        weight: 37
+        enabled: false
+      video:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions

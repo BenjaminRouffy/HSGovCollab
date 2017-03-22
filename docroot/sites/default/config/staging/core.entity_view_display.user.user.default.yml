@@ -13,13 +13,18 @@ dependencies:
     - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
     - field.field.user.user.field_middle_name
+    - field.field.user.user.field_mobilephone
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
+    - field.field.user.user.field_organisations
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_regions
+    - field.field.user.user.field_skype_or_other
+    - field.field.user.user.field_telephone
     - image.style.150x150
   module:
+    - entity_reference_revisions
     - group_content_field
     - image
     - user
@@ -76,6 +81,14 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_mobilephone:
+    weight: 11
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_non_member_organization:
     weight: 6
     label: above
@@ -107,8 +120,25 @@ content:
     third_party_settings: {  }
     type: group_content_list
     region: content
+  field_skype_or_other:
+    type: entity_reference_revisions_entity_view
+    weight: 13
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_telephone:
+    weight: 12
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   masquerade:
-    weight: 50
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -117,6 +147,7 @@ hidden:
   field_category: true
   field_country: true
   field_disclose_your_personal_det: true
+  field_organisations: true
   field_regions: true
   langcode: true
   member_for: true

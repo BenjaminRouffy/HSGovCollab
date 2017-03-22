@@ -2605,6 +2605,8 @@ form .social_login label:after {
   .form-contact-us .inner-bottom-column {
     padding: 0 40px 30px;
     width: 100%; }
+    .ie9 .form-contact-us .inner-bottom-column {
+      clear: both; }
   .form-contact-us .inner-top-column {
     overflow: hidden;
     margin-bottom: 20px; }
@@ -2908,14 +2910,24 @@ form .social_login label:after {
     width: 66.64%; }
   .acceptance-form .form-item {
     padding-top: 25px; }
-  .acceptance-form .form-checkbox {
+  .acceptance-form .form-checkbox,
+  .acceptance-form .js-form-type-checkbox {
     margin-right: 5px; }
-    .acceptance-form .form-checkbox ~ label {
+    .acceptance-form .form-checkbox ~ label,
+    .acceptance-form .js-form-type-checkbox ~ label {
       display: inline-block;
       vertical-align: top; }
-      .acceptance-form .form-checkbox ~ label.error {
+      .acceptance-form .form-checkbox ~ label.error,
+      .acceptance-form .js-form-type-checkbox ~ label.error {
         right: auto;
         left: 0; }
+    .acceptance-form .form-checkbox a,
+    .acceptance-form .js-form-type-checkbox a {
+      color: #ea3a32;
+      text-decoration: none; }
+      .acceptance-form .form-checkbox a:hover,
+      .acceptance-form .js-form-type-checkbox a:hover {
+        color: #8c2222; }
   .acceptance-form .form-submit {
     margin-top: 30px; }
 
@@ -3182,8 +3194,8 @@ form .social_login label:after {
   width: 50%;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-          transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
   text-align: center;
   z-index: 650; }
   .popup-wrapper.showed {
@@ -3227,6 +3239,19 @@ form .social_login label:after {
     .popup-wrapper h1 {
       font-size: 3.25rem;
       line-height: 1.2; } }
+
+@media (max-width: 479px) {
+  .popup-wrapper h1 {
+    font-size: 2.125rem;
+    padding-bottom: 10px; }
+  .popup-wrapper .action-links {
+    margin-top: 40px; }
+    .popup-wrapper .action-links a {
+      font-size: 1.625rem; }
+    .popup-wrapper .action-links .logout-link {
+      margin-right: 10px; }
+    .popup-wrapper .action-links .cancel-link {
+      margin-left: 10px; } }
 
 .addtoany-wrapper {
   overflow: hidden;

@@ -1,0 +1,19 @@
+uuid: 547f4c26-6ccf-4e57-bb54-8224d6dcec5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_account
+    - paragraphs.paragraphs_type.software_application
+id: paragraph.software_application.field_account
+field_name: field_account
+entity_type: paragraph
+bundle: software_application
+label: Account
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

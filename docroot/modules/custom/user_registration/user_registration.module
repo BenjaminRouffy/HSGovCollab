@@ -8,6 +8,7 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_help().
@@ -121,6 +122,24 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_category']['widget']['#title'] = t('Select categories in the Knowledge Vault');
     unset($form['account']['pass']['#description']);
   }
+
+  if($form_id == 'user_form') {
+    $current_user = \Drupal::currentUser();
+
+    $form['field_mobilephone']['widget']['add_more']['#value'] = t('Add number');
+    $form['field_telephone']['widget']['add_more']['#value'] = t('Add number');
+    $form['field_skype_or_other']['widget']['add_more']['add_more_button_software_application']['#value'] = t('Add');
+    $form['field_organisation']['widget']['#title'] = t('Main organization');
+
+    unset(
+      $form['field_skype_or_other']['widget']['text'],
+      $form['field_organisations']['widget']['text']
+    );
+
+    if (!$current_user->hasPermission('change main organisation')) {
+      $form['field_organisation']['widget']['#disabled'] = 'disabled';
+    }
+  }
 }
 
 /**
@@ -177,8 +196,9 @@ function user_registration_theme() {
 /**
  * Implements hook_preprocess_input().
  */
-function user_registration_preprocess_input(&$variables, $hook) {
-  if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass')) {
+function user_registration_preprocess(&$variables, $hook) {
+  // TODO Not for all calls we will have $variables['attributes']['name'].
+  if (isset($variables['element']['#type']) && FALSE !== strpos($variables['element']['#type'], 'pass') && isset($variables['attributes']['name'])) {
     if($variables['attributes']['name'] == 'current_pass') {
       $variables['attributes']['placeholder'] = t('Please enter your current password');
     }
@@ -200,5 +220,18 @@ function user_registration_preprocess_block(&$variables) {
     $redirect = new Url('<current>');
     // Redirect string will contain a current path, but without destination query.
     $variables['content']['user_login_form']['#action'] = $redirect->toString();
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function user_registration_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $user = \Drupal::currentUser();
+  $account = $form_state->getFormObject()->getEntity();
+
+  if ($user->id() == $account->id() || $user->hasPermission('administer users')) {
+    $form['account']['mail']['#type'] = 'email_confirm';
+    $form['account']['mail']['#title_display'] = 'invisible';
   }
 }

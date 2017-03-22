@@ -1,0 +1,125 @@
+uuid: df9b98d3-b1eb-47ae-bd30-b67488f2b9ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group
+    - views.view.list_of_projects
+    - views.view.news_and_events_group
+    - views.view.search_for_a_country_or_region
+  module:
+    - addtoany
+    - ctools
+    - panels
+    - user
+    - views
+id: group-panels_variant-2
+label: Region
+variant: panels_variant
+variant_settings:
+  blocks:
+    20988424-4463-4913-8d4c-a667222b5d4d:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: banner
+      region: banner
+      weight: 0
+      uuid: 20988424-4463-4913-8d4c-a667222b5d4d
+      context_mapping:
+        entity: group
+    b9980591-1f35-45d2-a9a7-ef5c27950686:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: -3
+      uuid: b9980591-1f35-45d2-a9a7-ef5c27950686
+      context_mapping:
+        entity: group
+    0127320e-69c9-455b-b5af-e730016e5d01:
+      id: addtoany_block
+      label: 'AddToAny buttons'
+      provider: addtoany
+      label_display: '0'
+      region: content
+      weight: -2
+      uuid: 0127320e-69c9-455b-b5af-e730016e5d01
+      context_mapping: {  }
+    2b5554aa-32ef-4847-8c06-916b2e78a1e6:
+      id: 'views_block:list_of_projects-block_2'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: '3'
+      region: content
+      weight: 0
+      uuid: 2b5554aa-32ef-4847-8c06-916b2e78a1e6
+      context_mapping: {  }
+    fe3889c0-09b2-4ef6-b7e9-712d6c824b6e:
+      id: 'views_block:news_and_events_group-region_news_events_without_filter'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 1
+      uuid: fe3889c0-09b2-4ef6-b7e9-712d6c824b6e
+      pager: view
+      context_mapping: {  }
+    c0e33000-eb63-4d2f-9eb4-7da6cfa4b59d:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: bottom
+      region: content
+      weight: 2
+      uuid: c0e33000-eb63-4d2f-9eb4-7da6cfa4b59d
+      context_mapping:
+        entity: group
+    625d8ffc-c808-4c13-8332-1007139ab02d:
+      id: 'views_block:search_for_a_country_or_region-block_2'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -1
+      uuid: 625d8ffc-c808-4c13-8332-1007139ab02d
+      context_mapping: {  }
+  id: panels_variant
+  uuid: d2b2d722-a25f-41a6-93ae-15d970bbaa06
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group-panels_variant-2
+  builder: standard
+page: group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      region: region
+    negate: false
+    context_mapping:
+      group: group
+  -
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: true
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

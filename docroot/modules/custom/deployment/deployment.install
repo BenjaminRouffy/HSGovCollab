@@ -657,8 +657,15 @@ function deployment_update_8042() {
 }
 
 /**
- * Install module "Crop".
+ * Install module "Form alter service".
  */
 function deployment_update_8043() {
+  \Drupal::service('module_installer')->install(['form_alter_service']);
+}
+
+/**
+ * Install module "Field validation".
+ */
+function deployment_update_8044() {
   \Drupal::service('module_installer')->install(['field_validation']);
 }

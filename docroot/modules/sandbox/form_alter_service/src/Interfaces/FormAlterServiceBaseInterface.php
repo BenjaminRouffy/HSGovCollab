@@ -9,7 +9,7 @@ interface FormAlterServiceBaseInterface {
   /**
    * Checks that form is matched to specific conditions.
    *
-   * @return boolean
+   * @return bool
    */
   public function hasMatch(&$form, FormStateInterface $form_state, $form_id);
 

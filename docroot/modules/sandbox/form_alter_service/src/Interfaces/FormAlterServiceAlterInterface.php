@@ -8,6 +8,7 @@ interface FormAlterServiceAlterInterface {
 
   /**
    * Form alter custom implementation.
+   *
    * @param $form
    * @param FormStateInterface $form_state
    */

@@ -228,6 +228,8 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
@@ -241,8 +243,6 @@ display:
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
   block_1:
     display_plugin: block
     id: block_1
@@ -322,6 +322,8 @@ display:
         arguments: false
         filters: false
         filter_groups: false
+        link_display: false
+        link_url: false
       use_more: true
       use_more_always: false
       use_more_text: 'See all projects'
@@ -428,6 +430,8 @@ display:
         operator: AND
         groups:
           1: AND
+      link_display: custom_url
+      link_url: 'group/{{ raw_arguments.group_id_depth }}/projects'
     cache_metadata:
       max-age: -1
       contexts:
@@ -494,6 +498,7 @@ display:
           operator: in
           value:
             country-subgroup-project: country-subgroup-project
+            region-subgroup-project: region-subgroup-project
           group: 1
           exposed: false
           expose:

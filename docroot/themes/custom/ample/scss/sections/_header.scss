@@ -237,9 +237,17 @@ header {
   .main-menu {
     ul {
       a {
+        border-bottom: 2px solid transparent;
         color: $white;
         font-weight: 200;
+        height: 60px;
         padding: 20px 30px;
+      }
+    }
+
+    .active {
+      a {
+        border-bottom: 2px solid $red;
       }
     }
   }

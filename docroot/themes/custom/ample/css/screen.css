@@ -3496,9 +3496,13 @@ header {
       margin: 0 auto;
       width: 63px; }
   .header-fixed .main-menu ul a {
+    border-bottom: 2px solid transparent;
     color: #fff;
     font-weight: 200;
+    height: 60px;
     padding: 20px 30px; }
+  .header-fixed .main-menu .active a {
+    border-bottom: 2px solid #ea3a32; }
   .header-fixed .service-links {
     right: 0;
     top: 20px;

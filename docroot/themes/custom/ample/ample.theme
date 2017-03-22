@@ -162,6 +162,15 @@ function ample_preprocess_paragraph(array &$variables) {
         $variables['country_icon'] = $view_builder->view($icon, 'default');
       }
     }
+
+    if ($entity->hasField('field_region_icon')) {
+      $icon = $entity->get('field_region_icon')->getValue();
+
+      if (is_array($icon) && !empty($icon)) {
+        $image = \Drupal\file\Entity\File::load($icon[0]['target_id']);
+        $variables['region_icon'] = $image->getFileUri();
+      }
+    }
   }
 
   if ($variables['paragraph']->hasField('field_private_content')) {

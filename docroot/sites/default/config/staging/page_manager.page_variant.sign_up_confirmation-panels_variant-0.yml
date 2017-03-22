@@ -16,11 +16,12 @@ variant: panels_variant
 variant_settings:
   blocks:
     921f7ce3-cb42-4a29-9f8c-633e45ce5252:
-      id: formblock_user_onetime
+      id: formblock_user_default
       label: 'User onetime form'
       provider: user
       label_display: '0'
       region: content
+      form_mode: onetime
       weight: 1
       uuid: 921f7ce3-cb42-4a29-9f8c-633e45ce5252
       context_mapping: {  }

@@ -28,6 +28,7 @@ class GroupContentListFormatter extends FormatterBase {
     $elements = [];
 
     foreach ($items as $delta => $item) {
+      $value = $item->getValue();
       $elements[$delta] = ['#markup' => 'test me please'];
     }
 

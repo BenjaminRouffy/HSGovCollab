@@ -30,7 +30,39 @@ class GroupContentItem extends FieldItemBase {
   /**
    * Saves current memberships.
    */
-  protected $membershipsValues = [];
+  protected $entityGidsValues = [];
+  protected $membershipLoader;
+  protected $groupRole;
+  protected $groupType;
+  protected $pluginManager;
+  protected $groupContent;
+
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(DataDefinitionInterface $definition, $name = NULL, TypedDataInterface $parent = NULL) {
+    parent::__construct($definition, $name, $parent);
+    $this->membershipLoader = \Drupal::service('group.membership_loader');
+    $this->groupRole = \Drupal::entityTypeManager()->getStorage('group_role');
+    $this->groupType = \Drupal::entityTypeManager()->getStorage('group_type');
+    $this->groupContent = \Drupal::entityTypeManager()->getStorage('group_content');
+    $this->pluginManager= \Drupal::service('plugin.manager.group_content_enabler');
+  }
+
+  /**
+   * Build properties.
+   */
+  protected function buildGroupContentProperties($entity) {
+    $properties = ['type' => $this->getSetting('plugin_type'), 'entity_id' => $entity->id()];
+
+    // TODO
+    if (strpos($this->getSetting('plugin_type'), 'group_membership') !== FALSE) {
+      $properties['group_roles'] = $this->getSetting('group_roles');
+    }
+
+    return $properties;
+  }
 
   /**
    * @inheritdoc
@@ -41,14 +73,16 @@ class GroupContentItem extends FieldItemBase {
     $parent_entity = $this->getParent()->getParent()->getValue();
 
     if (!empty($parent_entity->id()) && empty($this->values['from_widget'])) {
-      $membership_loader = \Drupal::service('group.membership_loader');
-      $memberships = $membership_loader->loadByUser($parent_entity, [$this->getSetting('gid')]);
+      $properties = $this->buildGroupContentProperties($parent_entity);
+
+      /** @var \Drupal\group\Entity\GroupContentInterface[] $group_contents */
+      $group_contents = $this->groupContent->loadByProperties($properties);
 
       $this->values['entity_gids'] = [];
-      foreach ($memberships as $membership) {
-        $this->values['entity_gids'][] = $membership->getGroup()->id();
+      foreach ($group_contents as $group_content) {
+        $this->values['entity_gids'][] = $group_content->getGroup()->id();
       }
-      $this->membershipsValues = $this->values['entity_gids'];
+      $this->entityGidsValues = $this->values['entity_gids'];
     }
 
     return parent::getValue();
@@ -59,7 +93,9 @@ class GroupContentItem extends FieldItemBase {
    */
   public static function defaultStorageSettings() {
     return [
-      'gid' => [],
+      'group_roles' => [],
+      'group_type' => [],
+      'plugin_type' => [],
     ] + parent::defaultStorageSettings();
   }
 
@@ -67,25 +103,73 @@ class GroupContentItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public function storageSettingsForm(array &$form, FormStateInterface $form_state, $has_data) {
-    $default_value = $this->getSetting('gid');
     $element = [];
-    $groupType = \Drupal::entityTypeManager()->getStorage('group_role');
-    $group_roles = $groupType->loadMultiple();
     $options = [];
-
-    foreach ($group_roles as $group_role) {
-      $options[$group_role->id()] = ucfirst($group_role->getGroupTypeId()) . ': ' . $group_role->label();
+    $group_types = $this->groupType->loadMultiple();
+    $group_type_default = $form_state->getValue('settings')['group_type'] ?? $this->getSetting('group_type');
+    foreach ($group_types as $group_type) {
+      $options[$group_type->id()] = $group_type->label();
     }
-
-    $element['gid'] = [
+    $element['group_type'] = [
       '#type' => 'radios',
       '#title' => $this->t('Group type'),
       '#options' => $options,
-      '#default_value' => $default_value,
+      '#default_value' => $group_type_default,
       '#required' => TRUE,
+      '#ajax' => array(
+        'callback' => 'Drupal\group_content_field\Plugin\Field\FieldType\GroupContentItem::updatePluginType',
+        'wrapper' => 'edit-plugin-type-wrapper',
+      ),
     ];
+    if ($group_type_default) {
+      $options = [];
+      $plugin_type_default = $form_state->getValue('settings')['plugin_type'] ?? $this->getSetting('plugin_type');
+      $plugin_types = $this->pluginManager->getInstalled($this->groupType->load($group_type_default));
 
+      foreach ($plugin_types as $plugin_type) {
+        $options[$plugin_type->getContentTypeConfigId()] = $plugin_type->getLabel();
+      }
+
+      $element['plugin_type'] = [
+        '#type' => 'radios',
+        '#title' => $this->t('Plugin type'),
+        '#options' => $options,
+        '#default_value' => $plugin_type_default,
+        '#required' => TRUE,
+        '#ajax' => array(
+          'callback' => 'Drupal\group_content_field\Plugin\Field\FieldType\GroupContentItem::updatePluginType',
+          'wrapper' => 'edit-plugin-type-wrapper',
+        ),
+      ];
+
+      if ($plugin_type_default) {
+        // TODO Here we should dynamically load fields from selected GroupContent bundles.
+        if (strpos($plugin_type_default, 'group_membership') !== FALSE) {
+          $group_roles = $this->groupRole->loadMultiple();
+          $options = [];
+
+          foreach ($group_roles as $group_role) {
+            $options[$group_role->id()] = ucfirst($group_role->getGroupTypeId()) . ': ' . $group_role->label();
+          }
+
+          $element['group_roles'] = [
+            '#type' => 'radios',
+            '#title' => $this->t('Group type'),
+            '#options' => $options,
+            '#default_value' => $this->getSetting('group_roles'),
+            '#required' => TRUE,
+          ];
+        }
+      }
+    }
+
+    $element['#prefix'] = '<div id="edit-plugin-type-wrapper">';
+    $element['#suffix'] = '</div>';
     return $element;
+  }
+
+  public function updatePluginType($form, FormStateInterface $form_state) {
+    return $form['settings'];
   }
 
   /**
@@ -120,35 +204,29 @@ class GroupContentItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public function postSave($update) {
-    $entity = $this->getParent()->getParent()->getValue();
+    $parent_entity = $this->getParent()->getParent()->getValue();
     $value = $this->getValue();
     if ($update == FALSE) {
+      $parent_entity->setNewRevision(FALSE);
       // TODO Need user id here.
-      $entity->save();
+      $parent_entity->save();
     }
     elseif (!empty($value['from_widget'])) {
       $value = $this->getValue();
       $value_gid = $value['entity_gids'];
 
-      $this->syncMemberships($this->membershipsValues, $value_gid, $entity->id());
+      $this->syncGroupContents($this->entityGidsValues, $value_gid, $parent_entity);
     }
   }
 
   /**
    * @param $old
    * @param $new
-   * @param $entity_id
+   * @param $parent_entity
+   * @internal param $entity_id
    */
-  private function syncMemberships($old, $new, $entity_id) {
-    $gid = $this->getSetting('gid');
-    $group_type = explode('-', $gid)[0];
-    $properties = [
-      'type' => "$group_type-group_membership",
-      'entity_id' => $entity_id,
-      'group_roles' => [
-         $gid,
-      ],
-    ];
+  private function syncGroupContents($old, $new, $parent_entity) {
+    $properties = $this->buildGroupContentProperties($parent_entity);
 
     foreach (array_diff($old, $new) as $delete_gid) {
       $properties['gid'] = $delete_gid;
@@ -168,7 +246,7 @@ class GroupContentItem extends FieldItemBase {
         ->loadByProperties($properties);
 
       if (empty($result)) {
-        $membership = GroupContent::create($properties)->save();
+        GroupContent::create($properties)->save();
       }
     }
   }

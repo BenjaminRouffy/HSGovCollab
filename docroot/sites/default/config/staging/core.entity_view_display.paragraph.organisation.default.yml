@@ -1,0 +1,32 @@
+uuid: 76bd9351-e5c6-4888-9893-951831bf6d24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.organisation.field_job_title
+    - field.field.paragraph.organisation.field_organisation
+    - paragraphs.paragraphs_type.organisation
+id: paragraph.organisation.default
+targetEntityType: paragraph
+bundle: organisation
+mode: default
+content:
+  field_job_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_organisation:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  uid: true

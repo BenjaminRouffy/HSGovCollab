@@ -13,15 +13,20 @@ dependencies:
     - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
     - field.field.user.user.field_middle_name
+    - field.field.user.user.field_mobilephone
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
+    - field.field.user.user.field_organisations
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_regions
+    - field.field.user.user.field_skype_or_other
+    - field.field.user.user.field_telephone
     - image.style.150x150
   module:
     - group_content_field
     - image_widget_crop
+    - paragraphs
     - path
     - user
 id: user.user.default
@@ -30,29 +35,29 @@ bundle: user
 mode: default
 content:
   account:
-    weight: 1
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   captcha:
-    weight: 0
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   contact:
-    weight: 4
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_accept_term_conditions:
-    weight: 13
+    weight: 15
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_avatar:
-    weight: 7
+    weight: 0
     settings:
       show_default_crop: true
       preview_image_style: 150x150
@@ -66,7 +71,7 @@ content:
     type: image_widget_crop
     region: content
   field_category:
-    weight: 17
+    weight: 19
     settings:
       match_operator: CONTAINS
       size: 60
@@ -75,7 +80,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_country:
-    weight: 15
+    weight: 17
     settings:
       match_operator: CONTAINS
       size: 60
@@ -84,20 +89,20 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_country_manager:
-    weight: 18
+    weight: 20
     settings: {  }
     third_party_settings: {  }
     type: group_select
     region: content
   field_disclose_your_personal_det:
-    weight: 14
+    weight: 16
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_first_name:
-    weight: 2
+    weight: 4
     settings:
       size: 60
       placeholder: ''
@@ -105,22 +110,6 @@ content:
     type: string_textfield
     region: content
   field_job_title:
-    weight: 10
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_last_name:
-    weight: 3
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_middle_name:
     weight: 9
     settings:
       size: 60
@@ -128,8 +117,32 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_last_name:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_middle_name:
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_mobilephone:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: +
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_non_member_organization:
-    weight: 11
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -137,16 +150,24 @@ content:
     type: string_textfield
     region: content
   field_organisation:
-    weight: 6
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    weight: 8
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
+    region: content
+  field_organisations:
+    type: entity_reference_paragraphs
+    weight: 10
+    settings:
+      title: Organisation
+      title_plural: Organisations
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
     region: content
   field_person_titles:
-    weight: 12
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -155,13 +176,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_project_manager:
-    weight: 19
+    weight: 21
     settings: {  }
     third_party_settings: {  }
     type: group_select
     region: content
   field_regions:
-    weight: 16
+    weight: 18
     settings:
       match_operator: CONTAINS
       size: 60
@@ -169,23 +190,46 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_skype_or_other:
+    type: entity_reference_paragraphs
+    weight: 23
+    settings:
+      title: 'Skype or other'
+      title_plural: 'Skype or other'
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    region: content
+  field_telephone:
+    weight: 25
+    settings:
+      size: 60
+      placeholder: +
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info_block:
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   legal_terms_and_conditions:
-    weight: -4
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 8
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     region: content
   timezone:
-    weight: 5
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  info_block: true
   langcode: true
   language: true

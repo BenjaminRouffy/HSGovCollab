@@ -122,6 +122,24 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_category']['widget']['#title'] = t('Select categories in the Knowledge Vault');
     unset($form['account']['pass']['#description']);
   }
+
+  if($form_id == 'user_form') {
+    $current_user = \Drupal::currentUser();
+
+    $form['field_mobilephone']['widget']['add_more']['#value'] = t('Add number');
+    $form['field_telephone']['widget']['add_more']['#value'] = t('Add number');
+    $form['field_skype_or_other']['widget']['add_more']['add_more_button_software_application']['#value'] = t('Add');
+    $form['field_organisation']['widget']['#title'] = t('Main organization');
+
+    unset(
+      $form['field_skype_or_other']['widget']['text'],
+      $form['field_organisations']['widget']['text']
+    );
+
+    if (!$current_user->hasPermission('change main organisation')) {
+      $form['field_organisation']['widget']['#disabled'] = 'disabled';
+    }
+  }
 }
 
 /**

@@ -43,11 +43,17 @@ use Drupal\blocktabs\TabPluginCollection;
  *     "name",
  *     "label",
  *     "tabs",
+ *     "event"
  *   }
  * )
  */
 class Blocktabs extends ConfigEntityBase implements BlocktabsInterface, EntityWithPluginCollectionInterface {
 
+  /**
+   * Selected event Hover or Click
+   *
+   */
+  protected $event;
 
   /**
    * The name of the blocktabs.
@@ -138,6 +144,12 @@ class Blocktabs extends ConfigEntityBase implements BlocktabsInterface, EntityWi
       $this->tabsCollection->sort();
     }
     return $this->tabsCollection;
+  }
+  /**
+   * {@inheritdoc}
+   */
+  public function getEvent(){
+    return $this->get('event');
   }
 
   /**

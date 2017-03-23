@@ -46,10 +46,11 @@ function template_preprocess_blocktabs(&$variables) {
   //unset($variables['elements']['blocktabs']);
   //foreach($variables['elements'] as $key => $value){
   //  drupal_set_message('key:' .$key);
- // }
-  
+  // }
+
   $tabs_id = 'blocktabs-' . $blocktabs->id();
   $variables['tabs_id'] = $tabs_id;
+  $variables['tabs_event'] = $blocktabs->getEvent();
   $variables['tabs'] = array();
   $tabs = $blocktabs->getTabs();
 	foreach ($tabs as $tab) {
@@ -61,6 +62,4 @@ function template_preprocess_blocktabs(&$variables) {
 	  $variables['tabs'][$tab_id] = $tab_obj;
 	  
 	}  
-
-
 }

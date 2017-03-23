@@ -27,16 +27,18 @@
  * @ingroup themeable
  */
 #}
-<div id="{{ tabs_id }}" class="blocktabs">
-<ul>
-{% for tab in tabs %}
-<li><a href="#{{ tab.id }}">{{ tab.title }}</a></li>
-{% endfor %}
-</ul>
+{% if tabs_event %}
+    <div id="{{ tabs_id }}" class="blocktabs-{{ tabs_event }}">
+        <ul>
+            {% for tab in tabs %}
+            <li><a href="#{{ tab.id }}">{{ tab.title }}</a></li>
+            {% endfor %}
+        </ul>
 
-{% for tab in tabs %}
-<div id="{{ tab.id }}">{{ tab.content }}</div>
-{% endfor %}
+        {% for tab in tabs %}
+            <div id="{{ tab.id }}">{{ tab.content }}</div>
+        {% endfor %}
 
-</div>
+    </div>
+{% endif %}
 

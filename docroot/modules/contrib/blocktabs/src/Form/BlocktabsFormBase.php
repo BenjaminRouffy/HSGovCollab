@@ -69,6 +69,16 @@ abstract class BlocktabsFormBase extends EntityForm {
       '#default_value' => $this->entity->id(),
       '#required' => TRUE,
     );
+    $form['event'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('Select an event'),
+      '#default_value' => $this->entity->getEvent(),
+      '#options' => [
+        'click' => $this->t('OnClick'),
+        'mouseover' => $this->t('Hover')
+      ],
+    ];
+
 
     return parent::form($form, $form_state);
   }

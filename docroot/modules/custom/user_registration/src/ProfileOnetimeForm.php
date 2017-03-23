@@ -12,6 +12,15 @@ use Drupal\user\ProfileForm;
  * @package Drupal\module_handler_alter
  */
 class ProfileOnetimeForm extends ProfileForm {
+
+  /**
+   * {@inheritdoc}
+   *
+   * @param array $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *
+   * @return array
+   */
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
     $form['account']['name']['#access'] = FALSE;
@@ -37,12 +46,20 @@ class ProfileOnetimeForm extends ProfileForm {
     return $form;
   }
 
+  /**
+   * {@inheritdoc}
+   *
+   * @param array $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   */
   public function save(array $form, FormStateInterface $form_state) {
     parent::save($form, $form_state);
+    // @codingStandardsIgnoreStart
     /*$form_state->setRedirect('entity.user.canonical', array(
       'user' => $this->getEntity()
         ->id()
     ));*/
+    // @codingStandardsIgnoreEnd
     // @TODO Temporary redirect to front page.
     $form_state->setRedirect('<front>');
 

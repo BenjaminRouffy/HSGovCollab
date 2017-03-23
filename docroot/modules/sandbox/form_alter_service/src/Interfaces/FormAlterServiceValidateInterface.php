@@ -8,6 +8,7 @@ interface FormAlterServiceValidateInterface {
 
   /**
    * Form validation custom implementation.
+   *
    * @param $form
    * @param FormStateInterface $form_state
    */

@@ -1,0 +1,29 @@
+uuid: bb291bcf-df9e-4b24-802a-6bd6ca37f654
+langcode: en
+status: true
+dependencies: {  }
+name: user_user
+label: 'user user validation'
+entity_type: user
+bundle: user
+field_validation_rules:
+  2adf313c-c4c9-4d9d-8a97-01faf91caf37:
+    uuid: 2adf313c-c4c9-4d9d-8a97-01faf91caf37
+    id: regex_field_validation_rule
+    title: Mobilephone
+    weight: '1'
+    field_name: field_mobilephone
+    column: value
+    error_message: 'You have typed an invalid telephone number.'
+    data:
+      setting: '/^[\d\-\s\+]+$/'
+  309bdea1-2e5b-4aa1-b20e-50e01cfe44dd:
+    uuid: 309bdea1-2e5b-4aa1-b20e-50e01cfe44dd
+    id: regex_field_validation_rule
+    title: Phone
+    weight: 2
+    field_name: field_telephone
+    column: value
+    error_message: 'You have typed an invalid telephone number.'
+    data:
+      setting: '/^[\d\-\s\+]+$/'

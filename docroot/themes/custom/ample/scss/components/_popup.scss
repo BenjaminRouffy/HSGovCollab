@@ -7,7 +7,7 @@
   width: 50%;
   left: 50%;
   top: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  transform: translateX(-50%) translateY(-50%);
   text-align: center;
   z-index: 650;
 
@@ -68,5 +68,28 @@
   h1 {
     @include font-size(52);
     line-height: 1.2;
+  }
+}
+
+@include breakpoint-for('.popup-wrapper', (to: mobileL)) {
+  h1 {
+    @include font-size(34);
+    padding-bottom: 10px;
+  }
+
+  .action-links {
+    margin-top: 40px;
+
+    a {
+      @include font-size(26);
+    }
+
+    .logout-link {
+      margin-right: 10px;
+    }
+
+    .cancel-link {
+      margin-left: 10px;
+    }
   }
 }

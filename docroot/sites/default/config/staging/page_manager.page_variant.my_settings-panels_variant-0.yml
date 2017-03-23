@@ -1,0 +1,39 @@
+uuid: 8d424411-1de6-4776-8129-2d2b4124e0a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.my_settings
+  module:
+    - panels
+    - user
+id: my_settings-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    e0912fb3-efd9-4c44-a9f5-f88535d00585:
+      id: formblock_user_default
+      label: 'My settings'
+      provider: user
+      label_display: visible
+      form_mode: default
+      region: content
+      weight: 0
+      uuid: e0912fb3-efd9-4c44-a9f5-f88535d00585
+      context_mapping: {  }
+  id: panels_variant
+  uuid: fd97a819-effc-4580-a839-71aa484e2a48
+  label: null
+  weight: 0
+  layout: default_layout
+  layout_settings: {  }
+  page_title: 'My settings'
+  storage_type: page_manager
+  storage_id: my_settings-panels_variant-0
+  builder: standard
+page: my_settings
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

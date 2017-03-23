@@ -10,14 +10,19 @@ use Drupal\Core\Config\ImmutableConfig;
  */
 class EmailChecker {
 
-  /** @var ImmutableConfig */
+  /**
+   * @var ImmutableConfig
+   */
   protected $userRegistrationSettings;
 
-  /** @var string */
+  /**
+   * @var string
+   */
   protected $approvedEmails;
 
   /**
    * EmailChecker constructor.
+   *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config
    */
   public function __construct(ConfigFactoryInterface $config) {

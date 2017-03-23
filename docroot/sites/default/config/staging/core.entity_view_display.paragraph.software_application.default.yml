@@ -1,0 +1,32 @@
+uuid: 9537781e-4a80-4b37-85e8-f2afbcd5bc9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.software_application.field_account
+    - field.field.paragraph.software_application.field_type
+    - paragraphs.paragraphs_type.software_application
+id: paragraph.software_application.default
+targetEntityType: paragraph
+bundle: software_application
+mode: default
+content:
+  field_account:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_type:
+    weight: 0
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  created: true
+  uid: true

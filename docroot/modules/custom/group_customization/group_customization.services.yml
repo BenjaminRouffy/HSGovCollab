@@ -1,0 +1,8 @@
+services:
+  form_alter_service.group_membership_alter:
+    class: Drupal\group_customization\FormAlterService\GroupMembershipAlter
+    tags:
+      - { name: form_alter, form_id: group_content_country-group_membership_add_form }
+      - { name: form_alter, form_id: group_content_country-group_membership_edit_form }
+      - { name: form_alter, form_id: group_content_project-group_membership_add_form }
+      - { name: form_alter, form_id: group_content_project-group_membership_edit_form }

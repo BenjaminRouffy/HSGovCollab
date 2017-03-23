@@ -8,6 +8,7 @@ interface FormAlterServiceSubmitInterface {
 
   /**
    * Form submit custom implementation.
+   *
    * @param $form
    * @param FormStateInterface $form_state
    */

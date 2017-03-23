@@ -43,6 +43,9 @@ third_party_settings:
         - account
         - group_organisation_details
         - field_organisations
+        - field_regions
+        - field_countries
+        - field_projects
         - group_contact_details
         - group_address_details
         - submit1
@@ -63,8 +66,7 @@ third_party_settings:
       label: 'My Profile'
     group_interest:
       children:
-        - field_country
-        - field_regions
+        - field_category
         - submit2
       parent_name: ''
       weight: 20
@@ -83,7 +85,6 @@ third_party_settings:
       label: 'My Categories of interest'
     group_newsletter:
       children:
-        - field_category
         - submit3
       parent_name: ''
       weight: 21
@@ -144,7 +145,7 @@ third_party_settings:
         - field_mobilephone
         - field_telephone
       parent_name: group_my_profile
-      weight: 6
+      weight: 9
       format_type: html_element
       format_settings:
         id: contact-details
@@ -164,7 +165,7 @@ third_party_settings:
         - field_zip_code
         - field_country_text
       parent_name: group_my_profile
-      weight: 7
+      weight: 10
       format_type: html_element
       format_settings:
         id: address-details
@@ -216,13 +217,10 @@ content:
     type: string_textfield
     region: content
   field_countries:
-    weight: 27
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    weight: 7
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_country_text:
     weight: 24
@@ -304,22 +302,16 @@ content:
     type: options_select
     region: content
   field_projects:
-    weight: 28
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    weight: 8
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_regions:
-    weight: 26
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    weight: 6
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_skype_or_other:
     type: entity_reference_paragraphs
@@ -357,12 +349,12 @@ content:
     type: string_textfield
     region: content
   submit1:
-    weight: 8
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   submit2:
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }

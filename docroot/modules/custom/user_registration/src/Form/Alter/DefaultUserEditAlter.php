@@ -59,6 +59,12 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
       $form['account']['name']['#description'],
       $form['account']['pass']['#description']
     );
+
+    $form['actions']['submit']['#value'] = t('Submit changes');
+    for ($i = 1; $i <= 3; $i++) {
+      $form['submit' . $i] = $form['actions']['submit'];
+    }
+    $form['actions']['submit']['#access'] = FALSE;
   }
 
 }

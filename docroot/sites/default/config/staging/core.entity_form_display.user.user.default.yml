@@ -7,7 +7,7 @@ dependencies:
     - field.field.user.user.field_avatar
     - field.field.user.user.field_category
     - field.field.user.user.field_city
-    - field.field.user.user.field_country
+    - field.field.user.user.field_countries
     - field.field.user.user.field_country_manager
     - field.field.user.user.field_country_text
     - field.field.user.user.field_disclose_your_personal_det
@@ -21,6 +21,7 @@ dependencies:
     - field.field.user.user.field_organisations
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_project_manager
+    - field.field.user.user.field_projects
     - field.field.user.user.field_regions
     - field.field.user.user.field_skype_or_other
     - field.field.user.user.field_streetname
@@ -42,57 +43,64 @@ third_party_settings:
         - account
         - group_organisation_details
         - field_organisations
+        - field_regions
+        - field_countries
+        - field_projects
         - group_contact_details
         - group_address_details
+        - submit1
       parent_name: ''
       weight: -1
       format_type: html_element
       format_settings:
-        id: my-profile
-        classes: anchor
+        label: 'My Profile'
         element: div
         show_label: true
         label_element: h3
         required_fields: true
-        attributes: ''
+        attributes: 'data-anchor-label="My Profile"'
         effect: none
         speed: fast
+        id: my-profile
+        classes: anchor
       label: 'My Profile'
     group_interest:
       children:
-        - field_country
-        - field_regions
+        - field_category
+        - submit2
       parent_name: ''
       weight: 20
       format_type: html_element
       format_settings:
-        id: interest
-        classes: anchor
+        label: 'My Categories of interest'
         element: div
         show_label: true
         label_element: h3
         required_fields: true
-        attributes: ''
+        attributes: 'data-anchor-label="Interest"'
         effect: none
         speed: fast
-      label: Interest
+        id: interest
+        classes: anchor
+      label: 'My Categories of interest'
     group_newsletter:
       children:
-        - field_category
+        - submit3
       parent_name: ''
       weight: 21
       format_type: html_element
       format_settings:
-        id: newsletter
-        classes: anchor
+        label: 'Newsletter subscribtion'
         element: div
         show_label: true
         label_element: h3
         required_fields: true
-        attributes: ''
+        attributes: 'data-anchor-label="Newsletter"'
         effect: none
         speed: fast
-      label: Newsletter
+        id: newsletter
+        classes: anchor
+      label: 'Newsletter subscribtion'
     group_user_details:
       children:
         - field_first_name
@@ -137,7 +145,7 @@ third_party_settings:
         - field_mobilephone
         - field_telephone
       parent_name: group_my_profile
-      weight: 20
+      weight: 9
       format_type: html_element
       format_settings:
         id: contact-details
@@ -157,7 +165,7 @@ third_party_settings:
         - field_zip_code
         - field_country_text
       parent_name: group_my_profile
-      weight: 20
+      weight: 10
       format_type: html_element
       format_settings:
         id: address-details
@@ -208,8 +216,8 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_country:
-    weight: 9
+  field_countries:
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -293,8 +301,14 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_projects:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_regions:
-    weight: 16
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -334,6 +348,21 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  submit1:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  submit2:
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  submit3:
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   captcha: true
   contact: true

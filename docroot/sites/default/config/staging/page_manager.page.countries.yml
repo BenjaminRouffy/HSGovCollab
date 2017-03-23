@@ -1,0 +1,16 @@
+uuid: 9fcd67e6-4692-41b9-b289-8669b3ef6988
+langcode: en
+status: true
+dependencies: {  }
+id: countries
+label: Countries
+description: ''
+use_admin_theme: false
+path: '/group/{group}/countries'
+access_logic: and
+access_conditions: {  }
+parameters:
+  group:
+    machine_name: group
+    type: 'entity:group'
+    label: Group

@@ -1,0 +1,20 @@
+uuid: d8eb4344-dc0d-4e89-a05e-c9795488ec43
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+id: region-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: region
+permissions_ui: true
+permissions:
+  - 'join group'
+  - 'view group'
+  - 'access group_node overview'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'

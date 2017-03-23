@@ -1,19 +1,19 @@
-uuid: 372e2848-7b97-4395-864a-caa5e1274312
+uuid: 1c2f0a79-d0f7-47bd-80d4-d0f170d3f200
 langcode: en
 status: true
 dependencies:
   module:
-    - taxonomy
+    - group
     - user
-id: user.field_country
-field_name: field_country
+id: user.field_countries
+field_name: field_countries
 entity_type: user
 type: entity_reference
 settings:
-  target_type: taxonomy_term
+  target_type: group
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -1,19 +1,19 @@
-uuid: b1da91c5-0315-4108-b0a3-58ff8af73dfd
+uuid: 381359ad-8382-46a7-b4be-7eaf10579f0d
 langcode: en
 status: true
 dependencies:
   module:
-    - taxonomy
+    - group
     - user
 id: user.field_regions
 field_name: field_regions
 entity_type: user
 type: entity_reference
 settings:
-  target_type: taxonomy_term
+  target_type: group
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

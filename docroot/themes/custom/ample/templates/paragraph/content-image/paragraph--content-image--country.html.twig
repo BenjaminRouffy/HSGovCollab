@@ -2,6 +2,12 @@
   <div class="country-content-wrapper">
     {{ country_icon }}
 
+    {% if region_icon %}
+      <div class="country-icon-wrapper">
+        <img src="{{ file_url(region_icon) }}">
+      </div>
+    {% endif %}
+
     <h1 role="heading">
       {{ group_label|t|upper }}
     </h1>

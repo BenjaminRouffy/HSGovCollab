@@ -41,3 +41,10 @@ group.faq:
     _title: 'FAQ'
   requirements:
     group: \d+
+
+group.country:
+  path: '/group/{group}/countries'
+  defaults:
+    _title: 'Countries'
+  requirements:
+    group: \d+

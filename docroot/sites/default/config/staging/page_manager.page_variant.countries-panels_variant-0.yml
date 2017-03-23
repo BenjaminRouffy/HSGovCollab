@@ -1,57 +1,56 @@
-uuid: f587f684-74f8-4a90-a2c5-467e31a0a80c
+uuid: 5b17bf79-9a90-4fdd-b62c-8d1926d4fab0
 langcode: en
 status: true
 dependencies:
   config:
-    - page_manager.page.projects_list_group
-    - views.view.list_of_projects
+    - page_manager.page.countries
+    - views.view.search_for_a_country_or_region
   module:
     - ctools
+    - group_dashboard
     - panels
-    - user
     - views
-id: projects_list_group-panels_variant-0
+id: countries-panels_variant-0
 label: Panels
 variant: panels_variant
 variant_settings:
   blocks:
-    4ffab8ab-20d5-4c4d-95fa-a34cca38943d:
-      id: 'views_block:list_of_projects-block_full'
+    1c15a1b5-dc4a-4ba5-a5c4-3b71366caf30:
+      id: 'views_block:search_for_a_country_or_region-block_2'
       label: ''
       provider: views
       label_display: '0'
       views_label: ''
       items_per_page: none
       region: middle
-      weight: 1
-      uuid: 4ffab8ab-20d5-4c4d-95fa-a34cca38943d
+      weight: 0
+      uuid: 1c15a1b5-dc4a-4ba5-a5c4-3b71366caf30
       context_mapping: {  }
   id: panels_variant
-  uuid: 9ffd340c-6de7-4ee3-b794-74353c111427
+  uuid: 78c5c6fa-7738-40f1-98ad-2ee70292fc8c
   label: null
   weight: 0
   layout: separate_column
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager
-  storage_id: projects_list_group-panels_variant-0
+  storage_id: countries-panels_variant-0
   builder: standard
-page: projects_list_group
+page: countries
 weight: 0
 selection_criteria:
   -
-    id: user_role
+    id: access_by_user_role
     roles:
-      authenticated: authenticated
-    negate: false
+      anonymous: anonymous
+    negate: 1
     context_mapping:
       user: current_user
   -
     id: 'entity_bundle:group'
     bundles:
-      country: country
+      region: region
     negate: false
-    context_mapping:
-      group: group
+    context_mapping: {  }
 selection_logic: and
 static_context: {  }

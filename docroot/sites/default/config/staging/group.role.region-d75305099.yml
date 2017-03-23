@@ -1,0 +1,19 @@
+uuid: d7c672ee-445e-4d34-8053-1c63804e4f74
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.specific_users
+id: region-d75305099
+label: 'Specific users'
+weight: 7
+internal: true
+audience: outsider
+group_type: region
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,58 @@
+uuid: 342fc32b-5c0f-4997-825a-a15a0b142b52
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.news_events_group
+    - views.view.news_and_events_group
+  module:
+    - ctools
+    - group_dashboard
+    - panels
+    - views
+id: news_events_group-panels_variant-2
+label: Region
+variant: panels_variant
+variant_settings:
+  blocks:
+    ec9fe20d-6620-45ff-84bf-ea863d0336e8:
+      id: 'views_block:news_and_events_group-region_news_events'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: ec9fe20d-6620-45ff-84bf-ea863d0336e8
+      pager: view
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 742fd9ea-0edf-4909-a454-f44f2e33e612
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: news_events_group-panels_variant-2
+  builder: standard
+page: news_events_group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      region: region
+    negate: false
+    context_mapping:
+      group: group
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

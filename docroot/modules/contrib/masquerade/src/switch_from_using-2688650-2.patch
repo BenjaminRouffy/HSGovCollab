@@ -1,0 +1,92 @@
+diff --git a/masquerade.services.yml b/masquerade.services.yml
+index b54cedf..81472ac 100644
+--- a/masquerade.services.yml
++++ b/masquerade.services.yml
+@@ -1,7 +1,7 @@
+ services:
+   masquerade:
+     class: Drupal\masquerade\Masquerade
+-    arguments: ['@current_user', '@entity_type.manager', '@module_handler', '@session_manager', '@logger.channel.masquerade', '@user.permissions']
++    arguments: ['@current_user', '@entity_type.manager', '@module_handler', '@session_manager', '@logger.channel.masquerade', '@user.permissions', '@session']
+   logger.channel.masquerade:
+     parent: logger.channel_base
+     arguments: ['masquerade']
+diff --git a/src/Cache/MasqueradeCacheContext.php b/src/Cache/MasqueradeCacheContext.php
+index 87796b8..4dc5310 100644
+--- a/src/Cache/MasqueradeCacheContext.php
++++ b/src/Cache/MasqueradeCacheContext.php
+@@ -30,7 +30,7 @@ class MasqueradeCacheContext extends RequestStackCacheContextBase implements Cac
+    * {@inheritdoc}
+    */
+   public function getContext() {
+-    return !empty($_SESSION['masquerading']) ? '1' : '0';
++    return $this->requestStack->getCurrentRequest()->getSession()->has('masquerading') ? '1' : '0';
+   }
+ 
+   /**
+diff --git a/src/Masquerade.php b/src/Masquerade.php
+index 031f4f0..b5ec3b6 100644
+--- a/src/Masquerade.php
++++ b/src/Masquerade.php
+@@ -16,6 +16,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
+ use Drupal\user\PermissionHandlerInterface;
+ use Drupal\user\UserInterface;
+ use Psr\Log\LoggerInterface;
++use Symfony\Component\HttpFoundation\Session\Session;
+ 
+ /**
+  * Defines a masquerade service to switch user account.
+@@ -82,13 +83,14 @@ class Masquerade {
+    * @param \Drupal\user\PermissionHandlerInterface $permission_handler
+    *   The permission handler.
+    */
+-  public function __construct(AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler, SessionManagerInterface $session_manager, LoggerInterface $logger, PermissionHandlerInterface $permission_handler) {
++  public function __construct(AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler, SessionManagerInterface $session_manager, LoggerInterface $logger, PermissionHandlerInterface $permission_handler, Session $session) {
+     $this->currentUser = $current_user;
+     $this->entityTypeManager = $entity_type_manager;
+     $this->moduleHandler = $module_handler;
+     $this->sessionManager = $session_manager;
+     $this->logger = $logger;
+     $this->permissionHandler = $permission_handler;
++    $this->session = $session;
+   }
+ 
+   /**
+@@ -97,8 +99,7 @@ class Masquerade {
+    * @return bool
+    */
+   public function isMasquerading() {
+-    // @todo Check to use some session related service.
+-    return !empty($_SESSION['masquerading']);
++    return $this->session->has('masquerading');
+   }
+ 
+   /**
+@@ -119,7 +120,7 @@ class Masquerade {
+     // Regenerate the session ID to prevent against session fixation attacks.
+     $this->sessionManager->regenerate();
+ 
+-    $_SESSION['masquerading'] = $account->id();
++    $this->session->set('masquerading', $account->id());
+ 
+     // Supposed "safe" user switch method:
+     // https://www.drupal.org/node/218104
+@@ -146,15 +147,15 @@ class Masquerade {
+    *   TRUE when switched back, FALSE otherwise.
+    */
+   public function switchBack() {
+-    if (empty($_SESSION['masquerading'])) {
++    if (!$this->session->has('masquerading')) {
+       return FALSE;
+     }
+     $new_user = $this->entityTypeManager
+       ->getStorage('user')
+-      ->load($_SESSION['masquerading']);
++      ->load($this->session->get('masquerading'));
+ 
+     // Ensure the flag is cleared.
+-    unset($_SESSION['masquerading']);
++    $this->session->remove('masquerading');
+     if (!$new_user) {
+       return FALSE;
+     }

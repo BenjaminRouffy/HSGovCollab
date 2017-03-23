@@ -11,6 +11,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\user\PermissionHandlerInterface;
 use Drupal\user\UserInterface;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Defines a masquerade service to switch user account.
@@ -77,13 +78,14 @@ class Masquerade {
    * @param \Drupal\user\PermissionHandlerInterface $permission_handler
    *   The permission handler.
    */
-  public function __construct(AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler, SessionManagerInterface $session_manager, LoggerInterface $logger, PermissionHandlerInterface $permission_handler) {
+  public function __construct(AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler, SessionManagerInterface $session_manager, LoggerInterface $logger, PermissionHandlerInterface $permission_handler, Session $session) {
     $this->currentUser = $current_user;
     $this->entityTypeManager = $entity_type_manager;
     $this->moduleHandler = $module_handler;
     $this->sessionManager = $session_manager;
     $this->logger = $logger;
     $this->permissionHandler = $permission_handler;
+    $this->session = $session;
   }
 
   /**
@@ -92,8 +94,7 @@ class Masquerade {
    * @return bool
    */
   public function isMasquerading() {
-    // @todo Check to use some session related service.
-    return !empty($_SESSION['masquerading']);
+    return $this->session->has('masquerading');
   }
 
   /**
@@ -114,7 +115,7 @@ class Masquerade {
     // Regenerate the session ID to prevent against session fixation attacks.
     $this->sessionManager->regenerate();
 
-    $_SESSION['masquerading'] = $account->id();
+    $this->session->set('masquerading', $account->id());
 
     // Supposed "safe" user switch method:
     // https://www.drupal.org/node/218104
@@ -141,15 +142,15 @@ class Masquerade {
    *   TRUE when switched back, FALSE otherwise.
    */
   public function switchBack() {
-    if (empty($_SESSION['masquerading'])) {
+    if (!$this->session->has('masquerading')) {
       return FALSE;
     }
     $new_user = $this->entityTypeManager
       ->getStorage('user')
-      ->load($_SESSION['masquerading']);
+      ->load($this->session->get('masquerading'));
 
     // Ensure the flag is cleared.
-    unset($_SESSION['masquerading']);
+    $this->session->remove('masquerading');
     if (!$new_user) {
       return FALSE;
     }

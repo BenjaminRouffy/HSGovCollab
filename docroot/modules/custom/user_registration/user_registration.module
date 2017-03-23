@@ -120,6 +120,12 @@ function user_registration_entity_extra_field_info_alter(&$info) {
     'description' => t('Helper captcha block.'),
     'weight' => -10,
   );
+  for ($i = 1; $i <= 3; $i++) {
+    $user_form['submit' . $i] = array(
+      'label' => t('Submit Button ' . $i),
+      'weight' => -10,
+    );
+  }
 
 }
 

@@ -1,17 +1,17 @@
-uuid: 4b0cc71a-ab12-4b9b-8471-8d2e74d49dcb
+uuid: 6b724d64-75ba-45f3-b4ac-5c47a52e0e25
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.field_regions
+    - field.storage.user.field_countries
     - group.type.country
   module:
     - user
-id: user.user.field_regions
-field_name: field_regions
+id: user.user.field_countries
+field_name: field_countries
 entity_type: user
 bundle: user
-label: Regions
+label: Countries
 description: ''
 required: false
 translatable: false

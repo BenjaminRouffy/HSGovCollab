@@ -9,6 +9,7 @@ dependencies:
     - field.field.group.country.field_country_icon
     - field.field.group.country.field_country_options
     - field.field.group.country.field_date
+    - field.field.group.country.field_group_status
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
@@ -44,6 +45,8 @@ third_party_settings:
         - field_banner
         - label
         - field_country_icon
+        - translation
+        - field_group_status
       parent_name: group_t
       weight: 20
       format_type: tab
@@ -177,6 +180,12 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_group_status:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   field_infographic:
     type: entity_reference_paragraphs
     weight: 9
@@ -264,9 +273,9 @@ content:
     region: content
   translation:
     weight: 13
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   path: true
   uid: true

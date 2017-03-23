@@ -1,27 +1,27 @@
-uuid: 386212a6-19d6-42be-95d9-b6485a365b0d
+uuid: 883473cf-8817-4c33-b763-5aa82d79ff35
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.field_country
-    - taxonomy.vocabulary.countries
+    - field.storage.user.field_projects
+    - group.type.project
   module:
     - user
-id: user.user.field_country
-field_name: field_country
+id: user.user.field_projects
+field_name: field_projects
 entity_type: user
 bundle: user
-label: Country
+label: Projects
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: 'default:group'
   handler_settings:
     target_bundles:
-      countries: countries
+      project: project
     sort:
       field: _none
     auto_create: false

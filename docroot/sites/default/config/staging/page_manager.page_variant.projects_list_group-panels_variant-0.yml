@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.projects_list_group
     - views.view.list_of_projects
   module:
+    - ctools
     - panels
     - user
     - views
@@ -45,5 +46,12 @@ selection_criteria:
     negate: false
     context_mapping:
       user: current_user
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      country: country
+    negate: false
+    context_mapping:
+      group: group
 selection_logic: and
 static_context: {  }

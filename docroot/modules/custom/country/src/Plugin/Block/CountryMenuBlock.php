@@ -77,6 +77,7 @@ class CountryMenuBlock extends BlockBase {
       ];
 
       $entities = [
+        'country' => $this->t('Countries'),
         'project' => $this->t('Projects'),
         'news_and_event' => $this->t('News&Events'),
         'document' => $this->t('Documents'),
@@ -88,12 +89,21 @@ class CountryMenuBlock extends BlockBase {
         $row = [];
 
         switch($index) {
+          case 'country':
+            $row = views_get_view_result('search_for_a_country_or_region', 'block_2');
+            break;
+
           case 'news_and_event':
             $row = views_get_view_result('news_and_events_group', 'news_and_events_by_group');
             break;
 
           case 'project':
-            $row = views_get_view_result('list_of_projects', 'block_1');
+            if ($group->bundle() == 'region') {
+              $row = views_get_view_result('list_of_projects', 'block_3');
+            }
+            else {
+              $row = views_get_view_result('list_of_projects', 'block_1');
+            }
             break;
 
           case 'document':

@@ -1,0 +1,57 @@
+uuid: db51f8cd-62e2-4a38-b9ba-461f188d8bc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.projects_list_group
+    - views.view.list_of_projects
+  module:
+    - ctools
+    - group_dashboard
+    - panels
+    - views
+id: projects_list_group-panels_variant-2
+label: Region
+variant: panels_variant
+variant_settings:
+  blocks:
+    faf72d51-9e6e-467f-afaa-4784f44fedb1:
+      id: 'views_block:list_of_projects-region_full_block'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: faf72d51-9e6e-467f-afaa-4784f44fedb1
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 99fedaa1-c248-4afc-a5ae-df50ac66b104
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: projects_list_group-panels_variant-2
+  builder: standard
+page: projects_list_group
+weight: 0
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      region: region
+    negate: false
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

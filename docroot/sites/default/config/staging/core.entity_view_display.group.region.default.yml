@@ -1,0 +1,60 @@
+uuid: be43d32b-ca71-4e35-8fa5-788605f2d66c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.region.field_banner
+    - field.field.group.region.field_bottom_link
+    - field.field.group.region.field_content
+    - field.field.group.region.field_date
+    - field.field.group.region.field_infographic
+    - field.field.group.region.field_join_block
+    - field.field.group.region.field_region_icon
+    - field.field.group.region.field_summary
+    - field.field.group.region.field_time_line
+    - group.type.region
+  module:
+    - entity_reference_revisions
+    - text
+id: group.region.default
+targetEntityType: group
+bundle: region
+mode: default
+content:
+  field_content:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_infographic:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_summary:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_bottom_link: true
+  field_date: true
+  field_join_block: true
+  field_region_icon: true
+  field_time_line: true
+  label: true
+  langcode: true
+  uid: true

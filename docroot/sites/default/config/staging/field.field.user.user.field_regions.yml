@@ -1,27 +1,27 @@
-uuid: 77b2bd9d-96e4-4fd0-8357-f96eac4f7f4c
+uuid: 4b0cc71a-ab12-4b9b-8471-8d2e74d49dcb
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.user.field_regions
-    - taxonomy.vocabulary.regions
+    - group.type.country
   module:
     - user
 id: user.user.field_regions
 field_name: field_regions
 entity_type: user
 bundle: user
-label: Region
+label: Regions
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: 'default:group'
   handler_settings:
     target_bundles:
-      regions: regions
+      country: country
     sort:
       field: _none
     auto_create: false

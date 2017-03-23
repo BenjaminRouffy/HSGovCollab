@@ -1,0 +1,20 @@
+uuid: 519aa4e0-9770-48e3-a979-2cd89f04f263
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - user
+id: user.field_projects
+field_name: field_projects
+entity_type: user
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

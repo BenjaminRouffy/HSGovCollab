@@ -10,7 +10,9 @@ field_name: field_country_manager
 entity_type: user
 type: group_content_item
 settings:
-  gid: country-admin
+  group_type: country
+  plugin_type: country-group_membership
+  group_roles: country-admin
 module: group_content_field
 locked: false
 cardinality: 1

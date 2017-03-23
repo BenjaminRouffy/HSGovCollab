@@ -10,7 +10,9 @@ field_name: field_project_manager
 entity_type: user
 type: group_content_item
 settings:
-  gid: project-admin
+  group_type: project
+  plugin_type: project-group_membership
+  group_roles: project-admin
 module: group_content_field
 locked: false
 cardinality: 1

@@ -6,7 +6,6 @@ dependencies:
     - page_manager.page.group
     - views.view.list_of_projects
     - views.view.news_and_events_group
-    - views.view.search_for_a_country_or_region
   module:
     - addtoany
     - ctools
@@ -83,8 +82,8 @@ variant_settings:
       uuid: c0e33000-eb63-4d2f-9eb4-7da6cfa4b59d
       context_mapping:
         entity: group
-    625d8ffc-c808-4c13-8332-1007139ab02d:
-      id: 'views_block:search_for_a_country_or_region-block_2'
+    f1c4fe4a-7fa8-4ed9-bd73-21d2713b1413:
+      id: 'views_block:list_of_projects-block_3'
       label: ''
       provider: views
       label_display: '0'
@@ -92,7 +91,7 @@ variant_settings:
       items_per_page: none
       region: content
       weight: -1
-      uuid: 625d8ffc-c808-4c13-8332-1007139ab02d
+      uuid: f1c4fe4a-7fa8-4ed9-bd73-21d2713b1413
       context_mapping: {  }
   id: panels_variant
   uuid: d2b2d722-a25f-41a6-93ae-15d970bbaa06

@@ -8,6 +8,7 @@ dependencies:
   module:
     - better_exposed_filters
     - group
+    - p4h_views_plugins
 id: search_for_a_country_or_region
 label: 'Search for a country or region'
 module: views
@@ -66,9 +67,23 @@ display:
                 rewrite:
                   filter_rewrite_values: ''
       pager:
-        type: none
+        type: mini_with_items
         options:
+          items_per_page: 18
           offset: 0
+          id: '0'
+          total_pages: ''
+          tags:
+            previous: ‹‹
+            next: ››
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
       style:
         type: default
         options:
@@ -412,18 +427,19 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.project.time_line'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.search_country'
   block_1:
     display_plugin: block
     id: block_1
@@ -437,6 +453,7 @@ display:
       contexts:
         - 'languages:language_interface'
         - url
+        - url.query_args
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'

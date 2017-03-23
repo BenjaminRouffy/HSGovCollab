@@ -7,6 +7,8 @@ use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\group\Entity\Group;
 
 /**
  * Plugin implementation of the 'plugin_reference_id' formatter.
@@ -20,16 +22,24 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class GroupContentListFormatter extends FormatterBase {
-
   /**
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode):array {
     $elements = [];
 
+    // Initialize field.
+    $items->setValue(1);
+
     foreach ($items as $delta => $item) {
       $value = $item->getValue();
-      $elements[$delta] = ['#markup' => 'test me please'];
+      foreach (Group::loadMultiple($value['entity_gids']) as $group) {
+        $elements[$delta][] = [
+          '#type' => 'link',
+          '#title' => $group->label(),
+          '#url' => Url::fromRoute('entity.group.canonical', ['group' => $group->id()]),
+        ];
+      }
     }
 
     return $elements;

@@ -1,0 +1,20 @@
+uuid: 381359ad-8382-46a7-b4be-7eaf10579f0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - user
+id: user.field_regions
+field_name: field_regions
+entity_type: user
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

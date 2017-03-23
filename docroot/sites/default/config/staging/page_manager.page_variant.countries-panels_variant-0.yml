@@ -1,0 +1,56 @@
+uuid: 5b17bf79-9a90-4fdd-b62c-8d1926d4fab0
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.countries
+    - views.view.search_for_a_country_or_region
+  module:
+    - ctools
+    - group_dashboard
+    - panels
+    - views
+id: countries-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    b7d37d2e-a40f-4ed2-ad62-b08d3a575aeb:
+      id: 'views_block:search_for_a_country_or_region-block_2'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: b7d37d2e-a40f-4ed2-ad62-b08d3a575aeb
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 78c5c6fa-7738-40f1-98ad-2ee70292fc8c
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: countries-panels_variant-0
+  builder: standard
+page: countries
+weight: 0
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      region: region
+    negate: false
+    context_mapping: {  }
+selection_logic: and
+static_context: {  }

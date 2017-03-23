@@ -7,7 +7,6 @@ dependencies:
     - field.field.user.user.field_avatar
     - field.field.user.user.field_category
     - field.field.user.user.field_city
-    - field.field.user.user.field_country
     - field.field.user.user.field_country_manager
     - field.field.user.user.field_country_text
     - field.field.user.user.field_disclose_your_personal_det
@@ -213,12 +212,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
-  field_country:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
   field_country_text:
     weight: 24

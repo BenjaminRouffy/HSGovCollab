@@ -92,6 +92,7 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_mobilephone']['widget']['add_more']['#value'] = t('Add number');
     $form['field_telephone']['widget']['add_more']['#value'] = t('Add number');
     $form['field_skype_or_other']['widget']['add_more']['add_more_button_software_application']['#value'] = t('Add');
+    $form['field_organisations']['widget']['add_more']['add_more_button_organisation']['#value'] = t('Add organisation');
     $form['field_organisation']['widget']['#title'] = t('Main organization');
 
     unset(
@@ -102,6 +103,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     if (!$current_user->hasPermission('change main organisation')) {
       $form['field_organisation']['widget']['#disabled'] = 'disabled';
     }
+
+    $form['#attributes']['class'][] = 'form-my-settings';
   }
 }
 

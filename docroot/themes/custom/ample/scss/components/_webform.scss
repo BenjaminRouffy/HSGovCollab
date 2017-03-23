@@ -144,6 +144,10 @@ form {
   animation: none !important;
 }
 
+.form-radio {
+  appearance: radio;
+}
+
 .form-submit {
   background: $white;
   border: 1px solid transparent;
@@ -769,5 +773,248 @@ form {
 @include breakpoint-for('.acceptance-form', (to: tablet)) {
   .entity-legal-document-acceptance-form {
     width: 100%;
+  }
+}
+
+.form-my-settings {
+  .field--name-field-person-titles {
+    margin-bottom: 15px;
+    padding: 20px 40px;
+    width: 50%;
+
+    .form-item {
+      width: 33.33%;
+    }
+  }
+
+  #user-details,
+  #organisation-details,
+  #contact-details,
+  #address-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding: 20px 0;
+
+    .form-wrapper {
+      padding: 0 40px;
+      width: 50%;
+
+      .form-wrapper {
+        padding: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  #contact-details {
+    justify-content: flex-end;
+
+    > .form-wrapper {
+      margin-bottom: 35px;
+    }
+
+    label {
+      display: none;
+    }
+
+    .paragraph-type-top {
+      top: -30px;
+    }
+  }
+
+  #edit-account {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding: 20px 0;
+
+    > .form-item {
+      margin: 0;
+      padding: 0 40px;
+      width: 50%;
+    }
+  }
+
+  #edit-field-organisations-wrapper,
+  #contact-details {
+    margin-bottom: 15px;
+    padding: 20px 0;
+
+    .paragraph-type-title {
+      display: none;
+    }
+
+    strong {
+      display: block;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .form-submit {
+      @include font-size(14);
+      background: transparent;
+      border: none;
+      font-family: $fira;
+      letter-spacing: 0;
+      padding: 0;
+      text-transform: none;
+
+      &.field-add-more-submit {
+        background: url(../images/add-plus-button.png) left top no-repeat;
+        padding-left: 21px;
+      }
+
+      &:hover {
+        background-position: left bottom;
+        color: $red-dark;
+        transform: none;
+      }
+    }
+  }
+
+  #edit-field-organisations-wrapper,
+  #edit-field-skype-or-other-wrapper {
+    .field-add-more-submit {
+      margin-left: 40px;
+    }
+
+    > .ajax-new-content {
+      padding: 0 40px;
+
+      .field-add-more-submit {
+        margin-left: 0;
+      }
+
+      .field--name-field-organisation,
+      thead .label {
+        padding-left: 0;
+      }
+
+      .field--name-field-job-title,
+      .paragraph-type-top {
+        padding-right: 0;
+      }
+    }
+  }
+
+  #edit-field-skype-or-other-wrapper {
+    .paragraphs-subform {
+      .field--name-field-type {
+        width: 33.33%;
+      }
+
+      .field--name-field-account {
+        padding-left: 10px;
+        width: 66.64%;
+      }
+    }
+  }
+
+  #edit-field-organisations,
+  #edit-field-skype-or-other,
+  #edit-field-mobilephone-wrapper,
+  #edit-field-telephone-wrapper {
+    padding: 0 40px;
+    position: relative;
+
+    .field-add-more-submit {
+      margin-left: 0;
+    }
+  }
+
+  table {
+    margin: 0 !important;
+    width: 100%;
+
+    th,
+    td {
+      padding: 0 !important;
+      position: relative;
+    }
+
+    td {
+      display: block;
+      min-height: 50px;
+    }
+
+    .field-multiple-drag {
+      display: none;
+    }
+
+    .paragraph-type-top {
+      padding-right: 40px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    .paragraphs-subform {
+      display: flex;
+      flex-wrap: wrap;
+
+      .form-wrapper {
+        padding: 0 40px;
+        width: 50%;
+      }
+    }
+
+    .dropbutton-wrapper {
+      min-height: 0;
+
+      &.open {
+        .dropbutton-toggle {
+          top: -5px;
+        }
+
+        .dropbutton-arrow {
+          border-top-color: transparent;
+          border-bottom-color: $red-dark;
+        }
+      }
+
+      .dropbutton-toggle {
+        bottom: auto;
+        top: 13px;
+      }
+
+      .dropbutton-arrow {
+        border-top-color: $red-dark;
+      }
+    }
+
+    .confirm-remove,
+    .restore {
+      .form-submit {
+        margin-top: 0 !important;
+      }
+    }
+  }
+
+  thead {
+    .label {
+      @include font-size(18.2);
+      font-family: $oswald;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 20px;
+      margin: 0;
+      padding-bottom: 10px;
+      text-align: left;
+    }
+  }
+
+  #edit-field-organisations-wrapper {
+    thead {
+      .label {
+        padding: 0 40px 10px;
+      }
+    }
+  }
+
+  .ajax-progress-throbber {
+    position: absolute;
+    left: 50%;
   }
 }

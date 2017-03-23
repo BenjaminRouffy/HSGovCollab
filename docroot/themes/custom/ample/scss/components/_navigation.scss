@@ -177,6 +177,16 @@
     }
   }
 
+  .active {
+    a {
+      background: $white;
+
+      &:before {
+        color: $red;
+      }
+    }
+  }
+
   .sidebar-menu {
     .contextual-links {
       border-top-left-radius: 0;

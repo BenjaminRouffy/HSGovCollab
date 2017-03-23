@@ -9,6 +9,7 @@ dependencies:
   module:
     - addtoany
     - ctools
+    - ctools_block
     - panels
     - user
     - views
@@ -93,6 +94,23 @@ variant_settings:
       weight: -1
       uuid: f1c4fe4a-7fa8-4ed9-bd73-21d2713b1413
       context_mapping: {  }
+    16ff8aec-43c8-46af-b035-e43394795d69:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: -3
+      uuid: 16ff8aec-43c8-46af-b035-e43394795d69
+      context_mapping:
+        entity: group
   id: panels_variant
   uuid: d2b2d722-a25f-41a6-93ae-15d970bbaa06
   label: null

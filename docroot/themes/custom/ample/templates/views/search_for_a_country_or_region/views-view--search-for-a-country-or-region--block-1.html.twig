@@ -3,14 +3,6 @@
 {% if without_wrapper is not defined %}
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
-  <div class="title-wrapper" data-anchor-id="view-{{ dom_id }}">
-    {{ title_prefix }}
-    <h1 role="heading" class="anchor-title">
-      {{ view.getTitle()|raw }}
-    </h1>
-    {{ title_suffix|without('contextual_links') }}
-    <div class="line"></div>
-  </div>
 
   {% if header %}
   {% if header_without_wrapper is not defined %}
@@ -24,15 +16,16 @@
 
   {{ exposed }}
   {{ attachment_before }}
+  {{ pager }}
 
   {{ rows }}
-
   {% if empty %}
     <div class="empty-result">
       {{ empty }}
     </div>
   {% endif %}
 
+  {{ pager }}
   {{ attachment_after }}
 
 <div class="bottom-link">

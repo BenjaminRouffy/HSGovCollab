@@ -1241,6 +1241,7 @@ display:
         filter_groups: false
         relationships: false
         arguments: false
+        empty: false
       row:
         type: 'entity:group'
         options:
@@ -1387,6 +1388,7 @@ display:
           entity_type: group_content
           entity_field: gid
           plugin_id: group_id
+      empty: {  }
     cache_metadata:
       max-age: -1
       contexts:

@@ -1,6 +1,6 @@
 <div class="project-content">
-  <div{{ attributes }}>
     {{ title_prefix }}
+    {{ title_suffix }}
     <div class="project-title">
       <div class="project-icon-wrapper">
         {{ content.field_project_icon }}
@@ -16,8 +16,6 @@
         {% endif %}
       </div>
     </div>
-    {{ title_suffix }}
-  </div>
   {% if not logged_in %}
     <div class="bottom-link">
       {# TODO Should use here a router.#}

@@ -1,0 +1,13 @@
+diff --git a/docroot/core/lib/Drupal/Core/Access/AccessResult.php b/docroot/core/lib/Drupal/Core/Access/AccessResult.php
+index d87872a..0c6a033 100755
+--- a/docroot/core/lib/Drupal/Core/Access/AccessResult.php
++++ b/docroot/core/lib/Drupal/Core/Access/AccessResult.php
+@@ -389,7 +389,7 @@ public function andIf(AccessResultInterface $other) {
+         }
+       }
+     }
+-    elseif ($this->isAllowed() && $other->isAllowed()) {
++    elseif ($this->isAllowed() && ($other->isAllowed() || $other->isNeutral())) {
+       $result = static::allowed();
+       $merge_other = TRUE;
+     }

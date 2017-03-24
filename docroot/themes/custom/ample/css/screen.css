@@ -3019,6 +3019,11 @@ form .social_login label:after {
 .form-my-settings label.form-required:after {
   content: ": *"; }
 
+.form-my-settings #edit-field-organisations-wrapper strong:after,
+.form-my-settings #contact-details strong:after,
+.form-my-settings .label:after {
+  content: ":"; }
+
 .form-my-settings #interest h1,
 .form-my-settings #newsletter h1 {
   font-size: 3.0625rem;

@@ -867,6 +867,14 @@ form {
     }
   }
 
+  #edit-field-organisations-wrapper strong,
+  #contact-details strong,
+  .label {
+    &:after {
+      content: ":";
+    }
+  }
+
   #interest,
   #newsletter {
     h1 {

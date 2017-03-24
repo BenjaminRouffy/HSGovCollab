@@ -3024,6 +3024,7 @@ form .social_login label:after {
   padding: 20px 40px;
   width: 50%; }
   .form-my-settings .field--name-field-person-titles .form-item {
+    margin-bottom: 0;
     width: 33.33%; }
 
 .form-my-settings #user-details,
@@ -3054,9 +3055,11 @@ form .social_login label:after {
       width: 100%; }
 
 .form-my-settings #interest .form-wrapper {
-  margin-bottom: 15px;
+  margin: 0 auto 15px;
   padding: 20px 40px;
   width: 50%; }
+  .form-my-settings #interest .form-wrapper label {
+    display: none; }
 
 .form-my-settings #contact-details {
   -webkit-box-pack: end;

@@ -870,6 +870,7 @@ form {
     width: 50%;
 
     .form-item {
+      margin-bottom: 0;
       width: 33.33%;
     }
   }
@@ -897,9 +898,13 @@ form {
 
   #interest {
     .form-wrapper {
-      margin-bottom: 15px;
+      margin: 0 auto 15px;
       padding: 20px 40px;
       width: 50%;
+
+      label {
+        display: none;
+      }
     }
   }
 

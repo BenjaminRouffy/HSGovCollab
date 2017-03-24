@@ -855,6 +855,26 @@ form {
     }
   }
 
+  label {
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
+      }
+    }
+  }
+
+  #edit-field-organisations-wrapper strong,
+  #contact-details strong,
+  .label {
+    &:after {
+      content: ":";
+    }
+  }
+
   #interest,
   #newsletter {
     h1 {

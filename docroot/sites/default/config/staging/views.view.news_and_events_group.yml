@@ -2765,10 +2765,23 @@ display:
           1: AND
       header: {  }
       pager:
-        type: some
+        type: mini_with_items
         options:
           items_per_page: 7
           offset: 0
+          id: '0'
+          total_pages: ''
+          tags:
+            previous: ‹‹
+            next: ››
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
       use_more: true
       use_more_always: false
       use_more_text: 'Read more news'
@@ -2870,5 +2883,6 @@ display:
         - 'languages:language_interface'
         - route
         - url
+        - url.query_args
         - user.permissions
       tags: {  }

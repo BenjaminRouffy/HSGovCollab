@@ -359,11 +359,11 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: field
-        langcode:
-          id: langcode
-          table: group_content_field_data
+        langcode_1:
+          id: langcode_1
+          table: groups_field_data
           field: langcode
-          relationship: none
+          relationship: gc__group
           group_type: group
           admin_label: ''
           label: 'Translation language'
@@ -422,7 +422,7 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: group_content
+          entity_type: group
           entity_field: langcode
           plugin_id: field
         changed:
@@ -846,27 +846,23 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        langcode:
-          id: langcode
-          table: group_content_field_data
+        langcode_1:
+          id: langcode_1
+          table: groups_field_data
           field: langcode
-          relationship: none
+          relationship: gc__group
           group_type: group
           admin_label: ''
           operator: in
-          value:
-            en: en
-            fr: fr
-            und: und
-            zxx: zxx
+          value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: langcode_op
+            operator_id: langcode_1_op
             label: 'Translation language'
             description: ''
             use_operator: false
-            operator: langcode_op
+            operator: langcode_1_op
             identifier: langcode
             required: false
             remember: false
@@ -874,7 +870,6 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
@@ -893,7 +888,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: group_content
+          entity_type: group
           entity_field: langcode
           plugin_id: language
       sorts: {  }

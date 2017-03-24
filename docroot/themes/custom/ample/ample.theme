@@ -39,6 +39,23 @@ function ample_preprocess_html(array &$variables) {
     $variables['is_front'] = FALSE;
   }
 
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $route_name = explode('.', $route_name);
+  $route_prefix = current($route_name);
+
+  if ('page_manager' === $route_prefix) {
+    $page_name = end($route_name);
+    // Remove "page_view_".
+    $variables['attributes']['class'][] = 'page-' . str_replace('_', '-', substr($page_name, 10));
+  }
+  elseif ('group' === $route_prefix) {
+    $variables['attributes']['class'][] = 'page-' . $route_prefix . '-' . str_replace('_', '-', end($route_name));
+  }
+
+  if ('node' === $variables['root_path']) {
+    $variables['attributes']['class'][] = 'node-' . str_replace('_', '-', $variables['node_type']);
+  }
+
   $variables['attributes']['class'][] = strtolower(\Drupal::languageManager()->getCurrentLanguage()->getId());
   $variables['attributes']['class'][] = \Drupal::theme()->getActiveTheme()->getName();
 }

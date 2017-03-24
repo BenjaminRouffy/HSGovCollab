@@ -2542,11 +2542,19 @@ form {
           appearance: checkbox;
   -webkit-animation: none !important;
           animation: none !important; }
+  .form-checkbox ~ label {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top; }
 
 .form-radio {
   -webkit-appearance: radio;
      -moz-appearance: radio;
           appearance: radio; }
+  .form-radio ~ label {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top; }
 
 .form-submit {
   background: #fff;
@@ -2995,6 +3003,8 @@ form .social_login label:after {
   margin-bottom: 100px; }
 
 .form-my-settings .title-wrapper {
+  padding-left: 40px;
+  padding-right: 40px;
   text-align: center; }
   .form-my-settings .title-wrapper h1 {
     font-size: 4.2rem; }
@@ -3042,6 +3052,11 @@ form .social_login label:after {
     .form-my-settings #address-details .form-wrapper .form-wrapper {
       padding: 0;
       width: 100%; }
+
+.form-my-settings #interest .form-wrapper {
+  margin-bottom: 15px;
+  padding: 20px 40px;
+  width: 50%; }
 
 .form-my-settings #contact-details {
   -webkit-box-pack: end;

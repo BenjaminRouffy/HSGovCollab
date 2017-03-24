@@ -187,10 +187,22 @@ form {
 .form-checkbox {
   appearance: checkbox;
   animation: none !important;
+
+  ~ label {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top;
+  }
 }
 
 .form-radio {
   appearance: radio;
+
+  ~ label {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top;
+  }
 }
 
 .form-submit {
@@ -829,6 +841,8 @@ form {
   }
 
   .title-wrapper {
+    padding-left: 40px;
+    padding-right: 40px;
     text-align: center;
 
     h1 {
@@ -878,6 +892,14 @@ form {
         padding: 0;
         width: 100%;
       }
+    }
+  }
+
+  #interest {
+    .form-wrapper {
+      margin-bottom: 15px;
+      padding: 20px 40px;
+      width: 50%;
     }
   }
 

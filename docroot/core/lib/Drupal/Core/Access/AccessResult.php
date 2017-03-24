@@ -389,7 +389,7 @@ abstract class AccessResult implements AccessResultInterface, RefinableCacheable
         }
       }
     }
-    elseif ($this->isAllowed() && ($other->isAllowed() || $other->isNeutral())) {
+    elseif ($this->isAllowed() && $other->isAllowed()) {
       $result = static::allowed();
       $merge_other = TRUE;
     }

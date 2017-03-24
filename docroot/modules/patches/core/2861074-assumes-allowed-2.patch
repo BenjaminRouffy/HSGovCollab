@@ -1,0 +1,32 @@
+commit 2409bb08ee086705dce14b8f6ad49034e33cccdb
+Author: Yuriy Boychenko <yuboychenko@gmail.com>
+Date:   Fri Mar 24 14:09:51 2017 +0200
+
+    Group Permission Access Check
+
+diff --git a/docroot/core/lib/Drupal/Core/Access/AccessResult.php b/docroot/core/lib/Drupal/Core/Access/AccessResult.php
+index d87872a..0c6a033 100755
+--- a/docroot/core/lib/Drupal/Core/Access/AccessResult.php
++++ b/docroot/core/lib/Drupal/Core/Access/AccessResult.php
+@@ -389,7 +389,7 @@ public function andIf(AccessResultInterface $other) {
+         }
+       }
+     }
+-    elseif ($this->isAllowed() && $other->isAllowed()) {
++    elseif ($this->isAllowed() && ($other->isAllowed() || $other->isNeutral())) {
+       $result = static::allowed();
+       $merge_other = TRUE;
+     }
+diff --git a/docroot/core/modules/user/src/Access/LoginStatusCheck.php b/docroot/core/modules/user/src/Access/LoginStatusCheck.php
+index 3212c0a..049284f 100755
+--- a/docroot/core/modules/user/src/Access/LoginStatusCheck.php
++++ b/docroot/core/modules/user/src/Access/LoginStatusCheck.php
+@@ -26,7 +26,7 @@ class LoginStatusCheck implements AccessInterface {
+   public function access(AccountInterface $account, Route $route) {
+     $required_status = filter_var($route->getRequirement('_user_is_logged_in'), FILTER_VALIDATE_BOOLEAN);
+     $actual_status = $account->isAuthenticated();
+-    return AccessResult::allowedIf($required_status === $actual_status)->addCacheContexts(['user.roles:authenticated']);
++    return AccessResult::forbiddenIf($required_status !== $actual_status)->addCacheContexts(['user.roles:authenticated']);
+   }
+ 
+ }

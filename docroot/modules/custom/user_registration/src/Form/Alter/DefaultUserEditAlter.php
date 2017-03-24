@@ -32,7 +32,7 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
   public function formAlter(&$form, FormStateInterface $form_state) {
     $form['field_person_titles']['widget']['#options']['_none'] = t('Select title');
 
-    $form['field_first_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your name');
+    $form['field_first_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your first name');
     $form['field_middle_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your middle name');
     $form['field_last_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your last name');
 

@@ -2483,6 +2483,37 @@ form {
   height: 50px;
   padding: 1px 12px;
   width: 100%; }
+  .form-select.chosen-container {
+    background: #fff;
+    border: none;
+    height: auto;
+    padding: 0; }
+    .form-select.chosen-container .chosen-choices {
+      height: 100%;
+      min-height: 50px;
+      padding: 10px 12px; }
+      .form-select.chosen-container .chosen-choices .search-choice {
+        font-size: 0.9625rem;
+        background: none;
+        border: none;
+        box-shadow: none;
+        color: #283b44;
+        font-family: "Fira Sans", sans-serif;
+        line-height: 18px;
+        padding: 2px 5px 2px 20px; }
+        .form-select.chosen-container .chosen-choices .search-choice .search-choice-close {
+          background: url(../images/add-plus-button.png) 2px -1px no-repeat;
+          right: auto;
+          left: 3px;
+          -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg); }
+          .form-select.chosen-container .chosen-choices .search-choice .search-choice-close:hover {
+            background-position: 2px -22px; }
+    .form-select.chosen-container .search-field,
+    .form-select.chosen-container input[type="text"] {
+      height: 100% !important; }
+    .form-select.chosen-container input[type="text"] {
+      margin-top: 4px !important; }
   .form-select::-ms-expand {
     display: none; }
   .form-select:hover {
@@ -2955,6 +2986,26 @@ form .social_login label:after {
   .acceptance-form .entity-legal-document-acceptance-form {
     width: 100%; } }
 
+.form-my-settings #my_profile,
+.form-my-settings #interest,
+.form-my-settings #newsletter {
+  margin-bottom: 100px; }
+
+.form-my-settings .title-wrapper {
+  text-align: center; }
+  .form-my-settings .title-wrapper h1 {
+    font-size: 4.2rem; }
+  .form-my-settings .title-wrapper .line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+
+.form-my-settings #interest h1,
+.form-my-settings #newsletter h1 {
+  font-size: 3.0625rem;
+  line-height: 58px;
+  padding-bottom: 10px; }
+
 .form-my-settings .field--name-field-person-titles {
   margin-bottom: 15px;
   padding: 20px 40px;
@@ -2964,6 +3015,7 @@ form .social_login label:after {
 
 .form-my-settings #user-details,
 .form-my-settings #organisation-details,
+.form-my-settings #interests-wrapper,
 .form-my-settings #contact-details,
 .form-my-settings #address-details {
   display: -webkit-box;
@@ -2975,12 +3027,14 @@ form .social_login label:after {
   padding: 20px 0; }
   .form-my-settings #user-details .form-wrapper,
   .form-my-settings #organisation-details .form-wrapper,
+  .form-my-settings #interests-wrapper .form-wrapper,
   .form-my-settings #contact-details .form-wrapper,
   .form-my-settings #address-details .form-wrapper {
     padding: 0 40px;
     width: 50%; }
     .form-my-settings #user-details .form-wrapper .form-wrapper,
     .form-my-settings #organisation-details .form-wrapper .form-wrapper,
+    .form-my-settings #interests-wrapper .form-wrapper .form-wrapper,
     .form-my-settings #contact-details .form-wrapper .form-wrapper,
     .form-my-settings #address-details .form-wrapper .form-wrapper {
       padding: 0;
@@ -3137,6 +3191,19 @@ form .social_login label:after {
 
 .form-my-settings #edit-field-organisations-wrapper thead .label {
   padding: 0 40px 10px; }
+
+.form-my-settings .form-submit {
+  border-color: #ea3a32;
+  font-weight: 700;
+  margin: 0 auto;
+  text-transform: none; }
+  .form-my-settings .form-submit:not(.js-hide) {
+    display: block; }
+  .form-my-settings .form-submit:hover {
+    border-color: #8c2222;
+    color: #8c2222;
+    -webkit-transform: none;
+            transform: none; }
 
 .form-my-settings .ajax-progress-throbber {
   position: absolute;

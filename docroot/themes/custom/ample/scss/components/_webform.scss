@@ -110,6 +110,51 @@ form {
   padding: 1px 12px;
   width: 100%;
 
+  &.chosen-container {
+    background: $white;
+    border: none;
+    height: auto;
+    padding: 0;
+
+    .chosen-choices {
+      height: 100%;
+      min-height: 50px;
+      padding: 10px 12px;
+
+      .search-choice {
+        @include font-size(15.4);
+        background: none;
+        border: none;
+        box-shadow: none;
+        color: $navy-dark;
+        font-family: $fira;
+        line-height: 18px;
+        padding: 2px 5px 2px 20px;
+
+        .search-choice-close {
+          background: url(../images/add-plus-button.png) 2px -1px no-repeat;
+          right: auto;
+          left: 3px;
+
+          transform: rotate(45deg);
+
+          &:hover {
+            background-position: 2px -22px;
+          }
+        }
+      }
+    }
+
+    .search-field,
+    input[type="text"] {
+      height: 100% !important;
+    }
+
+    input[type="text"] {
+      margin-top: 4px !important;
+    }
+  }
+
   &::-ms-expand {
     display: none;
   }
@@ -777,6 +822,34 @@ form {
 }
 
 .form-my-settings {
+  #my_profile,
+  #interest,
+  #newsletter {
+    margin-bottom: 100px;
+  }
+
+  .title-wrapper {
+    text-align: center;
+
+    h1 {
+      @include font-size(67.2);
+    }
+
+    .line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  #interest,
+  #newsletter {
+    h1 {
+      @include font-size(49);
+      line-height: 58px;
+      padding-bottom: 10px;
+    }
+  }
+
   .field--name-field-person-titles {
     margin-bottom: 15px;
     padding: 20px 40px;
@@ -789,6 +862,7 @@ form {
 
   #user-details,
   #organisation-details,
+  #interests-wrapper,
   #contact-details,
   #address-details {
     display: flex;
@@ -1010,6 +1084,23 @@ form {
       .label {
         padding: 0 40px 10px;
       }
+    }
+  }
+
+  .form-submit {
+    border-color: $red;
+    font-weight: 700;
+    margin: 0 auto;
+    text-transform: none;
+
+    &:not(.js-hide) {
+      display: block;
+    }
+
+    &:hover {
+      border-color: $red-dark;
+      color: $red-dark;
+      transform: none;
     }
   }
 

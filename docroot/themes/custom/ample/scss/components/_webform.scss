@@ -1039,7 +1039,7 @@ form {
 
       &.open {
         .dropbutton-toggle {
-          top: -5px;
+          top: -9px;
         }
 
         .dropbutton-arrow {
@@ -1050,7 +1050,7 @@ form {
 
       .dropbutton-toggle {
         bottom: auto;
-        top: 13px;
+        top: 9px;
       }
 
       .dropbutton-arrow {
@@ -1085,6 +1085,12 @@ form {
         padding: 0 40px 10px;
       }
     }
+  }
+
+  .paragraphs-dropbutton-wrapper .form-submit,
+  .field-add-more-submit.form-submit {
+    font-weight: 400;
+    margin: 0;
   }
 
   .form-submit {

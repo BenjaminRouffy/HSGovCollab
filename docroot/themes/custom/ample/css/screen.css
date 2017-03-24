@@ -726,6 +726,9 @@ svg {
   .anchor-links a:hover {
     color: #4c7e96; }
 
+.toolbar-item.unmasquerade-link {
+  display: none; }
+
 .social-links .trigger,
 .social-links .contextual-links {
   right: -15px !important; }
@@ -3166,13 +3169,13 @@ form .social_login label:after {
   .form-my-settings table .dropbutton-wrapper {
     min-height: 0; }
     .form-my-settings table .dropbutton-wrapper.open .dropbutton-toggle {
-      top: -5px; }
+      top: -9px; }
     .form-my-settings table .dropbutton-wrapper.open .dropbutton-arrow {
       border-top-color: transparent;
       border-bottom-color: #8c2222; }
     .form-my-settings table .dropbutton-wrapper .dropbutton-toggle {
       bottom: auto;
-      top: 13px; }
+      top: 9px; }
     .form-my-settings table .dropbutton-wrapper .dropbutton-arrow {
       border-top-color: #8c2222; }
   .form-my-settings table .confirm-remove .form-submit,
@@ -3191,6 +3194,11 @@ form .social_login label:after {
 
 .form-my-settings #edit-field-organisations-wrapper thead .label {
   padding: 0 40px 10px; }
+
+.form-my-settings .paragraphs-dropbutton-wrapper .form-submit,
+.form-my-settings .field-add-more-submit.form-submit {
+  font-weight: 400;
+  margin: 0; }
 
 .form-my-settings .form-submit {
   border-color: #ea3a32;

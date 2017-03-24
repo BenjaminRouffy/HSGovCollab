@@ -228,24 +228,26 @@ display:
         - route
         - url
       tags:
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.project.bottom'
+        - 'config:core.entity_view_display.group.region.search_country'
+        - 'config:core.entity_view_display.group.region.time_line'
+        - 'config:core.entity_view_display.group.region.token'
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
         - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
-        - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
-        - 'config:core.entity_view_display.group.region.search_country'
-        - 'config:core.entity_view_display.group.region.time_line'
-        - 'config:core.entity_view_display.group.region.token'
   block_1:
     display_plugin: block
     id: block_1
@@ -261,6 +263,8 @@ display:
         use_more_always: false
         use_more_text: false
         pager: false
+        filters: false
+        filter_groups: false
       use_more: true
       use_more_always: false
       use_more_text: 'See all projects'
@@ -282,6 +286,91 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: 0
             offset_label: Offset
+      filters:
+        type:
+          id: type
+          table: group_content_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            country-subgroup-project: country-subgroup-project
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group_content
+          entity_field: type
+          plugin_id: bundle
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: langcode
+          plugin_id: language
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
@@ -296,6 +385,7 @@ display:
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'
@@ -304,6 +394,7 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
@@ -450,6 +541,7 @@ display:
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'
@@ -458,6 +550,7 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
@@ -489,10 +582,23 @@ display:
       use_more_always: false
       use_more_text: 'See all countries'
       pager:
-        type: some
+        type: mini_with_items
         options:
           items_per_page: 3
           offset: 0
+          id: '0'
+          total_pages: ''
+          tags:
+            previous: ‹‹
+            next: ››
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
       display_description: ''
       arguments:
         group_id_depth:
@@ -692,6 +798,7 @@ display:
         - 'languages:language_interface'
         - route
         - url
+        - url.query_args
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
@@ -699,6 +806,7 @@ display:
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'
@@ -707,6 +815,7 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
@@ -826,6 +935,46 @@ display:
           entity_type: group
           entity_field: label
           plugin_id: string
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -868,6 +1017,7 @@ display:
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'
@@ -876,6 +1026,7 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
@@ -999,6 +1150,46 @@ display:
           entity_type: group
           entity_field: label
           plugin_id: string
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -1102,6 +1293,7 @@ display:
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'
@@ -1110,6 +1302,7 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'

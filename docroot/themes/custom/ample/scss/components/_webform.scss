@@ -855,6 +855,18 @@ form {
     }
   }
 
+  label {
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
+      }
+    }
+  }
+
   #interest,
   #newsletter {
     h1 {

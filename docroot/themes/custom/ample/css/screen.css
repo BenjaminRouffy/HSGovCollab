@@ -3013,6 +3013,12 @@ form .social_login label:after {
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%); }
 
+.form-my-settings label:after {
+  content: ":"; }
+
+.form-my-settings label.form-required:after {
+  content: ": *"; }
+
 .form-my-settings #interest h1,
 .form-my-settings #newsletter h1 {
   font-size: 3.0625rem;

@@ -22,6 +22,7 @@ dependencies:
     - field_group
     - geolocation
     - paragraphs
+    - path
     - text
 third_party_settings:
   field_group:
@@ -271,11 +272,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   translation:
     weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  path: true
   uid: true

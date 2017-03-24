@@ -1115,6 +1115,10 @@
     max-width: 40px;
     padding-top: 5px;
     width: 100%;
+
+    .ie & {
+      height: 40px;
+    }
   }
 
   .country-icon-wrapper {

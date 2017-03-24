@@ -38,6 +38,10 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
 
     $form['account']['current_pass']['#weight'] = 10;
     $form['account']['pass']['#weight'] = 11;
+    $form['account']['status']['#weight'] = 12;
+    $form['account']['roles']['#weight'] = 13;
+    $form['account']['current_pass']['#prefix'] = '<div class="form-item">';
+    $form['account']['pass']['#suffix'] = '</div>';
 
     foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {
       if (is_array($option)) {
@@ -55,6 +59,7 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
 
     unset(
       $form['account']['current_pass']['#description'],
+      $form['account']['name'],
       $form['account']['mail']['#description'],
       $form['account']['name']['#description'],
       $form['account']['pass']['#description']

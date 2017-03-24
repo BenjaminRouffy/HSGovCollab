@@ -90,10 +90,10 @@ function admin_customizations_document_form_submit(array $form, FormStateInterfa
 }
 
 /**
- * Implements hook_link_alter().
+ * Implements hook_toolbar_alter().
  */
-function admin_customizations_link_alter(&$variables) {
-  if (isset($variables['url']) && $variables['url']->getRouteName() == 'masquerade.unmasquerade') {
-    $variables['options']['attributes']['class'][] = 'unmasquerade-link';
+function admin_customizations_toolbar_alter(&$items) {
+  if (isset($items['masquerade_switch_back'])) {
+    unset($items['masquerade_switch_back']);
   }
 }

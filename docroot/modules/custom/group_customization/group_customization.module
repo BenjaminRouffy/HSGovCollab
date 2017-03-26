@@ -30,3 +30,42 @@ function group_customization_group_access(EntityInterface $entity, $operation, A
     'content',
   ]);
 }
+
+/**
+ * Implements hook_node_grants_alter().
+ */
+function group_customization_node_grants_alter(array &$grants, AccountInterface $account, $op) {
+
+  $key_name_alter = [];
+  // Skip gnode alter activities.
+  if($account->hasPermission('bypass group access')) {
+    return;
+  }
+
+  // Get all gnode granted rules.
+  foreach (array_keys($grants) as $key) {
+    if (FALSE === strpos($key, 'gnode')) {
+      continue;
+    }
+    $key_name_alter[] = $key;
+  }
+
+  if(!empty($key_name_alter)) {
+    // Gather the machine names of all node types.
+    $entity_type_manager = \Drupal::entityTypeManager();
+
+    $query = $entity_type_manager->getStorage('group')->getQuery();
+    $query->condition('type', 'country');
+    $group = $query->orConditionGroup()
+      ->notExists('field_group_status')
+      ->condition('field_group_status', 'unpublished');
+    $query->condition($group);
+
+    $unpublished = $query->execute();
+    foreach ($key_name_alter as $key) {
+      $grants[$key] = array_values(array_diff($grants[$key], $unpublished));
+    }
+
+  }
+
+}

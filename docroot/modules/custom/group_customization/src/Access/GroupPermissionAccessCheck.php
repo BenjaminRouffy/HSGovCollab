@@ -61,12 +61,13 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
    * @see group_customization_group_access()
    */
   public function checkAccess(EntityInterface $entity, string $operation, AccountInterface $account, array $group_statuses = []) {
+    // @TODO Ensure that it is correct permission.
     $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
-    $group_by_pass = GroupAccessResult::allowedIfHasGroupPermissions($entity, $account, [
-      'bypass administer group status',
-      'bypass administer group ' . $operation,
-    ], 'OR');
-    if (!$bypass->isAllowed() && !$group_by_pass->isAllowed()) {
+    //$group_by_pass = GroupAccessResult::allowedIfHasGroupPermissions($entity, $account, [
+    //  'bypass administer group status',
+    //  'bypass administer group ' . $operation,
+    //], 'OR');
+    if (!$bypass->isAllowed()/* && !$group_by_pass->isAllowed()*/) {
       if ($entity instanceof GroupInterface) {
         if (!$entity->get('field_group_status')) {
           return AccessResult::neutral();

@@ -130,9 +130,9 @@ class AccessManager implements AccessManagerInterface {
     $result = AccessResult::neutral();
     if (!empty($checks)) {
       $arguments_resolver = $this->argumentsResolverFactory->getArgumentsResolver($route_match, $account, $request);
-      $result = AccessResult::neutral();
+      $result = AccessResult::allowed();
       foreach ($checks as $service_id) {
-        $result = $result->orIf($this->performCheck($service_id, $arguments_resolver));
+        $result = $result->andIf($this->performCheck($service_id, $arguments_resolver));
       }
     }
     return $return_as_object ? $result : $result->isAllowed();

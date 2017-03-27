@@ -13,7 +13,6 @@ dependencies:
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
-    - field.field.group.country.field_regions
     - field.field.group.country.field_summary
     - field.field.group.country.field_time_line
     - group.type.country
@@ -232,12 +231,6 @@ content:
       target_address_field: null
     third_party_settings: {  }
     type: geolocation_googlegeocoder
-    region: content
-  field_regions:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
   field_summary:
     weight: 7

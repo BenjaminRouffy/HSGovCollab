@@ -248,6 +248,18 @@ class Group extends ContentEntityBase implements GroupInterface {
       }
     }
 
+    // Check permission for supergroups if subgroup module is enabled.
+    $moduleHandler = \Drupal::service('module_handler');
+    if ($moduleHandler->moduleExists('ggroup')){
+      /** @var \Drupal\ggroup\GroupHierarchyManager $group_hierarchy_manager */
+      $supergroups = \Drupal::service('ggroup.group_hierarchy_manager')->getGroupSupergroups($this);
+      foreach ($supergroups as $group) {
+        if ($group->hasPermission($permission, $account)) {
+          return TRUE;
+        }
+      }
+    }
+
     // If no role had the requested permission, we deny access.
     return FALSE;
   }

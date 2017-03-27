@@ -115,6 +115,12 @@ form {
   padding: 1px 12px;
   width: 100%;
 
+  &[disabled] {
+    border-color: $grey-light;
+    color: $grey-light;
+    font-weight: 300;
+  }
+
   &.chosen-container {
     background: $white;
     border: none;
@@ -122,7 +128,8 @@ form {
     padding: 0;
     width: 100% !important;
 
-    .chosen-choices {
+    .chosen-choices,
+    .chosen-single {
       height: 100%;
       min-height: 50px;
       padding: 10px 12px;
@@ -145,13 +152,36 @@ form {
           background: url(../images/add-plus-button.png) 2px -1px no-repeat;
           right: auto;
           left: 3px;
-
           transform: rotate(45deg);
 
           &:hover {
             background-position: 2px -22px;
           }
         }
+      }
+    }
+
+    .chosen-single {
+      background-image: url(../images/select-arrows.png), linear-gradient($white 0, #f3f3f3 100%);
+      background-position: right center;
+      background-repeat: no-repeat;
+      border: 1px solid #75a8c0;
+
+      &:hover {
+        box-shadow: none;
+      }
+
+      &:focus {
+        border-color: #3898EC;
+        outline: none;
+      }
+
+      > span {
+        margin-top: 2px;
+      }
+
+      > div {
+        display: none;
       }
     }
 
@@ -850,6 +880,17 @@ form {
     .line {
       left: 50%;
       transform: translateX(-50%);
+    }
+  }
+
+  .anchor-region {
+    background: #e9ecee;
+    box-shadow: 0 1px 3px rgba($black, .1);
+    height: 60px;
+    padding-top: 6px;
+
+    &:empty {
+      display: none;
     }
   }
 

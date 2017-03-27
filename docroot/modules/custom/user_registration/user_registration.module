@@ -64,7 +64,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['#group_children']['actions'] = 'group_right';
     unset(
       $form['account']['mail']['#title'],
-      $form['account']['notify']
+      $form['account']['notify'],
+      $form['field_organisation']['widget']['#description']
     );
     $form['#group_children']['captcha'] = 'group_right';
     $title = &$form['field_accept_term_conditions']['widget']['value']['#title'];
@@ -105,6 +106,10 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     }
 
     $form['#attributes']['class'][] = 'form-my-settings';
+  }
+
+  if ($form_id == 'user_invited_person_form') {
+    unset($form['field_organisation']['widget']['#description']);
   }
 }
 

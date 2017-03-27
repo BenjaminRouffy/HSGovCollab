@@ -544,6 +544,10 @@ svg {
       font-size: 0rem;
       font-style: normal;
       line-height: 0; }
+  .dashboard-sidebar .active a {
+    background: #fff; }
+    .dashboard-sidebar .active a:before {
+      color: #ea3a32; }
   .dashboard-sidebar .sidebar-menu .contextual-links {
     border-top-left-radius: 0;
     right: -76px; }
@@ -721,6 +725,9 @@ svg {
   vertical-align: top; }
   .anchor-links a:hover {
     color: #4c7e96; }
+
+.toolbar-item.unmasquerade-link {
+  display: none; }
 
 .social-links .trigger,
 .social-links .contextual-links {
@@ -2200,6 +2207,9 @@ header .social-links .font-social-icon {
     max-width: 40px;
     padding-top: 5px;
     width: 100%; }
+    .ie .country-title .project-icon-wrapper, .ie
+    .project-title .project-icon-wrapper {
+      height: 40px; }
   .country-title .country-icon-wrapper,
   .project-title .country-icon-wrapper {
     float: left;
@@ -2476,6 +2486,37 @@ form {
   height: 50px;
   padding: 1px 12px;
   width: 100%; }
+  .form-select.chosen-container {
+    background: #fff;
+    border: none;
+    height: auto;
+    padding: 0; }
+    .form-select.chosen-container .chosen-choices {
+      height: 100%;
+      min-height: 50px;
+      padding: 10px 12px; }
+      .form-select.chosen-container .chosen-choices .search-choice {
+        font-size: 0.9625rem;
+        background: none;
+        border: none;
+        box-shadow: none;
+        color: #283b44;
+        font-family: "Fira Sans", sans-serif;
+        line-height: 18px;
+        padding: 2px 5px 2px 20px; }
+        .form-select.chosen-container .chosen-choices .search-choice .search-choice-close {
+          background: url(../images/add-plus-button.png) 2px -1px no-repeat;
+          right: auto;
+          left: 3px;
+          -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg); }
+          .form-select.chosen-container .chosen-choices .search-choice .search-choice-close:hover {
+            background-position: 2px -22px; }
+    .form-select.chosen-container .search-field,
+    .form-select.chosen-container input[type="text"] {
+      height: 100% !important; }
+    .form-select.chosen-container input[type="text"] {
+      margin-top: 4px !important; }
   .form-select::-ms-expand {
     display: none; }
   .form-select:hover {
@@ -2501,6 +2542,19 @@ form {
           appearance: checkbox;
   -webkit-animation: none !important;
           animation: none !important; }
+  .form-checkbox ~ label {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top; }
+
+.form-radio {
+  -webkit-appearance: radio;
+     -moz-appearance: radio;
+          appearance: radio; }
+  .form-radio ~ label {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top; }
 
 .form-submit {
   background: #fff;
@@ -2943,6 +2997,255 @@ form .social_login label:after {
   .acceptance-form .entity-legal-document-acceptance-form {
     width: 100%; } }
 
+.form-my-settings #my_profile,
+.form-my-settings #interest,
+.form-my-settings #newsletter {
+  margin-bottom: 100px; }
+
+.form-my-settings .title-wrapper {
+  padding-left: 40px;
+  padding-right: 40px;
+  text-align: center; }
+  .form-my-settings .title-wrapper h1 {
+    font-size: 4.2rem; }
+  .form-my-settings .title-wrapper .line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+
+.form-my-settings label:after {
+  content: ":"; }
+
+.form-my-settings label.form-required:after {
+  content: ": *"; }
+
+.form-my-settings #edit-field-organisations-wrapper strong:after,
+.form-my-settings #contact-details strong:after,
+.form-my-settings .label:after {
+  content: ":"; }
+
+.form-my-settings #interest h1,
+.form-my-settings #newsletter h1 {
+  font-size: 3.0625rem;
+  line-height: 58px;
+  padding-bottom: 10px; }
+
+.form-my-settings .field--name-field-person-titles {
+  margin-bottom: 15px;
+  padding: 20px 40px;
+  width: 50%; }
+  .form-my-settings .field--name-field-person-titles .form-item {
+    margin-bottom: 0;
+    width: 33.33%; }
+
+.form-my-settings #user-details,
+.form-my-settings #organisation-details,
+.form-my-settings #interests-wrapper,
+.form-my-settings #contact-details,
+.form-my-settings #address-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding: 20px 0; }
+  .form-my-settings #user-details .form-wrapper,
+  .form-my-settings #organisation-details .form-wrapper,
+  .form-my-settings #interests-wrapper .form-wrapper,
+  .form-my-settings #contact-details .form-wrapper,
+  .form-my-settings #address-details .form-wrapper {
+    padding: 0 40px;
+    width: 50%; }
+    .form-my-settings #user-details .form-wrapper .form-wrapper,
+    .form-my-settings #organisation-details .form-wrapper .form-wrapper,
+    .form-my-settings #interests-wrapper .form-wrapper .form-wrapper,
+    .form-my-settings #contact-details .form-wrapper .form-wrapper,
+    .form-my-settings #address-details .form-wrapper .form-wrapper {
+      padding: 0;
+      width: 100%; }
+
+.form-my-settings #interest .form-wrapper {
+  margin: 0 auto 15px;
+  padding: 20px 40px;
+  width: 50%; }
+  .form-my-settings #interest .form-wrapper label {
+    display: none; }
+
+.form-my-settings #contact-details {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+  .form-my-settings #contact-details > .form-wrapper {
+    margin-bottom: 35px; }
+  .form-my-settings #contact-details label {
+    display: none; }
+  .form-my-settings #contact-details .paragraph-type-top {
+    top: -30px; }
+
+.form-my-settings #edit-account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding: 20px 0; }
+  .form-my-settings #edit-account > .form-item {
+    margin: 0;
+    padding: 0 40px;
+    width: 50%; }
+
+.form-my-settings #edit-field-organisations-wrapper,
+.form-my-settings #contact-details {
+  margin-bottom: 15px;
+  padding: 20px 0; }
+  .form-my-settings #edit-field-organisations-wrapper .paragraph-type-title,
+  .form-my-settings #contact-details .paragraph-type-title {
+    display: none; }
+  .form-my-settings #edit-field-organisations-wrapper strong,
+  .form-my-settings #contact-details strong {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 20px; }
+  .form-my-settings #edit-field-organisations-wrapper .form-submit,
+  .form-my-settings #contact-details .form-submit {
+    font-size: 0.875rem;
+    background: transparent;
+    border: none;
+    font-family: "Fira Sans", sans-serif;
+    letter-spacing: 0;
+    padding: 0;
+    text-transform: none; }
+    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit,
+    .form-my-settings #contact-details .form-submit.field-add-more-submit {
+      background: url(../images/add-plus-button.png) left top no-repeat;
+      padding-left: 21px; }
+    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover,
+    .form-my-settings #contact-details .form-submit:hover {
+      background-position: left bottom;
+      color: #8c2222;
+      -webkit-transform: none;
+              transform: none; }
+
+.form-my-settings #edit-field-organisations-wrapper .field-add-more-submit,
+.form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit {
+  margin-left: 40px; }
+
+.form-my-settings #edit-field-organisations-wrapper > .ajax-new-content,
+.form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content {
+  padding: 0 40px; }
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .field-add-more-submit,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .field-add-more-submit {
+    margin-left: 0; }
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .field--name-field-organisation,
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content thead .label,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .field--name-field-organisation,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content thead .label {
+    padding-left: 0; }
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .field--name-field-job-title,
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .paragraph-type-top,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .field--name-field-job-title,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .paragraph-type-top {
+    padding-right: 0; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper .paragraphs-subform .field--name-field-type {
+  width: 33.33%; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper .paragraphs-subform .field--name-field-account {
+  padding-left: 10px;
+  width: 66.64%; }
+
+.form-my-settings #edit-field-organisations,
+.form-my-settings #edit-field-skype-or-other,
+.form-my-settings #edit-field-mobilephone-wrapper,
+.form-my-settings #edit-field-telephone-wrapper {
+  padding: 0 40px;
+  position: relative; }
+  .form-my-settings #edit-field-organisations .field-add-more-submit,
+  .form-my-settings #edit-field-skype-or-other .field-add-more-submit,
+  .form-my-settings #edit-field-mobilephone-wrapper .field-add-more-submit,
+  .form-my-settings #edit-field-telephone-wrapper .field-add-more-submit {
+    margin-left: 0; }
+
+.form-my-settings table {
+  margin: 0 !important;
+  width: 100%; }
+  .form-my-settings table th,
+  .form-my-settings table td {
+    padding: 0 !important;
+    position: relative; }
+  .form-my-settings table td {
+    display: block;
+    min-height: 50px; }
+  .form-my-settings table .field-multiple-drag {
+    display: none; }
+  .form-my-settings table .paragraph-type-top {
+    padding-right: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10; }
+  .form-my-settings table .paragraphs-subform {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+    .form-my-settings table .paragraphs-subform .form-wrapper {
+      padding: 0 40px;
+      width: 50%; }
+  .form-my-settings table .dropbutton-wrapper {
+    min-height: 0; }
+    .form-my-settings table .dropbutton-wrapper.open .dropbutton-toggle {
+      top: -9px; }
+    .form-my-settings table .dropbutton-wrapper.open .dropbutton-arrow {
+      border-top-color: transparent;
+      border-bottom-color: #8c2222; }
+    .form-my-settings table .dropbutton-wrapper .dropbutton-toggle {
+      bottom: auto;
+      top: 9px; }
+    .form-my-settings table .dropbutton-wrapper .dropbutton-arrow {
+      border-top-color: #8c2222; }
+  .form-my-settings table .confirm-remove .form-submit,
+  .form-my-settings table .restore .form-submit {
+    margin-top: 0 !important; }
+
+.form-my-settings thead .label {
+  font-size: 1.1375rem;
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  letter-spacing: .5px;
+  line-height: 20px;
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: left; }
+
+.form-my-settings #edit-field-organisations-wrapper thead .label {
+  padding: 0 40px 10px; }
+
+.form-my-settings .paragraphs-dropbutton-wrapper .form-submit,
+.form-my-settings .field-add-more-submit.form-submit {
+  font-weight: 400;
+  margin: 0; }
+
+.form-my-settings .form-submit {
+  border-color: #ea3a32;
+  font-weight: 700;
+  margin: 0 auto;
+  text-transform: none; }
+  .form-my-settings .form-submit:not(.js-hide) {
+    display: block; }
+  .form-my-settings .form-submit:hover {
+    border-color: #8c2222;
+    color: #8c2222;
+    -webkit-transform: none;
+            transform: none; }
+
+.form-my-settings .ajax-progress-throbber {
+  position: absolute;
+  left: 50%; }
+
 #block-ample-local-tasks {
   background: #fff;
   margin: 0;
@@ -3187,7 +3490,11 @@ form .social_login label:after {
   height: 70px;
   width: 70px;
   background: rgba(0, 0, 0, 0.3) url(../images/throbber.svg) center no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  border-radius: 7px; }
+  .ajax-progress .throbber,
+  .ajax-progress .message {
+    display: none; }
 
 .popup-wrapper {
   background: #fff;

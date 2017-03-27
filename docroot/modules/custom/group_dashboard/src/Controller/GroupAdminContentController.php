@@ -56,6 +56,10 @@ class GroupAdminContentController extends GroupContentController {
       $plugin = $group->getGroupType()->getContentPlugin($plugin_id);
       $label = $plugin->getLabel();
 
+      if ($plugin->getBaseId() == 'subgroup') {
+        $destination = Url::fromRoute('view.subgroups.page_1', ['group' => $group->id()]);
+      }
+
       $build['#bundles'][$bundle_name] = [
         'label' => $label,
         'description' => $plugin->getContentTypeDescription(),

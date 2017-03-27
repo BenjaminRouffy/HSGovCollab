@@ -36,6 +36,8 @@ img[src$="svg"] {
   }
 }
 
-.toolbar-item.unmasquerade-link {
-  display: none;
+.toolbar-item {
+  &.unmasquerade-link {
+    display: none;
+  }
 }

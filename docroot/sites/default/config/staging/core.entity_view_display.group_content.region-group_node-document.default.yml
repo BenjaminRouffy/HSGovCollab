@@ -1,0 +1,23 @@
+uuid: 5b05abbb-baa7-4d28-ac41-b496d1fe925d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.region-group_node-document
+id: group_content.region-group_node-document.default
+targetEntityType: group_content
+bundle: region-group_node-document
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

@@ -110,6 +110,51 @@ form {
   padding: 1px 12px;
   width: 100%;
 
+  &.chosen-container {
+    background: $white;
+    border: none;
+    height: auto;
+    padding: 0;
+
+    .chosen-choices {
+      height: 100%;
+      min-height: 50px;
+      padding: 10px 12px;
+
+      .search-choice {
+        @include font-size(15.4);
+        background: none;
+        border: none;
+        box-shadow: none;
+        color: $navy-dark;
+        font-family: $fira;
+        line-height: 18px;
+        padding: 2px 5px 2px 20px;
+
+        .search-choice-close {
+          background: url(../images/add-plus-button.png) 2px -1px no-repeat;
+          right: auto;
+          left: 3px;
+
+          transform: rotate(45deg);
+
+          &:hover {
+            background-position: 2px -22px;
+          }
+        }
+      }
+    }
+
+    .search-field,
+    input[type="text"] {
+      height: 100% !important;
+    }
+
+    input[type="text"] {
+      margin-top: 4px !important;
+    }
+  }
+
   &::-ms-expand {
     display: none;
   }
@@ -142,6 +187,22 @@ form {
 .form-checkbox {
   appearance: checkbox;
   animation: none !important;
+
+  ~ label {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top;
+  }
+}
+
+.form-radio {
+  appearance: radio;
+
+  ~ label {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top;
+  }
 }
 
 .form-submit {
@@ -769,5 +830,335 @@ form {
 @include breakpoint-for('.acceptance-form', (to: tablet)) {
   .entity-legal-document-acceptance-form {
     width: 100%;
+  }
+}
+
+.form-my-settings {
+  #my_profile,
+  #interest,
+  #newsletter {
+    margin-bottom: 100px;
+  }
+
+  .title-wrapper {
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: center;
+
+    h1 {
+      @include font-size(67.2);
+    }
+
+    .line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  label {
+    &:after {
+      content: ":";
+    }
+
+    &.form-required {
+      &:after {
+        content: ": *";
+      }
+    }
+  }
+
+  #edit-field-organisations-wrapper strong,
+  #contact-details strong,
+  .label {
+    &:after {
+      content: ":";
+    }
+  }
+
+  #interest,
+  #newsletter {
+    h1 {
+      @include font-size(49);
+      line-height: 58px;
+      padding-bottom: 10px;
+    }
+  }
+
+  .field--name-field-person-titles {
+    margin-bottom: 15px;
+    padding: 20px 40px;
+    width: 50%;
+
+    .form-item {
+      margin-bottom: 0;
+      width: 33.33%;
+    }
+  }
+
+  #user-details,
+  #organisation-details,
+  #interests-wrapper,
+  #contact-details,
+  #address-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding: 20px 0;
+
+    .form-wrapper {
+      padding: 0 40px;
+      width: 50%;
+
+      .form-wrapper {
+        padding: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  #interest {
+    .form-wrapper {
+      margin: 0 auto 15px;
+      padding: 20px 40px;
+      width: 50%;
+
+      label {
+        display: none;
+      }
+    }
+  }
+
+  #contact-details {
+    justify-content: flex-end;
+
+    > .form-wrapper {
+      margin-bottom: 35px;
+    }
+
+    label {
+      display: none;
+    }
+
+    .paragraph-type-top {
+      top: -30px;
+    }
+  }
+
+  #edit-account {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding: 20px 0;
+
+    > .form-item {
+      margin: 0;
+      padding: 0 40px;
+      width: 50%;
+    }
+  }
+
+  #edit-field-organisations-wrapper,
+  #contact-details {
+    margin-bottom: 15px;
+    padding: 20px 0;
+
+    .paragraph-type-title {
+      display: none;
+    }
+
+    strong {
+      display: block;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .form-submit {
+      @include font-size(14);
+      background: transparent;
+      border: none;
+      font-family: $fira;
+      letter-spacing: 0;
+      padding: 0;
+      text-transform: none;
+
+      &.field-add-more-submit {
+        background: url(../images/add-plus-button.png) left top no-repeat;
+        padding-left: 21px;
+      }
+
+      &:hover {
+        background-position: left bottom;
+        color: $red-dark;
+        transform: none;
+      }
+    }
+  }
+
+  #edit-field-organisations-wrapper,
+  #edit-field-skype-or-other-wrapper {
+    .field-add-more-submit {
+      margin-left: 40px;
+    }
+
+    > .ajax-new-content {
+      padding: 0 40px;
+
+      .field-add-more-submit {
+        margin-left: 0;
+      }
+
+      .field--name-field-organisation,
+      thead .label {
+        padding-left: 0;
+      }
+
+      .field--name-field-job-title,
+      .paragraph-type-top {
+        padding-right: 0;
+      }
+    }
+  }
+
+  #edit-field-skype-or-other-wrapper {
+    .paragraphs-subform {
+      .field--name-field-type {
+        width: 33.33%;
+      }
+
+      .field--name-field-account {
+        padding-left: 10px;
+        width: 66.64%;
+      }
+    }
+  }
+
+  #edit-field-organisations,
+  #edit-field-skype-or-other,
+  #edit-field-mobilephone-wrapper,
+  #edit-field-telephone-wrapper {
+    padding: 0 40px;
+    position: relative;
+
+    .field-add-more-submit {
+      margin-left: 0;
+    }
+  }
+
+  table {
+    margin: 0 !important;
+    width: 100%;
+
+    th,
+    td {
+      padding: 0 !important;
+      position: relative;
+    }
+
+    td {
+      display: block;
+      min-height: 50px;
+    }
+
+    .field-multiple-drag {
+      display: none;
+    }
+
+    .paragraph-type-top {
+      padding-right: 40px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    .paragraphs-subform {
+      display: flex;
+      flex-wrap: wrap;
+
+      .form-wrapper {
+        padding: 0 40px;
+        width: 50%;
+      }
+    }
+
+    .dropbutton-wrapper {
+      min-height: 0;
+
+      &.open {
+        .dropbutton-toggle {
+          top: -9px;
+        }
+
+        .dropbutton-arrow {
+          border-top-color: transparent;
+          border-bottom-color: $red-dark;
+        }
+      }
+
+      .dropbutton-toggle {
+        bottom: auto;
+        top: 9px;
+      }
+
+      .dropbutton-arrow {
+        border-top-color: $red-dark;
+      }
+    }
+
+    .confirm-remove,
+    .restore {
+      .form-submit {
+        margin-top: 0 !important;
+      }
+    }
+  }
+
+  thead {
+    .label {
+      @include font-size(18.2);
+      font-family: $oswald;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 20px;
+      margin: 0;
+      padding-bottom: 10px;
+      text-align: left;
+    }
+  }
+
+  #edit-field-organisations-wrapper {
+    thead {
+      .label {
+        padding: 0 40px 10px;
+      }
+    }
+  }
+
+  .paragraphs-dropbutton-wrapper .form-submit,
+  .field-add-more-submit.form-submit {
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .form-submit {
+    border-color: $red;
+    font-weight: 700;
+    margin: 0 auto;
+    text-transform: none;
+
+    &:not(.js-hide) {
+      display: block;
+    }
+
+    &:hover {
+      border-color: $red-dark;
+      color: $red-dark;
+      transform: none;
+    }
+  }
+
+  .ajax-progress-throbber {
+    position: absolute;
+    left: 50%;
   }
 }

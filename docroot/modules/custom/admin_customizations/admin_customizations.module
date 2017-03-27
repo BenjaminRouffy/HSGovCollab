@@ -89,3 +89,11 @@ function admin_customizations_document_form_submit(array $form, FormStateInterfa
   $form_state->setRedirectUrl(Url::fromRoute('system.admin_content'));
 }
 
+/**
+ * Implements hook_toolbar_alter().
+ */
+function admin_customizations_toolbar_alter(&$items) {
+  if (isset($items['masquerade_switch_back'])) {
+    unset($items['masquerade_switch_back']);
+  }
+}

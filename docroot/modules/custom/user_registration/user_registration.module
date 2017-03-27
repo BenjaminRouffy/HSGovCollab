@@ -64,7 +64,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['#group_children']['actions'] = 'group_right';
     unset(
       $form['account']['mail']['#title'],
-      $form['account']['notify']
+      $form['account']['notify'],
+      $form['field_organisation']['widget']['#description']
     );
     $form['#group_children']['captcha'] = 'group_right';
     $title = &$form['field_accept_term_conditions']['widget']['value']['#title'];

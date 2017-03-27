@@ -166,6 +166,7 @@ function ample_preprocess_paragraph(array &$variables) {
 
     if ('group' === $entity->getEntityTypeId()) {
       $variables['group_label'] = $entity->label();
+      $variables['group_bundle'] = $entity->bundle();
     }
 
     if ($entity->hasField('field_country_icon')) {

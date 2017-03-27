@@ -5,8 +5,12 @@
  * Group customization module main file.
  */
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_preprocess_html().
@@ -38,7 +42,7 @@ function group_customization_node_grants_alter(array &$grants, AccountInterface 
 
   $key_name_alter = [];
   // Skip gnode alter activities.
-  if($account->hasPermission('bypass group access')) {
+  if ($account->hasPermission('bypass group access')) {
     return;
   }
 
@@ -50,22 +54,40 @@ function group_customization_node_grants_alter(array &$grants, AccountInterface 
     $key_name_alter[] = $key;
   }
 
-  if(!empty($key_name_alter)) {
-    // Gather the machine names of all node types.
-    $entity_type_manager = \Drupal::entityTypeManager();
-
-    $query = $entity_type_manager->getStorage('group')->getQuery();
-    $query->condition('type', 'country');
-    $group = $query->orConditionGroup()
-      ->notExists('field_group_status')
-      ->condition('field_group_status', 'unpublished');
-    $query->condition($group);
-
-    $unpublished = $query->execute();
+  if (!empty($key_name_alter)) {
+    $unpublished = _group_customization_get_unpublished_groups();
     foreach ($key_name_alter as $key) {
       $grants[$key] = array_values(array_diff($grants[$key], $unpublished));
     }
 
   }
 
+}
+
+/**
+ * Return unpublished group IDs.
+ */
+function _group_customization_get_unpublished_groups() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+
+  $query = $entity_type_manager->getStorage('group')->getQuery();
+  $query->condition('type', 'country');
+  $group = $query->orConditionGroup()
+    ->notExists('field_group_status')
+    ->condition('field_group_status', 'unpublished');
+  $query->condition($group);
+
+  return $query->execute();
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function group_customization_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  // @TODO Add a view name.
+  if (in_array($view->element['#name'], ['search_for_a_country_or_region', 'map'])
+    && in_array('groups_field_data', array_keys($view->getBaseTables()))
+  ) {
+    $query->addWhere(0, 'id', _group_customization_get_unpublished_groups(), 'not in');
+  }
 }

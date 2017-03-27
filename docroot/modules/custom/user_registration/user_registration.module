@@ -107,6 +107,10 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
 
     $form['#attributes']['class'][] = 'form-my-settings';
   }
+
+  if ($form_id == 'user_invited_person_form') {
+    unset($form['field_organisation']['widget']['#description']);
+  }
 }
 
 /**

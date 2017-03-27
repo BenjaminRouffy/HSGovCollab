@@ -915,10 +915,18 @@ form {
     }
 
     .image-widget-data {
+      @include font-size(14);
+      color: $red;
+      font-family: $fira;
       float: none;
 
       a {
+        color: $red;
         text-decoration: none;
+
+        &:hover {
+          color: $red-dark;
+        }
       }
 
       summary {
@@ -947,23 +955,7 @@ form {
     }
 
     .vertical-tabs__menu {
-      border: none;
-      float: none;
-      margin: 0;
-      width: auto;
-    }
-
-    .vertical-tabs__menu-item {
-      background: none;
-      border: none;
-
-      a:hover {
-        outline: none;
-
-        .vertical-tabs__menu-item-title {
-          text-decoration: none;
-        }
-      }
+      display: none;
     }
   }
 
@@ -1215,7 +1207,6 @@ form {
   .form- {
     &checkbox,
     &radio {
-
       ~ label {
         display: inline-block;
         margin-left: 5px;
@@ -1225,6 +1216,7 @@ form {
   }
 
   .form-submit {
+    background: none;
     border-color: $red;
     font-weight: 700;
     margin: 0 auto;

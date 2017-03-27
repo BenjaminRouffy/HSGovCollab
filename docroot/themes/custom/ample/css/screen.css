@@ -3057,9 +3057,15 @@ form .social_login label:after {
     overflow: hidden;
     padding: 0; }
   .form-my-settings #edit-field-avatar-wrapper .image-widget-data {
+    font-size: 0.875rem;
+    color: #ea3a32;
+    font-family: "Fira Sans", sans-serif;
     float: none; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data a {
+      color: #ea3a32;
       text-decoration: none; }
+      .form-my-settings #edit-field-avatar-wrapper .image-widget-data a:hover {
+        color: #8c2222; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
       outline: none; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit {
@@ -3077,17 +3083,7 @@ form .social_login label:after {
     border: none;
     margin: 0; }
   .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu {
-    border: none;
-    float: none;
-    margin: 0;
-    width: auto; }
-  .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item {
-    background: none;
-    border: none; }
-    .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item a:hover {
-      outline: none; }
-      .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item a:hover .vertical-tabs__menu-item-title {
-        text-decoration: none; }
+    display: none; }
 
 .form-my-settings #user-details,
 .form-my-settings #organisation-details,
@@ -3286,6 +3282,7 @@ form .social_login label:after {
   vertical-align: top; }
 
 .form-my-settings .form-submit {
+  background: none;
   border-color: #ea3a32;
   font-weight: 700;
   margin: 0 auto;
@@ -3330,6 +3327,23 @@ form .social_login label:after {
         border-bottom: 2px solid #80aabe; }
       #block-ample-local-tasks > ul a.is-active {
         border-bottom: 2px solid #ea3a32; }
+
+.ui-tabs {
+  background: none;
+  border: none;
+  padding: 0; }
+  .ui-tabs .ui-tabs-nav {
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: center; }
+    .ui-tabs .ui-tabs-nav li {
+      border: none;
+      display: inline-block;
+      float: none;
+      margin: 0;
+      opacity: .36;
+      vertical-align: top; }
 
 .view-news-and-events .title-wrapper {
   padding-bottom: 10px;
@@ -4119,7 +4133,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;

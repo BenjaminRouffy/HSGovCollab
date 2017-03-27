@@ -2465,6 +2465,10 @@ form {
 :-ms-input-placeholder {
   color: #999 !important; }
 
+.form-file {
+  font-size: 1rem;
+  line-height: 1; }
+
 .form-textarea {
   height: auto;
   padding: 8px 12px; }
@@ -2499,6 +2503,8 @@ form {
       height: 100%;
       min-height: 50px;
       padding: 10px 12px; }
+      .form-select.chosen-container .chosen-choices input[type="text"] {
+        font-weight: 300; }
       .form-select.chosen-container .chosen-choices .search-choice {
         font-size: 0.9625rem;
         background: none;
@@ -2546,19 +2552,11 @@ form {
           appearance: checkbox;
   -webkit-animation: none !important;
           animation: none !important; }
-  .form-checkbox ~ label {
-    display: inline-block;
-    margin-left: 5px;
-    vertical-align: top; }
 
 .form-radio {
   -webkit-appearance: radio;
      -moz-appearance: radio;
           appearance: radio; }
-  .form-radio ~ label {
-    display: inline-block;
-    margin-left: 5px;
-    vertical-align: top; }
 
 .form-submit {
   background: #fff;
@@ -3023,6 +3021,9 @@ form .social_login label:after {
 .form-my-settings label.form-required:after {
   content: ": *"; }
 
+.form-my-settings .description {
+  margin: 5px 0 0; }
+
 .form-my-settings #edit-field-organisations-wrapper strong:after,
 .form-my-settings #contact-details strong:after,
 .form-my-settings .label:after {
@@ -3041,6 +3042,52 @@ form .social_login label:after {
   .form-my-settings .field--name-field-person-titles .form-item {
     margin-bottom: 0;
     width: 33.33%; }
+
+.form-my-settings #edit-field-avatar-wrapper {
+  padding: 20px 40px 10px;
+  width: 50%; }
+  .form-my-settings #edit-field-avatar-wrapper label {
+    display: none; }
+  .form-my-settings #edit-field-avatar-wrapper .image-preview {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    float: none;
+    margin: 40px 0 30px;
+    overflow: hidden;
+    padding: 0; }
+  .form-my-settings #edit-field-avatar-wrapper .image-widget-data {
+    float: none; }
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data a {
+      text-decoration: none; }
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
+      outline: none; }
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit {
+      font-size: 0.875rem;
+      background: none;
+      border: none;
+      font-family: "Fira Sans", sans-serif;
+      font-weight: 400;
+      letter-spacing: normal;
+      margin: 10px 0 0;
+      padding: 0; }
+  .form-my-settings #edit-field-avatar-wrapper .image-data__crop-wrapper {
+    margin-top: 10px; }
+  .form-my-settings #edit-field-avatar-wrapper .vertical-tabs {
+    border: none;
+    margin: 0; }
+  .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu {
+    border: none;
+    float: none;
+    margin: 0;
+    width: auto; }
+  .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item {
+    background: none;
+    border: none; }
+    .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item a:hover {
+      outline: none; }
+      .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item a:hover .vertical-tabs__menu-item-title {
+        text-decoration: none; }
 
 .form-my-settings #user-details,
 .form-my-settings #organisation-details,
@@ -3232,6 +3279,11 @@ form .social_login label:after {
 .form-my-settings .field-add-more-submit.form-submit {
   font-weight: 400;
   margin: 0; }
+
+.form-my-settings .form-checkbox ~ label, .form-my-settings .form-radio ~ label {
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: top; }
 
 .form-my-settings .form-submit {
   border-color: #ea3a32;
@@ -4067,7 +4119,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.front) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;

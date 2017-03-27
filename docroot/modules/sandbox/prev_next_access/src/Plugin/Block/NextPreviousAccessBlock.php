@@ -15,7 +15,10 @@ use Drupal\node\Entity\Node;
  * @Block(
  *   id = "next_previous_access_block",
  *   admin_label = @Translation("Next Previous Access Block"),
- *   category = @Translation("Blocks")
+ *   category = @Translation("Blocks"),
+ *   context = {
+ *     "parent_groups" = @ContextDefinition("entity:group", required = FALSE)
+ *   }
  * )
  */
 class NextPreviousAccessBlock extends BlockBase {
@@ -61,7 +64,7 @@ class NextPreviousAccessBlock extends BlockBase {
    */
   public function generateNextPrevious(Node $node, $direction = 'next') {
     $comparison_operator = $sort = $display_text = $direction_arrow = '';
-    
+
     $lang_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     if ($direction === 'next') {
@@ -78,21 +81,38 @@ class NextPreviousAccessBlock extends BlockBase {
     }
 
     // Lookup 1 node younger (or older) than the current node.
-    $query = \Drupal::entityQuery('node');
-    $next = $query->condition('nid', $node->id(), $comparison_operator)
-      ->condition('type', $node->getType())
-      ->sort('created', $sort)
+    $query = \Drupal::database()->select('node_field_data', 'n')
+      ->fields('n', ['nid'])
+      ->condition('n.nid', $node->id(), $comparison_operator)
+      ->condition('n.type', $node->getType())
+      ->orderBy('n.created', $sort)
       ->range(0, 1)
-      ->condition('langcode', $lang_code)
-      ->accessCheck()
-      ->execute();
+      ->condition('n.langcode', $lang_code)
+      ->addTag('node_access');
+
+    $groups = $this->getContextValue('parent_groups');
+
+    if (isset($groups)) {
+      $gids = [];
+
+      foreach ($groups as $group) {
+        $gids[] = $group->id();
+      }
+
+      $query->leftJoin('group_content_field_data', 'group_content', 'group_content.entity_id=n.nid');
+      $query = $query->condition('group_content.type', '%-group_node-%', 'LIKE')
+        ->condition('group_content.gid', $gids, 'IN');
+    }
+
+    $result = $query->execute()
+    ->fetchCol();
 
     // If this is not the youngest (or oldest) node.
-    if (!empty($next) && is_array($next)) {
-      $next = array_values($next);
-      $next = array_shift($next);
-      $result_node = Node::load($next);
-      $url = Url::fromRoute('entity.node.canonical', ['node' => $next], ['absolute' => TRUE]);
+    if (!empty($result) && is_array($result)) {
+      $result = array_values($result);
+      $result = array_shift($result);
+      $result_node = Node::load($result);
+      $url = Url::fromRoute('entity.node.canonical', ['node' => $result], ['absolute' => TRUE]);
 
       $display_text = new FormattableMarkup('<span>@display_text</span><p>@text</p>', [
         '@display_text' => $display_text,

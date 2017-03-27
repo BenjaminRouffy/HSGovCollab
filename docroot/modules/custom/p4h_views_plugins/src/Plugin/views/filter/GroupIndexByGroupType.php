@@ -100,12 +100,18 @@ class GroupIndexByGroupType extends GroupIndexGid  {
       //   https://www.drupal.org/node/1821274.
       ->addTag('group_access');
     $query->condition('type', $group_type->id());
-    $groups = $this->group->loadMultiple($query->execute());
+    $result = $query->execute();
+    $groups = $this->group->loadMultiple($result);
 
     foreach ($groups as $group) {
+      $access = $group->access('view group', null, TRUE);
+      if(!$access->isForbidden()) {
+
       $options[$group->id()] = \Drupal::entityManager()
         ->getTranslationFromContext($group)
         ->label();
+
+      }
     }
 
     asort($options);

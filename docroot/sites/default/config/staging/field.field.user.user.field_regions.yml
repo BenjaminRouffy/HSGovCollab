@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.user.field_regions
-    - group.type.country
+    - group.type.region
   module:
     - user
 id: user.user.field_regions
@@ -21,9 +21,10 @@ settings:
   handler: 'default:group'
   handler_settings:
     target_bundles:
-      country: country
+      region: region
     sort:
-      field: _none
+      field: label
+      direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: country
 field_type: entity_reference

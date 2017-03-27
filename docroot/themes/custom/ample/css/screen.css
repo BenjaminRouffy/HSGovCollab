@@ -2195,34 +2195,41 @@ header .social-links .font-social-icon {
         width: 100%; } }
 
 .country-title,
-.project-title {
+.project-title,
+.region-title {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px; }
   .country-title + div,
-  .project-title + div {
+  .project-title + div,
+  .region-title + div {
     min-height: 150px;
     margin-bottom: 5px; }
   .country-title .project-icon-wrapper,
-  .project-title .project-icon-wrapper {
+  .project-title .project-icon-wrapper,
+  .region-title .project-icon-wrapper {
     float: left;
     margin-right: 20px;
     max-width: 40px;
     padding-top: 5px;
     width: 100%; }
     .ie .country-title .project-icon-wrapper, .ie
-    .project-title .project-icon-wrapper {
+    .project-title .project-icon-wrapper, .ie
+    .region-title .project-icon-wrapper {
       height: 40px; }
   .country-title .country-icon-wrapper,
-  .project-title .country-icon-wrapper {
+  .project-title .country-icon-wrapper,
+  .region-title .country-icon-wrapper {
     float: left;
     margin-right: 20px;
     width: 40px; }
     .ie .country-title .country-icon-wrapper, .ie
-    .project-title .country-icon-wrapper {
+    .project-title .country-icon-wrapper, .ie
+    .region-title .country-icon-wrapper {
       height: 40px; }
   .country-title h3,
-  .project-title h3 {
+  .project-title h3,
+  .region-title h3 {
     font-size: 1.4rem;
     line-height: 32px;
     margin: 10px 0 5px;
@@ -2465,6 +2472,17 @@ form {
 :-ms-input-placeholder {
   color: #999 !important; }
 
+.email-suffix {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 25px; }
+  .email-suffix .form-text, .email-suffix .form-textarea {
+    margin-bottom: 0; }
+
 .form-file {
   font-size: 1rem;
   line-height: 1; }
@@ -2496,6 +2514,7 @@ form {
   .form-select[disabled] {
     border-color: #ccc;
     color: #ccc;
+    cursor: not-allowed;
     font-weight: 300; }
   .form-select.chosen-container {
     background: #fff;
@@ -2505,6 +2524,7 @@ form {
     width: 100% !important; }
     .form-select.chosen-container .chosen-choices,
     .form-select.chosen-container .chosen-single {
+      border: 1px solid #75a8c0;
       height: 100%;
       min-height: 50px;
       padding: 10px 12px; }
@@ -2535,8 +2555,7 @@ form {
       background-image: url(../images/select-arrows.png), -webkit-linear-gradient(#fff 0, #f3f3f3 100%);
       background-image: url(../images/select-arrows.png), linear-gradient(#fff 0, #f3f3f3 100%);
       background-position: right center;
-      background-repeat: no-repeat;
-      border: 1px solid #75a8c0; }
+      background-repeat: no-repeat; }
       .form-select.chosen-container .chosen-single:hover {
         box-shadow: none; }
       .form-select.chosen-container .chosen-single:focus {
@@ -3042,10 +3061,11 @@ form .social_login label:after {
 .form-my-settings .anchor-region {
   background: #e9ecee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  height: 60px;
-  padding-top: 6px; }
+  height: 60px; }
   .form-my-settings .anchor-region:empty {
     display: none; }
+  .form-my-settings .anchor-region a {
+    padding: 20px 30px; }
 
 .form-my-settings label:after {
   content: ":"; }

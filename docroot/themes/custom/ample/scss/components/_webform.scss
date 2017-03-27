@@ -81,6 +81,16 @@ form {
   color: #999 !important;
 }
 
+.email-suffix {
+  align-items: center;
+  display: flex;
+  margin-bottom: 25px;
+
+  .form-text {
+    margin-bottom: 0;
+  }
+}
+
 .form-file {
   @include font-size(16);
   line-height: 1;
@@ -118,6 +128,7 @@ form {
   &[disabled] {
     border-color: $grey-light;
     color: $grey-light;
+    cursor: not-allowed;
     font-weight: 300;
   }
 
@@ -130,6 +141,7 @@ form {
 
     .chosen-choices,
     .chosen-single {
+      border: 1px solid #75a8c0;
       height: 100%;
       min-height: 50px;
       padding: 10px 12px;
@@ -165,7 +177,6 @@ form {
       background-image: url(../images/select-arrows.png), linear-gradient($white 0, #f3f3f3 100%);
       background-position: right center;
       background-repeat: no-repeat;
-      border: 1px solid #75a8c0;
 
       &:hover {
         box-shadow: none;
@@ -887,10 +898,13 @@ form {
     background: #e9ecee;
     box-shadow: 0 1px 3px rgba($black, .1);
     height: 60px;
-    padding-top: 6px;
 
     &:empty {
       display: none;
+    }
+
+    a {
+      padding: 20px 30px;
     }
   }
 

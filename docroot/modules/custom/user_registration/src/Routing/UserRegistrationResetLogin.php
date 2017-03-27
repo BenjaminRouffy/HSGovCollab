@@ -34,7 +34,7 @@ class UserRegistrationResetLogin extends RouteSubscriberBase {
     }
 
     if ($route = $collection->get('user.page')) {
-      $route->setRequirement('_access', 'FALSE');
+      $route->setPath('/user/my-settings');
     }
 
   }

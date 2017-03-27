@@ -87,7 +87,7 @@ function _group_customization_get_unpublished_groups() {
  * Implements hook_query_TAG_alter().
  */
 function group_customization_query_group_country_alter(Drupal\Core\Database\Query\AlterableInterface $query) {
-    // @TODO Remove tag "group_country" and update views.
+  // @TODO Remove tag "group_country" and update views.
 }
 
 
@@ -124,7 +124,12 @@ function group_customization_entity_presave(EntityInterface $entity) {
 function group_customization_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
   // @TODO Add a view name.
   $access = \Drupal::currentUser()->hasPermission('bypass group access');
-  if (!$access && in_array('groups_field_data', array_keys($view->getBaseTables()))) {
+  if (!$access && in_array($view->element['#name'], [
+      'search_for_a_country_or_region',
+      'map'
+    ])
+    && in_array('groups_field_data', array_keys($view->getBaseTables()))
+  ) {
     $query->addWhere(1, 'group_status', ['published'], 'in');
   }
 }

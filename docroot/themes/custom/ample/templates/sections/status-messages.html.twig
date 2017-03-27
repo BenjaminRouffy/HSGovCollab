@@ -6,19 +6,13 @@
       {% if status_headings[type] %}
         <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
       {% endif %}
-      {% if messages|length > 1 %}
-        <div class="error status-message">
+        <div class="{{ type }} status-message">
           <ul>
             {% for message in messages %}
               <li>{{ message }}</li>
             {% endfor %}
           </ul>
         </div>
-      {% else %}
-        <div class="status status-message">
-          {{ messages|first }}
-        </div>
-      {% endif %}
     {% if type == 'error' %}
       </div>
     {% endif %}

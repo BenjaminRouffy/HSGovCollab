@@ -68,7 +68,7 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
     //  'bypass administer group ' . $operation,
     //], 'OR');
     if (!$bypass->isAllowed()/* && !$group_by_pass->isAllowed()*/) {
-      if ($entity instanceof GroupInterface) {
+      if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
         if (!$entity->get('field_group_status')) {
           return AccessResult::neutral();
         }

@@ -2195,34 +2195,41 @@ header .social-links .font-social-icon {
         width: 100%; } }
 
 .country-title,
-.project-title {
+.project-title,
+.region-title {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px; }
   .country-title + div,
-  .project-title + div {
+  .project-title + div,
+  .region-title + div {
     min-height: 150px;
     margin-bottom: 5px; }
   .country-title .project-icon-wrapper,
-  .project-title .project-icon-wrapper {
+  .project-title .project-icon-wrapper,
+  .region-title .project-icon-wrapper {
     float: left;
     margin-right: 20px;
     max-width: 40px;
     padding-top: 5px;
     width: 100%; }
     .ie .country-title .project-icon-wrapper, .ie
-    .project-title .project-icon-wrapper {
+    .project-title .project-icon-wrapper, .ie
+    .region-title .project-icon-wrapper {
       height: 40px; }
   .country-title .country-icon-wrapper,
-  .project-title .country-icon-wrapper {
+  .project-title .country-icon-wrapper,
+  .region-title .country-icon-wrapper {
     float: left;
     margin-right: 20px;
     width: 40px; }
     .ie .country-title .country-icon-wrapper, .ie
-    .project-title .country-icon-wrapper {
+    .project-title .country-icon-wrapper, .ie
+    .region-title .country-icon-wrapper {
       height: 40px; }
   .country-title h3,
-  .project-title h3 {
+  .project-title h3,
+  .region-title h3 {
     font-size: 1.4rem;
     line-height: 32px;
     margin: 10px 0 5px;
@@ -2465,6 +2472,17 @@ form {
 :-ms-input-placeholder {
   color: #999 !important; }
 
+.email-suffix {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 25px; }
+  .email-suffix .form-text, .email-suffix .form-textarea {
+    margin-bottom: 0; }
+
 .form-file {
   font-size: 1rem;
   line-height: 1; }
@@ -2493,19 +2511,28 @@ form {
   height: 50px;
   padding: 1px 12px;
   width: 100%; }
+  .form-select[disabled] {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+    font-weight: 300; }
   .form-select.chosen-container {
     background: #fff;
     border: none;
     height: auto;
     padding: 0;
     width: 100% !important; }
-    .form-select.chosen-container .chosen-choices {
+    .form-select.chosen-container .chosen-choices,
+    .form-select.chosen-container .chosen-single {
+      border: 1px solid #75a8c0;
       height: 100%;
       min-height: 50px;
       padding: 10px 12px; }
-      .form-select.chosen-container .chosen-choices input[type="text"] {
+      .form-select.chosen-container .chosen-choices input[type="text"],
+      .form-select.chosen-container .chosen-single input[type="text"] {
         font-weight: 300; }
-      .form-select.chosen-container .chosen-choices .search-choice {
+      .form-select.chosen-container .chosen-choices .search-choice,
+      .form-select.chosen-container .chosen-single .search-choice {
         font-size: 0.9625rem;
         background: none;
         border: none;
@@ -2514,14 +2541,30 @@ form {
         font-family: "Fira Sans", sans-serif;
         line-height: 18px;
         padding: 2px 5px 2px 20px; }
-        .form-select.chosen-container .chosen-choices .search-choice .search-choice-close {
+        .form-select.chosen-container .chosen-choices .search-choice .search-choice-close,
+        .form-select.chosen-container .chosen-single .search-choice .search-choice-close {
           background: url(../images/add-plus-button.png) 2px -1px no-repeat;
           right: auto;
           left: 3px;
           -webkit-transform: rotate(45deg);
                   transform: rotate(45deg); }
-          .form-select.chosen-container .chosen-choices .search-choice .search-choice-close:hover {
+          .form-select.chosen-container .chosen-choices .search-choice .search-choice-close:hover,
+          .form-select.chosen-container .chosen-single .search-choice .search-choice-close:hover {
             background-position: 2px -22px; }
+    .form-select.chosen-container .chosen-single {
+      background-image: url(../images/select-arrows.png), -webkit-linear-gradient(#fff 0, #f3f3f3 100%);
+      background-image: url(../images/select-arrows.png), linear-gradient(#fff 0, #f3f3f3 100%);
+      background-position: right center;
+      background-repeat: no-repeat; }
+      .form-select.chosen-container .chosen-single:hover {
+        box-shadow: none; }
+      .form-select.chosen-container .chosen-single:focus {
+        border-color: #3898EC;
+        outline: none; }
+      .form-select.chosen-container .chosen-single > span {
+        margin-top: 2px; }
+      .form-select.chosen-container .chosen-single > div {
+        display: none; }
     .form-select.chosen-container .search-field,
     .form-select.chosen-container input[type="text"] {
       height: 100% !important; }
@@ -3015,6 +3058,15 @@ form .social_login label:after {
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%); }
 
+.form-my-settings .anchor-region {
+  background: #e9ecee;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 60px; }
+  .form-my-settings .anchor-region:empty {
+    display: none; }
+  .form-my-settings .anchor-region a {
+    padding: 20px 30px; }
+
 .form-my-settings label:after {
   content: ":"; }
 
@@ -3057,9 +3109,15 @@ form .social_login label:after {
     overflow: hidden;
     padding: 0; }
   .form-my-settings #edit-field-avatar-wrapper .image-widget-data {
+    font-size: 0.875rem;
+    color: #ea3a32;
+    font-family: "Fira Sans", sans-serif;
     float: none; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data a {
+      color: #ea3a32;
       text-decoration: none; }
+      .form-my-settings #edit-field-avatar-wrapper .image-widget-data a:hover {
+        color: #8c2222; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
       outline: none; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit {
@@ -3077,17 +3135,7 @@ form .social_login label:after {
     border: none;
     margin: 0; }
   .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu {
-    border: none;
-    float: none;
-    margin: 0;
-    width: auto; }
-  .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item {
-    background: none;
-    border: none; }
-    .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item a:hover {
-      outline: none; }
-      .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item a:hover .vertical-tabs__menu-item-title {
-        text-decoration: none; }
+    display: none; }
 
 .form-my-settings #user-details,
 .form-my-settings #organisation-details,
@@ -3286,6 +3334,7 @@ form .social_login label:after {
   vertical-align: top; }
 
 .form-my-settings .form-submit {
+  background: none;
   border-color: #ea3a32;
   font-weight: 700;
   margin: 0 auto;
@@ -3330,6 +3379,35 @@ form .social_login label:after {
         border-bottom: 2px solid #80aabe; }
       #block-ample-local-tasks > ul a.is-active {
         border-bottom: 2px solid #ea3a32; }
+
+.ui-tabs {
+  background: none;
+  border: none;
+  padding: 0; }
+  .ui-tabs .ui-tabs-nav {
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: center; }
+    .ui-tabs .ui-tabs-nav li {
+      background: none;
+      border: none;
+      display: inline-block;
+      float: none;
+      margin: 0 20px;
+      opacity: .36;
+      vertical-align: top; }
+    .ui-tabs .ui-tabs-nav a {
+      float: none;
+      padding: 0; }
+    .ui-tabs .ui-tabs-nav .ui-tabs-active {
+      opacity: 1; }
+    .ui-tabs .ui-tabs-nav h1 {
+      font-size: 4.2rem; }
+    .ui-tabs .ui-tabs-nav .line {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
 
 .view-news-and-events .title-wrapper {
   padding-bottom: 10px;
@@ -4119,7 +4197,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;

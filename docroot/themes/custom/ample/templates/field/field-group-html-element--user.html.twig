@@ -16,7 +16,7 @@
  */
 #}
 
-<{{ wrapper_element }} {{ attributes.setAttribute('data-anchor-id', title).setAttribute('data-region', '.region-wrapper .content .anchor-region:eq(0)') }}>
+<{{ wrapper_element }} {{ attributes.setAttribute('data-anchor-id', title).setAttribute('data-region', '.region-wrapper .anchor-region:eq(0)') }}>
   {% if title %}
     <div class="title-wrapper">
       <h1 class="anchor-title{% if collapsible %} field-group-toggler{% endif %}">{{ title }}</h1>

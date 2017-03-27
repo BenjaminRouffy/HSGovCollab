@@ -54,8 +54,9 @@ third_party_settings:
       label: 'Fields Wrapper'
     group_catagories_wrapper:
       children:
-        - field_category
+        - field_countries
         - field_regions
+        - field_category
       parent_name: group_fields_wrapper
       weight: 2
       format_type: html_element
@@ -83,17 +84,29 @@ content:
     third_party_settings: {  }
   field_category:
     type: options_select
-    weight: 4
+    weight: 32
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_countries:
+    type: options_select
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_regions:
+    type: options_select
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }
   info_block:
-    weight: 5
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   legal_terms_and_conditions:
-    weight: -4
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -103,7 +116,6 @@ hidden:
   field_accept_term_conditions: true
   field_avatar: true
   field_city: true
-  field_countries: true
   field_country_manager: true
   field_country_text: true
   field_disclose_your_personal_det: true
@@ -118,7 +130,6 @@ hidden:
   field_person_titles: true
   field_project_manager: true
   field_projects: true
-  field_regions: true
   field_skype_or_other: true
   field_streetname: true
   field_telephone: true

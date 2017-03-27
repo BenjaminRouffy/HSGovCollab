@@ -1,6 +1,5 @@
 {% for type, messages in message_list %}
   <div role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes|without('role', 'aria-label') }}>
-    {{ breakpoint() }}
     {% if type == 'error' %}
       <div role="alert">
     {% endif %}

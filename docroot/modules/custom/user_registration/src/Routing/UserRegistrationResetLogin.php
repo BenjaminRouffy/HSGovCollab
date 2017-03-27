@@ -33,6 +33,10 @@ class UserRegistrationResetLogin extends RouteSubscriberBase {
       $route->setRequirement('_user_is_onetime_access', 'user_registration.login_onetime');
     }
 
+    if ($route = $collection->get('user.page')) {
+      $route->setRequirement('_access', 'FALSE');
+    }
+
   }
 
   /**

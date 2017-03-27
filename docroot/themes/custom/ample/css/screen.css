@@ -1090,6 +1090,9 @@ header .social-links .font-social-icon {
     width: 100px;
     float: left;
     margin-right: 20px; }
+    .country-content-wrapper .country-icon-wrapper.default {
+      background: url(../images/default_country_icon.png) center no-repeat;
+      background-size: 100%; }
   .country-content-wrapper h1 {
     font-size: 5rem;
     color: #fff;
@@ -2117,6 +2120,30 @@ header .social-links .font-social-icon {
       margin: 8px 0 0;
       -webkit-transition: opacity .3s ease;
       transition: opacity .3s ease; }
+
+.country-list-by-region .country-title {
+  margin-bottom: 0; }
+  .country-list-by-region .country-title a {
+    border-bottom: 2px solid transparent;
+    display: block;
+    padding: 5px 0;
+    -webkit-transition: border .3s ease;
+    transition: border .3s ease; }
+    .country-list-by-region .country-title a:hover {
+      border-color: #ea3a32; }
+      .country-list-by-region .country-title a:hover .country-icon-wrapper,
+      .country-list-by-region .country-title a:hover h3 {
+        opacity: .66; }
+  .country-list-by-region .country-title .country-icon-wrapper,
+  .country-list-by-region .country-title h3 {
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease; }
+  .country-list-by-region .country-title h3 {
+    font-size: 1.3125rem;
+    font-weight: 400;
+    line-height: 40px;
+    margin-top: 0;
+    text-transform: none; }
 
 @media (max-width: 991px) {
   .country-list .country-item,
@@ -3546,6 +3573,19 @@ form .social_login label:after {
 
 .view-country {
   margin-top: 40px; }
+  .group-region .view-country {
+    margin-top: 0; }
+    .group-region .view-country .title-wrapper {
+      padding-bottom: 10px;
+      text-align: center; }
+      .group-region .view-country .title-wrapper h1 {
+        font-size: 2.625rem;
+        line-height: 48px;
+        padding-top: 30px; }
+      .group-region .view-country .title-wrapper .line {
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%); }
   .view-country .js-form-type-textfield {
     background: #fff;
     overflow: hidden;
@@ -4276,6 +4316,12 @@ footer {
   margin-bottom: 40px;
   padding-bottom: 20px;
   position: relative; }
+  .page-group-country .title-wrapper .main-wrapper {
+    text-align: center; }
+    .page-group-country .title-wrapper .main-wrapper .line {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
   .title-wrapper h1 ~ h2 {
     margin-bottom: 0; }
   .title-wrapper .line {

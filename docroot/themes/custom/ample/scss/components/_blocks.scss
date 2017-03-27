@@ -1055,6 +1055,41 @@
   }
 }
 
+.country-list-by-region {
+  .country-title {
+    margin-bottom: 0;
+
+    a {
+      border-bottom: 2px solid transparent;
+      display: block;
+      padding: 5px 0;
+      transition: border .3s ease;
+
+      &:hover {
+        border-color: $red;
+
+        .country-icon-wrapper,
+        h3 {
+          opacity: .66;
+        }
+      }
+    }
+
+    .country-icon-wrapper,
+    h3 {
+      transition: opacity .3s ease;
+    }
+
+    h3 {
+      @include font-size(21);
+      font-weight: 400;
+      line-height: 40px;
+      margin-top: 0;
+      text-transform: none;
+    }
+  }
+}
+
 @include breakpoint-for('.country-list, .project-list, .members-list ul', (to: laptop-small)) {
   .country-item,
   .project-item,

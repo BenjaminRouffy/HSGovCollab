@@ -899,6 +899,7 @@ form {
 
   #edit-field-avatar-wrapper {
     padding: 20px 40px 10px;
+    width: 50%;
 
     label {
       display: none;
@@ -915,6 +916,54 @@ form {
 
     .image-widget-data {
       float: none;
+
+      a {
+        text-decoration: none;
+      }
+
+      summary {
+        outline: none;
+      }
+
+      .form-submit {
+        @include font-size(14);
+        background: none;
+        border: none;
+        font-family: $fira;
+        font-weight: 400;
+        letter-spacing: normal;
+        margin: 10px 0 0;
+        padding: 0;
+      }
+    }
+
+    .image-data__crop-wrapper {
+      margin-top: 10px;
+    }
+
+    .vertical-tabs {
+      border: none;
+      margin: 0;
+    }
+
+    .vertical-tabs__menu {
+      border: none;
+      float: none;
+      margin: 0;
+      width: auto;
+    }
+
+    .vertical-tabs__menu-item {
+      background: none;
+      border: none;
+
+      a:hover {
+        outline: none;
+
+        .vertical-tabs__menu-item-title {
+          text-decoration: none;
+        }
+      }
     }
   }
 

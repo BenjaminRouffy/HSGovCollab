@@ -3044,7 +3044,8 @@ form .social_login label:after {
     width: 33.33%; }
 
 .form-my-settings #edit-field-avatar-wrapper {
-  padding: 20px 40px 10px; }
+  padding: 20px 40px 10px;
+  width: 50%; }
   .form-my-settings #edit-field-avatar-wrapper label {
     display: none; }
   .form-my-settings #edit-field-avatar-wrapper .image-preview {
@@ -3057,6 +3058,36 @@ form .social_login label:after {
     padding: 0; }
   .form-my-settings #edit-field-avatar-wrapper .image-widget-data {
     float: none; }
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data a {
+      text-decoration: none; }
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
+      outline: none; }
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit {
+      font-size: 0.875rem;
+      background: none;
+      border: none;
+      font-family: "Fira Sans", sans-serif;
+      font-weight: 400;
+      letter-spacing: normal;
+      margin: 10px 0 0;
+      padding: 0; }
+  .form-my-settings #edit-field-avatar-wrapper .image-data__crop-wrapper {
+    margin-top: 10px; }
+  .form-my-settings #edit-field-avatar-wrapper .vertical-tabs {
+    border: none;
+    margin: 0; }
+  .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu {
+    border: none;
+    float: none;
+    margin: 0;
+    width: auto; }
+  .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item {
+    background: none;
+    border: none; }
+    .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item a:hover {
+      outline: none; }
+      .form-my-settings #edit-field-avatar-wrapper .vertical-tabs__menu-item a:hover .vertical-tabs__menu-item-title {
+        text-decoration: none; }
 
 .form-my-settings #user-details,
 .form-my-settings #organisation-details,

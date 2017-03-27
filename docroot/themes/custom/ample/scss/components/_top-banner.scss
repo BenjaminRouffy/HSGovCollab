@@ -239,6 +239,11 @@
     @include same(100px, height, width);
     float: left;
     margin-right: 20px;
+
+    &.default {
+      background: url(../images/default_country_icon.png) center no-repeat;
+      background-size: 100%;
+    }
   }
 
   h1 {

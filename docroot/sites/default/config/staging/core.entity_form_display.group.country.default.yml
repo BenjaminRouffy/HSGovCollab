@@ -64,7 +64,6 @@ third_party_settings:
         - field_date
         - field_location
         - langcode
-        - field_regions
       parent_name: group_t
       weight: 21
       format_type: tab
@@ -233,12 +232,6 @@ content:
     third_party_settings: {  }
     type: geolocation_googlegeocoder
     region: content
-  field_regions:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_summary:
     weight: 7
     settings:
@@ -284,4 +277,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_regions: true
   uid: true

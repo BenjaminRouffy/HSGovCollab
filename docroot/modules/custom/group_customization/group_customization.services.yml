@@ -6,3 +6,8 @@ services:
       - { name: form_alter, form_id: group_content_country-group_membership_edit_form }
       - { name: form_alter, form_id: group_content_project-group_membership_add_form }
       - { name: form_alter, form_id: group_content_project-group_membership_edit_form }
+
+  group_customization.group.permission:
+    class: 'Drupal\group_customization\Access\GroupPermissionAccessCheck'
+    tags:
+      - { name: access_check, applies_to: _entity_access }

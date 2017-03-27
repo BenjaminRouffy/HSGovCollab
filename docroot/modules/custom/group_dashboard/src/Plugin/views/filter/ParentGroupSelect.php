@@ -126,7 +126,7 @@ class ParentGroupSelect extends GroupIndexByGroupType  {
     $options = [];
 
     $user = \Drupal::currentUser();
-
+    // @TODO We should try to change it to $group->access().
     if (!$user->hasPermission('all access to groups')) {
       foreach ($group_types as $group_type) {
         $parent_group = $group_type->id();
@@ -148,6 +148,9 @@ class ParentGroupSelect extends GroupIndexByGroupType  {
     }
 
     foreach ($groups as $group) {
+      // @TODO We should try to change it to $group->access().
+      // @see \Drupal\p4h_views_plugins\Plugin\views\filter\GroupIndexByGroupType
+      // @line 107
       if (!$user->hasPermission('all access to groups')) {
         if (array_search($group->id(), $result) !== FALSE) {
           $options[$group->id()] = \Drupal::entityManager()

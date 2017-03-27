@@ -35,6 +35,11 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
     }
     // Don't interfere if the group isn't a real group.
     $group = $parameters->get('group');
+
+    if (!$group instanceof GroupInterface) {
+      return AccessResult::neutral();
+    }
+
     $group_check = $this->checkAccess($group, 'view group', $account, [
       'published',
     ]);

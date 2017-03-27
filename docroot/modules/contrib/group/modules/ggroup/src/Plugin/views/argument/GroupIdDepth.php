@@ -100,10 +100,10 @@ class GroupIdDepth extends ArgumentPluginBase implements ContainerFactoryPluginI
       else {
         $this->query->addWhereExpression(
           $group,
-          "group_graph.start_vertex = :gid AND group_graph.hops = :hops",
+          "group_graph.start_vertex = :gid AND group_graph.hops = :hops_$depth",
           [
             ':gid' => $this->argument,
-            ':hops' => $depth
+            ":hops_$depth" => $depth
           ]
         );
       }

@@ -7,6 +7,7 @@ use Drupal\user\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a creating a group without it being saved yet.
@@ -21,18 +22,26 @@ class SubgroupFormStep1 extends GroupForm {
   protected $privateTempStore;
 
   /**
-   * Constructs a SubgroupFormStep1 object.
+   * Constructs a SubgroupFormStep2 object.
    *
    * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
    *   The entity manager.
    * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
    *   The factory for the temp store object.
    */
-  public function __construct(EntityManagerInterface $entity_manager) {
+  public function __construct(EntityManagerInterface $entity_manager, PrivateTempStoreFactory $temp_store_factory) {
     parent::__construct($entity_manager);
-    // @todo use proper dependency injection for this.
-    $temp_store_factory = \Drupal::getContainer()->get('user.private_tempstore');
     $this->privateTempStore = $temp_store_factory->get('ggroup_add_temp');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity.manager'),
+      $container->get('user.private_tempstore')
+    );
   }
 
   /**

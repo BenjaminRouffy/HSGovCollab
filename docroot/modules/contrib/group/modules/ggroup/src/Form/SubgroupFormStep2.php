@@ -24,12 +24,12 @@ class SubgroupFormStep2 extends GroupContentForm {
   /**
    * Constructs a SubgroupFormStep2 object.
    *
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
-   *   The entity manager.
    * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
    *   The factory for the temp store object.
+   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
+   *   The entity manager.
    */
-  public function __construct(EntityManagerInterface $entity_manager, PrivateTempStoreFactory $temp_store_factory) {
+  public function __construct(PrivateTempStoreFactory $temp_store_factory, EntityManagerInterface $entity_manager) {
     parent::__construct($temp_store_factory, $entity_manager);
     $this->privateTempStore = $temp_store_factory->get('ggroup_add_temp');
   }
@@ -39,8 +39,8 @@ class SubgroupFormStep2 extends GroupContentForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity.manager'),
-      $container->get('user.private_tempstore')
+      $container->get('user.private_tempstore'),
+      $container->get('entity.manager')
     );
   }
 

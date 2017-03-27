@@ -507,6 +507,8 @@ svg {
 .dashboard-sidebar {
   background: #283b44;
   height: 100%;
+  overflow-y: auto;
+  padding-bottom: 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -603,13 +605,13 @@ svg {
     color: #fff;
     cursor: pointer;
     padding: 26px 0;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     text-align: center;
     -webkit-transition: background .4s ease;
     transition: background .4s ease;
-    width: 100%; }
+    width: 80px; }
     .dashboard-sidebar .expand-menu-btn:hover {
       background: #345a6d; }
   .dashboard-sidebar.expanded-menu {
@@ -628,7 +630,8 @@ svg {
       font-size: 0.75rem; }
     .dashboard-sidebar.expanded-menu .expand-menu-btn {
       -webkit-transform: rotate(180deg);
-              transform: rotate(180deg); }
+              transform: rotate(180deg);
+      width: 220px; }
 
 @media (max-width: 767px) {
   .dashboard-sidebar {
@@ -2490,7 +2493,8 @@ form {
     background: #fff;
     border: none;
     height: auto;
-    padding: 0; }
+    padding: 0;
+    width: 100% !important; }
     .form-select.chosen-container .chosen-choices {
       height: 100%;
       min-height: 50px;

@@ -107,6 +107,8 @@
 .dashboard-sidebar {
   background: $navy-dark;
   height: 100%;
+  overflow-y: auto;
+  padding-bottom: 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -291,12 +293,12 @@
     color: $white;
     cursor: pointer;
     padding: 26px 0;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     text-align: center;
     transition: background .4s ease;
-    width: 100%;
+    width: 80px;
 
     &:hover {
       background: #345a6d;
@@ -338,6 +340,7 @@
 
     .expand-menu-btn {
       transform: rotate(180deg);
+      width: 220px;
     }
   }
 }

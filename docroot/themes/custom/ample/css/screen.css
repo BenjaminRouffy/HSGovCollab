@@ -3015,6 +3015,12 @@ form .social_login label:after {
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%); }
 
+.form-my-settings .anchor-region {
+  background: #e9ecee;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 60px;
+  padding-top: 6px; }
+
 .form-my-settings label:after {
   content: ":"; }
 
@@ -3338,12 +3344,24 @@ form .social_login label:after {
     padding: 0;
     text-align: center; }
     .ui-tabs .ui-tabs-nav li {
+      background: none;
       border: none;
       display: inline-block;
       float: none;
-      margin: 0;
+      margin: 0 20px;
       opacity: .36;
       vertical-align: top; }
+    .ui-tabs .ui-tabs-nav a {
+      float: none;
+      padding: 0; }
+    .ui-tabs .ui-tabs-nav .ui-tabs-active {
+      opacity: 1; }
+    .ui-tabs .ui-tabs-nav h1 {
+      font-size: 4.2rem; }
+    .ui-tabs .ui-tabs-nav .line {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
 
 .view-news-and-events .title-wrapper {
   padding-bottom: 10px;

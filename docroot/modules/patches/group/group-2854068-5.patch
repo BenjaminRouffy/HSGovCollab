@@ -1,0 +1,194 @@
+From bca50c2b35c11a7b7852fab4e025833d513fcc66 Mon Sep 17 00:00:00 2001
+From: Kristiaan Van den Eynde <magentix@gmail.com>
+Date: Mon, 20 Feb 2017 11:12:14 +0100
+Subject: [PATCH] Issue #2854068 by kristiaanvandeneynde: Relation not deleted
+ when node is deleted
+
+---
+ group.module                                  |  1 +
+ tests/src/Kernel/GroupContentCrudHookTest.php | 50 +++----------------
+ tests/src/Kernel/GroupKernelTestBase.php      | 71 +++++++++++++++++++++++++++
+ 3 files changed, 80 insertions(+), 42 deletions(-)
+ create mode 100644 tests/src/Kernel/GroupKernelTestBase.php
+
+diff --git a/group.module b/group.module
+index de97308..5c5c6e0 100644
+--- a/group.module
++++ b/group.module
+@@ -7,6 +7,7 @@
+ 
+ use Drupal\group\Entity\GroupContent;
+ use Drupal\Core\Entity\ContentEntityForm;
++use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Entity\EntityInterface;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Render\Element;
+diff --git a/tests/src/Kernel/GroupContentCrudHookTest.php b/tests/src/Kernel/GroupContentCrudHookTest.php
+index 63927b8..cdb2381 100644
+--- a/tests/src/Kernel/GroupContentCrudHookTest.php
++++ b/tests/src/Kernel/GroupContentCrudHookTest.php
+@@ -2,25 +2,12 @@
+ 
+ namespace Drupal\Tests\group\Kernel;
+ 
+-use Drupal\group\Entity\Group;
+-use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+-
+ /**
+  * Tests the way group content entities react to entity CRUD events.
+  *
+- * The entity_crud_hook_test module implements all core entity CRUD hooks and
+- * stores a message for each in $GLOBALS['entity_crud_hook_test'].
+- *
+  * @group group
+  */
+-class GroupContentCrudHookTest extends EntityKernelTestBase {
+-
+-  /**
+-   * Modules to enable.
+-   *
+-   * @var array
+-   */
+-  public static $modules = ['group', 'group_test_config', 'entity_crud_hook_test'];
++class GroupContentCrudHookTest extends GroupKernelTestBase {
+ 
+   /**
+    * {@inheritdoc}
+@@ -28,12 +15,6 @@ class GroupContentCrudHookTest extends EntityKernelTestBase {
+   protected function setUp() {
+     parent::setUp();
+ 
+-    $this->installConfig(['group', 'group_test_config']);
+-    $this->installEntitySchema('group');
+-    $this->installEntitySchema('group_type');
+-    $this->installEntitySchema('group_content');
+-    $this->installEntitySchema('group_content_type');
+-
+     // Required to be able to delete accounts. See User::postDelete().
+     $this->installSchema('user', ['users_data']);
+   }
+@@ -43,37 +24,22 @@ class GroupContentCrudHookTest extends EntityKernelTestBase {
+    */
+   public function testGroupedEntityDeletion() {
+     $account = $this->createUser();
+-    Group::create([
+-      'type' => 'default',
+-      'uid' => $account->id(),
+-      'label' => $this->randomMachineName(),
+-    ])->save();
++    $group = $this->createGroup(['uid' => $account->id()]);
+ 
+-    // Start with a clean slate and delete the account.
+-    $GLOBALS['entity_crud_hook_test'] = [];
++    $count = count($group->getContent());
+     $account->delete();
+-
+-    $delete_user = 'entity_crud_hook_test_entity_delete called for type user';
+-    $position_1 = array_search($delete_user, $GLOBALS['entity_crud_hook_test']);
+-    $this->assertNotFalse($position_1, 'User delete hook fired.');
+-
+-    $delete_gc = 'entity_crud_hook_test_entity_delete called for type group_content';
+-    $position_2 = array_search($delete_gc, $GLOBALS['entity_crud_hook_test']);
+-    $this->assertNotFalse($position_2, 'Group content delete hook fired.');
+-    $this->assertGreaterThan($position_2, $position_1, 'Group content delete hook fired after user delete hook.');
+-
+-    $update_user = 'entity_crud_hook_test_entity_update called for type user';
+-    $position_3 = array_search($update_user, $GLOBALS['entity_crud_hook_test']);
+-    $this->assertFalse($position_3, 'User update hook not fired.');
++    $this->assertCount($count - 1, $group->getContent(), "Deleting the group owner's account reduces the group content count by one.");
+   }
+ 
+   /**
+    * Tests that an ungrouped entity deletion triggers no group content deletion.
+    */
+   public function testUngroupedEntityDeletion() {
++    $group = $this->createGroup();
++
++    $count = count($group->getContent());
+     $this->createUser()->delete();
+-    $delete_gc = 'entity_crud_hook_test_entity_delete called for type group_content';
+-    $this->assertFalse(array_search($delete_gc, $GLOBALS['entity_crud_hook_test']), 'Group content delete hook not fired.');
++    $this->assertCount($count, $group->getContent(), "Deleting an ungrouped user account does not remove any group content.");
+   }
+ 
+ }
+diff --git a/tests/src/Kernel/GroupKernelTestBase.php b/tests/src/Kernel/GroupKernelTestBase.php
+new file mode 100644
+index 0000000..1c1bd79
+--- /dev/null
++++ b/tests/src/Kernel/GroupKernelTestBase.php
+@@ -0,0 +1,71 @@
++<?php
++
++namespace Drupal\Tests\group\Kernel;
++
++use Drupal\Core\Session\AccountInterface;
++use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
++
++/**
++ * Defines an abstract test base for group kernel tests.
++ */
++abstract class GroupKernelTestBase extends EntityKernelTestBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  public static $modules = ['group', 'group_test_config'];
++
++  /**
++   * The entity type manager service.
++   *
++   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
++   */
++  protected $entityTypeManager;
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUp() {
++    parent::setUp();
++
++    $this->entityTypeManager = $this->container->get('entity_type.manager');
++
++    $this->installConfig(['group', 'group_test_config']);
++    $this->installEntitySchema('group');
++    $this->installEntitySchema('group_type');
++    $this->installEntitySchema('group_content');
++    $this->installEntitySchema('group_content_type');
++
++    $this->setCurrentUser($this->createUser());
++  }
++
++  /**
++   * Set the current user so group creation can rely on it.
++   *
++   * @param \Drupal\Core\Session\AccountInterface $account
++   *   The account to set as the current user.
++   */
++  protected function setCurrentUser(AccountInterface $account) {
++    $this->container->get('current_user')->setAccount($account);
++  }
++
++  /**
++   * Creates a group.
++   *
++   * @param array $values
++   *   (optional) The values used to create the entity.
++   *
++   * @return \Drupal\group\Entity\Group
++   *   The created group entity.
++   */
++  protected function createGroup($values = []) {
++    $group = $this->entityTypeManager->getStorage('group')->create($values + [
++      'type' => 'default',
++      'label' => $this->randomMachineName(),
++    ]);
++    $group->enforceIsNew();
++    $group->save();
++    return $group;
++  }
++
++}
+-- 
+2.8.1
+

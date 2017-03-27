@@ -128,6 +128,17 @@
   padding-bottom: 20px;
   position: relative;
 
+  .page-group-country & {
+    .main-wrapper {
+      text-align: center;
+
+      .line {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
   h1 {
     ~ h2 {
       margin-bottom: 0;

@@ -69,9 +69,15 @@ form {
     outline: none;
   }
 
-  &::-webkit-input-placeholder,
-  &::-moz-placeholder,
-  &:-ms-input-placeholder,
+  &::-webkit-input-placeholder {
+    color: #999;
+  }
+  &::-moz-placeholder {
+    color: #999;
+  }
+  &:-ms-input-placeholder {
+    color: #999;
+  }
   &:-moz-placeholder {
     color: #999;
   }
@@ -142,12 +148,18 @@ form {
 
     .chosen-choices,
     .chosen-single {
+      background: $white;
       border: 1px solid #75a8c0;
       height: 100%;
       min-height: 50px;
       padding: 10px 12px;
 
+      &:hover {
+        box-shadow: 0 0 6px 0 rgba($navy-dark, .38);
+      }
+
       input[type="text"] {
+        @include font-size(18.2);
         font-weight: 300;
       }
 

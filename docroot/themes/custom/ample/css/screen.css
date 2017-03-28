@@ -546,10 +546,6 @@ svg {
       font-size: 0rem;
       font-style: normal;
       line-height: 0; }
-  .dashboard-sidebar .active a {
-    background: #fff; }
-    .dashboard-sidebar .active a:before {
-      color: #ea3a32; }
   .dashboard-sidebar .sidebar-menu .contextual-links {
     border-top-left-radius: 0;
     right: -76px; }
@@ -572,6 +568,12 @@ svg {
       vertical-align: top; }
     .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) a:hover {
       background: #345a6d; }
+  .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) .active a {
+    background: #fff;
+    color: #4c7e96;
+    font-weight: 400; }
+    .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) .active a:before {
+      color: #ea3a32; }
   .dashboard-sidebar .sidebar-menu .sign-out {
     word-break: break-all; }
   .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li {
@@ -2512,6 +2514,7 @@ form {
 
 .form-file {
   font-size: 1rem;
+  color: #283b44;
   line-height: 1; }
 
 .form-textarea {
@@ -3281,6 +3284,15 @@ form .social_login label:after {
 .form-my-settings #edit-field-skype-or-other-wrapper .paragraphs-subform .field--name-field-account {
   padding-left: 10px;
   width: 66.64%; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper .ajax-new-content {
+  padding: 0; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper .paragraph-type-top {
+  top: -20px; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit {
+  margin-left: 0; }
 
 .form-my-settings #edit-field-organisations,
 .form-my-settings #edit-field-skype-or-other,

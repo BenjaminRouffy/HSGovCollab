@@ -18,7 +18,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
-    - group_content_field
+    - group_content_formatters
     - image
     - rel_content
     - text
@@ -30,9 +30,9 @@ mode: default
 content:
   addtoany:
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   body:
     label: hidden
     type: text_default
@@ -96,7 +96,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: group_content_list
+    type: group_content_country_list
     region: content
   field_organization:
     weight: 8
@@ -115,9 +115,9 @@ content:
     region: content
   links:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_documents: true
   langcode: true

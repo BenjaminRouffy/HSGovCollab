@@ -48,7 +48,7 @@ third_party_settings:
         - group_address_details
         - submit1
       parent_name: ''
-      weight: -1
+      weight: 0
       format_type: html_element
       format_settings:
         label: 'My Profile'
@@ -67,7 +67,7 @@ third_party_settings:
         - field_category
         - submit2
       parent_name: ''
-      weight: 20
+      weight: 1
       format_type: html_element
       format_settings:
         label: 'My Categories of interest'
@@ -85,7 +85,7 @@ third_party_settings:
       children:
         - submit3
       parent_name: ''
-      weight: 21
+      weight: 2
       format_type: html_element
       format_settings:
         label: 'Newsletter subscribtion'
@@ -124,7 +124,7 @@ third_party_settings:
         - field_non_member_organization
         - field_job_title
       parent_name: group_my_profile
-      weight: 4
+      weight: 6
       format_type: html_element
       format_settings:
         id: organisation-details
@@ -143,7 +143,7 @@ third_party_settings:
         - field_mobilephone
         - field_telephone
       parent_name: group_my_profile
-      weight: 10
+      weight: 9
       format_type: html_element
       format_settings:
         id: contact-details
@@ -163,7 +163,7 @@ third_party_settings:
         - field_zip_code
         - field_country_text
       parent_name: group_my_profile
-      weight: 11
+      weight: 10
       format_type: html_element
       format_settings:
         id: address-details
@@ -182,7 +182,7 @@ third_party_settings:
         - field_countries
         - field_projects
       parent_name: group_my_profile
-      weight: 6
+      weight: 8
       format_type: html_element
       format_settings:
         label: 'Interests wrapper'
@@ -304,7 +304,7 @@ content:
     region: content
   field_organisations:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 7
     settings:
       title: Organisation
       title_plural: Organisations
@@ -367,7 +367,7 @@ content:
     type: string_textfield
     region: content
   submit1:
-    weight: 12
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }

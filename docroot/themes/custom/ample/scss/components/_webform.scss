@@ -1171,6 +1171,14 @@ form {
       top: -20px;
     }
 
+    label {
+      &.error {
+        right: auto;
+        left: 0;
+        top: -23px;
+      }
+    }
+
     .form-submit {
       &.field-add-more-submit {
         margin-left: 0;

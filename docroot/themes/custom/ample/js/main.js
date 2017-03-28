@@ -470,7 +470,7 @@
 
   Drupal.behaviors.stopScroll = {
     attach: function(context, settings) {
-      var $bodyHTML = $('body, html');
+      var $bodyHTML = $('body, html', context);
 
       $bodyHTML.on('scroll mousedown DOMMouseScroll mousewheel keyup', function(e) {
         if (e.which > 0 || e.type === 'mousedown' || e.type === 'mousewheel') {

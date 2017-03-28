@@ -92,7 +92,7 @@ form {
   display: flex;
   margin-bottom: 25px;
 
-  .form-text {
+  .form-email {
     margin-bottom: 0;
   }
 }
@@ -1169,6 +1169,14 @@ form {
 
     .paragraph-type-top {
       top: -20px;
+    }
+
+    label {
+      &.error {
+        right: auto;
+        left: 0;
+        top: -23px;
+      }
     }
 
     .form-submit {

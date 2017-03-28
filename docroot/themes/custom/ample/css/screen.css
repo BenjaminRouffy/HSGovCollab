@@ -2515,7 +2515,7 @@ form {
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 25px; }
-  .email-suffix .form-text, .email-suffix .form-textarea {
+  .email-suffix .form-email {
     margin-bottom: 0; }
 
 .form-file {
@@ -3301,6 +3301,11 @@ form .social_login label:after {
 
 .form-my-settings #edit-field-skype-or-other-wrapper .paragraph-type-top {
   top: -20px; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper label.error {
+  right: auto;
+  left: 0;
+  top: -23px; }
 
 .form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit {
   margin-left: 0; }

@@ -124,7 +124,7 @@ class ParentGroupSelect extends GroupIndexByGroupType  {
   protected function getUserGroupMembership($group_types, $groups) {
     $result = [];
     $options = [];
-    $parent_groups = [];
+    $roles = [];
 
     $user = \Drupal::currentUser();
     // @TODO We should try to change it to $group->access().
@@ -135,15 +135,15 @@ class ParentGroupSelect extends GroupIndexByGroupType  {
     if (!$user->hasPermission('all access to groups')) {
       // Get group admin roles.
       foreach ($group_types as $group_type) {
-        $parent_groups[] = $group_type->id() . '-admin';
+        $roles[] = $group_type->id() . '-admin';
       }
       // Get all user memberships by admin roles.
-      $all_user_memberships = $membership_loader->loadByUser($user, $parent_groups);
+      $all_user_memberships = $membership_loader->loadByUser($user, $roles);
 
       if (!empty($all_user_memberships)) {
         foreach ($all_user_memberships as $group) {
-          // Non-admin user can't moderate region's content.
-          if ('region' != $group->getGroup()->get('type')->target_id) {
+          // Only group admins can moderate group content.
+          if ($group->hasPermission('edit group')) {
             $result = array_merge($result, [
               $group->getGroupContent()->get('gid')->target_id,
             ]);

@@ -93,6 +93,7 @@ form {
 
 .form-file {
   @include font-size(16);
+  color: $navy-dark;
   line-height: 1;
 }
 
@@ -1147,6 +1148,20 @@ form {
       .field--name-field-account {
         padding-left: 10px;
         width: 66.64%;
+      }
+    }
+
+    .ajax-new-content {
+      padding: 0;
+    }
+
+    .paragraph-type-top {
+      top: -20px;
+    }
+
+    .form-submit {
+      &.field-add-more-submit {
+        margin-left: 0;
       }
     }
   }

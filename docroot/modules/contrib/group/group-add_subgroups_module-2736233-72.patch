@@ -1441,10 +1441,10 @@ index 0000000..1a4880b
 +}
 diff --git a/modules/ggroup/src/Form/SubgroupFormStep1.php b/modules/ggroup/src/Form/SubgroupFormStep1.php
 new file mode 100644
-index 0000000..1bfa331
+index 0000000..a08b890
 --- /dev/null
 +++ b/modules/ggroup/src/Form/SubgroupFormStep1.php
-@@ -0,0 +1,102 @@
+@@ -0,0 +1,111 @@
 +<?php
 +
 +namespace Drupal\ggroup\Form;
@@ -1454,6 +1454,7 @@ index 0000000..1bfa331
 +use Drupal\Core\Url;
 +use Drupal\Core\Form\FormStateInterface;
 +use Drupal\Core\Entity\EntityManagerInterface;
++use Symfony\Component\DependencyInjection\ContainerInterface;
 +
 +/**
 + * Provides a creating a group without it being saved yet.
@@ -1468,18 +1469,26 @@ index 0000000..1bfa331
 +  protected $privateTempStore;
 +
 +  /**
-+   * Constructs a SubgroupFormStep1 object.
++   * Constructs a SubgroupFormStep2 object.
 +   *
 +   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
 +   *   The entity manager.
 +   * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
 +   *   The factory for the temp store object.
 +   */
-+  public function __construct(EntityManagerInterface $entity_manager) {
++  public function __construct(EntityManagerInterface $entity_manager, PrivateTempStoreFactory $temp_store_factory) {
 +    parent::__construct($entity_manager);
-+    // @todo use proper dependency injection for this.
-+    $temp_store_factory = \Drupal::getContainer()->get('user.private_tempstore');
 +    $this->privateTempStore = $temp_store_factory->get('ggroup_add_temp');
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public static function create(ContainerInterface $container) {
++    return new static(
++      $container->get('entity.manager'),
++      $container->get('user.private_tempstore')
++    );
 +  }
 +
 +  /**
@@ -1549,7 +1558,7 @@ index 0000000..1bfa331
 +}
 diff --git a/modules/ggroup/src/Form/SubgroupFormStep2.php b/modules/ggroup/src/Form/SubgroupFormStep2.php
 new file mode 100644
-index 0000000..63b9360
+index 0000000..1cd2eb6
 --- /dev/null
 +++ b/modules/ggroup/src/Form/SubgroupFormStep2.php
 @@ -0,0 +1,112 @@
@@ -1579,13 +1588,13 @@ index 0000000..63b9360
 +  /**
 +   * Constructs a SubgroupFormStep2 object.
 +   *
-+   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
-+   *   The entity manager.
 +   * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
 +   *   The factory for the temp store object.
++   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
++   *   The entity manager.
 +   */
-+  public function __construct(EntityManagerInterface $entity_manager, PrivateTempStoreFactory $temp_store_factory) {
-+    parent::__construct($entity_manager);
++  public function __construct(PrivateTempStoreFactory $temp_store_factory, EntityManagerInterface $entity_manager) {
++    parent::__construct($temp_store_factory, $entity_manager);
 +    $this->privateTempStore = $temp_store_factory->get('ggroup_add_temp');
 +  }
 +
@@ -1594,8 +1603,8 @@ index 0000000..63b9360
 +   */
 +  public static function create(ContainerInterface $container) {
 +    return new static(
-+      $container->get('entity.manager'),
-+      $container->get('user.private_tempstore')
++      $container->get('user.private_tempstore'),
++      $container->get('entity.manager')
 +    );
 +  }
 +
@@ -2110,10 +2119,10 @@ index 0000000..97340bc
 \ No newline at end of file
 diff --git a/modules/ggroup/src/GroupHierarchyManager.php b/modules/ggroup/src/GroupHierarchyManager.php
 new file mode 100644
-index 0000000..6036545
+index 0000000..3f2a69e
 --- /dev/null
 +++ b/modules/ggroup/src/GroupHierarchyManager.php
-@@ -0,0 +1,126 @@
+@@ -0,0 +1,128 @@
 +<?php
 +
 +namespace Drupal\ggroup;
@@ -2231,16 +2240,17 @@ index 0000000..6036545
 +    }
 +
 +    $parent_group = $group_content->getGroup();
-+    /** @var \Drupal\group\Entity\GroupInterface $child_group */
-+    $child_group = $group_content->getEntity();
++    $child_group_id = $group_content->get('entity_id')->getValue();
 +
-+    $this->groupGraphStorage->removeEdge($parent_group->id(), $child_group->id());
++    if (empty($child_group_id)) {
++      $child_group_id = reset($child_group_id)['target_id'];
++      $this->groupGraphStorage->removeEdge($parent_group->id(), $child_group_id);
++    }
 +
 +    // @todo Invalidate some kind of cache?
 +  }
 +
 +}
-\ No newline at end of file
 diff --git a/modules/ggroup/src/GroupHierarchyManagerInterface.php b/modules/ggroup/src/GroupHierarchyManagerInterface.php
 new file mode 100644
 index 0000000..fc0b5dd
@@ -2867,7 +2877,7 @@ index 0000000..c035051
 +}
 diff --git a/modules/ggroup/src/Plugin/views/argument/GroupIdDepth.php b/modules/ggroup/src/Plugin/views/argument/GroupIdDepth.php
 new file mode 100644
-index 0000000..547c2bc
+index 0000000..2b9ada8
 --- /dev/null
 +++ b/modules/ggroup/src/Plugin/views/argument/GroupIdDepth.php
 @@ -0,0 +1,114 @@
@@ -2973,10 +2983,10 @@ index 0000000..547c2bc
 +      else {
 +        $this->query->addWhereExpression(
 +          $group,
-+          "group_graph.start_vertex = :gid AND group_graph.hops = :hops",
++          "group_graph.start_vertex = :gid AND group_graph.hops = :hops_$depth",
 +          [
 +            ':gid' => $this->argument,
-+            ':hops' => $depth
++            ":hops_$depth" => $depth
 +          ]
 +        );
 +      }
@@ -3049,6 +3059,29 @@ index 0000000..ea00bf4
 +  }
 +
 +}
+diff --git a/src/Entity/Group.php b/src/Entity/Group.php
+index 9066920..2326db6 100644
+--- a/src/Entity/Group.php
++++ b/src/Entity/Group.php
+@@ -247,6 +247,18 @@ class Group extends ContentEntityBase implements GroupInterface {
+       }
+     }
+ 
++    // Check permission for supergroups if subgroup module is enabled.
++    $moduleHandler = \Drupal::service('module_handler');
++    if ($moduleHandler->moduleExists('ggroup')){
++      /** @var \Drupal\ggroup\GroupHierarchyManager $group_hierarchy_manager */
++      $supergroups = \Drupal::service('ggroup.group_hierarchy_manager')->getGroupSupergroups($this);
++      foreach ($supergroups as $group) {
++        if ($group->hasPermission($permission, $account)) {
++          return TRUE;
++        }
++      }
++    }
++
+     // If no role had the requested permission, we deny access.
+     return FALSE;
+   }
 diff --git a/src/GroupMembershipCollection.php b/src/GroupMembershipCollection.php
 new file mode 100644
 index 0000000..8aa17b2

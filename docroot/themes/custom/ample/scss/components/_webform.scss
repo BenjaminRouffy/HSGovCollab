@@ -237,7 +237,7 @@ form {
 
 .ie9 {
   .select-wrapper {
-    background: $white-dark url(../images/select-arrows.png) right center no-repeat;
+    background: $white url(../images/select-arrows.png) right center no-repeat;
     border: 1px solid #75a8c0;
     border-radius: 4px;
     overflow: hidden;
@@ -1091,6 +1091,14 @@ form {
     flex-wrap: wrap;
     margin-bottom: 15px;
     padding: 20px 0;
+
+    .ie9 & {
+      overflow: hidden;
+
+      > .form-item {
+        float: left;
+      }
+    }
 
     > .form-item {
       margin: 0;

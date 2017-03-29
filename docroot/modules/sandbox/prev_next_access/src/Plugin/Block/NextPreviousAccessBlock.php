@@ -92,7 +92,7 @@ class NextPreviousAccessBlock extends BlockBase {
 
     $groups = $this->getContextValue('parent_groups');
 
-    if (isset($groups)) {
+    if (!empty($groups)) {
       $gids = [];
 
       foreach ($groups as $group) {

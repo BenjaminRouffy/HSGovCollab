@@ -484,7 +484,7 @@
     attach: function(context, settings) {
       if ($('body').is('.ie9')) {
         $('.form-select[multiple]', context).each(function() {
-          $(this).parent().addClass('multiple-select-wrapper');
+          $(this).parent().addClass('chosen-select-wrapper');
         });
       }
     }

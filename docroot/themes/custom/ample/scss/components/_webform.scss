@@ -243,9 +243,10 @@ form {
     overflow: hidden;
   }
 
-  .multiple-select-wrapper {
+  .chosen-select-wrapper {
     border: none;
     border-radius: 0;
+    overflow: visible;
   }
 
   .form-select {
@@ -255,6 +256,11 @@ form {
 
     &[multiple] {
       width: 100%;
+    }
+
+    .chosen-single {
+      background: none;
+      border: none;
     }
   }
 }

@@ -2623,9 +2623,10 @@ form {
   border-radius: 4px;
   overflow: hidden; }
 
-.ie9 .multiple-select-wrapper {
+.ie9 .chosen-select-wrapper {
   border: none;
-  border-radius: 0; }
+  border-radius: 0;
+  overflow: visible; }
 
 .ie9 .form-select {
   background: transparent;
@@ -2633,6 +2634,9 @@ form {
   width: calc(100% + 35px); }
   .ie9 .form-select[multiple] {
     width: 100%; }
+  .ie9 .form-select .chosen-single {
+    background: none;
+    border: none; }
 
 .form-checkbox {
   -webkit-appearance: checkbox;

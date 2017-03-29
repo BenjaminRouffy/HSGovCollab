@@ -207,6 +207,9 @@ class GroupContentItem extends FieldItemBase {
     $parent_entity = $this->getParent()->getParent()->getValue();
     $value = $this->getValue();
     if ($update == FALSE) {
+      if ($parent_entity->getRevisionId()) {
+        $parent_entity->setNewRevision(FALSE);
+      }
       // TODO Need user id here.
       $parent_entity->save();
     }

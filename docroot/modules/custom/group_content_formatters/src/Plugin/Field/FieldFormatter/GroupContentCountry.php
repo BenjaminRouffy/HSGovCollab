@@ -30,7 +30,8 @@ class GroupContentCountry extends FormatterBase {
 
     // Initialize field.
     $items->setValue(1);
-    $global_content = $items->getEntity()->global_content->getValue();
+    $entity = $items->getEntity()->getTranslation($langcode);
+    $global_content = $entity->global_content->getValue();
 
     if (isset($global_content[0]) && $global_content[0]['value'] == TRUE) {
       $elements[0][] = [

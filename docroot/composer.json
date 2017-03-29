@@ -7,10 +7,10 @@
         "composer/installers": "^1.0.21",
         "wikimedia/composer-merge-plugin": "~1.3",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "~8.2",
+        "drupal/core": "~8.3.0-rc2",
         "ajgl/breakpoint-twig-extension": "^0.3.0",
         "drupal/console": "~1.0",
-        "symfony/dom-crawler": "2.8"
+        "symfony/dom-crawler": "2.8.18"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -48,7 +48,8 @@
                 "views_query_views_alter() does not handle IN queries": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch",
                 "Title for details form elements is not set as '#markup'": "https://www.drupal.org/files/issues/2652850-17.patch",
                 "Contextual links double trigger (https://www.drupal.org/node/2834346)": "https://www.drupal.org/files/issues/contextual-2834346-D8.patch",
-                "View output is not used for entityreference options": "https://www.drupal.org/files/issues/view_output_is_not_used-2174633-93.patch"
+                "Contextual links button is always rendered even when no links are available (with warm client-side cache)": "https://www.drupal.org/files/issues/2650910-72.patch",
+                "Limiting options for exposed Language filters causes errors and doesn't work for special languages": "https://www.drupal.org/files/issues/drupal-exposed-language-filter-errors-2693727-1.patch"
             }
         }
     },

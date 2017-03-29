@@ -88,12 +88,14 @@ form {
 }
 
 .email-suffix {
-  align-items: center;
-  display: flex;
+  display: table;
   margin-bottom: 25px;
 
-  .form-email {
+  input,
+  .field-suffix {
+    display: table-cell;
     margin-bottom: 0;
+    vertical-align: middle;
   }
 }
 
@@ -235,16 +237,31 @@ form {
 
 .ie9 {
   .select-wrapper {
-    background: $white-dark url(../images/select-arrows.png) right center no-repeat;
+    background: $white url(../images/select-arrows.png) right center no-repeat;
     border: 1px solid #75a8c0;
     border-radius: 4px;
     overflow: hidden;
+  }
+
+  .chosen-select-wrapper {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
 
   .form-select {
     background: transparent;
     border: none;
     width: calc(100% + 35px);
+
+    &[multiple] {
+      width: 100%;
+    }
+
+    .chosen-single {
+      background: none;
+      border: none;
+    }
   }
 }
 
@@ -1037,6 +1054,14 @@ form {
     margin-bottom: 15px;
     padding: 20px 0;
 
+    .ie9 & {
+      overflow: hidden;
+
+      .form-wrapper {
+        float: left;
+      }
+    }
+
     .form-wrapper {
       padding: 0 40px;
       width: 50%;
@@ -1081,6 +1106,14 @@ form {
     flex-wrap: wrap;
     margin-bottom: 15px;
     padding: 20px 0;
+
+    .ie9 & {
+      overflow: hidden;
+
+      > .form-item {
+        float: left;
+      }
+    }
 
     > .form-item {
       margin: 0;

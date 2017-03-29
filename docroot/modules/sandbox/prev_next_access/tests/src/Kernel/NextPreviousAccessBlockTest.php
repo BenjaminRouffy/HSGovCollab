@@ -36,11 +36,11 @@ class NextPreviousAccessBlockTest extends EntityKernelTestBase {
   protected function setUp() {
     parent::setUp();
 
-    // Mock only construct, don't wanna call drupal block staff.
-    $this->nextPrevBlock = $this->getMockBuilder('\Drupal\prev_next_access\Plugin\Block\NextPreviousAccessBlock')
-      ->setMethods(['__construct'])
-      ->disableOriginalConstructor()
-      ->getMock();
+    $this->nextPrevBlock = $this->getMock('\Drupal\prev_next_access\Plugin\Block\NextPreviousAccessBlock', ['getContextValue'], [], '', FALSE);
+
+    $this->nextPrevBlock->expects($this->any())
+      ->method('getContextValue')
+      ->will($this->returnValue([]));
 
     // Create the node bundles required for testing.
     $type = NodeType::create(array(

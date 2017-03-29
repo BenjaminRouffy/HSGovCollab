@@ -2623,10 +2623,16 @@ form {
   border-radius: 4px;
   overflow: hidden; }
 
+.ie9 .multiple-select-wrapper {
+  border: none;
+  border-radius: 0; }
+
 .ie9 .form-select {
   background: transparent;
   border: none;
   width: calc(100% + 35px); }
+  .ie9 .form-select[multiple] {
+    width: 100%; }
 
 .form-checkbox {
   -webkit-appearance: checkbox;

@@ -243,10 +243,19 @@ form {
     overflow: hidden;
   }
 
+  .multiple-select-wrapper {
+    border: none;
+    border-radius: 0;
+  }
+
   .form-select {
     background: transparent;
     border: none;
     width: calc(100% + 35px);
+
+    &[multiple] {
+      width: 100%;
+    }
   }
 }
 

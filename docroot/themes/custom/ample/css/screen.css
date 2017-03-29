@@ -2513,7 +2513,8 @@ form {
   .email-suffix input,
   .email-suffix .field-suffix {
     display: table-cell;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    vertical-align: middle; }
 
 .form-file {
   font-size: 1rem;
@@ -3187,6 +3188,18 @@ form .social_login label:after {
       flex-wrap: wrap;
   margin-bottom: 15px;
   padding: 20px 0; }
+  .ie9 .form-my-settings #user-details, .ie9
+  .form-my-settings #organisation-details, .ie9
+  .form-my-settings #interests-wrapper, .ie9
+  .form-my-settings #contact-details, .ie9
+  .form-my-settings #address-details {
+    overflow: hidden; }
+    .ie9 .form-my-settings #user-details .form-wrapper, .ie9
+    .form-my-settings #organisation-details .form-wrapper, .ie9
+    .form-my-settings #interests-wrapper .form-wrapper, .ie9
+    .form-my-settings #contact-details .form-wrapper, .ie9
+    .form-my-settings #address-details .form-wrapper {
+      float: left; }
   .form-my-settings #user-details .form-wrapper,
   .form-my-settings #organisation-details .form-wrapper,
   .form-my-settings #interests-wrapper .form-wrapper,

@@ -95,6 +95,7 @@ form {
   .field-suffix {
     display: table-cell;
     margin-bottom: 0;
+    vertical-align: middle;
   }
 }
 
@@ -1037,6 +1038,14 @@ form {
     flex-wrap: wrap;
     margin-bottom: 15px;
     padding: 20px 0;
+
+    .ie9 & {
+      overflow: hidden;
+
+      .form-wrapper {
+        float: left;
+      }
+    }
 
     .form-wrapper {
       padding: 0 40px;

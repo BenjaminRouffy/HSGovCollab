@@ -88,11 +88,12 @@ form {
 }
 
 .email-suffix {
-  align-items: center;
-  display: flex;
+  display: table;
   margin-bottom: 25px;
 
-  .form-email {
+  input,
+  .field-suffix {
+    display: table-cell;
     margin-bottom: 0;
   }
 }

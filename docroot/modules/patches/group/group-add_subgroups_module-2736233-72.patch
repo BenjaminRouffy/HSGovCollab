@@ -2119,10 +2119,10 @@ index 0000000..97340bc
 \ No newline at end of file
 diff --git a/modules/ggroup/src/GroupHierarchyManager.php b/modules/ggroup/src/GroupHierarchyManager.php
 new file mode 100644
-index 0000000..6036545
+index 0000000..3f2a69e
 --- /dev/null
 +++ b/modules/ggroup/src/GroupHierarchyManager.php
-@@ -0,0 +1,126 @@
+@@ -0,0 +1,128 @@
 +<?php
 +
 +namespace Drupal\ggroup;
@@ -2240,16 +2240,17 @@ index 0000000..6036545
 +    }
 +
 +    $parent_group = $group_content->getGroup();
-+    /** @var \Drupal\group\Entity\GroupInterface $child_group */
-+    $child_group = $group_content->getEntity();
++    $child_group_id = $group_content->get('entity_id')->getValue();
 +
-+    $this->groupGraphStorage->removeEdge($parent_group->id(), $child_group->id());
++    if (empty($child_group_id)) {
++      $child_group_id = reset($child_group_id)['target_id'];
++      $this->groupGraphStorage->removeEdge($parent_group->id(), $child_group_id);
++    }
 +
 +    // @todo Invalidate some kind of cache?
 +  }
 +
 +}
-\ No newline at end of file
 diff --git a/modules/ggroup/src/GroupHierarchyManagerInterface.php b/modules/ggroup/src/GroupHierarchyManagerInterface.php
 new file mode 100644
 index 0000000..fc0b5dd
@@ -2876,7 +2877,7 @@ index 0000000..c035051
 +}
 diff --git a/modules/ggroup/src/Plugin/views/argument/GroupIdDepth.php b/modules/ggroup/src/Plugin/views/argument/GroupIdDepth.php
 new file mode 100644
-index 0000000..547c2bc
+index 0000000..2b9ada8
 --- /dev/null
 +++ b/modules/ggroup/src/Plugin/views/argument/GroupIdDepth.php
 @@ -0,0 +1,114 @@
@@ -3059,7 +3060,7 @@ index 0000000..ea00bf4
 +
 +}
 diff --git a/src/Entity/Group.php b/src/Entity/Group.php
-index 6d90179..22d305f 100644
+index 9066920..2326db6 100644
 --- a/src/Entity/Group.php
 +++ b/src/Entity/Group.php
 @@ -247,6 +247,18 @@ class Group extends ContentEntityBase implements GroupInterface {

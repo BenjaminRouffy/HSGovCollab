@@ -230,9 +230,11 @@ function gnode_node_grants(AccountInterface $account, $op) {
     }
   }
 
-  // Merge grant by group type.
-  foreach ($grants_ao as $key => $grant) {
-    $grants_ao[$key] = array_reduce($grant, 'array_merge', []);
+  // The code above populated the anonymous/outsider grants by adding the group
+  // IDs per group type. We need to combine this into one big list of group IDs
+  // per entry in the $grants_ao array.
+  foreach ($grants_ao as $key => $gids_per_group_type) {
+    $grants_ao[$key] = array_reduce($gids_per_group_type, 'array_merge', []);
   }
 
   // Recursively merge the member grants with the anonymous/outsider grants.

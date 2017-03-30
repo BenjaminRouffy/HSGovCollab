@@ -115,10 +115,12 @@ class GroupHierarchyManager implements GroupHierarchyManagerInterface {
     }
 
     $parent_group = $group_content->getGroup();
-    /** @var \Drupal\group\Entity\GroupInterface $child_group */
-    $child_group = $group_content->getEntity();
+    $child_group_id = $group_content->get('entity_id')->getValue();
 
-    $this->groupGraphStorage->removeEdge($parent_group->id(), $child_group->id());
+    if (empty($child_group_id)) {
+      $child_group_id = reset($child_group_id)['target_id'];
+      $this->groupGraphStorage->removeEdge($parent_group->id(), $child_group_id);
+    }
 
     // @todo Invalidate some kind of cache?
   }

@@ -1,0 +1,21 @@
+uuid: 4f421b7a-3ed5-4d6a-906d-85e1458a5d8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_news_country_content
+    - node.type.news
+  module:
+    - group_content_field
+id: node.news.field_news_country_content
+field_name: field_news_country_content
+entity_type: node
+bundle: news
+label: 'News country content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

@@ -1,0 +1,21 @@
+uuid: e8498e3c-587a-451d-88bd-bac7d8c19381
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_country_content
+    - node.type.event
+  module:
+    - group_content_field
+id: node.event.field_event_country_content
+field_name: field_event_country_content
+entity_type: node
+bundle: event
+label: 'Event country content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

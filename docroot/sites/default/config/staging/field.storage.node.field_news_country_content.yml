@@ -1,0 +1,22 @@
+uuid: 97cb7458-b5d8-43ab-afc3-7042d5b4af95
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_content_field
+    - node
+id: node.field_news_country_content
+field_name: field_news_country_content
+entity_type: node
+type: group_content_item
+settings:
+  group_type: country
+  plugin_type: country-group_node-news
+  group_roles: {  }
+module: group_content_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

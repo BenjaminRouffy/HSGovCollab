@@ -546,10 +546,6 @@ svg {
       font-size: 0rem;
       font-style: normal;
       line-height: 0; }
-  .dashboard-sidebar .active a {
-    background: #fff; }
-    .dashboard-sidebar .active a:before {
-      color: #ea3a32; }
   .dashboard-sidebar .sidebar-menu .contextual-links {
     border-top-left-radius: 0;
     right: -76px; }
@@ -572,6 +568,12 @@ svg {
       vertical-align: top; }
     .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) a:hover {
       background: #345a6d; }
+  .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) .active a {
+    background: #fff;
+    color: #4c7e96;
+    font-weight: 400; }
+    .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) .active a:before {
+      color: #ea3a32; }
   .dashboard-sidebar .sidebar-menu .sign-out {
     word-break: break-all; }
   .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li {
@@ -2489,10 +2491,16 @@ form {
   .form-email:focus {
     border-color: #3898EC;
     outline: none; }
-  .form-text::-webkit-input-placeholder, .form-textarea::-webkit-input-placeholder, .form-text::-moz-placeholder, .form-textarea::-moz-placeholder, .form-text:-ms-input-placeholder, .form-textarea:-ms-input-placeholder, .form-text:-moz-placeholder, .form-textarea:-moz-placeholder,
-  .form-email::-webkit-input-placeholder,
-  .form-email::-moz-placeholder,
-  .form-email:-ms-input-placeholder,
+  .form-text::-webkit-input-placeholder, .form-textarea::-webkit-input-placeholder,
+  .form-email::-webkit-input-placeholder {
+    color: #999; }
+  .form-text::-moz-placeholder, .form-textarea::-moz-placeholder,
+  .form-email::-moz-placeholder {
+    color: #999; }
+  .form-text:-ms-input-placeholder, .form-textarea:-ms-input-placeholder,
+  .form-email:-ms-input-placeholder {
+    color: #999; }
+  .form-text:-moz-placeholder, .form-textarea:-moz-placeholder,
   .form-email:-moz-placeholder {
     color: #999; }
 
@@ -2500,18 +2508,17 @@ form {
   color: #999 !important; }
 
 .email-suffix {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: table;
   margin-bottom: 25px; }
-  .email-suffix .form-text, .email-suffix .form-textarea {
-    margin-bottom: 0; }
+  .email-suffix input,
+  .email-suffix .field-suffix {
+    display: table-cell;
+    margin-bottom: 0;
+    vertical-align: middle; }
 
 .form-file {
   font-size: 1rem;
+  color: #283b44;
   line-height: 1; }
 
 .form-textarea {
@@ -2551,12 +2558,17 @@ form {
     width: 100% !important; }
     .form-select.chosen-container .chosen-choices,
     .form-select.chosen-container .chosen-single {
+      background: #fff;
       border: 1px solid #75a8c0;
       height: 100%;
       min-height: 50px;
       padding: 10px 12px; }
+      .form-select.chosen-container .chosen-choices:hover,
+      .form-select.chosen-container .chosen-single:hover {
+        box-shadow: 0 0 6px 0 rgba(40, 59, 68, 0.38); }
       .form-select.chosen-container .chosen-choices input[type="text"],
       .form-select.chosen-container .chosen-single input[type="text"] {
+        font-size: 1.1375rem;
         font-weight: 300; }
       .form-select.chosen-container .chosen-choices .search-choice,
       .form-select.chosen-container .chosen-single .search-choice {
@@ -2606,15 +2618,25 @@ form {
     outline: none; }
 
 .ie9 .select-wrapper {
-  background: #f5f5f5 url(../images/select-arrows.png) right center no-repeat;
+  background: #fff url(../images/select-arrows.png) right center no-repeat;
   border: 1px solid #75a8c0;
   border-radius: 4px;
   overflow: hidden; }
+
+.ie9 .chosen-select-wrapper {
+  border: none;
+  border-radius: 0;
+  overflow: visible; }
 
 .ie9 .form-select {
   background: transparent;
   border: none;
   width: calc(100% + 35px); }
+  .ie9 .form-select[multiple] {
+    width: 100%; }
+  .ie9 .form-select .chosen-single {
+    background: none;
+    border: none; }
 
 .form-checkbox {
   -webkit-appearance: checkbox;
@@ -3176,6 +3198,18 @@ form .social_login label:after {
       flex-wrap: wrap;
   margin-bottom: 15px;
   padding: 20px 0; }
+  .ie9 .form-my-settings #user-details, .ie9
+  .form-my-settings #organisation-details, .ie9
+  .form-my-settings #interests-wrapper, .ie9
+  .form-my-settings #contact-details, .ie9
+  .form-my-settings #address-details {
+    overflow: hidden; }
+    .ie9 .form-my-settings #user-details .form-wrapper, .ie9
+    .form-my-settings #organisation-details .form-wrapper, .ie9
+    .form-my-settings #interests-wrapper .form-wrapper, .ie9
+    .form-my-settings #contact-details .form-wrapper, .ie9
+    .form-my-settings #address-details .form-wrapper {
+      float: left; }
   .form-my-settings #user-details .form-wrapper,
   .form-my-settings #organisation-details .form-wrapper,
   .form-my-settings #interests-wrapper .form-wrapper,
@@ -3217,6 +3251,10 @@ form .social_login label:after {
       flex-wrap: wrap;
   margin-bottom: 15px;
   padding: 20px 0; }
+  .ie9 .form-my-settings #edit-account {
+    overflow: hidden; }
+    .ie9 .form-my-settings #edit-account > .form-item {
+      float: left; }
   .form-my-settings #edit-account > .form-item {
     margin: 0;
     padding: 0 40px;
@@ -3281,6 +3319,20 @@ form .social_login label:after {
 .form-my-settings #edit-field-skype-or-other-wrapper .paragraphs-subform .field--name-field-account {
   padding-left: 10px;
   width: 66.64%; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper .ajax-new-content {
+  padding: 0; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper .paragraph-type-top {
+  top: -20px; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper label.error {
+  right: auto;
+  left: 0;
+  top: -23px; }
+
+.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit {
+  margin-left: 0; }
 
 .form-my-settings #edit-field-organisations,
 .form-my-settings #edit-field-skype-or-other,
@@ -3521,9 +3573,7 @@ form .social_login label:after {
       vertical-align: top; }
   .view-news-and-events .form-checkboxes .form-checkbox {
     float: left;
-    margin-right: 8px; }
-    .ie .view-news-and-events .form-checkboxes .form-checkbox {
-      margin-top: 3px; }
+    margin: 3px 8px 0 0; }
   .view-news-and-events .form-checkboxes label {
     font-size: 0.9625rem;
     float: left;

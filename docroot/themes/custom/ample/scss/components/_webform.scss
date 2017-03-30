@@ -69,9 +69,15 @@ form {
     outline: none;
   }
 
-  &::-webkit-input-placeholder,
-  &::-moz-placeholder,
-  &:-ms-input-placeholder,
+  &::-webkit-input-placeholder {
+    color: #999;
+  }
+  &::-moz-placeholder {
+    color: #999;
+  }
+  &:-ms-input-placeholder {
+    color: #999;
+  }
   &:-moz-placeholder {
     color: #999;
   }
@@ -82,17 +88,20 @@ form {
 }
 
 .email-suffix {
-  align-items: center;
-  display: flex;
+  display: table;
   margin-bottom: 25px;
 
-  .form-text {
+  input,
+  .field-suffix {
+    display: table-cell;
     margin-bottom: 0;
+    vertical-align: middle;
   }
 }
 
 .form-file {
   @include font-size(16);
+  color: $navy-dark;
   line-height: 1;
 }
 
@@ -141,12 +150,18 @@ form {
 
     .chosen-choices,
     .chosen-single {
+      background: $white;
       border: 1px solid #75a8c0;
       height: 100%;
       min-height: 50px;
       padding: 10px 12px;
 
+      &:hover {
+        box-shadow: 0 0 6px 0 rgba($navy-dark, .38);
+      }
+
       input[type="text"] {
+        @include font-size(18.2);
         font-weight: 300;
       }
 
@@ -222,16 +237,31 @@ form {
 
 .ie9 {
   .select-wrapper {
-    background: $white-dark url(../images/select-arrows.png) right center no-repeat;
+    background: $white url(../images/select-arrows.png) right center no-repeat;
     border: 1px solid #75a8c0;
     border-radius: 4px;
     overflow: hidden;
+  }
+
+  .chosen-select-wrapper {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
 
   .form-select {
     background: transparent;
     border: none;
     width: calc(100% + 35px);
+
+    &[multiple] {
+      width: 100%;
+    }
+
+    .chosen-single {
+      background: none;
+      border: none;
+    }
   }
 }
 
@@ -1024,6 +1054,14 @@ form {
     margin-bottom: 15px;
     padding: 20px 0;
 
+    .ie9 & {
+      overflow: hidden;
+
+      .form-wrapper {
+        float: left;
+      }
+    }
+
     .form-wrapper {
       padding: 0 40px;
       width: 50%;
@@ -1068,6 +1106,14 @@ form {
     flex-wrap: wrap;
     margin-bottom: 15px;
     padding: 20px 0;
+
+    .ie9 & {
+      overflow: hidden;
+
+      > .form-item {
+        float: left;
+      }
+    }
 
     > .form-item {
       margin: 0;
@@ -1147,6 +1193,28 @@ form {
       .field--name-field-account {
         padding-left: 10px;
         width: 66.64%;
+      }
+    }
+
+    .ajax-new-content {
+      padding: 0;
+    }
+
+    .paragraph-type-top {
+      top: -20px;
+    }
+
+    label {
+      &.error {
+        right: auto;
+        left: 0;
+        top: -23px;
+      }
+    }
+
+    .form-submit {
+      &.field-add-more-submit {
+        margin-left: 0;
       }
     }
   }

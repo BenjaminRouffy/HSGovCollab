@@ -468,4 +468,26 @@
     }
   };
 
+  Drupal.behaviors.stopScroll = {
+    attach: function(context, settings) {
+      var $bodyHTML = $('body, html', context);
+
+      $bodyHTML.on('scroll mousedown DOMMouseScroll mousewheel keyup', function(e) {
+        if (e.which > 0 || e.type === 'mousedown' || e.type === 'mousewheel') {
+          $bodyHTML.stop();
+        }
+      });
+    }
+  };
+
+  Drupal.behaviors.ieFixes = {
+    attach: function(context, settings) {
+      if ($('body').is('.ie9')) {
+        $('.form-select[multiple]', context).each(function() {
+          $(this).parent().addClass('chosen-select-wrapper');
+        });
+      }
+    }
+  };
+
 })(jQuery, Drupal);

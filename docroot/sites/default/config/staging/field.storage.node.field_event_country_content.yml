@@ -1,0 +1,22 @@
+uuid: 35b69a03-e9bb-4a00-80bf-766ffcfe0e82
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_content_field
+    - node
+id: node.field_event_country_content
+field_name: field_event_country_content
+entity_type: node
+type: group_content_item
+settings:
+  group_type: country
+  plugin_type: country-group_node-event
+  group_roles: {  }
+module: group_content_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

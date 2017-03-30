@@ -179,16 +179,6 @@
     }
   }
 
-  .active {
-    a {
-      background: $white;
-
-      &:before {
-        color: $red;
-      }
-    }
-  }
-
   .sidebar-menu {
     .contextual-links {
       border-top-left-radius: 0;
@@ -217,6 +207,18 @@
 
         &:hover {
           background: #345a6d;
+        }
+      }
+
+      .active {
+        a {
+          background: $white;
+          color: $navy;
+          font-weight: 400;
+
+          &:before {
+            color: $red;
+          }
         }
       }
     }

@@ -8,6 +8,7 @@ dependencies:
     - field.field.group.region.field_bottom_link
     - field.field.group.region.field_content
     - field.field.group.region.field_date
+    - field.field.group.region.field_faq
     - field.field.group.region.field_infographic
     - field.field.group.region.field_join_block
     - field.field.group.region.field_region_icon
@@ -29,6 +30,7 @@ third_party_settings:
         - group_content
         - group_infographic_timeline
         - group_bottom
+        - group_faq
       parent_name: ''
       weight: 0
       format_type: tabs
@@ -59,7 +61,7 @@ third_party_settings:
         - field_summary
         - field_content
       parent_name: group_tabs_panel
-      weight: 8
+      weight: 7
       format_type: tab
       format_settings:
         id: ''
@@ -73,7 +75,7 @@ third_party_settings:
         - field_infographic
         - field_time_line
       parent_name: group_tabs_panel
-      weight: 9
+      weight: 8
       format_type: tab
       format_settings:
         id: ''
@@ -87,7 +89,7 @@ third_party_settings:
         - field_join_block
         - field_bottom_link
       parent_name: group_tabs_panel
-      weight: 10
+      weight: 9
       format_type: tab
       format_settings:
         id: ''
@@ -96,6 +98,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Bottom
+    group_faq:
+      children:
+        - field_faq
+      parent_name: group_tabs_panel
+      weight: 10
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: FAQ
 id: group.region.default
 targetEntityType: group
 bundle: region
@@ -139,6 +154,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_faq:
+    weight: 14
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
     region: content
   field_infographic:
     weight: 10

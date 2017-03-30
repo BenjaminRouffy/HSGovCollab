@@ -1,0 +1,25 @@
+uuid: 8a433ccd-c188-4f6b-a4a6-36820ffd2d68
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: group_faq
+label: 'Group FAQ'
+description: ''
+use_admin_theme: false
+path: '/group/{group}/faq'
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+parameters:
+  group:
+    machine_name: group
+    type: 'entity:group'
+    label: Group

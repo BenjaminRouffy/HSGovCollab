@@ -111,9 +111,15 @@ class CountryMenuBlock extends BlockBase {
             break;
 
           case 'contact':
+            break;
+
           case 'faq':
+            if ($group->hasField('field_faq')) {
+              $row = $group->get('field_faq')->getValue();
+            }
 
             break;
+
         }
 
         if (empty($row)) {

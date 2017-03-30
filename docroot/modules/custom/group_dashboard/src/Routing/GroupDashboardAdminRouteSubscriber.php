@@ -39,6 +39,14 @@ class GroupDashboardAdminRouteSubscriber extends GroupAdminRouteSubscriber {
         '_custom_access' => '\\Drupal\\group_dashboard\\BlockPageAccessControlHandler::blockContentTypesAccess',
       ]);
     }
+
+    $route = $collection->get('system.admin_config');
+
+    if (!empty($route)) {
+      $route->setRequirements([
+        '_permission' => 'access configuration page',
+      ]);
+    }
   }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\group_following;
+use Drupal\group\Entity\GroupInterface;
 use Drupal\group\GroupMembershipLoader;
 
 /**
@@ -23,4 +24,11 @@ class GroupFollowingManager implements GroupFollowingManagerInterface {
     $this->groupMembershipLoader = $group_membership_loader;
   }
 
+  /**
+   * @param GroupInterface $group
+   * @return GroupFollowing
+   */
+  public function getFollowingByGroup(GroupInterface $group) {
+    // TODO: Implement getFollowingByGroup() method.
+  }
 }

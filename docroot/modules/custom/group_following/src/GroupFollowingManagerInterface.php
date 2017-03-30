@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\group_following;
+use Drupal\group\Entity\GroupInterface;
 
 /**
  * Interface GroupFollowingManagerInterface.
@@ -10,7 +11,7 @@ namespace Drupal\group_following;
 interface GroupFollowingManagerInterface {
 
   /**
-   * @param \Drupal\group_following\GroupInterface $group
+   * @param GroupInterface $group
    * @return GroupFollowing
    */
   public function getFollowingByGroup(GroupInterface $group);

@@ -1,14 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: spheresh
- * Date: 30/03/17
- * Time: 17:45
- */
 
 namespace Drupal\group_following;
 
 
-class GroupFollowing {
+use Drupal\Core\Session\AccountInterface;
+
+class GroupFollowing implements GroupFollowingInterface {
+
+  /**
+   * @param \Drupal\Core\Session\AccountInterface $account
+   * @return GroupFollowingResult
+   */
+  public function isFollower(AccountInterface $account) {
+    return new GroupFollowingResult();
+  }
 
 }

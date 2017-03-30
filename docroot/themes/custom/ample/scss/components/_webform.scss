@@ -317,6 +317,10 @@ form {
   .login-wrapper {
     margin-top: 40px;
     width: 50%;
+
+    .ie9 & {
+      float: right;
+    }
   }
 
   a {

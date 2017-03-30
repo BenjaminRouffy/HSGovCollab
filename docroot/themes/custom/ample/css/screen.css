@@ -2693,6 +2693,8 @@ form .social_login label:after {
   .user-login-form .login-wrapper {
     margin-top: 40px;
     width: 50%; }
+    .ie9 .user-login-form .login-wrapper {
+      float: right; }
   .user-login-form a {
     font-size: 0.875rem;
     color: #ea3a32;

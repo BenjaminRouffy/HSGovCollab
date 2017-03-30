@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.group_faq
     - views.view.group_faq
   module:
+    - group_dashboard
     - panels
     - views
 id: group_faq-panels_variant-0
@@ -36,6 +37,13 @@ variant_settings:
   builder: standard
 page: group_faq
 weight: 0
-selection_criteria: {  }
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

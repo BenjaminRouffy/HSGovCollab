@@ -1056,6 +1056,8 @@
 }
 
 .country-list-by-region {
+  margin-bottom: 30px;
+  
   .country-title {
     margin-bottom: 0;
 
@@ -1140,7 +1142,7 @@
   overflow: hidden;
   padding: 0 20px;
 
-  + div {
+  + div:not(.country-title) {
     min-height: 150px;
     margin-bottom: 5px;
   }

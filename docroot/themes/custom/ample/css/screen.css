@@ -2127,29 +2127,31 @@ header .social-links .font-social-icon {
       -webkit-transition: opacity .3s ease;
       transition: opacity .3s ease; }
 
-.country-list-by-region .country-title {
-  margin-bottom: 0; }
-  .country-list-by-region .country-title a {
-    border-bottom: 2px solid transparent;
-    display: block;
-    padding: 5px 0;
-    -webkit-transition: border .3s ease;
-    transition: border .3s ease; }
-    .country-list-by-region .country-title a:hover {
-      border-color: #ea3a32; }
-      .country-list-by-region .country-title a:hover .country-icon-wrapper,
-      .country-list-by-region .country-title a:hover h3 {
-        opacity: .66; }
-  .country-list-by-region .country-title .country-icon-wrapper,
-  .country-list-by-region .country-title h3 {
-    -webkit-transition: opacity .3s ease;
-    transition: opacity .3s ease; }
-  .country-list-by-region .country-title h3 {
-    font-size: 1.3125rem;
-    font-weight: 400;
-    line-height: 40px;
-    margin-top: 0;
-    text-transform: none; }
+.country-list-by-region {
+  margin-bottom: 30px; }
+  .country-list-by-region .country-title {
+    margin-bottom: 0; }
+    .country-list-by-region .country-title a {
+      border-bottom: 2px solid transparent;
+      display: block;
+      padding: 5px 0;
+      -webkit-transition: border .3s ease;
+      transition: border .3s ease; }
+      .country-list-by-region .country-title a:hover {
+        border-color: #ea3a32; }
+        .country-list-by-region .country-title a:hover .country-icon-wrapper,
+        .country-list-by-region .country-title a:hover h3 {
+          opacity: .66; }
+    .country-list-by-region .country-title .country-icon-wrapper,
+    .country-list-by-region .country-title h3 {
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease; }
+    .country-list-by-region .country-title h3 {
+      font-size: 1.3125rem;
+      font-weight: 400;
+      line-height: 40px;
+      margin-top: 0;
+      text-transform: none; }
 
 @media (max-width: 991px) {
   .country-list .country-item,
@@ -2233,9 +2235,9 @@ header .social-links .font-social-icon {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px; }
-  .country-title + div,
-  .project-title + div,
-  .region-title + div {
+  .country-title + div:not(.country-title),
+  .project-title + div:not(.country-title),
+  .region-title + div:not(.country-title) {
     min-height: 150px;
     margin-bottom: 5px; }
   .country-title .project-icon-wrapper,

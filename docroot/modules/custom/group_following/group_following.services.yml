@@ -1,0 +1,5 @@
+services:
+  group_following.manager:
+    class: Drupal\group_following\GroupFollowingManager
+    arguments: ['@group.membership_loader']
+

@@ -308,6 +308,14 @@ form {
   max-width: 1160px;
   padding: 0 20px;
 
+  .ie9 & {
+    overflow: hidden;
+
+    .login-wrapper {
+      float: right;
+    }
+  }
+
   .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;
@@ -317,10 +325,6 @@ form {
   .login-wrapper {
     margin-top: 40px;
     width: 50%;
-
-    .ie9 & {
-      float: right;
-    }
   }
 
   a {
@@ -575,6 +579,15 @@ form {
   flex-wrap: wrap;
   justify-content: flex-end;
 
+  .ie9 & {
+    overflow: hidden;
+
+    .social_login,
+    .login-wrapper {
+      float: left;
+    }
+  }
+
   .social_login,
   .login-wrapper {
     width: 50%;
@@ -730,12 +743,23 @@ form {
   #fields-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
+    div:empty {
+      display: none;
+    }
   }
 
   #edit-account,
   #catagories-wrapper {
     padding: 10px;
     width: 50%;
+  }
+
+  .ie9 & {
+    #catagories-wrapper {
+      margin: 0 auto;
+    }
   }
 
   .content-with-sidebar & {
@@ -813,6 +837,14 @@ form {
     display: flex;
     justify-content: center;
     margin-top: 25px;
+  }
+
+  .ie9 & {
+    .g-recaptcha {
+      > div {
+        margin: 0 auto;
+      }
+    }
   }
 
   label {

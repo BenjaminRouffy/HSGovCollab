@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\group_following;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group\GroupMembershipLoader;
 
@@ -26,9 +27,20 @@ class GroupFollowingManager implements GroupFollowingManagerInterface {
 
   /**
    * @param GroupInterface $group
-   * @return GroupFollowing
+   * @return GroupFollowingInterface
    */
   public function getFollowingByGroup(GroupInterface $group) {
-    // TODO: Implement getFollowingByGroup() method.
+    return new GroupFollowing();
+  }
+
+  /**
+   * @return GroupFollowingStorageInteraface
+   */
+  public function getStorage() {
+    // TODO: Implement getStorage() method.
+  }
+
+  public function addHardFollowing(GroupFollowing $group_following, AccountInterface $account) {
+    // TODO: Implement addHardFollowing() method.
   }
 }

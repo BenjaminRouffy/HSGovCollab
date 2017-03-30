@@ -10,6 +10,11 @@ interface GroupFollowingInterface {
    * @param \Drupal\Core\Session\AccountInterface $account
    * @return GroupFollowingResult
    */
-  public function isFollower(AccountInterface $account);
+  public function getResultByAccount(AccountInterface $account);
+
+  public function follow();
+
+  public function unfollow();
+
 
 }

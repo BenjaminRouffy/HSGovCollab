@@ -9,7 +9,7 @@
 namespace Drupal\group_following;
 
 
-class GroupFollowingResult implements GroupFollowingResultInterface {
+class GroupFollowingResult implements GroupFollowingResultInterface  {
 
   /**
    * Return TRUE in case isSoftFollower or isHardFollower is TRUE.

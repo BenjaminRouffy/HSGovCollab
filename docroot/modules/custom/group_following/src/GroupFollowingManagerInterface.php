@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\group_following;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
 
 /**
@@ -12,8 +13,15 @@ interface GroupFollowingManagerInterface {
 
   /**
    * @param GroupInterface $group
-   * @return GroupFollowing
+   * @return GroupFollowingInterface
    */
   public function getFollowingByGroup(GroupInterface $group);
+
+  /**
+   * @return GroupFollowingStorageInteraface
+   */
+  public function getStorage();
+
+  public function addHardFollowing(GroupFollowing $group_following, AccountInterface $account);
 
 }

@@ -1,0 +1,36 @@
+uuid: 5efc8da7-fdc9-4f55-8614-b2ae2694c6b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - admin_customizations
+    - language
+    - user
+  theme:
+    - ample
+id: languageswitchercontent_2
+theme: ample
+region: dashboard_sidebar
+weight: 0
+provider: null
+plugin: 'language_block:language_content'
+settings:
+  id: 'language_block:language_content'
+  label: 'Language switcher (Content)'
+  provider: language
+  label_display: '0'
+visibility:
+  http_status:
+    id: http_status
+    negate: true
+    code:
+      403: '403'
+      404: '404'
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

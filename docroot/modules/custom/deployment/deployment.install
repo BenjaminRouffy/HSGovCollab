@@ -669,3 +669,17 @@ function deployment_update_8043() {
 function deployment_update_8044() {
   \Drupal::service('module_installer')->install(['field_validation']);
 }
+
+/**
+ * Install module "Block tabs".
+ */
+function deployment_update_8045() {
+  \Drupal::service('module_installer')->install(['blocktabs']);
+}
+
+/**
+ * Install module "Disable message".
+ */
+function deployment_update_8046() {
+  \Drupal::service('module_installer')->install(['disable_messages']);
+}

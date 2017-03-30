@@ -1,0 +1,21 @@
+uuid: 15271b46-690b-4fd5-a71b-a135af0d49ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_summary
+    - group.type.region
+  module:
+    - text
+id: group.region.field_summary
+field_name: field_summary
+entity_type: group
+bundle: region
+label: Summary
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -6,6 +6,12 @@
           <div class="country-content-wrapper">
             {{ country_icon }}
 
+            {% if region_icon is not empty %}
+              <img src="{{ file_url(region_icon) }}">
+            {% elseif group_bundle is not empty and group_bundle == 'region'%}
+              <div class="country-icon-wrapper default"></div>
+            {% endif %}
+
             <h1 role="heading">
               {{ group_label|t|upper }}
             </h1>

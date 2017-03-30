@@ -248,6 +248,18 @@ class Group extends ContentEntityBase implements GroupInterface {
       }
     }
 
+    // Check permission for supergroups if subgroup module is enabled.
+    $moduleHandler = \Drupal::service('module_handler');
+    if ($moduleHandler->moduleExists('ggroup')){
+      /** @var \Drupal\ggroup\GroupHierarchyManager $group_hierarchy_manager */
+      $supergroups = \Drupal::service('ggroup.group_hierarchy_manager')->getGroupSupergroups($this);
+      foreach ($supergroups as $group) {
+        if ($group->hasPermission($permission, $account)) {
+          return TRUE;
+        }
+      }
+    }
+
     // If no role had the requested permission, we deny access.
     return FALSE;
   }
@@ -340,9 +352,11 @@ class Group extends ContentEntityBase implements GroupInterface {
   public function postSave(EntityStorageInterface $storage, $update = TRUE) {
     parent::postSave($storage, $update);
 
-    // If a new group is created, add the creator as a member by default.
-    if ($update === FALSE) {
-      $values = ['group_roles' => $this->getGroupType()->getCreatorRoleIds()];
+    // If a new group is created and the group type is configured to grant group
+    // creators a membership by default, add the creator as a member.
+    $group_type = $this->getGroupType();
+    if ($update === FALSE && $group_type->creatorGetsMembership()) {
+      $values = ['group_roles' => $group_type->getCreatorRoleIds()];
       $this->addMember($this->getOwner(), $values);
     }
   }

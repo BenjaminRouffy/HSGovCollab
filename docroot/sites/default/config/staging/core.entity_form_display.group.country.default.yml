@@ -9,6 +9,7 @@ dependencies:
     - field.field.group.country.field_country_icon
     - field.field.group.country.field_country_options
     - field.field.group.country.field_date
+    - field.field.group.country.field_group_status
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
@@ -21,6 +22,7 @@ dependencies:
     - field_group
     - geolocation
     - paragraphs
+    - path
     - text
 third_party_settings:
   field_group:
@@ -44,6 +46,8 @@ third_party_settings:
         - field_banner
         - label
         - field_country_icon
+        - translation
+        - field_group_status
       parent_name: group_t
       weight: 20
       format_type: tab
@@ -60,7 +64,6 @@ third_party_settings:
         - field_date
         - field_location
         - langcode
-        - field_regions
       parent_name: group_t
       weight: 21
       format_type: tab
@@ -177,6 +180,12 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_group_status:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   field_infographic:
     type: entity_reference_paragraphs
     weight: 9
@@ -223,12 +232,6 @@ content:
     third_party_settings: {  }
     type: geolocation_googlegeocoder
     region: content
-  field_regions:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_summary:
     weight: 7
     settings:
@@ -262,11 +265,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  translation:
-    weight: 13
+  path:
+    type: path
+    weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
+  translation:
+    weight: 13
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
-  path: true
+  field_regions: true
   uid: true

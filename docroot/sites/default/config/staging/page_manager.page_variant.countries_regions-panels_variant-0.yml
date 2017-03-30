@@ -1,0 +1,47 @@
+uuid: c2b4c725-7475-415b-9ffa-dadf4bf33aed
+langcode: en
+status: true
+dependencies:
+  config:
+    - blocktabs.blocktabs.countries_regions
+    - page_manager.page.countries_regions
+  module:
+    - blocktabs
+    - panels
+    - user
+id: countries_regions-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    a613ecaf-2ab9-4ca7-a9a2-71aa3936fcda:
+      id: 'blocktabs_block:countries_regions'
+      label: 'Blocktabs:Countries & Regions'
+      provider: blocktabs
+      label_display: '0'
+      region: content
+      weight: 0
+      uuid: a613ecaf-2ab9-4ca7-a9a2-71aa3936fcda
+      context_mapping: {  }
+  id: panels_variant
+  uuid: ee4ffa0a-189c-4f0d-830f-30d88f8490db
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: countries_regions-panels_variant-0
+  builder: standard
+page: countries_regions
+weight: 0
+selection_criteria:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

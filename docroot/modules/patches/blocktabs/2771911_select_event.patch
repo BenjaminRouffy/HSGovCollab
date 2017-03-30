@@ -1,0 +1,137 @@
+diff --git a/blocktabs.module b/blocktabs.module
+index 555c3aa..21fa60c 100644
+--- a/blocktabs.module
++++ b/blocktabs.module
+@@ -46,10 +46,11 @@ function template_preprocess_blocktabs(&$variables) {
+   //unset($variables['elements']['blocktabs']);
+   //foreach($variables['elements'] as $key => $value){
+   //  drupal_set_message('key:' .$key);
+- // }
+-  
++  // }
++
+   $tabs_id = 'blocktabs-' . $blocktabs->id();
+   $variables['tabs_id'] = $tabs_id;
++  $variables['tabs_event'] = $blocktabs->getEvent();
+   $variables['tabs'] = array();
+   $tabs = $blocktabs->getTabs();
+ 	foreach ($tabs as $tab) {
+@@ -61,6 +62,4 @@ function template_preprocess_blocktabs(&$variables) {
+ 	  $variables['tabs'][$tab_id] = $tab_obj;
+ 	  
+ 	}  
+-
+-
+ }
+\ No newline at end of file
+diff --git a/js/blocktabs.js b/js/blocktabs.js
+index 58736da..053877e 100644
+--- a/js/blocktabs.js
++++ b/js/blocktabs.js
+@@ -17,11 +17,16 @@
+    */
+   Drupal.behaviors.blocktabs = {
+     attach: function (context, settings) {
+-      $(context).find('div.blocktabs').each(function () {
++      $(context).find('div.blocktabs-mouseover').each(function () {
+         $(this).tabs({
+          event: "mouseover"
+         });
+       });
++      $(context).find('div.blocktabs-click').each(function () {
++        $(this).tabs({
++          event: "click"
++        });
++      });
+     }
+   };
+ 
+diff --git a/src/Entity/Blocktabs.php b/src/Entity/Blocktabs.php
+index 91a8bd9..5d0baff 100644
+--- a/src/Entity/Blocktabs.php
++++ b/src/Entity/Blocktabs.php
+@@ -39,11 +39,17 @@ use Drupal\blocktabs\TabPluginCollection;
+  *     "name",
+  *     "label",
+  *     "tabs",
++ *     "event"
+  *   }
+  * )
+  */
+ class Blocktabs extends ConfigEntityBase implements BlocktabsInterface, EntityWithPluginCollectionInterface {
+ 
++  /**
++   * Selected event Hover or Click
++   *
++   */
++  protected $event;
+ 
+   /**
+    * The name of the blocktabs.
+@@ -135,6 +141,12 @@ class Blocktabs extends ConfigEntityBase implements BlocktabsInterface, EntityWi
+     }
+     return $this->tabsCollection;
+   }
++  /**
++   * {@inheritdoc}
++   */
++  public function getEvent(){
++    return $this->get('event');
++  }
+ 
+   /**
+    * {@inheritdoc}
+diff --git a/src/Form/BlocktabsFormBase.php b/src/Form/BlocktabsFormBase.php
+index 5c3d85a..a0375e0 100644
+--- a/src/Form/BlocktabsFormBase.php
++++ b/src/Form/BlocktabsFormBase.php
+@@ -64,6 +64,16 @@ abstract class BlocktabsFormBase extends EntityForm {
+       '#default_value' => $this->entity->id(),
+       '#required' => TRUE,
+     );
++    $form['event'] = [
++      '#type' => 'radios',
++      '#title' => $this->t('Select an event'),
++      '#default_value' => $this->entity->getEvent(),
++      '#options' => [
++        'click' => $this->t('OnClick'),
++        'mouseover' => $this->t('Hover')
++      ],
++    ];
++
+ 
+     return parent::form($form, $form_state);
+   }
+diff --git a/templates/blocktabs.html.twig b/templates/blocktabs.html.twig
+index 7ce9b4e..cb2d287 100644
+--- a/templates/blocktabs.html.twig
++++ b/templates/blocktabs.html.twig
+@@ -28,16 +28,18 @@
+  */
+ #}
+ {{ attach_library('blocktabs/blocktabs') }}
+-<div id="{{ tabs_id }}" class="blocktabs">
+-<ul>
+-{% for tab in tabs %}
+-<li><a href="#{{ tab.id }}">{{ tab.title }}</a></li>
+-{% endfor %}
+-</ul>
++{% if tabs_event %}
++    <div id="{{ tabs_id }}" class="blocktabs-{{ tabs_event }}">
++        <ul>
++            {% for tab in tabs %}
++            <li><a href="#{{ tab.id }}">{{ tab.title }}</a></li>
++            {% endfor %}
++        </ul>
+ 
+-{% for tab in tabs %}
+-<div id="{{ tab.id }}">{{ tab.content }}</div>
+-{% endfor %}
++        {% for tab in tabs %}
++            <div id="{{ tab.id }}">{{ tab.content }}</div>
++        {% endfor %}
+ 
+-</div>
++    </div>
++{% endif %}
+ 

@@ -1055,6 +1055,43 @@
   }
 }
 
+.country-list-by-region {
+  margin-bottom: 30px;
+  
+  .country-title {
+    margin-bottom: 0;
+
+    a {
+      border-bottom: 2px solid transparent;
+      display: block;
+      padding: 5px 0;
+      transition: border .3s ease;
+
+      &:hover {
+        border-color: $red;
+
+        .country-icon-wrapper,
+        h3 {
+          opacity: .66;
+        }
+      }
+    }
+
+    .country-icon-wrapper,
+    h3 {
+      transition: opacity .3s ease;
+    }
+
+    h3 {
+      @include font-size(21);
+      font-weight: 400;
+      line-height: 40px;
+      margin-top: 0;
+      text-transform: none;
+    }
+  }
+}
+
 @include breakpoint-for('.country-list, .project-list, .members-list ul', (to: laptop-small)) {
   .country-item,
   .project-item,
@@ -1099,12 +1136,13 @@
 }
 
 .country-title,
-.project-title {
+.project-title,
+.region-title {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px;
 
-  + div {
+  + div:not(.country-title) {
     min-height: 150px;
     margin-bottom: 5px;
   }
@@ -1115,6 +1153,10 @@
     max-width: 40px;
     padding-top: 5px;
     width: 100%;
+
+    .ie & {
+      height: 40px;
+    }
   }
 
   .country-icon-wrapper {

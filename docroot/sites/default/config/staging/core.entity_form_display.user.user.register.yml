@@ -7,20 +7,30 @@ dependencies:
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
     - field.field.user.user.field_category
-    - field.field.user.user.field_country
+    - field.field.user.user.field_city
+    - field.field.user.user.field_countries
     - field.field.user.user.field_country_manager
+    - field.field.user.user.field_country_text
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
     - field.field.user.user.field_middle_name
+    - field.field.user.user.field_mobilephone
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
+    - field.field.user.user.field_organisations
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_project_manager
+    - field.field.user.user.field_projects
     - field.field.user.user.field_regions
+    - field.field.user.user.field_skype_or_other
+    - field.field.user.user.field_streetname
+    - field.field.user.user.field_telephone
+    - field.field.user.user.field_zip_code
   module:
     - field_group
+    - group_content_field
     - user
 third_party_settings:
   field_group:
@@ -33,6 +43,8 @@ third_party_settings:
         - field_last_name
         - field_job_title
         - account
+        - field_country_manager
+        - field_project_manager
         - captcha
         - legal_terms_and_conditions
         - field_disclose_your_personal_det
@@ -81,13 +93,19 @@ content:
     settings: {  }
     third_party_settings: {  }
   captcha:
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_manager:
+    type: group_select
     weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   field_disclose_your_personal_det:
     type: boolean_checkbox
-    weight: 29
+    weight: 31
     region: content
     settings:
       display_label: true
@@ -98,7 +116,7 @@ content:
     region: content
     settings:
       size: 60
-      placeholder: 'Please enter your name'
+      placeholder: 'Please enter your first name'
     third_party_settings: {  }
   field_job_title:
     type: string_textfield
@@ -130,7 +148,7 @@ content:
     region: content
     settings:
       size: 60
-      placeholder: ''
+      placeholder: 'Please enter your organization'
     third_party_settings: {  }
   field_organisation:
     type: options_select
@@ -144,8 +162,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  legal_terms_and_conditions:
+  field_project_manager:
+    type: group_select
     weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  legal_terms_and_conditions:
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -154,16 +178,22 @@ hidden:
   field_accept_term_conditions: true
   field_avatar: true
   field_category: true
-  field_country: true
-  field_country_manager: true
+  field_city: true
+  field_countries: true
+  field_country_text: true
   field_mobilephone: true
   field_organisations: true
-  field_project_manager: true
+  field_projects: true
   field_regions: true
   field_skype_or_other: true
+  field_streetname: true
   field_telephone: true
+  field_zip_code: true
   info_block: true
   langcode: true
   language: true
   path: true
+  submit1: true
+  submit2: true
+  submit3: true
   timezone: true

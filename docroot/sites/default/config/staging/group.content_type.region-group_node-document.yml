@@ -1,0 +1,19 @@
+uuid: f039aaf2-1ca4-48c2-b47c-ce730d244653
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+    - node.type.document
+  module:
+    - gnode
+    - node
+id: region-group_node-document
+label: 'Region: Group node (Document)'
+description: 'Adds <em class="placeholder">Document</em> content to groups both publicly and privately.'
+group_type: region
+content_plugin: 'group_node:document'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

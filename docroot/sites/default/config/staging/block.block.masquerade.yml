@@ -4,7 +4,6 @@ status: true
 dependencies:
   module:
     - admin_customizations
-    - group_dashboard
     - masquerade
     - system
   theme:
@@ -31,14 +30,3 @@ visibility:
     pages: /admin/people
     negate: false
     context_mapping: {  }
-  access_by_user_role:
-    id: access_by_user_role
-    roles:
-      anonymous: anonymous
-      authenticated: authenticated
-      country_managers: country_managers
-      projects_managers: projects_managers
-      specific_users: specific_users
-    negate: true
-    context_mapping:
-      user: '@user.current_user_context:current_user'

@@ -1,11 +1,135 @@
 <?php
 
 /**
+ * @file
+ * Group customization module main file.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\node\NodeInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
+
+/**
  * Implements hook_preprocess_html().
  */
 function group_customization_preprocess_html(array &$variables) {
   // Add class to body by group context.
   if (($group = \Drupal::routeMatch()->getParameter('group')) && $group->id()) {
     $variables['attributes']['class'][] = 'group-' . $group->bundle();
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function group_customization_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  // @var \Drupal\group_customization\Access\GroupPermissionAccessCheck $groupPermissionAccess
+  $groupPermissionAccess = \Drupal::getContainer()
+    ->get('group_customization.group.permission');
+  return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
+    'published',
+    'content',
+  ]);
+}
+
+/**
+ * Implements hook_node_grants_alter().
+ */
+function group_customization_node_grants_alter(array &$grants, AccountInterface $account, $op) {
+
+  $key_name_alter = [];
+  // Skip gnode alter activities.
+  if ($account->hasPermission('bypass group access')) {
+    return;
+  }
+
+  // Get all gnode granted rules.
+  foreach (array_keys($grants) as $key) {
+    if (FALSE === strpos($key, 'gnode')) {
+      continue;
+    }
+    $key_name_alter[] = $key;
+  }
+
+  if (!empty($key_name_alter)) {
+    $unpublished = _group_customization_get_unpublished_groups();
+    foreach ($key_name_alter as $key) {
+      $grants[$key] = array_values(array_diff($grants[$key], $unpublished));
+    }
+
+  }
+
+}
+
+/**
+ * Return unpublished group IDs.
+ */
+function _group_customization_get_unpublished_groups() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+
+  $query = $entity_type_manager->getStorage('group')->getQuery();
+  $query->condition('type', 'country');
+  $group = $query->orConditionGroup()
+    ->notExists('field_group_status')
+    ->condition('field_group_status', 'unpublished');
+  $query->condition($group);
+
+  return $query->execute();
+}
+
+/**
+ * Implements hook_query_TAG_alter().
+ */
+function group_customization_query_group_country_alter(Drupal\Core\Database\Query\AlterableInterface $query) {
+  // @TODO Remove tag "group_country" and update views.
+}
+
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function group_customization_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if (in_array($entity_type->id(), ['group'])) {
+    $fields['group_status'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Group Status'))
+      ->setDescription(t('Group Status'));
+
+    return $fields;
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function group_customization_entity_presave(EntityInterface $entity) {
+  if (in_array($entity->getEntityTypeId(), ['group'])) {
+    if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
+      if ($entity->get('field_group_status')) {
+        $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
+        $entity->set('group_status', $group_status);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function group_customization_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  // @TODO Add a view name.
+  $access = \Drupal::currentUser()->hasPermission('bypass group access');
+  if (!$access && in_array($view->element['#name'], [
+      'search_for_a_country_or_region',
+      'map'
+    ])
+    && in_array('groups_field_data', array_keys($view->getBaseTables()))
+  ) {
+    $query->addWhere(1, 'group_status', ['published'], 'in');
   }
 }

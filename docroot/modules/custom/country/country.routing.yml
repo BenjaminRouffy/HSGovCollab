@@ -1,11 +1,13 @@
-entity.group.canonical:
-  path: '/group/{group}'
-  defaults:
-    _entity_view: 'group.full'
-    _title: 'Group'
-    _title_callback: '\Drupal\country\Controller\CountryGroupMembershipController::groupTitle'
-  requirements:
-    group: \d+
+# @todo Commented because _entity_view with 'group.full' trigger unexpected behavior.
+#  It can be removed after testing.
+#entity.group.canonical:
+#  path: '/group/{group}'
+#  defaults:
+#    _entity_view: 'group.view'
+#    _title: 'Group'
+#    _title_callback: '\Drupal\country\Controller\CountryGroupMembershipController::groupTitle'
+#  requirements:
+#    group: \d+
 
 group.news_and_event:
   path: '/group/{group}/news-and-events'
@@ -39,5 +41,12 @@ group.faq:
   path: '/group/{group}/faq'
   defaults:
     _title: 'FAQ'
+  requirements:
+    group: \d+
+
+group.country:
+  path: '/group/{group}/countries'
+  defaults:
+    _title: 'Countries'
   requirements:
     group: \d+

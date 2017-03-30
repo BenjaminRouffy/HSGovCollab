@@ -1,0 +1,23 @@
+uuid: c8c289c2-57d5-4b73-b1aa-6a78b90679d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_group_status
+    - group.type.country
+  module:
+    - options
+id: group.country.field_group_status
+field_name: field_group_status
+entity_type: group
+bundle: country
+label: 'Group Status'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: unpublished
+default_value_callback: ''
+settings: {  }
+field_type: list_string

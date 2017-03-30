@@ -11,12 +11,14 @@ dependencies:
     - field.field.node.news.field_documents
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
+    - field.field.node.news.field_news_country_content
     - field.field.node.news.field_organization
     - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
     - datetime
     - entity_reference_revisions
+    - group_content_formatters
     - image
     - rel_content
     - text
@@ -28,9 +30,9 @@ mode: default
 content:
   addtoany:
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   body:
     label: hidden
     type: text_default
@@ -89,6 +91,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_news_country_content:
+    weight: 11
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: group_content_country_list
+    region: content
   field_organization:
     weight: 8
     label: above
@@ -106,9 +115,9 @@ content:
     region: content
   links:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_documents: true
   langcode: true

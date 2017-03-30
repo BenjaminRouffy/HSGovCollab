@@ -39,6 +39,23 @@ function ample_preprocess_html(array &$variables) {
     $variables['is_front'] = FALSE;
   }
 
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $route_name = explode('.', $route_name);
+  $route_prefix = current($route_name);
+
+  if ('page_manager' === $route_prefix) {
+    $page_name = end($route_name);
+    // Remove "page_view_".
+    $variables['attributes']['class'][] = 'page-' . str_replace('_', '-', substr($page_name, 10));
+  }
+  elseif ('group' === $route_prefix) {
+    $variables['attributes']['class'][] = 'page-' . $route_prefix . '-' . str_replace('_', '-', end($route_name));
+  }
+
+  if ('node' === $variables['root_path']) {
+    $variables['attributes']['class'][] = 'node-' . str_replace('_', '-', $variables['node_type']);
+  }
+
   $variables['attributes']['class'][] = strtolower(\Drupal::languageManager()->getCurrentLanguage()->getId());
   $variables['attributes']['class'][] = \Drupal::theme()->getActiveTheme()->getName();
 }
@@ -149,6 +166,7 @@ function ample_preprocess_paragraph(array &$variables) {
 
     if ('group' === $entity->getEntityTypeId()) {
       $variables['group_label'] = $entity->label();
+      $variables['group_bundle'] = $entity->bundle();
     }
 
     if ($entity->hasField('field_country_icon')) {
@@ -161,6 +179,15 @@ function ample_preprocess_paragraph(array &$variables) {
         $view_builder = \Drupal::entityTypeManager()->getViewBuilder($icon->getEntityTypeId());
 
         $variables['country_icon'] = $view_builder->view($icon, 'default');
+      }
+    }
+
+    if ($entity->hasField('field_region_icon')) {
+      $icon = $entity->get('field_region_icon')->getValue();
+
+      if (is_array($icon) && !empty($icon)) {
+        $image = \Drupal\file\Entity\File::load($icon[0]['target_id']);
+        $variables['region_icon'] = $image->getFileUri();
       }
     }
   }

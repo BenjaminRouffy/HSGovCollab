@@ -1,0 +1,19 @@
+uuid: 4ce59fdb-28c8-4e3f-bdea-1f5e1c380380
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.projects_managers
+id: region-128ade90e
+label: 'Projects managers'
+weight: 4
+internal: true
+audience: outsider
+group_type: region
+permissions_ui: false
+permissions: {  }

@@ -167,8 +167,20 @@
 
   Drupal.behaviors.anchorLink = {
     attach: function(context, settings) {
-      var $bottomHead = $('.bottom-head', context);
       var $anchorLink = $('[data-anchor-id]', context);
+      var anchorSettings = {
+        'region': []
+      };
+      $anchorLink.each(function(index, element) {
+        if (this.hasAttribute('data-region')) {
+          anchorSettings['region'].push($(this).attr('data-region'));
+        }
+      });
+      anchorSettings = $.extend(true, {
+        'region': ['.bottom-head']
+      }, anchorSettings);
+      var $bottomHead = $(anchorSettings.region.join(','), context);
+
       var $body = $('body');
 
       if (!$body.is('.group.logged')) {
@@ -182,7 +194,13 @@
           }
 
           $anchorLink.each(function(index, element) {
-            var title = $(element).find('.anchor-title').first().text();
+
+            var anchorLabel = false;
+            if (this.hasAttribute('data-anchor-label')) {
+              anchorLabel = $(this).attr('data-anchor-label');
+            }
+
+            var title = anchorLabel || $(element).find('.anchor-title').first().text();
             var id = title.trim();
             var lastId;
 
@@ -447,6 +465,47 @@
       });
 
       hidePopup(context);
+    }
+  };
+
+  Drupal.behaviors.stopScroll = {
+    attach: function(context, settings) {
+      var $bodyHTML = $('body, html', context);
+
+      $bodyHTML.on('scroll mousedown DOMMouseScroll mousewheel keyup', function(e) {
+        if (e.which > 0 || e.type === 'mousedown' || e.type === 'mousewheel') {
+          $bodyHTML.stop();
+        }
+      });
+    }
+  };
+
+  Drupal.behaviors.accordion = {
+    attach: function(context, settings) {
+      $('.accordion-item', context).on('click', '.accordion-title', function() {
+        var $this = $(this);
+        var $parent = $this.parent();
+
+        $parent.siblings().removeClass('expanded').find('.accordion-content').slideUp();
+
+        if (!$parent.is('.expanded')) {
+          $parent.addClass('expanded');
+          $this.siblings('.accordion-content').slideToggle();
+        }
+        else {
+          $parent.removeClass('expanded').find('.accordion-content').slideUp();
+        }
+      });
+    }
+  };
+
+  Drupal.behaviors.ieFixes = {
+    attach: function(context, settings) {
+      if ($('body').is('.ie9')) {
+        $('.form-select[multiple]', context).each(function() {
+          $(this).parent().addClass('chosen-select-wrapper');
+        });
+      }
     }
   };
 

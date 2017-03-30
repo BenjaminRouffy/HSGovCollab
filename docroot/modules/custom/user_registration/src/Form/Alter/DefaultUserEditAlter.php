@@ -32,12 +32,17 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
   public function formAlter(&$form, FormStateInterface $form_state) {
     $form['field_person_titles']['widget']['#options']['_none'] = t('Select title');
 
-    $form['field_first_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your name');
+    $form['field_first_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your first name');
     $form['field_middle_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your middle name');
     $form['field_last_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your last name');
+    $form['field_non_member_organization']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your organisation');
 
     $form['account']['current_pass']['#weight'] = 10;
     $form['account']['pass']['#weight'] = 11;
+    $form['account']['status']['#weight'] = 12;
+    $form['account']['roles']['#weight'] = 13;
+    $form['account']['current_pass']['#prefix'] = '<div class="form-item">';
+    $form['account']['pass']['#suffix'] = '</div>';
 
     foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {
       if (is_array($option)) {
@@ -55,10 +60,17 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
 
     unset(
       $form['account']['current_pass']['#description'],
+      $form['account']['name'],
       $form['account']['mail']['#description'],
       $form['account']['name']['#description'],
       $form['account']['pass']['#description']
     );
+
+    $form['actions']['submit']['#value'] = t('Submit changes');
+    for ($i = 1; $i <= 3; $i++) {
+      $form['submit' . $i] = $form['actions']['submit'];
+    }
+    $form['actions']['submit']['#access'] = FALSE;
   }
 
 }

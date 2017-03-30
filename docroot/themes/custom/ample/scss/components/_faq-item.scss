@@ -1,0 +1,62 @@
+.faq-item {
+  position: relative;
+
+  &.expanded {
+    &:after {
+      transform: rotate(135deg);
+    }
+  }
+
+  &:after {
+    @include font-size(28);
+    content: "´";
+    color: $red;
+    font-family: $p4h;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    transition: transform .4s ease;
+  }
+}
+
+.faq-title {
+  background: $white;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 20px 40px 20px 20px;
+  transition: box-shadow .3s ease;
+
+  &:hover {
+    box-shadow: 0 0 8px rgba($black, .11);
+  }
+
+  h3 {
+    @include font-size(16.8);
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 25px;
+    margin: 0;
+  }
+}
+
+.faq-content {
+  display: none;
+  width: 80%;
+}
+
+.faq-body {
+  @include font-size(16.8);
+  font-family: $fira;
+  line-height: 33px;
+  padding: 20px;
+  position: relative;
+
+  &:after {
+    background: $red;
+    content: "";
+    display: block;
+    height: 2px;
+    margin: 60px 0 20px;
+    width: 180px;
+  }
+}

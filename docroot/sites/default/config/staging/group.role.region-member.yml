@@ -1,0 +1,20 @@
+uuid: decc5213-fc49-4e28-bcfb-104ef6d2bff0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+id: region-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: region
+permissions_ui: true
+permissions:
+  - 'view group'
+  - 'access group_node overview'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'
+  - 'view group_node:news content'

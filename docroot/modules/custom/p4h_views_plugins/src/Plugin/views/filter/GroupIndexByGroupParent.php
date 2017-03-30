@@ -70,7 +70,10 @@ class GroupIndexByGroupParent extends GroupIndexGid {
 
           foreach ($query as $id) {
             $subgroup = $this->group->load($id);
-            $subgroups[$subgroup->id()] = $subgroup->label();
+
+            if (!empty($subgroup)) {
+              $subgroups[$subgroup->id()] = $subgroup->label();
+            }
           }
 
           asort($subgroups);

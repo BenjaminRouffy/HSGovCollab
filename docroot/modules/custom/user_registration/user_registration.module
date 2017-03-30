@@ -64,7 +64,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['#group_children']['actions'] = 'group_right';
     unset(
       $form['account']['mail']['#title'],
-      $form['account']['notify']
+      $form['account']['notify'],
+      $form['field_organisation']['widget']['#description']
     );
     $form['#group_children']['captcha'] = 'group_right';
     $title = &$form['field_accept_term_conditions']['widget']['value']['#title'];
@@ -92,6 +93,7 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_mobilephone']['widget']['add_more']['#value'] = t('Add number');
     $form['field_telephone']['widget']['add_more']['#value'] = t('Add number');
     $form['field_skype_or_other']['widget']['add_more']['add_more_button_software_application']['#value'] = t('Add');
+    $form['field_organisations']['widget']['add_more']['add_more_button_organisation']['#value'] = t('Add organisation');
     $form['field_organisation']['widget']['#title'] = t('Main organization');
 
     unset(
@@ -102,6 +104,12 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     if (!$current_user->hasPermission('change main organisation')) {
       $form['field_organisation']['widget']['#disabled'] = 'disabled';
     }
+
+    $form['#attributes']['class'][] = 'form-my-settings';
+  }
+
+  if ($form_id == 'user_invited_person_form') {
+    unset($form['field_organisation']['widget']['#description']);
   }
 }
 
@@ -120,6 +128,12 @@ function user_registration_entity_extra_field_info_alter(&$info) {
     'description' => t('Helper captcha block.'),
     'weight' => -10,
   );
+  for ($i = 1; $i <= 3; $i++) {
+    $user_form['submit' . $i] = array(
+      'label' => t('Submit Button ' . $i),
+      'weight' => -10,
+    );
+  }
 
 }
 

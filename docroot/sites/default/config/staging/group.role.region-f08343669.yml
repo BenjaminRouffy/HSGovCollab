@@ -1,0 +1,19 @@
+uuid: e5c805d5-d033-4448-9106-cdde938af16a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+  enforced:
+    module:
+      - grolesync
+    config:
+      - user.role.country_managers
+id: region-f08343669
+label: 'Country managers'
+weight: 3
+internal: true
+audience: outsider
+group_type: region
+permissions_ui: false
+permissions: {  }

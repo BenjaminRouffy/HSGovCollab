@@ -54,6 +54,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
       case 'views-exposed-form-news-events-block-1':
       case 'views-exposed-form-news-and-events-group-news-and-events-by-group':
       case 'views-exposed-form-news-and-events-group-documents-by-group':
+      case 'views-exposed-form-news-and-events-group-region-news-events':
       case 'views-exposed-form-news-and-events-group-block-news-events-project':
         $form['wrap'] = [
           '#prefix' => '<div class="wrapper-filters">',
@@ -71,7 +72,12 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         break;
 
       case 'views-exposed-form-list-of-projects-block-full':
+      case 'views-exposed-form-list-of-projects-region-full-block':
         $form['label']['#attributes']['placeholder'] = t('Search in projects');
+        break;
+
+      case 'views-exposed-form-search-for-a-country-or-region-block-2':
+        $form['combine_1']['#attributes']['placeholder'] = t('Search in countries');
         break;
     }
   }

@@ -1217,6 +1217,15 @@ form {
         margin-left: 0;
       }
     }
+
+    .ie11 &,
+    .ie10 & {
+      table,
+      tbody,
+      tr {
+        display: block;
+      }
+    }
   }
 
   #edit-field-organisations,
@@ -1261,6 +1270,14 @@ form {
     .paragraphs-subform {
       display: flex;
       flex-wrap: wrap;
+
+      .ie9 & {
+        overflow: hidden;
+
+        .form-wrapper {
+          float: left;
+        }
+      }
 
       .form-wrapper {
         padding: 0 40px;
@@ -1317,6 +1334,15 @@ form {
     thead {
       .label {
         padding: 0 40px 10px;
+      }
+    }
+
+    .ie11 &,
+    .ie10 & {
+      table,
+      tbody,
+      tr {
+        display: block;
       }
     }
   }

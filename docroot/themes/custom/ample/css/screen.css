@@ -2874,6 +2874,9 @@ form .social_login label:after {
   .user-register-form .social_login,
   .user-register-form .login-wrapper {
     width: 50%; }
+    .ie9 .user-register-form .social_login, .ie9
+    .user-register-form .login-wrapper {
+      float: left; }
   .user-register-form .social_login {
     margin: 0 !important;
     padding: 0 40px;
@@ -3036,6 +3039,8 @@ form .social_login label:after {
         -ms-flex-pack: center;
             justify-content: center;
     margin-top: 25px; }
+  .ie9 .user-pass .g-recaptcha > div {
+    margin: 0 auto; }
   .user-pass label:after {
     content: ":"; }
   .user-pass label.form-required:after {

@@ -578,6 +578,10 @@ form {
   .social_login,
   .login-wrapper {
     width: 50%;
+
+    .ie9 & {
+      float: left;
+    }
   }
 
   .social_login {
@@ -813,6 +817,14 @@ form {
     display: flex;
     justify-content: center;
     margin-top: 25px;
+  }
+
+  .ie9 & {
+    .g-recaptcha {
+      > div {
+        margin: 0 auto;
+      }
+    }
   }
 
   label {

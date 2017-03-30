@@ -96,7 +96,7 @@ class UserLoginBlock extends BlockBase implements ContainerFactoryPluginInterfac
     $form['pass']['#size'] = 15;
     $form['#action'] = $this->url('<current>', [], ['query' => $this->getDestinationArray(), 'external' => FALSE]);
     // Build action links.
-    $items = array();
+    $items = [];
     if (\Drupal::config('user.settings')->get('register') != USER_REGISTER_ADMINISTRATORS_ONLY) {
       $items['create_account'] = [
         '#type' => 'link',
@@ -119,13 +119,13 @@ class UserLoginBlock extends BlockBase implements ContainerFactoryPluginInterfac
         ],
       ]),
     ];
-    return array(
+    return [
       'user_login_form' => $form,
-      'user_links' => array(
+      'user_links' => [
         '#theme' => 'item_list',
         '#items' => $items,
-      ),
-    );
+      ],
+    ];
   }
 
 }

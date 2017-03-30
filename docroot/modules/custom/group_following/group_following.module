@@ -23,23 +23,3 @@ function group_following_help($route_name, RouteMatchInterface $route_match) {
     default:
   }
 }
-
-/**
- * Implements hook_field_widget_form_alter().
- */
-function group_following_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
-
-  /** @var \Drupal\group_following\GroupFollowingManagerInterface $manager */
-  $manager = \Drupal::getContainer()->get('group_following.manager');
-
-  $group_following = $manager->getFollowingByGroup(new Group());
-
-  $result = $group_following->getResultByAccount($account);
-
-  if($result->isFollower() == TRUE) {
-    $group_following->follow();
-    $group_following->unfollow();
-  }
-
-
-}

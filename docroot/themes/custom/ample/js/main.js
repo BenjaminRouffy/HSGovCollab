@@ -485,15 +485,16 @@
       $('.accordion-item', context).on('click', '.accordion-title', function() {
         var $this = $(this);
         var $parent = $this.parent();
+        var $content = $('.accordion-content');
 
-        $parent.siblings().removeClass('expanded').find('.accordion-content').slideUp();
+        $parent.siblings().removeClass('expanded').find($content).slideUp();
 
         if (!$parent.is('.expanded')) {
           $parent.addClass('expanded');
-          $this.siblings('.accordion-content').slideToggle();
+          $this.siblings($content).slideToggle();
         }
         else {
-          $parent.removeClass('expanded').find('.accordion-content').slideUp();
+          $parent.removeClass('expanded').find($content).slideUp();
         }
       });
     }

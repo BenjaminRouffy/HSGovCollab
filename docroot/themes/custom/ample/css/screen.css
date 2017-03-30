@@ -2693,6 +2693,8 @@ form .social_login label:after {
   .user-login-form .login-wrapper {
     margin-top: 40px;
     width: 50%; }
+    .ie9 .user-login-form .login-wrapper {
+      float: right; }
   .user-login-form a {
     font-size: 0.875rem;
     color: #ea3a32;
@@ -3820,10 +3822,21 @@ form .social_login label:after {
 
 .faq-item {
   position: relative; }
-  .faq-item.expanded:after {
+  .faq-item.expanded .faq-title:after {
     -webkit-transform: rotate(135deg);
             transform: rotate(135deg); }
-  .faq-item:after {
+
+.faq-title {
+  background: #fff;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 20px 40px 20px 20px;
+  position: relative;
+  -webkit-transition: box-shadow .3s ease;
+  transition: box-shadow .3s ease; }
+  .faq-title:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.11); }
+  .faq-title:after {
     font-size: 1.75rem;
     content: "´";
     color: #ea3a32;
@@ -3835,16 +3848,6 @@ form .social_login label:after {
     transition: -webkit-transform .4s ease;
     transition: transform .4s ease;
     transition: transform .4s ease, -webkit-transform .4s ease; }
-
-.faq-title {
-  background: #fff;
-  cursor: pointer;
-  margin-bottom: 5px;
-  padding: 20px 40px 20px 20px;
-  -webkit-transition: box-shadow .3s ease;
-  transition: box-shadow .3s ease; }
-  .faq-title:hover {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.11); }
   .faq-title h3 {
     font-size: 1.05rem;
     font-weight: 400;
@@ -5069,6 +5072,14 @@ footer {
       left: 50%;
       -webkit-transform: translateX(-50%);
               transform: translateX(-50%); }
+
+@media (max-width: 991px) {
+  .faq-list {
+    width: 90%; } }
+
+@media (max-width: 767px) {
+  .faq-list {
+    width: 100%; } }
 
 .dashboard {
   background: #f5f5f5;

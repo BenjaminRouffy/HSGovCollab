@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.group_faq
     - views.view.group_faq
   module:
+    - ctools_block
     - group_dashboard
     - panels
     - views
@@ -25,6 +26,23 @@ variant_settings:
       weight: 0
       uuid: 3f1fe2a4-2572-4de6-a198-61351d411410
       context_mapping: {  }
+    b0d68428-a84f-49fc-b48f-79bb22d08856:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: b0d68428-a84f-49fc-b48f-79bb22d08856
+      context_mapping:
+        entity: group
   id: panels_variant
   uuid: bf026f81-9709-4712-9f75-215d1a32590b
   label: null

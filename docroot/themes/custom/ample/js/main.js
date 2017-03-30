@@ -480,6 +480,25 @@
     }
   };
 
+  Drupal.behaviors.accordion = {
+    attach: function(context, settings) {
+      $('.accordion-item', context).on('click', '.accordion-title', function() {
+        var $this = $(this);
+        var $parent = $this.parent();
+
+        $parent.siblings().removeClass('expanded').find('.accordion-content').slideUp();
+
+        if (!$parent.is('.expanded')) {
+          $parent.addClass('expanded');
+          $this.siblings('.accordion-content').slideToggle();
+        }
+        else {
+          $parent.removeClass('expanded').find('.accordion-content').slideUp();
+        }
+      });
+    }
+  };
+
   Drupal.behaviors.ieFixes = {
     attach: function(context, settings) {
       if ($('body').is('.ie9')) {

@@ -16,6 +16,7 @@
   <testsuites>
     <testsuite name="custom">
       <directory suffix="Test.php">modules/custom/*</directory>
+      <directory suffix="Test.php">modules/sandbox/*</directory>
     </testsuite>
   </testsuites>
   <!-- Filter for coverage reports. -->
@@ -23,6 +24,8 @@
     <whitelist>
       <directory suffix=".php">./modules/custom</directory>
       <directory suffix=".module">./modules/custom</directory>
+      <directory suffix=".php">./modules/sandbox</directory>
+      <directory suffix=".module">./modules/sandbox</directory>
 
       <!-- Exclude core -->
       <exclude>

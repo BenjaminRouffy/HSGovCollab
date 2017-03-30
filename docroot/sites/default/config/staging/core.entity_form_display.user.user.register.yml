@@ -30,6 +30,7 @@ dependencies:
     - field.field.user.user.field_zip_code
   module:
     - field_group
+    - group_content_field
     - user
 third_party_settings:
   field_group:
@@ -42,6 +43,8 @@ third_party_settings:
         - field_last_name
         - field_job_title
         - account
+        - field_country_manager
+        - field_project_manager
         - captcha
         - legal_terms_and_conditions
         - field_disclose_your_personal_det
@@ -90,13 +93,19 @@ content:
     settings: {  }
     third_party_settings: {  }
   captcha:
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_manager:
+    type: group_select
     weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   field_disclose_your_personal_det:
     type: boolean_checkbox
-    weight: 29
+    weight: 31
     region: content
     settings:
       display_label: true
@@ -153,8 +162,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  legal_terms_and_conditions:
+  field_project_manager:
+    type: group_select
     weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  legal_terms_and_conditions:
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -165,11 +180,9 @@ hidden:
   field_category: true
   field_city: true
   field_countries: true
-  field_country_manager: true
   field_country_text: true
   field_mobilephone: true
   field_organisations: true
-  field_project_manager: true
   field_projects: true
   field_regions: true
   field_skype_or_other: true

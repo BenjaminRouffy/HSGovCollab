@@ -28,7 +28,7 @@ function form_alter_service_form_alter(&$form, FormStateInterface $form_state, $
       if ($alter instanceof FormAlterServiceSubmitInterface) {
         // @TODO Add a possibility to add deferments submit callbacks.
         // @TODO Needs refactoring: In case the submit button does not have any action, we should not to fill in the submit callback to this array.
-        if (isset($form['actions']['submit']['#submit']) && !empty((array) Element::children($form['actions']['submit']['#submit']))) {
+        if (isset($form['actions']['submit']['#submit'])) {
           $form['actions']['submit']['#submit'][] = [$alter, 'formSubmit'];
         }
         $form['#submit'][] = [$alter, 'formSubmit'];

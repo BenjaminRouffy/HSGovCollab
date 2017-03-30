@@ -1,0 +1,16 @@
+uuid: 67607288-4783-45ab-9ccc-cc19859d970c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.faq_item
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.faq_item
+target_entity_type_id: paragraph
+target_bundle: faq_item
+default_langcode: site_default
+language_alterable: true

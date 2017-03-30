@@ -9,6 +9,7 @@ dependencies:
     - field.field.group.country.field_country_icon
     - field.field.group.country.field_country_options
     - field.field.group.country.field_date
+    - field.field.group.country.field_faq
     - field.field.group.country.field_group_status
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
@@ -33,6 +34,7 @@ third_party_settings:
         - group_content
         - group_infographic_timeline
         - group_bottom
+        - group_faq
       parent_name: ''
       weight: 0
       format_type: tabs
@@ -116,6 +118,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Bottom
+    group_faq:
+      children:
+        - field_faq
+      parent_name: group_t
+      weight: 25
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: FAQ
 id: group.country.default
 targetEntityType: group
 bundle: country
@@ -179,6 +194,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_faq:
+    type: entity_reference_paragraphs
+    weight: 29
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
     region: content
   field_group_status:
     weight: 28

@@ -1,0 +1,11 @@
+<div class="faq-list accordion-container">
+  <div class="title-wrapper">
+    <h1>{{ 'FAQ'|t }}</h1>
+    <div class="line"></div>
+  </div>
+  {% for row in rows %}
+    <div class="faq-item accordion-item">
+      {{ row.content }}
+    </div>
+  {% endfor %}
+</div>

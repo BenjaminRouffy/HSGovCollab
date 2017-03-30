@@ -2,9 +2,24 @@
   position: relative;
 
   &.expanded {
-    &:after {
-      transform: rotate(135deg);
+    .faq-title {
+      &:after {
+        transform: rotate(135deg);
+      }
     }
+  }
+}
+
+.faq-title {
+  background: $white;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 20px 40px 20px 20px;
+  position: relative;
+  transition: box-shadow .3s ease;
+
+  &:hover {
+    box-shadow: 0 0 8px rgba($black, .11);
   }
 
   &:after {
@@ -16,18 +31,6 @@
     top: 20px;
     right: 15px;
     transition: transform .4s ease;
-  }
-}
-
-.faq-title {
-  background: $white;
-  cursor: pointer;
-  margin-bottom: 5px;
-  padding: 20px 40px 20px 20px;
-  transition: box-shadow .3s ease;
-
-  &:hover {
-    box-shadow: 0 0 8px rgba($black, .11);
   }
 
   h3 {

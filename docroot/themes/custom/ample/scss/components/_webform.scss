@@ -1090,6 +1090,12 @@ form {
 
     > .form-wrapper {
       margin-bottom: 35px;
+
+      .ie9 & {
+        &:last-child {
+          float: right;
+        }
+      }
     }
 
     label {
@@ -1224,6 +1230,7 @@ form {
       tbody,
       tr {
         display: block;
+        clear: both;
       }
     }
   }
@@ -1340,9 +1347,12 @@ form {
     .ie11 &,
     .ie10 & {
       table,
+      thead,
       tbody,
-      tr {
+      tr,
+      th {
         display: block;
+        clear: both;
       }
     }
   }

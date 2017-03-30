@@ -3244,6 +3244,8 @@ form .social_login label:after {
           justify-content: flex-end; }
   .form-my-settings #contact-details > .form-wrapper {
     margin-bottom: 35px; }
+    .ie9 .form-my-settings #contact-details > .form-wrapper:last-child {
+      float: right; }
   .form-my-settings #contact-details label {
     display: none; }
   .form-my-settings #contact-details .paragraph-type-top {
@@ -3346,7 +3348,8 @@ form .social_login label:after {
 .ie10 .form-my-settings #edit-field-skype-or-other-wrapper table,
 .ie10 .form-my-settings #edit-field-skype-or-other-wrapper tbody,
 .ie10 .form-my-settings #edit-field-skype-or-other-wrapper tr {
-  display: block; }
+  display: block;
+  clear: both; }
 
 .form-my-settings #edit-field-organisations,
 .form-my-settings #edit-field-skype-or-other,
@@ -3421,12 +3424,17 @@ form .social_login label:after {
   padding: 0 40px 10px; }
 
 .ie11 .form-my-settings #edit-field-organisations-wrapper table,
+.ie11 .form-my-settings #edit-field-organisations-wrapper thead,
 .ie11 .form-my-settings #edit-field-organisations-wrapper tbody,
 .ie11 .form-my-settings #edit-field-organisations-wrapper tr,
+.ie11 .form-my-settings #edit-field-organisations-wrapper th,
 .ie10 .form-my-settings #edit-field-organisations-wrapper table,
+.ie10 .form-my-settings #edit-field-organisations-wrapper thead,
 .ie10 .form-my-settings #edit-field-organisations-wrapper tbody,
-.ie10 .form-my-settings #edit-field-organisations-wrapper tr {
-  display: block; }
+.ie10 .form-my-settings #edit-field-organisations-wrapper tr,
+.ie10 .form-my-settings #edit-field-organisations-wrapper th {
+  display: block;
+  clear: both; }
 
 .form-my-settings .paragraphs-dropbutton-wrapper .form-submit,
 .form-my-settings .field-add-more-submit.form-submit {

@@ -3244,6 +3244,8 @@ form .social_login label:after {
           justify-content: flex-end; }
   .form-my-settings #contact-details > .form-wrapper {
     margin-bottom: 35px; }
+    .ie9 .form-my-settings #contact-details > .form-wrapper:last-child {
+      float: right; }
   .form-my-settings #contact-details label {
     display: none; }
   .form-my-settings #contact-details .paragraph-type-top {
@@ -3340,6 +3342,15 @@ form .social_login label:after {
 .form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit {
   margin-left: 0; }
 
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper table,
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper tbody,
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper tr,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper table,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper tbody,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper tr {
+  display: block;
+  clear: both; }
+
 .form-my-settings #edit-field-organisations,
 .form-my-settings #edit-field-skype-or-other,
 .form-my-settings #edit-field-mobilephone-wrapper,
@@ -3376,6 +3387,10 @@ form .social_login label:after {
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
+    .ie9 .form-my-settings table .paragraphs-subform {
+      overflow: hidden; }
+      .ie9 .form-my-settings table .paragraphs-subform .form-wrapper {
+        float: left; }
     .form-my-settings table .paragraphs-subform .form-wrapper {
       padding: 0 40px;
       width: 50%; }
@@ -3407,6 +3422,19 @@ form .social_login label:after {
 
 .form-my-settings #edit-field-organisations-wrapper thead .label {
   padding: 0 40px 10px; }
+
+.ie11 .form-my-settings #edit-field-organisations-wrapper table,
+.ie11 .form-my-settings #edit-field-organisations-wrapper thead,
+.ie11 .form-my-settings #edit-field-organisations-wrapper tbody,
+.ie11 .form-my-settings #edit-field-organisations-wrapper tr,
+.ie11 .form-my-settings #edit-field-organisations-wrapper th,
+.ie10 .form-my-settings #edit-field-organisations-wrapper table,
+.ie10 .form-my-settings #edit-field-organisations-wrapper thead,
+.ie10 .form-my-settings #edit-field-organisations-wrapper tbody,
+.ie10 .form-my-settings #edit-field-organisations-wrapper tr,
+.ie10 .form-my-settings #edit-field-organisations-wrapper th {
+  display: block;
+  clear: both; }
 
 .form-my-settings .paragraphs-dropbutton-wrapper .form-submit,
 .form-my-settings .field-add-more-submit.form-submit {

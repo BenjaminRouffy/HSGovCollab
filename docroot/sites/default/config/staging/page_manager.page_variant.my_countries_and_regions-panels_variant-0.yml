@@ -7,6 +7,7 @@ dependencies:
     - page_manager.page.my_countries_and_regions
   module:
     - blocktabs
+    - group_dashboard
     - panels
 id: my_countries_and_regions-panels_variant-0
 label: Panels
@@ -34,6 +35,13 @@ variant_settings:
   builder: standard
 page: my_countries_and_regions
 weight: 0
-selection_criteria: {  }
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

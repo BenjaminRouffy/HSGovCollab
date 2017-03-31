@@ -1,0 +1,49 @@
+uuid: b6ebc48c-169a-4dde-974e-7f916b9556e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.my_projects
+    - views.view.my_projects
+  module:
+    - group_dashboard
+    - panels
+    - views
+id: my_projects-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    344c6464-cafb-4f91-8682-97137bcc9ead:
+      id: 'views_block:my_projects-block_my_projects'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 344c6464-cafb-4f91-8682-97137bcc9ead
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 69e1200b-e1e8-4915-b308-0b37843d661f
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: my_projects-panels_variant-0
+  builder: standard
+page: my_projects
+weight: 0
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

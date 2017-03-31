@@ -1,0 +1,67 @@
+uuid: c96b64df-3ac1-4732-ac70-c96714866b14
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group_faq
+    - views.view.group_faq
+  module:
+    - ctools_block
+    - group_dashboard
+    - panels
+    - views
+id: group_faq-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    3f1fe2a4-2572-4de6-a198-61351d411410:
+      id: 'views_block:group_faq-faq_block'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 3f1fe2a4-2572-4de6-a198-61351d411410
+      context_mapping: {  }
+    b0d68428-a84f-49fc-b48f-79bb22d08856:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: b0d68428-a84f-49fc-b48f-79bb22d08856
+      context_mapping:
+        entity: group
+  id: panels_variant
+  uuid: bf026f81-9709-4712-9f75-215d1a32590b
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group_faq-panels_variant-0
+  builder: standard
+page: group_faq
+weight: 0
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

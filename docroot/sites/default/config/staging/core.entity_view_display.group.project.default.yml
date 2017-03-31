@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.group.project.field_content
     - field.field.group.project.field_date
+    - field.field.group.project.field_faq
     - field.field.group.project.field_join_block
     - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
@@ -74,6 +75,7 @@ hidden:
   changed: true
   created: true
   field_date: true
+  field_faq: true
   field_summary_public: true
   langcode: true
   uid: true

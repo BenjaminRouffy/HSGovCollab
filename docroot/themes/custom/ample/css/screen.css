@@ -446,6 +446,10 @@ svg {
 .expand-icon > span::after {
   content: "h"; }
 
+.plus-icon > a::after,
+.plus-icon > span::after {
+  content: "´"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -2123,29 +2127,31 @@ header .social-links .font-social-icon {
       -webkit-transition: opacity .3s ease;
       transition: opacity .3s ease; }
 
-.country-list-by-region .country-title {
-  margin-bottom: 0; }
-  .country-list-by-region .country-title a {
-    border-bottom: 2px solid transparent;
-    display: block;
-    padding: 5px 0;
-    -webkit-transition: border .3s ease;
-    transition: border .3s ease; }
-    .country-list-by-region .country-title a:hover {
-      border-color: #ea3a32; }
-      .country-list-by-region .country-title a:hover .country-icon-wrapper,
-      .country-list-by-region .country-title a:hover h3 {
-        opacity: .66; }
-  .country-list-by-region .country-title .country-icon-wrapper,
-  .country-list-by-region .country-title h3 {
-    -webkit-transition: opacity .3s ease;
-    transition: opacity .3s ease; }
-  .country-list-by-region .country-title h3 {
-    font-size: 1.3125rem;
-    font-weight: 400;
-    line-height: 40px;
-    margin-top: 0;
-    text-transform: none; }
+.country-list-by-region {
+  margin-bottom: 30px; }
+  .country-list-by-region .country-title {
+    margin-bottom: 0; }
+    .country-list-by-region .country-title a {
+      border-bottom: 2px solid transparent;
+      display: block;
+      padding: 5px 0;
+      -webkit-transition: border .3s ease;
+      transition: border .3s ease; }
+      .country-list-by-region .country-title a:hover {
+        border-color: #ea3a32; }
+        .country-list-by-region .country-title a:hover .country-icon-wrapper,
+        .country-list-by-region .country-title a:hover h3 {
+          opacity: .66; }
+    .country-list-by-region .country-title .country-icon-wrapper,
+    .country-list-by-region .country-title h3 {
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease; }
+    .country-list-by-region .country-title h3 {
+      font-size: 1.3125rem;
+      font-weight: 400;
+      line-height: 40px;
+      margin-top: 0;
+      text-transform: none; }
 
 @media (max-width: 991px) {
   .country-list .country-item,
@@ -2229,9 +2235,9 @@ header .social-links .font-social-icon {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px; }
-  .country-title + div,
-  .project-title + div,
-  .region-title + div {
+  .country-title + div:not(.country-title),
+  .project-title + div:not(.country-title),
+  .region-title + div:not(.country-title) {
     min-height: 150px;
     margin-bottom: 5px; }
   .country-title .project-icon-wrapper,
@@ -2680,6 +2686,10 @@ form .social_login label:after {
   margin: 0 auto 40px;
   max-width: 1160px;
   padding: 0 20px; }
+  .ie9 .user-login-form {
+    overflow: hidden; }
+    .ie9 .user-login-form .login-wrapper {
+      float: right; }
   .user-login-form .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;
@@ -2863,6 +2873,11 @@ form .social_login label:after {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
+  .ie9 .user-register-form {
+    overflow: hidden; }
+    .ie9 .user-register-form .social_login,
+    .ie9 .user-register-form .login-wrapper {
+      float: left; }
   .user-register-form .social_login,
   .user-register-form .login-wrapper {
     width: 50%; }
@@ -2967,12 +2982,20 @@ form .social_login label:after {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .user-onetime-form #fields-wrapper div:empty {
+    display: none; }
 
 .user-onetime-form #edit-account,
 .user-onetime-form #catagories-wrapper {
   padding: 10px;
   width: 50%; }
+
+.ie9 .user-onetime-form #catagories-wrapper {
+  margin: 0 auto; }
 
 .content-with-sidebar .user-onetime-form .content {
   float: none;
@@ -3028,6 +3051,8 @@ form .social_login label:after {
         -ms-flex-pack: center;
             justify-content: center;
     margin-top: 25px; }
+  .ie9 .user-pass .g-recaptcha > div {
+    margin: 0 auto; }
   .user-pass label:after {
     content: ":"; }
   .user-pass label.form-required:after {
@@ -3238,6 +3263,8 @@ form .social_login label:after {
           justify-content: flex-end; }
   .form-my-settings #contact-details > .form-wrapper {
     margin-bottom: 35px; }
+    .ie9 .form-my-settings #contact-details > .form-wrapper:last-child {
+      float: right; }
   .form-my-settings #contact-details label {
     display: none; }
   .form-my-settings #contact-details .paragraph-type-top {
@@ -3334,6 +3361,15 @@ form .social_login label:after {
 .form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit {
   margin-left: 0; }
 
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper table,
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper tbody,
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper tr,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper table,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper tbody,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper tr {
+  display: block;
+  clear: both; }
+
 .form-my-settings #edit-field-organisations,
 .form-my-settings #edit-field-skype-or-other,
 .form-my-settings #edit-field-mobilephone-wrapper,
@@ -3370,6 +3406,10 @@ form .social_login label:after {
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
+    .ie9 .form-my-settings table .paragraphs-subform {
+      overflow: hidden; }
+      .ie9 .form-my-settings table .paragraphs-subform .form-wrapper {
+        float: left; }
     .form-my-settings table .paragraphs-subform .form-wrapper {
       padding: 0 40px;
       width: 50%; }
@@ -3401,6 +3441,19 @@ form .social_login label:after {
 
 .form-my-settings #edit-field-organisations-wrapper thead .label {
   padding: 0 40px 10px; }
+
+.ie11 .form-my-settings #edit-field-organisations-wrapper table,
+.ie11 .form-my-settings #edit-field-organisations-wrapper thead,
+.ie11 .form-my-settings #edit-field-organisations-wrapper tbody,
+.ie11 .form-my-settings #edit-field-organisations-wrapper tr,
+.ie11 .form-my-settings #edit-field-organisations-wrapper th,
+.ie10 .form-my-settings #edit-field-organisations-wrapper table,
+.ie10 .form-my-settings #edit-field-organisations-wrapper thead,
+.ie10 .form-my-settings #edit-field-organisations-wrapper tbody,
+.ie10 .form-my-settings #edit-field-organisations-wrapper tr,
+.ie10 .form-my-settings #edit-field-organisations-wrapper th {
+  display: block;
+  clear: both; }
 
 .form-my-settings .paragraphs-dropbutton-wrapper .form-submit,
 .form-my-settings .field-add-more-submit.form-submit {
@@ -3783,6 +3836,59 @@ form .social_login label:after {
       margin-right: 10px; }
     .popup-wrapper .action-links .cancel-link {
       margin-left: 10px; } }
+
+.faq-item {
+  position: relative; }
+  .faq-item.expanded .faq-title:after {
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg); }
+
+.faq-title {
+  background: #fff;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 20px 40px 20px 20px;
+  position: relative;
+  -webkit-transition: box-shadow .3s ease;
+  transition: box-shadow .3s ease; }
+  .faq-title:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.11); }
+  .faq-title:after {
+    font-size: 1.75rem;
+    content: "´";
+    color: #ea3a32;
+    font-family: P4h, sans-serif;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    -webkit-transition: -webkit-transform .4s ease;
+    transition: -webkit-transform .4s ease;
+    transition: transform .4s ease;
+    transition: transform .4s ease, -webkit-transform .4s ease; }
+  .faq-title h3 {
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 25px;
+    margin: 0; }
+
+.faq-content {
+  display: none;
+  width: 80%; }
+
+.faq-body {
+  font-size: 1.05rem;
+  font-family: "Fira Sans", sans-serif;
+  line-height: 33px;
+  padding: 20px;
+  position: relative; }
+  .faq-body:after {
+    background: #ea3a32;
+    content: "";
+    display: block;
+    height: 2px;
+    margin: 50px 0 20px;
+    width: 180px; }
 
 .addtoany-wrapper {
   overflow: hidden;
@@ -4283,7 +4389,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-faq) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -4970,6 +5076,26 @@ footer {
 
 @media (max-width: 479px) {
   .marker-info {
+    width: 100%; } }
+
+.faq-list {
+  margin: 0 auto;
+  width: 80%; }
+  .faq-list .title-wrapper {
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    text-align: center; }
+    .faq-list .title-wrapper .line {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+
+@media (max-width: 991px) {
+  .faq-list {
+    width: 90%; } }
+
+@media (max-width: 767px) {
+  .faq-list {
     width: 100%; } }
 
 .dashboard {

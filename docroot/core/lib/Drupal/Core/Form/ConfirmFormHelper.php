@@ -28,21 +28,13 @@ class ConfirmFormHelper {
     $url = NULL;
     // If a destination is specified, that serves as the cancel link.
     if ($query->has('destination')) {
-      $destination = $query->get('destination');
-      if (!UrlHelper::isExternal($destination)) {
-        $options = UrlHelper::parse($destination);
-        if (strpos($options['path'], '/') === 0) {
-          // WTF now.  it already includes the base URL.
-          // $url = Url::fromUrl('internalwithbase:'. $options['path'], $options);
-        }
-        else {
-          try {
-            // @todo Revisit this in https://www.drupal.org/node/2418219.
-            $url = Url::fromUserInput('/' . ltrim($options['path'], '/'), $options);
-          } catch (\InvalidArgumentException $e) {
-            // Suppress the exception and fall back to the form's cancel url.
-          }
-        }
+      $options = UrlHelper::parse($query->get('destination'));
+      // @todo Revisit this in https://www.drupal.org/node/2418219.
+      try {
+        $url = Url::fromUserInput('/' . ltrim($options['path'], '/'), $options);
+      }
+      catch (\InvalidArgumentException $e) {
+        // Suppress the exception and fall back to the form's cancel url.
       }
     }
     // Check for a route-based cancel link.

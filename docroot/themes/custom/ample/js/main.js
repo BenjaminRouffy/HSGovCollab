@@ -502,24 +502,15 @@
 
   Drupal.behaviors.ieFixes = {
     attach: function(context, settings) {
+      // IE 9
       if ($('body').is('.ie9')) {
+        // Multiple select
         $('.form-select[multiple]', context).each(function() {
           $(this).parent().addClass('chosen-select-wrapper');
         });
 
-        $('[placeholder]').focus(function() {
-          var input = $(this);
-          if (input.val() == input.attr('placeholder')) {
-            input.val('');
-            input.removeClass('placeholder');
-          }
-        }).blur(function() {
-          var input = $(this);
-          if (input.val() == '' || input.val() == input.attr('placeholder')) {
-            input.addClass('placeholder');
-            input.val(input.attr('placeholder'));
-          }
-        }).blur();
+        // Placeholder
+        $('input, textarea').placeholder();
       }
     }
   };

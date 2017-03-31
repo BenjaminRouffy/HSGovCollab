@@ -1,15 +1,19 @@
 <?php
 
 namespace Drupal\Tests\phpunit_skeleton\Kernel;
+
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupType;
 use Drupal\group\Entity\GroupTypeInterface;
 use Drupal\group\Entity\Storage\GroupContentTypeStorageInterface;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\node\Entity\NodeType;
 use Drupal\simpletest\ContentTypeCreationTrait;
 use Drupal\simpletest\NodeCreationTrait;
+use Drupal\user\Entity\User;
 
 /**
- * dsfsdf
+ * PHPUnit skeleton
  */
 trait TestsSkeletonTrait {
   use NodeCreationTrait {
@@ -21,72 +25,140 @@ trait TestsSkeletonTrait {
     createContentType as drupalCreateContentType;
   }
 
-  private $entityTypeManager;
-  private $contentType;
-  private $default_account;
-  private $uid_1_account;
+  /**
+   * The entity type manager service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
 
-  function constructFullSkeleton() {
+  /**
+   * Default user account.
+   *
+   * @var User
+   */
+  private $defaultAccount;
+
+  /**
+   * Super admin account.
+   *
+   * @var User
+   */
+  private $superAccount;
+
+  function constructDefaultSkeleton($with_super_user = TRUE) {
     // Create the test user account.
-    $this->default_account = $this->createUser(['uid' => 2]);
-    $this->uid_1_account = $this->createUser(['uid' => 1]);
+    $this->defaultAccount = $this->createUser(['uid' => 2]);
 
-    $this->generateNodeSkeleton();
-    $this->generateGroupSkeleton();
+    if ($with_super_user) {
+      $this->superAccount = $this->createUser(['uid' => 1]);
+    }
+
+    if (!isset($this->entityTypeManager)) {
+      $this->entityTypeManager = $this->container->get('entity_type.manager');
+    }
   }
 
   /**
-   * Generate node types for tests.
+   * Generate content types.
+   *
+   * @param string $type_id
+   *   Content type ID.
+   *
+   * @return NodeType
+   *   Created content type.
    */
-  private function generateNodeSkeleton() {
+  private function generateNodeTypeSkeleton($type_id = 'page') {
     $this->installConfig(['node']);
     $this->installSchema('node', ['node_access']);
 
     // Create a node type.
-    $this->contentType = $this->drupalCreateContentType([
-      'type' => 'page',
-      'name' => 'Basic page',
+    $content_type = $this->drupalCreateContentType([
+      'type' => $type_id,
+      'name' => $this->randomMachineName(),
       'display_submitted' => FALSE,
     ]);
 
     // Enable two additional languages.
     ConfigurableLanguage::createFromLangcode('de')->save();
     ConfigurableLanguage::createFromLangcode('it')->save();
+
+    return $content_type;
   }
 
   /**
-   * Generate group types.
+   * Init group modules and import default config.
    */
-  private function generateGroupSkeleton() {
-    \Drupal::service('module_installer')->install(['group']);
-
+  private function initGroupFunctionality() {
     $this->installConfig(['group', 'group_test_config']);
     $this->installEntitySchema('group');
     $this->installEntitySchema('group_type');
     $this->installEntitySchema('group_content');
     $this->installEntitySchema('group_content_type');
-
-    /* @var GroupTypeInterface $group_type */
-    $group_type = $this->getEntityTypeManager()->getStorage('group_type')->load('default');
-
-    // Install some node types on some group types.
-    /** @var GroupContentTypeStorageInterface $storage */
-    $storage = $this->getEntityTypeManager()->getStorage('group_content_type');
-    $storage->createFromPlugin($group_type, 'group_node:' . $this->contentType->id())->save();
-
-    $outsider_a = [
-      'view group_node:'. $this->contentType->id() . ' entity',
-    ];
-    $group_type->getOutsiderRole()->grantPermissions($outsider_a)->save();
   }
 
   /**
-   * @return mixed
+   * Generate group types.
+   *
+   * @param string $type_id
+   *   Group type ID.
+   *
+   * @return GroupTypeInterface
+   *   Created content type.
    */
-  public function getEntityTypeManager() {
-    if (!isset($this->entityTypeManager)) {
-      $this->entityTypeManager = $this->container->get('entity_type.manager');
-    }
-    return $this->entityTypeManager;
+  private function generateGroupTypeSkeleton($type_id = 'country') {
+    /* @var GroupTypeInterface $group_type */
+    $group_type = $this->entityTypeManager->getStorage('group_type')
+      ->create([
+        'id' => $type_id,
+        'label' => $this->randomMachineName(),
+        'description' => ''
+      ]);
+
+    $this->entityTypeManager->getStorage('group_type')->resetCache();
+
+    return $group_type;
   }
+
+  /**
+   * Return test group type.
+   *
+   * @return mixed
+   *  Group type.
+   */
+  public function getDefaultGroupType() {
+    return $this->entityTypeManager->getStorage('group_type')->load('default');
+  }
+
+  private function attachContentTypeToGroup(GroupType $group_type, $content_type_id) {
+    /** @var GroupContentTypeStorageInterface $storage */
+    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage->createFromPlugin($group_type, 'group_node:' . $content_type_id)->save();
+  }
+
+  /**
+   * Creates a group by type.
+   *
+   * @param string $type
+   *   Group type.
+   *
+   * @param array $values
+   *   (optional) The values used to create the entity.
+   *
+   * @return Group
+   *   The created group entity.
+   */
+  protected function createGroupByType($type, $values = []) {
+    /* @var Group $group */
+    $group = $this->entityTypeManager->getStorage('group')->create($values + [
+      'type' => $type,
+      'label' => $this->randomMachineName(),
+    ]);
+
+    $group->enforceIsNew();
+    $group->save();
+
+    return $group;
+  }
+
 }

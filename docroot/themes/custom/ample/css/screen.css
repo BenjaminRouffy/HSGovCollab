@@ -2994,14 +2994,13 @@ form .social_login label:after {
           justify-content: center; }
   .user-onetime-form #fields-wrapper div:empty {
     display: none; }
+    .ie9 .user-onetime-form #fields-wrapper div:empty ~ #catagories-wrapper {
+      margin: 0 auto; }
 
 .user-onetime-form #edit-account,
 .user-onetime-form #catagories-wrapper {
   padding: 10px;
   width: 50%; }
-
-.ie9 .user-onetime-form #catagories-wrapper {
-  margin: 0 auto; }
 
 .content-with-sidebar .user-onetime-form .content {
   float: none;
@@ -3256,11 +3255,12 @@ form .social_login label:after {
       padding: 0;
       width: 100%; }
 
-.ie9 .form-my-settings #organisation-details .form-wrapper:last-child {
-  clear: both; }
-
-.ie9 .form-my-settings #organisation-details .form-wrapper[style="display: none;"] + div {
-  clear: none; }
+.form-my-settings #organisation-details {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+  .ie9 .form-my-settings #organisation-details .form-wrapper:last-child {
+    float: right; }
 
 .form-my-settings #interest .form-wrapper {
   margin: 0 auto 15px;

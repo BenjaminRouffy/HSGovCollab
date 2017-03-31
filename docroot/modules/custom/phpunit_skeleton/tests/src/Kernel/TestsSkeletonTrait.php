@@ -3,6 +3,7 @@
 namespace Drupal\Tests\phpunit_skeleton\Kernel;
 
 use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupRoleInterface;
 use Drupal\group\Entity\GroupType;
 use Drupal\group\Entity\GroupTypeInterface;
 use Drupal\group\Entity\Storage\GroupContentTypeStorageInterface;
@@ -103,21 +104,52 @@ trait TestsSkeletonTrait {
    * @param string $type_id
    *   Group type ID.
    *
+   * @param array $values
+   *   Group type options.
+   *
    * @return GroupTypeInterface
-   *   Created content type.
+   *   Created group type.
    */
-  private function generateGroupTypeSkeleton($type_id = 'country') {
+  private function generateGroupTypeSkeleton($type_id, array $values = []) {
     /* @var GroupTypeInterface $group_type */
     $group_type = $this->entityTypeManager->getStorage('group_type')
       ->create([
         'id' => $type_id,
         'label' => $this->randomMachineName(),
+        'creator_membership' => TRUE,
         'description' => ''
-      ]);
+      ] + $values);
+    $group_type->save();
 
     $this->entityTypeManager->getStorage('group_type')->resetCache();
 
     return $group_type;
+  }
+
+  /**
+   * Generate group role.
+   *
+   * @param string $role_id
+   *   Group role ID.
+   *
+   * @param array $values
+   *   Group role oprions.
+   *
+   * @return GroupRoleInterface
+   *   Created group role.
+   */
+  private function generateGroupRoleSkeleton($role_id = 'member', array $values = []) {
+    /* @var GroupRoleInterface $group_role */
+    $group_role = $this->entityTypeManager->getStorage('group_role')
+      ->create([
+        'id' => $role_id,
+        'label' => $this->randomMachineName(),
+      ] + $values);
+    $group_role->save();
+
+    $this->entityTypeManager->getStorage('group_role')->resetCache();
+
+    return $group_role;
   }
 
   /**

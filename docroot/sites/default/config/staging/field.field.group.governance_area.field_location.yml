@@ -1,0 +1,21 @@
+uuid: 39f48da2-28d6-45a2-8e3c-8f4be317f776
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_location
+    - group.type.governance_area
+  module:
+    - geolocation
+id: group.governance_area.field_location
+field_name: field_location
+entity_type: group
+bundle: governance_area
+label: Location
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation

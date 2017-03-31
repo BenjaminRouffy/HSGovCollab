@@ -502,10 +502,15 @@
 
   Drupal.behaviors.ieFixes = {
     attach: function(context, settings) {
+      // IE 9
       if ($('body').is('.ie9')) {
+        // Multiple select
         $('.form-select[multiple]', context).each(function() {
           $(this).parent().addClass('chosen-select-wrapper');
         });
+
+        // Placeholder
+        $('input, textarea').placeholder();
       }
     }
   };

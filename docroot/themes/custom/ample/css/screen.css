@@ -2510,6 +2510,9 @@ form {
   .form-email:-moz-placeholder {
     color: #999; }
 
+.placeholder {
+  color: #999; }
+
 :-ms-input-placeholder {
   color: #999 !important; }
 
@@ -2738,7 +2741,9 @@ form .social_login label:after {
     .user-login-form .login-wrapper {
       width: 100%; }
     .user-login-form .login-wrapper {
-      padding: 0 10px; } }
+      padding: 0 10px; }
+      .ie9 .user-login-form .login-wrapper {
+        float: none; } }
 
 @media (max-width: 479px) {
   .user-login-form .social_login,
@@ -2880,9 +2885,10 @@ form .social_login label:after {
       float: left; }
   .user-register-form .social_login,
   .user-register-form .login-wrapper {
+    margin-top: 40px;
     width: 50%; }
   .user-register-form .social_login {
-    margin: 0 !important;
+    margin: 40px 0 0 !important;
     padding: 0 40px;
     overflow: hidden; }
   .user-register-form #title-wrapper {
@@ -3249,6 +3255,9 @@ form .social_login label:after {
     .form-my-settings #address-details .form-wrapper .form-wrapper {
       padding: 0;
       width: 100%; }
+
+.ie9 .form-my-settings #organisation-details .form-wrapper:last-child {
+  clear: both; }
 
 .form-my-settings #interest .form-wrapper {
   margin: 0 auto 15px;

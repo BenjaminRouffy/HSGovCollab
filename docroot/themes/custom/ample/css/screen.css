@@ -2994,9 +2994,9 @@ form .social_login label:after {
           justify-content: center; }
   .ie9 .user-onetime-form #fields-wrapper {
     overflow: hidden; }
-  .user-onetime-form #fields-wrapper div:empty {
+  .user-onetime-form #fields-wrapper .form-wrapper:empty {
     display: none; }
-    .ie9 .user-onetime-form #fields-wrapper div:empty ~ #catagories-wrapper {
+    .ie9 .user-onetime-form #fields-wrapper .form-wrapper:empty ~ #catagories-wrapper {
       float: none;
       margin: 0 auto; }
 

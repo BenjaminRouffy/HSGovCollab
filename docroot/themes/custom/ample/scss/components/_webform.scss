@@ -754,11 +754,16 @@ form {
     flex-wrap: wrap;
     justify-content: center;
 
+    .ie9 & {
+      overflow: hidden;
+    }
+
     div:empty {
       display: none;
 
       .ie9 & {
         ~ #catagories-wrapper {
+          float: none;
           margin: 0 auto;
         }
       }
@@ -769,6 +774,10 @@ form {
   #catagories-wrapper {
     padding: 10px;
     width: 50%;
+
+    .ie9 & {
+      float: left;
+    }
   }
 
   .content-with-sidebar & {

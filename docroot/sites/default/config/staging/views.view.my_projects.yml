@@ -83,6 +83,11 @@ display:
         type: default
       row:
         type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: false
       fields:
         rendered_entity:
           id: rendered_entity
@@ -198,7 +203,7 @@ display:
           exposed: true
           expose:
             operator_id: label_op
-            label: Title
+            label: ''
             description: ''
             use_operator: false
             operator: label_op
@@ -233,10 +238,22 @@ display:
       title: 'My projects'
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:

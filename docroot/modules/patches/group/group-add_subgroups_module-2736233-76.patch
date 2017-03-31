@@ -2119,10 +2119,10 @@ index 0000000..97340bc
 \ No newline at end of file
 diff --git a/modules/ggroup/src/GroupHierarchyManager.php b/modules/ggroup/src/GroupHierarchyManager.php
 new file mode 100644
-index 0000000..3f2a69e
+index 0000000..3dee962
 --- /dev/null
 +++ b/modules/ggroup/src/GroupHierarchyManager.php
-@@ -0,0 +1,128 @@
+@@ -0,0 +1,129 @@
 +<?php
 +
 +namespace Drupal\ggroup;
@@ -2240,9 +2240,10 @@ index 0000000..3f2a69e
 +    }
 +
 +    $parent_group = $group_content->getGroup();
++
 +    $child_group_id = $group_content->get('entity_id')->getValue();
 +
-+    if (empty($child_group_id)) {
++    if (!empty($child_group_id)) {
 +      $child_group_id = reset($child_group_id)['target_id'];
 +      $this->groupGraphStorage->removeEdge($parent_group->id(), $child_group_id);
 +    }
@@ -3059,6 +3060,185 @@ index 0000000..ea00bf4
 +  }
 +
 +}
+diff --git a/modules/ggroup/tests/modules/ggroup_test_config/config/install/group.content_type.default-subgroup-subgroup.yml b/modules/ggroup/tests/modules/ggroup_test_config/config/install/group.content_type.default-subgroup-subgroup.yml
+new file mode 100644
+index 0000000..0934755
+--- /dev/null
++++ b/modules/ggroup/tests/modules/ggroup_test_config/config/install/group.content_type.default-subgroup-subgroup.yml
+@@ -0,0 +1,14 @@
++langcode: en
++status: true
++dependencies:
++  config:
++    - group.type.default
++    - group.type.subgroup
++id: default-subgroup-subgroup
++label: 'Default group: Subgroup'
++description: 'Adds <em class="placeholder">Subgroup</em> groups to groups both publicly and privately.'
++group_type: default
++content_plugin: 'subgroup:subgroup'
++plugin_config:
++  group_cardinality: 0
++  entity_cardinality: 1
+diff --git a/modules/ggroup/tests/modules/ggroup_test_config/config/install/group.type.subgroup.yml b/modules/ggroup/tests/modules/ggroup_test_config/config/install/group.type.subgroup.yml
+new file mode 100644
+index 0000000..9853bd2
+--- /dev/null
++++ b/modules/ggroup/tests/modules/ggroup_test_config/config/install/group.type.subgroup.yml
+@@ -0,0 +1,6 @@
++langcode: en
++status: true
++dependencies: {  }
++id: subgroup
++label: 'Subgroup'
++description: 'Subgroup description.'
+diff --git a/modules/ggroup/tests/modules/ggroup_test_config/ggroup_test_config.info.yml b/modules/ggroup/tests/modules/ggroup_test_config/ggroup_test_config.info.yml
+new file mode 100644
+index 0000000..7730d21
+--- /dev/null
++++ b/modules/ggroup/tests/modules/ggroup_test_config/ggroup_test_config.info.yml
+@@ -0,0 +1,6 @@
++name: 'Group configuration tests'
++description: 'Support module for group configuration tests.'
++package: 'Testing'
++type: 'module'
++version: '1.0'
++core: '8.x'
+diff --git a/modules/ggroup/tests/src/Kernel/SubgroupTest.php b/modules/ggroup/tests/src/Kernel/SubgroupTest.php
+new file mode 100644
+index 0000000..8e3626c
+--- /dev/null
++++ b/modules/ggroup/tests/src/Kernel/SubgroupTest.php
+@@ -0,0 +1,129 @@
++<?php
++
++namespace Drupal\Tests\ggroup\Kernel;
++
++use Drupal\group\Entity\Group;
++use Drupal\group\Entity\GroupContent;
++use Drupal\Tests\group\Kernel\GroupKernelTestBase;
++
++/**
++ * Tests the behavior of subgroup creators.
++ *
++ * @group group
++ */
++class SubgroupTest extends GroupKernelTestBase {
++  /**
++   * Modules to enable.
++   *
++   * @var array
++   */
++  public static $modules = ['ggroup', 'ggroup_test_config'];
++
++  /**
++   * The account to use as the group creator.
++   *
++   * @var \Drupal\group\Entity\GroupTypeInterface
++   */
++  protected $groupType;
++
++  /**
++   * The account to use as the group creator.
++   *
++   * @var \Drupal\group\Entity\GroupTypeInterface
++   */
++  protected $subGroupType;
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUp() {
++    parent::setUp();
++    
++    $this->installConfig(['ggroup_test_config']);
++    $this->installSchema('ggroup', 'group_graph');
++
++    $this->entityTypeManager = $this->container->get('entity_type.manager');
++
++    $this->groupType = $this->entityTypeManager->getStorage('group_type')->load('default');
++    $this->subGroupType = $this->entityTypeManager->getStorage('group_type')->load('subgroup');
++  }
++
++  /**
++   * Tests the addition of a group to a group.
++   */
++  public function testCreateSubgroup() {
++    list($group, $subGroup) = $this->addGroup();
++    $this->assertNotEmpty($group->getContentByEntityId('subgroup:' . $this->subGroupType->id(), $subGroup->id()), 'Subgroup is group content');
++  }
++
++  /**
++   * Tests the removing subgroup from group.
++   */
++  public function testDeleteSubgroupFromGroupContent() {
++    /* @var Group $subGroup */
++    list($group, $sub_group) = $this->addGroup();
++
++    foreach (GroupContent::loadByEntity($sub_group) as $group_content) {
++      $group_content->delete();
++
++      $this->assertEquals(\Drupal::service('ggroup.group_hierarchy_manager')->groupHasSubgroup($group, $sub_group), FALSE, 'Subgroup is removed');
++    }
++
++  }
++
++  /**
++   * Tests the removing subgroup.
++   */
++  public function testDeleteSubgroup() {
++    list($group, $sub_group) = $this->addGroup();
++
++    /* @var Group $subGroup */
++    $sub_group->delete();
++
++    $this->assertEquals(\Drupal::service('ggroup.group_hierarchy_manager')->groupHasSubgroup($group, $sub_group), FALSE, 'Subgroup is removed');
++  }
++
++  /**
++   * Create group and attach subgroup to group.
++   * 
++   * @return array
++   *  Return group and subgroup.
++   */
++  private function addGroup() {
++    /* @var Group $group */
++    $group = $this->createGroupByType($this->groupType->id(), ['uid' => $this->getCurrentUser()->id()]);
++    /* @var Group $subGroup */
++    $sub_group = $this->createGroupByType($this->subGroupType->id(), ['uid' => $this->getCurrentUser()->id()]);
++
++
++    $group->addContent($sub_group, 'subgroup:' . $this->subGroupType->id());
++
++    return [$group, $sub_group];
++  }
++
++  /**
++   * Creates a group by type.
++   *
++   * @param string $type
++   *   Group type.
++   *
++   * @param array $values
++   *   (optional) The values used to create the entity.
++   *
++   * @return Group
++   *   The created group entity.
++   */
++  private function createGroupByType($type, $values = []) {
++    /* @var Group $group */
++    $group = $this->entityTypeManager->getStorage('group')->create($values + [
++        'type' => $type,
++        'label' => $this->randomMachineName(),
++      ]);
++
++    $group->enforceIsNew();
++    $group->save();
++
++    return $group;
++  }
++
++}
 diff --git a/src/Entity/Group.php b/src/Entity/Group.php
 index 9066920..2326db6 100644
 --- a/src/Entity/Group.php
@@ -3227,7 +3407,7 @@ index 0000000..8aa17b2
 +}
 \ No newline at end of file
 diff --git a/src/GroupMembershipLoader.php b/src/GroupMembershipLoader.php
-index 1feda75..e9dbe76 100644
+index 7971c16..a36e2fa 100644
 --- a/src/GroupMembershipLoader.php
 +++ b/src/GroupMembershipLoader.php
 @@ -5,6 +5,8 @@ namespace Drupal\group;
@@ -3238,8 +3418,8 @@ index 1feda75..e9dbe76 100644
 +use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  
  /**
-  * Generates and caches the permissions hash for a group membership.
-@@ -26,16 +28,26 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
+  * Loader for wrapped GroupContent entities using the 'group_membership' plugin.
+@@ -36,16 +38,26 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
    protected $currentUser;
  
    /**
@@ -3267,15 +3447,16 @@ index 1feda75..e9dbe76 100644
    }
  
    /**
-@@ -48,29 +60,18 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
+@@ -57,22 +69,6 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
+     return $this->entityTypeManager->getStorage('group_content');
    }
  
-   /**
--   * Wraps GroupContent entities ina GroupMembership object.
+-  /**
+-   * Wraps GroupContent entities in a GroupMembership object.
 -   *
 -   * @param \Drupal\group\Entity\GroupContentInterface[] $entities
 -   *   An array of GroupContent entities to wrap.
--   * 
+-   *
 -   * @return \Drupal\group\GroupMembership[]
 -   *   A list of GroupMembership wrapper objects.
 -   */
@@ -3286,10 +3467,10 @@ index 1feda75..e9dbe76 100644
 -    }
 -    return $group_memberships;
 -  }
--  
--  /**
+ 
+   /**
     * {@inheritdoc}
-    */
+@@ -80,7 +76,13 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
    public function load(GroupInterface $group, AccountInterface $account) {
      $filters = ['entity_id' => $account->id()];
      $group_contents = $this->groupContentStorage()->loadByGroup($group, 'group_membership', $filters);
@@ -3304,12 +3485,10 @@ index 1feda75..e9dbe76 100644
      return $group_memberships ? reset($group_memberships) : FALSE;
    }
  
-@@ -83,9 +84,16 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
-     if (isset($roles)) {
+@@ -94,8 +96,15 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
        $filters['group_roles'] = (array) $roles;
      }
--    
-+
+ 
 +    /** @var \Drupal\group\Entity\GroupContentInterface[] $group_contents */
      $group_contents = $this->groupContentStorage()->loadByGroup($group, 'group_membership', $filters);
 -    return $this->wrapGroupContentEntities($group_contents);
@@ -3323,7 +3502,7 @@ index 1feda75..e9dbe76 100644
    }
  
    /**
-@@ -119,7 +127,13 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
+@@ -129,7 +138,13 @@ class GroupMembershipLoader implements GroupMembershipLoaderInterface {
  
      /** @var \Drupal\group\Entity\GroupContentInterface[] $group_contents */
      $group_contents = $this->groupContentStorage()->loadByProperties($properties);

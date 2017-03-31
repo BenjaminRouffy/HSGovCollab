@@ -391,6 +391,10 @@ form {
 
   .login-wrapper {
     padding: 0 10px;
+
+    .ie9 & {
+      float: none;
+    }
   }
 }
 
@@ -594,11 +598,12 @@ form {
 
   .social_login,
   .login-wrapper {
+    margin-top: 40px;
     width: 50%;
   }
 
   .social_login {
-    margin: 0 !important;
+    margin: 40px 0 0 !important;
     padding: 0 40px;
     overflow: hidden;
   }
@@ -1109,6 +1114,16 @@ form {
       .form-wrapper {
         padding: 0;
         width: 100%;
+      }
+    }
+  }
+
+  #organisation-details {
+    .form-wrapper {
+      .ie9 & {
+        &:last-child {
+          clear: both;
+        }
       }
     }
   }

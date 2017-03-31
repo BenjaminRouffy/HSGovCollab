@@ -3259,6 +3259,9 @@ form .social_login label:after {
 .ie9 .form-my-settings #organisation-details .form-wrapper:last-child {
   clear: both; }
 
+.ie9 .form-my-settings #organisation-details .form-wrapper[style="display: none;"] + div {
+  clear: none; }
+
 .form-my-settings #interest .form-wrapper {
   margin: 0 auto 15px;
   padding: 20px 40px;

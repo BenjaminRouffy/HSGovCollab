@@ -138,16 +138,17 @@ class ParentGroupSelect extends GroupIndexByGroupType  {
         $roles[] = $group_type->id() . '-admin';
       }
       // Get all user memberships by admin roles.
+      // @todo GroupMembershipSubscriber::onAlterMembershipsByUser() should be changed to current P4H business logic.
       $all_user_memberships = $membership_loader->loadByUser($user, $roles);
 
       if (!empty($all_user_memberships)) {
         foreach ($all_user_memberships as $group) {
-          // Only group admins can moderate group content.
-          if ($group->hasPermission('edit group')) {
+          // Only group admins can moderate group content.          
+          //if ($group->hasPermission('edit group')) {
             $result = array_merge($result, [
               $group->getGroupContent()->get('gid')->target_id,
             ]);
-          }
+          //}
         }
       }
     }

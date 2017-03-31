@@ -1253,6 +1253,10 @@ form {
 
   #edit-field-skype-or-other-wrapper {
     .paragraphs-subform {
+      .ie9 & {
+        overflow: visible;
+      }
+      
       .field--name-field-type {
         width: 33.33%;
       }

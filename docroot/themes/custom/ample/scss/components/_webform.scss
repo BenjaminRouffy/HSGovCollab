@@ -754,8 +754,19 @@ form {
     flex-wrap: wrap;
     justify-content: center;
 
-    div:empty {
+    .ie9 & {
+      overflow: hidden;
+    }
+
+    .form-wrapper:empty {
       display: none;
+
+      .ie9 & {
+        ~ #catagories-wrapper {
+          float: none;
+          margin: 0 auto;
+        }
+      }
     }
   }
 
@@ -763,11 +774,9 @@ form {
   #catagories-wrapper {
     padding: 10px;
     width: 50%;
-  }
 
-  .ie9 & {
-    #catagories-wrapper {
-      margin: 0 auto;
+    .ie9 & {
+      float: left;
     }
   }
 
@@ -1119,16 +1128,12 @@ form {
   }
 
   #organisation-details {
+    justify-content: flex-end;
+
     .form-wrapper {
       .ie9 & {
         &:last-child {
-          clear: both;
-        }
-
-        &[style="display: none;"] {
-          + div {
-            clear: none;
-          }
+          float: right;
         }
       }
     }
@@ -1256,7 +1261,7 @@ form {
       .ie9 & {
         overflow: visible;
       }
-      
+
       .field--name-field-type {
         width: 33.33%;
       }

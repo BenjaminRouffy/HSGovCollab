@@ -25,9 +25,19 @@
       display: block;
       flex: none;
       overflow: hidden;
+      text-align: center;
 
       .paragraph {
-        float: left;
+        display: inline-block;
+        margin-left: -4px;
+        max-width: 25%;
+        vertical-align: top;
+      }
+    }
+
+    .ie10 & {
+      .paragraph {
+        width: calc(100% - 40px);
       }
     }
 

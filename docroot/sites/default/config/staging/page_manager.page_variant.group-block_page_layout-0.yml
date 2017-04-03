@@ -1,0 +1,128 @@
+uuid: 693be5b4-e8c4-4229-9919-56cf096b0e09
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group
+    - views.view.list_of_projects
+    - views.view.news_and_events_group
+  module:
+    - addtoany
+    - block_page_layout
+    - ctools
+    - ctools_block
+    - group_dashboard
+    - views
+id: group-block_page_layout-0
+label: 'Governance area'
+variant: block_page_layout
+variant_settings:
+  blocks:
+    93aa53d3-2ea8-44a8-9644-c3e41e7ce570:
+      id: addtoany_block
+      label: 'AddToAny buttons'
+      provider: addtoany
+      label_display: '0'
+      region: content
+      weight: -9
+      uuid: 93aa53d3-2ea8-44a8-9644-c3e41e7ce570
+      context_mapping: {  }
+    1c96d730-8066-4750-b398-310f3f920b46:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: banner
+      region: banner
+      weight: -10
+      uuid: 1c96d730-8066-4750-b398-310f3f920b46
+      context_mapping:
+        entity: group
+    d6b7a091-ee4c-4af2-8917-33f199579ad8:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: -10
+      uuid: d6b7a091-ee4c-4af2-8917-33f199579ad8
+      context_mapping:
+        entity: group
+    f3e6725e-a48a-4f93-9dde-b453eb1393cc:
+      id: 'views_block:list_of_projects-block_4'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -8
+      uuid: f3e6725e-a48a-4f93-9dde-b453eb1393cc
+      context_mapping: {  }
+    be8014da-f095-4f50-9393-c3c63277f3c0:
+      id: 'views_block:news_and_events_group-block_governance_area'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: be8014da-f095-4f50-9393-c3c63277f3c0
+      pager: view
+      context_mapping: {  }
+    636a4bac-93f0-4781-a81d-ef4de8977b73:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: bottom
+      region: content
+      weight: 0
+      uuid: 636a4bac-93f0-4781-a81d-ef4de8977b73
+      context_mapping:
+        entity: group
+    ca2dd569-ce26-42af-a1b2-0520cdb39be5:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: ca2dd569-ce26-42af-a1b2-0520cdb39be5
+      context_mapping:
+        entity: group
+  id: block_page_layout
+  uuid: 04479d15-c5a5-43a2-bd14-1e93f7b87541
+  label: null
+  weight: 0
+  page_title: ''
+  layout: stacked
+  layout_settings: {  }
+page: group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      governance_area: governance_area
+    negate: false
+    context_mapping:
+      group: group
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

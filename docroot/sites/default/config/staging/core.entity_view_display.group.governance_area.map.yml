@@ -1,8 +1,9 @@
-uuid: 240f708d-6898-4746-8f90-b7567820d1d9
+uuid: 47495fa5-002f-40de-9f5c-59388e9e8d5f
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.group.map
     - field.field.group.governance_area.field_banner
     - field.field.group.governance_area.field_bottom_link
     - field.field.group.governance_area.field_content
@@ -19,49 +20,49 @@ dependencies:
     - group.type.governance_area
   module:
     - entity_reference_revisions
-    - text
-id: group.governance_area.default
+    - geolocation
+id: group.governance_area.map
 targetEntityType: group
 bundle: governance_area
-mode: default
+mode: map
 content:
-  field_content:
-    weight: 1
+  field_country_options:
+    weight: 0
     label: hidden
     settings:
-      view_mode: private_content
+      view_mode: default
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
   field_infographic:
-    weight: 2
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    region: content
     label: hidden
     settings:
-      view_mode: private_content
+      view_mode: map
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  field_summary:
-    weight: 0
+  field_location:
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    type: geolocation_latlng
     region: content
 hidden:
   changed: true
   created: true
   field_banner: true
   field_bottom_link: true
-  field_country_options: true
+  field_content: true
   field_date: true
   field_faq: true
   field_ga_icon: true
   field_group_status: true
   field_join_block: true
-  field_location: true
+  field_summary: true
   field_time_line: true
   label: true
   langcode: true

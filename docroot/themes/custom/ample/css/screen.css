@@ -446,6 +446,10 @@ svg {
 .expand-icon > span::after {
   content: "h"; }
 
+.plus-icon > a::after,
+.plus-icon > span::after {
+  content: "´"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -938,6 +942,8 @@ header .social-links .font-social-icon {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -949,9 +955,15 @@ header .social-links .font-social-icon {
       -webkit-box-flex: 0;
           -ms-flex: none;
               flex: none;
-      overflow: hidden; }
+      overflow: hidden;
+      text-align: center; }
       .ie9 .top-banner-region .section-info .paragraph {
-        float: left; }
+        display: inline-block;
+        margin-left: -4px;
+        max-width: 25%;
+        vertical-align: top; }
+    .ie10 .top-banner-region .section-info .paragraph {
+      max-width: 25%; }
     .top-banner-region .section-info .paragraph {
       max-width: 33.33%;
       text-align: center;
@@ -1004,6 +1016,7 @@ header .social-links .font-social-icon {
       margin: 0 auto 20px;
       overflow: hidden; }
       .top-banner-region .user-info .icon-wrapper img {
+        max-height: none;
         max-width: 100%; }
   .top-banner-region .infooverlay {
     background: #fff;
@@ -1093,7 +1106,7 @@ header .social-links .font-social-icon {
     float: left;
     margin-right: 20px; }
     .country-content-wrapper .country-icon-wrapper.default {
-      background: url(../images/default_country_icon.png) center no-repeat;
+      background: url(../images/globe_white.svg) center no-repeat;
       background-size: 100%; }
   .country-content-wrapper h1 {
     font-size: 5rem;
@@ -2006,6 +2019,15 @@ header .social-links .font-social-icon {
   .project-list .project-item {
     padding: 10px;
     width: 33.33%; }
+    .ie9 .country-list .country-item, .ie9
+    .country-list .project-item, .ie9
+    .project-list .country-item, .ie9
+    .project-list .project-item {
+      display: inline-block;
+      margin-left: -4px;
+      padding-left: 14px;
+      padding-right: 6px;
+      vertical-align: top; }
   .country-list .country-content,
   .country-list .project-content,
   .project-list .country-content,
@@ -2123,29 +2145,31 @@ header .social-links .font-social-icon {
       -webkit-transition: opacity .3s ease;
       transition: opacity .3s ease; }
 
-.country-list-by-region .country-title {
-  margin-bottom: 0; }
-  .country-list-by-region .country-title a {
-    border-bottom: 2px solid transparent;
-    display: block;
-    padding: 5px 0;
-    -webkit-transition: border .3s ease;
-    transition: border .3s ease; }
-    .country-list-by-region .country-title a:hover {
-      border-color: #ea3a32; }
-      .country-list-by-region .country-title a:hover .country-icon-wrapper,
-      .country-list-by-region .country-title a:hover h3 {
-        opacity: .66; }
-  .country-list-by-region .country-title .country-icon-wrapper,
-  .country-list-by-region .country-title h3 {
-    -webkit-transition: opacity .3s ease;
-    transition: opacity .3s ease; }
-  .country-list-by-region .country-title h3 {
-    font-size: 1.3125rem;
-    font-weight: 400;
-    line-height: 40px;
-    margin-top: 0;
-    text-transform: none; }
+.country-list-by-region {
+  margin-bottom: 30px; }
+  .country-list-by-region .country-title {
+    margin-bottom: 0; }
+    .country-list-by-region .country-title a {
+      border-bottom: 2px solid transparent;
+      display: block;
+      padding: 5px 0;
+      -webkit-transition: border .3s ease;
+      transition: border .3s ease; }
+      .country-list-by-region .country-title a:hover {
+        border-color: #ea3a32; }
+        .country-list-by-region .country-title a:hover .country-icon-wrapper,
+        .country-list-by-region .country-title a:hover h3 {
+          opacity: .66; }
+    .country-list-by-region .country-title .country-icon-wrapper,
+    .country-list-by-region .country-title h3 {
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease; }
+    .country-list-by-region .country-title h3 {
+      font-size: 1.3125rem;
+      font-weight: 400;
+      line-height: 40px;
+      margin-top: 0;
+      text-transform: none; }
 
 @media (max-width: 991px) {
   .country-list .country-item,
@@ -2229,9 +2253,9 @@ header .social-links .font-social-icon {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px; }
-  .country-title + div,
-  .project-title + div,
-  .region-title + div {
+  .country-title + div:not(.country-title),
+  .project-title + div:not(.country-title),
+  .region-title + div:not(.country-title) {
     min-height: 150px;
     margin-bottom: 5px; }
   .country-title .project-icon-wrapper,
@@ -2428,6 +2452,7 @@ header .social-links .font-social-icon {
   .status-message li:not(:last-child) {
     margin-bottom: 5px; }
   .status-message em {
+    color: #283b44;
     font-style: normal; }
   .status-message a {
     color: #8c2222;
@@ -2504,19 +2529,20 @@ form {
   .form-email:-moz-placeholder {
     color: #999; }
 
+.placeholder {
+  color: #999; }
+
 :-ms-input-placeholder {
   color: #999 !important; }
 
 .email-suffix {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: table;
   margin-bottom: 25px; }
-  .email-suffix .form-email {
-    margin-bottom: 0; }
+  .email-suffix input,
+  .email-suffix .field-suffix {
+    display: table-cell;
+    margin-bottom: 0;
+    vertical-align: middle; }
 
 .form-file {
   font-size: 1rem;
@@ -2620,15 +2646,25 @@ form {
     outline: none; }
 
 .ie9 .select-wrapper {
-  background: #f5f5f5 url(../images/select-arrows.png) right center no-repeat;
+  background: #fff url(../images/select-arrows.png) right center no-repeat;
   border: 1px solid #75a8c0;
   border-radius: 4px;
   overflow: hidden; }
+
+.ie9 .chosen-select-wrapper {
+  border: none;
+  border-radius: 0;
+  overflow: visible; }
 
 .ie9 .form-select {
   background: transparent;
   border: none;
   width: calc(100% + 35px); }
+  .ie9 .form-select[multiple] {
+    width: 100%; }
+  .ie9 .form-select .chosen-single {
+    background: none;
+    border: none; }
 
 .form-checkbox {
   -webkit-appearance: checkbox;
@@ -2672,6 +2708,10 @@ form .social_login label:after {
   margin: 0 auto 40px;
   max-width: 1160px;
   padding: 0 20px; }
+  .ie9 .user-login-form {
+    overflow: hidden; }
+    .ie9 .user-login-form .login-wrapper {
+      float: right; }
   .user-login-form .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;
@@ -2720,7 +2760,9 @@ form .social_login label:after {
     .user-login-form .login-wrapper {
       width: 100%; }
     .user-login-form .login-wrapper {
-      padding: 0 10px; } }
+      padding: 0 10px; }
+      .ie9 .user-login-form .login-wrapper {
+        float: none; } }
 
 @media (max-width: 479px) {
   .user-login-form .social_login,
@@ -2855,11 +2897,17 @@ form .social_login label:after {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
+  .ie9 .user-register-form {
+    overflow: hidden; }
+    .ie9 .user-register-form .social_login,
+    .ie9 .user-register-form .login-wrapper {
+      float: left; }
   .user-register-form .social_login,
   .user-register-form .login-wrapper {
+    margin-top: 40px;
     width: 50%; }
   .user-register-form .social_login {
-    margin: 0 !important;
+    margin: 40px 0 0 !important;
     padding: 0 40px;
     overflow: hidden; }
   .user-register-form #title-wrapper {
@@ -2959,12 +3007,25 @@ form .social_login label:after {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .ie9 .user-onetime-form #fields-wrapper {
+    overflow: hidden; }
+  .user-onetime-form #fields-wrapper .form-wrapper:empty {
+    display: none; }
+    .ie9 .user-onetime-form #fields-wrapper .form-wrapper:empty ~ #catagories-wrapper {
+      float: none;
+      margin: 0 auto; }
 
 .user-onetime-form #edit-account,
 .user-onetime-form #catagories-wrapper {
   padding: 10px;
   width: 50%; }
+  .ie9 .user-onetime-form #edit-account, .ie9
+  .user-onetime-form #catagories-wrapper {
+    float: left; }
 
 .content-with-sidebar .user-onetime-form .content {
   float: none;
@@ -3020,6 +3081,8 @@ form .social_login label:after {
         -ms-flex-pack: center;
             justify-content: center;
     margin-top: 25px; }
+  .ie9 .user-pass .g-recaptcha > div {
+    margin: 0 auto; }
   .user-pass label:after {
     content: ":"; }
   .user-pass label.form-required:after {
@@ -3190,6 +3253,18 @@ form .social_login label:after {
       flex-wrap: wrap;
   margin-bottom: 15px;
   padding: 20px 0; }
+  .ie9 .form-my-settings #user-details, .ie9
+  .form-my-settings #organisation-details, .ie9
+  .form-my-settings #interests-wrapper, .ie9
+  .form-my-settings #contact-details, .ie9
+  .form-my-settings #address-details {
+    overflow: hidden; }
+    .ie9 .form-my-settings #user-details .form-wrapper, .ie9
+    .form-my-settings #organisation-details .form-wrapper, .ie9
+    .form-my-settings #interests-wrapper .form-wrapper, .ie9
+    .form-my-settings #contact-details .form-wrapper, .ie9
+    .form-my-settings #address-details .form-wrapper {
+      float: left; }
   .form-my-settings #user-details .form-wrapper,
   .form-my-settings #organisation-details .form-wrapper,
   .form-my-settings #interests-wrapper .form-wrapper,
@@ -3205,6 +3280,13 @@ form .social_login label:after {
       padding: 0;
       width: 100%; }
 
+.form-my-settings #organisation-details {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+  .ie9 .form-my-settings #organisation-details .form-wrapper:last-child {
+    float: right; }
+
 .form-my-settings #interest .form-wrapper {
   margin: 0 auto 15px;
   padding: 20px 40px;
@@ -3218,6 +3300,8 @@ form .social_login label:after {
           justify-content: flex-end; }
   .form-my-settings #contact-details > .form-wrapper {
     margin-bottom: 35px; }
+    .ie9 .form-my-settings #contact-details > .form-wrapper:last-child {
+      float: right; }
   .form-my-settings #contact-details label {
     display: none; }
   .form-my-settings #contact-details .paragraph-type-top {
@@ -3231,6 +3315,10 @@ form .social_login label:after {
       flex-wrap: wrap;
   margin-bottom: 15px;
   padding: 20px 0; }
+  .ie9 .form-my-settings #edit-account {
+    overflow: hidden; }
+    .ie9 .form-my-settings #edit-account > .form-item {
+      float: left; }
   .form-my-settings #edit-account > .form-item {
     margin: 0;
     padding: 0 40px;
@@ -3289,6 +3377,9 @@ form .social_login label:after {
   .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .paragraph-type-top {
     padding-right: 0; }
 
+.ie9 .form-my-settings #edit-field-skype-or-other-wrapper .paragraphs-subform {
+  overflow: visible; }
+
 .form-my-settings #edit-field-skype-or-other-wrapper .paragraphs-subform .field--name-field-type {
   width: 33.33%; }
 
@@ -3309,6 +3400,15 @@ form .social_login label:after {
 
 .form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit {
   margin-left: 0; }
+
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper table,
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper tbody,
+.ie11 .form-my-settings #edit-field-skype-or-other-wrapper tr,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper table,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper tbody,
+.ie10 .form-my-settings #edit-field-skype-or-other-wrapper tr {
+  display: block;
+  clear: both; }
 
 .form-my-settings #edit-field-organisations,
 .form-my-settings #edit-field-skype-or-other,
@@ -3346,6 +3446,10 @@ form .social_login label:after {
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
+    .ie9 .form-my-settings table .paragraphs-subform {
+      overflow: hidden; }
+      .ie9 .form-my-settings table .paragraphs-subform .form-wrapper {
+        float: left; }
     .form-my-settings table .paragraphs-subform .form-wrapper {
       padding: 0 40px;
       width: 50%; }
@@ -3378,6 +3482,19 @@ form .social_login label:after {
 .form-my-settings #edit-field-organisations-wrapper thead .label {
   padding: 0 40px 10px; }
 
+.ie11 .form-my-settings #edit-field-organisations-wrapper table,
+.ie11 .form-my-settings #edit-field-organisations-wrapper thead,
+.ie11 .form-my-settings #edit-field-organisations-wrapper tbody,
+.ie11 .form-my-settings #edit-field-organisations-wrapper tr,
+.ie11 .form-my-settings #edit-field-organisations-wrapper th,
+.ie10 .form-my-settings #edit-field-organisations-wrapper table,
+.ie10 .form-my-settings #edit-field-organisations-wrapper thead,
+.ie10 .form-my-settings #edit-field-organisations-wrapper tbody,
+.ie10 .form-my-settings #edit-field-organisations-wrapper tr,
+.ie10 .form-my-settings #edit-field-organisations-wrapper th {
+  display: block;
+  clear: both; }
+
 .form-my-settings .paragraphs-dropbutton-wrapper .form-submit,
 .form-my-settings .field-add-more-submit.form-submit {
   font-weight: 400;
@@ -3387,6 +3504,11 @@ form .social_login label:after {
   display: inline-block;
   margin-left: 5px;
   vertical-align: top; }
+
+.form-my-settings #edit-status--wrapper .form-checkbox ~ label:after, .form-my-settings #edit-status--wrapper .form-radio ~ label:after,
+.form-my-settings #edit-roles--wrapper .form-checkbox ~ label:after,
+.form-my-settings #edit-roles--wrapper .form-radio ~ label:after {
+  content: none; }
 
 .form-my-settings .form-submit {
   background: none;
@@ -3760,6 +3882,59 @@ form .social_login label:after {
     .popup-wrapper .action-links .cancel-link {
       margin-left: 10px; } }
 
+.faq-item {
+  position: relative; }
+  .faq-item.expanded .faq-title:after {
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg); }
+
+.faq-title {
+  background: #fff;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 20px 40px 20px 20px;
+  position: relative;
+  -webkit-transition: box-shadow .3s ease;
+  transition: box-shadow .3s ease; }
+  .faq-title:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.11); }
+  .faq-title:after {
+    font-size: 1.75rem;
+    content: "´";
+    color: #ea3a32;
+    font-family: P4h, sans-serif;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    -webkit-transition: -webkit-transform .4s ease;
+    transition: -webkit-transform .4s ease;
+    transition: transform .4s ease;
+    transition: transform .4s ease, -webkit-transform .4s ease; }
+  .faq-title h3 {
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 25px;
+    margin: 0; }
+
+.faq-content {
+  display: none;
+  width: 80%; }
+
+.faq-body {
+  font-size: 1.05rem;
+  font-family: "Fira Sans", sans-serif;
+  line-height: 33px;
+  padding: 20px;
+  position: relative; }
+  .faq-body:after {
+    background: #ea3a32;
+    content: "";
+    display: block;
+    height: 2px;
+    margin: 50px 0 20px;
+    width: 180px; }
+
 .addtoany-wrapper {
   overflow: hidden;
   position: fixed;
@@ -3983,8 +4158,6 @@ header {
     height: 60px; }
     .logged .header-fixed .top-head {
       background: #fff; }
-    .ie9 .header-fixed .top-head {
-      background: #283b44; }
   .header-fixed .logo-wrapper {
     position: absolute;
     top: 0;
@@ -4259,7 +4432,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-faq) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -4474,6 +4647,7 @@ footer {
   font-size: 0.9625rem;
   color: #4c7e96;
   font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
   margin-bottom: 20px; }
   .post-info > *:not(:first-child) {
     display: inline-block;
@@ -4487,6 +4661,11 @@ footer {
   .post-info time,
   .post-info .country {
     font-weight: 700; }
+  .post-info a {
+    color: #4c7e96;
+    font-weight: 700; }
+    .post-info a:hover {
+      color: #ea3a32; }
 
 .summary-text p {
   font-size: 1.4rem;
@@ -4946,6 +5125,26 @@ footer {
 
 @media (max-width: 479px) {
   .marker-info {
+    width: 100%; } }
+
+.faq-list {
+  margin: 0 auto;
+  width: 80%; }
+  .faq-list .title-wrapper {
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    text-align: center; }
+    .faq-list .title-wrapper .line {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+
+@media (max-width: 991px) {
+  .faq-list {
+    width: 90%; } }
+
+@media (max-width: 767px) {
+  .faq-list {
     width: 100%; } }
 
 .dashboard {

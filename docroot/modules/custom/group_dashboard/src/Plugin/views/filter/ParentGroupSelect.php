@@ -124,28 +124,35 @@ class ParentGroupSelect extends GroupIndexByGroupType  {
   protected function getUserGroupMembership($group_types, $groups) {
     $result = [];
     $options = [];
+    $roles = [];
 
     $user = \Drupal::currentUser();
     // @TODO We should try to change it to $group->access().
+
+    /** @var \Drupal\group\GroupMembershipLoaderInterface $membership_loader */
+    $membership_loader = \Drupal::service('group.membership_loader');
+
     if (!$user->hasPermission('all access to groups')) {
+      // Get group admin roles.
       foreach ($group_types as $group_type) {
-        $parent_group = $group_type->id();
-        $parent_query = \Drupal::database()
-          ->select('group_content_field_data', 'group_content_field_data')
-          ->fields('group_content_field_data', ['gid'])
-          ->condition('group_content_field_data.type', "$parent_group-group_membership", 'LIKE')
-          ->condition('group_content_field_data.entity_id', $user->id());
+        $roles[] = $group_type->id() . '-admin';
+      }
+      // Get all user memberships by admin roles.
+      // @todo GroupMembershipSubscriber::onAlterMembershipsByUser() should be changed to current P4H business logic.
+      $all_user_memberships = $membership_loader->loadByUser($user, $roles);
 
-        $parent_query->leftJoin('group_content__group_roles', 'group_content__group_roles', 'group_content__group_roles.entity_id=group_content_field_data.id');
-        $query_result = $parent_query->condition('group_content__group_roles.group_roles_target_id', '%-admin', 'LIKE')
-          ->execute()
-          ->fetchCol();
-
-        if (!empty($query_result)) {
-          $result = array_merge($result, $query_result);
+      if (!empty($all_user_memberships)) {
+        foreach ($all_user_memberships as $group) {
+          // Only group admins can moderate group content.          
+          //if ($group->hasPermission('edit group')) {
+            $result = array_merge($result, [
+              $group->getGroupContent()->get('gid')->target_id,
+            ]);
+          //}
         }
       }
     }
+
 
     foreach ($groups as $group) {
       // @TODO We should try to change it to $group->access().

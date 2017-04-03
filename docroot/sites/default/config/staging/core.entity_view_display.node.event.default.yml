@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.event.field_date
     - field.field.node.event.field_documents
     - field.field.node.event.field_event_author
+    - field.field.node.event.field_event_country_content
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
     - field.field.node.event.field_join_block
@@ -21,6 +22,7 @@ dependencies:
   module:
     - datetime_range
     - entity_reference_revisions
+    - group_content_formatters
     - link
     - options
     - rel_content
@@ -33,9 +35,9 @@ mode: default
 content:
   addtoany:
     weight: 14
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   body:
     label: hidden
     type: text_default
@@ -68,6 +70,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_event_country_content:
+    weight: 15
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: group_content_country_list
     region: content
   field_event_link:
     type: link_separate
@@ -152,9 +161,9 @@ content:
     region: content
   links:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_documents: true
   langcode: true

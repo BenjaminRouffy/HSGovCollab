@@ -228,19 +228,16 @@ display:
         - route
         - url
       tags:
-        - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.project.bottom'
-        - 'config:core.entity_view_display.group.region.search_country'
-        - 'config:core.entity_view_display.group.region.time_line'
-        - 'config:core.entity_view_display.group.region.token'
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.search_country'
-        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
+        - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.project.time_line'
@@ -248,6 +245,9 @@ display:
         - 'config:core.entity_view_display.group.region.bottom'
         - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
+        - 'config:core.entity_view_display.group.region.search_country'
+        - 'config:core.entity_view_display.group.region.time_line'
+        - 'config:core.entity_view_display.group.region.token'
   block_1:
     display_plugin: block
     id: block_1
@@ -844,7 +844,8 @@ display:
         exposed_form: false
         use_ajax: false
         title: false
-      block_hide_empty: true
+        empty: false
+      block_hide_empty: false
       link_display: '0'
       link_url: 'group/{{ arguments.gid }}/projects'
       use_more: false
@@ -1004,6 +1005,18 @@ display:
                   filter_rewrite_values: ''
       use_ajax: true
       title: 'Country projects'
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:
@@ -1058,7 +1071,8 @@ display:
         arguments: false
         relationships: false
         query: false
-      block_hide_empty: true
+        empty: false
+      block_hide_empty: false
       link_display: '0'
       link_url: 'group/{{ arguments.gid }}/projects'
       use_more: false
@@ -1280,6 +1294,18 @@ display:
           replica: false
           query_comment: ''
           query_tags: null
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

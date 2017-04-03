@@ -32,9 +32,8 @@ class GroupSelectWidget extends WidgetBase {
     $values = $items[$delta]->getValue();
 
     /** @var \Drupal\Core\Field\FieldStorageDefinitionInterface */
-    $gid = $this->fieldDefinition->getFieldStorageDefinition()->getSetting('gid');
-    $gid = explode('-', $gid)[0];
-    foreach(\Drupal::entityTypeManager()->getStorage('group')->loadByProperties(['type' => $gid]) as $key => $group) {
+    $group_type = $this->fieldDefinition->getFieldStorageDefinition()->getSetting('group_type');
+    foreach(\Drupal::entityTypeManager()->getStorage('group')->loadByProperties(['type' => $group_type]) as $key => $group) {
       $options[$key] = $group->label();
     }
     $items[$delta]->value;

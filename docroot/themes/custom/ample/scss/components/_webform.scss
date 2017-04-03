@@ -83,17 +83,23 @@ form {
   }
 }
 
+.placeholder {
+  color: #999;
+}
+
 :-ms-input-placeholder {
   color: #999 !important;
 }
 
 .email-suffix {
-  align-items: center;
-  display: flex;
+  display: table;
   margin-bottom: 25px;
 
-  .form-email {
+  input,
+  .field-suffix {
+    display: table-cell;
     margin-bottom: 0;
+    vertical-align: middle;
   }
 }
 
@@ -235,16 +241,31 @@ form {
 
 .ie9 {
   .select-wrapper {
-    background: $white-dark url(../images/select-arrows.png) right center no-repeat;
+    background: $white url(../images/select-arrows.png) right center no-repeat;
     border: 1px solid #75a8c0;
     border-radius: 4px;
     overflow: hidden;
+  }
+
+  .chosen-select-wrapper {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
 
   .form-select {
     background: transparent;
     border: none;
     width: calc(100% + 35px);
+
+    &[multiple] {
+      width: 100%;
+    }
+
+    .chosen-single {
+      background: none;
+      border: none;
+    }
   }
 }
 
@@ -290,6 +311,14 @@ form {
   margin: 0 auto 40px;
   max-width: 1160px;
   padding: 0 20px;
+
+  .ie9 & {
+    overflow: hidden;
+
+    .login-wrapper {
+      float: right;
+    }
+  }
 
   .social_login {
     margin: 40px 0 0 !important;
@@ -362,6 +391,10 @@ form {
 
   .login-wrapper {
     padding: 0 10px;
+
+    .ie9 & {
+      float: none;
+    }
   }
 }
 
@@ -554,13 +587,23 @@ form {
   flex-wrap: wrap;
   justify-content: flex-end;
 
+  .ie9 & {
+    overflow: hidden;
+
+    .social_login,
+    .login-wrapper {
+      float: left;
+    }
+  }
+
   .social_login,
   .login-wrapper {
+    margin-top: 40px;
     width: 50%;
   }
 
   .social_login {
-    margin: 0 !important;
+    margin: 40px 0 0 !important;
     padding: 0 40px;
     overflow: hidden;
   }
@@ -709,12 +752,32 @@ form {
   #fields-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
+    .ie9 & {
+      overflow: hidden;
+    }
+
+    .form-wrapper:empty {
+      display: none;
+
+      .ie9 & {
+        ~ #catagories-wrapper {
+          float: none;
+          margin: 0 auto;
+        }
+      }
+    }
   }
 
   #edit-account,
   #catagories-wrapper {
     padding: 10px;
     width: 50%;
+
+    .ie9 & {
+      float: left;
+    }
   }
 
   .content-with-sidebar & {
@@ -792,6 +855,14 @@ form {
     display: flex;
     justify-content: center;
     margin-top: 25px;
+  }
+
+  .ie9 & {
+    .g-recaptcha {
+      > div {
+        margin: 0 auto;
+      }
+    }
   }
 
   label {
@@ -1037,6 +1108,14 @@ form {
     margin-bottom: 15px;
     padding: 20px 0;
 
+    .ie9 & {
+      overflow: hidden;
+
+      .form-wrapper {
+        float: left;
+      }
+    }
+
     .form-wrapper {
       padding: 0 40px;
       width: 50%;
@@ -1044,6 +1123,18 @@ form {
       .form-wrapper {
         padding: 0;
         width: 100%;
+      }
+    }
+  }
+
+  #organisation-details {
+    justify-content: flex-end;
+
+    .form-wrapper {
+      .ie9 & {
+        &:last-child {
+          float: right;
+        }
       }
     }
   }
@@ -1065,6 +1156,12 @@ form {
 
     > .form-wrapper {
       margin-bottom: 35px;
+
+      .ie9 & {
+        &:last-child {
+          float: right;
+        }
+      }
     }
 
     label {
@@ -1081,6 +1178,14 @@ form {
     flex-wrap: wrap;
     margin-bottom: 15px;
     padding: 20px 0;
+
+    .ie9 & {
+      overflow: hidden;
+
+      > .form-item {
+        float: left;
+      }
+    }
 
     > .form-item {
       margin: 0;
@@ -1153,6 +1258,10 @@ form {
 
   #edit-field-skype-or-other-wrapper {
     .paragraphs-subform {
+      .ie9 & {
+        overflow: visible;
+      }
+
       .field--name-field-type {
         width: 33.33%;
       }
@@ -1182,6 +1291,16 @@ form {
     .form-submit {
       &.field-add-more-submit {
         margin-left: 0;
+      }
+    }
+
+    .ie11 &,
+    .ie10 & {
+      table,
+      tbody,
+      tr {
+        display: block;
+        clear: both;
       }
     }
   }
@@ -1228,6 +1347,14 @@ form {
     .paragraphs-subform {
       display: flex;
       flex-wrap: wrap;
+
+      .ie9 & {
+        overflow: hidden;
+
+        .form-wrapper {
+          float: left;
+        }
+      }
 
       .form-wrapper {
         padding: 0 40px;
@@ -1286,6 +1413,18 @@ form {
         padding: 0 40px 10px;
       }
     }
+
+    .ie11 &,
+    .ie10 & {
+      table,
+      thead,
+      tbody,
+      tr,
+      th {
+        display: block;
+        clear: both;
+      }
+    }
   }
 
   .paragraphs-dropbutton-wrapper .form-submit,
@@ -1301,6 +1440,20 @@ form {
         display: inline-block;
         margin-left: 5px;
         vertical-align: top;
+      }
+    }
+  }
+
+  #edit-status--wrapper,
+  #edit-roles--wrapper {
+    .form- {
+      &checkbox,
+      &radio {
+        ~ label {
+          &:after {
+            content: none;
+          }
+        }
       }
     }
   }

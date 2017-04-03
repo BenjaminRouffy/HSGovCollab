@@ -1,0 +1,6 @@
+services:
+  group_parent_context.parent_groups_context:
+    class: Drupal\group_parent_context\EventSubscriber\ParentGroupsContext
+    arguments: ['@router.route_provider', '@request_stack']
+    tags:
+      - { name: 'event_subscriber' }

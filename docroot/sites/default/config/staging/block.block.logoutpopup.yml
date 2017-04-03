@@ -5,6 +5,7 @@ dependencies:
   module:
     - admin_customizations
     - group_dashboard
+    - user
   theme:
     - ample
 id: logoutpopup
@@ -25,13 +26,22 @@ settings:
 visibility:
   http_status:
     id: http_status
-    negate: false
-    code: {  }
+    negate: true
+    code:
+      403: '403'
+      404: '404'
     context_mapping: {  }
   access_by_user_role:
     id: access_by_user_role
     roles:
       anonymous: anonymous
     negate: true
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'

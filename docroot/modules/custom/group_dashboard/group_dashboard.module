@@ -41,15 +41,6 @@ function group_dashboard_menu_local_tasks_alter(&$data, $route_name) {
         unset($data['tabs']);
       }
       break;
-
-    case 'entity.group.canonical':
-      $link_params = $data['tabs'][0]['group.view']['#link']['url']->getRouteParameters();
-      $group = Group::load($link_params['group']);
-
-      if (!empty($group) && !$group->access('update', $user)) {
-        unset($data['tabs']);
-      }
-      break;
   }
 }
 

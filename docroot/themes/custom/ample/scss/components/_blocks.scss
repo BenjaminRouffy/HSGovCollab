@@ -923,6 +923,14 @@
   .project-item {
     padding: 10px;
     width: 33.33%;
+
+    .ie9 & {
+      display: inline-block;
+      margin-left: -4px;
+      padding-left: 14px;
+      padding-right: 6px;
+      vertical-align: top;
+    }
   }
 
   .country-content,
@@ -1056,6 +1064,8 @@
 }
 
 .country-list-by-region {
+  margin-bottom: 30px;
+
   .country-title {
     margin-bottom: 0;
 
@@ -1140,7 +1150,7 @@
   overflow: hidden;
   padding: 0 20px;
 
-  + div {
+  + div:not(.country-title) {
     min-height: 150px;
     margin-bottom: 5px;
   }
@@ -1382,6 +1392,7 @@
   }
 
   em {
+    color: $navy-dark;
     font-style: normal;
   }
 

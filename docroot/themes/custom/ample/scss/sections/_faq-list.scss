@@ -1,0 +1,23 @@
+.faq-list {
+  margin: 0 auto;
+  width: 80%;
+
+  .title-wrapper {
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    text-align: center;
+
+    .line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@include breakpoint-for('.faq-list', (to: laptop-small)) {
+  width: 90%;
+}
+
+@include breakpoint-for('.faq-list', (to: tablet)) {
+  width: 100%;
+}

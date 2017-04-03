@@ -1816,6 +1816,8 @@ header .social-links .font-social-icon {
   transition: transform .6s ease;
   transition: transform .6s ease, -webkit-transform .6s ease;
   width: 100%; }
+  .logged .related-wrapper {
+    padding-left: 80px; }
   .related-wrapper .related-content {
     margin: 0 auto;
     max-width: 1260px;
@@ -1838,6 +1840,10 @@ header .social-links .font-social-icon {
     display: flex;
     margin: 0;
     padding: 0; }
+    .ie9 .related-wrapper .item-list {
+      overflow: hidden; }
+      .ie9 .related-wrapper .item-list li {
+        float: left; }
     .related-wrapper .item-list li {
       border-bottom: 1px solid transparent;
       padding: 15px 20px 15px 0;

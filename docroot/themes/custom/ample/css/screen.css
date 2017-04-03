@@ -4625,6 +4625,7 @@ footer {
   font-size: 0.9625rem;
   color: #4c7e96;
   font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
   margin-bottom: 20px; }
   .post-info > *:not(:first-child) {
     display: inline-block;
@@ -4638,6 +4639,11 @@ footer {
   .post-info time,
   .post-info .country {
     font-weight: 700; }
+  .post-info a {
+    color: #4c7e96;
+    font-weight: 700; }
+    .post-info a:hover {
+      color: #ea3a32; }
 
 .summary-text p {
   font-size: 1.4rem;

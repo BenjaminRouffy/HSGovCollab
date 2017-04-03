@@ -644,6 +644,10 @@
   transition: transform .6s ease;
   width: 100%;
 
+  .logged & {
+    padding-left: 80px;
+  }
+
   .related-content {
     margin: 0 auto;
     max-width: 1260px;
@@ -668,6 +672,14 @@
     display: flex;
     margin: 0;
     padding: 0;
+
+    .ie9 & {
+      overflow: hidden;
+
+      li {
+        float: left;
+      }
+    }
 
     li {
       border-bottom: 1px solid transparent;

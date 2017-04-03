@@ -1,0 +1,54 @@
+uuid: 5c6e1105-616d-41f5-9834-aab3bcf61b41
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.projects_list_group
+    - views.view.list_of_projects
+  module:
+    - block_page_layout
+    - ctools
+    - group_dashboard
+    - views
+id: projects_list_group-block_page_layout-0
+label: 'Governance area'
+variant: block_page_layout
+variant_settings:
+  blocks:
+    ff4cdee4-f177-41f8-ab1c-ff839da9ad2e:
+      id: 'views_block:list_of_projects-ga_block_full'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: ff4cdee4-f177-41f8-ab1c-ff839da9ad2e
+      context_mapping: {  }
+  id: block_page_layout
+  uuid: e67f73a0-8047-4d1f-b53a-128718171f89
+  label: null
+  weight: 0
+  page_title: ''
+  layout: separate_column
+  layout_settings: {  }
+page: projects_list_group
+weight: 0
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      governance_area: governance_area
+    negate: false
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

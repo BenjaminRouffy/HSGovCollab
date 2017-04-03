@@ -1444,6 +1444,20 @@ form {
     }
   }
 
+  #edit-status--wrapper,
+  #edit-roles--wrapper {
+    .form- {
+      &checkbox,
+      &radio {
+        ~ label {
+          &:after {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
   .form-submit {
     background: none;
     border-color: $red;

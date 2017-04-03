@@ -551,8 +551,10 @@ svg {
       font-style: normal;
       line-height: 0; }
   .dashboard-sidebar .sidebar-menu .contextual-links {
-    border-top-left-radius: 0;
-    right: -76px; }
+    max-width: 70px; }
+    .dashboard-sidebar .sidebar-menu .contextual-links a {
+      line-height: 1.2;
+      white-space: normal; }
   .dashboard-sidebar .sidebar-menu ul:not(.contextual-links) a {
     color: #fff;
     display: block;
@@ -623,6 +625,10 @@ svg {
   .dashboard-sidebar.expanded-menu {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
     width: 220px; }
+    .dashboard-sidebar.expanded-menu .contextual-links {
+      max-width: 100%; }
+      .dashboard-sidebar.expanded-menu .contextual-links a {
+        line-height: .8em; }
     .dashboard-sidebar.expanded-menu .logo-wrapper a {
       padding: 20px 10px 0 20px; }
     .dashboard-sidebar.expanded-menu .dashboard-logo.small {

@@ -181,8 +181,12 @@
 
   .sidebar-menu {
     .contextual-links {
-      border-top-left-radius: 0;
-      right: -76px;
+      max-width: 70px;
+
+      a {
+        line-height: 1.2;
+        white-space: normal;
+      }
     }
 
     ul:not(.contextual-links) {
@@ -310,6 +314,14 @@
   &.expanded-menu {
     box-shadow: 0 1px 3px rgba($black, 0.25);
     width: 220px;
+
+    .contextual-links {
+      max-width: 100%;
+
+      a {
+        line-height: .8em;
+      }
+    }
 
     .logo-wrapper {
       a {

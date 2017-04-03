@@ -67,8 +67,16 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
     );
 
     $form['actions']['submit']['#value'] = t('Submit changes');
-    for ($i = 1; $i <= 3; $i++) {
-      $form['submit' . $i] = $form['actions']['submit'];
+
+    $current_theme = \Drupal::service('theme.manager')->getActiveTheme();
+
+    if ('ample' == $current_theme->getName()) {
+      for ($i = 1; $i <= 3; $i++) {
+        $form['submit' . $i] = $form['actions']['submit'];
+      }
+    }
+    else {
+      $form['submit3'] = $form['actions']['submit'];
     }
     $form['actions']['submit']['#access'] = FALSE;
   }

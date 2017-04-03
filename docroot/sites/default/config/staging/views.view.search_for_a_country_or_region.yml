@@ -421,11 +421,7 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.search_country'
-        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'
@@ -434,11 +430,15 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
-        - 'config:core.entity_view_display.group.region.country_list_by_region'
-        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
   block_1:
     display_plugin: block
     id: block_1
@@ -468,6 +468,19 @@ display:
             offset_label: Offset
       defaults:
         pager: false
+        empty: false
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

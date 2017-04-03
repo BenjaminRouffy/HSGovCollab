@@ -3486,6 +3486,11 @@ form .social_login label:after {
   margin-left: 5px;
   vertical-align: top; }
 
+.form-my-settings #edit-status--wrapper .form-checkbox ~ label:after, .form-my-settings #edit-status--wrapper .form-radio ~ label:after,
+.form-my-settings #edit-roles--wrapper .form-checkbox ~ label:after,
+.form-my-settings #edit-roles--wrapper .form-radio ~ label:after {
+  content: none; }
+
 .form-my-settings .form-submit {
   background: none;
   border-color: #ea3a32;

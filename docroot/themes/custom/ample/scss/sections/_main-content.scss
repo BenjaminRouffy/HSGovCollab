@@ -302,6 +302,7 @@
   @include font-size(15.4);
   color: $navy;
   font-family: $fira;
+  font-weight: 400;
   margin-bottom: 20px;
 
   > *:not(:first-child) {
@@ -326,6 +327,15 @@
   time,
   .country {
     font-weight: 700;
+  }
+
+  a {
+    color: $navy;
+    font-weight: 700;
+
+    &:hover {
+      color: $red;
+    }
   }
 }
 

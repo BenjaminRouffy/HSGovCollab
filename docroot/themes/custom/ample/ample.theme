@@ -204,6 +204,15 @@ function ample_preprocess_paragraph(array &$variables) {
         $variables['region_icon'] = $image->getFileUri();
       }
     }
+
+    if ($entity->hasField('field_ga_icon')) {
+      $icon = $entity->get('field_ga_icon')->getValue();
+
+      if (is_array($icon) && !empty($icon)) {
+        $image = \Drupal\file\Entity\File::load($icon[0]['target_id']);
+        $variables['region_icon'] = $image->getFileUri();
+      }
+    }
   }
 
   if ($variables['paragraph']->hasField('field_private_content')) {

@@ -1223,6 +1223,40 @@ header .social-links .font-social-icon {
   .ie9 .overlay-wrapper {
     padding-top: 19%; } }
 
+@media (max-width: 991px) {
+  .overlay-wrapper h1 {
+    font-size: 4rem; }
+  .overlay-wrapper .description {
+    font-size: 2rem;
+    line-height: 42px; } }
+
+@media (max-width: 767px) {
+  .overlay-wrapper h1 {
+    font-size: 3.5rem;
+    line-height: 64px; }
+  .overlay-wrapper .description {
+    font-size: 1.6rem;
+    line-height: 32px;
+    margin-top: 10px; } }
+
+@media (max-width: 479px) {
+  .overlay-wrapper h1 {
+    font-size: 2rem;
+    line-height: 40px; }
+  .overlay-wrapper .description {
+    font-size: 1.2rem;
+    line-height: 24px;
+    margin-top: 0; } }
+
+@media screen and (max-width: 380px) {
+  .overlay-wrapper h1 {
+    font-size: 1.625rem;
+    line-height: 28px;
+    margin-top: 10px; }
+  .overlay-wrapper .description {
+    font-size: 1rem;
+    line-height: 20px; } }
+
 .w-background-video .plyr {
   max-height: 60vh;
   overflow: hidden; }

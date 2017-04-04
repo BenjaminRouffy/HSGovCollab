@@ -5,7 +5,6 @@ namespace Drupal\Tests\prev_next_access\Kernel;
 use Drupal\group\Entity\Group;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
 use Drupal\prev_next_access\Plugin\Block\NextPreviousAccessBlock;
 use Drupal\Tests\phpunit_skeleton\Kernel\TestsSkeletonTrait;
 
@@ -51,8 +50,8 @@ class NextPreviousAccessBlockTest extends EntityKernelTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->constructFullSkeleton();
-
+    $this->constructDefaultSkeleton();
+    $this->initGroupFunctionality();
     $this->nextPrevBlock = $this->getMock('\Drupal\prev_next_access\Plugin\Block\NextPreviousAccessBlock', ['getContextValue'], [], '', FALSE);
 
     $this->nextPrevBlock->expects($this->any())
@@ -66,11 +65,12 @@ class NextPreviousAccessBlockTest extends EntityKernelTestBase {
    */
   public function testGenerateNextPrevious() {
     $container = \Drupal::getContainer();
-    $container->get('current_user')->setAccount($this->uid_1_account);
+    $container->get('current_user')->setAccount($this->superAccount);
+    $content_type = $this->generateNodeTypeSkeleton();
 
     // Create a test node.
     $english = Node::create(array(
-      'type' => 'page',
+      'type' => $content_type->id(),
       'title' => $this->randomMachineName(),
       'language' => 'en',
     ));
@@ -82,8 +82,9 @@ class NextPreviousAccessBlockTest extends EntityKernelTestBase {
     $this->assertEquals([], $link);
 
     // Create a test node.
+    /* @var Node $english2 */
     $english2 = Node::create(array(
-      'type' => 'page',
+      'type' => $content_type->id(),
       'title' => $this->randomMachineName(),
       'language' => 'en',
     ));
@@ -93,8 +94,9 @@ class NextPreviousAccessBlockTest extends EntityKernelTestBase {
     $this->generateNextPrevHelper($english, $english2);
 
     // Create a test node.
+    /* @var Node $english3 */
     $english3 = Node::create(array(
-      'type' => 'page',
+      'type' => $content_type->id(),
       'title' => $this->randomMachineName(),
       'language' => 'en',
     ));
@@ -103,13 +105,9 @@ class NextPreviousAccessBlockTest extends EntityKernelTestBase {
     $this->generateNextPrevHelper($english2, $english, 'prev', 'Previous');
     $this->generateNextPrevHelper($english2, $english3);
 
+    $group_type = $this->getDefaultGroupType();
     /* @var Group $group */
-    $group = $this->entityTypeManager->getStorage('group')->create([
-      'type' => 'default',
-      'uid' => $this->uid_1_account->id(),
-      'label' => $this->randomMachineName(),
-    ]);
-    $group->save();
+    $group = $this->createGroupByType($group_type->id(), ['uid' => $this->superAccount->id()]);
 
     $this->nextPrevBlock = $this->getMock('\Drupal\prev_next_access\Plugin\Block\NextPreviousAccessBlock', ['getContextValue'], [], '', FALSE);
 
@@ -118,8 +116,9 @@ class NextPreviousAccessBlockTest extends EntityKernelTestBase {
       ->will($this->returnValue([$group]));
 
     // Attach nodes to group.
-    $group->addContent($english, 'group_node:' . $this->contentType->id());
-    $group->addContent($english3, 'group_node:' . $this->contentType->id());
+    $this->attachContentTypeToGroup($group_type, $content_type->id());
+    $group->addContent($english, 'group_node:' . $content_type->id());
+    $group->addContent($english3, 'group_node:' . $content_type->id());
 
     $this->generateNextPrevHelper($english3, $english, 'prev', 'Previous');
     $this->generateNextPrevHelper($english, $english3);

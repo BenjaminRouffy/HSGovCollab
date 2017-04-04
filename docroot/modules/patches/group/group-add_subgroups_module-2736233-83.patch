@@ -2591,10 +2591,10 @@ index 0000000..024657a
 +}
 diff --git a/modules/ggroup/src/Plugin/GroupContentEnabler/Subgroup.php b/modules/ggroup/src/Plugin/GroupContentEnabler/Subgroup.php
 new file mode 100644
-index 0000000..a676605
+index 0000000..d42b34c
 --- /dev/null
 +++ b/modules/ggroup/src/Plugin/GroupContentEnabler/Subgroup.php
-@@ -0,0 +1,136 @@
+@@ -0,0 +1,134 @@
 +<?php
 +
 +namespace Drupal\ggroup\Plugin\GroupContentEnabler;
@@ -2699,11 +2699,9 @@ index 0000000..a676605
 +   */
 +  public function defaultConfiguration() {
 +    $config = parent::defaultConfiguration();
++
 +    $config['entity_cardinality'] = 1;
 +
-+    // This string will be saved as part of the group type config entity. We do
-+    // not use a t() function here as it needs to be stored untranslated.
-+    $config['info_text']['value'] = '<p>By submitting this form you will add this subgroup to the group.<br />It will then be subject to the access control settings that were configured for the group.<br/>Please fill out any available fields to describe the relation between the subgroup and the group.</p>';
 +    return $config;
 +  }
 +

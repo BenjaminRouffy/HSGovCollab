@@ -28,6 +28,7 @@ class FeatureContext extends RawTqContext {
    * @BeforeScenario
    */
   public function beforeScenario() {
+    $this->getTqContext()->useScreenResolution('1600x1200');
         if (self::$windowResized) {
       return;
     }
@@ -37,12 +38,12 @@ class FeatureContext extends RawTqContext {
   }
 
   /**
-   * @Given /^I execute Javascript on "(?P<element>[^"]*)" element$/
+   * @Given /^I execute Javascript "(?P<jscode>[^"]*)" on "(?P<element>[^"]*)" element$/
    */
-  public function iExecuteJavascriptOnElement($elmt)
+  public function iExecuteJavascriptOnElement($selector, $js)
   {
-    $element = $this->element('*', $elmt);
-    $this->executeJsOnElement($element, "jQuery({{ELEMENT}}).css('top', 0)");
+    $element = $this->element('*', $selector);
+    $this->executeJsOnElement($element, $js);
   }
 
   /**

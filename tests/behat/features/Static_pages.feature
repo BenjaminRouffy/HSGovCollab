@@ -62,7 +62,7 @@ Feature: Static pages feature
     And I should see "Infographic 1" in the "h2[role='heading']" element
     And I should see "99 % value 1" in the "span.value" element
     When I checkout to whole page
-    And I execute Javascript on "div.top-banner-region div.paragraph div.infooverlay" element
+    And I execute Javascript "jQuery({{ELEMENT}}).css('top', 0)" on "div.top-banner-region div.paragraph div.infooverlay" element
     Then I should see "Infographic 1 description" in the "div.infooverlay > p.description" element
     And I scroll to "div.section-info" element
     And I work with elements in "div.anchor-links" region

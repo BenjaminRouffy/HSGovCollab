@@ -1,0 +1,5 @@
+services:
+ admin_customizations.taxonomy_term_subscriber:
+   class: 'Drupal\admin_customizations\Routing\TaxonomyTermSubscriber'
+   tags:
+     - { name: 'event_subscriber' }

@@ -1,4 +1,4 @@
-uuid: 275e8a09-eeec-43fe-9690-40466f0f4a62
+uuid: d115adbf-558d-4043-af8d-fe0f8dc54d42
 langcode: en
 status: true
 dependencies:
@@ -6,15 +6,16 @@ dependencies:
     - page_manager.page.news_events_group
     - views.view.news_and_events_group
   module:
-    - block_page_layout
     - ctools
+    - group_dashboard
+    - panels
     - views
-id: news_events_group-block_page_layout-0
+id: news_events_group-panels_variant-3
 label: 'Governance area'
-variant: block_page_layout
+variant: panels_variant
 variant_settings:
   blocks:
-    f40df451-ba47-4427-b2f5-2fc763822304:
+    9292f61a-fbef-4c00-a595-5e66538bfb97:
       id: 'views_block:news_and_events_group-ga_news_events'
       label: ''
       provider: views
@@ -23,16 +24,19 @@ variant_settings:
       items_per_page: none
       region: content
       weight: 0
-      uuid: f40df451-ba47-4427-b2f5-2fc763822304
+      uuid: 9292f61a-fbef-4c00-a595-5e66538bfb97
       pager: view
       context_mapping: {  }
-  id: block_page_layout
-  uuid: 8dec1ed3-1f8a-46d3-91df-2596b4852417
+  id: panels_variant
+  uuid: e61eccc6-7ded-41ec-9df0-559fe3dfc704
   label: null
   weight: 0
-  page_title: ''
   layout: stacked
   layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: news_events_group-panels_variant-3
+  builder: standard
 page: news_events_group
 weight: 0
 selection_criteria:
@@ -43,5 +47,12 @@ selection_criteria:
     negate: false
     context_mapping:
       group: group
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

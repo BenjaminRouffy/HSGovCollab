@@ -2,6 +2,10 @@ uuid: 7363e954-5a36-46fd-adc8-b9ea9e932f2c
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.document
+    - node.type.event
+    - node.type.news
   module:
     - group
     - node
@@ -762,7 +766,10 @@ display:
           group_type: group
           admin_label: ''
           operator: in
-          value: {  }
+          value:
+            document: document
+            event: event
+            news: news
           group: 1
           exposed: true
           expose:
@@ -778,12 +785,12 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
-            reduce: false
+              specific_users: '0'
+            reduce: true
           is_grouped: false
           group_info:
             label: ''

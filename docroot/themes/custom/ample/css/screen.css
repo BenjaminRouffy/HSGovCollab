@@ -948,8 +948,6 @@ header .social-links .font-social-icon {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -1519,6 +1517,9 @@ header .social-links .font-social-icon {
   .timeline .bottom-link {
     margin: 0; }
 
+.group-region .timeline {
+  margin-top: 100px; }
+
 .timeline .title-wrapper {
   margin-bottom: 20px;
   padding-bottom: 5px; }
@@ -1532,6 +1533,9 @@ header .social-links .font-social-icon {
     font-size: 3.0625rem;
     line-height: 48px;
     margin: 20px 0 21px; }
+    .group-region .timeline .title-wrapper h2 {
+      font-size: 2.625rem;
+      padding-bottom: 20px; }
 
 .timeline h2 {
   margin-left: 0;
@@ -3603,6 +3607,9 @@ form .social_login label:after {
   text-align: center; }
   .view-news-and-events .title-wrapper h1 {
     padding-top: 0; }
+    .group-region .view-news-and-events .title-wrapper h1 {
+      font-size: 2.625rem;
+      line-height: 48px; }
   .view-news-and-events .title-wrapper .line {
     left: 50%;
     -webkit-transform: translateX(-50%);

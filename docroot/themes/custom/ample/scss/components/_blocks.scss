@@ -222,6 +222,10 @@
 }
 
 .timeline {
+  .group-region & {
+    margin-top: 100px;
+  }
+
   .title-wrapper {
     margin-bottom: 20px;
     padding-bottom: 5px;
@@ -239,6 +243,11 @@
       @include font-size(49);
       line-height: 48px;
       margin: 20px 0 21px;
+
+      .group-region & {
+        @include font-size(42);
+        padding-bottom: 20px;
+      }
     }
   }
 

@@ -5,6 +5,7 @@ dependencies:
   config:
     - page_manager.page.my_settings
   module:
+    - group_dashboard
     - panels
     - user
 id: my_settings-panels_variant-0
@@ -34,6 +35,13 @@ variant_settings:
   builder: standard
 page: my_settings
 weight: 0
-selection_criteria: {  }
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

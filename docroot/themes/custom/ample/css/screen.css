@@ -1517,7 +1517,8 @@ header .social-links .font-social-icon {
   .timeline .bottom-link {
     margin: 0; }
 
-.group-region .timeline {
+.group-region .timeline,
+.group-country .timeline {
   margin-top: 100px; }
 
 .timeline .title-wrapper {
@@ -1533,7 +1534,8 @@ header .social-links .font-social-icon {
     font-size: 3.0625rem;
     line-height: 48px;
     margin: 20px 0 21px; }
-    .group-region .timeline .title-wrapper h2 {
+    .group-region .timeline .title-wrapper h2,
+    .group-country .timeline .title-wrapper h2 {
       font-size: 2.625rem;
       padding-bottom: 20px; }
 
@@ -4538,6 +4540,9 @@ footer {
               transform: translateX(-50%); }
   .title-wrapper h1 ~ h2 {
     margin-bottom: 0; }
+  .title-wrapper h1#small-title {
+    font-size: 2.625rem;
+    line-height: 48px; }
   .title-wrapper .line {
     background: #ea3a32;
     display: block;

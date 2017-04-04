@@ -222,7 +222,8 @@
 }
 
 .timeline {
-  .group-region & {
+  .group-region &,
+  .group-country & {
     margin-top: 100px;
   }
 
@@ -244,7 +245,8 @@
       line-height: 48px;
       margin: 20px 0 21px;
 
-      .group-region & {
+      .group-region &,
+      .group-country & {
         @include font-size(42);
         padding-bottom: 20px;
       }

@@ -143,6 +143,11 @@
     ~ h2 {
       margin-bottom: 0;
     }
+
+    &#small-title {
+      @include font-size(42);
+      line-height: 48px;
+    }
   }
 
   .line {

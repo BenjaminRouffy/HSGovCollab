@@ -84,7 +84,7 @@ display:
       row:
         type: fields
         options:
-          default_field_elements: true
+          default_field_elements: false
           inline: {  }
           separator: ''
           hide_empty: false
@@ -425,8 +425,6 @@ display:
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.project.bottom'
-        - 'config:core.entity_view_display.group.project.default'
-        - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
@@ -437,6 +435,8 @@ display:
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
   block_1:

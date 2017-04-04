@@ -683,3 +683,10 @@ function deployment_update_8045() {
 function deployment_update_8046() {
   \Drupal::service('module_installer')->install(['disable_messages']);
 }
+
+/**
+ * Install module "Password policy".
+ */
+function deployment_update_8047() {
+  \Drupal::service('module_installer')->install(['password_policy']);
+}

@@ -80,7 +80,11 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_country']['widget']['#title'] = t('Select country of interest');
     $form['field_regions']['widget']['#title'] = t('Select regions of interest');
     $form['field_category']['widget']['#title'] = t('Select categories in the Knowledge Vault');
-    unset($form['account']['pass']['#description']);
+    unset(
+      $form['account']['pass']['#description'],
+      $form['account']['password_policy_status'],
+      $form['account']['roles']['#ajax']
+    );
   }
 
   if (isset($form['account']['mail'])) {
@@ -95,10 +99,13 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_skype_or_other']['widget']['add_more']['add_more_button_software_application']['#value'] = t('Add');
     $form['field_organisations']['widget']['add_more']['add_more_button_organisation']['#value'] = t('Add organisation');
     $form['field_organisation']['widget']['#title'] = t('Main organization');
+    $form['account']['current_pass']['#weight'] = $form['account']['pass']['#weight'] -1;
 
     unset(
       $form['field_skype_or_other']['widget']['text'],
-      $form['field_organisations']['widget']['text']
+      $form['field_organisations']['widget']['text'],
+      $form['account']['password_policy_status'],
+      $form['account']['roles']['#ajax']
     );
 
     if (!$current_user->hasPermission('change main organisation')) {
@@ -109,7 +116,17 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
   }
 
   if ($form_id == 'user_invited_person_form') {
-    unset($form['field_organisation']['widget']['#description']);
+    foreach ($form['#validate'] as $key => $method) {
+      if ('_password_policy_user_profile_form_validate' === $method) {
+        unset($form['#validate'][$key]);
+      }
+    }
+
+    unset(
+      $form['field_organisation']['widget']['#description'],
+      $form['account']['password_policy_status'],
+      $form['account']['roles']['#ajax']
+    );
   }
 }
 
@@ -154,7 +171,10 @@ function user_registration_element_info_alter(array &$types) {
  * validation.
  */
 function user_registration_form_process_password_confirm($element) {
-  unset($element['#attached']['drupalSettings']['password']);
+  unset(
+    $element['#attached']['drupalSettings']['password'],
+    $element['pass1']['#ajax']
+  );
   return $element;
 }
 

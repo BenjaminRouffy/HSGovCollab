@@ -5,7 +5,7 @@
   {% endif %}
   <div class="title-wrapper" data-anchor-id="view-{{ dom_id }}">
     {{ title_prefix }}
-    <h1 role="heading" class="anchor-title">
+    <h1 role="heading" class="anchor-title" id="small-title">
       {{ view.getTitle()|raw }}
     </h1>
     {{ title_suffix|without('contextual_links') }}

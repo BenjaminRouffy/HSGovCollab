@@ -3830,7 +3830,9 @@ form .social_login label:after {
   width: 70px;
   background: rgba(0, 0, 0, 0.3) url(../images/throbber.svg) center no-repeat;
   background-size: cover;
-  border-radius: 7px; }
+  border-radius: 7px;
+  left: 50%;
+  margin-left: -35px; }
   .ajax-progress .throbber,
   .ajax-progress .message {
     display: none; }

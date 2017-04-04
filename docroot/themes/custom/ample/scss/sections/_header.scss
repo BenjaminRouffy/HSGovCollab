@@ -598,3 +598,12 @@ header {
     }
   }
 }
+
+@include breakpoint-for('.header-fixed', (to: mobileL)) {
+  .logo-wrapper {
+    .logo {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

@@ -8,7 +8,6 @@ dependencies:
   module:
     - ctools
     - panels
-    - user
     - views
 id: projects_list_group-panels_variant-0
 label: Panels
@@ -39,14 +38,7 @@ variant_settings:
 page: projects_list_group
 weight: 0
 selection_criteria:
-  -
-    id: user_role
-    roles:
-      authenticated: authenticated
-    negate: false
-    context_mapping:
-      user: current_user
-  -
+  1:
     id: 'entity_bundle:group'
     bundles:
       country: country

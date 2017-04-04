@@ -251,7 +251,6 @@ ol {
 
 img {
   height: auto !important;
-  max-height: 100%;
   max-width: 100%; }
 
 svg {
@@ -1109,6 +1108,8 @@ header .social-links .font-social-icon {
     width: 100px;
     float: left;
     margin-right: 20px; }
+    .ie .country-content-wrapper .country-icon-wrapper img {
+      max-height: 100%; }
     .country-content-wrapper .country-icon-wrapper.default {
       background: url(../images/globe_white.svg) center no-repeat;
       background-size: 100%; }
@@ -2288,6 +2289,10 @@ header .social-links .font-social-icon {
     .project-title .project-icon-wrapper, .ie
     .region-title .project-icon-wrapper {
       height: 40px; }
+      .ie .country-title .project-icon-wrapper img, .ie
+      .project-title .project-icon-wrapper img, .ie
+      .region-title .project-icon-wrapper img {
+        max-height: 100%; }
   .country-title .country-icon-wrapper,
   .project-title .country-icon-wrapper,
   .region-title .country-icon-wrapper {
@@ -2298,6 +2303,10 @@ header .social-links .font-social-icon {
     .project-title .country-icon-wrapper, .ie
     .region-title .country-icon-wrapper {
       height: 40px; }
+      .ie .country-title .country-icon-wrapper img, .ie
+      .project-title .country-icon-wrapper img, .ie
+      .region-title .country-icon-wrapper img {
+        max-height: 100%; }
   .country-title h3,
   .project-title h3,
   .region-title h3 {

@@ -2499,7 +2499,7 @@ header .social-links .font-social-icon {
 
 .status-message {
   font-family: Oswald, sans-serif;
-  padding: 10px;
+  padding: 25px 10px;
   position: relative;
   text-align: center;
   z-index: 60; }
@@ -2604,6 +2604,8 @@ form {
     display: table-cell;
     margin-bottom: 0;
     vertical-align: middle; }
+  .email-suffix .field-suffix {
+    padding-left: 5px; }
 
 .form-file {
   font-size: 1rem;
@@ -3237,6 +3239,12 @@ form .social_login label:after {
 
 .form-my-settings label.form-required:after {
   content: ": *"; }
+
+.form-my-settings #edit-pass .form-text, .form-my-settings #edit-pass .form-textarea {
+  margin-bottom: 0; }
+
+.form-my-settings #edit-pass .form-item {
+  margin-bottom: 25px; }
 
 .form-my-settings .description {
   margin: 5px 0 0; }

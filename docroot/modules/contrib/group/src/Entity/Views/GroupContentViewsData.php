@@ -94,7 +94,7 @@ class GroupContentViewsData extends EntityViewsData {
       }
 
       $t_args = [
-        '@entity_type' => $entity_type->getLabel(),
+        '@entity_type' => $entity_type->getLowercaseLabel(),
       ];
 
       // This relationship will allow a group content entity to easily map to a

@@ -251,6 +251,12 @@
     float: left;
     margin-right: 20px;
 
+    .ie & {
+      img {
+        max-height: 100%;
+      }
+    }
+
     &.default {
       background: url(../images/globe_white.svg) center no-repeat;
       background-size: 100%;

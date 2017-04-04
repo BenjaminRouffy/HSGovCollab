@@ -279,6 +279,14 @@
   }
 }
 
+@include breakpoint-for('.content, .more-content', (to: desktop)) {
+  .content-with-sidebar & {
+    blockquote {
+      left: 0;
+    }
+  }
+}
+
 @include breakpoint-for('.content, .more-content', (to: laptop-small)) {
   .content-with-sidebar & {
     blockquote {
@@ -288,12 +296,6 @@
 }
 
 @include breakpoint-for('.content, .more-content', (to: tablet)) {
-  .content-with-sidebar & {
-    blockquote {
-      left: 0;
-    }
-  }
-
   .legal & {
     width: 100%;
 

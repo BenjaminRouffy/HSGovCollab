@@ -4660,13 +4660,15 @@ footer {
     font-weight: 400;
     text-decoration: none; }
 
+@media (max-width: 1440px) {
+  .content-with-sidebar .content blockquote, .content-with-sidebar .more-content blockquote {
+    left: 0; } }
+
 @media (max-width: 991px) {
   .content-with-sidebar .content blockquote, .content-with-sidebar .more-content blockquote {
     width: 100%; } }
 
 @media (max-width: 767px) {
-  .content-with-sidebar .content blockquote, .content-with-sidebar .more-content blockquote {
-    left: 0; }
   .legal .content, .legal .more-content {
     width: 100%; }
     .legal .content article, .legal .more-content article {

@@ -169,7 +169,8 @@ form {
       }
 
       input[type="text"] {
-        @include font-size(18.2);
+        font-size: 18.2px !important;
+        font-family: $fira !important;
         font-weight: 300;
       }
 

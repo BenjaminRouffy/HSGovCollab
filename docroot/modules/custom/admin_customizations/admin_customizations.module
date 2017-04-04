@@ -96,4 +96,8 @@ function admin_customizations_toolbar_alter(&$items) {
   if (isset($items['masquerade_switch_back'])) {
     unset($items['masquerade_switch_back']);
   }
+
+  if ($items['user']) {
+    unset($items['user']['tray']['user_links']['#links']['account']);
+  }
 }

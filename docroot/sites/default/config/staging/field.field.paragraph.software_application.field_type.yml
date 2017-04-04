@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.paragraph.field_type
     - paragraphs.paragraphs_type.software_application
+  content:
+    - 'taxonomy_term:software_application:16bc8001-f67f-4ad9-b308-4fb7b5f322d1'
 id: paragraph.software_application.field_type
 field_name: field_type
 entity_type: paragraph
@@ -13,7 +15,9 @@ label: Type
 description: ''
 required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: 16bc8001-f67f-4ad9-b308-4fb7b5f322d1
 default_value_callback: ''
 settings:
   handler: views

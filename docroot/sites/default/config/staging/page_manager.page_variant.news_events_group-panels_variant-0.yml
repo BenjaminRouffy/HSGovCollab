@@ -10,6 +10,7 @@ dependencies:
   module:
     - block_content
     - ctools
+    - group_dashboard
     - panels
     - views
 id: news_events_group-panels_variant-0
@@ -61,5 +62,12 @@ selection_criteria:
     negate: false
     context_mapping:
       group: group
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

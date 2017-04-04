@@ -99,7 +99,7 @@ class CountryMenuBlock extends BlockBase {
 
           case 'project':
             if ($group->bundle() == 'region') {
-              $row = views_get_view_result('list_of_projects', 'block_3');
+              $row = views_get_view_result('list_of_projects', 'block_2');
             }
             else {
               $row = views_get_view_result('list_of_projects', 'block_1');

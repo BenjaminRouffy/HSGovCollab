@@ -10,6 +10,7 @@ dependencies:
   module:
     - block_content
     - group
+    - group_dashboard
     - panels
     - views
 id: document_list_group-panels_variant-0
@@ -62,5 +63,12 @@ selection_criteria:
     negate: 0
     context_mapping:
       group: group
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

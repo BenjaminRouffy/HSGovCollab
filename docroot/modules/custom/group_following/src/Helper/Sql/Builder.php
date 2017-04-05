@@ -2,6 +2,7 @@
 
 namespace Drupal\group_following\Helper\Sql;
 
+use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\Query\Select;
 
@@ -31,7 +32,7 @@ class Builder {
     $select->addField('gc', 'type');
     $select->condition('gc.type', '%group_membership', 'LIKE');
     $select->groupBy('gc.type');
-    return $select;
+    return $select->execute()->fetchCol();
   }
 
   /**
@@ -72,22 +73,30 @@ class Builder {
    * @param \Drupal\Core\Database\Query\Select $where
    * @return \Drupal\Core\Database\Query\Select
    */
-  function getGroupRolesWithGid(Select $where) {
+  function getGroupRolesWithGid(array $where) {
 
     $select = $this->connection->select('group_content_field_data', 'gcfd');
     $select->leftJoin('group_content__group_roles', ' gcgr', 'gcfd.id = gcgr.entity_id');
 
     $select->addField('gcfd', 'id', 'id');
     $select->addExpression('substring_index(gcfd.type, \'-\', 1)', 'type');
+//    $select->addField('gcfd', 'type', 'type');
     $select->addField('gcfd', 'gid', 'gid');
 
     // @TODO Ensure that 'unfollower' role is needed here.
     $select->addExpression($exp1 = 'substring_index(if(isnull(gcgr.entity_id), replace(gcfd.type, \'group_membership\', \'unfollower\'), gcgr.group_roles_target_id),\'-\', -1)', 'role');
+//    $select->addField('gcgr', 'group_roles_target_id', 'role');
     $select->addField('gcfd', 'entity_id', 'uid');
 
+//    $select->condition('gcfd.type', '%group_membership', 'LIKE');
     $select->condition('gcfd.type', $where, 'IN');
 
-    $select->where($exp1 . ' IN (\'follower\', \'unfollower\')');
+    /** @var Condition $or */
+    $or = new Condition('OR');
+    $or->condition('gcgr.group_roles_target_id', '%-follower', 'LIKE');
+    $or->isNull('gcgr.group_roles_target_id');
+    $select->condition($or);
+    //$select->where($exp1 . ' IN (\'follower\', \'unfollower\')');
 
     return $select;
   }
@@ -136,7 +145,7 @@ class Builder {
            *
            * This code will auto soft follow all unfollowed regions.
            */
-          $fields[] = "if(grg{$i}.role = 'unfollower', 'unfollower:follower', grg{$i}.role)";
+          $fields[] = "if(grg{$i}.role = 'unfollower', if(grg{$i}.type = 'region','unfollower:follower','unfollower'), grg{$i}.role)";
           break;
         default:
           $fields[] = "grg{$i}.role";

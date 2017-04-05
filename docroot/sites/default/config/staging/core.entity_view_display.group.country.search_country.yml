@@ -10,11 +10,11 @@ dependencies:
     - field.field.group.country.field_country_icon
     - field.field.group.country.field_country_options
     - field.field.group.country.field_date
+    - field.field.group.country.field_faq
     - field.field.group.country.field_group_status
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
-    - field.field.group.country.field_regions
     - field.field.group.country.field_summary
     - field.field.group.country.field_time_line
     - group.type.country
@@ -43,14 +43,6 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  field_regions:
-    type: entity_reference_label
-    weight: 2
-    label: hidden
-    settings:
-      link: false
-    third_party_settings: {  }
-    region: content
 hidden:
   changed: true
   created: true
@@ -59,6 +51,7 @@ hidden:
   field_content: true
   field_country_options: true
   field_date: true
+  field_faq: true
   field_group_status: true
   field_join_block: true
   field_location: true

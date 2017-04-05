@@ -1,0 +1,68 @@
+uuid: 07222efd-9141-4dfa-8a17-069b8d506674
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.document_list_group
+    - views.view.news_and_events_group
+  module:
+    - ctools
+    - ctools_block
+    - panels
+    - views
+id: document_list_group-panels_variant-1
+label: 'Governance area'
+variant: panels_variant
+variant_settings:
+  blocks:
+    662e3a5b-b3c2-407b-bd48-9108a9fce9d3:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: 662e3a5b-b3c2-407b-bd48-9108a9fce9d3
+      context_mapping:
+        entity: group
+    6d558bf4-781f-4601-b5bf-e6c821fefc3f:
+      id: 'views_block:news_and_events_group-documents_by_group'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 6d558bf4-781f-4601-b5bf-e6c821fefc3f
+      pager: view
+      context_mapping: {  }
+  id: panels_variant
+  uuid: a1493e25-0610-4bad-acf8-6ee1522a0cd6
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: document_list_group-panels_variant-1
+  builder: standard
+page: document_list_group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      governance_area: governance_area
+    negate: false
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

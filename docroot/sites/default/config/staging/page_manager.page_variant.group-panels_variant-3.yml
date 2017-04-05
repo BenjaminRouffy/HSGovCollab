@@ -10,7 +10,6 @@ dependencies:
     - addtoany
     - ctools
     - ctools_block
-    - group_dashboard
     - panels
     - views
 id: group-panels_variant-3
@@ -120,12 +119,5 @@ selection_criteria:
     negate: false
     context_mapping:
       group: group
-  -
-    id: access_by_user_role
-    roles:
-      authenticated: authenticated
-    negate: 0
-    context_mapping:
-      user: current_user
 selection_logic: and
 static_context: {  }

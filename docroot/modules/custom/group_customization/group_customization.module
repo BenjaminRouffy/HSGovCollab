@@ -29,42 +29,44 @@ function group_customization_preprocess_html(array &$variables) {
  * Implements hook_ENTITY_TYPE_access().
  */
 function group_customization_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
-  // @var \Drupal\group_customization\Access\GroupPermissionAccessCheck $groupPermissionAccess
-  $groupPermissionAccess = \Drupal::getContainer()
-    ->get('group_customization.group.permission');
-  return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
-    'published',
-    'content',
-  ]);
+  if ('view' === $operation) {
+    // @var \Drupal\group_customization\Access\GroupPermissionAccessCheck $groupPermissionAccess
+    $groupPermissionAccess = \Drupal::getContainer()
+      ->get('group_customization.group.permission');
+
+    return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
+      'published',
+      'content',
+    ]);
+  }
 }
 
 /**
  * Implements hook_node_grants_alter().
  */
 function group_customization_node_grants_alter(array &$grants, AccountInterface $account, $op) {
-
-  $key_name_alter = [];
-  // Skip gnode alter activities.
-  if ($account->hasPermission('bypass group access')) {
-    return;
-  }
-
-  // Get all gnode granted rules.
-  foreach (array_keys($grants) as $key) {
-    if (FALSE === strpos($key, 'gnode')) {
-      continue;
-    }
-    $key_name_alter[] = $key;
-  }
-
-  if (!empty($key_name_alter)) {
-    $unpublished = _group_customization_get_unpublished_groups();
-    foreach ($key_name_alter as $key) {
-      $grants[$key] = array_values(array_diff($grants[$key], $unpublished));
+  if ('view' === $op) {
+    $key_name_alter = [];
+    // Skip gnode alter activities.
+    if ($account->hasPermission('bypass group access')) {
+      return;
     }
 
-  }
+    // Get all gnode granted rules.
+    foreach (array_keys($grants) as $key) {
+      if (FALSE === strpos($key, 'gnode')) {
+        continue;
+      }
+      $key_name_alter[] = $key;
+    }
 
+    if (!empty($key_name_alter)) {
+      $unpublished = _group_customization_get_unpublished_groups();
+      foreach ($key_name_alter as $key) {
+        $grants[$key] = array_values(array_diff($grants[$key], $unpublished));
+      }
+    }
+  }
 }
 
 /**
@@ -124,7 +126,7 @@ function group_customization_entity_presave(EntityInterface $entity) {
 function group_customization_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
   // @TODO Add a view name.
   $access = \Drupal::currentUser()->hasPermission('bypass group access');
-  if (!$access && in_array($view->element['#name'], [
+  if (!$access && isset($view->element['#name']) && in_array($view->element['#name'], [
       'search_for_a_country_or_region',
       'map'
     ])

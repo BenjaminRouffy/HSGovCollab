@@ -25,7 +25,6 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
    * @see group_customization.services.yml
    */
   public function access(Route $route, RouteMatchInterface $route_match, AccountInterface $account) {
-
     $result = parent::access($route, $route_match, $account);
 
     // Don't interfere if no group was specified.
@@ -44,6 +43,7 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
       'published',
     ]);
     $result = $result->orIf($group_check);
+
     return $result;
   }
 
@@ -66,22 +66,30 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
    * @see group_customization_group_access()
    */
   public function checkAccess(EntityInterface $entity, string $operation, AccountInterface $account, array $group_statuses = []) {
-    // @TODO Ensure that it is correct permission.
-    $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
-    //$group_by_pass = GroupAccessResult::allowedIfHasGroupPermissions($entity, $account, [
-    //  'bypass administer group status',
-    //  'bypass administer group ' . $operation,
-    //], 'OR');
-    if (!$bypass->isAllowed()/* && !$group_by_pass->isAllowed()*/) {
-      if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
-        if (!$entity->get('field_group_status')) {
-          return AccessResult::neutral();
+    if ('view' === $operation) {
+      // @TODO Ensure that it is correct permission.
+      $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
+      //$group_by_pass = GroupAccessResult::allowedIfHasGroupPermissions($entity, $account, [
+      //  'bypass administer group status',
+      //  'bypass administer group ' . $operation,
+      //], 'OR');
+      if (!$bypass->isAllowed()/* && !$group_by_pass->isAllowed()*/) {
+        if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
+          if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'edit group')) {
+            return AccessResult::allowed();
+          }
+
+          if (!$entity->get('field_group_status')) {
+            return AccessResult::neutral();
+          }
+
+          $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
+          $status = AccessResult::forbiddenIf(!in_array($group_status, $group_statuses));
+          return $status;
         }
-        $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
-        $status = AccessResult::forbiddenIf(!in_array($group_status, $group_statuses));
-        return $status;
       }
     }
+
     return AccessResult::neutral();
   }
 

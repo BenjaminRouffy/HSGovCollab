@@ -7,34 +7,21 @@ dependencies:
     - field.field.group.governance_area.field_banner
     - field.field.group.governance_area.field_bottom_link
     - field.field.group.governance_area.field_content
-    - field.field.group.governance_area.field_country_options
     - field.field.group.governance_area.field_date
     - field.field.group.governance_area.field_faq
     - field.field.group.governance_area.field_ga_icon
-    - field.field.group.governance_area.field_group_status
     - field.field.group.governance_area.field_infographic
     - field.field.group.governance_area.field_join_block
-    - field.field.group.governance_area.field_location
     - field.field.group.governance_area.field_summary
     - field.field.group.governance_area.field_time_line
     - group.type.governance_area
   module:
     - entity_reference_revisions
-    - geolocation
 id: group.governance_area.map
 targetEntityType: group
 bundle: governance_area
 mode: map
 content:
-  field_country_options:
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
   field_infographic:
     type: entity_reference_revisions_entity_view
     weight: 1
@@ -44,13 +31,6 @@ content:
       view_mode: map
       link: ''
     third_party_settings: {  }
-  field_location:
-    weight: 2
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: geolocation_latlng
-    region: content
 hidden:
   changed: true
   created: true
@@ -60,7 +40,6 @@ hidden:
   field_date: true
   field_faq: true
   field_ga_icon: true
-  field_group_status: true
   field_join_block: true
   field_summary: true
   field_time_line: true

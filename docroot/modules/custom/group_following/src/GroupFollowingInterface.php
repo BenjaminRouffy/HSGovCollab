@@ -12,9 +12,14 @@ interface GroupFollowingInterface {
    */
   public function getResultByAccount(AccountInterface $account);
 
+  /**
+   * @return mixed
+   */
   public function follow();
 
+  /**
+   * @return mixed
+   */
   public function unfollow();
-
 
 }

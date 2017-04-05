@@ -1,17 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: spheresh
- * Date: 30/03/17
- * Time: 17:44
- */
 
 namespace Drupal\group_following;
 
-
 use Drupal\Core\Session\AccountInterface;
 
-class GroupFollowingResult implements GroupFollowingResultInterface  {
+/**
+ * Class GroupFollowingResult.
+ */
+class GroupFollowingResult implements GroupFollowingResultInterface {
 
   /**
    * @var GroupFollowing
@@ -25,6 +21,7 @@ class GroupFollowingResult implements GroupFollowingResultInterface  {
 
   /**
    * GroupFollowingResult constructor.
+   *
    * @param GroupFollowing $group_following
    * @param AccountInterface $account
    */
@@ -32,6 +29,7 @@ class GroupFollowingResult implements GroupFollowingResultInterface  {
     $this->groupFollowing = $group_following;
     $this->entity = $account;
   }
+
   /**
    * Return TRUE in case isSoftFollower or isHardFollower is TRUE.
    *
@@ -56,5 +54,7 @@ class GroupFollowingResult implements GroupFollowingResultInterface  {
    * @return bool
    */
   public function isHardFollower() {
+    // TODO: Implement isHardFollower() method.
   }
+
 }

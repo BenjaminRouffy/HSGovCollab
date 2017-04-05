@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\group_following;
+
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group\GroupMembershipLoader;
@@ -53,4 +54,5 @@ class GroupFollowingManager implements GroupFollowingManagerInterface {
   public function addHardFollowing(GroupFollowing $group_following, AccountInterface $account) {
     // TODO: Implement addHardFollowing() method.
   }
+
 }

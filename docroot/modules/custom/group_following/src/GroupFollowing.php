@@ -34,15 +34,27 @@ class GroupFollowing implements GroupFollowingInterface {
     return new GroupFollowingResult($this, $account);
   }
 
+  /**
+   * @return mixed
+   */
   public function follow() {
-    $this->entity;
+    // TODO: Implement unfollow() method.
   }
 
+  /**
+   * @return mixed
+   */
   public function unfollow() {
     // TODO: Implement unfollow() method.
   }
 
+  /**
+   * @param $entity
+   * @return int
+   */
   public function getFollowerByGroupForUser($entity) {
-    return $this->groupFollowingManager->getStorage()->getFollowerByGroupForUser($this->entity, $entity);
+    return $this->groupFollowingManager->getStorage()
+      ->getFollowerByGroupForUser($this->entity, $entity);
   }
+
 }

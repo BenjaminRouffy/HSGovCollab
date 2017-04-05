@@ -4,15 +4,24 @@ namespace Drupal\group_following\Helper\Sql;
 
 use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Database\Query\Select;
 
+/**
+ * Class Builder.
+ */
 class Builder {
 
   protected $connection;
 
-  function __construct(Connection $connection) {
+  /**
+   * Builder constructor.
+   *
+   * @param \Drupal\Core\Database\Connection $connection
+   *   Database connection service.
+   */
+  public function __construct(Connection $connection) {
     $this->connection = $connection;
   }
+
   /**
    * The nested query will return all available membership types.
    *
@@ -25,9 +34,10 @@ class Builder {
    *
    * @todo This part can be optimised.
    *
-   * @return \Drupal\Core\Database\Query\Select
+   * @return array
+   *   List of membership types.
    */
-  function getAllGroupMemberShipTypes() {
+  public function getAllGroupMemberShipTypes() {
     $select = $this->connection->select('group_content', 'gc');
     $select->addField('gc', 'type');
     $select->condition('gc.type', '%group_membership', 'LIKE');
@@ -36,7 +46,6 @@ class Builder {
   }
 
   /**
-   *
    * Type field of membership without "group_membership" prefix.
    *
    * @example
@@ -63,40 +72,42 @@ class Builder {
    *    gcfd.entity_id                     AS uid,
    *    substring_index(gcfd.type, '-', 1) AS type,
    *    substring_index(
-   *      if(isnull(gcgr.entity_id), replace(gcfd.type, 'group_membership', 'unfollower'), gcgr.group_roles_target_id), '-',
-   *    -1)                            AS role
+   *      if(
+   *        isnull(gcgr.entity_id),
+   *          replace(gcfd.type, 'group_membership', 'unfollower'),
+   *          gcgr.group_roles_target_id), '-', -1)  AS role
    *    FROM group_content_field_data gcfd
-   *      LEFT OUTER JOIN group_content__group_roles gcgr ON gcfd.id = gcgr.entity_id
+   *      LEFT OUTER JOIN group_content__group_roles gcgr
+   *        ON gcfd.id = gcgr.entity_id
    *    WHERE gcfd.type IN ('region-group_membership', ...)
    *    HAVING role in ('follower', 'unfollower')
    *
-   * @param \Drupal\Core\Database\Query\Select $where
+   * @param array $where
+   *   List of membership types.
+   *
    * @return \Drupal\Core\Database\Query\Select
+   *   Nested query.
    */
-  function getGroupRolesWithGid(array $where) {
+  public function getGroupRolesWithGid(array $where) {
 
     $select = $this->connection->select('group_content_field_data', 'gcfd');
     $select->leftJoin('group_content__group_roles', ' gcgr', 'gcfd.id = gcgr.entity_id');
 
     $select->addField('gcfd', 'id', 'id');
     $select->addExpression('substring_index(gcfd.type, \'-\', 1)', 'type');
-//    $select->addField('gcfd', 'type', 'type');
     $select->addField('gcfd', 'gid', 'gid');
 
     // @TODO Ensure that 'unfollower' role is needed here.
-    $select->addExpression($exp1 = 'substring_index(if(isnull(gcgr.entity_id), replace(gcfd.type, \'group_membership\', \'unfollower\'), gcgr.group_roles_target_id),\'-\', -1)', 'role');
-//    $select->addField('gcgr', 'group_roles_target_id', 'role');
+    $select->addExpression('substring_index(if(isnull(gcgr.entity_id), replace(gcfd.type, \'group_membership\', \'unfollower\'), gcgr.group_roles_target_id),\'-\', -1)', 'role');
     $select->addField('gcfd', 'entity_id', 'uid');
 
-//    $select->condition('gcfd.type', '%group_membership', 'LIKE');
     $select->condition('gcfd.type', $where, 'IN');
 
-    /** @var Condition $or */
+    /** @var \Drupal\Core\Database\Query\Condition $or */
     $or = new Condition('OR');
     $or->condition('gcgr.group_roles_target_id', '%-follower', 'LIKE');
     $or->isNull('gcgr.group_roles_target_id');
     $select->condition($or);
-    //$select->where($exp1 . ' IN (\'follower\', \'unfollower\')');
 
     return $select;
   }
@@ -118,8 +129,9 @@ class Builder {
    *  | 279 | 280 | 1 | - hops of child has been increase
    *
    * @return \Drupal\Core\Database\Query\Select
+   *   Nested query.
    */
-  function getGroupGraphWithOwn() {
+  public function getGroupGraphWithOwn() {
     $group_graph_with_own = $this->connection->select('groups_field_data', 'gfd');
     $group_graph_with_own->addExpression('ifnull(gg.start_vertex, gfd.id)', 'start_vertex');
     $group_graph_with_own->addExpression('ifnull(gg.end_vertex, gfd.id)', 'end_vertex');
@@ -132,28 +144,29 @@ class Builder {
   /**
    * Threads regenerating based on query.
    *
-   * @param $iteration
+   * @param int $iteration
+   *   Max depth level.
+   *
    * @return string
+   *   String to insert into query.
    */
-  function getRoles($iteration) {
+  public function getRoles($iteration) {
     $fields = [];
     for ($i = 1; $i <= $iteration; $i++) {
       switch ($i) {
         case 1:
-          /**
-           * !!! Experimental !!!
-           *
-           * This code will auto soft follow all unfollowed regions.
-           */
-          $fields[] = "if(grg{$i}.role = 'unfollower', if(grg{$i}.type = 'region','unfollower:follower','unfollower'), grg{$i}.role)";
+          // If the first level and group type is "region",
+          // assuming that this condition carry out.
+          // The "unfollowed" region at first position
+          // should return "follower" role for next one group in the depth.
+          $fields[] = "IF(grg{$i}.role = 'unfollower', IF(grg{$i}.type = 'region', 'unfollower:follower', 'unfollower'), grg{$i}.role)";
           break;
+
         default:
           $fields[] = "grg{$i}.role";
       }
     }
-
-    return "concat_ws(':', ':', " . implode(',', $fields) . ")";
-
+    return "CONCAT_WS(':', ':', " . implode(',', $fields) . ")";
   }
 
 }

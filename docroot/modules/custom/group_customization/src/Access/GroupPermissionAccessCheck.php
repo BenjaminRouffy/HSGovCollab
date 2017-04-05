@@ -75,19 +75,29 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
       //  'bypass administer group ' . $operation,
       //], 'OR');
       if (!$bypass->isAllowed()/* && !$group_by_pass->isAllowed()*/) {
-        if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
+        if ($entity instanceof GroupInterface) {
           if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'edit group')->isAllowed()) {
             return AccessResult::allowed();
           }
 
-          if (!$entity->get('field_group_status')) {
-            return AccessResult::neutral();
+          if ($entity->hasField('field_group_status')) {
+            if (!$entity->get('field_group_status')) {
+              return AccessResult::neutral();
+            }
+
+            $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
+            $status = AccessResult::forbiddenIf(!in_array($group_status, $group_statuses));
+
+            return $status;
           }
-
-          $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
-          $status = AccessResult::forbiddenIf(!in_array($group_status, $group_statuses));
-
-          return $status;
+          else {
+            if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'view group')->isAllowed()) {
+              return AccessResult::allowed();
+            }
+            else {
+              return AccessResult::forbidden();
+            }
+          }
         }
       }
     }

@@ -2131,7 +2131,9 @@ header .social-links .font-social-icon {
     .project-list .project-bottom-link .font-social-icon:not(:last-child) {
       margin-bottom: 10px; }
     .country-list .project-bottom-link span,
-    .project-list .project-bottom-link span {
+    .country-list .project-bottom-link a,
+    .project-list .project-bottom-link span,
+    .project-list .project-bottom-link a {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -2139,13 +2141,19 @@ header .social-links .font-social-icon {
       transition: opacity .3s ease;
       white-space: nowrap; }
       .country-list .project-bottom-link span:hover,
-      .project-list .project-bottom-link span:hover {
+      .country-list .project-bottom-link a:hover,
+      .project-list .project-bottom-link span:hover,
+      .project-list .project-bottom-link a:hover {
         opacity: .66; }
       .country-list .project-bottom-link span:after,
-      .project-list .project-bottom-link span:after {
+      .country-list .project-bottom-link a:after,
+      .project-list .project-bottom-link span:after,
+      .project-list .project-bottom-link a:after {
         content: none; }
       .country-list .project-bottom-link span:before,
-      .project-list .project-bottom-link span:before {
+      .country-list .project-bottom-link a:before,
+      .project-list .project-bottom-link span:before,
+      .project-list .project-bottom-link a:before {
         font-size: 1.75rem;
         content: "j";
         color: #4c7e96;
@@ -4533,18 +4541,13 @@ footer {
 
 .content-container {
   margin: 0 auto;
-  max-width: 1160px;
-  padding: 80px 0 40px;
+  max-width: 1200px;
+  padding: 80px 20px 40px;
   width: 100%; }
   .front .content-container {
     max-width: 1260px; }
   .contact-us .content-container .top-text-region {
     margin-bottom: 30px; }
-
-@media (max-width: 991px) {
-  .content-container {
-    padding-left: 20px;
-    padding-right: 20px; } }
 
 .region-wrapper:after {
   content: "";

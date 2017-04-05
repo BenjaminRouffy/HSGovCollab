@@ -29,8 +29,8 @@
 
 .content-container {
   margin: 0 auto;
-  max-width: 1160px;
-  padding: 80px 0 40px;
+  max-width: 1200px;
+  padding: 80px 20px 40px;
   width: 100%;
 
   .front & {
@@ -42,11 +42,6 @@
       margin-bottom: 30px;
     }
   }
-}
-
-@include breakpoint-for('.content-container', (to: laptop-small)) {
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .region-wrapper {

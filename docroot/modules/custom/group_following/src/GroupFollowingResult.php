@@ -9,15 +9,36 @@
 namespace Drupal\group_following;
 
 
+use Drupal\Core\Session\AccountInterface;
+
 class GroupFollowingResult implements GroupFollowingResultInterface  {
 
+  /**
+   * @var GroupFollowing
+   */
+  protected $groupFollowing;
+
+  /**
+   * @var AccountInterface
+   */
+  protected $entity;
+
+  /**
+   * GroupFollowingResult constructor.
+   * @param GroupFollowing $group_following
+   * @param AccountInterface $account
+   */
+  function __construct(GroupFollowing $group_following, AccountInterface $account) {
+    $this->groupFollowing = $group_following;
+    $this->entity = $account;
+  }
   /**
    * Return TRUE in case isSoftFollower or isHardFollower is TRUE.
    *
    * @return bool
    */
   public function isFollower() {
-    // TODO: Implement isFollower() method.
+    return $this->isHardFollower() || $this->isSoftFollower();
   }
 
   /**
@@ -26,7 +47,7 @@ class GroupFollowingResult implements GroupFollowingResultInterface  {
    * @return bool
    */
   public function isSoftFollower() {
-    // TODO: Implement isSoftFollower() method.
+    return $this->groupFollowing->getFollowerByGroupForUser($this->entity);
   }
 
   /**
@@ -35,6 +56,5 @@ class GroupFollowingResult implements GroupFollowingResultInterface  {
    * @return bool
    */
   public function isHardFollower() {
-    // TODO: Implement isHardFollower() method.
   }
 }

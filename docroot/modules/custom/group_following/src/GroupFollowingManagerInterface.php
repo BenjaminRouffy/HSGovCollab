@@ -18,7 +18,7 @@ interface GroupFollowingManagerInterface {
   public function getFollowingByGroup(GroupInterface $group);
 
   /**
-   * @return GroupFollowingStorageInteraface
+   * @return GroupFollowingStorageInterface
    */
   public function getStorage();
 

@@ -2,10 +2,16 @@
 
 namespace Drupal\group_following\Helper\Sql;
 
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\Query\Select;
 
 class Builder {
 
+  protected $connection;
+
+  function __construct(Connection $connection) {
+    $this->connection = $connection;
+  }
   /**
    * The nested query will return all available membership types.
    *
@@ -21,7 +27,7 @@ class Builder {
    * @return \Drupal\Core\Database\Query\Select
    */
   function getAllGroupMemberShipTypes() {
-    $select = db_select('group_content', 'gc');
+    $select = $this->connection->select('group_content', 'gc');
     $select->addField('gc', 'type');
     $select->condition('gc.type', '%group_membership', 'LIKE');
     $select->groupBy('gc.type');
@@ -68,7 +74,7 @@ class Builder {
    */
   function getGroupRolesWithGid(Select $where) {
 
-    $select = db_select('group_content_field_data', 'gcfd');
+    $select = $this->connection->select('group_content_field_data', 'gcfd');
     $select->leftJoin('group_content__group_roles', ' gcgr', 'gcfd.id = gcgr.entity_id');
 
     $select->addField('gcfd', 'id', 'id');
@@ -104,7 +110,7 @@ class Builder {
    * @return \Drupal\Core\Database\Query\Select
    */
   function getGroupGraphWithOwn() {
-    $group_graph_with_own = db_select('groups_field_data', 'gfd');
+    $group_graph_with_own = $this->connection->select('groups_field_data', 'gfd');
     $group_graph_with_own->addExpression('ifnull(gg.start_vertex, gfd.id)', 'start_vertex');
     $group_graph_with_own->addExpression('ifnull(gg.end_vertex, gfd.id)', 'end_vertex');
     $group_graph_with_own->addExpression('if(isnull(gg.hops), 0, gg.hops + 1)', 'hops');

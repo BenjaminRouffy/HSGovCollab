@@ -390,6 +390,58 @@
   }
 }
 
+@include breakpoint-for('.overlay-wrapper', (to: laptop-small)) {
+  h1 {
+    @include font-size(64);
+  }
+
+  .description {
+    @include font-size(32);
+    line-height: 42px;
+  }
+}
+
+@include breakpoint-for('.overlay-wrapper', (to: tablet)) {
+  h1 {
+    @include font-size(56);
+    line-height: 64px;
+  }
+
+  .description {
+    @include font-size(25.6);
+    line-height: 32px;
+    margin-top: 10px;
+  }
+}
+
+@include breakpoint-for('.overlay-wrapper', (to: mobileL)) {
+  h1 {
+    @include font-size(32);
+    line-height: 40px;
+  }
+
+  .description {
+    @include font-size(19.2);
+    line-height: 24px;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .overlay-wrapper {
+    h1 {
+      @include font-size(26);
+      line-height: 28px;
+      margin-top: 10px;
+    }
+
+    .description {
+      @include font-size(16);
+      line-height: 20px;
+    }
+  }
+}
+
 .w-background-video {
   .plyr {
     max-height: 60vh;

@@ -500,6 +500,18 @@
     }
   };
 
+  Drupal.behaviors.header = {
+    attach: function(context, settings) {
+      var $staticHeader = $('.header-static', context);
+
+      $.scrollAction(function() {
+        return this.scrollY > 0;
+      }, function(isTrue) {
+        $staticHeader.toggleClassCondition(isTrue, 'collapsed');
+      });
+    }
+  };
+
   Drupal.behaviors.ieFixes = {
     attach: function(context, settings) {
       // IE 9

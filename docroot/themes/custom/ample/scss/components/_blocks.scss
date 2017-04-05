@@ -960,6 +960,9 @@
   .project-content {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
     padding: 30px 0 20px;
     position: relative;

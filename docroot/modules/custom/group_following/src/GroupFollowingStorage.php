@@ -31,7 +31,7 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
 
     $group_graph = $this->connection->select($group_graph_with_own, 'gg1');
 
-    $group_graph->addExpression($this->sqlBuilder->getRoles(static::ITERATION), 'roles');
+    $group_graph->addExpression($exp2 = $this->sqlBuilder->getRoles(static::ITERATION), 'roles');
 
     for ($i = 1; $i <= static::ITERATION; $i++) {
       if ($i != 1) {
@@ -49,8 +49,8 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
 
     }
     $group_graph->condition('gg1.hops', 0);
-    $group_graph->havingCondition('roles', '%:unfollower', 'NOT LIKE');
-    $group_graph->havingCondition('roles', ':', '!=');
+    $group_graph->where($exp2 . 'NOT LIKE \'%:unfollower\'');
+    $group_graph->where($exp2 . ' != \':\'');
 
     return $group_graph;
   }

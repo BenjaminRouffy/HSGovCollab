@@ -82,11 +82,12 @@ class Builder {
     $select->addField('gcfd', 'gid', 'gid');
 
     // @TODO Ensure that 'unfollower' role is needed here.
-    $select->addExpression('substring_index(if(isnull(gcgr.entity_id), replace(gcfd.type, \'group_membership\', \'unfollower\'), gcgr.group_roles_target_id),\'-\', -1)', 'role');
+    $select->addExpression($exp1 = 'substring_index(if(isnull(gcgr.entity_id), replace(gcfd.type, \'group_membership\', \'unfollower\'), gcgr.group_roles_target_id),\'-\', -1)', 'role');
     $select->addField('gcfd', 'entity_id', 'uid');
 
     $select->condition('gcfd.type', $where, 'IN');
-    $select->havingCondition('role', ['follower', 'unfollower'], 'IN');
+
+    $select->where($exp1 . ' IN (\'follower\', \'unfollower\')');
 
     return $select;
   }

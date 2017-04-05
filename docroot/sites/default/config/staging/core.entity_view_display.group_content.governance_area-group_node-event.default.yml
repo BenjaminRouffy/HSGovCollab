@@ -1,0 +1,23 @@
+uuid: 6cc07bb7-9806-48ae-952d-f842bd3c0710
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.governance_area-group_node-event
+id: group_content.governance_area-group_node-event.default
+targetEntityType: group_content
+bundle: governance_area-group_node-event
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: news_events_listing
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

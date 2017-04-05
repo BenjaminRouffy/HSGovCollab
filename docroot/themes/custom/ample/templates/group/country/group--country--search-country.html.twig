@@ -7,7 +7,7 @@
 {% if not logged_in %}
   {{ content.field_infographic }}
 {% else %}
-{{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}
+  {{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}
 {% endif %}
-{{ content.field_regions }}
+
 <a href="{{ url }}" class="country-link"></a>

@@ -1,5 +1,7 @@
 services:
   group_following.manager:
-    class: Drupal\group_following\GroupFollowingManager
+    class: \Drupal\group_following\GroupFollowingManager
     arguments: ['@group.membership_loader']
+  group_following.builder_sql:
+    class: \Drupal\group_following\Helper\Sql\Builder
 

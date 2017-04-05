@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Views alteration.
+ */
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function group_following_views_data_alter(array &$data) {
+  $data['group_content_field_data']['group_following'] = array(
+    'title' => t('Group following'),
+    'help' => t('Group following'),
+    'relationship' => array(
+      'base field' => 'end_vertex',
+      'join_id' => 'group_following',
+      'id' => 'group_following',
+      'label' => t('Group following label for relationship'),
+      'base' => 'group_graph',
+      'field' => 'gid',
+    ),
+  );
+}

@@ -75,7 +75,7 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
       //], 'OR');
       if (!$bypass->isAllowed()/* && !$group_by_pass->isAllowed()*/) {
         if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
-          if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'edit group')) {
+          if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'edit group')->isAllowed()) {
             return AccessResult::allowed();
           }
 
@@ -85,6 +85,7 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
 
           $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
           $status = AccessResult::forbiddenIf(!in_array($group_status, $group_statuses));
+
           return $status;
         }
       }

@@ -690,3 +690,10 @@ function deployment_update_8046() {
 function deployment_update_8047() {
   \Drupal::service('module_installer')->install(['password_policy']);
 }
+
+/**
+ * Install module "Views Field View".
+ */
+function deployment_update_8048() {
+  \Drupal::service('module_installer')->install(['views_field_view']);
+}

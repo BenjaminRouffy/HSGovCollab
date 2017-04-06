@@ -2,6 +2,7 @@
 
 namespace Drupal\p4h_views_plugins\Plugin\views\filter;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Config\Entity\ConfigEntityStorageInterface;
 use Drupal\Core\Entity\Sql\SqlEntityStorageInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -82,7 +83,7 @@ class GroupIndexByGroupType extends GroupIndexGid  {
     }
 
     $form['gid'] = [
-      '#type' => 'radios',
+      '#type' => 'checkboxes',
       '#title' => $this->t('Group type'),
       '#options' => $options,
       '#default_value' => $this->options['gid'],
@@ -92,25 +93,35 @@ class GroupIndexByGroupType extends GroupIndexGid  {
 
 
   protected function valueForm(&$form, FormStateInterface $form_state) {
-    $group_type = $this->groupType->load($this->options['gid']);
     $options = [];
+    $account = \Drupal::currentUser();
 
-    $query = \Drupal::entityQuery('group')
-      // @todo Sorting on vocabulary properties -
-      //   https://www.drupal.org/node/1821274.
-      ->addTag('group_access');
-    $query->condition('type', $group_type->id());
-    $result = $query->execute();
-    $groups = $this->group->loadMultiple($result);
+    foreach ($this->options['gid'] as $group_type_id) {
+      $group_type = $this->groupType->load($group_type_id);
 
-    foreach ($groups as $group) {
-      $access = $group->access('view group', null, TRUE);
-      if(!$access->isForbidden()) {
+      $query = \Drupal::entityQuery('group')
+        // @todo Sorting on vocabulary properties -
+        //   https://www.drupal.org/node/1821274.
+        ->addTag('group_access');
+      $query->condition('type', $group_type->id());
+      $result = $query->execute();
+      $groups = $this->group->loadMultiple($result);
 
-      $options[$group->id()] = \Drupal::entityManager()
-        ->getTranslationFromContext($group)
-        ->label();
+      foreach ($groups as $group) {
+        $groupPermissionAccess = \Drupal::getContainer()
+          ->get('group_customization.group.permission');
 
+        /* @var AccessResult $access */
+        $access =  $groupPermissionAccess->checkAccessForFilter($group, $account, [
+          'published',
+          'content',
+        ]);
+
+        if ($access->isAllowed()) {
+          $options[$group->id()] = \Drupal::entityManager()
+            ->getTranslationFromContext($group)
+            ->label();
+        }
       }
     }
 

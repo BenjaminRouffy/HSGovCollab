@@ -3,6 +3,7 @@
 namespace Drupal\group_customization\Access;
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Entity\EntityAccessCheck;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Routing\Access\AccessInterface;
@@ -50,16 +51,16 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
   /**
    * This function will check permission on entity load.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
+   * @param EntityInterface $entity
    *   Group Entity.
    * @param string $operation
    *   String value most of cases contains ('view', 'view group', 'edit') etc.
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * @param AccountInterface $account
    *   Current account.
    * @param array $group_statuses
    *   Array of statuses that is allowed in current case.
    *
-   * @return \Drupal\Core\Access\AccessResultInterface
+   * @return AccessResultInterface
    *   Access result implementation.
    *
    * @see ContentEntityBase::access()
@@ -92,6 +93,34 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
     }
 
     return AccessResult::neutral();
+  }
+
+  /**
+   * This function will check permission for views exposed filter.
+   *
+   * @param EntityInterface $entity
+   *   Group Entity.
+   * @param AccountInterface $account
+   *   Current account.
+   * @param array $group_statuses
+   *   Array of statuses that is allowed in current case.
+   *
+   * @return AccessResultInterface
+   *   Access result implementation.
+   */
+  public function checkAccessForFilter(EntityInterface $entity, AccountInterface $account, array $group_statuses = []) {
+    if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
+      if (!$entity->get('field_group_status')) {
+        return AccessResult::neutral();
+      }
+
+      $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
+      $status = AccessResult::allowedIf(in_array($group_status, $group_statuses));
+
+      return $status;
+    }
+
+    return GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'access to view all group content');
   }
 
 }

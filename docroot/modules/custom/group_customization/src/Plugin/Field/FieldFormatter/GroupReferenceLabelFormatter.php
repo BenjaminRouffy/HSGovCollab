@@ -42,7 +42,7 @@ class GroupReferenceLabelFormatter extends EntityReferenceLabelFormatter {
         return parent::viewElements($items, $langcode);
       }
 
-      $label = $entity->label();
+      $label = $this->t('Part of the @region Region', ['@region' => $entity->label()]);
       $access_to_link = AccessResult::allowedIfHasPermission($account, 'access group link');
 
       if ($access_to_link->isAllowed() && !$entity->isNew()) {
@@ -50,7 +50,7 @@ class GroupReferenceLabelFormatter extends EntityReferenceLabelFormatter {
 
         $elements[$delta] = [
           '#type' => 'link',
-          '#title' => $this->t('Part of the @region Region', ['@region' => $label]),
+          '#title' => $label,
           '#url' => $url,
           '#options' => $url->getOptions(),
         ];

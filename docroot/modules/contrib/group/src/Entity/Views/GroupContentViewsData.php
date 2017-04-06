@@ -103,7 +103,7 @@ class GroupContentViewsData extends EntityViewsData {
         'title' => t('@entity_type from group content', $t_args),
         'help' => t('Relates to the @entity_type entity the group content represents.', $t_args),
         'relationship' => array(
-          'group' => $entity_type->getLabel(),
+          'group' => $entity_type->getLowercaseLabel(),
           'base' => $entity_data_table,
           'base field' => $entity_type->getKey('id'),
           'relationship field' => 'entity_id',

@@ -435,12 +435,12 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
-        - 'config:core.entity_view_display.group.region.country_list_by_region'
-        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
         - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.country.search_country'
   block_1:
     display_plugin: block
@@ -1443,18 +1443,18 @@ display:
             description: ''
             use_operator: false
             operator: combine_op
-            identifier: combine
+            identifier: combine_region
             required: true
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
           is_grouped: false
           group_info:
             label: ''

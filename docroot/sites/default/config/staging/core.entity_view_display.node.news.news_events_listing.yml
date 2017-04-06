@@ -12,10 +12,12 @@ dependencies:
     - field.field.node.news.field_documents
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
+    - field.field.node.news.field_news_country_content
     - field.field.node.news.field_organization
     - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
+    - group_content_formatters
     - image
     - user
 id: node.news.news_events_listing
@@ -40,6 +42,13 @@ content:
       image_link: ''
     third_party_settings: {  }
     region: content
+  field_news_country_content:
+    type: group_content_country_list
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   addtoany: true
   body: true

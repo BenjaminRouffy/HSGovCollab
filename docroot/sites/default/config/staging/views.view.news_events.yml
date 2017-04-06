@@ -887,7 +887,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: 0
-          gid: country
+          gid:
+            country: country
+            project: project
+            region: region
           entity_type: group_content
           entity_field: gid
           plugin_id: group_index_gid

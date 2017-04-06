@@ -697,3 +697,11 @@ function deployment_update_8047() {
 function deployment_update_8048() {
   \Drupal::service('module_installer')->install(['views_field_view']);
 }
+
+
+/**
+ * Install module "group_following".
+ */
+function deployment_update_8049() {
+  \Drupal::service('module_installer')->install(['group_following']);
+}

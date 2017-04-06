@@ -91,23 +91,22 @@ class Builder {
   public function getGroupRolesWithGid(array $where) {
 
     $select = $this->connection->select('group_content_field_data', 'gcfd');
-    $select->leftJoin('group_content__group_roles', ' gcgr', 'gcfd.id = gcgr.entity_id');
+    $unikey = rand(100, 999);
+    $select->leftJoin('group_content__group_roles', ' gcgr', 'gcfd.id = gcgr.entity_id AND gcgr.group_roles_target_id LIKE :follower' . $unikey, [':follower' . $unikey => '%-follower']);
 
     $select->addField('gcfd', 'id', 'id');
     $select->addExpression('substring_index(gcfd.type, \'-\', 1)', 'type');
     $select->addField('gcfd', 'gid', 'gid');
 
     // @TODO Ensure that 'unfollower' role is needed here.
-    $select->addExpression('substring_index(if(isnull(gcgr.entity_id), replace(gcfd.type, \'group_membership\', \'unfollower\'), gcgr.group_roles_target_id),\'-\', -1)', 'role');
+    $expression = 'substring_index(if(isnull(gcgr.entity_id), replace(gcfd.type, \'group_membership\', \'unfollower\'), gcgr.group_roles_target_id),\'-\', -1)';
+    $select->addExpression($expression, 'role');
     $select->addField('gcfd', 'entity_id', 'uid');
 
     $select->condition('gcfd.type', $where, 'IN');
 
     /** @var \Drupal\Core\Database\Query\Condition $or */
-    $or = new Condition('OR');
-    $or->condition('gcgr.group_roles_target_id', '%-follower', 'LIKE');
-    $or->isNull('gcgr.group_roles_target_id');
-    $select->condition($or);
+    $select->where($expression . ' IN (\'follower\', \'unfollower\')');
 
     return $select;
   }

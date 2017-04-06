@@ -170,6 +170,7 @@ body {
   height: 100%;
   line-height: 20px;
   min-height: 100%;
+  min-width: 320px;
   overflow-x: hidden; }
   body.no-scroll {
     overflow: hidden; }
@@ -2636,6 +2637,16 @@ form {
     form textarea ~ label.error:after {
       content: none; }
 
+@media (max-width: 479px) {
+  form label {
+    font-size: 1rem; }
+  form .form-email ~ label.error,
+  form .form-text ~ label.error,
+  form .form-textarea ~ label.error {
+    font-size: 0.875rem;
+    top: 82px;
+    text-align: right; } }
+
 .form-text, .form-textarea,
 .form-email {
   border: 1px solid #75a8c0;
@@ -2676,15 +2687,16 @@ form {
   color: #999 !important; }
 
 .email-suffix {
-  display: table;
   margin-bottom: 25px; }
-  .email-suffix input,
-  .email-suffix .field-suffix {
-    display: table-cell;
-    margin-bottom: 0;
-    vertical-align: middle; }
-  .email-suffix .field-suffix {
-    padding-left: 5px; }
+  .form-my-settings .email-suffix {
+    display: table; }
+    .form-my-settings .email-suffix input,
+    .form-my-settings .email-suffix .field-suffix {
+      display: table-cell;
+      margin-bottom: 0;
+      vertical-align: middle; }
+    .form-my-settings .email-suffix .field-suffix {
+      padding-left: 5px; }
 
 .form-file {
   font-size: 1rem;
@@ -3133,6 +3145,11 @@ form .social_login label:after {
       width: 100%; }
     .user-register-form .login-wrapper {
       padding: 0 10px; } }
+
+@media (max-width: 479px) {
+  .user-register-form .social_login,
+  .user-register-form .login-wrapper {
+    padding: 0; } }
 
 .user-onetime-form .good-to-know-icon {
   background: url(../images/light.svg) center no-repeat;

@@ -47,6 +47,21 @@ form {
   }
 }
 
+@include breakpoint-for('form', (to: mobileL)) {
+  label {
+    @include font-size(16);
+  }
+
+  .form-email,
+  .form-text {
+    ~ label.error {
+      @include font-size(14);
+      top: 82px;
+      text-align: right;
+    }
+  }
+}
+
 .form-text,
 .form-email {
   border: 1px solid #75a8c0;
@@ -92,18 +107,21 @@ form {
 }
 
 .email-suffix {
-  display: table;
   margin-bottom: 25px;
 
-  input,
-  .field-suffix {
-    display: table-cell;
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
+  .form-my-settings & {
+    display: table;
 
-  .field-suffix {
-    padding-left: 5px;
+    input,
+    .field-suffix {
+      display: table-cell;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    .field-suffix {
+      padding-left: 5px;
+    }
   }
 }
 
@@ -735,6 +753,13 @@ form {
 
   .login-wrapper {
     padding: 0 10px;
+  }
+}
+
+@include breakpoint-for('.user-register-form', (to: mobileL)) {
+  .social_login,
+  .login-wrapper {
+    padding: 0;
   }
 }
 

@@ -12,6 +12,7 @@ dependencies:
     - better_exposed_filters
     - ggroup
     - group
+    - options
     - p4h_views_plugins
 id: list_of_projects
 label: 'List of projects'
@@ -230,13 +231,13 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -718,6 +719,45 @@ display:
           entity_type: group
           entity_field: langcode
           plugin_id: language
+        field_group_status_value:
+          id: field_group_status_value
+          table: group__field_group_status
+          field: field_group_status_value
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            published: published
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
       filter_groups:
         operator: AND
         groups:

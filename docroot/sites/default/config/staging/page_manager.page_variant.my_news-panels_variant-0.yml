@@ -1,0 +1,47 @@
+uuid: 4b69f0e6-b30e-4dd3-b847-668f0470c7cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - blocktabs.blocktabs.my_news
+    - page_manager.page.my_news
+  module:
+    - blocktabs
+    - panels
+    - user
+id: my_news-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    7b1c5604-1c7e-4553-a39c-949a4ed0356c:
+      id: 'blocktabs_block:my_news'
+      label: 'Blocktabs:My news'
+      provider: blocktabs
+      label_display: '0'
+      region: middle
+      weight: 0
+      uuid: 7b1c5604-1c7e-4553-a39c-949a4ed0356c
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 292785c0-aa49-492b-a644-e6e105cdf680
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: my_news-panels_variant-0
+  builder: standard
+page: my_news
+weight: 0
+selection_criteria:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

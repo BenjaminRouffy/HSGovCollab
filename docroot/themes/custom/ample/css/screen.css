@@ -602,6 +602,8 @@ svg {
     content: 'm'; }
   .dashboard-sidebar .calendar:before {
     content: 'x'; }
+  .dashboard-sidebar .folder:before {
+    content: 'i'; }
   .dashboard-sidebar .contacts:before {
     content: 'n'; }
   .dashboard-sidebar .countries:before {
@@ -4547,7 +4549,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-faq) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;

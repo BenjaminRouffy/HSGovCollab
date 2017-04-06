@@ -1288,6 +1288,7 @@ header .social-links .font-social-icon {
   font-weight: 400;
   line-height: 20px;
   margin-top: 50px;
+  overflow: hidden;
   padding: 20px 0;
   width: 90%; }
   .node-pager .prev-wrapper,
@@ -1920,6 +1921,23 @@ header .social-links .font-social-icon {
     margin-top: 10px;
     margin-bottom: 0; }
 
+@media (max-width: 767px) {
+  .logged .related-wrapper {
+    padding-left: 0; } }
+
+@media (max-width: 479px) {
+  .related-wrapper {
+    position: static;
+    -webkit-transform: none;
+            transform: none; }
+    .related-wrapper .item-list {
+      display: block;
+      padding: 0 20px; }
+      .related-wrapper .item-list li {
+        width: 100%; }
+        .ie9 .related-wrapper .item-list li {
+          float: none; } }
+
 .event-info {
   font-size: 1.575rem;
   border: 2px solid #e9ecee;
@@ -1927,7 +1945,7 @@ header .social-links .font-social-icon {
   line-height: 32px;
   margin-bottom: 40px;
   padding: 40px 40px 20px;
-  width: 94%; }
+  width: 118%; }
   .event-info:after {
     content: "";
     display: table;
@@ -1966,6 +1984,33 @@ header .social-links .font-social-icon {
     font-size: 1.3125rem;
     line-height: 20px;
     margin: 10px auto; }
+
+@media (max-width: 991px) {
+  .event-info {
+    padding-left: 14px;
+    padding-right: 10px; }
+    .event-info .label,
+    .event-info .value {
+      padding-top: 0;
+      padding-bottom: 0;
+      word-break: break-word; }
+    .event-info .red-btn-link {
+      font-size: 1.05rem; } }
+
+@media (max-width: 767px) {
+  .event-info {
+    width: 100%; } }
+
+@media (max-width: 479px) {
+  .event-info .label,
+  .event-info .value {
+    width: 50%; }
+  .event-info .label {
+    font-size: 1.4rem;
+    line-height: 30px; }
+  .event-info .value {
+    font-size: 1.225rem;
+    line-height: 31px; } }
 
 .news-and-events-list {
   font-size: 0rem;
@@ -4566,7 +4611,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -4661,6 +4706,10 @@ footer {
     width: 180px; }
   .title-wrapper ~ .event-info {
     margin-top: -20px; }
+
+@media (max-width: 991px) {
+  .title-wrapper ~ .event-info {
+    margin-top: -10px; } }
 
 @media (max-width: 479px) {
   .title-wrapper {

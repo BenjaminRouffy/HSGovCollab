@@ -1,0 +1,15 @@
+group_following.follow:
+  path: '/group/{group}/follow'
+  defaults:
+    _controller: '\Drupal\group_following\Controller\GroupFollowController::follow'
+  requirements:
+    _group_permission: 'join group'
+    _group_member: 'FALSE'
+
+group_following.unfollow:
+  path: '/group/{group}/unfollow'
+  defaults:
+    _controller: '\Drupal\group_following\Controller\GroupFollowController::unfollow'
+  requirements:
+    _group_permission: 'leave group'
+    _group_member: 'TRUE'

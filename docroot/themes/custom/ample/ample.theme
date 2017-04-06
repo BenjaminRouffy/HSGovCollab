@@ -167,6 +167,7 @@ function ample_preprocess_paragraph(array &$variables) {
     if ('group' === $entity->getEntityTypeId()) {
       $variables['group_label'] = $entity->label();
       $variables['group_bundle'] = $entity->bundle();
+      $variables['following_form'] =  \Drupal::formBuilder()->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $entity);
     }
 
     if ($entity->hasField('field_country_icon')) {

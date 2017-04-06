@@ -41,46 +41,29 @@ class GroupFollowController extends ControllerBase {
   }
 
   /**
+   * @param \Drupal\group\Entity\GroupInterface $group
    */
   public function follow(GroupInterface $group) {
+    /** @var \Drupal\group_following\GroupFollowingManagerInterface $manager */
+    $manager = \Drupal::getContainer()->get('group_following.manager');
 
-//    $group = $this->getContextValue('group');
-//    $user = $this->getContextValue('current_user');
-//
-//    /** @var \Drupal\group\GroupMembership $membership */
-//    $membership = $group->getMember($user);
-//    $membership->getRoles();
+    $group_following = $manager->getFollowingByGroup($group);
 
-    /** @var \Drupal\group\Plugin\GroupContentEnablerInterface $plugin */
-    $plugin = $group->getGroupType()->getContentPlugin('group_membership');
-
-    // Pre-populate a group membership with the current user.
-    $group_content = GroupContent::create([
-      'type' => $plugin->getContentTypeConfigId(),
-      'gid' => $group->id(),
-      'entity_id' => $this->currentUser->id(),
-    ]);
-
-    return $this->entityFormBuilder->getForm($group_content, 'group-join');
+    $group_following->follow();
+    return $this->redirect('entity.group.canonical', ['group' => $group->id()]);
   }
 
   /**
+   * @param \Drupal\group\Entity\GroupInterface $group
    */
   public function unfollow(GroupInterface $group) {
+    /** @var \Drupal\group_following\GroupFollowingManagerInterface $manager */
+    $manager = \Drupal::getContainer()->get('group_following.manager');
 
-//  /** @var \Drupal\group_following\GroupFollowingManagerInterface $manager */
-//  $manager = \Drupal::getContainer()->get('group_following.manager');
-//
-//  $group_following = $manager->getFollowingByGroup(new Group());
-//
-//  $result = $group_following->getResultByAccount($account);
-//
-//  if($result->isFollower() == TRUE) {
-//      $group_following->follow();
-//      $group_following->unfollow();
-//    }
-    $group_content = $group->getMember($this->currentUser)->getGroupContent();
-    return $this->entityFormBuilder->getForm($group_content, 'group-leave');
+    $group_following = $manager->getFollowingByGroup($group);
+
+    $group_following->unfollow();
+    return $this->redirect('entity.group.canonical', ['group' => $group->id()]);
   }
 
 }

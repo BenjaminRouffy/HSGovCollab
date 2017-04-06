@@ -57,14 +57,7 @@ variant_settings:
 page: group_faq
 weight: 0
 selection_criteria:
-  -
-    id: 'entity_bundle:group'
-    bundles:
-      governance_area: governance_area
-    negate: false
-    context_mapping:
-      group: group
-  -
+  1:
     id: access_by_group_roles
     group_roles:
       governance_area-member: governance_area-member
@@ -73,5 +66,12 @@ selection_criteria:
     context_mapping:
       group: group
       user: current_user
+  2:
+    id: 'entity_bundle:group'
+    bundles:
+      governance_area: governance_area
+    negate: false
+    context_mapping:
+      group: group
 selection_logic: and
 static_context: {  }

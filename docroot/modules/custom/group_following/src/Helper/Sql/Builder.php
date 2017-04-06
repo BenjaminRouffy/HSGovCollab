@@ -92,6 +92,10 @@ class Builder {
 
     $select = $this->connection->select('group_content_field_data', 'gcfd');
     $unikey = rand(100, 999);
+    // Join "follower" role to membership table,
+    // means if the user has a membership (which role does not matter)
+    // he/she should has "follower" role to be follower in other cases user
+    // we consider user is unfollower.
     $select->leftJoin('group_content__group_roles', ' gcgr', 'gcfd.id = gcgr.entity_id AND gcgr.group_roles_target_id LIKE :follower' . $unikey, [':follower' . $unikey => '%-follower']);
 
     $select->addField('gcfd', 'id', 'id');
@@ -105,8 +109,9 @@ class Builder {
 
     $select->condition('gcfd.type', $where, 'IN');
 
+    // @TODO Looks like a redundant condition.
     /** @var \Drupal\Core\Database\Query\Condition $or */
-    $select->where($expression . ' IN (\'follower\', \'unfollower\')');
+    //$select->where($expression . ' IN (\'follower\', \'unfollower\')');
 
     return $select;
   }

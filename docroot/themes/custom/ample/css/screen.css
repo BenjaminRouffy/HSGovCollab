@@ -894,6 +894,9 @@ header .social-links .font-social-icon {
     .accordion-button:hover:after {
       -webkit-transform: rotate(45deg);
               transform: rotate(45deg); }
+  .accordion-button.closed:after {
+    -webkit-transform: none;
+            transform: none; }
   .accordion-button .text {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -3963,7 +3966,8 @@ form .social_login label:after {
       text-decoration: none; }
       .popup-wrapper .action-links a:hover {
         opacity: .7; }
-    .popup-wrapper .action-links .logout-link {
+    .popup-wrapper .action-links .logout-link,
+    .popup-wrapper .action-links .continue-link {
       color: #afb7bb;
       margin-right: 50px; }
     .popup-wrapper .action-links .cancel-link {

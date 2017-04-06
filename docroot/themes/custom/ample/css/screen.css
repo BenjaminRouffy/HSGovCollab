@@ -1970,27 +1970,40 @@ header .social-links .font-social-icon {
   .news-and-events-list .item {
     font-size: 0.9625rem;
     display: inline-block;
+    position: relative;
     vertical-align: top;
     width: 25%; }
     .front .news-and-events-list .item {
       width: 33.33%; }
-    .news-and-events-list .item > a {
+    .news-and-events-list .item .event-container,
+    .news-and-events-list .item .news-container {
       border-bottom: 2px solid transparent;
       -webkit-transition: background .2s ease, border .2s ease;
       transition: background .2s ease, border .2s ease; }
-      .news-and-events-list .item > a:hover {
+      .news-and-events-list .item .event-container:hover,
+      .news-and-events-list .item .news-container:hover {
         border-color: #ea3a32; }
+  .news-and-events-list .country a {
+    display: inline;
+    position: relative;
+    z-index: 10; }
   .news-and-events-list .news:first-child {
     margin-bottom: 20px;
     width: 50%; }
+  .news-and-events-list .news:hover .news-container {
+    background: #fff;
+    border-color: #ea3a32; }
   .front .news-and-events-list .news:nth-child(2) {
     margin-bottom: 20px;
     width: 50%; }
-  .news-and-events-list .news > a {
+  .news-and-events-list .news .news-container {
     padding: 10px 10px 30px; }
-    .news-and-events-list .news > a:hover {
-      background: #fff;
-      border-color: #ea3a32; }
+  .news-and-events-list .news > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%; }
   .news-and-events-list .social {
     margin-bottom: 30px;
     padding: 10px; }
@@ -2011,11 +2024,11 @@ header .social-links .font-social-icon {
       margin: 5px 0 10px; }
   .news-and-events-list .event {
     padding: 10px; }
-    .news-and-events-list .event > a {
+    .news-and-events-list .event .event-container {
       background: rgba(234, 58, 50, 0.09) url(../images/calendar-icon.svg) 20px 40px no-repeat;
       background-size: 41px 41px;
       padding: 40px 20px 40px 71px; }
-      .news-and-events-list .event > a:hover {
+      .news-and-events-list .event .event-container:hover {
         background-color: rgba(234, 58, 50, 0.07);
         border-color: #ea3a32; }
   .news-and-events-list a {

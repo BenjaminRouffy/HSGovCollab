@@ -790,15 +790,16 @@
   .item {
     @include font-size(15.4);
     display: inline-block;
+    position: relative;
     vertical-align: top;
     width: 25%;
-
 
     .front & {
       width: 33.33%;
     }
 
-    > a {
+    .event-container,
+    .news-container {
       border-bottom: 2px solid transparent;
       transition: background .2s ease, border .2s ease;
 
@@ -808,10 +809,25 @@
     }
   }
 
+  .country {
+    a {
+      display: inline;
+      position: relative;
+      z-index: 10;
+    }
+  }
+
   .news {
     &:first-child {
       margin-bottom: 20px;
       width: 50%;
+    }
+
+    &:hover {
+      .news-container {
+        background: $white;
+        border-color: $red;
+      }
     }
 
     .front & {
@@ -821,13 +837,16 @@
       }
     }
 
-    > a {
+    .news-container {
       padding: 10px 10px 30px;
+    }
 
-      &:hover {
-        background: $white;
-        border-color: $red;
-      }
+    > a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
     }
   }
 
@@ -862,7 +881,7 @@
   .event {
     padding: 10px;
 
-    > a {
+    .event-container {
       background: rgba($red, .09) url(../images/calendar-icon.svg) 20px 40px no-repeat;
       background-size: 41px 41px;
       padding: 40px 20px 40px 71px;

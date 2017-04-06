@@ -726,6 +726,30 @@
   }
 }
 
+@include breakpoint-for('.related-wrapper', (to: tablet)) {
+  .logged & {
+    padding-left: 0;
+  }
+}
+
+@include breakpoint-for('.related-wrapper', (to: mobileL)) {
+  position: static;
+  transform: none;
+
+  .item-list {
+    display: block;
+    padding: 0 20px;
+
+    li {
+      width: 100%;
+
+      .ie9 & {
+        float: none;
+      }
+    }
+  }
+}
+
 .event-info {
   @include font-size(25.2);
   @include clearfix();
@@ -734,7 +758,7 @@
   line-height: 32px;
   margin-bottom: 40px;
   padding: 40px 40px 20px;
-  width: 94%;
+  width: 118%;
 
   .label {
     margin-left: -4px;
@@ -780,6 +804,43 @@
     @include font-size(21);
     line-height: 20px;
     margin: 10px auto;
+  }
+}
+
+@include breakpoint-for('.event-info', (to: laptop-small)) {
+  padding-left: 14px;
+  padding-right: 10px;
+
+  .label,
+  .value {
+    padding-top: 0;
+    padding-bottom: 0;
+    word-break: break-word;
+  }
+
+  .red-btn-link {
+    @include font-size(16.8);
+  }
+}
+
+@include breakpoint-for('.event-info', (to: tablet)) {
+  width: 100%;
+}
+
+@include breakpoint-for('.event-info', (to: mobileL)) {
+  .label,
+  .value {
+    width: 50%;
+  }
+
+  .label {
+    @include font-size(22.4);
+    line-height: 30px;
+  }
+
+  .value {
+    @include font-size(19.6);
+    line-height: 31px;
   }
 }
 

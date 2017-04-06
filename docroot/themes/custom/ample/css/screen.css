@@ -309,6 +309,11 @@ svg {
     -webkit-transition: opacity .4s ease;
     transition: opacity .4s ease; }
 
+.ui-widget-overlay {
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 1;
+  z-index: 600 !important; }
+
 @-webkit-keyframes blink {
   0% {
     box-shadow: 0 0 5px #ea3a32; }
@@ -1126,8 +1131,9 @@ header .social-links .font-social-icon {
     line-height: 72px;
     margin: 20px 0 10px;
     padding: 0; }
-  .country-content-wrapper .follow-link {
+  .country-content-wrapper .follow-link .form-submit {
     font-size: 1.5rem;
+    background: transparent;
     border: 1px solid #fff;
     color: #fff;
     cursor: pointer;
@@ -1141,8 +1147,10 @@ header .social-links .font-social-icon {
             transform: scale(1.06);
     -webkit-transition: background .2s ease;
     transition: background .2s ease; }
-    .country-content-wrapper .follow-link:hover {
+    .country-content-wrapper .follow-link .form-submit:hover {
       background: #ea3a32; }
+  .country-content-wrapper .follow-link .ajax-progress {
+    position: absolute; }
 
 @media (max-width: 991px) {
   .country-content-wrapper {
@@ -4062,6 +4070,60 @@ form .social_login label:after {
       margin-right: 10px; }
     .popup-wrapper .action-links .cancel-link {
       margin-left: 10px; } }
+
+.ui-dialog {
+  border: none;
+  border-radius: 0;
+  padding: 5%;
+  width: 50% !important;
+  z-index: 610 !important; }
+  .ui-dialog .popup-wrapper {
+    height: auto;
+    opacity: 1;
+    position: static;
+    -webkit-transform: none;
+            transform: none;
+    width: auto; }
+  .ui-dialog .ui-dialog-titlebar {
+    background: none;
+    border: none;
+    padding: 0; }
+  .ui-dialog .ui-button {
+    height: 28px;
+    width: 28px;
+    background: none;
+    border: none;
+    padding: 0;
+    right: 0;
+    top: 0; }
+  .ui-dialog .ui-icon-closethick {
+    background: none;
+    height: 100%;
+    margin: 0;
+    position: static;
+    text-indent: 0;
+    width: 100%; }
+    .ui-dialog .ui-icon-closethick:after {
+      font-size: 1.75rem;
+      content: 'w';
+      color: #ea3a32;
+      font-family: P4h, sans-serif; }
+    .ui-dialog .ui-icon-closethick:hover:after {
+      color: #8c2222; }
+  .ui-dialog .ui-button-text {
+    display: none; }
+
+@media (max-width: 1440px) {
+  .ui-dialog {
+    width: 60% !important; } }
+
+@media (max-width: 1024px) {
+  .ui-dialog {
+    width: 80% !important; } }
+
+@media (max-width: 767px) {
+  .ui-dialog {
+    width: 90% !important; } }
 
 .faq-item {
   position: relative; }

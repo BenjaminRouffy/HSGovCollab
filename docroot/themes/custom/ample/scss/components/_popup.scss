@@ -94,3 +94,70 @@
     }
   }
 }
+
+.ui-dialog {
+  border: none;
+  border-radius: 0;
+  padding: 5%;
+  width: 50% !important;
+  z-index: 610 !important;
+
+  .popup-wrapper {
+    height: auto;
+    opacity: 1;
+    position: static;
+    transform: none;
+    width: auto;
+  }
+
+  .ui-dialog-titlebar {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .ui-button {
+    @include same(28px, height, width);
+    background: none;
+    border: none;
+    padding: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .ui-icon-closethick {
+    background: none;
+    height: 100%;
+    margin: 0;
+    position: static;
+    text-indent: 0;
+    width: 100%;
+
+    &:after {
+      @include font-size(28);
+      content: 'w';
+      color: $red;
+      font-family: $p4h;
+    }
+
+    &:hover:after {
+      color: $red-dark;
+    }
+  }
+
+  .ui-button-text {
+    display: none;
+  }
+}
+
+@include breakpoint-for('.ui-dialog', (to: desktop)) {
+  width: 60% !important;
+}
+
+@include breakpoint-for('.ui-dialog', (to: laptop)) {
+  width: 80% !important;
+}
+
+@include breakpoint-for('.ui-dialog', (to: tablet)) {
+  width: 90% !important;
+}

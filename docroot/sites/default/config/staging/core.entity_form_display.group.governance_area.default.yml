@@ -44,7 +44,6 @@ third_party_settings:
         - field_banner
         - label
         - field_ga_icon
-        - field_group_status
       parent_name: group_tabs_panel
       weight: 7
       format_type: tab
@@ -146,7 +145,7 @@ content:
       title_plural: Paragraphs
       edit_mode: closed
       add_mode: dropdown
-      form_display_mode: private_content
+      form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -187,7 +186,7 @@ content:
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
-      form_display_mode: private_content
+      form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content

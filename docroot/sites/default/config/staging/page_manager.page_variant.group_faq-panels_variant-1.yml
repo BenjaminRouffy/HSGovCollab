@@ -1,22 +1,23 @@
-uuid: d115adbf-558d-4043-af8d-fe0f8dc54d42
+uuid: a3995f07-227d-4642-807c-ed58f1523042
 langcode: en
 status: true
 dependencies:
   config:
-    - page_manager.page.news_events_group
-    - views.view.news_and_events_group
+    - page_manager.page.group_faq
+    - views.view.group_faq
   module:
     - ctools
+    - ctools_block
     - group_customization
     - panels
     - views
-id: news_events_group-panels_variant-3
+id: group_faq-panels_variant-1
 label: 'Governance area'
 variant: panels_variant
 variant_settings:
   blocks:
-    9292f61a-fbef-4c00-a595-5e66538bfb97:
-      id: 'views_block:news_and_events_group-ga_news_events'
+    186a1f56-b120-4914-a80d-bbabaaff2f2f:
+      id: 'views_block:group_faq-faq_block'
       label: ''
       provider: views
       label_display: '0'
@@ -24,20 +25,36 @@ variant_settings:
       items_per_page: none
       region: content
       weight: 0
-      uuid: 9292f61a-fbef-4c00-a595-5e66538bfb97
-      pager: view
+      uuid: 186a1f56-b120-4914-a80d-bbabaaff2f2f
       context_mapping: {  }
+    d2c60cb3-55b5-4c9a-9ba3-5fa5dfcbc075:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: d2c60cb3-55b5-4c9a-9ba3-5fa5dfcbc075
+      context_mapping:
+        entity: group
   id: panels_variant
-  uuid: e61eccc6-7ded-41ec-9df0-559fe3dfc704
+  uuid: 55668c59-5f19-4e0b-aed6-223dc4ae8146
   label: null
   weight: 0
   layout: stacked
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager
-  storage_id: news_events_group-panels_variant-3
+  storage_id: group_faq-panels_variant-1
   builder: standard
-page: news_events_group
+page: group_faq
 weight: 0
 selection_criteria:
   -

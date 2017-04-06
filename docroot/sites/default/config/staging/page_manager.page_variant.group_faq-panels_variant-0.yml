@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.group_faq
     - views.view.group_faq
   module:
+    - ctools
     - ctools_block
     - group_dashboard
     - panels
@@ -63,5 +64,14 @@ selection_criteria:
     negate: 0
     context_mapping:
       user: current_user
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      country: country
+      project: project
+      region: region
+    negate: false
+    context_mapping:
+      group: group
 selection_logic: and
 static_context: {  }

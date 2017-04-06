@@ -7,6 +7,7 @@ dependencies:
     - views.view.list_of_projects
   module:
     - ctools
+    - group_customization
     - panels
     - views
 id: projects_list_group-panels_variant-1
@@ -45,5 +46,14 @@ selection_criteria:
     negate: false
     context_mapping:
       group: group
+  -
+    id: access_by_group_roles
+    group_roles:
+      governance_area-member: governance_area-member
+      governance_area-manager: governance_area-manager
+    negate: 0
+    context_mapping:
+      group: group
+      user: current_user
 selection_logic: and
 static_context: {  }

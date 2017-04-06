@@ -726,6 +726,30 @@
   }
 }
 
+@include breakpoint-for('.related-wrapper', (to: tablet)) {
+  .logged & {
+    padding-left: 0;
+  }
+}
+
+@include breakpoint-for('.related-wrapper', (to: mobileL)) {
+  position: static;
+  transform: none;
+
+  .item-list {
+    display: block;
+    padding: 0 20px;
+
+    li {
+      width: 100%;
+
+      .ie9 & {
+        float: none;
+      }
+    }
+  }
+}
+
 .event-info {
   @include font-size(25.2);
   @include clearfix();
@@ -734,7 +758,7 @@
   line-height: 32px;
   margin-bottom: 40px;
   padding: 40px 40px 20px;
-  width: 94%;
+  width: 118%;
 
   .label {
     margin-left: -4px;
@@ -783,6 +807,43 @@
   }
 }
 
+@include breakpoint-for('.event-info', (to: laptop-small)) {
+  padding-left: 14px;
+  padding-right: 10px;
+
+  .label,
+  .value {
+    padding-top: 0;
+    padding-bottom: 0;
+    word-break: break-word;
+  }
+
+  .red-btn-link {
+    @include font-size(16.8);
+  }
+}
+
+@include breakpoint-for('.event-info', (to: tablet)) {
+  width: 100%;
+}
+
+@include breakpoint-for('.event-info', (to: mobileL)) {
+  .label,
+  .value {
+    width: 50%;
+  }
+
+  .label {
+    @include font-size(22.4);
+    line-height: 30px;
+  }
+
+  .value {
+    @include font-size(19.6);
+    line-height: 31px;
+  }
+}
+
 .news-and-events-list {
   @include font-size(0);
   margin-bottom: 30px;
@@ -790,15 +851,16 @@
   .item {
     @include font-size(15.4);
     display: inline-block;
+    position: relative;
     vertical-align: top;
     width: 25%;
-
 
     .front & {
       width: 33.33%;
     }
 
-    > a {
+    .event-container,
+    .news-container {
       border-bottom: 2px solid transparent;
       transition: background .2s ease, border .2s ease;
 
@@ -808,10 +870,25 @@
     }
   }
 
+  .country {
+    a {
+      display: inline;
+      position: relative;
+      z-index: 10;
+    }
+  }
+
   .news {
     &:first-child {
       margin-bottom: 20px;
       width: 50%;
+    }
+
+    &:hover {
+      .news-container {
+        background: $white;
+        border-color: $red;
+      }
     }
 
     .front & {
@@ -821,13 +898,16 @@
       }
     }
 
-    > a {
+    .news-container {
       padding: 10px 10px 30px;
+    }
 
-      &:hover {
-        background: $white;
-        border-color: $red;
-      }
+    > a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
     }
   }
 
@@ -862,7 +942,7 @@
   .event {
     padding: 10px;
 
-    > a {
+    .event-container {
       background: rgba($red, .09) url(../images/calendar-icon.svg) 20px 40px no-repeat;
       background-size: 41px 41px;
       padding: 40px 20px 40px 71px;

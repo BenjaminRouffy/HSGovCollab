@@ -13,6 +13,7 @@ dependencies:
     - better_exposed_filters
     - ggroup
     - group
+    - group_following
     - options
     - p4h_views_plugins
     - views_field_view
@@ -423,8 +424,8 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
@@ -438,9 +439,9 @@ display:
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
         - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
+        - 'config:core.entity_view_display.group.country.search_country'
   block_1:
     display_plugin: block
     id: block_1
@@ -1753,6 +1754,18 @@ display:
             offset_label: Offset
       defaults:
         pager: false
+        relationships: false
+      relationships:
+        group_following:
+          id: group_following
+          table: groups_field_data
+          field: group_following
+          relationship: none
+          group_type: group
+          admin_label: 'Group following label for relationship'
+          required: true
+          entity_type: group
+          plugin_id: group_following
     cache_metadata:
       max-age: -1
       contexts:

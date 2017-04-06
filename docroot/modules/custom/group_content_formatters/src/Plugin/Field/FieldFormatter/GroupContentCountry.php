@@ -9,6 +9,7 @@ use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupInterface;
 
 /**
  * Plugin implementation of the 'plugin_reference_id' formatter.
@@ -50,18 +51,26 @@ class GroupContentCountry extends FormatterBase {
           ];
         }
         else {
+          /* @var GroupInterface $group */
           foreach (Group::loadMultiple($value['entity_gids']) as $group) {
-            $elements[$delta][] = [
-              '#type' => 'link',
-              '#title' => $group->label(),
-              '#url' => Url::fromRoute('entity.group.canonical', ['group' => $group->id()]),
-            ];
+            if ($group->hasField('field_group_status') && 'published' === $group->get('field_group_status')->value) {
+              $elements[$delta][] = [
+                '#type' => 'link',
+                '#title' => $group->label(),
+                '#url' => Url::fromRoute('entity.group.canonical', ['group' => $group->id()]),
+              ];
+            }
+            else {
+              $elements[$delta][] = [
+                '#type' => 'markup',
+                '#markup' => $group->label(),
+              ];
+            }
           }
         }
       }
 
     }
-
 
     return $elements;
   }

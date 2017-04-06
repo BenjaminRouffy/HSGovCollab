@@ -12,6 +12,21 @@
     $('body').addClass('ie ie11');
   }
 
+  // Detect mobile device.
+  function isTouchDevice() {
+    var $body = $('body');
+
+    if ('ontouchstart' in document) {
+      $body.addClass('mobile');
+
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        $body.addClass('ios');
+      }
+    }
+  }
+
+  isTouchDevice();
+
   Drupal.behaviors.accordionExposedFilter = {
     attach: function(context, settings) {
 
@@ -19,7 +34,7 @@
 
       $.each($forms, function (i, v) {
         var $form = v;
-        // @TODO Refactoring needed. 
+        // @TODO Refactoring needed.
         var settings = jQuery.extend(true, settings, {
           // @TODO Add this setting.
           //'defaultFormSelector': 'form#views-exposed-form-news-events-block-1',

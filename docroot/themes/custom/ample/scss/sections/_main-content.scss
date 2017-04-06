@@ -11,7 +11,7 @@
     padding-left: 80px;
   }
 
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news) & {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) & {
     background: $white;
   }
 
@@ -157,6 +157,12 @@
 
   ~ .event-info {
     margin-top: -20px;
+  }
+}
+
+@include breakpoint-for('.title-wrapper', (to: laptop-small)) {
+  ~ .event-info {
+    margin-top: -10px;
   }
 }
 

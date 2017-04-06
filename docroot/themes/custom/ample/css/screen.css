@@ -170,6 +170,7 @@ body {
   height: 100%;
   line-height: 20px;
   min-height: 100%;
+  min-width: 320px;
   overflow-x: hidden; }
   body.no-scroll {
     overflow: hidden; }
@@ -894,6 +895,9 @@ header .social-links .font-social-icon {
     .accordion-button:hover:after {
       -webkit-transform: rotate(45deg);
               transform: rotate(45deg); }
+  .accordion-button.closed:after {
+    -webkit-transform: none;
+            transform: none; }
   .accordion-button .text {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1285,6 +1289,7 @@ header .social-links .font-social-icon {
   font-weight: 400;
   line-height: 20px;
   margin-top: 50px;
+  overflow: hidden;
   padding: 20px 0;
   width: 90%; }
   .node-pager .prev-wrapper,
@@ -1917,6 +1922,23 @@ header .social-links .font-social-icon {
     margin-top: 10px;
     margin-bottom: 0; }
 
+@media (max-width: 767px) {
+  .logged .related-wrapper {
+    padding-left: 0; } }
+
+@media (max-width: 479px) {
+  .related-wrapper {
+    position: static;
+    -webkit-transform: none;
+            transform: none; }
+    .related-wrapper .item-list {
+      display: block;
+      padding: 0 20px; }
+      .related-wrapper .item-list li {
+        width: 100%; }
+        .ie9 .related-wrapper .item-list li {
+          float: none; } }
+
 .event-info {
   font-size: 1.575rem;
   border: 2px solid #e9ecee;
@@ -1924,7 +1946,7 @@ header .social-links .font-social-icon {
   line-height: 32px;
   margin-bottom: 40px;
   padding: 40px 40px 20px;
-  width: 94%; }
+  width: 118%; }
   .event-info:after {
     content: "";
     display: table;
@@ -1964,33 +1986,73 @@ header .social-links .font-social-icon {
     line-height: 20px;
     margin: 10px auto; }
 
+@media (max-width: 991px) {
+  .event-info {
+    padding-left: 14px;
+    padding-right: 10px; }
+    .event-info .label,
+    .event-info .value {
+      padding-top: 0;
+      padding-bottom: 0;
+      word-break: break-word; }
+    .event-info .red-btn-link {
+      font-size: 1.05rem; } }
+
+@media (max-width: 767px) {
+  .event-info {
+    width: 100%; } }
+
+@media (max-width: 479px) {
+  .event-info .label,
+  .event-info .value {
+    width: 50%; }
+  .event-info .label {
+    font-size: 1.4rem;
+    line-height: 30px; }
+  .event-info .value {
+    font-size: 1.225rem;
+    line-height: 31px; } }
+
 .news-and-events-list {
   font-size: 0rem;
   margin-bottom: 30px; }
   .news-and-events-list .item {
     font-size: 0.9625rem;
     display: inline-block;
+    position: relative;
     vertical-align: top;
     width: 25%; }
     .front .news-and-events-list .item {
       width: 33.33%; }
-    .news-and-events-list .item > a {
+    .news-and-events-list .item .event-container,
+    .news-and-events-list .item .news-container {
       border-bottom: 2px solid transparent;
       -webkit-transition: background .2s ease, border .2s ease;
       transition: background .2s ease, border .2s ease; }
-      .news-and-events-list .item > a:hover {
+      .news-and-events-list .item .event-container:hover,
+      .news-and-events-list .item .news-container:hover {
         border-color: #ea3a32; }
+  .news-and-events-list .country a {
+    display: inline;
+    position: relative;
+    z-index: 10; }
   .news-and-events-list .news:first-child {
     margin-bottom: 20px;
     width: 50%; }
+  .news-and-events-list .news:hover .news-container {
+    background: #fff;
+    border-color: #ea3a32; }
   .front .news-and-events-list .news:nth-child(2) {
     margin-bottom: 20px;
     width: 50%; }
-  .news-and-events-list .news > a {
+  .news-and-events-list .news .news-container {
     padding: 10px 10px 30px; }
-    .news-and-events-list .news > a:hover {
-      background: #fff;
-      border-color: #ea3a32; }
+  .news-and-events-list .news > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%; }
   .news-and-events-list .social {
     margin-bottom: 30px;
     padding: 10px; }
@@ -2011,11 +2073,11 @@ header .social-links .font-social-icon {
       margin: 5px 0 10px; }
   .news-and-events-list .event {
     padding: 10px; }
-    .news-and-events-list .event > a {
+    .news-and-events-list .event .event-container {
       background: rgba(234, 58, 50, 0.09) url(../images/calendar-icon.svg) 20px 40px no-repeat;
       background-size: 41px 41px;
       padding: 40px 20px 40px 71px; }
-      .news-and-events-list .event > a:hover {
+      .news-and-events-list .event .event-container:hover {
         background-color: rgba(234, 58, 50, 0.07);
         border-color: #ea3a32; }
   .news-and-events-list a {
@@ -2575,6 +2637,16 @@ form {
     form textarea ~ label.error:after {
       content: none; }
 
+@media (max-width: 479px) {
+  form label {
+    font-size: 1rem; }
+  form .form-email ~ label.error,
+  form .form-text ~ label.error,
+  form .form-textarea ~ label.error {
+    font-size: 0.875rem;
+    top: 82px;
+    text-align: right; } }
+
 .form-text, .form-textarea,
 .form-email {
   border: 1px solid #75a8c0;
@@ -2615,15 +2687,16 @@ form {
   color: #999 !important; }
 
 .email-suffix {
-  display: table;
   margin-bottom: 25px; }
-  .email-suffix input,
-  .email-suffix .field-suffix {
-    display: table-cell;
-    margin-bottom: 0;
-    vertical-align: middle; }
-  .email-suffix .field-suffix {
-    padding-left: 5px; }
+  .form-my-settings .email-suffix {
+    display: table; }
+    .form-my-settings .email-suffix input,
+    .form-my-settings .email-suffix .field-suffix {
+      display: table-cell;
+      margin-bottom: 0;
+      vertical-align: middle; }
+    .form-my-settings .email-suffix .field-suffix {
+      padding-left: 5px; }
 
 .form-file {
   font-size: 1rem;
@@ -3072,6 +3145,11 @@ form .social_login label:after {
       width: 100%; }
     .user-register-form .login-wrapper {
       padding: 0 10px; } }
+
+@media (max-width: 479px) {
+  .user-register-form .social_login,
+  .user-register-form .login-wrapper {
+    padding: 0; } }
 
 .user-onetime-form .good-to-know-icon {
   background: url(../images/light.svg) center no-repeat;
@@ -3950,7 +4028,8 @@ form .social_login label:after {
       text-decoration: none; }
       .popup-wrapper .action-links a:hover {
         opacity: .7; }
-    .popup-wrapper .action-links .logout-link {
+    .popup-wrapper .action-links .logout-link,
+    .popup-wrapper .action-links .continue-link {
       color: #afb7bb;
       margin-right: 50px; }
     .popup-wrapper .action-links .cancel-link {
@@ -4549,7 +4628,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -4644,6 +4723,10 @@ footer {
     width: 180px; }
   .title-wrapper ~ .event-info {
     margin-top: -20px; }
+
+@media (max-width: 991px) {
+  .title-wrapper ~ .event-info {
+    margin-top: -10px; } }
 
 @media (max-width: 479px) {
   .title-wrapper {

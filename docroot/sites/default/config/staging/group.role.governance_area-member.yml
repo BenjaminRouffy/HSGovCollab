@@ -1,0 +1,23 @@
+uuid: 5996a43a-f854-4142-9265-6307d0c5f23f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+id: governance_area-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: governance_area
+permissions_ui: true
+permissions:
+  3: 'view group'
+  4: 'access group_node overview'
+  11: 'view group_node:document entity'
+  18: 'view group_node:document content'
+  24: 'view group_node:event entity'
+  31: 'view group_node:event content'
+  37: 'view group_node:news entity'
+  44: 'view group_node:news content'
+  50: 'view subgroup:project content'

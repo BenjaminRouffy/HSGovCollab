@@ -1,0 +1,133 @@
+uuid: 8d2cd485-8e86-4ed2-8f09-b9e8c1692a1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group
+    - views.view.list_of_projects
+    - views.view.news_and_events_group
+  module:
+    - addtoany
+    - ctools
+    - ctools_block
+    - group_customization
+    - panels
+    - views
+id: group-panels_variant-3
+label: 'Governance area'
+variant: panels_variant
+variant_settings:
+  blocks:
+    2226ebe6-c546-492b-bd36-1cb32f19778a:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: banner
+      region: banner
+      weight: 0
+      uuid: 2226ebe6-c546-492b-bd36-1cb32f19778a
+      context_mapping:
+        entity: group
+    417af5ad-94ff-449b-891f-b666ec7de0de:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: -2
+      uuid: 417af5ad-94ff-449b-891f-b666ec7de0de
+      context_mapping:
+        entity: group
+    ea1f3347-ed38-46ad-898a-b7c1c8780c33:
+      id: addtoany_block
+      label: 'AddToAny buttons'
+      provider: addtoany
+      label_display: '0'
+      region: content
+      weight: -1
+      uuid: ea1f3347-ed38-46ad-898a-b7c1c8780c33
+      context_mapping: {  }
+    a71e8292-99ae-4aa6-8608-4612e33aef4e:
+      id: 'views_block:list_of_projects-block_4'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: a71e8292-99ae-4aa6-8608-4612e33aef4e
+      context_mapping: {  }
+    75dc1ab1-0f40-4416-a0b1-b7ad1f24b14a:
+      id: 'views_block:news_and_events_group-block_governance_area'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 1
+      uuid: 75dc1ab1-0f40-4416-a0b1-b7ad1f24b14a
+      pager: view
+      context_mapping: {  }
+    85b3257c-0f41-4073-90e2-1cdadae6dccd:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: bottom
+      region: content
+      weight: 2
+      uuid: 85b3257c-0f41-4073-90e2-1cdadae6dccd
+      context_mapping:
+        entity: group
+    30aa4c35-e8b3-4955-8d72-33a53493d42a:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: 30aa4c35-e8b3-4955-8d72-33a53493d42a
+      context_mapping:
+        entity: group
+  id: panels_variant
+  uuid: 58f96e63-44d0-4083-813a-ef4caeff950d
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group-panels_variant-3
+  builder: standard
+page: group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      governance_area: governance_area
+    negate: false
+    context_mapping:
+      group: group
+  -
+    id: access_by_group_roles
+    group_roles:
+      governance_area-member: governance_area-member
+      governance_area-manager: governance_area-manager
+    negate: 0
+    context_mapping:
+      group: group
+      user: current_user
+selection_logic: and
+static_context: {  }

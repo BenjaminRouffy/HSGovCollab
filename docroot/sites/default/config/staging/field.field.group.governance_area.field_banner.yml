@@ -1,0 +1,92 @@
+uuid: d4f00eca-a01f-4724-96d5-4fc06d550449
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_banner
+    - group.type.governance_area
+    - paragraphs.paragraphs_type.content_image
+    - paragraphs.paragraphs_type.slider
+  module:
+    - entity_reference_revisions
+id: group.governance_area.field_banner
+field_name: field_banner
+entity_type: group
+bundle: governance_area
+label: Banner
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_image: content_image
+      slider: slider
+    target_bundles_drag_drop:
+      cd_user:
+        weight: 22
+        enabled: false
+      content_image:
+        enabled: true
+        weight: 23
+      content_text:
+        weight: 24
+        enabled: false
+      country_and_project:
+        weight: 25
+        enabled: false
+      country_option:
+        weight: 26
+        enabled: false
+      custom_content:
+        weight: 27
+        enabled: false
+      exist_content:
+        weight: 28
+        enabled: false
+      faq_item:
+        weight: 29
+        enabled: false
+      file:
+        weight: 30
+        enabled: false
+      infographic:
+        weight: 31
+        enabled: false
+      infographic_item:
+        weight: 32
+        enabled: false
+      link:
+        weight: 33
+        enabled: false
+      link_to_file:
+        weight: 34
+        enabled: false
+      member_icon:
+        weight: 35
+        enabled: false
+      organisation:
+        weight: 36
+        enabled: false
+      slider:
+        enabled: true
+        weight: 37
+      slider_item:
+        weight: 38
+        enabled: false
+      software_application:
+        weight: 39
+        enabled: false
+      time_line:
+        weight: 40
+        enabled: false
+      timeline_social:
+        weight: 41
+        enabled: false
+      video:
+        weight: 42
+        enabled: false
+field_type: entity_reference_revisions

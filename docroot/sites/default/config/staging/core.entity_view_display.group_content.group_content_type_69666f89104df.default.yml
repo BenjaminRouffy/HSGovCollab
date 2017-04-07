@@ -1,0 +1,23 @@
+uuid: 78668395-3413-41cf-83d9-fd5cdebb8961
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_69666f89104df
+id: group_content.group_content_type_69666f89104df.default
+targetEntityType: group_content
+bundle: group_content_type_69666f89104df
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

@@ -9,3 +9,8 @@ services:
     class: \Drupal\group_following\Helper\Sql\Builder
     arguments: ['@database']
 
+  group_following.group_type_alter:
+    class: Drupal\group_following\Form\Alter\GroupTypeAlter
+    tags:
+      - { name: form_alter, form_id: group_type_add_form }
+      - { name: form_alter, form_id: group_type_edit_form }

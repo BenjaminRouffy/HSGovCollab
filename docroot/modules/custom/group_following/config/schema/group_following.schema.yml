@@ -1,0 +1,19 @@
+group.type.*.third_party.group_following:
+  type: mapping
+  label: 'Group following'
+  mapping:
+    confirmation_popup_status:
+      type: boolean
+      label: 'Show confirmation popup.'
+    confirmation_popup_following_header:
+      type: text
+      label: 'Popup messages.'
+    confirmation_popup_following_body:
+      type: text
+      label: 'Popup messages.'
+    confirmation_popup_unfollowing_header:
+      type: text
+      label: 'Popup messages.'
+    confirmation_popup_unfollowing_body:
+      type: text
+      label: 'Popup messages.'

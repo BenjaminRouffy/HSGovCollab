@@ -3,6 +3,7 @@
 namespace Drupal\group_content_field\Plugin\Field\FieldType;
 
 use Drupal;
+use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -222,12 +223,14 @@ class GroupContentItem extends FieldItemBase {
   }
 
   /**
-   * @param $old
-   * @param $new
-   * @param $parent_entity
-   * @internal param $entity_id
+   * @param array $old
+   *  Array with loaded from database groups.
+   * @param array $new
+   *  Array with changed groups
+   * @param \Drupal\Core\Entity\ContentEntityBase $parent_entity
+   *
    */
-  private function syncGroupContents($old, $new, $parent_entity) {
+  private function syncGroupContents(array $old, array $new, ContentEntityBase $parent_entity) {
     $properties = $this->buildGroupContentProperties($parent_entity);
 
     foreach (array_diff($old, $new) as $delete_gid) {
@@ -236,6 +239,7 @@ class GroupContentItem extends FieldItemBase {
         ->getStorage('group_content')
         ->loadByProperties($properties);
       foreach ($result as $group_content) {
+        // TODO Remove only role.
         $group_content->delete();
       }
     }
@@ -248,6 +252,7 @@ class GroupContentItem extends FieldItemBase {
         ->loadByProperties($properties);
 
       if (empty($result)) {
+        // TODO Add only role if membership exist.
         GroupContent::create($properties)->save();
       }
     }

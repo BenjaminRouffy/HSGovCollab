@@ -17,9 +17,7 @@
             </h1>
 
             {% if logged_in %}
-              <div class="follow-link">
-                {{ 'Follow @country'|t({'@country': group_label|t}) }}
-              </div>
+              {{ following_form }}
             {% endif %}
           </div>
         {% endif %}

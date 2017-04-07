@@ -273,21 +273,28 @@
   }
 
   .follow-link {
-    @include font-size(24);
-    border: 1px solid $white;
-    color: $white;
-    cursor: pointer;
-    display: inline-block;
-    font-family: $oswald;
-    letter-spacing: .5px;
-    margin-top: 40px;
-    margin-left: 10px;
-    padding: 15px 40px;
-    transform: scale(1.06);
-    transition: background .2s ease;
+    .form-submit {
+      @include font-size(24);
+      background: transparent;
+      border: 1px solid $white;
+      color: $white;
+      cursor: pointer;
+      display: inline-block;
+      font-family: $oswald;
+      letter-spacing: .5px;
+      margin-top: 40px;
+      margin-left: 10px;
+      padding: 15px 40px;
+      transform: scale(1.06);
+      transition: background .2s ease;
 
-    &:hover {
-      background: $red;
+      &:hover {
+        background: $red;
+      }
+    }
+
+    .ajax-progress {
+      position: absolute;
     }
   }
 }

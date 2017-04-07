@@ -1,7 +1,16 @@
 uuid: 8dc2a641-e0d7-4b07-945e-ff23da385b20
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - group_following
+third_party_settings:
+  group_following:
+    confirmation_popup_status: false
+    confirmation_popup_following_header: ''
+    confirmation_popup_following_body: ''
+    confirmation_popup_unfollowing_header: ''
+    confirmation_popup_unfollowing_body: ''
 id: project
 label: Project
 description: 'Project area with own news and event and can be a part of one/many countries'

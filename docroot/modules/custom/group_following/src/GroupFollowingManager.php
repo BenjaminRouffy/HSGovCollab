@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\group_following;
+
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group\GroupMembershipLoader;
@@ -18,11 +19,21 @@ class GroupFollowingManager implements GroupFollowingManagerInterface {
    * @var \Drupal\group\GroupMembershipLoader
    */
   protected $groupMembershipLoader;
+
+  /**
+   * @var \Drupal\group_following\GroupFollowingStorageInterface
+   */
+  protected $groupFollowingStorage;
+
   /**
    * Constructor.
+   *
+   * @param GroupMembershipLoader $group_membership_loader
+   * @param GroupFollowingStorageInterface $group_following_storage
    */
-  public function __construct(GroupMembershipLoader $group_membership_loader) {
+  public function __construct(GroupMembershipLoader $group_membership_loader, GroupFollowingStorageInterface $group_following_storage) {
     $this->groupMembershipLoader = $group_membership_loader;
+    $this->groupFollowingStorage = $group_following_storage;
   }
 
   /**
@@ -30,17 +41,18 @@ class GroupFollowingManager implements GroupFollowingManagerInterface {
    * @return GroupFollowingInterface
    */
   public function getFollowingByGroup(GroupInterface $group) {
-    return new GroupFollowing();
+    return new GroupFollowing($this, $group);
   }
 
   /**
-   * @return GroupFollowingStorageInteraface
+   * @return GroupFollowingStorageInterface
    */
   public function getStorage() {
-    // TODO: Implement getStorage() method.
+    return $this->groupFollowingStorage;
   }
 
   public function addHardFollowing(GroupFollowing $group_following, AccountInterface $account) {
     // TODO: Implement addHardFollowing() method.
   }
+
 }

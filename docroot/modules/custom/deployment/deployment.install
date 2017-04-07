@@ -698,10 +698,40 @@ function deployment_update_8048() {
   \Drupal::service('module_installer')->install(['views_field_view']);
 }
 
+/**
+ * Auto assign role to old memberships.
+ */
+function deployment_update_8049() {
+  $select = db_select('group_content_field_data', 'gcfd');
+  $select->leftJoin('group_content__group_roles', 'gcgr', 'gcfd.id = gcgr.entity_id');
+  $select->condition('gcfd.type', [
+    'country-group_membership',
+    'project-group_membership',
+    'region-group_membership',
+  ], 'IN');
+  $select->isNull('gcgr.group_roles_target_id');
+  $select->addField('gcfd', 'type', 'bundle');
+  $select->addField('gcfd', 'id', 'entity_id');
+  $select->addField('gcfd', 'id', 'revision_id');
+  $select->addExpression('\'en\'', 'langcode');
+  $select->addExpression('\'0\'', 'delta');
+  $select->addExpression('concat(substring_index(gcfd.type, \'-\', 1),\'-admin\')', 'group_roles_target_id');
+  $db_insert = db_insert('group_content__group_roles');
+  $db_insert->fields([
+    'bundle',
+    'entity_id',
+    'revision_id',
+    'langcode',
+    'delta',
+    'group_roles_target_id',
+  ]);
+  $db_insert->from($select);
+  $db_insert->execute();
+}
 
 /**
  * Install module "group_following".
  */
-function deployment_update_8049() {
+function deployment_update_8050() {
   \Drupal::service('module_installer')->install(['group_following']);
 }

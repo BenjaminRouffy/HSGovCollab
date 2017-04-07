@@ -1,7 +1,13 @@
 services:
   group_following.manager:
-    class: Drupal\group_following\GroupFollowingManager
-    arguments: ['@group.membership_loader']
+    class: \Drupal\group_following\GroupFollowingManager
+    arguments: ['@group.membership_loader', '@group_following.storage']
+  group_following.storage:
+    class: \Drupal\group_following\GroupFollowingStorage
+    arguments: ['@database', '@group_following.builder_sql']
+  group_following.builder_sql:
+    class: \Drupal\group_following\Helper\Sql\Builder
+    arguments: ['@database']
 
   group_following.group_type_alter:
     class: Drupal\group_following\Form\Alter\GroupTypeAlter

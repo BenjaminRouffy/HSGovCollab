@@ -308,3 +308,12 @@ function ample_preprocess_block(&$variables) {
       break;
   }
 }
+
+/**
+ * Implements hook_preprocess_blocktabs().
+ */
+function ample_preprocess_blocktabs(&$variables) {
+  foreach ($variables['tabs'] as $id => $tab) {
+    $variables['tabs'][$id]->title = t($variables['tabs'][$id]->title);
+  }
+}

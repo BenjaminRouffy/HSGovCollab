@@ -309,6 +309,11 @@ svg {
     -webkit-transition: opacity .4s ease;
     transition: opacity .4s ease; }
 
+.ui-widget-overlay {
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 1;
+  z-index: 600 !important; }
+
 @-webkit-keyframes blink {
   0% {
     box-shadow: 0 0 5px #ea3a32; }
@@ -512,6 +517,7 @@ svg {
   background: #283b44;
   height: 100%;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 80px;
   position: fixed;
   top: 0;
@@ -1126,8 +1132,9 @@ header .social-links .font-social-icon {
     line-height: 72px;
     margin: 20px 0 10px;
     padding: 0; }
-  .country-content-wrapper .follow-link {
+  .country-content-wrapper .follow-link .form-submit {
     font-size: 1.5rem;
+    background: transparent;
     border: 1px solid #fff;
     color: #fff;
     cursor: pointer;
@@ -1137,12 +1144,15 @@ header .social-links .font-social-icon {
     margin-top: 40px;
     margin-left: 10px;
     padding: 15px 40px;
+    text-transform: none;
     -webkit-transform: scale(1.06);
             transform: scale(1.06);
     -webkit-transition: background .2s ease;
     transition: background .2s ease; }
-    .country-content-wrapper .follow-link:hover {
+    .country-content-wrapper .follow-link .form-submit:hover {
       background: #ea3a32; }
+  .country-content-wrapper .follow-link .ajax-progress {
+    position: absolute; }
 
 @media (max-width: 991px) {
   .country-content-wrapper {
@@ -1560,7 +1570,8 @@ header .social-links .font-social-icon {
     margin: 0; }
 
 .group-region .timeline,
-.group-country .timeline {
+.group-country .timeline,
+.timeline .group-governance_area {
   margin-top: 100px; }
 
 .timeline .title-wrapper {
@@ -1577,7 +1588,8 @@ header .social-links .font-social-icon {
     line-height: 48px;
     margin: 20px 0 21px; }
     .group-region .timeline .title-wrapper h2,
-    .group-country .timeline .title-wrapper h2 {
+    .group-country .timeline .title-wrapper h2,
+    .timeline .title-wrapper h2 .group-governance_area {
       font-size: 2.625rem;
       padding-bottom: 20px; }
 
@@ -3766,7 +3778,7 @@ form .social_login label:after {
   text-align: center; }
   .view-news-and-events .title-wrapper h1 {
     padding-top: 0; }
-    .group-region .view-news-and-events .title-wrapper h1 {
+    .group-region:not(.page-group-news-and-event) .view-news-and-events .title-wrapper h1 {
       font-size: 2.625rem;
       line-height: 48px; }
   .view-news-and-events .title-wrapper .line {
@@ -4062,6 +4074,34 @@ form .social_login label:after {
       margin-right: 10px; }
     .popup-wrapper .action-links .cancel-link {
       margin-left: 10px; } }
+
+.ui-dialog {
+  border: none;
+  border-radius: 0;
+  padding: 5%;
+  width: 50% !important;
+  z-index: 610 !important; }
+  .ui-dialog .popup-wrapper {
+    height: auto;
+    opacity: 1;
+    position: static;
+    -webkit-transform: none;
+            transform: none;
+    width: auto; }
+  .ui-dialog .ui-dialog-titlebar {
+    display: none; }
+
+@media (max-width: 1440px) {
+  .ui-dialog {
+    width: 60% !important; } }
+
+@media (max-width: 1024px) {
+  .ui-dialog {
+    width: 80% !important; } }
+
+@media (max-width: 767px) {
+  .ui-dialog {
+    width: 90% !important; } }
 
 .faq-item {
   position: relative; }
@@ -4628,7 +4668,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -5358,6 +5398,14 @@ footer {
     line-height: 78px;
     margin: 0;
     padding: 30px 0; }
+  .dashboard .follow-link {
+    padding-top: 5px; }
+    .dashboard .follow-link .form-submit {
+      background: transparent;
+      border-color: #ea3a32;
+      text-transform: none; }
+    .dashboard .follow-link .ajax-progress {
+      position: absolute; }
   .dashboard .sidebar {
     background-color: #4c7e96;
     color: #fff;

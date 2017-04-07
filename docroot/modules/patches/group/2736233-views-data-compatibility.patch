@@ -1,0 +1,35 @@
+commit d2b93f8d4b16f8881a94e24ed514a5ebba103a31
+Author: Yuriy Boychenko <yuboychenko@gmail.com>
+Date:   Fri Apr 7 14:40:26 2017 +0300
+
+    NULL dependencies fixed
+
+diff --git a/docroot/modules/contrib/group/modules/ggroup/ggroup.views.inc b/docroot/modules/contrib/group/modules/ggroup/ggroup.views.inc
+index 15758da..577f037 100644
+--- a/docroot/modules/contrib/group/modules/ggroup/ggroup.views.inc
++++ b/docroot/modules/contrib/group/modules/ggroup/ggroup.views.inc
+@@ -5,9 +5,24 @@
+  */
+ 
+ /**
++ * Implements hook_views_data().
++ */
++function ggroup_views_data() {
++  $data = array();
++
++  $data['group_graph'] = array();
++  $data['group_graph']['table'] = array();
++  $data['group_graph']['table']['group'] = t('Group Graph table');
++  $data['group_graph']['table']['provider'] = 'ggroup';
++
++  return $data;
++}
++
++/**
+  * Implements hook_views_data_alter().
+  */
+ function ggroup_views_data_alter(array &$data) {
++
+   $data['group_content_field_data']['group_id_depth'] = array(
+     'help' => t('Group id with depth implemented by subgroups'),
+     'argument' => array(

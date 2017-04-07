@@ -1,0 +1,13 @@
+group_following.follow:
+  path: '/group/{group}/follow'
+  defaults:
+    _controller: '\Drupal\group_following\Controller\GroupFollowController::follow'
+  requirements:
+    _permission: 'access content'
+
+group_following.unfollow:
+  path: '/group/{group}/unfollow'
+  defaults:
+    _controller: '\Drupal\group_following\Controller\GroupFollowController::unfollow'
+  requirements:
+    _permission: 'access content'

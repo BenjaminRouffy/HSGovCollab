@@ -1,0 +1,19 @@
+uuid: 66600ae6-974d-42ef-9552-9f4a217464fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+    - node.type.document
+  module:
+    - gnode
+    - node
+id: group_content_type_69666f89104df
+label: 'Governance area: Group node (Document)'
+description: 'Adds <em class="placeholder">Document</em> content to groups both publicly and privately.'
+group_type: governance_area
+content_plugin: 'group_node:document'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

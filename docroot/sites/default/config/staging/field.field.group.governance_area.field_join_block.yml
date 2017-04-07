@@ -1,0 +1,25 @@
+uuid: 015c248d-5012-4bf5-8e54-6a8ed2bc9509
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_join_block
+    - group.type.governance_area
+id: group.governance_area.field_join_block
+field_name: field_join_block
+entity_type: group
+bundle: governance_area
+label: 'Join block'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: block_reference
+      display_name: entity_reference_block
+      arguments: {  }
+field_type: entity_reference

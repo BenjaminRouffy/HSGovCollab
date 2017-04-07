@@ -97,6 +97,9 @@ class CountryMenuBlock extends BlockBase {
             if ($group->bundle() == 'region') {
               $row = views_get_view_result('news_and_events_group', 'region_news_events');
             }
+            elseif ($group->bundle() == 'governance_area') {
+              $row = views_get_view_result('news_and_events_group', 'ga_news_events');
+            }
             else {
               $row = views_get_view_result('news_and_events_group', 'news_and_events_by_group');
             }
@@ -105,6 +108,9 @@ class CountryMenuBlock extends BlockBase {
           case 'project':
             if ($group->bundle() == 'region') {
               $row = views_get_view_result('list_of_projects', 'block_2');
+            }
+            elseif ($group->bundle() == 'governance_area') {
+              $row = views_get_view_result('list_of_projects', 'block_4');
             }
             else {
               $row = views_get_view_result('list_of_projects', 'block_1');

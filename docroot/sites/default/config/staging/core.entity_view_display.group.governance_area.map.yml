@@ -1,0 +1,48 @@
+uuid: 47495fa5-002f-40de-9f5c-59388e9e8d5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.map
+    - field.field.group.governance_area.field_banner
+    - field.field.group.governance_area.field_bottom_link
+    - field.field.group.governance_area.field_content
+    - field.field.group.governance_area.field_date
+    - field.field.group.governance_area.field_faq
+    - field.field.group.governance_area.field_ga_icon
+    - field.field.group.governance_area.field_infographic
+    - field.field.group.governance_area.field_join_block
+    - field.field.group.governance_area.field_summary
+    - field.field.group.governance_area.field_time_line
+    - group.type.governance_area
+  module:
+    - entity_reference_revisions
+id: group.governance_area.map
+targetEntityType: group
+bundle: governance_area
+mode: map
+content:
+  field_infographic:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: map
+      link: ''
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_bottom_link: true
+  field_content: true
+  field_date: true
+  field_faq: true
+  field_ga_icon: true
+  field_join_block: true
+  field_summary: true
+  field_time_line: true
+  label: true
+  langcode: true
+  uid: true

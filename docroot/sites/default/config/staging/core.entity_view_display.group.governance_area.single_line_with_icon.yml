@@ -1,0 +1,46 @@
+uuid: dd51df1d-9492-41cb-8807-fc3c3ab65ddb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.single_line_with_icon
+    - field.field.group.governance_area.field_banner
+    - field.field.group.governance_area.field_bottom_link
+    - field.field.group.governance_area.field_content
+    - field.field.group.governance_area.field_date
+    - field.field.group.governance_area.field_faq
+    - field.field.group.governance_area.field_ga_icon
+    - field.field.group.governance_area.field_infographic
+    - field.field.group.governance_area.field_join_block
+    - field.field.group.governance_area.field_summary
+    - field.field.group.governance_area.field_time_line
+    - group.type.governance_area
+id: group.governance_area.single_line_with_icon
+targetEntityType: group
+bundle: governance_area
+mode: single_line_with_icon
+content:
+  field_ga_icon:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_bottom_link: true
+  field_content: true
+  field_date: true
+  field_faq: true
+  field_infographic: true
+  field_join_block: true
+  field_summary: true
+  field_time_line: true
+  label: true
+  langcode: true
+  uid: true

@@ -1,0 +1,33 @@
+<div{{ attributes.addClass(group.bundle() ~ '-group') }}>
+  <div class="top-text-region">
+    {{ title_prefix }}
+    <div class="title-wrapper" data-anchor-id="group-{{ group.id() }}">
+      <h1 role="heading" class="anchor-title">
+        {{ label }}
+      </h1>
+
+      <div class="line"></div>
+    </div>
+    {{ title_suffix }}
+
+    <div class="summary-text">
+      {{ content.field_summary }}
+    </div>
+
+    <div class="more-content-wrapper">
+      <div class="show-more read-more">
+        {{ 'Read more'|t }}
+      </div>
+
+      <div class="more-content">
+        {{ content.field_content|field_value }}
+      </div>
+    </div>
+  </div>
+
+  {% if content.field_infographic|field_value %}
+    <div class="top-banner-region">
+      {{ content.field_infographic|field_value }}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,22 @@
+diff --git a/src/Entity/Views/GroupContentViewsData.php b/src/Entity/Views/GroupContentViewsData.php
+index 62eb94a..dcba533 100644
+--- a/src/Entity/Views/GroupContentViewsData.php
++++ b/src/Entity/Views/GroupContentViewsData.php
+@@ -94,7 +94,7 @@ class GroupContentViewsData extends EntityViewsData {
+       }
+ 
+       $t_args = [
+-        '@entity_type' => $entity_type->getLabel(),
++        '@entity_type' => $entity_type->getLowercaseLabel(),
+       ];
+ 
+       // This relationship will allow a group content entity to easily map to a
+@@ -103,7 +103,7 @@ class GroupContentViewsData extends EntityViewsData {
+         'title' => t('@entity_type from group content', $t_args),
+         'help' => t('Relates to the @entity_type entity the group content represents.', $t_args),
+         'relationship' => array(
+-          'group' => $entity_type->getLabel(),
++          'group' => $entity_type->getLowercaseLabel(),
+           'base' => $entity_data_table,
+           'base field' => $entity_type->getKey('id'),
+           'relationship field' => 'entity_id',

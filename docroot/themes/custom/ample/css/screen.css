@@ -517,6 +517,7 @@ svg {
   background: #283b44;
   height: 100%;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 80px;
   position: fixed;
   top: 0;
@@ -3777,7 +3778,7 @@ form .social_login label:after {
   text-align: center; }
   .view-news-and-events .title-wrapper h1 {
     padding-top: 0; }
-    .group-region .view-news-and-events .title-wrapper h1 {
+    .group-region:not(.page-group-news-and-event) .view-news-and-events .title-wrapper h1 {
       font-size: 2.625rem;
       line-height: 48px; }
   .view-news-and-events .title-wrapper .line {
@@ -4667,7 +4668,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;

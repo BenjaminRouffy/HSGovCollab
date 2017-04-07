@@ -6,7 +6,7 @@
     h1 {
       padding-top: 0;
 
-      .group-region & {
+      .group-region:not(.page-group-news-and-event) & {
         @include font-size(42);
         line-height: 48px;
       }

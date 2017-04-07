@@ -4373,7 +4373,7 @@ header {
   z-index: 400; }
   .toolbar-fixed .header-fixed {
     top: 39px; }
-  .toolbar-tray-open .header-fixed {
+  .toolbar-tray-open.toolbar-horizontal .header-fixed {
     top: 79px; }
   .header-fixed .top-head {
     background-image: -webkit-linear-gradient(top, #334c58, #283b44);
@@ -5409,6 +5409,8 @@ footer {
   .dashboard .sidebar {
     background-color: #4c7e96;
     color: #fff;
+    float: right;
+    margin: 0;
     padding: 40px; }
     .dashboard .sidebar h2 {
       font-size: 1.925rem;
@@ -5446,6 +5448,12 @@ footer {
       letter-spacing: .5px;
       margin-top: 8px;
       vertical-align: top; }
+
+@media (max-width: 991px) {
+  .dashboard .sidebar,
+  .dashboard .content {
+    float: none;
+    width: 100%; } }
 
 .document-list {
   background: #fff;

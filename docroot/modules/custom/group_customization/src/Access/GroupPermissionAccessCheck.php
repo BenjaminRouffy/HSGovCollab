@@ -119,15 +119,25 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
    *   Access result implementation.
    */
   public function checkAccessForFilter(EntityInterface $entity, AccountInterface $account, array $group_statuses = []) {
-    if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
-      if (!$entity->get('field_group_status')) {
-        return AccessResult::neutral();
+    if ($entity instanceof GroupInterface) {
+      if ($entity->hasField('field_group_status')) {
+        if (!$entity->get('field_group_status')) {
+          return AccessResult::neutral();
+        }
+
+        $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
+        $status = AccessResult::allowedIf(in_array($group_status, $group_statuses));
+
+        return $status;
       }
-
-      $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
-      $status = AccessResult::allowedIf(in_array($group_status, $group_statuses));
-
-      return $status;
+      else {
+        if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'view group')->isAllowed()) {
+          return AccessResult::allowed();
+        }
+        else {
+          return AccessResult::forbidden();
+        }
+      }
     }
 
     return GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'access to view all group content');

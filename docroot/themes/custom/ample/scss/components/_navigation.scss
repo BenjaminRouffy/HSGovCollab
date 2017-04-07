@@ -483,6 +483,21 @@
     &.active {
       border-color: $red;
     }
+
+    .group-country & {
+      &:first-child {
+        a {
+          text-transform: uppercase;
+
+          &:before {
+            @include font-size(16.8);
+            content: 'f';
+            font-family: P4h, sans-serif;
+            text-transform: none;
+          }
+        }
+      }
+    }
   }
 
   a {

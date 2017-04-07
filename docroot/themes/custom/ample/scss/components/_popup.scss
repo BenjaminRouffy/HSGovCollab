@@ -111,41 +111,6 @@
   }
 
   .ui-dialog-titlebar {
-    background: none;
-    border: none;
-    padding: 0;
-  }
-
-  .ui-button {
-    @include same(28px, height, width);
-    background: none;
-    border: none;
-    padding: 0;
-    right: 0;
-    top: 0;
-  }
-
-  .ui-icon-closethick {
-    background: none;
-    height: 100%;
-    margin: 0;
-    position: static;
-    text-indent: 0;
-    width: 100%;
-
-    &:after {
-      @include font-size(28);
-      content: 'w';
-      color: $red;
-      font-family: $p4h;
-    }
-
-    &:hover:after {
-      color: $red-dark;
-    }
-  }
-
-  .ui-button-text {
     display: none;
   }
 }

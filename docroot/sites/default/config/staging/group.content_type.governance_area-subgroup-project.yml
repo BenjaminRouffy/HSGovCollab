@@ -1,0 +1,18 @@
+uuid: abedcf49-d4d1-4762-b0c9-5abd9d90af97
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+    - group.type.project
+id: governance_area-subgroup-project
+label: 'Governance area: Subgroup (Project)'
+description: 'Adds <em class="placeholder">Project</em> groups to groups both publicly and privately.'
+group_type: governance_area
+content_plugin: 'subgroup:project'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true
+  info_text:
+    value: '<p>By submitting this form you will add this subgroup to the group.<br />It will then be subject to the access control settings that were configured for the group.<br/>Please fill out any available fields to describe the relation between the subgroup and the group.</p>'

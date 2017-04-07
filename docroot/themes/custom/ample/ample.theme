@@ -144,7 +144,10 @@ function ample_preprocess_group(array &$variables) {
   if ('default' === $variables['view_mode']) {
     /* @var Group $group */
     $group = $variables['group'];
-    $variables['following_form'] =  \Drupal::formBuilder()->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $group);
+    if ('governance_area' != $group->getGroupType()->id()) {
+      $variables['following_form'] = \Drupal::formBuilder()
+        ->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $group);
+    }
   }
 }
 
@@ -180,7 +183,10 @@ function ample_preprocess_paragraph(array &$variables) {
     if ('group' === $entity->getEntityTypeId()) {
       $variables['group_label'] = $entity->label();
       $variables['group_bundle'] = $entity->bundle();
-      $variables['following_form'] =  \Drupal::formBuilder()->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $entity);
+      if ('governance_area' != $entity->bundle()) {
+        $variables['following_form'] = \Drupal::formBuilder()
+          ->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $entity);
+      }
     }
 
     if ($entity->hasField('field_country_icon')) {
@@ -198,6 +204,15 @@ function ample_preprocess_paragraph(array &$variables) {
 
     if ($entity->hasField('field_region_icon')) {
       $icon = $entity->get('field_region_icon')->getValue();
+
+      if (is_array($icon) && !empty($icon)) {
+        $image = \Drupal\file\Entity\File::load($icon[0]['target_id']);
+        $variables['region_icon'] = $image->getFileUri();
+      }
+    }
+
+    if ($entity->hasField('field_ga_icon')) {
+      $icon = $entity->get('field_ga_icon')->getValue();
 
       if (is_array($icon) && !empty($icon)) {
         $image = \Drupal\file\Entity\File::load($icon[0]['target_id']);

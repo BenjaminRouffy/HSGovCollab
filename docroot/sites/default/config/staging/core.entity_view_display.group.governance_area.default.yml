@@ -1,0 +1,62 @@
+uuid: 240f708d-6898-4746-8f90-b7567820d1d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.governance_area.field_banner
+    - field.field.group.governance_area.field_bottom_link
+    - field.field.group.governance_area.field_content
+    - field.field.group.governance_area.field_date
+    - field.field.group.governance_area.field_faq
+    - field.field.group.governance_area.field_ga_icon
+    - field.field.group.governance_area.field_infographic
+    - field.field.group.governance_area.field_join_block
+    - field.field.group.governance_area.field_summary
+    - field.field.group.governance_area.field_time_line
+    - group.type.governance_area
+  module:
+    - entity_reference_revisions
+    - text
+id: group.governance_area.default
+targetEntityType: group
+bundle: governance_area
+mode: default
+content:
+  field_content:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_infographic:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_summary:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_bottom_link: true
+  field_date: true
+  field_faq: true
+  field_ga_icon: true
+  field_join_block: true
+  field_time_line: true
+  label: true
+  langcode: true
+  uid: true

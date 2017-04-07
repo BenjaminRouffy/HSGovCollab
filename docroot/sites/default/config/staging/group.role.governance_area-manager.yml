@@ -1,0 +1,68 @@
+uuid: 9c6c68e9-394e-4ecb-bad7-8c7a2f296cb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+id: governance_area-manager
+label: Manager
+weight: 101
+internal: false
+audience: member
+group_type: governance_area
+permissions_ui: true
+permissions:
+  0: 'access content overview'
+  1: 'edit group'
+  2: 'view group_membership content'
+  3: 'view group'
+  4: 'access group_node overview'
+  5: 'create group_node:document entity'
+  6: 'delete any group_node:document entity'
+  7: 'delete own group_node:document entity'
+  8: 'update any group_node:document entity'
+  9: 'update own group_node:document entity'
+  10: 'view group_node:document entity'
+  11: 'view unpublished group_node:document entity'
+  12: 'create group_node:document content'
+  13: 'delete any group_node:document content'
+  14: 'delete own group_node:document content'
+  15: 'update any group_node:document content'
+  16: 'update own group_node:document content'
+  17: 'view group_node:document content'
+  18: 'create group_node:event entity'
+  19: 'delete any group_node:event entity'
+  20: 'delete own group_node:event entity'
+  21: 'update any group_node:event entity'
+  22: 'update own group_node:event entity'
+  23: 'view group_node:event entity'
+  24: 'view unpublished group_node:event entity'
+  25: 'create group_node:event content'
+  26: 'delete any group_node:event content'
+  27: 'delete own group_node:event content'
+  28: 'update any group_node:event content'
+  29: 'update own group_node:event content'
+  30: 'view group_node:event content'
+  31: 'create group_node:news entity'
+  32: 'delete any group_node:news entity'
+  33: 'delete own group_node:news entity'
+  34: 'update any group_node:news entity'
+  35: 'update own group_node:news entity'
+  36: 'view group_node:news entity'
+  37: 'view unpublished group_node:news entity'
+  38: 'create group_node:news content'
+  39: 'delete any group_node:news content'
+  40: 'delete own group_node:news content'
+  41: 'update any group_node:news content'
+  42: 'update own group_node:news content'
+  43: 'view group_node:news content'
+  44: 'access subgroup overview'
+  45: 'create subgroup:project content'
+  46: 'delete any subgroup:project content'
+  47: 'delete own subgroup:project content'
+  48: 'edit any subgroup:project content'
+  49: 'edit own subgroup:project content'
+  50: 'view subgroup:project content'
+  51: 'update any subgroup:project content'
+  52: 'update own subgroup:project content'
+  55: 'administer members'

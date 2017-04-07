@@ -131,7 +131,9 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
         return $status;
       }
       else {
-        if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'view group')->isAllowed()) {
+        $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
+
+        if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'view group')->isAllowed() || $bypass->isAllowed()) {
           return AccessResult::allowed();
         }
         else {

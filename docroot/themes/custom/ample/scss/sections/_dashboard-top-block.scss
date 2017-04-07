@@ -16,6 +16,20 @@
     }
   }
 
+  .follow-link {
+    padding-top: 5px;
+
+    .form-submit {
+      background: transparent;
+      border-color: $red;
+      text-transform: none;
+    }
+
+    .ajax-progress {
+      position: absolute;
+    }
+  }
+
   .sidebar {
     background-color: $navy;
     color: $white;

@@ -1143,6 +1143,7 @@ header .social-links .font-social-icon {
     margin-top: 40px;
     margin-left: 10px;
     padding: 15px 40px;
+    text-transform: none;
     -webkit-transform: scale(1.06);
             transform: scale(1.06);
     -webkit-transition: background .2s ease;
@@ -4085,32 +4086,6 @@ form .social_login label:after {
             transform: none;
     width: auto; }
   .ui-dialog .ui-dialog-titlebar {
-    background: none;
-    border: none;
-    padding: 0; }
-  .ui-dialog .ui-button {
-    height: 28px;
-    width: 28px;
-    background: none;
-    border: none;
-    padding: 0;
-    right: 0;
-    top: 0; }
-  .ui-dialog .ui-icon-closethick {
-    background: none;
-    height: 100%;
-    margin: 0;
-    position: static;
-    text-indent: 0;
-    width: 100%; }
-    .ui-dialog .ui-icon-closethick:after {
-      font-size: 1.75rem;
-      content: 'w';
-      color: #ea3a32;
-      font-family: P4h, sans-serif; }
-    .ui-dialog .ui-icon-closethick:hover:after {
-      color: #8c2222; }
-  .ui-dialog .ui-button-text {
     display: none; }
 
 @media (max-width: 1440px) {
@@ -5420,6 +5395,14 @@ footer {
     line-height: 78px;
     margin: 0;
     padding: 30px 0; }
+  .dashboard .follow-link {
+    padding-top: 5px; }
+    .dashboard .follow-link .form-submit {
+      background: transparent;
+      border-color: #ea3a32;
+      text-transform: none; }
+    .dashboard .follow-link .ajax-progress {
+      position: absolute; }
   .dashboard .sidebar {
     background-color: #4c7e96;
     color: #fff;

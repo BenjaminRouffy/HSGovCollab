@@ -888,6 +888,11 @@ form {
     padding: 10px 0;
     width: 100%;
   }
+
+  .form-submit {
+    @include font-size(16.8);
+    padding: 10px;
+  }
 }
 
 .user-pass {

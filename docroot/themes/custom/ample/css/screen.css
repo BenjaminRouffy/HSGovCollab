@@ -5336,6 +5336,12 @@ footer {
       max-width: 100%;
       padding: 10px 0;
       text-align: left; }
+      .ie10 .marker-info .section-info .paragraph {
+        max-width: 100%; }
+      .ie9 .marker-info .section-info .paragraph {
+        display: block;
+        margin-left: 0;
+        max-width: 100%; }
     .marker-info .section-info .icon-wrapper {
       float: left;
       height: 35px;

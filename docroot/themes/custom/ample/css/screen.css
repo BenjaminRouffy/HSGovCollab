@@ -732,6 +732,13 @@ svg {
   vertical-align: top; }
   .anchor-links li.active {
     border-color: #ea3a32; }
+  .group-country .anchor-links li:first-child a {
+    text-transform: uppercase; }
+    .group-country .anchor-links li:first-child a:before {
+      font-size: 1.05rem;
+      content: 'f';
+      font-family: P4h, sans-serif;
+      text-transform: none; }
 
 .anchor-links a {
   font-size: 1.05rem;
@@ -4941,6 +4948,8 @@ footer {
     margin: 0 auto;
     max-width: 80px;
     padding-top: 5px; }
+    .ie .top-text-region .project-icon img {
+      max-height: 80px; }
   .top-text-region .title-wrapper {
     padding-bottom: 10px;
     margin-bottom: 20px; }

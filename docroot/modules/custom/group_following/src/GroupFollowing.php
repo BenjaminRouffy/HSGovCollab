@@ -2,6 +2,7 @@
 
 namespace Drupal\group_following;
 
+use Drupal\Core\Database\Query\SelectInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
 
@@ -14,7 +15,8 @@ class GroupFollowing implements GroupFollowingInterface {
   /**
    * @var GroupInterface
    */
-  protected $entity;
+  protected $group;
+  protected $accountFollowing;
 
   /**
    * GroupFollowing constructor.
@@ -23,7 +25,7 @@ class GroupFollowing implements GroupFollowingInterface {
    */
   function __construct(GroupFollowingManagerInterface $group_following_manager, GroupInterface $group) {
     $this->groupFollowingManager = $group_following_manager;
-    $this->entity = $group;
+    $this->group = $group;
   }
 
   /**
@@ -31,30 +33,35 @@ class GroupFollowing implements GroupFollowingInterface {
    * @return GroupFollowingResult
    */
   public function getResultByAccount(AccountInterface $account) {
-    return new GroupFollowingResult($this, $account);
+    if (!isset($this->accountFollowing[$account->id()])) {
+      $this->accountFollowing[$account->id()] = new GroupFollowingResult($this, $account);
+    }
+    return $this->accountFollowing[$account->id()];
   }
 
   /**
+   * @param \Drupal\Core\Session\AccountInterface $account
    * @return mixed
    */
-  public function follow() {
-    // TODO: Implement unfollow() method.
+  public function follow(AccountInterface $account) {
+
   }
 
   /**
+   * @param \Drupal\Core\Session\AccountInterface $account
    * @return mixed
    */
-  public function unfollow() {
-    // TODO: Implement unfollow() method.
+  public function unfollow(AccountInterface $account) {
+
   }
 
   /**
-   * @param $entity
+   * @param $account
    * @return int
    */
-  public function getFollowerByGroupForUser($entity) {
+  public function getFollowerByGroupForUser(AccountInterface $account) {
     return $this->groupFollowingManager->getStorage()
-      ->getFollowerByGroupForUser($this->entity, $entity);
+      ->getFollowerByGroupForUser($this->group, $account);
   }
 
 }

@@ -136,7 +136,7 @@ class Builder {
    *   Nested query.
    */
   public function getGroupGraphWithOwn() {
-    $group_graph_with_own = $this->connection->select('groups_field_data', 'gfd');
+    $group_graph_with_own = $this->connection->select('groups', 'gfd');
     $group_graph_with_own->addExpression('ifnull(gg.start_vertex, gfd.id)', 'start_vertex');
     $group_graph_with_own->addExpression('ifnull(gg.end_vertex, gfd.id)', 'end_vertex');
     $group_graph_with_own->addExpression('if(isnull(gg.hops), 0, gg.hops + 1)', 'hops');
@@ -163,14 +163,16 @@ class Builder {
           // assuming that this condition carry out.
           // The "unfollowed" region at first position
           // should return "follower" role for next one group in the depth.
-          $fields[] = "IF(grg{$i}.role = 'unfollower', IF(grg{$i}.type = 'region', 'unfollower:follower', 'unfollower'), grg{$i}.role)";
+//          $fields[] = "IF(grg{$i}.role = 'unfollower', IF(grg{$i}.type = 'region', 'unfollower:follower', 'unfollower'), grg{$i}.role)";
+          $fields[] = "IF(grg{$i}.role = 'unfollower' AND grg{$i}.type = 'region', ':unfollower:follower', CONCAT(':', grg{$i}.role))";
           break;
 
         default:
-          $fields[] = "grg{$i}.role";
+          $fields[] = "CONCAT(':', grg{$i}.role)";
       }
     }
-    return "CONCAT_WS(':', ':', " . implode(',', $fields) . ")";
+    return "CONCAT_WS(':', " . implode(',', $fields) . ")";
+//    return "CONCAT_WS(':', ':', " . implode(',', $fields) . ")";
   }
 
 }

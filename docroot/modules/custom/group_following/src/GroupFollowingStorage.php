@@ -6,7 +6,6 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
-use Drupal\group\Entity\GroupoupInterface;
 use Drupal\group_following\Helper\Sql\Builder;
 use Drupal\views\Plugin\views\join\JoinPluginBase;
 
@@ -41,7 +40,7 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    * @return \Drupal\Core\Database\Query\SelectInterface
    *   Nested query.
    */
-  protected function generateJoin(AccountInterface $account) {
+  public function generateJoin(AccountInterface $account) {
     $current_user = $account->id();
 
     // All membership group types "region-group_membership" etc...
@@ -65,11 +64,13 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
           ':hops' . $level_depth => $parent_level_depth,
         ]);
       }
-      $group_graph->leftJoin($group_roles_with_gid, "grg{$level_depth}", "gg{$level_depth}.end_vertex = grg{$level_depth}.gid AND grg{$level_depth}.uid = :current_user", [
+      $method = ($level_depth == 1) ? 'innerJoin' : 'leftJoin';
+      $group_graph->{$method}($group_roles_with_gid, "grg{$level_depth}", "gg{$level_depth}.end_vertex = grg{$level_depth}.gid AND grg{$level_depth}.uid = :current_user", [
         ':current_user' => $current_user,
       ]);
 
       $group_graph->addField("gg{$level_depth}", "end_vertex", "end_vertex{$level_depth}");
+//      $group_graph->addField("grg{$level_depth}", "type", "type{$level_depth}");
 
     }
     $group_graph->condition('gg1.hops', 0);
@@ -78,10 +79,12 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
      * This code designed as for compatibility with mysql 5.5.
      *
      * @best_prastise
-     *  $group_graph->havingCondition('role', '%:unfollower', 'NOT LIKE')
+     *  $group_graph->havingCondition('roles', '%:unfollower', 'NOT LIKE')
      */
+//    $group_graph->havingCondition('roles', '%:unfollower', 'NOT LIKE');
+
     $group_graph->where($expression . 'NOT LIKE \'%:unfollower\'');
-    $group_graph->where($expression . ' != \':\'');
+//    $group_graph->where($expression . ' != \':\'');
 
     return $group_graph;
   }
@@ -96,6 +99,9 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
     $current_user = \Drupal::currentUser()->getAccount();
 
     $group_graph = $this->generateJoin($current_user);
+
+    /*$condition = $this->condition('grg', 'type', 'region');
+    $group_graph->condition($condition);*/
 
     $or = new Condition('OR');
     for ($i = 1; $i <= static::ITERATION; $i++) {
@@ -114,15 +120,30 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
   public function getFollowerByGroupForUser(GroupInterface $group, AccountInterface $account) {
     $group_graph = $this->generateJoin($account);
 
-    $iteration = 3;
-    $or = new Condition('OR');
-
-    for ($i = 1; $i <= $iteration; $i++) {
-      $or->condition("gg{$i}.end_vertex", $group->id());
-    }
-
-    $result = $group_graph->condition($or)->countQuery();
+    $condition = $this->condition('gg', 'end_vertex', $group->id());
+    $result = $group_graph->condition($condition)->countQuery();
     return $result->execute()->fetchField();
+  }
+
+  public function getFollowedForUser(AccountInterface $account) {
+    $result = $this->generateJoin($account)->execute()->fetchAll();
+    $items = [];
+    foreach ($result as $item) {
+      $groups = [];
+      for ($i = 1; $i <= static::ITERATION; $i++) {
+        $groups[] = (int) $item->{"end_vertex$i"};
+      }
+      $items = array_merge($items, $groups);
+    }
+    return array_unique(array_filter($items));
+  }
+
+  private function condition($table, $field, $value = NULL, $operator = '=') {
+    $or = new Condition('OR');
+    for ($i = 1; $i <= static::ITERATION; $i++) {
+      $or->condition("$table{$i}.$field", $value, $operator);
+    }
+    return $or;
   }
 
 }

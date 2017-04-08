@@ -13,13 +13,15 @@ interface GroupFollowingInterface {
   public function getResultByAccount(AccountInterface $account);
 
   /**
+   * @param \Drupal\Core\Session\AccountInterface $account
    * @return mixed
    */
-  public function follow();
+  public function follow(AccountInterface $account);
 
   /**
+   * @param \Drupal\Core\Session\AccountInterface $account
    * @return mixed
    */
-  public function unfollow();
+  public function unfollow(AccountInterface $account);
 
 }

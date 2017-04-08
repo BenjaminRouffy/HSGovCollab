@@ -94,7 +94,10 @@ class CountryMenuBlock extends BlockBase {
             break;
 
           case 'news_and_event':
-            if ($group->bundle() == 'governance_area') {
+            if ($group->bundle() == 'region') {
+              $row = views_get_view_result('news_and_events_group', 'region_news_events');
+            }
+            elseif ($group->bundle() == 'governance_area') {
               $row = views_get_view_result('news_and_events_group', 'ga_news_events');
             }
             else {

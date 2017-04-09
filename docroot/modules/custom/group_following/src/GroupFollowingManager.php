@@ -58,11 +58,19 @@ class GroupFollowingManager implements GroupFollowingManagerInterface {
   public function getFollowedForUser(AccountInterface $account, $group_type = NULL) {
     $gids = $this->getStorage()
       ->getFollowedForUser($account);
-    $result = [];
-    foreach ($gids as $gid) {
-      $result[$gid->bundle][$gid->gid] = $gid->gid;
+
+    if (empty($gids)) {
+      return;
     }
-    return $result;
+
+    /** @var \Drupal\Core\Entity\Query\QueryInterface $query */
+    $query = \Drupal::entityQuery('group');
+    $query->condition('id', $gids, 'IN');
+    if ($group_type) {
+      $query->condition('type', $group_type);
+    }
+    $entity_ids = $query->execute();
+    return $entity_ids;
   }
 
   /**

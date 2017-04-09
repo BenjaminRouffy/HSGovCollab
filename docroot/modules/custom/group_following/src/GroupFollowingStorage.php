@@ -38,27 +38,27 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    *   GroupFollowing::buildJoin.
    */
   public function buildJoin(JoinPluginBase $join_plugin, $select_query, $table, $view_query) {
-    $condition = db_and();
-    $select = db_select('group_content_field_data', 'gcfd');
-    $select->fields('gcfd');
-    $this->buildJoinQuery('gcfd', 'gid', $select, $condition);
-
-    $select_query->join($select, 'group_select', db_and()->where("{$join_plugin->leftTable}.{$join_plugin->leftField} = group_select.gid"));
+    $select = $this->buildJoinQuery();
+    $select_query->join($select, 'group_select', db_and()
+      ->where("{$join_plugin->leftTable}.{$join_plugin->leftField} = group_select.gid")
+    );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildJoinQuery($left_table, $left_field, $select_query, $condition) {
+  public function buildJoinQuery() {
+    $select_query = db_select($this->sqlBuilder->groupUnion(), 'group_union');
+    $select_query->addField('group_union', 'end_vertex', 'gid');
     /** @var \Drupal\Core\Database\Query\Select $select_query */
-    $alias = $select_query->join($this->sqlBuilder->groupUnion(), 'group_union', $condition->where("{$left_table}.{$left_field} = group_union.end_vertex"));
+    $alias = 'group_union';
 
     $select_query->leftJoin($this->sqlBuilder->groupFollowing(), 'group_following', db_and()
       ->where("{$alias}.start_vertex = group_following.gid"));
 
     $select_query->leftJoin('group_graph', 'group_graph_1', db_and()
       ->where("{$alias}.end_vertex = group_graph_1.end_vertex")
-      ->where("group_graph_1.hops = 0"));
+      ->where("{$alias}.exit_edge_id = group_graph_1.id"));
 
 
     $select_query->leftJoin($this->sqlBuilder->groupFollowing(), 'group_following_start', db_and()
@@ -83,7 +83,7 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
       $select_query->where("length($expression) > 0");
       $select_query->where($expression . ' LIKE \'%:following\'');
     }
-
+    return $select_query;
   }
 
   /**
@@ -93,12 +93,9 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    *   Count of following references.
    */
   public function getFollowerByGroupForUser(GroupInterface $group, AccountInterface $account) {
-    $select = db_select('group_content_field_data', 'gcfd');
-    $select->fields('gcfd');
-
+    $select = $this->buildJoinQuery();
     $condition = db_and()->condition("group_union.end_vertex", $group->id());
-    $this->buildJoinQuery('gcfd', 'gid', $select, $condition);
-
+    $select->condition($condition);
     $result = $select->countQuery();
     return $result->execute()->fetchField();
   }
@@ -107,14 +104,8 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    * {@inheritdoc}
    */
   public function getFollowedForUser(AccountInterface $account) {
-    $select = db_select('group_content_field_data', 'gcfd');
-    $select->addExpression('substring_index(gcfd.type, \'-\', 1)', 'bundle');
-    $select->addField('gcfd', 'gid');
-
-    $condition = db_and();
-    $this->buildJoinQuery('gcfd', 'gid', $select, $condition);
-
-    $result = $select->execute()->fetchAll();
+    $select = $this->buildJoinQuery();
+    $result = $select->execute()->fetchCol();
     return $result;
   }
 

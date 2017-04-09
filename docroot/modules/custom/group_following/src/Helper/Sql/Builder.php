@@ -3,6 +3,7 @@
 namespace Drupal\group_following\Helper\Sql;
 
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Class Builder.
@@ -29,6 +30,7 @@ class Builder {
     $select->addField('g', 'id', 'start_vertex');
     $select->addField('g', 'id', 'end_vertex');
     $select->addExpression('\'0\'', 'hops');
+    $select->addExpression('\'0\'', 'exit_edge_id');
 
     $select->leftJoin('group_graph', 'gg', 'g.id = gg.end_vertex');
     $select->isNull('gg.hops');
@@ -57,6 +59,7 @@ class Builder {
     $select->addField('gg', 'start_vertex', 'start_vertex');
     $select->addField('gg', 'end_vertex', 'end_vertex');
     $select->addExpression('gg.hops + 1', 'hops');
+    $select->addExpression('gg.exit_edge_id', 'exit_edge_id');
 
     $select->innerJoin('group_graph', 'gg', db_and()
       ->where('g.max = gg.hops')
@@ -76,7 +79,7 @@ class Builder {
   /**
    * {@inheritdoc}
    */
-  public function groupFollowing() {
+  public function groupFollowing($account) {
     $select = db_select('group_content_field_data', 'gcf');
     $select->addField('gcf', 'id', 'id');
     $select->addField('gcf', 'gid', 'gid');
@@ -87,7 +90,11 @@ class Builder {
 
     $select->innerJoin('group_content__field_follower', 'gcff', db_and()
       ->where('gcf.id = gcff.entity_id'));
-    $select->condition('gcf.entity_id', \Drupal::currentUser()->id());
+
+    // @TODO Replace to $account.
+    $select->condition('gcf.entity_id', \Drupal::currentUser()
+      ->id()
+    );
     return $select;
   }
 

@@ -36,7 +36,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -405,17 +405,7 @@ display:
           tokenize: false
           content: "<div class=\"empty-result\">\n      <p>Nothing has been found</p>\n\n    </div>"
           plugin_id: text_custom
-      relationships:
-        group_following:
-          id: group_following
-          table: groups_field_data
-          field: group_following
-          relationship: none
-          group_type: group
-          admin_label: 'Group following label for relationship'
-          required: true
-          entity_type: group
-          plugin_id: group_following
+      relationships: {  }
       arguments: {  }
       display_extenders: {  }
       filter_groups:
@@ -424,7 +414,7 @@ display:
           1: OR
           2: AND
       css_class: view-country
-      group_by: true
+      group_by: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -434,7 +424,11 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.governance_area.banner'
@@ -450,15 +444,11 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.country.search_country'
-        - 'config:core.entity_view_display.group.country.single_line_with_icon'
-        - 'config:core.entity_view_display.group.region.country_list_by_region'
-        - 'config:core.entity_view_display.group.region.default'
   block_1:
     display_plugin: block
     id: block_1
@@ -1793,6 +1783,8 @@ display:
       defaults:
         pager: false
         relationships: false
+        filters: false
+        filter_groups: false
       relationships:
         group_following:
           id: group_following
@@ -1804,6 +1796,218 @@ display:
           required: true
           entity_type: group
           plugin_id: group_following
+      filters:
+        combine_1:
+          id: combine_1
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          admin_label: 'Search for a country or region'
+          operator: starts
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_1_op
+            label: 'Search for a country or region'
+            description: ''
+            use_operator: false
+            operator: combine_1_op
+            identifier: combine_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          fields:
+            label: label
+          alphabet: 0
+          plugin_id: combine
+        combine:
+          id: combine
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          admin_label: 'Alphabet filter'
+          operator: starts
+          value: all
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: combine_op
+            identifier: combine
+            required: true
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          fields:
+            label: label
+          alphabet: 1
+          plugin_id: combine
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
+            und: und
+            zxx: zxx
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: langcode
+          plugin_id: language
+        type:
+          id: type
+          table: groups_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            country: country
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: type
+          plugin_id: bundle
+        field_group_status_value:
+          id: field_group_status_value
+          table: group__field_group_status
+          field: field_group_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            published: published
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
+      filter_groups:
+        operator: AND
+        groups:
+          1: OR
+          2: AND
     cache_metadata:
       max-age: -1
       contexts:

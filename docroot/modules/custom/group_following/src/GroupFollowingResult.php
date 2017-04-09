@@ -19,6 +19,10 @@ class GroupFollowingResult implements GroupFollowingResultInterface {
    * @var AccountInterface
    */
   protected $account;
+
+  /**
+   * @var bool
+   */
   protected $softFollower;
 
   /**
@@ -60,7 +64,7 @@ class GroupFollowingResult implements GroupFollowingResultInterface {
   }
 
   /**
-   * @return mixed
+   * {@inheritdoc}
    */
   public function getSoftFollower() {
     if (is_null($this->softFollower)) {
@@ -70,22 +74,21 @@ class GroupFollowingResult implements GroupFollowingResultInterface {
   }
 
   /**
-   * @param $softFollower
-   * @return mixed
+   * {@inheritdoc}
    */
   public function setSoftFollower($softFollower) {
     $this->softFollower = (bool) $softFollower;
   }
 
   /**
-   * @return mixed
+   * {@inheritdoc}
    */
   public function follow() {
     return $this->groupFollowing->follow($this->account);
   }
 
   /**
-   * @return mixed
+   * {@inheritdoc}
    */
   public function unfollow() {
     return $this->groupFollowing->unfollow($this->account);

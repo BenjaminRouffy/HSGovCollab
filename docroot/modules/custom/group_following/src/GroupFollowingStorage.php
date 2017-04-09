@@ -3,7 +3,7 @@
 namespace Drupal\group_following;
 
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Database\Query\Condition;
+use Drupal\Core\Database\Database;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group_following\Helper\Sql\Builder;
@@ -32,83 +32,54 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
   }
 
   /**
-   * Generate skeleton.
-   *
-   * @param \Drupal\Core\Session\AccountInterface $account
-   *   User account.
-   *
-   * @return \Drupal\Core\Database\Query\SelectInterface
-   *   Nested query.
-   */
-  public function generateJoin(AccountInterface $account) {
-    $current_user = $account->id();
-
-    // All membership group types "region-group_membership" etc...
-    $group_membership_types = $this->sqlBuilder->getAllGroupMemberShipTypes();
-
-    $group_roles_with_gid = $this->sqlBuilder->getGroupRolesWithGid($group_membership_types);
-    $group_graph_with_own = $this->sqlBuilder->getGroupGraphWithOwn();
-
-    $group_graph = $this->connection->select($group_graph_with_own, 'gg1');
-
-    $expression = $this->sqlBuilder->getRoles(static::ITERATION);
-    $group_graph->addExpression($expression, 'roles');
-
-    for ($level_depth = 1; $level_depth <= static::ITERATION; $level_depth++) {
-      if ($level_depth != 1) {
-        // We skips the first level, because mail table contains
-        // all information that we need.
-        $group_graph_with_own = $this->sqlBuilder->getGroupGraphWithOwn();
-        $parent_level_depth = $level_depth - 1;
-        $group_graph->leftJoin($group_graph_with_own, "gg{$level_depth}", "gg{$parent_level_depth}.end_vertex = gg{$level_depth}.start_vertex AND gg{$level_depth}.hops = :hops{$level_depth}", [
-          ':hops' . $level_depth => $parent_level_depth,
-        ]);
-      }
-      $method = ($level_depth == 1) ? 'innerJoin' : 'leftJoin';
-      $group_graph->{$method}($group_roles_with_gid, "grg{$level_depth}", "gg{$level_depth}.end_vertex = grg{$level_depth}.gid AND grg{$level_depth}.uid = :current_user", [
-        ':current_user' => $current_user,
-      ]);
-
-      $group_graph->addField("gg{$level_depth}", "end_vertex", "end_vertex{$level_depth}");
-//      $group_graph->addField("grg{$level_depth}", "type", "type{$level_depth}");
-
-    }
-    $group_graph->condition('gg1.hops', 0);
-
-    /*
-     * This code designed as for compatibility with mysql 5.5.
-     *
-     * @best_prastise
-     *  $group_graph->havingCondition('roles', '%:unfollower', 'NOT LIKE')
-     */
-//    $group_graph->havingCondition('roles', '%:unfollower', 'NOT LIKE');
-
-    $group_graph->where($expression . 'NOT LIKE \'%:unfollower\'');
-//    $group_graph->where($expression . ' != \':\'');
-
-    return $group_graph;
-  }
-
-  /**
    * {@inheritdoc}
    *
    * @file group_following/src/Plugin/views/join/GroupFollowing.php
    *   GroupFollowing::buildJoin.
    */
   public function buildJoin(JoinPluginBase $join_plugin, $select_query, $table, $view_query) {
-    $current_user = \Drupal::currentUser()->getAccount();
+    $condition = db_and();
+    return $this->buildJoinQuery($join_plugin->leftTable, $join_plugin->leftField, $select_query, $condition);
+  }
 
-    $group_graph = $this->generateJoin($current_user);
+  /**
+   * {@inheritdoc}
+   */
+  public function buildJoinQuery($left_table, $left_field, $select_query, $condition) {
+    /** @var \Drupal\Core\Database\Query\Select $select_query */
+    $alias = $select_query->join($this->sqlBuilder->groupUnion(), 'group_union', $condition->where("{$left_table}.{$left_field} = group_union.end_vertex"));
 
-    /*$condition = $this->condition('grg', 'type', 'region');
-    $group_graph->condition($condition);*/
+    $select_query->leftJoin($this->sqlBuilder->groupFollowing(), 'group_following', db_and()
+      ->where("{$alias}.start_vertex = group_following.gid"));
 
-    $or = new Condition('OR');
-    for ($i = 1; $i <= static::ITERATION; $i++) {
-      $or->where("{$join_plugin->leftTable}.{$join_plugin->leftField} = {$table['alias']}.end_vertex{$i}");
+    $select_query->leftJoin('group_graph', 'group_graph_1', db_and()
+      ->where("{$alias}.end_vertex = group_graph_1.end_vertex")
+      ->where("group_graph_1.hops = 0"));
+
+
+    $select_query->leftJoin($this->sqlBuilder->groupFollowing(), 'group_following_start', db_and()
+      ->where("group_graph_1.start_vertex = group_following_start.gid"));
+    $select_query->leftJoin($this->sqlBuilder->groupFollowing(), 'group_following_end', db_and()
+      ->where("group_graph_1.end_vertex = group_following_end.gid"));
+
+    $select_query->addExpression('CONCAT_WS(\',\', group_union.start_vertex,
+            if(group_union.start_vertex != group_graph_1.start_vertex, group_graph_1.start_vertex, NULL),
+            group_graph_1.end_vertex)', 'thread');
+    $select_query->addExpression($expression = 'CONCAT_WS(\'\', IF(group_union.start_vertex = group_union.end_vertex, substring_index(group_following.value, \':\', 2), group_following.value),
+            if(group_union.start_vertex != group_graph_1.start_vertex, group_following_start.value,
+               NULL), group_following_end.value)', 'roles');
+
+    $mysql_version = Database::getConnection()->version();
+    list($main_version) = explode('-', $mysql_version);
+    if (version_compare($main_version, '5.7') >= 0) {
+      $select_query->having('length(roles) > 0');
+      $select_query->havingCondition('roles', '%:following', 'LIKE');
+    }
+    else {
+      $select_query->where("length($expression) > 0");
+      $select_query->where($expression . ' LIKE \'%:following\'');
     }
 
-    $select_query->addJoin($join_plugin->type = 'INNER', $group_graph, $table['alias'], db_and()->condition($or));
   }
 
   /**
@@ -118,32 +89,29 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    *   Count of following references.
    */
   public function getFollowerByGroupForUser(GroupInterface $group, AccountInterface $account) {
-    $group_graph = $this->generateJoin($account);
+    $select = db_select('group_content_field_data', 'gcfd');
+    $select->fields('gcfd');
 
-    $condition = $this->condition('gg', 'end_vertex', $group->id());
-    $result = $group_graph->condition($condition)->countQuery();
+    $condition = db_and()->condition("group_union.end_vertex", $group->id());
+    $this->buildJoinQuery('gcfd', 'gid', $select, $condition);
+
+    $result = $select->countQuery();
     return $result->execute()->fetchField();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getFollowedForUser(AccountInterface $account) {
-    $result = $this->generateJoin($account)->execute()->fetchAll();
-    $items = [];
-    foreach ($result as $item) {
-      $groups = [];
-      for ($i = 1; $i <= static::ITERATION; $i++) {
-        $groups[] = (int) $item->{"end_vertex$i"};
-      }
-      $items = array_merge($items, $groups);
-    }
-    return array_unique(array_filter($items));
-  }
+    $select = db_select('group_content_field_data', 'gcfd');
+    $select->addExpression('substring_index(gcfd.type, \'-\', 1)', 'bundle');
+    $select->addField('gcfd', 'gid');
 
-  private function condition($table, $field, $value = NULL, $operator = '=') {
-    $or = new Condition('OR');
-    for ($i = 1; $i <= static::ITERATION; $i++) {
-      $or->condition("$table{$i}.$field", $value, $operator);
-    }
-    return $or;
+    $condition = db_and();
+    $this->buildJoinQuery('gcfd', 'gid', $select, $condition);
+
+    $result = $select->execute()->fetchAll();
+    return $result;
   }
 
 }

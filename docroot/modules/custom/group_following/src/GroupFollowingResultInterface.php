@@ -2,6 +2,11 @@
 
 namespace Drupal\group_following;
 
+/**
+ * Interface GroupFollowingResultInterface.
+ *
+ * @TODO Update interface.
+ */
 interface GroupFollowingResultInterface {
 
   /**

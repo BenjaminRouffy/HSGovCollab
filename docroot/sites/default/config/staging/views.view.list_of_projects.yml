@@ -13,6 +13,7 @@ dependencies:
     - better_exposed_filters
     - ggroup
     - group
+    - node
     - options
     - p4h_views_plugins
 id: list_of_projects
@@ -265,7 +266,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
-      title: ''
+      title: Projects
       defaults:
         title: false
         arguments: false
@@ -279,8 +280,41 @@ display:
         use_more_text: false
         use_ajax: false
         exposed_form: false
+        empty: false
       arguments: {  }
-      relationships: {  }
+      relationships:
+        gc__node:
+          id: gc__node
+          table: group_content_field_data
+          field: gc__node
+          relationship: none
+          group_type: group
+          admin_label: 'Group content content'
+          required: false
+          group_content_plugins:
+            'group_node:basic_page': '0'
+            'group_node:document': '0'
+            'group_node:event': '0'
+            'group_node:member': '0'
+            'group_node:news': '0'
+            'group_node:social': '0'
+          entity_type: group_content
+          plugin_id: group_content_to_entity
+        gc__group:
+          id: gc__group
+          table: group_content_field_data
+          field: gc__group
+          relationship: none
+          group_type: group
+          admin_label: 'Group content group'
+          required: false
+          group_content_plugins:
+            'subgroup:project': 'subgroup:project'
+            'subgroup:country': '0'
+            'subgroup:governance_area': '0'
+            'subgroup:region': '0'
+          entity_type: group_content
+          plugin_id: group_content_to_entity
       filters:
         type:
           id: type
@@ -323,46 +357,6 @@ display:
           entity_type: group_content
           entity_field: type
           plugin_id: bundle
-        langcode:
-          id: langcode
-          table: group_content_field_data
-          field: langcode
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: group_content
-          entity_field: langcode
-          plugin_id: language
         gid_1:
           id: gid_1
           table: group_content_field_data
@@ -509,6 +503,46 @@ display:
           entity_type: group_content
           entity_field: label
           plugin_id: string
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -626,6 +660,18 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

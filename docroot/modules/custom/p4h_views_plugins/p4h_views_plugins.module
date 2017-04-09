@@ -59,6 +59,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
       case 'views-exposed-form-news-events-block-3':
       case 'views-exposed-form-news-and-events-group-ga-news-events':
       case 'views-exposed-form-news-and-events-group-block-news-events-project':
+      case 'views-exposed-form-list-of-projects-all-projects':
         $form['wrap'] = [
           '#prefix' => '<div class="wrapper-filters">',
           '#suffix' => '</div>',
@@ -66,9 +67,15 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         ];
         $form['#attributes']['data-accordion'] = $form['#id'];
 
-        $form['wrap']['year'] = $form['year'];
-        $form['wrap']['month'] = $form['month'];
-        unset($form['year'], $form['month']);
+        if (isset($form['year'])) {
+          $form['wrap']['year'] = $form['year'];
+          unset($form['year']);
+        }
+
+        if (isset($form['month'])) {
+          $form['wrap']['month'] = $form['month'];
+          unset($form['month']);
+        }
 
         /*$form['#attached']['drupalSettings'] = [
           'defaultFormSelector' . rand(100,999) => '#' . $form['#id']

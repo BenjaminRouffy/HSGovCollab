@@ -1,0 +1,23 @@
+uuid: f79a7775-06f3-4d15-8ba9-4f4ca8d063fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.field_follower
+    - group.content_type.country-group_membership
+id: group_content.country-group_membership.field_follower
+field_name: field_follower
+entity_type: group_content
+bundle: country-group_membership
+label: Follower
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

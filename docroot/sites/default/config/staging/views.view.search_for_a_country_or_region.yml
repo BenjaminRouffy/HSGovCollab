@@ -2229,6 +2229,7 @@ display:
         filter_groups: false
         pager: false
         fields: false
+        relationships: false
       filter_groups:
         operator: AND
         groups:
@@ -2369,6 +2370,17 @@ display:
           view_mode: country_list_by_region
           entity_type: group
           plugin_id: rendered_entity
+      relationships:
+        group_following:
+          id: group_following
+          table: groups_field_data
+          field: group_following
+          relationship: none
+          group_type: group
+          admin_label: 'Group following label for relationship'
+          required: true
+          entity_type: group
+          plugin_id: group_following
     cache_metadata:
       max-age: -1
       contexts:

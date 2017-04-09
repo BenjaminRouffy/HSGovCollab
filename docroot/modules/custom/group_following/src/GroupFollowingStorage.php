@@ -39,7 +39,11 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    */
   public function buildJoin(JoinPluginBase $join_plugin, $select_query, $table, $view_query) {
     $condition = db_and();
-    return $this->buildJoinQuery($join_plugin->leftTable, $join_plugin->leftField, $select_query, $condition);
+    $select = db_select('group_content_field_data', 'gcfd');
+    $select->fields('gcfd');
+    $this->buildJoinQuery('gcfd', 'gid', $select, $condition);
+
+    $select_query->join($select, 'group_select', db_and()->where("{$join_plugin->leftTable}.{$join_plugin->leftField} = group_select.gid"));
   }
 
   /**

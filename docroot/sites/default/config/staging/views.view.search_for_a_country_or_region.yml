@@ -405,7 +405,17 @@ display:
           tokenize: false
           content: "<div class=\"empty-result\">\n      <p>Nothing has been found</p>\n\n    </div>"
           plugin_id: text_custom
-      relationships: {  }
+      relationships:
+        group_following:
+          id: group_following
+          table: groups_field_data
+          field: group_following
+          relationship: none
+          group_type: group
+          admin_label: 'Group following label for relationship'
+          required: true
+          entity_type: group
+          plugin_id: group_following
       arguments: {  }
       display_extenders: {  }
       filter_groups:
@@ -424,11 +434,16 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -439,9 +454,11 @@ display:
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
         - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.region.country_list_by_region'
         - 'config:core.entity_view_display.group.region.default'
-        - 'config:core.entity_view_display.group.country.search_country'
   block_1:
     display_plugin: block
     id: block_1
@@ -950,6 +967,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -1360,6 +1384,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -1714,6 +1745,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -1782,6 +1820,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -2136,6 +2181,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -2371,6 +2423,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.group_content.country-group_membership.field_follower
     - field.field.group_content.country-group_membership.group_roles
     - group.content_type.country-group_membership
 id: group_content.country-group_membership.default
@@ -20,5 +21,6 @@ content:
     region: content
 hidden:
   entity_id: true
+  field_follower: true
   langcode: true
   uid: true

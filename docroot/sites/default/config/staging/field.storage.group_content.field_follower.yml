@@ -1,0 +1,22 @@
+uuid: 8601a257-d084-4bdb-b02b-78881426aaa9
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - group
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: group_content.field_follower
+field_name: field_follower
+entity_type: group_content
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

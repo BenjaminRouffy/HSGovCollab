@@ -11,7 +11,8 @@ entity_type: node
 type: group_content_item
 settings:
   group_type: country
-  plugin_type: country-group_node-event
+  plugin_type: group_content_node
+  plugin_enabler_id: country-group_node-event
   group_roles: {  }
 module: group_content_field
 locked: false

@@ -8,28 +8,31 @@ dependencies:
     - field.field.user.user.field_avatar
     - field.field.user.user.field_category
     - field.field.user.user.field_city
-    - field.field.user.user.field_countries
     - field.field.user.user.field_country_manager
     - field.field.user.user.field_country_text
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
+    - field.field.user.user.field_following_countries
+    - field.field.user.user.field_following_projects
+    - field.field.user.user.field_following_regions
     - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
+    - field.field.user.user.field_last_password_reset
     - field.field.user.user.field_middle_name
     - field.field.user.user.field_mobilephone
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
     - field.field.user.user.field_organisations
+    - field.field.user.user.field_password_expiration
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_project_manager
-    - field.field.user.user.field_projects
-    - field.field.user.user.field_regions
     - field.field.user.user.field_skype_or_other
     - field.field.user.user.field_streetname
     - field.field.user.user.field_telephone
     - field.field.user.user.field_zip_code
   module:
     - field_group
+    - group_content_field
     - user
 third_party_settings:
   field_group:
@@ -54,8 +57,9 @@ third_party_settings:
       label: 'Fields Wrapper'
     group_catagories_wrapper:
       children:
-        - field_countries
-        - field_regions
+        - field_following_regions
+        - field_following_countries
+        - field_following_projects
         - field_category
       parent_name: group_fields_wrapper
       weight: 2
@@ -84,19 +88,25 @@ content:
     third_party_settings: {  }
   field_category:
     type: options_select
-    weight: 32
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_countries:
-    type: options_select
-    weight: 30
+  field_following_countries:
+    type: group_select
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_regions:
-    type: options_select
-    weight: 31
+  field_following_projects:
+    type: group_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_following_regions:
+    type: group_select
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -122,14 +132,15 @@ hidden:
   field_first_name: true
   field_job_title: true
   field_last_name: true
+  field_last_password_reset: true
   field_middle_name: true
   field_mobilephone: true
   field_non_member_organization: true
   field_organisation: true
   field_organisations: true
+  field_password_expiration: true
   field_person_titles: true
   field_project_manager: true
-  field_projects: true
   field_skype_or_other: true
   field_streetname: true
   field_telephone: true

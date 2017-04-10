@@ -1,0 +1,21 @@
+uuid: c3670026-4f13-424f-b597-be87ac2c6ab1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_following_countries
+  module:
+    - group_content_field
+    - user
+id: user.user.field_following_countries
+field_name: field_following_countries
+entity_type: user
+bundle: user
+label: Countries
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

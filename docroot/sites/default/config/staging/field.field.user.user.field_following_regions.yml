@@ -1,0 +1,23 @@
+uuid: 7aceefba-21e7-4e89-9f04-802e66c6a44e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_following_regions
+  module:
+    - group_content_field
+    - user
+id: user.user.field_following_regions
+field_name: field_following_regions
+entity_type: user
+bundle: user
+label: Regions
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

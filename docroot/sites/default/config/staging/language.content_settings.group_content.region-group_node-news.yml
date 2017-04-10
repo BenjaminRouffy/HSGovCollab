@@ -1,0 +1,16 @@
+uuid: 056031a0-622f-4cb9-b00a-a0bc3cd40476
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.region-group_node-news
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: group_content.region-group_node-news
+target_entity_type_id: group_content
+target_bundle: region-group_node-news
+default_langcode: site_default
+language_alterable: false

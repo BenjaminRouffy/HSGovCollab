@@ -1,0 +1,16 @@
+uuid: a1901f75-4c1f-41a5-964c-fb2c1357bd0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: group.region
+target_entity_type_id: group
+target_bundle: region
+default_langcode: site_default
+language_alterable: true

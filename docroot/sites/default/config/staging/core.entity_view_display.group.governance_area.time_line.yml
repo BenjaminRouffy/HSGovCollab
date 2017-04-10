@@ -7,7 +7,6 @@ dependencies:
     - field.field.group.governance_area.field_banner
     - field.field.group.governance_area.field_bottom_link
     - field.field.group.governance_area.field_content
-    - field.field.group.governance_area.field_date
     - field.field.group.governance_area.field_faq
     - field.field.group.governance_area.field_ga_icon
     - field.field.group.governance_area.field_infographic
@@ -16,22 +15,12 @@ dependencies:
     - field.field.group.governance_area.field_time_line
     - group.type.governance_area
   module:
-    - datetime
     - text
 id: group.governance_area.time_line
 targetEntityType: group
 bundle: governance_area
 mode: time_line
 content:
-  field_date:
-    weight: 1
-    label: hidden
-    settings:
-      timezone_override: ''
-      format_type: time_line
-    third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_summary:
     weight: 0
     label: hidden

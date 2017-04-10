@@ -7,7 +7,6 @@ dependencies:
     - field.field.group.governance_area.field_banner
     - field.field.group.governance_area.field_bottom_link
     - field.field.group.governance_area.field_content
-    - field.field.group.governance_area.field_date
     - field.field.group.governance_area.field_faq
     - field.field.group.governance_area.field_ga_icon
     - field.field.group.governance_area.field_infographic
@@ -16,7 +15,6 @@ dependencies:
     - field.field.group.governance_area.field_time_line
     - group.type.governance_area
   module:
-    - datetime
     - entity_browser
     - field_group
     - paragraphs
@@ -148,12 +146,6 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
-    region: content
-  field_date:
-    weight: 15
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
     region: content
   field_faq:
     weight: 16

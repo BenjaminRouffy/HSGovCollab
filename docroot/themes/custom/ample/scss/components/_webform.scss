@@ -160,6 +160,11 @@ form {
   padding: 1px 12px;
   width: 100%;
 
+  .select-wrapper & {
+    @include font-size(16.8);
+    font-family: $fira;
+  }
+
   &[disabled] {
     border-color: $grey-light;
     color: $grey-light;

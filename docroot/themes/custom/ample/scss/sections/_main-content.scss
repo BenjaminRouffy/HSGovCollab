@@ -44,6 +44,13 @@
   }
 }
 
+@include breakpoint-for('.content-container', (to: mobileL)) {
+  .page-my-countries-and-regions &,
+  .page-my-news & {
+    padding-top: 40px;
+  }
+}
+
 .region-wrapper {
   @include clearfix();
 }

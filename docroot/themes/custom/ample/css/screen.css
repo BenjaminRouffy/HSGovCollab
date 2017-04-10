@@ -739,6 +739,9 @@ svg {
       content: 'f';
       font-family: P4h, sans-serif;
       text-transform: none; }
+  .group-project .anchor-links li:first-child a,
+  .group-region .anchor-links li:first-child a {
+    text-transform: uppercase; }
 
 .anchor-links a {
   font-size: 1.05rem;
@@ -4678,7 +4681,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.page-projects.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;

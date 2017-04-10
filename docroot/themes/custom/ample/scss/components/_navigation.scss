@@ -498,6 +498,15 @@
         }
       }
     }
+
+    .group-project &,
+    .group-region & {
+      &:first-child {
+        a {
+          text-transform: uppercase;
+        }
+      }
+    }
   }
 
   a {

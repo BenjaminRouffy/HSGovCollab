@@ -2,6 +2,7 @@
 
 namespace Drupal\p4h_views_plugins\Plugin\views\filter;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Config\Entity\ConfigEntityStorageInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
@@ -95,6 +96,8 @@ class GroupIndexByFollowing extends GroupIndexGid  {
   protected function valueForm(&$form, FormStateInterface $form_state) {
     $options = [];
     $account = \Drupal::currentUser();
+    $groupPermissionAccess = \Drupal::getContainer()
+      ->get('group_customization.group.permission');
 
     foreach (array_filter($this->options['gid']) as $group_type_id) {
       $groups_id = $this->manager->getFollowedForUser($account, $group_type_id);
@@ -102,9 +105,14 @@ class GroupIndexByFollowing extends GroupIndexGid  {
       foreach ($groups_id as $group_id) {
         $group = Group::load($group_id);
 
-        $options[$group->id()] = \Drupal::entityManager()
-          ->getTranslationFromContext($group)
-          ->label();
+        /* @var AccessResult $access */
+        $access = $groupPermissionAccess->checkAccessForFilter($group, $account, ['published', 'content',]);
+
+        if ($access->isAllowed()) {
+          $options[$group->id()] = \Drupal::entityManager()
+            ->getTranslationFromContext($group)
+            ->label();
+        }
       }
     }
 

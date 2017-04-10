@@ -107,10 +107,10 @@ class GroupIndexByGroupType extends GroupIndexGid  {
       $result = $query->execute();
       $groups = $this->group->loadMultiple($result);
 
-      foreach ($groups as $group) {
-        $groupPermissionAccess = \Drupal::getContainer()
-          ->get('group_customization.group.permission');
+      $groupPermissionAccess = \Drupal::getContainer()
+        ->get('group_customization.group.permission');
 
+      foreach ($groups as $group) {
         /* @var AccessResult $access */
         $access =  $groupPermissionAccess->checkAccessForFilter($group, $account, [
           'published',

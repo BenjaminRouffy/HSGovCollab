@@ -69,7 +69,7 @@ display:
               autosubmit: true
               timeout: '1000'
               autosubmit_hide: true
-            gid_following:
+            gid:
               bef_format: bef
               more_options:
                 bef_select_all_none: false
@@ -1479,6 +1479,7 @@ display:
         filter_groups: false
         relationships: false
         cache: false
+        header: false
       filter_groups:
         operator: AND
         groups:
@@ -1513,6 +1514,18 @@ display:
       cache:
         type: none
         options: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Filter by:'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:
@@ -1906,11 +1919,24 @@ display:
       defaults:
         filters: false
         filter_groups: false
+        header: false
       filter_groups:
         operator: AND
         groups:
           1: AND
       display_description: ''
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Filter by:'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

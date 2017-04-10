@@ -38,7 +38,7 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    *   GroupFollowing::buildJoin.
    */
   public function buildJoin(JoinPluginBase $join_plugin, $select_query, $table, $view_query) {
-    $select = $this->buildJoinQuery();
+    $select = $this->buildJoinQuery(\Drupal::currentUser()->getAccount());
     $select_query->join($select, 'group_select', db_and()
       ->where("{$join_plugin->leftTable}.{$join_plugin->leftField} = group_select.gid")
     );
@@ -47,13 +47,13 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
   /**
    * {@inheritdoc}
    */
-  public function buildJoinQuery() {
+  public function buildJoinQuery(AccountInterface $account) {
     $select_query = db_select($this->sqlBuilder->groupUnion(), 'group_union');
     $select_query->addField('group_union', 'end_vertex', 'gid');
     /** @var \Drupal\Core\Database\Query\Select $select_query */
     $alias = 'group_union';
 
-    $select_query->leftJoin($this->sqlBuilder->groupFollowing(), 'group_following', db_and()
+    $select_query->leftJoin($this->sqlBuilder->groupFollowing($account), 'group_following', db_and()
       ->where("{$alias}.start_vertex = group_following.gid"));
 
     $select_query->leftJoin('group_graph', 'group_graph_1', db_and()
@@ -61,9 +61,9 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
       ->where("{$alias}.exit_edge_id = group_graph_1.id"));
 
 
-    $select_query->leftJoin($this->sqlBuilder->groupFollowing(), 'group_following_start', db_and()
+    $select_query->leftJoin($this->sqlBuilder->groupFollowing($account), 'group_following_start', db_and()
       ->where("group_graph_1.start_vertex = group_following_start.gid"));
-    $select_query->leftJoin($this->sqlBuilder->groupFollowing(), 'group_following_end', db_and()
+    $select_query->leftJoin($this->sqlBuilder->groupFollowing($account), 'group_following_end', db_and()
       ->where("group_graph_1.end_vertex = group_following_end.gid"));
 
     $select_query->addExpression('CONCAT_WS(\',\', group_union.start_vertex,
@@ -93,7 +93,7 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    *   Count of following references.
    */
   public function getFollowerByGroupForUser(GroupInterface $group, AccountInterface $account) {
-    $select = $this->buildJoinQuery();
+    $select = $this->buildJoinQuery($account);
     $condition = db_and()->condition("group_union.end_vertex", $group->id());
     $select->condition($condition);
     $result = $select->countQuery();
@@ -104,7 +104,7 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    * {@inheritdoc}
    */
   public function getFollowedForUser(AccountInterface $account) {
-    $select = $this->buildJoinQuery();
+    $select = $this->buildJoinQuery($account);
     $result = $select->execute()->fetchCol();
     return $result;
   }

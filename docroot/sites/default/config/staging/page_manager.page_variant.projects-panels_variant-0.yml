@@ -1,0 +1,49 @@
+uuid: 8d5b0032-e981-466d-ae58-3e87dfee0852
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.projects
+    - views.view.search_for_a_country_or_region
+  module:
+    - panels
+    - user
+    - views
+id: projects-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    a667c72c-1231-4a47-99d1-90feaa845088:
+      id: 'views_block:search_for_a_country_or_region-projects'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: a667c72c-1231-4a47-99d1-90feaa845088
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 128d2cc4-d47b-426b-a874-2265cea69b9a
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: projects-panels_variant-0
+  builder: standard
+page: projects
+weight: 0
+selection_criteria:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

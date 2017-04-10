@@ -1,0 +1,23 @@
+uuid: 2adb503f-cf4e-4274-8433-043c3d8d390c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.region-subgroup-project
+id: group_content.region-subgroup-project.default
+targetEntityType: group_content
+bundle: region-subgroup-project
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

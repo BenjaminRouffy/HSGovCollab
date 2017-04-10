@@ -96,7 +96,7 @@ class GroupIndexByGroupType extends GroupIndexGid  {
     $options = [];
     $account = \Drupal::currentUser();
 
-    foreach ($this->options['gid'] as $group_type_id) {
+    foreach (array_filter($this->options['gid']) as $group_type_id) {
       $group_type = $this->groupType->load($group_type_id);
 
       $query = \Drupal::entityQuery('group')

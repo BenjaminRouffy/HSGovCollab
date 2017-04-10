@@ -10,6 +10,8 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\ggroup\GroupHierarchyManager;
+use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
@@ -30,6 +32,24 @@ function group_customization_preprocess_html(array &$variables) {
  */
 function group_customization_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
   if ('view' === $operation) {
+    if ('project' == $entity->bundle()) {
+      /* @var GroupHierarchyManager $subgroup_manage */
+      $subgroup_manage = \Drupal::service('ggroup.group_hierarchy_manager');
+
+      /* @var Group[] $parents */
+      $parents = $subgroup_manage->getGroupSupergroups($entity);
+
+      if (empty($parents)) {
+        return AccessResult::neutral();
+      }
+
+      foreach ($parents as $index => $parent) {
+        $parents[$index] = $parent->hasPermission('view group', $account);
+      }
+
+      return in_array(TRUE, $parents) ? AccessResult::allowed() : AccessResult::forbidden();
+    }
+
     // @var \Drupal\group_customization\Access\GroupPermissionAccessCheck $groupPermissionAccess
     $groupPermissionAccess = \Drupal::getContainer()
       ->get('group_customization.group.permission');
@@ -39,6 +59,8 @@ function group_customization_group_access(EntityInterface $entity, $operation, A
       'content',
     ]);
   }
+
+  return AccessResult::neutral();
 }
 
 /**

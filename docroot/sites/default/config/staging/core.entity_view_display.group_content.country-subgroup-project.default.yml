@@ -1,0 +1,23 @@
+uuid: 07ed0cdf-63a6-45ce-aaf2-bbb76b296558
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.country-subgroup-project
+id: group_content.country-subgroup-project.default
+targetEntityType: group_content
+bundle: country-subgroup-project
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

@@ -9,6 +9,8 @@
 namespace Drupal\group_following\Plugin\GroupContentDecorator;
 
 
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupContent;
 use Drupal\group_content_field\Plugin\GroupContentDecoratorBase;
 
 /**
@@ -27,10 +29,14 @@ class GroupContentDecoratorFollowing extends GroupContentDecoratorBase {
   protected $pluginManager;
   protected $groupType;
 
+  /** @var \Drupal\group_following\GroupFollowingManagerInterface $followingManager */
+  protected $followingManager;
+
   public function __construct($configuration) {
     parent::__construct($configuration);
     $this->pluginManager= \Drupal::service('plugin.manager.group_content_enabler');
     $this->groupType = \Drupal::entityTypeManager()->getStorage('group_type');
+    $this->followingManager =  \Drupal::getContainer()->get('group_following.manager');
   }
 
 
@@ -48,44 +54,28 @@ class GroupContentDecoratorFollowing extends GroupContentDecoratorBase {
    *   Array with gids.
    */
   function getDefaultValues($parent_entity) {
-    // TODO: Implement getDefaultValues() method.
+    return $this->followingManager->getFollowedForUser($parent_entity, $this->groupContentItem->getSetting('group_type'));
   }
 
   function getBuildProperties($parent_entity) {
-    // TODO: Implement getBuildProperties() method.
+    return [];
   }
+
   /**
    * Method which assign selected content to group.
    */
   function createMemberContent($parent_entity, $add_gid) {
-    $properties = $this->getBuildProperties($parent_entity);
+    $group_following = $this->followingManager->getFollowingByGroup(Group::load($add_gid));
 
-    $properties['gid'] = $add_gid;
-
-    $result = \Drupal::entityTypeManager()
-      ->getStorage('group_content')
-      ->loadByProperties($properties);
-
-    if (empty($result)) {
-      // TODO Add only role if membership exist.
-      GroupContent::create($properties)->save();
-    }
+    $group_following->follow($parent_entity);
   }
 
   /**
    * @inheritdoc
    */
   function removeMemberContent($parent_entity, $delete_gid) {
-    $properties = $this->getBuildProperties($parent_entity);
+    $group_following = $this->followingManager->getFollowingByGroup(Group::load($delete_gid));
 
-    $properties['gid'] = $delete_gid;
-    $result = \Drupal::entityTypeManager()
-      ->getStorage('group_content')
-      ->loadByProperties($properties);
-
-    foreach ($result as $group_content) {
-      // TODO Remove only role.
-      $group_content->delete();
-    }
+    $group_following->unfollow($parent_entity);
   }
 }

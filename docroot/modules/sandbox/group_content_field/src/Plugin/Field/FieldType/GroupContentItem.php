@@ -113,6 +113,7 @@ class GroupContentItem extends FieldItemBase {
     if ($group_type_default) {
       $options = [];
       $plugin_type_default = $form_state->getValue('settings')['plugin_type'] ?? $this->getSetting('plugin_type');
+      // TODO Ask for supported entities. E.g. Following supports only user entities.
       $plugin_types = $this->pluginManager->getAll($this);
 
       foreach ($plugin_types as $plugin_type) {

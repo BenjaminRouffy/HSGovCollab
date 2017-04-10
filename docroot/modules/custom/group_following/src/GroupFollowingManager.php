@@ -60,7 +60,7 @@ class GroupFollowingManager implements GroupFollowingManagerInterface {
       ->getFollowedForUser($account);
 
     if (empty($gids)) {
-      return;
+      return [];
     }
 
     /** @var \Drupal\Core\Entity\Query\QueryInterface $query */

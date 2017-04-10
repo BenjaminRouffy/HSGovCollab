@@ -36,7 +36,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: none
+        type: tag
         options: {  }
       query:
         type: views_query
@@ -414,7 +414,7 @@ display:
           1: OR
           2: AND
       css_class: view-country
-      group_by: false
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1783,8 +1783,10 @@ display:
       defaults:
         pager: false
         relationships: false
+        cache: false
         filters: false
         filter_groups: false
+        query: false
       relationships:
         group_following:
           id: group_following
@@ -1796,6 +1798,9 @@ display:
           required: true
           entity_type: group
           plugin_id: group_following
+      cache:
+        type: none
+        options: {  }
       filters:
         combine_1:
           id: combine_1
@@ -2008,6 +2013,14 @@ display:
         groups:
           1: OR
           2: AND
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
@@ -2230,6 +2243,8 @@ display:
         pager: false
         fields: false
         relationships: false
+        cache: false
+        query: false
       filter_groups:
         operator: AND
         groups:
@@ -2381,6 +2396,17 @@ display:
           required: true
           entity_type: group
           plugin_id: group_following
+      cache:
+        type: none
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:

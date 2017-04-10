@@ -4,16 +4,18 @@ status: true
 dependencies:
   config:
     - page_manager.page.projects
+    - views.view.search_for_a_country_or_region
   module:
     - panels
     - user
+    - views
 id: projects-panels_variant-0
 label: Panels
 variant: panels_variant
 variant_settings:
   blocks:
-    3273490a-7aad-451c-b0f6-29b2f8adb240:
-      id: 'views_block:list_of_projects-all_projects'
+    a667c72c-1231-4a47-99d1-90feaa845088:
+      id: 'views_block:search_for_a_country_or_region-projects'
       label: ''
       provider: views
       label_display: '0'
@@ -21,7 +23,7 @@ variant_settings:
       items_per_page: none
       region: middle
       weight: 0
-      uuid: 3273490a-7aad-451c-b0f6-29b2f8adb240
+      uuid: a667c72c-1231-4a47-99d1-90feaa845088
       context_mapping: {  }
   id: panels_variant
   uuid: 128d2cc4-d47b-426b-a874-2265cea69b9a

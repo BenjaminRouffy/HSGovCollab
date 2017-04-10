@@ -1,4 +1,4 @@
-uuid: cbb7b6ef-30ce-4acc-aab0-51e6c91c2b92
+uuid: 99f1def8-2e8d-4af4-891d-f168ba8eabe4
 langcode: en
 status: true
 dependencies:
@@ -8,15 +8,15 @@ dependencies:
     - user
 third_party_settings:
   field_permissions:
-    permission_type: custom
-id: user.field_project_manager
-field_name: field_project_manager
+    permission_type: public
+id: user.field_following_regions
+field_name: field_following_regions
 entity_type: user
 type: group_content_item
 settings:
-  group_type: project
-  plugin_type: group_content_group_membership
-  group_roles: project-admin
+  group_type: region
+  plugin_type: group_content_following
+  group_roles: {  }
   plugin_enabler_id: {  }
 module: group_content_field
 locked: false

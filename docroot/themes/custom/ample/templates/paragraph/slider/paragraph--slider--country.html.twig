@@ -4,12 +4,12 @@
       <div class="slider-item-wrapper{{ key == 0 ? ' first-slide' : '' }}">
         {% if key == 0 %}
           <div class="country-content-wrapper">
-            {{ country_icon }}
-
-            {% if region_icon is not empty %}
-              <img src="{{ file_url(region_icon) }}">
-            {% elseif group_bundle is not empty and (group_bundle == 'region' or group_bundle == 'governance_area')%}
-              <div class="country-icon-wrapper default"></div>
+            {% if 'country' == group_bundle  %}
+              {{ group_icon }}
+            {% elseif group_icon is not empty %}
+              <img src="{{ file_url(group_icon) }}">
+            {% else %}
+              <div class="country-icon-wrapper default {{ group_bundle }}"></div>
             {% endif %}
 
             <h1 role="heading">

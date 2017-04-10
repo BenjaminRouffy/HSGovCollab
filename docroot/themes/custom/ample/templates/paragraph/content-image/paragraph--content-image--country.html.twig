@@ -1,13 +1,13 @@
 <div class="banner-image-wrapper">
   <div class="country-content-wrapper">
-    {{ country_icon }}
-
-    {% if region_icon  %}
+    {% if 'country' == group_bundle  %}
+      {{ group_icon }}
+    {% elseif group_icon is not empty %}
       <div class="country-icon-wrapper">
-        <img src="{{ file_url(region_icon) }}">
+        <img src="{{ file_url(group_icon) }}">
       </div>
-    {% elseif group_bundle == 'region' or group_bundle == 'governance_area' %}
-      <div class="country-icon-wrapper default"></div>
+    {% else %}
+      <div class="country-icon-wrapper default {{ group_bundle }}"></div>
     {% endif %}
 
     <h1 role="heading">

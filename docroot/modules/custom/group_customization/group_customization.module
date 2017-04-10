@@ -39,6 +39,10 @@ function group_customization_group_access(EntityInterface $entity, $operation, A
       /* @var Group[] $parents */
       $parents = $subgroup_manage->getGroupSupergroups($entity);
 
+      if (empty($parents)) {
+        return AccessResult::neutral();
+      }
+
       foreach ($parents as $index => $parent) {
         $parents[$index] = $parent->hasPermission('view group', $account);
       }

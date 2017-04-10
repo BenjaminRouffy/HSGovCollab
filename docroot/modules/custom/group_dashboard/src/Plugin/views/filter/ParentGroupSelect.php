@@ -135,7 +135,13 @@ class ParentGroupSelect extends GroupIndexByGroupType  {
     if (!$user->hasPermission('all access to groups')) {
       // Get group admin roles.
       foreach ($group_types as $group_type) {
-        $roles[] = $group_type->id() . '-admin';
+        // @TODO We should to set admin roles to one name.
+        if ('governance_area' == $group_type->id()) {
+          $roles[] = $group_type->id() . '-manager';
+        }
+        else {
+          $roles[] = $group_type->id() . '-admin';
+        }
       }
       // Get all user memberships by admin roles.
       // @todo GroupMembershipSubscriber::onAlterMembershipsByUser() should be changed to current P4H business logic.

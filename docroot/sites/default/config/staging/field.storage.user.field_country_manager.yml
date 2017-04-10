@@ -15,8 +15,9 @@ entity_type: user
 type: group_content_item
 settings:
   group_type: country
-  plugin_type: country-group_membership
+  plugin_type: group_content_group_membership
   group_roles: country-admin
+  plugin_enabler_id: {  }
 module: group_content_field
 locked: false
 cardinality: 1

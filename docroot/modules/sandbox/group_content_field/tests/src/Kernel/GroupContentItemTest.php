@@ -49,20 +49,7 @@ class GroupContentItemTest extends EntityKernelTestBase {
 
   protected function setUp() {
     parent::setUp();
-
-    $this->constructFullSkeleton();
-
-    $this->groupContentItem = $this->getMock('\Drupal\group_content_field\Plugin\Field\GroupContentItem', [], [], '', FALSE);
   }
 
-  /**
-   * Tests generate next previous.
-   */
-  public function testGroupContentItem() {
-    $container = \Drupal::getContainer();
-    $container->get('current_user')->setAccount($this->uid_1_account);
-//    $this->groupContentItem->syncGroupContents();
-
-  }
 
 }

@@ -67,20 +67,4 @@ class GroupContentDecoratorNode extends GroupContentDecoratorBase {
     ];
   }
 
-  /**
-   * @inheritdoc
-   */
-  function getDefaultValues($parent_entity) {
-    $properties = $this->getBuildProperties($parent_entity);
-
-    /** @var \Drupal\group\Entity\GroupContentInterface[] $group_contents */
-    $group_contents = $this->groupContent->loadByProperties($properties);
-
-    $gids = [];
-    foreach ($group_contents as $group_content) {
-      $gids = $group_content->getGroup()->id();
-    }
-
-    return $gids;
-  }
 }

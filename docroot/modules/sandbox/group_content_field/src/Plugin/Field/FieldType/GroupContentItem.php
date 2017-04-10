@@ -55,8 +55,11 @@ class GroupContentItem extends FieldItemBase {
     $this->groupType = \Drupal::entityTypeManager()->getStorage('group_type');
     $this->groupContent = \Drupal::entityTypeManager()->getStorage('group_content');
     $this->pluginManager= \Drupal::service('plugin.manager.group_content_decorator');
-    $this->decoratorInstance = $this->pluginManager->createInstance($this->getSetting('plugin_type'), ['group_content_item' => $this]);
 
+    $plugin_type_default = $this->getSetting('plugin_type');
+    if ($this->pluginManager->hasDefinition($plugin_type_default)) {
+      $this->decoratorInstance = $this->pluginManager->createInstance($plugin_type_default, ['group_content_item' => $this]);
+    }
   }
 
   /**
@@ -66,8 +69,7 @@ class GroupContentItem extends FieldItemBase {
    */
   public function getValue() {
     $parent_entity = $this->getParent()->getParent()->getValue();
-
-    if (!empty($parent_entity->id()) && empty($this->values['from_widget'])) {
+    if (!empty($parent_entity->id()) && empty($this->values['from_widget']) && !empty($this->decoratorInstance)) {
       $this->entityGidsValues = $this->values['entity_gids'] = $this->decoratorInstance->getDefaultValues($parent_entity);
     }
 

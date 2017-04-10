@@ -22,30 +22,10 @@ use Drupal\group_content_field\Plugin\GroupContentDecoratorBase;
  */
 class GroupContentDecoratorGroupMembership extends GroupContentDecoratorBase {
   protected $groupRole;
-  protected $groupContent;
 
   public function __construct($configuration) {
     parent::__construct($configuration);
     $this->groupRole = \Drupal::entityTypeManager()->getStorage('group_role');
-    $this->groupContent = \Drupal::entityTypeManager()->getStorage('group_content');
-
-  }
-
-  /**
-   * @inheritdoc
-   */
-  function getDefaultValues($parent_entity) {
-    $properties = $this->getBuildProperties($parent_entity);
-
-    /** @var \Drupal\group\Entity\GroupContentInterface[] $group_contents */
-    $group_contents = $this->groupContent->loadByProperties($properties);
-
-    $gids = [];
-    foreach ($group_contents as $group_content) {
-      $gids = $group_content->getGroup()->id();
-    }
-
-    return $gids;
   }
 
   public function getBuildProperties($parent_entity) {

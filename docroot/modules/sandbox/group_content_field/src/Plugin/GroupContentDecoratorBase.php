@@ -19,6 +19,7 @@ abstract class GroupContentDecoratorBase implements GroupContentDecoratorInterfa
    * @var \Drupal\group_content_field\Plugin\Field\FieldType\GroupContentItem
    */
   protected $groupContentItem;
+  protected $groupContent;
 
   /**
    * GroupContentDecoratorBase constructor.
@@ -27,8 +28,8 @@ abstract class GroupContentDecoratorBase implements GroupContentDecoratorInterfa
   public function __construct($configuration) {
     $this->configuration = $configuration;
     $this->groupContentItem = $configuration['group_content_item'];
+    $this->groupContent = \Drupal::entityTypeManager()->getStorage('group_content');
   }
-
   /**
    * Plugin id.
    */
@@ -76,5 +77,22 @@ abstract class GroupContentDecoratorBase implements GroupContentDecoratorInterfa
       // TODO Remove only role.
       $group_content->delete();
     }
+  }
+
+  /**
+   * @inheritdoc
+   */
+  function getDefaultValues($parent_entity) {
+    $properties = $this->getBuildProperties($parent_entity);
+
+    /** @var \Drupal\group\Entity\GroupContentInterface[] $group_contents */
+    $group_contents = $this->groupContent->loadByProperties($properties);
+
+    $gids = [];
+    foreach ($group_contents as $group_content) {
+      $gids[] = $group_content->getGroup()->id();
+    }
+
+    return $gids;
   }
 }

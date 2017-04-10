@@ -260,6 +260,10 @@
     &.default {
       background: url(../images/globe_white.svg) center no-repeat;
       background-size: 100%;
+
+      .group-governance_area & {
+        background: url(../images/Governance_white.svg) center no-repeat;
+      }
     }
   }
 

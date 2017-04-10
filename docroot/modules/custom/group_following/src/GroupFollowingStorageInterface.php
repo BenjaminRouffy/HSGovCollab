@@ -6,6 +6,11 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\views\Plugin\views\join\JoinPluginBase;
 
+/**
+ * Interface GroupFollowingStorageInterface.
+ *
+ * @TODO Update interface.
+ */
 interface GroupFollowingStorageInterface {
 
   /**

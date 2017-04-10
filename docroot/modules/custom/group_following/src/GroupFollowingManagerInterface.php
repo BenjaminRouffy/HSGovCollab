@@ -13,21 +13,35 @@ use Drupal\group\Entity\GroupInterface;
 interface GroupFollowingManagerInterface {
 
   /**
-   * @param GroupInterface $group
+   * Return a new GroupFollowingInterface class.
+   *
+   * @param \Drupal\group\Entity\GroupInterface $group
+   *   Group object.
+   *
    * @return GroupFollowingInterface
+   *   GroupFollowingInterface class.
    */
   public function getFollowingByGroup(GroupInterface $group);
 
   /**
-   * @return GroupFollowingStorageInterface
+   * Array all following of user grouped by groups.
+   *
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   User object.
+   * @param null $group_type
+   *   Add implementation here.
+   *
+   * @return array
+   *   Array all following of user grouped by groups.
    */
-  public function getStorage();
+  public function getFollowedForUser(AccountInterface $account, $group_type = NULL);
 
   /**
-   * @param \Drupal\group_following\GroupFollowing $group_following
-   * @param \Drupal\Core\Session\AccountInterface $account
-   * @return mixed
+   * Storage getter.
+   *
+   * @return GroupFollowingStorageInterface
+   *   Storage object.
    */
-  public function addHardFollowing(GroupFollowing $group_following, AccountInterface $account);
+  public function getStorage();
 
 }

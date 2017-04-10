@@ -49,7 +49,7 @@ class GroupFollowController extends ControllerBase {
 
     $group_following = $manager->getFollowingByGroup($group);
 
-    $group_following->follow();
+    $group_following->follow($this->currentUser);
     return $this->redirect('entity.group.canonical', ['group' => $group->id()]);
   }
 
@@ -62,7 +62,7 @@ class GroupFollowController extends ControllerBase {
 
     $group_following = $manager->getFollowingByGroup($group);
 
-    $group_following->unfollow();
+    $group_following->unfollow($this->currentUser);
     return $this->redirect('entity.group.canonical', ['group' => $group->id()]);
   }
 

@@ -7,7 +7,9 @@ dependencies:
     - group.type.project
   module:
     - better_exposed_filters
+    - ggroup
     - group
+    - group_following
     - p4h_views_plugins
 id: my_projects
 label: 'My projects'
@@ -28,13 +30,13 @@ display:
         type: none
         options: {  }
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
         type: views_query
         options:
-          disable_sql_rewrite: false
-          distinct: false
+          disable_sql_rewrite: true
+          distinct: true
           replica: false
           query_comment: ''
           query_tags: {  }
@@ -250,10 +252,21 @@ display:
           tokenize: false
           content: 'Nothing has been found'
           plugin_id: text_custom
-      relationships: {  }
+      relationships:
+        group_following:
+          id: group_following
+          table: groups_field_data
+          field: group_following
+          relationship: none
+          group_type: group
+          admin_label: 'Group following label for relationship'
+          required: true
+          entity_type: group
+          plugin_id: group_following
       arguments: {  }
       display_extenders: {  }
       use_ajax: true
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -270,6 +283,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -304,6 +324,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'

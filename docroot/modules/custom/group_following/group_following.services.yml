@@ -8,7 +8,6 @@ services:
   group_following.builder_sql:
     class: \Drupal\group_following\Helper\Sql\Builder
     arguments: ['@database']
-
   group_following.group_type_alter:
     class: Drupal\group_following\Form\Alter\GroupTypeAlter
     tags:

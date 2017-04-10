@@ -79,7 +79,7 @@ class Builder {
   /**
    * {@inheritdoc}
    */
-  public function groupFollowing($account) {
+  public function groupFollowing() {
     $select = db_select('group_content_field_data', 'gcf');
     $select->addField('gcf', 'id', 'id');
     $select->addField('gcf', 'gid', 'gid');

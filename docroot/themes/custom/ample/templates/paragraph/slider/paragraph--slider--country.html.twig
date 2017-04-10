@@ -8,7 +8,7 @@
 
             {% if region_icon is not empty %}
               <img src="{{ file_url(region_icon) }}">
-            {% elseif group_bundle is not empty and group_bundle == 'region'%}
+            {% elseif group_bundle is not empty and (group_bundle == 'region' or group_bundle == 'governance_area')%}
               <div class="country-icon-wrapper default"></div>
             {% endif %}
 

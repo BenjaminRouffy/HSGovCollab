@@ -1137,6 +1137,8 @@ header .social-links .font-social-icon {
     .country-content-wrapper .country-icon-wrapper.default {
       background: url(../images/globe_white.svg) center no-repeat;
       background-size: 100%; }
+      .group-governance_area .country-content-wrapper .country-icon-wrapper.default {
+        background: url(../images/Governance_white.svg) center no-repeat; }
   .country-content-wrapper h1 {
     font-size: 5rem;
     color: #fff;
@@ -3776,20 +3778,46 @@ form .social_login label:after {
       border: none;
       display: inline-block;
       float: none;
-      margin: 0 20px;
+      margin: 0;
       opacity: .36;
-      vertical-align: top; }
+      vertical-align: top;
+      white-space: normal; }
     .ui-tabs .ui-tabs-nav a {
-      float: none;
-      padding: 0; }
+      padding: 0 !important; }
     .ui-tabs .ui-tabs-nav .ui-tabs-active {
       opacity: 1; }
     .ui-tabs .ui-tabs-nav h1 {
-      font-size: 4.2rem; }
+      font-size: 4.2rem;
+      margin: 0 20px; }
     .ui-tabs .ui-tabs-nav .line {
       left: 50%;
       -webkit-transform: translateX(-50%);
               transform: translateX(-50%); }
+
+@media (max-width: 991px) {
+  .ui-tabs {
+    overflow: hidden; }
+    .ui-tabs .ui-tabs-nav li {
+      float: left;
+      width: 50%; }
+    .ui-tabs .ui-tabs-nav a {
+      width: 100%; }
+    .ui-tabs .ui-tabs-nav h1 {
+      margin: 0;
+      padding: 20px 20px 30px; } }
+
+@media (max-width: 767px) {
+  .ui-tabs .ui-tabs-nav h1 {
+    font-size: 2.875rem;
+    line-height: 56px; } }
+
+@media (max-width: 479px) {
+  .ui-tabs .ui-tabs-nav h1 {
+    font-size: 1.75rem;
+    line-height: 34px;
+    padding: 0 0 20px; }
+  .ui-tabs .ui-tabs-nav .line {
+    width: 100px; } }
 
 .view-news-and-events .title-wrapper {
   padding-bottom: 10px;
@@ -4705,6 +4733,11 @@ footer {
     max-width: 1260px; }
   .contact-us .content-container .top-text-region {
     margin-bottom: 30px; }
+
+@media (max-width: 479px) {
+  .page-my-countries-and-regions .content-container,
+  .page-my-news .content-container {
+    padding-top: 40px; } }
 
 .region-wrapper:after {
   content: "";

@@ -2731,6 +2731,8 @@ display:
         fields: false
         pager: false
         use_ajax: false
+        header: false
+        empty: false
       css_class: view-project
       display_description: ''
       title: Projects
@@ -2953,6 +2955,30 @@ display:
             offset: 0
             offset_label: Offset
       use_ajax: true
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: 'Filter by:'
+          plugin_id: text_custom
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

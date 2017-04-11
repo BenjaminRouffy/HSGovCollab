@@ -91,11 +91,17 @@ class SimpleGroupFollowingTest extends EntityKernelTestBase {
     $group_following = $manager->getFollowingByGroup($region);
 
     /* @var GroupFollowingResult $result */
-    // $result = $group_following->getResultByAccount($this->defaultAccount);
-    $result = $this->groupFollowingResult = $this->getMock('Drupal\group_following\GroupFollowingResult', ['isFollower'], [], '', FALSE);
-    $this->groupFollowingResult->expects($this->any())
-     ->method('isFollower')
-     ->willReturn(TRUE);
+    $result = $group_following->getResultByAccount($this->defaultAccount);
+    /*
+     * Mock example.
+     *
+     * @example
+     * $result = $this->groupFollowingResult = $this->getMock('Drupal\group_following\GroupFollowingResult', ['isFollower'], [], '', FALSE);
+     * $this->groupFollowingResult->expects($this->any())
+     *  ->method('isFollower')
+     *  ->willReturn(TRUE);
+     */
+
     $this->assertTrue($result->isFollower(), 'User is follower');
   }
 
@@ -134,11 +140,17 @@ class SimpleGroupFollowingTest extends EntityKernelTestBase {
       $group_following = $manager->getFollowingByGroup($subgroup);
 
       /* @var GroupFollowingResult $result */
-      // $result = $group_following->getResultByAccount($this->defaultAccount);
-      $result = $this->groupFollowingResult = $this->getMock('Drupal\group_following\GroupFollowingResult', ['isSoftFollower'], [], '', FALSE);
-      $this->groupFollowingResult->expects($this->any())
-       ->method('isSoftFollower')
-       ->willReturn(TRUE);
+      $result = $group_following->getResultByAccount($this->defaultAccount);
+      /*
+       * Mock example.
+       *
+       * @example
+       * $result = $this->groupFollowingResult = $this->getMock('Drupal\group_following\GroupFollowingResult', ['isSoftFollower'], [], '', FALSE);
+       * $this->groupFollowingResult->expects($this->any())
+       *  ->method('isSoftFollower')
+       *  ->willReturn(TRUE);
+       */
+
       $this->assertTrue($result->isSoftFollower(), 'User is soft follower');
     }
   }

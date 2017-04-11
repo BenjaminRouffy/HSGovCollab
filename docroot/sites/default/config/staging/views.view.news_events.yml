@@ -1480,6 +1480,7 @@ display:
         relationships: false
         cache: false
         header: false
+        exposed_form: false
       filter_groups:
         operator: AND
         groups:
@@ -1526,6 +1527,63 @@ display:
           tokenize: false
           content: 'Filter by:'
           plugin_id: text_custom
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: true
+              timeout: '1000'
+              autosubmit_hide: true
+            gid_following:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_organization_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_category_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date_1:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -1920,6 +1978,7 @@ display:
         filters: false
         filter_groups: false
         header: false
+        exposed_form: false
       filter_groups:
         operator: AND
         groups:
@@ -1937,6 +1996,63 @@ display:
           tokenize: false
           content: 'Filter by:'
           plugin_id: text_custom
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: true
+              timeout: '1000'
+              autosubmit_hide: true
+            gid_following:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_organization_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_category_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date_1:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
     cache_metadata:
       max-age: -1
       contexts:

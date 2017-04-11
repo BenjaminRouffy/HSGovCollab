@@ -157,4 +157,12 @@ function p4h_views_plugins_views_data_alter(array &$data) {
       'id' => 'group_index_by_following',
     ),
   );
+
+  $data['group_content_field_data']['gid_global'] = array(
+    'real field' => 'gid',
+    'filter' => array(
+      'title' => t('Group with global content'),
+      'id' => 'group_index_by_global',
+    ),
+  );
 }

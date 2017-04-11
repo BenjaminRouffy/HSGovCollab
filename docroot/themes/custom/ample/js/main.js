@@ -300,7 +300,6 @@
         var $slider = $(el);
 
         $slider.owlCarousel({
-          loop: true,
           items: 1,
           nav: true,
           smartSpeed: 500

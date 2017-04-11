@@ -91,7 +91,7 @@
   register: updates
 
 - name: Gets deleted config files form log
-  shell: "cat config_stage_changes.log | grep -v 'staging/language' | grep -E '^D' | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev || true"
+  shell: "cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^D' | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev || true"
   register: deploy_files_deleted
 
 - name: Remove single config from configuration manager.

@@ -1305,6 +1305,13 @@
   }
 }
 
+.project-title {
+  + div:not(.project-title) {
+    min-height: 0;
+    margin-bottom: 5px;
+  }
+}
+
 .view-list-of-projects {
   .title-wrapper {
     padding-bottom: 10px;

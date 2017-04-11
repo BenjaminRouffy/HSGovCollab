@@ -9,6 +9,7 @@ dependencies:
     - better_exposed_filters
     - ggroup
     - group
+    - group_dashboard
     - group_following
     - p4h_views_plugins
 id: my_projects
@@ -309,6 +310,17 @@ display:
           tokenize: false
           content: 'Filter by:'
           plugin_id: text_custom
+        custom_to_page:
+          id: custom_to_page
+          table: views
+          field: custom_to_page
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          title: Edit
+          page: my_settings
+          plugin_id: link_to_page
       footer: {  }
       empty:
         area_text_custom:

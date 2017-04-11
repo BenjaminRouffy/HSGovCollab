@@ -18,15 +18,6 @@ function group_dashboard_entity_type_alter(array &$entity_types) {
 }
 
 /**
- * Implements hook_node_grants_alter().
- */
-function group_dashboard_node_grants_alter(array &$grants, AccountInterface $account, $op) {
-  if ($account->hasPermission('always access to node view') && 'view' === $op) {
-    $grants['gnode_bypass'][GNODE_MASTER_GRANT_ID] = GNODE_MASTER_GRANT_ID;
-  }
-}
-
-/**
  * Implements hook_menu_local_tasks_alter().
  */
 function group_dashboard_menu_local_tasks_alter(&$data, $route_name) {

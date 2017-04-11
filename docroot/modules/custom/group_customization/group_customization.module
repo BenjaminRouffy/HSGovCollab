@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Config\Entity\ConfigEntityType;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
@@ -24,6 +25,15 @@ function group_customization_preprocess_html(array &$variables) {
   // Add class to body by group context.
   if (($group = \Drupal::routeMatch()->getParameter('group')) && $group->id()) {
     $variables['attributes']['class'][] = 'group-' . $group->bundle();
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function group_customization_entity_type_alter(array &$entity_types) {
+  if (!empty($entity_types['group'])) {
+    $entity_types['group']->setClass('Drupal\group_customization\Entity\Group');
   }
 }
 

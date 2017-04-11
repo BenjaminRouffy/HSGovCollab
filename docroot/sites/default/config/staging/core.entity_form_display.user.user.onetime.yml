@@ -6,7 +6,6 @@ dependencies:
     - core.entity_form_mode.user.onetime
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
-    - field.field.user.user.field_category
     - field.field.user.user.field_city
     - field.field.user.user.field_country_manager
     - field.field.user.user.field_country_text
@@ -83,12 +82,6 @@ mode: onetime
 content:
   account:
     weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_category:
-    type: options_select
-    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }

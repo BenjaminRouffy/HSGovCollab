@@ -8,6 +8,10 @@
  * Implements hook_views_data_alter().
  */
 function group_following_views_data_alter(array &$data) {
+
+  $data['node_field_data']['global_content']['filter']['id'] = 'boolean_string2';
+  $data['node_field_data']['global_content']['filter']['accept_null'] = TRUE;
+
   $data['groups_field_data']['group_following'] = array(
     'title' => t('Group following'),
     'help' => t('Group following'),

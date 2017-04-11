@@ -1446,16 +1446,22 @@ display:
           exposed: false
           expose:
             operator_id: ''
-            label: ''
+            label: 'Global content'
             description: ''
             use_operator: false
-            operator: ''
-            identifier: ''
+            operator: global_content_op
+            identifier: global_content
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
           is_grouped: false
           group_info:
             label: ''

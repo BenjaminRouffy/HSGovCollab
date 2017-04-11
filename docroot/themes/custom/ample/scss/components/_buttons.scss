@@ -111,6 +111,12 @@
     }
   }
 
+  &.closed {
+    &:after {
+      transform: none;
+    }
+  }
+
   .text {
     overflow: hidden;
     text-overflow: ellipsis;

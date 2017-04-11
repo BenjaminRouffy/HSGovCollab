@@ -8,22 +8,24 @@ dependencies:
     - field.field.user.user.field_avatar
     - field.field.user.user.field_category
     - field.field.user.user.field_city
-    - field.field.user.user.field_countries
     - field.field.user.user.field_country_manager
     - field.field.user.user.field_country_text
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
+    - field.field.user.user.field_following_countries
+    - field.field.user.user.field_following_projects
+    - field.field.user.user.field_following_regions
     - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
+    - field.field.user.user.field_last_password_reset
     - field.field.user.user.field_middle_name
     - field.field.user.user.field_mobilephone
     - field.field.user.user.field_non_member_organization
     - field.field.user.user.field_organisation
     - field.field.user.user.field_organisations
+    - field.field.user.user.field_password_expiration
     - field.field.user.user.field_person_titles
     - field.field.user.user.field_project_manager
-    - field.field.user.user.field_projects
-    - field.field.user.user.field_regions
     - field.field.user.user.field_skype_or_other
     - field.field.user.user.field_streetname
     - field.field.user.user.field_telephone
@@ -75,19 +77,21 @@ hidden:
   field_accept_term_conditions: true
   field_category: true
   field_city: true
-  field_countries: true
   field_country_manager: true
   field_country_text: true
   field_disclose_your_personal_det: true
+  field_following_countries: true
+  field_following_projects: true
+  field_following_regions: true
   field_job_title: true
+  field_last_password_reset: true
   field_middle_name: true
   field_mobilephone: true
   field_non_member_organization: true
   field_organisations: true
+  field_password_expiration: true
   field_person_titles: true
   field_project_manager: true
-  field_projects: true
-  field_regions: true
   field_skype_or_other: true
   field_streetname: true
   field_telephone: true

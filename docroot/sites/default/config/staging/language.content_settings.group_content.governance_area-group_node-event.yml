@@ -1,0 +1,16 @@
+uuid: 005c07aa-e6c2-4128-af08-bb2213d1328b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.governance_area-group_node-event
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: group_content.governance_area-group_node-event
+target_entity_type_id: group_content
+target_bundle: governance_area-group_node-event
+default_langcode: site_default
+language_alterable: false

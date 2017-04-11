@@ -16,9 +16,25 @@
     }
   }
 
+  .follow-link {
+    padding-top: 5px;
+
+    .form-submit {
+      background: transparent;
+      border-color: $red;
+      text-transform: none;
+    }
+
+    .ajax-progress {
+      position: absolute;
+    }
+  }
+
   .sidebar {
     background-color: $navy;
     color: $white;
+    float: right;
+    margin: 0;
     padding: 40px;
 
     h2 {
@@ -69,5 +85,13 @@
       margin-top: 8px;
       vertical-align: top;
     }
+  }
+}
+
+@include breakpoint-for('.dashboard', (to: laptop-small)) {
+  .sidebar,
+  .content {
+    float: none;
+    width: 100%;
   }
 }

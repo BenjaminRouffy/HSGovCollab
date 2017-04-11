@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.group_content.project-group_membership.field_follower
     - field.field.group_content.project-group_membership.group_roles
     - group.content_type.project-group_membership
   module:
@@ -20,6 +21,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
+  field_follower:
+    weight: 32
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   group_roles:
     type: options_buttons

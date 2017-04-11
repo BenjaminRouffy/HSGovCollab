@@ -1,0 +1,26 @@
+uuid: e0a4afd8-8678-43ed-aadc-47f4473f1c5e
+langcode: en
+status: true
+dependencies: {  }
+name: my_countries_and_regions
+label: 'My countries and regions'
+tabs:
+  631d50a6-e462-497d-ae60-708a57c83f0d:
+    uuid: 631d50a6-e462-497d-ae60-708a57c83f0d
+    id: views_tab
+    title: 'My countries'
+    weight: '1'
+    data:
+      view_name: search_for_a_country_or_region
+      view_display: block_4
+      view_arg: ''
+  2078dbb9-9a32-4f8e-a616-fc981b0b0fd6:
+    uuid: 2078dbb9-9a32-4f8e-a616-fc981b0b0fd6
+    id: views_tab
+    title: 'My regions'
+    weight: '2'
+    data:
+      view_name: search_for_a_country_or_region
+      view_display: block_5
+      view_arg: ''
+event: click

@@ -12,85 +12,106 @@
     $('body').addClass('ie ie11');
   }
 
+  // Detect mobile device.
+  function isTouchDevice() {
+    var $body = $('body');
+
+    if ('ontouchstart' in document) {
+      $body.addClass('mobile');
+
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        $body.addClass('ios');
+      }
+    }
+  }
+
+  isTouchDevice();
+
   Drupal.behaviors.accordionExposedFilter = {
     attach: function(context, settings) {
-      var settings = jQuery.extend(true, settings, {
-        // @TODO Add this setting.
-        //'defaultFormSelector': 'form#views-exposed-form-news-events-block-1',
-        //'defaultFormSelector': 'form.views-exposed-form',
-        'defaultAttributeSelector': 'data-drupal-selector',
-        'defaultAccordionTab': '.click-item',
-        'defaultAccordionTabText': '.text-label',
-        'defaultFieldsetLegend': '.fieldset-legend',
-        'defaultClosed': 'closed'
-      });
-      var $form = $(settings.defaultFormSelector, context);
 
-      var applyCheckboxesLabel = function (parent) {
-        var parentAttribute = $(parent)
-          .attr(settings.defaultAttributeSelector);
+      var $forms = $('[data-accordion]', context);
 
-        // Get all tags of accordion.
-        $(settings.defaultAccordionTab, $form)
-        // Fitter that related to parent fieldset element.
-          .filter('[' + settings.defaultAttributeSelector + '="' + parentAttribute + '"]')
-          // Change a label of tab.
-          .find(settings.defaultAccordionTabText).html(function () {
-            return $(settings.defaultFieldsetLegend, parent).html();
-            // Gets all checked inputs and ...
-            /*return $('input:checked + label', parent).map(function () {
-                // ... and gets its labels.
-                return $(this).html();
-              })
-              // Return all labels or default value of tab.
-              .get().join() || $(settings.defaultFieldsetLegend, parent).html()*/
-          });
-
-      };
-      var addLabel = function(form, parent) {
-        var legend = $(settings.defaultFieldsetLegend, parent)
-          .hide()
-          .html();
-        $(parent).hide()
-        var template = '<div class="wrapper accordion-button ' + settings.defaultAccordionTab.substr(1) + '">' +
-                          '<div class="text">' +
-                            '<span class="' + settings.defaultAccordionTabText.substr(1) + '"></span>' +
-                            '<span class="button"></span>' +
-                          '</div>' +
-                        '</div>';
-
-        var parentAttribute = $(parent)
-          .attr(settings.defaultAttributeSelector);
-        var new_div = $(template)
-          .addClass(settings.defaultAccordionTab.substr(1))
-          .addClass(settings.defaultClosed)
-          .attr(settings.defaultAttributeSelector, parentAttribute);
-        $(new_div).find(settings.defaultAccordionTabText).html(legend);
-        $('.wrapper-filters', form).prepend(new_div);
-        applyCheckboxesLabel(parent);
-      }
-
-
-      var _this = this;
-      $('fieldset', $form)
-        .filter('[' + settings.defaultAttributeSelector + ']').each(function () {
-          addLabel($form, this);
+      $.each($forms, function (i, v) {
+        var $form = v;
+        // @TODO Refactoring needed.
+        var settings = jQuery.extend(true, settings, {
+          // @TODO Add this setting.
+          //'defaultFormSelector': 'form#views-exposed-form-news-events-block-1',
+          //'defaultFormSelector': 'form.views-exposed-form',
+          'defaultAttributeSelector': 'data-drupal-selector',
+          'defaultAccordionTab': '.click-item',
+          'defaultAccordionTabText': '.text-label',
+          'defaultFieldsetLegend': '.fieldset-legend',
+          'defaultClosed': 'closed'
         });
 
-      $(".click-item", $form).click(function()
-      {
-        var attr = $(this).attr(settings.defaultAttributeSelector);
-        $('fieldset')
-          .filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings("fieldset").slideUp(100);
-        $(this).toggleClass(settings.defaultClosed).siblings(settings.defaultAccordionTab).addClass(settings.defaultClosed);
+        var applyCheckboxesLabel = function (parent) {
+          var parentAttribute = $(parent)
+            .attr(settings.defaultAttributeSelector);
+
+          // Get all tags of accordion.
+          $(settings.defaultAccordionTab, $form)
+          // Fitter that related to parent fieldset element.
+            .filter('[' + settings.defaultAttributeSelector + '="' + parentAttribute + '"]')
+            // Change a label of tab.
+            .find(settings.defaultAccordionTabText).html(function () {
+              return $(settings.defaultFieldsetLegend, parent).html();
+              // Gets all checked inputs and ...
+              /*return $('input:checked + label', parent).map(function () {
+                  // ... and gets its labels.
+                  return $(this).html();
+                })
+                // Return all labels or default value of tab.
+                .get().join() || $(settings.defaultFieldsetLegend, parent).html()*/
+            });
+
+        };
+        var addLabel = function(form, parent) {
+          var legend = $(settings.defaultFieldsetLegend, parent)
+            .hide()
+            .html();
+          $(parent).hide()
+          var template = '<div class="wrapper accordion-button ' + settings.defaultAccordionTab.substr(1) + '">' +
+                            '<div class="text">' +
+                              '<span class="' + settings.defaultAccordionTabText.substr(1) + '"></span>' +
+                              '<span class="button"></span>' +
+                            '</div>' +
+                          '</div>';
+
+          var parentAttribute = $(parent)
+            .attr(settings.defaultAttributeSelector);
+          var new_div = $(template)
+            .addClass(settings.defaultAccordionTab.substr(1))
+            .addClass(settings.defaultClosed)
+            .attr(settings.defaultAttributeSelector, parentAttribute);
+          $(new_div).find(settings.defaultAccordionTabText).html(legend);
+          $('.wrapper-filters', form).prepend(new_div);
+          applyCheckboxesLabel(parent);
+        }
+
+
+        var _this = this;
+        $('fieldset', $form)
+          .filter('[' + settings.defaultAttributeSelector + ']').each(function () {
+            addLabel($form, this);
+          });
+
+        $(".click-item", $form).click(function()
+        {
+          var attr = $(this).attr(settings.defaultAttributeSelector);
+          $('fieldset', $form)
+            .filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings("fieldset").slideUp(100);
+          $(this).toggleClass(settings.defaultClosed).siblings(settings.defaultAccordionTab).addClass(settings.defaultClosed);
+
+        });
+
+        $('fieldset[' + settings.defaultAttributeSelector + '] input', $form).change(function () {
+          var parent = $(this).parents('fieldset');
+          applyCheckboxesLabel(parent);
+        });
 
       });
-
-      $('fieldset[' + settings.defaultAttributeSelector + '] input', $form).change(function () {
-        var parent = $(this).parents('fieldset');
-        applyCheckboxesLabel(parent);
-      });
-
     }
   };
 
@@ -496,6 +517,18 @@
         else {
           $parent.removeClass('expanded').find($content).slideUp();
         }
+      });
+    }
+  };
+
+  Drupal.behaviors.header = {
+    attach: function(context, settings) {
+      var $staticHeader = $('.header-static', context);
+
+      $.scrollAction(function() {
+        return this.scrollY > 0;
+      }, function(isTrue) {
+        $staticHeader.toggleClassCondition(isTrue, 'collapsed');
       });
     }
   };

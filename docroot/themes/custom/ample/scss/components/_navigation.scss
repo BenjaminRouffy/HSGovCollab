@@ -108,6 +108,7 @@
   background: $navy-dark;
   height: 100%;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 80px;
   position: fixed;
   top: 0;
@@ -278,6 +279,12 @@
   .calendar {
     &:before {
       content: 'x';
+    }
+  }
+
+  .folder {
+    &:before {
+      content: 'i';
     }
   }
 
@@ -475,6 +482,32 @@
 
     &.active {
       border-color: $red;
+    }
+
+    .group-country & {
+      &:first-child {
+        a {
+          font-weight: 700;
+          text-transform: uppercase;
+
+          &:before {
+            @include font-size(16.8);
+            content: 'f';
+            font-family: P4h, sans-serif;
+            text-transform: none;
+          }
+        }
+      }
+    }
+
+    .group-project &,
+    .group-region & {
+      &:first-child {
+        a {
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+      }
     }
   }
 

@@ -15,8 +15,9 @@ entity_type: user
 type: group_content_item
 settings:
   group_type: project
-  plugin_type: project-group_membership
+  plugin_type: group_content_group_membership
   group_roles: project-admin
+  plugin_enabler_id: {  }
 module: group_content_field
 locked: false
 cardinality: 1

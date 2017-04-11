@@ -1,0 +1,77 @@
+uuid: a3995f07-227d-4642-807c-ed58f1523042
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group_faq
+    - views.view.group_faq
+  module:
+    - ctools
+    - ctools_block
+    - group_customization
+    - panels
+    - views
+id: group_faq-panels_variant-1
+label: 'Governance area'
+variant: panels_variant
+variant_settings:
+  blocks:
+    186a1f56-b120-4914-a80d-bbabaaff2f2f:
+      id: 'views_block:group_faq-faq_block'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 186a1f56-b120-4914-a80d-bbabaaff2f2f
+      context_mapping: {  }
+    d2c60cb3-55b5-4c9a-9ba3-5fa5dfcbc075:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: d2c60cb3-55b5-4c9a-9ba3-5fa5dfcbc075
+      context_mapping:
+        entity: group
+  id: panels_variant
+  uuid: 55668c59-5f19-4e0b-aed6-223dc4ae8146
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group_faq-panels_variant-1
+  builder: standard
+page: group_faq
+weight: 0
+selection_criteria:
+  1:
+    id: access_by_group_roles
+    group_roles:
+      governance_area-member: governance_area-member
+      governance_area-manager: governance_area-manager
+    negate: 0
+    context_mapping:
+      group: group
+      user: current_user
+  2:
+    id: 'entity_bundle:group'
+    bundles:
+      governance_area: governance_area
+    negate: false
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

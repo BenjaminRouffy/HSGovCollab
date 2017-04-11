@@ -3,6 +3,7 @@
 namespace Drupal\group_content_field\Plugin\Field\FieldType;
 
 use Drupal;
+use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -34,8 +35,15 @@ class GroupContentItem extends FieldItemBase {
   protected $membershipLoader;
   protected $groupRole;
   protected $groupType;
+  /**
+   * @var \Drupal\group_content_field\Plugin\GroupContentManager
+   */
   protected $pluginManager;
   protected $groupContent;
+  /**
+   * @var \Drupal\group_content_field\Plugin\GroupContentDecoratorInterface
+   */
+  protected $decoratorInstance;
 
 
   /**
@@ -44,24 +52,14 @@ class GroupContentItem extends FieldItemBase {
   public function __construct(DataDefinitionInterface $definition, $name = NULL, TypedDataInterface $parent = NULL) {
     parent::__construct($definition, $name, $parent);
     $this->membershipLoader = \Drupal::service('group.membership_loader');
-    $this->groupRole = \Drupal::entityTypeManager()->getStorage('group_role');
     $this->groupType = \Drupal::entityTypeManager()->getStorage('group_type');
     $this->groupContent = \Drupal::entityTypeManager()->getStorage('group_content');
-    $this->pluginManager= \Drupal::service('plugin.manager.group_content_enabler');
-  }
+    $this->pluginManager= \Drupal::service('plugin.manager.group_content_decorator');
 
-  /**
-   * Build properties.
-   */
-  protected function buildGroupContentProperties($entity) {
-    $properties = ['type' => $this->getSetting('plugin_type'), 'entity_id' => $entity->id()];
-
-    // TODO
-    if (strpos($this->getSetting('plugin_type'), 'group_membership') !== FALSE) {
-      $properties['group_roles'] = $this->getSetting('group_roles');
+    $plugin_type_default = $this->getSetting('plugin_type');
+    if ($this->pluginManager->hasDefinition($plugin_type_default)) {
+      $this->decoratorInstance = $this->pluginManager->createInstance($plugin_type_default, ['group_content_item' => $this]);
     }
-
-    return $properties;
   }
 
   /**
@@ -71,18 +69,8 @@ class GroupContentItem extends FieldItemBase {
    */
   public function getValue() {
     $parent_entity = $this->getParent()->getParent()->getValue();
-
-    if (!empty($parent_entity->id()) && empty($this->values['from_widget'])) {
-      $properties = $this->buildGroupContentProperties($parent_entity);
-
-      /** @var \Drupal\group\Entity\GroupContentInterface[] $group_contents */
-      $group_contents = $this->groupContent->loadByProperties($properties);
-
-      $this->values['entity_gids'] = [];
-      foreach ($group_contents as $group_content) {
-        $this->values['entity_gids'][] = $group_content->getGroup()->id();
-      }
-      $this->entityGidsValues = $this->values['entity_gids'];
+    if (!empty($parent_entity->id()) && empty($this->values['from_widget']) && !empty($this->decoratorInstance)) {
+      $this->entityGidsValues = $this->values['entity_gids'] = $this->decoratorInstance->getDefaultValues($parent_entity);
     }
 
     return parent::getValue();
@@ -96,6 +84,7 @@ class GroupContentItem extends FieldItemBase {
       'group_roles' => [],
       'group_type' => [],
       'plugin_type' => [],
+      'plugin_enabler_id' => [],
     ] + parent::defaultStorageSettings();
   }
 
@@ -124,10 +113,11 @@ class GroupContentItem extends FieldItemBase {
     if ($group_type_default) {
       $options = [];
       $plugin_type_default = $form_state->getValue('settings')['plugin_type'] ?? $this->getSetting('plugin_type');
-      $plugin_types = $this->pluginManager->getInstalled($this->groupType->load($group_type_default));
+      // TODO Ask for supported entities. E.g. Following supports only user entities.
+      $plugin_types = $this->pluginManager->getAll($this);
 
       foreach ($plugin_types as $plugin_type) {
-        $options[$plugin_type->getContentTypeConfigId()] = $plugin_type->getLabel();
+        $options[$plugin_type->getPluginId()] = $plugin_type->getLabel();
       }
 
       $element['plugin_type'] = [
@@ -136,30 +126,15 @@ class GroupContentItem extends FieldItemBase {
         '#options' => $options,
         '#default_value' => $plugin_type_default,
         '#required' => TRUE,
-        '#ajax' => array(
+        '#ajax' => [
           'callback' => 'Drupal\group_content_field\Plugin\Field\FieldType\GroupContentItem::updatePluginType',
           'wrapper' => 'edit-plugin-type-wrapper',
-        ),
+        ],
       ];
 
-      if ($plugin_type_default) {
-        // TODO Here we should dynamically load fields from selected GroupContent bundles.
-        if (strpos($plugin_type_default, 'group_membership') !== FALSE) {
-          $group_roles = $this->groupRole->loadMultiple();
-          $options = [];
-
-          foreach ($group_roles as $group_role) {
-            $options[$group_role->id()] = ucfirst($group_role->getGroupTypeId()) . ': ' . $group_role->label();
-          }
-
-          $element['group_roles'] = [
-            '#type' => 'radios',
-            '#title' => $this->t('Group type'),
-            '#options' => $options,
-            '#default_value' => $this->getSetting('group_roles'),
-            '#required' => TRUE,
-          ];
-        }
+      if ($plugin_type_default && $this->pluginManager->hasDefinition($plugin_type_default)) {
+        $instance = $this->pluginManager->createInstance($plugin_type_default, ['group_content_item' => $this]);
+        $element += $instance->fieldStorageSettings();
       }
     }
 
@@ -186,16 +161,16 @@ class GroupContentItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
-    $schema = array(
-      'columns' => array(
-        'entity_gids' => array(
+    $schema = [
+      'columns' => [
+        'entity_gids' => [
           'description' => 'Serialized array of gids.',
           'type' => 'blob',
           'size' => 'big',
           'serialize' => TRUE,
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
 
     return $schema;
   }
@@ -222,34 +197,34 @@ class GroupContentItem extends FieldItemBase {
   }
 
   /**
-   * @param $old
-   * @param $new
-   * @param $parent_entity
-   * @internal param $entity_id
+   * @param array $old
+   *  Array with loaded from database groups.
+   * @param array $new
+   *  Array with changed groups
+   * @param \Drupal\Core\Entity\ContentEntityBase $parent_entity
+   *
    */
-  private function syncGroupContents($old, $new, $parent_entity) {
-    $properties = $this->buildGroupContentProperties($parent_entity);
-
+  private function syncGroupContents(array $old, array $new, ContentEntityBase $parent_entity) {
     foreach (array_diff($old, $new) as $delete_gid) {
-      $properties['gid'] = $delete_gid;
-      $result = \Drupal::entityTypeManager()
-        ->getStorage('group_content')
-        ->loadByProperties($properties);
-      foreach ($result as $group_content) {
-        $group_content->delete();
-      }
+      $this->decoratorInstance->removeMemberContent($parent_entity, $delete_gid);
     }
 
     foreach (array_diff($new, $old) as $add_gid) {
-      $properties['gid'] = $add_gid;
-
-      $result = \Drupal::entityTypeManager()
-        ->getStorage('group_content')
-        ->loadByProperties($properties);
-
-      if (empty($result)) {
-        GroupContent::create($properties)->save();
-      }
+      $this->decoratorInstance->createMemberContent($parent_entity, $add_gid);
     }
   }
+
+  /**
+   * Returns the value of a field setting.
+   *
+   * @param string $setting_name
+   *   The setting name.
+   *
+   * @return mixed
+   *   The setting value.
+   */
+  public function getSetting($setting_name) {
+    return $this->getFieldDefinition()->getSetting($setting_name);
+  }
+
 }

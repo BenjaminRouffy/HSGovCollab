@@ -43,7 +43,8 @@
       }
     }
 
-    .logout-link {
+    .logout-link,
+    .continue-link {
       color: #afb7bb;
       margin-right: 50px;
     }
@@ -92,4 +93,36 @@
       margin-left: 10px;
     }
   }
+}
+
+.ui-dialog {
+  border: none;
+  border-radius: 0;
+  padding: 5%;
+  width: 50% !important;
+  z-index: 610 !important;
+
+  .popup-wrapper {
+    height: auto;
+    opacity: 1;
+    position: static;
+    transform: none;
+    width: auto;
+  }
+
+  .ui-dialog-titlebar {
+    display: none;
+  }
+}
+
+@include breakpoint-for('.ui-dialog', (to: desktop)) {
+  width: 60% !important;
+}
+
+@include breakpoint-for('.ui-dialog', (to: laptop)) {
+  width: 80% !important;
+}
+
+@include breakpoint-for('.ui-dialog', (to: tablet)) {
+  width: 90% !important;
 }

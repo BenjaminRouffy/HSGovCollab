@@ -8,7 +8,7 @@
 
             {% if region_icon is not empty %}
               <img src="{{ file_url(region_icon) }}">
-            {% elseif group_bundle is not empty and group_bundle == 'region'%}
+            {% elseif group_bundle is not empty and (group_bundle == 'region' or group_bundle == 'governance_area')%}
               <div class="country-icon-wrapper default"></div>
             {% endif %}
 
@@ -17,9 +17,7 @@
             </h1>
 
             {% if logged_in %}
-              <div class="follow-link">
-                {{ 'Follow @country'|t({'@country': group_label|t}) }}
-              </div>
+              {{ following_form }}
             {% endif %}
           </div>
         {% endif %}

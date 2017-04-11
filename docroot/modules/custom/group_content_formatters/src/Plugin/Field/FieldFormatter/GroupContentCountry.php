@@ -9,6 +9,7 @@ use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupInterface;
 
 /**
  * Plugin implementation of the 'plugin_reference_id' formatter.
@@ -42,26 +43,35 @@ class GroupContentCountry extends FormatterBase {
     else {
       foreach ($items as $delta => $item) {
         $value = $item->getValue();
-
-        if (count($value['entity_gids']) > 1) {
-          $elements[0][] = [
-            '#type' => 'markup',
-            '#markup' => $this->t('Multiple countries'),
-          ];
-        }
-        else {
-          foreach (Group::loadMultiple($value['entity_gids']) as $group) {
-            $elements[$delta][] = [
-              '#type' => 'link',
-              '#title' => $group->label(),
-              '#url' => Url::fromRoute('entity.group.canonical', ['group' => $group->id()]),
+        if (is_array($value['entity_gids'])) {
+          if (count($value['entity_gids']) > 1) {
+            $elements[0][] = [
+              '#type' => 'markup',
+              '#markup' => $this->t('Multiple countries'),
             ];
+          }
+          else {
+            /* @var GroupInterface $group */
+            foreach (Group::loadMultiple($value['entity_gids']) as $group) {
+              if ($group->hasField('field_group_status') && 'published' === $group->get('field_group_status')->value) {
+                $elements[$delta][] = [
+                  '#type' => 'link',
+                  '#title' => $group->label(),
+                  '#url' => Url::fromRoute('entity.group.canonical', ['group' => $group->id()]),
+                ];
+              }
+              else {
+                $elements[$delta][] = [
+                  '#type' => 'markup',
+                  '#markup' => $group->label(),
+                ];
+              }
+            }
           }
         }
       }
 
     }
-
 
     return $elements;
   }

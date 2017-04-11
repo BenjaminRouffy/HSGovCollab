@@ -6,12 +6,15 @@ dependencies:
     - core.entity_view_mode.group.region_search_for_countries
     - core.entity_view_mode.group.teaser
     - group.content_type.country-subgroup-project
+    - group.content_type.governance_area-subgroup-project
     - group.content_type.region-subgroup-country
     - group.content_type.region-subgroup-project
   module:
     - better_exposed_filters
     - ggroup
     - group
+    - node
+    - options
     - p4h_views_plugins
 id: list_of_projects
 label: 'List of projects'
@@ -230,13 +233,20 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -388,6 +398,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -544,6 +561,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -718,6 +742,45 @@ display:
           entity_type: group
           entity_field: langcode
           plugin_id: language
+        field_group_status_value:
+          id: field_group_status_value
+          table: group__field_group_status
+          field: field_group_status_value
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            published: published
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
       filter_groups:
         operator: AND
         groups:
@@ -809,6 +872,172 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
+        - 'config:core.entity_view_display.group.project.bottom'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'
+        - 'config:core.entity_view_display.group.project.time_line'
+        - 'config:core.entity_view_display.group.region.banner'
+        - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
+        - 'config:core.entity_view_display.group.region.search_country'
+        - 'config:core.entity_view_display.group.region.time_line'
+        - 'config:core.entity_view_display.group.region.token'
+  block_4:
+    display_plugin: block
+    id: block_4
+    display_title: 'Governance area'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_hide_empty: true
+      css_class: view-list-of-projects
+      defaults:
+        css_class: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        pager: false
+        filters: false
+        filter_groups: false
+      use_more: true
+      use_more_always: false
+      use_more_text: 'See all projects'
+      pager:
+        type: mini_with_items
+        options:
+          items_per_page: 3
+          offset: 0
+          id: '0'
+          total_pages: ''
+          tags:
+            previous: ‹‹
+            next: ››
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
+      filters:
+        type:
+          id: type
+          table: group_content_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            governance_area-subgroup-project: governance_area-subgroup-project
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group_content
+          entity_field: type
+          plugin_id: bundle
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: langcode
+          plugin_id: language
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - route
+        - url
+        - url.query_args
+      tags:
+        - 'config:core.entity_view_display.group.country.banner'
+        - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
+        - 'config:core.entity_view_display.group.country.time_line'
+        - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -1033,6 +1262,244 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
+        - 'config:core.entity_view_display.group.project.bottom'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'
+        - 'config:core.entity_view_display.group.project.time_line'
+        - 'config:core.entity_view_display.group.region.banner'
+        - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
+        - 'config:core.entity_view_display.group.region.search_country'
+        - 'config:core.entity_view_display.group.region.time_line'
+        - 'config:core.entity_view_display.group.region.token'
+  ga_block_full:
+    display_plugin: block
+    id: ga_block_full
+    display_title: 'Governance Area Full block'
+    position: 3
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      pager:
+        type: none
+        options:
+          offset: 0
+      defaults:
+        pager: false
+        link_display: false
+        link_url: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        filters: false
+        filter_groups: false
+        exposed_form: false
+        use_ajax: false
+        title: false
+        empty: false
+      block_hide_empty: false
+      link_display: '0'
+      link_url: 'group/{{ arguments.gid }}/projects'
+      use_more: false
+      use_more_always: true
+      use_more_text: 'See all projects'
+      filters:
+        type:
+          id: type
+          table: group_content_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            governance_area-subgroup-project: governance_area-subgroup-project
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group_content
+          entity_field: type
+          plugin_id: bundle
+        label:
+          id: label
+          table: groups_field_data
+          field: label
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: label_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: label_op
+            identifier: label
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: label
+          plugin_id: string
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: langcode
+          plugin_id: language
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: false
+              timeout: '100'
+              autosubmit_hide: false
+            label:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+      use_ajax: true
+      title: 'Governance Area Projects'
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - route
+        - url
+      tags:
+        - 'config:core.entity_view_display.group.country.banner'
+        - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
+        - 'config:core.entity_view_display.group.country.time_line'
+        - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -1322,6 +1789,13 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.governance_area.banner'
+        - 'config:core.entity_view_display.group.governance_area.bottom'
+        - 'config:core.entity_view_display.group.governance_area.default'
+        - 'config:core.entity_view_display.group.governance_area.map'
+        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
+        - 'config:core.entity_view_display.group.governance_area.time_line'
+        - 'config:core.entity_view_display.group.governance_area.token'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'

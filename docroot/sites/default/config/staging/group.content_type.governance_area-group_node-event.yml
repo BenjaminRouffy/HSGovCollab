@@ -1,0 +1,19 @@
+uuid: 118ddee8-197c-4944-a9e0-cd51da48ae01
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+    - node.type.event
+  module:
+    - gnode
+    - node
+id: governance_area-group_node-event
+label: 'Governance area: Group node (Event)'
+description: 'Adds <em class="placeholder">Event</em> content to groups both publicly and privately.'
+group_type: governance_area
+content_plugin: 'group_node:event'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

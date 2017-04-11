@@ -1,0 +1,23 @@
+uuid: 9ba73104-ffc4-4d4b-9f55-a8c3fa8aa909
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_content_field
+    - user
+id: user.field_following_countries
+field_name: field_following_countries
+entity_type: user
+type: group_content_item
+settings:
+  group_type: country
+  plugin_type: group_content_following
+  group_roles: {  }
+  plugin_enabler_id: {  }
+module: group_content_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

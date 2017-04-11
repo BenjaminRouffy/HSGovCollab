@@ -47,6 +47,21 @@ form {
   }
 }
 
+@include breakpoint-for('form', (to: mobileL)) {
+  label {
+    @include font-size(16);
+  }
+
+  .form-email,
+  .form-text {
+    ~ label.error {
+      @include font-size(14);
+      top: 82px;
+      text-align: right;
+    }
+  }
+}
+
 .form-text,
 .form-email {
   border: 1px solid #75a8c0;
@@ -92,14 +107,21 @@ form {
 }
 
 .email-suffix {
-  display: table;
   margin-bottom: 25px;
 
-  input,
-  .field-suffix {
-    display: table-cell;
-    margin-bottom: 0;
-    vertical-align: middle;
+  .form-my-settings & {
+    display: table;
+
+    input,
+    .field-suffix {
+      display: table-cell;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    .field-suffix {
+      padding-left: 5px;
+    }
   }
 }
 
@@ -138,6 +160,11 @@ form {
   padding: 1px 12px;
   width: 100%;
 
+  .select-wrapper & {
+    @include font-size(16.8);
+    font-family: $fira;
+  }
+
   &[disabled] {
     border-color: $grey-light;
     color: $grey-light;
@@ -165,7 +192,8 @@ form {
       }
 
       input[type="text"] {
-        @include font-size(18.2);
+        font-size: 18.2px !important;
+        font-family: $fira !important;
         font-weight: 300;
       }
 
@@ -733,6 +761,13 @@ form {
   }
 }
 
+@include breakpoint-for('.user-register-form', (to: mobileL)) {
+  .social_login,
+  .login-wrapper {
+    padding: 0;
+  }
+}
+
 .user-onetime-form {
   .good-to-know-icon {
     background: url(../images/light.svg) center no-repeat;
@@ -767,6 +802,20 @@ form {
           margin: 0 auto;
         }
       }
+    }
+  }
+
+  #edit-pass {
+    .form-text {
+      margin-bottom: 0;
+    }
+
+    .form-item {
+      margin-bottom: 25px;
+    }
+
+    .description {
+      margin: 5px 0 0;
     }
   }
 
@@ -843,6 +892,11 @@ form {
   #catagories-wrapper {
     padding: 10px 0;
     width: 100%;
+  }
+
+  .form-submit {
+    @include font-size(16.8);
+    padding: 10px;
   }
 }
 
@@ -1001,6 +1055,16 @@ form {
       &:after {
         content: ": *";
       }
+    }
+  }
+
+  #edit-pass {
+    .form-text {
+      margin-bottom: 0;
+    }
+
+    .form-item {
+      margin-bottom: 25px;
     }
   }
 

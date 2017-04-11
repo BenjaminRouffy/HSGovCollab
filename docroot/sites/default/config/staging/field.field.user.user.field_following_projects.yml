@@ -1,0 +1,23 @@
+uuid: c743f869-a0a6-4ff8-b399-8cbbd6b0795a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_following_projects
+  module:
+    - group_content_field
+    - user
+id: user.user.field_following_projects
+field_name: field_following_projects
+entity_type: user
+bundle: user
+label: Projects
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

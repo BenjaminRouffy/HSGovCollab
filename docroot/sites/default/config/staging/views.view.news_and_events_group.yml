@@ -12,6 +12,7 @@ dependencies:
     - better_exposed_filters
     - ggroup
     - group
+    - group_customization
     - node
     - p4h_views_plugins
     - taxonomy
@@ -453,6 +454,198 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      arguments: {  }
+      display_extenders: {  }
+      use_ajax: true
+      css_class: view-news-and-events
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - user.permissions
+      tags: {  }
+  block_governance_area:
+    display_plugin: block
+    id: block_governance_area
+    display_title: 'GA News & Events (without filter)'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      allow:
+        pager: pager
+        items_per_page: false
+        offset: '0'
+        hide_fields: '0'
+        sort_fields: '0'
+        disable_filters: '0'
+        configure_sorts: '0'
+      display_description: ''
+      title: 'Governance area news'
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+        header: false
+        pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+        access: false
+        empty: false
+        arguments: false
+        sorts: false
+        relationships: false
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            event: event
+            news: news
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      header: {  }
+      pager:
+        type: some
+        options:
+          items_per_page: 7
+          offset: 0
+      use_more: true
+      use_more_always: false
+      use_more_text: 'Read more news'
+      link_display: custom_url
+      link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
+      block_hide_empty: true
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      empty: {  }
       arguments:
         group_id_depth:
           id: group_id_depth
@@ -490,13 +683,52 @@ display:
             0: '0'
           entity_type: group_content
           plugin_id: group_id_depth
-      display_extenders: {  }
-      use_ajax: true
-      css_class: view-news-and-events
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
+      sorts:
+        computed_date:
+          id: computed_date
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: standard
+      relationships:
+        gc__group:
+          id: gc__group
+          table: group_content_field_data
+          field: gc__group
+          relationship: none
+          group_type: group
+          admin_label: 'Group content Group'
+          required: false
+          group_content_plugins:
+            'subgroup:governance_area': 'subgroup:governance_area'
+            'subgroup:country': '0'
+            'subgroup:project': '0'
+            'subgroup:region': '0'
+          entity_type: group_content
+          plugin_id: group_content_to_entity
+        gc__node:
+          id: gc__node
+          table: group_content_field_data
+          field: gc__node
+          relationship: none
+          group_type: group
+          admin_label: 'Group content Content'
+          required: true
+          group_content_plugins:
+            'group_node:basic_page': '0'
+            'group_node:event': '0'
+            'group_node:member': '0'
+            'group_node:news': '0'
+          entity_type: group_content
+          plugin_id: group_content_to_entity
     cache_metadata:
       max-age: -1
       contexts:
@@ -504,8 +736,6 @@ display:
         - 'languages:language_interface'
         - route
         - url
-        - url.query_args
-        - user
         - user.permissions
       tags: {  }
   block_news_events_project:
@@ -1329,6 +1559,7 @@ display:
           required: false
           group_content_plugins:
             'subgroup:country': 'subgroup:country'
+            'subgroup:governance_area': 'subgroup:governance_area'
             'subgroup:project': 'subgroup:project'
             'subgroup:region': 'subgroup:region'
           entity_type: group_content
@@ -1397,6 +1628,486 @@ display:
             1: '1'
           entity_type: group_content
           plugin_id: group_id_depth
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - route
+        - url
+        - url.query_args
+        - user
+        - user.permissions
+      tags: {  }
+  ga_news_events:
+    display_plugin: block
+    id: ga_news_events
+    display_title: 'Governance Area News & Events'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      allow:
+        pager: pager
+        items_per_page: false
+        offset: '0'
+        hide_fields: '0'
+        sort_fields: '0'
+        disable_filters: '0'
+        configure_sorts: '0'
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      defaults:
+        access: false
+        filters: false
+        filter_groups: false
+        sorts: false
+        arguments: false
+        relationships: false
+        title: false
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            event: event
+            news: news
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+        gid_sub_group:
+          id: gid_sub_group
+          table: group_content_field_data
+          field: gid_sub_group
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Select location'
+            description: ''
+            use_operator: false
+            operator: gid_sub_group_op
+            identifier: gid_sub_group
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          entity_type: group_content
+          plugin_id: group_index_gid_subgroup
+        field_category_target_id:
+          id: field_category_target_id
+          table: node__field_category
+          field: field_category_target_id
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_category_target_id_op
+            label: 'Select category'
+            description: ''
+            use_operator: false
+            operator: field_category_target_id_op
+            identifier: category
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: categories
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_organization_target_id:
+          id: field_organization_target_id
+          table: node__field_organization
+          field: field_organization_target_id
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_organization_target_id_op
+            label: 'Select organization'
+            description: ''
+            use_operator: false
+            operator: field_organization_target_id_op
+            identifier: organization
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: organizations
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        computed_date:
+          id: computed_date
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: Year
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: computed_date_op
+            label: Year
+            description: ''
+            use_operator: false
+            operator: computed_date_op
+            identifier: year
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          type: select
+          granularity: year
+          year_range: '-3:+0'
+          from_unixtime: 0
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: computed_date
+        computed_date_1:
+          id: computed_date_1
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: Month
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: computed_date_1_op
+            label: Month
+            description: ''
+            use_operator: false
+            operator: computed_date_1_op
+            identifier: month
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administration_users: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          type: select
+          granularity: month
+          year_range: '-3:+0'
+          from_unixtime: 0
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: computed_date
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      sorts:
+        computed_date:
+          id: computed_date
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: standard
+      display_description: ''
+      arguments:
+        group_id_depth:
+          id: group_id_depth
+          table: group_content_field_data
+          field: group_id_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: group_id_from_url
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth:
+            -1: '-1'
+            0: '0'
+          entity_type: group_content
+          plugin_id: group_id_depth
+      relationships:
+        gc__group:
+          id: gc__group
+          table: group_content_field_data
+          field: gc__group
+          relationship: none
+          group_type: group
+          admin_label: 'Group content Group'
+          required: false
+          group_content_plugins:
+            'subgroup:governance_area': 'subgroup:governance_area'
+            'subgroup:country': '0'
+            'subgroup:project': '0'
+            'subgroup:region': '0'
+          entity_type: group_content
+          plugin_id: group_content_to_entity
+        gc__node:
+          id: gc__node
+          table: group_content_field_data
+          field: gc__node
+          relationship: none
+          group_type: group
+          admin_label: 'Group content Content'
+          required: true
+          group_content_plugins:
+            'group_node:basic_page': '0'
+            'group_node:event': '0'
+            'group_node:member': '0'
+            'group_node:news': '0'
+          entity_type: group_content
+          plugin_id: group_content_to_entity
+      title: 'Governance Area News & Events'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1786,44 +2497,6 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: language
-        public_content:
-          id: public_content
-          table: node_field_data
-          field: public_content
-          relationship: gc__node
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: '0'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          entity_field: public_content
-          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -2123,6 +2796,219 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - route
+        - url
+        - user.permissions
+      tags: {  }
+  parent_region:
+    display_plugin: embed
+    id: parent_region
+    display_title: 'Parent region'
+    position: 7
+    display_options:
+      display_extenders: {  }
+      style:
+        type: default
+        options: {  }
+      defaults:
+        style: false
+        row: false
+        filters: false
+        filter_groups: false
+        pager: false
+        arguments: false
+        fields: false
+        relationships: false
+        empty: false
+        header: false
+        css_class: false
+        use_ajax: false
+        title: false
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      filters:
+        langcode:
+          id: langcode
+          table: groups_field_data
+          field: langcode
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group
+          entity_field: langcode
+          plugin_id: language
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      pager:
+        type: none
+        options:
+          offset: 0
+      arguments:
+        entity_id:
+          id: entity_id
+          table: group_content_field_data
+          field: entity_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: group_content
+          entity_field: entity_id
+          plugin_id: numeric
+      fields:
+        gid:
+          id: gid
+          table: group_content_field_data
+          field: gid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: group_reference_label
+          settings:
+            link: 0
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: group_content
+          entity_field: gid
+          plugin_id: field
+      relationships:
+        gc__group:
+          id: gc__group
+          table: group_content_field_data
+          field: gc__group
+          relationship: none
+          group_type: group
+          admin_label: 'Group content Group'
+          required: false
+          group_content_plugins:
+            'subgroup:country': '0'
+            'subgroup:project': '0'
+            'subgroup:region': '0'
+          entity_type: group_content
+          plugin_id: group_content_to_entity
+      empty: {  }
+      header: {  }
+      css_class: view-parent-region
+      use_ajax: false
+      title: ''
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
         - url
         - user.permissions
       tags: {  }

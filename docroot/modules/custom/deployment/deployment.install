@@ -746,3 +746,11 @@ function deployment_update_8051() {
   deployment_delete_fields('group', 'governance_area', ['field_date']);
   field_purge_batch(500);
 }
+
+/**
+ * Remove old fields.
+ */
+function deployment_update_8052() {
+  deployment_delete_fields('user', 'user', ['field_category']);
+  field_purge_batch(500);
+}

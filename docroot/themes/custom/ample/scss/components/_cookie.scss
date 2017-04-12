@@ -1,0 +1,51 @@
+#sliding-popup {
+  @include font-size(14);
+  background: $navy-light !important;
+  color: $white;
+  font-family: $fira;
+  font-weight: 300;
+  min-height: 60px;
+  padding: 10px;
+  right: 5%;
+  text-align: left;
+  transition: width .3s ease, right .3s ease;
+  width: 500px !important;
+
+  .agree-button {
+    @include font-size(28);
+    @include same(40px, height, width);
+    background: $white;
+    border-radius: 50%;
+    color: $navy-dark;
+    cursor: pointer;
+    float: left;
+    margin: 0 20px 5px 0;
+    padding-top: 10px;
+    text-align: center;
+
+    &:hover {
+      opacity: .79;
+    }
+  }
+
+  p {
+    margin: 0;
+    padding-top: 12px;
+  }
+
+  a {
+    border: none;
+    color: $white;
+    cursor: pointer;
+    display: inline;
+    font-family: $fira;
+    margin: 0;
+    padding: 0;
+    text-decoration: underline;
+  }
+}
+
+@include breakpoint-for('#sliding-popup', (to: tablet)) {
+  right: 0;
+  width: 100% !important;
+}

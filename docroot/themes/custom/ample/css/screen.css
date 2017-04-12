@@ -2178,8 +2178,7 @@ header .social-links .font-social-icon {
     .project-list .project-item {
       display: inline-block;
       margin-left: -4px;
-      padding-left: 14px;
-      padding-right: 6px;
+      margin-right: 20px;
       vertical-align: top; }
   .country-list .country-content,
   .country-list .project-content,
@@ -2354,7 +2353,8 @@ header .social-links .font-social-icon {
     .project-list .member-block, .ie9 .members-list ul .country-item, .ie9
     .members-list ul .project-item, .ie9
     .members-list ul .member-block {
-      width: calc(50% - 4px); } }
+      margin: 10px 8px;
+      width: calc(50% - 20px); } }
 
 @media (max-width: 767px) {
   .country-list .country-item,
@@ -2381,6 +2381,8 @@ header .social-links .font-social-icon {
     .project-list .member-block, .ie9 .members-list ul .country-item, .ie9
     .members-list ul .project-item, .ie9
     .members-list ul .member-block {
+      margin-left: 0;
+      margin-right: 0;
       width: 100%; }
     .country-list .country-item .block-content,
     .country-list .project-item .block-content,

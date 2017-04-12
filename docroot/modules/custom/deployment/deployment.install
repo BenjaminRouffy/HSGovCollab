@@ -754,3 +754,10 @@ function deployment_update_8052() {
   deployment_delete_fields('user', 'user', ['field_category']);
   field_purge_batch(500);
 }
+
+/**
+ * Install module "EU Cookie Compliance".
+ */
+function deployment_update_8053() {
+  \Drupal::service('module_installer')->install(['eu_cookie_compliance']);
+}

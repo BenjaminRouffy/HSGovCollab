@@ -98,6 +98,9 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         $form['wrap']['label']['#attributes']['placeholder'] = t('Search in projects');
         $form['#attributes']['data-accordion'] = $form['#id'];
     }
+
+    // Set autocomplete attribute
+    $form['#attributes']['autocomplete'] = 'off';
   }
 }
 

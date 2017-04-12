@@ -251,6 +251,16 @@ form {
     input[type="text"] {
       margin-top: 4px !important;
     }
+
+    .chosen-results {
+      @include font-size(15.4);
+      color: $navy-dark;
+      font-family: $fira;
+
+      .highlighted {
+        background: $navy;
+      }
+    }
   }
 
   &::-ms-expand {

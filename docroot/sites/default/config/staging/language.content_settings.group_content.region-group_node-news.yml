@@ -1,17 +1,16 @@
-uuid: 19166c5c-2504-4c3c-9158-3a1111c0c6b0
+uuid: 056031a0-622f-4cb9-b00a-a0bc3cd40476
 langcode: en
 status: true
 dependencies:
   config:
-    - group.content_type.governance_area-group_node-news
+    - group.content_type.region-group_node-news
   module:
     - content_translation
 third_party_settings:
   content_translation:
     enabled: false
-id: group_content.governance_area-group_node-news
+id: group_content.region-group_node-news
 target_entity_type_id: group_content
-target_bundle: governance_area-group_node-news
+target_bundle: region-group_node-news
 default_langcode: site_default
 language_alterable: false
-

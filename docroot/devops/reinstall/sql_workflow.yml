@@ -91,7 +91,7 @@
   register: updates
 
 - name: Gets deleted config files form log
-  shell: "cat config_stage_changes.log | grep -v 'staging/language' | grep -E '^D' | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev || true"
+  shell: "cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^D' | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev || true"
   register: deploy_files_deleted
 
 - name: Remove single config from configuration manager.
@@ -100,7 +100,7 @@
   with_items: deploy_files_deleted.stdout_lines
 
 - name: Gets added/modified config files form log
-  shell: "cat config_stage_changes.log | grep -v 'staging/language' | grep -E '^(A|M)' | grep staging | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev | xargs printf ',%s' | cut -d',' -f2- || true"
+  shell: "cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^(A|M)' | grep staging | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev | xargs printf ',%s' | cut -d',' -f2- || true"
   register: deploy_files_modified
 
 - name: Apply changes from file

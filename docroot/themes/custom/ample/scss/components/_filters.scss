@@ -1,4 +1,5 @@
-.view-news-and-events {
+.view-news-and-events,
+.view-my-projects {
   .title-wrapper {
     padding-bottom: 10px;
     text-align: center;
@@ -47,6 +48,10 @@
     line-height: 48px;
     margin-bottom: 15px;
     text-align: center;
+  }
+
+  form {
+    max-width: 100%;
   }
 
   .wrapper-filters {
@@ -123,7 +128,11 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events', (to: laptop-small)) {
+.search-form-wrapper {
+  position: relative;
+}
+
+@include breakpoint-for('.view-news-and-events, .view-my-projects', (to: laptop-small)) {
   .wrapper-filters {
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -147,7 +156,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events', (to: tablet)) {
+@include breakpoint-for('.view-news-and-events, .view-my-projects', (to: tablet)) {
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
@@ -173,7 +182,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events', (to: mobileL)) {
+@include breakpoint-for('.view-news-and-events, .view-my-projects', (to: mobileL)) {
   .wrapper-filters {
     > div {
       max-width: 100%;
@@ -191,6 +200,40 @@
   .form-checkboxes {
     .form-item {
       width: 100%;
+    }
+  }
+}
+
+.view-my-projects {
+  .wrapper-filters {
+    > div {
+      max-width: 30%;
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: laptop-small)) {
+  .wrapper-filters {
+    justify-content: center;
+
+    > div {
+      max-width: calc(40% - 20px);
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: tablet)) {
+  .wrapper-filters {
+    > div {
+      max-width: calc(50% - 20px);
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: mobileL)) {
+  .wrapper-filters {
+    > div {
+      max-width: 100%;
     }
   }
 }

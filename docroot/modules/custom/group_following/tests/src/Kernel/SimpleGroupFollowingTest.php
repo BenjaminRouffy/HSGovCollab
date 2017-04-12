@@ -3,7 +3,6 @@
 namespace Drupal\Tests\group_following\Kernel;
 
 use Drupal\group\Entity\GroupTypeInterface;
-use Drupal\group\Entity\Storage\GroupContentTypeStorage;
 use Drupal\group_following\GroupFollowing;
 use Drupal\group_following\GroupFollowingManager;
 use Drupal\group_following\GroupFollowingResult;
@@ -19,12 +18,12 @@ use Drupal\Tests\phpunit_skeleton\Kernel\TestsSkeletonTrait;
 class SimpleGroupFollowingTest extends EntityKernelTestBase {
   use TestsSkeletonTrait;
 
-//  /**
-//   * {@inheritdoc}
-//   *
-//   * I feel the power!
-//   */
-//  protected $runTestInSeparateProcess = FALSE;
+  /**
+   * {@inheritdoc}
+   *
+   * I feel the power!
+   */
+  // protected $runTestInSeparateProcess = FALSE;
 
   /**
    * Region group type.
@@ -58,6 +57,8 @@ class SimpleGroupFollowingTest extends EntityKernelTestBase {
     'ggroup',
     'phpunit_skeleton',
     'group_following',
+    'field_permissions',
+    'group_following_test',
   ];
 
   protected function setUp() {
@@ -66,10 +67,16 @@ class SimpleGroupFollowingTest extends EntityKernelTestBase {
     $this->constructDefaultSkeleton(TRUE);
     $this->initGroupFunctionality();
     $this->installSchema('ggroup', 'group_graph');
+    $this->installEntitySchema('group');
+    $this->installEntitySchema('group_type');
+    $this->installEntitySchema('group_content');
+    $this->installEntitySchema('group_content_type');
+    $this->installConfig(['group_following_test']);
 
-    $this->regionGroup = $this->generateGroupTypeSkeleton('region');
-    $this->countryGroup = $this->generateGroupTypeSkeleton('country');
-    $this->projectGroup = $this->generateGroupTypeSkeleton('project');
+    $this->groupType = \Drupal::entityTypeManager()->getStorage('group_type');
+    $this->regionGroup = $this->groupType->load('region');
+    $this->countryGroup = $this->groupType->load('country');
+    $this->projectGroup = $this->groupType->load('project');
   }
 
   /**
@@ -78,12 +85,11 @@ class SimpleGroupFollowingTest extends EntityKernelTestBase {
   public function testHardFollowing() {
     $region = $this->createGroupByType($this->regionGroup->id(), ['uid' => $this->superAccount->id()]);
 
-    $group_roles = $this->generateGroupRoleSkeleton('region-follower', [
-      'label' => 'Follower',
-      'group_type' => $this->regionGroup->id(),
+    $region->addMember($this->defaultAccount, [
+      'field_follower' => [
+        'value' => 1,
+      ],
     ]);
-
-    $region->addMember($this->defaultAccount, ['group_roles' => [$group_roles->id()]]);
 
     /* @var GroupFollowingManager $manager */
     $manager = \Drupal::getContainer()->get('group_following.manager');
@@ -113,25 +119,17 @@ class SimpleGroupFollowingTest extends EntityKernelTestBase {
     $country1 = $this->createGroupByType($this->countryGroup->id(), ['uid' => $this->superAccount->id()]);
     $country2 = $this->createGroupByType($this->countryGroup->id(), ['uid' => $this->superAccount->id()]);
 
-    /** @var GroupContentTypeStorage $storage */
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
-    $storage->createFromPlugin($this->regionGroup, 'subgroup:' . $this->countryGroup->id(), [
-      'group_cardinality' => 0,
-      'entity_cardinality' => 1,
-    ])->save();
-
     $region->addContent($country1, 'subgroup:' . $this->countryGroup->id());
     $region->addContent($country2, 'subgroup:' . $this->countryGroup->id());
 
-    $group_roles = $this->generateGroupRoleSkeleton('region-follower', [
-      'label' => 'Follower',
-      'group_type' => $this->regionGroup->id(),
+    $region->addMember($this->defaultAccount, [
+      'field_follower' => [
+        'value' => 1,
+      ],
     ]);
 
-    $region->addMember($this->defaultAccount, ['group_roles' => [$group_roles->id()]]);
-
-
-    $subgroups = \Drupal::service('ggroup.group_hierarchy_manager')->getGroupSubgroups($region);
+    $subgroups = \Drupal::service('ggroup.group_hierarchy_manager')
+      ->getGroupSubgroups($region);
 
     foreach ($subgroups as $subgroup) {
       /* @var GroupFollowingManager $manager */

@@ -9,6 +9,7 @@ label: 'Authenticated user'
 weight: 1
 is_admin: false
 permissions:
+  - 'access comments'
   - 'access content'
   - 'access group label'
   - 'access group link'
@@ -20,8 +21,11 @@ permissions:
   - 'delete paragraph content software_application'
   - 'display eu cookie compliance popup'
   - 'download any document files'
+  - 'edit own comments'
   - 'legal re-accept terms_and_conditions'
   - 'legal view terms_and_conditions'
+  - 'post comments'
+  - 'skip comment approval'
   - 'update paragraph content organisation'
   - 'update paragraph content software_application'
   - 'view error messages'

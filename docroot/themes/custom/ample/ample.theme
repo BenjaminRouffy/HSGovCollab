@@ -181,7 +181,9 @@ function ample_preprocess_paragraph(array &$variables) {
     $entity = $variables['paragraph']->getParentEntity();
 
     if ('group' === $entity->getEntityTypeId()) {
-      $variables['group_label'] = $entity->label();
+      $variables['group_label'] = \Drupal::entityManager()
+        ->getTranslationFromContext($entity)
+        ->label();
       $variables['group_bundle'] = $entity->bundle();
       if ('governance_area' != $entity->bundle()) {
         $variables['following_form'] = \Drupal::formBuilder()

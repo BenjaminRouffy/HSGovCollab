@@ -14,3 +14,11 @@ block.settings.logout_popup:
     cancel:
       type: text
       label: 'Cancel'
+
+views.area.link_to_page:
+  type: views_area
+  label: 'Link to page'
+  mapping:
+    title:
+      type: text
+      label: 'Title'

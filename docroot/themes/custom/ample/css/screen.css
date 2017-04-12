@@ -2163,8 +2163,15 @@ header .social-links .font-social-icon {
   .country-list .project-item,
   .project-list .country-item,
   .project-list .project-item {
-    padding: 10px;
-    width: 33.33%; }
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    width: calc(33.33% - 20px); }
+    .country-list .country-item:hover,
+    .country-list .project-item:hover,
+    .project-list .country-item:hover,
+    .project-list .project-item:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
     .project-list .country-item, .ie9
@@ -2174,10 +2181,10 @@ header .social-links .font-social-icon {
       padding-left: 14px;
       padding-right: 6px;
       vertical-align: top; }
-  .country-list .white-box-wrapper,
-  .project-list .white-box-wrapper {
-    background: #fff;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  .country-list .country-content,
+  .country-list .project-content,
+  .project-list .country-content,
+  .project-list .project-content {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2191,9 +2198,6 @@ header .social-links .font-social-icon {
     height: 100%;
     padding: 30px 0 20px;
     position: relative; }
-    .country-list .white-box-wrapper:hover,
-    .project-list .white-box-wrapper:hover {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
   .country-list .project-content .summary,
   .project-list .project-content .summary {
     padding-top: 20px; }
@@ -2303,6 +2307,11 @@ header .social-links .font-social-icon {
       -webkit-transition: opacity .3s ease;
       transition: opacity .3s ease; }
 
+.project-list .project-content {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
 .country-list-by-region {
   margin-bottom: 30px; }
   .country-list-by-region .country-title {
@@ -2337,7 +2346,7 @@ header .social-links .font-social-icon {
   .project-list .member-block, .members-list ul .country-item,
   .members-list ul .project-item,
   .members-list ul .member-block {
-    width: 50%; }
+    width: calc(50% - 20px); }
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
     .country-list .member-block, .ie9 .project-list .country-item, .ie9
@@ -2361,8 +2370,9 @@ header .social-links .font-social-icon {
   .project-list .member-block, .members-list ul .country-item,
   .members-list ul .project-item,
   .members-list ul .member-block {
-    padding-left: 0;
-    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
     width: 100%; }
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
@@ -2567,12 +2577,9 @@ header .social-links .font-social-icon {
     padding-top: 10px; }
   .last-news-by-group h3 {
     font-size: 0.875rem;
-    display: inline-block;
     font-weight: 400;
     line-height: 20px;
-    margin: 8px 0 0;
-    max-width: calc(100% - 38px);
-    vertical-align: top; }
+    margin: 8px 0 0 38px; }
 
 .follow-us {
   margin-top: 20px;

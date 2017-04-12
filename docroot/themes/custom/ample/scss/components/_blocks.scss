@@ -1026,8 +1026,14 @@
 
   .country-item,
   .project-item {
-    padding: 10px;
-    width: 33.33%;
+    background: $white;
+    box-shadow: 0 0 6px rgba($black, .1);
+    margin: 10px;
+    width: calc(33.33% - 20px);
+
+      &:hover {
+        box-shadow: 0 0 10px rgba($black, .2);
+      }
 
     .ie9 & {
       display: inline-block;
@@ -1038,21 +1044,14 @@
     }
   }
 
-  //.country-content,
-  //.project-content,
-  .white-box-wrapper {
-    background: $white;
-    box-shadow: 0 0 6px rgba($black, .1);
+  .country-content,
+  .project-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     padding: 30px 0 20px;
     position: relative;
-
-    &:hover {
-      box-shadow: 0 0 10px rgba($black, .2);
-    }
   }
 
   .project-content {
@@ -1175,6 +1174,12 @@
   }
 }
 
+.project-list {
+  .project-content {
+    justify-content: flex-start;
+  }
+}
+
 .country-list-by-region {
   margin-bottom: 30px;
 
@@ -1216,7 +1221,7 @@
   .country-item,
   .project-item,
   .member-block {
-    width: 50%;
+    width: calc(50% - 20px);
 
     .ie9 & {
       width: calc(50% - 4px);
@@ -1235,8 +1240,9 @@
   .country-item,
   .project-item,
   .member-block {
-    padding-left: 0;
-    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
     width: 100%;
 
     .ie9 & {
@@ -1445,12 +1451,9 @@
 
   h3 {
     @include font-size(14);
-    display: inline-block;
     font-weight: 400;
     line-height: 20px;
-    margin: 8px 0 0;
-    max-width: calc(100% - 38px);
-    vertical-align: top;
+    margin: 8px 0 0 38px;
   }
 }
 

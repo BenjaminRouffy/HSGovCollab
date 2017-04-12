@@ -1,33 +1,31 @@
 <div class="project-item">
-  <div class="white-box-wrapper">
-    <div{{ attributes.addClass('project-content') }}>
-      {{ title_prefix }}
-      {{ title_suffix }}
-      <div class="project-title">
-        <div class="project-icon-wrapper">
-          {{ content.field_project_icon }}
-        </div>
-        <h3 role="heading">
-          {{ label }}
-        </h3>
-        <div class="summary">
-          {% if not logged_in %}
-            {{ content.field_summary_public }}
-          {% else %}
-            {{ content.field_summary }}
-          {% endif %}
-        </div>
+  <div{{ attributes.addClass('project-content') }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+    <div class="project-title">
+      <div class="project-icon-wrapper">
+        {{ content.field_project_icon }}
       </div>
-      {% if not logged_in %}
-        <div class="bottom-link">
-          {# TODO Should use here a router.#}
-          {{ link('Signup to know more'|t, 'base:user/sign-up', { 'class':[ 'read-more' ] }) }}
-        </div>
-      {% else %}
-        {{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}
-        <a href="{{ url }}" class="project-link"></a>
-      {% endif %}
+      <h3 role="heading">
+        {{ label }}
+      </h3>
+      <div class="summary">
+        {% if not logged_in %}
+          {{ content.field_summary_public }}
+        {% else %}
+          {{ content.field_summary }}
+        {% endif %}
+      </div>
     </div>
+    {% if not logged_in %}
+      <div class="bottom-link">
+        {# TODO Should use here a router.#}
+        {{ link('Signup to know more'|t, 'base:user/sign-up', { 'class':[ 'read-more' ] }) }}
+      </div>
+    {% else %}
+      {{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}
+      <a href="{{ url }}" class="project-link"></a>
+    {% endif %}
   </div>
 </div>
 

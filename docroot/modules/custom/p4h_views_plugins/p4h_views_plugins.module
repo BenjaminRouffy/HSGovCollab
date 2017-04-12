@@ -86,6 +86,9 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         $form['combine_1']['#attributes']['placeholder'] = t('Search in countries');
         break;
     }
+
+    // Set autocomplete attribute
+    $form['#attributes']['autocomplete'] = 'off';
   }
 }
 

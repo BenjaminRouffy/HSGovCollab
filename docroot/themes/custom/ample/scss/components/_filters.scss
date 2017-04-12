@@ -198,6 +198,36 @@
 .view-country {
   margin-top: 40px;
 
+  > h2 {
+    @include font-size(25.2);
+    line-height: 48px;
+    margin-bottom: 15px;
+    position: relative;
+    text-align: center;
+
+    a {
+      @include font-size(15.4);
+      line-height: 18px;
+      position: absolute;
+      top: 17px;
+      right: 0;
+      text-decoration: none;
+
+      &:before {
+        content: "q";
+        color: $red;
+        font-family: $p4h;
+        margin-right: 4px;
+      }
+
+      &:hover {
+        &:before {
+          color: $red-dark;
+        }
+      }
+    }
+  }
+
   .group-region & {
     margin-top: 0;
 

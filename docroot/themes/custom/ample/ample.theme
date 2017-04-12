@@ -200,7 +200,7 @@ function ample_preprocess_paragraph(array &$variables) {
           ->load($icon[0]['target_id']);
         $view_builder = \Drupal::entityTypeManager()->getViewBuilder($icon->getEntityTypeId());
 
-        $variables['country_icon'] = $view_builder->view($icon, 'default');
+        $variables['group_icon'] = $view_builder->view($icon, 'default');
       }
     }
 
@@ -209,7 +209,7 @@ function ample_preprocess_paragraph(array &$variables) {
 
       if (is_array($icon) && !empty($icon)) {
         $image = \Drupal\file\Entity\File::load($icon[0]['target_id']);
-        $variables['region_icon'] = $image->getFileUri();
+        $variables['group_icon'] = $image->getFileUri();
       }
     }
 
@@ -218,7 +218,7 @@ function ample_preprocess_paragraph(array &$variables) {
 
       if (is_array($icon) && !empty($icon)) {
         $image = \Drupal\file\Entity\File::load($icon[0]['target_id']);
-        $variables['region_icon'] = $image->getFileUri();
+        $variables['group_icon'] = $image->getFileUri();
       }
     }
   }

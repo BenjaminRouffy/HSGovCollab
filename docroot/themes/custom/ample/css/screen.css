@@ -1137,8 +1137,10 @@ header .social-links .font-social-icon {
     .country-content-wrapper .country-icon-wrapper.default {
       background: url(../images/globe_white.svg) center no-repeat;
       background-size: 100%; }
-      .group-governance_area .country-content-wrapper .country-icon-wrapper.default {
-        background: url(../images/Governance_white.svg) center no-repeat; }
+    .country-content-wrapper .country-icon-wrapper.region {
+      background: url(../images/globe_white.svg) center no-repeat; }
+    .country-content-wrapper .country-icon-wrapper.governance_area {
+      background: url(../images/Governance_white.svg) center no-repeat; }
   .country-content-wrapper h1 {
     font-size: 5rem;
     color: #fff;
@@ -2171,10 +2173,8 @@ header .social-links .font-social-icon {
       padding-left: 14px;
       padding-right: 6px;
       vertical-align: top; }
-  .country-list .country-content,
-  .country-list .project-content,
-  .project-list .country-content,
-  .project-list .project-content {
+  .country-list .white-box-wrapper,
+  .project-list .white-box-wrapper {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     display: -webkit-box;
@@ -2190,10 +2190,8 @@ header .social-links .font-social-icon {
     height: 100%;
     padding: 30px 0 20px;
     position: relative; }
-    .country-list .country-content:hover,
-    .country-list .project-content:hover,
-    .project-list .country-content:hover,
-    .project-list .project-content:hover {
+    .country-list .white-box-wrapper:hover,
+    .project-list .white-box-wrapper:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
   .country-list .project-content .summary,
   .project-list .project-content .summary {
@@ -2454,6 +2452,10 @@ header .social-links .font-social-icon {
     line-height: 32px;
     margin: 10px 0 5px;
     text-transform: uppercase; }
+
+.project-title + div:not(.project-title) {
+  min-height: 0;
+  margin-bottom: 5px; }
 
 .view-list-of-projects .title-wrapper {
   padding-bottom: 10px;
@@ -3040,6 +3042,12 @@ form .social_login label:after {
     padding: 0 10px 30px; }
   .form-contact-us .form-actions {
     width: 100%; } }
+
+.view-project > h2 {
+  font-size: 1.575rem;
+  line-height: 48px;
+  margin-bottom: 15px;
+  text-align: center; }
 
 .view-project form {
   max-width: 40%;

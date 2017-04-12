@@ -1,0 +1,13 @@
+diff --git a/core/modules/contextual/js/contextual.js b/core/modules/contextual/js/contextual.js
+index 7f93a15..d73da6a 100644
+--- a/core/modules/contextual/js/contextual.js
++++ b/core/modules/contextual/js/contextual.js
+@@ -108,7 +108,7 @@
+       .find('.contextual');
+ 
+     // Early-return when there's no nesting.
+-    if ($contextuals.length === 1) {
++    if ($contextuals.length <= 1) {
+       return;
+     }
+ 

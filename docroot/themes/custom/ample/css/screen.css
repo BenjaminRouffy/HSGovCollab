@@ -1137,8 +1137,10 @@ header .social-links .font-social-icon {
     .country-content-wrapper .country-icon-wrapper.default {
       background: url(../images/globe_white.svg) center no-repeat;
       background-size: 100%; }
-      .group-governance_area .country-content-wrapper .country-icon-wrapper.default {
-        background: url(../images/Governance_white.svg) center no-repeat; }
+    .country-content-wrapper .country-icon-wrapper.region {
+      background: url(../images/globe_white.svg) center no-repeat; }
+    .country-content-wrapper .country-icon-wrapper.governance_area {
+      background: url(../images/Governance_white.svg) center no-repeat; }
   .country-content-wrapper h1 {
     font-size: 5rem;
     color: #fff;
@@ -3040,6 +3042,12 @@ form .social_login label:after {
     padding: 0 10px 30px; }
   .form-contact-us .form-actions {
     width: 100%; } }
+
+.view-project > h2 {
+  font-size: 1.575rem;
+  line-height: 48px;
+  margin-bottom: 15px;
+  text-align: center; }
 
 .view-project form {
   max-width: 40%;

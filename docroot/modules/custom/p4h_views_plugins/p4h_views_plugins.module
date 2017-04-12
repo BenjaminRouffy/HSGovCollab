@@ -92,11 +92,15 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
           '#suffix' => '</div>',
           '#weight' => -100,
         ];
-
+        $form['wrap']['actions'] = $form['actions'];
+        unset($form['actions']);
         $form['wrap']['label'] = $form['label'];
         unset($form['label']);
         $form['wrap']['label']['#attributes']['placeholder'] = t('Search in projects');
         $form['#attributes']['data-accordion'] = $form['#id'];
+
+        $form['wrap']['label']['#prefix'] = '<div class="search-form-wrapper">';
+        $form['wrap']['actions']['#suffix'] = '</div>';
     }
 
     // Set autocomplete attribute

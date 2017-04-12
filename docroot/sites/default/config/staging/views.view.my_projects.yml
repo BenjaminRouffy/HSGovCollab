@@ -9,6 +9,7 @@ dependencies:
     - better_exposed_filters
     - ggroup
     - group
+    - group_dashboard
     - group_following
     - p4h_views_plugins
 id: my_projects
@@ -60,6 +61,14 @@ display:
             label:
               bef_format: default
               more_options:
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            gid_following:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
@@ -152,6 +161,7 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
+          group: 1
         langcode:
           id: langcode
           table: groups_field_data
@@ -236,9 +246,81 @@ display:
           entity_type: group
           entity_field: label
           plugin_id: string
+        gid_following:
+          id: gid_following
+          table: group_content_field_data
+          field: gid_following
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: gid_following_op
+            label: 'Following group'
+            description: ''
+            use_operator: false
+            operator: gid_following_op
+            identifier: gid_following
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          gid:
+            country: country
+            region: region
+            governance_area: 0
+            project: 0
+          entity_type: group_content
+          plugin_id: group_index_by_following
       sorts: {  }
       title: 'My projects'
-      header: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Filter by:'
+          plugin_id: text_custom
+        custom_to_page:
+          id: custom_to_page
+          table: views
+          field: custom_to_page
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          title: Edit
+          page: my_settings
+          plugin_id: link_to_page
       footer: {  }
       empty:
         area_text_custom:
@@ -263,10 +345,29 @@ display:
           required: true
           entity_type: group
           plugin_id: group_following
+        group_content:
+          id: group_content
+          table: groups_field_data
+          field: group_content
+          relationship: none
+          group_type: group
+          admin_label: 'Group group content'
+          required: false
+          group_content_plugins:
+            'subgroup:country': '0'
+            'subgroup:governance_area': '0'
+            'subgroup:project': '0'
+            'subgroup:region': '0'
+          entity_type: group
+          plugin_id: group_content_to_entity_reverse
       arguments: {  }
       display_extenders: {  }
       use_ajax: true
       group_by: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:

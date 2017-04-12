@@ -71,4 +71,11 @@ function group_dashboard_views_data_alter(array &$data) {
       'help' => t('Filter for content by node access. <strong>Not necessary if you are using node as your base table.</strong>'),
     ],
   ];
+
+  $data['views']['custom_to_page'] = [
+    'title' => t('Link to page'),
+    'area' => [
+      'id' => 'link_to_page',
+    ],
+  ];
 }

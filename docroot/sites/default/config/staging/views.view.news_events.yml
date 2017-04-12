@@ -16,6 +16,7 @@ dependencies:
     - datetime_range
     - ggroup
     - group
+    - group_dashboard
     - group_following
     - image
     - node
@@ -69,6 +70,14 @@ display:
               autosubmit: true
               timeout: '1000'
               autosubmit_hide: true
+            gid:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
             field_organization_target_id:
               bef_format: bef
               more_options:
@@ -95,14 +104,6 @@ display:
                   filter_rewrite_values: ''
             computed_date_1:
               bef_format: default
-              more_options:
-                bef_select_all_none: false
-                bef_collapsible: false
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
-            gid:
-              bef_format: bef
               more_options:
                 bef_select_all_none: false
                 bef_collapsible: false
@@ -1077,13 +1078,59 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
+        node_operations:
+          id: node_operations
+          table: node_access
+          field: node_operations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          node_operations: view
+          plugin_id: node_operations_access
       defaults:
         filters: false
         filter_groups: false
+        query: false
       filter_groups:
         operator: AND
         groups:
           1: AND
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
@@ -1206,35 +1253,35 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        gid:
-          id: gid
+        gid_following:
+          id: gid_following
           table: group_content_field_data
-          field: gid
+          field: gid_following
           relationship: group_content
           group_type: group
-          admin_label: 'Group location'
+          admin_label: ''
           operator: or
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: gid_op
-            label: 'Select location'
+            operator_id: gid_following_op
+            label: 'Select locations'
             description: ''
             use_operator: false
-            operator: gid_op
-            identifier: gid
+            operator: gid_following_op
+            identifier: gid_following
             required: false
             remember: false
             multiple: true
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
             reduce: 0
           is_grouped: false
           group_info:
@@ -1249,10 +1296,13 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: 0
-          gid: country
+          gid:
+            country: country
+            project: project
+            region: region
+            governance_area: 0
           entity_type: group_content
-          entity_field: gid
-          plugin_id: group_index_gid
+          plugin_id: group_index_by_following
         field_organization_target_id:
           id: field_organization_target_id
           table: node__field_organization
@@ -1476,6 +1526,8 @@ display:
         filter_groups: false
         relationships: false
         cache: false
+        header: false
+        exposed_form: false
       filter_groups:
         operator: AND
         groups:
@@ -1510,6 +1562,75 @@ display:
       cache:
         type: none
         options: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Filter by:'
+          plugin_id: text_custom
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: true
+              timeout: '1000'
+              autosubmit_hide: true
+            gid_following:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_organization_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_category_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date_1:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -1632,35 +1753,35 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        gid:
-          id: gid
+        gid_global:
+          id: gid_global
           table: group_content_field_data
-          field: gid
+          field: gid_global
           relationship: group_content
           group_type: group
-          admin_label: 'Group location'
+          admin_label: ''
           operator: or
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: gid_op
-            label: 'Select location'
+            operator_id: gid_global_op
+            label: 'Select locations'
             description: ''
             use_operator: false
-            operator: gid_op
-            identifier: gid
+            operator: gid_global_op
+            identifier: gid_global
             required: false
             remember: false
             multiple: true
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
             reduce: 0
           is_grouped: false
           group_info:
@@ -1675,10 +1796,13 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: 0
-          gid: country
+          gid:
+            country: country
+            governance_area: governance_area
+            project: project
+            region: region
           entity_type: group_content
-          entity_field: gid
-          plugin_id: group_index_gid
+          plugin_id: group_index_by_global
         field_organization_target_id:
           id: field_organization_target_id
           table: node__field_organization
@@ -1897,14 +2021,122 @@ display:
           entity_type: node
           entity_field: global_content
           plugin_id: boolean
+        node_operations:
+          id: node_operations
+          table: node_access
+          field: node_operations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          node_operations: view
+          plugin_id: node_operations_access
       defaults:
         filters: false
         filter_groups: false
+        header: false
+        exposed_form: false
       filter_groups:
         operator: AND
         groups:
           1: AND
       display_description: ''
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Filter by:'
+          plugin_id: text_custom
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: true
+              timeout: '1000'
+              autosubmit_hide: true
+            field_organization_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_category_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            computed_date_1:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            gid_global:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -2045,6 +2277,43 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        node_operations:
+          id: node_operations
+          table: node_access
+          field: node_operations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          node_operations: view
+          plugin_id: node_operations_access
       filter_groups:
         operator: AND
         groups:

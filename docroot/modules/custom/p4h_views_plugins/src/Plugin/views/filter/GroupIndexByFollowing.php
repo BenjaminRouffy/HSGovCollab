@@ -4,12 +4,11 @@ namespace Drupal\p4h_views_plugins\Plugin\views\filter;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Config\Entity\ConfigEntityStorageInterface;
-use Drupal\Core\Entity\Sql\SqlEntityStorageInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
-use Drupal\group\Entity\GroupInterface;
 use Drupal\group\Entity\GroupTypeInterface;
-use Drupal\views\Plugin\views\filter\ManyToOne;
+use Drupal\group_following\GroupFollowingManagerInterface;
+use Drupal\views\Annotation\ViewsFilter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -17,9 +16,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @ingroup views_filter_handlers
  *
- * @ViewsFilter("group_index_gid")
+ * @ViewsFilter("group_index_by_following")
  */
-class GroupIndexByGroupType extends GroupIndexGid  {
+class GroupIndexByFollowing extends GroupIndexGid  {
 
   /**
    * @var GroupTypeInterface
@@ -27,17 +26,17 @@ class GroupIndexByGroupType extends GroupIndexGid  {
   public $groupType;
 
   /**
-   * @var GroupInterface
+   * @var GroupFollowingManagerInterface
    */
-  public $group;
+  public $manager;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigEntityStorageInterface $group_type, SqlEntityStorageInterface $group) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition,ConfigEntityStorageInterface $group_type, GroupFollowingManagerInterface $manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->groupType = $group_type;
-    $this->group = $group;
+    $this->manager = $manager;
   }
 
   /**
@@ -49,7 +48,7 @@ class GroupIndexByGroupType extends GroupIndexGid  {
       $plugin_id,
       $plugin_definition,
       $container->get('entity.manager')->getStorage('group_type'),
-      $container->get('entity.manager')->getStorage('group')
+      $container->get('group_following.manager')
     );
   }
 
@@ -91,31 +90,23 @@ class GroupIndexByGroupType extends GroupIndexGid  {
     ];
   }
 
-
+  /**
+   * {@inheritdoc}
+   */
   protected function valueForm(&$form, FormStateInterface $form_state) {
     $options = [];
     $account = \Drupal::currentUser();
+    $groupPermissionAccess = \Drupal::getContainer()
+      ->get('group_customization.group.permission');
 
     foreach (array_filter($this->options['gid']) as $group_type_id) {
-      $group_type = $this->groupType->load($group_type_id);
+      $groups_id = $this->manager->getFollowedForUser($account, $group_type_id);
 
-      $query = \Drupal::entityQuery('group')
-        // @todo Sorting on vocabulary properties -
-        //   https://www.drupal.org/node/1821274.
-        ->addTag('group_access');
-      $query->condition('type', $group_type->id());
-      $result = $query->execute();
-      $groups = $this->group->loadMultiple($result);
+      foreach ($groups_id as $group_id) {
+        $group = Group::load($group_id);
 
-      $groupPermissionAccess = \Drupal::getContainer()
-        ->get('group_customization.group.permission');
-
-      foreach ($groups as $group) {
         /* @var AccessResult $access */
-        $access =  $groupPermissionAccess->checkAccessForFilter($group, $account, [
-          'published',
-          'content',
-        ]);
+        $access = $groupPermissionAccess->checkAccessForFilter($group, $account, ['published', 'content',]);
 
         if ($access->isAllowed()) {
           $options[$group->id()] = \Drupal::entityManager()

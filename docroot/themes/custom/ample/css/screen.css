@@ -455,6 +455,10 @@ svg {
 .plus-icon > span::after {
   content: "´"; }
 
+.pensil-icon > a::after,
+.pensil-icon > span::after {
+  content: "q"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -3063,7 +3067,22 @@ form .social_login label:after {
   font-size: 1.575rem;
   line-height: 48px;
   margin-bottom: 15px;
+  position: relative;
   text-align: center; }
+  .view-project > h2 a {
+    font-size: 0.9625rem;
+    line-height: 18px;
+    position: absolute;
+    top: 17px;
+    right: 0;
+    text-decoration: none; }
+    .view-project > h2 a:before {
+      content: "q";
+      color: #ea3a32;
+      font-family: P4h, sans-serif;
+      margin-right: 4px; }
+    .view-project > h2 a:hover:before {
+      color: #8c2222; }
 
 .view-project form {
   max-width: 40%;
@@ -3095,6 +3114,18 @@ form .social_login label:after {
     border: none;
     -webkit-transform: scale(1.2);
             transform: scale(1.2); }
+
+@media (max-width: 991px) {
+  .view-project form {
+    max-width: 60%; } }
+
+@media (max-width: 767px) {
+  .view-project form {
+    max-width: 80%; } }
+
+@media (max-width: 479px) {
+  .view-project form {
+    max-width: 100%; } }
 
 .user-register-form {
   display: -webkit-box;
@@ -3977,6 +4008,26 @@ form .social_login label:after {
 
 .view-country {
   margin-top: 40px; }
+  .view-country > h2 {
+    font-size: 1.575rem;
+    line-height: 48px;
+    margin-bottom: 15px;
+    position: relative;
+    text-align: center; }
+    .view-country > h2 a {
+      font-size: 0.9625rem;
+      line-height: 18px;
+      position: absolute;
+      top: 17px;
+      right: 0;
+      text-decoration: none; }
+      .view-country > h2 a:before {
+        content: "q";
+        color: #ea3a32;
+        font-family: P4h, sans-serif;
+        margin-right: 4px; }
+      .view-country > h2 a:hover:before {
+        color: #8c2222; }
   .group-region .view-country {
     margin-top: 0; }
     .group-region .view-country .title-wrapper {

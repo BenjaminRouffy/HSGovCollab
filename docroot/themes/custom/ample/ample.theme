@@ -337,3 +337,13 @@ function ample_preprocess_blocktabs(&$variables) {
     $variables['tabs'][$id]->title = t($variables['tabs'][$id]->title);
   }
 }
+
+/**
+ * Implements template_preprocess_comment().
+ */
+function ample_preprocess_comment(&$variables) {
+  $date = $variables['comment']->getCreatedTime();
+  $current_date = \Drupal::time()->getRequestTime();
+  $variables['created'] = \Drupal::service('date.formatter')->formatInterval($current_date - $date);
+  $variables['submitted'] = t('@datetime', ['@datetime' => $variables['created']]);
+}

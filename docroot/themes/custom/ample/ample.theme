@@ -348,6 +348,7 @@ function ample_preprocess_comment(&$variables) {
   $variables['created'] = \Drupal::service('date.formatter')->formatInterval($current_date - $date);
   $variables['submitted'] = t('@datetime', ['@datetime' => $variables['created']]);
   // Rewrite {{ user_picture }} variable.
+  $comment = $variables['elements']['#comment'];
   $account = $comment->getOwner();
   $variables['user_picture'] = user_view($account, 'comment_author');
 }

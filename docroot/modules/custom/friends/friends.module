@@ -7,15 +7,49 @@
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\friends\Plugin\FieldPermissionType\FriendsAccess;
-
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\views\ViewExecutable;
 
 /**
- * Implements hook_entity_view().
+ * Implements hook_ENTITY_TYPE_view() for user entities.
  */
-function friends_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-  if ('user' == $entity->getEntityTypeId()) {
-    if (FriendsAccess::checkAccess('view', $entity, \Drupal::currentUser())) {
-      $build['#user_mail'] = $entity->getEmail();
+function friends_user_view(array &$build, \Drupal\Core\Entity\EntityInterface $account, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  if (FriendsAccess::checkAccess('view', $account, \Drupal::currentUser())) {
+    $build['#user_mail'] = $account->getEmail();
+  }
+  $build['relation_form'] = \Drupal::formBuilder()
+    ->getForm('Drupal\friends\Form\RelationForm', $account);
+
+}
+
+/**
+ * Act on the view immediately before rendering it.
+ *
+ * At this point the query has been executed, and the preRender() phase has
+ * already happened for handlers, so all data should be available. This hook
+ * can be used by themes.
+ *
+ * Output can be added to the view by setting $view->attachment_before
+ * and $view->attachment_after.
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ *   The view object about to be processed.
+ *
+ * @see \Drupal\views\ViewExecutable
+ */
+function friends_views_pre_render(ViewExecutable $view) {
+  $results = &$view->result;
+  /** @var \Drupal\views\ResultRow $view_row */
+  foreach ($results as $key => $view_row) {
+    $relationships = $view_row->_relationship_entities;
+    if (isset($relationships['user__endpoints']) && isset($relationships['relation_base_left_friend'])) {
+      /** @var \Drupal\relation\Entity\Relation $relation */
+      $relation = $relationships['relation_base_left_friend'];
+      $relation_status = $relation->field_relation_status->getValue()[0]['value'];
+      /** @var \Drupal\user\Entity\User $user */
+      $results[$key]->_entity->relationStatus = $relation_status;
     }
   }
 }

@@ -1,8 +1,9 @@
-uuid: dd5ad048-62d7-41a3-8e12-5c42b9182622
+uuid: 1b0baf5d-6ef1-4887-a625-97bc7db55111
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.user.name
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
     - field.field.user.user.field_city
@@ -28,120 +29,73 @@ dependencies:
     - field.field.user.user.field_streetname
     - field.field.user.user.field_telephone
     - field.field.user.user.field_zip_code
-    - image.style.150x150
   module:
-    - entity_reference_revisions
-    - group_content_field
-    - image
     - user
-id: user.user.default
+id: user.user.name
 targetEntityType: user
 bundle: user
-mode: default
+mode: name
 content:
-  field_avatar:
-    weight: 0
-    label: hidden
-    settings:
-      image_style: 150x150
-      image_link: ''
-    third_party_settings: {  }
-    type: image
-    region: content
-  field_country_manager:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: group_content_manager_list
-    region: content
-  field_country_text:
+  field_first_name:
     type: string
-    weight: 10
+    weight: 1
     region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_job_title:
-    weight: 8
+    type: string
+    weight: 4
+    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+  field_last_name:
     type: string
+    weight: 3
     region: content
-  field_mobilephone:
-    weight: 5
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+  field_middle_name:
     type: string
+    weight: 2
     region: content
-  field_non_member_organization:
-    weight: 7
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-    region: content
-  field_organisation:
-    weight: 6
+  field_person_titles:
+    weight: 0
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_organisations:
-    type: entity_reference_revisions_entity_view
-    weight: 9
-    region: content
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-  field_project_manager:
-    weight: 2
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: group_content_manager_list
-    region: content
-  field_skype_or_other:
-    type: entity_reference_revisions_entity_view
-    weight: 3
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    region: content
-  field_telephone:
-    weight: 4
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
 hidden:
   field_accept_term_conditions: true
+  field_avatar: true
   field_city: true
+  field_country_manager: true
+  field_country_text: true
   field_disclose_your_personal_det: true
-  field_first_name: true
   field_following_countries: true
   field_following_projects: true
   field_following_regions: true
-  field_last_name: true
   field_last_password_reset: true
-  field_middle_name: true
+  field_mobilephone: true
+  field_non_member_organization: true
+  field_organisation: true
+  field_organisations: true
   field_password_expiration: true
-  field_person_titles: true
+  field_project_manager: true
+  field_skype_or_other: true
   field_streetname: true
+  field_telephone: true
   field_zip_code: true
   langcode: true
   masquerade: true

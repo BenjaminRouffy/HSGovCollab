@@ -1,0 +1,25 @@
+uuid: b247adb9-530d-4330-a5ba-dbf641e1d4d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user_view
+label: 'User view'
+description: ''
+use_admin_theme: false
+path: '/user/{user}'
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+parameters:
+  user:
+    machine_name: user
+    type: 'entity:user'
+    label: User

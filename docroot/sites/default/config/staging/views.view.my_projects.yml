@@ -55,8 +55,8 @@ display:
             general:
               allow_secondary: false
               secondary_label: 'Advanced options'
-              autosubmit: false
-              timeout: '100'
+              autosubmit: true
+              timeout: '1000'
               autosubmit_hide: false
             label:
               bef_format: default
@@ -259,7 +259,7 @@ display:
           exposed: true
           expose:
             operator_id: gid_following_op
-            label: 'Following group'
+            label: 'Select locations'
             description: ''
             use_operator: false
             operator: gid_following_op

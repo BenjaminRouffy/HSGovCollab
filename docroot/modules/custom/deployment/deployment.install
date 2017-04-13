@@ -769,3 +769,11 @@ function deployment_update_8053() {
 function deployment_update_8054() {
   \Drupal::service('module_installer')->install(['friends']);
 }
+
+/**
+ * Remove field 'Country'.
+ */
+function deployment_update_8055() {
+  deployment_delete_fields('user', 'user', ['field_country_text']);
+  field_purge_batch(500);
+}

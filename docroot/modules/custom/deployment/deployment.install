@@ -769,3 +769,10 @@ function deployment_update_8053() {
 function deployment_update_8054() {
   \Drupal::service('module_installer')->install(['friends']);
 }
+
+/**
+ * Install module "relation".
+ */
+function deployment_update_8055() {
+  \Drupal::service('module_installer')->install(['relation']);
+}

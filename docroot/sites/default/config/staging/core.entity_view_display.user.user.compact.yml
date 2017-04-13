@@ -1,8 +1,9 @@
-uuid: dd5ad048-62d7-41a3-8e12-5c42b9182622
+uuid: 244b4cac-6b1a-41b9-9e0c-bf6f70d6971f
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.user.compact
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
     - field.field.user.user.field_city
@@ -34,10 +35,10 @@ dependencies:
     - group_content_field
     - image
     - user
-id: user.user.default
+id: user.user.compact
 targetEntityType: user
 bundle: user
-mode: default
+mode: compact
 content:
   field_avatar:
     weight: 0
@@ -49,7 +50,7 @@ content:
     type: image
     region: content
   field_country_manager:
-    weight: 1
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -57,29 +58,37 @@ content:
     region: content
   field_country_text:
     type: string
-    weight: 10
+    weight: 12
     region: content
     label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_first_name:
+    type: string
+    weight: 1
+    region: content
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_job_title:
-    weight: 8
+    weight: 10
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
+  field_last_name:
+    type: string
+    weight: 2
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_mobilephone:
-    weight: 5
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_non_member_organization:
     weight: 7
     label: hidden
     settings:
@@ -87,8 +96,16 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_non_member_organization:
+    weight: 9
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_organisation:
-    weight: 6
+    weight: 8
     label: hidden
     settings:
       link: false
@@ -97,7 +114,7 @@ content:
     region: content
   field_organisations:
     type: entity_reference_revisions_entity_view
-    weight: 9
+    weight: 11
     region: content
     label: hidden
     settings:
@@ -105,7 +122,7 @@ content:
       link: ''
     third_party_settings: {  }
   field_project_manager:
-    weight: 2
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -113,7 +130,7 @@ content:
     region: content
   field_skype_or_other:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 5
     label: hidden
     settings:
       view_mode: default
@@ -121,7 +138,7 @@ content:
     third_party_settings: {  }
     region: content
   field_telephone:
-    weight: 4
+    weight: 6
     label: hidden
     settings:
       link_to_entity: false
@@ -132,11 +149,9 @@ hidden:
   field_accept_term_conditions: true
   field_city: true
   field_disclose_your_personal_det: true
-  field_first_name: true
   field_following_countries: true
   field_following_projects: true
   field_following_regions: true
-  field_last_name: true
   field_last_password_reset: true
   field_middle_name: true
   field_password_expiration: true

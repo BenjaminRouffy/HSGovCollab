@@ -1,0 +1,89 @@
+uuid: 76d64a0a-4480-4187-abcb-79f12df99fe3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.relation.endpoints
+    - relation.type.friend
+  module:
+    - dynamic_entity_reference
+id: relation.friend.endpoints
+field_name: endpoints
+entity_type: relation
+bundle: friend
+label: Endpoints
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  user:
+    handler: 'default:user'
+    handler_settings:
+      target_bundles: null
+  block_content:
+    handler: 'default:block_content'
+    handler_settings:
+      target_bundles: {  }
+  comment:
+    handler: 'default:comment'
+    handler_settings:
+      target_bundles: {  }
+  contact_message:
+    handler: 'default:contact_message'
+    handler_settings:
+      target_bundles: {  }
+  crop:
+    handler: 'default:crop'
+    handler_settings:
+      target_bundles: {  }
+  entity_legal_document_acceptance:
+    handler: 'default:entity_legal_document_acceptance'
+    handler_settings:
+      target_bundles: {  }
+  entity_legal_document_version:
+    handler: 'default:entity_legal_document_version'
+    handler_settings:
+      target_bundles: {  }
+  file:
+    handler: 'default:file'
+    handler_settings:
+      target_bundles: {  }
+  group:
+    handler: 'default:group'
+    handler_settings:
+      target_bundles: {  }
+  group_content:
+    handler: 'default:group_content'
+    handler_settings:
+      target_bundles: {  }
+  node:
+    handler: 'default:node'
+    handler_settings:
+      target_bundles: {  }
+  paragraph:
+    handler: 'default:paragraph'
+    handler_settings:
+      target_bundles: {  }
+  relation:
+    handler: 'default:relation'
+    handler_settings:
+      target_bundles: {  }
+  shortcut:
+    handler: 'default:shortcut'
+    handler_settings:
+      target_bundles: {  }
+  taxonomy_term:
+    handler: 'default:taxonomy_term'
+    handler_settings:
+      target_bundles: {  }
+  webform_submission:
+    handler: 'default:webform_submission'
+    handler_settings:
+      target_bundles: {  }
+  menu_link_content:
+    handler: 'default:menu_link_content'
+    handler_settings:
+      target_bundles: {  }
+field_type: dynamic_entity_reference

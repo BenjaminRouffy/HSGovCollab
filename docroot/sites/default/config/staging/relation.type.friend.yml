@@ -1,0 +1,16 @@
+uuid: e712aab5-6024-49ee-9227-6dffc70d1458
+langcode: en
+status: true
+dependencies: {  }
+id: friend
+label: Friend
+reverse_label: 'Reverse friend'
+directional: true
+transitive: false
+r_unique: true
+min_arity: 2
+max_arity: 2
+source_bundles:
+  'user:*': 'user:*'
+target_bundles:
+  'user:*': 'user:*'

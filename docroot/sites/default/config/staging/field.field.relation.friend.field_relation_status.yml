@@ -1,0 +1,23 @@
+uuid: 67795cc9-9586-4a22-a896-9939c394eb15
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.relation.field_relation_status
+    - relation.type.friend
+  module:
+    - options
+id: relation.friend.field_relation_status
+field_name: field_relation_status
+entity_type: relation
+bundle: friend
+label: 'Relation status'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: pending
+default_value_callback: ''
+settings: {  }
+field_type: list_string

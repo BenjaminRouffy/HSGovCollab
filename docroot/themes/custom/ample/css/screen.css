@@ -4272,6 +4272,51 @@ form .social_login label:after {
   .ui-dialog {
     width: 90% !important; } }
 
+#sliding-popup {
+  font-size: 0.875rem;
+  background: #80aabe !important;
+  color: #fff;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  min-height: 60px;
+  padding: 10px;
+  right: 5%;
+  text-align: left;
+  -webkit-transition: width .3s ease, right .3s ease;
+  transition: width .3s ease, right .3s ease;
+  width: 500px !important; }
+  #sliding-popup .agree-button {
+    font-size: 1.75rem;
+    height: 40px;
+    width: 40px;
+    background: #fff;
+    border-radius: 50%;
+    color: #283b44;
+    cursor: pointer;
+    float: left;
+    margin: 0 20px 5px 0;
+    padding-top: 10px;
+    text-align: center; }
+    #sliding-popup .agree-button:hover {
+      opacity: .79; }
+  #sliding-popup p {
+    margin: 0;
+    padding-top: 12px; }
+  #sliding-popup a {
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline;
+    font-family: "Fira Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: underline; }
+
+@media (max-width: 767px) {
+  #sliding-popup {
+    right: 0;
+    width: 100% !important; } }
+
 .faq-item {
   position: relative; }
   .faq-item.expanded .faq-title:after {

@@ -342,8 +342,12 @@ function ample_preprocess_blocktabs(&$variables) {
  * Implements template_preprocess_comment().
  */
 function ample_preprocess_comment(&$variables) {
+  // Set comment created date interval.
   $date = $variables['comment']->getCreatedTime();
   $current_date = \Drupal::time()->getRequestTime();
   $variables['created'] = \Drupal::service('date.formatter')->formatInterval($current_date - $date);
   $variables['submitted'] = t('@datetime', ['@datetime' => $variables['created']]);
+  // Rewrite {{ user_picture }} variable.
+  $user = \Drupal::currentUser();
+  $variables['user_picture'] = user_view($user, 'comment_author');
 }

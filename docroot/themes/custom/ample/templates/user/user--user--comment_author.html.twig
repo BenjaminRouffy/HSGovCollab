@@ -1,0 +1,14 @@
+{% if content %}
+  <a href="#">
+    {{ content.field_avatar }}
+    <div class="name">
+      {% if content.field_first_name %}
+        {{ content.field_first_name }}
+      {% endif %}
+
+      {% if content.field_last_name %}
+        {{ content.field_last_name }}
+      {% endif %}
+    </div>
+  </a>
+{% endif %}

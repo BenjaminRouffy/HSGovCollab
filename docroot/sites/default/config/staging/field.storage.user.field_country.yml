@@ -1,0 +1,24 @@
+uuid: f614ef82-d30e-4c38-afd0-3461164aba35
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - taxonomy
+    - user
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: user.field_country
+field_name: field_country
+entity_type: user
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

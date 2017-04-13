@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.user.compact
     - field.storage.user.field_first_name
     - field.storage.user.field_last_name
+    - taxonomy.vocabulary.country_icon
     - taxonomy.vocabulary.organizations
     - user.role.coordination_desk_users
     - user.role.country_managers
@@ -199,6 +200,7 @@ display:
         fields: false
         exposed_form: false
         use_ajax: false
+        header: false
       display_description: ''
       filters:
         status:
@@ -212,55 +214,6 @@ display:
           expose:
             operator: ''
           group: 1
-        roles_target_id:
-          id: roles_target_id
-          table: user__roles
-          field: roles_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value:
-            country_managers: country_managers
-            projects_managers: projects_managers
-            governance_group_users: governance_group_users
-            coordination_desk_users: coordination_desk_users
-          group: 1
-          exposed: true
-          expose:
-            operator_id: roles_target_id_op
-            label: Role
-            description: ''
-            use_operator: false
-            operator: roles_target_id_op
-            identifier: roles_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              country_managers: '0'
-              projects_managers: '0'
-              governance_group_users: '0'
-              coordination_desk_users: '0'
-              specific_users: '0'
-            reduce: true
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          entity_type: user
-          plugin_id: user_roles
         field_organisation_target_id:
           id: field_organisation_target_id
           table: user__field_organisation
@@ -310,6 +263,104 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        field_country_target_id:
+          id: field_country_target_id
+          table: user__field_country
+          field: field_country_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_country_target_id_op
+            label: Country
+            description: ''
+            use_operator: false
+            operator: field_country_target_id_op
+            identifier: field_country_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: country_icon
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        roles_target_id:
+          id: roles_target_id
+          table: user__roles
+          field: roles_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            country_managers: country_managers
+            projects_managers: projects_managers
+            governance_group_users: governance_group_users
+            coordination_desk_users: coordination_desk_users
+          group: 1
+          exposed: true
+          expose:
+            operator_id: roles_target_id_op
+            label: Role
+            description: ''
+            use_operator: false
+            operator: roles_target_id_op
+            identifier: roles_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+            reduce: true
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          entity_type: user
+          plugin_id: user_roles
         combine:
           id: combine
           table: views
@@ -355,6 +406,51 @@ display:
             field_first_name: field_first_name
             field_last_name: field_last_name
           alphabet: 0
+          plugin_id: combine
+        combine_1:
+          id: combine_1
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: starts
+          value: all
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_1_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: combine_1_op
+            identifier: user_name_alf
+            required: true
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          fields:
+            field_first_name: field_first_name
+          alphabet: 1
           plugin_id: combine
         uid_raw:
           id: uid_raw
@@ -625,7 +721,7 @@ display:
               autosubmit: true
               timeout: '1000'
               autosubmit_hide: false
-            roles_target_id:
+            field_organisation_target_id:
               bef_format: default
               more_options:
                 bef_select_all_none: false
@@ -633,7 +729,15 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            field_organisation_target_id:
+            field_country_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            roles_target_id:
               bef_format: default
               more_options:
                 bef_select_all_none: false
@@ -647,7 +751,25 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
+            combine_1:
+              bef_format: bef_ul
+              more_options:
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
       use_ajax: true
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: 'Filter by:'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

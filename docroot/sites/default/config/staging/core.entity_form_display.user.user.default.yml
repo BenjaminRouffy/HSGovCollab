@@ -6,8 +6,8 @@ dependencies:
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
     - field.field.user.user.field_city
+    - field.field.user.user.field_country
     - field.field.user.user.field_country_manager
-    - field.field.user.user.field_country_text
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_following_countries
@@ -127,7 +127,7 @@ third_party_settings:
         - field_streetname
         - field_city
         - field_zip_code
-        - field_country_text
+        - field_country
       parent_name: group_my_profile
       weight: 10
       format_type: html_element
@@ -194,20 +194,18 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_country:
+    weight: 24
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_country_manager:
     type: group_select
     weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_country_text:
-    weight: 24
-    settings:
-      size: 60
-      placeholder: 'Please enter your country'
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_disclose_your_personal_det:
     type: boolean_checkbox
     weight: 1

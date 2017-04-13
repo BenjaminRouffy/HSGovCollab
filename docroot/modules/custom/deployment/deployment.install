@@ -790,3 +790,10 @@ function deployment_update_8056() {
 function deployment_update_8057() {
   \Drupal::service('module_installer')->install(['relation']);
 }
+
+/**
+ * Install modules "AJAX comments" and "Rate".
+ */
+function deployment_update_8058() {
+  \Drupal::service('module_installer')->install(['ajax_comments', 'rate']);
+}

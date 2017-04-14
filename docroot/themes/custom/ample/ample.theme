@@ -136,6 +136,10 @@ function ample_preprocess_node(array &$variables) {
 
     $variables['contextual_link_access'] = $update_access || $delete_access;
   }
+  // Comments count.
+  if (in_array($node->bundle(), ['news', 'event', 'basic_page'])) {
+    $variables['comment_count'] = $variables['node']->get('field_comments')->comment_count;
+  }
 }
 
 

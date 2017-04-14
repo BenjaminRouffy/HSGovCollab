@@ -68,4 +68,12 @@
       </span>
     </div>
   {% endif %}
+
+  {% if elements['#current_user'] != user.id() %}
+    <div class="contact-to-user">
+      <a href="{{ path('entity.user.canonical', {'user': user.id()}) }}/contact" target="_blank">
+        {{ 'Contact trough P4H network'|t }}
+      </a>
+    </div>
+  {% endif %}
 </div>

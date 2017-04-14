@@ -665,6 +665,9 @@ class AjaxCommentsController extends ControllerBase {
       // if applicable.
       $response->addCommand(new RemoveCommand($wrapper_html_id . ' .js-ajax-comments-messages'));
 
+      // Remove any opened reply form.
+      $response->addCommand(new RemoveCommand($wrapper_html_id . ' .ajax-comments-form-reply'));
+
       // Build the comment entity form.
       // This approach is very similar to the one taken in
       // \Drupal\comment\CommentLazyBuilders::renderForm().

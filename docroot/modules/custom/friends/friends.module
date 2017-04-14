@@ -48,7 +48,6 @@ function friends_entity_view(array &$build, EntityInterface $entity, EntityViewD
   }
 }
 
-
 /**
  * Implements hook_form_alter().
  */
@@ -56,9 +55,9 @@ function friends_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'views_exposed_form') {
     switch ($form['#id']) {
       case 'views-exposed-form-cd-user-view-all-contacts':
-        if (!empty($form['field_organisation_target_id'])) {
-          $form['field_organisation_target_id']['#options']['All'] = $form['#info']['filter-field_organisation_target_id']['label'];
-          $form['#info']['filter-field_organisation_target_id']['label'] = '';
+        if (!empty($form['combine_taxonomy_term'])) {
+          $form['combine_taxonomy_term']['#options']['All'] = $form['#info']['filter-combine_taxonomy_term']['label'];
+          $form['#info']['filter-combine_taxonomy_term']['label'] = '';
         }
 
         if (!empty($form['field_country_target_id'])) {

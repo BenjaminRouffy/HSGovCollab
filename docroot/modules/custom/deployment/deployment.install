@@ -762,10 +762,16 @@ function deployment_update_8053() {
   \Drupal::service('module_installer')->install(['eu_cookie_compliance']);
 }
 
-
 /**
  * Install module "Friends".
  */
 function deployment_update_8054() {
   \Drupal::service('module_installer')->install(['friends']);
+}
+
+/**
+ * Install module "Hotjar".
+ */
+function deployment_update_8055() {
+  \Drupal::service('module_installer')->install(['hotjar']);
 }

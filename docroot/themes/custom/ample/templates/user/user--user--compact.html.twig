@@ -57,6 +57,10 @@
     </span>
   </div>
 
+  {% if content.field_organisations|field_value %}
+    {{ content.field_organisations }}
+  {% endif %}
+
   {% if content.field_countryt|field_value %}
     <div class="font-social-icon country-icon">
       <span>

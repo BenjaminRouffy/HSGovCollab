@@ -1,10 +1,13 @@
 <section{{ attributes }}>
 
-  {{ comments }}
-
   {% if comment_form %}
-    <h2{{ content_attributes }}>{{ 'Add new comment'|t }}</h2>
+    <div class="title-wrapper">
+      <h2{{ content_attributes }}>{{ 'Write comment'|t }}</h2>
+      <div class="line"></div>
+    </div>
     {{ comment_form }}
   {% endif %}
+
+  {{ comments }}
 
 </section>

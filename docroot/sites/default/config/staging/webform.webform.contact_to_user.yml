@@ -112,7 +112,7 @@ handlers:
       from_mail: default
       from_name: ''
       subject: 'Contact through P4H'
-      body: "[webform_submission:values:message:value]<br />\n<br />\nName:&nbsp;[current-user:field_first_name]&nbsp;[current-user:field_last_name]<br />\n<br />\n<a href=\"[current-user:url]\">Link to profile</a>"
+      body: "[webform_submission:values:message:value]<br />\n<br />\nName:&nbsp;[current-user:field_first_name]&nbsp;[current-user:field_last_name]<br />\n<a href=\"[current-user:url]\">User&nbsp;profile</a>"
       excluded_elements: {  }
       html: true
       attachments: 0

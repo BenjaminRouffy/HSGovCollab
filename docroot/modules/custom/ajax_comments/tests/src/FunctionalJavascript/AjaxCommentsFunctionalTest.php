@@ -46,7 +46,15 @@ class AjaxCommentsFunctionalTest extends JavascriptTestBase {
     $this->addDefaultCommentField('node', 'article');
 
     // Enable ajax comments on the comment field.
-    $entity_view_display = EntityViewDisplay::load('node.article.comments');
+    $entity_view_display = EntityViewDisplay::create([
+      'status' => TRUE,
+      'targetEntityType' => 'node',
+      'bundle' => 'article',
+      'mode' => 'comments',
+    ])->save();;
+
+    $this->addDefaultCommentField('node', 'article', 'comment', CommentItemInterface::OPEN, 'comment', 'comments');
+
     $renderer = $entity_view_display->getRenderer('comment');
     $renderer->setThirdPartySetting('ajax_comments', 'enable_ajax_comments', TRUE);
     $entity_view_display->save();

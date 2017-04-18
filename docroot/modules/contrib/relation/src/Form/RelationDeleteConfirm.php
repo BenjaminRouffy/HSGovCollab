@@ -16,16 +16,6 @@ class RelationDeleteConfirm extends ContentEntityConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('entity.manager'),
-      $container->get('url_generator')
-    );
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getQuestion() {
     return t('Are you sure you want to delete relation @id?', array('@id' => $this->entity->id()));
   }

@@ -1,0 +1,55 @@
+uuid: abfb9976-7729-49ed-b66e-d7c8fded9af0
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.contact_to_user
+  content:
+    - 'block_content:headline_description:844f5700-1537-4d6e-8afb-800792bc179c'
+  module:
+    - block_content
+    - panels
+    - webform
+id: contact_to_user-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    e20e56e9-7c0b-4f7f-a2e0-79399476e7fd:
+      id: webform_block
+      label: Webform
+      provider: webform
+      label_display: '0'
+      webform_id: contact_to_user
+      default_data: ''
+      region: content
+      weight: -9
+      uuid: e20e56e9-7c0b-4f7f-a2e0-79399476e7fd
+      context_mapping: {  }
+    669d487a-66d8-469c-a158-19bcbfe4ec36:
+      id: 'block_content:844f5700-1537-4d6e-8afb-800792bc179c'
+      label: 'Contact to user'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: banner
+      weight: 0
+      uuid: 669d487a-66d8-469c-a158-19bcbfe4ec36
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 75afc818-f923-4783-bdcc-3e32bc8dfcec
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: contact_to_user-panels_variant-0
+  builder: standard
+page: contact_to_user
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

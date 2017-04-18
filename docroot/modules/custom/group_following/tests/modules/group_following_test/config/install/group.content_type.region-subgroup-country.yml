@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+    - group.type.region
+id: region-subgroup-country
+label: 'Region: Subgroup (Country)'
+description: 'Adds <em class="placeholder">Country</em> groups to groups both publicly and privately.'
+group_type: region
+content_plugin: 'subgroup:country'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

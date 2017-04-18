@@ -1,0 +1,25 @@
+uuid: 4c628b18-1d8d-42b3-b427-ec0b4f0adcac
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: contact_to_user
+label: 'Contact to user'
+description: ''
+use_admin_theme: false
+path: '/user/{user}/contact'
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+parameters:
+  user:
+    machine_name: user
+    type: 'entity:user'
+    label: User

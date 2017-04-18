@@ -2,7 +2,7 @@ domain: ''
 domains_option: 1
 domains_list: ''
 eu_only: false
-exclude_paths: "admin\r\n/*/admin\r\nadmin/*\r\nbatch\r\nnode/add*\r\nnode/*/edit\r\nnode/*/delete"
+exclude_paths: "/admin\r\n/*/admin\r\n/admin/*\r\n/batch\r\n/node/add*\r\n/node/*/edit\r\n/node/*/delete\r\n/node/*/translations\r\n/group/*/edit\r\n/group/*/delete\r\n/group/*/subgroups\r\n/group/*/members\r\n/group/*/content\r\n/group/*/translations"
 export:
   folder: custom
 langcode: en
@@ -12,19 +12,19 @@ popup_agreed:
 popup_agree_button_message: Accept
 popup_agreed_enabled: false
 popup_bg_hex: 0779BF
-popup_clicking_confirmation: false
+popup_clicking_confirmation: true
 popup_delay: 1
-popup_disagree_button_message: Decline
+popup_disagree_button_message: 'cookie policy.'
 popup_enabled: true
 popup_find_more_button_message: 'More info'
 popup_height: null
 popup_hide_agreed: false
 popup_hide_button_message: Hide
 popup_info:
-  value: "<p>We use cookies to better understand your preferences and personalize content and our electronic interactions with you. By closing this banner, clicking \"Accept\" or continuing to browse the website, you consent to these cookies.</p>\r\n"
+  value: "<p>Our website uses cookies. Find out more about our</p>\r\n"
   format: minimal
-popup_link: 'https://www.google.com.ua/'
-popup_link_new_window: true
+popup_link: 'https://cibox07.m2.propeople.com.ua/stage/en/terms-and-conditions'
+popup_link_new_window: false
 popup_position: false
 popup_text_hex: ffffff
 popup_width: 100%

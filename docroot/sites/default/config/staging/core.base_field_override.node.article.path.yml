@@ -1,22 +1,20 @@
-uuid: eb8cacdb-f51f-4f23-b4ca-b2fe18470945
+uuid: 04f451ef-1405-40e8-af2d-a06678ff6b0d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
     - node.type.article
   module:
-    - text
-id: node.article.body
-field_name: body
+    - path
+id: node.article.path
+field_name: path
 entity_type: node
 bundle: article
-label: Body
+label: 'URL alias'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-field_type: text_with_summary
+settings: {  }
+field_type: path

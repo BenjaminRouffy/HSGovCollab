@@ -6,14 +6,7 @@ dependencies:
     - field.storage.group.field_region_icon
     - group.type.product
   module:
-    - content_translation
     - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      alt: alt
-      title: title
-      file: '0'
 id: group.product.field_region_icon
 field_name: field_region_icon
 entity_type: group
@@ -21,7 +14,7 @@ bundle: product
 label: 'Product icon'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

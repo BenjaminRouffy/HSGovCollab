@@ -1,0 +1,205 @@
+#calendar {
+  font-family: $oswald;
+  letter-spacing: 1px;
+
+  .fc-left {
+    float: none;
+
+    button {
+      @include font-size(15.4);
+      background: none;
+      border: none;
+      box-shadow: none;
+      float: none;
+      height: auto;
+      margin: 0;
+      padding: 9px 30px;
+    }
+
+    .fc-state-active {
+      color: $red;
+    }
+  }
+
+  .fc-center {
+    margin: 30px 0;
+
+    h2 {
+      @include font-size(33.6);
+      color: $navy;
+      line-height: 24px;
+      margin: 0;
+    }
+  }
+
+  .fc-prev-button,
+  .fc-next-button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fc-icon {
+    margin: 0 15px;
+    
+    &:after {
+      @include font-size(33.6);
+      color: $navy;
+      font-family: $p4h;
+    }
+  }
+
+  .fc-icon-right-single-arrow {
+    &:after {
+      content: "9";
+    }
+  }
+
+  .fc-icon-left-single-arrow {
+    &:after {
+      content: "8";
+    }
+  }
+
+  th {
+    color: #afb7bb;
+    font-weight: 400;
+    text-align: right;
+  }
+
+  .fc-year-main-table {
+    * {
+      border: none;
+    }
+  }
+
+  .fc-month-view {
+    .fc-week-number {
+      @include font-size(11.2);
+      border: none;
+
+      &.fc-widget-header {
+        visibility: hidden;
+      }
+    }
+
+    th,
+    td {
+      border-color: #ced9df;
+    }
+
+    .fc-widget-header {
+      @include font-size(18.2);
+      border: none;
+      color: $navy-dark;
+      min-height: 39px;
+      text-align: center;
+    }
+
+    td {
+      border-top: none;
+      border-left: none;
+    }
+
+    td {
+      border-bottom: none;
+    }
+
+    .fc-week {
+      background: $white;
+      border-bottom-width: 1px;
+    }
+
+    .fc-day-number {
+      padding: 10px 5px;
+    }
+
+    .fc-today {
+      span {
+        @include same(23px, height, width);
+        background: $red;
+        border-radius: 50%;
+        color: $white;
+        display: inline-block;
+        line-height: 21px;
+        text-align: center;
+        vertical-align: top;
+      }
+    }
+
+    .fc-widget-content {
+      .fc-sat,
+      .fc-sun {
+        background: #e9ecee;
+      }
+    }
+  }
+
+  .fc-day-grid-container {
+    height: auto !important;
+  }
+
+  .fc-year-monthly-name {
+    height: 35px;
+
+    a {
+      @include font-size(18.2);
+      font-weight: 400;
+    }
+  }
+
+  .fc-year-view {
+    .fc-week-number-head {
+      @include font-size(14);
+      height: 35px;
+      vertical-align: top;
+      width: auto !important;
+    }
+
+    .fc-week-number {
+      width: auto !important;
+    }
+
+    .fc-day-grid {
+      .fc-row {
+        min-height: 35px;
+      }
+    }
+  }
+
+  .fc-year-month-separator {
+    display: none;
+  }
+
+  .fc-year-monthly-td {
+    font-weight: 400;
+    padding: 15px;
+
+    table {
+      @include font-size(14);
+    }
+  }
+
+  .fc-day-number {
+    color: $navy;
+    padding-top: 5px;
+  }
+
+  .fc-other-month {
+    color: #d7dbdd;
+    opacity: 1;
+  }
+
+  .fc-week-number {
+    color: #afb7bb;
+    padding-top: 6px;
+    text-align: right;
+  }
+
+  .fc-today {
+    background: transparent;
+    color: $red;
+  }
+}

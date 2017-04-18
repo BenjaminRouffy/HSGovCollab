@@ -85,7 +85,11 @@ class RelationController extends ControllerBase {
     switch (\Drupal::request()->query->get(MainContentViewSubscriber::WRAPPER_FORMAT)) {
       case 'drupal_ajax':
         $response = new AjaxResponse();
-        $response->addCommand(new RedirectCommand($redirect_url->toString()));
+        $response->addCommand(new ReplaceCommand(
+          '.relation_form_' . $user->id(),
+          render(\Drupal::formBuilder()->getForm('Drupal\friends\Form\RelationForm', $user))
+        ));
+
         break;
 
       default:

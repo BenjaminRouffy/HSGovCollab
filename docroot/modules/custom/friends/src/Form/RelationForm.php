@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 class RelationForm extends FormBase {
   protected $user;
   protected $endpoints;
+  protected $relation;
 
   /**
    * {@inheritdoc}
@@ -35,6 +36,8 @@ class RelationForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state, User $user = NULL) {
 
     $this->user = $user;
+    $form['#prefix'] = '<div class = "relation_form_' . $user->id() . '">';
+    $form['#suffix'] = '</div>';
 
     $form['container'] = [
       '#type' => 'container',

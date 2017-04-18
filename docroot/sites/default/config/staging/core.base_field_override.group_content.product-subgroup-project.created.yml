@@ -1,0 +1,18 @@
+uuid: 9bd3b7e9-b36c-43c3-8b6f-f68becd3922c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-subgroup-project
+id: group_content.product-subgroup-project.created
+field_name: created
+entity_type: group_content
+bundle: product-subgroup-project
+label: 'Created on'
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

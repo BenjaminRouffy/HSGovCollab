@@ -1,0 +1,19 @@
+uuid: f6387ec5-cc63-4029-bae0-f647befe598b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+id: product-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: product
+permissions_ui: true
+permissions:
+  0: 'view group'
+  1: 'access group_node overview'
+  4: 'view group_node:document entity'
+  5: 'view group_node:event entity'
+  6: 'view group_node:news entity'

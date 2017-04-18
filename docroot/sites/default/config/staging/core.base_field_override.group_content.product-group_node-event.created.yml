@@ -1,0 +1,18 @@
+uuid: 4106dac0-4016-4a5d-859d-0ffa9e80d4b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-group_node-event
+id: group_content.product-group_node-event.created
+field_name: created
+entity_type: group_content
+bundle: product-group_node-event
+label: 'Created on'
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

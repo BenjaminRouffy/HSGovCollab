@@ -1,0 +1,21 @@
+uuid: bda0d37f-9d01-424b-9f11-6fb69d274034
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_dashboard
+    - group_following
+third_party_settings:
+  group_following:
+    confirmation_popup_status: false
+    confirmation_popup_following_header: ''
+    confirmation_popup_following_body: ''
+    confirmation_popup_unfollowing_header: ''
+    confirmation_popup_unfollowing_body: ''
+  group_dashboard:
+    access_to_subgroup_functionality: 1
+id: knowledge_vault
+label: 'Knowledge Vault'
+description: ''
+creator_membership: true
+creator_roles: {  }

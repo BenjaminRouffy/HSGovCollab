@@ -1,0 +1,21 @@
+uuid: ec875582-a1c5-47a6-bf46-cd08784640b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: products
+label: Products
+description: ''
+use_admin_theme: false
+path: /products
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+parameters: {  }

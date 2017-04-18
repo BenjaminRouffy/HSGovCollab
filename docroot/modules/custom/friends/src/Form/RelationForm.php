@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
+use Drupal\relation\Entity\Relation;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -19,6 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class RelationForm extends FormBase {
   protected $user;
+  protected $endpoints;
 
   /**
    * {@inheritdoc}
@@ -37,7 +39,7 @@ class RelationForm extends FormBase {
     $form['container'] = [
       '#type' => 'container',
       '#attributes' => [
-        'class' => 'follow-link',
+        'class' => 'relation-link',
       ],
       '#cache' => [
         'contexts' => [
@@ -46,103 +48,51 @@ class RelationForm extends FormBase {
       ],
     ];
 
-    $form['container']['button'] = [
-      '#type' => 'link',
-      '#title' => $this->t('I would like to connect'),
-      '#ajax' => [
-        'callback' => '::ajaxCallback',
-      ],
+    $this->endpoints = [
+      ['target_type' => 'user', 'target_id' => $this->currentUser()->id()],
+      ['target_type' => 'user', 'target_id' => $user->id()],
     ];
 
-    return $form;
-  }
+    $exists = \Drupal::getContainer()->get('entity.repository.relation')->relationExists($this->endpoints);
 
-  /**
-   */
-  public function ajaxCallback(array &$form, FormStateInterface $form_state) {
-    $response = new AjaxResponse();
+    if (count($exists)) {
+      $relations = Relation::loadMultiple($exists);
+      $this->relation = array_shift($relations);
 
-    $group_type_settings = $this->group->getGroupType()->getThirdPartySettings('group_following');
-    $following = $this->isFollower ? 'unfollow' : 'follow';
-    $redirect_url = Url::fromRoute("group_following.$following", ['group' => $this->group->id()]);
+      if ($this->relation->field_relation_status->getValue()[0]['value'] == 'pending') {
+        if ($this->endpoints == $this->relation->endpoints->getValue()) {
+          $form['container']['button'] = [
+            '#markup' => $this->t('Pending contact request'),
+            '#type' => 'markup',
+          ];
+        }
+        else {
+          $form['container']['approve_link'] = [
+            '#title' => $this->t('User would like to connect with your. Approve connection'),
+            '#url' => Url::fromRoute('friends.approve', ['user' => $user->id()]),
+            '#type' => 'link',
+            '#attributes' => [
+              'class' => ['use-ajax'],
+            ]
+          ];
+        }
 
-    if ($group_type_settings['confirmation_popup_status']) {
-      $content['container'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => [
-            'popup-wrapper',
-            'logout-popup',
-          ]
-        ]
-      ];
-
-      $content['container']['title_wrapper'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => [
-            'title-wrapper',
-          ]
-        ],
-      ];
-
-      $content['container']['title_wrapper']['title'] = [
-        '#type' => 'markup',
-        '#markup' => '<h1 role="heading">' . $group_type_settings["confirmation_popup_{$following}ing_header"] . '</h1>',
-        '#suffix' =>'<div class="line"></div>'
-      ];
-
-      $content['container']['summary_text'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => [
-            'summary-text',
-          ]
-        ],
-      ];
-      $content['container']['summary_text']['value'] = [
-        '#type' => 'markup',
-        '#markup' => '<p>' . $group_type_settings["confirmation_popup_{$following}ing_body"] . '</p>',
-      ];
-
-      $content['container']['action_links'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => [
-            'action-links',
-          ]
-        ],
-      ];
-      $content['container']['action_links']['continue'] = [
-        '#type' => 'link',
-        '#title' => $this->t('Continue'),
-        '#url' => $redirect_url,
-        '#attributes' => [
-          'class' => [
-            'continue-link',
-          ],
-        ],
-      ];
-      $content['container']['action_links']['cancel'] = [
-        '#type' => 'link',
-        '#title' => $this->t('Cancel'),
-        '#url' => Url::fromRoute('<current>'),
-        '#attributes' => [
-          'class' => [
-            'dialog-cancel',
-            'cancel-link',
-          ],
-        ],
-      ];
-
-      $content['#attached']['library'][] = 'core/drupal.dialog.ajax';
-      $response->addCommand(new OpenModalDialogCommand('', $content));
+      }
     }
     else {
-      $response->addCommand(new RedirectCommand($redirect_url->toString()));
+      $form['container']['connect_link'] = [
+        '#title' => $this->t('I would like to connect'),
+        '#url' => Url::fromRoute('friends.connect', ['user' => $user->id()]),
+        '#type' => 'link',
+        '#attributes' => [
+          'class' => ['use-ajax'],
+        ]
+      ];
     }
 
-    return $response;
+    $form['#attached'] = ['library' => array('core/drupal.ajax')];
+
+    return $form;
   }
 
   /**

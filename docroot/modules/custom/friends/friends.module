@@ -53,3 +53,20 @@ function friends_views_pre_render(ViewExecutable $view) {
     }
   }
 }
+
+/**
+ * Implements hook_mail().
+ */
+function friends_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+
+  switch ($key) {
+   case 'connection_request':
+     $message['from'] = \Drupal::config('system.site')->get('mail');
+     $message['subject'] = t('New connection request', $options);
+     $message['body'][] = $params['message'];
+     break;
+  }
+}

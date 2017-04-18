@@ -208,6 +208,13 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_disclose_your_personal_det:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_first_name:
     weight: 3
     settings:
@@ -339,7 +346,7 @@ content:
     type: string_textfield
     region: content
   submit3:
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -347,7 +354,6 @@ hidden:
   captcha: true
   contact: true
   field_accept_term_conditions: true
-  field_disclose_your_personal_det: true
   field_last_password_reset: true
   field_password_expiration: true
   info_block: true

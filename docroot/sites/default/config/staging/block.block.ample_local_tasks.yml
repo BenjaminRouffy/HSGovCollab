@@ -31,13 +31,12 @@ visibility:
     context_mapping: {  }
   request_path:
     id: request_path
-    pages: "/user/sign-in\r\n/user/password\r\n/user/sign-up\r\n/user/sign-up/*"
+    pages: "/user/sign-in\r\n/user/password\r\n/user/sign-up\r\n/user/sign-up/*\r\n/user/*"
     negate: true
     context_mapping: {  }
   access_by_user_role:
     id: access_by_user_role
     roles:
-      administration_users: administration_users
       country_managers: country_managers
       projects_managers: projects_managers
       governance_group_users: governance_group_users

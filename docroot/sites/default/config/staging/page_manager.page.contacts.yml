@@ -1,0 +1,21 @@
+uuid: fc29c768-5db4-4179-a8ee-d472d55b0925
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: contacts
+label: Contacts
+description: ''
+use_admin_theme: false
+path: /contacts
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+parameters: {  }

@@ -1,0 +1,24 @@
+<div{{ attributes.addClass(['title-wrapper', 'user-profile']) }}>
+  <h1 role="heading">
+    {% if content.field_person_titles|field_value %}
+      {{ content.field_person_titles|field_value }}
+    {% endif %}
+    {% if content.field_first_name|field_value %}
+      {{ content.field_first_name|field_value }}
+    {% endif %}
+    {% if content.field_middle_name|field_value %}
+      {{ content.field_middle_name|field_value }}
+    {% endif %}
+    {% if content.field_last_name|field_value %}
+      {{ content.field_last_name|field_value }}
+    {% endif %}
+  </h1>
+
+  <div class="line"></div>
+
+  {% if content.field_job_title|field_value %}
+    <div class="job-title">
+      {{ content.field_job_title|field_value }}
+    </div>
+  {% endif %}
+</div>

@@ -1019,13 +1019,15 @@
 }
 
 .country-list,
-.project-list {
+.project-list,
+.contact-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 
   .country-item,
-  .project-item {
+  .project-item,
+  .contact-item {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     margin: 10px;
@@ -1056,6 +1058,130 @@
   .project-content {
     .summary {
       padding-top: 20px;
+    }
+  }
+
+  .contact-content {
+    font-family: $oswald;
+    padding: 30px 20px 0;
+
+    .font-social-icon {
+      color: $navy-dark;
+      min-height: 50px;
+      padding: 5px 0;
+      transition: opacity .3s ease;
+
+      &:hover {
+        opacity: .66;
+      }
+
+      > span:first-child {
+        letter-spacing: .5px;
+
+        &:after {
+          content: none;
+        }
+
+        &:before {
+          @include font-size(28);
+          color: $navy;
+          font-family: $p4h;
+          margin-right: 6px;
+          position: relative;
+          top: 8px;
+        }
+      }
+    }
+
+    .mail-icon {
+      > span:first-child {
+        &:before {
+          content: "o";
+        }
+      }
+    }
+
+    .group-manager-icon {
+      > span:first-child {
+        &:before {
+          content: "a";
+        }
+      }
+    }
+
+    .organization-icon {
+      > span:first-child {
+        &:before {
+          content: "$";
+        }
+      }
+    }
+
+    .skype-icon {
+      > span:first-child {
+        &:before {
+          content: "0";
+        }
+      }
+    }
+
+    .slack-icon {
+      > span:first-child {
+        &:before {
+          content: "";
+        }
+      }
+    }
+
+    .webex-icon {
+      > span:first-child {
+        &:before {
+          content: "O";
+        }
+      }
+    }
+
+    .phone-icon {
+      > span:first-child {
+        &:before {
+          content: "å";
+        }
+      }
+    }
+
+    .country-icon {
+      > span:first-child {
+        &:before {
+          content: "f";
+        }
+      }
+    }
+  }
+
+  .contact-to-user {
+    a {
+      @include font-size(14);
+      margin: 10px 0;
+      padding: 15px 40px;
+    }
+  }
+
+  .user-wrapper {
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    .user-icon {
+      @include same(60px, height, width);
+      border-radius: 50%;
+      float: left;
+      margin-right: 20px;
+      overflow: hidden;
+    }
+
+    .user-name {
+      @include font-size(16.8);
+      line-height: 25px;
+      letter-spacing: .5px;
     }
   }
 
@@ -1216,10 +1342,11 @@
   }
 }
 
-@include breakpoint-for('.country-list, .project-list, .members-list ul', (to: laptop-small)) {
+@include breakpoint-for('.country-list, .project-list, .contact-list, .members-list ul', (to: laptop-small)) {
   .country-item,
   .project-item,
-  .member-block {
+  .member-block,
+  .contact-item {
     width: calc(50% - 20px);
 
     .ie9 & {
@@ -1236,10 +1363,11 @@
   }
 }
 
-@include breakpoint-for('.country-list, .project-list, .members-list ul', (to: mobileL)) {
+@include breakpoint-for('.country-list, .project-list, .members-list ul, .contact-list', (to: mobileL)) {
   .country-item,
   .project-item,
-  .member-block {
+  .member-block,
+  .contact-item {
     margin-left: 0;
     margin-right: 0;
     padding: 0;
@@ -1537,3 +1665,12 @@
     }
   }
 }
+//
+//.contact-list {
+//  display: flex;
+//  flex-wrap: wrap;
+//
+//  .contact-item {
+//    max-width: 33.33%;
+//  }
+//}

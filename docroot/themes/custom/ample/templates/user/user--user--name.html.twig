@@ -15,10 +15,10 @@
   </h1>
 
   <div class="line"></div>
-
-  {% if content.field_job_title|field_value %}
-    <div class="job-title">
-      {{ content.field_job_title|field_value }}
-    </div>
-  {% endif %}
 </div>
+
+{% if content.field_job_title|field_value %}
+  <div class="job-title">
+    {{ content.field_job_title|field_value }}
+  </div>
+{% endif %}

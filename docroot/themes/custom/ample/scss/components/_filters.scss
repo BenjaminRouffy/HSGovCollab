@@ -1,5 +1,6 @@
 .view-news-and-events,
-.view-my-projects {
+.view-my-projects,
+.view-contacts {
   .title-wrapper {
     padding-bottom: 10px;
     text-align: center;
@@ -128,11 +129,47 @@
   }
 }
 
-.search-form-wrapper {
-  position: relative;
+.view-contacts {
+  .wrapper-filters {
+    > div {
+      max-width: 25%;
+    }
+  }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects', (to: laptop-small)) {
+.search-form-wrapper {
+  position: relative;
+
+  .form-text {
+    border-color: rgba($navy-dark, .32);
+    padding-right: 60px;
+
+    &:focus {
+      border-color: rgba(#3898EC, .32);
+    }
+  }
+
+  .form-submit {
+    background: url(../images/magnifying-glass.svg) center no-repeat;
+    background-size: 20px 20px;
+    border: none;
+    height: 50px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-indent: -9999px;
+    transition: transform .1s ease;
+    width: 60px;
+
+    &:hover {
+      border: none;
+      transform: scale(1.2);
+    }
+  }
+}
+
+@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts', (to: laptop-small)) {
   .wrapper-filters {
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -156,7 +193,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects', (to: tablet)) {
+@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts', (to: tablet)) {
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
@@ -182,7 +219,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects', (to: mobileL)) {
+@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts', (to: mobileL)) {
   .wrapper-filters {
     > div {
       max-width: 100%;
@@ -315,8 +352,49 @@
       width: 45.5%;
     }
   }
+}
 
-  div[id^='edit-combine'] {
+@include breakpoint-for('.view-country', (to: laptop-small)) {
+  .js-form-type-textfield {
+    margin-bottom: 0;
+
+    label,
+    .form-text {
+      float: none;
+      width: 100%;
+    }
+
+    .form-text {
+      margin: 0;
+    }
+  }
+}
+
+@include breakpoint-for('.view-country', (to: tablet)) {
+  .js-form-type-textfield {
+    label {
+      text-align: center;
+    }
+  }
+}
+
+.empty-result {
+  @include font-size(20);
+  background: #ffdede;
+  font-family: $oswald;
+  margin: 30px auto;
+  padding: 15px 0;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.view-country,
+.view-contacts {
+  div[id^='edit-combine'],
+  div[id^='edit-user-name-alf'] {
     padding: 20px 0 28px;
     text-align: center;
 
@@ -358,42 +436,5 @@
       vertical-align: top;
       width: 100%;
     }
-  }
-}
-
-@include breakpoint-for('.view-country', (to: laptop-small)) {
-  .js-form-type-textfield {
-    margin-bottom: 0;
-
-    label,
-    .form-text {
-      float: none;
-      width: 100%;
-    }
-
-    .form-text {
-      margin: 0;
-    }
-  }
-}
-
-@include breakpoint-for('.view-country', (to: tablet)) {
-  .js-form-type-textfield {
-    label {
-      text-align: center;
-    }
-  }
-}
-
-.empty-result {
-  @include font-size(20);
-  background: #ffdede;
-  font-family: $oswald;
-  margin: 30px auto;
-  padding: 15px 0;
-  text-align: center;
-
-  p {
-    margin: 0;
   }
 }

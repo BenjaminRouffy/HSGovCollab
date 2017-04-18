@@ -112,19 +112,44 @@ function friends_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'views_exposed_form') {
     switch ($form['#id']) {
       case 'views-exposed-form-cd-user-view-all-contacts':
+        $form['wrap'] = [
+          '#prefix' => '<div class="wrapper-filters">',
+          '#suffix' => '</div>',
+          '#weight' => -100,
+        ];
+
         if (!empty($form['combine_taxonomy_term'])) {
-          $form['combine_taxonomy_term']['#options']['All'] = $form['#info']['filter-combine_taxonomy_term']['label'];
+          $form['wrap']['combine_taxonomy_term'] =  $form['combine_taxonomy_term'];
+          $form['wrap']['combine_taxonomy_term']['#options']['All'] = $form['#info']['filter-combine_taxonomy_term']['label'];
           $form['#info']['filter-combine_taxonomy_term']['label'] = '';
+          unset($form['combine_taxonomy_term']);
         }
 
         if (!empty($form['field_country_target_id'])) {
-          $form['field_country_target_id']['#options']['All'] = $form['#info']['filter-field_country_target_id']['label'];
+          $form['wrap']['field_country_target_id'] =  $form['field_country_target_id'];
+          $form['wrap']['field_country_target_id']['#options']['All'] = $form['#info']['filter-field_country_target_id']['label'];
           $form['#info']['filter-field_country_target_id']['label'] = '';
+          unset($form['field_country_target_id']);
         }
 
         if (!empty($form['roles_target_id'])) {
-          $form['roles_target_id']['#options']['All'] = $form['#info']['filter-roles_target_id']['label'];
+          $form['wrap']['roles_target_id'] =  $form['roles_target_id'];
+          $form['wrap']['roles_target_id']['#options']['All'] = $form['#info']['filter-roles_target_id']['label'];
           $form['#info']['filter-roles_target_id']['label'] = '';
+          unset($form['roles_target_id']);
+        }
+
+        if (!empty($form['user_name'])) {
+          $form['wrap']['user_name'] = $form['user_name'];
+          unset($form['user_name']);
+
+          $form['wrap']['user_name']['#attributes']['placeholder'] = t('Search in contacts');
+
+          $form['wrap']['actions'] = $form['actions'];
+          unset($form['actions']);
+
+          $form['wrap']['user_name']['#prefix'] = '<div class="search-form-wrapper">';
+          $form['wrap']['actions']['#suffix'] = '</div>';
         }
         break;
     }

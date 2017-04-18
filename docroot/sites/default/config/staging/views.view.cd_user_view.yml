@@ -201,6 +201,7 @@ display:
         use_ajax: false
         header: false
         relationships: false
+        css_class: false
       display_description: ''
       filters:
         status:
@@ -854,6 +855,7 @@ display:
           admin_label: 'field_organisation: Taxonomy term'
           required: false
           plugin_id: standard
+      css_class: view-contacts
     cache_metadata:
       max-age: -1
       contexts:

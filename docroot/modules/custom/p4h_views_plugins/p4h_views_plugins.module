@@ -172,4 +172,12 @@ function p4h_views_plugins_views_data_alter(array &$data) {
       'id' => 'group_index_by_global',
     ),
   );
+
+  $data['taxonomy_term_field_data']['combine_taxonomy_term'] = array(
+    'real field' => 'tid',
+    'filter' => array(
+      'title' => t('Grouping taxonomy terms'),
+      'id' => 'combine_taxonomy_term',
+    ),
+  );
 }

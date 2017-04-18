@@ -1,0 +1,120 @@
+uuid: cd48923d-aac1-4af1-8c2a-870b4b5f7d29
+langcode: en
+status: true
+dependencies:
+  module:
+    - friends
+uid: 1
+template: false
+id: contact_to_user
+title: 'Contact to user'
+description: ''
+elements: "'#attributes':\n  class:\n    - form-contact-us\nleft_main:\n  '#type': container\n  '#attributes':\n    class:\n      - webform-left-column\n  left_inner:\n    '#type': container\n    '#attributes':\n      class:\n        - inner-top-column\n    title:\n      '#type': webform_entity_select\n      '#title': Title\n      '#default_value': '[current-user:field_person_titles:target_id]'\n      '#empty_option': 'Select title'\n      '#target_type': taxonomy_term\n      '#selection_handler': 'default:taxonomy_term'\n      '#selection_settings':\n        target_bundles:\n          person_titles: person_titles\n        sort:\n          field: weight\n          direction: ASC\n      '#disabled': true\n    organisation:\n      '#type': webform_entity_select\n      '#title': Organisation\n      '#default_value': '[current-user:field_organisation:target_id]'\n      '#empty_option': 'Select organisation'\n      '#target_type': taxonomy_term\n      '#selection_handler': views\n      '#selection_settings':\n        view:\n          view_name: webform_organisations_list\n          display_name: entity_reference_webform_select\n          arguments: {  }\n      '#disabled': true\n    non_member_organisation:\n      '#type': textfield\n      '#title': 'Non-member organisation'\n      '#default_value': '[current-user:field_non_member_organization]'\n      '#states':\n        visible:\n          ':input[name=\"organisation\"]':\n            value: '485'\n      '#disabled': true\n  first_name:\n    '#type': textfield\n    '#title': 'First name'\n    '#default_value': '[current-user:field_first_name]'\n    '#required': true\n    '#disabled': true\n  last_name:\n    '#type': textfield\n    '#title': 'Last name'\n    '#default_value': '[current-user:field_last_name]'\n    '#required': true\n    '#disabled': true\nright_main:\n  '#type': container\n  '#attributes':\n    class:\n      - webform-right-column\n  message:\n    '#type': textarea\n    '#title': Message\n    '#placeholder': 'Please enter a message'\n    '#required': true\n"
+css: ''
+javascript: ''
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_submit_once: false
+  form_submit_attributes: {  }
+  form_exception_message: ''
+  form_closed_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_unsaved: false
+  form_disable_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_next_button_attributes: {  }
+  wizard_prev_button_label: ''
+  wizard_prev_button_attributes: {  }
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_next_button_attributes: {  }
+  preview_prev_button_label: ''
+  preview_prev_button_attributes: {  }
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_button_attributes: {  }
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: message
+  confirmation_message: 'Your message has been sent.'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  purge: none
+  purge_days: null
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers:
+  contact_to_user:
+    id: contact_to_user
+    label: 'Contact to user'
+    handler_id: contact_to_user
+    status: true
+    weight: 0
+    settings:
+      cc_mail: ''
+      bcc_mail: ''
+      from_mail: default
+      from_name: ''
+      subject: 'Contact through P4H'
+      body: "[webform_submission:values:message:value]<br />\n<br />\nName:&nbsp;[current-user:field_first_name]&nbsp;[current-user:field_last_name]<br />\n<a href=\"[current-user:url]\">User&nbsp;profile</a>"
+      excluded_elements: {  }
+      html: true
+      attachments: 0
+      debug: 0
+      to_mail: default

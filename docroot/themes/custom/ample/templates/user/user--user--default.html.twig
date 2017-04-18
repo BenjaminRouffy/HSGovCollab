@@ -32,16 +32,38 @@
   {% endif %}
 
   <div class="font-social-icon organization-icon">
+    {% if elements['#organization'] is not empty %}
+      <span>
+        {{ elements['#organization'] }},
+      </span>
+    {% else %}
+      <span>
+        {{ content.field_organisation|field_value }},
+      </span>
+    {% endif %}
+
     <span>
-      {{ content.field_organisation|field_value }}, {{ content.field_job_title|field_value }}
+      {{ content.field_job_title|field_value }}
     </span>
   </div>
 
-  {% if content.field_country_text|field_value %}
+  {% if content.field_organisations|field_value %}
+    {{ content.field_organisations }}
+  {% endif %}
+
+  {% if content.field_country|field_value %}
     <div class="font-social-icon country-icon">
       <span>
-        {{ content.field_country_text|field_value }}
+        {{ content.field_country|field_value }}
       </span>
+    </div>
+  {% endif %}
+
+  {% if elements['#current_user'] != user.id() %}
+    <div class="contact-to-user">
+      <a href="{{ path('entity.user.canonical', {'user': user.id()}) }}/contact" target="_blank">
+        {{ 'Contact trough P4H network'|t }}
+      </a>
     </div>
   {% endif %}
 </div>

@@ -6,8 +6,8 @@ dependencies:
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
     - field.field.user.user.field_city
+    - field.field.user.user.field_country
     - field.field.user.user.field_country_manager
-    - field.field.user.user.field_country_text
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_following_countries
@@ -48,6 +48,14 @@ content:
     third_party_settings: {  }
     type: image
     region: content
+  field_country:
+    weight: 10
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_country_manager:
     weight: 1
     label: hidden
@@ -55,14 +63,6 @@ content:
     third_party_settings: {  }
     type: group_content_manager_list
     region: content
-  field_country_text:
-    type: string
-    weight: 10
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   field_job_title:
     weight: 8
     label: hidden

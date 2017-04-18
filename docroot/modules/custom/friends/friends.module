@@ -4,8 +4,11 @@
  * @file
  * Contains friends.module.
  */
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\friends\Plugin\FieldPermissionType\FriendsAccess;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Link;
@@ -16,12 +19,43 @@ use Drupal\views\ViewExecutable;
  * Implements hook_ENTITY_TYPE_view() for user entities.
  */
 function friends_user_view(array &$build, \Drupal\Core\Entity\EntityInterface $account, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  $build['#current_user'] = \Drupal::currentUser()->id();
+
+  if ($account->hasField('field_organisation')) {
+    $organisation = $account->get('field_organisation')->getValue();
+
+    if (!empty($organisation)) {
+      $organisation = reset($organisation);
+
+      // @TODO Change this logic.
+      // Non-member organisation.
+      if (485 == $organisation['target_id']) {
+        $build['#organization'] = $account->get('field_non_member_organization')->value;
+      }
+    }
+  }
+
   if (FriendsAccess::checkAccess('view', $account, \Drupal::currentUser())) {
     $build['#user_mail'] = $account->getEmail();
   }
+
   $build['relation_form'] = \Drupal::formBuilder()
     ->getForm('Drupal\friends\Form\RelationForm', $account);
 
+}
+
+/**
+ * Implements hook_entity_access().
+ */
+function friends_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if (
+    'view' == $operation &&
+    'user' == $entity->getEntityTypeId() &&
+    1 == $entity->id() &&
+    !$account->hasPermission('view superadmin account')
+  ) {
+    return AccessResult::forbidden();
+  }
 }
 
 /**
@@ -50,7 +84,7 @@ function friends_views_pre_render(ViewExecutable $view) {
       $relation_status = $relation->field_relation_status->getValue()[0]['value'];
       /** @var \Drupal\user\Entity\User $user */
       $results[$key]->_entity->relationStatus = $relation_status;
-    }
+      }
   }
 }
 
@@ -68,5 +102,31 @@ function friends_mail($key, &$message, $params) {
      $message['subject'] = t('New connection request', $options);
      $message['body'][] = $params['message'];
      break;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function friends_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'views_exposed_form') {
+    switch ($form['#id']) {
+      case 'views-exposed-form-cd-user-view-all-contacts':
+        if (!empty($form['combine_taxonomy_term'])) {
+          $form['combine_taxonomy_term']['#options']['All'] = $form['#info']['filter-combine_taxonomy_term']['label'];
+          $form['#info']['filter-combine_taxonomy_term']['label'] = '';
+        }
+
+        if (!empty($form['field_country_target_id'])) {
+          $form['field_country_target_id']['#options']['All'] = $form['#info']['filter-field_country_target_id']['label'];
+          $form['#info']['filter-field_country_target_id']['label'] = '';
+        }
+
+        if (!empty($form['roles_target_id'])) {
+          $form['roles_target_id']['#options']['All'] = $form['#info']['filter-roles_target_id']['label'];
+          $form['#info']['filter-roles_target_id']['label'] = '';
+        }
+        break;
+    }
   }
 }

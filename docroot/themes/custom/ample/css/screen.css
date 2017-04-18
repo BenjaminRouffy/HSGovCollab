@@ -4882,7 +4882,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -5593,6 +5593,126 @@ footer {
 @media (max-width: 479px) {
   .marker-info {
     width: 100%; } }
+
+#calendar {
+  font-family: Oswald, sans-serif;
+  letter-spacing: 1px; }
+  #calendar .fc-left {
+    float: none; }
+    #calendar .fc-left button {
+      font-size: 0.9625rem;
+      background: none;
+      border: none;
+      box-shadow: none;
+      float: none;
+      height: auto;
+      margin: 0;
+      padding: 9px 30px; }
+    #calendar .fc-left .fc-state-active {
+      color: #ea3a32; }
+  #calendar .fc-center {
+    margin: 30px 0; }
+    #calendar .fc-center h2 {
+      font-size: 2.1rem;
+      color: #4c7e96;
+      line-height: 24px;
+      margin: 0; }
+  #calendar .fc-prev-button,
+  #calendar .fc-next-button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0; }
+  #calendar .fc-icon {
+    margin: 0 15px; }
+    #calendar .fc-icon:after {
+      font-size: 2.1rem;
+      color: #4c7e96;
+      font-family: P4h, sans-serif; }
+  #calendar .fc-icon-right-single-arrow:after {
+    content: "9"; }
+  #calendar .fc-icon-left-single-arrow:after {
+    content: "8"; }
+  #calendar th {
+    color: #afb7bb;
+    font-weight: 400;
+    text-align: right; }
+  #calendar .fc-year-main-table * {
+    border: none; }
+  #calendar .fc-month-view .fc-week-number {
+    font-size: 0.7rem;
+    border: none; }
+    #calendar .fc-month-view .fc-week-number.fc-widget-header {
+      visibility: hidden; }
+  #calendar .fc-month-view th,
+  #calendar .fc-month-view td {
+    border-color: #ced9df; }
+  #calendar .fc-month-view .fc-widget-header {
+    font-size: 1.1375rem;
+    border: none;
+    color: #283b44;
+    min-height: 39px;
+    text-align: center; }
+  #calendar .fc-month-view td {
+    border-top: none;
+    border-left: none; }
+  #calendar .fc-month-view td {
+    border-bottom: none; }
+  #calendar .fc-month-view .fc-week {
+    background: #fff;
+    border-bottom-width: 1px; }
+  #calendar .fc-month-view .fc-day-number {
+    padding: 10px 5px; }
+  #calendar .fc-month-view .fc-today span {
+    height: 23px;
+    width: 23px;
+    background: #ea3a32;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    line-height: 21px;
+    text-align: center;
+    vertical-align: top; }
+  #calendar .fc-month-view .fc-widget-content .fc-sat,
+  #calendar .fc-month-view .fc-widget-content .fc-sun {
+    background: #e9ecee; }
+  #calendar .fc-day-grid-container {
+    height: auto !important; }
+  #calendar .fc-year-monthly-name {
+    height: 35px; }
+    #calendar .fc-year-monthly-name a {
+      font-size: 1.1375rem;
+      font-weight: 400; }
+  #calendar .fc-year-view .fc-week-number-head {
+    font-size: 0.875rem;
+    height: 35px;
+    vertical-align: top;
+    width: auto !important; }
+  #calendar .fc-year-view .fc-week-number {
+    width: auto !important; }
+  #calendar .fc-year-view .fc-day-grid .fc-row {
+    min-height: 35px; }
+  #calendar .fc-year-month-separator {
+    display: none; }
+  #calendar .fc-year-monthly-td {
+    font-weight: 400;
+    padding: 15px; }
+    #calendar .fc-year-monthly-td table {
+      font-size: 0.875rem; }
+  #calendar .fc-day-number {
+    color: #4c7e96;
+    padding-top: 5px; }
+  #calendar .fc-other-month {
+    color: #d7dbdd;
+    opacity: 1; }
+  #calendar .fc-week-number {
+    color: #afb7bb;
+    padding-top: 6px;
+    text-align: right; }
+  #calendar .fc-today {
+    background: transparent;
+    color: #ea3a32; }
 
 .faq-list {
   margin: 0 auto;

@@ -51,6 +51,9 @@ function ample_preprocess_html(array &$variables) {
   elseif ('group' === $route_prefix) {
     $variables['attributes']['class'][] = 'page-' . $route_prefix . '-' . str_replace('_', '-', end($route_name));
   }
+  elseif ('entity' === $route_prefix) {
+    $variables['attributes']['class'][] = 'page-' . next($route_name) . '-' . str_replace('_', '-', end($route_name));
+  }
 
   if ('node' === $variables['root_path']) {
     $variables['attributes']['class'][] = 'node-' . str_replace('_', '-', $variables['node_type']);

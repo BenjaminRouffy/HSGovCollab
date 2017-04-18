@@ -1,79 +1,84 @@
 <div{{ attributes.addClass('contact-item') }}>
-  {% if content.field_avatar %}
-    {{ content.field_avatar }}
-  {% endif %}
+  <div class="contact-content">
+    <div class="user-wrapper">
+      {% if content.field_avatar %}
+        <div class="user-icon">
+          {{ content.field_avatar }}
+        </div>
+      {% endif %}
 
-  <div class="user-name">
-    {% if content.field_first_name|field_value %}
-      {{ content.field_first_name|field_value }}
+      <div class="user-name">
+        {% if content.field_first_name|field_value %}
+          {{ content.field_first_name|field_value }}
+        {% endif %}
+
+        {% if content.field_last_name|field_value %}
+          {{ content.field_last_name|field_value }}
+        {% endif %}
+      </div>
+    </div>
+
+    {% if elements['#user_mail'] is not empty %}
+      <div class="font-social-icon mail-icon">
+        <span>
+          {{ elements['#user_mail'] }}
+        </span>
+      </div>
     {% endif %}
 
-    {% if content.field_last_name|field_value %}
-      {{ content.field_last_name|field_value }}
+    {% if content.field_country_manager|field_value %}
+      {{ content.field_country_manager }}
+    {% endif %}
+
+    {% if content.field_project_manager|field_value %}
+      {{ content.field_project_manager }}
+    {% endif %}
+
+    {% if content.field_skype_or_other|field_value %}
+      {{ content.field_skype_or_other|field_value }}
+    {% endif %}
+
+    {% if content.field_telephone|field_value %}
+      {{ content.field_telephone }}
+    {% endif %}
+
+    {% if content.field_mobilephone|field_value %}
+      {{ content.field_mobilephone }}
+    {% endif %}
+
+    <div class="font-social-icon organization-icon">
+      {% if elements['#organization'] is not empty %}
+        <span>
+          {{ elements['#organization'] }},
+        </span>
+      {% else %}
+        <span>
+          {{ content.field_organisation|field_value }},
+        </span>
+      {% endif %}
+      <span>
+        {{ content.field_job_title|field_value }}
+      </span>
+    </div>
+
+    {% if content.field_organisations|field_value %}
+      {{ content.field_organisations }}
+    {% endif %}
+
+    {% if content.field_country|field_value %}
+      <div class="font-social-icon country-icon">
+        <span>
+          {{ content.field_country|field_value }}
+        </span>
+      </div>
+    {% endif %}
+
+    {% if elements['#current_user'] != user.id() %}
+      <div class="contact-to-user">
+        <a href="{{ path('entity.user.canonical', {'user': user.id()}) }}/contact" target="_blank" class="red-btn-link">
+          {{ 'Contact trough P4H network'|t }}
+        </a>
+      </div>
     {% endif %}
   </div>
-
-  {% if elements['#user_mail'] is not empty %}
-    <div class="font-social-icon mail-icon">
-      <span>
-        {{ elements['#user_mail'] }}
-      </span>
-    </div>
-  {% endif %}
-
-  {% if content.field_country_manager|field_value %}
-    {{ content.field_country_manager }}
-  {% endif %}
-
-  {% if content.field_project_manager|field_value %}
-    {{ content.field_project_manager }}
-  {% endif %}
-
-  {% if content.field_skype_or_other|field_value %}
-    {{ content.field_skype_or_other|field_value }}
-  {% endif %}
-
-  {% if content.field_telephone|field_value %}
-    {{ content.field_telephone }}
-  {% endif %}
-
-  {% if content.field_mobilephone|field_value %}
-    {{ content.field_mobilephone }}
-  {% endif %}
-
-  <div class="font-social-icon organization-icon">
-    {% if elements['#organization'] is not empty %}
-      <span>
-        {{ elements['#organization'] }}
-      </span>
-    {% else %}
-      <span>
-        {{ content.field_organisation|field_value }}
-      </span>
-    {% endif %}
-    ,
-    <span>
-      {{ content.field_job_title|field_value }}
-    </span>
-  </div>
-
-  {% if content.field_organisations|field_value %}
-    {{ content.field_organisations }}
-  {% endif %}
-
-  {% if content.field_countryt|field_value %}
-    <div class="font-social-icon country-icon">
-      <span>
-        {{ content.field_countryt|field_value }}
-      </span>
-    </div>
-  {% endif %}
-
-  {% if elements['#current_user'] != user.id() %}
-    <div class="contact-to-user">
-      <a href="{{ path('entity.user.canonical', {'user': user.id()}) }}/contact" target="_blank">
-        {{ 'Contact trough P4H network'|t }}
-      </a>
-    </div>
-  {% endif %}
 </div>

@@ -94,7 +94,7 @@ class GroupAdminSubgroupController extends GroupAdminContentController {
     $current_user = \Drupal::currentUser();
     $group_type = GroupType::load($group->bundle());
 
-    if ($group_type->getThirdPartySetting('group_dashboard', 'access_to_subgroup_functionality', 0) && !$current_user->hasPermission('access to subgroup page on product and knowledge_vault')) {
+    if ($group_type->getThirdPartySetting('group_dashboard', 'access_to_subgroup_functionality', 0) && !$current_user->hasPermission('access to subgroup page')) {
       return AccessResult::forbidden();
     }
 

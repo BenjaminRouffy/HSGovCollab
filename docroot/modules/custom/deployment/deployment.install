@@ -798,9 +798,3 @@ function deployment_update_8058() {
   \Drupal::service('module_installer')->install(['ajax_comments', 'rate']);
 }
 
-/**
- * Install module "Rate".
- */
-function deployment_update_8056() {
-  \Drupal::service('module_installer')->install(['rate']);
-}

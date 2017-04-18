@@ -97,7 +97,7 @@ function ajax_comments_comment_links_alter(array &$links, CommentInterface &$ent
     }
 
     // Hide reply link for second-level comments.
-    if ($entity->getParentComment()) {
+    if ($entity->hasParentComment()) {
       unset($links['comment']['#links']['comment-reply']);
     }
     else {

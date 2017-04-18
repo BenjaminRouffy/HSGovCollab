@@ -2318,21 +2318,21 @@ header .social-links .font-social-icon {
   .contact-list .user-wrapper {
     margin-bottom: 20px;
     overflow: hidden; }
-    .country-list .user-wrapper .user-icon,
-    .project-list .user-wrapper .user-icon,
-    .contact-list .user-wrapper .user-icon {
-      height: 60px;
-      width: 60px;
-      border-radius: 50%;
-      float: left;
-      margin-right: 20px;
-      overflow: hidden; }
-    .country-list .user-wrapper .user-name,
-    .project-list .user-wrapper .user-name,
-    .contact-list .user-wrapper .user-name {
-      font-size: 1.05rem;
-      line-height: 25px;
-      letter-spacing: .5px; }
+  .country-list .user-icon,
+  .project-list .user-icon,
+  .contact-list .user-icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    overflow: hidden; }
+  .country-list .user-name,
+  .project-list .user-name,
+  .contact-list .user-name {
+    font-size: 1.05rem;
+    line-height: 25px;
+    letter-spacing: .5px; }
   .country-list .summary,
   .project-list .summary,
   .contact-list .summary {
@@ -2460,6 +2460,30 @@ header .social-links .font-social-icon {
       margin: 8px 0 0;
       -webkit-transition: opacity .3s ease;
       transition: opacity .3s ease; }
+
+.single-contact {
+  display: block;
+  margin: 30px auto 0;
+  width: 66.64%; }
+  .single-contact .contact-item {
+    margin: 0;
+    width: 100%; }
+  .single-contact .contact-content {
+    overflow: hidden;
+    padding: 30px 20px 50px; }
+  .single-contact .user-icon-wrapper {
+    float: left;
+    margin: 0;
+    width: 25%; }
+  .single-contact .user-icon {
+    height: 150px;
+    width: 150px;
+    float: none;
+    margin: 0 auto 20px; }
+  .single-contact .user-contacts {
+    float: left;
+    padding-left: 20px;
+    width: 75%; }
 
 .project-list .project-content {
   -webkit-box-pack: start;
@@ -2620,6 +2644,20 @@ header .social-links .font-social-icon {
       .ie9
       .contact-list .contact-item .block-content {
         width: 100%; } }
+
+@media (max-width: 991px) {
+  .single-contact {
+    width: 100%; }
+    .single-contact .contact-item {
+      width: 100%; } }
+
+@media (max-width: 767px) {
+  .single-contact .user-contacts {
+    width: 100%; } }
+
+@media (max-width: 479px) {
+  .single-contact .user-icon-wrapper {
+    width: 100%; } }
 
 .country-title,
 .project-title,
@@ -5126,7 +5164,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts) .main-wrapper {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-user-canonical) .main-wrapper {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -5226,6 +5264,40 @@ footer {
     width: 180px; }
   .title-wrapper ~ .event-info {
     margin-top: -20px; }
+
+.user-profile {
+  margin: 0 auto 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 66.64%; }
+  .user-profile h1 {
+    font-size: 3.0625rem;
+    line-height: 64px;
+    padding: 20px 0; }
+  .user-profile .line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+
+@media (max-width: 991px) {
+  .user-profile {
+    width: 100%; }
+    .user-profile h1 {
+      padding-bottom: 10px; } }
+
+@media (max-width: 479px) {
+  .user-profile h1 {
+    font-size: 2.275rem;
+    line-height: 48px; } }
+
+.job-title {
+  font-size: 1.05rem;
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  letter-spacing: .5px;
+  line-height: 25px;
+  margin-bottom: 10px;
+  text-align: center; }
 
 @media (max-width: 991px) {
   .title-wrapper ~ .event-info {

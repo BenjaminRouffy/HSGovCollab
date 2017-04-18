@@ -11,7 +11,7 @@
     padding-left: 80px;
   }
 
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts) & {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-user-canonical) & {
     background: $white;
   }
 
@@ -165,6 +165,49 @@
   ~ .event-info {
     margin-top: -20px;
   }
+}
+
+.user-profile {
+  margin: 0 auto 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 66.64%;
+
+  h1 {
+    @include font-size(49);
+    line-height: 64px;
+    padding: 20px 0;
+  }
+
+  .line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@include breakpoint-for('.user-profile', (to: laptop-small)) {
+  width: 100%;
+
+  h1 {
+    padding-bottom: 10px;
+  }
+}
+
+@include breakpoint-for('.user-profile', (to: mobileL)) {
+  h1 {
+    @include font-size(36.4);
+    line-height: 48px;
+  }
+}
+
+.job-title {
+  @include font-size(16.8);
+  font-family: $oswald;
+  font-weight: 400;
+  letter-spacing: .5px;
+  line-height: 25px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 @include breakpoint-for('.title-wrapper', (to: laptop-small)) {

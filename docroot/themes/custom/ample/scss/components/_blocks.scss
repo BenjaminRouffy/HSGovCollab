@@ -1169,20 +1169,20 @@
   .user-wrapper {
     margin-bottom: 20px;
     overflow: hidden;
+  }
 
-    .user-icon {
-      @include same(60px, height, width);
-      border-radius: 50%;
-      float: left;
-      margin-right: 20px;
-      overflow: hidden;
-    }
+  .user-icon {
+    @include same(60px, height, width);
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    overflow: hidden;
+  }
 
-    .user-name {
-      @include font-size(16.8);
-      line-height: 25px;
-      letter-spacing: .5px;
-    }
+  .user-name {
+    @include font-size(16.8);
+    line-height: 25px;
+    letter-spacing: .5px;
   }
 
   .summary {
@@ -1299,6 +1299,40 @@
   }
 }
 
+.single-contact {
+  display: block;
+  margin: 30px auto 0;
+  width: 66.64%;
+
+  .contact-item {
+    margin: 0;
+    width: 100%;
+  }
+
+  .contact-content {
+    overflow: hidden;
+    padding: 30px 20px 50px;
+  }
+
+  .user-icon-wrapper {
+    float: left;
+    margin: 0;
+    width: 25%;
+  }
+
+  .user-icon {
+    @include same(150px, height, width);
+    float: none;
+    margin: 0 auto 20px;
+  }
+
+  .user-contacts {
+    float: left;
+    padding-left: 20px;
+    width: 75%;
+  }
+}
+
 .project-list {
   .project-content {
     justify-content: flex-start;
@@ -1388,6 +1422,26 @@
         width: 100%;
       }
     }
+  }
+}
+
+@include breakpoint-for('.single-contact', (to: laptop-small)) {
+  width: 100%;
+
+  .contact-item {
+    width: 100%;
+  }
+}
+
+@include breakpoint-for('.single-contact', (to: tablet)) {
+  .user-contacts {
+    width: 100%;
+  }
+}
+
+@include breakpoint-for('.single-contact', (to: mobileL)) {
+  .user-icon-wrapper {
+    width: 100%;
   }
 }
 

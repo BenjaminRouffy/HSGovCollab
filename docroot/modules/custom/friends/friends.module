@@ -19,7 +19,7 @@ function friends_entity_access(EntityInterface $entity, $operation, AccountInter
     'view' == $operation &&
     'user' == $entity->getEntityTypeId() &&
     1 == $entity->id() &&
-    1 !== $account->id()
+    !$account->hasPermission('view superadmin account')
   ) {
     return AccessResult::forbidden();
   }
@@ -39,6 +39,7 @@ function friends_entity_view(array &$build, EntityInterface $entity, EntityViewD
         $organisation = reset($organisation);
 
         // @TODO Change this logic.
+        // Non-member organisation.
         if (485 == $organisation['target_id']) {
           $build['#organization'] = $entity->get('field_non_member_organization')->value;
         }

@@ -426,7 +426,7 @@ header {
 }
 
 @include breakpoint-for('.header-static', (to: laptop-small)) {
-  &.collapsed {
+  .collapsed & {
     min-height: 60px;
     top: -150px;
   }

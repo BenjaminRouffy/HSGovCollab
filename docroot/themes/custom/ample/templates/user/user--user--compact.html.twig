@@ -73,6 +73,8 @@
       </div>
     {% endif %}
 
+    {{ content.relation_form }}
+
     {% if elements['#current_user'] != user.id() %}
       <div class="contact-to-user">
         <a href="{{ path('entity.user.canonical', {'user': user.id()}) }}/contact" target="_blank" class="red-btn-link">

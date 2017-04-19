@@ -1,0 +1,13 @@
+friends.connect:
+  path: '/user/{user}/connect'
+  defaults:
+    _controller: '\Drupal\friends\Controller\RelationController::connect'
+  requirements:
+    _permission: 'access content'
+
+friends.approve:
+  path: '/user/{user}/approve'
+  defaults:
+    _controller: '\Drupal\friends\Controller\RelationController::approve'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,31 @@
+uuid: ed21e390-ad2f-496b-a343-ea8f983ee767
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.relation.friend.endpoints
+    - field.field.relation.friend.field_relation_status
+    - relation.type.friend
+  module:
+    - dynamic_entity_reference
+id: relation.friend.default
+targetEntityType: relation
+bundle: friend
+mode: default
+content:
+  endpoints:
+    type: dynamic_entity_reference_default
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 40
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_relation_status:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden: {  }

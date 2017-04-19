@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\field_permissions\Annotation\FieldPermissionType;
 use Drupal\field_permissions\Plugin\FieldPermissionType\Base;
+use Drupal\relation\Entity\Relation;
 use Drupal\user\EntityOwnerInterface;
 use Drupal\user\UserInterface;
 
@@ -60,10 +61,25 @@ class FriendsAccess extends Base {
         }
 
         if ($entity instanceof UserInterface) {
+          $endpoints = [
+            ['target_type' => 'user', 'target_id' => $account->id()],
+            ['target_type' => 'user', 'target_id' => $entity->id()],
+          ];
+
+          $exists = \Drupal::getContainer()->get('entity.repository.relation')->relationExists($endpoints);
+
+          if (count($exists)) {
+            $relations = Relation::loadMultiple($exists);
+            $relation = array_shift($relations);
+
+            if ($relation->field_relation_status->getValue()[0]['value'] == 'approved') {
+              return TRUE;
+            }
+          }
+
           return $entity->id() == $account->id();
         }
 
-        // @todo Add implementation by relation to user.
         return  FALSE;
         break;
 

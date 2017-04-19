@@ -172,7 +172,7 @@ function ample_preprocess_field(array &$variables) {
       // Check comments static count.
       $node = $variables['element']['#object'];
       if ($variables['element']['#items']->status != CommentItemInterface::CLOSED
-        || $variables['element']['#items']->status != CommentItemInterface::HIDDEN
+        && $variables['element']['#items']->status != CommentItemInterface::HIDDEN
       ) {
         $variables['comment_status'] = TRUE;
         $variables['comment_count'] = $node->get('field_comments')->comment_count;

@@ -36,7 +36,7 @@ class RelationForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state, User $user = NULL) {
 
     $this->user = $user;
-    
+
     if ($this->currentUser()->id() == $this->user->id()) {
       return $form;
     }

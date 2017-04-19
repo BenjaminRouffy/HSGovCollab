@@ -63,7 +63,7 @@ class GroupJoinBlockForm extends FormBase {
     if ($this->isFollower) {
       $form['container']['button'] = [
         '#type' => 'submit',
-        '#value' => "Unfollow",
+        '#value' => $this->t('Unfollow'),
         '#ajax' => [
           'callback' => '::ajaxCallback',
         ],
@@ -72,7 +72,7 @@ class GroupJoinBlockForm extends FormBase {
     else {
       $form['container']['button'] = [
         '#type' => 'submit',
-        '#value' => "Follow",
+        '#value' => $this->t('Follow'),
         '#ajax' => [
           'callback' => '::ajaxCallback',
         ],

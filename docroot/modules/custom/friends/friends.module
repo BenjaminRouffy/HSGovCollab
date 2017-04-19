@@ -10,6 +10,39 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\friends\Plugin\FieldPermissionType\FriendsAccess;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_ENTITY_TYPE_view() for user entities.
+ */
+function friends_user_view(array &$build, \Drupal\Core\Entity\EntityInterface $account, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  $build['#current_user'] = \Drupal::currentUser()->id();
+
+  if ($account->hasField('field_organisation')) {
+    $organisation = $account->get('field_organisation')->getValue();
+
+    if (!empty($organisation)) {
+      $organisation = reset($organisation);
+
+      // @TODO Change this logic.
+      // Non-member organisation.
+      if (485 == $organisation['target_id']) {
+        $build['#organization'] = $account->get('field_non_member_organization')->value;
+      }
+    }
+  }
+
+  if (FriendsAccess::checkAccess('view', $account, \Drupal::currentUser())) {
+    $build['#user_mail'] = $account->getEmail();
+  }
+
+  $build['relation_form'] = \Drupal::formBuilder()
+    ->getForm('Drupal\friends\Form\RelationForm', $account);
+
+}
 
 /**
  * Implements hook_entity_access().
@@ -26,29 +59,49 @@ function friends_entity_access(EntityInterface $entity, $operation, AccountInter
 }
 
 /**
- * Implements hook_entity_view().
+ * Act on the view immediately before rendering it.
+ *
+ * At this point the query has been executed, and the preRender() phase has
+ * already happened for handlers, so all data should be available. This hook
+ * can be used by themes.
+ *
+ * Output can be added to the view by setting $view->attachment_before
+ * and $view->attachment_after.
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ *   The view object about to be processed.
+ *
+ * @see \Drupal\views\ViewExecutable
  */
-function friends_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-  if ('user' == $entity->getEntityTypeId()) {
-    $build['#current_user'] = \Drupal::currentUser()->id();
-
-    if ($entity->hasField('field_organisation')) {
-      $organisation = $entity->get('field_organisation')->getValue();
-
-      if (!empty($organisation)) {
-        $organisation = reset($organisation);
-
-        // @TODO Change this logic.
-        // Non-member organisation.
-        if (485 == $organisation['target_id']) {
-          $build['#organization'] = $entity->get('field_non_member_organization')->value;
-        }
+function friends_views_pre_render(ViewExecutable $view) {
+  $results = &$view->result;
+  /** @var \Drupal\views\ResultRow $view_row */
+  foreach ($results as $key => $view_row) {
+    $relationships = $view_row->_relationship_entities;
+    if (isset($relationships['user__endpoints']) && isset($relationships['relation_base_left_friend'])) {
+      /** @var \Drupal\relation\Entity\Relation $relation */
+      $relation = $relationships['relation_base_left_friend'];
+      $relation_status = $relation->field_relation_status->getValue()[0]['value'];
+      /** @var \Drupal\user\Entity\User $user */
+      $results[$key]->_entity->relationStatus = $relation_status;
       }
-    }
+  }
+}
 
-    if (FriendsAccess::checkAccess('view', $entity, \Drupal::currentUser())) {
-      $build['#user_mail'] = $entity->getEmail();
-    }
+/**
+ * Implements hook_mail().
+ */
+function friends_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+
+  switch ($key) {
+   case 'connection_request':
+     $message['from'] = \Drupal::config('system.site')->get('mail');
+     $message['subject'] = t('New connection request', $options);
+     $message['body'][] = $params['message'];
+     break;
   }
 }
 

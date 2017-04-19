@@ -135,6 +135,10 @@ function ajax_comments_comment_links_alter(array &$links, CommentInterface &$ent
       );
     }
   }
+
+  if (isset($links['comment']['#links']['comment-forbidden'])) {
+    unset($links['comment']['#links']['comment-forbidden']);
+  }
 }
 
 /**
@@ -317,9 +321,13 @@ function ajax_comments_preprocess_status_messages(&$variables) {
  * Implements hook_entity_type_alter().
  */
 function ajax_comments_entity_type_alter(array &$entity_types) {
-  // Alter the comment entity definition to use this module's forms.
-  $entity_types['comment']->setFormClass('default', 'Drupal\ajax_comments\Form\AjaxCommentsForm');
-  $entity_types['comment']->setFormClass('delete', 'Drupal\ajax_comments\Form\AjaxCommentsDeleteForm');
+  if (!empty($entity_types['comment'])) {
+    // Alter the comment entity definition to use this module's forms.
+    $entity_types['comment']->setFormClass('default', 'Drupal\ajax_comments\Form\AjaxCommentsForm');
+    $entity_types['comment']->setFormClass('delete', 'Drupal\ajax_comments\Form\AjaxCommentsDeleteForm');
+    // Alter access handler.
+    $entity_types['comment']->setHandlerClass('access', 'Drupal\ajax_comments\AjaxCommentsAccessHandler');
+  }
 }
 
 /**

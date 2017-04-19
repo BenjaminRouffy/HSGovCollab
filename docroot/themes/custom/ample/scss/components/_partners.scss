@@ -30,7 +30,7 @@ header,
 footer {
   > .partners {
     background: $white-dark;
-    z-index: 400;
+    z-index: 410;
 
     .item-list {
       li {
@@ -43,7 +43,7 @@ footer {
 }
 
 @include breakpoint-for('.partners', (to: laptop-small)) {
-  &.collapsed {
+  .collapsed & {
     top: -150px;
   }
 }

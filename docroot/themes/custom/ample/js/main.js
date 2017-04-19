@@ -523,11 +523,12 @@
   Drupal.behaviors.header = {
     attach: function(context, settings) {
       var $staticHeader = $('.header-static', context);
+      var $partners = $('header', context).children('.partners');
 
       $.scrollAction(function() {
         return this.scrollY > 0;
       }, function(isTrue) {
-        $staticHeader.toggleClassCondition(isTrue, 'collapsed');
+        $staticHeader.add($partners).toggleClassCondition(isTrue, 'collapsed');
       });
     }
   };

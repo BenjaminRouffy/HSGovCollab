@@ -1,7 +1,23 @@
 .top-banner-region {
   background: $white-dark;
+  position: relative;
 
-  .contact-us & {
+  &:after {
+    background: $white-dark url(../images/site-bg.svg) 100% 50% no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .37;
+    z-index: -1;
+  }
+
+  .contact-us &,
+  .page-user-contact-form & {
     padding-top: 120px;
   }
 

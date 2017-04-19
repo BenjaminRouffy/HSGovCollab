@@ -4,13 +4,26 @@ status: true
 dependencies:
   config:
     - page_manager.page.products
+    - views.view.search_for_a_country_or_region
   module:
     - panels
+    - views
 id: products-panels_variant-0
 label: Panels
 variant: panels_variant
 variant_settings:
-  blocks: {  }
+  blocks:
+    48ff5c1b-00af-40e2-8191-2e5baa4ede4b:
+      id: 'views_block:search_for_a_country_or_region-products'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 48ff5c1b-00af-40e2-8191-2e5baa4ede4b
+      context_mapping: {  }
   id: panels_variant
   uuid: b39646c0-cbdf-4d9c-b757-c28a7b86b90b
   label: null

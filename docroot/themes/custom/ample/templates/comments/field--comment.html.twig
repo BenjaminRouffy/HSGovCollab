@@ -1,5 +1,8 @@
-<section{{ attributes }}>
+{% if comment_status %}
+  <h2{{ title_attributes }}>{{ 'Comments'|t }} ({{ comment_count }})</h2>
+{% endif %}
 
+<section{{ attributes }}>
   {% if comment_form %}
     <div class="title-wrapper">
       <h2{{ content_attributes }}>{{ 'Write comment'|t }}</h2>

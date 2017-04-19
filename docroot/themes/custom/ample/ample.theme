@@ -14,6 +14,7 @@ use Drupal\taxonomy\Entity\Term;
 use \Drupal\paragraphs\Entity\Paragraph;
 use \Drupal\group\Entity\Group;
 use Drupal\views\ViewExecutable;
+use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
 
 /**
  * Additional settings for ample setting form.
@@ -136,10 +137,6 @@ function ample_preprocess_node(array &$variables) {
 
     $variables['contextual_link_access'] = $update_access || $delete_access;
   }
-  // Comments count.
-  if (in_array($node->bundle(), ['news', 'event', 'basic_page'])) {
-    $variables['comment_count'] = $variables['node']->get('field_comments')->comment_count;
-  }
 }
 
 
@@ -172,6 +169,14 @@ function ample_preprocess_field(array &$variables) {
       break;
 
     case 'field_comments':
+      // Check comments static count.
+      $node = $variables['element']['#object'];
+      if ($variables['element']['#items']->status != CommentItemInterface::CLOSED
+        || $variables['element']['#items']->status != CommentItemInterface::HIDDEN
+      ) {
+        $variables['comment_status'] = TRUE;
+        $variables['comment_count'] = $node->get('field_comments')->comment_count;
+      }
       // Check children comments count.
       $parents = [];
       foreach ($variables['items'] as $i => $item) {

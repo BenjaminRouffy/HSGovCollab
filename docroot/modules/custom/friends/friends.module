@@ -112,6 +112,7 @@ function friends_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'views_exposed_form') {
     switch ($form['#id']) {
       case 'views-exposed-form-cd-user-view-all-contacts':
+      case 'views-exposed-form-cd-user-view-block-my-contacts':
         $form['wrap'] = [
           '#prefix' => '<div class="wrapper-filters">',
           '#suffix' => '</div>',

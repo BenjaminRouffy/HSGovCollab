@@ -36,6 +36,11 @@ class RelationForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state, User $user = NULL) {
 
     $this->user = $user;
+    
+    if ($this->currentUser()->id() == $this->user->id()) {
+      return $form;
+    }
+
     $form['#prefix'] = '<div class = "relation_form_' . $user->id() . '">';
     $form['#suffix'] = '</div>';
 
@@ -55,6 +60,8 @@ class RelationForm extends FormBase {
       ['target_type' => 'user', 'target_id' => $this->currentUser()->id()],
       ['target_type' => 'user', 'target_id' => $user->id()],
     ];
+
+
 
     $exists = \Drupal::getContainer()->get('entity.repository.relation')->relationExists($this->endpoints);
 

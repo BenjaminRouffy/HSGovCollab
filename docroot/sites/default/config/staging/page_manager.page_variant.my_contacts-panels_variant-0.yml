@@ -1,0 +1,41 @@
+uuid: ce972be8-4d99-4581-ba33-8f7d551c9e95
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.my_contacts
+    - views.view.cd_user_view
+  module:
+    - panels
+    - views
+id: my_contacts-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    f252d888-d2ab-4dc6-88b8-e1cce7fb977f:
+      id: 'views_block:cd_user_view-block_my_contacts'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: f252d888-d2ab-4dc6-88b8-e1cce7fb977f
+      context_mapping: {  }
+  id: panels_variant
+  uuid: b6afbbad-fdb8-4383-828b-f4e7c3cbed58
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: my_contacts-panels_variant-0
+  builder: standard
+page: my_contacts
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

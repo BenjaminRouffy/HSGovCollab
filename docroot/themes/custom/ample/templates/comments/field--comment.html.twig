@@ -8,6 +8,7 @@
     {{ comment_form }}
   {% endif %}
 
-  {{ comments }}
-
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
 </section>

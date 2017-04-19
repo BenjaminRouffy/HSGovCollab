@@ -170,6 +170,40 @@ function ample_preprocess_field(array &$variables) {
 
       $variables['#attached']['library'][] = 'ample/plyr';
       break;
+
+    case 'field_comments':
+      // Check children comments count.
+      $parents = [];
+      foreach ($variables['items'] as $i => $item) {
+        foreach ($variables['items'][$i]['content']['comments'] as $key => $comment) {
+          if (is_numeric($key)) {
+            $variables['items'][$i]['content']['comments'][$key]['#cid'] = $comment['#comment']->id();
+            $variables['items'][$i]['content']['comments'][$key]['#is_parent'] = TRUE;
+
+            if ($comment['#comment']->getParentComment()) {
+              $parents[$comment['#comment']->getParentComment()
+                ->id()][] = $comment['#comment']->id();
+              $variables['items'][$i]['content']['comments'][$key]['#is_parent'] = FALSE;
+            }
+          }
+        }
+
+        foreach ($parents as $parent_id => $children) {
+          foreach ($variables['items'][$i]['content']['comments'] as $key => $comment) {
+            if (is_numeric($key)) {
+              if ($parent_id == $variables['items'][$i]['content']['comments'][$key]['#cid']
+                && $variables['items'][$i]['content']['comments'][$key]['#is_parent']
+              ) {
+                if (count($children) > 2) {
+                  $variables['items'][$i]['content']['comments'][$key]['#replies_count'] = TRUE;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      break;
   }
 }
 

@@ -101,32 +101,38 @@ function ajax_comments_comment_links_alter(array &$links, CommentInterface &$ent
       unset($links['comment']['#links']['comment-reply']);
     }
     else {
-      // Attach classes to comment reply links to allow ajax_comments.js
-      // to attach ajax behaviors to them.
-      if (isset($links['comment']['#links']['comment-reply'])) {
-        $classes = [
-          'use-ajax',
-          'js-use-ajax-comments',
-          'js-ajax-comments-reply',
-          'js-ajax-comments-reply-' . $entity->getCommentedEntityId() . '-' . $entity->getFieldName() . '-' . $entity->id(),
-        ];
-        if (empty($links['comment']['#links']['comment-reply']['attributes']['class'])) {
-          $links['comment']['#links']['comment-reply']['attributes']['class'] = $classes;
-        }
-        else {
-          $links['comment']['#links']['comment-reply']['attributes']['class'] = array_unique(array_merge($links['comment']['#links']['comment-reply']['attributes']['class'], $classes));
-        }
-        $links['comment']['#links']['comment-reply']['attributes']['data-wrapper-html-id'] = $wrapper_html_id;
-        $links['comment']['#links']['comment-reply']['url'] = Url::fromRoute(
-          'ajax_comments.reply',
-          [
-            'entity_type' => $entity->getCommentedEntityTypeId(),
-            'entity' => $entity->getCommentedEntityId(),
-            'field_name' => $entity->getFieldName(),
-            'pid' => $entity->id(),
-          ]
-        );
+      // Attach custom link "Show more".
+      $links['comment']['#links']['comment-show'] = [
+        '#attributes' => ['class' => ['links', 'inline', 'show-comments']],
+        'title' => t('See more'),
+      ];
+    }
+
+    // Attach classes to comment reply links to allow ajax_comments.js
+    // to attach ajax behaviors to them.
+    if (isset($links['comment']['#links']['comment-reply'])) {
+      $classes = [
+        'use-ajax',
+        'js-use-ajax-comments',
+        'js-ajax-comments-reply',
+        'js-ajax-comments-reply-' . $entity->getCommentedEntityId() . '-' . $entity->getFieldName() . '-' . $entity->id(),
+      ];
+      if (empty($links['comment']['#links']['comment-reply']['attributes']['class'])) {
+        $links['comment']['#links']['comment-reply']['attributes']['class'] = $classes;
       }
+      else {
+        $links['comment']['#links']['comment-reply']['attributes']['class'] = array_unique(array_merge($links['comment']['#links']['comment-reply']['attributes']['class'], $classes));
+      }
+      $links['comment']['#links']['comment-reply']['attributes']['data-wrapper-html-id'] = $wrapper_html_id;
+      $links['comment']['#links']['comment-reply']['url'] = Url::fromRoute(
+        'ajax_comments.reply',
+        [
+          'entity_type' => $entity->getCommentedEntityTypeId(),
+          'entity' => $entity->getCommentedEntityId(),
+          'field_name' => $entity->getFieldName(),
+          'pid' => $entity->id(),
+        ]
+      );
     }
   }
 }

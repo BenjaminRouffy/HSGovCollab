@@ -783,3 +783,10 @@ function deployment_update_8055() {
 function deployment_update_8056() {
   \Drupal::service('module_installer')->install(['hotjar']);
 }
+
+/**
+ * Install module "relation".
+ */
+function deployment_update_8057() {
+  \Drupal::service('module_installer')->install(['relation']);
+}

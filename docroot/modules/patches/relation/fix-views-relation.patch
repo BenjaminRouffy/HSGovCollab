@@ -1,0 +1,19 @@
+--- docroot/modules/contrib/relation/src/Plugin/views/relationship/RelationRelationship.php
++++ docroot/modules/contrib/relation/src/Plugin/views/relationship/RelationRelationship.php
+@@ -7,6 +7,7 @@
+
+ namespace Drupal\relation\Plugin\views\relationship;
+ 
++use Drupal\Core\Entity\Sql\TableMappingInterface;
+ use Drupal\views\Views;
+ use Drupal\views\Plugin\views\relationship\Standard as RelationshipStandard;
+ use Drupal\Core\Form\FormStateInterface;
+@@ -79,7 +80,7 @@
+     $relation_data_table_name = $table_mapping->getDedicatedDataTableName($endpoints_field);
+     $entity_id_field_name = $table_mapping->getFieldColumnName($endpoints_field, 'target_id');
+     $entity_type_field_name = $table_mapping->getFieldColumnName($endpoints_field, 'target_type');
+-    $delta_field_name = $table_mapping->getFieldColumnName($endpoints_field, 'delta');
++    $delta_field_name = $table_mapping->getFieldColumnName($endpoints_field, TableMappingInterface::DELTA);
+
+     $join_type = empty($this->options['required']) ? 'LEFT' : 'INNER';
+     $endpoints_twice = isset($this->definition['entity_type_left']) && isset($this->definition['entity_type_right']);

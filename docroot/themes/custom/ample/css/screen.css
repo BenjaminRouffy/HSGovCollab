@@ -2178,7 +2178,10 @@ footer > .partners {
     padding: 10px; }
     .news-and-events-list .social > a {
       background: #fff;
-      padding: 20px; }
+      border-bottom: 2px solid transparent;
+      padding: 20px;
+      -webkit-transition: border .3s ease;
+      transition: border .3s ease; }
       .news-and-events-list .social > a:hover {
         border-color: #ea3a32; }
     .news-and-events-list .social .font-social-icon {
@@ -5298,7 +5301,7 @@ footer {
     height: 100%;
     width: 100%;
     z-index: -1; }
-  .main-wrapper:after {
+  .front .main-wrapper:after {
     background: url(../images/site-bg.svg) 100% 50% no-repeat;
     background-size: cover;
     background-attachment: fixed;

@@ -14,6 +14,7 @@ use Drupal\Core\Url;
 use Drupal\group\Entity\GroupContent;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\relation\Entity\Relation;
+use Drupal\user\Entity\User;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -25,7 +26,7 @@ class RelationController extends ControllerBase {
    * @param \Drupal\group\Entity\GroupInterface $group
    */
   public function connect(UserInterface $user) {
-    $current_user = $this->currentUser();
+    $current_user = User::load($this->currentUser()->id());
 
     $this->endpoints = [
       ['target_type' => 'user', 'target_id' => $current_user->id()],
@@ -43,9 +44,9 @@ class RelationController extends ControllerBase {
           'message' => $this->t(
             '<a href="@profile_link">@profile_link_text</a> would like to connect with you. If you wanna to connect with the user, please click <a href="@approve_link">here</a>. If you don\'t want to connect the user please just ignore the message.',
             [
-              '@profile_link' => Url::fromRoute('entity.user.canonical', ['user' => $current_user->id()])->toString(),
+              '@profile_link' => Url::fromRoute('entity.user.canonical', ['user' => $current_user->id()], ['absolute' => TRUE])->toString(),
               '@profile_link_text' => $current_user->realname,
-              '@approve_link' => Url::fromRoute('friends.approve', ['user' => $current_user->id()])->toString(),
+              '@approve_link' => Url::fromRoute('friends.approve', ['user' => $current_user->id()], ['absolute' => TRUE])->toString(),
             ]
           ),
         ], NULL, TRUE);

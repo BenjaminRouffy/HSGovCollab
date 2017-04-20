@@ -72,7 +72,7 @@ class RelationForm extends FormBase {
       if ($this->relation->field_relation_status->getValue()[0]['value'] == 'pending') {
         if ($this->endpoints == $this->relation->endpoints->getValue()) {
           $form['container']['button'] = [
-            '#markup' => $this->t('Pending contact request'),
+            '#markup' => '<span>' . $this->t('Pending contact request') . '</span>',
             '#type' => 'markup',
           ];
         }

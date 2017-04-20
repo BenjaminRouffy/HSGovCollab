@@ -1172,7 +1172,6 @@
 
     .relation-form {
       position: relative;
-      z-index: 10;
 
       .ajax-progress {
         position: absolute;
@@ -1181,25 +1180,34 @@
 
     .relation-link {
       @include font-size(14);
-      border-bottom: 2px solid transparent;
-      display: inline-block;
-      padding-bottom: 12px;
-      transition: border .3s ease, opacity .3s ease;
-      vertical-align: top;
 
-      &:before {
-        @include font-size(28);
-        content: "+";
-        color: $navy;
-        font-family: $p4h;
-        margin-right: 6px;
-        position: relative;
-        top: 8px;
+      a,
+      span {
+        display: inline-block;
+        vertical-align: top;
+        border-bottom: 2px solid transparent;
+        padding: 6px 0 12px 34px;
+        transition: border .3s ease, opacity .3s ease;
+
+        &:before {
+          @include font-size(28);
+          content: "+";
+          color: $navy;
+          font-family: $p4h;
+          position: absolute;
+          left: 0;
+          top: 8px;
+        }
       }
 
-      &:hover {
-        border-color: $red;
-        opacity: .66;
+      a {
+        position: relative;
+        z-index: 10;
+
+        &:hover {
+          border-color: $red;
+          opacity: .66;
+        }
       }
     }
   }
@@ -1256,6 +1264,10 @@
     left: 0;
     height: 100%;
     width: 100%;
+  }
+
+  .contact-link {
+    z-index: 5;
   }
 
   a {

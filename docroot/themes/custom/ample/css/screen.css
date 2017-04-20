@@ -475,6 +475,10 @@ svg {
 .phone-icon > span::after {
   content: "å"; }
 
+.connect-icon > a::after,
+.connect-icon > span::after {
+  content: "+"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -2306,6 +2310,31 @@ header .social-links .font-social-icon {
     .project-list .contact-content .country-icon > span:first-child:before,
     .contact-list .contact-content .country-icon > span:first-child:before {
       content: "f"; }
+    .country-list .contact-content .relation-link,
+    .project-list .contact-content .relation-link,
+    .contact-list .contact-content .relation-link {
+      font-size: 0.875rem;
+      border-bottom: 2px solid transparent;
+      display: inline-block;
+      padding-bottom: 12px;
+      -webkit-transition: border .3s ease, opacity .3s ease;
+      transition: border .3s ease, opacity .3s ease;
+      vertical-align: top; }
+      .country-list .contact-content .relation-link:before,
+      .project-list .contact-content .relation-link:before,
+      .contact-list .contact-content .relation-link:before {
+        font-size: 1.75rem;
+        content: "+";
+        color: #4c7e96;
+        font-family: P4h, sans-serif;
+        margin-right: 6px;
+        position: relative;
+        top: 8px; }
+      .country-list .contact-content .relation-link:hover,
+      .project-list .contact-content .relation-link:hover,
+      .contact-list .contact-content .relation-link:hover {
+        border-color: #ea3a32;
+        opacity: .66; }
   .country-list .contact-to-user a,
   .project-list .contact-to-user a,
   .contact-list .contact-to-user a {

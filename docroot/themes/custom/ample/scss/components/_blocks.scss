@@ -1123,7 +1123,7 @@
 
       img {
         margin: 8px 11px 0 3px;
-        
+
         ~ span {
           display: inline-block;
           margin-top: 7px;
@@ -1145,6 +1145,30 @@
         &:before {
           content: "f";
         }
+      }
+    }
+
+    .relation-link {
+      @include font-size(14);
+      border-bottom: 2px solid transparent;
+      display: inline-block;
+      padding-bottom: 12px;
+      transition: border .3s ease, opacity .3s ease;
+      vertical-align: top;
+
+      &:before {
+        @include font-size(28);
+        content: "+";
+        color: $navy;
+        font-family: $p4h;
+        margin-right: 6px;
+        position: relative;
+        top: 8px;
+      }
+
+      &:hover {
+        border-color: $red;
+        opacity: .66;
       }
     }
   }

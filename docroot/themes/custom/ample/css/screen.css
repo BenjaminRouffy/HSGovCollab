@@ -1021,20 +1021,7 @@ footer > .partners {
   width: 50%; }
 
 .top-banner-region {
-  background: #f5f5f5;
-  position: relative; }
-  .top-banner-region:after {
-    background: #f5f5f5 url(../images/site-bg.svg) 100% 50% no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: .37;
-    z-index: -1; }
+  background: #f5f5f5; }
   .contact-us .top-banner-region,
   .page-user-contact-form .top-banner-region {
     padding-top: 120px; }
@@ -1043,6 +1030,20 @@ footer > .partners {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.11); }
   .top-banner-region ~ .content-container {
     padding-top: 40px; }
+  .top-banner-region .section-info-wrapper {
+    position: relative; }
+    .top-banner-region .section-info-wrapper:after {
+      background: #f5f5f5 url(../images/site-bg.svg) 100% 50% no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: .37;
+      z-index: -1; }
   .top-banner-region .section-info {
     display: -webkit-box;
     display: -ms-flexbox;

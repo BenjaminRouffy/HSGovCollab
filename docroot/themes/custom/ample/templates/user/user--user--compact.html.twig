@@ -2,7 +2,7 @@
   set user_link = path('entity.user.canonical', {'user': user.id()})
 %}
 <div{{ attributes.addClass('contact-item') }}>
-  <a href="{{ user_link }}"></a>
+  <a href="{{ user_link }}" class="contact-link"></a>
 
   <div class="contact-content">
     <div class="user-wrapper">
@@ -13,15 +13,13 @@
       {% endif %}
 
       <div class="user-name">
-        <a href="{{ path('entity.user.canonical', {'user': user.id()}) }}">
-          {% if content.field_first_name|field_value %}
-            {{ content.field_first_name|field_value }}
-          {% endif %}
+        {% if content.field_first_name|field_value %}
+          {{ content.field_first_name|field_value }}
+        {% endif %}
 
-          {% if content.field_last_name|field_value %}
-            {{ content.field_last_name|field_value }}
-          {% endif %}
-        </a>
+        {% if content.field_last_name|field_value %}
+          {{ content.field_last_name|field_value }}
+        {% endif %}
       </div>
     </div>
 

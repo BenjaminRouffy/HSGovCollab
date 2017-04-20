@@ -1031,6 +1031,7 @@
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     margin: 10px;
+    position: relative;
     width: calc(33.33% - 20px);
 
       &:hover {
@@ -1070,10 +1071,6 @@
       min-height: 50px;
       padding: 5px 0;
       transition: opacity .3s ease;
-
-      &:hover {
-        opacity: .66;
-      }
 
       > span:first-child {
         letter-spacing: .5px;
@@ -1117,26 +1114,20 @@
       }
     }
 
-    .skype-icon {
+    .default-icon {
       > span:first-child {
         &:before {
-          content: "0";
+          content: "n";
         }
       }
-    }
 
-    .slack-icon {
-      > span:first-child {
-        &:before {
-          content: "";
-        }
-      }
-    }
-
-    .webex-icon {
-      > span:first-child {
-        &:before {
-          content: "O";
+      img {
+        margin: 8px 11px 0 3px;
+        
+        ~ span {
+          display: inline-block;
+          margin-top: 7px;
+          vertical-align: top;
         }
       }
     }
@@ -1163,6 +1154,8 @@
       @include font-size(14);
       margin: 10px 0;
       padding: 15px 40px;
+      position: relative;
+      z-index: 10;
     }
   }
 
@@ -1193,7 +1186,8 @@
   }
 
   .country-link,
-  .project-link {
+  .project-link,
+  .contact-link {
     position: absolute;
     top: 0;
     left: 0;

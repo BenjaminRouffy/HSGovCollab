@@ -2194,6 +2194,7 @@ header .social-links .font-social-icon {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     margin: 10px;
+    position: relative;
     width: calc(33.33% - 20px); }
     .country-list .country-item:hover,
     .country-list .project-item:hover,
@@ -2254,10 +2255,6 @@ header .social-links .font-social-icon {
       padding: 5px 0;
       -webkit-transition: opacity .3s ease;
       transition: opacity .3s ease; }
-      .country-list .contact-content .font-social-icon:hover,
-      .project-list .contact-content .font-social-icon:hover,
-      .contact-list .contact-content .font-social-icon:hover {
-        opacity: .66; }
       .country-list .contact-content .font-social-icon > span:first-child,
       .project-list .contact-content .font-social-icon > span:first-child,
       .contact-list .contact-content .font-social-icon > span:first-child {
@@ -2287,18 +2284,20 @@ header .social-links .font-social-icon {
     .project-list .contact-content .organization-icon > span:first-child:before,
     .contact-list .contact-content .organization-icon > span:first-child:before {
       content: "$"; }
-    .country-list .contact-content .skype-icon > span:first-child:before,
-    .project-list .contact-content .skype-icon > span:first-child:before,
-    .contact-list .contact-content .skype-icon > span:first-child:before {
-      content: "0"; }
-    .country-list .contact-content .slack-icon > span:first-child:before,
-    .project-list .contact-content .slack-icon > span:first-child:before,
-    .contact-list .contact-content .slack-icon > span:first-child:before {
-      content: ""; }
-    .country-list .contact-content .webex-icon > span:first-child:before,
-    .project-list .contact-content .webex-icon > span:first-child:before,
-    .contact-list .contact-content .webex-icon > span:first-child:before {
-      content: "O"; }
+    .country-list .contact-content .default-icon > span:first-child:before,
+    .project-list .contact-content .default-icon > span:first-child:before,
+    .contact-list .contact-content .default-icon > span:first-child:before {
+      content: "n"; }
+    .country-list .contact-content .default-icon img,
+    .project-list .contact-content .default-icon img,
+    .contact-list .contact-content .default-icon img {
+      margin: 8px 11px 0 3px; }
+      .country-list .contact-content .default-icon img ~ span,
+      .project-list .contact-content .default-icon img ~ span,
+      .contact-list .contact-content .default-icon img ~ span {
+        display: inline-block;
+        margin-top: 7px;
+        vertical-align: top; }
     .country-list .contact-content .phone-icon > span:first-child:before,
     .project-list .contact-content .phone-icon > span:first-child:before,
     .contact-list .contact-content .phone-icon > span:first-child:before {
@@ -2312,7 +2311,9 @@ header .social-links .font-social-icon {
   .contact-list .contact-to-user a {
     font-size: 0.875rem;
     margin: 10px 0;
-    padding: 15px 40px; }
+    padding: 15px 40px;
+    position: relative;
+    z-index: 10; }
   .country-list .user-wrapper,
   .project-list .user-wrapper,
   .contact-list .user-wrapper {
@@ -2342,10 +2343,13 @@ header .social-links .font-social-icon {
     line-height: 21px; }
   .country-list .country-link,
   .country-list .project-link,
+  .country-list .contact-link,
   .project-list .country-link,
   .project-list .project-link,
+  .project-list .contact-link,
   .contact-list .country-link,
-  .contact-list .project-link {
+  .contact-list .project-link,
+  .contact-list .contact-link {
     position: absolute;
     top: 0;
     left: 0;

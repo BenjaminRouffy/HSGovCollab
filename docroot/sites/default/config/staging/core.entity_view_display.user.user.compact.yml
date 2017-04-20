@@ -33,7 +33,7 @@ dependencies:
   module:
     - entity_reference_revisions
     - group_content_field
-    - image
+    - taxonomy_image_formatter
     - user
 id: user.user.compact
 targetEntityType: user
@@ -47,7 +47,7 @@ content:
       image_style: 150x150
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: taxonomy_image_formatter
     region: content
   field_country:
     type: entity_reference_label

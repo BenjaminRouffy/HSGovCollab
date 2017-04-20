@@ -29,7 +29,9 @@ dependencies:
     - field.field.user.user.field_streetname
     - field.field.user.user.field_telephone
     - field.field.user.user.field_zip_code
+    - image.style.150x150
   module:
+    - taxonomy_image_formatter
     - user
 id: user.user.cd_user_block
 targetEntityType: user
@@ -37,12 +39,12 @@ bundle: user
 mode: cd_user_block
 content:
   field_avatar:
-    type: entity_reference_entity_view
+    type: taxonomy_image_formatter
     weight: 3
     label: hidden
     settings:
-      view_mode: file_uri
-      link: false
+      image_style: 150x150
+      image_link: ''
     third_party_settings: {  }
     region: content
   field_first_name:

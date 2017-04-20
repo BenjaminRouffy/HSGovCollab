@@ -939,7 +939,9 @@
 
     > a {
       background: $white;
+      border-bottom: 2px solid transparent;
       padding: 20px;
+      transition: border .3s ease;
 
       &:hover {
         border-color: $red;

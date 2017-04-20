@@ -1170,6 +1170,15 @@
       }
     }
 
+    .relation-form {
+      position: relative;
+      z-index: 10;
+
+      .ajax-progress {
+        position: absolute;
+      }
+    }
+
     .relation-link {
       @include font-size(14);
       border-bottom: 2px solid transparent;

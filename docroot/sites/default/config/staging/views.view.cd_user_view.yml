@@ -2011,16 +2011,16 @@ display:
             group_items: {  }
           entity_type: user
           plugin_id: numeric
-        group_roles_target_id:
-          id: group_roles_target_id
-          table: group_content__group_roles
-          field: group_roles_target_id
+        field_follower_value:
+          id: field_follower_value
+          table: group_content__field_follower
+          field: field_follower_value
           relationship: group_content
           group_type: group
           admin_label: ''
-          operator: contains
-          value: '-stakeholder'
-          group: 2
+          operator: '='
+          value: '1'
+          group: 1
           exposed: false
           expose:
             operator_id: ''
@@ -2046,43 +2046,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: string
-        group_roles_target_id_1:
-          id: group_roles_target_id_1
-          table: group_content__group_roles
-          field: group_roles_target_id
-          relationship: group_content
-          group_type: group
-          admin_label: ''
-          operator: contains
-          value: '-admin'
-          group: 2
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: string
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:

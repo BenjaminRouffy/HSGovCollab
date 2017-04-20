@@ -1,6 +1,6 @@
 uuid: cb7dcaad-0875-45ca-bba1-a6f88f19ed8b
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.relation.field_relation_status
@@ -386,7 +386,9 @@ display:
         - user.permissions
       tags:
         - 'config:core.entity_view_display.user.user.cd_user_block'
+        - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
+        - 'config:core.entity_view_display.user.user.name'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.relation.field_relation_status'
   page_1:
@@ -406,6 +408,8 @@ display:
         - user.permissions
       tags:
         - 'config:core.entity_view_display.user.user.cd_user_block'
+        - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
+        - 'config:core.entity_view_display.user.user.name'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.relation.field_relation_status'

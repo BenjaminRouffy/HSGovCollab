@@ -93,7 +93,7 @@ class GroupingTerm extends GroupIndexGid  {
       '#type' => 'checkboxes',
       '#title' => $this->t('Taxonomies'),
       '#options' => $options,
-      '#default_value' => $this->options['taxonomy'],
+      '#default_value' => $this->options['vid'],
       '#required' => TRUE,
     ];
   }
@@ -104,7 +104,7 @@ class GroupingTerm extends GroupIndexGid  {
   protected function valueForm(&$form, FormStateInterface $form_state) {
     $options = [];
 
-    foreach (array_filter($this->options['vid']) as $id) {
+    foreach (array_reverse(array_filter($this->options['vid'])) as $id) {
       $tree = $this->termStorage->loadTree($id, 0, NULL, TRUE);
 
       if (!empty($tree)) {
@@ -116,8 +116,6 @@ class GroupingTerm extends GroupIndexGid  {
         }
       }
     }
-
-    $options = array_reverse($options);
 
     $form_state->set('filter_options', $options);
 

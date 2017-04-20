@@ -1,6 +1,7 @@
-<div class="font-social-icon {{ content.field_type|render|striptags|trim|lower }}-icon">
+<div class="font-social-icon default-icon">
+  {{ content.field_type|field_value }}
+
   <span>
     {{ content.field_account|field_value }}
   </span>
 </div>
-

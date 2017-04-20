@@ -1,0 +1,34 @@
+uuid: 4bb8bf05-2db5-49ac-b14c-56890cb0caa4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.organizations.field_organisation_image
+    - image.style.scale_autox62
+    - taxonomy.vocabulary.organizations
+  module:
+    - image
+    - text
+id: taxonomy_term.organizations.default
+targetEntityType: taxonomy_term
+bundle: organizations
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_organisation_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: scale_autox62
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  langcode: true

@@ -66,12 +66,15 @@ content:
     label: hidden
     settings:
       link: false
+      view_mode: default
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
     region: content
   masquerade:
     weight: 50
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_accept_term_conditions: true
   field_city: true

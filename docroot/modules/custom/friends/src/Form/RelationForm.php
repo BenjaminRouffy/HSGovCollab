@@ -88,6 +88,9 @@ class RelationForm extends FormBase {
         }
 
       }
+      else {
+        $form['#access'] = FALSE;
+      }
     }
     else {
       $form['container']['connect_link'] = [

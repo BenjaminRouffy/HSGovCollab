@@ -2379,6 +2379,15 @@ footer > .partners {
     .project-list .contact-content .country-icon > span:first-child:before,
     .contact-list .contact-content .country-icon > span:first-child:before {
       content: "f"; }
+    .country-list .contact-content .relation-form,
+    .project-list .contact-content .relation-form,
+    .contact-list .contact-content .relation-form {
+      position: relative;
+      z-index: 10; }
+      .country-list .contact-content .relation-form .ajax-progress,
+      .project-list .contact-content .relation-form .ajax-progress,
+      .contact-list .contact-content .relation-form .ajax-progress {
+        position: absolute; }
     .country-list .contact-content .relation-link,
     .project-list .contact-content .relation-link,
     .contact-list .contact-content .relation-link {

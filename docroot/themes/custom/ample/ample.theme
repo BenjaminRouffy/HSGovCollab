@@ -15,6 +15,7 @@ use \Drupal\paragraphs\Entity\Paragraph;
 use \Drupal\group\Entity\Group;
 use Drupal\views\ViewExecutable;
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Additional settings for ample setting form.
@@ -176,6 +177,16 @@ function ample_preprocess_field(array &$variables) {
       ) {
         $variables['comment_status'] = TRUE;
         $variables['comment_count'] = $node->get('field_comments')->comment_count;
+        // Add link for anonymous user.
+        if ($variables['user']->isAnonymous()) {
+          $variables['comment_forbidden'] = new TranslatableMarkup(
+            "For adding comments please <a href='@register'>sign up</a> or <a href='@login'>log in</a>",
+            [
+              '@login' => Url::fromRoute('page_manager.page_view_user_login')->toString(),
+              '@register' => Url::fromRoute('page_manager.page_view_sign_up')->toString(),
+            ]
+          );
+        }
       }
       // Check children comments count.
       $parents = [];

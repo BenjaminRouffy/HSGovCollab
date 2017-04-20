@@ -11,6 +11,10 @@
     {{ comment_form }}
   {% endif %}
 
+  {% if comment_forbidden %}
+    {{ comment_forbidden }}
+  {% endif %}
+
   {% for item in items %}
     {{ item.content['comments'] }}
   {% endfor %}

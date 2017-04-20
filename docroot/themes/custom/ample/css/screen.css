@@ -2382,8 +2382,7 @@ footer > .partners {
     .country-list .contact-content .relation-form,
     .project-list .contact-content .relation-form,
     .contact-list .contact-content .relation-form {
-      position: relative;
-      z-index: 10; }
+      position: relative; }
       .country-list .contact-content .relation-form .ajax-progress,
       .project-list .contact-content .relation-form .ajax-progress,
       .contact-list .contact-content .relation-form .ajax-progress {
@@ -2391,28 +2390,42 @@ footer > .partners {
     .country-list .contact-content .relation-link,
     .project-list .contact-content .relation-link,
     .contact-list .contact-content .relation-link {
-      font-size: 0.875rem;
-      border-bottom: 2px solid transparent;
-      display: inline-block;
-      padding-bottom: 12px;
-      -webkit-transition: border .3s ease, opacity .3s ease;
-      transition: border .3s ease, opacity .3s ease;
-      vertical-align: top; }
-      .country-list .contact-content .relation-link:before,
-      .project-list .contact-content .relation-link:before,
-      .contact-list .contact-content .relation-link:before {
-        font-size: 1.75rem;
-        content: "+";
-        color: #4c7e96;
-        font-family: P4h, sans-serif;
-        margin-right: 6px;
+      font-size: 0.875rem; }
+      .country-list .contact-content .relation-link a,
+      .country-list .contact-content .relation-link span,
+      .project-list .contact-content .relation-link a,
+      .project-list .contact-content .relation-link span,
+      .contact-list .contact-content .relation-link a,
+      .contact-list .contact-content .relation-link span {
+        display: inline-block;
+        vertical-align: top;
+        border-bottom: 2px solid transparent;
+        padding: 6px 0 12px 34px;
+        -webkit-transition: border .3s ease, opacity .3s ease;
+        transition: border .3s ease, opacity .3s ease; }
+        .country-list .contact-content .relation-link a:before,
+        .country-list .contact-content .relation-link span:before,
+        .project-list .contact-content .relation-link a:before,
+        .project-list .contact-content .relation-link span:before,
+        .contact-list .contact-content .relation-link a:before,
+        .contact-list .contact-content .relation-link span:before {
+          font-size: 1.75rem;
+          content: "+";
+          color: #4c7e96;
+          font-family: P4h, sans-serif;
+          position: absolute;
+          left: 0;
+          top: 8px; }
+      .country-list .contact-content .relation-link a,
+      .project-list .contact-content .relation-link a,
+      .contact-list .contact-content .relation-link a {
         position: relative;
-        top: 8px; }
-      .country-list .contact-content .relation-link:hover,
-      .project-list .contact-content .relation-link:hover,
-      .contact-list .contact-content .relation-link:hover {
-        border-color: #ea3a32;
-        opacity: .66; }
+        z-index: 10; }
+        .country-list .contact-content .relation-link a:hover,
+        .project-list .contact-content .relation-link a:hover,
+        .contact-list .contact-content .relation-link a:hover {
+          border-color: #ea3a32;
+          opacity: .66; }
   .country-list .contact-to-user,
   .project-list .contact-to-user,
   .contact-list .contact-to-user {
@@ -2472,6 +2485,10 @@ footer > .partners {
     left: 0;
     height: 100%;
     width: 100%; }
+  .country-list .contact-link,
+  .project-list .contact-link,
+  .contact-list .contact-link {
+    z-index: 5; }
   .country-list a,
   .project-list a,
   .contact-list a {

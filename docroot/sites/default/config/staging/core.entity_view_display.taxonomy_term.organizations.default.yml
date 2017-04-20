@@ -4,31 +4,24 @@ status: true
 dependencies:
   config:
     - field.field.taxonomy_term.organizations.field_organisation_image
-    - image.style.scale_autox62
+    - image.style.150x150
     - taxonomy.vocabulary.organizations
   module:
     - image
-    - text
 id: taxonomy_term.organizations.default
 targetEntityType: taxonomy_term
 bundle: organizations
 mode: default
 content:
-  description:
-    label: hidden
-    type: text_default
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_organisation_image:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
-      image_style: scale_autox62
+      image_style: 150x150
       image_link: ''
     third_party_settings: {  }
     type: image
     region: content
 hidden:
+  description: true
   langcode: true

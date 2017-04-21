@@ -133,6 +133,14 @@
   .wrapper-filters {
     > div {
       max-width: 25%;
+
+      .ie10 & {
+        max-width: calc(25% - 20px);
+      }
+
+      .ie9 & {
+        max-width: calc(25% - 25px);
+      }
     }
   }
 }
@@ -179,6 +187,7 @@
       margin-bottom: 20px;
     }
 
+    .ie10 &,
     .ie9 & {
       > div {
         max-width: calc(33.33% - 20px);
@@ -199,6 +208,7 @@
       max-width: calc(50% - 20px);
     }
 
+    .ie10 &,
     .ie9 & {
       > div {
         max-width: calc(50% - 20px);
@@ -227,6 +237,7 @@
       margin-right: 0;
     }
 
+    .ie10 &,
     .ie9 & {
       > div {
         max-width: 100%;

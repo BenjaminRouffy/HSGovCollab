@@ -283,10 +283,22 @@ form {
 
 .ie9 {
   .select-wrapper {
-    background: $white url(../images/select-arrows.png) right center no-repeat;
+    background: $white;
     border: 1px solid #75a8c0;
     border-radius: 4px;
     overflow: hidden;
+    position: relative;
+
+    &:after {
+      background: $white url(../images/select-arrows-ie.png) right center no-repeat;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 16px;
+    }
   }
 
   .chosen-select-wrapper {

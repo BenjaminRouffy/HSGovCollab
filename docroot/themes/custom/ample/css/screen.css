@@ -3234,10 +3234,20 @@ form {
     outline: none; }
 
 .ie9 .select-wrapper {
-  background: #fff url(../images/select-arrows.png) right center no-repeat;
+  background: #fff;
   border: 1px solid #75a8c0;
   border-radius: 4px;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
+  .ie9 .select-wrapper:after {
+    background: #fff url(../images/select-arrows-ie.png) right center no-repeat;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px; }
 
 .ie9 .chosen-select-wrapper {
   border: none;
@@ -4381,6 +4391,10 @@ form .social_login label:after {
 
 .view-contacts .wrapper-filters > div {
   max-width: 25%; }
+  .ie10 .view-contacts .wrapper-filters > div {
+    max-width: calc(25% - 20px); }
+  .ie9 .view-contacts .wrapper-filters > div {
+    max-width: calc(25% - 25px); }
 
 .search-form-wrapper {
   position: relative; }
@@ -4419,7 +4433,10 @@ form .social_login label:after {
     .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px; }
-    .ie9 .view-news-and-events .wrapper-filters > div, .ie9 .view-my-projects .wrapper-filters > div, .ie9 .view-contacts .wrapper-filters > div {
+    .ie10 .view-news-and-events .wrapper-filters > div,
+    .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
+    .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
+    .ie9 .view-contacts .wrapper-filters > div {
       max-width: calc(33.33% - 20px); }
   .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
     width: 33.33%; } }
@@ -4427,7 +4444,10 @@ form .social_login label:after {
 @media (max-width: 767px) {
   .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
     max-width: calc(50% - 20px); }
-  .ie9 .view-news-and-events .wrapper-filters > div, .ie9 .view-my-projects .wrapper-filters > div, .ie9 .view-contacts .wrapper-filters > div {
+  .ie10 .view-news-and-events .wrapper-filters > div,
+  .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
+  .ie9 .view-contacts .wrapper-filters > div {
     max-width: calc(50% - 20px); }
   .front .view-news-and-events .title-wrapper, .front .view-my-projects .title-wrapper, .front .view-contacts .title-wrapper {
     margin: -40px 0 3px -20px; }
@@ -4439,7 +4459,10 @@ form .social_login label:after {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0; }
-  .ie9 .view-news-and-events .wrapper-filters > div, .ie9 .view-my-projects .wrapper-filters > div, .ie9 .view-contacts .wrapper-filters > div {
+  .ie10 .view-news-and-events .wrapper-filters > div,
+  .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
+  .ie9 .view-contacts .wrapper-filters > div {
     max-width: 100%; }
   .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
     width: 100%; } }

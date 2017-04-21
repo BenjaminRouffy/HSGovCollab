@@ -1044,6 +1044,10 @@ footer > .partners {
       width: 100%;
       opacity: .37;
       z-index: -1; }
+    .mobile .top-banner-region .section-info-wrapper {
+      background-attachment: auto;
+      background-position: center;
+      background-size: 400%; }
   .top-banner-region .section-info {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -5357,6 +5361,10 @@ footer {
     width: 100%;
     opacity: .37;
     z-index: -1; }
+    .mobile footer:after {
+      background-attachment: auto;
+      background-position: center;
+      background-size: 300%; }
     body:not(.front) footer:after {
       background-color: #fff; }
   footer .partners {
@@ -5405,6 +5413,10 @@ footer {
     width: 100%;
     opacity: .15;
     z-index: -1; }
+  .mobile .main-wrapper:after {
+    background-attachment: auto;
+    background-position: center;
+    background-size: 650%; }
   .user .main-wrapper {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {

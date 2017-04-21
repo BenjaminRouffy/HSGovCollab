@@ -33,6 +33,14 @@
     }
   }
 
+  .mobile & {
+    &:after {
+      background-attachment: auto;
+      background-position: center;
+      background-size: 650%;
+    }
+  }
+
   .user & {
     min-height: calc(100% - 316px);
   }

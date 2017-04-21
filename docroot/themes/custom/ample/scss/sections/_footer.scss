@@ -28,6 +28,12 @@ footer {
     opacity: .37;
     z-index: -1;
 
+    .mobile & {
+      background-attachment: auto;
+      background-position: center;
+      background-size: 300%;
+    }
+
     body:not(.front) & {
       background-color: $white;
     }

@@ -53,4 +53,8 @@ footer {
 
 @include breakpoint-for('footer', (to: laptop-small)) {
   position: relative;
+
+  > .partners {
+    display: block;
+  }
 }

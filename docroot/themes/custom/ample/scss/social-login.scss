@@ -12,7 +12,7 @@ body {
 }
 
 .providers {
-  text-align: center;
+  margin: 3px;
 }
 
 .provider {
@@ -25,18 +25,32 @@ body {
   letter-spacing: 1px;
   margin: 0 auto 20px;
   min-width: 255px;
-  padding: 15px 40px;
+  padding: 12px 40px;
+  text-align: center;
+  transform: scale(1.02);
   vertical-align: top;
-}
 
-#provider_facebook {
-  background: #4c7e96;
-}
+  &:nth-child(1) {
+    background: #283b44;
 
-#provider_linkedin {
-  background: #283b44;
-}
+    &:hover {
+      background: #416170;
+    }
+  }
+  
+  &:nth-child(2) {
+    background: #4c7e96;
 
-#provider_twitter {
-  background: #1990c9;
+    &:hover {
+      background: #729db1;
+    }
+  }
+
+  &:nth-child(3) {
+    background: #1990c9;
+
+    &:hover {
+      background: #33a9e2;
+    }
+  }
 }

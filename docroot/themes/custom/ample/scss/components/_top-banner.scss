@@ -31,6 +31,11 @@
       opacity: .37;
       z-index: -1;
     }
+
+    .mobile & {
+      background-position: center;
+      background-size: 400%;
+    }
   }
 
   .section-info {

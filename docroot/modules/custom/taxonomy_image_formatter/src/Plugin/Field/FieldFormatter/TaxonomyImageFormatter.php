@@ -6,6 +6,7 @@ use Drupal\image\Plugin\Field\FieldFormatter\ImageFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
+use Drupal\taxonomy_image_formatter\TaxonomyImageTrait;
 
 
 /**
@@ -20,6 +21,9 @@ use Drupal\user\Entity\User;
  * )
  */
 class TaxonomyImageFormatter extends ImageFormatter {
+
+  use TaxonomyImageTrait;
+
   /**
    * {@inheritdoc}
    */
@@ -32,20 +36,10 @@ class TaxonomyImageFormatter extends ImageFormatter {
       $avatar = $entity->get('field_avatar')->getValue();
 
       if (!$avatar) {
-        if ($entity->hasField('field_organisation')) {
-          $organisation = $entity->get('field_organisation')->getValue();
+        $term_image = $this->getTermImage($entity);
 
-          if (!empty($organisation)) {
-            $organisation = reset($organisation);
-            // Load organisation taxonomy term.
-            $term = Term::load($organisation['target_id']);
-            if ($term && $term->hasField('field_organisation_image')) {
-              $organisation_image_items = $term->get('field_organisation_image');
-              if (!$organisation_image_items->isEmpty()) {
-                $elements[0]['#item'] = $organisation_image_items->first();
-              }
-            }
-          }
+        if ($term_image) {
+          $elements[0]['#item'] = $term_image;
         }
       }
     }

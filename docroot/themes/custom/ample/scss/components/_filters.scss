@@ -137,6 +137,10 @@
       .ie10 & {
         max-width: calc(25% - 20px);
       }
+
+      .ie9 & {
+        max-width: calc(25% - 25px);
+      }
     }
   }
 }

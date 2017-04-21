@@ -4,8 +4,10 @@ namespace Drupal\taxonomy_image_formatter\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 use Drupal\image_widget_crop\Plugin\Field\FieldWidget\ImageCropWidget;
 use Drupal\taxonomy_image_formatter\TaxonomyImageTrait;
+use Drupal\user\Entity\User;
 
 /**
  * Plugin implementation of the 'taxonomy_image_widget_crop' widget.
@@ -30,7 +32,6 @@ class TaxonomyImageCropWidget extends ImageCropWidget {
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
-    $field_settings = $this->getFieldSettings();
     $entity = $items->getEntity();
     // Default image.
     if ($entity instanceof User) {
@@ -44,6 +45,6 @@ class TaxonomyImageCropWidget extends ImageCropWidget {
       }
     }
 
-    return parent::formElement($items, $delta, $element, $form, $form_state);
+    return $element;
   }
 }

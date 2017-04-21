@@ -100,7 +100,7 @@ function friends_mail($key, &$message, $params) {
   switch ($key) {
    case 'connection_request':
      $message['from'] = \Drupal::config('system.site')->get('mail');
-     $message['subject'] = \Drupal::config('user.mail')->get('friend_approve.subject');
+     $message['subject'] = \Drupal::token()->replace(\Drupal::config('user.mail')->get('friend_approve.subject'));
      $message['body'][] = $params['message'];
      break;
   }

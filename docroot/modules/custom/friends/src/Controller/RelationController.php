@@ -41,7 +41,7 @@ class RelationController extends ControllerBase {
 
       $result = \Drupal::service('plugin.manager.mail')
         ->mail('friends', 'connection_request', $user->getEmail(), $user->getPreferredLangcode(), [
-          'message' => \Drupal::config('user.mail')->get('friend_approve.body')
+          'message' => \Drupal::token()->replace(\Drupal::config('user.mail')->get('friend_approve.body'))
         ], NULL, TRUE);
     }
 

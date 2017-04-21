@@ -8,6 +8,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\friends\Plugin\FieldPermissionType\FriendsAccess;
 use Drupal\Component\Utility\Html;
@@ -99,11 +100,61 @@ function friends_mail($key, &$message, $params) {
   switch ($key) {
    case 'connection_request':
      $message['from'] = \Drupal::config('system.site')->get('mail');
-     $message['subject'] = t('New connection request', $options);
+     $message['subject'] = \Drupal::config('user.mail')->get('friend_approve.subject');
      $message['body'][] = $params['message'];
      break;
   }
 }
+
+/**
+ * Implements hook_token_info().
+ */
+function friends_token_info() {
+  $current_user['approve-url'] = [
+    'name' => t("Approve page"),
+    'description' => t("The URL of the current's approve page."),
+  ];
+
+  return [
+    'tokens' => [
+      'current-user' => $current_user,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function friends_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+
+  $current_user = User::load(\Drupal::currentUser()->id());
+  $url_options = ['absolute' => TRUE];
+  if (isset($options['langcode'])) {
+    $url_options['language'] = \Drupal::languageManager()->getLanguage($options['langcode']);
+    $langcode = $options['langcode'];
+  }
+  else {
+    $langcode = NULL;
+  }
+  $replacements = [];
+
+  if ($type == 'current-user') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+
+        case 'approve-url':
+          $result = Url::fromRoute('friends.approve', ['user' => $current_user->id()], ['absolute' => TRUE]);
+
+          $bubbleable_metadata->addCacheableDependency($result);
+          $replacements[$original] = $result->toString();
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
 
 /**
  * Implements hook_form_alter().
@@ -152,4 +203,11 @@ function friends_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       }
     }
   }
+}
+
+function friends_config_schema_info_alter(&$definitions) {
+  $definitions['user.mail']['mapping']['friend_approve'] = [
+    'type' => 'mail',
+    'label' => 'Friend approve request',
+  ];
 }

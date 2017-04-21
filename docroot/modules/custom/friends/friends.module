@@ -127,7 +127,7 @@ function friends_token_info() {
  */
 function friends_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
 
-  $current_user = User::load(\Drupal::currentUser()->id());
+  $current_user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
   $url_options = ['absolute' => TRUE];
   if (isset($options['langcode'])) {
     $url_options['language'] = \Drupal::languageManager()->getLanguage($options['langcode']);

@@ -1,18 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700");
 *,
 *::before,
 *::after {
   box-sizing: border-box; }
 
+body {
+  margin: 0;
+  padding: 0; }
+
+.providers {
+  text-align: center; }
+
 .provider {
   border-radius: 29px;
   color: #fff;
+  display: inline-block;
   font-family: Oswald, sans-serif;
   font-size: 16.8px;
   font-weight: 300;
   letter-spacing: 1px;
   margin: 0 auto 20px;
   min-width: 255px;
-  padding: 15px 40px; }
+  padding: 15px 40px;
+  vertical-align: top; }
 
 #provider_facebook {
   background: #4c7e96; }

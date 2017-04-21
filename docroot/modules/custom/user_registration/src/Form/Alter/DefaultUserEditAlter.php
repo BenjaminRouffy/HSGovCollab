@@ -5,9 +5,11 @@ namespace Drupal\user_registration\Form\Alter;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceAlterInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceBaseInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceSubmitInterface;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Class DefaultUserEditAlter.
@@ -57,6 +59,19 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
       ),
     );
     $form['field_non_member_organization']['#states'] = $states;
+
+    // Change default image to organisation image.
+    $term = Term::load($form['field_organisation']['widget']['#default_value'][0]);
+    if ($term && $term->hasField('field_organisation_image')) {
+      $organisation_image_items = $term->get('field_organisation_image');
+      if (!$organisation_image_items->isEmpty()) {
+        $term_image = $organisation_image_items->first()->getValue();
+        $term_image_file = File::load($term_image['target_id']);
+        $term_image_file->get('uuid')->value;
+        $form['field_avatar']['widget'][0]['#default_image']['fid'] = $term_image_file->get('fid')->value;
+        $form['field_avatar']['widget'][0]['#default_image']['uuid'] = $term_image_file->get('uuid')->value;
+      }
+    }
 
     unset(
       $form['account']['current_pass']['#description'],

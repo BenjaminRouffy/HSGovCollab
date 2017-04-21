@@ -4,10 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.taxonomy_term.organizations.field_organisation_image
-    - image.style.150x150
+    - image.style.large
     - taxonomy.vocabulary.organizations
   module:
-    - image_widget_crop
+    - image
     - path
     - text
 id: taxonomy_term.organizations.default
@@ -26,16 +26,10 @@ content:
   field_organisation_image:
     weight: 31
     settings:
-      show_default_crop: true
-      preview_image_style: 150x150
-      crop_preview_image_style: thumbnail
-      crop_list:
-        - avatar
+      preview_image_style: large
       progress_indicator: throbber
-      show_crop_area: false
-      warn_multiple_usages: false
     third_party_settings: {  }
-    type: image_widget_crop
+    type: image_image
     region: content
   langcode:
     type: language_select

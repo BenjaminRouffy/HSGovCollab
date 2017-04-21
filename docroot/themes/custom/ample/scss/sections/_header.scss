@@ -53,7 +53,7 @@ header {
 
 .header-static {
   background: $white;
-  box-shadow: 0 0 6px rgba($black, .1);
+  //box-shadow: 0 0 6px rgba($black, .1);
   min-height: 120px;
   position: relative;
   text-align: center;
@@ -92,6 +92,7 @@ header {
 
   .mobile-menu-wrapper {
     overflow-x: hidden;
+    padding-top: 52px;
 
     .contextual {
       display: none;
@@ -425,7 +426,7 @@ header {
 }
 
 @include breakpoint-for('.header-static', (to: laptop-small)) {
-  &.collapsed {
+  .collapsed & {
     min-height: 60px;
     top: -150px;
   }
@@ -433,7 +434,7 @@ header {
   .mobile-menu-wrapper {
     height: calc(100vh - 80px);
     position: fixed;
-    top: 80px;
+    top: 126px;
 
     .toolbar-fixed &,
     .toolbar-vertical & {

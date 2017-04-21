@@ -36,7 +36,12 @@ class RelationForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state, User $user = NULL) {
 
     $this->user = $user;
-    $form['#prefix'] = '<div class = "relation_form_' . $user->id() . '">';
+
+    if ($this->currentUser()->id() == $this->user->id()) {
+      return $form;
+    }
+
+    $form['#prefix'] = '<div class = "relation_form_' . $user->id() . ' font-social-icon">';
     $form['#suffix'] = '</div>';
 
     $form['container'] = [
@@ -56,6 +61,8 @@ class RelationForm extends FormBase {
       ['target_type' => 'user', 'target_id' => $user->id()],
     ];
 
+
+
     $exists = \Drupal::getContainer()->get('entity.repository.relation')->relationExists($this->endpoints);
 
     if (count($exists)) {
@@ -65,7 +72,7 @@ class RelationForm extends FormBase {
       if ($this->relation->field_relation_status->getValue()[0]['value'] == 'pending') {
         if ($this->endpoints == $this->relation->endpoints->getValue()) {
           $form['container']['button'] = [
-            '#markup' => $this->t('Pending contact request'),
+            '#markup' => '<span>' . $this->t('Pending contact request') . '</span>',
             '#type' => 'markup',
           ];
         }
@@ -80,6 +87,9 @@ class RelationForm extends FormBase {
           ];
         }
 
+      }
+      else {
+        $form['#access'] = FALSE;
       }
     }
     else {

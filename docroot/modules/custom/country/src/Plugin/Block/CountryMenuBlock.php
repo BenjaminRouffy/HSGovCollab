@@ -122,6 +122,7 @@ class CountryMenuBlock extends BlockBase {
             break;
 
           case 'contact':
+            $row = 'not-null';
             break;
 
           case 'faq':

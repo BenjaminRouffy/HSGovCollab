@@ -1,0 +1,16 @@
+uuid: 5ea3ea49-fd47-4b55-bfad-6a2acf2f1ab0
+langcode: en
+status: true
+dependencies: {  }
+id: group_contacts
+label: 'Group contacts'
+description: ''
+use_admin_theme: false
+path: '/group/{group}/contacts'
+access_logic: and
+access_conditions: {  }
+parameters:
+  group:
+    machine_name: group
+    type: 'entity:group'
+    label: Group

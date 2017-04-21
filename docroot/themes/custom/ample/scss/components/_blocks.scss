@@ -26,6 +26,24 @@
     font-weight: 300;
     padding: 40px 30px;
     text-decoration: none;
+
+    .sidebar & {
+      position: relative;
+
+      &:after {
+        background: url(../images/site-bg.svg) 100% 50% no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        box-shadow: inset 0 0 8px rgba($black, .11);
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: .37;
+      }
+    }
   }
 
   h2 {
@@ -36,8 +54,10 @@
     font-weight: 400;
     line-height: 40px;
     margin: 0;
+    position: relative;
     text-decoration: none;
     transition: all .2s ease;
+    z-index: 1;
 
     &:hover {
       transform: scale(1.02);
@@ -919,7 +939,9 @@
 
     > a {
       background: $white;
+      border-bottom: 2px solid transparent;
       padding: 20px;
+      transition: border .3s ease;
 
       &:hover {
         border-color: $red;
@@ -1031,6 +1053,7 @@
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     margin: 10px;
+    position: relative;
     width: calc(33.33% - 20px);
 
       &:hover {
@@ -1070,10 +1093,6 @@
       min-height: 50px;
       padding: 5px 0;
       transition: opacity .3s ease;
-
-      &:hover {
-        opacity: .66;
-      }
 
       > span:first-child {
         letter-spacing: .5px;
@@ -1117,26 +1136,20 @@
       }
     }
 
-    .skype-icon {
+    .default-icon {
       > span:first-child {
         &:before {
-          content: "0";
+          content: "n";
         }
       }
-    }
 
-    .slack-icon {
-      > span:first-child {
-        &:before {
-          content: "";
-        }
-      }
-    }
+      img {
+        margin: 8px 11px 0 3px;
 
-    .webex-icon {
-      > span:first-child {
-        &:before {
-          content: "O";
+        ~ span {
+          display: inline-block;
+          margin-top: 7px;
+          vertical-align: top;
         }
       }
     }
@@ -1156,13 +1169,65 @@
         }
       }
     }
+
+    .relation-form {
+      position: relative;
+
+      .ajax-progress {
+        position: absolute;
+      }
+    }
+
+    .relation-link {
+      @include font-size(14);
+
+      a,
+      span {
+        display: inline-block;
+        vertical-align: top;
+        border-bottom: 2px solid transparent;
+        padding: 6px 0 12px 34px;
+        transition: border .3s ease, opacity .3s ease;
+
+        &:before {
+          @include font-size(28);
+          content: "+";
+          color: $navy;
+          font-family: $p4h;
+          position: absolute;
+          left: 0;
+          top: 8px;
+        }
+      }
+
+      a {
+        position: relative;
+        z-index: 10;
+
+        &:hover {
+          border-color: $red;
+          opacity: .66;
+        }
+      }
+    }
   }
 
   .contact-to-user {
+    text-align: center;
+
     a {
       @include font-size(14);
+      border-color: $red;
+      color: $red;
       margin: 10px 0;
       padding: 15px 40px;
+      position: relative;
+      z-index: 10;
+
+      &:hover {
+        border-color: $red-dark;
+        color: $red-dark;
+      }
     }
   }
 
@@ -1193,12 +1258,17 @@
   }
 
   .country-link,
-  .project-link {
+  .project-link,
+  .contact-link {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
+  }
+
+  .contact-link {
+    z-index: 5;
   }
 
   a {
@@ -1330,6 +1400,10 @@
     float: left;
     padding-left: 20px;
     width: 75%;
+  }
+
+  .contact-to-user {
+    text-align: left;
   }
 }
 

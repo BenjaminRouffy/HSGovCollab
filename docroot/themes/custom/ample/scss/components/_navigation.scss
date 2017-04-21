@@ -104,6 +104,18 @@
   }
 }
 
+.collapsed {
+  ~ .dashboard-sidebar {
+    .toolbar-fixed & {
+      padding-top: 39px;
+    }
+
+    .toolbar-tray-open & {
+      padding-top: 79px;
+    }
+  }
+}
+
 .dashboard-sidebar {
   background: $navy-dark;
   height: 100%;
@@ -113,15 +125,16 @@
   position: fixed;
   top: 0;
   left: 0;
+  transition: padding .3s ease;
   width: 80px;
   z-index: 400;
 
   .toolbar-fixed & {
-    padding-top: 39px;
+    padding-top: 85px;
   }
 
   .toolbar-tray-open & {
-    padding-top: 79px;
+    padding-top: 125px;
   }
 
   .logo-wrapper {

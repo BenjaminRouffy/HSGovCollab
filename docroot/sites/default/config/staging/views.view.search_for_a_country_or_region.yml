@@ -428,9 +428,6 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
@@ -442,9 +439,6 @@ display:
         - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
         - 'config:core.entity_view_display.group.governance_area.time_line'
         - 'config:core.entity_view_display.group.governance_area.token'
-        - 'config:core.entity_view_display.group.knowledge_vault.default'
-        - 'config:core.entity_view_display.group.product.banner'
-        - 'config:core.entity_view_display.group.product.bottom'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.teaser'
@@ -456,8 +450,9 @@ display:
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
-        - 'config:core.entity_view_display.group.product.default'
-        - 'config:core.entity_view_display.group.product.search_country'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
   block_1:
     display_plugin: block
     id: block_1
@@ -1025,6 +1020,7 @@ display:
         filter_groups: false
         title: false
         fields: false
+        empty: false
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.gid }}/countries'
       relationships:
@@ -1371,6 +1367,18 @@ display:
           entity_type: group
           plugin_id: rendered_entity
       block_hide_empty: true
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

@@ -1,7 +1,37 @@
 .main-wrapper {
-  box-shadow: inset 0 0 8px rgba($black, .11);
   min-height: calc(100% - 196px);
   overflow-x: hidden;
+  position: relative;
+  z-index: 310;
+
+  &:before {
+    background-color: $white-dark;
+    box-shadow: inset 0 0 8px rgba($black, .11);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .front & {
+    &:after {
+      background: url(../images/site-bg.svg) 100% 50% no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      box-shadow: inset 0 0 8px rgba($black, .11);
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: .15;
+      z-index: -1;
+    }
+  }
 
   .user & {
     min-height: calc(100% - 316px);
@@ -11,8 +41,10 @@
     padding-left: 80px;
   }
 
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-user-canonical) & {
-    background: $white;
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical) & {
+    &:before {
+      background: $white;
+    }
   }
 
   > .top-banner-region {

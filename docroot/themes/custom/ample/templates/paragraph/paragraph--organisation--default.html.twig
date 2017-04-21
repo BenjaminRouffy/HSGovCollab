@@ -1,5 +1,7 @@
-<div class="font-social-icon organization-icon">
-  <span>
-    {{ content.field_organisation|field_value }}, {{ content.field_job_title|field_value }}
-  </span>
-</div>
+{% if content.field_organisation|field_value %}
+  <div class="font-social-icon organization-icon">
+    <span>
+      {{ content.field_organisation|field_value }}, {{ content.field_job_title|field_value }}
+    </span>
+  </div>
+{% endif %}

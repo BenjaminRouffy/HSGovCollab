@@ -54,9 +54,9 @@ settings:
   draft_button_attributes: {  }
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: message
+  confirmation_type: url_message
   confirmation_message: 'Your message has been sent.'
-  confirmation_url: ''
+  confirmation_url: 'user/[current-page:url:unaliased:args:value:1]'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''

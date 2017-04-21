@@ -1,4 +1,9 @@
+{%
+  set user_link = path('entity.user.canonical', {'user': user.id()})
+%}
 <div{{ attributes.addClass('contact-item') }}>
+  <a href="{{ user_link }}" class="contact-link"></a>
+
   <div class="contact-content">
     <div class="user-wrapper">
       {% if content.field_avatar %}
@@ -73,9 +78,11 @@
       </div>
     {% endif %}
 
+    {{ content.relation_form }}
+
     {% if elements['#current_user'] != user.id() %}
       <div class="contact-to-user">
-        <a href="{{ path('entity.user.canonical', {'user': user.id()}) }}/contact" target="_blank" class="red-btn-link">
+        <a href="{{ user_link ~ '/contact' }}" target="_blank" class="red-btn-link">
           {{ 'Contact trough P4H network'|t }}
         </a>
       </div>

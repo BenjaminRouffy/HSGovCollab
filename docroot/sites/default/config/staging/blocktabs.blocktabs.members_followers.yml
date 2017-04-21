@@ -1,0 +1,26 @@
+uuid: c914dab2-01c8-4ab8-9001-f79150fd3e24
+langcode: en
+status: true
+dependencies: {  }
+name: members_followers
+label: 'Members & Followers'
+tabs:
+  6fe1d1d5-bf45-4af8-a1f0-cf686e0a83cf:
+    uuid: 6fe1d1d5-bf45-4af8-a1f0-cf686e0a83cf
+    id: views_tab
+    title: Members
+    weight: '1'
+    data:
+      view_name: cd_user_view
+      view_display: block_1
+      view_arg: ''
+  bc7f5292-dc2a-450b-b7a6-853706a39356:
+    uuid: bc7f5292-dc2a-450b-b7a6-853706a39356
+    id: views_tab
+    title: Followers
+    weight: '2'
+    data:
+      view_name: cd_user_view
+      view_display: block_2
+      view_arg: ''
+event: click

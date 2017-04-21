@@ -3234,10 +3234,20 @@ form {
     outline: none; }
 
 .ie9 .select-wrapper {
-  background: #fff url(../images/select-arrows-ie.png) right center no-repeat;
+  background: #fff;
   border: 1px solid #75a8c0;
   border-radius: 4px;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
+  .ie9 .select-wrapper:after {
+    background: #fff url(../images/select-arrows-ie.png) right center no-repeat;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px; }
 
 .ie9 .chosen-select-wrapper {
   border: none;

@@ -20,11 +20,13 @@ body {
   font-weight: 300;
   letter-spacing: 1px;
   margin: 0 auto 20px;
-  min-width: 255px;
+  min-width: 250px;
   padding: 12px 40px;
   text-align: center;
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
+  -webkit-transition: background .2s ease;
+  transition: background .2s ease;
   vertical-align: top; }
   .provider:nth-child(1) {
     background: #283b44; }

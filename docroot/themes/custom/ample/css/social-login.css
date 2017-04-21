@@ -9,7 +9,7 @@ body {
   padding: 0; }
 
 .providers {
-  text-align: center; }
+  margin: 3px; }
 
 .provider {
   border-radius: 29px;
@@ -21,14 +21,20 @@ body {
   letter-spacing: 1px;
   margin: 0 auto 20px;
   min-width: 255px;
-  padding: 15px 40px;
+  padding: 12px 40px;
+  text-align: center;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
   vertical-align: top; }
-
-#provider_facebook {
-  background: #4c7e96; }
-
-#provider_linkedin {
-  background: #283b44; }
-
-#provider_twitter {
-  background: #1990c9; }
+  .provider:nth-child(1) {
+    background: #283b44; }
+    .provider:nth-child(1):hover {
+      background: #416170; }
+  .provider:nth-child(2) {
+    background: #4c7e96; }
+    .provider:nth-child(2):hover {
+      background: #729db1; }
+  .provider:nth-child(3) {
+    background: #1990c9; }
+    .provider:nth-child(3):hover {
+      background: #33a9e2; }

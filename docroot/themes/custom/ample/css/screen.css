@@ -3081,6 +3081,9 @@ form {
   -webkit-transition: all .2s ease;
   transition: all .2s ease;
   width: 100%; }
+  .ui-widget .form-text, .ui-widget .form-textarea, .ui-widget
+  .form-email {
+    font-family: "Fira Sans", sans-serif; }
   .form-text:hover, .form-textarea:hover,
   .form-email:hover {
     box-shadow: 0 0 6px 0 rgba(40, 59, 68, 0.38); }
@@ -5228,6 +5231,7 @@ header {
     top: 60px; }
     .toolbar-fixed .header-static .mobile-menu-wrapper,
     .toolbar-vertical .header-static .mobile-menu-wrapper {
+      padding-bottom: 100px;
       top: 99px; } }
 
 @media (max-width: 479px) {
@@ -5328,7 +5332,9 @@ footer {
 
 @media (max-width: 991px) {
   footer {
-    position: relative; } }
+    position: relative; }
+    footer > .partners {
+      display: block; } }
 
 .main-wrapper {
   min-height: calc(100% - 196px);
@@ -5362,7 +5368,7 @@ footer {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical) .main-wrapper:before {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact) .main-wrapper:before {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;

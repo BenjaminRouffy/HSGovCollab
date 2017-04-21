@@ -75,6 +75,10 @@ form {
   transition: all .2s ease;
   width: 100%;
 
+  .ui-widget & {
+    font-family: $fira;
+  }
+
   &:hover {
     box-shadow: 0 0 6px 0 rgba($navy-dark, .38);
   }

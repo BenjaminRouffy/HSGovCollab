@@ -3297,7 +3297,17 @@ form .social_login label {
     content: none; }
 
 form .social_login iframe {
-  max-width: 100%; }
+  display: block;
+  max-width: 266px;
+  width: 100% !important; }
+
+@media (max-width: 767px) {
+  form .social_login iframe {
+    margin: 0 auto; } }
+
+@media (max-width: 479px) {
+  form .social_login iframe {
+    max-width: 100%; } }
 
 .user-login-form {
   display: -webkit-box;
@@ -3366,14 +3376,9 @@ form .social_login iframe {
     .user-login-form .login-wrapper {
       width: 100%; }
     .user-login-form .login-wrapper {
-      padding: 0 10px; }
+      padding: 0 20px; }
       .ie9 .user-login-form .login-wrapper {
         float: none; } }
-
-@media (max-width: 479px) {
-  .user-login-form .social_login,
-  .user-login-form .login-wrapper {
-    padding: 0; } }
 
 .form-contact-us {
   display: -webkit-box;

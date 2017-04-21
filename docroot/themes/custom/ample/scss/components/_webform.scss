@@ -361,6 +361,24 @@ form {
     }
 
     iframe {
+      display: block;
+      max-width: 266px;
+      width: 100% !important;
+    }
+  }
+}
+
+@include breakpoint-for('form', (to: tablet)) {
+  .social_login {
+    iframe {
+      margin: 0 auto;
+    }
+  }
+}
+
+@include breakpoint-for('form', (to: mobileL)) {
+  .social_login {
+    iframe {
       max-width: 100%;
     }
   }
@@ -457,18 +475,11 @@ form {
   }
 
   .login-wrapper {
-    padding: 0 10px;
+    padding: 0 20px;
 
     .ie9 & {
       float: none;
     }
-  }
-}
-
-@include breakpoint-for('.user-login-form', (to: mobileL)) {
-  .social_login,
-  .login-wrapper {
-    padding: 0;
   }
 }
 

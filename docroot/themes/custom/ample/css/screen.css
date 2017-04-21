@@ -3297,12 +3297,17 @@ form .social_login label {
     content: none; }
 
 form .social_login iframe {
+  display: block;
   max-width: 266px;
   width: 100% !important; }
 
 @media (max-width: 767px) {
-  form .social_login {
+  form .social_login iframe {
     margin: 0 auto; } }
+
+@media (max-width: 479px) {
+  form .social_login iframe {
+    max-width: 100%; } }
 
 .user-login-form {
   display: -webkit-box;

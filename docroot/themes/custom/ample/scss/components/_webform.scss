@@ -361,6 +361,7 @@ form {
     }
 
     iframe {
+      display: block;
       max-width: 266px;
       width: 100% !important;
     }
@@ -369,7 +370,17 @@ form {
 
 @include breakpoint-for('form', (to: tablet)) {
   .social_login {
-    margin: 0 auto;
+    iframe {
+      margin: 0 auto;
+    }
+  }
+}
+
+@include breakpoint-for('form', (to: mobileL)) {
+  .social_login {
+    iframe {
+      max-width: 100%;
+    }
   }
 }
 

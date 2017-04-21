@@ -3289,8 +3289,16 @@ form {
     border-color: #8c2222;
     color: #8c2222; }
 
-form .social_login label:after {
-  content: none; }
+form .social_login label {
+  font-size: 1.05rem;
+  line-height: 25px;
+  margin-bottom: 30px;
+  text-align: center; }
+  form .social_login label:after {
+    content: none; }
+
+form .social_login iframe {
+  max-width: 100%; }
 
 .user-login-form {
   display: -webkit-box;

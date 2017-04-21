@@ -351,9 +351,18 @@ form {
 form {
   .social_login {
     label {
+      @include font-size(16.8);
+      line-height: 25px;
+      margin-bottom: 30px;
+      text-align: center;
+
       &:after {
         content: none;
       }
+    }
+
+    iframe {
+      max-width: 100%;
     }
   }
 }

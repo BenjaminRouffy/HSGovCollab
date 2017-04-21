@@ -5,9 +5,11 @@ namespace Drupal\user_registration\Form\Alter;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceAlterInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceBaseInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceSubmitInterface;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Class DefaultUserEditAlter.

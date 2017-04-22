@@ -6046,7 +6046,12 @@ footer {
       margin: 20px 0 10px; }
   .comment-wrapper .comment-item {
     margin: 40px 0; }
-  .comment-wrapper label {
+  .comment-wrapper .indented {
+    border-left: 1px dotted #80aabe;
+    margin-left: 80px;
+    padding-left: 20px; }
+  .comment-wrapper label,
+  .comment-wrapper details {
     display: none; }
   .comment-wrapper .user-info {
     position: relative; }
@@ -6072,8 +6077,8 @@ footer {
     text-align: right; }
     .comment-wrapper .rate-widget-thumbs-up:hover {
       opacity: .79; }
-    .comment-wrapper .rate-widget-thumbs-up .ajax-progress {
-      position: absolute; }
+  .comment-wrapper .ajax-progress {
+    position: absolute; }
   .comment-wrapper .rate-thumbs-up-btn-up,
   .comment-wrapper .rate-undo {
     background: none;

@@ -18,7 +18,14 @@
     margin: 40px 0;
   }
 
-  label {
+  .indented {
+    border-left: 1px dotted #80aabe;
+    margin-left: 80px;
+    padding-left: 20px;
+  }
+
+  label,
+  details {
     display: none;
   }
 
@@ -56,10 +63,10 @@
     &:hover {
       opacity: .79;
     }
+  }
 
-    .ajax-progress {
-      position: absolute;
-    }
+  .ajax-progress {
+    position: absolute;
   }
 
   .rate-thumbs-up-btn-up,

@@ -1,14 +1,9 @@
-<section{{ attributes }}>
+<section{{ attributes.addClass('comment-wrapper') }}>
   {% if comment_status %}
-    <h2{{ title_attributes }}>{{ 'Comments'|t }} ({{ comment_count }})</h2>
-  {% endif %}
-
-  {% if comment_form %}
     <div class="title-wrapper">
-      <h2{{ content_attributes }}>{{ 'Write comment'|t }}</h2>
+      <h2{{ title_attributes }}>{{ 'Comments'|t }} ({{ comment_count }})</h2>
       <div class="line"></div>
     </div>
-    {{ comment_form }}
   {% endif %}
 
   {% if comment_forbidden %}
@@ -18,4 +13,12 @@
   {% for item in items %}
     {{ item.content['comments'] }}
   {% endfor %}
+
+  {% if comment_form %}
+    <div class="title-wrapper">
+      <h2{{ content_attributes }}>{{ 'Write comment'|t }}</h2>
+      <div class="line"></div>
+    </div>
+    {{ comment_form }}
+  {% endif %}
 </section>

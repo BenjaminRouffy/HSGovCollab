@@ -1,0 +1,174 @@
+.comment-wrapper {
+  @include font-size(16.8);
+  font-family: $oswald;
+  font-weight: 400;
+  letter-spacing: .5px;
+
+  .title-wrapper {
+    margin-bottom: 20px;
+
+    h2 {
+      @include font-size(28);
+      line-height: 30px;
+      margin: 20px 0 10px;
+    }
+  }
+
+  .comment-item {
+    margin: 40px 0;
+  }
+
+  label {
+    display: none;
+  }
+
+  .user-info {
+    position: relative;
+
+    img {
+      border-radius: 50%;
+      margin-right: 20px;
+      max-width: 60px;
+    }
+
+    .name {
+      color: $navy-dark;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .commented {
+      color: $navy;
+      display: inline-block;
+      margin-left: 14px;
+      vertical-align: top;
+    }
+  }
+
+  .rate-widget-thumbs-up {
+    @include font-size(14);
+    color: #416170;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+
+    &:hover {
+      opacity: .79;
+    }
+
+    .ajax-progress {
+      position: absolute;
+    }
+  }
+
+  .rate-thumbs-up-btn-up,
+  .rate-undo {
+    background: none;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    text-indent: -9999px;
+    vertical-align: top;
+
+    &:after {
+      content: "H";
+      color: #416170;
+      font-family: $p4h;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-indent: 0;
+    }
+  }
+
+  .rate-undo {
+    &:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .rate-undo-vote {
+    display: inline;
+  }
+
+  .rate-score {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .comment-body {
+    @include font-size(15.4);
+    font-family: $fira;
+    letter-spacing: 0;
+    line-height: 23px;
+    margin-left: 80px;
+  }
+
+  .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      @include font-size(14);
+      font-family: $oswald;
+      color: #416170;
+      cursor: pointer;
+      display: inline-block;
+      margin: 15px 15px 0 0;
+      vertical-align: top;
+
+      &:hover {
+        opacity: .79;
+      }
+    }
+
+    .comment-edit,
+    .comment-reply {
+      a {
+        &:before {
+          content: "q";
+        }
+      }
+    }
+
+    .comment-delete {
+      a {
+        &:before {
+          content: "w";
+        }
+      }
+    }
+
+    .comment-show {
+      &:before {
+        content: "y";
+        font-family: $p4h;
+        margin-right: 5px;
+      }
+    }
+
+    a {
+      color: #416170;
+
+      &:before {
+        font-family: $p4h;
+        margin-right: 5px;
+      }
+
+      &:hover {
+        opacity: .79;
+      }
+    }
+  }
+
+  .form-textarea {
+    margin-bottom: 10px;
+  }
+
+  .form-actions {
+    text-align: center;
+  }
+}
+

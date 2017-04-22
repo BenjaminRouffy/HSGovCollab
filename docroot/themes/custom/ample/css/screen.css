@@ -475,6 +475,10 @@ svg {
 .phone-icon > span::after {
   content: "å"; }
 
+.thumb-up-icon > a::after,
+.thumb-up-icon > span::after {
+  content: "H"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -3124,7 +3128,7 @@ form {
 
 .form-submit {
   background: #fff;
-  border: 1px solid transparent;
+  border: 1px solid #ea3a32;
   color: #ea3a32;
   letter-spacing: 1px;
   padding: 15px 41px;
@@ -3132,9 +3136,8 @@ form {
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
   .form-submit:hover {
-    border-color: #ea3a32;
-    -webkit-transform: scale(1.04);
-            transform: scale(1.04); }
+    border-color: #8c2222;
+    color: #8c2222; }
 
 form .social_login label:after {
   content: none; }
@@ -6029,6 +6032,113 @@ footer {
   #calendar .fc-today {
     background: transparent;
     color: #ea3a32; }
+
+.comment-wrapper {
+  font-size: 1.05rem;
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  letter-spacing: .5px; }
+  .comment-wrapper .title-wrapper {
+    margin-bottom: 20px; }
+    .comment-wrapper .title-wrapper h2 {
+      font-size: 1.75rem;
+      line-height: 30px;
+      margin: 20px 0 10px; }
+  .comment-wrapper .comment-item {
+    margin: 40px 0; }
+  .comment-wrapper label {
+    display: none; }
+  .comment-wrapper .user-info {
+    position: relative; }
+    .comment-wrapper .user-info img {
+      border-radius: 50%;
+      margin-right: 20px;
+      max-width: 60px; }
+    .comment-wrapper .user-info .name {
+      color: #283b44;
+      display: inline-block;
+      vertical-align: top; }
+    .comment-wrapper .user-info .commented {
+      color: #4c7e96;
+      display: inline-block;
+      margin-left: 14px;
+      vertical-align: top; }
+  .comment-wrapper .rate-widget-thumbs-up {
+    font-size: 0.875rem;
+    color: #416170;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right; }
+    .comment-wrapper .rate-widget-thumbs-up:hover {
+      opacity: .79; }
+    .comment-wrapper .rate-widget-thumbs-up .ajax-progress {
+      position: absolute; }
+  .comment-wrapper .rate-thumbs-up-btn-up,
+  .comment-wrapper .rate-undo {
+    background: none;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    text-indent: -9999px;
+    vertical-align: top; }
+    .comment-wrapper .rate-thumbs-up-btn-up:after,
+    .comment-wrapper .rate-undo:after {
+      content: "H";
+      color: #416170;
+      font-family: P4h, sans-serif;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-indent: 0; }
+  .comment-wrapper .rate-undo:after {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); }
+  .comment-wrapper .rate-undo-vote {
+    display: inline; }
+  .comment-wrapper .rate-score {
+    display: inline-block;
+    vertical-align: top; }
+  .comment-wrapper .comment-body {
+    font-size: 0.9625rem;
+    font-family: "Fira Sans", sans-serif;
+    letter-spacing: 0;
+    line-height: 23px;
+    margin-left: 80px; }
+  .comment-wrapper .links {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    .comment-wrapper .links li {
+      font-size: 0.875rem;
+      font-family: Oswald, sans-serif;
+      color: #416170;
+      cursor: pointer;
+      display: inline-block;
+      margin: 15px 15px 0 0;
+      vertical-align: top; }
+      .comment-wrapper .links li:hover {
+        opacity: .79; }
+    .comment-wrapper .links .comment-edit a:before,
+    .comment-wrapper .links .comment-reply a:before {
+      content: "q"; }
+    .comment-wrapper .links .comment-delete a:before {
+      content: "w"; }
+    .comment-wrapper .links .comment-show:before {
+      content: "y";
+      font-family: P4h, sans-serif;
+      margin-right: 5px; }
+    .comment-wrapper .links a {
+      color: #416170; }
+      .comment-wrapper .links a:before {
+        font-family: P4h, sans-serif;
+        margin-right: 5px; }
+      .comment-wrapper .links a:hover {
+        opacity: .79; }
+  .comment-wrapper .form-textarea {
+    margin-bottom: 10px; }
+  .comment-wrapper .form-actions {
+    text-align: center; }
 
 .faq-list {
   margin: 0 auto;

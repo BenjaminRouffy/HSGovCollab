@@ -23,7 +23,7 @@ class EventAlter implements FormAlterServiceAlterInterface, FormAlterServiceVali
    * @param FormStateInterface $form_state
    */
   public function formAlter(&$form, FormStateInterface $form_state) {
-
+    $element = &$form['custom_date_widget'];
   }
 
   /**

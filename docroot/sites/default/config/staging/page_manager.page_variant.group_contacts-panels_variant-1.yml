@@ -1,0 +1,58 @@
+uuid: 65c75d98-ee7b-4a51-b749-510208e328db
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group_contacts
+    - views.view.cd_user_view
+  module:
+    - group
+    - group_customization
+    - panels
+    - views
+id: group_contacts-panels_variant-1
+label: 'Governance area'
+variant: panels_variant
+variant_settings:
+  blocks:
+    53c4293d-4d5d-4034-a4c8-7829997c48f3:
+      id: 'views_block:cd_user_view-block_3'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 53c4293d-4d5d-4034-a4c8-7829997c48f3
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 3cf7b60a-f4a0-4cca-97f0-dd58492bacae
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group_contacts-panels_variant-1
+  builder: standard
+page: group_contacts
+weight: 0
+selection_criteria:
+  -
+    id: group_type
+    group_types:
+      governance_area: governance_area
+    negate: 0
+    context_mapping:
+      group: group
+  -
+    id: access_by_group_roles
+    group_roles:
+      governance_area-member: governance_area-member
+    negate: 0
+    context_mapping:
+      group: group
+      user: current_user
+selection_logic: and
+static_context: {  }

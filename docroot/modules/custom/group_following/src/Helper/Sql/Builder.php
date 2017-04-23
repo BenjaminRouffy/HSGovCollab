@@ -79,7 +79,8 @@ class Builder {
   /**
    * {@inheritdoc}
    */
-  public function groupFollowing(AccountInterface $account) {
+  public function groupFollowing() {
+
     $select = db_select('group_content_field_data', 'gcf');
     $select->addField('gcf', 'id', 'id');
     $select->addField('gcf', 'gid', 'gid');
@@ -92,7 +93,7 @@ class Builder {
       ->where('gcf.id = gcff.entity_id'));
 
     // @TODO Replace to $account.
-    $select->condition('gcf.entity_id', $account->id());
+    // $select->condition('gcf.entity_id', $account->id());
     return $select;
   }
 

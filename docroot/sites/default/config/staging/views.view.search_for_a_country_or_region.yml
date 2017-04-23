@@ -427,7 +427,8 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
@@ -438,20 +439,19 @@ display:
         - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
         - 'config:core.entity_view_display.group.governance_area.time_line'
         - 'config:core.entity_view_display.group.governance_area.token'
-        - 'config:core.entity_view_display.group.project.bottom'
-        - 'config:core.entity_view_display.group.project.default'
-        - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
-        - 'config:core.entity_view_display.group.region.country_list_by_region'
-        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
         - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.project.bottom'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
   block_1:
     display_plugin: block
     id: block_1
@@ -1806,6 +1806,7 @@ display:
         fields: false
         title: false
         header: false
+        arguments: false
       relationships:
         group_following:
           id: group_following
@@ -2299,12 +2300,52 @@ display:
           title: Edit
           page: my_settings
           plugin_id: link_to_page
+      arguments:
+        uid:
+          id: uid
+          table: group_graph
+          field: uid
+          relationship: group_following
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: current_user
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          glossary: false
+          limit: 0
+          case: none
+          path_case: none
+          transform_dash: false
+          break_phrase: false
+          plugin_id: string
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
@@ -2524,6 +2565,7 @@ display:
         cache: false
         query: false
         header: false
+        arguments: false
       filter_groups:
         operator: AND
         groups:
@@ -2709,12 +2751,52 @@ display:
           title: Edit
           page: my_settings
           plugin_id: link_to_page
+      arguments:
+        uid:
+          id: uid
+          table: group_graph
+          field: uid
+          relationship: group_following
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: current_user
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          glossary: false
+          limit: 0
+          case: none
+          path_case: none
+          transform_dash: false
+          break_phrase: false
+          plugin_id: string
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'

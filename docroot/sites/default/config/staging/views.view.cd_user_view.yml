@@ -13,7 +13,9 @@ dependencies:
     - user.role.projects_managers
   module:
     - better_exposed_filters
+    - ggroup
     - group
+    - group_following
     - options
     - p4h_views_plugins
     - relation
@@ -1712,6 +1714,7 @@ display:
         relationships: false
         css_class: false
         arguments: false
+        group_by: false
       display_description: ''
       filters:
         status:
@@ -2011,42 +2014,6 @@ display:
             group_items: {  }
           entity_type: user
           plugin_id: numeric
-        field_follower_value:
-          id: field_follower_value
-          table: group_content__field_follower
-          field: field_follower_value
-          relationship: group_content
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: '1'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -2402,25 +2369,23 @@ display:
           admin_label: 'field_organisation: Taxonomy term'
           required: false
           plugin_id: standard
-        group_content:
-          id: group_content
+        group_following:
+          id: group_following
           table: users_field_data
-          field: group_content
+          field: group_following
           relationship: none
           group_type: group
-          admin_label: 'User group content'
-          required: false
-          group_content_plugins:
-            group_membership: group_membership
+          admin_label: 'Group following label for relationship'
+          required: true
           entity_type: user
-          plugin_id: group_content_to_entity_reverse
+          plugin_id: group_following
       css_class: view-contacts
       arguments:
         gid:
           id: gid
-          table: group_content_field_data
+          table: group_graph
           field: gid
-          relationship: group_content
+          relationship: group_following
           group_type: group
           admin_label: ''
           default_action: default
@@ -2447,11 +2412,13 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
+          glossary: false
+          limit: 0
+          case: none
+          path_case: none
+          transform_dash: false
           break_phrase: false
-          not: false
-          entity_type: group_content
-          entity_field: gid
-          plugin_id: group_id
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:

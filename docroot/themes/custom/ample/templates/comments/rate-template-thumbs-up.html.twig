@@ -7,6 +7,9 @@
     <a {{ up_attributes }} href="{{ up_url }}">{{ 'Up'|t }}</a>
   {% endif %}
   <div{{ score_attributes }}>
+    {% if not can_vote %}
+      <span class="rate-thumbs-up-btn-up"></span>
+    {% endif %}
     {{ up_votes }}
   </div>
 

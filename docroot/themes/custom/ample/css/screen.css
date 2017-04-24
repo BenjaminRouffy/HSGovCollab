@@ -3890,7 +3890,8 @@ form .social_login iframe {
 .form-my-settings #organisation-details,
 .form-my-settings #interests-wrapper,
 .form-my-settings #contact-details,
-.form-my-settings #address-details {
+.form-my-settings #address-details,
+.form-my-settings #managers-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3902,26 +3903,30 @@ form .social_login iframe {
   .form-my-settings #organisation-details, .ie9
   .form-my-settings #interests-wrapper, .ie9
   .form-my-settings #contact-details, .ie9
-  .form-my-settings #address-details {
+  .form-my-settings #address-details, .ie9
+  .form-my-settings #managers-wrapper {
     overflow: hidden; }
     .ie9 .form-my-settings #user-details .form-wrapper, .ie9
     .form-my-settings #organisation-details .form-wrapper, .ie9
     .form-my-settings #interests-wrapper .form-wrapper, .ie9
     .form-my-settings #contact-details .form-wrapper, .ie9
-    .form-my-settings #address-details .form-wrapper {
+    .form-my-settings #address-details .form-wrapper, .ie9
+    .form-my-settings #managers-wrapper .form-wrapper {
       float: left; }
   .form-my-settings #user-details .form-wrapper,
   .form-my-settings #organisation-details .form-wrapper,
   .form-my-settings #interests-wrapper .form-wrapper,
   .form-my-settings #contact-details .form-wrapper,
-  .form-my-settings #address-details .form-wrapper {
+  .form-my-settings #address-details .form-wrapper,
+  .form-my-settings #managers-wrapper .form-wrapper {
     padding: 0 40px;
     width: 50%; }
     .form-my-settings #user-details .form-wrapper .form-wrapper,
     .form-my-settings #organisation-details .form-wrapper .form-wrapper,
     .form-my-settings #interests-wrapper .form-wrapper .form-wrapper,
     .form-my-settings #contact-details .form-wrapper .form-wrapper,
-    .form-my-settings #address-details .form-wrapper .form-wrapper {
+    .form-my-settings #address-details .form-wrapper .form-wrapper,
+    .form-my-settings #managers-wrapper .form-wrapper .form-wrapper {
       padding: 0;
       width: 100%; }
 
@@ -3967,6 +3972,20 @@ form .social_login iframe {
   .form-my-settings #edit-account > .form-item {
     margin: 0;
     padding: 0 40px;
+    width: 50%; }
+
+.form-my-settings .role-status-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+  padding-bottom: 20px;
+  width: 100%; }
+  .form-my-settings .role-status-wrapper legend {
+    margin-bottom: 10px; }
+  .form-my-settings .role-status-wrapper fieldset {
+    padding: 0 40px;
+    margin: 0;
     width: 50%; }
 
 .form-my-settings #edit-field-organisations-wrapper,
@@ -4167,7 +4186,7 @@ form .social_login iframe {
   background: none;
   border-color: #ea3a32;
   font-weight: 700;
-  margin: 0 auto;
+  margin: 0 auto 15px;
   text-transform: none; }
   .form-my-settings .form-submit:not(.js-hide) {
     display: block; }

@@ -41,10 +41,20 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
 
     $form['account']['current_pass']['#weight'] = 10;
     $form['account']['pass']['#weight'] = 11;
-    $form['account']['status']['#weight'] = 12;
-    $form['account']['roles']['#weight'] = 13;
     $form['account']['current_pass']['#prefix'] = '<div class="form-item">';
     $form['account']['pass']['#suffix'] = '</div>';
+    $form['account']['wrap'] = [
+      '#prefix' => '<div class="role-status-wrapper">',
+      '#suffix' => '</div>',
+      '#weight' => -100,
+    ];
+
+    $form['account']['wrap']['roles'] =  $form['account']['roles'];
+    $form['account']['wrap']['status'] =  $form['account']['status'];
+    unset(
+      $form['account']['roles'],
+      $form['account']['status']
+    );
 
     foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {
       if (is_array($option)) {

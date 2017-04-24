@@ -43,11 +43,10 @@ third_party_settings:
         - field_person_titles
         - group_user_details
         - account
-        - field_project_manager
-        - field_country_manager
         - group_organisation_details
         - field_organisations
         - group_interests_wrapper
+        - group_managers
         - group_contact_details
         - group_address_details
       parent_name: ''
@@ -90,7 +89,7 @@ third_party_settings:
         - field_non_member_organization
         - field_job_title
       parent_name: group_my_profile
-      weight: 6
+      weight: 4
       format_type: html_element
       format_settings:
         id: organisation-details
@@ -109,7 +108,7 @@ third_party_settings:
         - field_mobilephone
         - field_telephone
       parent_name: group_my_profile
-      weight: 9
+      weight: 8
       format_type: html_element
       format_settings:
         id: contact-details
@@ -129,7 +128,7 @@ third_party_settings:
         - field_zip_code
         - field_country
       parent_name: group_my_profile
-      weight: 10
+      weight: 9
       format_type: html_element
       format_settings:
         id: address-details
@@ -148,7 +147,7 @@ third_party_settings:
         - field_following_countries
         - field_following_projects
       parent_name: group_my_profile
-      weight: 8
+      weight: 6
       format_type: html_element
       format_settings:
         label: 'Interests wrapper'
@@ -162,6 +161,24 @@ third_party_settings:
         id: interests-wrapper
         classes: ''
       label: 'Interests wrapper'
+    group_managers:
+      children:
+        - field_project_manager
+        - field_country_manager
+      parent_name: group_my_profile
+      weight: 7
+      format_type: html_element
+      format_settings:
+        id: managers-wrapper
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Managers
 id: user.user.default
 targetEntityType: user
 bundle: user
@@ -264,7 +281,7 @@ content:
     type: string_textfield
     region: content
   field_mobilephone:
-    weight: 7
+    weight: 22
     settings:
       size: 60
       placeholder: +
@@ -287,7 +304,7 @@ content:
     region: content
   field_organisations:
     type: entity_reference_paragraphs
-    weight: 7
+    weight: 5
     settings:
       title: Organisation
       title_plural: Organisations
@@ -310,7 +327,7 @@ content:
     third_party_settings: {  }
   field_skype_or_other:
     type: entity_reference_paragraphs
-    weight: 6
+    weight: 21
     settings:
       title: 'Skype or other'
       title_plural: 'Skype or other'
@@ -328,7 +345,7 @@ content:
     type: string_textfield
     region: content
   field_telephone:
-    weight: 8
+    weight: 23
     settings:
       size: 60
       placeholder: +

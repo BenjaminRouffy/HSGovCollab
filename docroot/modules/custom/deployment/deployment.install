@@ -804,3 +804,10 @@ function deployment_update_8058() {
 function deployment_update_8059() {
   \Drupal::service('module_installer')->install(['taxonomy_image_formatter']);
 }
+
+/**
+ * Install module "menu_item_visibility_by_group".
+ */
+function deployment_update_8059() {
+  \Drupal::service('module_installer')->install(['menu_item_visibility_by_group']);
+}

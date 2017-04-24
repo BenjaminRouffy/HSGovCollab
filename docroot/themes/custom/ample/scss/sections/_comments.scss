@@ -1,3 +1,36 @@
+.page-comment-edit-form {
+  .comment-form {
+    margin: 0 auto 20px;
+    max-width: 1160px;
+    width: 66.64%;
+  }
+
+  details {
+    margin-bottom: 15px;
+  }
+
+  summary {
+    outline: none;
+  }
+
+  .details-wrapper {
+    margin-top: 10px;
+  }
+
+  fieldset {
+    margin-top: 20px;
+  }
+
+  legend {
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
 .comment-wrapper {
   @include font-size(16.8);
   font-family: $oswald;

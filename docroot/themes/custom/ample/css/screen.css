@@ -1044,6 +1044,10 @@ footer > .partners {
       width: 100%;
       opacity: .37;
       z-index: -1; }
+    .mobile .top-banner-region .section-info-wrapper {
+      background-attachment: auto;
+      background-position: center;
+      background-size: 400%; }
   .top-banner-region .section-info {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3081,6 +3085,9 @@ form {
   -webkit-transition: all .2s ease;
   transition: all .2s ease;
   width: 100%; }
+  .ui-widget .form-text, .ui-widget .form-textarea, .ui-widget
+  .form-email {
+    font-family: "Fira Sans", sans-serif; }
   .form-text:hover, .form-textarea:hover,
   .form-email:hover {
     box-shadow: 0 0 6px 0 rgba(40, 59, 68, 0.38); }
@@ -3231,10 +3238,20 @@ form {
     outline: none; }
 
 .ie9 .select-wrapper {
-  background: #fff url(../images/select-arrows.png) right center no-repeat;
+  background: #fff;
   border: 1px solid #75a8c0;
   border-radius: 4px;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
+  .ie9 .select-wrapper:after {
+    background: #fff url(../images/select-arrows-ie.png) right center no-repeat;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px; }
 
 .ie9 .chosen-select-wrapper {
   border: none;
@@ -3276,8 +3293,25 @@ form {
     border-color: #8c2222;
     color: #8c2222; }
 
-form .social_login label:after {
-  content: none; }
+form .social_login label {
+  font-size: 1.05rem;
+  line-height: 25px;
+  margin-bottom: 27px; }
+  form .social_login label:after {
+    content: none; }
+
+form .social_login iframe {
+  display: block;
+  max-width: 266px;
+  width: 100% !important; }
+
+@media (max-width: 767px) {
+  form .social_login iframe {
+    margin: 0 auto; } }
+
+@media (max-width: 479px) {
+  form .social_login iframe {
+    max-width: 100%; } }
 
 .user-login-form {
   display: -webkit-box;
@@ -3296,6 +3330,8 @@ form .social_login label:after {
     overflow: hidden; }
     .ie9 .user-login-form .login-wrapper {
       float: right; }
+    .ie9 .user-login-form .form-text, .ie9 .user-login-form .form-textarea {
+      display: block !important; }
   .user-login-form .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;
@@ -3344,14 +3380,9 @@ form .social_login label:after {
     .user-login-form .login-wrapper {
       width: 100%; }
     .user-login-form .login-wrapper {
-      padding: 0 10px; }
+      padding: 0 20px; }
       .ie9 .user-login-form .login-wrapper {
         float: none; } }
-
-@media (max-width: 479px) {
-  .user-login-form .social_login,
-  .user-login-form .login-wrapper {
-    padding: 0; } }
 
 .form-contact-us {
   display: -webkit-box;
@@ -4109,6 +4140,10 @@ form .social_login label:after {
   display: block;
   clear: both; }
 
+.form-my-settings #edit-field-organisations-wrapper .field--name-field-job-title label.error {
+  right: 60px;
+  top: -3px; }
+
 .form-my-settings .paragraphs-dropbutton-wrapper .form-submit,
 .form-my-settings .field-add-more-submit.form-submit {
   font-weight: 400;
@@ -4374,6 +4409,10 @@ form .social_login label:after {
 
 .view-contacts .wrapper-filters > div {
   max-width: 25%; }
+  .ie10 .view-contacts .wrapper-filters > div {
+    max-width: calc(25% - 20px); }
+  .ie9 .view-contacts .wrapper-filters > div {
+    max-width: calc(25% - 25px); }
 
 .search-form-wrapper {
   position: relative; }
@@ -4412,7 +4451,10 @@ form .social_login label:after {
     .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px; }
-    .ie9 .view-news-and-events .wrapper-filters > div, .ie9 .view-my-projects .wrapper-filters > div, .ie9 .view-contacts .wrapper-filters > div {
+    .ie10 .view-news-and-events .wrapper-filters > div,
+    .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
+    .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
+    .ie9 .view-contacts .wrapper-filters > div {
       max-width: calc(33.33% - 20px); }
   .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
     width: 33.33%; } }
@@ -4420,7 +4462,10 @@ form .social_login label:after {
 @media (max-width: 767px) {
   .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
     max-width: calc(50% - 20px); }
-  .ie9 .view-news-and-events .wrapper-filters > div, .ie9 .view-my-projects .wrapper-filters > div, .ie9 .view-contacts .wrapper-filters > div {
+  .ie10 .view-news-and-events .wrapper-filters > div,
+  .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
+  .ie9 .view-contacts .wrapper-filters > div {
     max-width: calc(50% - 20px); }
   .front .view-news-and-events .title-wrapper, .front .view-my-projects .title-wrapper, .front .view-contacts .title-wrapper {
     margin: -40px 0 3px -20px; }
@@ -4432,7 +4477,10 @@ form .social_login label:after {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0; }
-  .ie9 .view-news-and-events .wrapper-filters > div, .ie9 .view-my-projects .wrapper-filters > div, .ie9 .view-contacts .wrapper-filters > div {
+  .ie10 .view-news-and-events .wrapper-filters > div,
+  .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
+  .ie9 .view-contacts .wrapper-filters > div {
     max-width: 100%; }
   .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
     width: 100%; } }
@@ -5228,6 +5276,7 @@ header {
     top: 60px; }
     .toolbar-fixed .header-static .mobile-menu-wrapper,
     .toolbar-vertical .header-static .mobile-menu-wrapper {
+      padding-bottom: 100px;
       top: 99px; } }
 
 @media (max-width: 479px) {
@@ -5312,6 +5361,10 @@ footer {
     width: 100%;
     opacity: .37;
     z-index: -1; }
+    .mobile footer:after {
+      background-attachment: auto;
+      background-position: center;
+      background-size: 300%; }
     body:not(.front) footer:after {
       background-color: #fff; }
   footer .partners {
@@ -5328,7 +5381,9 @@ footer {
 
 @media (max-width: 991px) {
   footer {
-    position: relative; } }
+    position: relative; }
+    footer > .partners {
+      display: block; } }
 
 .main-wrapper {
   min-height: calc(100% - 196px);
@@ -5358,11 +5413,15 @@ footer {
     width: 100%;
     opacity: .15;
     z-index: -1; }
+  .mobile .main-wrapper:after {
+    background-attachment: auto;
+    background-position: center;
+    background-size: 650%; }
   .user .main-wrapper {
     min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical) .main-wrapper:before {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact) .main-wrapper:before {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;

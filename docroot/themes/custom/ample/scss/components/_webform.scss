@@ -75,6 +75,10 @@ form {
   transition: all .2s ease;
   width: 100%;
 
+  .ui-widget & {
+    font-family: $fira;
+  }
+
   &:hover {
     box-shadow: 0 0 6px 0 rgba($navy-dark, .38);
   }
@@ -279,10 +283,22 @@ form {
 
 .ie9 {
   .select-wrapper {
-    background: $white url(../images/select-arrows.png) right center no-repeat;
+    background: $white;
     border: 1px solid #75a8c0;
     border-radius: 4px;
     overflow: hidden;
+    position: relative;
+
+    &:after {
+      background: $white url(../images/select-arrows-ie.png) right center no-repeat;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 16px;
+    }
   }
 
   .chosen-select-wrapper {
@@ -335,9 +351,35 @@ form {
 form {
   .social_login {
     label {
+      @include font-size(16.8);
+      line-height: 25px;
+      margin-bottom: 27px;
+
       &:after {
         content: none;
       }
+    }
+
+    iframe {
+      display: block;
+      max-width: 266px;
+      width: 100% !important;
+    }
+  }
+}
+
+@include breakpoint-for('form', (to: tablet)) {
+  .social_login {
+    iframe {
+      margin: 0 auto;
+    }
+  }
+}
+
+@include breakpoint-for('form', (to: mobileL)) {
+  .social_login {
+    iframe {
+      max-width: 100%;
     }
   }
 }
@@ -356,6 +398,10 @@ form {
 
     .login-wrapper {
       float: right;
+    }
+
+    .form-text {
+      display: block !important;
     }
   }
 
@@ -429,18 +475,11 @@ form {
   }
 
   .login-wrapper {
-    padding: 0 10px;
+    padding: 0 20px;
 
     .ie9 & {
       float: none;
     }
-  }
-}
-
-@include breakpoint-for('.user-login-form', (to: mobileL)) {
-  .social_login,
-  .login-wrapper {
-    padding: 0;
   }
 }
 
@@ -1518,6 +1557,13 @@ form {
       th {
         display: block;
         clear: both;
+      }
+    }
+
+    .field--name-field-job-title {
+      label.error {
+        right: 60px;
+        top: -3px;
       }
     }
   }

@@ -790,3 +790,10 @@ function deployment_update_8056() {
 function deployment_update_8057() {
   \Drupal::service('module_installer')->install(['relation']);
 }
+
+/**
+ * Install module "taxonomy_image_formatter".
+ */
+function deployment_update_8058() {
+  \Drupal::service('module_installer')->install(['taxonomy_image_formatter']);
+}

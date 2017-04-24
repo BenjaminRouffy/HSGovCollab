@@ -1,0 +1,112 @@
+uuid: 63d967d6-4e6c-489c-a12e-86ab0730fdf1
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group
+    - views.view.news_and_events_group
+  module:
+    - addtoany
+    - ctools
+    - ctools_block
+    - group
+    - panels
+    - views
+id: group-panels_variant-4
+label: Product
+variant: panels_variant
+variant_settings:
+  blocks:
+    e4b063d8-2b0b-470d-adba-b2128e524ad2:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: banner
+      region: banner
+      weight: 0
+      uuid: e4b063d8-2b0b-470d-adba-b2128e524ad2
+      context_mapping:
+        entity: group
+    7204e5a0-7a40-4639-b856-267bf2e89d0d:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: -1
+      uuid: 7204e5a0-7a40-4639-b856-267bf2e89d0d
+      context_mapping:
+        entity: group
+    864f2f3f-f7ed-49b2-8536-98ee5abe1907:
+      id: addtoany_block
+      label: 'AddToAny buttons'
+      provider: addtoany
+      label_display: '0'
+      region: content
+      weight: -2
+      uuid: 864f2f3f-f7ed-49b2-8536-98ee5abe1907
+      context_mapping: {  }
+    f4ada9d0-cbb7-42bf-82cd-bd2b62c33e68:
+      id: 'views_block:news_and_events_group-product_news_and_events_with_out_filter'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: f4ada9d0-cbb7-42bf-82cd-bd2b62c33e68
+      pager: view
+      context_mapping: {  }
+    56a6773d-0b1e-4bf5-af6b-9b8684666f43:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: bottom
+      region: content
+      weight: 1
+      uuid: 56a6773d-0b1e-4bf5-af6b-9b8684666f43
+      context_mapping:
+        entity: group
+    0c9c7e36-65df-4015-b1e8-a74d5478d08c:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: view_mode_registration_block
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: 0c9c7e36-65df-4015-b1e8-a74d5478d08c
+      context_mapping:
+        entity: group
+  id: panels_variant
+  uuid: 04561229-6eea-497d-b2b8-2e6ff6b0f60d
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group-panels_variant-4
+  builder: standard
+page: group
+weight: 0
+selection_criteria:
+  -
+    id: group_type
+    group_types:
+      product: product
+    negate: 0
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

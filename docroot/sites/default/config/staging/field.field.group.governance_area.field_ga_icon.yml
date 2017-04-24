@@ -6,14 +6,7 @@ dependencies:
     - field.storage.group.field_ga_icon
     - group.type.governance_area
   module:
-    - content_translation
     - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      alt: alt
-      title: title
-      file: '0'
 id: group.governance_area.field_ga_icon
 field_name: field_ga_icon
 entity_type: group
@@ -21,7 +14,7 @@ bundle: governance_area
 label: 'GA icon'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -1,0 +1,18 @@
+uuid: bcd2b899-147d-4e96-b937-ef898261778b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-group_node-news
+id: group_content.product-group_node-news.created
+field_name: created
+entity_type: group_content
+bundle: product-group_node-news
+label: 'Created on'
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

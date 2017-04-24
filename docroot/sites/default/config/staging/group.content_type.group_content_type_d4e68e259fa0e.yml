@@ -1,0 +1,19 @@
+uuid: 376fe6bf-e347-466e-a559-1b336be62b86
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+    - node.type.article
+  module:
+    - gnode
+    - node
+id: group_content_type_d4e68e259fa0e
+label: 'Knowledge Vault: Group node (Article)'
+description: 'Adds <em class="placeholder">Article</em> content to groups both publicly and privately.'
+group_type: knowledge_vault
+content_plugin: 'group_node:article'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

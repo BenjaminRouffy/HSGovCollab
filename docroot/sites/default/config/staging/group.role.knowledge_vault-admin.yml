@@ -1,0 +1,31 @@
+uuid: 7b7bd000-9769-41bf-835d-e315d5ec1338
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+id: knowledge_vault-admin
+label: Manager
+weight: 102
+internal: false
+audience: member
+group_type: knowledge_vault
+permissions_ui: true
+permissions:
+  0: 'access content overview'
+  1: 'edit group'
+  2: 'view group'
+  3: 'access group_node overview'
+  8: 'create group_node:article entity'
+  9: 'delete any group_node:article entity'
+  10: 'delete own group_node:article entity'
+  11: 'update any group_node:article entity'
+  12: 'update own group_node:article entity'
+  13: 'view group_node:article entity'
+  14: 'view unpublished group_node:article entity'
+  15: 'create group_node:article content'
+  16: 'delete any group_node:article content'
+  17: 'delete own group_node:article content'
+  18: 'update any group_node:article content'
+  19: 'update own group_node:article content'
+  20: 'view group_node:article content'

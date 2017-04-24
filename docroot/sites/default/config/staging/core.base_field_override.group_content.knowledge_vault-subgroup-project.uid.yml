@@ -1,0 +1,20 @@
+uuid: 7d405d69-7b14-4e60-9290-36d0270b9e4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.knowledge_vault-subgroup-project
+id: group_content.knowledge_vault-subgroup-project.uid
+field_name: uid
+entity_type: group_content
+bundle: knowledge_vault-subgroup-project
+label: 'Group content creator'
+description: 'The username of the group content creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupContent::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

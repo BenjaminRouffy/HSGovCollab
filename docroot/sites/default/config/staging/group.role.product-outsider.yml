@@ -1,0 +1,17 @@
+uuid: f48d96b6-c03f-4df1-8e5b-ede14126e4d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+id: product-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: product
+permissions_ui: true
+permissions:
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'

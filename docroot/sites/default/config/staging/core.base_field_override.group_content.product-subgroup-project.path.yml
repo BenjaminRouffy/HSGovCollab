@@ -1,0 +1,20 @@
+uuid: df91f9c6-4956-4b70-abfc-44838dd276d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-subgroup-project
+  module:
+    - path
+id: group_content.product-subgroup-project.path
+field_name: path
+entity_type: group_content
+bundle: product-subgroup-project
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

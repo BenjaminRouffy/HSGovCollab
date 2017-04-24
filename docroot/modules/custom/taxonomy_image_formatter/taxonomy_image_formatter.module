@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains taxonomy_image_formatter.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function taxonomy_image_formatter_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the p4h_svg_formatter module.
+    case 'help.page.taxonomy_image_formatter':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('P4H Taxonomy Image Formatter') . '</p>';
+      return $output;
+
+    default:
+  }
+}

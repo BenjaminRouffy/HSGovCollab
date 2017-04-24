@@ -1,0 +1,20 @@
+uuid: f861381c-1d78-46dd-8e4f-305610f1e967
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-group_node-event
+  module:
+    - path
+id: group_content.product-group_node-event.path
+field_name: path
+entity_type: group_content
+bundle: product-group_node-event
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

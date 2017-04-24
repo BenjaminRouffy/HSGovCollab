@@ -1,0 +1,16 @@
+uuid: b48541f4-cdbe-40d4-960b-afe25276f853
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-group_membership
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: group_content.product-group_membership
+target_entity_type_id: group_content
+target_bundle: product-group_membership
+default_langcode: site_default
+language_alterable: false

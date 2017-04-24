@@ -78,15 +78,8 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
       case 'views-exposed-form-list-of-projects-block-full':
       case 'views-exposed-form-list-of-projects-ga-block-full':
       case 'views-exposed-form-list-of-projects-region-full-block':
-      case 'views-exposed-form-search-for-a-country-or-region-projects':
-        $form['label']['#attributes']['placeholder'] = t('Search in projects');
-        break;
-
-      case 'views-exposed-form-search-for-a-country-or-region-block-2':
-        $form['combine_1']['#attributes']['placeholder'] = t('Search in countries');
-        break;
-
       case 'views-exposed-form-my-projects-block-my-projects':
+      case 'views-exposed-form-search-for-a-country-or-region-projects':
         $form['wrap'] = [
           '#prefix' => '<div class="wrapper-filters">',
           '#suffix' => '</div>',
@@ -101,6 +94,11 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
 
         $form['wrap']['label']['#prefix'] = '<div class="search-form-wrapper">';
         $form['wrap']['actions']['#suffix'] = '</div>';
+        break;
+
+      case 'views-exposed-form-search-for-a-country-or-region-block-2':
+        $form['combine_1']['#attributes']['placeholder'] = t('Search in countries');
+        break;
     }
 
     // Set autocomplete attribute

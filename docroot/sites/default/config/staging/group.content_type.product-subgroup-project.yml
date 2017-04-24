@@ -1,0 +1,16 @@
+uuid: bd60ce2d-af1a-495e-aa61-9bfeb15bc4f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+    - group.type.project
+id: product-subgroup-project
+label: 'Product: Subgroup (Project)'
+description: 'Adds <em class="placeholder">Project</em> groups to groups both publicly and privately.'
+group_type: product
+content_plugin: 'subgroup:project'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

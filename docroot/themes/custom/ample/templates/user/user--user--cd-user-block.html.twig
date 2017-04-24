@@ -1,7 +1,7 @@
 <article{{ attributes }}>
   {% if content %}
     <div class="icon-wrapper">
-      <img src="{{ file_url(content.field_avatar|render|striptags|trim) }}"/>
+        {{ content.field_avatar }}
     </div>
     <h3>
       {% if content.field_first_name %}

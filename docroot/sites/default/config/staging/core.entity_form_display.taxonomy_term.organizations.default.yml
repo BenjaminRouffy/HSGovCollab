@@ -1,0 +1,64 @@
+uuid: e4f2aabb-f641-46a6-b827-0ed89d0f3c85
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.browse_files_modal
+    - field.field.taxonomy_term.organizations.field_organisation_image
+    - taxonomy.vocabulary.organizations
+  module:
+    - entity_browser
+    - path
+    - text
+id: taxonomy_term.organizations.default
+targetEntityType: taxonomy_term
+bundle: organizations
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_organisation_image:
+    weight: 31
+    settings:
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: large
+    third_party_settings: {  }
+    type: entity_browser_file
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

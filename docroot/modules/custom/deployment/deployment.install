@@ -798,3 +798,9 @@ function deployment_update_8058() {
   \Drupal::service('module_installer')->install(['ajax_comments', 'rate']);
 }
 
+/**
+ * Install module "taxonomy_image_formatter".
+ */
+function deployment_update_8059() {
+  \Drupal::service('module_installer')->install(['taxonomy_image_formatter']);
+}

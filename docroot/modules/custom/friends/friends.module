@@ -8,6 +8,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\friends\Plugin\FieldPermissionType\FriendsAccess;
 use Drupal\Component\Utility\Html;
@@ -99,59 +100,114 @@ function friends_mail($key, &$message, $params) {
   switch ($key) {
    case 'connection_request':
      $message['from'] = \Drupal::config('system.site')->get('mail');
-     $message['subject'] = t('New connection request', $options);
+     $message['subject'] = \Drupal::token()->replace(\Drupal::config('user.mail')->get('friend_approve.subject'));
      $message['body'][] = $params['message'];
      break;
   }
 }
 
 /**
+ * Implements hook_token_info().
+ */
+function friends_token_info() {
+  $current_user['approve-url'] = [
+    'name' => t("Approve page"),
+    'description' => t("The URL of the current's approve page."),
+  ];
+
+  return [
+    'tokens' => [
+      'current-user' => $current_user,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function friends_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+
+  $current_user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  $url_options = ['absolute' => TRUE];
+  if (isset($options['langcode'])) {
+    $url_options['language'] = \Drupal::languageManager()->getLanguage($options['langcode']);
+    $langcode = $options['langcode'];
+  }
+  else {
+    $langcode = NULL;
+  }
+  $replacements = [];
+
+  if ($type == 'current-user') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+
+        case 'approve-url':
+          $result = Url::fromRoute('friends.approve', ['user' => $current_user->id()], ['absolute' => TRUE]);
+
+          $bubbleable_metadata->addCacheableDependency($result);
+          $replacements[$original] = $result->toString();
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+
+/**
  * Implements hook_form_alter().
  */
 function friends_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'views_exposed_form') {
-    switch ($form['#id']) {
-      case 'views-exposed-form-cd-user-view-all-contacts':
-        $form['wrap'] = [
-          '#prefix' => '<div class="wrapper-filters">',
-          '#suffix' => '</div>',
-          '#weight' => -100,
-        ];
+    if (strpos($form['#id'], 'views-exposed-form-cd-user-view') !== FALSE) {
+      $form['wrap'] = [
+        '#prefix' => '<div class="wrapper-filters">',
+        '#suffix' => '</div>',
+        '#weight' => -100,
+      ];
 
-        if (!empty($form['combine_taxonomy_term'])) {
-          $form['wrap']['combine_taxonomy_term'] =  $form['combine_taxonomy_term'];
-          $form['wrap']['combine_taxonomy_term']['#options']['All'] = $form['#info']['filter-combine_taxonomy_term']['label'];
-          $form['#info']['filter-combine_taxonomy_term']['label'] = '';
-          unset($form['combine_taxonomy_term']);
-        }
+      if (!empty($form['combine_taxonomy_term'])) {
+        $form['wrap']['combine_taxonomy_term'] =  $form['combine_taxonomy_term'];
+        $form['wrap']['combine_taxonomy_term']['#options']['All'] = $form['#info']['filter-combine_taxonomy_term']['label'];
+        $form['#info']['filter-combine_taxonomy_term']['label'] = '';
+        unset($form['combine_taxonomy_term']);
+      }
 
-        if (!empty($form['field_country_target_id'])) {
-          $form['wrap']['field_country_target_id'] =  $form['field_country_target_id'];
-          $form['wrap']['field_country_target_id']['#options']['All'] = $form['#info']['filter-field_country_target_id']['label'];
-          $form['#info']['filter-field_country_target_id']['label'] = '';
-          unset($form['field_country_target_id']);
-        }
+      if (!empty($form['field_country_target_id'])) {
+        $form['wrap']['field_country_target_id'] =  $form['field_country_target_id'];
+        $form['wrap']['field_country_target_id']['#options']['All'] = $form['#info']['filter-field_country_target_id']['label'];
+        $form['#info']['filter-field_country_target_id']['label'] = '';
+        unset($form['field_country_target_id']);
+      }
 
-        if (!empty($form['roles_target_id'])) {
-          $form['wrap']['roles_target_id'] =  $form['roles_target_id'];
-          $form['wrap']['roles_target_id']['#options']['All'] = $form['#info']['filter-roles_target_id']['label'];
-          $form['#info']['filter-roles_target_id']['label'] = '';
-          unset($form['roles_target_id']);
-        }
+      if (!empty($form['roles_target_id'])) {
+        $form['wrap']['roles_target_id'] =  $form['roles_target_id'];
+        $form['wrap']['roles_target_id']['#options']['All'] = $form['#info']['filter-roles_target_id']['label'];
+        $form['#info']['filter-roles_target_id']['label'] = '';
+        unset($form['roles_target_id']);
+      }
 
-        if (!empty($form['user_name'])) {
-          $form['wrap']['user_name'] = $form['user_name'];
-          unset($form['user_name']);
+      if (!empty($form['user_name'])) {
+        $form['wrap']['user_name'] = $form['user_name'];
+        unset($form['user_name']);
 
-          $form['wrap']['user_name']['#attributes']['placeholder'] = t('Search in contacts');
+        $form['wrap']['user_name']['#attributes']['placeholder'] = t('Search in contacts');
 
-          $form['wrap']['actions'] = $form['actions'];
-          unset($form['actions']);
+        $form['wrap']['actions'] = $form['actions'];
+        unset($form['actions']);
 
-          $form['wrap']['user_name']['#prefix'] = '<div class="search-form-wrapper">';
-          $form['wrap']['actions']['#suffix'] = '</div>';
-        }
-        break;
+        $form['wrap']['user_name']['#prefix'] = '<div class="search-form-wrapper">';
+        $form['wrap']['actions']['#suffix'] = '</div>';
+      }
     }
   }
+}
+
+function friends_config_schema_info_alter(&$definitions) {
+  $definitions['user.mail']['mapping']['friend_approve'] = [
+    'type' => 'mail',
+    'label' => 'Friend approve request',
+  ];
 }

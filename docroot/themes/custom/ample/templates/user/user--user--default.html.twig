@@ -38,8 +38,6 @@
           {{ content.field_mobilephone }}
         {% endif %}
 
-        {{ content.relation_form }}
-
         <div class="font-social-icon organization-icon">
           {% if elements['#organization'] is not empty %}
             <span>
@@ -67,6 +65,8 @@
             </span>
           </div>
         {% endif %}
+
+        {{ content.relation_form }}
 
         {% if elements['#current_user'] != user.id() %}
           <div class="contact-to-user">

@@ -1,0 +1,49 @@
+uuid: 17448832-cd11-48c5-811f-01fb571e2f46
+langcode: en
+status: true
+dependencies:
+  config:
+    - blocktabs.blocktabs.members_followers
+    - page_manager.page.group_contacts
+  module:
+    - blocktabs
+    - group
+    - panels
+id: group_contacts-panels_variant-0
+label: 'Region, Country, Project'
+variant: panels_variant
+variant_settings:
+  blocks:
+    04baa11e-4147-4c1a-9df5-d6660f05565c:
+      id: 'blocktabs_block:members_followers'
+      label: 'Blocktabs:Members & Followers'
+      provider: blocktabs
+      label_display: '0'
+      region: content
+      weight: 0
+      uuid: 04baa11e-4147-4c1a-9df5-d6660f05565c
+      context_mapping: {  }
+  id: panels_variant
+  uuid: e920072f-ee70-46d0-9161-1fb5fee459d4
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: null
+  storage_type: page_manager
+  storage_id: group_contacts-panels_variant-0
+  builder: standard
+page: group_contacts
+weight: 0
+selection_criteria:
+  -
+    id: group_type
+    group_types:
+      country: country
+      project: project
+      region: region
+    negate: 0
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

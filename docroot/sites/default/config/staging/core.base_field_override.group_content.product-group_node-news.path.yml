@@ -1,0 +1,20 @@
+uuid: bef4e9b0-e34b-44a1-88c6-2cafe9df2eac
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-group_node-news
+  module:
+    - path
+id: group_content.product-group_node-news.path
+field_name: path
+entity_type: group_content
+bundle: product-group_node-news
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

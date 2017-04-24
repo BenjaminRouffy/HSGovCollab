@@ -1,0 +1,20 @@
+uuid: b1976150-25c8-498b-8e53-f61ae8eb5b2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-group_node-document
+  module:
+    - path
+id: group_content.product-group_node-document.path
+field_name: path
+entity_type: group_content
+bundle: product-group_node-document
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

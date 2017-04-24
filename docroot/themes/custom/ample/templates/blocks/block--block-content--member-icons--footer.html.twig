@@ -1,4 +1,8 @@
-<p><strong>{{ 'P4H Members'|t }}:</strong></p>
+{% if content.field_copyright_text|field_value %}
+  <p>{{ content.field_copyright_text|field_value }}</p>
+{% endif %}
+
+<h4>{{ 'P4H Members'|t }}:</h4>
 
 <div class="partners">
   <div{{ attributes }}>
@@ -11,7 +15,3 @@
     {{ title_suffix }}
   </div>
 </div>
-
-{% if content.field_copyright_text|field_value %}
-  <p>{{ content.field_copyright_text|field_value }}</p>
-{% endif %}

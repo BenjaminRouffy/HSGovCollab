@@ -1,0 +1,16 @@
+uuid: eca5ef1b-3486-430e-9fd3-7892df893a7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: group.product
+target_entity_type_id: group
+target_bundle: product
+default_langcode: current_interface
+language_alterable: true

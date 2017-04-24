@@ -1,0 +1,20 @@
+uuid: 97f4bd21-8f36-49df-9a93-f49e039639a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.governance_area-group_membership
+  module:
+    - path
+id: group_content.governance_area-group_membership.path
+field_name: path
+entity_type: group_content
+bundle: governance_area-group_membership
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

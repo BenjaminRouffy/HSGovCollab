@@ -4,6 +4,7 @@ friends.connect:
     _controller: '\Drupal\friends\Controller\RelationController::connect'
   requirements:
     _permission: 'access content'
+    _user_is_logged_in: 'TRUE'
 
 friends.approve:
   path: '/user/{user}/approve'
@@ -11,3 +12,4 @@ friends.approve:
     _controller: '\Drupal\friends\Controller\RelationController::approve'
   requirements:
     _permission: 'access content'
+    _user_is_logged_in: 'TRUE'

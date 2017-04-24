@@ -1236,7 +1236,8 @@ form {
   #organisation-details,
   #interests-wrapper,
   #contact-details,
-  #address-details {
+  #address-details,
+  #managers-wrapper {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 15px;
@@ -1324,6 +1325,23 @@ form {
     > .form-item {
       margin: 0;
       padding: 0 40px;
+      width: 50%;
+    }
+  }
+
+  .role-status-wrapper {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    width: 100%;
+
+    legend {
+      margin-bottom: 10px;
+    }
+
+    fieldset {
+      padding: 0 40px;
+      margin: 0;
       width: 50%;
     }
   }
@@ -1608,7 +1626,7 @@ form {
     background: none;
     border-color: $red;
     font-weight: 700;
-    margin: 0 auto;
+    margin: 0 auto 15px;
     text-transform: none;
 
     &:not(.js-hide) {

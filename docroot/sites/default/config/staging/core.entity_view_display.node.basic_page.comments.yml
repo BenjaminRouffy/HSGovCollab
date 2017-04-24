@@ -1,0 +1,42 @@
+uuid: 73bdc6bc-a388-4216-aa69-2eeaabcbeb9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.common_comments.default
+    - core.entity_view_mode.node.comments
+    - field.field.node.basic_page.field_author
+    - field.field.node.basic_page.field_banner
+    - field.field.node.basic_page.field_bottom_link
+    - field.field.node.basic_page.field_comments
+    - field.field.node.basic_page.field_content_paragraph
+    - field.field.node.basic_page.field_join_block
+    - field.field.node.basic_page.field_time_line
+    - node.type.basic_page
+  module:
+    - comment
+    - user
+id: node.basic_page.comments
+targetEntityType: node
+bundle: basic_page
+mode: comments
+content:
+  field_comments:
+    type: comment_default
+    weight: 0
+    region: content
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_author: true
+  field_banner: true
+  field_bottom_link: true
+  field_content_paragraph: true
+  field_join_block: true
+  field_time_line: true
+  langcode: true
+  links: true

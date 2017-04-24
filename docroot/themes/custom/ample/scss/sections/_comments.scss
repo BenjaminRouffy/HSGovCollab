@@ -1,0 +1,287 @@
+.page-comment-edit-form {
+  .comment-form {
+    margin: 0 auto 20px;
+    max-width: 1160px;
+    width: 66.64%;
+  }
+
+  details {
+    margin-bottom: 15px;
+  }
+
+  summary {
+    outline: none;
+  }
+
+  .details-wrapper {
+    margin-top: 10px;
+  }
+
+  fieldset {
+    margin-top: 20px;
+  }
+
+  legend {
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.comment-wrapper {
+  @include font-size(16.8);
+  font-family: $oswald;
+  font-weight: 400;
+  letter-spacing: .5px;
+  position: relative;
+
+  .title-wrapper {
+    margin-bottom: 20px;
+
+    h2 {
+      @include font-size(28);
+      line-height: 30px;
+      margin: 20px 0 10px;
+    }
+  }
+
+  .status-message {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+
+    &.error {
+      li {
+        color: $red-dark;
+      }
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      color: $navy-dark;
+      margin-top: 0;
+    }
+  }
+
+  .comment-item {
+    margin: 40px 0;
+  }
+
+  .indented {
+    border-left: 1px dotted #80aabe;
+    margin-left: 80px;
+    padding-left: 20px;
+
+    > a {
+      display: none !important;
+    }
+
+    .comment-item {
+      margin: 0 0 20px;
+
+      &:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+        display: none;
+      }
+    }
+
+    &.expanded {
+      .comment-item {
+        &:nth-of-type(n) {
+          display: block;
+        }
+      }
+    }
+
+    .user-icon {
+      @include same(40px, height, width);
+    }
+
+    .comment-body {
+      margin-left: 60px;
+    }
+
+    .links {
+      li {
+        margin-top: 0;
+      }
+    }
+  }
+
+  label,
+  details {
+    display: none;
+  }
+
+  .user-icon {
+    @include same(60px, height, width);
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    overflow: hidden;
+  }
+
+  .user-info {
+    position: relative;
+
+    .name {
+      color: $navy-dark;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .commented {
+      color: $navy;
+      display: inline-block;
+      margin-left: 14px;
+      vertical-align: top;
+    }
+  }
+
+  .rate-widget-thumbs-up {
+    @include font-size(14);
+    color: #416170;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+
+    &:hover {
+      opacity: .79;
+    }
+  }
+
+  .ajax-progress {
+    position: absolute;
+  }
+
+  .rate-thumbs-up-btn-up,
+  .rate-undo {
+    background: none;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    text-indent: -9999px;
+    vertical-align: top;
+
+    &:after {
+      content: "H";
+      color: #416170;
+      font-family: $p4h;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-indent: 0;
+    }
+  }
+
+  .rate-undo {
+    &:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .rate-undo-vote {
+    display: inline;
+  }
+
+  .rate-score {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .comment-body {
+    @include font-size(15.4);
+    font-family: $fira;
+    letter-spacing: 0;
+    line-height: 23px;
+    margin-top: 10px;
+    margin-left: 80px;
+  }
+
+  .comment-form {
+    margin-bottom: 20px;
+  }
+
+  .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      @include font-size(14);
+      font-family: $oswald;
+      color: #416170;
+      cursor: pointer;
+      display: inline-block;
+      margin: 15px 15px 0 0;
+      vertical-align: top;
+
+      &:hover {
+        opacity: .79;
+      }
+    }
+
+    .comment-show {
+      display: none;
+
+      &:before {
+        content: "y";
+        font-family: $p4h;
+        margin-right: 5px;
+      }
+    }
+
+    a {
+      color: #416170;
+      text-decoration: none;
+
+      &:before {
+        font-family: $p4h;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  a {
+    &:hover {
+      opacity: .79;
+    }
+  }
+
+  .comment-edit,
+  .comment-reply {
+    a {
+      &:before {
+        content: "q";
+      }
+    }
+  }
+
+  .comment-delete {
+    a {
+      &:before {
+        content: "w";
+      }
+    }
+  }
+
+  [many-replies] {
+    .comment-show {
+      display: inline-block;
+    }
+  }
+
+  .form-textarea {
+    margin-bottom: 10px;
+  }
+
+  .form-actions {
+    text-align: center;
+  }
+}
+

@@ -15,6 +15,8 @@ use Drupal\taxonomy\Entity\Term;
 use \Drupal\paragraphs\Entity\Paragraph;
 use \Drupal\group\Entity\Group;
 use Drupal\views\ViewExecutable;
+use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Additional settings for ample setting form.
@@ -168,6 +170,58 @@ function ample_preprocess_field(array &$variables) {
       }
 
       $variables['#attached']['library'][] = 'ample/plyr';
+      break;
+
+    case 'field_comments':
+      // Check comments static count.
+      $node = $variables['element']['#object'];
+      if ($variables['element']['#items']->status != CommentItemInterface::CLOSED
+        && $variables['element']['#items']->status != CommentItemInterface::HIDDEN
+      ) {
+        $variables['comment_status'] = TRUE;
+        $variables['comment_count'] = $node->get('field_comments')->comment_count;
+        // Add link for anonymous user.
+        if ($variables['user']->isAnonymous()) {
+          $variables['comment_forbidden'] = new TranslatableMarkup(
+            "For adding comments please <a href='@register'>sign up</a> or <a href='@login'>log in</a>",
+            [
+              '@login' => Url::fromRoute('page_manager.page_view_user_login')->toString(),
+              '@register' => Url::fromRoute('page_manager.page_view_sign_up')->toString(),
+            ]
+          );
+        }
+      }
+      // Check children comments count.
+      $parents = [];
+      foreach ($variables['items'] as $i => $item) {
+        foreach ($variables['items'][$i]['content']['comments'] as $key => $comment) {
+          if (is_numeric($key)) {
+            $variables['items'][$i]['content']['comments'][$key]['#cid'] = $comment['#comment']->id();
+            $variables['items'][$i]['content']['comments'][$key]['#is_parent'] = TRUE;
+
+            if ($comment['#comment']->getParentComment()) {
+              $parents[$comment['#comment']->getParentComment()
+                ->id()][] = $comment['#comment']->id();
+              $variables['items'][$i]['content']['comments'][$key]['#is_parent'] = FALSE;
+            }
+          }
+        }
+
+        foreach ($parents as $parent_id => $children) {
+          foreach ($variables['items'][$i]['content']['comments'] as $key => $comment) {
+            if (is_numeric($key)) {
+              if ($parent_id == $variables['items'][$i]['content']['comments'][$key]['#cid']
+                && $variables['items'][$i]['content']['comments'][$key]['#is_parent']
+              ) {
+                if (count($children) > 2) {
+                  $variables['items'][$i]['content']['comments'][$key]['#replies_count'] = TRUE;
+                }
+              }
+            }
+          }
+        }
+      }
+
       break;
   }
 }
@@ -343,4 +397,32 @@ function ample_preprocess_blocktabs(&$variables) {
   foreach ($variables['tabs'] as $id => $tab) {
     $variables['tabs'][$id]->title = t($variables['tabs'][$id]->title);
   }
+}
+
+/**
+ * Implements template_preprocess_comment().
+ */
+function ample_preprocess_comment(&$variables) {
+  // Set comment created date interval.
+  $date = $variables['comment']->getCreatedTime();
+  $current_date = \Drupal::time()->getRequestTime();
+  $variables['created'] = \Drupal::service('date.formatter')->formatInterval($current_date - $date);
+  $variables['submitted'] = t('@datetime', ['@datetime' => $variables['created']]);
+  // Rewrite {{ user_picture }} variable.
+  $comment = $variables['elements']['#comment'];
+  $account = $comment->getOwner();
+  $variables['user_picture'] = user_view($account, 'comment_author');
+
+  $first_name = '';
+  $last_name = '';
+
+  if (!empty($account->get('field_first_name'))) {
+    $first_name = $account->get('field_first_name')->value;
+  }
+
+  if (!empty($account->get('field_last_name'))) {
+    $last_name = $account->get('field_last_name')->value;
+  }
+
+  $variables['author_name'] = $first_name . ' ' . $last_name;
 }

@@ -532,6 +532,17 @@
     }
   };
 
+  Drupal.behaviors.comments = {
+    attach: function(context, settings) {
+      $('.comment-show', context).on('click', function() {
+        var $this = $(this);
+
+        $this.parents('.comment-item').siblings('.indented').first().addClass('expanded');
+        $this.remove();
+      });
+    }
+  };
+
   Drupal.behaviors.ieFixes = {
     attach: function(context, settings) {
       // IE 9

@@ -1,0 +1,28 @@
+uuid: 963c1542-fb83-478a-b001-a2010d2abb9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.common_comments
+    - field.field.comment.common_comments.field_comment_body
+id: comment.common_comments.default
+targetEntityType: comment
+bundle: common_comments
+mode: default
+content:
+  author:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_comment_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: 'Example text'
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  langcode: true
+  subject: true

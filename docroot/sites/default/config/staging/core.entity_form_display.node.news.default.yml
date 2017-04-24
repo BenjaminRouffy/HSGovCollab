@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_author
     - field.field.node.news.field_category
+    - field.field.node.news.field_comments
     - field.field.node.news.field_content_date
     - field.field.node.news.field_content_paragraph
     - field.field.node.news.field_documents
@@ -17,6 +18,7 @@ dependencies:
     - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
+    - comment
     - datetime
     - entity_browser
     - field_group
@@ -140,6 +142,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_comments:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
     region: content
   field_content_date:
     weight: 3

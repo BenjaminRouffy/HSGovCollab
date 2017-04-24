@@ -24,9 +24,14 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
    *   The processed path.
    */
   public function processInbound($path, Request $request) {
-    if (preg_match('~/user/(register|login|\d+/edit$)~is', $path, $match) === 1) {
+    if (preg_match('~/user/(register|login)~is', $path, $match) === 1) {
       return "/user/" . $this->getPath($match[1]);
     }
+
+    if (preg_match('~/user/(\d+/edit$)~is', $path, $match) === 1) {
+      return "/user/" . $this->getEditPath($match[1]);
+    }
+
     return $path;
   }
 
@@ -66,9 +71,14 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
    *   The processed path.
    */
   public function processOutbound($path, &$options = array(), Request $request = NULL, BubbleableMetadata $bubbleable_metadata = NULL) {
-    if (preg_match('~/user/(register|login|\d+/edit$)~is', $path, $match) === 1) {
+    if (preg_match('~/user/(register|login)~is', $path, $match) === 1) {
       return "/user/" . $this->getPath($match[1]);
     }
+
+    if (preg_match('~/user/(\d+/edit$)~is', $path, $match) === 1) {
+      return "/user/" . $this->getEditPath($match[1]);
+    }
+
     return $path;
   }
 
@@ -78,6 +88,18 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
    * @return string
    */
   private function getPath(string $match_path) {
+    return [
+      'register' => 'sign-up',
+      'login' => 'sign-in',
+    ][$match_path];
+  }
+
+  /**
+   * @param string $match_path
+   *
+   * @return string
+   */
+  private function getEditPath(string $match_path) {
     $user = \Drupal::currentUser();
     $user_path = $match_path;
 
@@ -86,8 +108,6 @@ class RegisterPathProcessorAlias implements InboundPathProcessorInterface, Outbo
     }
 
     return [
-      'register' => 'sign-up',
-      'login' => 'sign-in',
       $match_path => $user_path,
     ][$match_path];
   }

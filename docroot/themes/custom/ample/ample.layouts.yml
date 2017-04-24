@@ -12,10 +12,21 @@ default_layout:
     bottom:
       label: Bottom region
 two_column:
-  label: Two column
+  label: Two column (right sidebar)
   category: Ample
   template: templates/page_layouts/two-column
   regions:
+    left_sidebar:
+     label: Left sidebar
+    right_sidebar:
+     label: Right sidebar
+two_column_left:
+  label: Two column (left sidebar)
+  category: Ample
+  template: templates/page_layouts/two-column-left
+  regions:
+    top:
+     label: Top region
     left_sidebar:
      label: Left sidebar
     right_sidebar:

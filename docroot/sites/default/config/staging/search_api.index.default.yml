@@ -1,0 +1,97 @@
+uuid: 9af0c47e-7910-436d-bb89-ce11686df118
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_documents
+    - field.storage.group.field_summary
+    - search_api.server.default
+  module:
+    - search_api
+    - node
+    - group
+    - user
+id: default
+name: Default
+description: ''
+read_only: false
+field_settings:
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  field_documents:
+    label: 'Related documents'
+    datasource_id: 'entity:node'
+    property_path: field_documents
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_documents
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+  label:
+    label: Title
+    datasource_id: 'entity:group'
+    property_path: label
+    type: string
+  type_1:
+    label: 'Group type'
+    datasource_id: 'entity:group'
+    property_path: type
+    type: string
+  field_summary:
+    label: Summary
+    datasource_id: 'entity:group'
+    property_path: field_summary
+    type: text
+    dependencies:
+      config:
+        - field.storage.group.field_summary
+  name:
+    label: Name
+    datasource_id: 'entity:user'
+    property_path: name
+    type: string
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+  'entity:group':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+  'entity:user':
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
+tracker_settings:
+  default: {  }
+options:
+  index_directly: true
+  cron_limit: 50
+server: default

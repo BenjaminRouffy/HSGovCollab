@@ -6359,6 +6359,8 @@ footer {
     .comment-wrapper .indented .user-icon {
       height: 40px;
       width: 40px; }
+    .comment-wrapper .indented .comment-body {
+      margin-left: 60px; }
     .comment-wrapper .indented .links li {
       margin-top: 0; }
   .comment-wrapper label,
@@ -6423,6 +6425,7 @@ footer {
     font-family: "Fira Sans", sans-serif;
     letter-spacing: 0;
     line-height: 23px;
+    margin-top: 10px;
     margin-left: 80px; }
   .comment-wrapper .comment-form {
     margin-bottom: 20px; }
@@ -6447,12 +6450,13 @@ footer {
         font-family: P4h, sans-serif;
         margin-right: 5px; }
     .comment-wrapper .links a {
-      color: #416170; }
+      color: #416170;
+      text-decoration: none; }
       .comment-wrapper .links a:before {
         font-family: P4h, sans-serif;
         margin-right: 5px; }
-      .comment-wrapper .links a:hover {
-        opacity: .79; }
+  .comment-wrapper a:hover {
+    opacity: .79; }
   .comment-wrapper .comment-edit a:before,
   .comment-wrapper .comment-reply a:before {
     content: "q"; }

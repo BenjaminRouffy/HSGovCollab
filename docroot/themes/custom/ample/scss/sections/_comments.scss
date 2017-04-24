@@ -68,6 +68,10 @@
       @include same(40px, height, width);
     }
 
+    .comment-body {
+      margin-left: 60px;
+    }
+
     .links {
       li {
         margin-top: 0;
@@ -162,6 +166,7 @@
     font-family: $fira;
     letter-spacing: 0;
     line-height: 23px;
+    margin-top: 10px;
     margin-left: 80px;
   }
 
@@ -200,15 +205,18 @@
 
     a {
       color: #416170;
+      text-decoration: none;
 
       &:before {
         font-family: $p4h;
         margin-right: 5px;
       }
+    }
+  }
 
-      &:hover {
-        opacity: .79;
-      }
+  a {
+    &:hover {
+      opacity: .79;
     }
   }
 

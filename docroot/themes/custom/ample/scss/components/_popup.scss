@@ -113,6 +113,27 @@
   .ui-dialog-titlebar {
     display: none;
   }
+
+  .ui-dialog-buttonpane {
+    .ui-dialog-buttonset {
+      float: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+
+  .button {
+    @extend .form-submit;
+    @include font-size(24);
+    border-radius: 0;
+    font-family: $oswald;
+    letter-spacing: .5px;
+
+    span {
+      padding: 0;
+      text-transform: none;
+    }
+  }
 }
 
 @include breakpoint-for('.ui-dialog', (to: desktop)) {
@@ -125,4 +146,10 @@
 
 @include breakpoint-for('.ui-dialog', (to: tablet)) {
   width: 90% !important;
+}
+
+.comment-confirm-form {
+  @include font-size(24);
+  line-height: 30px;
+  text-align: center;
 }

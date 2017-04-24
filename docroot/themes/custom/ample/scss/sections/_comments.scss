@@ -15,6 +15,26 @@
     }
   }
 
+  .status-message {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+
+    &.error {
+      li {
+        color: $red-dark;
+      }
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      color: $navy-dark;
+      margin-top: 0;
+    }
+  }
+
   .comment-item {
     margin: 40px 0;
   }

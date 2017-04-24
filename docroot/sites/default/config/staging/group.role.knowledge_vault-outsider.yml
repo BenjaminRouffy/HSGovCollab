@@ -1,0 +1,17 @@
+uuid: fcff10a0-6d5c-4f15-a8e9-3ee810e50831
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+id: knowledge_vault-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: knowledge_vault
+permissions_ui: true
+permissions:
+  0: 'view group'
+  1: 'access group_node overview'
+  4: 'view group_node:article entity'

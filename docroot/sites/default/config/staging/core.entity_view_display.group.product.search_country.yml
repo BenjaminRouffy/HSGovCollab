@@ -1,0 +1,57 @@
+uuid: 95dff690-169c-4df6-b33e-dca6c8bfba48
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.search_country
+    - field.field.group.product.field_banner
+    - field.field.group.product.field_bottom_link
+    - field.field.group.product.field_content
+    - field.field.group.product.field_date
+    - field.field.group.product.field_faq
+    - field.field.group.product.field_infographic
+    - field.field.group.product.field_join_block
+    - field.field.group.product.field_region_icon
+    - field.field.group.product.field_summary
+    - field.field.group.product.field_time_line
+    - group.type.product
+  module:
+    - entity_reference_revisions
+    - image
+id: group.product.search_country
+targetEntityType: group
+bundle: product
+mode: search_country
+content:
+  field_infographic:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: search_for_a_country
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_region_icon:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_bottom_link: true
+  field_content: true
+  field_date: true
+  field_faq: true
+  field_join_block: true
+  field_summary: true
+  field_time_line: true
+  label: true
+  langcode: true
+  uid: true

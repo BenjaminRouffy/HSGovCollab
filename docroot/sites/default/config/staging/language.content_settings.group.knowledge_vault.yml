@@ -1,0 +1,16 @@
+uuid: 8f6576ac-1ab1-4036-9454-30045a589414
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: group.knowledge_vault
+target_entity_type_id: group
+target_bundle: knowledge_vault
+default_langcode: current_interface
+language_alterable: true

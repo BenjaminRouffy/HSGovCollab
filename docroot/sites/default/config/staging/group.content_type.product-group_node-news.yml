@@ -1,0 +1,19 @@
+uuid: 8df8a6d6-0ff5-459c-b6d9-0d1e070bb453
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+    - node.type.news
+  module:
+    - gnode
+    - node
+id: product-group_node-news
+label: 'Product: Group node (News)'
+description: 'Adds <em class="placeholder">News</em> content to groups both publicly and privately.'
+group_type: product
+content_plugin: 'group_node:news'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

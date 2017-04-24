@@ -1,0 +1,20 @@
+uuid: 5abead20-430a-465a-86fd-60b58c495ce9
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.governance_area-group_node-event
+  module:
+    - path
+id: group_content.governance_area-group_node-event.path
+field_name: path
+entity_type: group_content
+bundle: governance_area-group_node-event
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

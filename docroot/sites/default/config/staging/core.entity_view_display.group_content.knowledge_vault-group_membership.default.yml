@@ -1,0 +1,24 @@
+uuid: 504fb6ca-e273-4b68-b03c-5c6028b16a03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.knowledge_vault-group_membership.group_roles
+    - group.content_type.knowledge_vault-group_membership
+id: group_content.knowledge_vault-group_membership.default
+targetEntityType: group_content
+bundle: knowledge_vault-group_membership
+mode: default
+content:
+  group_roles:
+    label: above
+    type: entity_reference_label
+    settings:
+      link: false
+    weight: -4
+    third_party_settings: {  }
+    region: content
+hidden:
+  entity_id: true
+  langcode: true
+  uid: true

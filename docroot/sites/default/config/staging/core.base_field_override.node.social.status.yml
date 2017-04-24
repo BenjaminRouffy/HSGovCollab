@@ -1,0 +1,22 @@
+uuid: ecf694f4-edde-4727-b8b8-85357ca61d7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.social
+id: node.social.status
+field_name: status
+entity_type: node
+bundle: social
+label: 'Publishing status'
+description: 'A boolean indicating the published state.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

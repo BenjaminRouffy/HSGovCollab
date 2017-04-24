@@ -1,0 +1,20 @@
+uuid: 409ef42b-0eb7-46fd-b38f-f8ebf840f211
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-group_membership
+  module:
+    - path
+id: group_content.product-group_membership.path
+field_name: path
+entity_type: group_content
+bundle: product-group_membership
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

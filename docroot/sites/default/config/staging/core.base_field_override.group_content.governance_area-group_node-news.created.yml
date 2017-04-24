@@ -1,0 +1,18 @@
+uuid: 0a14036f-6340-4724-8daf-0840c6d94f76
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.governance_area-group_node-news
+id: group_content.governance_area-group_node-news.created
+field_name: created
+entity_type: group_content
+bundle: governance_area-group_node-news
+label: 'Created on'
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

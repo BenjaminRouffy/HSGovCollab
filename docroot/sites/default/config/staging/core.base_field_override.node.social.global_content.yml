@@ -1,0 +1,22 @@
+uuid: 8d163cd3-d17c-4d5a-b0e6-c4f7e4b6a2d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.social
+id: node.social.global_content
+field_name: global_content
+entity_type: node
+bundle: social
+label: 'Global content'
+description: 'For marking content as global'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,11 @@
+uuid: ecf9a075-6743-4b21-870a-77348c6cb0e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_legal.document.terms_and_conditions
+id: entity_legal_document_version.terms_and_conditions
+target_entity_type_id: entity_legal_document_version
+target_bundle: terms_and_conditions
+default_langcode: site_default
+language_alterable: false

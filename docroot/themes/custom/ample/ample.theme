@@ -9,6 +9,7 @@ use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteProvider;
 use Drupal\Core\Url;
+use Drupal\group\Entity\GroupType;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use \Drupal\paragraphs\Entity\Paragraph;
@@ -147,7 +148,9 @@ function ample_preprocess_group(array &$variables) {
   if ('default' === $variables['view_mode']) {
     /* @var Group $group */
     $group = $variables['group'];
-    if ('governance_area' != $group->getGroupType()->id()) {
+    $group_type = GroupType::load($group->bundle());
+
+    if (!$group_type->getThirdPartySetting('group_dashboard', 'hide_follow_button', 0)) {
       $variables['following_form'] = \Drupal::formBuilder()
         ->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $group);
     }
@@ -187,8 +190,12 @@ function ample_preprocess_paragraph(array &$variables) {
       $variables['group_label'] = \Drupal::entityManager()
         ->getTranslationFromContext($entity)
         ->label();
+
       $variables['group_bundle'] = $entity->bundle();
-      if ('governance_area' != $entity->bundle()) {
+
+      $group_type = GroupType::load($variables['group_bundle']);
+
+      if (!$group_type->getThirdPartySetting('group_dashboard', 'hide_follow_button', 0)) {
         $variables['following_form'] = \Drupal::formBuilder()
           ->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $entity);
       }

@@ -41,14 +41,7 @@ class RelationController extends ControllerBase {
 
       $result = \Drupal::service('plugin.manager.mail')
         ->mail('friends', 'connection_request', $user->getEmail(), $user->getPreferredLangcode(), [
-          'message' => $this->t(
-            '<a href="@profile_link">@profile_link_text</a> would like to connect with you. If you wanna to connect with the user, please click <a href="@approve_link">here</a>. If you don\'t want to connect the user please just ignore the message.',
-            [
-              '@profile_link' => Url::fromRoute('entity.user.canonical', ['user' => $current_user->id()], ['absolute' => TRUE])->toString(),
-              '@profile_link_text' => $current_user->realname,
-              '@approve_link' => Url::fromRoute('friends.approve', ['user' => $current_user->id()], ['absolute' => TRUE])->toString(),
-            ]
-          ),
+          'message' => \Drupal::token()->replace(\Drupal::config('user.mail')->get('friend_approve.body'))
         ], NULL, TRUE);
     }
 

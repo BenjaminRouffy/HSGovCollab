@@ -1,16 +1,5 @@
-{% if content %}
-  <a href="#">
-    {% if content.field_avatar %}
-      {{ content.field_avatar }}
-    {% endif %}
-    <div class="name">
-      {% if content.field_first_name %}
-        {{ content.field_first_name }}
-      {% endif %}
-
-      {% if content.field_last_name %}
-        {{ content.field_last_name }}
-      {% endif %}
-    </div>
-  </a>
+{% if content.field_avatar %}
+  <div class="user-icon">
+    {{ content.field_avatar }}
+  </div>
 {% endif %}

@@ -7,23 +7,29 @@
   #}
   <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
 
-  <div class="user-info">
-    {{ user_picture }}
-    <span class="commented">{{ submitted }}</span>
+  {{ user_picture }}
 
-    {#
-      Indicate the semantic relationship between parent and child comments for
-      accessibility. The list is difficult to navigate in a screen reader
-      without this information.
-    #}
-    {% if parent %}
-      <p class="visually-hidden">{{ parent }}</p>
-    {% endif %}
+  <div class="comment-container">
+    <div class="user-info">
+      <div class="name">
+        {{ author_name }}
+      </div>
+      <span class="commented">{{ submitted }}</span>
 
-    {{ content.votingapi_links }}
-  </div>
-  <div{{ content_attributes.addClass('comment-body') }}>
-    {{ content.field_comment_body }}
-    {{ content.links }}
+      {#
+        Indicate the semantic relationship between parent and child comments for
+        accessibility. The list is difficult to navigate in a screen reader
+        without this information.
+      #}
+      {% if parent %}
+        <p class="visually-hidden">{{ parent }}</p>
+      {% endif %}
+
+      {{ content.votingapi_links }}
+    </div>
+    <div{{ content_attributes.addClass('comment-body') }}>
+      {{ content.field_comment_body }}
+      {{ content.links }}
+    </div>
   </div>
 </article>

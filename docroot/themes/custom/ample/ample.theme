@@ -405,4 +405,17 @@ function ample_preprocess_comment(&$variables) {
   $comment = $variables['elements']['#comment'];
   $account = $comment->getOwner();
   $variables['user_picture'] = user_view($account, 'comment_author');
+
+  $first_name = '';
+  $last_name = '';
+
+  if (!empty($account->get('field_first_name'))) {
+    $first_name = $account->get('field_first_name')->value;
+  }
+
+  if (!empty($account->get('field_last_name'))) {
+    $last_name = $account->get('field_last_name')->value;
+  }
+
+  $variables['author_name'] = $first_name . ' ' . $last_name;
 }

@@ -6,3 +6,6 @@ edit private user profile:
 
 view superadmin account:
   title: 'View superadmin account'
+
+permission_callbacks:
+  - \Drupal\friends\UserViewPermissions::permissions

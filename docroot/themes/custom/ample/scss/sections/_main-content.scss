@@ -96,6 +96,39 @@
   }
 }
 
+.bottom-teaser {
+  padding-bottom: 160px;
+
+  ~ .full-width {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    .logged & {
+      left: 80px;
+      width: calc(100% - 80px);
+    }
+  }
+}
+
+@include breakpoint-for('.bottom-teaser', (to: tablet)) {
+  ~ .full-width {
+    .logged & {
+      left: 0;
+      width: 100%;
+    }
+  }
+}
+
+@include breakpoint-for('.bottom-teaser', (to: mobileL)) {
+  padding-bottom: 40px;
+
+  ~ .full-width {
+    position: static;
+  }
+}
+
 .region-wrapper {
   @include clearfix();
 }

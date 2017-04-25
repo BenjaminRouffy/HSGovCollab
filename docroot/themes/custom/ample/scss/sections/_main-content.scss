@@ -1,12 +1,13 @@
 .main-wrapper {
-  min-height: calc(100% - 196px);
+  margin-bottom: 160px;
+  min-height: calc(100% - 327px);
   overflow-x: hidden;
   position: relative;
   z-index: 310;
 
   &:before {
     background-color: $white-dark;
-    //box-shadow: inset 0 0 8px rgba($black, .11);
+    box-shadow: inset 0 0 8px rgba($black, .11);
     content: "";
     position: absolute;
     top: 0;
@@ -41,9 +42,9 @@
     }
   }
 
-  .user & {
-    min-height: calc(100% - 316px);
-  }
+  //.user & {
+  //  min-height: calc(100% - 316px);
+  //}
 
   .logged & {
     padding-left: 80px;
@@ -65,6 +66,10 @@
   .logged & {
     padding-left: 0;
   }
+}
+
+@include breakpoint-for('.main-wrapper', (to: laptop-small)) {
+  margin-bottom: 0;
 }
 
 .content-container {

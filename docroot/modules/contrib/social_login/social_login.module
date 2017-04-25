@@ -456,18 +456,13 @@ function social_login_user_login($account) {
       \Drupal::logger('social_login')->error('Invalid JSON received from OneAll API.');
     }
 
-    // Restore to origin.
-    $origin = (isset($_SESSION['social_login_origin']) ? $_SESSION['social_login_origin'] : '');
-
     // Clear session.
     social_login_clear_session();
 
     // Redirect to origin.
-    if (strlen(trim($origin)) > 0) {
-      $response = new RedirectResponse($origin);
-      $response->send();
-      return;
-    }
+    $response = new RedirectResponse(new Url('<front>'));
+    $response->send();
+    return;
   }
 }
 

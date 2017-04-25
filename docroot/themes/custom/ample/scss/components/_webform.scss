@@ -696,7 +696,8 @@ form {
   }
 
   .social_login,
-  .login-wrapper {
+  .login-wrapper,
+  .form-item-social-login-create-account {
     margin-top: 40px;
     width: 50%;
   }
@@ -769,6 +770,12 @@ form {
     margin: 20px 0 10px;
   }
 
+  .form-item-mail-mail1 {
+    .email-suffix {
+      margin-bottom: 0;
+    }
+  }
+
   .form-item-legal-terms-and-conditions {
     padding-top: 25px;
     position: relative;
@@ -807,7 +814,8 @@ form {
 
 @include breakpoint-for('.user-register-form', (to: laptop-small)) {
   .social_login,
-  .login-wrapper {
+  .login-wrapper,
+  .form-item-social-login-create-account {
     padding: 0 20px;
   }
 
@@ -823,7 +831,8 @@ form {
   flex-direction: column;
 
   .social_login,
-  .login-wrapper {
+  .login-wrapper,
+  .form-item-social-login-create-account {
     width: 100%;
   }
 
@@ -834,7 +843,8 @@ form {
 
 @include breakpoint-for('.user-register-form', (to: mobileL)) {
   .social_login,
-  .login-wrapper {
+  .login-wrapper,
+  .form-item-social-login-create-account {
     padding: 0;
   }
 }

@@ -3536,7 +3536,8 @@ form .social_login iframe {
     .ie9 .user-register-form .login-wrapper {
       float: left; }
   .user-register-form .social_login,
-  .user-register-form .login-wrapper {
+  .user-register-form .login-wrapper,
+  .user-register-form .form-item-social-login-create-account {
     margin-top: 40px;
     width: 50%; }
   .user-register-form .social_login {
@@ -3577,6 +3578,8 @@ form .social_login iframe {
   .user-register-form .js-form-type-email-confirm,
   .user-register-form .captcha {
     margin: 20px 0 10px; }
+  .user-register-form .form-item-mail-mail1 .email-suffix {
+    margin-bottom: 0; }
   .user-register-form .form-item-legal-terms-and-conditions {
     padding-top: 25px;
     position: relative; }
@@ -3604,7 +3607,8 @@ form .social_login iframe {
 
 @media (max-width: 991px) {
   .user-register-form .social_login,
-  .user-register-form .login-wrapper {
+  .user-register-form .login-wrapper,
+  .user-register-form .form-item-social-login-create-account {
     padding: 0 20px; }
   .user-register-form .field--name-field-person-titles,
   .user-register-form .field--name-field-organisation {
@@ -3619,14 +3623,16 @@ form .social_login iframe {
         -ms-flex-direction: column;
             flex-direction: column; }
     .user-register-form .social_login,
-    .user-register-form .login-wrapper {
+    .user-register-form .login-wrapper,
+    .user-register-form .form-item-social-login-create-account {
       width: 100%; }
     .user-register-form .login-wrapper {
       padding: 0 10px; } }
 
 @media (max-width: 479px) {
   .user-register-form .social_login,
-  .user-register-form .login-wrapper {
+  .user-register-form .login-wrapper,
+  .user-register-form .form-item-social-login-create-account {
     padding: 0; } }
 
 .user-onetime-form .good-to-know-icon {

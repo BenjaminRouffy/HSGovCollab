@@ -624,7 +624,8 @@ form {
   }
 }
 
-.view-project {
+.view-project,
+.view-product {
   > h2 {
     @include font-size(25.2);
     line-height: 48px;
@@ -662,19 +663,19 @@ form {
   }
 }
 
-@include breakpoint-for('.view-project', (to: laptop-small)) {
+@include breakpoint-for('.view-project, .view-product', (to: laptop-small)) {
   form {
     max-width: 60%;
   }
 }
 
-@include breakpoint-for('.view-project', (to: tablet)) {
+@include breakpoint-for('.view-project, .view-product', (to: tablet)) {
   form {
     max-width: 80%;
   }
 }
 
-@include breakpoint-for('.view-project', (to: mobileL)) {
+@include breakpoint-for('.view-project, .view-product', (to: mobileL)) {
   form {
     max-width: 100%;
   }

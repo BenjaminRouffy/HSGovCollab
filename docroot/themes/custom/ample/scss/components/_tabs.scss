@@ -37,12 +37,14 @@
   }
 }
 
-.ui-tabs {
+.ui-tabs,
+.blocktabs-click {
   background: none;
   border: none;
   padding: 0;
 
-  .ui-tabs-nav {
+  .ui-tabs-nav,
+  > ul {
     background: none;
     border: none;
     padding: 0;
@@ -61,6 +63,7 @@
 
     a {
       padding: 0 !important;
+      text-decoration: none;
     }
 
     .ui-tabs-active {

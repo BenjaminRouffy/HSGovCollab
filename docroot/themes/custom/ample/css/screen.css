@@ -5510,6 +5510,28 @@ footer {
   .page-my-news .content-container {
     padding-top: 40px; } }
 
+.bottom-teaser {
+  padding-bottom: 160px; }
+  .bottom-teaser ~ .full-width {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; }
+    .logged .bottom-teaser ~ .full-width {
+      left: 80px;
+      width: calc(100% - 80px); }
+
+@media (max-width: 767px) {
+  .logged .bottom-teaser ~ .full-width {
+    left: 0;
+    width: 100%; } }
+
+@media (max-width: 479px) {
+  .bottom-teaser {
+    padding-bottom: 40px; }
+    .bottom-teaser ~ .full-width {
+      position: static; } }
+
 .region-wrapper:after {
   content: "";
   display: table;

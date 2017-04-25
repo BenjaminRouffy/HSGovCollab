@@ -459,8 +459,8 @@ function social_login_user_login($account) {
     // Clear session.
     social_login_clear_session();
 
-    // Redirect to origin.
-    $response = new RedirectResponse(new Url('<front>'));
+    // Redirect to front page.
+    $response = new RedirectResponse(Url::fromRoute('<front>')->toString());
     $response->send();
     return;
   }

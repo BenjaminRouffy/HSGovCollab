@@ -1,5 +1,5 @@
 diff --git a/social_login.module b/social_login.module
-index 126e0b3..feb569b 100644
+index 126e0b3..b137dcc 100644
 --- a/social_login.module
 +++ b/social_login.module
 @@ -456,18 +456,13 @@ function social_login_user_login($account) {
@@ -12,13 +12,14 @@ index 126e0b3..feb569b 100644
      // Clear session.
      social_login_clear_session();
  
-     // Redirect to origin.
+-    // Redirect to origin.
 -    if (strlen(trim($origin)) > 0) {
 -      $response = new RedirectResponse($origin);
 -      $response->send();
 -      return;
 -    }
-+    $response = new RedirectResponse(new Url('<front>'));
++    // Redirect to front page.
++    $response = new RedirectResponse(Url::fromRoute('<front>')->toString());
 +    $response->send();
 +    return;
    }

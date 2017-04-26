@@ -91,6 +91,14 @@
       }
     }
 
+    .mobile & {
+      &:not(.hover) {
+        .infooverlay {
+          top: 100%;
+        }
+      }
+    }
+
     .icon-wrapper {
       height: 100px;
       margin: 0 auto 30px;

@@ -1086,6 +1086,8 @@ footer > .partners {
     position: relative; }
     .top-banner-region .paragraph:hover .infooverlay, .top-banner-region .paragraph.hover .infooverlay {
       top: 0; }
+    .mobile .top-banner-region .paragraph:not(.hover) .infooverlay {
+      top: 100%; }
     .top-banner-region .paragraph .icon-wrapper {
       height: 100px;
       margin: 0 auto 30px;

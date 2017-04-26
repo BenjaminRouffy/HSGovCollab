@@ -1084,7 +1084,7 @@ footer > .partners {
     overflow: hidden;
     padding: 20px;
     position: relative; }
-    .top-banner-region .paragraph:hover .infooverlay {
+    .top-banner-region .paragraph:hover .infooverlay, .top-banner-region .paragraph.hover .infooverlay {
       top: 0; }
     .top-banner-region .paragraph .icon-wrapper {
       height: 100px;
@@ -1137,6 +1137,14 @@ footer > .partners {
     transition: top 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
     width: 100%;
     z-index: 100; }
+    .top-banner-region .infooverlay:after {
+      background: inherit;
+      content: "";
+      height: 20px;
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%; }
     .top-banner-region .infooverlay h3 {
       font-size: 1.75rem;
       font-weight: 400;

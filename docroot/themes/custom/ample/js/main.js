@@ -551,6 +551,14 @@
     }
   };
 
+  Drupal.behaviors.infographic = {
+    attach: function(context, settings) {
+      $('.section-info', context).on('touchstart', '.paragraph', function() {
+        $(this).toggleClass('hover').siblings().removeClass('hover');
+      });
+    }
+  };
+
   Drupal.behaviors.ieFixes = {
     attach: function(context, settings) {
       // IE 9

@@ -811,3 +811,10 @@ function deployment_update_8059() {
 function deployment_update_8060() {
   \Drupal::service('module_installer')->install(['menu_item_visibility_by_group']);
 }
+
+/**
+ * Install module "Tagadelic" and "KV".
+ */
+function deployment_update_8061() {
+  \Drupal::service('module_installer')->install(['tagadelic', 'knowledge_vault']);
+}

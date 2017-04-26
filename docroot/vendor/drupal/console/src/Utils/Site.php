@@ -38,8 +38,7 @@ class Site
     public function __construct(
         $appRoot,
         ConfigurationManager $configurationManager
-    )
-    {
+    ) {
         $this->appRoot = $appRoot;
         $this->configurationManager = $configurationManager;
     }
@@ -220,7 +219,7 @@ class Site
         if ($cacheDirectory) {
             if (strpos($cacheDirectory, '/') != 0) {
                 $cacheDirectory = $this->configurationManager
-                        ->getApplicationDirectory() . '/' . $cacheDirectory;
+                    ->getApplicationDirectory() . '/' . $cacheDirectory;
             }
             $cacheDirectories[] = $cacheDirectory . '/' . $siteId . '/';
         }
@@ -253,6 +252,23 @@ class Site
             return true;
         } catch (\Exception $e) {
             return false;
+        }
+    }
+
+    public function cachedServicesFile()
+    {
+        return $this->getCacheDirectory().'/console.services.yml';
+    }
+
+    public function cachedServicesFileExists()
+    {
+        return file_exists($this->cachedServicesFile());
+    }
+
+    public function removeCachedServicesFile()
+    {
+        if ($this->cachedServicesFileExists()) {
+            unlink($this->cachedServicesFile());
         }
     }
 }

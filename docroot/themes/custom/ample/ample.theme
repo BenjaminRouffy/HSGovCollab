@@ -120,6 +120,17 @@ function ample_theme_suggestions_alter(array &$suggestions, array $variables, $h
 
     $suggestions[] = $original_theme_hook . '__' . str_replace('-', '_', $variables['element']['#form_id']);
   }
+
+  if ($hook == 'page') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    if (!empty($node)) {
+      $path_args = explode('/', trim(\Drupal::service('path.current')->getPath(), '/'));
+      $path_args[] = $node->bundle();
+
+      $suggestions = theme_get_suggestions($path_args, 'page');
+    }
+  }
 }
 
 /**

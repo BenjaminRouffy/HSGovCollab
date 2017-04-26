@@ -1,0 +1,41 @@
+<header role="banner">
+  {{ page.header }}
+  {{ page.header_static }}
+</header>
+
+{{ page.primary_menu }}
+{{ page.secondary_menu }}
+
+{{ page.dashboard_sidebar }}
+
+{{ page.breadcrumb }}
+
+{{ page.highlighted }}
+
+{{ page.help }}
+
+<main class="main-wrapper article-add-node">
+  <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+  <div class="content-container">
+    {{ page.content }}
+  </div>
+</main>
+
+{% if page.pre_footer %}
+  {{ page.pre_footer }}
+{% endif %}
+
+{% if page.footer %}
+  <footer role="contentinfo">
+    {{ page.footer }}
+  </footer>
+{% endif %}
+
+{% if page.popup %}
+  <div role="contentinfo">
+    {{ page.popup }}
+  </div>
+{% endif %}
+
+<div id="overlay"></div>

@@ -1,5 +1,6 @@
 .main-wrapper {
-  min-height: calc(100% - 196px);
+  margin-bottom: 160px;
+  min-height: calc(100% - 327px);
   overflow-x: hidden;
   position: relative;
   z-index: 310;
@@ -35,21 +36,21 @@
 
   .mobile & {
     &:after {
-      background-attachment: auto;
+      background-attachment: scroll;
       background-position: center;
       background-size: 650%;
     }
   }
 
-  .user & {
-    min-height: calc(100% - 316px);
-  }
+  //.user & {
+  //  min-height: calc(100% - 316px);
+  //}
 
   .logged & {
     padding-left: 80px;
   }
 
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact) & {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products) & {
     &:before {
       background: $white;
     }
@@ -65,6 +66,10 @@
   .logged & {
     padding-left: 0;
   }
+}
+
+@include breakpoint-for('.main-wrapper', (to: laptop-small)) {
+  margin-bottom: 0;
 }
 
 .content-container {
@@ -88,6 +93,39 @@
   .page-my-countries-and-regions &,
   .page-my-news & {
     padding-top: 40px;
+  }
+}
+
+.bottom-teaser {
+  padding-bottom: 160px;
+
+  ~ .full-width {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    .logged & {
+      left: 80px;
+      width: calc(100% - 80px);
+    }
+  }
+}
+
+@include breakpoint-for('.bottom-teaser', (to: tablet)) {
+  ~ .full-width {
+    .logged & {
+      left: 0;
+      width: 100%;
+    }
+  }
+}
+
+@include breakpoint-for('.bottom-teaser', (to: mobileL)) {
+  padding-bottom: 40px;
+
+  ~ .full-width {
+    position: static;
   }
 }
 

@@ -1,0 +1,35 @@
+
+<article{{ attributes.addClass(['js-comment', 'comment-item']) }} {{ elements['#replies_count'] ? 'many-replies' }}>
+  {#
+    Hide the "new" indicator by default, let a piece of JavaScript ask the
+    server which comments are new for the user. Rendering the final "new"
+    indicator here would break the render cache.
+  #}
+  <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
+
+  {{ user_picture }}
+
+  <div class="comment-container">
+    <div class="user-info">
+      <div class="name">
+        {{ author_name }}
+      </div>
+      <span class="commented">{{ submitted }}</span>
+
+      {#
+        Indicate the semantic relationship between parent and child comments for
+        accessibility. The list is difficult to navigate in a screen reader
+        without this information.
+      #}
+      {% if parent %}
+        <p class="visually-hidden">{{ parent }}</p>
+      {% endif %}
+
+      {{ content.votingapi_links }}
+    </div>
+    <div{{ content_attributes.addClass('comment-body') }}>
+      {{ content.field_comment_body }}
+      {{ content.links }}
+    </div>
+  </div>
+</article>

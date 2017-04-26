@@ -792,8 +792,22 @@ function deployment_update_8057() {
 }
 
 /**
- * Install module "taxonomy_image_formatter".
+ * Install modules "AJAX comments" and "Rate".
  */
 function deployment_update_8058() {
+  \Drupal::service('module_installer')->install(['ajax_comments', 'rate']);
+}
+
+/**
+ * Install module "taxonomy_image_formatter".
+ */
+function deployment_update_8059() {
   \Drupal::service('module_installer')->install(['taxonomy_image_formatter']);
+}
+
+/**
+ * Install module "menu_item_visibility_by_group".
+ */
+function deployment_update_8060() {
+  \Drupal::service('module_installer')->install(['menu_item_visibility_by_group']);
 }

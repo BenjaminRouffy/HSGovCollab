@@ -1,0 +1,23 @@
+uuid: ff612b7a-51e7-4d33-bed1-0cccc84d19c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.product-group_node-document
+id: group_content.product-group_node-document.default
+targetEntityType: group_content
+bundle: product-group_node-document
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

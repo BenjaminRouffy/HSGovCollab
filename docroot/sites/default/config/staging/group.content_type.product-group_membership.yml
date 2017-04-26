@@ -1,0 +1,17 @@
+uuid: fd35fbeb-ad29-4e4d-b623-b3f0395bdf8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+  module:
+    - user
+id: product-group_membership
+label: 'Product: Group membership'
+description: 'Adds users to groups as members.'
+group_type: product
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

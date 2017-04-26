@@ -1,0 +1,22 @@
+uuid: 97d1230c-d8a2-43d8-9015-ba9b45ac7038
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_dashboard
+    - group_following
+third_party_settings:
+  group_following:
+    confirmation_popup_status: false
+    confirmation_popup_following_header: ''
+    confirmation_popup_following_body: ''
+    confirmation_popup_unfollowing_header: ''
+    confirmation_popup_unfollowing_body: ''
+  group_dashboard:
+    access_to_subgroup_functionality: 1
+    hide_follow_button: 1
+id: product
+label: Product
+description: ''
+creator_membership: true
+creator_roles: {  }

@@ -167,17 +167,13 @@ body {
   background: #f5f5f5;
   color: #333;
   font-family: Arial, sans-serif;
+  height: 100%;
   line-height: 20px;
   min-height: 100%;
   min-width: 320px;
-  overflow-x: hidden;
-  padding-bottom: 160px; }
+  overflow-x: hidden; }
   body.no-scroll {
     overflow: hidden; }
-
-@media (max-width: 991px) {
-  body {
-    padding-bottom: 0; } }
 
 h1, h2, h3 {
   color: #283b44;
@@ -478,6 +474,10 @@ svg {
 .phone-icon > a::after,
 .phone-icon > span::after {
   content: "å"; }
+
+.thumb-up-icon > a::after,
+.thumb-up-icon > span::after {
+  content: "H"; }
 
 .connect-icon > a::after,
 .connect-icon > span::after {
@@ -1045,7 +1045,7 @@ footer > .partners {
       opacity: .37;
       z-index: -1; }
     .mobile .top-banner-region .section-info-wrapper {
-      background-attachment: auto;
+      background-attachment: scroll;
       background-position: center;
       background-size: 400%; }
   .top-banner-region .section-info {
@@ -1222,6 +1222,8 @@ footer > .partners {
       background: url(../images/globe_white.svg) center no-repeat; }
     .country-content-wrapper .country-icon-wrapper.governance_area {
       background: url(../images/Governance_white.svg) center no-repeat; }
+    .country-content-wrapper .country-icon-wrapper.product {
+      background: url(../images/united-white.svg) center no-repeat; }
   .country-content-wrapper h1 {
     font-size: 5rem;
     color: #fff;
@@ -1229,7 +1231,7 @@ footer > .partners {
     line-height: 72px;
     margin: 20px 0 10px;
     padding: 0; }
-  .country-content-wrapper .follow-link .form-submit {
+  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .ui-dialog .button, .ui-dialog .country-content-wrapper .follow-link .button {
     font-size: 1.5rem;
     background: transparent;
     border: 1px solid #fff;
@@ -1246,7 +1248,7 @@ footer > .partners {
             transform: scale(1.06);
     -webkit-transition: background .2s ease;
     transition: background .2s ease; }
-    .country-content-wrapper .follow-link .form-submit:hover {
+    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .ui-dialog .button:hover, .ui-dialog .country-content-wrapper .follow-link .button:hover {
       background: #ea3a32; }
   .country-content-wrapper .follow-link .ajax-progress {
     position: absolute; }
@@ -3280,7 +3282,7 @@ form {
      -moz-appearance: radio;
           appearance: radio; }
 
-.form-submit {
+.form-submit, .ui-dialog .button {
   background: #fff;
   border: 1px solid #ea3a32;
   color: #ea3a32;
@@ -3289,7 +3291,7 @@ form {
   text-transform: uppercase;
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
-  .form-submit:hover {
+  .form-submit:hover, .ui-dialog .button:hover {
     border-color: #8c2222;
     color: #8c2222; }
 
@@ -3355,11 +3357,11 @@ form .social_login iframe {
     content: ": *"; }
   .user-login-form .form-actions {
     margin-top: 20px; }
-  .user-login-form .form-submit {
+  .user-login-form .form-submit, .user-login-form .ui-dialog .button, .ui-dialog .user-login-form .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-login-form .form-submit:hover {
+    .user-login-form .form-submit:hover, .user-login-form .ui-dialog .button:hover, .ui-dialog .user-login-form .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3439,7 +3441,7 @@ form .social_login iframe {
     margin: 10px 0 55px;
     text-align: center;
     width: 50%; }
-  .form-contact-us .form-submit {
+  .form-contact-us .form-submit, .form-contact-us .ui-dialog .button, .ui-dialog .form-contact-us .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
@@ -3472,42 +3474,47 @@ form .social_login iframe {
   .form-contact-us .form-actions {
     width: 100%; } }
 
-.view-project > h2 {
+.view-project > h2,
+.view-product > h2 {
   font-size: 1.575rem;
   line-height: 48px;
   margin-bottom: 15px;
   position: relative;
   text-align: center; }
-  .view-project > h2 a {
+  .view-project > h2 a,
+  .view-product > h2 a {
     font-size: 0.9625rem;
     line-height: 18px;
     position: absolute;
     top: 17px;
     right: 0;
     text-decoration: none; }
-    .view-project > h2 a:before {
+    .view-project > h2 a:before,
+    .view-product > h2 a:before {
       content: "q";
       color: #ea3a32;
       font-family: P4h, sans-serif;
       margin-right: 4px; }
-    .view-project > h2 a:hover:before {
+    .view-project > h2 a:hover:before,
+    .view-product > h2 a:hover:before {
       color: #8c2222; }
 
-.view-project form {
+.view-project form,
+.view-product form {
   max-width: 40%;
   margin: 0 auto;
   position: relative; }
 
 @media (max-width: 991px) {
-  .view-project form {
+  .view-project form, .view-product form {
     max-width: 60%; } }
 
 @media (max-width: 767px) {
-  .view-project form {
+  .view-project form, .view-product form {
     max-width: 80%; } }
 
 @media (max-width: 479px) {
-  .view-project form {
+  .view-project form, .view-product form {
     max-width: 100%; } }
 
 .user-register-form {
@@ -3525,7 +3532,8 @@ form .social_login iframe {
     .ie9 .user-register-form .login-wrapper {
       float: left; }
   .user-register-form .social_login,
-  .user-register-form .login-wrapper {
+  .user-register-form .login-wrapper,
+  .user-register-form .form-item-social-login-create-account {
     margin-top: 40px;
     width: 50%; }
   .user-register-form .social_login {
@@ -3566,6 +3574,8 @@ form .social_login iframe {
   .user-register-form .js-form-type-email-confirm,
   .user-register-form .captcha {
     margin: 20px 0 10px; }
+  .user-register-form .form-item-mail-mail1 .email-suffix {
+    margin-bottom: 0; }
   .user-register-form .form-item-legal-terms-and-conditions {
     padding-top: 25px;
     position: relative; }
@@ -3581,11 +3591,11 @@ form .social_login iframe {
     margin: 30px auto 0;
     text-align: center;
     width: 50%; }
-  .user-register-form .form-submit {
+  .user-register-form .form-submit, .user-register-form .ui-dialog .button, .ui-dialog .user-register-form .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-register-form .form-submit:hover {
+    .user-register-form .form-submit:hover, .user-register-form .ui-dialog .button:hover, .ui-dialog .user-register-form .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3593,7 +3603,8 @@ form .social_login iframe {
 
 @media (max-width: 991px) {
   .user-register-form .social_login,
-  .user-register-form .login-wrapper {
+  .user-register-form .login-wrapper,
+  .user-register-form .form-item-social-login-create-account {
     padding: 0 20px; }
   .user-register-form .field--name-field-person-titles,
   .user-register-form .field--name-field-organisation {
@@ -3608,14 +3619,16 @@ form .social_login iframe {
         -ms-flex-direction: column;
             flex-direction: column; }
     .user-register-form .social_login,
-    .user-register-form .login-wrapper {
+    .user-register-form .login-wrapper,
+    .user-register-form .form-item-social-login-create-account {
       width: 100%; }
     .user-register-form .login-wrapper {
       padding: 0 10px; } }
 
 @media (max-width: 479px) {
   .user-register-form .social_login,
-  .user-register-form .login-wrapper {
+  .user-register-form .login-wrapper,
+  .user-register-form .form-item-social-login-create-account {
     padding: 0; } }
 
 .user-onetime-form .good-to-know-icon {
@@ -3687,7 +3700,7 @@ form .social_login iframe {
   margin-top: 30px;
   text-align: center; }
 
-.user-onetime-form .form-submit:hover {
+.user-onetime-form .form-submit:hover, .user-onetime-form .ui-dialog .button:hover, .ui-dialog .user-onetime-form .button:hover {
   -webkit-transform: none;
           transform: none; }
 
@@ -3704,7 +3717,7 @@ form .social_login iframe {
   .user-onetime-form #catagories-wrapper {
     padding: 10px 0;
     width: 100%; }
-  .user-onetime-form .form-submit {
+  .user-onetime-form .form-submit, .user-onetime-form .ui-dialog .button, .ui-dialog .user-onetime-form .button {
     font-size: 1.05rem;
     padding: 10px; } }
 
@@ -3729,11 +3742,11 @@ form .social_login iframe {
   .user-pass .form-actions {
     margin-top: 25px;
     text-align: center; }
-  .user-pass .form-submit {
+  .user-pass .form-submit, .user-pass .ui-dialog .button, .ui-dialog .user-pass .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-pass .form-submit:hover {
+    .user-pass .form-submit:hover, .user-pass .ui-dialog .button:hover, .ui-dialog .user-pass .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3774,7 +3787,7 @@ form .social_login iframe {
       .acceptance-form .form-checkbox a:hover,
       .acceptance-form .js-form-type-checkbox a:hover {
         color: #8c2222; }
-  .acceptance-form .form-submit {
+  .acceptance-form .form-submit, .acceptance-form .ui-dialog .button, .ui-dialog .acceptance-form .button {
     margin-top: 30px; }
 
 @media (max-width: 991px) {
@@ -3869,7 +3882,7 @@ form .social_login iframe {
         color: #8c2222; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
       outline: none; }
-    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit {
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog .button, .ui-dialog .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button {
       font-size: 0.875rem;
       background: none;
       border: none;
@@ -3890,7 +3903,8 @@ form .social_login iframe {
 .form-my-settings #organisation-details,
 .form-my-settings #interests-wrapper,
 .form-my-settings #contact-details,
-.form-my-settings #address-details {
+.form-my-settings #address-details,
+.form-my-settings #managers-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3902,26 +3916,30 @@ form .social_login iframe {
   .form-my-settings #organisation-details, .ie9
   .form-my-settings #interests-wrapper, .ie9
   .form-my-settings #contact-details, .ie9
-  .form-my-settings #address-details {
+  .form-my-settings #address-details, .ie9
+  .form-my-settings #managers-wrapper {
     overflow: hidden; }
     .ie9 .form-my-settings #user-details .form-wrapper, .ie9
     .form-my-settings #organisation-details .form-wrapper, .ie9
     .form-my-settings #interests-wrapper .form-wrapper, .ie9
     .form-my-settings #contact-details .form-wrapper, .ie9
-    .form-my-settings #address-details .form-wrapper {
+    .form-my-settings #address-details .form-wrapper, .ie9
+    .form-my-settings #managers-wrapper .form-wrapper {
       float: left; }
   .form-my-settings #user-details .form-wrapper,
   .form-my-settings #organisation-details .form-wrapper,
   .form-my-settings #interests-wrapper .form-wrapper,
   .form-my-settings #contact-details .form-wrapper,
-  .form-my-settings #address-details .form-wrapper {
+  .form-my-settings #address-details .form-wrapper,
+  .form-my-settings #managers-wrapper .form-wrapper {
     padding: 0 40px;
     width: 50%; }
     .form-my-settings #user-details .form-wrapper .form-wrapper,
     .form-my-settings #organisation-details .form-wrapper .form-wrapper,
     .form-my-settings #interests-wrapper .form-wrapper .form-wrapper,
     .form-my-settings #contact-details .form-wrapper .form-wrapper,
-    .form-my-settings #address-details .form-wrapper .form-wrapper {
+    .form-my-settings #address-details .form-wrapper .form-wrapper,
+    .form-my-settings #managers-wrapper .form-wrapper .form-wrapper {
       padding: 0;
       width: 100%; }
 
@@ -3969,6 +3987,20 @@ form .social_login iframe {
     padding: 0 40px;
     width: 50%; }
 
+.form-my-settings .role-status-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+  padding-bottom: 20px;
+  width: 100%; }
+  .form-my-settings .role-status-wrapper legend {
+    margin-bottom: 10px; }
+  .form-my-settings .role-status-wrapper fieldset {
+    padding: 0 40px;
+    margin: 0;
+    width: 50%; }
+
 .form-my-settings #edit-field-organisations-wrapper,
 .form-my-settings #contact-details {
   margin-bottom: 15px;
@@ -3981,8 +4013,10 @@ form .social_login iframe {
     display: block;
     font-weight: 400;
     margin-bottom: 20px; }
-  .form-my-settings #edit-field-organisations-wrapper .form-submit,
-  .form-my-settings #contact-details .form-submit {
+  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .button, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .button,
+  .form-my-settings #contact-details .form-submit,
+  .form-my-settings #contact-details .ui-dialog .button, .ui-dialog
+  .form-my-settings #contact-details .button {
     font-size: 0.875rem;
     background: transparent;
     border: none;
@@ -3990,12 +4024,16 @@ form .social_login iframe {
     letter-spacing: 0;
     padding: 0;
     text-transform: none; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit,
-    .form-my-settings #contact-details .form-submit.field-add-more-submit {
+    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .field-add-more-submit.button, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button,
+    .form-my-settings #contact-details .form-submit.field-add-more-submit,
+    .form-my-settings #contact-details .ui-dialog .field-add-more-submit.button, .ui-dialog
+    .form-my-settings #contact-details .field-add-more-submit.button {
       background: url(../images/add-plus-button.png) left top no-repeat;
       padding-left: 21px; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover,
-    .form-my-settings #contact-details .form-submit:hover {
+    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .button:hover, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .button:hover,
+    .form-my-settings #contact-details .form-submit:hover,
+    .form-my-settings #contact-details .ui-dialog .button:hover, .ui-dialog
+    .form-my-settings #contact-details .button:hover {
       background-position: left bottom;
       color: #8c2222;
       -webkit-transform: none;
@@ -4043,7 +4081,7 @@ form .social_login iframe {
   left: 0;
   top: -23px; }
 
-.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit {
+.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog .field-add-more-submit.button, .ui-dialog .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button {
   margin-left: 0; }
 
 .ie11 .form-my-settings #edit-field-skype-or-other-wrapper table,
@@ -4110,8 +4148,10 @@ form .social_login iframe {
       top: 9px; }
     .form-my-settings table .dropbutton-wrapper .dropbutton-arrow {
       border-top-color: #8c2222; }
-  .form-my-settings table .confirm-remove .form-submit,
-  .form-my-settings table .restore .form-submit {
+  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .ui-dialog .button, .ui-dialog .form-my-settings table .confirm-remove .button,
+  .form-my-settings table .restore .form-submit,
+  .form-my-settings table .restore .ui-dialog .button, .ui-dialog
+  .form-my-settings table .restore .button {
     margin-top: 0 !important; }
 
 .form-my-settings thead .label {
@@ -4144,8 +4184,10 @@ form .social_login iframe {
   right: 60px;
   top: -3px; }
 
-.form-my-settings .paragraphs-dropbutton-wrapper .form-submit,
-.form-my-settings .field-add-more-submit.form-submit {
+.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog .button, .ui-dialog .form-my-settings .paragraphs-dropbutton-wrapper .button,
+.form-my-settings .field-add-more-submit.form-submit,
+.form-my-settings .ui-dialog .field-add-more-submit.button, .ui-dialog
+.form-my-settings .field-add-more-submit.button {
   font-weight: 400;
   margin: 0; }
 
@@ -4163,15 +4205,18 @@ form .social_login iframe {
   padding: 20px 40px;
   margin-bottom: 14px; }
 
-.form-my-settings .form-submit {
+.form-my-settings label:after {
+  content: none; }
+
+.form-my-settings .form-submit, .form-my-settings .ui-dialog .button, .ui-dialog .form-my-settings .button {
   background: none;
   border-color: #ea3a32;
   font-weight: 700;
-  margin: 0 auto;
+  margin: 0 auto 15px;
   text-transform: none; }
-  .form-my-settings .form-submit:not(.js-hide) {
+  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .ui-dialog .button:not(.js-hide), .ui-dialog .form-my-settings .button:not(.js-hide) {
     display: block; }
-  .form-my-settings .form-submit:hover {
+  .form-my-settings .form-submit:hover, .form-my-settings .ui-dialog .button:hover, .ui-dialog .form-my-settings .button:hover {
     border-color: #8c2222;
     color: #8c2222;
     -webkit-transform: none;
@@ -4210,16 +4255,23 @@ form .social_login iframe {
       #block-ample-local-tasks > ul a.is-active {
         border-bottom: 2px solid #ea3a32; }
 
-.ui-tabs {
+.ui-tabs,
+.blocktabs-click {
   background: none;
   border: none;
   padding: 0; }
-  .ui-tabs .ui-tabs-nav {
+  .ui-tabs .ui-tabs-nav,
+  .ui-tabs > ul,
+  .blocktabs-click .ui-tabs-nav,
+  .blocktabs-click > ul {
     background: none;
     border: none;
     padding: 0;
     text-align: center; }
-    .ui-tabs .ui-tabs-nav li {
+    .ui-tabs .ui-tabs-nav li,
+    .ui-tabs > ul li,
+    .blocktabs-click .ui-tabs-nav li,
+    .blocktabs-click > ul li {
       background: none;
       border: none;
       display: inline-block;
@@ -4228,14 +4280,27 @@ form .social_login iframe {
       opacity: .36;
       vertical-align: top;
       white-space: normal; }
-    .ui-tabs .ui-tabs-nav a {
-      padding: 0 !important; }
-    .ui-tabs .ui-tabs-nav .ui-tabs-active {
+    .ui-tabs .ui-tabs-nav a,
+    .ui-tabs > ul a,
+    .blocktabs-click .ui-tabs-nav a,
+    .blocktabs-click > ul a {
+      padding: 0 !important;
+      text-decoration: none; }
+    .ui-tabs .ui-tabs-nav .ui-tabs-active,
+    .ui-tabs > ul .ui-tabs-active,
+    .blocktabs-click .ui-tabs-nav .ui-tabs-active,
+    .blocktabs-click > ul .ui-tabs-active {
       opacity: 1; }
-    .ui-tabs .ui-tabs-nav h1 {
+    .ui-tabs .ui-tabs-nav h1,
+    .ui-tabs > ul h1,
+    .blocktabs-click .ui-tabs-nav h1,
+    .blocktabs-click > ul h1 {
       font-size: 4.2rem;
       margin: 0 20px; }
-    .ui-tabs .ui-tabs-nav .line {
+    .ui-tabs .ui-tabs-nav .line,
+    .ui-tabs > ul .line,
+    .blocktabs-click .ui-tabs-nav .line,
+    .blocktabs-click > ul .line {
       left: 50%;
       -webkit-transform: translateX(-50%);
               transform: translateX(-50%); }
@@ -4421,7 +4486,7 @@ form .social_login iframe {
     padding-right: 60px; }
     .search-form-wrapper .form-text:focus, .search-form-wrapper .form-textarea:focus {
       border-color: rgba(56, 152, 236, 0.32); }
-  .search-form-wrapper .form-submit {
+  .search-form-wrapper .form-submit, .search-form-wrapper .ui-dialog .button, .ui-dialog .search-form-wrapper .button {
     background: url(../images/magnifying-glass.svg) center no-repeat;
     background-size: 20px 20px;
     border: none;
@@ -4436,7 +4501,7 @@ form .social_login iframe {
     transition: transform .1s ease;
     transition: transform .1s ease, -webkit-transform .1s ease;
     width: 60px; }
-    .search-form-wrapper .form-submit:hover {
+    .search-form-wrapper .form-submit:hover, .search-form-wrapper .ui-dialog .button:hover, .ui-dialog .search-form-wrapper .button:hover {
       border: none;
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
@@ -4731,6 +4796,18 @@ form .social_login iframe {
     width: auto; }
   .ui-dialog .ui-dialog-titlebar {
     display: none; }
+  .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: none;
+    margin-top: 20px;
+    text-align: center; }
+  .ui-dialog .button {
+    font-size: 1.5rem;
+    border-radius: 0;
+    font-family: Oswald, sans-serif;
+    letter-spacing: .5px; }
+    .ui-dialog .button span {
+      padding: 0;
+      text-transform: none; }
 
 @media (max-width: 1440px) {
   .ui-dialog {
@@ -4743,6 +4820,11 @@ form .social_login iframe {
 @media (max-width: 767px) {
   .ui-dialog {
     width: 90% !important; } }
+
+.comment-confirm-form {
+  font-size: 1.5rem;
+  line-height: 30px;
+  text-align: center; }
 
 #sliding-popup {
   font-size: 0.875rem;
@@ -4846,13 +4928,13 @@ form .social_login iframe {
   overflow: hidden;
   position: fixed;
   right: 0;
-  top: 150px;
+  top: 170px;
   text-align: center;
   z-index: 50; }
   .toolbar-fixed .addtoany-wrapper {
-    top: 190px; }
+    top: 210px; }
   .toolbar-tray-open .addtoany-wrapper {
-    top: 230px; }
+    top: 250px; }
   .addtoany-wrapper .toggle-sharing-btn {
     font-size: 1.4rem;
     height: 40px;
@@ -5352,7 +5434,6 @@ footer {
     background: #f5f5f5 url(../images/site-bg.svg) 100% 50% no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.11);
     content: "";
     position: absolute;
     top: 0;
@@ -5362,7 +5443,7 @@ footer {
     opacity: .37;
     z-index: -1; }
     .mobile footer:after {
-      background-attachment: auto;
+      background-attachment: scroll;
       background-position: center;
       background-size: 300%; }
     body:not(.front) footer:after {
@@ -5386,7 +5467,8 @@ footer {
       display: block; } }
 
 .main-wrapper {
-  min-height: calc(100% - 196px);
+  margin-bottom: 160px;
+  min-height: calc(100% - 327px);
   overflow-x: hidden;
   position: relative;
   z-index: 310; }
@@ -5414,14 +5496,12 @@ footer {
     opacity: .15;
     z-index: -1; }
   .mobile .main-wrapper:after {
-    background-attachment: auto;
+    background-attachment: scroll;
     background-position: center;
     background-size: 650%; }
-  .user .main-wrapper {
-    min-height: calc(100% - 316px); }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact) .main-wrapper:before {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products) .main-wrapper:before {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -5430,6 +5510,10 @@ footer {
 @media (max-width: 767px) {
   .logged .main-wrapper {
     padding-left: 0; } }
+
+@media (max-width: 991px) {
+  .main-wrapper {
+    margin-bottom: 0; } }
 
 .content-container {
   margin: 0 auto;
@@ -5445,6 +5529,28 @@ footer {
   .page-my-countries-and-regions .content-container,
   .page-my-news .content-container {
     padding-top: 40px; } }
+
+.bottom-teaser {
+  padding-bottom: 160px; }
+  .bottom-teaser ~ .full-width {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; }
+    .logged .bottom-teaser ~ .full-width {
+      left: 80px;
+      width: calc(100% - 80px); }
+
+@media (max-width: 767px) {
+  .logged .bottom-teaser ~ .full-width {
+    left: 0;
+    width: 100%; } }
+
+@media (max-width: 479px) {
+  .bottom-teaser {
+    padding-bottom: 40px; }
+    .bottom-teaser ~ .full-width {
+      position: static; } }
 
 .region-wrapper:after {
   content: "";
@@ -6289,6 +6395,183 @@ footer {
     background: transparent;
     color: #ea3a32; }
 
+.page-comment-edit-form .comment-form {
+  margin: 0 auto 20px;
+  max-width: 1160px;
+  width: 66.64%; }
+
+.page-comment-edit-form details {
+  margin-bottom: 15px; }
+
+.page-comment-edit-form summary {
+  outline: none; }
+
+.page-comment-edit-form .details-wrapper {
+  margin-top: 10px; }
+
+.page-comment-edit-form fieldset {
+  margin-top: 20px; }
+
+.page-comment-edit-form legend {
+  margin-bottom: 10px; }
+
+.page-comment-edit-form label {
+  display: inline-block;
+  vertical-align: top; }
+
+.comment-wrapper {
+  font-size: 1.05rem;
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  letter-spacing: .5px;
+  max-width: 618px;
+  position: relative; }
+  .comment-wrapper .title-wrapper {
+    margin-bottom: 20px; }
+    .comment-wrapper .title-wrapper h2 {
+      font-size: 1.75rem;
+      line-height: 30px;
+      margin: 20px 0 10px; }
+  .comment-wrapper .status-message {
+    padding: 5px 10px;
+    margin-bottom: 5px; }
+    .comment-wrapper .status-message.error li {
+      color: #8c2222; }
+    .comment-wrapper .status-message ul {
+      list-style: none; }
+    .comment-wrapper .status-message li {
+      color: #283b44;
+      margin-top: 0; }
+  .comment-wrapper .comment-item {
+    margin: 40px 0; }
+  .comment-wrapper .indented {
+    border-left: 1px dotted #80aabe;
+    margin-left: 80px;
+    padding-left: 20px; }
+    .comment-wrapper .indented > a {
+      display: none !important; }
+    .comment-wrapper .indented .comment-item {
+      margin: 0 0 20px; }
+      .comment-wrapper .indented .comment-item:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+        display: none; }
+    .comment-wrapper .indented.expanded .comment-item:nth-of-type(n) {
+      display: block; }
+    .comment-wrapper .indented .user-icon {
+      height: 40px;
+      width: 40px; }
+    .comment-wrapper .indented .comment-body {
+      margin-left: 60px; }
+    .comment-wrapper .indented .links li {
+      margin-top: 0; }
+  .comment-wrapper label,
+  .comment-wrapper details {
+    display: none; }
+  .comment-wrapper .user-icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    overflow: hidden; }
+  .comment-wrapper .user-info {
+    position: relative; }
+    .comment-wrapper .user-info .name {
+      color: #283b44;
+      display: inline-block;
+      vertical-align: top; }
+    .comment-wrapper .user-info .commented {
+      color: #4c7e96;
+      display: inline-block;
+      margin-left: 14px;
+      vertical-align: top; }
+  .comment-wrapper .rate-widget-thumbs-up {
+    font-size: 0.875rem;
+    color: #416170;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right; }
+    .comment-wrapper .rate-widget-thumbs-up:hover {
+      opacity: .79; }
+  .comment-wrapper .ajax-progress {
+    position: absolute; }
+  .comment-wrapper .rate-thumbs-up-btn-up,
+  .comment-wrapper .rate-undo {
+    background: none;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    text-indent: -9999px;
+    vertical-align: top; }
+    .comment-wrapper .rate-thumbs-up-btn-up:after,
+    .comment-wrapper .rate-undo:after {
+      content: "H";
+      color: #416170;
+      font-family: P4h, sans-serif;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-indent: 0; }
+  .comment-wrapper .rate-undo:after {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); }
+  .comment-wrapper .rate-undo-vote {
+    display: inline; }
+  .comment-wrapper .rate-score {
+    display: inline-block;
+    vertical-align: top; }
+  .comment-wrapper .comment-body {
+    font-size: 0.9625rem;
+    font-family: "Fira Sans", sans-serif;
+    letter-spacing: 0;
+    line-height: 23px;
+    margin-top: 10px;
+    margin-left: 80px; }
+  .comment-wrapper .comment-form {
+    margin-bottom: 20px; }
+  .comment-wrapper .links {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    .comment-wrapper .links li {
+      font-size: 0.875rem;
+      font-family: Oswald, sans-serif;
+      color: #416170;
+      cursor: pointer;
+      display: inline-block;
+      margin: 15px 15px 0 0;
+      vertical-align: top; }
+      .comment-wrapper .links li:hover {
+        opacity: .79; }
+    .comment-wrapper .links .comment-show {
+      display: none; }
+      .comment-wrapper .links .comment-show:before {
+        content: "y";
+        font-family: P4h, sans-serif;
+        margin-right: 5px; }
+    .comment-wrapper .links a {
+      color: #416170;
+      text-decoration: none; }
+      .comment-wrapper .links a:before {
+        font-family: P4h, sans-serif;
+        margin-right: 5px; }
+  .comment-wrapper a {
+    color: #ea3a32;
+    text-decoration: none; }
+    .comment-wrapper a:hover {
+      color: #8c2222; }
+  .comment-wrapper .comment-edit a:before,
+  .comment-wrapper .comment-reply a:before {
+    content: "q"; }
+  .comment-wrapper .comment-delete a:before {
+    content: "w"; }
+  .comment-wrapper [many-replies] .comment-show {
+    display: inline-block; }
+  .comment-wrapper .form-textarea {
+    margin-bottom: 10px; }
+  .comment-wrapper .form-actions {
+    text-align: center; }
+
 .faq-list {
   margin: 0 auto;
   width: 80%; }
@@ -6322,7 +6605,7 @@ footer {
     padding: 30px 0; }
   .dashboard .follow-link {
     padding-top: 5px; }
-    .dashboard .follow-link .form-submit {
+    .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog .button, .ui-dialog .dashboard .follow-link .button {
       background: transparent;
       border-color: #ea3a32;
       text-transform: none; }

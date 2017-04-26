@@ -1,0 +1,20 @@
+uuid: 0929fcde-96fd-4351-b357-ac6d10408e82
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.governance_area-subgroup-project
+  module:
+    - path
+id: group_content.governance_area-subgroup-project.path
+field_name: path
+entity_type: group_content
+bundle: governance_area-subgroup-project
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

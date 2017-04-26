@@ -1,0 +1,20 @@
+uuid: 5b9e5acb-2e39-4e02-a282-20b87354a49f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.governance_area-group_node-news
+  module:
+    - path
+id: group_content.governance_area-group_node-news.path
+field_name: path
+entity_type: group_content
+bundle: governance_area-group_node-news
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

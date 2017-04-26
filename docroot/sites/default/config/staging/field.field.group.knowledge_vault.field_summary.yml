@@ -1,0 +1,21 @@
+uuid: 0665e3d9-9c40-415b-98ef-e44bdbb68aa4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_summary
+    - group.type.knowledge_vault
+  module:
+    - text
+id: group.knowledge_vault.field_summary
+field_name: field_summary
+entity_type: group
+bundle: knowledge_vault
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

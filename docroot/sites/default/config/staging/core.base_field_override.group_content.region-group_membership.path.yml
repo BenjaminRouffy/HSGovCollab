@@ -1,0 +1,20 @@
+uuid: c17ed126-296f-4bf6-8ee3-071a362fe725
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.region-group_membership
+  module:
+    - path
+id: group_content.region-group_membership.path
+field_name: path
+entity_type: group_content
+bundle: region-group_membership
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

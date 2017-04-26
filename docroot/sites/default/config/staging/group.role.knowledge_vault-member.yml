@@ -1,0 +1,17 @@
+uuid: 24ba2a03-f729-40ca-8544-14a6c1245198
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+id: knowledge_vault-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: knowledge_vault
+permissions_ui: true
+permissions:
+  0: 'view group'
+  1: 'access group_node overview'
+  4: 'view group_node:article entity'

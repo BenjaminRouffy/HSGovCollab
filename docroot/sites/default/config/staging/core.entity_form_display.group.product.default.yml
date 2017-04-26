@@ -1,0 +1,257 @@
+uuid: 47c765e9-50d9-4175-920c-128868efcd9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.browse_files_modal
+    - field.field.group.product.field_banner
+    - field.field.group.product.field_bottom_link
+    - field.field.group.product.field_content
+    - field.field.group.product.field_date
+    - field.field.group.product.field_faq
+    - field.field.group.product.field_infographic
+    - field.field.group.product.field_join_block
+    - field.field.group.product.field_region_icon
+    - field.field.group.product.field_summary
+    - field.field.group.product.field_time_line
+    - group.type.product
+  module:
+    - datetime
+    - entity_browser
+    - field_group
+    - paragraphs
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_tabs_panel:
+      children:
+        - group_banner
+        - group_summary
+        - group_content
+        - group_infographic_timeline
+        - group_bottom
+        - group_faq
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: 'Tabs panel'
+    group_banner:
+      children:
+        - field_banner
+        - label
+        - field_region_icon
+      parent_name: group_tabs_panel
+      weight: 10
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Banner
+    group_summary:
+      children:
+        - field_date
+        - langcode
+      parent_name: group_tabs_panel
+      weight: 11
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Summary
+    group_content:
+      children:
+        - field_summary
+        - field_content
+      parent_name: group_tabs_panel
+      weight: 12
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+    group_infographic_timeline:
+      children:
+        - field_infographic
+        - field_time_line
+      parent_name: group_tabs_panel
+      weight: 13
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Infographic/Timeline
+    group_bottom:
+      children:
+        - field_join_block
+        - field_bottom_link
+      parent_name: group_tabs_panel
+      weight: 14
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Bottom
+    group_faq:
+      children:
+        - field_faq
+      parent_name: group_tabs_panel
+      weight: 15
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: FAQ
+id: group.product.default
+targetEntityType: group
+bundle: product
+mode: default
+content:
+  field_banner:
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: banner
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_bottom_link:
+    weight: 16
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_content:
+    weight: 9
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: banner
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_date:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_faq:
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_infographic:
+    weight: 6
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_join_block:
+    weight: 15
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_region_icon:
+    weight: 6
+    settings:
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: entity_browser_file
+    region: content
+  field_summary:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_time_line:
+    weight: 7
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  label:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

@@ -112,7 +112,7 @@ handlers:
       from_mail: default
       from_name: ''
       subject: 'Contact through P4H'
-      body: "[webform_submission:values:message:value]<br />\n<br />\nName:&nbsp;[current-user:field_first_name]&nbsp;[current-user:field_last_name]<br />\n<a href=\"[current-user:url]\">User&nbsp;profile</a>"
+      body: "User [current-user:field_first_name]&nbsp;[current-user:field_last_name] has written you an email. If you would like to answer please click here&nbsp;<a href=\"[current-user:url]\">user&nbsp;profile</a>.<br />\n<br />\n[webform_submission:values:message:value].<br />\n<br />\nYours P4H Coordination Desk"
       excluded_elements: {  }
       html: true
       attachments: 0

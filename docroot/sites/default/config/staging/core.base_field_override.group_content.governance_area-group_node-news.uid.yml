@@ -1,0 +1,20 @@
+uuid: 50b1b54a-2375-4a25-905a-b133c66eedbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.governance_area-group_node-news
+id: group_content.governance_area-group_node-news.uid
+field_name: uid
+entity_type: group_content
+bundle: governance_area-group_node-news
+label: 'Group content creator'
+description: 'The username of the group content creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupContent::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: 0076f663-fdeb-4504-8bed-db64c4d0cad7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.region-group_node-event
+  module:
+    - path
+id: group_content.region-group_node-event.path
+field_name: path
+entity_type: group_content
+bundle: region-group_node-event
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -2,10 +2,13 @@
 
 namespace Drupal\group_dashboard\Controller;
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Entity\EntityFormBuilderInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\group\Entity\GroupInterface;
+use Drupal\group\Entity\GroupType;
 use Drupal\group\Plugin\GroupContentEnablerManagerInterface;
 use Drupal\user\PrivateTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -76,6 +79,26 @@ class GroupAdminSubgroupController extends GroupAdminContentController {
     }
 
     return $bundles;
+  }
+
+  /**
+   * Check access to subgroup page.
+   *
+   * @param GroupInterface $group
+   *   Group object.
+   *
+   * @return AccessResultInterface
+   *    An access result.
+   */
+  public function AccessToCreateSubgroup(GroupInterface $group) {
+    $current_user = \Drupal::currentUser();
+    $group_type = GroupType::load($group->bundle());
+
+    if ($group_type->getThirdPartySetting('group_dashboard', 'access_to_subgroup_functionality', 0) && !$current_user->hasPermission('access to subgroup page')) {
+      return AccessResult::forbidden();
+    }
+
+    return AccessResult::allowed();
   }
 
 }

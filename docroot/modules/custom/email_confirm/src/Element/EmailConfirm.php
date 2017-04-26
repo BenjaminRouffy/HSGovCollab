@@ -97,6 +97,12 @@ class EmailConfirm extends FormElement   {
         $element['mail2']['#default_value'] = $email_info['full'];
       }
     }
+    else {
+      if (!empty($element['#value'][0])) {
+        $element['mail1']['#default_value'] = $element['#value'][0];
+      }
+    }
+
     $element['#element_validate'] = array(array(get_called_class(), 'validateEmailConfirm'));
     $element['#tree'] = TRUE;
 

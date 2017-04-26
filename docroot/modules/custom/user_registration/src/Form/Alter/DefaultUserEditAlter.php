@@ -41,8 +41,6 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
 
     $form['account']['current_pass']['#weight'] = 10;
     $form['account']['pass']['#weight'] = 11;
-    $form['account']['status']['#weight'] = 12;
-    $form['account']['roles']['#weight'] = 13;
     $form['account']['current_pass']['#prefix'] = '<div class="form-item">';
     $form['account']['pass']['#suffix'] = '</div>';
 

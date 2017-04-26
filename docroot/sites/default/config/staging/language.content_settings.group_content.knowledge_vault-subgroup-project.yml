@@ -1,0 +1,16 @@
+uuid: 7c15f08b-187f-4d88-b834-08db8a50bfa0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.knowledge_vault-subgroup-project
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: group_content.knowledge_vault-subgroup-project
+target_entity_type_id: group_content
+target_bundle: knowledge_vault-subgroup-project
+default_langcode: site_default
+language_alterable: false

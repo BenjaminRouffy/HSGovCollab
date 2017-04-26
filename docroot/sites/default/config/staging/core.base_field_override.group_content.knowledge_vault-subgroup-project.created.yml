@@ -1,0 +1,18 @@
+uuid: 1dae401d-4200-4193-ab4c-6d8d19bdc23f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.knowledge_vault-subgroup-project
+id: group_content.knowledge_vault-subgroup-project.created
+field_name: created
+entity_type: group_content
+bundle: knowledge_vault-subgroup-project
+label: 'Created on'
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,24 +1,23 @@
-uuid: 1f9921bc-76d2-4738-8417-cb2a7f78fdfb
+uuid: c6ad8085-0cf1-47d6-bb01-5bd48df37944
 langcode: en
 status: true
 dependencies:
   module:
-    - entity_reference_revisions
+    - block_content
     - field_permissions
     - node
-    - paragraphs
 third_party_settings:
   field_permissions:
     permission_type: custom
-id: node.field_content_paragraph
-field_name: field_content_paragraph
+id: node.field_article_join_block
+field_name: field_article_join_block
 entity_type: node
-type: entity_reference_revisions
+type: entity_reference
 settings:
-  target_type: paragraph
-module: entity_reference_revisions
+  target_type: block_content
+module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

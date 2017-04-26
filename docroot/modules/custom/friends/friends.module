@@ -20,12 +20,7 @@ use Drupal\views\ViewExecutable;
  * Implements hook_ENTITY_TYPE_view() for user entities.
  */
 function friends_user_view(array &$build, EntityInterface $account, EntityViewDisplayInterface $display, $view_mode) {
-  $current_user = \Drupal::currentUser();
-  $build['#current_user'] = $current_user->id();
-
-  if (!$current_user->hasPermission("view $view_mode view display")) {
-    $build = [];
-  }
+  $build['#current_user'] = \Drupal::currentUser()->id();
 
   if ($account->hasField('field_organisation')) {
     $organisation = $account->get('field_organisation')->getValue();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\friends;
+namespace Drupal\user_access;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;

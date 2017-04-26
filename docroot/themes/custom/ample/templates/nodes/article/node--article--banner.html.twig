@@ -1,0 +1,22 @@
+{{ title_prefix }}
+<div class="title-wrapper">
+  <h1 class="page-title">
+    {{ label }}
+  </h1>
+  <div class="line"></div>
+</div>
+{{ title_suffix }}
+
+<div class="article-options">
+  {% if content.field_pros|field_value %}
+    <div class="pros-list">
+      {{ content.field_pros }}
+    </div>
+  {% endif %}
+
+  {% if content.field_cons|field_value %}
+    <div class="cons-list">
+      {{ content.field_cons }}
+    </div>
+  {% endif %}
+</div>

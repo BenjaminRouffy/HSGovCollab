@@ -58,7 +58,7 @@ function ample_preprocess_html(array &$variables) {
     $variables['attributes']['class'][] = 'page-' . next($route_name) . '-' . str_replace('_', '-', end($route_name));
   }
 
-  if ('node' === $variables['root_path']) {
+  if ('node' === $variables['root_path'] && isset($variables['node_type'])) {
     $variables['attributes']['class'][] = 'node-' . str_replace('_', '-', $variables['node_type']);
   }
 

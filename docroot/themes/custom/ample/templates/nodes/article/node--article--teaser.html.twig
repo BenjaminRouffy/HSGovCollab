@@ -1,0 +1,21 @@
+<div class="article-item">
+  <div{{ attributes}}>
+    {% if content.field_type|field_value %}
+      <p class="article-type">
+        {{ content.field_type|field_value }}
+      </p>
+    {% endif %}
+
+    {{ title_prefix }}
+    <h2 role="heading">
+      {{ label }}
+    </h2>
+    {{ title_suffix }}
+
+    {{ content.body }}
+
+    <a href="{{ url }}" class="read-more">
+      {{ 'Read more'|t }}
+    </a>
+  </div>
+</div>

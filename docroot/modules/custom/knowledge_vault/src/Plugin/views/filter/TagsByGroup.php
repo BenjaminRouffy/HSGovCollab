@@ -57,7 +57,7 @@ class TagsByGroup extends GroupIndexGid  {
 
     $form['count'] = [
       '#type' => 'number',
-      '#title' => $this->t('Tags style'),
+      '#title' => $this->t('Tags count'),
       '#default_value' => $this->options['count'],
       '#min' => 1,
       '#max' => 50,

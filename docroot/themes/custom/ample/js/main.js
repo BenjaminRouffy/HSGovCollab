@@ -282,11 +282,11 @@
 
   Drupal.behaviors.overlay = {
     attach: function(context, settings) {
-      var bannerOverlay = $('.overlay-wrapper');
+      var bannerOverlay = $('.overlay-wrapper', context);
 
       setTimeout(function() {
         bannerOverlay.animate({'opacity': 0}, 2000, function() {
-          if (bannerOverlay.siblings('#map').size()) {
+          if (bannerOverlay.siblings('#map').size() || isTouchDevice()) {
             bannerOverlay.remove();
           }
         });

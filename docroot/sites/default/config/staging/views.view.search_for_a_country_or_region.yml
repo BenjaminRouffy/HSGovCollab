@@ -442,9 +442,10 @@ display:
         - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
         - 'config:core.entity_view_display.group.governance_area.time_line'
         - 'config:core.entity_view_display.group.governance_area.token'
+        - 'config:core.entity_view_display.group.knowledge_vault.default'
+        - 'config:core.entity_view_display.group.product.banner'
+        - 'config:core.entity_view_display.group.product.bottom'
         - 'config:core.entity_view_display.group.project.bottom'
-        - 'config:core.entity_view_display.group.project.default'
-        - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
@@ -453,6 +454,10 @@ display:
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
+        - 'config:core.entity_view_display.group.product.default'
+        - 'config:core.entity_view_display.group.product.search_country'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'
   block_1:
     display_plugin: block
     id: block_1
@@ -3033,6 +3038,7 @@ display:
         pager: false
         css_class: false
         exposed_form: false
+        empty: false
       filters:
         langcode:
           id: langcode
@@ -3259,6 +3265,18 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Nothing has been found'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

@@ -18,7 +18,6 @@ footer {
     background: $white-dark url(../images/site-bg.svg) 100% 50% no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    box-shadow: inset 0 0 8px rgba($black, .11);
     content: "";
     position: absolute;
     top: 0;
@@ -29,7 +28,7 @@ footer {
     z-index: -1;
 
     .mobile & {
-      background-attachment: auto;
+      background-attachment: scroll;
       background-position: center;
       background-size: 300%;
     }

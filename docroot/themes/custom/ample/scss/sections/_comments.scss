@@ -36,6 +36,7 @@
   font-family: $oswald;
   font-weight: 400;
   letter-spacing: .5px;
+  max-width: 618px;
   position: relative;
 
   .title-wrapper {
@@ -248,8 +249,11 @@
   }
 
   a {
+    color: $red;
+    text-decoration: none;
+
     &:hover {
-      opacity: .79;
+      color: $red-dark;
     }
   }
 

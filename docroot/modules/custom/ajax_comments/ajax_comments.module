@@ -149,6 +149,12 @@ function ajax_comments_node_links_alter(array &$node_links, NodeInterface $node,
   // compatibility. Should you require comment links for other entity types you
   // can do so by implementing a new field formatter.
   $links = \Drupal::service('comment.link_builder')->buildCommentedEntityLinks($node, $context);
+  // Unset default comment links.
+  unset(
+    $links['comment__field_comments']['#links']['comment-forbidden'],
+    $links['comment__field_comments']['#links']['comment-add']
+  );
+
   foreach ($links as $link_name => $link) {
     $field_name = substr($link_name, strlen('comment__'));
     $classes = array('js-use-ajax-comments', 'js-ajax-comments-reply', 'js-ajax-comments-reply-' . $node->id() . '-' . $field_name . '-0');

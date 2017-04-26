@@ -448,12 +448,20 @@
   Drupal.behaviors.sidebarMenu = {
     attach: function(context, settings) {
       var sidebarMenu = $('.dashboard-sidebar', context);
-      var $body = $('body', context);
+
+      localStorage.getItem('dashboard') ? sidebarMenu.addClass('expanded-menu') : false;
 
       $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
 
-        sidebarMenu.toggleClass('expanded-menu');
+        if (!sidebarMenu.is('.expanded-menu')) {
+          localStorage.setItem('dashboard', true);
+          sidebarMenu.addClass('expanded-menu');
+        }
+        else {
+          localStorage.removeItem('dashboard');
+          sidebarMenu.removeClass('expanded-menu');
+        }
       });
 
       $.resizeAction(function() {

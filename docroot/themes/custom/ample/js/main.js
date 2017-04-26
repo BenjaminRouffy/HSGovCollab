@@ -22,6 +22,8 @@
       if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         $body.addClass('ios');
       }
+
+      return true;
     }
   }
 
@@ -67,11 +69,14 @@
             });
 
         };
+
         var addLabel = function(form, parent) {
           var legend = $(settings.defaultFieldsetLegend, parent)
             .hide()
             .html();
-          $(parent).hide()
+
+          $(parent).hide();
+
           var template = '<div class="wrapper accordion-button ' + settings.defaultAccordionTab.substr(1) + '">' +
                             '<div class="text">' +
                               '<span class="' + settings.defaultAccordionTabText.substr(1) + '"></span>' +
@@ -79,17 +84,16 @@
                             '</div>' +
                           '</div>';
 
-          var parentAttribute = $(parent)
-            .attr(settings.defaultAttributeSelector);
+          var parentAttribute = $(parent).attr(settings.defaultAttributeSelector);
           var new_div = $(template)
             .addClass(settings.defaultAccordionTab.substr(1))
             .addClass(settings.defaultClosed)
             .attr(settings.defaultAttributeSelector, parentAttribute);
+
           $(new_div).find(settings.defaultAccordionTabText).html(legend);
           $('.wrapper-filters', form).prepend(new_div);
           applyCheckboxesLabel(parent);
-        }
-
+        };
 
         var _this = this;
         $('fieldset', $form)
@@ -97,20 +101,16 @@
             addLabel($form, this);
           });
 
-        $(".click-item", $form).click(function()
-        {
+        $(".click-item", $form).click(function() {
           var attr = $(this).attr(settings.defaultAttributeSelector);
-          $('fieldset', $form)
-            .filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings("fieldset").slideUp(100);
+          $('fieldset', $form).filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings("fieldset").slideUp(100);
           $(this).toggleClass(settings.defaultClosed).siblings(settings.defaultAccordionTab).addClass(settings.defaultClosed);
-
         });
 
         $('fieldset[' + settings.defaultAttributeSelector + '] input', $form).change(function () {
           var parent = $(this).parents('fieldset');
           applyCheckboxesLabel(parent);
         });
-
       });
     }
   };
@@ -551,11 +551,27 @@
     }
   };
 
-  Drupal.behaviors.infographic = {
+  Drupal.behaviors.mobileFeatures = {
     attach: function(context, settings) {
       $('.section-info', context).on('touchstart', '.paragraph', function() {
         $(this).toggleClass('hover').siblings().removeClass('hover');
       });
+
+      if (isTouchDevice()) {
+        $('.wrapper-filters', context).on('click', '.accordion-button', function() {
+          var $this = $(this),
+              $parent = $this.parent(),
+              parentHeight = $parent.height(),
+              parentTopOffset = $parent.offset().top,
+              headerHeight = $('header').height();
+
+          if (!$this.is('.closed')) {
+            $('html, body').animate({
+              scrollTop: parentHeight + parentTopOffset - headerHeight
+            }, 1000);
+          }
+        });
+      }
     }
   };
 

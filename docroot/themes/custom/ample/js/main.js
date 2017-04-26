@@ -315,7 +315,6 @@
       var sliderSettings = {
         items: 1,
         smartSpeed: speed,
-        dots: false,
         nav: true,
         navSpeed: speed,
         dotsSpeed: speed

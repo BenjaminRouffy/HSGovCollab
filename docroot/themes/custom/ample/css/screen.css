@@ -5960,8 +5960,13 @@ footer {
   .fixed .content-slider-wrapper .owl-next {
     background: url(../images/slider-arrow-right.svg) center no-repeat; }
 
-.content-slider-wrapper .owl-nav {
+.content-slider-wrapper .owl-nav,
+.content-slider-wrapper .owl-dots {
   display: none; }
+
+@media (max-width: 767px) {
+  .content-slider-wrapper .owl-dots {
+    display: block; } }
 
 .thumb-slider-wrapper {
   height: 90px;

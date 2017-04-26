@@ -5,11 +5,16 @@ dependencies:
   config:
     - core.entity_view_mode.node.banner
     - field.field.node.article.body
+    - field.field.node.article.field_article_join_block
+    - field.field.node.article.field_author
     - field.field.node.article.field_comments
     - field.field.node.article.field_cons
+    - field.field.node.article.field_content
+    - field.field.node.article.field_content_date
     - field.field.node.article.field_documents
     - field.field.node.article.field_image
     - field.field.node.article.field_pros
+    - field.field.node.article.field_related_content_selector
     - field.field.node.article.field_tags
     - field.field.node.article.field_type
     - node.type.article
@@ -39,9 +44,14 @@ content:
 hidden:
   addtoany: true
   body: true
+  field_article_join_block: true
+  field_author: true
   field_comments: true
+  field_content: true
+  field_content_date: true
   field_documents: true
   field_image: true
+  field_related_content_selector: true
   field_tags: true
   field_type: true
   langcode: true

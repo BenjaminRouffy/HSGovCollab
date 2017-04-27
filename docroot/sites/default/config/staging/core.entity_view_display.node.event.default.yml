@@ -23,6 +23,7 @@ dependencies:
   module:
     - datetime_range
     - entity_reference_revisions
+    - events
     - group_content_formatters
     - link
     - options
@@ -62,7 +63,7 @@ content:
       format_type: time_line
       separator: '-'
     third_party_settings: {  }
-    type: daterange_default
+    type: daterange_multiple
     region: content
   field_event_author:
     weight: 2

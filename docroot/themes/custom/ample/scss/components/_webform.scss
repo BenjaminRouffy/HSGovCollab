@@ -52,12 +52,14 @@ form {
     @include font-size(16);
   }
 
-  .form-email,
-  .form-text {
-    ~ label.error {
-      @include font-size(14);
-      top: 82px;
-      text-align: right;
+  &:not(.form-contact-us) {
+    .form-email,
+    .form-text {
+      ~ label.error {
+        @include font-size(14);
+        top: 82px;
+        text-align: right;
+      }
     }
   }
 }

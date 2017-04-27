@@ -1,4 +1,4 @@
-uuid: 1dbc46a4-9fdb-4594-bd6e-5b83ec03c5f6
+uuid: 06227432-9350-4fa8-8559-8335dfef38b9
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,13 @@ dependencies:
     - views.view.search
   module:
     - search_customization
-id: parent_groups_with_type_region
-name: Regions
-url_alias: parent_groups_with_type_region
+id: organizations
+name: Organizations
+url_alias: organizations
 weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: parent_groups_region
+field_identifier: field_organization
 facet_source_id: 'search_api:views_block_with_path__search__block_with_path_1'
 widget:
   type: checkbox

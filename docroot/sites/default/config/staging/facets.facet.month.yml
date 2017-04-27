@@ -1,4 +1,4 @@
-uuid: 1dbc46a4-9fdb-4594-bd6e-5b83ec03c5f6
+uuid: db86d7ab-8161-4cb4-a876-a3e26bfa6338
 langcode: en
 status: true
 dependencies:
@@ -7,19 +7,21 @@ dependencies:
     - views.view.search
   module:
     - search_customization
-id: parent_groups_with_type_region
-name: Regions
-url_alias: parent_groups_with_type_region
+id: month
+name: Date
+url_alias: month
 weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: parent_groups_region
+field_identifier: computed_date
 facet_source_id: 'search_api:views_block_with_path__search__block_with_path_1'
 widget:
-  type: checkbox
+  type: datebasic
   config:
     show_numbers: true
-    soft_limit: 0
+    display_relative: false
+    granularity: '5'
+    date_display: ''
 query_operator: or
 use_hierarchy: false
 expand_hierarchy: false
@@ -46,11 +48,6 @@ processor_configs:
       sort: -10
     settings:
       sort: ASC
-  translate_entity:
-    processor_id: translate_entity
-    weights:
-      build: 5
-    settings: {  }
   url_processor_handler:
     processor_id: url_processor_handler
     weights:

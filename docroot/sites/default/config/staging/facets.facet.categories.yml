@@ -1,4 +1,4 @@
-uuid: 1dbc46a4-9fdb-4594-bd6e-5b83ec03c5f6
+uuid: a625d081-a1c0-416d-9a67-58429d905acc
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,13 @@ dependencies:
     - views.view.search
   module:
     - search_customization
-id: parent_groups_with_type_region
-name: Regions
-url_alias: parent_groups_with_type_region
+id: categories
+name: Categories
+url_alias: categories
 weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: parent_groups_region
+field_identifier: field_category
 facet_source_id: 'search_api:views_block_with_path__search__block_with_path_1'
 widget:
   type: checkbox

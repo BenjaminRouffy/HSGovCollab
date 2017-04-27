@@ -1,4 +1,4 @@
-uuid: 1dbc46a4-9fdb-4594-bd6e-5b83ec03c5f6
+uuid: 654af6ae-81bb-41b4-9991-159083d6872b
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,13 @@ dependencies:
     - views.view.search
   module:
     - search_customization
-id: parent_groups_with_type_region
-name: Regions
-url_alias: parent_groups_with_type_region
+id: kv_categories
+name: 'KV categories'
+url_alias: kv_categories
 weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: parent_groups_region
+field_identifier: parent_groups_knowledge_vault
 facet_source_id: 'search_api:views_block_with_path__search__block_with_path_1'
 widget:
   type: checkbox

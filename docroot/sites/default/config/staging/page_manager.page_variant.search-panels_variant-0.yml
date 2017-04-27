@@ -3,8 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - facets.facet.categories
     - facets.facet.content_type
+    - facets.facet.countries
+    - facets.facet.kv_categories
+    - facets.facet.month
+    - facets.facet.organizations
     - facets.facet.parent_groups_with_type_region
+    - facets.facet.products
+    - facets.facet.projects
     - page_manager.page.search
     - views.view.search
   module:
@@ -26,24 +33,6 @@ variant_settings:
       weight: 0
       uuid: 12c686dc-dfce-43c2-ba66-27fa3ca1723e
       context_mapping: {  }
-    b89835b6-3848-452d-a624-007b4c65b392:
-      id: 'facet_block:content_type'
-      label: 'Content type'
-      provider: facets
-      label_display: visible
-      region: left_sidebar
-      weight: 0
-      uuid: b89835b6-3848-452d-a624-007b4c65b392
-      context_mapping: {  }
-    f99e3e82-9999-4746-8f95-929fa4d59f62:
-      id: 'facet_block:parent_groups_with_type_region'
-      label: Region
-      provider: facets
-      label_display: visible
-      region: left_sidebar
-      weight: 0
-      uuid: f99e3e82-9999-4746-8f95-929fa4d59f62
-      context_mapping: {  }
     4063d4e7-5b4e-437e-8101-39a327942dac:
       id: 'views_block:search-block_with_path_1'
       label: ''
@@ -54,6 +43,87 @@ variant_settings:
       region: right_sidebar
       weight: 0
       uuid: 4063d4e7-5b4e-437e-8101-39a327942dac
+      context_mapping: {  }
+    1a351ab6-a523-491d-9cdd-5f7d8c085d9f:
+      id: 'facet_block:countries'
+      label: Countries
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: -3
+      uuid: 1a351ab6-a523-491d-9cdd-5f7d8c085d9f
+      context_mapping: {  }
+    011c71d5-799d-4b66-91d2-c37ccba17875:
+      id: 'facet_block:kv_categories'
+      label: 'KV categories'
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: 0
+      uuid: 011c71d5-799d-4b66-91d2-c37ccba17875
+      context_mapping: {  }
+    282fd026-18fc-4e41-a670-4c63985828cd:
+      id: 'facet_block:organizations'
+      label: Organizations
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: 1
+      uuid: 282fd026-18fc-4e41-a670-4c63985828cd
+      context_mapping: {  }
+    5261a262-ebe5-4237-9c9b-75f710fd1b76:
+      id: 'facet_block:products'
+      label: Products
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: -1
+      uuid: 5261a262-ebe5-4237-9c9b-75f710fd1b76
+      context_mapping: {  }
+    dbc0e2a8-6a5e-4d37-8fa1-8e137e48876f:
+      id: 'facet_block:projects'
+      label: Projects
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: -2
+      uuid: dbc0e2a8-6a5e-4d37-8fa1-8e137e48876f
+      context_mapping: {  }
+    c733e50b-43d1-4e93-b0e4-aa6eed6fd750:
+      id: 'facet_block:parent_groups_with_type_region'
+      label: Regions
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: -4
+      uuid: c733e50b-43d1-4e93-b0e4-aa6eed6fd750
+      context_mapping: {  }
+    b85c0a24-789a-46bb-a1c4-edcafd08f5da:
+      id: 'facet_block:content_type'
+      label: 'Content types'
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: -5
+      uuid: b85c0a24-789a-46bb-a1c4-edcafd08f5da
+      context_mapping: {  }
+    b6964311-911d-4ae9-9d20-df8909d89aaa:
+      id: 'facet_block:categories'
+      label: Categories
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: 2
+      uuid: b6964311-911d-4ae9-9d20-df8909d89aaa
+      context_mapping: {  }
+    54ec7361-55b3-447f-bbc7-a821ec66869a:
+      id: 'facet_block:month'
+      label: Date
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: 4
+      uuid: 54ec7361-55b3-447f-bbc7-a821ec66869a
       context_mapping: {  }
   id: panels_variant
   uuid: 63601cf6-d9e5-489c-90db-64f01ad0213a

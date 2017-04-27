@@ -532,8 +532,7 @@
       var $header = $('header', context);
 
       $.scrollAction(function() {
-        var top = typeof window.scrollY === 'undefined' ? window.pageYOffset : window.scrollY;
-        return top > 0;
+        return $(window).scrollTop() > 0;
       }, function(isTrue) {
         $header.toggleClassCondition(isTrue, 'collapsed');
       });

@@ -1,0 +1,20 @@
+<div class="article-item">
+  {% if display_submitted %}
+    <div class="post-info">
+      <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+        {{ content.field_content_date|field_value }}
+      </time>
+      {% if content.field_author|field_value %}
+        <span class="author">
+          {% trans %}By: {% endtrans %} {{ content.field_author|field_value }}
+        </span>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <a href="{{ url }}">
+    <h2 role="heading">
+      {{ label }}
+    </h2>
+  </a>
+</div>

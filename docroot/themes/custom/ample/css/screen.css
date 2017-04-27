@@ -3083,9 +3083,9 @@ form {
 @media (max-width: 479px) {
   form label {
     font-size: 1rem; }
-  form .form-email ~ label.error,
-  form .form-text ~ label.error,
-  form .form-textarea ~ label.error {
+  form:not(.form-contact-us) .form-email ~ label.error,
+  form:not(.form-contact-us) .form-text ~ label.error,
+  form:not(.form-contact-us) .form-textarea ~ label.error {
     font-size: 0.875rem;
     top: 82px;
     text-align: right; } }

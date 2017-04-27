@@ -137,6 +137,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
+  custom_date_widget:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_category:
     weight: 12
     settings: {  }
@@ -151,11 +156,9 @@ content:
     region: content
   field_date:
     weight: 5
-    settings:
-      date_type: date_only
-      date_format: html_year
+    settings: {  }
     third_party_settings: {  }
-    type: daterange_eventdaterange
+    type: daterange_eventdaterangelist
     region: content
   field_documents:
     weight: 20

@@ -6,7 +6,7 @@ solr_extractor_configuration:
 pdftotext_extractor_configuration: {  }
 tika_extractor_configuration:
   java_path: java
-  tika_path: tika-app-1.14.jar
+  tika_path: /opt/tika/tika-app-1.14.jar
 python_pdf2txt_extractor_configuration:
   python_path: python
   python_pdf2txt_script: /usr/bin/pdf2txt

@@ -1245,7 +1245,7 @@ footer > .partners {
     line-height: 72px;
     margin: 20px 0 10px;
     padding: 0; }
-  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .ui-dialog .button, .ui-dialog .country-content-wrapper .follow-link .button {
+  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button {
     font-size: 1.5rem;
     background: transparent;
     border: 1px solid #fff;
@@ -1262,7 +1262,7 @@ footer > .partners {
             transform: scale(1.06);
     -webkit-transition: background .2s ease;
     transition: background .2s ease; }
-    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .ui-dialog .button:hover, .ui-dialog .country-content-wrapper .follow-link .button:hover {
+    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button:hover {
       background: #ea3a32; }
   .country-content-wrapper .follow-link .ajax-progress {
     position: absolute; }
@@ -3296,7 +3296,7 @@ form {
      -moz-appearance: radio;
           appearance: radio; }
 
-.form-submit, .ui-dialog .button {
+.form-submit, .ui-dialog.ui-widget-content .button {
   background: #fff;
   border: 1px solid #ea3a32;
   color: #ea3a32;
@@ -3305,7 +3305,7 @@ form {
   text-transform: uppercase;
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
-  .form-submit:hover, .ui-dialog .button:hover {
+  .form-submit:hover, .ui-dialog.ui-widget-content .button:hover {
     border-color: #8c2222;
     color: #8c2222; }
 
@@ -3371,11 +3371,11 @@ form .social_login iframe {
     content: ": *"; }
   .user-login-form .form-actions {
     margin-top: 20px; }
-  .user-login-form .form-submit, .user-login-form .ui-dialog .button, .ui-dialog .user-login-form .button {
+  .user-login-form .form-submit, .user-login-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-login-form .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-login-form .form-submit:hover, .user-login-form .ui-dialog .button:hover, .ui-dialog .user-login-form .button:hover {
+    .user-login-form .form-submit:hover, .user-login-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-login-form .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3455,7 +3455,7 @@ form .social_login iframe {
     margin: 10px 0 55px;
     text-align: center;
     width: 50%; }
-  .form-contact-us .form-submit, .form-contact-us .ui-dialog .button, .ui-dialog .form-contact-us .button {
+  .form-contact-us .form-submit, .form-contact-us .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-contact-us .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
@@ -3605,11 +3605,11 @@ form .social_login iframe {
     margin: 30px auto 0;
     text-align: center;
     width: 50%; }
-  .user-register-form .form-submit, .user-register-form .ui-dialog .button, .ui-dialog .user-register-form .button {
+  .user-register-form .form-submit, .user-register-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-register-form .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-register-form .form-submit:hover, .user-register-form .ui-dialog .button:hover, .ui-dialog .user-register-form .button:hover {
+    .user-register-form .form-submit:hover, .user-register-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-register-form .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3714,7 +3714,7 @@ form .social_login iframe {
   margin-top: 30px;
   text-align: center; }
 
-.user-onetime-form .form-submit:hover, .user-onetime-form .ui-dialog .button:hover, .ui-dialog .user-onetime-form .button:hover {
+.user-onetime-form .form-submit:hover, .user-onetime-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-onetime-form .button:hover {
   -webkit-transform: none;
           transform: none; }
 
@@ -3731,7 +3731,7 @@ form .social_login iframe {
   .user-onetime-form #catagories-wrapper {
     padding: 10px 0;
     width: 100%; }
-  .user-onetime-form .form-submit, .user-onetime-form .ui-dialog .button, .ui-dialog .user-onetime-form .button {
+  .user-onetime-form .form-submit, .user-onetime-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-onetime-form .button {
     font-size: 1.05rem;
     padding: 10px; } }
 
@@ -3756,11 +3756,11 @@ form .social_login iframe {
   .user-pass .form-actions {
     margin-top: 25px;
     text-align: center; }
-  .user-pass .form-submit, .user-pass .ui-dialog .button, .ui-dialog .user-pass .button {
+  .user-pass .form-submit, .user-pass .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-pass .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-pass .form-submit:hover, .user-pass .ui-dialog .button:hover, .ui-dialog .user-pass .button:hover {
+    .user-pass .form-submit:hover, .user-pass .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-pass .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3801,7 +3801,7 @@ form .social_login iframe {
       .acceptance-form .form-checkbox a:hover,
       .acceptance-form .js-form-type-checkbox a:hover {
         color: #8c2222; }
-  .acceptance-form .form-submit, .acceptance-form .ui-dialog .button, .ui-dialog .acceptance-form .button {
+  .acceptance-form .form-submit, .acceptance-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .acceptance-form .button {
     margin-top: 30px; }
 
 @media (max-width: 991px) {
@@ -3896,7 +3896,7 @@ form .social_login iframe {
         color: #8c2222; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
       outline: none; }
-    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog .button, .ui-dialog .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button {
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button {
       font-size: 0.875rem;
       background: none;
       border: none;
@@ -4027,9 +4027,9 @@ form .social_login iframe {
     display: block;
     font-weight: 400;
     margin-bottom: 20px; }
-  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .button, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .button,
+  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button,
   .form-my-settings #contact-details .form-submit,
-  .form-my-settings #contact-details .ui-dialog .button, .ui-dialog
+  .form-my-settings #contact-details .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .form-my-settings #contact-details .button {
     font-size: 0.875rem;
     background: transparent;
@@ -4038,15 +4038,15 @@ form .social_login iframe {
     letter-spacing: 0;
     padding: 0;
     text-transform: none; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .field-add-more-submit.button, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button,
+    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button,
     .form-my-settings #contact-details .form-submit.field-add-more-submit,
-    .form-my-settings #contact-details .ui-dialog .field-add-more-submit.button, .ui-dialog
+    .form-my-settings #contact-details .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content
     .form-my-settings #contact-details .field-add-more-submit.button {
       background: url(../images/add-plus-button.png) left top no-repeat;
       padding-left: 21px; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .button:hover, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .button:hover,
+    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button:hover,
     .form-my-settings #contact-details .form-submit:hover,
-    .form-my-settings #contact-details .ui-dialog .button:hover, .ui-dialog
+    .form-my-settings #contact-details .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content
     .form-my-settings #contact-details .button:hover {
       background-position: left bottom;
       color: #8c2222;
@@ -4095,7 +4095,7 @@ form .social_login iframe {
   left: 0;
   top: -23px; }
 
-.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog .field-add-more-submit.button, .ui-dialog .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button {
+.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button {
   margin-left: 0; }
 
 .ie11 .form-my-settings #edit-field-skype-or-other-wrapper table,
@@ -4162,9 +4162,9 @@ form .social_login iframe {
       top: 9px; }
     .form-my-settings table .dropbutton-wrapper .dropbutton-arrow {
       border-top-color: #8c2222; }
-  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .ui-dialog .button, .ui-dialog .form-my-settings table .confirm-remove .button,
+  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings table .confirm-remove .button,
   .form-my-settings table .restore .form-submit,
-  .form-my-settings table .restore .ui-dialog .button, .ui-dialog
+  .form-my-settings table .restore .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .form-my-settings table .restore .button {
     margin-top: 0 !important; }
 
@@ -4198,9 +4198,9 @@ form .social_login iframe {
   right: 60px;
   top: -3px; }
 
-.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog .button, .ui-dialog .form-my-settings .paragraphs-dropbutton-wrapper .button,
+.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .paragraphs-dropbutton-wrapper .button,
 .form-my-settings .field-add-more-submit.form-submit,
-.form-my-settings .ui-dialog .field-add-more-submit.button, .ui-dialog
+.form-my-settings .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content
 .form-my-settings .field-add-more-submit.button {
   font-weight: 400;
   margin: 0; }
@@ -4222,15 +4222,15 @@ form .social_login iframe {
 .form-my-settings label:after {
   content: none; }
 
-.form-my-settings .form-submit, .form-my-settings .ui-dialog .button, .ui-dialog .form-my-settings .button {
+.form-my-settings .form-submit, .form-my-settings .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .button {
   background: none;
   border-color: #ea3a32;
   font-weight: 700;
   margin: 0 auto 15px;
   text-transform: none; }
-  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .ui-dialog .button:not(.js-hide), .ui-dialog .form-my-settings .button:not(.js-hide) {
+  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .form-my-settings .button:not(.js-hide) {
     display: block; }
-  .form-my-settings .form-submit:hover, .form-my-settings .ui-dialog .button:hover, .ui-dialog .form-my-settings .button:hover {
+  .form-my-settings .form-submit:hover, .form-my-settings .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings .button:hover {
     border-color: #8c2222;
     color: #8c2222;
     -webkit-transform: none;
@@ -4500,7 +4500,7 @@ form .social_login iframe {
     padding-right: 60px; }
     .search-form-wrapper .form-text:focus, .search-form-wrapper .form-textarea:focus {
       border-color: rgba(56, 152, 236, 0.32); }
-  .search-form-wrapper .form-submit, .search-form-wrapper .ui-dialog .button, .ui-dialog .search-form-wrapper .button {
+  .search-form-wrapper .form-submit, .search-form-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .search-form-wrapper .button {
     background: url(../images/magnifying-glass.svg) center no-repeat;
     background-size: 20px 20px;
     border: none;
@@ -4515,7 +4515,7 @@ form .social_login iframe {
     transition: transform .1s ease;
     transition: transform .1s ease, -webkit-transform .1s ease;
     width: 60px; }
-    .search-form-wrapper .form-submit:hover, .search-form-wrapper .ui-dialog .button:hover, .ui-dialog .search-form-wrapper .button:hover {
+    .search-form-wrapper .form-submit:hover, .search-form-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .search-form-wrapper .button:hover {
       border: none;
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
@@ -4795,31 +4795,31 @@ form .social_login iframe {
     .popup-wrapper .action-links .cancel-link {
       margin-left: 10px; } }
 
-.ui-dialog {
+.ui-dialog.ui-widget-content {
   border: none;
   border-radius: 0;
   padding: 5%;
   width: 50% !important;
   z-index: 610 !important; }
-  .ui-dialog .popup-wrapper {
+  .ui-dialog.ui-widget-content .popup-wrapper {
     height: auto;
     opacity: 1;
     position: static;
     -webkit-transform: none;
             transform: none;
     width: auto; }
-  .ui-dialog .ui-dialog-titlebar {
+  .ui-dialog.ui-widget-content .ui-dialog-titlebar {
     display: none; }
-  .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+  .ui-dialog.ui-widget-content .ui-dialog-buttonpane .ui-dialog-buttonset {
     float: none;
     margin-top: 20px;
     text-align: center; }
-  .ui-dialog .button {
+  .ui-dialog.ui-widget-content .button {
     font-size: 1.5rem;
     border-radius: 0;
     font-family: Oswald, sans-serif;
     letter-spacing: .5px; }
-    .ui-dialog .button span {
+    .ui-dialog.ui-widget-content .button span {
       padding: 0;
       text-transform: none; }
 
@@ -6626,7 +6626,7 @@ footer {
     padding: 30px 0; }
   .dashboard .follow-link {
     padding-top: 5px; }
-    .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog .button, .ui-dialog .dashboard .follow-link .button {
+    .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .dashboard .follow-link .button {
       background: transparent;
       border-color: #ea3a32;
       text-transform: none; }

@@ -306,6 +306,14 @@ header {
     text-align: left;
   }
 
+  .service-links {
+    .active {
+      a {
+        border-left: 3px solid $red;
+      }
+    }
+  }
+
   .desktop-service-links {
     display: none;
   }

@@ -601,7 +601,7 @@ svg {
     color: #fff;
     display: block;
     min-height: 70px;
-    padding: 26px 15px 20px;
+    padding: 26px 0 20px 15px;
     text-decoration: none;
     -webkit-transition: background .4s ease;
     transition: background .4s ease; }
@@ -1084,8 +1084,10 @@ footer > .partners {
     overflow: hidden;
     padding: 20px;
     position: relative; }
-    .top-banner-region .paragraph:hover .infooverlay {
+    .top-banner-region .paragraph:hover .infooverlay, .top-banner-region .paragraph.hover .infooverlay {
       top: 0; }
+    .mobile .top-banner-region .paragraph:not(.hover) .infooverlay {
+      top: 100%; }
     .top-banner-region .paragraph .icon-wrapper {
       height: 100px;
       margin: 0 auto 30px;
@@ -1137,6 +1139,14 @@ footer > .partners {
     transition: top 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
     width: 100%;
     z-index: 100; }
+    .top-banner-region .infooverlay:after {
+      background: inherit;
+      content: "";
+      height: 20px;
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%; }
     .top-banner-region .infooverlay h3 {
       font-size: 1.75rem;
       font-weight: 400;
@@ -5501,7 +5511,7 @@ footer {
     background-size: 650%; }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products) .main-wrapper:before {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products) .main-wrapper:before {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -5950,8 +5960,13 @@ footer {
   .fixed .content-slider-wrapper .owl-next {
     background: url(../images/slider-arrow-right.svg) center no-repeat; }
 
-.content-slider-wrapper .owl-nav {
+.content-slider-wrapper .owl-nav,
+.content-slider-wrapper .owl-dots {
   display: none; }
+
+@media (max-width: 767px) {
+  .content-slider-wrapper .owl-dots {
+    display: block; } }
 
 .thumb-slider-wrapper {
   height: 90px;

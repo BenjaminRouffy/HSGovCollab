@@ -19,9 +19,22 @@ class Events extends ComputedDateBase {
   public function getValue() {
     /* @var $entity EntityInterface */
     $entity = $this->getEntity();
-    if (!empty($entity->field_date) && isset($entity->field_date->start_date)) {
-      /* @var \Drupal\Core\Datetime\DrupalDateTime */
-      return $entity->field_date->start_date;
+
+    $dates = [];
+
+    if (!empty($entity->field_date)) {
+      // Get minimal start date from date list as computed date.
+      foreach ($entity->field_date as $date) {
+        if (isset($date->start_date)) {
+          $dates[$date->start_date->getTimestamp()] = $date->start_date;
+        }
+      }
+
+      if (!empty($dates)) {
+        $start_date = $dates[min(array_keys($dates))];
+        /* @var \Drupal\Core\Datetime\DrupalDateTime */
+        return $start_date;
+      }
     }
   }
 

@@ -448,7 +448,9 @@
     attach: function(context, settings) {
       var sidebarMenu = $('.dashboard-sidebar', context);
 
-      localStorage.getItem('dashboard') ? sidebarMenu.addClass('expanded-menu') : false;
+      if (window.innerWidth > 767) {
+        localStorage.getItem('dashboard') ? sidebarMenu.addClass('expanded-menu') : false;
+      }
 
       $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;

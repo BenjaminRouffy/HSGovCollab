@@ -530,10 +530,9 @@
   Drupal.behaviors.header = {
     attach: function(context, settings) {
       var $header = $('header', context);
-      var top = typeof window.scrollY === 'undefined' ? window.pageYOffset : window.scrollY;
 
       $.scrollAction(function() {
-        return top > 0;
+        return $(window).scrollTop() > 0;
       }, function(isTrue) {
         $header.toggleClassCondition(isTrue, 'collapsed');
       });

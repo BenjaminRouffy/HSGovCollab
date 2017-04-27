@@ -813,8 +813,15 @@ function deployment_update_8060() {
 }
 
 /**
- * Install module "Tagadelic" and "KV".
+ * Install module "User access".
  */
 function deployment_update_8061() {
+  \Drupal::service('module_installer')->install(['user_access']);
+}
+
+/**
+ * Install module "Tagadelic" and "KV".
+ */
+function deployment_update_8062() {
   \Drupal::service('module_installer')->install(['tagadelic', 'knowledge_vault']);
 }

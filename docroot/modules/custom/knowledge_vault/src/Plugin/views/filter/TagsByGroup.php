@@ -71,7 +71,7 @@ class TagsByGroup extends GroupIndexGid  {
   protected function valueForm(&$form, FormStateInterface $form_state) {
     $options = [];
 
-    // @todo Change it.
+    // @todo Change hardcode view name and display name to options.
     $tags = views_get_view_result('tagadelic_terms', 'tags_by_group', $this->view->args[0]);
 
     if (count($tags) > $this->options['count']) {

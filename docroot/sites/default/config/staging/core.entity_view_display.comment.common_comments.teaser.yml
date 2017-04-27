@@ -1,14 +1,15 @@
-uuid: 6771e856-d766-4660-bf36-b9a857b1390f
+uuid: 567d362e-2b1f-41cf-931b-2961cdd99ae2
 langcode: en
 status: true
 dependencies:
   config:
     - comment.type.common_comments
+    - core.entity_view_mode.comment.teaser
     - field.field.comment.common_comments.field_comment_body
-id: comment.common_comments.default
+id: comment.common_comments.teaser
 targetEntityType: comment
 bundle: common_comments
-mode: default
+mode: teaser
 content:
   field_comment_body:
     weight: 1
@@ -17,11 +18,6 @@ content:
     third_party_settings: {  }
     type: basic_string
     region: content
-  links:
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   rate_vote_widget:
     weight: 0
     region: content
@@ -29,3 +25,4 @@ content:
     third_party_settings: {  }
 hidden:
   langcode: true
+  links: true

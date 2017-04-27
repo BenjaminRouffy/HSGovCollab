@@ -1,9 +1,9 @@
-uuid: 5f186232-01bd-4fdf-b074-14f514ef819e
+uuid: 581a55db-1325-45c3-9852-b41108dfa95f
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.user.comment_author
+    - core.entity_view_mode.user.kv_manager
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
     - field.field.user.user.field_city
@@ -31,12 +31,12 @@ dependencies:
     - field.field.user.user.field_zip_code
     - image.style.150x150
   module:
-    - image
+    - taxonomy_image_formatter
     - user
-id: user.user.comment_author
+id: user.user.kv_manager
 targetEntityType: user
 bundle: user
-mode: comment_author
+mode: kv_manager
 content:
   field_avatar:
     weight: 0
@@ -45,20 +45,34 @@ content:
       image_style: 150x150
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: taxonomy_image_formatter
     region: content
+  field_first_name:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_last_name:
+    type: string
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   field_accept_term_conditions: true
   field_city: true
   field_country: true
   field_country_manager: true
   field_disclose_your_personal_det: true
-  field_first_name: true
   field_following_countries: true
   field_following_projects: true
   field_following_regions: true
   field_job_title: true
-  field_last_name: true
   field_last_password_reset: true
   field_middle_name: true
   field_mobilephone: true

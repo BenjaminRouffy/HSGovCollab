@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.small_teaser
     - core.entity_view_mode.node.teaser
     - node.type.article
     - taxonomy.vocabulary.article_type
@@ -95,8 +96,17 @@ display:
             offset_label: Offset
       style:
         type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
       row:
         type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: false
       fields:
         rendered_entity:
           id: rendered_entity
@@ -530,6 +540,7 @@ display:
         - 'config:core.entity_view_display.node.article.banner'
         - 'config:core.entity_view_display.node.article.comments'
         - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.small_teaser'
         - 'config:core.entity_view_display.node.article.teaser'
         - 'config:core.entity_view_display.node.basic_page.banner'
         - 'config:core.entity_view_display.node.basic_page.bottom'
@@ -588,6 +599,210 @@ display:
         - 'config:core.entity_view_display.node.article.banner'
         - 'config:core.entity_view_display.node.article.comments'
         - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.small_teaser'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.basic_page.banner'
+        - 'config:core.entity_view_display.node.basic_page.bottom'
+        - 'config:core.entity_view_display.node.basic_page.comments'
+        - 'config:core.entity_view_display.node.basic_page.default'
+        - 'config:core.entity_view_display.node.basic_page.full'
+        - 'config:core.entity_view_display.node.basic_page.teaser'
+        - 'config:core.entity_view_display.node.basic_page.view_mode_for_section_page'
+        - 'config:core.entity_view_display.node.document.default'
+        - 'config:core.entity_view_display.node.document.teaser'
+        - 'config:core.entity_view_display.node.document.time_line'
+        - 'config:core.entity_view_display.node.event.comments'
+        - 'config:core.entity_view_display.node.event.default'
+        - 'config:core.entity_view_display.node.event.full'
+        - 'config:core.entity_view_display.node.event.news_events_listing'
+        - 'config:core.entity_view_display.node.event.news_events_sidebar'
+        - 'config:core.entity_view_display.node.event.single_line_with_icon'
+        - 'config:core.entity_view_display.node.event.small_teaser'
+        - 'config:core.entity_view_display.node.event.teaser'
+        - 'config:core.entity_view_display.node.event.time_line'
+        - 'config:core.entity_view_display.node.member.default'
+        - 'config:core.entity_view_display.node.member.full'
+        - 'config:core.entity_view_display.node.member.member_icons'
+        - 'config:core.entity_view_display.node.member.teaser'
+        - 'config:core.entity_view_display.node.news.comments'
+        - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.full'
+        - 'config:core.entity_view_display.node.news.news_events_listing'
+        - 'config:core.entity_view_display.node.news.news_events_sidebar'
+        - 'config:core.entity_view_display.node.news.single_line_with_icon'
+        - 'config:core.entity_view_display.node.news.small_teaser'
+        - 'config:core.entity_view_display.node.news.teaser'
+        - 'config:core.entity_view_display.node.news.time_line'
+        - 'config:core.entity_view_display.node.social.default'
+        - 'config:core.entity_view_display.node.social.teaser'
+        - 'config:core.entity_view_display.node.social.time_line'
+  embed_1:
+    display_plugin: embed
+    id: embed_1
+    display_title: 'Last 3 article'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      title: ''
+      defaults:
+        title: false
+        fields: false
+        filters: false
+        filter_groups: false
+        relationships: false
+        pager: false
+      fields:
+        rendered_entity:
+          id: rendered_entity
+          table: node
+          field: rendered_entity
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view_mode: small_teaser
+          entity_type: node
+          plugin_id: rendered_entity
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            article: article
+          group: 1
+          exposed: false
+          expose:
+            operator_id: type_op
+            label: 'Content type'
+            description: ''
+            use_operator: false
+            operator: type_op
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      relationships:
+        group_content:
+          id: group_content
+          table: node_field_data
+          field: group_content
+          relationship: none
+          group_type: group
+          admin_label: 'Content group content'
+          required: false
+          group_content_plugins:
+            'group_node:article': 'group_node:article'
+            'group_node:basic_page': '0'
+            'group_node:document': '0'
+            'group_node:event': '0'
+            'group_node:member': '0'
+            'group_node:news': '0'
+            'group_node:social': '0'
+          entity_type: node
+          plugin_id: group_content_to_entity_reverse
+      pager:
+        type: some
+        options:
+          items_per_page: 3
+          offset: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - route
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:core.entity_view_display.node.article.banner'
+        - 'config:core.entity_view_display.node.article.comments'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.small_teaser'
         - 'config:core.entity_view_display.node.article.teaser'
         - 'config:core.entity_view_display.node.basic_page.banner'
         - 'config:core.entity_view_display.node.basic_page.bottom'

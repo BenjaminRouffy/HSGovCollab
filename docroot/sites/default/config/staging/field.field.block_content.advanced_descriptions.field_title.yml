@@ -1,0 +1,19 @@
+uuid: efacd411-592e-4c27-8e3f-37130abb7462
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.advanced_descriptions
+    - field.storage.block_content.field_title
+id: block_content.advanced_descriptions.field_title
+field_name: field_title
+entity_type: block_content
+bundle: advanced_descriptions
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

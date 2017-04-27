@@ -1,0 +1,35 @@
+uuid: 9842f6b6-398d-4c18-b178-1bf44dbbbe37
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.search_result_row
+    - field.field.group.knowledge_vault.field_summary
+    - group.type.knowledge_vault
+  module:
+    - text
+id: group.knowledge_vault.search_result_row
+targetEntityType: group
+bundle: knowledge_vault
+mode: search_result_row
+content:
+  field_summary:
+    weight: -4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  langcode: true
+  uid: true

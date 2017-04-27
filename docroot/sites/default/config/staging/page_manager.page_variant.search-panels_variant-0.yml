@@ -1,20 +1,51 @@
-uuid: 54ebfc22-8578-4ec4-be6f-beea4eb50604
+uuid: ce407860-2981-4790-a0a1-d849be110ca2
 langcode: en
 status: true
 dependencies:
   config:
+    - facets.facet.content_type
+    - facets.facet.parent_groups_with_type_region
     - page_manager.page.search
     - views.view.search
   module:
+    - facets
     - panels
     - views
 id: search-panels_variant-0
-label: Panels
+label: Default
 variant: panels_variant
 variant_settings:
   blocks:
-    d283f46a-e0cb-4635-be77-5be8ce1ea6a4:
-      id: 'views_block:search-block_1'
+    12c686dc-dfce-43c2-ba66-27fa3ca1723e:
+      id: 'views_exposed_filter_block:search-block_with_path_1'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      region: top
+      weight: 0
+      uuid: 12c686dc-dfce-43c2-ba66-27fa3ca1723e
+      context_mapping: {  }
+    b89835b6-3848-452d-a624-007b4c65b392:
+      id: 'facet_block:content_type'
+      label: 'Content type'
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: 0
+      uuid: b89835b6-3848-452d-a624-007b4c65b392
+      context_mapping: {  }
+    f99e3e82-9999-4746-8f95-929fa4d59f62:
+      id: 'facet_block:parent_groups_with_type_region'
+      label: Region
+      provider: facets
+      label_display: visible
+      region: left_sidebar
+      weight: 0
+      uuid: f99e3e82-9999-4746-8f95-929fa4d59f62
+      context_mapping: {  }
+    4063d4e7-5b4e-437e-8101-39a327942dac:
+      id: 'views_block:search-block_with_path_1'
       label: ''
       provider: views
       label_display: '0'
@@ -22,10 +53,10 @@ variant_settings:
       items_per_page: none
       region: right_sidebar
       weight: 0
-      uuid: d283f46a-e0cb-4635-be77-5be8ce1ea6a4
+      uuid: 4063d4e7-5b4e-437e-8101-39a327942dac
       context_mapping: {  }
   id: panels_variant
-  uuid: f62bfabf-3e7f-44f6-a15b-8a1b542f6be7
+  uuid: 63601cf6-d9e5-489c-90db-64f01ad0213a
   label: null
   weight: 0
   layout: two_column_left

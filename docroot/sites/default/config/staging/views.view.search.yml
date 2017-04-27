@@ -5,7 +5,9 @@ dependencies:
   config:
     - search_api.index.default
   module:
+    - better_exposed_filters
     - search_api
+    - search_customization
 id: search
 label: Search
 module: views
@@ -33,7 +35,7 @@ display:
           bypass_access: false
           skip_access: false
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
           reset_button: false
@@ -42,6 +44,19 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: true
+              timeout: '100'
+              autosubmit_hide: true
+            search_api_fulltext:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
       pager:
         type: full
         options:
@@ -70,22 +85,22 @@ display:
         options:
           view_modes:
             'entity:node':
-              article: default
-              basic_page: default
-              document: default
-              event: default
-              member: default
-              news: default
-              social: default
+              article: search_result_row
+              basic_page: search_result_row
+              document: search_result_row
+              event: search_result_row
+              member: search_result_row
+              news: search_result_row
+              social: search_result_row
             'entity:group':
-              country: default
-              governance_area: default
-              knowledge_vault: default
-              product: default
-              project: default
-              region: default
+              country: search_result_row
+              governance_area: search_result_row
+              knowledge_vault: search_result_row
+              product: search_result_row
+              project: search_result_row
+              region: search_result_row
             'entity:user':
-              user: default
+              user: sea
       fields:
         title:
           id: title
@@ -226,7 +241,90 @@ display:
             multi_separator: ', '
           entity_type: group
           plugin_id: search_api_field
-      filters: {  }
+      filters:
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_default
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: and
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: search_api_fulltext_op
+            identifier: search_api_fulltext
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: null
+          fields: {  }
+          plugin_id: search_api_fulltext
+        search_api_language:
+          id: search_api_language
+          table: search_api_index_default
+          field: search_api_language
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_language
       sorts: {  }
       title: ''
       header: {  }
@@ -240,19 +338,27 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
       tags: {  }
-  block_1:
-    display_plugin: block
-    id: block_1
-    display_title: Block
-    position: 1
+  block_with_path_1:
+    display_plugin: block_with_path
+    id: block_with_path_1
+    display_title: 'Block with path'
+    position: 2
     display_options:
       display_extenders: {  }
+      path: global-search
+      exposed_block: true
+      cache:
+        type: none
+      defaults:
+        cache: false
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
       tags: {  }

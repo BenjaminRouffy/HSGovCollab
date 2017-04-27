@@ -1,0 +1,29 @@
+uuid: e3d332a4-ffd6-4688-ada3-06d3354912b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_row
+    - field.field.node.article.body
+    - node.type.article
+  module:
+    - text
+    - user
+id: node.article.search_result_row
+targetEntityType: node
+bundle: article
+mode: search_result_row
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  langcode: true

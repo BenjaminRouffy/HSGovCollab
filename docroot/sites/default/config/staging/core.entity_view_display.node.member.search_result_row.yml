@@ -1,8 +1,9 @@
-uuid: 1d448cfd-e033-42ec-adb6-15a18f8337c2
+uuid: ba4bb550-d154-4900-b44d-2caf639d040d
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.search_result_row
     - field.field.node.member.body
     - field.field.node.member.field_content_paragraph
     - field.field.node.member.field_country
@@ -18,16 +19,16 @@ dependencies:
     - link
     - text
     - user
-id: node.member.default
+id: node.member.search_result_row
 targetEntityType: node
 bundle: member
-mode: default
+mode: search_result_row
 content:
   addtoany:
     weight: 8
-    region: content
     settings: {  }
     third_party_settings: {  }
+    region: content
   body:
     label: hidden
     type: text_default
@@ -91,8 +92,8 @@ content:
     region: content
   links:
     weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   langcode: true

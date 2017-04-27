@@ -5,10 +5,14 @@ dependencies:
   config:
     - field.storage.node.body
     - field.storage.node.field_documents
+    - field.storage.node.field_organization
+    - field.storage.node.field_category
     - field.storage.group.field_summary
     - search_api.server.default
   module:
     - search_api
+    - search_api_attachments
+    - search_customization
     - node
     - group
     - user
@@ -17,6 +21,40 @@ name: Default
 description: ''
 read_only: false
 field_settings:
+  aggregated_field:
+    label: 'Aggregated field'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields: {  }
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  parent_groups_region:
+    label: 'Parent groups with type Region'
+    property_path: parent_groups_region
+    type: string
+  parent_groups_country:
+    label: 'Parent groups with type Country'
+    property_path: parent_groups_country
+    type: string
+  parent_groups_project:
+    label: 'Parent groups with type Project'
+    property_path: parent_groups_project
+    type: string
+  parent_groups_product:
+    label: 'Parent groups with type Product'
+    property_path: parent_groups_product
+    type: string
+  parent_groups_knowledge_vault:
+    label: 'Parent groups with type Knowledge Vault'
+    property_path: parent_groups_knowledge_vault
+    type: string
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -42,6 +80,41 @@ field_settings:
     label: 'Content type'
     datasource_id: 'entity:node'
     property_path: type
+    type: string
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+  field_organization:
+    label: Organization
+    datasource_id: 'entity:node'
+    property_path: field_organization
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_organization
+  field_category:
+    label: Category
+    datasource_id: 'entity:node'
+    property_path: field_category
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_category
+  computed_date:
+    label: 'Computed date'
+    datasource_id: 'entity:node'
+    property_path: computed_date
     type: string
   label:
     label: Title
@@ -88,7 +161,13 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  entity_status: {  }
   rendered_item: {  }
+  file_attachments: {  }
+  parent_groups: {  }
 tracker_settings:
   default: {  }
 options:

@@ -313,7 +313,9 @@ svg {
   background: rgba(0, 0, 0, 0.9);
   opacity: 1;
   z-index: 600 !important; }
-  .ie9 .ui-widget-overlay {
+  .ie .ui-widget-overlay {
+    background: rgba(0, 0, 0, 0.9);
+    opacity: 1;
     filter: alpha(opacity=90); }
 
 @-webkit-keyframes blink {

@@ -131,6 +131,10 @@ function ample_theme_suggestions_alter(array &$suggestions, array $variables, $h
       $suggestions = theme_get_suggestions($path_args, 'page');
     }
   }
+
+  if ($hook == 'comment') {
+    $suggestions[] = "{$hook}__{$variables['elements']['#view_mode']}";
+  }
 }
 
 /**
@@ -417,7 +421,13 @@ function ample_preprocess_comment(&$variables) {
   // Set comment created date interval.
   $date = $variables['comment']->getCreatedTime();
   $current_date = \Drupal::time()->getRequestTime();
-  $variables['created'] = \Drupal::service('date.formatter')->formatInterval($current_date - $date);
+
+  if ('teaser' == $variables['elements']['#view_mode']) {
+    $variables['created'] = \Drupal::service('date.formatter')->format($date, 'p4h_time_and_date');
+  }
+  else {
+    $variables['created'] = \Drupal::service('date.formatter')->formatInterval($current_date - $date);
+  }
   $variables['submitted'] = t('@datetime', ['@datetime' => $variables['created']]);
   // Rewrite {{ user_picture }} variable.
   $comment = $variables['elements']['#comment'];

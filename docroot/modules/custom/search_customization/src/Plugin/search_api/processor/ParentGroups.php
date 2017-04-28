@@ -3,6 +3,7 @@
 namespace Drupal\search_customization\Plugin\search_api\processor;
 
 use Drupal\Core\TypedData\DataReferenceDefinition;
+use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupContent;
 use Drupal\group\Entity\GroupType;
 use Drupal\search_api\Datasource\DatasourceInterface;
@@ -68,7 +69,16 @@ class ParentGroups extends ProcessorPluginBase {
           if (!$field->getDatasourceId()) {
             foreach ($group_contents as $key => $group_content) {
               if (strpos($group_content->type->getValue()[0]['target_id'], $group_type_key . '-') !== FALSE) {
-                $field->addValue($group_content->gid->getValue()[0]['target_id']);
+                $target_id = $group_content->gid->getValue()[0]['target_id'];
+
+                if ($group_type_key == 'country') {
+                  $country = Group::load($target_id);
+                  if (!isset($country->field_group_status->getValue()[0]['value']) || $country->field_group_status->getValue()[0]['value'] == 'unpublished') {
+                    continue;
+                  }
+                }
+
+                $field->addValue($target_id);
               }
             }
           }

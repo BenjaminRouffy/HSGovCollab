@@ -1,0 +1,19 @@
+<article{{ attributes }}>
+  {% if content %}
+    <div class="icon-wrapper">
+      {{ content.field_avatar }}
+    </div>
+    <h3>
+      {% if content.field_first_name %}
+        {{ content.field_first_name }}
+      {% endif %}
+      {% if content.field_last_name %}
+        {{ content.field_last_name }}
+      {% endif %}
+      {% if content.field_organisation %}
+        <br>
+        {{ content.field_organisation }}
+      {% endif %}
+    </h3>
+  {% endif %}
+</article>

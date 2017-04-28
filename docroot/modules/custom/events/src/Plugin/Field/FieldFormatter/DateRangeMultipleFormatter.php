@@ -42,7 +42,7 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
         /** @var \Drupal\Core\Datetime\DrupalDateTime $end_date */
         $end_date = $item->end_date;
 
-        if ($start_date->getTimestamp() !== $end_date->getTimestamp()) {
+        if ($this->formatDate($start_date) !== $this->formatDate($end_date)) {
           $elements[$delta] = [
             'start_date' => $this->buildDateWithIsoAttribute($start_date),
             'separator' => ['#plain_text' => ' ' . $separator . ' '],
@@ -53,7 +53,7 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
           ];
         }
         else {
-          $elements[$delta] = $this->buildDateWithIsoAttribute($start_date);
+          $elements[$delta]['start_date'] = $this->buildDateWithIsoAttribute($start_date);
           $elements[$delta]['#weight'] = $start_date->getTimestamp();
           $elements[$delta]['start_time'] = $this->buildTimeWithIsoAttribute($start_date);
           $elements[$delta]['end_time'] = $this->buildTimeWithIsoAttribute($end_date);
@@ -76,8 +76,10 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
     $period = Events::getEventPeriod($items);
     if (!empty($period)) {
       $elements['#period']['start_date'] = $this->buildDateWithIsoAttribute($period['start_date']);
-      $elements['#period']['separator'] = ['#plain_text' => ' ' . $separator . ' '];
-      $elements['#period']['end_date'] = $this->buildDateWithIsoAttribute($period['end_date']);
+      if ($this->formatDate($period['start_date']) != $this->formatDate($period['end_date'])) {
+        $elements['#period']['separator'] = ['#plain_text' => ' ' . $separator . ' '];
+        $elements['#period']['end_date'] = $this->buildDateWithIsoAttribute($period['end_date']);
+      }
     }
 
     return $elements;

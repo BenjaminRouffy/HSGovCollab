@@ -48,6 +48,7 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
             'separator' => ['#plain_text' => ' ' . $separator . ' '],
             'end_date' => $this->buildDateWithIsoAttribute($end_date),
             'start_time' => $this->buildTimeWithIsoAttribute($start_date),
+            'time_separator' => ['#plain_text' => ' ' . $separator . ' '],
             'end_time' => $this->buildTimeWithIsoAttribute($end_date),
             '#weight' => $start_date->getTimestamp(),
           ];
@@ -56,6 +57,7 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
           $elements[$delta]['start_date'] = $this->buildDateWithIsoAttribute($start_date);
           $elements[$delta]['#weight'] = $start_date->getTimestamp();
           $elements[$delta]['start_time'] = $this->buildTimeWithIsoAttribute($start_date);
+          $elements[$delta]['separator'] = ['#plain_text' => ' ' . $separator . ' '];
           $elements[$delta]['end_time'] = $this->buildTimeWithIsoAttribute($end_date);
           if (!empty($item->_attributes)) {
             $elements[$delta]['#attributes'] += $item->_attributes;

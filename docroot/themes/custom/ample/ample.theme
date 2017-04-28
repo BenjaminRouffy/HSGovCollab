@@ -58,7 +58,7 @@ function ample_preprocess_html(array &$variables) {
     $variables['attributes']['class'][] = 'page-' . next($route_name) . '-' . str_replace('_', '-', end($route_name));
   }
 
-  if ('node' === $variables['root_path']) {
+  if ('node' === $variables['root_path'] && isset($variables['node_type'])) {
     $variables['attributes']['class'][] = 'node-' . str_replace('_', '-', $variables['node_type']);
   }
 
@@ -119,6 +119,21 @@ function ample_theme_suggestions_alter(array &$suggestions, array $variables, $h
     $original_theme_hook = $variables['theme_hook_original'];
 
     $suggestions[] = $original_theme_hook . '__' . str_replace('-', '_', $variables['element']['#form_id']);
+  }
+
+  if ($hook == 'page') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    if (!empty($node)) {
+      $path_args = explode('/', trim(\Drupal::service('path.current')->getPath(), '/'));
+      $path_args[] = $node->bundle();
+
+      $suggestions = theme_get_suggestions($path_args, 'page');
+    }
+  }
+
+  if ($hook == 'comment') {
+    $suggestions[] = "{$hook}__{$variables['elements']['#view_mode']}";
   }
 }
 
@@ -406,7 +421,13 @@ function ample_preprocess_comment(&$variables) {
   // Set comment created date interval.
   $date = $variables['comment']->getCreatedTime();
   $current_date = \Drupal::time()->getRequestTime();
-  $variables['created'] = \Drupal::service('date.formatter')->formatInterval($current_date - $date);
+
+  if ('teaser' == $variables['elements']['#view_mode']) {
+    $variables['created'] = \Drupal::service('date.formatter')->format($date, 'p4h_time_and_date');
+  }
+  else {
+    $variables['created'] = \Drupal::service('date.formatter')->formatInterval($current_date - $date);
+  }
   $variables['submitted'] = t('@datetime', ['@datetime' => $variables['created']]);
   // Rewrite {{ user_picture }} variable.
   $comment = $variables['elements']['#comment'];

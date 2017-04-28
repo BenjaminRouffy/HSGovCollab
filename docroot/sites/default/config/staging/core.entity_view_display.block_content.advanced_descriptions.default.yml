@@ -1,0 +1,57 @@
+uuid: 0d7aa65b-5ea8-429e-a6a9-98654f38fa0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.advanced_descriptions
+    - field.field.block_content.advanced_descriptions.field_content
+    - field.field.block_content.advanced_descriptions.field_description
+    - field.field.block_content.advanced_descriptions.field_link
+    - field.field.block_content.advanced_descriptions.field_title
+  module:
+    - entity_reference_revisions
+    - link
+    - text
+id: block_content.advanced_descriptions.default
+targetEntityType: block_content
+bundle: advanced_descriptions
+mode: default
+content:
+  field_content:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true

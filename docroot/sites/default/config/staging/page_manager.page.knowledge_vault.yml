@@ -1,0 +1,21 @@
+uuid: 832a8ef8-9aa7-4724-8944-32376de392de
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: knowledge_vault
+label: 'Knowledge vault'
+description: ''
+use_admin_theme: false
+path: /knowledge-vault
+access_logic: and
+access_conditions:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+parameters: {  }

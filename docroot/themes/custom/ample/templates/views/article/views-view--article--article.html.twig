@@ -1,0 +1,32 @@
+{% set classes = [dom_id ? 'js-view-dom-id-' ~ dom_id] %}
+
+{% if without_wrapper is not defined %}
+<div{{ attributes.addClass(classes) }}>
+  {% endif %}
+  {{ exposed }}
+  {{ attachment_before }}
+  {{ pager }}
+
+  {{ rows }}
+  {% if empty %}
+    <div class="empty-result">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {{ pager }}
+  {{ attachment_after }}
+
+{% if footer %}
+  {% if footer_without_wrapper is not defined %}
+    <{{ footer_tag|default('footer') }}{{ footer_classes }}>
+    {{ footer }}
+    </{{ footer_tag|default('footer') }}>
+  {% else %}
+    {{ footer }}
+  {% endif %}
+{% endif %}
+
+{% if without_wrapper is not defined %}
+  </div>
+{% endif %}

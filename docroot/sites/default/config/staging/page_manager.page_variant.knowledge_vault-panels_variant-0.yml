@@ -1,0 +1,68 @@
+uuid: fa21412b-d58f-4e12-be16-b2364a392138
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.knowledge_vault
+    - views.view.comments_recent
+    - views.view.knowledge_vault
+  content:
+    - 'block_content:advanced_descriptions:26522194-ac78-4588-a752-6eea5499b22b'
+  module:
+    - block_content
+    - panels
+    - views
+id: knowledge_vault-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    90427d3d-87c6-45a6-8382-fdaf83034e59:
+      id: 'block_content:26522194-ac78-4588-a752-6eea5499b22b'
+      label: 'Knowledge vault'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: dashboard
+      weight: 0
+      uuid: 90427d3d-87c6-45a6-8382-fdaf83034e59
+      context_mapping: {  }
+    25e5d97c-caed-4be1-8723-bb9a5d0134ec:
+      id: 'views_block:comments_recent-last_comments_by_article'
+      label: 'Latest comments'
+      provider: views
+      label_display: visible
+      views_label: 'Latest comments'
+      items_per_page: none
+      region: dashboard_sidebar
+      weight: 0
+      uuid: 25e5d97c-caed-4be1-8723-bb9a5d0134ec
+      context_mapping: {  }
+    54ab4607-ae80-4194-b2cb-61d0be53f201:
+      id: 'views_block:knowledge_vault-kv_all'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 54ab4607-ae80-4194-b2cb-61d0be53f201
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 6c5e3c65-3add-418c-a252-a0ad561454e2
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: knowledge_vault-panels_variant-0
+  builder: standard
+page: knowledge_vault
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

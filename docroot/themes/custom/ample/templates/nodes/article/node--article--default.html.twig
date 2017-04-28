@@ -1,0 +1,35 @@
+{% if content.field_image %}
+  <div class="header-image">
+    {{ content.field_image|field_value }}
+  </div>
+{% endif %}
+
+<article{{ attributes }} role="article">
+  {% if display_submitted %}
+    <div class="post-info">
+      <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+        {{ content.field_content_date|field_value }}
+      </time>
+      {% if content.field_author|field_value %}
+        <span class="author">
+        {% trans %}By: {% endtrans %} {{ content.field_author|field_value }}
+      </span>
+      {% endif %}
+    </div>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if node.body.summary|field_value %}
+    <div class="content-summary">
+      <p>{{ node.body.summary }}</p>
+    </div>
+  {% endif %}
+
+  {{ content.body }}
+
+  {{ content.addtoany }}
+
+  {% if content.field_content|field_value %}
+    {{ content.field_content|field_value }}
+  {% endif %}
+</article>

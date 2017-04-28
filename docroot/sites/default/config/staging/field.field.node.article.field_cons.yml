@@ -1,0 +1,19 @@
+uuid: 8ab24a27-d47f-4140-a856-73a87b621161
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cons
+    - node.type.article
+id: node.article.field_cons
+field_name: field_cons
+entity_type: node
+bundle: article
+label: Cons
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

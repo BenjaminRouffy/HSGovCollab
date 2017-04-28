@@ -1,0 +1,28 @@
+<div{{ attributes.addClass('section-knowledge-vault') }}>
+  {{ title_prefix }}
+  <div class="title-wrapper">
+    <h1 role="heading">
+      {{ content.field_title }}
+    </h1>
+
+    <div class="line"></div>
+  </div>
+  {{ title_suffix }}
+
+  {% if content.field_link|field_value %}
+    {{ content.field_link }}
+  {% endif %}
+
+  <div class="summary-text">
+    {{ content.field_description }}
+  </div>
+
+  {% if content.field_content|field_value %}
+    <div class="more-content-wrapper">
+      <div class="read-more show-more">{{ 'Read more'|t }}</div>
+      <div class="more-content">
+        {{ content.field_content|field_value }}
+      </div>
+    </div>
+  {% endif %}
+</div>

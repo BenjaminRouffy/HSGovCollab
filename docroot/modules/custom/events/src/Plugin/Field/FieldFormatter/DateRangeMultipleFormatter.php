@@ -73,7 +73,7 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
     foreach ($elements as $key => $row) {
       $sorted_ranges[$key] = $row['#weight'];
     }
-    array_multisort($sorted_ranges, SORT_DESC, $elements);
+    array_multisort($sorted_ranges, SORT_ASC, $elements);
     // Get event period.
     $period = Events::getEventPeriod($items);
     if (!empty($period)) {

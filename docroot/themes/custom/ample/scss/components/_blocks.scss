@@ -1042,14 +1042,16 @@
 
 .country-list,
 .project-list,
-.contact-list {
+.contact-list,
+.article-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 
   .country-item,
   .project-item,
-  .contact-item {
+  .contact-item,
+  .article-item {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     margin: 10px;
@@ -1069,7 +1071,8 @@
   }
 
   .country-content,
-  .project-content {
+  .project-content,
+  .article-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1450,7 +1453,7 @@
   }
 }
 
-@include breakpoint-for('.country-list, .project-list, .contact-list, .members-list ul', (to: laptop-small)) {
+@include breakpoint-for('.country-list, .project-list, .contact-list, .article-list, .members-list ul', (to: laptop-small)) {
   .country-item,
   .project-item,
   .member-block,
@@ -1464,14 +1467,14 @@
   }
 }
 
-@include breakpoint-for('.country-list, .project-list', (to: tablet)) {
+@include breakpoint-for('.country-list, .project-list, .article-list', (to: tablet)) {
   .country-item,
   .project-item {
     padding: 5px;
   }
 }
 
-@include breakpoint-for('.country-list, .project-list, .members-list ul, .contact-list', (to: mobileL)) {
+@include breakpoint-for('.country-list, .project-list, .members-list ul, .contact-list, .article-list', (to: mobileL)) {
   .country-item,
   .project-item,
   .member-block,
@@ -1521,7 +1524,8 @@
 
 .country-title,
 .project-title,
-.region-title {
+.region-title,
+.article-title {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px;
@@ -1567,6 +1571,14 @@
     margin: 10px 0 5px;
     text-transform: uppercase;
   }
+}
+
+.article-type {
+  @include font-size(12.6);
+  color: $red;
+  font-family: $fira;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .project-title {

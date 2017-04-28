@@ -52,7 +52,7 @@ class KnowledgeVaultFilterAlter implements FormAlterServiceBaseInterface, FormAl
           $classes = ['filter-tab'];
 
           if (!empty($form['#tags_styles'][$name]) && isset($tags[$tid])) {
-            $classes[] = 'level' . $tags[$tid];
+            $classes[] = 'level' . round($tags[$tid] / 2);
           }
 
           $element = [
@@ -65,16 +65,14 @@ class KnowledgeVaultFilterAlter implements FormAlterServiceBaseInterface, FormAl
           ];
 
           if ($tid == 'All') {
-            $element = $element + [
-                '#value' => '<a href="" class="active" id="' . $tid . '">' . t('All') . '</a>',
-              ];
+            $element['#value'] = '<a href="" class="active" id="' . $tid . '">' . t('All') . '</a>';
           }
 
           $options[] = $element;
         }
 
         $form[$name . '_wrap'] = [
-          '#prefix' => '<div class="links-filter-wrapper">',
+          '#prefix' => '<div class="wrapper-' . str_replace('_', '-', $name) . '"',
           '#suffix' => '</div>',
           '#weight' => -100,
         ];
@@ -87,8 +85,8 @@ class KnowledgeVaultFilterAlter implements FormAlterServiceBaseInterface, FormAl
           $form[$name . '_wrap'][$name . '_label'] = [
             '#type' => 'markup',
             '#markup' => $form['#info']["filter-$name"]['label'],
-            '#prefix' => '<span class="filter-label">',
-            '#suffix' => '</span>',
+            '#prefix' => "<h3 class='filter-label " . "$name'>",
+            '#suffix' => '</h3>',
           ];
         }
 

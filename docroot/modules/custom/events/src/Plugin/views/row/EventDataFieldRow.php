@@ -38,8 +38,8 @@ class EventDataFieldRow extends DataFieldRow {
       if ('field_date' == $id) {
         $period = Events::getEventPeriod($row->_entity->field_date);
         $value = [
-          'start' => $period['start_date']->getTimestamp(),
-          'end' => $period['end_date']->getTimestamp(),
+          'start' => $period['start_date']->format('Y-m-d'),
+          'end' => $period['end_date']->format('Y-m-d'),
         ];
       }
       // Omit excluded fields from the rendered output.

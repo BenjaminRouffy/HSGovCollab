@@ -420,13 +420,7 @@ function ample_preprocess_blocktabs(&$variables) {
 function ample_preprocess_views_view(&$vars) {
   $view = $vars['view'];
   if ($view->element['#name'] == 'my_calendar') {
-    $attributes = &$vars['attributes'];
-    $attributes['id'] = 'calendar';
     $vars['#attached']['library'][] = 'events/fullcalendar.settings';
-    $vars['#attached']['drupalSettings']['calendar'] = [
-      // @TODO
-      'wrapper' => $attributes['id'],
-    ];
   }
 }
 

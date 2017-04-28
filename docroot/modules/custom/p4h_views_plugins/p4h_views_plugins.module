@@ -59,6 +59,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
       case 'views-exposed-form-news-events-block-3':
       case 'views-exposed-form-news-and-events-group-ga-news-events':
       case 'views-exposed-form-news-and-events-group-block-news-events-project':
+      case 'views-exposed-form-my-calendar-block-1':
         $form['wrap'] = [
           '#prefix' => '<div class="wrapper-filters">',
           '#suffix' => '</div>',
@@ -70,9 +71,6 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         $form['wrap']['month'] = $form['month'];
         unset($form['year'], $form['month']);
 
-        /*$form['#attached']['drupalSettings'] = [
-          'defaultFormSelector' . rand(100,999) => '#' . $form['#id']
-        ];*/
         break;
 
       case 'views-exposed-form-list-of-projects-block-full':

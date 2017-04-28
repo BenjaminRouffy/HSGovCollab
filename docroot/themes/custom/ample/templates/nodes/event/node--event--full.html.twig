@@ -9,7 +9,10 @@
 
       <article{{ attributes }} role="article">
         <div class="post-info">
-          {{ content.field_date }}
+          {% if content.field_date['#period'] %}
+            {{ content.field_date['#period'] }}
+          {% endif %}
+
           {% if content.field_event_author|field_value %}
             <span class="author">
               {% trans %}By: {% endtrans %} {{ content.field_event_author|field_value }}

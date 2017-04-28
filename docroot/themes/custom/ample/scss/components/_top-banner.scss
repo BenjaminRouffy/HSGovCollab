@@ -11,6 +11,12 @@
     box-shadow: 0 0 8px rgba($black, .11);
   }
 
+  .node-article & {
+    background: $white;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
   ~ .content-container {
     padding-top: 40px;
   }
@@ -192,6 +198,38 @@
       margin: 20px 0 0;
     }
   }
+}
+
+.article-options {
+  @include font-size(16.8);
+  font-family: $oswald;
+  letter-spacing: .5px;
+  line-height: 25px;
+  overflow: hidden;
+
+  h3 {
+    @include font-size(25.2);
+    line-height: 64px;
+    margin: 0 0 15px;
+    text-transform: uppercase;
+  }
+
+  .item {
+    margin-bottom: 20px;
+  }
+}
+
+.pros-list {
+  float: left;
+  padding-right: 20px;
+  text-align: right;
+  width: 50%;
+}
+
+.cons-list {
+  float: left;
+  padding-left: 10px;
+  width: 50%;
 }
 
 @include breakpoint-for('.top-banner-region', (to: laptop-small)) {

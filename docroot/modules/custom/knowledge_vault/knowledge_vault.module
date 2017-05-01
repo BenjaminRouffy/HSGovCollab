@@ -4,17 +4,42 @@
  * @file
  * Contains knowledge_vault.module.
  */
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function knowledge_vault_node_presave(EntityInterface $entity) {
+  if ('article' == $entity->bundle() && $entity->hasField('field_knowledge_vault')) {
+    $current_user = \Drupal::currentUser();
+
+    if (!$current_user->hasPermission('edit field_knowledge_vault')) {
+      $config = \Drupal::config('knowledge_vault.settings');
+      $entity->set('field_knowledge_vault', [
+        'entity_gids' => [$config->get('contribute_category')],
+        'from_widget' => TRUE,
+      ]);
+    }
+  }
+}
 
 /**
  * Implements hook_views_data_alter().
  */
 function knowledge_vault_views_data_alter(array &$data) {
-  $data['taxonomy_term_field_data']['tags_by_group'] = array(
+  $data['taxonomy_term_field_data']['tags_by_group'] = [
     'real field' => 'tid',
-    'filter' => array(
+    'filter' => [
       'title' => t('Tags by group'),
       'id' => 'tags_by_group',
-    ),
-  );
+    ],
+  ];
+
+  $data['group_content_field_data']['parents_content'] = [
+    'argument' => [
+      'title' => t('Has parent ID for get parent contents'),
+      'id' => 'parents_content',
+    ],
+  ];
 }
 

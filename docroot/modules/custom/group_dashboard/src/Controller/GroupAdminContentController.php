@@ -2,10 +2,14 @@
 
 namespace Drupal\group_dashboard\Controller;
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\group\Entity\Controller\GroupContentController;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
+use Drupal\group\Entity\GroupType;
+use Drupal\group\Entity\GroupTypeInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
@@ -19,6 +23,7 @@ class GroupAdminContentController extends GroupContentController {
     $build = ['#theme' => 'entity_add_list', '#bundles' => []];
     $form_route = $this->addPageFormRoute($group, $create_mode);
     $bundle_names = $this->addPageBundles($group, $create_mode);
+    $current_user = \Drupal::currentUser();
 
     // Set the add bundle message if available.
     $add_bundle_message = $this->addPageBundleMessage($group, $create_mode);
@@ -56,6 +61,14 @@ class GroupAdminContentController extends GroupContentController {
       $plugin = $group->getGroupType()->getContentPlugin($plugin_id);
       $label = $plugin->getLabel();
 
+      $group_options = array_filter($group->getGroupType()->getThirdPartySetting('group_dashboard', 'access_to_different_entities', []));
+      $plugin_type_id = $plugin->getContentTypeConfigId();
+
+      if (in_array($plugin_type_id, $group_options) && !$current_user->hasPermission("access to relate {$plugin_type_id}")) {
+        continue;
+      }
+
+
       if ($plugin->getBaseId() == 'subgroup') {
         $destination = Url::fromRoute('view.subgroups.page_1', ['group' => $group->id()]);
       }
@@ -77,5 +90,55 @@ class GroupAdminContentController extends GroupContentController {
     $build['#cache']['tags'] = $bundle_entity_type->getListCacheTags();
 
     return $build;
+  }
+
+  /**
+   * Check access to subgroup page.
+   *
+   * @param GroupInterface $group
+   *   Group object.
+   *
+   * @return AccessResultInterface
+   *    An access result.
+   */
+  public function AccessToCreateContent(GroupInterface $group) {
+    $current_user = \Drupal::currentUser();
+    $group_type = GroupType::load($group->bundle());
+
+    if ($group_type->getThirdPartySetting('group_dashboard', 'access_to_related_entities_functionality', 0) && !$current_user->hasPermission('access to related entities page')) {
+      return AccessResult::forbidden();
+    }
+
+    return AccessResult::allowed();
+  }
+
+  /**
+   * Check access to subgroup page.
+   *
+   * @param GroupInterface $group
+   *   Group object.
+   *
+   * @return AccessResultInterface
+   *    An access result.
+   */
+  public function AccessToCreateDifferentEntities(GroupInterface $group) {
+    $parameter = \Drupal::routeMatch()->getRawParameter('plugin_id');
+    $current_user = \Drupal::currentUser();
+
+    if (!empty($parameter)) {
+      /* @var GroupTypeInterface $group_type */
+      $group_type = $group->getGroupType();
+      $group_options = array_filter($group_type->getThirdPartySetting('group_dashboard', 'access_to_different_entities', []));
+
+      if ($group_type->hasContentPlugin($parameter)) {
+        $plugin_type_id = $group_type->getContentPlugin($parameter)->getContentTypeConfigId();
+
+        if (in_array($plugin_type_id, $group_options) && !$current_user->hasPermission("access to relate {$plugin_type_id}")) {
+          return AccessResult::forbidden();
+        }
+      }
+    }
+
+    return AccessResult::allowed();
   }
 }

@@ -3,3 +3,9 @@ services:
     class: Drupal\knowledge_vault\Form\Alter\KnowledgeVaultFilterAlter
     tags:
       - { name: form_alter, form_id: views_exposed_form }
+
+  knowledge_vault.project_group_alter:
+    class: Drupal\knowledge_vault\Form\Alter\ProjectGroupAlter
+    tags:
+      - { name: form_alter, form_id: group_project_add_form }
+      - { name: form_alter, form_id: group_project_edit_form }

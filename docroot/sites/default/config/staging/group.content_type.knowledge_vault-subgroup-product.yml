@@ -1,0 +1,16 @@
+uuid: fa518d4d-02c3-4652-8544-933906f98163
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+    - group.type.product
+id: knowledge_vault-subgroup-product
+label: 'Knowledge Vault: Subgroup (Product)'
+description: 'Adds <em class="placeholder">Product</em> groups to groups both publicly and privately.'
+group_type: knowledge_vault
+content_plugin: 'subgroup:product'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

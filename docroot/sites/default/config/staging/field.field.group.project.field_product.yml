@@ -1,0 +1,23 @@
+uuid: 7f973e9e-b9d6-4efa-b3bf-74c67e977f44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_product
+    - group.type.project
+  module:
+    - group_content_field
+id: group.project.field_product
+field_name: field_product
+entity_type: group
+bundle: project
+label: Product
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

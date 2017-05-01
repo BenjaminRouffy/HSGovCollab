@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - page_manager.page.group
+    - views.view.article
     - views.view.group_users
   module:
     - ctools
@@ -35,7 +36,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: dashboard_sidebar
-      weight: 0
+      weight: -2
       uuid: 5ca8da22-1f84-483b-9335-fc0e1c292f80
       context_mapping: {  }
     a006bbff-998c-4aec-827b-b12abe22ba52:
@@ -64,6 +65,28 @@ variant_settings:
       region: content
       weight: 0
       uuid: 6ee2d1b4-49d9-452a-8fb9-11f9dfd9fc09
+      context_mapping:
+        entity: group
+    907fc550-14aa-4079-b8f9-43f7a7691dc9:
+      id: 'views_block:article-parents_content'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 907fc550-14aa-4079-b8f9-43f7a7691dc9
+      context_mapping: {  }
+    d33aefc2-c036-4836-9a33-7dde89fc8db0:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: based_on
+      region: dashboard_sidebar
+      weight: -1
+      uuid: d33aefc2-c036-4836-9a33-7dde89fc8db0
       context_mapping:
         entity: group
   id: panels_variant

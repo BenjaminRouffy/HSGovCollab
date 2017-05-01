@@ -7,7 +7,7 @@ dependencies:
     - views.view.comments_recent
     - views.view.knowledge_vault
   content:
-    - 'block_content:advanced_descriptions:26522194-ac78-4588-a752-6eea5499b22b'
+    - 'block_content:advanced_descriptions:ee793894-85b3-413b-a52d-9a4d472a2adb'
   module:
     - block_content
     - panels
@@ -17,18 +17,6 @@ label: Panels
 variant: panels_variant
 variant_settings:
   blocks:
-    90427d3d-87c6-45a6-8382-fdaf83034e59:
-      id: 'block_content:26522194-ac78-4588-a752-6eea5499b22b'
-      label: 'Knowledge vault'
-      provider: block_content
-      label_display: '0'
-      status: true
-      info: ''
-      view_mode: full
-      region: dashboard
-      weight: 0
-      uuid: 90427d3d-87c6-45a6-8382-fdaf83034e59
-      context_mapping: {  }
     25e5d97c-caed-4be1-8723-bb9a5d0134ec:
       id: 'views_block:comments_recent-last_comments_by_article'
       label: 'Latest comments'
@@ -50,6 +38,18 @@ variant_settings:
       region: content
       weight: 0
       uuid: 54ab4607-ae80-4194-b2cb-61d0be53f201
+      context_mapping: {  }
+    3f904b07-9b4c-4cf2-921e-943e5e7cc9d1:
+      id: 'block_content:ee793894-85b3-413b-a52d-9a4d472a2adb'
+      label: 'Knowledge vault header'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: dashboard
+      weight: 0
+      uuid: 3f904b07-9b4c-4cf2-921e-943e5e7cc9d1
       context_mapping: {  }
   id: panels_variant
   uuid: 6c5e3c65-3add-418c-a252-a0ad561454e2

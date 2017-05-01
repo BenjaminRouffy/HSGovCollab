@@ -12,8 +12,8 @@ dependencies:
     - field.field.node.article.field_content_date
     - field.field.node.article.field_documents
     - field.field.node.article.field_image
+    - field.field.node.article.field_knowledge_vault
     - field.field.node.article.field_pros
-    - field.field.node.article.field_related_content_selector
     - field.field.node.article.field_tags
     - field.field.node.article.field_type
     - image.style.thumbnail
@@ -22,9 +22,9 @@ dependencies:
     - comment
     - datetime
     - field_group
+    - group_content_field
     - image
     - paragraphs
-    - rel_content
     - text
 third_party_settings:
   field_group:
@@ -49,6 +49,7 @@ third_party_settings:
         - field_content_date
         - field_image
         - body
+        - field_knowledge_vault
       parent_name: group_tabs_panel
       weight: 10
       format_type: tab
@@ -75,7 +76,6 @@ third_party_settings:
     group_related_content:
       children:
         - field_documents
-        - field_related_content_selector
         - field_article_join_block
       parent_name: group_tabs_panel
       weight: 13
@@ -147,7 +147,7 @@ content:
     region: content
   field_content:
     type: entity_reference_paragraphs
-    weight: 29
+    weight: 31
     settings:
       title: Content
       title_plural: Content
@@ -179,6 +179,12 @@ content:
     third_party_settings: {  }
     type: image_image
     region: content
+  field_knowledge_vault:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
+    region: content
   field_pros:
     weight: 1
     settings:
@@ -187,14 +193,8 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_related_content_selector:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
-    type: list_rel_content_select
-    region: content
   field_tags:
-    weight: 4
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -203,7 +203,7 @@ content:
     type: entity_reference_autocomplete_tags
     region: content
   field_type:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select

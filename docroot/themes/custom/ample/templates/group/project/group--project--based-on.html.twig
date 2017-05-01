@@ -1,0 +1,12 @@
+<div class="based-on">
+  <h2 role="heading">
+    {{ 'Based on'|t }}
+  </h2>
+  {% if content.field_knowledge_vault|field_value %}
+    {{ content.field_knowledge_vault }}
+  {% endif %}
+
+  {% if content.field_product|field_value %}
+    {{ content.field_product }}
+  {% endif %}
+</div>

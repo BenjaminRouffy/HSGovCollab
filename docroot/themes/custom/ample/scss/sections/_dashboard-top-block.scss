@@ -109,11 +109,16 @@
       display: block;
       font-weight: 400;
       line-height: 20px;
+      transition: opacity .3s ease;
 
       &:before {
         content: "9";
         font-family: $p4h;
         margin-right: 4px;
+      }
+
+      &:hover {
+        opacity: .66;
       }
     }
 

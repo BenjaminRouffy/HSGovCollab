@@ -1,9 +1,9 @@
-uuid: 7900c28a-6f7b-497f-80b8-d114c282f4a5
+uuid: 14f9b410-f92f-42f1-810f-e4015b7860ec
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.single_line_with_icon
+    - core.entity_view_mode.node.event_ajax_response
     - field.field.node.event.body
     - field.field.node.event.field_category
     - field.field.node.event.field_comments
@@ -21,29 +21,70 @@ dependencies:
     - field.field.node.event.field_timezone
     - node.type.event
   module:
+    - events
+    - link
+    - members
+    - options
     - user
-id: node.event.single_line_with_icon
+id: node.event.event_ajax_response
 targetEntityType: node
 bundle: event
-mode: single_line_with_icon
-content: {  }
+mode: event_ajax_response
+content:
+  body:
+    label: hidden
+    type: summarybody_trimmed
+    weight: 4
+    settings:
+      trim_length: '180'
+    third_party_settings: {  }
+    region: content
+  field_date:
+    weight: 1
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_multiple
+    region: content
+  field_location:
+    weight: 3
+    label: above
+    settings:
+      trim_length: 80
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_timezone:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   addtoany: true
-  body: true
   field_category: true
   field_comments: true
-  field_date: true
   field_documents: true
   field_event_author: true
   field_event_country_content: true
   field_event_link: true
   field_event_slider: true
   field_join_block: true
-  field_location: true
   field_organization: true
   field_related_content_selector: true
   field_time: true
-  field_timezone: true
   langcode: true
   like_and_dislike: true
-  links: true

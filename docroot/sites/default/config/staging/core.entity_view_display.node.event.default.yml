@@ -17,12 +17,11 @@ dependencies:
     - field.field.node.event.field_organization
     - field.field.node.event.field_related_content_selector
     - field.field.node.event.field_time
-    - field.field.node.event.field_time_text
     - field.field.node.event.field_timezone
     - node.type.event
   module:
-    - datetime_range
     - entity_reference_revisions
+    - events
     - group_content_formatters
     - link
     - options
@@ -35,19 +34,19 @@ bundle: event
 mode: default
 content:
   addtoany:
-    weight: 14
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   body:
     label: hidden
     type: text_default
-    weight: 9
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     region: content
   field_category:
-    weight: 11
+    weight: 10
     label: above
     settings:
       link: true
@@ -62,7 +61,7 @@ content:
       format_type: time_line
       separator: '-'
     third_party_settings: {  }
-    type: daterange_default
+    type: daterange_multiple
     region: content
   field_event_author:
     weight: 2
@@ -73,7 +72,7 @@ content:
     type: string
     region: content
   field_event_country_content:
-    weight: 15
+    weight: 14
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -81,7 +80,7 @@ content:
     region: content
   field_event_link:
     type: link_separate
-    weight: 8
+    weight: 7
     label: hidden
     settings:
       trim_length: 80
@@ -101,7 +100,7 @@ content:
     third_party_settings: {  }
     region: content
   field_join_block:
-    weight: 10
+    weight: 9
     label: above
     settings:
       link: true
@@ -109,7 +108,7 @@ content:
     type: entity_reference_label
     region: content
   field_location:
-    weight: 7
+    weight: 5
     label: above
     settings:
       trim_length: 80
@@ -121,7 +120,7 @@ content:
     type: link
     region: content
   field_organization:
-    weight: 12
+    weight: 11
     label: above
     settings:
       link: true
@@ -129,39 +128,21 @@ content:
     type: entity_reference_label
     region: content
   field_related_content_selector:
-    weight: 13
+    weight: 12
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_rel_content_id
     region: content
-  field_time:
-    weight: 4
-    label: hidden
-    settings:
-      timezone_override: ''
-      format_type: event_time
-      separator: '-'
-    third_party_settings: {  }
-    type: daterange_default
-    region: content
-  field_time_text:
-    weight: 5
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_timezone:
-    weight: 6
+    weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   like_and_dislike:
-    weight: 7
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -173,4 +154,5 @@ content:
 hidden:
   field_comments: true
   field_documents: true
+  field_time: true
   langcode: true

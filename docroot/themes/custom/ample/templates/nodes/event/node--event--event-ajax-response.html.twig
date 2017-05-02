@@ -1,0 +1,42 @@
+<article{{ attributes }} role="article">
+  {{ title_prefix }}
+  <div class="title-wrapper">
+    <a href="{{ url }}" rel="bookmark">
+      <h1 class="page-title">{{ label }}</h1>
+    </a>
+    <div class="line"></div>
+  </div>
+  {% if contextual_link_access %}
+    {{ title_suffix }}
+  {% endif %}
+
+  <div class="event-info">
+    <div class="row">
+      <span class="label">{{ 'When'|t }}:</span>
+      <span class="value">{{ content.field_date }}</span>
+    </div>
+
+    {% if content.field_timezone|field_value %}
+      <div class="row">
+        <span class="label">{{ 'Timezone'|t }}:</span>
+        <span class="value">{{ content.field_timezone|field_value }}</span>
+      </div>
+    {% endif %}
+
+    {% if content.field_location|field_value %}
+      <div class="row">
+        <span class="label">{{ 'Location'|t }}:</span>
+        <span class="value">
+        <span class="font-social-icon pin-icon">
+          <span></span>
+        </span>
+        <a href="{{ content.field_location[0]['#url'] }}" target="_blank">{{ content.field_location[0]['#title'] }}</a>
+      </span>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {{ content.body }}
+
+</article>

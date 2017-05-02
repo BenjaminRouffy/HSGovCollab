@@ -21,13 +21,6 @@ name: Default
 description: ''
 read_only: false
 field_settings:
-  aggregated_field:
-    label: 'Aggregated field'
-    property_path: aggregated_field
-    type: string
-    configuration:
-      type: union
-      fields: {  }
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -59,7 +52,7 @@ field_settings:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: string
+    type: text
   body:
     label: Body
     datasource_id: 'entity:node'
@@ -120,12 +113,12 @@ field_settings:
     label: Title
     datasource_id: 'entity:group'
     property_path: label
-    type: string
+    type: text
   type_1:
     label: 'Group type'
     datasource_id: 'entity:group'
     property_path: type
-    type: string
+    type: text
   field_summary:
     label: Summary
     datasource_id: 'entity:group'
@@ -138,7 +131,7 @@ field_settings:
     label: Name
     datasource_id: 'entity:user'
     property_path: name
-    type: string
+    type: text
 datasource_settings:
   'entity:node':
     bundles:

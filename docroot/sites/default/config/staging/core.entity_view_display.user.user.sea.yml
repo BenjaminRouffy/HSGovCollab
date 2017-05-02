@@ -64,6 +64,14 @@ content:
     third_party_settings: {  }
     type: group_content_manager_list
     region: content
+  field_first_name:
+    type: string
+    weight: 11
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_job_title:
     weight: 8
     label: hidden
@@ -72,6 +80,22 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_last_name:
+    type: string
+    weight: 13
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_middle_name:
+    type: string
+    weight: 12
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_mobilephone:
     weight: 5
     label: hidden
@@ -133,13 +157,10 @@ hidden:
   field_accept_term_conditions: true
   field_city: true
   field_disclose_your_personal_det: true
-  field_first_name: true
   field_following_countries: true
   field_following_projects: true
   field_following_regions: true
-  field_last_name: true
   field_last_password_reset: true
-  field_middle_name: true
   field_password_expiration: true
   field_person_titles: true
   field_streetname: true

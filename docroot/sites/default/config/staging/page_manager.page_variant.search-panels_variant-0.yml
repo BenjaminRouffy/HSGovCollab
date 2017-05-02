@@ -12,10 +12,12 @@ dependencies:
     - facets.facet.parent_groups_with_type_region
     - facets.facet.products
     - facets.facet.projects
+    - facets_summary.facets_summary.summary
     - page_manager.page.search
     - views.view.search
   module:
     - facets
+    - facets_summary
     - panels
     - views
 id: search-panels_variant-0
@@ -122,8 +124,17 @@ variant_settings:
       provider: facets
       label_display: visible
       region: left_sidebar
-      weight: 4
+      weight: 3
       uuid: 54ec7361-55b3-447f-bbc7-a821ec66869a
+      context_mapping: {  }
+    0938a439-3ac4-4a9d-8f38-a92d6bcc101d:
+      id: 'facets_summary_block:summary'
+      label: Summary
+      provider: facets_summary
+      label_display: '0'
+      region: left_sidebar
+      weight: 4
+      uuid: 0938a439-3ac4-4a9d-8f38-a92d6bcc101d
       context_mapping: {  }
   id: panels_variant
   uuid: 63601cf6-d9e5-489c-90db-64f01ad0213a

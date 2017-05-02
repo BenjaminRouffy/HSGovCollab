@@ -1,0 +1,89 @@
+uuid: bdc26338-a534-4351-b76f-1fc9a409b868
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default
+    - views.view.search
+  module:
+    - search_customization
+id: summary
+name: Summary
+facets:
+  categories:
+    checked: true
+    label: Categories
+    separator: ', '
+    weight: 0
+    show_count: false
+  content_type:
+    checked: true
+    label: 'Content types'
+    separator: ', '
+    weight: 0
+    show_count: false
+  countries:
+    checked: true
+    label: Countries
+    separator: ', '
+    weight: 0
+    show_count: false
+  kv_categories:
+    checked: true
+    label: 'KV categories'
+    separator: ', '
+    weight: 0
+    show_count: false
+  month:
+    checked: true
+    label: Date
+    separator: ', '
+    weight: 0
+    show_count: false
+  organizations:
+    checked: true
+    label: Organizations
+    separator: ', '
+    weight: 0
+    show_count: false
+  parent_groups_with_type_region:
+    checked: true
+    label: Regions
+    separator: ', '
+    weight: 0
+    show_count: false
+  products:
+    checked: true
+    label: Products
+    separator: ', '
+    weight: 0
+    show_count: false
+  projects:
+    checked: true
+    label: Projects
+    separator: ', '
+    weight: 0
+    show_count: false
+facet_source_id: 'search_api:views_block_with_path__search__block_with_path_1'
+processor_configs:
+  only_reset_facets:
+    processor_id: only_reset_facets
+    weights:
+      build: '-10'
+    settings:
+      link_text: Reset
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '-10'
+    settings:
+      link_text: ''
+  show_text_when_empty:
+    processor_id: show_text_when_empty
+    weights:
+      build: '-10'
+    settings:
+      text:
+        value: ''
+        format: plain_text
+empty_behavior: null

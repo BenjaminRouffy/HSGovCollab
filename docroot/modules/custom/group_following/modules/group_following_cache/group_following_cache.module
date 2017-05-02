@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Contains group_following_cache.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function group_following_cache_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the group_following_cache module.
+    case 'help.page.group_following_cache':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function group_following_cache_entity_insert(EntityInterface $entity) {
+  group_following_cache_entity_update($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function group_following_cache_entity_update(EntityInterface $entity) {
+  if ($entity->getEntityType()->id() == 'group_content'
+    && $entity->hasField('field_follower')
+  ) {
+    $uid = $entity->getEntity()->id();
+
+    /** @var \Drupal\group_following\GroupFollowingManagerInterface $manager */
+    $manager = \Drupal::getContainer()->get('group_following.manager');
+
+    $gids = $manager->getStorage()->getFollowedForUserSql($entity->getEntity(), FALSE);
+
+    db_delete('group_following_cache')
+      ->condition('uid', $uid)
+      ->execute();
+
+    $insert = db_insert('group_following_cache');
+    $insert->from($gids)->execute();
+
+  }
+}

@@ -26,13 +26,14 @@
             title: $(this).find('.event-title').text().trim(),
             start: $(times).eq(0).attr('datetime'),
             end: $(times).eq(1).attr('datetime'),
+            description: $(this).find('.event-desc').html(),
           });
           $(this).hide();
         });
         callback(events);
       },
       eventAfterAllRender: function (view) {
-        $('.fc-year-monthly-name a').click(function (event) {
+        $('.fc-year-monthly-name a', _this.$view).click(function (event) {
           event.preventDefault();
         });
       },
@@ -43,6 +44,9 @@
         _this.getInput('format').val(view['type']);
         _this.getInput('month').val(date.month() + 1);
         _this.getInput('year').val(date.year());
+      },
+      eventClick: function(calEvent, jsEvent, view) {
+        $('.event-content', _this.$view).html('').append(calEvent.description);
       }
     });
 

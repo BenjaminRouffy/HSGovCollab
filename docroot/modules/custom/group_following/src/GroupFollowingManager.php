@@ -55,9 +55,9 @@ class GroupFollowingManager implements GroupFollowingManagerInterface {
    * @return array
    *   Array all following of user grouped by groups.
    */
-  public function getFollowedForUser(AccountInterface $account, $group_type = NULL) {
+  public function getFollowedForUser(AccountInterface $account, $group_type = NULL, $cache = TRUE) {
     $gids = $this->getStorage()
-      ->getFollowedForUser($account);
+      ->getFollowedForUser($account, $cache);
 
     if (empty($gids)) {
       return [];

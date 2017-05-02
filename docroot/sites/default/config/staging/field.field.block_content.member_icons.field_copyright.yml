@@ -1,0 +1,21 @@
+uuid: 25e894fb-5f64-4d85-ad8c-2570ee04c8f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.member_icons
+    - field.storage.block_content.field_copyright
+  module:
+    - text
+id: block_content.member_icons.field_copyright
+field_name: field_copyright
+entity_type: block_content
+bundle: member_icons
+label: Copyright
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

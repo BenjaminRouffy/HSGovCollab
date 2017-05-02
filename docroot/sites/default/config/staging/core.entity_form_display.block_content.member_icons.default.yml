@@ -4,20 +4,22 @@ status: true
 dependencies:
   config:
     - block_content.type.member_icons
-    - field.field.block_content.member_icons.field_copyright_text
+    - field.field.block_content.member_icons.field_copyright
     - field.field.block_content.member_icons.field_member_icons
+  module:
+    - text
 id: block_content.member_icons.default
 targetEntityType: block_content
 bundle: member_icons
 mode: default
 content:
-  field_copyright_text:
-    weight: 2
+  field_copyright:
+    weight: 26
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: text_textarea
     region: content
   field_member_icons:
     weight: 1

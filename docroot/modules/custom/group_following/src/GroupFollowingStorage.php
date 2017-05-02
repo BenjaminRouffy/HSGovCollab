@@ -170,8 +170,7 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
     $select = db_select($db_name, 'group_select');
     $select->fields('group_select');
     $select->condition("group_select.uid", $account->id());
-    $result = $select->execute()->fetchCol();
-    return $result;
+    return $select;
   }
 
 }

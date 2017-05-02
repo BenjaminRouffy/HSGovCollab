@@ -64,7 +64,7 @@
 
   Drupal.fullcalendar.prototype.onDisplayChange = function (selector) {
     var _this = this;
-    $(selector).click(function (event) {
+    $(selector, _this._calendar).click(function (event) {
       event.preventDefault();
       var view = $(_this._calendar).fullCalendar('getView'),
         date = $(_this._calendar).fullCalendar('getDate');

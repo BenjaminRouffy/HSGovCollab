@@ -50,7 +50,7 @@
     padding-left: 80px;
   }
 
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault) & {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault) & {
     &:before {
       background: $white;
     }
@@ -80,6 +80,10 @@
 
   .front & {
     max-width: 1260px;
+  }
+
+  .page-knowledge-vault & {
+    padding-top: 0;
   }
 
   .contact-us & {
@@ -501,6 +505,14 @@
   .more-content {
     display: none;
     padding: 20px 0;
+
+    .page-title {
+      @include font-size(19.6);
+      font-family: $fira;
+      letter-spacing: 0;
+      line-height: 24px;
+      margin: 30px 0 10px;
+    }
 
     blockquote {
       margin-left: auto;

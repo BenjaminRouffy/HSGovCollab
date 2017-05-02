@@ -1,0 +1,23 @@
+uuid: 12ce06d2-0130-43f2-9ff4-31570e02a663
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_content_selector
+    - node.type.article
+  module:
+    - rel_content
+id: node.article.field_related_content_selector
+field_name: field_related_content_selector
+entity_type: node
+bundle: article
+label: 'Related content selector'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'group_rel_content:group_content_type_d4e68e259fa0e'
+default_value_callback: ''
+settings: {  }
+field_type: list_rel_content

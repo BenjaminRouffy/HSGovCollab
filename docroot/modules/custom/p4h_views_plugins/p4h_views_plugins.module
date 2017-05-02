@@ -106,6 +106,13 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         $form['label']['#prefix'] = '<div class="search-form-wrapper">';
         $form['actions']['#suffix'] = '</div>';
         break;
+
+      case 'views-exposed-form-knowledge-vault-kv-all':
+        $form['label']['#attributes']['placeholder'] = t('Search in category');
+
+        $form['label']['#prefix'] = '<div class="search-form-wrapper">';
+        $form['actions']['#suffix'] = '</div>';
+        break;
     }
 
     // Set autocomplete attribute

@@ -1,0 +1,69 @@
+uuid: 07c9d17d-9386-43da-8a80-2aa6dbb0a15d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.advanced_descriptions
+    - field.field.block_content.advanced_descriptions.field_content
+    - field.field.block_content.advanced_descriptions.field_description
+    - field.field.block_content.advanced_descriptions.field_link
+    - field.field.block_content.advanced_descriptions.field_title
+  module:
+    - link
+    - paragraphs
+    - text
+id: block_content.advanced_descriptions.default
+targetEntityType: block_content
+bundle: advanced_descriptions
+mode: default
+content:
+  field_content:
+    type: entity_reference_paragraphs
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: with_title
+    third_party_settings: {  }
+    region: content
+  field_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

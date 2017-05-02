@@ -9,16 +9,17 @@ label: 'Content alias'
 type: 'canonical_entities:node'
 pattern: '[node:content-type:name]/[node:title]'
 selection_criteria:
-  b2f1c1d1-3afb-4add-9684-26a21e0e7991:
+  4f87f0eb-16b4-426e-af92-9cb9ba7177d8:
     id: node_type
     bundles:
+      article: article
       event: event
       member: member
       news: news
     negate: false
     context_mapping:
       node: node
-    uuid: b2f1c1d1-3afb-4add-9684-26a21e0e7991
+    uuid: 4f87f0eb-16b4-426e-af92-9cb9ba7177d8
 selection_logic: and
 weight: -5
 relationships: {  }

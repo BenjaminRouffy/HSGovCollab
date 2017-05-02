@@ -313,6 +313,10 @@ svg {
   background: rgba(0, 0, 0, 0.9);
   opacity: 1;
   z-index: 600 !important; }
+  .ie .ui-widget-overlay {
+    background: rgba(0, 0, 0, 0.9);
+    opacity: 1;
+    filter: alpha(opacity=90); }
 
 @-webkit-keyframes blink {
   0% {
@@ -592,6 +596,8 @@ svg {
       font-size: 0rem;
       font-style: normal;
       line-height: 0; }
+  .ie .dashboard-sidebar .sidebar-menu {
+    margin-bottom: 74px; }
   .dashboard-sidebar .sidebar-menu .contextual-links {
     max-width: 70px; }
     .dashboard-sidebar .sidebar-menu .contextual-links a {
@@ -601,7 +607,7 @@ svg {
     color: #fff;
     display: block;
     min-height: 70px;
-    padding: 26px 15px 20px;
+    padding: 26px 0 20px 15px;
     text-decoration: none;
     -webkit-transition: background .4s ease;
     transition: background .4s ease; }
@@ -936,6 +942,13 @@ footer > .partners {
   transition: border .3s ease; }
   .read-more:hover {
     border-color: #ea3a32; }
+  .article-content .read-more {
+    border: none;
+    font-family: "Fira Sans", sans-serif;
+    margin: 0;
+    padding: 0; }
+    .article-content .read-more:hover {
+      color: #8c2222; }
 
 .show-more {
   font-size: 0.9625rem;
@@ -1028,6 +1041,10 @@ footer > .partners {
   body:not(.group) .top-banner-region {
     border-bottom: 1px solid #e9e6e6;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.11); }
+  .node-article .top-banner-region {
+    background: #fff;
+    border: none !important;
+    box-shadow: none !important; }
   .top-banner-region ~ .content-container {
     padding-top: 40px; }
   .top-banner-region .section-info-wrapper {
@@ -1084,8 +1101,10 @@ footer > .partners {
     overflow: hidden;
     padding: 20px;
     position: relative; }
-    .top-banner-region .paragraph:hover .infooverlay {
+    .top-banner-region .paragraph:hover .infooverlay, .top-banner-region .paragraph.hover .infooverlay {
       top: 0; }
+    .mobile .top-banner-region .paragraph:not(.hover) .infooverlay {
+      top: 100%; }
     .top-banner-region .paragraph .icon-wrapper {
       height: 100px;
       margin: 0 auto 30px;
@@ -1137,6 +1156,14 @@ footer > .partners {
     transition: top 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
     width: 100%;
     z-index: 100; }
+    .top-banner-region .infooverlay:after {
+      background: inherit;
+      content: "";
+      height: 20px;
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%; }
     .top-banner-region .infooverlay h3 {
       font-size: 1.75rem;
       font-weight: 400;
@@ -1148,6 +1175,31 @@ footer > .partners {
       font-family: "Fira Sans", sans-serif;
       line-height: 23px;
       margin: 20px 0 0; }
+
+.article-options {
+  font-size: 1.05rem;
+  font-family: Oswald, sans-serif;
+  letter-spacing: .5px;
+  line-height: 25px;
+  overflow: hidden; }
+  .article-options h3 {
+    font-size: 1.575rem;
+    line-height: 64px;
+    margin: 0 0 15px;
+    text-transform: uppercase; }
+  .article-options .item {
+    margin-bottom: 20px; }
+
+.pros-list {
+  float: left;
+  padding-right: 20px;
+  text-align: right;
+  width: 50%; }
+
+.cons-list {
+  float: left;
+  padding-left: 10px;
+  width: 50%; }
 
 @media (max-width: 991px) {
   .top-banner-region .section-info {
@@ -1231,7 +1283,7 @@ footer > .partners {
     line-height: 72px;
     margin: 20px 0 10px;
     padding: 0; }
-  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .ui-dialog .button, .ui-dialog .country-content-wrapper .follow-link .button {
+  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button {
     font-size: 1.5rem;
     background: transparent;
     border: 1px solid #fff;
@@ -1248,7 +1300,7 @@ footer > .partners {
             transform: scale(1.06);
     -webkit-transition: background .2s ease;
     transition: background .2s ease; }
-    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .ui-dialog .button:hover, .ui-dialog .country-content-wrapper .follow-link .button:hover {
+    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button:hover {
       background: #ea3a32; }
   .country-content-wrapper .follow-link .ajax-progress {
     position: absolute; }
@@ -2252,7 +2304,9 @@ footer > .partners {
 
 .country-list,
 .project-list,
-.contact-list {
+.contact-list,
+.article-list,
+.knowledge-vault-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2264,12 +2318,28 @@ footer > .partners {
   .country-list .country-item,
   .country-list .project-item,
   .country-list .contact-item,
+  .country-list .article-item,
+  .country-list .knowledge-vault-item,
   .project-list .country-item,
   .project-list .project-item,
   .project-list .contact-item,
+  .project-list .article-item,
+  .project-list .knowledge-vault-item,
   .contact-list .country-item,
   .contact-list .project-item,
-  .contact-list .contact-item {
+  .contact-list .contact-item,
+  .contact-list .article-item,
+  .contact-list .knowledge-vault-item,
+  .article-list .country-item,
+  .article-list .project-item,
+  .article-list .contact-item,
+  .article-list .article-item,
+  .article-list .knowledge-vault-item,
+  .knowledge-vault-list .country-item,
+  .knowledge-vault-list .project-item,
+  .knowledge-vault-list .contact-item,
+  .knowledge-vault-list .article-item,
+  .knowledge-vault-list .knowledge-vault-item {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     margin: 10px;
@@ -2278,32 +2348,78 @@ footer > .partners {
     .country-list .country-item:hover,
     .country-list .project-item:hover,
     .country-list .contact-item:hover,
+    .country-list .article-item:hover,
+    .country-list .knowledge-vault-item:hover,
     .project-list .country-item:hover,
     .project-list .project-item:hover,
     .project-list .contact-item:hover,
+    .project-list .article-item:hover,
+    .project-list .knowledge-vault-item:hover,
     .contact-list .country-item:hover,
     .contact-list .project-item:hover,
-    .contact-list .contact-item:hover {
+    .contact-list .contact-item:hover,
+    .contact-list .article-item:hover,
+    .contact-list .knowledge-vault-item:hover,
+    .article-list .country-item:hover,
+    .article-list .project-item:hover,
+    .article-list .contact-item:hover,
+    .article-list .article-item:hover,
+    .article-list .knowledge-vault-item:hover,
+    .knowledge-vault-list .country-item:hover,
+    .knowledge-vault-list .project-item:hover,
+    .knowledge-vault-list .contact-item:hover,
+    .knowledge-vault-list .article-item:hover,
+    .knowledge-vault-list .knowledge-vault-item:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
     .country-list .contact-item, .ie9
+    .country-list .article-item, .ie9
+    .country-list .knowledge-vault-item, .ie9
     .project-list .country-item, .ie9
     .project-list .project-item, .ie9
     .project-list .contact-item, .ie9
+    .project-list .article-item, .ie9
+    .project-list .knowledge-vault-item, .ie9
     .contact-list .country-item, .ie9
     .contact-list .project-item, .ie9
-    .contact-list .contact-item {
+    .contact-list .contact-item, .ie9
+    .contact-list .article-item, .ie9
+    .contact-list .knowledge-vault-item, .ie9
+    .article-list .country-item, .ie9
+    .article-list .project-item, .ie9
+    .article-list .contact-item, .ie9
+    .article-list .article-item, .ie9
+    .article-list .knowledge-vault-item, .ie9
+    .knowledge-vault-list .country-item, .ie9
+    .knowledge-vault-list .project-item, .ie9
+    .knowledge-vault-list .contact-item, .ie9
+    .knowledge-vault-list .article-item, .ie9
+    .knowledge-vault-list .knowledge-vault-item {
       display: inline-block;
       margin-left: -4px;
       margin-right: 20px;
       vertical-align: top; }
   .country-list .country-content,
   .country-list .project-content,
+  .country-list .article-content,
+  .country-list .knowledge-vault-content,
   .project-list .country-content,
   .project-list .project-content,
+  .project-list .article-content,
+  .project-list .knowledge-vault-content,
   .contact-list .country-content,
-  .contact-list .project-content {
+  .contact-list .project-content,
+  .contact-list .article-content,
+  .contact-list .knowledge-vault-content,
+  .article-list .country-content,
+  .article-list .project-content,
+  .article-list .article-content,
+  .article-list .knowledge-vault-content,
+  .knowledge-vault-list .country-content,
+  .knowledge-vault-list .project-content,
+  .knowledge-vault-list .article-content,
+  .knowledge-vault-list .knowledge-vault-content {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2317,18 +2433,76 @@ footer > .partners {
     height: 100%;
     padding: 30px 0 20px;
     position: relative; }
+  .country-list .knowledge-vault-content p,
+  .project-list .knowledge-vault-content p,
+  .contact-list .knowledge-vault-content p,
+  .article-list .knowledge-vault-content p,
+  .knowledge-vault-list .knowledge-vault-content p {
+    font-size: 0.9625rem;
+    font-family: "Fira Sans", sans-serif;
+    line-height: 21px; }
+  .country-list .article-teaser,
+  .project-list .article-teaser,
+  .contact-list .article-teaser,
+  .article-list .article-teaser,
+  .knowledge-vault-list .article-teaser {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0 20px; }
+    .country-list .article-teaser:hover .post-info,
+    .country-list .article-teaser:hover h2,
+    .project-list .article-teaser:hover .post-info,
+    .project-list .article-teaser:hover h2,
+    .contact-list .article-teaser:hover .post-info,
+    .contact-list .article-teaser:hover h2,
+    .article-list .article-teaser:hover .post-info,
+    .article-list .article-teaser:hover h2,
+    .knowledge-vault-list .article-teaser:hover .post-info,
+    .knowledge-vault-list .article-teaser:hover h2 {
+      color: #ea3a32; }
+    .country-list .article-teaser .post-info,
+    .project-list .article-teaser .post-info,
+    .contact-list .article-teaser .post-info,
+    .article-list .article-teaser .post-info,
+    .knowledge-vault-list .article-teaser .post-info {
+      font-size: 0.7875rem;
+      font-weight: 700;
+      margin-bottom: 0; }
+      .country-list .article-teaser .post-info > *:not(:first-child):before,
+      .project-list .article-teaser .post-info > *:not(:first-child):before,
+      .contact-list .article-teaser .post-info > *:not(:first-child):before,
+      .article-list .article-teaser .post-info > *:not(:first-child):before,
+      .knowledge-vault-list .article-teaser .post-info > *:not(:first-child):before {
+        font-weight: 700;
+        margin: 0; }
+    .country-list .article-teaser h2,
+    .project-list .article-teaser h2,
+    .contact-list .article-teaser h2,
+    .article-list .article-teaser h2,
+    .knowledge-vault-list .article-teaser h2 {
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 25px;
+      margin: 0 0 10px; }
   .country-list .project-content .summary,
   .project-list .project-content .summary,
-  .contact-list .project-content .summary {
+  .contact-list .project-content .summary,
+  .article-list .project-content .summary,
+  .knowledge-vault-list .project-content .summary {
     padding-top: 20px; }
   .country-list .contact-content,
   .project-list .contact-content,
-  .contact-list .contact-content {
+  .contact-list .contact-content,
+  .article-list .contact-content,
+  .knowledge-vault-list .contact-content {
     font-family: Oswald, sans-serif;
     padding: 30px 20px 0; }
     .country-list .contact-content .font-social-icon,
     .project-list .contact-content .font-social-icon,
-    .contact-list .contact-content .font-social-icon {
+    .contact-list .contact-content .font-social-icon,
+    .article-list .contact-content .font-social-icon,
+    .knowledge-vault-list .contact-content .font-social-icon {
       color: #283b44;
       min-height: 50px;
       padding: 5px 0;
@@ -2336,15 +2510,21 @@ footer > .partners {
       transition: opacity .3s ease; }
       .country-list .contact-content .font-social-icon > span:first-child,
       .project-list .contact-content .font-social-icon > span:first-child,
-      .contact-list .contact-content .font-social-icon > span:first-child {
+      .contact-list .contact-content .font-social-icon > span:first-child,
+      .article-list .contact-content .font-social-icon > span:first-child,
+      .knowledge-vault-list .contact-content .font-social-icon > span:first-child {
         letter-spacing: .5px; }
         .country-list .contact-content .font-social-icon > span:first-child:after,
         .project-list .contact-content .font-social-icon > span:first-child:after,
-        .contact-list .contact-content .font-social-icon > span:first-child:after {
+        .contact-list .contact-content .font-social-icon > span:first-child:after,
+        .article-list .contact-content .font-social-icon > span:first-child:after,
+        .knowledge-vault-list .contact-content .font-social-icon > span:first-child:after {
           content: none; }
         .country-list .contact-content .font-social-icon > span:first-child:before,
         .project-list .contact-content .font-social-icon > span:first-child:before,
-        .contact-list .contact-content .font-social-icon > span:first-child:before {
+        .contact-list .contact-content .font-social-icon > span:first-child:before,
+        .article-list .contact-content .font-social-icon > span:first-child:before,
+        .knowledge-vault-list .contact-content .font-social-icon > span:first-child:before {
           font-size: 1.75rem;
           color: #4c7e96;
           font-family: P4h, sans-serif;
@@ -2353,56 +2533,82 @@ footer > .partners {
           top: 8px; }
     .country-list .contact-content .mail-icon > span:first-child:before,
     .project-list .contact-content .mail-icon > span:first-child:before,
-    .contact-list .contact-content .mail-icon > span:first-child:before {
+    .contact-list .contact-content .mail-icon > span:first-child:before,
+    .article-list .contact-content .mail-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .mail-icon > span:first-child:before {
       content: "o"; }
     .country-list .contact-content .group-manager-icon > span:first-child:before,
     .project-list .contact-content .group-manager-icon > span:first-child:before,
-    .contact-list .contact-content .group-manager-icon > span:first-child:before {
+    .contact-list .contact-content .group-manager-icon > span:first-child:before,
+    .article-list .contact-content .group-manager-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .group-manager-icon > span:first-child:before {
       content: "a"; }
     .country-list .contact-content .organization-icon > span:first-child:before,
     .project-list .contact-content .organization-icon > span:first-child:before,
-    .contact-list .contact-content .organization-icon > span:first-child:before {
+    .contact-list .contact-content .organization-icon > span:first-child:before,
+    .article-list .contact-content .organization-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .organization-icon > span:first-child:before {
       content: "$"; }
     .country-list .contact-content .default-icon > span:first-child:before,
     .project-list .contact-content .default-icon > span:first-child:before,
-    .contact-list .contact-content .default-icon > span:first-child:before {
+    .contact-list .contact-content .default-icon > span:first-child:before,
+    .article-list .contact-content .default-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .default-icon > span:first-child:before {
       content: "n"; }
     .country-list .contact-content .default-icon img,
     .project-list .contact-content .default-icon img,
-    .contact-list .contact-content .default-icon img {
+    .contact-list .contact-content .default-icon img,
+    .article-list .contact-content .default-icon img,
+    .knowledge-vault-list .contact-content .default-icon img {
       margin: 8px 11px 0 3px; }
       .country-list .contact-content .default-icon img ~ span,
       .project-list .contact-content .default-icon img ~ span,
-      .contact-list .contact-content .default-icon img ~ span {
+      .contact-list .contact-content .default-icon img ~ span,
+      .article-list .contact-content .default-icon img ~ span,
+      .knowledge-vault-list .contact-content .default-icon img ~ span {
         display: inline-block;
         margin-top: 7px;
         vertical-align: top; }
     .country-list .contact-content .phone-icon > span:first-child:before,
     .project-list .contact-content .phone-icon > span:first-child:before,
-    .contact-list .contact-content .phone-icon > span:first-child:before {
+    .contact-list .contact-content .phone-icon > span:first-child:before,
+    .article-list .contact-content .phone-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .phone-icon > span:first-child:before {
       content: "å"; }
     .country-list .contact-content .country-icon > span:first-child:before,
     .project-list .contact-content .country-icon > span:first-child:before,
-    .contact-list .contact-content .country-icon > span:first-child:before {
+    .contact-list .contact-content .country-icon > span:first-child:before,
+    .article-list .contact-content .country-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .country-icon > span:first-child:before {
       content: "f"; }
     .country-list .contact-content .relation-form,
     .project-list .contact-content .relation-form,
-    .contact-list .contact-content .relation-form {
+    .contact-list .contact-content .relation-form,
+    .article-list .contact-content .relation-form,
+    .knowledge-vault-list .contact-content .relation-form {
       position: relative; }
       .country-list .contact-content .relation-form .ajax-progress,
       .project-list .contact-content .relation-form .ajax-progress,
-      .contact-list .contact-content .relation-form .ajax-progress {
+      .contact-list .contact-content .relation-form .ajax-progress,
+      .article-list .contact-content .relation-form .ajax-progress,
+      .knowledge-vault-list .contact-content .relation-form .ajax-progress {
         position: absolute; }
     .country-list .contact-content .relation-link,
     .project-list .contact-content .relation-link,
-    .contact-list .contact-content .relation-link {
+    .contact-list .contact-content .relation-link,
+    .article-list .contact-content .relation-link,
+    .knowledge-vault-list .contact-content .relation-link {
       font-size: 0.875rem; }
       .country-list .contact-content .relation-link a,
       .country-list .contact-content .relation-link span,
       .project-list .contact-content .relation-link a,
       .project-list .contact-content .relation-link span,
       .contact-list .contact-content .relation-link a,
-      .contact-list .contact-content .relation-link span {
+      .contact-list .contact-content .relation-link span,
+      .article-list .contact-content .relation-link a,
+      .article-list .contact-content .relation-link span,
+      .knowledge-vault-list .contact-content .relation-link a,
+      .knowledge-vault-list .contact-content .relation-link span {
         display: inline-block;
         vertical-align: top;
         border-bottom: 2px solid transparent;
@@ -2414,7 +2620,11 @@ footer > .partners {
         .project-list .contact-content .relation-link a:before,
         .project-list .contact-content .relation-link span:before,
         .contact-list .contact-content .relation-link a:before,
-        .contact-list .contact-content .relation-link span:before {
+        .contact-list .contact-content .relation-link span:before,
+        .article-list .contact-content .relation-link a:before,
+        .article-list .contact-content .relation-link span:before,
+        .knowledge-vault-list .contact-content .relation-link a:before,
+        .knowledge-vault-list .contact-content .relation-link span:before {
           font-size: 1.75rem;
           content: "+";
           color: #4c7e96;
@@ -2424,21 +2634,29 @@ footer > .partners {
           top: 8px; }
       .country-list .contact-content .relation-link a,
       .project-list .contact-content .relation-link a,
-      .contact-list .contact-content .relation-link a {
+      .contact-list .contact-content .relation-link a,
+      .article-list .contact-content .relation-link a,
+      .knowledge-vault-list .contact-content .relation-link a {
         position: relative;
         z-index: 10; }
         .country-list .contact-content .relation-link a:hover,
         .project-list .contact-content .relation-link a:hover,
-        .contact-list .contact-content .relation-link a:hover {
+        .contact-list .contact-content .relation-link a:hover,
+        .article-list .contact-content .relation-link a:hover,
+        .knowledge-vault-list .contact-content .relation-link a:hover {
           border-color: #ea3a32;
           opacity: .66; }
   .country-list .contact-to-user,
   .project-list .contact-to-user,
-  .contact-list .contact-to-user {
+  .contact-list .contact-to-user,
+  .article-list .contact-to-user,
+  .knowledge-vault-list .contact-to-user {
     text-align: center; }
     .country-list .contact-to-user a,
     .project-list .contact-to-user a,
-    .contact-list .contact-to-user a {
+    .contact-list .contact-to-user a,
+    .article-list .contact-to-user a,
+    .knowledge-vault-list .contact-to-user a {
       font-size: 0.875rem;
       border-color: #ea3a32;
       color: #ea3a32;
@@ -2448,17 +2666,23 @@ footer > .partners {
       z-index: 10; }
       .country-list .contact-to-user a:hover,
       .project-list .contact-to-user a:hover,
-      .contact-list .contact-to-user a:hover {
+      .contact-list .contact-to-user a:hover,
+      .article-list .contact-to-user a:hover,
+      .knowledge-vault-list .contact-to-user a:hover {
         border-color: #8c2222;
         color: #8c2222; }
   .country-list .user-wrapper,
   .project-list .user-wrapper,
-  .contact-list .user-wrapper {
+  .contact-list .user-wrapper,
+  .article-list .user-wrapper,
+  .knowledge-vault-list .user-wrapper {
     margin-bottom: 20px;
     overflow: hidden; }
   .country-list .user-icon,
   .project-list .user-icon,
-  .contact-list .user-icon {
+  .contact-list .user-icon,
+  .article-list .user-icon,
+  .knowledge-vault-list .user-icon {
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -2467,13 +2691,17 @@ footer > .partners {
     overflow: hidden; }
   .country-list .user-name,
   .project-list .user-name,
-  .contact-list .user-name {
+  .contact-list .user-name,
+  .article-list .user-name,
+  .knowledge-vault-list .user-name {
     font-size: 1.05rem;
     line-height: 25px;
     letter-spacing: .5px; }
   .country-list .summary,
   .project-list .summary,
-  .contact-list .summary {
+  .contact-list .summary,
+  .article-list .summary,
+  .knowledge-vault-list .summary {
     font-size: 0.9625rem;
     color: #283b44;
     font-family: "Fira Sans", sans-serif;
@@ -2486,7 +2714,13 @@ footer > .partners {
   .project-list .contact-link,
   .contact-list .country-link,
   .contact-list .project-link,
-  .contact-list .contact-link {
+  .contact-list .contact-link,
+  .article-list .country-link,
+  .article-list .project-link,
+  .article-list .contact-link,
+  .knowledge-vault-list .country-link,
+  .knowledge-vault-list .project-link,
+  .knowledge-vault-list .contact-link {
     position: absolute;
     top: 0;
     left: 0;
@@ -2494,15 +2728,21 @@ footer > .partners {
     width: 100%; }
   .country-list .contact-link,
   .project-list .contact-link,
-  .contact-list .contact-link {
+  .contact-list .contact-link,
+  .article-list .contact-link,
+  .knowledge-vault-list .contact-link {
     z-index: 5; }
   .country-list a,
   .project-list a,
-  .contact-list a {
+  .contact-list a,
+  .article-list a,
+  .knowledge-vault-list a {
     text-decoration: none; }
   .country-list .project-bottom-link,
   .project-list .project-bottom-link,
-  .contact-list .project-bottom-link {
+  .contact-list .project-bottom-link,
+  .article-list .project-bottom-link,
+  .knowledge-vault-list .project-bottom-link {
     font-size: 0.875rem;
     color: #283b44;
     border-top: 1px solid #afb7bb;
@@ -2514,14 +2754,20 @@ footer > .partners {
     z-index: 5; }
     .country-list .project-bottom-link .font-social-icon:not(:last-child),
     .project-list .project-bottom-link .font-social-icon:not(:last-child),
-    .contact-list .project-bottom-link .font-social-icon:not(:last-child) {
+    .contact-list .project-bottom-link .font-social-icon:not(:last-child),
+    .article-list .project-bottom-link .font-social-icon:not(:last-child),
+    .knowledge-vault-list .project-bottom-link .font-social-icon:not(:last-child) {
       margin-bottom: 10px; }
     .country-list .project-bottom-link span,
     .country-list .project-bottom-link a,
     .project-list .project-bottom-link span,
     .project-list .project-bottom-link a,
     .contact-list .project-bottom-link span,
-    .contact-list .project-bottom-link a {
+    .contact-list .project-bottom-link a,
+    .article-list .project-bottom-link span,
+    .article-list .project-bottom-link a,
+    .knowledge-vault-list .project-bottom-link span,
+    .knowledge-vault-list .project-bottom-link a {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -2533,14 +2779,22 @@ footer > .partners {
       .project-list .project-bottom-link span:after,
       .project-list .project-bottom-link a:after,
       .contact-list .project-bottom-link span:after,
-      .contact-list .project-bottom-link a:after {
+      .contact-list .project-bottom-link a:after,
+      .article-list .project-bottom-link span:after,
+      .article-list .project-bottom-link a:after,
+      .knowledge-vault-list .project-bottom-link span:after,
+      .knowledge-vault-list .project-bottom-link a:after {
         content: none; }
       .country-list .project-bottom-link span:before,
       .country-list .project-bottom-link a:before,
       .project-list .project-bottom-link span:before,
       .project-list .project-bottom-link a:before,
       .contact-list .project-bottom-link span:before,
-      .contact-list .project-bottom-link a:before {
+      .contact-list .project-bottom-link a:before,
+      .article-list .project-bottom-link span:before,
+      .article-list .project-bottom-link a:before,
+      .knowledge-vault-list .project-bottom-link span:before,
+      .knowledge-vault-list .project-bottom-link a:before {
         font-size: 1.75rem;
         content: "j";
         color: #4c7e96;
@@ -2550,20 +2804,28 @@ footer > .partners {
         vertical-align: bottom; }
     .country-list .project-bottom-link a:hover,
     .project-list .project-bottom-link a:hover,
-    .contact-list .project-bottom-link a:hover {
+    .contact-list .project-bottom-link a:hover,
+    .article-list .project-bottom-link a:hover,
+    .knowledge-vault-list .project-bottom-link a:hover {
       opacity: .66; }
   .country-list .section-info,
   .project-list .section-info,
-  .contact-list .section-info {
+  .contact-list .section-info,
+  .article-list .section-info,
+  .knowledge-vault-list .section-info {
     padding: 0 20px; }
     .country-list .section-info .paragraph,
     .project-list .section-info .paragraph,
-    .contact-list .section-info .paragraph {
+    .contact-list .section-info .paragraph,
+    .article-list .section-info .paragraph,
+    .knowledge-vault-list .section-info .paragraph {
       overflow: hidden;
       padding: 5px 0; }
       .country-list .section-info .paragraph a,
       .project-list .section-info .paragraph a,
-      .contact-list .section-info .paragraph a {
+      .contact-list .section-info .paragraph a,
+      .article-list .section-info .paragraph a,
+      .knowledge-vault-list .section-info .paragraph a {
         border-bottom: 2px solid transparent;
         display: inline-block;
         -webkit-transition: border .3s ease;
@@ -2573,18 +2835,26 @@ footer > .partners {
         z-index: 5; }
         .country-list .section-info .paragraph a:hover,
         .project-list .section-info .paragraph a:hover,
-        .contact-list .section-info .paragraph a:hover {
+        .contact-list .section-info .paragraph a:hover,
+        .article-list .section-info .paragraph a:hover,
+        .knowledge-vault-list .section-info .paragraph a:hover {
           border-color: #ea3a32; }
           .country-list .section-info .paragraph a:hover .icon-wrapper,
           .country-list .section-info .paragraph a:hover h3,
           .project-list .section-info .paragraph a:hover .icon-wrapper,
           .project-list .section-info .paragraph a:hover h3,
           .contact-list .section-info .paragraph a:hover .icon-wrapper,
-          .contact-list .section-info .paragraph a:hover h3 {
+          .contact-list .section-info .paragraph a:hover h3,
+          .article-list .section-info .paragraph a:hover .icon-wrapper,
+          .article-list .section-info .paragraph a:hover h3,
+          .knowledge-vault-list .section-info .paragraph a:hover .icon-wrapper,
+          .knowledge-vault-list .section-info .paragraph a:hover h3 {
             opacity: .66; }
     .country-list .section-info .icon-wrapper,
     .project-list .section-info .icon-wrapper,
-    .contact-list .section-info .icon-wrapper {
+    .contact-list .section-info .icon-wrapper,
+    .article-list .section-info .icon-wrapper,
+    .knowledge-vault-list .section-info .icon-wrapper {
       float: left;
       height: 40px;
       margin-right: 10px;
@@ -2593,11 +2863,15 @@ footer > .partners {
       width: 26px; }
     .country-list .section-info path,
     .project-list .section-info path,
-    .contact-list .section-info path {
+    .contact-list .section-info path,
+    .article-list .section-info path,
+    .knowledge-vault-list .section-info path {
       fill: #4c7e96; }
     .country-list .section-info h3,
     .project-list .section-info h3,
-    .contact-list .section-info h3 {
+    .contact-list .section-info h3,
+    .article-list .section-info h3,
+    .knowledge-vault-list .section-info h3 {
       font-size: 0.875rem;
       font-weight: 400;
       letter-spacing: .5px;
@@ -2667,53 +2941,109 @@ footer > .partners {
   .country-list .country-item,
   .country-list .project-item,
   .country-list .member-block,
-  .country-list .contact-item, .project-list .country-item,
+  .country-list .contact-item,
+  .country-list .article-item,
+  .country-list .knowledge-vault-item, .project-list .country-item,
   .project-list .project-item,
   .project-list .member-block,
-  .project-list .contact-item, .contact-list .country-item,
+  .project-list .contact-item,
+  .project-list .article-item,
+  .project-list .knowledge-vault-item, .contact-list .country-item,
   .contact-list .project-item,
   .contact-list .member-block,
-  .contact-list .contact-item, .members-list ul .country-item,
+  .contact-list .contact-item,
+  .contact-list .article-item,
+  .contact-list .knowledge-vault-item, .article-list .country-item,
+  .article-list .project-item,
+  .article-list .member-block,
+  .article-list .contact-item,
+  .article-list .article-item,
+  .article-list .knowledge-vault-item, .knowledge-vault-list .country-item,
+  .knowledge-vault-list .project-item,
+  .knowledge-vault-list .member-block,
+  .knowledge-vault-list .contact-item,
+  .knowledge-vault-list .article-item,
+  .knowledge-vault-list .knowledge-vault-item, .members-list ul .country-item,
   .members-list ul .project-item,
   .members-list ul .member-block,
-  .members-list ul .contact-item {
+  .members-list ul .contact-item,
+  .members-list ul .article-item,
+  .members-list ul .knowledge-vault-item {
     width: calc(50% - 20px); }
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
     .country-list .member-block, .ie9
-    .country-list .contact-item, .ie9 .project-list .country-item, .ie9
+    .country-list .contact-item, .ie9
+    .country-list .article-item, .ie9
+    .country-list .knowledge-vault-item, .ie9 .project-list .country-item, .ie9
     .project-list .project-item, .ie9
     .project-list .member-block, .ie9
-    .project-list .contact-item, .ie9 .contact-list .country-item, .ie9
+    .project-list .contact-item, .ie9
+    .project-list .article-item, .ie9
+    .project-list .knowledge-vault-item, .ie9 .contact-list .country-item, .ie9
     .contact-list .project-item, .ie9
     .contact-list .member-block, .ie9
-    .contact-list .contact-item, .ie9 .members-list ul .country-item, .ie9
+    .contact-list .contact-item, .ie9
+    .contact-list .article-item, .ie9
+    .contact-list .knowledge-vault-item, .ie9 .article-list .country-item, .ie9
+    .article-list .project-item, .ie9
+    .article-list .member-block, .ie9
+    .article-list .contact-item, .ie9
+    .article-list .article-item, .ie9
+    .article-list .knowledge-vault-item, .ie9 .knowledge-vault-list .country-item, .ie9
+    .knowledge-vault-list .project-item, .ie9
+    .knowledge-vault-list .member-block, .ie9
+    .knowledge-vault-list .contact-item, .ie9
+    .knowledge-vault-list .article-item, .ie9
+    .knowledge-vault-list .knowledge-vault-item, .ie9 .members-list ul .country-item, .ie9
     .members-list ul .project-item, .ie9
     .members-list ul .member-block, .ie9
-    .members-list ul .contact-item {
+    .members-list ul .contact-item, .ie9
+    .members-list ul .article-item, .ie9
+    .members-list ul .knowledge-vault-item {
       margin: 10px 8px;
       width: calc(50% - 20px); } }
 
 @media (max-width: 767px) {
   .country-list .country-item,
   .country-list .project-item, .project-list .country-item,
-  .project-list .project-item {
+  .project-list .project-item, .article-list .country-item,
+  .article-list .project-item, .knowledge-vault-list .country-item,
+  .knowledge-vault-list .project-item {
     padding: 5px; } }
 
 @media (max-width: 479px) {
   .country-list .country-item,
   .country-list .project-item,
   .country-list .member-block,
-  .country-list .contact-item, .project-list .country-item,
+  .country-list .contact-item,
+  .country-list .article-item,
+  .country-list .knowledge-vault-item, .project-list .country-item,
   .project-list .project-item,
   .project-list .member-block,
-  .project-list .contact-item, .members-list ul .country-item,
+  .project-list .contact-item,
+  .project-list .article-item,
+  .project-list .knowledge-vault-item, .members-list ul .country-item,
   .members-list ul .project-item,
   .members-list ul .member-block,
-  .members-list ul .contact-item, .contact-list .country-item,
+  .members-list ul .contact-item,
+  .members-list ul .article-item,
+  .members-list ul .knowledge-vault-item, .contact-list .country-item,
   .contact-list .project-item,
   .contact-list .member-block,
-  .contact-list .contact-item {
+  .contact-list .contact-item,
+  .contact-list .article-item,
+  .contact-list .knowledge-vault-item, .article-list .country-item,
+  .article-list .project-item,
+  .article-list .member-block,
+  .article-list .contact-item,
+  .article-list .article-item,
+  .article-list .knowledge-vault-item, .knowledge-vault-list .country-item,
+  .knowledge-vault-list .project-item,
+  .knowledge-vault-list .member-block,
+  .knowledge-vault-list .contact-item,
+  .knowledge-vault-list .article-item,
+  .knowledge-vault-list .knowledge-vault-item {
     margin-left: 0;
     margin-right: 0;
     padding: 0;
@@ -2721,32 +3051,68 @@ footer > .partners {
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
     .country-list .member-block, .ie9
-    .country-list .contact-item, .ie9 .project-list .country-item, .ie9
+    .country-list .contact-item, .ie9
+    .country-list .article-item, .ie9
+    .country-list .knowledge-vault-item, .ie9 .project-list .country-item, .ie9
     .project-list .project-item, .ie9
     .project-list .member-block, .ie9
-    .project-list .contact-item, .ie9 .members-list ul .country-item, .ie9
+    .project-list .contact-item, .ie9
+    .project-list .article-item, .ie9
+    .project-list .knowledge-vault-item, .ie9 .members-list ul .country-item, .ie9
     .members-list ul .project-item, .ie9
     .members-list ul .member-block, .ie9
-    .members-list ul .contact-item, .ie9 .contact-list .country-item, .ie9
+    .members-list ul .contact-item, .ie9
+    .members-list ul .article-item, .ie9
+    .members-list ul .knowledge-vault-item, .ie9 .contact-list .country-item, .ie9
     .contact-list .project-item, .ie9
     .contact-list .member-block, .ie9
-    .contact-list .contact-item {
+    .contact-list .contact-item, .ie9
+    .contact-list .article-item, .ie9
+    .contact-list .knowledge-vault-item, .ie9 .article-list .country-item, .ie9
+    .article-list .project-item, .ie9
+    .article-list .member-block, .ie9
+    .article-list .contact-item, .ie9
+    .article-list .article-item, .ie9
+    .article-list .knowledge-vault-item, .ie9 .knowledge-vault-list .country-item, .ie9
+    .knowledge-vault-list .project-item, .ie9
+    .knowledge-vault-list .member-block, .ie9
+    .knowledge-vault-list .contact-item, .ie9
+    .knowledge-vault-list .article-item, .ie9
+    .knowledge-vault-list .knowledge-vault-item {
       margin-left: 0;
       margin-right: 0;
       width: 100%; }
     .country-list .country-item .block-content,
     .country-list .project-item .block-content,
     .country-list .member-block .block-content,
-    .country-list .contact-item .block-content, .project-list .country-item .block-content,
+    .country-list .contact-item .block-content,
+    .country-list .article-item .block-content,
+    .country-list .knowledge-vault-item .block-content, .project-list .country-item .block-content,
     .project-list .project-item .block-content,
     .project-list .member-block .block-content,
-    .project-list .contact-item .block-content, .members-list ul .country-item .block-content,
+    .project-list .contact-item .block-content,
+    .project-list .article-item .block-content,
+    .project-list .knowledge-vault-item .block-content, .members-list ul .country-item .block-content,
     .members-list ul .project-item .block-content,
     .members-list ul .member-block .block-content,
-    .members-list ul .contact-item .block-content, .contact-list .country-item .block-content,
+    .members-list ul .contact-item .block-content,
+    .members-list ul .article-item .block-content,
+    .members-list ul .knowledge-vault-item .block-content, .contact-list .country-item .block-content,
     .contact-list .project-item .block-content,
     .contact-list .member-block .block-content,
-    .contact-list .contact-item .block-content {
+    .contact-list .contact-item .block-content,
+    .contact-list .article-item .block-content,
+    .contact-list .knowledge-vault-item .block-content, .article-list .country-item .block-content,
+    .article-list .project-item .block-content,
+    .article-list .member-block .block-content,
+    .article-list .contact-item .block-content,
+    .article-list .article-item .block-content,
+    .article-list .knowledge-vault-item .block-content, .knowledge-vault-list .country-item .block-content,
+    .knowledge-vault-list .project-item .block-content,
+    .knowledge-vault-list .member-block .block-content,
+    .knowledge-vault-list .contact-item .block-content,
+    .knowledge-vault-list .article-item .block-content,
+    .knowledge-vault-list .knowledge-vault-item .block-content {
       margin-left: 0;
       margin-right: 0; }
       .ie10 .country-list .country-item .block-content,
@@ -2759,7 +3125,13 @@ footer > .partners {
       .country-list .member-block .block-content, .ie10
       .country-list .contact-item .block-content,
       .ie9
-      .country-list .contact-item .block-content, .ie10 .project-list .country-item .block-content,
+      .country-list .contact-item .block-content, .ie10
+      .country-list .article-item .block-content,
+      .ie9
+      .country-list .article-item .block-content, .ie10
+      .country-list .knowledge-vault-item .block-content,
+      .ie9
+      .country-list .knowledge-vault-item .block-content, .ie10 .project-list .country-item .block-content,
       .ie9 .project-list .country-item .block-content, .ie10
       .project-list .project-item .block-content,
       .ie9
@@ -2769,7 +3141,13 @@ footer > .partners {
       .project-list .member-block .block-content, .ie10
       .project-list .contact-item .block-content,
       .ie9
-      .project-list .contact-item .block-content, .ie10 .members-list ul .country-item .block-content,
+      .project-list .contact-item .block-content, .ie10
+      .project-list .article-item .block-content,
+      .ie9
+      .project-list .article-item .block-content, .ie10
+      .project-list .knowledge-vault-item .block-content,
+      .ie9
+      .project-list .knowledge-vault-item .block-content, .ie10 .members-list ul .country-item .block-content,
       .ie9 .members-list ul .country-item .block-content, .ie10
       .members-list ul .project-item .block-content,
       .ie9
@@ -2779,7 +3157,13 @@ footer > .partners {
       .members-list ul .member-block .block-content, .ie10
       .members-list ul .contact-item .block-content,
       .ie9
-      .members-list ul .contact-item .block-content, .ie10 .contact-list .country-item .block-content,
+      .members-list ul .contact-item .block-content, .ie10
+      .members-list ul .article-item .block-content,
+      .ie9
+      .members-list ul .article-item .block-content, .ie10
+      .members-list ul .knowledge-vault-item .block-content,
+      .ie9
+      .members-list ul .knowledge-vault-item .block-content, .ie10 .contact-list .country-item .block-content,
       .ie9 .contact-list .country-item .block-content, .ie10
       .contact-list .project-item .block-content,
       .ie9
@@ -2789,7 +3173,45 @@ footer > .partners {
       .contact-list .member-block .block-content, .ie10
       .contact-list .contact-item .block-content,
       .ie9
-      .contact-list .contact-item .block-content {
+      .contact-list .contact-item .block-content, .ie10
+      .contact-list .article-item .block-content,
+      .ie9
+      .contact-list .article-item .block-content, .ie10
+      .contact-list .knowledge-vault-item .block-content,
+      .ie9
+      .contact-list .knowledge-vault-item .block-content, .ie10 .article-list .country-item .block-content,
+      .ie9 .article-list .country-item .block-content, .ie10
+      .article-list .project-item .block-content,
+      .ie9
+      .article-list .project-item .block-content, .ie10
+      .article-list .member-block .block-content,
+      .ie9
+      .article-list .member-block .block-content, .ie10
+      .article-list .contact-item .block-content,
+      .ie9
+      .article-list .contact-item .block-content, .ie10
+      .article-list .article-item .block-content,
+      .ie9
+      .article-list .article-item .block-content, .ie10
+      .article-list .knowledge-vault-item .block-content,
+      .ie9
+      .article-list .knowledge-vault-item .block-content, .ie10 .knowledge-vault-list .country-item .block-content,
+      .ie9 .knowledge-vault-list .country-item .block-content, .ie10
+      .knowledge-vault-list .project-item .block-content,
+      .ie9
+      .knowledge-vault-list .project-item .block-content, .ie10
+      .knowledge-vault-list .member-block .block-content,
+      .ie9
+      .knowledge-vault-list .member-block .block-content, .ie10
+      .knowledge-vault-list .contact-item .block-content,
+      .ie9
+      .knowledge-vault-list .contact-item .block-content, .ie10
+      .knowledge-vault-list .article-item .block-content,
+      .ie9
+      .knowledge-vault-list .article-item .block-content, .ie10
+      .knowledge-vault-list .knowledge-vault-item .block-content,
+      .ie9
+      .knowledge-vault-list .knowledge-vault-item .block-content {
         width: 100%; } }
 
 @media (max-width: 991px) {
@@ -2808,18 +3230,21 @@ footer > .partners {
 
 .country-title,
 .project-title,
-.region-title {
+.region-title,
+.article-title {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px; }
-  .country-title + div:not(.country-title),
-  .project-title + div:not(.country-title),
-  .region-title + div:not(.country-title) {
+  .country-title + div:not(.country-title):not(.article-teaser),
+  .project-title + div:not(.country-title):not(.article-teaser),
+  .region-title + div:not(.country-title):not(.article-teaser),
+  .article-title + div:not(.country-title):not(.article-teaser) {
     min-height: 150px;
     margin-bottom: 5px; }
   .country-title .project-icon-wrapper,
   .project-title .project-icon-wrapper,
-  .region-title .project-icon-wrapper {
+  .region-title .project-icon-wrapper,
+  .article-title .project-icon-wrapper {
     float: left;
     margin-right: 20px;
     max-width: 40px;
@@ -2827,33 +3252,46 @@ footer > .partners {
     width: 100%; }
     .ie .country-title .project-icon-wrapper, .ie
     .project-title .project-icon-wrapper, .ie
-    .region-title .project-icon-wrapper {
+    .region-title .project-icon-wrapper, .ie
+    .article-title .project-icon-wrapper {
       height: 40px; }
       .ie .country-title .project-icon-wrapper img, .ie
       .project-title .project-icon-wrapper img, .ie
-      .region-title .project-icon-wrapper img {
+      .region-title .project-icon-wrapper img, .ie
+      .article-title .project-icon-wrapper img {
         max-height: 100%; }
   .country-title .country-icon-wrapper,
   .project-title .country-icon-wrapper,
-  .region-title .country-icon-wrapper {
+  .region-title .country-icon-wrapper,
+  .article-title .country-icon-wrapper {
     float: left;
     margin-right: 20px;
     width: 40px; }
     .ie .country-title .country-icon-wrapper, .ie
     .project-title .country-icon-wrapper, .ie
-    .region-title .country-icon-wrapper {
+    .region-title .country-icon-wrapper, .ie
+    .article-title .country-icon-wrapper {
       height: 40px; }
       .ie .country-title .country-icon-wrapper img, .ie
       .project-title .country-icon-wrapper img, .ie
-      .region-title .country-icon-wrapper img {
+      .region-title .country-icon-wrapper img, .ie
+      .article-title .country-icon-wrapper img {
         max-height: 100%; }
   .country-title h3,
   .project-title h3,
-  .region-title h3 {
+  .region-title h3,
+  .article-title h3 {
     font-size: 1.4rem;
     line-height: 32px;
     margin: 10px 0 5px;
     text-transform: uppercase; }
+
+.article-type {
+  font-size: 0.7875rem;
+  color: #ea3a32;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase; }
 
 .project-title + div:not(.project-title) {
   min-height: 0;
@@ -3067,9 +3505,9 @@ form {
 @media (max-width: 479px) {
   form label {
     font-size: 1rem; }
-  form .form-email ~ label.error,
-  form .form-text ~ label.error,
-  form .form-textarea ~ label.error {
+  form:not(.form-contact-us) .form-email ~ label.error,
+  form:not(.form-contact-us) .form-text ~ label.error,
+  form:not(.form-contact-us) .form-textarea ~ label.error {
     font-size: 0.875rem;
     top: 82px;
     text-align: right; } }
@@ -3282,7 +3720,7 @@ form {
      -moz-appearance: radio;
           appearance: radio; }
 
-.form-submit, .ui-dialog .button {
+.form-submit, .ui-dialog.ui-widget-content .button {
   background: #fff;
   border: 1px solid #ea3a32;
   color: #ea3a32;
@@ -3291,7 +3729,7 @@ form {
   text-transform: uppercase;
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
-  .form-submit:hover, .ui-dialog .button:hover {
+  .form-submit:hover, .ui-dialog.ui-widget-content .button:hover {
     border-color: #8c2222;
     color: #8c2222; }
 
@@ -3357,11 +3795,11 @@ form .social_login iframe {
     content: ": *"; }
   .user-login-form .form-actions {
     margin-top: 20px; }
-  .user-login-form .form-submit, .user-login-form .ui-dialog .button, .ui-dialog .user-login-form .button {
+  .user-login-form .form-submit, .user-login-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-login-form .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-login-form .form-submit:hover, .user-login-form .ui-dialog .button:hover, .ui-dialog .user-login-form .button:hover {
+    .user-login-form .form-submit:hover, .user-login-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-login-form .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3441,7 +3879,7 @@ form .social_login iframe {
     margin: 10px 0 55px;
     text-align: center;
     width: 50%; }
-  .form-contact-us .form-submit, .form-contact-us .ui-dialog .button, .ui-dialog .form-contact-us .button {
+  .form-contact-us .form-submit, .form-contact-us .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-contact-us .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
@@ -3475,14 +3913,16 @@ form .social_login iframe {
     width: 100%; } }
 
 .view-project > h2,
-.view-product > h2 {
+.view-product > h2,
+.view-knowledge-vault > h2 {
   font-size: 1.575rem;
   line-height: 48px;
   margin-bottom: 15px;
   position: relative;
   text-align: center; }
   .view-project > h2 a,
-  .view-product > h2 a {
+  .view-product > h2 a,
+  .view-knowledge-vault > h2 a {
     font-size: 0.9625rem;
     line-height: 18px;
     position: absolute;
@@ -3490,31 +3930,34 @@ form .social_login iframe {
     right: 0;
     text-decoration: none; }
     .view-project > h2 a:before,
-    .view-product > h2 a:before {
+    .view-product > h2 a:before,
+    .view-knowledge-vault > h2 a:before {
       content: "q";
       color: #ea3a32;
       font-family: P4h, sans-serif;
       margin-right: 4px; }
     .view-project > h2 a:hover:before,
-    .view-product > h2 a:hover:before {
+    .view-product > h2 a:hover:before,
+    .view-knowledge-vault > h2 a:hover:before {
       color: #8c2222; }
 
 .view-project form,
-.view-product form {
+.view-product form,
+.view-knowledge-vault form {
   max-width: 40%;
   margin: 0 auto;
   position: relative; }
 
 @media (max-width: 991px) {
-  .view-project form, .view-product form {
+  .view-project form, .view-product form, .view-knowledge-vault form {
     max-width: 60%; } }
 
 @media (max-width: 767px) {
-  .view-project form, .view-product form {
+  .view-project form, .view-product form, .view-knowledge-vault form {
     max-width: 80%; } }
 
 @media (max-width: 479px) {
-  .view-project form, .view-product form {
+  .view-project form, .view-product form, .view-knowledge-vault form {
     max-width: 100%; } }
 
 .user-register-form {
@@ -3591,11 +4034,11 @@ form .social_login iframe {
     margin: 30px auto 0;
     text-align: center;
     width: 50%; }
-  .user-register-form .form-submit, .user-register-form .ui-dialog .button, .ui-dialog .user-register-form .button {
+  .user-register-form .form-submit, .user-register-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-register-form .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-register-form .form-submit:hover, .user-register-form .ui-dialog .button:hover, .ui-dialog .user-register-form .button:hover {
+    .user-register-form .form-submit:hover, .user-register-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-register-form .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3700,7 +4143,7 @@ form .social_login iframe {
   margin-top: 30px;
   text-align: center; }
 
-.user-onetime-form .form-submit:hover, .user-onetime-form .ui-dialog .button:hover, .ui-dialog .user-onetime-form .button:hover {
+.user-onetime-form .form-submit:hover, .user-onetime-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-onetime-form .button:hover {
   -webkit-transform: none;
           transform: none; }
 
@@ -3717,7 +4160,7 @@ form .social_login iframe {
   .user-onetime-form #catagories-wrapper {
     padding: 10px 0;
     width: 100%; }
-  .user-onetime-form .form-submit, .user-onetime-form .ui-dialog .button, .ui-dialog .user-onetime-form .button {
+  .user-onetime-form .form-submit, .user-onetime-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-onetime-form .button {
     font-size: 1.05rem;
     padding: 10px; } }
 
@@ -3742,11 +4185,11 @@ form .social_login iframe {
   .user-pass .form-actions {
     margin-top: 25px;
     text-align: center; }
-  .user-pass .form-submit, .user-pass .ui-dialog .button, .ui-dialog .user-pass .button {
+  .user-pass .form-submit, .user-pass .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-pass .button {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-pass .form-submit:hover, .user-pass .ui-dialog .button:hover, .ui-dialog .user-pass .button:hover {
+    .user-pass .form-submit:hover, .user-pass .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-pass .button:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3787,7 +4230,7 @@ form .social_login iframe {
       .acceptance-form .form-checkbox a:hover,
       .acceptance-form .js-form-type-checkbox a:hover {
         color: #8c2222; }
-  .acceptance-form .form-submit, .acceptance-form .ui-dialog .button, .ui-dialog .acceptance-form .button {
+  .acceptance-form .form-submit, .acceptance-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .acceptance-form .button {
     margin-top: 30px; }
 
 @media (max-width: 991px) {
@@ -3882,7 +4325,7 @@ form .social_login iframe {
         color: #8c2222; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
       outline: none; }
-    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog .button, .ui-dialog .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button {
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button {
       font-size: 0.875rem;
       background: none;
       border: none;
@@ -4013,9 +4456,9 @@ form .social_login iframe {
     display: block;
     font-weight: 400;
     margin-bottom: 20px; }
-  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .button, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .button,
+  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button,
   .form-my-settings #contact-details .form-submit,
-  .form-my-settings #contact-details .ui-dialog .button, .ui-dialog
+  .form-my-settings #contact-details .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .form-my-settings #contact-details .button {
     font-size: 0.875rem;
     background: transparent;
@@ -4024,15 +4467,15 @@ form .social_login iframe {
     letter-spacing: 0;
     padding: 0;
     text-transform: none; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .field-add-more-submit.button, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button,
+    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button,
     .form-my-settings #contact-details .form-submit.field-add-more-submit,
-    .form-my-settings #contact-details .ui-dialog .field-add-more-submit.button, .ui-dialog
+    .form-my-settings #contact-details .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content
     .form-my-settings #contact-details .field-add-more-submit.button {
       background: url(../images/add-plus-button.png) left top no-repeat;
       padding-left: 21px; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog .button:hover, .ui-dialog .form-my-settings #edit-field-organisations-wrapper .button:hover,
+    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button:hover,
     .form-my-settings #contact-details .form-submit:hover,
-    .form-my-settings #contact-details .ui-dialog .button:hover, .ui-dialog
+    .form-my-settings #contact-details .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content
     .form-my-settings #contact-details .button:hover {
       background-position: left bottom;
       color: #8c2222;
@@ -4081,7 +4524,7 @@ form .social_login iframe {
   left: 0;
   top: -23px; }
 
-.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog .field-add-more-submit.button, .ui-dialog .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button {
+.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button {
   margin-left: 0; }
 
 .ie11 .form-my-settings #edit-field-skype-or-other-wrapper table,
@@ -4148,9 +4591,9 @@ form .social_login iframe {
       top: 9px; }
     .form-my-settings table .dropbutton-wrapper .dropbutton-arrow {
       border-top-color: #8c2222; }
-  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .ui-dialog .button, .ui-dialog .form-my-settings table .confirm-remove .button,
+  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings table .confirm-remove .button,
   .form-my-settings table .restore .form-submit,
-  .form-my-settings table .restore .ui-dialog .button, .ui-dialog
+  .form-my-settings table .restore .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .form-my-settings table .restore .button {
     margin-top: 0 !important; }
 
@@ -4184,9 +4627,9 @@ form .social_login iframe {
   right: 60px;
   top: -3px; }
 
-.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog .button, .ui-dialog .form-my-settings .paragraphs-dropbutton-wrapper .button,
+.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .paragraphs-dropbutton-wrapper .button,
 .form-my-settings .field-add-more-submit.form-submit,
-.form-my-settings .ui-dialog .field-add-more-submit.button, .ui-dialog
+.form-my-settings .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content
 .form-my-settings .field-add-more-submit.button {
   font-weight: 400;
   margin: 0; }
@@ -4208,15 +4651,15 @@ form .social_login iframe {
 .form-my-settings label:after {
   content: none; }
 
-.form-my-settings .form-submit, .form-my-settings .ui-dialog .button, .ui-dialog .form-my-settings .button {
+.form-my-settings .form-submit, .form-my-settings .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .button {
   background: none;
   border-color: #ea3a32;
   font-weight: 700;
   margin: 0 auto 15px;
   text-transform: none; }
-  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .ui-dialog .button:not(.js-hide), .ui-dialog .form-my-settings .button:not(.js-hide) {
+  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .form-my-settings .button:not(.js-hide) {
     display: block; }
-  .form-my-settings .form-submit:hover, .form-my-settings .ui-dialog .button:hover, .ui-dialog .form-my-settings .button:hover {
+  .form-my-settings .form-submit:hover, .form-my-settings .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings .button:hover {
     border-color: #8c2222;
     color: #8c2222;
     -webkit-transform: none;
@@ -4479,6 +4922,92 @@ form .social_login iframe {
   .ie9 .view-contacts .wrapper-filters > div {
     max-width: calc(25% - 25px); }
 
+.view-article form {
+  overflow: hidden;
+  margin-bottom: 30px; }
+
+.view-article .js-form-type-select {
+  display: none; }
+
+.view-article .filter-label.tags_by_group {
+  font-size: 1.575rem;
+  font-weight: 700;
+  line-height: 64px;
+  margin: 0 0 10px;
+  text-align: center; }
+
+.view-article .filter-label.field_type_target_id {
+  font-size: 0.9625rem;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  float: left;
+  line-height: 18px;
+  margin: 10px 10px 15px 0; }
+
+.view-article .tags-by-group {
+  background: #fff;
+  margin-bottom: 40px;
+  overflow: hidden;
+  padding: 20px 171px; }
+  .view-article .tags-by-group li {
+    float: left;
+    margin-right: 5px; }
+  .view-article .tags-by-group .level1 {
+    font-size: 21px; }
+  .view-article .tags-by-group .level2 {
+    font-size: 22px; }
+  .view-article .tags-by-group .level3 {
+    font-size: 23px; }
+  .view-article .tags-by-group .level4 {
+    font-size: 24px; }
+  .view-article .tags-by-group .level5 {
+    font-size: 25px; }
+  .view-article .tags-by-group .level1 {
+    font-size: 0.7875rem; }
+  .view-article .tags-by-group .level2 {
+    font-size: 1.1375rem; }
+  .view-article .tags-by-group .level3 {
+    font-size: 1.4rem; }
+  .view-article .tags-by-group .level4 {
+    font-size: 1.75rem; }
+  .view-article .tags-by-group .level5 {
+    font-size: 2.625rem; }
+  .view-article .tags-by-group a {
+    color: #4c7e96;
+    display: inline-block;
+    font-family: "Fira Sans", sans-serif;
+    line-height: 27px;
+    text-decoration: none;
+    vertical-align: top; }
+    .view-article .tags-by-group a:hover {
+      color: #ea3a32; }
+
+.view-article .wrapper-field-type-target-id {
+  float: left;
+  width: 66.64%; }
+
+.view-article .search-form-wrapper {
+  float: left;
+  width: 33.33%; }
+
+.view-article .field-type-target-id {
+  font-size: 0.9625rem;
+  font-family: "Fira Sans", sans-serif;
+  margin: 0;
+  padding: 0; }
+  .view-article .field-type-target-id li {
+    display: inline-block;
+    margin: 10px 10px 15px 0;
+    vertical-align: top; }
+  .view-article .field-type-target-id a {
+    text-decoration: none; }
+    .view-article .field-type-target-id a:hover {
+      color: #ea3a32; }
+  .view-article .field-type-target-id .active {
+    color: #ea3a32;
+    font-weight: 700;
+    text-decoration: underline; }
+
 .search-form-wrapper {
   position: relative; }
   .search-form-wrapper .form-text, .search-form-wrapper .form-textarea {
@@ -4486,7 +5015,7 @@ form .social_login iframe {
     padding-right: 60px; }
     .search-form-wrapper .form-text:focus, .search-form-wrapper .form-textarea:focus {
       border-color: rgba(56, 152, 236, 0.32); }
-  .search-form-wrapper .form-submit, .search-form-wrapper .ui-dialog .button, .ui-dialog .search-form-wrapper .button {
+  .search-form-wrapper .form-submit, .search-form-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .search-form-wrapper .button {
     background: url(../images/magnifying-glass.svg) center no-repeat;
     background-size: 20px 20px;
     border: none;
@@ -4501,7 +5030,7 @@ form .social_login iframe {
     transition: transform .1s ease;
     transition: transform .1s ease, -webkit-transform .1s ease;
     width: 60px; }
-    .search-form-wrapper .form-submit:hover, .search-form-wrapper .ui-dialog .button:hover, .ui-dialog .search-form-wrapper .button:hover {
+    .search-form-wrapper .form-submit:hover, .search-form-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .search-form-wrapper .button:hover {
       border: none;
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
@@ -4781,31 +5310,31 @@ form .social_login iframe {
     .popup-wrapper .action-links .cancel-link {
       margin-left: 10px; } }
 
-.ui-dialog {
+.ui-dialog.ui-widget-content {
   border: none;
   border-radius: 0;
   padding: 5%;
   width: 50% !important;
   z-index: 610 !important; }
-  .ui-dialog .popup-wrapper {
+  .ui-dialog.ui-widget-content .popup-wrapper {
     height: auto;
     opacity: 1;
     position: static;
     -webkit-transform: none;
             transform: none;
     width: auto; }
-  .ui-dialog .ui-dialog-titlebar {
+  .ui-dialog.ui-widget-content .ui-dialog-titlebar {
     display: none; }
-  .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+  .ui-dialog.ui-widget-content .ui-dialog-buttonpane .ui-dialog-buttonset {
     float: none;
     margin-top: 20px;
     text-align: center; }
-  .ui-dialog .button {
+  .ui-dialog.ui-widget-content .button {
     font-size: 1.5rem;
     border-radius: 0;
     font-family: Oswald, sans-serif;
     letter-spacing: .5px; }
-    .ui-dialog .button span {
+    .ui-dialog.ui-widget-content .button span {
       padding: 0;
       text-transform: none; }
 
@@ -5211,6 +5740,8 @@ header {
     .header-fixed .social-links {
       position: static;
       text-align: left; }
+    .header-static .service-links .active a, .header-fixed .service-links .active a {
+      border-left: 3px solid #ea3a32; }
     .header-static .desktop-service-links, .header-fixed .desktop-service-links {
       display: none; }
     .header-static .mobile-service-links, .header-fixed .mobile-service-links {
@@ -5501,7 +6032,7 @@ footer {
     background-size: 650%; }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products) .main-wrapper:before {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation) .main-wrapper:before {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -5522,6 +6053,8 @@ footer {
   width: 100%; }
   .front .content-container {
     max-width: 1260px; }
+  .page-knowledge-vault .content-container {
+    padding-top: 0; }
   .contact-us .content-container .top-text-region {
     margin-bottom: 30px; }
 
@@ -5609,6 +6142,12 @@ footer {
   .page-group-country .title-wrapper .main-wrapper {
     text-align: center; }
     .page-group-country .title-wrapper .main-wrapper .line {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+  .node-article .title-wrapper {
+    text-align: center; }
+    .node-article .title-wrapper .line {
       left: 50%;
       -webkit-transform: translateX(-50%);
               transform: translateX(-50%); }
@@ -5818,6 +6357,12 @@ footer {
   .more-content-wrapper .more-content {
     display: none;
     padding: 20px 0; }
+    .more-content-wrapper .more-content .page-title {
+      font-size: 1.225rem;
+      font-family: "Fira Sans", sans-serif;
+      letter-spacing: 0;
+      line-height: 24px;
+      margin: 30px 0 10px; }
     .more-content-wrapper .more-content blockquote {
       margin-left: auto;
       margin-right: auto;
@@ -5950,8 +6495,13 @@ footer {
   .fixed .content-slider-wrapper .owl-next {
     background: url(../images/slider-arrow-right.svg) center no-repeat; }
 
-.content-slider-wrapper .owl-nav {
+.content-slider-wrapper .owl-nav,
+.content-slider-wrapper .owl-dots {
   display: none; }
+
+@media (max-width: 767px) {
+  .content-slider-wrapper .owl-dots {
+    display: block; } }
 
 .thumb-slider-wrapper {
   height: 90px;
@@ -6605,10 +7155,12 @@ footer {
     padding: 30px 0; }
   .dashboard .follow-link {
     padding-top: 5px; }
-    .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog .button, .ui-dialog .dashboard .follow-link .button {
+    .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .dashboard .follow-link .button {
       background: transparent;
       border-color: #ea3a32;
-      text-transform: none; }
+      display: inline-block;
+      text-transform: none;
+      vertical-align: top; }
     .dashboard .follow-link .ajax-progress {
       position: absolute; }
   .dashboard .sidebar {
@@ -6628,7 +7180,7 @@ footer {
     .dashboard .sidebar li {
       display: block;
       vertical-align: top; }
-    .dashboard .sidebar a {
+    .dashboard .sidebar .user-link {
       border-bottom: 2px solid transparent;
       color: #fff;
       display: inline-block;
@@ -6637,8 +7189,43 @@ footer {
       text-decoration: none;
       -webkit-transition: opacity .3s ease, border .3s ease;
       transition: opacity .3s ease, border .3s ease; }
-      .dashboard .sidebar a:hover {
+      .dashboard .sidebar .user-link:hover {
         border-color: #fff;
+        opacity: .66; }
+    .dashboard .sidebar .comment-wrapper {
+      margin: 20px 0; }
+      .dashboard .sidebar .comment-wrapper .user-icon {
+        height: 40px;
+        width: 40px; }
+      .dashboard .sidebar .comment-wrapper .name,
+      .dashboard .sidebar .comment-wrapper .commented {
+        font-size: 0.875rem;
+        color: #fff;
+        font-weight: 400;
+        line-height: 25px;
+        margin-top: 0; }
+      .dashboard .sidebar .comment-wrapper .commented {
+        font-size: 0.775rem; }
+      .dashboard .sidebar .comment-wrapper .rate-widget-thumbs-up,
+      .dashboard .sidebar .comment-wrapper .rate-thumbs-up-btn-up:after,
+      .dashboard .sidebar .comment-wrapper .rate-undo:after {
+        color: #fff; }
+    .dashboard .sidebar .comment-body {
+      font-weight: 300;
+      margin-left: 60px; }
+    .dashboard .sidebar .article-link {
+      font-size: 0.875rem;
+      color: #fff;
+      display: block;
+      font-weight: 400;
+      line-height: 20px;
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease; }
+      .dashboard .sidebar .article-link:before {
+        content: "9";
+        font-family: P4h, sans-serif;
+        margin-right: 4px; }
+      .dashboard .sidebar .article-link:hover {
         opacity: .66; }
     .dashboard .sidebar .font-social-icon {
       font-size: 2.1875rem;

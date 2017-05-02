@@ -5,6 +5,7 @@ namespace Drupal\prev_next_access\Plugin\Block;
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Database\Driver\mysql\Select;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
@@ -80,6 +81,7 @@ class NextPreviousAccessBlock extends BlockBase {
       $direction_arrow = 'left';
     }
 
+    /* @var Select $query */
     // Lookup 1 node younger (or older) than the current node.
     $query = \Drupal::database()->select('node_field_data', 'n')
       ->fields('n', ['nid'])
@@ -100,7 +102,11 @@ class NextPreviousAccessBlock extends BlockBase {
       }
 
       $query->leftJoin('group_content_field_data', 'group_content', 'group_content.entity_id=n.nid');
-      $query = $query->condition('group_content.type', '%-group_node-%', 'LIKE')
+
+      $condition_group = $query->orConditionGroup()
+        ->condition('group_content.type', '%-group_node-%', 'LIKE')
+        ->condition('group_content.type', 'group_content_type_%', 'LIKE');
+      $query = $query->condition($condition_group)
         ->condition('group_content.gid', $gids, 'IN');
     }
 

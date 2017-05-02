@@ -1,0 +1,58 @@
+uuid: dcd44134-92d0-404f-a0df-daac1561874c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.banner
+    - field.field.node.article.body
+    - field.field.node.article.field_article_join_block
+    - field.field.node.article.field_author
+    - field.field.node.article.field_comments
+    - field.field.node.article.field_cons
+    - field.field.node.article.field_content
+    - field.field.node.article.field_content_date
+    - field.field.node.article.field_documents
+    - field.field.node.article.field_image
+    - field.field.node.article.field_pros
+    - field.field.node.article.field_related_content_selector
+    - field.field.node.article.field_tags
+    - field.field.node.article.field_type
+    - node.type.article
+  module:
+    - user
+id: node.article.banner
+targetEntityType: node
+bundle: article
+mode: banner
+content:
+  field_cons:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pros:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  addtoany: true
+  body: true
+  field_article_join_block: true
+  field_author: true
+  field_comments: true
+  field_content: true
+  field_content_date: true
+  field_documents: true
+  field_image: true
+  field_related_content_selector: true
+  field_tags: true
+  field_type: true
+  langcode: true
+  links: true

@@ -18,11 +18,9 @@ dependencies:
     - field.field.node.event.field_organization
     - field.field.node.event.field_related_content_selector
     - field.field.node.event.field_time
-    - field.field.node.event.field_time_text
     - field.field.node.event.field_timezone
     - node.type.event
   module:
-    - datetime_range
     - entity_reference_revisions
     - events
     - link
@@ -37,12 +35,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 9
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     region: content
   field_category:
-    weight: 11
+    weight: 9
     label: hidden
     settings:
       link: true
@@ -69,7 +67,7 @@ content:
     region: content
   field_event_link:
     type: link_separate
-    weight: 8
+    weight: 6
     label: hidden
     settings:
       trim_length: 80
@@ -89,7 +87,7 @@ content:
     third_party_settings: {  }
     region: content
   field_join_block:
-    weight: 10
+    weight: 8
     label: hidden
     settings:
       view_mode: default
@@ -98,7 +96,7 @@ content:
     type: entity_reference_entity_view
     region: content
   field_location:
-    weight: 7
+    weight: 5
     label: hidden
     settings:
       trim_length: 80
@@ -110,33 +108,15 @@ content:
     type: link
     region: content
   field_organization:
-    weight: 12
+    weight: 10
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_time:
-    weight: 4
-    label: hidden
-    settings:
-      timezone_override: ''
-      format_type: event_time
-      separator: '-'
-    third_party_settings: {  }
-    type: daterange_default
-    region: content
-  field_time_text:
-    weight: 5
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_timezone:
-    weight: 6
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -153,5 +133,6 @@ hidden:
   field_documents: true
   field_event_country_content: true
   field_related_content_selector: true
+  field_time: true
   langcode: true
   like_and_dislike: true

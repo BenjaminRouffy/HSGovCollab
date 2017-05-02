@@ -6,9 +6,11 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.body
     - field.field.node.event.field_category
+    - field.field.node.event.field_comments
     - field.field.node.event.field_date
     - field.field.node.event.field_documents
     - field.field.node.event.field_event_author
+    - field.field.node.event.field_event_country_content
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
     - field.field.node.event.field_join_block
@@ -16,7 +18,6 @@ dependencies:
     - field.field.node.event.field_organization
     - field.field.node.event.field_related_content_selector
     - field.field.node.event.field_time
-    - field.field.node.event.field_time_text
     - field.field.node.event.field_timezone
     - node.type.event
   module:
@@ -41,9 +42,11 @@ content:
 hidden:
   addtoany: true
   field_category: true
+  field_comments: true
   field_date: true
   field_documents: true
   field_event_author: true
+  field_event_country_content: true
   field_event_link: true
   field_event_slider: true
   field_join_block: true
@@ -51,6 +54,6 @@ hidden:
   field_organization: true
   field_related_content_selector: true
   field_time: true
-  field_time_text: true
   field_timezone: true
   langcode: true
+  like_and_dislike: true

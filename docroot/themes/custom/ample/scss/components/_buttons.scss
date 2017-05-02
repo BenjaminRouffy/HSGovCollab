@@ -70,6 +70,17 @@
   &:hover {
     border-color: $red;
   }
+
+  .article-content & {
+    border: none;
+    font-family: $fira;
+    margin: 0;
+    padding: 0;
+
+    &:hover {
+      color: $red-dark;
+    }
+  }
 }
 
 .show-more {
@@ -91,7 +102,7 @@
   position: relative;
   text-align: center;
   transition: box-shadow .2s ease;
-  
+
   .view-my-projects & {
     text-align: left;
   }

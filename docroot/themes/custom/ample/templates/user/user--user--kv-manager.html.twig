@@ -1,0 +1,12 @@
+<div class="user-item">
+  {% if content.field_avatar %}
+    <div class="user-icon">
+      {{ content.field_avatar }}
+    </div>
+  {% endif %}
+
+  <div class="name">
+    {{ 'Category manager'|t }}
+    {{ content.field_first_name }} {{ content.field_last_name }}
+  </div>
+</div>

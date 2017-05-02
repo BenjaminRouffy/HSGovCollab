@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Contains knowledge_vault.module.
+ */
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function knowledge_vault_views_data_alter(array &$data) {
+  $data['taxonomy_term_field_data']['tags_by_group'] = array(
+    'real field' => 'tid',
+    'filter' => array(
+      'title' => t('Tags by group'),
+      'id' => 'tags_by_group',
+    ),
+  );
+}
+

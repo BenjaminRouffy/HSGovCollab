@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * Contains user_access.module.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_view() for user entities.
+ */
+function user_access_user_view(array &$build, EntityInterface $account, EntityViewDisplayInterface $display, $view_mode) {
+  $current_user = \Drupal::currentUser();
+
+  if (!$current_user->hasPermission("view $view_mode view display")) {
+    $build = [];
+  }
+}

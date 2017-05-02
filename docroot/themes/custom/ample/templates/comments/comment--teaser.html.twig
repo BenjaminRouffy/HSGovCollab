@@ -1,0 +1,22 @@
+<div class="comment-wrapper">
+  {{ user_picture }}
+
+  <div class="comment-container">
+    <div class="user-info">
+
+      <div class="name">
+        {{ author_name }}
+      </div>
+      <span class="commented">{{ created }}</span>
+
+      {{ content.votingapi_links }}
+    </div>
+    <div{{ content_attributes.addClass('comment-body') }}>
+      {{ content.field_comment_body }}
+
+      <a href="{{ path('entity.node.canonical', {'node': commented_entity.id()}) }}" role="link" class="article-link">
+        {{ commented_entity.label() }}
+      </a>
+    </div>
+  </div>
+</div>

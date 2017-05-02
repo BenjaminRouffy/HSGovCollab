@@ -70,8 +70,15 @@
     }
   }
 
-  .owl-nav {
+  .owl-nav,
+  .owl-dots {
     display: none;
+  }
+}
+
+@include breakpoint-for('.content-slider-wrapper', (to: tablet)) {
+  .owl-dots {
+    display: block;
   }
 }
 

@@ -1,0 +1,7 @@
+{% for item in items %}
+  <div class="follow-link">
+    <a href="{{ item.content['#url'] }}" class="form-submit contribute-button">
+      {{ item.content['#title'] }} +
+    </a>
+  </div>
+{% endfor %}

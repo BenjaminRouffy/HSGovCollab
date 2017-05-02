@@ -1,0 +1,25 @@
+uuid: 51ba6201-6c15-4f68-9fa7-7b99f7dd47ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_join_block
+    - node.type.article
+id: node.article.field_article_join_block
+field_name: field_article_join_block
+entity_type: node
+bundle: article
+label: 'Join block'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: block_reference
+      display_name: entity_reference_block
+      arguments: {  }
+field_type: entity_reference

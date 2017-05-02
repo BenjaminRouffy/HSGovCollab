@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_accept_term_conditions
     - field.field.user.user.field_avatar
     - field.field.user.user.field_city
+    - field.field.user.user.field_country
     - field.field.user.user.field_country_manager
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
@@ -30,7 +31,7 @@ dependencies:
     - field.field.user.user.field_zip_code
     - image.style.150x150
   module:
-    - image
+    - taxonomy_image_formatter
     - user
 id: user.user.comment_author
 targetEntityType: user
@@ -44,33 +45,20 @@ content:
       image_style: 150x150
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: taxonomy_image_formatter
     region: content
-  field_first_name:
-    type: string
-    weight: 1
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-  field_last_name:
-    type: string
-    weight: 2
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
 hidden:
   field_accept_term_conditions: true
   field_city: true
+  field_country: true
   field_country_manager: true
   field_disclose_your_personal_det: true
+  field_first_name: true
   field_following_countries: true
   field_following_projects: true
   field_following_regions: true
   field_job_title: true
+  field_last_name: true
   field_last_password_reset: true
   field_middle_name: true
   field_mobilephone: true

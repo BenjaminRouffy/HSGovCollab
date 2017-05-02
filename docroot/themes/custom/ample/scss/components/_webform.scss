@@ -627,7 +627,8 @@ form {
 }
 
 .view-project,
-.view-product {
+.view-product,
+.view-knowledge-vault {
   > h2 {
     @include font-size(25.2);
     line-height: 48px;
@@ -665,19 +666,19 @@ form {
   }
 }
 
-@include breakpoint-for('.view-project, .view-product', (to: laptop-small)) {
+@include breakpoint-for('.view-project, .view-product, .view-knowledge-vault', (to: laptop-small)) {
   form {
     max-width: 60%;
   }
 }
 
-@include breakpoint-for('.view-project, .view-product', (to: tablet)) {
+@include breakpoint-for('.view-project, .view-product, .view-knowledge-vault', (to: tablet)) {
   form {
     max-width: 80%;
   }
 }
 
-@include breakpoint-for('.view-project, .view-product', (to: mobileL)) {
+@include breakpoint-for('.view-project, .view-product, .view-knowledge-vault', (to: mobileL)) {
   form {
     max-width: 100%;
   }

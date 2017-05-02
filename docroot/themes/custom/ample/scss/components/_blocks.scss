@@ -1043,7 +1043,8 @@
 .country-list,
 .project-list,
 .contact-list,
-.article-list {
+.article-list,
+.knowledge-vault-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -1051,7 +1052,8 @@
   .country-item,
   .project-item,
   .contact-item,
-  .article-item {
+  .article-item,
+  .knowledge-vault-item {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     margin: 10px;
@@ -1072,13 +1074,54 @@
 
   .country-content,
   .project-content,
-  .article-content {
+  .article-content,
+  .knowledge-vault-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     padding: 30px 0 20px;
     position: relative;
+  }
+
+  .knowledge-vault-content {
+    p {
+      @include font-size(15.4);
+      font-family: $fira;
+      line-height: 21px;
+    }
+  }
+
+  .article-teaser {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0 20px;
+
+    &:hover {
+      .post-info,
+      h2 {
+        color: $red;
+      }
+    }
+
+    .post-info {
+      @include font-size(12.6);
+      font-weight: 700;
+      margin-bottom: 0;
+
+      > *:not(:first-child):before {
+        font-weight: 700;
+        margin: 0;
+      }
+    }
+
+    h2 {
+      @include font-size(16.8);
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 25px;
+      margin: 0 0 10px;
+    }
   }
 
   .project-content {
@@ -1453,11 +1496,13 @@
   }
 }
 
-@include breakpoint-for('.country-list, .project-list, .contact-list, .article-list, .members-list ul', (to: laptop-small)) {
+@include breakpoint-for('.country-list, .project-list, .contact-list, .article-list, .knowledge-vault-list, .members-list ul', (to: laptop-small)) {
   .country-item,
   .project-item,
   .member-block,
-  .contact-item {
+  .contact-item,
+  .article-item,
+  .knowledge-vault-item {
     width: calc(50% - 20px);
 
     .ie9 & {
@@ -1467,18 +1512,20 @@
   }
 }
 
-@include breakpoint-for('.country-list, .project-list, .article-list', (to: tablet)) {
+@include breakpoint-for('.country-list, .project-list, .article-list, .knowledge-vault-list', (to: tablet)) {
   .country-item,
   .project-item {
     padding: 5px;
   }
 }
 
-@include breakpoint-for('.country-list, .project-list, .members-list ul, .contact-list, .article-list', (to: mobileL)) {
+@include breakpoint-for('.country-list, .project-list, .members-list ul, .contact-list, .article-list, .knowledge-vault-list', (to: mobileL)) {
   .country-item,
   .project-item,
   .member-block,
-  .contact-item {
+  .contact-item,
+  .article-item,
+  .knowledge-vault-item {
     margin-left: 0;
     margin-right: 0;
     padding: 0;
@@ -1530,7 +1577,7 @@
   overflow: hidden;
   padding: 0 20px;
 
-  + div:not(.country-title) {
+  + div:not(.country-title):not(.article-teaser) {
     min-height: 150px;
     margin-bottom: 5px;
   }

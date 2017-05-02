@@ -22,7 +22,9 @@
     .form-submit {
       background: transparent;
       border-color: $red;
+      display: inline-block;
       text-transform: none;
+      vertical-align: top;
     }
 
     .ajax-progress {
@@ -54,7 +56,7 @@
       vertical-align: top;
     }
 
-    a {
+    .user-link {
       border-bottom: 2px solid transparent;
       color: $white;
       display: inline-block;
@@ -66,6 +68,52 @@
       &:hover {
         border-color: $white;
         opacity: .66;
+      }
+    }
+
+    .comment-wrapper {
+      margin: 20px 0;
+
+      .user-icon {
+        @include same(40px, height, width);
+      }
+
+      .name,
+      .commented {
+        @include font-size(14);
+        color: $white;
+        font-weight: 400;
+        line-height: 25px;
+        margin-top: 0;
+      }
+
+      .commented {
+        @include font-size(12.4);
+      }
+
+      .rate-widget-thumbs-up,
+      .rate-thumbs-up-btn-up:after,
+      .rate-undo:after {
+        color: $white;
+      }
+    }
+
+    .comment-body {
+      font-weight: 300;
+      margin-left: 60px;
+    }
+
+    .article-link {
+      @include font-size(14);
+      color: $white;
+      display: block;
+      font-weight: 400;
+      line-height: 20px;
+
+      &:before {
+        content: "9";
+        font-family: $p4h;
+        margin-right: 4px;
       }
     }
 

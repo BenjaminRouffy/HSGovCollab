@@ -364,9 +364,9 @@
         var sliderCurrentIndex = $slider.find('.active').index();
         var thumbCurrentIndex = $thumbs.find('.current').index();
 
-        $('#overlay').fadeToggle(300);
+        $('#slider-overlay').toggleClass('showed');
         $this.parent($('.slider-main')).toggleClass('fixed');
-        $('body').toggleClass('no-scroll');
+        $('body').toggleClass('no-scroll full-page-slider');
 
         $slider.add($thumbs).trigger('destroy.owl.carousel');
 

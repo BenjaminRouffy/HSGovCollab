@@ -4,6 +4,11 @@ services:
     tags:
       - { name: form_alter, form_id: views_exposed_form }
 
+  knowledge_vault.product_andProject_filter:
+    class: Drupal\knowledge_vault\Form\Alter\ProductAndProjectFilterAlter
+    tags:
+      - { name: form_alter, form_id: views_exposed_form }
+
   knowledge_vault.project_group_alter:
     class: Drupal\knowledge_vault\Form\Alter\ProjectGroupAlter
     tags:

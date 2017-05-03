@@ -5125,7 +5125,11 @@ form .social_login iframe {
 .view-article .title-wrapper {
   text-align: center; }
   .view-article .title-wrapper a {
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
     text-decoration: none; }
+    .view-article .title-wrapper a:hover {
+      opacity: .66; }
   .view-article .title-wrapper .line {
     left: 50%;
     -webkit-transform: translateX(-50%);

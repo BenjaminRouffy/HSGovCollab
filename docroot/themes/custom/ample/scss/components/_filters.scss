@@ -151,7 +151,12 @@
     text-align: center;
 
     a {
+      transition: opacity .3s ease;
       text-decoration: none;
+
+      &:hover {
+        opacity: .66;
+      }
     }
 
     .line {

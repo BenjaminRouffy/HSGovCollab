@@ -1,5 +1,7 @@
 img[src$="svg"] {
-  max-height: 70px;
+  div:not(.header-static):not(.header-fixed) {
+    max-height: 70px;
+  }
 }
 
 .container-inline {

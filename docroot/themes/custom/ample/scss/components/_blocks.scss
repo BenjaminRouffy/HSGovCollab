@@ -1087,19 +1087,29 @@
   }
 
   .knowledge-vault-content {
+    .region-title {
+      margin-bottom: 0;
+    }
+
     p {
       @include font-size(15.4);
       font-family: $fira;
       line-height: 21px;
+      margin-bottom: 30px;
     }
+  }
+
+  .post-info {
+    margin-bottom: 0;
   }
 
   .article-teaser {
     display: block;
-    margin-bottom: 20px;
-    padding: 0 20px;
+    margin-bottom: 30px;
 
-    &:hover {
+    a:hover {
+      display: block;
+
       .post-info,
       h2 {
         color: $red;
@@ -1109,9 +1119,9 @@
     .post-info {
       @include font-size(12.6);
       font-weight: 700;
-      margin-bottom: 0;
 
       > *:not(:first-child):before {
+        font-family: $oswald;
         font-weight: 700;
         margin: 0;
       }
@@ -1611,7 +1621,7 @@
   overflow: hidden;
   padding: 0 20px;
 
-  + div:not(.country-title):not(.article-teaser) {
+  + div:not(.country-title):not(.article-teaser):not(.knowledge-vault-link) {
     min-height: 150px;
     margin-bottom: 5px;
   }

@@ -24,6 +24,26 @@
     height: 100% !important;
     width: auto;
   }
+
+  .contextual {
+    &.open {
+      .trigger {
+        border: 1px solid #ccc;
+        border-left-color: transparent;
+        border-radius: 0 13px 13px 0;
+      }
+    }
+  }
+
+  .contextual-links {
+    right: 30px !important;
+    top: -30px !important;
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
 }
 
 header,

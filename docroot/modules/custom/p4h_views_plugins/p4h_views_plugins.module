@@ -101,7 +101,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         break;
 
       case 'views-exposed-form-search-for-a-country-or-region-products':
-        $form['label']['#attributes']['placeholder'] = t('Search in projects');
+        $form['label']['#attributes']['placeholder'] = t('Search in products');
 
         $form['label']['#prefix'] = '<div class="search-form-wrapper">';
         $form['actions']['#suffix'] = '</div>';

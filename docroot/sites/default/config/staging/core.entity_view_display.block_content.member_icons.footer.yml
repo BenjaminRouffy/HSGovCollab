@@ -5,21 +5,22 @@ dependencies:
   config:
     - block_content.type.member_icons
     - core.entity_view_mode.block_content.footer
-    - field.field.block_content.member_icons.field_copyright_text
+    - field.field.block_content.member_icons.field_copyright
     - field.field.block_content.member_icons.field_member_icons
+  module:
+    - text
 id: block_content.member_icons.footer
 targetEntityType: block_content
 bundle: member_icons
 mode: footer
 content:
-  field_copyright_text:
+  field_copyright:
+    type: text_default
     weight: 1
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
     region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_member_icons:
     type: entity_reference_entity_view
     weight: 0

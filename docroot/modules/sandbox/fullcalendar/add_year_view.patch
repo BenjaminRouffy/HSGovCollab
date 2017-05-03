@@ -1,0 +1,122 @@
+--- a/fullcalendar_options/fullcalendar_options.module
++++ b/fullcalendar_options/fullcalendar_options.module
+@@ -155,6 +155,7 @@
+         '#description' => t('The display to switch to when a day is clicked.'),
+         '#default_value' => 'agendaWeek',
+         '#options' => array(
++          'year' => 'Year',
+           'month' => 'Month',
+           'agendaWeek' => 'Week (Agenda)',
+           'basicWeek' => 'Week (Basic)',
+
+--- a/includes/fullcalendar.fullcalendar.inc
++++ b/includes/fullcalendar.fullcalendar.inc
+@@ -34,11 +34,13 @@
+     ),
+     'mdy' => array(
+       'title' => array(
++        'year' => 'yyyy',
+         'month' => 'MMMM yyyy',
+         'week' => 'MMM d[ yyyy]{ - [ MMM] d yyyy}',
+         'day' => 'dddd, MMM d, yyyy',
+       ),
+       'column' => array(
++        'year' => 'yyyy',
+         'month' => 'ddd',
+         'week' => 'ddd M/d',
+         'day' => 'dddd M/d',
+@@ -46,11 +48,13 @@
+     ),
+     'dmy' => array(
+       'title' => array(
++        'year' => 'yyyy',
+         'month' => 'MMMM yyyy',
+         'week' => 'd [ MMM][ yyyy]{ - d MMM yyyy}',
+         'day' => 'dddd, d MMM, yyyy',
+       ),
+       'column' => array(
++        'year' => 'yyyy',
+         'month' => 'ddd',
+         'week' => 'ddd d/M',
+         'day' => 'dddd d/M',
+@@ -58,11 +62,13 @@
+     ),
+     'ymd' => array(
+       'title' => array(
++        'year' => 'yyyy',
+         'month' => 'yyyy MMMM',
+         'week' => 'yyyy MMM d{ - [ yyyy][ MMM] d}',
+         'day' => 'yyyy MMM d, dddd ',
+       ),
+       'column' => array(
++        'year' => 'yyyy',
+         'month' => 'ddd',
+         'week' => 'ddd M/d',
+         'day' => 'dddd M/d',
+@@ -81,13 +87,16 @@
+     'weekMode' => array('default' => 'fixed'),
+     'left' => array('default' => 'today prev,next'),
+     'center' => array('default' => 'title'),
+-    'right' => array('default' => 'month agendaWeek agendaDay'),
++    'right' => array('default' => 'year month agendaWeek agendaDay'),
+     'timeformat' => array('default' => $time_format['time']),
+     'advanced' => array(
+       'default' => FALSE,
+       'bool' => TRUE,
+     ),
+     'axisFormat' => array('default' => $time_format['axis']),
++    'timeformatYear' => array('default' => $time_format['time']),
++    'titleformatYear' => array('default' => $date_format['title']['year']),
++    'columnformatYear' => array('default' => $date_format['column']['year']),
+     'timeformatMonth' => array('default' => $time_format['time']),
+     'titleformatMonth' => array('default' => $date_format['title']['month']),
+     'columnformatMonth' => array('default' => $date_format['column']['month']),
+@@ -190,6 +199,7 @@
+     '#type' => 'select',
+     '#title' => t('Initial display'),
+     '#options' => array(
++      'year' => 'Year',
+       'month' => 'Month',
+       'agendaWeek' => 'Week (Agenda)',
+       'basicWeek' => 'Week (Basic)',
+@@ -295,7 +305,7 @@
+ 
+   // Add the nine time/date formats.
+   foreach (array('time', 'title', 'column') as $type) {
+-    foreach (array('Month', 'Week', 'Day') as $range) {
++    foreach (array('Year','Month', 'Week', 'Day') as $range) {
+       $key = $type . 'format' . $range;
+       $form[$key] = array(
+         '#type' => 'textfield',
+@@ -563,6 +573,7 @@
+       'day' => t('Day'),
+       'week' => t('Week'),
+       'month' => t('Month'),
++      'year' => t('Year'),
+       'today' => t('Today'),
+     ),
+     'allDayText' => t('All day'),
+@@ -574,6 +585,7 @@
+   );
+   $advanced = !empty($settings['advanced']);
+   foreach ($settings as $key => $value) {
++    // TODO: Add year-related options.
+     if (is_array($value)) {
+       if ($key == 'times') {
+         $settings[$key]['date']['date'] = $value['date']['day'];
+@@ -637,13 +649,14 @@
+   if (isset($year) && is_numeric($year)) {
+     $settings['date']['year'] = $year;
+   }
++  // TODO: Add setting for year if needed.
+   if (isset($month) && is_numeric($month) && $month > 0 && $month <= 12) {
+     $settings['date']['month'] = $month;
+   }
+   if (isset($day) && is_numeric($day) && $day > 0 && $day <= 31) {
+     $settings['date']['date'] = $day;
+   }
+-  if (isset($mode) && in_array($mode, array('month', 'basicWeek', 'basicDay', 'agendaWeek', 'agendaDay'))) {
++  if (isset($mode) && in_array($mode, array('year','month', 'basicWeek', 'basicDay', 'agendaWeek', 'agendaDay'))) {
+     $settings['date']['defaultView'] = $mode;
+   }
+ 

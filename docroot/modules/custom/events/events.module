@@ -25,3 +25,14 @@ function events_node_view(array &$build, EntityInterface $entity, EntityViewDisp
     ];
   }
 }
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function events_entity_extra_field_info() {
+  $extra['node']['event']['form']['custom_date_widget'] = [
+    'label' => t('Custom Date Widget'),
+    'weight' => 0,
+  ];
+  return $extra;
+}

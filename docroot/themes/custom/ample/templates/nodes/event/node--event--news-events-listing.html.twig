@@ -9,7 +9,9 @@
       {% endif %}
 
       <div class="post-info">
-        {{ content.field_date }}
+        {% if content.field_date['#period'] %}
+          {{ content.field_date['#period'] }}
+        {% endif %}
       </div>
 
       <h2>{{ label }}</h2>

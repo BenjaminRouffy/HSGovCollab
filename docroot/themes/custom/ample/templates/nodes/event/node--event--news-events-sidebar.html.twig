@@ -1,7 +1,9 @@
 <li>
   <a href="{{ url }}" rel="bookmark">
 
-    {{ content.field_date[0]['start_date'] }}
+    {% if content.field_date['#period']['start_date'] %}
+      {{ content.field_date['#period']['start_date'] }}
+    {% endif %}
 
     <h4>{{ label }}</h4>
 

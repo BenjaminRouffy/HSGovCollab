@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Alters.
+ */
+use Drupal\Core\Form\FormStateInterface;
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function search_customization_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'views_exposed_form') {
+    switch ($form['#id']) {
+      case 'views-exposed-form-search-block-with-path-1':
+        $form['search_api_fulltext']['#attributes']['placeholder'] = t('Insert search');
+
+        $form['search_api_fulltext']['#prefix'] = '<div class="search-form-wrapper">';
+        $form['actions']['#suffix'] = '</div>';
+
+        break;
+    }
+
+  }
+}

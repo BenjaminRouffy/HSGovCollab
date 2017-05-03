@@ -100,6 +100,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     $form['field_organisations']['widget']['add_more']['add_more_button_organisation']['#value'] = t('Add organisation');
     $form['field_organisation']['widget']['#title'] = t('Main organization');
     $form['account']['current_pass']['#weight'] = $form['account']['pass']['#weight'] -1;
+    $form['account']['roles']['#weight'] = 5;
+    $form['account']['status']['#weight'] = 0;
 
     unset(
       $form['field_skype_or_other']['widget']['text'],

@@ -1,14 +1,16 @@
 .article-add-node,
-.article-edit-node {
+.article-edit-node,
+.article-delete-node {
   .content-container {
     max-width: 1160px;
     padding-bottom: 70px;
   }
 
   #block-ample-page-title {
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
     position: relative;
     text-align: center;
+    width: 66.64%;
 
     &:after {
       content: "";
@@ -27,9 +29,15 @@
       line-height: 78px;
       padding-bottom: 40px;
     }
+
+    .placeholder {
+      color: $navy;
+      font-style: normal;
+    }
   }
 
-  .node-form {
+  .node-form,
+  .node-article-delete-form {
     margin: 0 auto;
     width: 66.64%;
 
@@ -43,6 +51,19 @@
           content: ": *";
         }
       }
+    }
+  }
+
+  .node-article-delete-form {
+    text-align: center;
+
+    .form-actions {
+      margin-top: 50px;
+    }
+
+    #edit-cancel {
+      @extend .form-submit;
+      text-decoration: none;
     }
   }
 
@@ -124,8 +145,13 @@
   }
 }
 
-@include breakpoint-for('.article-add-node, .article-edit-node', (to: laptop-small)) {
-  .node-form {
+.article-delete-node {
+
+}
+
+@include breakpoint-for('.article-add-node, .article-edit-node, .article-delete-node', (to: laptop-small)) {
+  .node-form,
+  #block-ample-page-title {
     width: 100%;
   }
 

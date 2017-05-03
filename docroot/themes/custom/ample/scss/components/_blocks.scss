@@ -1435,10 +1435,12 @@
   }
 }
 
-.knowledge-vault-link {
-  > a {
-    &:before {
-      content: none;
+.knowledge-vault-list {
+  .knowledge-vault-link {
+    > a {
+      &:before {
+        content: none;
+      }
     }
   }
 }

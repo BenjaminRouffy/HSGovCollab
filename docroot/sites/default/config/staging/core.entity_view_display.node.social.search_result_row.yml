@@ -1,0 +1,67 @@
+uuid: 67cfe147-93c4-432b-affa-62524066ca8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_row
+    - field.field.node.social.body
+    - field.field.node.social.field_media
+    - field.field.node.social.field_permalink_url
+    - field.field.node.social.field_social_type
+    - node.type.social
+  module:
+    - link
+    - options
+    - text
+    - user
+id: node.social.search_result_row
+targetEntityType: node
+bundle: social
+mode: search_result_row
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_media:
+    weight: 104
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_permalink_url:
+    weight: 105
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: true
+      target: _blank
+      rel: '0'
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_social_type:
+    weight: 102
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  addtoany: true
+  langcode: true

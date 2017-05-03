@@ -7,13 +7,16 @@
   #}
   <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
 
-  {{ user_picture }}
-
+  <a href="{{ author_url }}">
+    {{ user_picture }}
+  </a>
   <div class="comment-container">
     <div class="user-info">
-      <div class="name">
-        {{ author_name }}
-      </div>
+      <a href="{{ author_url }}">
+        <div class="name">
+          {{ author_name }}
+        </div>
+      </a>
       <span class="commented">{{ submitted }}</span>
 
       {#

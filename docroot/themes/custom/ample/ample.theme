@@ -446,4 +446,5 @@ function ample_preprocess_comment(&$variables) {
   }
 
   $variables['author_name'] = $first_name . ' ' . $last_name;
+  $variables['author_url'] = $account->url();
 }

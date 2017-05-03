@@ -676,6 +676,7 @@
   transform: translateY(150%);
   transition: transform .6s ease;
   width: 100%;
+  z-index: 310;
 
   .logged & {
     padding-left: 80px;
@@ -1056,6 +1057,7 @@
   .knowledge-vault-item {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
+    display: block;
     margin: 10px;
     position: relative;
     width: calc(33.33% - 20px);
@@ -1321,7 +1323,8 @@
     text-decoration: none;
   }
 
-  .project-bottom-link {
+  .project-bottom-link,
+  .knowledge-vault-link {
     @include font-size(14);
     color: $navy-dark;
     border-top: 1px solid #afb7bb;
@@ -1363,6 +1366,23 @@
       &:hover {
         opacity: .66;
       }
+    }
+  }
+
+  .knowledge-vault-link {
+    .user-icon {
+      @include same(40px, height, width);
+      margin: 7px 20px 0 0;
+    }
+
+    p {
+      @include font-size(14);
+      font-family: $oswald;
+      margin: 0;
+    }
+
+    .category {
+      color: #80949e;
     }
   }
 

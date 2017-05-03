@@ -22,14 +22,20 @@
     .form-submit {
       background: transparent;
       border-color: $red;
-      display: inline-block;
       text-transform: none;
-      vertical-align: top;
     }
 
     .ajax-progress {
       position: absolute;
     }
+  }
+
+  .contribute-button {
+    display: inline-block;
+    font-family: $oswald;
+    letter-spacing: 0;
+    padding: 20px 40px;
+    vertical-align: top;
   }
 
   .sidebar {

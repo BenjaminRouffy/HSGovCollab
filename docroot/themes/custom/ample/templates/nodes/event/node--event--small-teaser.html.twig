@@ -1,5 +1,7 @@
 <a href="{{ url }}" rel="bookmark">
   {{ content.field_event_slider }}
   <p>{{ label }}</p>
-  {{ content.field_date }}
+  {% if content.field_date['#period'] %}
+    {{ content.field_date['#period'] }}
+  {% endif %}
 </a>

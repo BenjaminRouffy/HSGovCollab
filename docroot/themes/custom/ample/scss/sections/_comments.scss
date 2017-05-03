@@ -41,11 +41,17 @@
 
   .title-wrapper {
     margin-bottom: 20px;
+    text-align: left;
 
     h2 {
       @include font-size(28);
       line-height: 30px;
       margin: 20px 0 10px;
+    }
+
+    .line {
+      left: 0;
+      transform: none;
     }
   }
 
@@ -286,6 +292,10 @@
 
   .form-actions {
     text-align: center;
+
+    [value="Preview"] {
+      display: none;
+    }
   }
 }
 

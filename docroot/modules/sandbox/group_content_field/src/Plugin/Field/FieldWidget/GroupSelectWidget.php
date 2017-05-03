@@ -34,7 +34,7 @@ class GroupSelectWidget extends WidgetBase {
     /** @var \Drupal\Core\Field\FieldStorageDefinitionInterface */
     $group_type = $this->fieldDefinition->getFieldStorageDefinition()->getSetting('group_type');
     foreach(\Drupal::entityTypeManager()->getStorage('group')->loadByProperties(['type' => $group_type]) as $key => $group) {
-      if ($group->access('view') || $group->type == 'country') {
+      if ($group->access('view') || $group->getGroupType()->id() == 'country') {
         $options[$key] = $group->label();
       }
     }

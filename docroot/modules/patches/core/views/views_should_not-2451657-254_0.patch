@@ -1,0 +1,1214 @@
+diff --git a/core/modules/views/src/Plugin/views/field/EntityField.php b/core/modules/views/src/Plugin/views/field/EntityField.php
+index 5ee05a2..25de20c 100644
+--- a/core/modules/views/src/Plugin/views/field/EntityField.php
++++ b/core/modules/views/src/Plugin/views/field/EntityField.php
+@@ -1042,10 +1042,13 @@ protected function getTableMapping() {
+    */
+   public function getValue(ResultRow $values, $field = NULL) {
+     $entity = $this->getEntity($values);
++    // Retrieve the translated object.
++    $translated_entity = $this->getEntityFieldRenderer()->getEntityTranslation($entity, $values);
++
+     // Some bundles might not have a specific field, in which case the entity
+     // (potentially a fake one) doesn't have it either.
+     /** @var \Drupal\Core\Field\FieldItemListInterface $field_item_list */
+-    $field_item_list = isset($entity->{$this->definition['field_name']}) ? $entity->{$this->definition['field_name']} : NULL;
++    $field_item_list = isset($translated_entity->{$this->definition['field_name']}) ? $translated_entity->{$this->definition['field_name']} : NULL;
+ 
+     if (!isset($field_item_list)) {
+       // There isn't anything we can do without a valid field.
+diff --git a/core/modules/views/src/Plugin/views/join/FieldOrLanguageJoin.php b/core/modules/views/src/Plugin/views/join/FieldOrLanguageJoin.php
+new file mode 100644
+index 0000000..57a328e
+--- /dev/null
++++ b/core/modules/views/src/Plugin/views/join/FieldOrLanguageJoin.php
+@@ -0,0 +1,57 @@
++<?php
++
++namespace Drupal\views\Plugin\views\join;
++
++use Drupal\Core\Database\Query\SelectInterface;
++
++/**
++ * Implementation for the "field OR language" join.
++ *
++ * If the extra conditions contain either .langcode or .bundle,
++ * they will be grouped and joined with OR. All bundles the field
++ * appears on as untranslatable are included in $this->extra.
++ *
++ * @ingroup views_join_handlers
++ *
++ * @ViewsJoin("field_or_language_join")
++ */
++class FieldOrLanguageJoin extends JoinPluginBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function joinAddExtra(&$arguments, &$condition, $table, SelectInterface $select_query, $left_table = NULL) {
++    if (is_array($this->extra)) {
++      $extras = [];
++      foreach ($this->extra as $extra) {
++        $extras[] = $this->buildExtra($extra, $arguments, $table, $select_query, $left_table);
++      }
++
++      if ($extras) {
++        // Remove and store the langcode OR bundle join condition extra.
++        $language_bundle_conditions = [];
++        foreach ($extras as $key => &$extra) {
++          if (strpos($extra, '.langcode') !== FALSE || strpos($extra, '.bundle') !== FALSE) {
++            $language_bundle_conditions[] = $extra;
++            unset($extras[$key]);
++          }
++        }
++
++        if (count($extras) == 1) {
++          $condition .= ' AND ' . array_shift($extras);
++        }
++        else {
++          $condition .= ' AND (' . implode(' ' . $this->extraOperator . ' ', $extras) . ')';
++        }
++
++        // Tack on the langcode OR bundle join condition extra.
++        if (!empty($language_bundle_conditions)) {
++          $condition .= ' AND (' . implode(' OR ', $language_bundle_conditions) . ')';
++        }
++      }
++    }
++    elseif ($this->extra && is_string($this->extra)) {
++      $condition .= " AND ($this->extra)";
++    }
++  }
++}
+diff --git a/core/modules/views/src/Plugin/views/join/JoinPluginBase.php b/core/modules/views/src/Plugin/views/join/JoinPluginBase.php
+index 0aa6aa3..bf6c54a 100644
+--- a/core/modules/views/src/Plugin/views/join/JoinPluginBase.php
++++ b/core/modules/views/src/Plugin/views/join/JoinPluginBase.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\views\Plugin\views\join;
+ 
++use Drupal\Core\Database\Query\SelectInterface;
+ use Drupal\Core\Plugin\PluginBase;
+ 
+ /**
+@@ -261,12 +262,13 @@ public function buildJoin($select_query, $table, $view_query) {
+     }
+ 
+     if ($this->leftTable) {
+-      $left = $view_query->getTableInfo($this->leftTable);
+-      $left_field = "$left[alias].$this->leftField";
++      $left_table = $view_query->getTableInfo($this->leftTable);
++      $left_field = "$left_table[alias].$this->leftField";
+     }
+     else {
+       // This can be used if left_field is a formula or something. It should be used only *very* rarely.
+       $left_field = $this->leftField;
++      $left_table = NULL;
+     }
+ 
+     $condition = "$left_field = $table[alias].$this->field";
+@@ -274,87 +276,124 @@ public function buildJoin($select_query, $table, $view_query) {
+ 
+     // Tack on the extra.
+     if (isset($this->extra)) {
+-      if (is_array($this->extra)) {
+-        $extras = [];
+-        foreach ($this->extra as $info) {
+-          // Do not require 'value' to be set; allow for field syntax instead.
+-          $info += [
+-            'value' => NULL,
+-          ];
+-          // Figure out the table name. Remember, only use aliases provided
+-          // if at all possible.
+-          $join_table = '';
+-          if (!array_key_exists('table', $info)) {
+-            $join_table = $table['alias'] . '.';
+-          }
+-          elseif (isset($info['table'])) {
+-            // If we're aware of a table alias for this table, use the table
+-            // alias instead of the table name.
+-            if (isset($left) && $left['table'] == $info['table']) {
+-              $join_table = $left['alias'] . '.';
+-            }
+-            else {
+-              $join_table = $info['table'] . '.';
+-            }
+-          }
+-
+-          // Convert a single-valued array of values to the single-value case,
+-          // and transform from IN() notation to = notation
+-          if (is_array($info['value']) && count($info['value']) == 1) {
+-            $info['value'] = array_shift($info['value']);
+-          }
+-          if (is_array($info['value'])) {
+-            // We use an SA-CORE-2014-005 conformant placeholder for our array
+-            // of values. Also, note that the 'IN' operator is implicit.
+-            // @see https://www.drupal.org/node/2401615.
+-            $operator = !empty($info['operator']) ? $info['operator'] : 'IN';
+-            $placeholder = ':views_join_condition_' . $select_query->nextPlaceholder() . '[]';
+-            $placeholder_sql = "( $placeholder )";
+-          }
+-          else {
+-            // With a single value, the '=' operator is implicit.
+-            $operator = !empty($info['operator']) ? $info['operator'] : '=';
+-            $placeholder = $placeholder_sql = ':views_join_condition_' . $select_query->nextPlaceholder();
+-          }
+-          // Set 'field' as join table field if available or set 'left field' as
+-          // join table field is not set.
+-          if (isset($info['field'])) {
+-            $join_table_field = "$join_table$info[field]";
+-            // Allow the value to be set either with the 'value' element or
+-            // with 'left_field'.
+-            if (isset($info['left_field'])) {
+-              $placeholder_sql = "$left[alias].$info[left_field]";
+-            }
+-            else {
+-              $arguments[$placeholder] = $info['value'];
+-            }
+-          }
+-          // Set 'left field' as join table field is not set.
+-          else {
+-            $join_table_field = "$left[alias].$info[left_field]";
+-            $arguments[$placeholder] = $info['value'];
+-          }
+-          // Render out the SQL fragment with parameters.
+-          $extras[] = "$join_table_field $operator $placeholder_sql";
+-        }
+-
+-        if ($extras) {
+-          if (count($extras) == 1) {
+-            $condition .= ' AND ' . array_shift($extras);
+-          }
+-          else {
+-            $condition .= ' AND (' . implode(' ' . $this->extraOperator . ' ', $extras) . ')';
+-          }
+-        }
+-      }
+-      elseif ($this->extra && is_string($this->extra)) {
+-        $condition .= " AND ($this->extra)";
+-      }
++      $this->joinAddExtra($arguments, $condition, $table, $select_query, $left_table);
+     }
+ 
+     $select_query->addJoin($this->type, $right_table, $table['alias'], $condition, $arguments);
+   }
++  /**
++   * Adds the extras to the join condition.
++   *
++   * @param array $arguments
++   *   Array of query arguments.
++   * @param string $condition
++   *   The condition to be built.
++   * @param array $table
++   *   The right table.
++   * @param \Drupal\Core\Database\Query\SelectInterface $select_query
++   *   The current select query being built.
++   * @param array $left_table
++   *   The left table.
++   */
++  protected function joinAddExtra(&$arguments, &$condition, $table, SelectInterface $select_query, $left_table = NULL) {
++    if (is_array($this->extra)) {
++      $extras = [];
++      foreach ($this->extra as $info) {
++        $extras[] = $this->buildExtra($info, $arguments, $table, $select_query, $left_table);
++      }
+ 
++      if ($extras) {
++        if (count($extras) == 1) {
++          $condition .= ' AND ' . array_shift($extras);
++        }
++        else {
++          $condition .= ' AND (' . implode(' ' . $this->extraOperator . ' ', $extras) . ')';
++        }
++      }
++    }
++    elseif ($this->extra && is_string($this->extra)) {
++      $condition .= " AND ($this->extra)";
++    }
++  }
++
++  /**
++   * Builds a single extra condition.
++   *
++   * @param array $info
++   *   The extra information
++   * @param array $arguments
++   *   Array of query arguments.
++   * @param array $table
++   *   The right table.
++   * @param \Drupal\Core\Database\Query\SelectInterface $select_query
++   *   The current select query being built.
++   * @param array $left
++   *   The left table.
++   *
++   * @return string
++   *   The extra condition
++   */
++  protected function buildExtra($info, &$arguments, $table, SelectInterface $select_query, $left) {
++    // Do not require 'value' to be set; allow for field syntax instead.
++    $info += [
++      'value' => NULL,
++    ];
++    // Figure out the table name. Remember, only use aliases provided
++    // if at all possible.
++    $join_table = '';
++    if (!array_key_exists('table', $info)) {
++      $join_table = $table['alias'] . '.';
++    }
++    elseif (isset($info['table'])) {
++      // If we're aware of a table alias for this table, use the table
++      // alias instead of the table name.
++      if (isset($left) && $left['table'] == $info['table']) {
++        $join_table = $left['alias'] . '.';
++      }
++      else {
++        $join_table = $info['table'] . '.';
++      }
++    }
++
++    // Convert a single-valued array of values to the single-value case,
++    // and transform from IN() notation to = notation
++    if (is_array($info['value']) && count($info['value']) == 1) {
++      $info['value'] = array_shift($info['value']);
++    }
++    if (is_array($info['value'])) {
++      // We use an SA-CORE-2014-005 conformant placeholder for our array
++      // of values. Also, note that the 'IN' operator is implicit.
++      // @see https://www.drupal.org/node/2401615.
++      $operator = !empty($info['operator']) ? $info['operator'] : 'IN';
++      $placeholder = ':views_join_condition_' . $select_query->nextPlaceholder() . '[]';
++      $placeholder_sql = "( $placeholder )";
++    }
++    else {
++      // With a single value, the '=' operator is implicit.
++      $operator = !empty($info['operator']) ? $info['operator'] : '=';
++      $placeholder = $placeholder_sql = ':views_join_condition_' . $select_query->nextPlaceholder();
++    }
++    // Set 'field' as join table field if available or set 'left field' as
++    // join table field is not set.
++    if (isset($info['field'])) {
++      $join_table_field = "$join_table$info[field]";
++      // Allow the value to be set either with the 'value' element or
++      // with 'left_field'.
++      if (isset($info['left_field'])) {
++        $placeholder_sql = "$left[alias].$info[left_field]";
++      }
++      else {
++        $arguments[$placeholder] = $info['value'];
++      }
++    }
++    // Set 'left field' as join table field is not set.
++    else {
++      $join_table_field = "$left[alias].$info[left_field]";
++      $arguments[$placeholder] = $info['value'];
++    }
++    // Render out the SQL fragment with parameters.
++    return "$join_table_field $operator $placeholder_sql";
++  }
+ }
+ 
+ /**
+diff --git a/core/modules/views/src/Tests/FieldApiDataTest.php b/core/modules/views/src/Tests/FieldApiDataTest.php
+index 0e15695..246a324 100644
+--- a/core/modules/views/src/Tests/FieldApiDataTest.php
++++ b/core/modules/views/src/Tests/FieldApiDataTest.php
+@@ -5,6 +5,11 @@
+ use Drupal\Component\Render\MarkupInterface;
+ use Drupal\field\Entity\FieldConfig;
+ use Drupal\field\Tests\Views\FieldTestBase;
++use Drupal\language\Entity\ConfigurableLanguage;
++use Drupal\language\Entity\ContentLanguageSettings;
++use Drupal\node\Entity\Node;
++use Drupal\node\Entity\NodeType;
++use Drupal\views\Views;
+ 
+ /**
+  * Tests the Field Views data.
+@@ -13,10 +18,27 @@
+  */
+ class FieldApiDataTest extends FieldTestBase {
+ 
++  /**
++   * {@inheritdoc}
++   */
++  public static $modules = ['language'];
++
++  /**
++   * {@inheritdoc}
++   */
++  public static $testViews = ['test_field_config_translation_filter'];
++
++  /**
++   * The nodes used by the translation filter tests.
++   *
++   * @var \Drupal\node\NodeInterface[]
++   */
++  protected $translationNodes;
++
+   protected function setUp() {
+-    parent::setUp();
++    parent::setUp(FALSE);
+ 
+-    $field_names = $this->setUpFieldStorages(1);
++    $field_names = $this->setUpFieldStorages(4);
+ 
+     // Attach the field to nodes only.
+     $field = [
+@@ -43,6 +65,109 @@ protected function setUp() {
+       ];
+       $nodes[] = $this->drupalCreateNode($edit);
+     }
++
++    $bundles = [];
++    $bundles[] = $bundle = NodeType::create(['type' => 'bundle1']);
++    $bundle->save();
++    $bundles[] = $bundle = NodeType::create(['type' => 'bundle2']);
++    $bundle->save();
++
++    // Make the first field translatable on all bundles.
++    $field = FieldConfig::create([
++      'field_name' => $field_names[1],
++      'entity_type' => 'node',
++      'bundle' => $bundles[0]->id(),
++      'translatable' => TRUE,
++    ]);
++    $field->save();
++    $field = FieldConfig::create([
++      'field_name' => $field_names[1],
++      'entity_type' => 'node',
++      'bundle' => $bundles[1]->id(),
++      'translatable' => TRUE,
++    ]);
++    $field->save();
++
++    // Make the second field not translatable on any bundle.
++    $field = FieldConfig::create([
++      'field_name' => $field_names[2],
++      'entity_type' => 'node',
++      'bundle' => $bundles[0]->id(),
++      'translatable' => FALSE,
++    ]);
++    $field->save();
++    $field = FieldConfig::create([
++      'field_name' => $field_names[2],
++      'entity_type' => 'node',
++      'bundle' => $bundles[1]->id(),
++      'translatable' => FALSE,
++    ]);
++    $field->save();
++
++    // Make the last field translatable on some bundles.
++    $field = FieldConfig::create([
++      'field_name' => $field_names[3],
++      'entity_type' => 'node',
++      'bundle' => $bundles[0]->id(),
++      'translatable' => TRUE,
++    ]);
++    $field->save();
++    $field = FieldConfig::create([
++      'field_name' => $field_names[3],
++      'entity_type' => 'node',
++      'bundle' => $bundles[1]->id(),
++      'translatable' => FALSE,
++    ]);
++    $field->save();
++
++    // Create some example content.
++    ConfigurableLanguage::create([
++      'id' => 'es',
++    ])->save();
++    ConfigurableLanguage::create([
++      'id' => 'fr',
++    ])->save();
++
++    $config = ContentLanguageSettings::loadByEntityTypeBundle('node', $bundles[0]->id());
++    $config->setDefaultLangcode('es')
++      ->setLanguageAlterable(TRUE)
++      ->save();
++    $config = ContentLanguageSettings::loadByEntityTypeBundle('node', $bundles[1]->id());
++    $config->setDefaultLangcode('es')
++      ->setLanguageAlterable(TRUE)
++      ->save();
++
++    $node = Node::create([
++      'title' => 'Test title ' . $bundles[0]->id(),
++      'type' => $bundles[0]->id(),
++      'langcode' => 'es',
++      $field_names[1] => 'field name 1: es',
++      $field_names[2] => 'field name 2: es',
++      $field_names[3] => 'field name 3: es',
++    ]);
++    $node->save();
++    $this->translationNodes[] = $node;
++    $translation = $node->addTranslation('fr');
++    $translation->{$field_names[1]}->value = 'field name 1: fr';
++    $translation->{$field_names[3]}->value = 'field name 3: fr';
++    $translation->title->value = $node->title->value;
++    $translation->save();
++
++    $node = Node::create([
++      'title' => 'Test title ' . $bundles[1]->id(),
++      'type' => $bundles[1]->id(),
++      'langcode' => 'es',
++      $field_names[1] => 'field name 1: es',
++      $field_names[2] => 'field name 2: es',
++      $field_names[3] => 'field name 3: es',
++    ]);
++    $node->save();
++    $this->translationNodes[] = $node;
++    $translation = $node->addTranslation('fr');
++    $translation->{$field_names[1]}->value = 'field name 1: fr';
++    $translation->title->value = $node->title->value;
++    $translation->save();
++
+   }
+ 
+   /**
+@@ -137,4 +262,119 @@ protected function getViewsData() {
+     return $data;
+   }
+ 
++  /**
++   * Tests filtering entries with different translatabilty.
++   */
++  public function testEntityFieldFilter() {
++    $map = [
++      'nid' => 'nid',
++      'langcode' => 'langcode',
++    ];
++
++    $view = Views::getView('test_field_config_translation_filter');
++
++    // Filter by 'field name 1: es'.
++    $view->setDisplay('embed_1');
++    $this->executeView($view);
++    $expected = [
++      [
++        'nid' => $this->translationNodes[0]->id(),
++        'langcode' => 'es',
++      ],
++      [
++        'nid' => $this->translationNodes[1]->id(),
++        'langcode' => 'es',
++      ],
++    ];
++
++    $this->assertIdenticalResultset($view, $expected, $map);
++    $view->destroy();
++
++    // Filter by 'field name 1: fr'.
++    $view->setDisplay('embed_2');
++    $this->executeView($view);
++    $expected = [
++      [
++        'nid' => $this->translationNodes[0]->id(),
++        'langcode' => 'fr',
++      ],
++      [
++        'nid' => $this->translationNodes[1]->id(),
++        'langcode' => 'fr',
++      ],
++    ];
++
++    $this->assertIdenticalResultset($view, $expected, $map);
++    $view->destroy();
++
++    // Filter by 'field name 2: es'.
++    $view->setDisplay('embed_3');
++    $this->executeView($view);
++    $expected = [
++      [
++        'nid' => $this->translationNodes[0]->id(),
++        'langcode' => 'es',
++      ],
++      [
++        'nid' => $this->translationNodes[0]->id(),
++        'langcode' => 'fr',
++      ],
++      [
++        'nid' => $this->translationNodes[1]->id(),
++        'langcode' => 'es',
++      ],
++      [
++        'nid' => $this->translationNodes[1]->id(),
++        'langcode' => 'fr',
++      ],
++    ];
++
++    $this->assertIdenticalResultset($view, $expected, $map);
++    $view->destroy();
++
++    // Filter by 'field name 2: fr', which doesn't exist.
++    $view->setDisplay('embed_4');
++    $this->executeView($view);
++    $expected = [
++    ];
++
++    $this->assertIdenticalResultset($view, $expected, $map);
++    $view->destroy();
++
++    // Filter by 'field name 3: es'.
++    $view->setDisplay('embed_5');
++    $this->executeView($view);
++    $expected = [
++      [
++        'nid' => $this->translationNodes[0]->id(),
++        'langcode' => 'es',
++      ],
++      [
++        'nid' => $this->translationNodes[1]->id(),
++        'langcode' => 'es',
++      ],
++      // Why is this one returned?
++      [
++        'nid' => $this->translationNodes[1]->id(),
++        'langcode' => 'fr',
++      ],
++    ];
++
++    $this->assertIdenticalResultset($view, $expected, $map);
++    $view->destroy();
++
++    // Filter by 'field name 3: fr'.
++    $view->setDisplay('embed_6');
++    $this->executeView($view);
++    $expected = [
++      [
++        'nid' => $this->translationNodes[0]->id(),
++        'langcode' => 'fr',
++      ],
++    ];
++
++    $this->assertIdenticalResultset($view, $expected, $map);
++    $view->destroy();
++  }
++
+ }
+diff --git a/core/modules/views/tests/modules/views_test_config/test_views/views.view.test_field_config_translation_filter.yml b/core/modules/views/tests/modules/views_test_config/test_views/views.view.test_field_config_translation_filter.yml
+new file mode 100644
+index 0000000..2202d9c
+--- /dev/null
++++ b/core/modules/views/tests/modules/views_test_config/test_views/views.view.test_field_config_translation_filter.yml
+@@ -0,0 +1,187 @@
++langcode: en
++status: true
++dependencies: {  }
++id: test_field_config_translation_filter
++module: views
++description: ''
++tag: ''
++base_table: node_field_data
++base_field: id
++core: '8'
++display:
++  default:
++    display_options:
++      access:
++        type: none
++      cache:
++        type: none
++      fields:
++        nid:
++          id: nid
++          field: nid
++          table: node_field_data
++          plugin_id: field
++          entity_type: node
++          entity_field: nid
++        langcode:
++          id: langcode
++          field: langcode
++          table: node_field_data
++          plugin_id: field
++          entity_type: node
++          entity_field: langcode
++        field_name_1:
++          id: field_name_1
++          table: node__field_name_1
++          field: field_name_1
++          plugin_id: field
++          entity_type: node
++          entity_field: field_name_1
++        field_name_2:
++          id: field_name_2
++          table: node__field_name_2
++          field: field_name_2
++          plugin_id: field
++          entity_type: node
++          entity_field: field_name_2
++        field_name_3:
++          id: field_name_3
++          table: node__field_name_3
++          field: field_name_3
++          plugin_id: field
++          entity_type: node
++          entity_field: field_name_3
++      sorts:
++        nid:
++          id: nid
++          table: node_field_data
++          field: nid
++          order: ASC
++          plugin_id: standard
++          entity_type: node
++          entity_field: nid
++        langcode:
++          id: langcode
++          table: node_field_data
++          field: langcode
++          relationship: none
++          group_type: group
++          admin_label: ''
++          order: ASC
++          exposed: false
++          expose:
++            label: ''
++          entity_type: node
++          entity_field: langcode
++          plugin_id: standard
++      style:
++        type: html_list
++      row:
++        type: fields
++    display_plugin: default
++    display_title: Master
++    id: default
++    position: 0
++  embed_1:
++    display_options:
++      defaults:
++        fields: true
++        filters: false
++      filters:
++        field_name_1_value:
++          id: field_name_1_value
++          table: node__field_name_1
++          field: field_name_1_value
++          value: 'field name 1: es'
++          plugin_id: string
++          entity_type: node
++          entity_field: field_name_1
++    display_plugin: embed
++    display_title: Embed 1
++    id: embed_1
++    position: 1
++  embed_2:
++    display_options:
++      defaults:
++        filters: false
++      filters:
++        field_name_1_value:
++          id: field_name_1_value
++          table: node__field_name_1
++          field: field_name_1_value
++          value: 'field name 1: fr'
++          plugin_id: string
++          entity_type: node
++          entity_field: field_name_1
++    display_plugin: embed
++    display_title: Embed 2
++    id: embed_2
++    position: 2
++  embed_3:
++    display_options:
++      defaults:
++        filters: false
++      filters:
++        field_name_2_value:
++          id: field_name_2_value
++          table: node__field_name_2
++          field: field_name_2_value
++          value: 'field name 2: es'
++          plugin_id: string
++          entity_type: node
++          entity_field: field_name_2
++    display_plugin: embed
++    display_title: Embed 3
++    id: embed_3
++    position: 3
++  embed_4:
++    display_options:
++      defaults:
++        filters: false
++      filters:
++        field_name_2_value:
++          id: field_name_2_value
++          table: node__field_name_2
++          field: field_name_2_value
++          value: 'field name 2: fr'
++          plugin_id: string
++          entity_type: node
++          entity_field: field_name_2
++    display_plugin: embed
++    display_title: Embed 4
++    id: embed_4
++    position: 4
++  embed_5:
++    display_options:
++      defaults:
++        filters: false
++      filters:
++        field_name_3_value:
++          id: field_name_3_value
++          table: node__field_name_3
++          field: field_name_3_value
++          value: 'field name 3: es'
++          plugin_id: string
++          entity_type: node
++          entity_field: field_name_3
++    display_plugin: embed
++    display_title: Embed 5
++    id: embed_5
++    position: 5
++  embed_6:
++    display_options:
++      defaults:
++        filters: false
++      filters:
++        field_name_3_value:
++          id: field_name_3_value
++          table: node__field_name_3
++          field: field_name_3_value
++          value: 'field name 3: fr'
++          plugin_id: string
++          entity_type: node
++          entity_field: field_name_3
++    display_plugin: embed
++    display_title: Embed 6
++    id: embed_6
++    position: 6
+diff --git a/core/modules/views/tests/modules/views_test_config/test_views/views.view.test_view_sort_translation.yml b/core/modules/views/tests/modules/views_test_config/test_views/views.view.test_view_sort_translation.yml
+new file mode 100644
+index 0000000..09b9e41
+--- /dev/null
++++ b/core/modules/views/tests/modules/views_test_config/test_views/views.view.test_view_sort_translation.yml
+@@ -0,0 +1,86 @@
++langcode: en
++status: true
++dependencies: {  }
++id: test_view_sort_translation
++module: views
++description: ''
++tag: ''
++base_table: node_field_data
++base_field: id
++core: '8'
++display:
++  default:
++    display_options:
++      fields:
++        nid:
++          id: nid
++          field: nid
++          table: node_field_data
++          plugin_id: field
++          entity_type: node
++          entity_field: nid
++        langcode:
++          id: langcode
++          field: langcode
++          table: node_field_data
++          plugin_id: field
++          entity_type: node
++          entity_field: langcode
++        weight:
++          id: weight
++          table: node__weight
++          field: weight
++          plugin_id: numeric
++          entity_type: node
++          entity_field: weight
++      filters:
++        langcode:
++          id: langcode
++          table: node_field_data
++          field: langcode
++          relationship: none
++          group_type: group
++          admin_label: ''
++          operator: in
++          value:
++            'en': 'en'
++          group: 1
++          exposed: false
++          entity_type: node
++          entity_field: langcode
++          plugin_id: language
++      sorts:
++        weight:
++          id: weight
++          table: node__weight
++          field: weight_value
++          order: ASC
++          plugin_id: standard
++          entity_type: node
++          entity_field: weight
++    display_plugin: default
++    display_title: Master
++    id: default
++    position: 0
++  display_de:
++    display_plugin: embed
++    id: display_de
++    display_options:
++      defaults:
++        filters: false
++      filters:
++        langcode:
++          id: langcode
++          table: node_field_data
++          field: langcode
++          relationship: none
++          group_type: group
++          admin_label: ''
++          operator: in
++          value:
++            'de': 'de'
++          group: 1
++          exposed: false
++          entity_type: node
++          entity_field: langcode
++          plugin_id: language
+diff --git a/core/modules/views/tests/src/Kernel/Handler/SortTranslationTest.php b/core/modules/views/tests/src/Kernel/Handler/SortTranslationTest.php
+new file mode 100644
+index 0000000..1b6daca
+--- /dev/null
++++ b/core/modules/views/tests/src/Kernel/Handler/SortTranslationTest.php
+@@ -0,0 +1,151 @@
++<?php
++
++namespace Drupal\Tests\views\Kernel\Handler;
++
++use Drupal\field\Entity\FieldConfig;
++use Drupal\field\Entity\FieldStorageConfig;
++use Drupal\language\Entity\ConfigurableLanguage;
++use Drupal\node\Entity\Node;
++use Drupal\node\Entity\NodeType;
++use Drupal\Tests\views\Kernel\ViewsKernelTestBase;
++use Drupal\views\Views;
++
++/**
++ * Tests sorting on translatable and not translatable fields.
++ *
++ * @group views
++ */
++class SortTranslationTest extends ViewsKernelTestBase {
++  /**
++   * {@inheritdoc}
++   */
++  public static $modules = [
++    'node',
++    'field',
++    'language',
++  ];
++
++  /**
++   * {@inheritdoc}
++   */
++  public static $testViews = [
++    'test_view_sort_translation',
++  ];
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUp($import_test_views = TRUE) {
++    parent::setUp($import_test_views);
++    ConfigurableLanguage::createFromLangcode('de')->save();
++    $this->installSchema('node', 'node_access');
++    $this->installEntitySchema('node');
++    $this->installEntitySchema('user');
++
++    //$this->installConfig('node');
++    $this->container->get('kernel')->rebuildContainer();
++
++    $node_type = NodeType::create(['type' => 'article']);
++    $node_type->save();
++
++    FieldStorageConfig::create([
++      'field_name' => 'text',
++      'entity_type' => 'node',
++      'type' => 'string',
++    ])->save();
++
++    FieldConfig::create([
++      'field_name' => 'text',
++      'entity_type' => 'node',
++      'bundle' => 'article',
++      'label' => 'Translated text',
++      'translatable' => TRUE
++    ])->save();
++
++    FieldStorageConfig::create([
++      'field_name' => 'weight',
++      'entity_type' => 'node',
++      'type' => 'integer',
++    ])->save();
++
++    FieldConfig::create([
++      'field_name' => 'weight',
++      'entity_type' => 'node',
++      'bundle' => 'article',
++      'translatable' => FALSE,
++    ])->save();
++
++    for ($i = 0; $i < 3; $i++) {
++      $node = Node::create([
++        'type' => 'article',
++        'title' => 'Title en ' . $i,
++        'weight' => ['value' => 3 - $i],
++        'text' => ['value' => 'moo en ' . $i],
++        'langcode' => 'en',
++      ]);
++      $node->save();
++
++      $translation = $node->addTranslation('de');
++      $translation->title->value = 'Title DE ' . $i;
++      $translation->text->value = 'moo DE ' . $i;
++      $translation->save();
++      $nodes[] = $node;
++    }
++  }
++
++  /**
++   * Test sorting on an untranslated field.
++   */
++  public function testSortbyUntranslatedIntegerField() {
++    $map = [
++      'nid' => 'nid',
++      'node_field_data_langcode' => 'langcode',
++    ];
++
++    $view = Views::getView('test_view_sort_translation');
++    $view->setDisplay('default');
++    $this->executeView($view);
++
++    // With ascending sort, the nodes should come out in reverse order.
++    $expected = [
++      [
++        'nid' => 3,
++        'langcode' => 'en',
++      ],
++      [
++        'nid' => 2,
++        'langcode' => 'en',
++      ],
++      [
++        'nid' => 1,
++        'langcode' => 'en',
++      ],
++    ];
++    $this->assertIdenticalResultset($view, $expected, $map);
++    $view->destroy();
++
++    $view = Views::getView('test_view_sort_translation');
++    $view->setDisplay('display_de');
++    $this->executeView($view);
++
++    $expected = [
++      [
++        'nid' => 3,
++        'langcode' => 'de',
++      ],
++      [
++        'nid' => 2,
++        'langcode' => 'de',
++      ],
++      [
++        'nid' => 1,
++        'langcode' => 'de',
++      ],
++    ];
++
++    // The weight field is not translated, we sort by it so the nodes
++    // should come out in the same order in both languages.
++    $this->assertIdenticalResultset($view, $expected, $map);
++    $view->destroy();
++  }
++}
+diff --git a/core/modules/views/views.module b/core/modules/views/views.module
+index f9bd098..07e5716 100644
+--- a/core/modules/views/views.module
++++ b/core/modules/views/views.module
+@@ -17,7 +17,6 @@
+ use Drupal\views\Entity\View;
+ use Drupal\views\Render\ViewsRenderPipelineMarkup;
+ use Drupal\views\Views;
+-use Drupal\field\FieldConfigInterface;
+ 
+ /**
+  * Implements hook_help().
+@@ -437,21 +436,42 @@ function views_add_contextual_links(&$render_element, $location, $display_id, ar
+ /**
+  * Implements hook_ENTITY_TYPE_insert() for 'field_config'.
+  */
+-function views_field_config_insert(FieldConfigInterface $field) {
++function views_field_config_insert(EntityInterface $field) {
+   Views::viewsData()->clear();
+ }
+ 
+ /**
+  * Implements hook_ENTITY_TYPE_update() for 'field_config'.
+  */
+-function views_field_config_update(FieldConfigInterface $field) {
++function views_field_config_update(EntityInterface $entity) {
+   Views::viewsData()->clear();
+ }
+ 
+ /**
+  * Implements hook_ENTITY_TYPE_delete() for 'field_config'.
+  */
+-function views_field_config_delete(FieldConfigInterface $field) {
++function views_field_config_delete(EntityInterface $entity) {
++  Views::viewsData()->clear();
++}
++
++/**
++ * Implements hook_ENTITY_TYPE_insert().
++ */
++function views_base_field_override_insert(EntityInterface $entity) {
++  Views::viewsData()->clear();
++}
++
++/**
++ * Implements hook_ENTITY_TYPE_update().
++ */
++function views_base_field_override_update(EntityInterface $entity) {
++  Views::viewsData()->clear();
++}
++
++/**
++ * Implements hook_ENTITY_TYPE_delete().
++ */
++function views_base_field_override_delete(EntityInterface $entity) {
+   Views::viewsData()->clear();
+ }
+ 
+diff --git a/core/modules/views/views.views.inc b/core/modules/views/views.views.inc
+index 0bd5f27..dd50a9a 100644
+--- a/core/modules/views/views.views.inc
++++ b/core/modules/views/views.views.inc
+@@ -9,6 +9,7 @@
+ use Drupal\Core\Entity\EntityStorageInterface;
+ use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
+ use Drupal\Core\Render\Markup;
++use Drupal\field\Entity\FieldConfig;
+ use Drupal\field\FieldConfigInterface;
+ use Drupal\field\FieldStorageConfigInterface;
+ use Drupal\system\ActionConfigEntityInterface;
+@@ -352,6 +353,49 @@ function views_field_default_views_data(FieldStorageConfigInterface $field_stora
+     ];
+   }
+ 
++  // Determine if the fields are translatable.
++  $bundles_names = $field_storage->getBundles();
++  $translation_join_type = FALSE;
++  $fields = [];
++  $translatable_configs = [];
++  $untranslatable_configs = [];
++  $untranslatable_config_bundles = [];
++
++  foreach ($bundles_names as $bundle) {
++    $fields[$bundle] = FieldConfig::loadByName($entity_type->id(), $bundle, $field_name);
++  }
++  foreach ($fields as $bundle => $config_entity) {
++    if (!empty($config_entity)) {
++      if ($config_entity->isTranslatable()) {
++        $translatable_configs[$bundle] = $config_entity;
++      }
++      else {
++        $untranslatable_configs[$bundle] = $config_entity;
++      }
++    }
++    else {
++      // https://www.drupal.org/node/2451657#comment-11462881
++      \Drupal::logger('views')->error(
++        t('A non-existent config entity name returned by FieldStorageConfigInterface::getBundles(): field name: %field, bundle: %bundle',
++          ['%field' => $field_name, '%bundle' => $bundle]
++        ));
++    }
++  }
++
++  // If the field is translatable on all the bundles, there will be a join on
++  // the langcode.
++  if (!empty($translatable_configs) && empty($untranslatable_configs)) {
++    $translation_join_type = 'language';
++  }
++  // If the field is translatable only on certain bundles, there will be a join
++  // on langcode OR bundle name.
++  elseif (!empty($translatable_configs) && !empty($untranslatable_configs)) {
++    foreach ($untranslatable_configs as $config) {
++      $untranslatable_config_bundles[] = $config->getTargetBundle();
++    }
++    $translation_join_type = 'language_bundle';
++  }
++
+   // Build the relationships between the field table and the entity tables.
+   $table_alias = $field_tables[EntityStorageInterface::FIELD_LOAD_CURRENT]['alias'];
+   if ($data_table) {
+@@ -362,7 +406,6 @@ function views_field_default_views_data(FieldStorageConfigInterface $field_stora
+       'field' => 'entity_id',
+       'extra' => [
+         ['field' => 'deleted', 'value' => 0, 'numeric' => TRUE],
+-        ['left_field' => 'langcode', 'field' => 'langcode'],
+       ],
+     ];
+   }
+@@ -378,6 +421,24 @@ function views_field_default_views_data(FieldStorageConfigInterface $field_stora
+     ];
+   }
+ 
++  if ($translation_join_type === 'language_bundle') {
++    $data[$table_alias]['table']['join'][$data_table]['join_id'] = 'field_or_language_join';
++    $data[$table_alias]['table']['join'][$data_table]['extra'][] = [
++      'left_field' => 'langcode',
++      'field' => 'langcode',
++    ];
++    $data[$table_alias]['table']['join'][$data_table]['extra'][] = [
++      'value' => $untranslatable_config_bundles,
++      'field' => 'bundle',
++    ];
++  }
++  elseif ($translation_join_type === 'language') {
++    $data[$table_alias]['table']['join'][$data_table]['extra'][] = [
++      'left_field' => 'langcode',
++      'field' => 'langcode',
++    ];
++  }
++
+   if ($supports_revisions) {
+     $table_alias = $field_tables[EntityStorageInterface::FIELD_LOAD_REVISION]['alias'];
+     if ($entity_revision_data_table) {
+@@ -388,7 +449,6 @@ function views_field_default_views_data(FieldStorageConfigInterface $field_stora
+         'field' => 'revision_id',
+         'extra' => [
+           ['field' => 'deleted', 'value' => 0, 'numeric' => TRUE],
+-          ['left_field' => 'langcode', 'field' => 'langcode'],
+         ],
+       ];
+     }
+@@ -403,6 +463,23 @@ function views_field_default_views_data(FieldStorageConfigInterface $field_stora
+         ],
+       ];
+     }
++    if ($translation_join_type === 'language_bundle') {
++      $data[$table_alias]['table']['join'][$entity_revision_data_table]['join_id'] = 'field_or_language_join';
++      $data[$table_alias]['table']['join'][$entity_revision_data_table]['extra'][] = [
++        'left_field' => 'langcode',
++        'field' => 'langcode',
++      ];
++      $data[$table_alias]['table']['join'][$entity_revision_data_table]['extra'][] = [
++        'value' => $untranslatable_config_bundles,
++        'field' => 'bundle',
++      ];
++    }
++    elseif ($translation_join_type === 'language') {
++      $data[$table_alias]['table']['join'][$entity_revision_data_table]['extra'][] = [
++        'left_field' => 'langcode',
++        'field' => 'langcode',
++      ];
++    }
+   }
+ 
+   $group_name = $entity_type->getLabel();

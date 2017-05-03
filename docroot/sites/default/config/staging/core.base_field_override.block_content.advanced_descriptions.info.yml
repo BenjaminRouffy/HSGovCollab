@@ -1,16 +1,15 @@
-uuid: efacd411-592e-4c27-8e3f-37130abb7462
+uuid: 68c94fb8-b7e4-47cd-aa37-5980e2e8033c
 langcode: en
 status: true
 dependencies:
   config:
     - block_content.type.advanced_descriptions
-    - field.storage.block_content.field_title
-id: block_content.advanced_descriptions.field_title
-field_name: field_title
+id: block_content.advanced_descriptions.info
+field_name: info
 entity_type: block_content
 bundle: advanced_descriptions
-label: Title
-description: ''
+label: 'Block description'
+description: 'A brief description of your block.'
 required: true
 translatable: false
 default_value: {  }

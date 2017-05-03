@@ -1,0 +1,20 @@
+uuid: 8b51d761-4624-4e25-b2cd-e96cea3b7792
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.knowledge_vault-subgroup-product
+  module:
+    - path
+id: group_content.knowledge_vault-subgroup-product.path
+field_name: path
+entity_type: group_content
+bundle: knowledge_vault-subgroup-product
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

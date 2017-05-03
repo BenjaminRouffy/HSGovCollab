@@ -1,19 +1,18 @@
-uuid: efacd411-592e-4c27-8e3f-37130abb7462
+uuid: 53189589-470e-4d9c-86f8-e21b7c5bd6a6
 langcode: en
 status: true
 dependencies:
   config:
     - block_content.type.advanced_descriptions
-    - field.storage.block_content.field_title
-id: block_content.advanced_descriptions.field_title
-field_name: field_title
+id: block_content.advanced_descriptions.changed
+field_name: changed
 entity_type: block_content
 bundle: advanced_descriptions
-label: Title
-description: ''
-required: true
+label: Changed
+description: 'The time that the custom block was last edited.'
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: changed

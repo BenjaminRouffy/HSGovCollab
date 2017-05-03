@@ -6,4 +6,7 @@ id: knowledge_vault_manager
 label: 'Knowledge vault manager'
 weight: 8
 is_admin: null
-permissions: {  }
+permissions:
+  - 'translate article node'
+  - 'translate knowledge_vault group'
+  - 'translate tags taxonomy_term'

@@ -1,17 +1,17 @@
-uuid: f45dbf85-e093-489e-a85e-7957049b8668
+uuid: 16e139b2-a14f-415c-b037-60063cc60c09
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.article
-id: node.article.status
+    - comment.type.common_comments
+id: comment.common_comments.status
 field_name: status
-entity_type: node
-bundle: article
+entity_type: comment
+bundle: common_comments
 label: 'Publishing status'
 description: 'A boolean indicating the published state.'
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 1

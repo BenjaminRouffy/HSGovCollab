@@ -1,0 +1,134 @@
+.article-add-node,
+.article-edit-node {
+  .content-container {
+    max-width: 1160px;
+    padding-bottom: 70px;
+  }
+
+  #block-ample-page-title {
+    margin-bottom: 40px;
+    position: relative;
+    text-align: center;
+
+    &:after {
+      content: "";
+      background: $red;
+      display: block;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+    }
+
+    h1 {
+      @include font-size(67.2);
+      line-height: 78px;
+      padding-bottom: 40px;
+    }
+  }
+
+  .node-form {
+    margin: 0 auto;
+    width: 66.64%;
+
+    label {
+      &:after {
+        content: ":";
+      }
+
+      &.form-required {
+        &:after {
+          content: ": *";
+        }
+      }
+    }
+  }
+
+  .horizontal-tabs {
+    border: none;
+    padding: 20px 40px;
+  }
+
+  .horizontal-tabs-list,
+  .filter-wrapper,
+  .js-form-type-vertical-tabs {
+    display: none;
+  }
+
+  details {
+    padding: 0;
+  }
+
+  .field--type-datetime {
+    h4 {
+      @include font-size(18.2);
+      font-family: $oswald;
+      font-weight: 400;
+      margin-top: 0;
+
+      &:after {
+        content: ":";
+      }
+    }
+  }
+
+  .image-widget {
+    margin-bottom: 20px;
+
+    .form-submit:not(.js-hide) {
+      display: block;
+      margin-top: 25px;
+    }
+  }
+
+  .description {
+    @include font-size(15.4);
+    color: $navy;
+    margin-right: 0;
+
+    br {
+      display: none;
+    }
+  }
+
+  .field--name-body {
+    margin: 55px 0 40px;
+
+    button {
+      background: transparent;
+    }
+  }
+
+  .text-summary-wrapper {
+    margin-bottom: 25px;
+
+    .form-textarea {
+      margin-bottom: 5px;
+    }
+  }
+
+  .form-actions {
+    text-align: center;
+
+    .form-submit {
+      margin: 0 5px;
+    }
+  }
+
+  #edit-preview {
+    border-color: #afb7bb;
+    color: #afb7bb;
+
+    &:hover {
+      border-color: #7f868a;
+      color: #7f868a;
+    }
+  }
+
+  #edit-delete {
+    @extend .form-submit;
+    text-decoration: none;
+  }
+}

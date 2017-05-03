@@ -545,18 +545,19 @@ svg {
   .header-static .dashboard-menu ul:not(.contextual-links) li a:hover {
     background: none; }
 
-.toolbar-fixed .collapsed ~ .dashboard-sidebar {
-  padding-top: 39px; }
-
-.toolbar-tray-open .collapsed ~ .dashboard-sidebar {
-  padding-top: 79px; }
+.collapsed ~ .dashboard-sidebar {
+  padding-top: 0; }
+  .toolbar-fixed .collapsed ~ .dashboard-sidebar {
+    padding-top: 39px; }
+  .toolbar-tray-open .collapsed ~ .dashboard-sidebar {
+    padding-top: 79px; }
 
 .dashboard-sidebar {
   background: #283b44;
   height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 80px;
+  padding: 46px 0 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -1294,7 +1295,9 @@ footer > .partners {
     line-height: 72px;
     margin: 20px 0 10px;
     padding: 0; }
-  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button {
+  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button, .country-content-wrapper .follow-link .article-add-node #edit-delete, .article-add-node .country-content-wrapper .follow-link #edit-delete, .country-content-wrapper .follow-link
+  .article-edit-node #edit-delete,
+  .article-edit-node .country-content-wrapper .follow-link #edit-delete {
     font-size: 1.5rem;
     background: transparent;
     border: 1px solid #fff;
@@ -1311,7 +1314,9 @@ footer > .partners {
             transform: scale(1.06);
     -webkit-transition: background .2s ease;
     transition: background .2s ease; }
-    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button:hover {
+    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button:hover, .country-content-wrapper .follow-link .article-add-node #edit-delete:hover, .article-add-node .country-content-wrapper .follow-link #edit-delete:hover, .country-content-wrapper .follow-link
+    .article-edit-node #edit-delete:hover,
+    .article-edit-node .country-content-wrapper .follow-link #edit-delete:hover {
       background: #ea3a32; }
   .country-content-wrapper .follow-link .ajax-progress {
     position: absolute; }
@@ -3657,6 +3662,16 @@ form {
   color: #283b44;
   line-height: 1; }
 
+.form-date {
+  border: 1px solid #75a8c0;
+  color: #4c7e96;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  height: 50px;
+  line-height: 26px;
+  margin-bottom: 25px;
+  padding: 1px 12px; }
+
 .form-textarea {
   height: auto;
   padding: 8px 12px; }
@@ -3806,7 +3821,8 @@ form {
      -moz-appearance: radio;
           appearance: radio; }
 
-.form-submit, .ui-dialog.ui-widget-content .button {
+.form-submit, .ui-dialog.ui-widget-content .button, .article-add-node #edit-delete,
+.article-edit-node #edit-delete {
   background: #fff;
   border: 1px solid #ea3a32;
   color: #ea3a32;
@@ -3815,7 +3831,8 @@ form {
   text-transform: uppercase;
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
-  .form-submit:hover, .ui-dialog.ui-widget-content .button:hover {
+  .form-submit:hover, .ui-dialog.ui-widget-content .button:hover, .article-add-node #edit-delete:hover,
+  .article-edit-node #edit-delete:hover {
     border-color: #8c2222;
     color: #8c2222; }
 
@@ -3881,11 +3898,15 @@ form .social_login iframe {
     content: ": *"; }
   .user-login-form .form-actions {
     margin-top: 20px; }
-  .user-login-form .form-submit, .user-login-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-login-form .button {
+  .user-login-form .form-submit, .user-login-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-login-form .button, .user-login-form .article-add-node #edit-delete, .article-add-node .user-login-form #edit-delete, .user-login-form
+  .article-edit-node #edit-delete,
+  .article-edit-node .user-login-form #edit-delete {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-login-form .form-submit:hover, .user-login-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-login-form .button:hover {
+    .user-login-form .form-submit:hover, .user-login-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-login-form .button:hover, .user-login-form .article-add-node #edit-delete:hover, .article-add-node .user-login-form #edit-delete:hover, .user-login-form
+    .article-edit-node #edit-delete:hover,
+    .article-edit-node .user-login-form #edit-delete:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -3965,7 +3986,9 @@ form .social_login iframe {
     margin: 10px 0 55px;
     text-align: center;
     width: 50%; }
-  .form-contact-us .form-submit, .form-contact-us .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-contact-us .button {
+  .form-contact-us .form-submit, .form-contact-us .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-contact-us .button, .form-contact-us .article-add-node #edit-delete, .article-add-node .form-contact-us #edit-delete, .form-contact-us
+  .article-edit-node #edit-delete,
+  .article-edit-node .form-contact-us #edit-delete {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
@@ -4120,11 +4143,15 @@ form .social_login iframe {
     margin: 30px auto 0;
     text-align: center;
     width: 50%; }
-  .user-register-form .form-submit, .user-register-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-register-form .button {
+  .user-register-form .form-submit, .user-register-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-register-form .button, .user-register-form .article-add-node #edit-delete, .article-add-node .user-register-form #edit-delete, .user-register-form
+  .article-edit-node #edit-delete,
+  .article-edit-node .user-register-form #edit-delete {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-register-form .form-submit:hover, .user-register-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-register-form .button:hover {
+    .user-register-form .form-submit:hover, .user-register-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-register-form .button:hover, .user-register-form .article-add-node #edit-delete:hover, .article-add-node .user-register-form #edit-delete:hover, .user-register-form
+    .article-edit-node #edit-delete:hover,
+    .article-edit-node .user-register-form #edit-delete:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -4229,7 +4256,9 @@ form .social_login iframe {
   margin-top: 30px;
   text-align: center; }
 
-.user-onetime-form .form-submit:hover, .user-onetime-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-onetime-form .button:hover {
+.user-onetime-form .form-submit:hover, .user-onetime-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-onetime-form .button:hover, .user-onetime-form .article-add-node #edit-delete:hover, .article-add-node .user-onetime-form #edit-delete:hover, .user-onetime-form
+.article-edit-node #edit-delete:hover,
+.article-edit-node .user-onetime-form #edit-delete:hover {
   -webkit-transform: none;
           transform: none; }
 
@@ -4246,7 +4275,9 @@ form .social_login iframe {
   .user-onetime-form #catagories-wrapper {
     padding: 10px 0;
     width: 100%; }
-  .user-onetime-form .form-submit, .user-onetime-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-onetime-form .button {
+  .user-onetime-form .form-submit, .user-onetime-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-onetime-form .button, .user-onetime-form .article-add-node #edit-delete, .article-add-node .user-onetime-form #edit-delete, .user-onetime-form
+  .article-edit-node #edit-delete,
+  .article-edit-node .user-onetime-form #edit-delete {
     font-size: 1.05rem;
     padding: 10px; } }
 
@@ -4271,11 +4302,15 @@ form .social_login iframe {
   .user-pass .form-actions {
     margin-top: 25px;
     text-align: center; }
-  .user-pass .form-submit, .user-pass .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-pass .button {
+  .user-pass .form-submit, .user-pass .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-pass .button, .user-pass .article-add-node #edit-delete, .article-add-node .user-pass #edit-delete, .user-pass
+  .article-edit-node #edit-delete,
+  .article-edit-node .user-pass #edit-delete {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-pass .form-submit:hover, .user-pass .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-pass .button:hover {
+    .user-pass .form-submit:hover, .user-pass .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-pass .button:hover, .user-pass .article-add-node #edit-delete:hover, .article-add-node .user-pass #edit-delete:hover, .user-pass
+    .article-edit-node #edit-delete:hover,
+    .article-edit-node .user-pass #edit-delete:hover {
       border-color: #8c2222;
       color: #8c2222;
       -webkit-transform: none;
@@ -4316,7 +4351,9 @@ form .social_login iframe {
       .acceptance-form .form-checkbox a:hover,
       .acceptance-form .js-form-type-checkbox a:hover {
         color: #8c2222; }
-  .acceptance-form .form-submit, .acceptance-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .acceptance-form .button {
+  .acceptance-form .form-submit, .acceptance-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .acceptance-form .button, .acceptance-form .article-add-node #edit-delete, .article-add-node .acceptance-form #edit-delete, .acceptance-form
+  .article-edit-node #edit-delete,
+  .article-edit-node .acceptance-form #edit-delete {
     margin-top: 30px; }
 
 @media (max-width: 991px) {
@@ -4411,7 +4448,9 @@ form .social_login iframe {
         color: #8c2222; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
       outline: none; }
-    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button {
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .article-add-node #edit-delete, .article-add-node .form-my-settings #edit-field-avatar-wrapper .image-widget-data #edit-delete, .form-my-settings #edit-field-avatar-wrapper .image-widget-data
+    .article-edit-node #edit-delete,
+    .article-edit-node .form-my-settings #edit-field-avatar-wrapper .image-widget-data #edit-delete {
       font-size: 0.875rem;
       background: none;
       border: none;
@@ -4548,10 +4587,18 @@ form .social_login iframe {
     display: block;
     font-weight: 400;
     margin-bottom: 20px; }
-  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button,
+  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button, .form-my-settings #edit-field-organisations-wrapper .article-add-node #edit-delete, .article-add-node .form-my-settings #edit-field-organisations-wrapper #edit-delete, .form-my-settings #edit-field-organisations-wrapper
+  .article-edit-node #edit-delete,
+  .article-edit-node .form-my-settings #edit-field-organisations-wrapper #edit-delete,
   .form-my-settings #contact-details .form-submit,
   .form-my-settings #contact-details .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
-  .form-my-settings #contact-details .button {
+  .form-my-settings #contact-details .button,
+  .form-my-settings #contact-details .article-add-node #edit-delete, .article-add-node
+  .form-my-settings #contact-details #edit-delete,
+  .form-my-settings #contact-details
+  .article-edit-node #edit-delete,
+  .article-edit-node
+  .form-my-settings #contact-details #edit-delete {
     font-size: 0.875rem;
     background: transparent;
     border: none;
@@ -4559,16 +4606,32 @@ form .social_login iframe {
     letter-spacing: 0;
     padding: 0;
     text-transform: none; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button,
+    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button, .form-my-settings #edit-field-organisations-wrapper .article-add-node .field-add-more-submit#edit-delete, .article-add-node .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit#edit-delete, .form-my-settings #edit-field-organisations-wrapper
+    .article-edit-node .field-add-more-submit#edit-delete,
+    .article-edit-node .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit#edit-delete,
     .form-my-settings #contact-details .form-submit.field-add-more-submit,
     .form-my-settings #contact-details .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content
-    .form-my-settings #contact-details .field-add-more-submit.button {
+    .form-my-settings #contact-details .field-add-more-submit.button,
+    .form-my-settings #contact-details .article-add-node .field-add-more-submit#edit-delete, .article-add-node
+    .form-my-settings #contact-details .field-add-more-submit#edit-delete,
+    .form-my-settings #contact-details
+    .article-edit-node .field-add-more-submit#edit-delete,
+    .article-edit-node
+    .form-my-settings #contact-details .field-add-more-submit#edit-delete {
       background: url(../images/add-plus-button.png) left top no-repeat;
       padding-left: 21px; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button:hover,
+    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button:hover, .form-my-settings #edit-field-organisations-wrapper .article-add-node #edit-delete:hover, .article-add-node .form-my-settings #edit-field-organisations-wrapper #edit-delete:hover, .form-my-settings #edit-field-organisations-wrapper
+    .article-edit-node #edit-delete:hover,
+    .article-edit-node .form-my-settings #edit-field-organisations-wrapper #edit-delete:hover,
     .form-my-settings #contact-details .form-submit:hover,
     .form-my-settings #contact-details .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content
-    .form-my-settings #contact-details .button:hover {
+    .form-my-settings #contact-details .button:hover,
+    .form-my-settings #contact-details .article-add-node #edit-delete:hover, .article-add-node
+    .form-my-settings #contact-details #edit-delete:hover,
+    .form-my-settings #contact-details
+    .article-edit-node #edit-delete:hover,
+    .article-edit-node
+    .form-my-settings #contact-details #edit-delete:hover {
       background-position: left bottom;
       color: #8c2222;
       -webkit-transform: none;
@@ -4616,7 +4679,9 @@ form .social_login iframe {
   left: 0;
   top: -23px; }
 
-.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button {
+.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button, .form-my-settings #edit-field-skype-or-other-wrapper .article-add-node .field-add-more-submit#edit-delete, .article-add-node .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit#edit-delete, .form-my-settings #edit-field-skype-or-other-wrapper
+.article-edit-node .field-add-more-submit#edit-delete,
+.article-edit-node .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit#edit-delete {
   margin-left: 0; }
 
 .ie11 .form-my-settings #edit-field-skype-or-other-wrapper table,
@@ -4683,10 +4748,18 @@ form .social_login iframe {
       top: 9px; }
     .form-my-settings table .dropbutton-wrapper .dropbutton-arrow {
       border-top-color: #8c2222; }
-  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings table .confirm-remove .button,
+  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings table .confirm-remove .button, .form-my-settings table .confirm-remove .article-add-node #edit-delete, .article-add-node .form-my-settings table .confirm-remove #edit-delete, .form-my-settings table .confirm-remove
+  .article-edit-node #edit-delete,
+  .article-edit-node .form-my-settings table .confirm-remove #edit-delete,
   .form-my-settings table .restore .form-submit,
   .form-my-settings table .restore .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
-  .form-my-settings table .restore .button {
+  .form-my-settings table .restore .button,
+  .form-my-settings table .restore .article-add-node #edit-delete, .article-add-node
+  .form-my-settings table .restore #edit-delete,
+  .form-my-settings table .restore
+  .article-edit-node #edit-delete,
+  .article-edit-node
+  .form-my-settings table .restore #edit-delete {
     margin-top: 0 !important; }
 
 .form-my-settings thead .label {
@@ -4719,10 +4792,18 @@ form .social_login iframe {
   right: 60px;
   top: -3px; }
 
-.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .paragraphs-dropbutton-wrapper .button,
+.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .paragraphs-dropbutton-wrapper .button, .form-my-settings .paragraphs-dropbutton-wrapper .article-add-node #edit-delete, .article-add-node .form-my-settings .paragraphs-dropbutton-wrapper #edit-delete, .form-my-settings .paragraphs-dropbutton-wrapper
+.article-edit-node #edit-delete,
+.article-edit-node .form-my-settings .paragraphs-dropbutton-wrapper #edit-delete,
 .form-my-settings .field-add-more-submit.form-submit,
 .form-my-settings .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content
-.form-my-settings .field-add-more-submit.button {
+.form-my-settings .field-add-more-submit.button,
+.form-my-settings .article-add-node .field-add-more-submit#edit-delete, .article-add-node
+.form-my-settings .field-add-more-submit#edit-delete,
+.form-my-settings
+.article-edit-node .field-add-more-submit#edit-delete,
+.article-edit-node
+.form-my-settings .field-add-more-submit#edit-delete {
   font-weight: 400;
   margin: 0; }
 
@@ -4743,15 +4824,21 @@ form .social_login iframe {
 .form-my-settings label:after {
   content: none; }
 
-.form-my-settings .form-submit, .form-my-settings .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .button {
+.form-my-settings .form-submit, .form-my-settings .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .button, .form-my-settings .article-add-node #edit-delete, .article-add-node .form-my-settings #edit-delete, .form-my-settings
+.article-edit-node #edit-delete,
+.article-edit-node .form-my-settings #edit-delete {
   background: none;
   border-color: #ea3a32;
   font-weight: 700;
   margin: 0 auto 15px;
   text-transform: none; }
-  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .form-my-settings .button:not(.js-hide) {
+  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .form-my-settings .button:not(.js-hide), .form-my-settings .article-add-node #edit-delete:not(.js-hide), .article-add-node .form-my-settings #edit-delete:not(.js-hide), .form-my-settings
+  .article-edit-node #edit-delete:not(.js-hide),
+  .article-edit-node .form-my-settings #edit-delete:not(.js-hide) {
     display: block; }
-  .form-my-settings .form-submit:hover, .form-my-settings .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings .button:hover {
+  .form-my-settings .form-submit:hover, .form-my-settings .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings .button:hover, .form-my-settings .article-add-node #edit-delete:hover, .article-add-node .form-my-settings #edit-delete:hover, .form-my-settings
+  .article-edit-node #edit-delete:hover,
+  .article-edit-node .form-my-settings #edit-delete:hover {
     border-color: #8c2222;
     color: #8c2222;
     -webkit-transform: none;
@@ -5137,7 +5224,9 @@ form .social_login iframe {
     padding-right: 60px; }
     .search-form-wrapper .form-text:focus, .search-form-wrapper .form-textarea:focus {
       border-color: rgba(56, 152, 236, 0.32); }
-  .search-form-wrapper .form-submit, .search-form-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .search-form-wrapper .button {
+  .search-form-wrapper .form-submit, .search-form-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .search-form-wrapper .button, .search-form-wrapper .article-add-node #edit-delete, .article-add-node .search-form-wrapper #edit-delete, .search-form-wrapper
+  .article-edit-node #edit-delete,
+  .article-edit-node .search-form-wrapper #edit-delete {
     background: url(../images/magnifying-glass.svg) center no-repeat;
     background-size: 20px 20px;
     border: none;
@@ -5152,7 +5241,9 @@ form .social_login iframe {
     transition: transform .1s ease;
     transition: transform .1s ease, -webkit-transform .1s ease;
     width: 60px; }
-    .search-form-wrapper .form-submit:hover, .search-form-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .search-form-wrapper .button:hover {
+    .search-form-wrapper .form-submit:hover, .search-form-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .search-form-wrapper .button:hover, .search-form-wrapper .article-add-node #edit-delete:hover, .article-add-node .search-form-wrapper #edit-delete:hover, .search-form-wrapper
+    .article-edit-node #edit-delete:hover,
+    .article-edit-node .search-form-wrapper #edit-delete:hover {
       border: none;
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
@@ -6970,6 +7061,127 @@ footer {
   .marker-info {
     width: 100%; } }
 
+.article-add-node .content-container,
+.article-edit-node .content-container {
+  max-width: 1160px;
+  padding-bottom: 70px; }
+
+.article-add-node #block-ample-page-title,
+.article-edit-node #block-ample-page-title {
+  margin-bottom: 40px;
+  position: relative;
+  text-align: center; }
+  .article-add-node #block-ample-page-title:after,
+  .article-edit-node #block-ample-page-title:after {
+    content: "";
+    background: #ea3a32;
+    display: block;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 180px; }
+  .article-add-node #block-ample-page-title h1,
+  .article-edit-node #block-ample-page-title h1 {
+    font-size: 4.2rem;
+    line-height: 78px;
+    padding-bottom: 40px; }
+
+.article-add-node .node-form,
+.article-edit-node .node-form {
+  margin: 0 auto;
+  width: 66.64%; }
+  .article-add-node .node-form label:after,
+  .article-edit-node .node-form label:after {
+    content: ":"; }
+  .article-add-node .node-form label.form-required:after,
+  .article-edit-node .node-form label.form-required:after {
+    content: ": *"; }
+
+.article-add-node .horizontal-tabs,
+.article-edit-node .horizontal-tabs {
+  border: none;
+  padding: 20px 40px; }
+
+.article-add-node .horizontal-tabs-list,
+.article-add-node .filter-wrapper,
+.article-add-node .js-form-type-vertical-tabs,
+.article-edit-node .horizontal-tabs-list,
+.article-edit-node .filter-wrapper,
+.article-edit-node .js-form-type-vertical-tabs {
+  display: none; }
+
+.article-add-node details,
+.article-edit-node details {
+  padding: 0; }
+
+.article-add-node .field--type-datetime h4,
+.article-edit-node .field--type-datetime h4 {
+  font-size: 1.1375rem;
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  margin-top: 0; }
+  .article-add-node .field--type-datetime h4:after,
+  .article-edit-node .field--type-datetime h4:after {
+    content: ":"; }
+
+.article-add-node .image-widget,
+.article-edit-node .image-widget {
+  margin-bottom: 20px; }
+  .article-add-node .image-widget .form-submit:not(.js-hide), .article-add-node .image-widget .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .article-add-node .image-widget .button:not(.js-hide), .article-add-node .image-widget #edit-delete:not(.js-hide),
+  .article-edit-node .image-widget .form-submit:not(.js-hide),
+  .article-edit-node .image-widget .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content
+  .article-edit-node .image-widget .button:not(.js-hide), .article-edit-node .image-widget #edit-delete:not(.js-hide) {
+    display: block;
+    margin-top: 25px; }
+
+.article-add-node .description,
+.article-edit-node .description {
+  font-size: 0.9625rem;
+  color: #4c7e96;
+  margin-right: 0; }
+  .article-add-node .description br,
+  .article-edit-node .description br {
+    display: none; }
+
+.article-add-node .field--name-body,
+.article-edit-node .field--name-body {
+  margin: 55px 0 40px; }
+  .article-add-node .field--name-body button,
+  .article-edit-node .field--name-body button {
+    background: transparent; }
+
+.article-add-node .text-summary-wrapper,
+.article-edit-node .text-summary-wrapper {
+  margin-bottom: 25px; }
+  .article-add-node .text-summary-wrapper .form-textarea,
+  .article-edit-node .text-summary-wrapper .form-textarea {
+    margin-bottom: 5px; }
+
+.article-add-node .form-actions,
+.article-edit-node .form-actions {
+  text-align: center; }
+  .article-add-node .form-actions .form-submit, .article-add-node .form-actions .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .article-add-node .form-actions .button, .article-add-node .form-actions #edit-delete,
+  .article-edit-node .form-actions .form-submit,
+  .article-edit-node .form-actions .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
+  .article-edit-node .form-actions .button, .article-edit-node .form-actions #edit-delete {
+    margin: 0 5px; }
+
+.article-add-node #edit-preview,
+.article-edit-node #edit-preview {
+  border-color: #afb7bb;
+  color: #afb7bb; }
+  .article-add-node #edit-preview:hover,
+  .article-edit-node #edit-preview:hover {
+    border-color: #7f868a;
+    color: #7f868a; }
+
+.article-add-node #edit-delete,
+.article-edit-node #edit-delete {
+  text-decoration: none; }
+
 #calendar {
   font-family: Oswald, sans-serif;
   letter-spacing: 1px; }
@@ -7307,7 +7519,9 @@ footer {
     padding: 30px 0; }
   .dashboard .follow-link {
     padding-top: 5px; }
-    .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .dashboard .follow-link .button {
+    .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .dashboard .follow-link .button, .dashboard .follow-link .article-add-node #edit-delete, .article-add-node .dashboard .follow-link #edit-delete, .dashboard .follow-link
+    .article-edit-node #edit-delete,
+    .article-edit-node .dashboard .follow-link #edit-delete {
       background: transparent;
       border-color: #ea3a32;
       text-transform: none; }

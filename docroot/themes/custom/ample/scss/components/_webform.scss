@@ -137,6 +137,17 @@ form {
   line-height: 1;
 }
 
+.form-date {
+  border: 1px solid #75a8c0;
+  color: $navy;
+  font-family: $fira;
+  font-weight: 300;
+  height: 50px;
+  line-height: 26px;
+  margin-bottom: 25px;
+  padding: 1px 12px;
+}
+
 .form-textarea {
   @extend .form-text;
   height: auto;

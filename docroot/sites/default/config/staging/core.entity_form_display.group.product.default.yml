@@ -58,10 +58,11 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Banner
-    group_summary:
+    group_content:
       children:
         - field_date
         - langcode
+<<<<<<< HEAD
       parent_name: group_tabs_panel
       weight: 12
       format_type: tab
@@ -75,6 +76,8 @@ third_party_settings:
       label: Brief
     group_content:
       children:
+=======
+>>>>>>> 8055cdcc811dc277da99f7095f838523b83b7b27
         - field_summary
         - field_content
       parent_name: group_tabs_panel
@@ -169,7 +172,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_content:
-    weight: 9
+    weight: 16
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -180,7 +183,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 11
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -233,7 +236,7 @@ content:
     type: entity_browser_file
     region: content
   field_summary:
-    weight: 8
+    weight: 15
     settings:
       rows: 5
       placeholder: ''
@@ -261,7 +264,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 12
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }

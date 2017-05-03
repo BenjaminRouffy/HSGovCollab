@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.member_icons
-    - field.field.block_content.member_icons.field_copyright_text
+    - field.field.block_content.member_icons.field_copyright
     - field.field.block_content.member_icons.field_member_icons
 id: block_content.member_icons.default
 targetEntityType: block_content
@@ -21,5 +21,5 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
-  field_copyright_text: true
+  field_copyright: true
   langcode: true

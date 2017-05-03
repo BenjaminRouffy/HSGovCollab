@@ -56,7 +56,8 @@
       vertical-align: top;
     }
 
-    .user-link {
+    .user-link,
+    .based-on a {
       border-bottom: 2px solid transparent;
       color: $white;
       display: inline-block;
@@ -137,6 +138,15 @@
       letter-spacing: .5px;
       margin-top: 8px;
       vertical-align: top;
+    }
+
+    .based-on {
+      a {
+        @include font-size(18.2);
+        font-family: $oswald;
+        letter-spacing: .5px;
+        padding-top: 18px;
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-<div class="user-item">
+<a href="{{ path('entity.user.canonical', {'user': user.id()}) }}">
   {% if content.field_avatar %}
     <div class="user-icon">
       {{ content.field_avatar }}
@@ -9,4 +9,4 @@
     {{ 'Category manager'|t }}
     {{ content.field_first_name }} {{ content.field_last_name }}
   </div>
-</div>
+</a>

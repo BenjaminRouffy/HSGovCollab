@@ -38,6 +38,8 @@ class GroupContentListFormatter extends FormatterBase {
           '#type' => 'link',
           '#title' => $group->label(),
           '#url' => Url::fromRoute('entity.group.canonical', ['group' => $group->id()]),
+          '#prefix' => '<div class="group-content-item">',
+          '#suffix' => '</div>'
         ];
       }
     }

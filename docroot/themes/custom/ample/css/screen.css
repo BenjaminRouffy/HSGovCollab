@@ -2880,6 +2880,12 @@ footer > .partners {
       -webkit-transition: opacity .3s ease;
       transition: opacity .3s ease; }
 
+.knowledge-vault-link:before {
+  content: none; }
+
+.article-list {
+  margin-bottom: 60px; }
+
 .single-contact {
   display: block;
   margin: 30px auto 0;
@@ -3949,15 +3955,15 @@ form .social_login iframe {
   position: relative; }
 
 @media (max-width: 991px) {
-  .view-project form, .view-product form, .view-knowledge-vault form {
+  .view-project form, .view-product form {
     max-width: 60%; } }
 
 @media (max-width: 767px) {
-  .view-project form, .view-product form, .view-knowledge-vault form {
+  .view-project form, .view-product form {
     max-width: 80%; } }
 
 @media (max-width: 479px) {
-  .view-project form, .view-product form, .view-knowledge-vault form {
+  .view-project form, .view-product form {
     max-width: 100%; } }
 
 .user-register-form {
@@ -4775,28 +4781,33 @@ form .social_login iframe {
 
 .view-news-and-events .title-wrapper,
 .view-my-projects .title-wrapper,
-.view-contacts .title-wrapper {
+.view-contacts .title-wrapper,
+.view-knowledge-vault .title-wrapper {
   padding-bottom: 10px;
   text-align: center; }
   .view-news-and-events .title-wrapper h1,
   .view-my-projects .title-wrapper h1,
-  .view-contacts .title-wrapper h1 {
+  .view-contacts .title-wrapper h1,
+  .view-knowledge-vault .title-wrapper h1 {
     padding-top: 0; }
     .group-region:not(.page-group-news-and-event) .view-news-and-events .title-wrapper h1, .group-region:not(.page-group-news-and-event)
     .view-my-projects .title-wrapper h1, .group-region:not(.page-group-news-and-event)
-    .view-contacts .title-wrapper h1 {
+    .view-contacts .title-wrapper h1, .group-region:not(.page-group-news-and-event)
+    .view-knowledge-vault .title-wrapper h1 {
       font-size: 2.625rem;
       line-height: 48px; }
   .view-news-and-events .title-wrapper .line,
   .view-my-projects .title-wrapper .line,
-  .view-contacts .title-wrapper .line {
+  .view-contacts .title-wrapper .line,
+  .view-knowledge-vault .title-wrapper .line {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%); }
 
 .front .view-news-and-events .title-wrapper, .front
 .view-my-projects .title-wrapper, .front
-.view-contacts .title-wrapper {
+.view-contacts .title-wrapper, .front
+.view-knowledge-vault .title-wrapper {
   background: #f5f5f5;
   margin-top: -72px;
   padding: 10px 20px 0;
@@ -4805,7 +4816,8 @@ form .social_login iframe {
   z-index: 100; }
   .front .view-news-and-events .title-wrapper h1, .front
   .view-my-projects .title-wrapper h1, .front
-  .view-contacts .title-wrapper h1 {
+  .view-contacts .title-wrapper h1, .front
+  .view-knowledge-vault .title-wrapper h1 {
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 20px;
@@ -4813,14 +4825,16 @@ form .social_login iframe {
     text-transform: uppercase; }
   .front .view-news-and-events .title-wrapper .line, .front
   .view-my-projects .title-wrapper .line, .front
-  .view-contacts .title-wrapper .line {
+  .view-contacts .title-wrapper .line, .front
+  .view-knowledge-vault .title-wrapper .line {
     left: 0;
     -webkit-transform: none;
             transform: none; }
 
 .view-news-and-events > h2,
 .view-my-projects > h2,
-.view-contacts > h2 {
+.view-contacts > h2,
+.view-knowledge-vault > h2 {
   font-size: 1.575rem;
   line-height: 48px;
   margin-bottom: 15px;
@@ -4828,12 +4842,14 @@ form .social_login iframe {
 
 .view-news-and-events form,
 .view-my-projects form,
-.view-contacts form {
+.view-contacts form,
+.view-knowledge-vault form {
   max-width: 100%; }
 
 .view-news-and-events .wrapper-filters,
 .view-my-projects .wrapper-filters,
-.view-contacts .wrapper-filters {
+.view-contacts .wrapper-filters,
+.view-knowledge-vault .wrapper-filters {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4842,7 +4858,8 @@ form .social_login iframe {
           justify-content: center; }
   .ie9 .view-news-and-events .wrapper-filters, .ie9
   .view-my-projects .wrapper-filters, .ie9
-  .view-contacts .wrapper-filters {
+  .view-contacts .wrapper-filters, .ie9
+  .view-knowledge-vault .wrapper-filters {
     display: block;
     -webkit-box-flex: 0;
         -ms-flex: none;
@@ -4850,16 +4867,19 @@ form .social_login iframe {
     overflow: hidden; }
     .ie9 .view-news-and-events .wrapper-filters > div, .ie9
     .view-my-projects .wrapper-filters > div, .ie9
-    .view-contacts .wrapper-filters > div {
+    .view-contacts .wrapper-filters > div, .ie9
+    .view-knowledge-vault .wrapper-filters > div {
       float: left;
       max-width: calc(20% - 20px); }
   .ie10 .view-news-and-events .wrapper-filters > div, .ie10
   .view-my-projects .wrapper-filters > div, .ie10
-  .view-contacts .wrapper-filters > div {
+  .view-contacts .wrapper-filters > div, .ie10
+  .view-knowledge-vault .wrapper-filters > div {
     max-width: calc(20% - 20px); }
   .view-news-and-events .wrapper-filters > div,
   .view-my-projects .wrapper-filters > div,
-  .view-contacts .wrapper-filters > div {
+  .view-contacts .wrapper-filters > div,
+  .view-knowledge-vault .wrapper-filters > div {
     margin-left: 10px;
     margin-right: 10px;
     max-width: 20%;
@@ -4867,13 +4887,15 @@ form .social_login iframe {
 
 .view-news-and-events fieldset,
 .view-my-projects fieldset,
-.view-contacts fieldset {
+.view-contacts fieldset,
+.view-knowledge-vault fieldset {
   display: none;
   margin: 0; }
 
 .view-news-and-events .fieldset-wrapper,
 .view-my-projects .fieldset-wrapper,
-.view-contacts .fieldset-wrapper {
+.view-contacts .fieldset-wrapper,
+.view-knowledge-vault .fieldset-wrapper {
   background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.09);
   margin: 0 10px 10px;
@@ -4881,7 +4903,8 @@ form .social_login iframe {
 
 .view-news-and-events .form-checkboxes,
 .view-my-projects .form-checkboxes,
-.view-contacts .form-checkboxes {
+.view-contacts .form-checkboxes,
+.view-knowledge-vault .form-checkboxes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4891,23 +4914,27 @@ form .social_login iframe {
   width: 100%; }
   .view-news-and-events .form-checkboxes .form-item,
   .view-my-projects .form-checkboxes .form-item,
-  .view-contacts .form-checkboxes .form-item {
+  .view-contacts .form-checkboxes .form-item,
+  .view-knowledge-vault .form-checkboxes .form-item {
     padding: 0 10px 30px;
     width: 16.6%; }
     .ie9 .view-news-and-events .form-checkboxes .form-item, .ie9
     .view-my-projects .form-checkboxes .form-item, .ie9
-    .view-contacts .form-checkboxes .form-item {
+    .view-contacts .form-checkboxes .form-item, .ie9
+    .view-knowledge-vault .form-checkboxes .form-item {
       display: inline-block;
       margin-left: -4px;
       vertical-align: top; }
   .view-news-and-events .form-checkboxes .form-checkbox,
   .view-my-projects .form-checkboxes .form-checkbox,
-  .view-contacts .form-checkboxes .form-checkbox {
+  .view-contacts .form-checkboxes .form-checkbox,
+  .view-knowledge-vault .form-checkboxes .form-checkbox {
     float: left;
     margin: 3px 8px 0 0; }
   .view-news-and-events .form-checkboxes label,
   .view-my-projects .form-checkboxes label,
-  .view-contacts .form-checkboxes label {
+  .view-contacts .form-checkboxes label,
+  .view-knowledge-vault .form-checkboxes label {
     font-size: 0.9625rem;
     float: left;
     font-family: "Fira Sans", sans-serif;
@@ -4921,6 +4948,15 @@ form .social_login iframe {
     max-width: calc(25% - 20px); }
   .ie9 .view-contacts .wrapper-filters > div {
     max-width: calc(25% - 25px); }
+
+.view-article .title-wrapper {
+  text-align: center; }
+  .view-article .title-wrapper a {
+    text-decoration: none; }
+  .view-article .title-wrapper .line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
 
 .view-article form {
   overflow: hidden;
@@ -5079,23 +5115,43 @@ form .social_login iframe {
   .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
     width: 100%; } }
 
-.view-my-projects .wrapper-filters > div {
+.view-my-projects .wrapper-filters > div,
+.view-knowledge-vault .wrapper-filters > div {
   max-width: 30%; }
 
+.view-knowledge-vault:not(.with-filters) form {
+  max-width: 40%; }
+
 @media (max-width: 991px) {
-  .view-my-projects .wrapper-filters {
+  .view-my-projects .wrapper-filters, .view-knowledge-vault .wrapper-filters {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
-    .view-my-projects .wrapper-filters > div {
+    .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
       max-width: calc(40% - 20px); } }
 
+@media (max-width: 991px) {
+  .view-knowledge-vault:not(.with-filters) form {
+    max-width: 60%; } }
+
 @media (max-width: 767px) {
-  .view-my-projects .wrapper-filters > div {
+  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
     max-width: calc(50% - 20px); } }
 
+@media (max-width: 767px) {
+  .view-knowledge-vault:not(.with-filters) form {
+    max-width: 80%; } }
+
 @media (max-width: 479px) {
-  .view-my-projects .wrapper-filters > div {
+  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%; } }
+
+@media (max-width: 479px) {
+  .view-knowledge-vault:not(.with-filters) form {
     max-width: 100%; } }
 
 .view-country {
@@ -7180,7 +7236,8 @@ footer {
     .dashboard .sidebar li {
       display: block;
       vertical-align: top; }
-    .dashboard .sidebar .user-link {
+    .dashboard .sidebar .user-link,
+    .dashboard .sidebar .based-on a {
       border-bottom: 2px solid transparent;
       color: #fff;
       display: inline-block;
@@ -7189,7 +7246,8 @@ footer {
       text-decoration: none;
       -webkit-transition: opacity .3s ease, border .3s ease;
       transition: opacity .3s ease, border .3s ease; }
-      .dashboard .sidebar .user-link:hover {
+      .dashboard .sidebar .user-link:hover,
+      .dashboard .sidebar .based-on a:hover {
         border-color: #fff;
         opacity: .66; }
     .dashboard .sidebar .comment-wrapper {
@@ -7240,6 +7298,11 @@ footer {
       letter-spacing: .5px;
       margin-top: 8px;
       vertical-align: top; }
+    .dashboard .sidebar .based-on a {
+      font-size: 1.1375rem;
+      font-family: Oswald, sans-serif;
+      letter-spacing: .5px;
+      padding-top: 18px; }
 
 @media (max-width: 991px) {
   .dashboard .sidebar,

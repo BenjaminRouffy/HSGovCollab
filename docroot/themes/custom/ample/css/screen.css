@@ -176,7 +176,8 @@ body {
     overflow: hidden; }
   body.full-page-slider #toolbar-administration,
   body.full-page-slider header,
-  body.full-page-slider .dashboard-sidebar {
+  body.full-page-slider .dashboard-sidebar,
+  body.full-page-slider footer {
     z-index: 0; }
 
 h1, h2, h3 {
@@ -6514,6 +6515,8 @@ footer {
     background-attachment: scroll;
     background-position: center;
     background-size: 650%; }
+  .full-page-slider .main-wrapper {
+    position: static; }
   .logged .main-wrapper {
     padding-left: 80px; }
   body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation) .main-wrapper:before {

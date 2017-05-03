@@ -208,6 +208,7 @@ display:
         header: false
         relationships: false
         css_class: false
+        sorts: false
       display_description: ''
       filters:
         status:
@@ -862,6 +863,19 @@ display:
           required: false
           plugin_id: standard
       css_class: view-contacts
+      sorts:
+        field_first_name_value:
+          id: field_first_name_value
+          table: user__field_first_name
+          field: field_first_name_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
@@ -3353,6 +3367,7 @@ display:
         header: false
         relationships: false
         css_class: false
+        sorts: false
       display_description: ''
       filters:
         status:
@@ -4148,6 +4163,19 @@ display:
           required: true
           plugin_id: standard
       css_class: view-contacts
+      sorts:
+        field_first_name_value:
+          id: field_first_name_value
+          table: user__field_first_name
+          field: field_first_name_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:

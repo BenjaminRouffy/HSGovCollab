@@ -6,7 +6,11 @@
   {% endif %}
 
   <div class="name">
-    {{ 'Category manager'|t }}
-    {{ content.field_first_name }} {{ content.field_last_name }}
+    <p class="category">
+      {{ 'Category manager'|t }}
+    </p>
+    <p>
+      {{ content.field_first_name }} {{ content.field_last_name }}
+    </p>
   </div>
 </a>

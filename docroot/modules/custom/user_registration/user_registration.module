@@ -237,6 +237,12 @@ function user_registration_form_user_form_alter(&$form, FormStateInterface $form
   }
 }
 
+/**
+ * Add states to group manager fields.
+ *
+ * @param array $form
+ *   Form array containing the user form.
+ */
 function _user_registration_manager_field_states(array &$form) {
   if (isset($form['field_country_manager'])) {
     $form['field_country_manager']['widget'][0]['entity_gids'] += [

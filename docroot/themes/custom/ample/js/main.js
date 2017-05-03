@@ -164,8 +164,10 @@
     var halfDocOffset = $document.height() / 2;
     var halfWinOffset = $window.height() / 2;
     var $relatedContent = $('.related-wrapper');
+    var windowBottomPos = $window.scrollTop() + $window.height();
+    var docHeightNoFooter = $(document).height() - 160;
 
-    if ((scrollTop + halfWinOffset) > halfDocOffset) {
+    if ((scrollTop + halfWinOffset) > halfDocOffset && windowBottomPos < docHeightNoFooter) {
       $relatedContent.addClass('visible');
     } else {
       $relatedContent.removeClass('visible');
@@ -362,9 +364,9 @@
         var sliderCurrentIndex = $slider.find('.active').index();
         var thumbCurrentIndex = $thumbs.find('.current').index();
 
-        $('#overlay').fadeToggle(300);
+        $('#slider-overlay').toggleClass('showed');
         $this.parent($('.slider-main')).toggleClass('fixed');
-        $('body').toggleClass('no-scroll');
+        $('body').toggleClass('no-scroll full-page-slider');
 
         $slider.add($thumbs).trigger('destroy.owl.carousel');
 
@@ -531,10 +533,13 @@
 
   Drupal.behaviors.header = {
     attach: function(context, settings) {
+      var $window = $(window);
       var $header = $('header', context);
 
+      $window.scrollTop() > 0 ? $header.addClass('collapsed') : $header.removeClass('collapsed');
+
       $.scrollAction(function() {
-        return $(window).scrollTop() > 0;
+        return $window.scrollTop() > 0;
       }, function(isTrue) {
         $header.toggleClassCondition(isTrue, 'collapsed');
       });

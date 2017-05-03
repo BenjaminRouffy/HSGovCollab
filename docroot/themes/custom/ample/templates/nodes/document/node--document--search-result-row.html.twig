@@ -1,0 +1,15 @@
+<article{{ attributes.addClass('document-teaser') }}>
+  <div class="font-social-icon {{ node.bundle() }}-icon">
+    <span></span>
+  </div>
+  {{ title_prefix }}
+  <h4 role="heading">
+    {{ label|field_value }}
+  </h4>
+  {% if contextual_link_access %}
+    {{ title_suffix }}
+  {% endif %}
+
+  {{ content.field_document|field_value }}
+</article>
+

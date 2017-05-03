@@ -48,6 +48,30 @@ class GroupContentSubscriber extends RouteSubscriberBase {
         ]);
       }
     }
+
+    $routes = [
+      'entity.group_content.collection',
+      'entity.group_content.add_page',
+      'entity.group_content.create_page',
+    ];
+
+    foreach ($routes as $item) {
+      $route = $collection->get($item);
+
+      if (!empty($route)) {
+        $route->addRequirements([
+          '_custom_access' => '\Drupal\group_dashboard\Controller\GroupAdminContentController::AccessToCreateContent',
+        ]);
+      }
+    }
+
+    $route = $collection->get('entity.group_content.add_form');
+
+    if (!empty($route)) {
+      $route->addRequirements([
+        '_custom_access' => '\Drupal\group_dashboard\Controller\GroupAdminContentController::AccessToCreateDifferentEntities',
+      ]);
+    }
   }
 
   /**

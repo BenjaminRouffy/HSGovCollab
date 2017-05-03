@@ -1,0 +1,54 @@
+uuid: 03402f25-eed2-4409-927f-375f6fc9e40d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.based_on
+    - field.field.group.project.field_based_on
+    - field.field.group.project.field_content
+    - field.field.group.project.field_date
+    - field.field.group.project.field_faq
+    - field.field.group.project.field_join_block
+    - field.field.group.project.field_knowledge_vault
+    - field.field.group.project.field_product
+    - field.field.group.project.field_project_icon
+    - field.field.group.project.field_summary
+    - field.field.group.project.field_summary_public
+    - field.field.group.project.field_time_line
+    - group.type.project
+  module:
+    - group_content_field
+id: group.project.based_on
+targetEntityType: group
+bundle: project
+mode: based_on
+content:
+  field_knowledge_vault:
+    type: group_content_list
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_product:
+    type: group_content_list
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  field_based_on: true
+  field_content: true
+  field_date: true
+  field_faq: true
+  field_join_block: true
+  field_project_icon: true
+  field_summary: true
+  field_summary_public: true
+  field_time_line: true
+  label: true
+  langcode: true
+  uid: true

@@ -1,0 +1,14 @@
+uuid: aba36292-f043-4223-b8e3-3c518b2e38ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.knowledge_vault_manager
+  module:
+    - user
+id: user_remove_role_action.knowledge_vault_manager
+label: 'Remove the Knowledge vault manager role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: knowledge_vault_manager

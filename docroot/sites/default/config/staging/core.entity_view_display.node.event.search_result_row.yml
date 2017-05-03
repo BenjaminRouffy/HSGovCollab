@@ -1,0 +1,163 @@
+uuid: d892eb4f-0427-4c63-becd-48d80988c6c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_row
+    - field.field.node.event.body
+    - field.field.node.event.field_category
+    - field.field.node.event.field_comments
+    - field.field.node.event.field_date
+    - field.field.node.event.field_documents
+    - field.field.node.event.field_event_author
+    - field.field.node.event.field_event_country_content
+    - field.field.node.event.field_event_link
+    - field.field.node.event.field_event_slider
+    - field.field.node.event.field_join_block
+    - field.field.node.event.field_location
+    - field.field.node.event.field_organization
+    - field.field.node.event.field_related_content_selector
+    - field.field.node.event.field_time
+    - field.field.node.event.field_timezone
+    - node.type.event
+  module:
+    - datetime_range
+    - entity_reference_revisions
+    - group_content_formatters
+    - link
+    - options
+    - rel_content
+    - text
+    - user
+id: node.event.search_result_row
+targetEntityType: node
+bundle: event
+mode: search_result_row
+content:
+  addtoany:
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  body:
+    label: hidden
+    type: text_default
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_category:
+    weight: 11
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_date:
+    weight: 3
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_event_author:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_event_country_content:
+    weight: 15
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: group_content_country_list
+    region: content
+  field_event_link:
+    type: link_separate
+    weight: 8
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    region: content
+  field_event_slider:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_join_block:
+    weight: 10
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_location:
+    weight: 7
+    label: above
+    settings:
+      trim_length: 80
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_organization:
+    weight: 12
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_related_content_selector:
+    weight: 13
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_rel_content_id
+    region: content
+  field_time:
+    weight: 4
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: event_time
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_timezone:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_comments: true
+  field_documents: true
+  langcode: true

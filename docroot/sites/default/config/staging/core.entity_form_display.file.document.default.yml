@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.field.file.document.field_category
     - file_entity.type.document
-  module:
-    - path
 id: file.document.default
 targetEntityType: file
 bundle: document
@@ -18,12 +16,7 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  path:
-    type: path
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   filename: true
   langcode: true
+  path: true

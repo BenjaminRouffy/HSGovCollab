@@ -2,3 +2,8 @@ services:
   plugin.manager.computed_date:
     class: Drupal\p4h_views_plugins\ComputedDateManager
     parent: default_plugin_manager
+
+  views_exposed_form.product_views:
+    class: Drupal\p4h_views_plugins\Form\Alter\ProductViewsFilterAlter
+    tags:
+      - { name: form_alter, form_id: views_exposed_form }

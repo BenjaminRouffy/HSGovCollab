@@ -1,0 +1,27 @@
+uuid: 73c260eb-be4a-42d4-9351-7a1a2aece5cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - file_entity.type.audio
+id: file.audio.default
+targetEntityType: file
+bundle: audio
+mode: default
+content:
+  filename:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  path: true

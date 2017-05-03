@@ -1,0 +1,11 @@
+<article{{ attributes.addClass('document-teaser') }}>
+  <div class="font-social-icon {{ node.bundle() }}-icon">
+    <span></span>
+  </div>
+  <h4 role="heading">
+    {{ label }}
+  </h4>
+  <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}" role="link">
+    {{ 'Read more'|t }}
+  </a>
+</article>

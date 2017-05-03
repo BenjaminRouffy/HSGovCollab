@@ -676,6 +676,7 @@
   transform: translateY(150%);
   transition: transform .6s ease;
   width: 100%;
+  z-index: 310;
 
   .logged & {
     padding-left: 80px;
@@ -1432,6 +1433,20 @@
       transition: opacity .3s ease;
     }
   }
+}
+
+.knowledge-vault-list {
+  .knowledge-vault-link {
+    > a {
+      &:before {
+        content: none;
+      }
+    }
+  }
+}
+
+.article-list {
+  margin-bottom: 60px;
 }
 
 .single-contact {

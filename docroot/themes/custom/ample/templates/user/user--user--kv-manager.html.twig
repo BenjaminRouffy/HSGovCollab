@@ -1,14 +1,12 @@
-{% if content.field_avatar %}
-  <div class="user-icon">
-    {{ content.field_avatar }}
-  </div>
-{% endif %}
+<a href="{{ path('entity.user.canonical', {'user': user.id()}) }}">
+  {% if content.field_avatar %}
+    <div class="user-icon">
+      {{ content.field_avatar }}
+    </div>
+  {% endif %}
 
-<div class="name">
-  <p class="category">
+  <div class="name">
     {{ 'Category manager'|t }}
-  </p>
-  <p>
     {{ content.field_first_name }} {{ content.field_last_name }}
-  </p>
-</div>
+  </div>
+</a>

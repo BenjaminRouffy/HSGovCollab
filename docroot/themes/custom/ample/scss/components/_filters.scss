@@ -1,8 +1,7 @@
 .view-news-and-events,
 .view-my-projects,
-.view-my-calendar,
-.view-governance-area-calendar,
-.view-contacts {
+.view-contacts,
+.view-knowledge-vault {
   .title-wrapper {
     padding-bottom: 10px;
     text-align: center;
@@ -148,6 +147,24 @@
 }
 
 .view-article {
+  .title-wrapper {
+    text-align: center;
+
+    a {
+      transition: opacity .3s ease;
+      text-decoration: none;
+
+      &:hover {
+        opacity: .66;
+      }
+    }
+
+    .line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
   form {
     overflow: hidden;
     margin-bottom: 30px;
@@ -372,7 +389,8 @@
   }
 }
 
-.view-my-projects {
+.view-my-projects,
+.view-knowledge-vault {
   .wrapper-filters {
     > div {
       max-width: 30%;
@@ -380,8 +398,17 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects', (to: laptop-small)) {
+.view-knowledge-vault {
+  &:not(.with-filters) {
+    form {
+      max-width: 40%;
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects, .view-knowledge-vault', (to: laptop-small)) {
   .wrapper-filters {
+    flex-wrap: wrap;
     justify-content: center;
 
     > div {
@@ -390,7 +417,15 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects', (to: tablet)) {
+@include breakpoint-for('.view-knowledge-vault', (to: laptop-small)) {
+  &:not(.with-filters) {
+    form {
+      max-width: 60%;
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects, .view-knowledge-vault', (to: tablet)) {
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
@@ -398,9 +433,27 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects', (to: mobileL)) {
+@include breakpoint-for('.view-knowledge-vault', (to: tablet)) {
+  &:not(.with-filters) {
+    form {
+      max-width: 80%;
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects, .view-knowledge-vault', (to: mobileL)) {
   .wrapper-filters {
     > div {
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
+    }
+  }
+}
+
+@include breakpoint-for('.view-knowledge-vault', (to: mobileL)) {
+  &:not(.with-filters) {
+    form {
       max-width: 100%;
     }
   }

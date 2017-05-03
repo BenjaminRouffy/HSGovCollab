@@ -1,0 +1,16 @@
+<article{{ attributes.addClass('document-teaser') }}>
+  {% if content %}
+    <h4>
+      {% if content.field_first_name %}
+        {{ content.field_first_name }}
+      {% endif %}
+      {% if content.field_last_name %}
+        {{ content.field_last_name }}
+      {% endif %}
+    </h4>
+
+      <a href="{{ path('entity.user.canonical', {'user': user.id()}) }}" role="link">
+        {{ 'Read more'|t }}
+      </a>
+  {% endif %}
+</article>

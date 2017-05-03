@@ -1,20 +1,20 @@
-uuid: d96d07c1-7b14-4bd5-8510-90a9894d8412
+uuid: 21ea771a-a244-4731-b486-17edb3146df8
 langcode: en
 status: true
 dependencies:
   config:
-    - page_manager.page.my_calendar
+    - page_manager.page.group_calendar
     - views.view.my_calendar
   module:
     - panels
     - views
-id: my_calendar-panels_variant-0
-label: Panels
+id: group_calendar-panels_variant-0
+label: Governance_Area
 variant: panels_variant
 variant_settings:
   blocks:
-    354685d7-15b2-4df6-8bcc-14d896a8e6f4:
-      id: 'views_block:my_calendar-block_1'
+    ab7b6f3e-b831-4262-ba51-fcca72e894e4:
+      id: 'views_block:my_calendar-governance_area'
       label: ''
       provider: views
       label_display: '0'
@@ -22,19 +22,19 @@ variant_settings:
       items_per_page: none
       region: middle
       weight: 0
-      uuid: 354685d7-15b2-4df6-8bcc-14d896a8e6f4
+      uuid: ab7b6f3e-b831-4262-ba51-fcca72e894e4
       context_mapping: {  }
   id: panels_variant
-  uuid: 7240df95-c7be-45f3-bbef-ea7f9f069397
+  uuid: 11289ad4-1f2b-486b-bc2c-286ef06846af
   label: null
   weight: 0
   layout: separate_column
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager
-  storage_id: my_calendar-panels_variant-0
+  storage_id: group_calendar-panels_variant-0
   builder: standard
-page: my_calendar
+page: group_calendar
 weight: 0
 selection_criteria: {  }
 selection_logic: and

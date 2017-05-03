@@ -1,0 +1,46 @@
+<?php
+function group_following_cache_schema() {
+
+  $schema['group_following_cache'] = [
+    'description' => 'Stores module data as key/value pairs per user.',
+    'fields' => [
+      'gid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'thread' => [
+        'type' => 'varchar_ascii',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'roles' => [
+        'type' => 'varchar_ascii',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['gid', 'uid', 'thread'],
+    'indexes' => [
+      'gid' => ['gid'],
+      'uid' => ['uid'],
+    ],
+  ];
+
+  return $schema;
+
+}
+
+function group_following_cache_update_8003() {
+  db_drop_table('group_following_cache');
+  db_create_table('group_following_cache', group_following_cache_schema()['group_following_cache']);
+}

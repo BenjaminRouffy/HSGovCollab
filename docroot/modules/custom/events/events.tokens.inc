@@ -71,7 +71,7 @@ function events_tokens($type, $tokens, array $data, array $options, BubbleableMe
  * @param string $field
  *   Entity Field name.
  *
- * return $nested_entity
+ * @return array
  *   Return nested entity object.
  */
 function get_nested_paragraph_entity($entity, string $field) {

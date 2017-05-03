@@ -37,6 +37,13 @@ group.contact:
   requirements:
     group: \d+
 
+group.calendar:
+  path: '/group/{group}/calendar'
+  defaults:
+    _title: 'Calendar'
+  requirements:
+    group: \d+
+
 group.faq:
   path: '/group/{group}/faq'
   defaults:

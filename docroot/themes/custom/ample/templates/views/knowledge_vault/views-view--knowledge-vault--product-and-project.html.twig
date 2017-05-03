@@ -8,6 +8,20 @@ dom_id ? 'js-view-dom-id-' ~ dom_id,
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
 
+  {% if view.getTitle()|raw is not empty %}
+    <div class="top-text-region">
+      <div class="title-wrapper">
+        {{ title_prefix }}
+        <h1 role="heading">
+          {{ view.getTitle()|raw }}
+        </h1>
+        {{ title_suffix|without('contextual_links') }}
+
+        <div class="line"></div>
+      </div>
+    </div>
+  {% endif %}
+
   {% if header %}
   {% if header_without_wrapper is not defined %}
   <{{ header_tag|default('h2') }}{{ header_classes }}>

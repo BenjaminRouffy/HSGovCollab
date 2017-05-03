@@ -123,3 +123,14 @@
     text-decoration: none;
   }
 }
+
+@include breakpoint-for('.article-add-node, .article-edit-node', (to: laptop-small)) {
+  .node-form {
+    width: 100%;
+  }
+
+  .horizontal-tabs {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

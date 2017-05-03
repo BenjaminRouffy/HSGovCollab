@@ -863,6 +863,16 @@ header .social-links .font-social-icon {
   .partners img {
     height: 100% !important;
     width: auto; }
+  .partners .contextual.open .trigger {
+    border: 1px solid #ccc;
+    border-left-color: transparent;
+    border-radius: 0 13px 13px 0; }
+  .partners .contextual-links {
+    right: 30px !important;
+    top: -30px !important; }
+    .partners .contextual-links li {
+      display: inline-block;
+      vertical-align: top; }
 
 header > .partners,
 footer > .partners {
@@ -944,6 +954,7 @@ footer > .partners {
     border-color: #ea3a32; }
   .article-content .read-more {
     border: none;
+    display: block;
     font-family: "Fira Sans", sans-serif;
     margin: 0;
     padding: 0; }
@@ -2342,6 +2353,7 @@ footer > .partners {
   .knowledge-vault-list .knowledge-vault-item {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    display: block;
     margin: 10px;
     position: relative;
     width: calc(33.33% - 20px); }
@@ -2739,10 +2751,15 @@ footer > .partners {
   .knowledge-vault-list a {
     text-decoration: none; }
   .country-list .project-bottom-link,
+  .country-list .knowledge-vault-link,
   .project-list .project-bottom-link,
+  .project-list .knowledge-vault-link,
   .contact-list .project-bottom-link,
+  .contact-list .knowledge-vault-link,
   .article-list .project-bottom-link,
-  .knowledge-vault-list .project-bottom-link {
+  .article-list .knowledge-vault-link,
+  .knowledge-vault-list .project-bottom-link,
+  .knowledge-vault-list .knowledge-vault-link {
     font-size: 0.875rem;
     color: #283b44;
     border-top: 1px solid #afb7bb;
@@ -2753,21 +2770,36 @@ footer > .partners {
     width: 100%;
     z-index: 5; }
     .country-list .project-bottom-link .font-social-icon:not(:last-child),
+    .country-list .knowledge-vault-link .font-social-icon:not(:last-child),
     .project-list .project-bottom-link .font-social-icon:not(:last-child),
+    .project-list .knowledge-vault-link .font-social-icon:not(:last-child),
     .contact-list .project-bottom-link .font-social-icon:not(:last-child),
+    .contact-list .knowledge-vault-link .font-social-icon:not(:last-child),
     .article-list .project-bottom-link .font-social-icon:not(:last-child),
-    .knowledge-vault-list .project-bottom-link .font-social-icon:not(:last-child) {
+    .article-list .knowledge-vault-link .font-social-icon:not(:last-child),
+    .knowledge-vault-list .project-bottom-link .font-social-icon:not(:last-child),
+    .knowledge-vault-list .knowledge-vault-link .font-social-icon:not(:last-child) {
       margin-bottom: 10px; }
     .country-list .project-bottom-link span,
     .country-list .project-bottom-link a,
+    .country-list .knowledge-vault-link span,
+    .country-list .knowledge-vault-link a,
     .project-list .project-bottom-link span,
     .project-list .project-bottom-link a,
+    .project-list .knowledge-vault-link span,
+    .project-list .knowledge-vault-link a,
     .contact-list .project-bottom-link span,
     .contact-list .project-bottom-link a,
+    .contact-list .knowledge-vault-link span,
+    .contact-list .knowledge-vault-link a,
     .article-list .project-bottom-link span,
     .article-list .project-bottom-link a,
+    .article-list .knowledge-vault-link span,
+    .article-list .knowledge-vault-link a,
     .knowledge-vault-list .project-bottom-link span,
-    .knowledge-vault-list .project-bottom-link a {
+    .knowledge-vault-list .project-bottom-link a,
+    .knowledge-vault-list .knowledge-vault-link span,
+    .knowledge-vault-list .knowledge-vault-link a {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -2776,25 +2808,45 @@ footer > .partners {
       white-space: nowrap; }
       .country-list .project-bottom-link span:after,
       .country-list .project-bottom-link a:after,
+      .country-list .knowledge-vault-link span:after,
+      .country-list .knowledge-vault-link a:after,
       .project-list .project-bottom-link span:after,
       .project-list .project-bottom-link a:after,
+      .project-list .knowledge-vault-link span:after,
+      .project-list .knowledge-vault-link a:after,
       .contact-list .project-bottom-link span:after,
       .contact-list .project-bottom-link a:after,
+      .contact-list .knowledge-vault-link span:after,
+      .contact-list .knowledge-vault-link a:after,
       .article-list .project-bottom-link span:after,
       .article-list .project-bottom-link a:after,
+      .article-list .knowledge-vault-link span:after,
+      .article-list .knowledge-vault-link a:after,
       .knowledge-vault-list .project-bottom-link span:after,
-      .knowledge-vault-list .project-bottom-link a:after {
+      .knowledge-vault-list .project-bottom-link a:after,
+      .knowledge-vault-list .knowledge-vault-link span:after,
+      .knowledge-vault-list .knowledge-vault-link a:after {
         content: none; }
       .country-list .project-bottom-link span:before,
       .country-list .project-bottom-link a:before,
+      .country-list .knowledge-vault-link span:before,
+      .country-list .knowledge-vault-link a:before,
       .project-list .project-bottom-link span:before,
       .project-list .project-bottom-link a:before,
+      .project-list .knowledge-vault-link span:before,
+      .project-list .knowledge-vault-link a:before,
       .contact-list .project-bottom-link span:before,
       .contact-list .project-bottom-link a:before,
+      .contact-list .knowledge-vault-link span:before,
+      .contact-list .knowledge-vault-link a:before,
       .article-list .project-bottom-link span:before,
       .article-list .project-bottom-link a:before,
+      .article-list .knowledge-vault-link span:before,
+      .article-list .knowledge-vault-link a:before,
       .knowledge-vault-list .project-bottom-link span:before,
-      .knowledge-vault-list .project-bottom-link a:before {
+      .knowledge-vault-list .project-bottom-link a:before,
+      .knowledge-vault-list .knowledge-vault-link span:before,
+      .knowledge-vault-list .knowledge-vault-link a:before {
         font-size: 1.75rem;
         content: "j";
         color: #4c7e96;
@@ -2803,11 +2855,38 @@ footer > .partners {
         padding-top: 2px;
         vertical-align: bottom; }
     .country-list .project-bottom-link a:hover,
+    .country-list .knowledge-vault-link a:hover,
     .project-list .project-bottom-link a:hover,
+    .project-list .knowledge-vault-link a:hover,
     .contact-list .project-bottom-link a:hover,
+    .contact-list .knowledge-vault-link a:hover,
     .article-list .project-bottom-link a:hover,
-    .knowledge-vault-list .project-bottom-link a:hover {
+    .article-list .knowledge-vault-link a:hover,
+    .knowledge-vault-list .project-bottom-link a:hover,
+    .knowledge-vault-list .knowledge-vault-link a:hover {
       opacity: .66; }
+  .country-list .knowledge-vault-link .user-icon,
+  .project-list .knowledge-vault-link .user-icon,
+  .contact-list .knowledge-vault-link .user-icon,
+  .article-list .knowledge-vault-link .user-icon,
+  .knowledge-vault-list .knowledge-vault-link .user-icon {
+    height: 40px;
+    width: 40px;
+    margin: 7px 20px 0 0; }
+  .country-list .knowledge-vault-link p,
+  .project-list .knowledge-vault-link p,
+  .contact-list .knowledge-vault-link p,
+  .article-list .knowledge-vault-link p,
+  .knowledge-vault-list .knowledge-vault-link p {
+    font-size: 0.875rem;
+    font-family: Oswald, sans-serif;
+    margin: 0; }
+  .country-list .knowledge-vault-link .category,
+  .project-list .knowledge-vault-link .category,
+  .contact-list .knowledge-vault-link .category,
+  .article-list .knowledge-vault-link .category,
+  .knowledge-vault-list .knowledge-vault-link .category {
+    color: #80949e; }
   .country-list .section-info,
   .project-list .section-info,
   .contact-list .section-info,
@@ -4429,6 +4508,12 @@ form .social_login iframe {
     margin: 0;
     padding: 0 40px;
     width: 50%; }
+  .form-my-settings #edit-account fieldset legend {
+    margin-bottom: 10px; }
+    .form-my-settings #edit-account fieldset legend span:after {
+      content: ":"; }
+  .form-my-settings #edit-account fieldset .fieldset-wrapper {
+    margin-bottom: 25px; }
 
 .form-my-settings .role-status-wrapper {
   display: -webkit-box;
@@ -5561,6 +5646,7 @@ header {
 
 .header-static {
   background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-height: 120px;
   position: relative;
   text-align: center;
@@ -5990,6 +6076,8 @@ footer {
     font-size: 0.9rem;
     font-family: "Libre Franklin", sans-serif;
     margin-bottom: 20px; }
+  footer a:hover {
+    color: #ea3a32; }
 
 @media (max-width: 991px) {
   footer {
@@ -6227,7 +6315,7 @@ footer {
   .content h1,
   .more-content h1 {
     font-size: 3.0625rem;
-    line-height: 48px;
+    line-height: 56px;
     margin: 20px 0 21px;
     padding: 0; }
     @media screen and (max-width: 479px) {
@@ -6977,11 +7065,16 @@ footer {
   max-width: 618px;
   position: relative; }
   .comment-wrapper .title-wrapper {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    text-align: left; }
     .comment-wrapper .title-wrapper h2 {
       font-size: 1.75rem;
       line-height: 30px;
       margin: 20px 0 10px; }
+    .comment-wrapper .title-wrapper .line {
+      left: 0;
+      -webkit-transform: none;
+              transform: none; }
   .comment-wrapper .status-message {
     padding: 5px 10px;
     margin-bottom: 5px; }
@@ -7121,6 +7214,8 @@ footer {
     margin-bottom: 10px; }
   .comment-wrapper .form-actions {
     text-align: center; }
+    .comment-wrapper .form-actions [value="Preview"] {
+      display: none; }
 
 .faq-list {
   margin: 0 auto;
@@ -7158,11 +7253,15 @@ footer {
     .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .dashboard .follow-link .button {
       background: transparent;
       border-color: #ea3a32;
-      display: inline-block;
-      text-transform: none;
-      vertical-align: top; }
+      text-transform: none; }
     .dashboard .follow-link .ajax-progress {
       position: absolute; }
+  .dashboard .contribute-button {
+    display: inline-block;
+    font-family: Oswald, sans-serif;
+    letter-spacing: 0;
+    padding: 20px 40px;
+    vertical-align: top; }
   .dashboard .sidebar {
     background-color: #4c7e96;
     color: #fff;

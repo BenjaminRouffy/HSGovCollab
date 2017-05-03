@@ -1,4 +1,4 @@
-<div class="article-item">
+<a href="{{ url }}" class="article-item">
   <div{{ attributes.addClass('article-content') }}>
     <div class="article-title">
       {% if content.field_type|field_value %}
@@ -15,9 +15,9 @@
 
       {{ content.body }}
 
-      <a href="{{ url }}" class="read-more">
+      <div class="read-more">
         {{ 'Read more'|t }}
-      </a>
+      </div>
     </div>
   </div>
-</div>
+</a>

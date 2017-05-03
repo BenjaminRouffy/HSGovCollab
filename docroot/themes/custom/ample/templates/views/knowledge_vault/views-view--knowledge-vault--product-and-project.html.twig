@@ -1,8 +1,13 @@
-{% set classes = [dom_id ? 'js-view-dom-id-' ~ dom_id] %}
+{%
+set classes = [
+dom_id ? 'js-view-dom-id-' ~ dom_id,
+]
+%}
 
 {% if without_wrapper is not defined %}
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
+
   {% if header %}
   {% if header_without_wrapper is not defined %}
   <{{ header_tag|default('h2') }}{{ header_classes }}>
@@ -16,12 +21,15 @@
   {{ exposed }}
   {{ attachment_before }}
 
+  {{ pager }}
+
   {{ rows }}
   {% if empty %}
     <div class="empty-result">
       {{ empty }}
     </div>
   {% endif %}
+  {{ pager }}
 
   {{ attachment_after }}
 

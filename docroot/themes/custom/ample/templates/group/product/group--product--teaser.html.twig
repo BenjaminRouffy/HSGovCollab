@@ -1,0 +1,22 @@
+<div class="product-item">
+  <div{{ attributes.addClass('product-content') }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+    <div class="product-title">
+      <div class="product-icon-wrapper">
+        {{ content.field_region_icon }}
+      </div>
+
+      <h3 role="heading">
+        {{ label }}
+      </h3>
+
+      <div class="summary">
+        {{ content.field_summary }}
+      </div>
+    </div>
+
+    <a href="{{ url }}" class="product-link"></a>
+  </div>
+</div>
+

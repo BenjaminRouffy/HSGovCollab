@@ -7,7 +7,10 @@
 
 <article{{ attributes }} role="article">
   <div class="post-info">
-    {{ content.field_date }}
+    {% if content.field_date['#period'] %}
+      {{ content.field_date['#period'] }}
+    {% endif %}
+
     {% if content.field_event_country_content|field_value %}
       <span class="country">
         {{ content.field_event_country_content|field_value }}
@@ -30,17 +33,8 @@
   <div class="event-info">
     <div class="row">
       <span class="label">{{ 'When'|t }}:</span>
-      <span class="value">{{ content.field_date|field_value }}</span>
+      <span class="value">{{ content.field_date }}</span>
     </div>
-
-    {% if (content.field_time|field_value or content.field_time_text|field_value) %}
-      <div class="row">
-        <span class="label">{{ 'Time'|t }}:</span>
-        <span class="value">
-        {{ content.field_time|field_value ? content.field_time|field_value : '' }} {{ content.field_time_text|field_value ? content.field_time_text|field_value : '' }}
-      </span>
-      </div>
-    {% endif %}
 
     {% if content.field_timezone|field_value %}
       <div class="row">
@@ -68,6 +62,10 @@
         </a>
       </div>
     {% endif %}
+
+    {#For governance area#}
+    {{ content.like_and_dislike }}
+    {#For governance area#}
   </div>
 
   {% if node.body.summary %}

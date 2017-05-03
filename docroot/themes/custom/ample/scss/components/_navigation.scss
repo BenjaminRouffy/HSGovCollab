@@ -106,6 +106,8 @@
 
 .collapsed {
   ~ .dashboard-sidebar {
+    padding-top: 0;
+
     .toolbar-fixed & {
       padding-top: 39px;
     }
@@ -121,7 +123,7 @@
   height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 80px;
+  padding: 46px 0 80px;
   position: fixed;
   top: 0;
   left: 0;

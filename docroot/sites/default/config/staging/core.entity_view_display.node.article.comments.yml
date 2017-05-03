@@ -15,7 +15,6 @@ dependencies:
     - field.field.node.article.field_documents
     - field.field.node.article.field_image
     - field.field.node.article.field_pros
-    - field.field.node.article.field_related_content_selector
     - field.field.node.article.field_tags
     - field.field.node.article.field_type
     - node.type.article
@@ -46,8 +45,8 @@ hidden:
   field_content_date: true
   field_documents: true
   field_image: true
+  field_knowledge_vault: true
   field_pros: true
-  field_related_content_selector: true
   field_tags: true
   field_type: true
   langcode: true

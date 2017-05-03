@@ -1435,6 +1435,20 @@
   }
 }
 
+.knowledge-vault-list {
+  .knowledge-vault-link {
+    > a {
+      &:before {
+        content: none;
+      }
+    }
+  }
+}
+
+.article-list {
+  margin-bottom: 60px;
+}
+
 .single-contact {
   display: block;
   margin: 30px auto 0;

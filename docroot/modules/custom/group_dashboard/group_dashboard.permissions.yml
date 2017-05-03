@@ -18,3 +18,9 @@ access configuration page:
 
 access to subgroup page:
   title: 'Access to subgroup page'
+
+access to related entities page:
+  title: 'Access to related entities page'
+
+permission_callbacks:
+  - \Drupal\group_dashboard\RelatedEntitiesPermissions::permissions

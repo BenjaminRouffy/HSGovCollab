@@ -1,0 +1,22 @@
+<div class="country-item">
+  <div{{ attributes.addClass('country-content') }}>
+    {{ title_preffix }}
+    {{ title_suffix }}
+    <div class="project-title">
+      <div class="project-icon-wrapper">
+        {{ content.field_region_icon }}
+      </div>
+
+      <h3 role="heading">
+        {{ label }}
+      </h3>
+
+      <div class="summary">
+        {{ content.field_summary }}
+      </div>
+    </div>
+
+
+    <a href="{{ url }}" class="country-link"></a>
+  </div>
+</div>

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - page_manager.page.group
+    - views.view.article
     - views.view.news_and_events_group
   module:
     - addtoany
@@ -35,7 +36,7 @@ variant_settings:
       label_display: '0'
       view_mode: default
       region: content
-      weight: -1
+      weight: -2
       uuid: 7204e5a0-7a40-4639-b856-267bf2e89d0d
       context_mapping:
         entity: group
@@ -45,7 +46,7 @@ variant_settings:
       provider: addtoany
       label_display: '0'
       region: content
-      weight: -2
+      weight: -3
       uuid: 864f2f3f-f7ed-49b2-8536-98ee5abe1907
       context_mapping: {  }
     f4ada9d0-cbb7-42bf-82cd-bd2b62c33e68:
@@ -88,6 +89,17 @@ variant_settings:
       uuid: 0c9c7e36-65df-4015-b1e8-a74d5478d08c
       context_mapping:
         entity: group
+    3f5d20ff-f4cc-46ac-b397-9fc3e2e284c4:
+      id: 'views_block:article-parents_content'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -1
+      uuid: 3f5d20ff-f4cc-46ac-b397-9fc3e2e284c4
+      context_mapping: {  }
   id: panels_variant
   uuid: 04561229-6eea-497d-b2b8-2e6ff6b0f60d
   label: null

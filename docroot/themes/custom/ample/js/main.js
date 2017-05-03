@@ -533,10 +533,13 @@
 
   Drupal.behaviors.header = {
     attach: function(context, settings) {
+      var $window = $(window);
       var $header = $('header', context);
 
+      $window.scrollTop() > 0 ? $header.addClass('collapsed') : $header.removeClass('collapsed');
+
       $.scrollAction(function() {
-        return $(window).scrollTop() > 0;
+        return $window.scrollTop() > 0;
       }, function(isTrue) {
         $header.toggleClassCondition(isTrue, 'collapsed');
       });

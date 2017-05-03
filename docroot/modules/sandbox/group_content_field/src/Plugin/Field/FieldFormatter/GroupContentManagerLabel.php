@@ -38,7 +38,7 @@ class GroupContentManagerLabel extends FormatterBase {
           '#type' => 'markup',
           '#markup' => $this->t('@label @group_type manager', [
             '@label' => $group->label(),
-            '@group_type' => $group->bundle(),
+            '@group_type' => str_replace('_', ' ', $group->bundle()),
           ]),
         ];
       }

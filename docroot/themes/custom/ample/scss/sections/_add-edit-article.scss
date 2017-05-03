@@ -53,7 +53,8 @@
 
   .horizontal-tabs-list,
   .filter-wrapper,
-  .js-form-type-vertical-tabs {
+  .js-form-type-vertical-tabs,
+  #edit-preview {
     display: none;
   }
 
@@ -114,16 +115,6 @@
 
     .form-submit {
       margin: 0 5px;
-    }
-  }
-
-  #edit-preview {
-    border-color: #afb7bb;
-    color: #afb7bb;
-
-    &:hover {
-      border-color: #7f868a;
-      color: #7f868a;
     }
   }
 

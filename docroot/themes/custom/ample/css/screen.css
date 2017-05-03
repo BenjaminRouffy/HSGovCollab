@@ -7108,9 +7108,11 @@ footer {
 .article-add-node .horizontal-tabs-list,
 .article-add-node .filter-wrapper,
 .article-add-node .js-form-type-vertical-tabs,
+.article-add-node #edit-preview,
 .article-edit-node .horizontal-tabs-list,
 .article-edit-node .filter-wrapper,
-.article-edit-node .js-form-type-vertical-tabs {
+.article-edit-node .js-form-type-vertical-tabs,
+.article-edit-node #edit-preview {
   display: none; }
 
 .article-add-node details,
@@ -7168,15 +7170,6 @@ footer {
   .article-edit-node .form-actions .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .article-edit-node .form-actions .button, .article-edit-node .form-actions #edit-delete {
     margin: 0 5px; }
-
-.article-add-node #edit-preview,
-.article-edit-node #edit-preview {
-  border-color: #afb7bb;
-  color: #afb7bb; }
-  .article-add-node #edit-preview:hover,
-  .article-edit-node #edit-preview:hover {
-    border-color: #7f868a;
-    color: #7f868a; }
 
 .article-add-node #edit-delete,
 .article-edit-node #edit-delete {

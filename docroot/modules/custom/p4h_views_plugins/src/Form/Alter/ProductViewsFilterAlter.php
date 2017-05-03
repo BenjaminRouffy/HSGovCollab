@@ -7,15 +7,18 @@ use Drupal\form_alter_service\Interfaces\FormAlterServiceAlterInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceBaseInterface;
 
 /**
- * Class ProductNewsAndEventsFilterAlter.
+ * Class ProductDocumentsFilterAlter.
  */
-class ProductNewsAndEventsFilterAlter implements FormAlterServiceBaseInterface, FormAlterServiceAlterInterface {
+class ProductViewsFilterAlter implements FormAlterServiceBaseInterface, FormAlterServiceAlterInterface {
 
   /**
    * @inheritdoc
    */
   public function hasMatch(&$form, FormStateInterface $form_state, $form_id) {
-    return 'views-exposed-form-news-and-events-group-product-news-and-events' == $form['#id'];
+    return in_array($form['#id'], [
+      'views-exposed-form-news-and-events-group-product-news-and-events',
+      'views-exposed-form-news-and-events-group-product-documents',
+    ]);
   }
 
   /**

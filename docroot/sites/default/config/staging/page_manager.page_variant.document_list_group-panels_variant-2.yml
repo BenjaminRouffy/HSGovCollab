@@ -1,4 +1,4 @@
-uuid: cd385de0-c597-432f-90ef-94ff12c0e8b8
+uuid: 7afc012f-eb4f-459e-af6b-4fe25a19ff9d
 langcode: en
 status: true
 dependencies:
@@ -9,27 +9,16 @@ dependencies:
     - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
   module:
     - block_content
-    - group
-    - group_dashboard
+    - ctools
     - panels
+    - user
     - views
-id: document_list_group-panels_variant-0
-label: Panels
+id: document_list_group-panels_variant-2
+label: Product
 variant: panels_variant
 variant_settings:
   blocks:
-    e214fc84-b64c-4b19-af6c-5abfcb766206:
-      id: 'views_block:news_and_events_group-documents_by_group'
-      label: ''
-      provider: views
-      label_display: '0'
-      views_label: ''
-      items_per_page: none
-      region: content
-      weight: 0
-      uuid: e214fc84-b64c-4b19-af6c-5abfcb766206
-      context_mapping: {  }
-    d1d90dae-6980-41a0-ae31-cd09d6df3ebb:
+    caed58c6-c658-45e7-b7dc-2732cda83256:
       id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
       label: 'Interested in becoming a member?'
       provider: block_content
@@ -39,35 +28,45 @@ variant_settings:
       view_mode: view_mode_registration_block
       region: bottom
       weight: 0
-      uuid: d1d90dae-6980-41a0-ae31-cd09d6df3ebb
+      uuid: caed58c6-c658-45e7-b7dc-2732cda83256
+      context_mapping: {  }
+    8ce20589-87db-4445-a882-917e21c010c6:
+      id: 'views_block:news_and_events_group-product_documents'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 8ce20589-87db-4445-a882-917e21c010c6
+      pager: view
       context_mapping: {  }
   id: panels_variant
-  uuid: ddcd8b00-fd83-4acd-888b-b6808f126591
+  uuid: c1ebfa60-fca6-4ee7-93f0-4185458c141c
   label: null
   weight: 0
   layout: stacked
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager
-  storage_id: document_list_group-panels_variant-0
+  storage_id: document_list_group-panels_variant-2
   builder: standard
 page: document_list_group
 weight: 0
 selection_criteria:
   -
-    id: group_type
-    group_types:
-      country: country
-      project: project
-      region: region
-    negate: 0
+    id: 'entity_bundle:group'
+    bundles:
+      product: product
+    negate: false
     context_mapping:
       group: group
   -
-    id: access_by_user_role
+    id: user_role
     roles:
       authenticated: authenticated
-    negate: 0
+    negate: false
     context_mapping:
       user: current_user
 selection_logic: and

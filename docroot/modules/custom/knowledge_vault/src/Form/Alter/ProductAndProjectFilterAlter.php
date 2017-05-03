@@ -22,13 +22,27 @@ class ProductAndProjectFilterAlter implements FormAlterServiceBaseInterface, For
    * @inheritdoc
    */
   public function formAlter(&$form, FormStateInterface $form_state) {
+    $form['wrap'] = [
+      '#prefix' => '<div class="wrapper-filters">',
+      '#suffix' => '</div>',
+      '#weight' => -100,
+    ];
+
+    if (isset($form['child_type'])) {
+      $form['child_type']['#options']['All'] = t('Select type');
+      $form['wrap']['child_type'] = $form['child_type'];
+      unset($form['child_type']);
+    }
     $form['label']['#attributes']['placeholder'] = t('Search in products and projects');
 
-    if (isset($form['type_1'])) {
-      $form['type_1']['#options']['All'] = t('Select type');
-    }
     $form['label']['#prefix'] = '<div class="search-form-wrapper">';
     $form['actions']['#suffix'] = '</div>';
+
+    $form['wrap']['actions'] = $form['actions'];
+    unset($form['actions']);
+
+    $form['wrap']['label'] = $form['label'];
+    unset($form['label']);
   }
 
 }

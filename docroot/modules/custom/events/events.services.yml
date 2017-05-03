@@ -1,5 +1,0 @@
-services:
-  form_alter_service.event_alter:
-    class: Drupal\events\FormAlterService\EventAlter
-    tags:
-      - { name: form_alter, form_id: node_event_edit_form }

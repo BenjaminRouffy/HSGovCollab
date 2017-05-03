@@ -82,6 +82,7 @@ class CountryMenuBlock extends BlockBase {
         'news_and_event' => $this->t('News&Events'),
         'document' => $this->t('Documents'),
         'contact' => $this->t('Contacts'),
+        'calendar' => $this->t('Calendar'),
         'faq' => $this->t('FAQ'),
       ];
 
@@ -122,6 +123,10 @@ class CountryMenuBlock extends BlockBase {
             break;
 
           case 'contact':
+            $row = 'not-null';
+            break;
+
+          case 'calendar':
             $row = 'not-null';
             break;
 

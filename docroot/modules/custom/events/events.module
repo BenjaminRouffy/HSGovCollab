@@ -16,13 +16,34 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 function events_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
   $type = $entity->getType();
   $user = Drupal::currentUser();
-  if ('event' == $type && 'default' == $view_mode && TRUE === $user->isAnonymous()) {
-    $build['signup_link'] = [
-      '#title' => new TranslatableMarkup('Sign up for event'),
-      '#type' => 'link',
-      '#url' => Url::fromRoute('user.login'),
-      '#weight' => -10,
-    ];
+  if ('event' == $type) {
+    if ('default' == $view_mode && TRUE === $user->isAnonymous()) {
+      $build['signup_link'] = [
+        '#title' => new TranslatableMarkup('Sign up for event'),
+        '#type' => 'link',
+        '#url' => Url::fromRoute('user.login'),
+        '#weight' => -10,
+      ];
+    }
+    /* @var array $roles */
+    $roles = \Drupal::currentUser()->getRoles();
+    if (in_array("governance_group_users", $roles)) {
+      $build['event_registrant'] = views_embed_view('event_sign_up', 'block_1', $entity->id());
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ */
+function events_node_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  /* @var \Drupal\node\Entity\Node $entity */
+  $type = $entity->getType();
+  if ('event' == $type) {
+    $roles = \Drupal::currentUser()->getRoles();
+    if (!in_array("governance_group_users", $roles)) {
+      $build['like_and_dislike']['#access'] = FALSE;
+    }
   }
 }
 
@@ -33,6 +54,11 @@ function events_entity_extra_field_info() {
   $extra['node']['event']['form']['custom_date_widget'] = [
     'label' => t('Custom Date Widget'),
     'weight' => 0,
+  ];
+  $extra['node']['event']['display']['event_registrant'] = [
+    'label' => t('Event Registrant'),
+    'weight' => 0,
+    'visible' => FALSE,
   ];
   return $extra;
 }

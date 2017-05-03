@@ -1,4 +1,4 @@
-img[src$="svg"] {
+img[src$="svg"] div:not(.header-static):not(.header-fixed) {
   max-height: 70px; }
 
 .container-inline label:after,

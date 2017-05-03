@@ -1,0 +1,24 @@
+<div class="article-preview">
+  <div class="top-banner-region">
+    {% include "node--article--banner.html.twig" %}
+  </div>
+
+  <section class="content-container content-with-sidebar">
+    <div class="region-wrapper">
+      <section class="content">
+        {% include "node--article--default.html.twig" %}
+      </section>
+      <aside class="sidebar">
+        {% if content.field_article_join_block|field_value %}
+          <div class="teaser corners">
+            {{ content.field_article_join_block }}
+          </div>
+        {% endif %}
+
+        {{ content.field_documents }}
+      </aside>
+    </div>
+  </section>
+</div>
+
+

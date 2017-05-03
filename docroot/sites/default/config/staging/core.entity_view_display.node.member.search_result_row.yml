@@ -1,0 +1,99 @@
+uuid: ba4bb550-d154-4900-b44d-2caf639d040d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_row
+    - field.field.node.member.body
+    - field.field.node.member.field_content_paragraph
+    - field.field.node.member.field_country
+    - field.field.node.member.field_join_block
+    - field.field.node.member.field_member_category
+    - field.field.node.member.field_member_image
+    - field.field.node.member.field_member_link
+    - image.style.174x174
+    - node.type.member
+  module:
+    - entity_reference_revisions
+    - image
+    - link
+    - text
+    - user
+id: node.member.search_result_row
+targetEntityType: node
+bundle: member
+mode: search_result_row
+content:
+  addtoany:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  body:
+    label: hidden
+    type: text_default
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_content_paragraph:
+    type: entity_reference_revisions_entity_view
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_country:
+    weight: 3
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_join_block:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_member_category:
+    weight: 2
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_member_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: 174x174
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_member_link:
+    weight: 6
+    label: hidden
+    settings:
+      trim_length: 80
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

@@ -115,6 +115,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     }
 
     $form['#attributes']['class'][] = 'form-my-settings';
+
+    _user_registration_manager_field_states($form);
   }
 
   if ($form_id == 'user_invited_person_form') {
@@ -129,6 +131,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
       $form['account']['password_policy_status'],
       $form['account']['roles']['#ajax']
     );
+
+    _user_registration_manager_field_states($form);
   }
 }
 
@@ -232,5 +236,52 @@ function user_registration_form_user_form_alter(&$form, FormStateInterface $form
   if ($user->id() == $account->id() || $user->hasPermission('administer users')) {
     $form['account']['mail']['#type'] = 'email_confirm';
     $form['account']['mail']['#title_display'] = 'invisible';
+  }
+}
+
+/**
+ * Add states to group manager fields.
+ *
+ * @param array $form
+ *   Form array containing the user form.
+ */
+function _user_registration_manager_field_states(array &$form) {
+  if (isset($form['field_country_manager'])) {
+    $form['field_country_manager']['widget'][0]['entity_gids'] += [
+      '#states' => [
+        'required' => [
+          ':input[name="roles[country_managers]"]' => ['checked' => TRUE],
+        ],
+        'visible' => [
+          ':input[name="roles[country_managers]"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+  }
+
+  if (isset($form['field_project_manager'])) {
+    $form['field_project_manager']['widget'][0]['entity_gids'] += [
+      '#states' => [
+        'required' => [
+          ':input[name="roles[projects_managers]"]' => ['checked' => TRUE],
+        ],
+        'visible' => [
+          ':input[name="roles[projects_managers]"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+  }
+
+  if (isset($form['field_knowledge_vault_manager'])) {
+    $form['field_knowledge_vault_manager']['widget'][0]['entity_gids'] += [
+      '#states' => [
+        'required' => [
+          ':input[name="roles[knowledge_vault_manager]"]' => ['checked' => TRUE],
+        ],
+        'visible' => [
+          ':input[name="roles[knowledge_vault_manager]"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
   }
 }

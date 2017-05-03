@@ -137,6 +137,17 @@ form {
   line-height: 1;
 }
 
+.form-date {
+  border: 1px solid #75a8c0;
+  color: $navy;
+  font-family: $fira;
+  font-weight: 300;
+  height: 50px;
+  line-height: 26px;
+  margin-bottom: 25px;
+  padding: 1px 12px;
+}
+
 .form-textarea {
   @extend .form-text;
   height: auto;
@@ -666,19 +677,19 @@ form {
   }
 }
 
-@include breakpoint-for('.view-project, .view-product, .view-knowledge-vault', (to: laptop-small)) {
+@include breakpoint-for('.view-project, .view-product', (to: laptop-small)) {
   form {
     max-width: 60%;
   }
 }
 
-@include breakpoint-for('.view-project, .view-product, .view-knowledge-vault', (to: tablet)) {
+@include breakpoint-for('.view-project, .view-product', (to: tablet)) {
   form {
     max-width: 80%;
   }
 }
 
-@include breakpoint-for('.view-project, .view-product, .view-knowledge-vault', (to: mobileL)) {
+@include breakpoint-for('.view-project, .view-product', (to: mobileL)) {
   form {
     max-width: 100%;
   }

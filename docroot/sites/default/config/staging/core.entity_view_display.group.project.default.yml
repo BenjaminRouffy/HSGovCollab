@@ -3,10 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.group.project.field_based_on
     - field.field.group.project.field_content
     - field.field.group.project.field_date
     - field.field.group.project.field_faq
     - field.field.group.project.field_join_block
+    - field.field.group.project.field_knowledge_vault
+    - field.field.group.project.field_product
     - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
     - field.field.group.project.field_summary_public
@@ -74,8 +77,11 @@ content:
 hidden:
   changed: true
   created: true
+  field_based_on: true
   field_date: true
   field_faq: true
+  field_knowledge_vault: true
+  field_product: true
   field_summary_public: true
   langcode: true
   uid: true

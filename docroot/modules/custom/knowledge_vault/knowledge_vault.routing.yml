@@ -1,0 +1,7 @@
+knowledge_vault.settings:
+  path: '/admin/config/system/knowledge-vault'
+  defaults:
+    _form: 'Drupal\knowledge_vault\Form\KnowledgeVaultConfigForm'
+    _title: 'Knowledge vault'
+  requirements:
+    _permission: 'administer knowledge vault'

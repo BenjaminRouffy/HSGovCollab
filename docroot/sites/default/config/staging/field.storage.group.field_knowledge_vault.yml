@@ -1,0 +1,27 @@
+uuid: 6f423972-6d75-4a89-9079-dce6b756c3e6
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - group
+    - group_content_field
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: group.field_knowledge_vault
+field_name: field_knowledge_vault
+entity_type: group
+type: group_content_item
+settings:
+  group_type: knowledge_vault
+  plugin_type: group_content_subgroup
+  plugin_enabler_id: knowledge_vault-subgroup-project
+  group_roles: {  }
+module: group_content_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: a9c6718a-9578-4203-aeb8-5f1fcef8f57e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_knowledge_vault
+    - node.type.article
+  module:
+    - group_content_field
+id: node.article.field_knowledge_vault
+field_name: field_knowledge_vault
+entity_type: node
+bundle: article
+label: 'Knowledge vault'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

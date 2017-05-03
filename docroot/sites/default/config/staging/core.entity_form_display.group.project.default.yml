@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.browse_files_modal
+    - field.field.group.project.field_based_on
     - field.field.group.project.field_content
     - field.field.group.project.field_date
     - field.field.group.project.field_faq
     - field.field.group.project.field_join_block
+    - field.field.group.project.field_knowledge_vault
+    - field.field.group.project.field_product
     - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
     - field.field.group.project.field_summary_public
@@ -17,6 +20,7 @@ dependencies:
     - datetime
     - entity_browser
     - field_group
+    - group_content_field
     - paragraphs
     - path
     - text
@@ -25,6 +29,7 @@ third_party_settings:
     group_tabs_panel:
       children:
         - group_summary
+        - group_based_on
         - group_content
         - group_timeline
         - group_bottom
@@ -61,7 +66,7 @@ third_party_settings:
         - field_summary
         - field_content
       parent_name: group_tabs_panel
-      weight: 3
+      weight: 4
       format_type: tab
       format_settings:
         id: ''
@@ -74,7 +79,7 @@ third_party_settings:
       children:
         - field_time_line
       parent_name: group_tabs_panel
-      weight: 4
+      weight: 5
       format_type: tab
       format_settings:
         label: Timeline
@@ -88,7 +93,7 @@ third_party_settings:
       children:
         - field_join_block
       parent_name: group_tabs_panel
-      weight: 5
+      weight: 6
       format_type: tab
       format_settings:
         id: ''
@@ -101,7 +106,7 @@ third_party_settings:
       children:
         - field_faq
       parent_name: group_tabs_panel
-      weight: 6
+      weight: 7
       format_type: tab
       format_settings:
         id: ''
@@ -110,11 +115,32 @@ third_party_settings:
         description: ''
         required_fields: true
       label: FAQ
+    group_based_on:
+      children:
+        - field_based_on
+        - field_knowledge_vault
+        - field_product
+      parent_name: group_tabs_panel
+      weight: 3
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Based on'
 id: group.project.default
 targetEntityType: group
 bundle: project
 mode: default
 content:
+  field_based_on:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   field_content:
     weight: 6
     settings:
@@ -151,6 +177,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_knowledge_vault:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
+    region: content
+  field_product:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
     region: content
   field_project_icon:
     weight: 6

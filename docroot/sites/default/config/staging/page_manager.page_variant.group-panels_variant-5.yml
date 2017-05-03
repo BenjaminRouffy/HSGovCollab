@@ -5,6 +5,7 @@ dependencies:
   config:
     - page_manager.page.group
     - views.view.article
+    - views.view.knowledge_vault
   module:
     - ctools
     - ctools_block
@@ -23,7 +24,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: content
-      weight: 1
+      weight: 0
       uuid: 5c59967f-8a7c-45ff-8d98-d8248827d802
       context_mapping: {  }
     1885e92c-9554-4511-a116-66d4da44617b:
@@ -39,10 +40,21 @@ variant_settings:
         third_party_settings: {  }
         weight: 0
       region: content
-      weight: 0
+      weight: -1
       uuid: 1885e92c-9554-4511-a116-66d4da44617b
       context_mapping:
         entity: group
+    22ff9acc-3ed5-41c1-9187-5373708e27b9:
+      id: 'views_block:knowledge_vault-product_and_project'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 1
+      uuid: 22ff9acc-3ed5-41c1-9187-5373708e27b9
+      context_mapping: {  }
   id: panels_variant
   uuid: 80c3d147-8cd1-41d3-8ad9-b6c2ede86b0e
   label: null

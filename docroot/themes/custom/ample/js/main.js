@@ -164,8 +164,10 @@
     var halfDocOffset = $document.height() / 2;
     var halfWinOffset = $window.height() / 2;
     var $relatedContent = $('.related-wrapper');
+    var windowBottomPos = $window.scrollTop() + $window.height();
+    var docHeightNoFooter = $(document).height() - 160;
 
-    if ((scrollTop + halfWinOffset) > halfDocOffset) {
+    if ((scrollTop + halfWinOffset) > halfDocOffset && windowBottomPos < docHeightNoFooter) {
       $relatedContent.addClass('visible');
     } else {
       $relatedContent.removeClass('visible');

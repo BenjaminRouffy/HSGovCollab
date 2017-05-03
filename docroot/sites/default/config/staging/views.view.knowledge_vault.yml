@@ -423,7 +423,21 @@ display:
           entity_type: group
           entity_field: label
           plugin_id: string
-      sorts: {  }
+      sorts:
+        label:
+          id: label
+          table: groups_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: group
+          entity_field: label
+          plugin_id: standard
       title: ''
       header:
         area_text_custom:

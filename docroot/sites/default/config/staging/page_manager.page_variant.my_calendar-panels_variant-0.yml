@@ -1,0 +1,39 @@
+uuid: d96d07c1-7b14-4bd5-8510-90a9894d8412
+langcode: en
+status: true
+dependencies:
+  config:
+    - blocktabs.blocktabs.my_calendar
+    - page_manager.page.my_calendar
+  module:
+    - blocktabs
+    - panels
+id: my_calendar-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    5ced9df8-8259-4701-a7d8-6de675e862f9:
+      id: 'blocktabs_block:my_calendar'
+      label: 'Blocktabs:My calendar'
+      provider: blocktabs
+      label_display: '0'
+      region: middle
+      weight: 0
+      uuid: 5ced9df8-8259-4701-a7d8-6de675e862f9
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 7240df95-c7be-45f3-bbef-ea7f9f069397
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: my_calendar-panels_variant-0
+  builder: standard
+page: my_calendar
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

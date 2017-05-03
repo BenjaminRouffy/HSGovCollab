@@ -1341,6 +1341,20 @@ form {
       padding: 0 40px;
       width: 50%;
     }
+
+    fieldset {
+      legend {
+        margin-bottom: 10px;
+
+        span:after {
+          content: ":";
+        }
+      }
+
+      .fieldset-wrapper {
+        margin-bottom: 25px;
+      }
+    }
   }
 
   .role-status-wrapper {

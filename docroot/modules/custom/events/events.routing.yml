@@ -1,0 +1,7 @@
+events.get_event:
+  path: '/events/get-event/{nid}'
+  defaults:
+    _controller: '\Drupal\events\Controller\EventsController::getEvent'
+  requirements:
+    _access: 'TRUE'
+    nid: \d+

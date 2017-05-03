@@ -54,6 +54,12 @@ footer {
     font-family: $franklin;
     margin-bottom: 20px;
   }
+
+  a {
+    &:hover {
+      color: $red;
+    }
+  }
 }
 
 @include breakpoint-for('footer', (to: laptop-small)) {

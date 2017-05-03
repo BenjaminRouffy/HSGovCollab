@@ -13,10 +13,10 @@
     </div>
     <div{{ content_attributes.addClass('comment-body') }}>
       {{ content.field_comment_body }}
-    </div>
 
-    <a href="{{ path('entity.node.canonical', {'node': commented_entity.id()}) }}" role="link">
-      {{ commented_entity.label() }}
-    </a>
+      <a href="{{ path('entity.node.canonical', {'node': commented_entity.id()}) }}" role="link" class="article-link">
+        {{ commented_entity.label() }}
+      </a>
+    </div>
   </div>
 </div>

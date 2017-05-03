@@ -2305,7 +2305,8 @@ footer > .partners {
 .country-list,
 .project-list,
 .contact-list,
-.article-list {
+.article-list,
+.knowledge-vault-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2318,18 +2319,27 @@ footer > .partners {
   .country-list .project-item,
   .country-list .contact-item,
   .country-list .article-item,
+  .country-list .knowledge-vault-item,
   .project-list .country-item,
   .project-list .project-item,
   .project-list .contact-item,
   .project-list .article-item,
+  .project-list .knowledge-vault-item,
   .contact-list .country-item,
   .contact-list .project-item,
   .contact-list .contact-item,
   .contact-list .article-item,
+  .contact-list .knowledge-vault-item,
   .article-list .country-item,
   .article-list .project-item,
   .article-list .contact-item,
-  .article-list .article-item {
+  .article-list .article-item,
+  .article-list .knowledge-vault-item,
+  .knowledge-vault-list .country-item,
+  .knowledge-vault-list .project-item,
+  .knowledge-vault-list .contact-item,
+  .knowledge-vault-list .article-item,
+  .knowledge-vault-list .knowledge-vault-item {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     margin: 10px;
@@ -2339,35 +2349,53 @@ footer > .partners {
     .country-list .project-item:hover,
     .country-list .contact-item:hover,
     .country-list .article-item:hover,
+    .country-list .knowledge-vault-item:hover,
     .project-list .country-item:hover,
     .project-list .project-item:hover,
     .project-list .contact-item:hover,
     .project-list .article-item:hover,
+    .project-list .knowledge-vault-item:hover,
     .contact-list .country-item:hover,
     .contact-list .project-item:hover,
     .contact-list .contact-item:hover,
     .contact-list .article-item:hover,
+    .contact-list .knowledge-vault-item:hover,
     .article-list .country-item:hover,
     .article-list .project-item:hover,
     .article-list .contact-item:hover,
-    .article-list .article-item:hover {
+    .article-list .article-item:hover,
+    .article-list .knowledge-vault-item:hover,
+    .knowledge-vault-list .country-item:hover,
+    .knowledge-vault-list .project-item:hover,
+    .knowledge-vault-list .contact-item:hover,
+    .knowledge-vault-list .article-item:hover,
+    .knowledge-vault-list .knowledge-vault-item:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
     .country-list .contact-item, .ie9
     .country-list .article-item, .ie9
+    .country-list .knowledge-vault-item, .ie9
     .project-list .country-item, .ie9
     .project-list .project-item, .ie9
     .project-list .contact-item, .ie9
     .project-list .article-item, .ie9
+    .project-list .knowledge-vault-item, .ie9
     .contact-list .country-item, .ie9
     .contact-list .project-item, .ie9
     .contact-list .contact-item, .ie9
     .contact-list .article-item, .ie9
+    .contact-list .knowledge-vault-item, .ie9
     .article-list .country-item, .ie9
     .article-list .project-item, .ie9
     .article-list .contact-item, .ie9
-    .article-list .article-item {
+    .article-list .article-item, .ie9
+    .article-list .knowledge-vault-item, .ie9
+    .knowledge-vault-list .country-item, .ie9
+    .knowledge-vault-list .project-item, .ie9
+    .knowledge-vault-list .contact-item, .ie9
+    .knowledge-vault-list .article-item, .ie9
+    .knowledge-vault-list .knowledge-vault-item {
       display: inline-block;
       margin-left: -4px;
       margin-right: 20px;
@@ -2375,15 +2403,23 @@ footer > .partners {
   .country-list .country-content,
   .country-list .project-content,
   .country-list .article-content,
+  .country-list .knowledge-vault-content,
   .project-list .country-content,
   .project-list .project-content,
   .project-list .article-content,
+  .project-list .knowledge-vault-content,
   .contact-list .country-content,
   .contact-list .project-content,
   .contact-list .article-content,
+  .contact-list .knowledge-vault-content,
   .article-list .country-content,
   .article-list .project-content,
-  .article-list .article-content {
+  .article-list .article-content,
+  .article-list .knowledge-vault-content,
+  .knowledge-vault-list .country-content,
+  .knowledge-vault-list .project-content,
+  .knowledge-vault-list .article-content,
+  .knowledge-vault-list .knowledge-vault-content {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2397,21 +2433,76 @@ footer > .partners {
     height: 100%;
     padding: 30px 0 20px;
     position: relative; }
+  .country-list .knowledge-vault-content p,
+  .project-list .knowledge-vault-content p,
+  .contact-list .knowledge-vault-content p,
+  .article-list .knowledge-vault-content p,
+  .knowledge-vault-list .knowledge-vault-content p {
+    font-size: 0.9625rem;
+    font-family: "Fira Sans", sans-serif;
+    line-height: 21px; }
+  .country-list .article-teaser,
+  .project-list .article-teaser,
+  .contact-list .article-teaser,
+  .article-list .article-teaser,
+  .knowledge-vault-list .article-teaser {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0 20px; }
+    .country-list .article-teaser:hover .post-info,
+    .country-list .article-teaser:hover h2,
+    .project-list .article-teaser:hover .post-info,
+    .project-list .article-teaser:hover h2,
+    .contact-list .article-teaser:hover .post-info,
+    .contact-list .article-teaser:hover h2,
+    .article-list .article-teaser:hover .post-info,
+    .article-list .article-teaser:hover h2,
+    .knowledge-vault-list .article-teaser:hover .post-info,
+    .knowledge-vault-list .article-teaser:hover h2 {
+      color: #ea3a32; }
+    .country-list .article-teaser .post-info,
+    .project-list .article-teaser .post-info,
+    .contact-list .article-teaser .post-info,
+    .article-list .article-teaser .post-info,
+    .knowledge-vault-list .article-teaser .post-info {
+      font-size: 0.7875rem;
+      font-weight: 700;
+      margin-bottom: 0; }
+      .country-list .article-teaser .post-info > *:not(:first-child):before,
+      .project-list .article-teaser .post-info > *:not(:first-child):before,
+      .contact-list .article-teaser .post-info > *:not(:first-child):before,
+      .article-list .article-teaser .post-info > *:not(:first-child):before,
+      .knowledge-vault-list .article-teaser .post-info > *:not(:first-child):before {
+        font-weight: 700;
+        margin: 0; }
+    .country-list .article-teaser h2,
+    .project-list .article-teaser h2,
+    .contact-list .article-teaser h2,
+    .article-list .article-teaser h2,
+    .knowledge-vault-list .article-teaser h2 {
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 25px;
+      margin: 0 0 10px; }
   .country-list .project-content .summary,
   .project-list .project-content .summary,
   .contact-list .project-content .summary,
-  .article-list .project-content .summary {
+  .article-list .project-content .summary,
+  .knowledge-vault-list .project-content .summary {
     padding-top: 20px; }
   .country-list .contact-content,
   .project-list .contact-content,
   .contact-list .contact-content,
-  .article-list .contact-content {
+  .article-list .contact-content,
+  .knowledge-vault-list .contact-content {
     font-family: Oswald, sans-serif;
     padding: 30px 20px 0; }
     .country-list .contact-content .font-social-icon,
     .project-list .contact-content .font-social-icon,
     .contact-list .contact-content .font-social-icon,
-    .article-list .contact-content .font-social-icon {
+    .article-list .contact-content .font-social-icon,
+    .knowledge-vault-list .contact-content .font-social-icon {
       color: #283b44;
       min-height: 50px;
       padding: 5px 0;
@@ -2420,17 +2511,20 @@ footer > .partners {
       .country-list .contact-content .font-social-icon > span:first-child,
       .project-list .contact-content .font-social-icon > span:first-child,
       .contact-list .contact-content .font-social-icon > span:first-child,
-      .article-list .contact-content .font-social-icon > span:first-child {
+      .article-list .contact-content .font-social-icon > span:first-child,
+      .knowledge-vault-list .contact-content .font-social-icon > span:first-child {
         letter-spacing: .5px; }
         .country-list .contact-content .font-social-icon > span:first-child:after,
         .project-list .contact-content .font-social-icon > span:first-child:after,
         .contact-list .contact-content .font-social-icon > span:first-child:after,
-        .article-list .contact-content .font-social-icon > span:first-child:after {
+        .article-list .contact-content .font-social-icon > span:first-child:after,
+        .knowledge-vault-list .contact-content .font-social-icon > span:first-child:after {
           content: none; }
         .country-list .contact-content .font-social-icon > span:first-child:before,
         .project-list .contact-content .font-social-icon > span:first-child:before,
         .contact-list .contact-content .font-social-icon > span:first-child:before,
-        .article-list .contact-content .font-social-icon > span:first-child:before {
+        .article-list .contact-content .font-social-icon > span:first-child:before,
+        .knowledge-vault-list .contact-content .font-social-icon > span:first-child:before {
           font-size: 1.75rem;
           color: #4c7e96;
           font-family: P4h, sans-serif;
@@ -2440,59 +2534,70 @@ footer > .partners {
     .country-list .contact-content .mail-icon > span:first-child:before,
     .project-list .contact-content .mail-icon > span:first-child:before,
     .contact-list .contact-content .mail-icon > span:first-child:before,
-    .article-list .contact-content .mail-icon > span:first-child:before {
+    .article-list .contact-content .mail-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .mail-icon > span:first-child:before {
       content: "o"; }
     .country-list .contact-content .group-manager-icon > span:first-child:before,
     .project-list .contact-content .group-manager-icon > span:first-child:before,
     .contact-list .contact-content .group-manager-icon > span:first-child:before,
-    .article-list .contact-content .group-manager-icon > span:first-child:before {
+    .article-list .contact-content .group-manager-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .group-manager-icon > span:first-child:before {
       content: "a"; }
     .country-list .contact-content .organization-icon > span:first-child:before,
     .project-list .contact-content .organization-icon > span:first-child:before,
     .contact-list .contact-content .organization-icon > span:first-child:before,
-    .article-list .contact-content .organization-icon > span:first-child:before {
+    .article-list .contact-content .organization-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .organization-icon > span:first-child:before {
       content: "$"; }
     .country-list .contact-content .default-icon > span:first-child:before,
     .project-list .contact-content .default-icon > span:first-child:before,
     .contact-list .contact-content .default-icon > span:first-child:before,
-    .article-list .contact-content .default-icon > span:first-child:before {
+    .article-list .contact-content .default-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .default-icon > span:first-child:before {
       content: "n"; }
     .country-list .contact-content .default-icon img,
     .project-list .contact-content .default-icon img,
     .contact-list .contact-content .default-icon img,
-    .article-list .contact-content .default-icon img {
+    .article-list .contact-content .default-icon img,
+    .knowledge-vault-list .contact-content .default-icon img {
       margin: 8px 11px 0 3px; }
       .country-list .contact-content .default-icon img ~ span,
       .project-list .contact-content .default-icon img ~ span,
       .contact-list .contact-content .default-icon img ~ span,
-      .article-list .contact-content .default-icon img ~ span {
+      .article-list .contact-content .default-icon img ~ span,
+      .knowledge-vault-list .contact-content .default-icon img ~ span {
         display: inline-block;
         margin-top: 7px;
         vertical-align: top; }
     .country-list .contact-content .phone-icon > span:first-child:before,
     .project-list .contact-content .phone-icon > span:first-child:before,
     .contact-list .contact-content .phone-icon > span:first-child:before,
-    .article-list .contact-content .phone-icon > span:first-child:before {
+    .article-list .contact-content .phone-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .phone-icon > span:first-child:before {
       content: "å"; }
     .country-list .contact-content .country-icon > span:first-child:before,
     .project-list .contact-content .country-icon > span:first-child:before,
     .contact-list .contact-content .country-icon > span:first-child:before,
-    .article-list .contact-content .country-icon > span:first-child:before {
+    .article-list .contact-content .country-icon > span:first-child:before,
+    .knowledge-vault-list .contact-content .country-icon > span:first-child:before {
       content: "f"; }
     .country-list .contact-content .relation-form,
     .project-list .contact-content .relation-form,
     .contact-list .contact-content .relation-form,
-    .article-list .contact-content .relation-form {
+    .article-list .contact-content .relation-form,
+    .knowledge-vault-list .contact-content .relation-form {
       position: relative; }
       .country-list .contact-content .relation-form .ajax-progress,
       .project-list .contact-content .relation-form .ajax-progress,
       .contact-list .contact-content .relation-form .ajax-progress,
-      .article-list .contact-content .relation-form .ajax-progress {
+      .article-list .contact-content .relation-form .ajax-progress,
+      .knowledge-vault-list .contact-content .relation-form .ajax-progress {
         position: absolute; }
     .country-list .contact-content .relation-link,
     .project-list .contact-content .relation-link,
     .contact-list .contact-content .relation-link,
-    .article-list .contact-content .relation-link {
+    .article-list .contact-content .relation-link,
+    .knowledge-vault-list .contact-content .relation-link {
       font-size: 0.875rem; }
       .country-list .contact-content .relation-link a,
       .country-list .contact-content .relation-link span,
@@ -2501,7 +2606,9 @@ footer > .partners {
       .contact-list .contact-content .relation-link a,
       .contact-list .contact-content .relation-link span,
       .article-list .contact-content .relation-link a,
-      .article-list .contact-content .relation-link span {
+      .article-list .contact-content .relation-link span,
+      .knowledge-vault-list .contact-content .relation-link a,
+      .knowledge-vault-list .contact-content .relation-link span {
         display: inline-block;
         vertical-align: top;
         border-bottom: 2px solid transparent;
@@ -2515,7 +2622,9 @@ footer > .partners {
         .contact-list .contact-content .relation-link a:before,
         .contact-list .contact-content .relation-link span:before,
         .article-list .contact-content .relation-link a:before,
-        .article-list .contact-content .relation-link span:before {
+        .article-list .contact-content .relation-link span:before,
+        .knowledge-vault-list .contact-content .relation-link a:before,
+        .knowledge-vault-list .contact-content .relation-link span:before {
           font-size: 1.75rem;
           content: "+";
           color: #4c7e96;
@@ -2526,24 +2635,28 @@ footer > .partners {
       .country-list .contact-content .relation-link a,
       .project-list .contact-content .relation-link a,
       .contact-list .contact-content .relation-link a,
-      .article-list .contact-content .relation-link a {
+      .article-list .contact-content .relation-link a,
+      .knowledge-vault-list .contact-content .relation-link a {
         position: relative;
         z-index: 10; }
         .country-list .contact-content .relation-link a:hover,
         .project-list .contact-content .relation-link a:hover,
         .contact-list .contact-content .relation-link a:hover,
-        .article-list .contact-content .relation-link a:hover {
+        .article-list .contact-content .relation-link a:hover,
+        .knowledge-vault-list .contact-content .relation-link a:hover {
           border-color: #ea3a32;
           opacity: .66; }
   .country-list .contact-to-user,
   .project-list .contact-to-user,
   .contact-list .contact-to-user,
-  .article-list .contact-to-user {
+  .article-list .contact-to-user,
+  .knowledge-vault-list .contact-to-user {
     text-align: center; }
     .country-list .contact-to-user a,
     .project-list .contact-to-user a,
     .contact-list .contact-to-user a,
-    .article-list .contact-to-user a {
+    .article-list .contact-to-user a,
+    .knowledge-vault-list .contact-to-user a {
       font-size: 0.875rem;
       border-color: #ea3a32;
       color: #ea3a32;
@@ -2554,19 +2667,22 @@ footer > .partners {
       .country-list .contact-to-user a:hover,
       .project-list .contact-to-user a:hover,
       .contact-list .contact-to-user a:hover,
-      .article-list .contact-to-user a:hover {
+      .article-list .contact-to-user a:hover,
+      .knowledge-vault-list .contact-to-user a:hover {
         border-color: #8c2222;
         color: #8c2222; }
   .country-list .user-wrapper,
   .project-list .user-wrapper,
   .contact-list .user-wrapper,
-  .article-list .user-wrapper {
+  .article-list .user-wrapper,
+  .knowledge-vault-list .user-wrapper {
     margin-bottom: 20px;
     overflow: hidden; }
   .country-list .user-icon,
   .project-list .user-icon,
   .contact-list .user-icon,
-  .article-list .user-icon {
+  .article-list .user-icon,
+  .knowledge-vault-list .user-icon {
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -2576,14 +2692,16 @@ footer > .partners {
   .country-list .user-name,
   .project-list .user-name,
   .contact-list .user-name,
-  .article-list .user-name {
+  .article-list .user-name,
+  .knowledge-vault-list .user-name {
     font-size: 1.05rem;
     line-height: 25px;
     letter-spacing: .5px; }
   .country-list .summary,
   .project-list .summary,
   .contact-list .summary,
-  .article-list .summary {
+  .article-list .summary,
+  .knowledge-vault-list .summary {
     font-size: 0.9625rem;
     color: #283b44;
     font-family: "Fira Sans", sans-serif;
@@ -2599,7 +2717,10 @@ footer > .partners {
   .contact-list .contact-link,
   .article-list .country-link,
   .article-list .project-link,
-  .article-list .contact-link {
+  .article-list .contact-link,
+  .knowledge-vault-list .country-link,
+  .knowledge-vault-list .project-link,
+  .knowledge-vault-list .contact-link {
     position: absolute;
     top: 0;
     left: 0;
@@ -2608,17 +2729,20 @@ footer > .partners {
   .country-list .contact-link,
   .project-list .contact-link,
   .contact-list .contact-link,
-  .article-list .contact-link {
+  .article-list .contact-link,
+  .knowledge-vault-list .contact-link {
     z-index: 5; }
   .country-list a,
   .project-list a,
   .contact-list a,
-  .article-list a {
+  .article-list a,
+  .knowledge-vault-list a {
     text-decoration: none; }
   .country-list .project-bottom-link,
   .project-list .project-bottom-link,
   .contact-list .project-bottom-link,
-  .article-list .project-bottom-link {
+  .article-list .project-bottom-link,
+  .knowledge-vault-list .project-bottom-link {
     font-size: 0.875rem;
     color: #283b44;
     border-top: 1px solid #afb7bb;
@@ -2631,7 +2755,8 @@ footer > .partners {
     .country-list .project-bottom-link .font-social-icon:not(:last-child),
     .project-list .project-bottom-link .font-social-icon:not(:last-child),
     .contact-list .project-bottom-link .font-social-icon:not(:last-child),
-    .article-list .project-bottom-link .font-social-icon:not(:last-child) {
+    .article-list .project-bottom-link .font-social-icon:not(:last-child),
+    .knowledge-vault-list .project-bottom-link .font-social-icon:not(:last-child) {
       margin-bottom: 10px; }
     .country-list .project-bottom-link span,
     .country-list .project-bottom-link a,
@@ -2640,7 +2765,9 @@ footer > .partners {
     .contact-list .project-bottom-link span,
     .contact-list .project-bottom-link a,
     .article-list .project-bottom-link span,
-    .article-list .project-bottom-link a {
+    .article-list .project-bottom-link a,
+    .knowledge-vault-list .project-bottom-link span,
+    .knowledge-vault-list .project-bottom-link a {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -2654,7 +2781,9 @@ footer > .partners {
       .contact-list .project-bottom-link span:after,
       .contact-list .project-bottom-link a:after,
       .article-list .project-bottom-link span:after,
-      .article-list .project-bottom-link a:after {
+      .article-list .project-bottom-link a:after,
+      .knowledge-vault-list .project-bottom-link span:after,
+      .knowledge-vault-list .project-bottom-link a:after {
         content: none; }
       .country-list .project-bottom-link span:before,
       .country-list .project-bottom-link a:before,
@@ -2663,7 +2792,9 @@ footer > .partners {
       .contact-list .project-bottom-link span:before,
       .contact-list .project-bottom-link a:before,
       .article-list .project-bottom-link span:before,
-      .article-list .project-bottom-link a:before {
+      .article-list .project-bottom-link a:before,
+      .knowledge-vault-list .project-bottom-link span:before,
+      .knowledge-vault-list .project-bottom-link a:before {
         font-size: 1.75rem;
         content: "j";
         color: #4c7e96;
@@ -2674,23 +2805,27 @@ footer > .partners {
     .country-list .project-bottom-link a:hover,
     .project-list .project-bottom-link a:hover,
     .contact-list .project-bottom-link a:hover,
-    .article-list .project-bottom-link a:hover {
+    .article-list .project-bottom-link a:hover,
+    .knowledge-vault-list .project-bottom-link a:hover {
       opacity: .66; }
   .country-list .section-info,
   .project-list .section-info,
   .contact-list .section-info,
-  .article-list .section-info {
+  .article-list .section-info,
+  .knowledge-vault-list .section-info {
     padding: 0 20px; }
     .country-list .section-info .paragraph,
     .project-list .section-info .paragraph,
     .contact-list .section-info .paragraph,
-    .article-list .section-info .paragraph {
+    .article-list .section-info .paragraph,
+    .knowledge-vault-list .section-info .paragraph {
       overflow: hidden;
       padding: 5px 0; }
       .country-list .section-info .paragraph a,
       .project-list .section-info .paragraph a,
       .contact-list .section-info .paragraph a,
-      .article-list .section-info .paragraph a {
+      .article-list .section-info .paragraph a,
+      .knowledge-vault-list .section-info .paragraph a {
         border-bottom: 2px solid transparent;
         display: inline-block;
         -webkit-transition: border .3s ease;
@@ -2701,7 +2836,8 @@ footer > .partners {
         .country-list .section-info .paragraph a:hover,
         .project-list .section-info .paragraph a:hover,
         .contact-list .section-info .paragraph a:hover,
-        .article-list .section-info .paragraph a:hover {
+        .article-list .section-info .paragraph a:hover,
+        .knowledge-vault-list .section-info .paragraph a:hover {
           border-color: #ea3a32; }
           .country-list .section-info .paragraph a:hover .icon-wrapper,
           .country-list .section-info .paragraph a:hover h3,
@@ -2710,12 +2846,15 @@ footer > .partners {
           .contact-list .section-info .paragraph a:hover .icon-wrapper,
           .contact-list .section-info .paragraph a:hover h3,
           .article-list .section-info .paragraph a:hover .icon-wrapper,
-          .article-list .section-info .paragraph a:hover h3 {
+          .article-list .section-info .paragraph a:hover h3,
+          .knowledge-vault-list .section-info .paragraph a:hover .icon-wrapper,
+          .knowledge-vault-list .section-info .paragraph a:hover h3 {
             opacity: .66; }
     .country-list .section-info .icon-wrapper,
     .project-list .section-info .icon-wrapper,
     .contact-list .section-info .icon-wrapper,
-    .article-list .section-info .icon-wrapper {
+    .article-list .section-info .icon-wrapper,
+    .knowledge-vault-list .section-info .icon-wrapper {
       float: left;
       height: 40px;
       margin-right: 10px;
@@ -2725,12 +2864,14 @@ footer > .partners {
     .country-list .section-info path,
     .project-list .section-info path,
     .contact-list .section-info path,
-    .article-list .section-info path {
+    .article-list .section-info path,
+    .knowledge-vault-list .section-info path {
       fill: #4c7e96; }
     .country-list .section-info h3,
     .project-list .section-info h3,
     .contact-list .section-info h3,
-    .article-list .section-info h3 {
+    .article-list .section-info h3,
+    .knowledge-vault-list .section-info h3 {
       font-size: 0.875rem;
       font-weight: 400;
       letter-spacing: .5px;
@@ -2800,36 +2941,66 @@ footer > .partners {
   .country-list .country-item,
   .country-list .project-item,
   .country-list .member-block,
-  .country-list .contact-item, .project-list .country-item,
+  .country-list .contact-item,
+  .country-list .article-item,
+  .country-list .knowledge-vault-item, .project-list .country-item,
   .project-list .project-item,
   .project-list .member-block,
-  .project-list .contact-item, .contact-list .country-item,
+  .project-list .contact-item,
+  .project-list .article-item,
+  .project-list .knowledge-vault-item, .contact-list .country-item,
   .contact-list .project-item,
   .contact-list .member-block,
-  .contact-list .contact-item, .article-list .country-item,
+  .contact-list .contact-item,
+  .contact-list .article-item,
+  .contact-list .knowledge-vault-item, .article-list .country-item,
   .article-list .project-item,
   .article-list .member-block,
-  .article-list .contact-item, .members-list ul .country-item,
+  .article-list .contact-item,
+  .article-list .article-item,
+  .article-list .knowledge-vault-item, .knowledge-vault-list .country-item,
+  .knowledge-vault-list .project-item,
+  .knowledge-vault-list .member-block,
+  .knowledge-vault-list .contact-item,
+  .knowledge-vault-list .article-item,
+  .knowledge-vault-list .knowledge-vault-item, .members-list ul .country-item,
   .members-list ul .project-item,
   .members-list ul .member-block,
-  .members-list ul .contact-item {
+  .members-list ul .contact-item,
+  .members-list ul .article-item,
+  .members-list ul .knowledge-vault-item {
     width: calc(50% - 20px); }
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
     .country-list .member-block, .ie9
-    .country-list .contact-item, .ie9 .project-list .country-item, .ie9
+    .country-list .contact-item, .ie9
+    .country-list .article-item, .ie9
+    .country-list .knowledge-vault-item, .ie9 .project-list .country-item, .ie9
     .project-list .project-item, .ie9
     .project-list .member-block, .ie9
-    .project-list .contact-item, .ie9 .contact-list .country-item, .ie9
+    .project-list .contact-item, .ie9
+    .project-list .article-item, .ie9
+    .project-list .knowledge-vault-item, .ie9 .contact-list .country-item, .ie9
     .contact-list .project-item, .ie9
     .contact-list .member-block, .ie9
-    .contact-list .contact-item, .ie9 .article-list .country-item, .ie9
+    .contact-list .contact-item, .ie9
+    .contact-list .article-item, .ie9
+    .contact-list .knowledge-vault-item, .ie9 .article-list .country-item, .ie9
     .article-list .project-item, .ie9
     .article-list .member-block, .ie9
-    .article-list .contact-item, .ie9 .members-list ul .country-item, .ie9
+    .article-list .contact-item, .ie9
+    .article-list .article-item, .ie9
+    .article-list .knowledge-vault-item, .ie9 .knowledge-vault-list .country-item, .ie9
+    .knowledge-vault-list .project-item, .ie9
+    .knowledge-vault-list .member-block, .ie9
+    .knowledge-vault-list .contact-item, .ie9
+    .knowledge-vault-list .article-item, .ie9
+    .knowledge-vault-list .knowledge-vault-item, .ie9 .members-list ul .country-item, .ie9
     .members-list ul .project-item, .ie9
     .members-list ul .member-block, .ie9
-    .members-list ul .contact-item {
+    .members-list ul .contact-item, .ie9
+    .members-list ul .article-item, .ie9
+    .members-list ul .knowledge-vault-item {
       margin: 10px 8px;
       width: calc(50% - 20px); } }
 
@@ -2837,26 +3008,42 @@ footer > .partners {
   .country-list .country-item,
   .country-list .project-item, .project-list .country-item,
   .project-list .project-item, .article-list .country-item,
-  .article-list .project-item {
+  .article-list .project-item, .knowledge-vault-list .country-item,
+  .knowledge-vault-list .project-item {
     padding: 5px; } }
 
 @media (max-width: 479px) {
   .country-list .country-item,
   .country-list .project-item,
   .country-list .member-block,
-  .country-list .contact-item, .project-list .country-item,
+  .country-list .contact-item,
+  .country-list .article-item,
+  .country-list .knowledge-vault-item, .project-list .country-item,
   .project-list .project-item,
   .project-list .member-block,
-  .project-list .contact-item, .members-list ul .country-item,
+  .project-list .contact-item,
+  .project-list .article-item,
+  .project-list .knowledge-vault-item, .members-list ul .country-item,
   .members-list ul .project-item,
   .members-list ul .member-block,
-  .members-list ul .contact-item, .contact-list .country-item,
+  .members-list ul .contact-item,
+  .members-list ul .article-item,
+  .members-list ul .knowledge-vault-item, .contact-list .country-item,
   .contact-list .project-item,
   .contact-list .member-block,
-  .contact-list .contact-item, .article-list .country-item,
+  .contact-list .contact-item,
+  .contact-list .article-item,
+  .contact-list .knowledge-vault-item, .article-list .country-item,
   .article-list .project-item,
   .article-list .member-block,
-  .article-list .contact-item {
+  .article-list .contact-item,
+  .article-list .article-item,
+  .article-list .knowledge-vault-item, .knowledge-vault-list .country-item,
+  .knowledge-vault-list .project-item,
+  .knowledge-vault-list .member-block,
+  .knowledge-vault-list .contact-item,
+  .knowledge-vault-list .article-item,
+  .knowledge-vault-list .knowledge-vault-item {
     margin-left: 0;
     margin-right: 0;
     padding: 0;
@@ -2864,38 +3051,68 @@ footer > .partners {
     .ie9 .country-list .country-item, .ie9
     .country-list .project-item, .ie9
     .country-list .member-block, .ie9
-    .country-list .contact-item, .ie9 .project-list .country-item, .ie9
+    .country-list .contact-item, .ie9
+    .country-list .article-item, .ie9
+    .country-list .knowledge-vault-item, .ie9 .project-list .country-item, .ie9
     .project-list .project-item, .ie9
     .project-list .member-block, .ie9
-    .project-list .contact-item, .ie9 .members-list ul .country-item, .ie9
+    .project-list .contact-item, .ie9
+    .project-list .article-item, .ie9
+    .project-list .knowledge-vault-item, .ie9 .members-list ul .country-item, .ie9
     .members-list ul .project-item, .ie9
     .members-list ul .member-block, .ie9
-    .members-list ul .contact-item, .ie9 .contact-list .country-item, .ie9
+    .members-list ul .contact-item, .ie9
+    .members-list ul .article-item, .ie9
+    .members-list ul .knowledge-vault-item, .ie9 .contact-list .country-item, .ie9
     .contact-list .project-item, .ie9
     .contact-list .member-block, .ie9
-    .contact-list .contact-item, .ie9 .article-list .country-item, .ie9
+    .contact-list .contact-item, .ie9
+    .contact-list .article-item, .ie9
+    .contact-list .knowledge-vault-item, .ie9 .article-list .country-item, .ie9
     .article-list .project-item, .ie9
     .article-list .member-block, .ie9
-    .article-list .contact-item {
+    .article-list .contact-item, .ie9
+    .article-list .article-item, .ie9
+    .article-list .knowledge-vault-item, .ie9 .knowledge-vault-list .country-item, .ie9
+    .knowledge-vault-list .project-item, .ie9
+    .knowledge-vault-list .member-block, .ie9
+    .knowledge-vault-list .contact-item, .ie9
+    .knowledge-vault-list .article-item, .ie9
+    .knowledge-vault-list .knowledge-vault-item {
       margin-left: 0;
       margin-right: 0;
       width: 100%; }
     .country-list .country-item .block-content,
     .country-list .project-item .block-content,
     .country-list .member-block .block-content,
-    .country-list .contact-item .block-content, .project-list .country-item .block-content,
+    .country-list .contact-item .block-content,
+    .country-list .article-item .block-content,
+    .country-list .knowledge-vault-item .block-content, .project-list .country-item .block-content,
     .project-list .project-item .block-content,
     .project-list .member-block .block-content,
-    .project-list .contact-item .block-content, .members-list ul .country-item .block-content,
+    .project-list .contact-item .block-content,
+    .project-list .article-item .block-content,
+    .project-list .knowledge-vault-item .block-content, .members-list ul .country-item .block-content,
     .members-list ul .project-item .block-content,
     .members-list ul .member-block .block-content,
-    .members-list ul .contact-item .block-content, .contact-list .country-item .block-content,
+    .members-list ul .contact-item .block-content,
+    .members-list ul .article-item .block-content,
+    .members-list ul .knowledge-vault-item .block-content, .contact-list .country-item .block-content,
     .contact-list .project-item .block-content,
     .contact-list .member-block .block-content,
-    .contact-list .contact-item .block-content, .article-list .country-item .block-content,
+    .contact-list .contact-item .block-content,
+    .contact-list .article-item .block-content,
+    .contact-list .knowledge-vault-item .block-content, .article-list .country-item .block-content,
     .article-list .project-item .block-content,
     .article-list .member-block .block-content,
-    .article-list .contact-item .block-content {
+    .article-list .contact-item .block-content,
+    .article-list .article-item .block-content,
+    .article-list .knowledge-vault-item .block-content, .knowledge-vault-list .country-item .block-content,
+    .knowledge-vault-list .project-item .block-content,
+    .knowledge-vault-list .member-block .block-content,
+    .knowledge-vault-list .contact-item .block-content,
+    .knowledge-vault-list .article-item .block-content,
+    .knowledge-vault-list .knowledge-vault-item .block-content {
       margin-left: 0;
       margin-right: 0; }
       .ie10 .country-list .country-item .block-content,
@@ -2908,7 +3125,13 @@ footer > .partners {
       .country-list .member-block .block-content, .ie10
       .country-list .contact-item .block-content,
       .ie9
-      .country-list .contact-item .block-content, .ie10 .project-list .country-item .block-content,
+      .country-list .contact-item .block-content, .ie10
+      .country-list .article-item .block-content,
+      .ie9
+      .country-list .article-item .block-content, .ie10
+      .country-list .knowledge-vault-item .block-content,
+      .ie9
+      .country-list .knowledge-vault-item .block-content, .ie10 .project-list .country-item .block-content,
       .ie9 .project-list .country-item .block-content, .ie10
       .project-list .project-item .block-content,
       .ie9
@@ -2918,7 +3141,13 @@ footer > .partners {
       .project-list .member-block .block-content, .ie10
       .project-list .contact-item .block-content,
       .ie9
-      .project-list .contact-item .block-content, .ie10 .members-list ul .country-item .block-content,
+      .project-list .contact-item .block-content, .ie10
+      .project-list .article-item .block-content,
+      .ie9
+      .project-list .article-item .block-content, .ie10
+      .project-list .knowledge-vault-item .block-content,
+      .ie9
+      .project-list .knowledge-vault-item .block-content, .ie10 .members-list ul .country-item .block-content,
       .ie9 .members-list ul .country-item .block-content, .ie10
       .members-list ul .project-item .block-content,
       .ie9
@@ -2928,7 +3157,13 @@ footer > .partners {
       .members-list ul .member-block .block-content, .ie10
       .members-list ul .contact-item .block-content,
       .ie9
-      .members-list ul .contact-item .block-content, .ie10 .contact-list .country-item .block-content,
+      .members-list ul .contact-item .block-content, .ie10
+      .members-list ul .article-item .block-content,
+      .ie9
+      .members-list ul .article-item .block-content, .ie10
+      .members-list ul .knowledge-vault-item .block-content,
+      .ie9
+      .members-list ul .knowledge-vault-item .block-content, .ie10 .contact-list .country-item .block-content,
       .ie9 .contact-list .country-item .block-content, .ie10
       .contact-list .project-item .block-content,
       .ie9
@@ -2938,7 +3173,13 @@ footer > .partners {
       .contact-list .member-block .block-content, .ie10
       .contact-list .contact-item .block-content,
       .ie9
-      .contact-list .contact-item .block-content, .ie10 .article-list .country-item .block-content,
+      .contact-list .contact-item .block-content, .ie10
+      .contact-list .article-item .block-content,
+      .ie9
+      .contact-list .article-item .block-content, .ie10
+      .contact-list .knowledge-vault-item .block-content,
+      .ie9
+      .contact-list .knowledge-vault-item .block-content, .ie10 .article-list .country-item .block-content,
       .ie9 .article-list .country-item .block-content, .ie10
       .article-list .project-item .block-content,
       .ie9
@@ -2948,7 +3189,29 @@ footer > .partners {
       .article-list .member-block .block-content, .ie10
       .article-list .contact-item .block-content,
       .ie9
-      .article-list .contact-item .block-content {
+      .article-list .contact-item .block-content, .ie10
+      .article-list .article-item .block-content,
+      .ie9
+      .article-list .article-item .block-content, .ie10
+      .article-list .knowledge-vault-item .block-content,
+      .ie9
+      .article-list .knowledge-vault-item .block-content, .ie10 .knowledge-vault-list .country-item .block-content,
+      .ie9 .knowledge-vault-list .country-item .block-content, .ie10
+      .knowledge-vault-list .project-item .block-content,
+      .ie9
+      .knowledge-vault-list .project-item .block-content, .ie10
+      .knowledge-vault-list .member-block .block-content,
+      .ie9
+      .knowledge-vault-list .member-block .block-content, .ie10
+      .knowledge-vault-list .contact-item .block-content,
+      .ie9
+      .knowledge-vault-list .contact-item .block-content, .ie10
+      .knowledge-vault-list .article-item .block-content,
+      .ie9
+      .knowledge-vault-list .article-item .block-content, .ie10
+      .knowledge-vault-list .knowledge-vault-item .block-content,
+      .ie9
+      .knowledge-vault-list .knowledge-vault-item .block-content {
         width: 100%; } }
 
 @media (max-width: 991px) {
@@ -2972,10 +3235,10 @@ footer > .partners {
   margin-bottom: 20px;
   overflow: hidden;
   padding: 0 20px; }
-  .country-title + div:not(.country-title),
-  .project-title + div:not(.country-title),
-  .region-title + div:not(.country-title),
-  .article-title + div:not(.country-title) {
+  .country-title + div:not(.country-title):not(.article-teaser),
+  .project-title + div:not(.country-title):not(.article-teaser),
+  .region-title + div:not(.country-title):not(.article-teaser),
+  .article-title + div:not(.country-title):not(.article-teaser) {
     min-height: 150px;
     margin-bottom: 5px; }
   .country-title .project-icon-wrapper,
@@ -3650,14 +3913,16 @@ form .social_login iframe {
     width: 100%; } }
 
 .view-project > h2,
-.view-product > h2 {
+.view-product > h2,
+.view-knowledge-vault > h2 {
   font-size: 1.575rem;
   line-height: 48px;
   margin-bottom: 15px;
   position: relative;
   text-align: center; }
   .view-project > h2 a,
-  .view-product > h2 a {
+  .view-product > h2 a,
+  .view-knowledge-vault > h2 a {
     font-size: 0.9625rem;
     line-height: 18px;
     position: absolute;
@@ -3665,31 +3930,34 @@ form .social_login iframe {
     right: 0;
     text-decoration: none; }
     .view-project > h2 a:before,
-    .view-product > h2 a:before {
+    .view-product > h2 a:before,
+    .view-knowledge-vault > h2 a:before {
       content: "q";
       color: #ea3a32;
       font-family: P4h, sans-serif;
       margin-right: 4px; }
     .view-project > h2 a:hover:before,
-    .view-product > h2 a:hover:before {
+    .view-product > h2 a:hover:before,
+    .view-knowledge-vault > h2 a:hover:before {
       color: #8c2222; }
 
 .view-project form,
-.view-product form {
+.view-product form,
+.view-knowledge-vault form {
   max-width: 40%;
   margin: 0 auto;
   position: relative; }
 
 @media (max-width: 991px) {
-  .view-project form, .view-product form {
+  .view-project form, .view-product form, .view-knowledge-vault form {
     max-width: 60%; } }
 
 @media (max-width: 767px) {
-  .view-project form, .view-product form {
+  .view-project form, .view-product form, .view-knowledge-vault form {
     max-width: 80%; } }
 
 @media (max-width: 479px) {
-  .view-project form, .view-product form {
+  .view-project form, .view-product form, .view-knowledge-vault form {
     max-width: 100%; } }
 
 .user-register-form {
@@ -5764,7 +6032,7 @@ footer {
     background-size: 650%; }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault) .main-wrapper:before {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation) .main-wrapper:before {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -5785,6 +6053,8 @@ footer {
   width: 100%; }
   .front .content-container {
     max-width: 1260px; }
+  .page-knowledge-vault .content-container {
+    padding-top: 0; }
   .contact-us .content-container .top-text-region {
     margin-bottom: 30px; }
 
@@ -6087,6 +6357,12 @@ footer {
   .more-content-wrapper .more-content {
     display: none;
     padding: 20px 0; }
+    .more-content-wrapper .more-content .page-title {
+      font-size: 1.225rem;
+      font-family: "Fira Sans", sans-serif;
+      letter-spacing: 0;
+      line-height: 24px;
+      margin: 30px 0 10px; }
     .more-content-wrapper .more-content blockquote {
       margin-left: auto;
       margin-right: auto;
@@ -6882,7 +7158,9 @@ footer {
     .dashboard .follow-link .form-submit, .dashboard .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .dashboard .follow-link .button {
       background: transparent;
       border-color: #ea3a32;
-      text-transform: none; }
+      display: inline-block;
+      text-transform: none;
+      vertical-align: top; }
     .dashboard .follow-link .ajax-progress {
       position: absolute; }
   .dashboard .sidebar {
@@ -6902,7 +7180,7 @@ footer {
     .dashboard .sidebar li {
       display: block;
       vertical-align: top; }
-    .dashboard .sidebar a {
+    .dashboard .sidebar .user-link {
       border-bottom: 2px solid transparent;
       color: #fff;
       display: inline-block;
@@ -6911,8 +7189,43 @@ footer {
       text-decoration: none;
       -webkit-transition: opacity .3s ease, border .3s ease;
       transition: opacity .3s ease, border .3s ease; }
-      .dashboard .sidebar a:hover {
+      .dashboard .sidebar .user-link:hover {
         border-color: #fff;
+        opacity: .66; }
+    .dashboard .sidebar .comment-wrapper {
+      margin: 20px 0; }
+      .dashboard .sidebar .comment-wrapper .user-icon {
+        height: 40px;
+        width: 40px; }
+      .dashboard .sidebar .comment-wrapper .name,
+      .dashboard .sidebar .comment-wrapper .commented {
+        font-size: 0.875rem;
+        color: #fff;
+        font-weight: 400;
+        line-height: 25px;
+        margin-top: 0; }
+      .dashboard .sidebar .comment-wrapper .commented {
+        font-size: 0.775rem; }
+      .dashboard .sidebar .comment-wrapper .rate-widget-thumbs-up,
+      .dashboard .sidebar .comment-wrapper .rate-thumbs-up-btn-up:after,
+      .dashboard .sidebar .comment-wrapper .rate-undo:after {
+        color: #fff; }
+    .dashboard .sidebar .comment-body {
+      font-weight: 300;
+      margin-left: 60px; }
+    .dashboard .sidebar .article-link {
+      font-size: 0.875rem;
+      color: #fff;
+      display: block;
+      font-weight: 400;
+      line-height: 20px;
+      -webkit-transition: opacity .3s ease;
+      transition: opacity .3s ease; }
+      .dashboard .sidebar .article-link:before {
+        content: "9";
+        font-family: P4h, sans-serif;
+        margin-right: 4px; }
+      .dashboard .sidebar .article-link:hover {
         opacity: .66; }
     .dashboard .sidebar .font-social-icon {
       font-size: 2.1875rem;

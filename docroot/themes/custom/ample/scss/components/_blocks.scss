@@ -1436,8 +1436,10 @@
 }
 
 .knowledge-vault-link {
-  &:before {
-    content: none;
+  > a {
+    &:before {
+      content: none;
+    }
   }
 }
 

@@ -563,6 +563,7 @@ display:
         - 'config:core.entity_view_display.node.event.calendar_preview'
         - 'config:core.entity_view_display.node.event.comments'
         - 'config:core.entity_view_display.node.event.default'
+        - 'config:core.entity_view_display.node.event.event_ajax_response'
         - 'config:core.entity_view_display.node.event.full'
         - 'config:core.entity_view_display.node.event.news_events_listing'
         - 'config:core.entity_view_display.node.event.news_events_sidebar'
@@ -892,6 +893,7 @@ display:
         - 'config:core.entity_view_display.node.event.calendar_preview'
         - 'config:core.entity_view_display.node.event.comments'
         - 'config:core.entity_view_display.node.event.default'
+        - 'config:core.entity_view_display.node.event.event_ajax_response'
         - 'config:core.entity_view_display.node.event.full'
         - 'config:core.entity_view_display.node.event.news_events_listing'
         - 'config:core.entity_view_display.node.event.news_events_sidebar'
@@ -1144,6 +1146,7 @@ display:
         - 'config:core.entity_view_display.node.event.calendar_preview'
         - 'config:core.entity_view_display.node.event.comments'
         - 'config:core.entity_view_display.node.event.default'
+        - 'config:core.entity_view_display.node.event.event_ajax_response'
         - 'config:core.entity_view_display.node.event.full'
         - 'config:core.entity_view_display.node.event.news_events_listing'
         - 'config:core.entity_view_display.node.event.news_events_sidebar'
@@ -1288,6 +1291,8 @@ display:
         title: false
         fields: false
         group_by: false
+        style: false
+        row: false
       filter_groups:
         operator: AND
         groups:
@@ -1367,9 +1372,8 @@ display:
           entity_type: group_content
           plugin_id: parents_content
       pager:
-        type: some
+        type: none
         options:
-          items_per_page: 3
           offset: 0
       use_ajax: false
       exposed_form:
@@ -1504,6 +1508,25 @@ display:
           plugin_id: rendered_entity
       display_description: ''
       group_by: false
+      style:
+        type: grouping_limit
+        options:
+          grouping:
+            -
+              field: gid
+              rendered: true
+              rendered_strip: false
+              grouping_limit: '3'
+              grouping_offset: '0'
+          row_class: ''
+          default_row_class: true
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -1536,6 +1559,7 @@ display:
         - 'config:core.entity_view_display.node.event.calendar_preview'
         - 'config:core.entity_view_display.node.event.comments'
         - 'config:core.entity_view_display.node.event.default'
+        - 'config:core.entity_view_display.node.event.event_ajax_response'
         - 'config:core.entity_view_display.node.event.full'
         - 'config:core.entity_view_display.node.event.news_events_listing'
         - 'config:core.entity_view_display.node.event.news_events_sidebar'

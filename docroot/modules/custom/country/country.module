@@ -30,6 +30,15 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         return AccessResult::allowed();
       }
     }
+
+    if ($node->hasField('global_content')) {
+      $global_content = $node->get('global_content')->getValue();
+
+      if (!empty($global_content) && !empty(reset($global_content)['value']) && \Drupal::currentUser()->isAnonymous()) {
+        return AccessResult::forbidden();
+      }
+    }
+
     // Check node group content permissions.
     if ($account->hasPermission('always access to node view')) {
       if ($node instanceof GroupInterface) {
@@ -118,6 +127,21 @@ function country_node_access_records_alter(array &$grants, NodeInterface $node) 
       ];
     }
   }
+
+  if ($node->hasField('global_content')) {
+    $global_content = $node->get('global_content')->getValue();
+
+    if (!empty($global_content) && !empty(reset($global_content)['value'])) {
+      $grants[] = [
+        'realm' => 'global_group',
+        'gid' => PUBLIC_GROUP,
+        'grant_view' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
+        'priority' => 0,
+      ];
+    }
+  }
 }
 
 /**
@@ -126,6 +150,10 @@ function country_node_access_records_alter(array &$grants, NodeInterface $node) 
 function country_node_grants_alter(array &$grants, AccountInterface $account, $op) {
   if ($op == 'view') {
     $grants['public_group'] = [PUBLIC_GROUP];
+
+    if (\Drupal::currentUser()->isAuthenticated()) {
+      $grants['global_group'] = [PUBLIC_GROUP];
+    }
   }
 }
 

@@ -1,4 +1,3 @@
-
 <article{{ attributes.addClass(['js-comment', 'comment-item']) }} {{ elements['#replies_count'] ? 'many-replies' }}>
   {#
     Hide the "new" indicator by default, let a piece of JavaScript ask the
@@ -7,13 +6,29 @@
   #}
   <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
 
-  {{ user_picture }}
+  {% if logged_in %}
+    <a href="{{ author_url }}">
+  {% endif %}
+
+    {{ user_picture }}
+
+  {% if logged_in %}
+    </a>
+  {% endif %}
 
   <div class="comment-container">
     <div class="user-info">
-      <div class="name">
-        {{ author_name }}
-      </div>
+      {% if logged_in %}
+        <a href="{{ author_url }}">
+      {% endif %}
+
+        <div class="name">
+          {{ author_name }}
+        </div>
+
+      {% if logged_in %}
+        </a>
+      {% endif %}
       <span class="commented">{{ submitted }}</span>
 
       {#

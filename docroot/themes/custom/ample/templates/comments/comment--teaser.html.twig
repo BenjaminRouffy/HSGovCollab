@@ -1,12 +1,28 @@
 <div class="comment-wrapper">
+  {% if logged_in %}
+    <a href="{{ author_url }}">
+  {% endif %}
+
   {{ user_picture }}
+
+  {% if logged_in %}
+    </a>
+  {% endif %}
 
   <div class="comment-container">
     <div class="user-info">
+      {% if logged_in %}
+        <a href="{{ author_url }}">
+      {% endif %}
 
       <div class="name">
         {{ author_name }}
       </div>
+
+      {% if logged_in %}
+        </a>
+      {% endif %}
+
       <span class="commented">{{ created }}</span>
 
       {{ content.votingapi_links }}

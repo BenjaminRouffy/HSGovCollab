@@ -314,6 +314,84 @@
   }
 }
 
+.block-facet--checkbox,
+.block-facet--datebasic {
+  margin-bottom: 20px;
+
+  h2 {
+    @include font-size(14);
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 25px;
+    margin: 0 0 10px;
+
+    &:hover {
+      opacity: .79;
+    }
+  }
+
+  > ul {
+    background: $white;
+    box-shadow: 0 0 6px rgba($black, .09);
+    display: none;
+    margin: 0;
+    padding: 30px 20px;
+  }
+
+  li {
+    margin-bottom: 15px;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      opacity: .79;
+    }
+  }
+
+  [type="checkbox"] {
+    appearance: checkbox;
+    margin-right: 4px;
+  }
+
+  label {
+    @include font-size(15.4);
+    font-family: $fira;
+
+    &:hover {
+      opacity: .79;
+    }
+  }
+
+  .facet-item__count {
+    color: $navy;
+  }
+
+  .js-facet-deactivate {
+    color: $red;
+  }
+}
+
+.reset-filters {
+  margin-top: 50px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    @extend .form-submit;
+    background: transparent;
+    display: inline-block;
+    font-family: $oswald;
+    text-decoration: none;
+    vertical-align: top;
+  }
+}
+
 @include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts', (to: laptop-small)) {
   .wrapper-filters {
     flex-wrap: wrap;

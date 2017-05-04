@@ -5528,36 +5528,45 @@ form .social_login iframe {
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
 
-.block-facet--checkbox {
+.block-facet--checkbox,
+.block-facet--datebasic {
   margin-bottom: 20px; }
-  .block-facet--checkbox h2 {
+  .block-facet--checkbox h2,
+  .block-facet--datebasic h2 {
     font-size: 0.875rem;
     cursor: pointer;
     font-weight: 400;
     letter-spacing: .5px;
     line-height: 25px;
     margin: 0 0 10px; }
-    .block-facet--checkbox h2:hover {
+    .block-facet--checkbox h2:hover,
+    .block-facet--datebasic h2:hover {
       opacity: .79; }
-  .block-facet--checkbox > ul {
+  .block-facet--checkbox > ul,
+  .block-facet--datebasic > ul {
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.09);
     display: none;
     margin: 0;
     padding: 30px 20px; }
-  .block-facet--checkbox li {
+  .block-facet--checkbox li,
+  .block-facet--datebasic li {
     margin-bottom: 15px; }
-  .block-facet--checkbox a {
+  .block-facet--checkbox a,
+  .block-facet--datebasic a {
     text-decoration: none; }
-  .block-facet--checkbox [type="checkbox"] {
+  .block-facet--checkbox [type="checkbox"],
+  .block-facet--datebasic [type="checkbox"] {
     -webkit-appearance: checkbox;
        -moz-appearance: checkbox;
             appearance: checkbox;
     margin-right: 4px; }
-  .block-facet--checkbox label {
+  .block-facet--checkbox label,
+  .block-facet--datebasic label {
     font-size: 0.9625rem;
     font-family: "Fira Sans", sans-serif; }
-  .block-facet--checkbox .facet-item__count {
+  .block-facet--checkbox .facet-item__count,
+  .block-facet--datebasic .facet-item__count {
     color: #4c7e96; }
 
 .reset-filters {
@@ -8072,7 +8081,7 @@ footer {
     letter-spacing: .5px;
     line-height: 25px;
     margin: 0 0 5px; }
-  .document-list .font-social-icon {
+  .document-list .font-social-icon:not(.prev):not(.next) {
     font-size: 3.0625rem;
     color: #4c7e96;
     position: absolute;
@@ -8103,3 +8112,21 @@ footer {
       top: 7px; }
     .document-list .download:hover {
       opacity: .66; }
+
+.search-results {
+  background: transparent;
+  margin-top: 0;
+  padding: 0; }
+  .search-results nav:first-child .js-pager__items {
+    float: right;
+    margin-bottom: 15px; }
+  .search-results .views-row {
+    background: #fff;
+    clear: both;
+    padding: 10px 20px; }
+    .search-results .views-row:first-of-type {
+      padding-top: 30px; }
+    .search-results .views-row:last-of-type {
+      padding-bottom: 30px; }
+  .search-results .document-teaser {
+    margin: 0; }

@@ -583,8 +583,7 @@
 
   Drupal.behaviors.searchFilterAccordion = {
     attach: function(context, settings) {
-      var $facetBox = $('.block-facet--checkbox', context);
-      var $facetTitle = $facetBox.children('h2');
+      var $facetBox = $('.block-facet--checkbox, .block-facet--datebasic', context);
       var $facetCheckboxList = $facetBox.children('ul');
 
       $facetBox.on('click', 'h2', function() {

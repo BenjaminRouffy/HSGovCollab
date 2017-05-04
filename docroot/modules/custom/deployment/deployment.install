@@ -840,3 +840,11 @@ function deployment_update_8064() {
   deployment_delete_fields('node', 'event', ['field_time_text']);
   field_purge_batch(500);
 }
+
+/**
+ * Remove "Related content selector" field.
+ */
+function deployment_update_8065() {
+  deployment_delete_fields('node', 'article', ['field_related_content_selector']);
+  field_purge_batch(500);
+}

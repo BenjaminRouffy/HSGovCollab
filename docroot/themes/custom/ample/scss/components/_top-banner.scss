@@ -6,7 +6,7 @@
     padding-top: 120px;
   }
 
-  body:not(.group) & {
+  body:not(.group):not(.page-search) & {
     border-bottom: 1px solid #e9e6e6;
     box-shadow: 0 0 8px rgba($black, .11);
   }

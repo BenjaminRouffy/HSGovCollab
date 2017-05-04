@@ -6,12 +6,12 @@
 
 <div class="content-wrapper">
   <section class="content-container content-with-sidebar">
-    <section class="content">
-      {{ content.left_sidebar|without('#prefix', '#suffix') }}
-    </section>
-
     <aside class="sidebar">
       {{ content.right_sidebar|without('#prefix', '#suffix') }}
     </aside>
+
+    <section class="content">
+      {{ content.left_sidebar|without('#prefix', '#suffix') }}
+    </section>
   </section>
 </div>

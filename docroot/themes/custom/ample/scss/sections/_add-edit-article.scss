@@ -41,7 +41,7 @@
     margin: 0 auto;
     width: 66.64%;
 
-    label {
+    label:not(.error) {
       &:after {
         content: ":";
       }

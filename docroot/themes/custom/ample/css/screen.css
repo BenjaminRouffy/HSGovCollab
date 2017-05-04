@@ -5930,6 +5930,26 @@ form .social_login iframe {
   line-height: 30px;
   text-align: center; }
 
+.event-content {
+  background: #fff;
+  border: 1px solid #afb7bb;
+  max-height: 600px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(0, 0);
+          transform: translateX(-50%) translateY(-50%) scale(0, 0);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+  width: 35%;
+  z-index: 1; }
+  .event-content.active {
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(1, 1);
+            transform: translateX(-50%) translateY(-50%) scale(1, 1); }
+
 #sliding-popup {
   font-size: 0.875rem;
   background: #80aabe !important;
@@ -7463,19 +7483,19 @@ footer {
 .article-delete-node .node-article-delete-form {
   margin: 0 auto;
   width: 66.64%; }
-  .article-add-node .node-form label:after,
-  .article-add-node .node-article-delete-form label:after,
-  .article-edit-node .node-form label:after,
-  .article-edit-node .node-article-delete-form label:after,
-  .article-delete-node .node-form label:after,
-  .article-delete-node .node-article-delete-form label:after {
+  .article-add-node .node-form label:not(.error):after,
+  .article-add-node .node-article-delete-form label:not(.error):after,
+  .article-edit-node .node-form label:not(.error):after,
+  .article-edit-node .node-article-delete-form label:not(.error):after,
+  .article-delete-node .node-form label:not(.error):after,
+  .article-delete-node .node-article-delete-form label:not(.error):after {
     content: ":"; }
-  .article-add-node .node-form label.form-required:after,
-  .article-add-node .node-article-delete-form label.form-required:after,
-  .article-edit-node .node-form label.form-required:after,
-  .article-edit-node .node-article-delete-form label.form-required:after,
-  .article-delete-node .node-form label.form-required:after,
-  .article-delete-node .node-article-delete-form label.form-required:after {
+  .article-add-node .node-form label:not(.error).form-required:after,
+  .article-add-node .node-article-delete-form label:not(.error).form-required:after,
+  .article-edit-node .node-form label:not(.error).form-required:after,
+  .article-edit-node .node-article-delete-form label:not(.error).form-required:after,
+  .article-delete-node .node-form label:not(.error).form-required:after,
+  .article-delete-node .node-article-delete-form label:not(.error).form-required:after {
     content: ": *"; }
 
 .article-add-node .node-article-delete-form,

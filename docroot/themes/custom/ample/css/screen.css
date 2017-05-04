@@ -172,6 +172,8 @@ body {
   min-height: 100%;
   min-width: 320px;
   overflow-x: hidden; }
+  body.safari {
+    height: calc(100% + 160px); }
   body.no-scroll {
     overflow: hidden; }
   body.full-page-slider #toolbar-administration,
@@ -179,6 +181,10 @@ body {
   body.full-page-slider .dashboard-sidebar,
   body.full-page-slider footer {
     z-index: 0; }
+
+@media (max-width: 991px) {
+  body.safari {
+    height: 100%; } }
 
 h1, h2, h3 {
   color: #283b44;
@@ -1155,6 +1161,9 @@ footer > .partners {
     .top-banner-region .user-info .paragraph {
       height: auto;
       max-width: 25%; }
+      .safari .top-banner-region .user-info .paragraph {
+        max-width: 100%;
+        width: 25%; }
     .top-banner-region .user-info .icon-wrapper {
       height: 150px;
       width: 150px;
@@ -1229,6 +1238,9 @@ footer > .partners {
       max-width: 50%; }
       .top-banner-region .section-info .paragraph h2 {
         font-size: 1.75rem; }
+  .safari .top-banner-region .user-info .paragraph {
+    max-width: 100%;
+    width: 50%; }
   .top-banner-region .user-info .paragraph h3 {
     font-size: 1.3125rem;
     line-height: 29px; } }
@@ -3774,7 +3786,7 @@ form {
         padding: 2px 5px 2px 20px; }
         .form-select.chosen-container .chosen-choices .search-choice .search-choice-close,
         .form-select.chosen-container .chosen-single .search-choice .search-choice-close {
-          background: url(../images/add-plus-button.png) 2px -1px no-repeat;
+          background: url(../images/add-plus-button.png) 2px -1px no-repeat !important;
           right: auto;
           left: 3px;
           -webkit-transform: rotate(45deg);

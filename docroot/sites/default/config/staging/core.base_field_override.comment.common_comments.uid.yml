@@ -1,0 +1,22 @@
+uuid: 307a1bdb-c0da-4952-9079-5753377ce471
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.common_comments
+id: comment.common_comments.uid
+field_name: uid
+entity_type: comment
+bundle: common_comments
+label: 'User ID'
+description: 'The user ID of the comment author.'
+required: false
+translatable: false
+default_value:
+  -
+    target_id: '0'
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

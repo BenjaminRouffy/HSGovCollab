@@ -1,0 +1,18 @@
+uuid: e18479f9-2150-4313-8213-4f6b760f9eae
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.common_comments
+id: comment.common_comments.subject
+field_name: subject
+entity_type: comment
+bundle: common_comments
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

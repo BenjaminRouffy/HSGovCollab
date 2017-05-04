@@ -22,11 +22,13 @@
         var events = [];
         $('.views-row', _this.$view).each(function () {
           var times = $(this).find('.event-date time');
+          var eventId = $(this).find('.event-id').text().trim();
+          var langcode = drupalSettings.path.currentLanguage;
           events.push({
-            eventId: $(this).find('.event-id').text().trim(),
-            title: $(this).find('.event-title').html().trim(),
+            title: $(this).find('.event-title').text().trim(),
             start: $(times).eq(0).attr('datetime'),
             end: $(times).eq(1).attr('datetime'),
+            url: '/' + langcode + '/events/get-event/' + eventId,
           });
           $(this).hide();
         });
@@ -36,6 +38,8 @@
         $('.fc-year-monthly-name a', _this.$view).click(function (event) {
           event.preventDefault();
         });
+        $('.fc-event-container a', _this.$view).addClass('use-ajax');
+        Drupal.attachBehaviors($calendar);
       },
       viewDestroy: function (view, element) {
         var _calendar = this,

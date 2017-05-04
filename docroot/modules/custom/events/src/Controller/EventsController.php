@@ -25,7 +25,7 @@ class EventsController extends ControllerBase {
     $entity = Node::load($nid);
     $response = '';
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity->getEntityTypeId());
-    $view = $view_builder->view($entity, 'event_ajax_response', $entity->language()->getId());
+    $view = $view_builder->view($entity, 'event_ajax_response', \Drupal::languageManager()->getCurrentLanguage()->getId());
 
     if (!empty($view)) {
       $html = render($view);

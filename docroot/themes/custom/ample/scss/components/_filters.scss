@@ -319,20 +319,31 @@
 
   h2 {
     @include font-size(14);
+    cursor: pointer;
     font-weight: 400;
+    letter-spacing: .5px;
     line-height: 25px;
-    margin: 0 0 5px;
+    margin: 0 0 10px;
+
+    &:hover {
+      opacity: .79;
+    }
   }
 
-  ul {
+  > ul {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .09);
+    display: none;
     margin: 0;
     padding: 30px 20px;
   }
 
   li {
     margin-bottom: 15px;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   [type="checkbox"] {
@@ -343,6 +354,28 @@
   label {
     @include font-size(15.4);
     font-family: $fira;
+  }
+
+  .facet-item__count {
+    color: $navy;
+  }
+}
+
+.reset-filters {
+  margin-top: 50px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    @extend .form-submit;
+    background: transparent;
+    display: inline-block;
+    font-family: $oswald;
+    text-decoration: none;
+    vertical-align: top;
   }
 }
 

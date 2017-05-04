@@ -1690,3 +1690,23 @@ form {
     left: 50%;
   }
 }
+
+.full-width-search {
+  background: $white;
+  margin: 50px auto 27px;
+  max-width: 1160px;
+  padding: 42px;
+
+  .form-text {
+    @include font-size(19.6);
+    height: 70px;
+    margin-bottom: 0;
+    padding-left: 20px;
+  }
+
+  .search-form-wrapper {
+    .form-submit {
+      height: 100%;
+    }
+  }
+}

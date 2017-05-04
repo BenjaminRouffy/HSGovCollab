@@ -581,6 +581,29 @@
     }
   };
 
+  Drupal.behaviors.searchFilterAccordion = {
+    attach: function(context, settings) {
+      var $facetBox = $('.block-facet--checkbox', context);
+      var $facetTitle = $facetBox.children('h2');
+      var $facetCheckboxList = $facetBox.children('ul');
+
+      $facetBox.on('click', 'h2', function() {
+        var $this = $(this);
+
+        if (!$this.parent().is('[expanded]')) {
+          $facetBox.removeAttr('expanded');
+          $this.parent().attr('expanded', '');
+          $facetCheckboxList.slideUp();
+          $this.siblings('ul').slideDown();
+        }
+        else {
+          $facetBox.removeAttr('expanded');
+          $this.siblings('ul').slideUp();
+        }
+      });
+    }
+  };
+
   Drupal.behaviors.ieFixes = {
     attach: function(context, settings) {
       // IE 9

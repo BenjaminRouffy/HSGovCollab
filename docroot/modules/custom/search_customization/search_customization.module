@@ -15,6 +15,8 @@ function search_customization_form_alter(&$form, FormStateInterface $form_state,
       case 'views-exposed-form-search-block-with-path-1':
         $form['search_api_fulltext']['#attributes']['placeholder'] = t('Insert search');
 
+        $form['#attributes']['class'][] = 'full-width-search';
+
         $form['search_api_fulltext']['#prefix'] = '<div class="search-form-wrapper">';
         $form['actions']['#suffix'] = '</div>';
 

@@ -206,6 +206,23 @@
   }
 }
 
+.left-sidebar {
+  overflow: hidden;
+  padding-top: 0;
+
+  .sidebar {
+    float: left;
+    margin-top: 20px;
+    padding-right: 20px;
+    width: 25%;
+  }
+
+  .content {
+    float: right;
+    width: 75%;
+  }
+}
+
 .header-image {
   margin-bottom: 50px;
   width: 95%;

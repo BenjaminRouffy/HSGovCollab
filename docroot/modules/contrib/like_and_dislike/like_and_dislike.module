@@ -94,6 +94,8 @@ function like_and_dislike_can_vote(AccountInterface $account, $vote_type_id, Ent
  * Insert the like/dislike value if the user has select it.
  */
 function like_and_dislike_vote_insert(EntityInterface $vote) {
+  $vote_type_to_delete = '';
+
   switch ($vote->bundle()) {
     case 'like':
       $vote_type_to_delete = 'dislike';
@@ -103,13 +105,16 @@ function like_and_dislike_vote_insert(EntityInterface $vote) {
       $vote_type_to_delete = 'like';
       break;
   }
-  $vote_storage = \Drupal::entityManager()->getStorage('vote');
-  $vote_storage->deleteUserVotes(
-    $vote->getOwnerId(),
-    $vote_type_to_delete,
-    $vote->getVotedEntityType(),
-    $vote->getVotedEntityId()
-  );
+
+  if (!empty($vote_type_to_delete)) {
+    $vote_storage = \Drupal::entityManager()->getStorage('vote');
+    $vote_storage->deleteUserVotes(
+      $vote->getOwnerId(),
+      $vote_type_to_delete,
+      $vote->getVotedEntityType(),
+      $vote->getVotedEntityId()
+    );
+  }
 }
 
 /**

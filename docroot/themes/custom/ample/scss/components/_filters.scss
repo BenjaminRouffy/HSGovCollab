@@ -345,6 +345,10 @@
 
   a {
     text-decoration: none;
+
+    &:hover {
+      opacity: .79;
+    }
   }
 
   [type="checkbox"] {
@@ -355,10 +359,18 @@
   label {
     @include font-size(15.4);
     font-family: $fira;
+
+    &:hover {
+      opacity: .79;
+    }
   }
 
   .facet-item__count {
     color: $navy;
+  }
+
+  .js-facet-deactivate {
+    color: $red;
   }
 }
 

@@ -5555,6 +5555,9 @@ form .social_login iframe {
   .block-facet--checkbox a,
   .block-facet--datebasic a {
     text-decoration: none; }
+    .block-facet--checkbox a:hover,
+    .block-facet--datebasic a:hover {
+      opacity: .79; }
   .block-facet--checkbox [type="checkbox"],
   .block-facet--datebasic [type="checkbox"] {
     -webkit-appearance: checkbox;
@@ -5565,9 +5568,15 @@ form .social_login iframe {
   .block-facet--datebasic label {
     font-size: 0.9625rem;
     font-family: "Fira Sans", sans-serif; }
+    .block-facet--checkbox label:hover,
+    .block-facet--datebasic label:hover {
+      opacity: .79; }
   .block-facet--checkbox .facet-item__count,
   .block-facet--datebasic .facet-item__count {
     color: #4c7e96; }
+  .block-facet--checkbox .js-facet-deactivate,
+  .block-facet--datebasic .js-facet-deactivate {
+    color: #ea3a32; }
 
 .reset-filters {
   margin-top: 50px; }
@@ -6707,7 +6716,7 @@ footer {
   padding-top: 0; }
   .left-sidebar .sidebar {
     float: left;
-    margin-top: 20px;
+    margin-top: 80px;
     padding-right: 20px;
     width: 25%; }
   .left-sidebar .content {
@@ -8130,3 +8139,7 @@ footer {
       padding-bottom: 30px; }
   .search-results .document-teaser {
     margin: 0; }
+    .search-results .document-teaser a {
+      font-size: 0.875rem; }
+      .search-results .document-teaser a:hover {
+        color: #8c2222; }

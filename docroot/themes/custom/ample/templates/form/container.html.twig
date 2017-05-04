@@ -1,0 +1,14 @@
+{% if without_div %}
+  {{ children }}
+{% else %}
+  {%
+    set classes = [
+      has_parent ? 'js-form-wrapper',
+      has_parent ? 'form-wrapper',
+    ]
+  %}
+
+  <div{{ attributes.addClass(classes) }}>
+    {{ children }}
+  </div>
+{% endif %}

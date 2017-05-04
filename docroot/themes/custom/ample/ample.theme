@@ -447,3 +447,17 @@ function ample_preprocess_comment(&$variables) {
 
   $variables['author_name'] = $first_name . ' ' . $last_name;
 }
+
+/**
+ * Implements template_preprocess_container().
+ */
+function ample_preprocess_container(array &$variables) {
+  if (
+    isset($variables['element']['#type']) &&
+    'view' == $variables['element']['#type'] &&
+    isset($variables['element']['#name']) &&
+    'last_news_by_group' == $variables['element']['#name']
+  ) {
+    $variables['without_div'] = TRUE;
+  }
+}

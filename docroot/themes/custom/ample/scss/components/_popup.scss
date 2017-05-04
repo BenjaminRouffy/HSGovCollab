@@ -155,3 +155,21 @@
   line-height: 30px;
   text-align: center;
 }
+
+.event-content {
+  background: $white;
+  border: 1px solid #afb7bb;
+  max-height: 600px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) scale(0, 0);
+  transition: transform .3s ease;
+  width: 35%;
+  z-index: 1;
+
+  &.active {
+    transform: translateX(-50%) translateY(-50%) scale(1, 1);
+  }
+}

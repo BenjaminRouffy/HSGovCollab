@@ -7483,19 +7483,19 @@ footer {
 .article-delete-node .node-article-delete-form {
   margin: 0 auto;
   width: 66.64%; }
-  .article-add-node .node-form label:after,
-  .article-add-node .node-article-delete-form label:after,
-  .article-edit-node .node-form label:after,
-  .article-edit-node .node-article-delete-form label:after,
-  .article-delete-node .node-form label:after,
-  .article-delete-node .node-article-delete-form label:after {
+  .article-add-node .node-form label:not(.error):after,
+  .article-add-node .node-article-delete-form label:not(.error):after,
+  .article-edit-node .node-form label:not(.error):after,
+  .article-edit-node .node-article-delete-form label:not(.error):after,
+  .article-delete-node .node-form label:not(.error):after,
+  .article-delete-node .node-article-delete-form label:not(.error):after {
     content: ":"; }
-  .article-add-node .node-form label.form-required:after,
-  .article-add-node .node-article-delete-form label.form-required:after,
-  .article-edit-node .node-form label.form-required:after,
-  .article-edit-node .node-article-delete-form label.form-required:after,
-  .article-delete-node .node-form label.form-required:after,
-  .article-delete-node .node-article-delete-form label.form-required:after {
+  .article-add-node .node-form label:not(.error).form-required:after,
+  .article-add-node .node-article-delete-form label:not(.error).form-required:after,
+  .article-edit-node .node-form label:not(.error).form-required:after,
+  .article-edit-node .node-article-delete-form label:not(.error).form-required:after,
+  .article-delete-node .node-form label:not(.error).form-required:after,
+  .article-delete-node .node-article-delete-form label:not(.error).form-required:after {
     content: ": *"; }
 
 .article-add-node .node-article-delete-form,

@@ -23,10 +23,10 @@
         $('.views-row', _this.$view).each(function () {
           var times = $(this).find('.event-date time');
           events.push({
-            title: $(this).find('.event-title').text().trim(),
+            eventId: $(this).find('.event-id').text().trim(),
+            title: $(this).find('.event-title').html().trim(),
             start: $(times).eq(0).attr('datetime'),
             end: $(times).eq(1).attr('datetime'),
-            description: $(this).find('.event-desc').html(),
           });
           $(this).hide();
         });
@@ -44,9 +44,6 @@
         _this.getInput('format').val(view['type']);
         _this.getInput('month').val(date.month() + 1);
         _this.getInput('year').val(date.year());
-      },
-      eventClick: function(calEvent, jsEvent, view) {
-        $('.event-content', _this.$view).html('').append(calEvent.description);
       }
     });
 

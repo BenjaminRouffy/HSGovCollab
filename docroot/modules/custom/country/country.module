@@ -30,6 +30,15 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         return AccessResult::allowed();
       }
     }
+
+    if ($node->hasField('global_content')) {
+      $global_content = $node->get('global_content')->getValue();
+
+      if (!empty($global_content) && !empty(reset($global_content)['value']) && \Drupal::currentUser()->isAnonymous()) {
+        return AccessResult::forbidden();
+      }
+    }
+
     // Check node group content permissions.
     if ($account->hasPermission('always access to node view')) {
       if ($node instanceof GroupInterface) {

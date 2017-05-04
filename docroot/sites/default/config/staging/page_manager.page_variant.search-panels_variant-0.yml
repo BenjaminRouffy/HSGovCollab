@@ -42,8 +42,8 @@ variant_settings:
       label_display: '0'
       views_label: ''
       items_per_page: none
-      region: right_sidebar
-      weight: 0
+      region: left_sidebar
+      weight: -10
       uuid: 4063d4e7-5b4e-437e-8101-39a327942dac
       context_mapping: {  }
     1a351ab6-a523-491d-9cdd-5f7d8c085d9f:
@@ -51,7 +51,7 @@ variant_settings:
       label: Countries
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: -3
       uuid: 1a351ab6-a523-491d-9cdd-5f7d8c085d9f
       context_mapping: {  }
@@ -60,7 +60,7 @@ variant_settings:
       label: 'KV categories'
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: 0
       uuid: 011c71d5-799d-4b66-91d2-c37ccba17875
       context_mapping: {  }
@@ -69,7 +69,7 @@ variant_settings:
       label: Organizations
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: 1
       uuid: 282fd026-18fc-4e41-a670-4c63985828cd
       context_mapping: {  }
@@ -78,7 +78,7 @@ variant_settings:
       label: Products
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: -1
       uuid: 5261a262-ebe5-4237-9c9b-75f710fd1b76
       context_mapping: {  }
@@ -87,7 +87,7 @@ variant_settings:
       label: Projects
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: -2
       uuid: dbc0e2a8-6a5e-4d37-8fa1-8e137e48876f
       context_mapping: {  }
@@ -96,7 +96,7 @@ variant_settings:
       label: Regions
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: -4
       uuid: c733e50b-43d1-4e93-b0e4-aa6eed6fd750
       context_mapping: {  }
@@ -105,7 +105,7 @@ variant_settings:
       label: 'Content types'
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: -5
       uuid: b85c0a24-789a-46bb-a1c4-edcafd08f5da
       context_mapping: {  }
@@ -114,7 +114,7 @@ variant_settings:
       label: Categories
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: 2
       uuid: b6964311-911d-4ae9-9d20-df8909d89aaa
       context_mapping: {  }
@@ -123,7 +123,7 @@ variant_settings:
       label: Date
       provider: facets
       label_display: visible
-      region: left_sidebar
+      region: right_sidebar
       weight: 3
       uuid: 54ec7361-55b3-447f-bbc7-a821ec66869a
       context_mapping: {  }
@@ -132,7 +132,7 @@ variant_settings:
       label: Summary
       provider: facets_summary
       label_display: '0'
-      region: left_sidebar
+      region: right_sidebar
       weight: 4
       uuid: 0938a439-3ac4-4a9d-8f38-a92d6bcc101d
       context_mapping: {  }

@@ -15,6 +15,7 @@ dependencies:
     - field.field.user.user.field_following_projects
     - field.field.user.user.field_following_regions
     - field.field.user.user.field_job_title
+    - field.field.user.user.field_knowledge_vault_manager
     - field.field.user.user.field_last_name
     - field.field.user.user.field_last_password_reset
     - field.field.user.user.field_middle_name
@@ -51,7 +52,7 @@ content:
     region: content
   field_country:
     type: entity_reference_label
-    weight: 12
+    weight: 13
     region: content
     label: hidden
     settings:
@@ -73,13 +74,20 @@ content:
       link_to_entity: false
     third_party_settings: {  }
   field_job_title:
-    weight: 10
+    weight: 11
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
+  field_knowledge_vault_manager:
+    type: group_content_manager_list
+    weight: 5
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_last_name:
     type: string
     weight: 2
@@ -89,7 +97,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
   field_mobilephone:
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       link_to_entity: false
@@ -97,7 +105,7 @@ content:
     type: string
     region: content
   field_non_member_organization:
-    weight: 9
+    weight: 10
     label: hidden
     settings:
       link_to_entity: false
@@ -105,7 +113,7 @@ content:
     type: string
     region: content
   field_organisation:
-    weight: 8
+    weight: 9
     label: hidden
     settings:
       link: false
@@ -114,7 +122,7 @@ content:
     region: content
   field_organisations:
     type: entity_reference_revisions_entity_view
-    weight: 11
+    weight: 12
     region: content
     label: hidden
     settings:
@@ -130,7 +138,7 @@ content:
     region: content
   field_skype_or_other:
     type: entity_reference_revisions_entity_view
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       view_mode: default
@@ -138,7 +146,7 @@ content:
     third_party_settings: {  }
     region: content
   field_telephone:
-    weight: 6
+    weight: 7
     label: hidden
     settings:
       link_to_entity: false

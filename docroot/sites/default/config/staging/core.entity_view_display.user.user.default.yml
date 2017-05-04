@@ -14,6 +14,7 @@ dependencies:
     - field.field.user.user.field_following_projects
     - field.field.user.user.field_following_regions
     - field.field.user.user.field_job_title
+    - field.field.user.user.field_knowledge_vault_manager
     - field.field.user.user.field_last_name
     - field.field.user.user.field_last_password_reset
     - field.field.user.user.field_middle_name
@@ -49,7 +50,7 @@ content:
     type: taxonomy_image_formatter
     region: content
   field_country:
-    weight: 10
+    weight: 11
     label: hidden
     settings:
       link: false
@@ -64,15 +65,22 @@ content:
     type: group_content_manager_list
     region: content
   field_job_title:
-    weight: 8
+    weight: 9
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
+  field_knowledge_vault_manager:
+    type: group_content_manager_list
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_mobilephone:
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       link_to_entity: false
@@ -80,7 +88,7 @@ content:
     type: string
     region: content
   field_non_member_organization:
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       link_to_entity: false
@@ -88,7 +96,7 @@ content:
     type: string
     region: content
   field_organisation:
-    weight: 6
+    weight: 7
     label: hidden
     settings:
       link: false
@@ -97,7 +105,7 @@ content:
     region: content
   field_organisations:
     type: entity_reference_revisions_entity_view
-    weight: 9
+    weight: 10
     region: content
     label: hidden
     settings:
@@ -113,7 +121,7 @@ content:
     region: content
   field_skype_or_other:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       view_mode: default
@@ -121,7 +129,7 @@ content:
     third_party_settings: {  }
     region: content
   field_telephone:
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       link_to_entity: false

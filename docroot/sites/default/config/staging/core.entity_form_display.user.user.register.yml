@@ -15,6 +15,7 @@ dependencies:
     - field.field.user.user.field_following_projects
     - field.field.user.user.field_following_regions
     - field.field.user.user.field_job_title
+    - field.field.user.user.field_knowledge_vault_manager
     - field.field.user.user.field_last_name
     - field.field.user.user.field_last_password_reset
     - field.field.user.user.field_middle_name
@@ -46,11 +47,12 @@ third_party_settings:
         - account
         - field_country_manager
         - field_project_manager
+        - field_knowledge_vault_manager
         - captcha
         - legal_terms_and_conditions
         - field_disclose_your_personal_det
       parent_name: ''
-      weight: 1
+      weight: 0
       format_type: html_element
       format_settings:
         label: Right
@@ -94,7 +96,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   captcha:
-    weight: 29
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -106,7 +108,7 @@ content:
     third_party_settings: {  }
   field_disclose_your_personal_det:
     type: boolean_checkbox
-    weight: 31
+    weight: 32
     region: content
     settings:
       display_label: true
@@ -126,6 +128,12 @@ content:
     settings:
       size: 60
       placeholder: 'Please enter your job title'
+    third_party_settings: {  }
+  field_knowledge_vault_manager:
+    type: group_select
+    weight: 29
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_last_name:
     type: string_textfield
@@ -170,7 +178,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   legal_terms_and_conditions:
-    weight: 30
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }

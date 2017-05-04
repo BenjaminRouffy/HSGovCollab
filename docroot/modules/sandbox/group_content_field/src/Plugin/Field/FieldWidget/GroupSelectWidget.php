@@ -24,29 +24,36 @@ use Drupal\rel_content\RelatedContentInterface;
 class GroupSelectWidget extends WidgetBase {
 
   /**
-   * {@inheritdoc}
+   * Get all available options.
    */
-  public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+  protected function getGroups($group_type) {
     $options = [];
 
-    $values = $items[$delta]->getValue();
-
-    /** @var \Drupal\Core\Field\FieldStorageDefinitionInterface */
-    $group_type = $this->fieldDefinition->getFieldStorageDefinition()->getSetting('group_type');
     foreach(\Drupal::entityTypeManager()->getStorage('group')->loadByProperties(['type' => $group_type]) as $key => $group) {
-      if ($group->access('view') || $group->getGroupType()->id() == 'country') {
+      if ($group->access('view')) {
         $options[$key] = $group->label();
       }
     }
-    $items[$delta]->value;
+
+    return $options;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    $values = $items[$delta]->getValue();
+
+    $options = $this->getGroups($this->fieldDefinition->getFieldStorageDefinition()->getSetting('group_type'));
+    sort($options);
 
     $element['entity_gids'] = $element + [
-      '#type' => 'select',
-      '#default_value' => isset($values['entity_gids']) ? $values['entity_gids'] : NULL,
-      '#options' => $options,
-      '#multiple' => TRUE,
-      '#chosen' => TRUE,
-    ];
+        '#type' => 'select',
+        '#default_value' => isset($values['entity_gids']) ? $values['entity_gids'] : NULL,
+        '#options' => $options,
+        '#multiple' => TRUE,
+        '#chosen' => TRUE,
+      ];
 
     return $element;
   }

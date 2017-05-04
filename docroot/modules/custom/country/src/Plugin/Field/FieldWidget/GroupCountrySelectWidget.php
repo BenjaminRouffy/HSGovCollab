@@ -27,7 +27,7 @@ class GroupCountrySelectWidget extends GroupSelectWidget {
   /**
    * @inheritdoc
    */
-  public function getGroups($group_type) {
+  protected function getGroups($group_type) {
     $options = [];
 
     foreach(\Drupal::entityTypeManager()->getStorage('group')->loadByProperties(['type' => $group_type]) as $key => $group) {

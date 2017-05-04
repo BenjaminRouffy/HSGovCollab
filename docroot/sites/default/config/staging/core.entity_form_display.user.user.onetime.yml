@@ -15,6 +15,7 @@ dependencies:
     - field.field.user.user.field_following_projects
     - field.field.user.user.field_following_regions
     - field.field.user.user.field_job_title
+    - field.field.user.user.field_knowledge_vault_manager
     - field.field.user.user.field_last_name
     - field.field.user.user.field_last_password_reset
     - field.field.user.user.field_middle_name
@@ -30,6 +31,7 @@ dependencies:
     - field.field.user.user.field_telephone
     - field.field.user.user.field_zip_code
   module:
+    - country
     - field_group
     - group_content_field
     - user
@@ -59,7 +61,6 @@ third_party_settings:
         - field_following_regions
         - field_following_countries
         - field_following_projects
-        - field_category
       parent_name: group_fields_wrapper
       weight: 2
       format_type: html_element
@@ -86,7 +87,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_following_countries:
-    type: group_select
+    type: group_country_select
     weight: 1
     region: content
     settings: {  }
@@ -124,6 +125,7 @@ hidden:
   field_disclose_your_personal_det: true
   field_first_name: true
   field_job_title: true
+  field_knowledge_vault_manager: true
   field_last_name: true
   field_last_password_reset: true
   field_middle_name: true

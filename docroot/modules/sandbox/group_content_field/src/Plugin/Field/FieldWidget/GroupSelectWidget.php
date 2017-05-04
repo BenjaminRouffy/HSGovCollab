@@ -26,7 +26,7 @@ class GroupSelectWidget extends WidgetBase {
   /**
    * Get all available options.
    */
-  private function getGroups($group_type) {
+  protected function getGroups($group_type) {
     $options = [];
 
     foreach(\Drupal::entityTypeManager()->getStorage('group')->loadByProperties(['type' => $group_type]) as $key => $group) {

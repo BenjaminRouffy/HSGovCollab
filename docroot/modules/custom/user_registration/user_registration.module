@@ -115,8 +115,6 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     }
 
     $form['#attributes']['class'][] = 'form-my-settings';
-
-    _user_registration_manager_field_states($form);
   }
 
   if ($form_id == 'user_invited_person_form') {
@@ -131,8 +129,6 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
       $form['account']['password_policy_status'],
       $form['account']['roles']['#ajax']
     );
-
-    _user_registration_manager_field_states($form);
   }
 }
 

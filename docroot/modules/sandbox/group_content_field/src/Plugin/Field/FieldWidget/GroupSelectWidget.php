@@ -45,7 +45,7 @@ class GroupSelectWidget extends WidgetBase {
     $values = $items[$delta]->getValue();
 
     $options = $this->getGroups($this->fieldDefinition->getFieldStorageDefinition()->getSetting('group_type'));
-    sort($options);
+    asort($options);
 
     $element['entity_gids'] = $element + [
         '#type' => 'select',

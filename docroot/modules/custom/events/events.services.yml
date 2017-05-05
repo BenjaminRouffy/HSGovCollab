@@ -1,0 +1,5 @@
+services:
+  events.encoder.ical:
+    class: Drupal\events\Encoder\ICalEncoder
+    tags:
+      - { name: encoder, format: ical }

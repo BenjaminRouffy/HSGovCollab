@@ -172,8 +172,9 @@ body {
   min-height: 100%;
   min-width: 320px;
   overflow-x: hidden; }
-  body.safari {
-    height: calc(100% + 160px); }
+  body.safari:not(.logged) {
+    height: auto;
+    padding-bottom: 1px; }
   body.no-scroll {
     overflow: hidden; }
   body.full-page-slider #toolbar-administration,
@@ -181,10 +182,6 @@ body {
   body.full-page-slider .dashboard-sidebar,
   body.full-page-slider footer {
     z-index: 0; }
-
-@media (max-width: 991px) {
-  body.safari {
-    height: 100%; } }
 
 h1, h2, h3 {
   color: #283b44;

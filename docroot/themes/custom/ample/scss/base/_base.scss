@@ -15,8 +15,9 @@ body {
   min-width: 320px;
   overflow-x: hidden;
 
-  &.safari {
-    height: calc(100% + 160px);
+  &.safari:not(.logged) {
+    height: auto;
+    padding-bottom: 1px;
   }
 
   &.no-scroll {
@@ -30,12 +31,6 @@ body {
     footer {
       z-index: 0;
     }
-  }
-}
-
-@include breakpoint-for('body', (to: laptop-small)) {
-  &.safari {
-    height: 100%;
   }
 }
 

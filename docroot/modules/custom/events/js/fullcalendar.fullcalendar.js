@@ -51,7 +51,7 @@
       }
     });
 
-    var $month = _this.getInput('month').val()
+    var $month = _this.getInput('month').val();
     var $year = _this.getInput('year').val();
 
     $($calendar).fullCalendar('gotoDate', new Date($year + "-" + $month));

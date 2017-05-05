@@ -42,6 +42,7 @@
 
 <div class="bottom-link">
   {{ more }}
+  {{ feed_icons }}
 </div>
 
 {% if footer %}
@@ -54,8 +55,8 @@
   {% endif %}
 {% endif %}
 
+  <div id="calendar"></div>
+  <div id="event-response"></div>
 {% if without_wrapper is not defined %}
   </div>
 {% endif %}
-
-<div id="event-response"></div>

@@ -17,6 +17,7 @@ use Drupal\rest\Plugin\views\style\Serializer;
  * )
  */
 class EventSerializer extends Serializer {
+
   /**
    * {@inheritdoc}
    */
@@ -53,4 +54,5 @@ class EventSerializer extends Serializer {
     }
     return $this->serializer->serialize($rows, $content_type, ['views_style_plugin' => $this]);
   }
+
 }

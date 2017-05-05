@@ -3,7 +3,6 @@
 namespace Drupal\events\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Render\Element;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\datetime_range\Plugin\Field\FieldWidget\DateRangeDefaultWidget;
@@ -20,6 +19,7 @@ use Drupal\datetime_range\Plugin\Field\FieldWidget\DateRangeDefaultWidget;
  * )
  */
 class EventDateRangeListWidget extends DateRangeDefaultWidget {
+
   /**
    * {@inheritdoc}
    */
@@ -82,4 +82,5 @@ class EventDateRangeListWidget extends DateRangeDefaultWidget {
       }
     }
   }
+
 }

@@ -9,6 +9,7 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_ENTITY_TYPE_view().
@@ -61,4 +62,17 @@ function events_entity_extra_field_info() {
     'visible' => FALSE,
   ];
   return $extra;
+}
+
+/**
+ * Implements hook_views_post_build().
+ */
+function events_views_post_build(ViewExecutable $view) {
+  if (!in_array($view->id(), ['my_calendar'])) {
+    return;
+  }
+
+  foreach ($view->feedIcons as &$feed_icon) {
+    $feed_icon['#theme'] = 'feed_icon__download';
+  }
 }

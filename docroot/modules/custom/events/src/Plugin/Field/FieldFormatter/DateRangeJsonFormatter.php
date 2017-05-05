@@ -46,4 +46,5 @@ class DateRangeJsonFormatter extends DateRangeDefaultFormatter {
 
     return $elements;
   }
+
 }

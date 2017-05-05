@@ -28,7 +28,7 @@
             title: $(this).find('.event-title').text().trim(),
             start: $(times).eq(0).attr('datetime'),
             end: $(times).eq(1).attr('datetime'),
-            url: '/' + langcode + '/events/get-event/' + eventId,
+            url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
           });
           $(this).hide();
         });

@@ -24,6 +24,13 @@ class MiniWithItems extends Mini {
   /**
    * {@inheritdoc}
    */
+  public function useCountQuery() {
+    // TODO for search
+    return TRUE;
+  }
+  /**
+   * {@inheritdoc}
+   */
   public function render($input) {
     // The 1, 3 indexes are correct, see template_preprocess_pager().
     $tags = array(

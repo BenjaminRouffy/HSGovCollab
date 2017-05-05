@@ -9,3 +9,13 @@ services:
     tags:
       - { name: form_alter, form_id: group_type_add_form }
       - { name: form_alter, form_id: group_type_edit_form }
+
+  group_dashboard.group_content_alter:
+    class: Drupal\group_dashboard\Form\Alter\GroupContentAlter
+    tags:
+      - { name: form_alter, form_id: views_exposed_form }
+
+  group_dashboard.group_subgroup_alter:
+    class: Drupal\group_dashboard\Form\Alter\GroupSubgroupAlter
+    tags:
+      - { name: form_alter, form_id: views_exposed_form }

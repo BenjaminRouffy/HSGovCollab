@@ -919,7 +919,7 @@ footer > .partners {
   .bottom-link {
     margin-top: 0; } }
 
-.red-btn-link {
+.red-btn-link, .event-info .vote-widget--like-and-dislike a {
   font-size: 1.3125rem;
   border: 1px solid transparent;
   color: #ea3a32;
@@ -932,22 +932,22 @@ footer > .partners {
   text-decoration: none;
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
-  .contact-us .red-btn-link {
+  .contact-us .red-btn-link, .contact-us .event-info .vote-widget--like-and-dislike a, .event-info .vote-widget--like-and-dislike .contact-us a {
     font-size: 1.3125rem;
     margin: 0;
     padding: 20px 40px;
     -webkit-transition: border .3s ease;
     transition: border .3s ease; }
-    .contact-us .red-btn-link:hover {
+    .contact-us .red-btn-link:hover, .contact-us .event-info .vote-widget--like-and-dislike a:hover, .event-info .vote-widget--like-and-dislike .contact-us a:hover {
       color: #ea3a32; }
-  .red-btn-link:hover {
+  .red-btn-link:hover, .event-info .vote-widget--like-and-dislike a:hover {
     border-color: #ea3a32; }
-  .red-btn-link:after {
+  .red-btn-link:after, .event-info .vote-widget--like-and-dislike a:after {
     font-size: 1.8375rem;
     margin-left: 4px; }
 
 @media (max-width: 991px) {
-  .red-btn-link {
+  .red-btn-link, .event-info .vote-widget--like-and-dislike a {
     font-size: 1.05rem;
     margin-top: 0;
     padding-left: 30px;
@@ -2206,9 +2206,25 @@ footer > .partners {
   .event-info .font-social-icon {
     font-size: 1.75rem;
     float: left; }
+  .event-info .vote-widget--like-and-dislike {
+    text-align: center; }
+    .event-info .vote-widget--like-and-dislike a {
+      height: auto;
+      width: auto;
+      font-size: 1.3125rem;
+      background: transparent;
+      color: #afb7bb;
+      text-indent: 0;
+      text-transform: none; }
+      .event-info .vote-widget--like-and-dislike a:hover {
+        border-color: #afb7bb; }
+      .event-info .vote-widget--like-and-dislike a[class^='voted'] {
+        color: #ea3a32; }
+        .event-info .vote-widget--like-and-dislike a[class^='voted']:hover {
+          border-color: #ea3a32; }
   .event-info .sign-up {
     text-align: center; }
-  .event-info .red-btn-link {
+  .event-info .red-btn-link, .event-info .vote-widget--like-and-dislike a {
     font-size: 1.3125rem;
     line-height: 20px;
     margin: 10px auto; }
@@ -2222,7 +2238,7 @@ footer > .partners {
       padding-top: 0;
       padding-bottom: 0;
       word-break: break-word; }
-    .event-info .red-btn-link {
+    .event-info .red-btn-link, .event-info .vote-widget--like-and-dislike a {
       font-size: 1.05rem; } }
 
 @media (max-width: 767px) {

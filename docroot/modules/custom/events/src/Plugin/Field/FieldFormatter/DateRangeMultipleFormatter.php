@@ -69,7 +69,7 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
       }
     }
 
-    $sorted_ranges = array();
+    $sorted_ranges = [];
     foreach ($elements as $key => $row) {
       $sorted_ranges[$key] = $row['#weight'];
     }
@@ -86,4 +86,5 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
 
     return $elements;
   }
+
 }

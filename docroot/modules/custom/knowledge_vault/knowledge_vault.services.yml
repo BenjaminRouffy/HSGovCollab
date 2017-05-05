@@ -19,3 +19,4 @@ services:
     class: Drupal\knowledge_vault\Form\Alter\CreateArticleAlter
     tags:
       - { name: form_alter, form_id: node_article_form }
+      - { name: form_alter, form_id: node_article_edit_form }

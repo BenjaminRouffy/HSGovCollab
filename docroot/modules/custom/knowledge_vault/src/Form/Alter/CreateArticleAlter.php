@@ -27,6 +27,9 @@ class CreateArticleAlter implements FormAlterServiceBaseInterface, FormAlterServ
     if (!empty($group) && isset($form['field_knowledge_vault'])) {
       unset($form['field_knowledge_vault']);
     }
+    else {
+      $form['field_knowledge_vault']['widget'][0]['entity_gids']['#required'] = TRUE;
+    }
   }
 
 }

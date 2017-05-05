@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.article
     - node.type.document
     - node.type.event
     - node.type.news
@@ -82,6 +83,22 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
+            group_select_gid:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            global_content:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
             public_content:
               bef_format: default
               more_options:
@@ -90,14 +107,6 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: "True|Public\nFalse|Non-Public"
-            type_1:
-              bef_format: default
-              more_options:
-                bef_select_all_none: false
-                bef_collapsible: false
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
       pager:
         type: full
         options:
@@ -2384,6 +2393,7 @@ display:
           admin_label: ''
           operator: in
           value:
+            article: article
             document: document
             event: event
             news: news
@@ -2402,11 +2412,12 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
             reduce: true
           is_grouped: false
           group_info:

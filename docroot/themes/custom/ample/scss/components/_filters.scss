@@ -1,7 +1,8 @@
 .view-news-and-events,
 .view-my-projects,
 .view-contacts,
-.view-knowledge-vault {
+.view-knowledge-vault,
+.view-governance-area-calendar {
   .title-wrapper {
     padding-bottom: 10px;
     text-align: center;
@@ -468,10 +469,39 @@
 }
 
 .view-my-projects,
-.view-knowledge-vault {
+.view-knowledge-vault,
+.view-governance-area-calendar {
   .wrapper-filters {
     > div {
       max-width: 30%;
+    }
+  }
+}
+
+.view-governance-area-calendar {
+  .views-row {
+    display: none;
+  }
+
+  .feed-ical {
+    @include font-size(20);
+    color: $navy;
+    display: inline-block;
+    font-family: $oswald;
+    margin: 30px 0 40px;
+    text-decoration: none;
+    vertical-align: top;
+
+    &:before {
+      @include font-size(30);
+      content: "F";
+      font-family: $p4h;
+      position: relative;
+      top: 4px;
+    }
+
+    &:hover {
+      color: $red;
     }
   }
 }

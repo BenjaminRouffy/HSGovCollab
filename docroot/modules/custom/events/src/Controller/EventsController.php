@@ -3,6 +3,7 @@
 namespace Drupal\events\Controller;
 
 use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
@@ -31,6 +32,7 @@ class EventsController extends ControllerBase {
       $html = render($view);
       $response = new AjaxResponse();
       $response->addCommand(new HtmlCommand('#event-response', $html));
+      $response->addCommand(new InvokeCommand('#event-response', 'addClass', ['active']));
     }
     return $response;
   }

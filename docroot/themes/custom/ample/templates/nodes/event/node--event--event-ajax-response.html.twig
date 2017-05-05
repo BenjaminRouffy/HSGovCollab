@@ -1,19 +1,19 @@
 <article{{ attributes }} role="article">
   {{ title_prefix }}
-  <div class="title-wrapper">
+  <h3 class="event-title">
     <a href="{{ url }}" rel="bookmark">
-      <h1 class="page-title">{{ label }}</h1>
+      {{ label }}
     </a>
-    <div class="line"></div>
-  </div>
+  </h3>
   {% if contextual_link_access %}
     {{ title_suffix }}
   {% endif %}
 
-  <div class="event-info">
+  <div class="event-info-popup">
     <div class="row">
-      <span class="label">{{ 'When'|t }}:</span>
+      <span class="label">{{ 'Date'|t }}:</span>
       <span class="value">{{ content.field_date }}</span>
+      {{ breakpoint(content) }}
     </div>
 
     {% if content.field_timezone|field_value %}
@@ -34,10 +34,10 @@
       </span>
       </div>
     {% endif %}
-
   </div>
 
   {{ content.event_registrant }}
-  {{ content.body }}
-
+  <div class="event-body">
+    {{ content.body }}
+  </div>
 </article>

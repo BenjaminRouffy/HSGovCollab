@@ -609,6 +609,19 @@
     }
   };
 
+  Drupal.behaviors.calendar = {
+    attach: function(context, settings) {
+      $('.view-governance-area-calendar', context).on('mousedown', function(e) {
+        var $target = $(e.target);
+        var $eventContainer = $('#event-response');
+
+        if (!$eventContainer.is($target) && $eventContainer.has($target).length === 0) {
+          $eventContainer.removeClass('active');
+        }
+      })
+    }
+  };
+
   Drupal.behaviors.ieFixes = {
     attach: function(context, settings) {
       // IE 9

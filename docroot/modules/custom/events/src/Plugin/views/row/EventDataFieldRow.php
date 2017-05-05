@@ -18,6 +18,7 @@ use Drupal\p4h_views_plugins\Plugin\ComputedDate\Events;
  * )
  */
 class EventDataFieldRow extends DataFieldRow {
+
   /**
    * {@inheritdoc}
    */
@@ -50,4 +51,5 @@ class EventDataFieldRow extends DataFieldRow {
 
     return $output;
   }
+
 }

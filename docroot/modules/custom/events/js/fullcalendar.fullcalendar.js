@@ -39,7 +39,7 @@
           event.preventDefault();
         });
         $('.fc-event-container a', _this.$view).addClass('use-ajax');
-        Drupal.attachBehaviors($calendar);
+        Drupal.attachBehaviors($calendar.get()[0]);
       },
       viewDestroy: function (view, element) {
         var _calendar = this,

@@ -9,6 +9,7 @@ use Drupal\datetime\Plugin\Field\FieldType\DateTimeItem;
  * Provides friendly methods for time range.
  */
 trait TimeRangeTrait {
+
   /**
    * Creates a render array from a date object with ISO date attribute.
    *

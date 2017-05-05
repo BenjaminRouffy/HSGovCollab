@@ -819,6 +819,32 @@
     float: left;
   }
 
+  .vote-widget--like-and-dislike {
+    text-align: center;
+
+    a {
+      @extend .red-btn-link;
+      @include same(auto, height, width);
+      @include font-size(21);
+      background: transparent;
+      color: #afb7bb;
+      text-indent: 0;
+      text-transform: none;
+
+      &:hover {
+        border-color: #afb7bb;
+      }
+
+      &[class^='voted'] {
+        color: $red;
+
+        &:hover {
+          border-color: $red;
+        }
+      }
+    }
+  }
+
   .sign-up {
     text-align: center;
   }

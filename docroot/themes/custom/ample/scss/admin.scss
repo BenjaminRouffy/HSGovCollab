@@ -20,17 +20,6 @@ img[src$="svg"] {
 }
 
 .user-form {
-  .field--name-field-country-manager,
-  .field--name-field-project-manager,
-  .field--name-field-knowledge-vault-manager {
-    height: 0;
-    overflow: hidden;
-
-    &.active {
-      height: 100%;
-      overflow: visible;
-    }
-  }
   .form-type-password-confirm {
     width: 33em;
   }

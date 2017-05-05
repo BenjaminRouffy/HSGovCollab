@@ -12,6 +12,12 @@
     $('body').addClass('ie ie11');
   }
 
+  // Detect Safari browser.
+  if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+    $('body').addClass('safari');
+  }
+
+
   // Detect mobile device.
   function isTouchDevice() {
     var $body = $('body');

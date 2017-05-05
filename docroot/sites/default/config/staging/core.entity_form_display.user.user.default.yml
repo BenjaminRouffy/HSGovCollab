@@ -31,6 +31,7 @@ dependencies:
     - field.field.user.user.field_zip_code
     - image.style.150x150
   module:
+    - country
     - field_group
     - group_content_field
     - paragraphs
@@ -244,7 +245,7 @@ content:
     weight: 26
     settings: {  }
     third_party_settings: {  }
-    type: group_select
+    type: group_country_select
     region: content
   field_following_projects:
     weight: 27
@@ -377,6 +378,7 @@ hidden:
   captcha: true
   contact: true
   field_accept_term_conditions: true
+  field_knowledge_vault_manager: true
   field_last_password_reset: true
   field_password_expiration: true
   info_block: true

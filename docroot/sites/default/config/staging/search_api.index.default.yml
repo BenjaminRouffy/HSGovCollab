@@ -15,7 +15,6 @@ dependencies:
     - search_customization
     - node
     - group
-    - user
 id: default
 name: Default
 description: ''
@@ -127,11 +126,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.group.field_summary
-  name:
-    label: Name
-    datasource_id: 'entity:user'
-    property_path: name
-    type: text
 datasource_settings:
   'entity:node':
     bundles:
@@ -144,10 +138,6 @@ datasource_settings:
     bundles:
       default: true
       selected: {  }
-    languages:
-      default: true
-      selected: {  }
-  'entity:user':
     languages:
       default: true
       selected: {  }

@@ -18,6 +18,7 @@ dependencies:
   module:
     - facets
     - facets_summary
+    - group_dashboard
     - panels
     - views
 id: search-panels_variant-0
@@ -148,6 +149,13 @@ variant_settings:
   builder: standard
 page: search
 weight: 0
-selection_criteria: {  }
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 selection_logic: and
 static_context: {  }

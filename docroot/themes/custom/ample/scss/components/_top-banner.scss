@@ -147,6 +147,11 @@
     .paragraph {
       height: auto;
       max-width: 25%;
+
+      .safari & {
+        max-width: 100%;
+        width: 25%;
+      }
     }
 
     .icon-wrapper {
@@ -248,6 +253,11 @@
 
   .user-info {
     .paragraph {
+      .safari & {
+        max-width: 100%;
+        width: 50%;
+      }
+
       h3 {
         @include font-size(21);
         line-height: 29px;

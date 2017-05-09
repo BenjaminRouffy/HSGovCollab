@@ -8013,7 +8013,9 @@ footer {
     border-radius: 50%;
     float: left;
     margin-right: 20px;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative;
+    z-index: 1; }
   .comment-wrapper .user-info {
     position: relative; }
     .comment-wrapper .user-info .name {

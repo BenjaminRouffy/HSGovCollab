@@ -5671,8 +5671,9 @@ form .social_login iframe {
   .block-facet--datebasic .js-facet-deactivate {
     color: #ea3a32; }
 
-@media (min-width: laptop-small1) {
-  .block-facet--checkbox, .block-facet--datebasic {
+@media screen and (min-width: 992px) {
+  .block-facet--checkbox,
+  .block-facet--datebasic {
     display: block !important; } }
 
 @media (max-width: 991px) {

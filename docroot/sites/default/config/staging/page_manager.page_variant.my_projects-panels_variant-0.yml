@@ -6,7 +6,6 @@ dependencies:
     - page_manager.page.my_projects
     - views.view.my_projects
   module:
-    - group_dashboard
     - panels
     - views
 id: my_projects-panels_variant-0
@@ -37,13 +36,6 @@ variant_settings:
   builder: standard
 page: my_projects
 weight: 0
-selection_criteria:
-  -
-    id: access_by_user_role
-    roles:
-      authenticated: authenticated
-    negate: 0
-    context_mapping:
-      user: current_user
+selection_criteria: {  }
 selection_logic: and
 static_context: {  }

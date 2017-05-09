@@ -8,7 +8,6 @@ dependencies:
   module:
     - blocktabs
     - panels
-    - user
 id: countries_regions-panels_variant-0
 label: Panels
 variant: panels_variant
@@ -35,13 +34,6 @@ variant_settings:
   builder: standard
 page: countries_regions
 weight: 0
-selection_criteria:
-  -
-    id: user_role
-    roles:
-      authenticated: authenticated
-    negate: false
-    context_mapping:
-      user: current_user
+selection_criteria: {  }
 selection_logic: and
 static_context: {  }

@@ -1710,3 +1710,11 @@ form {
     }
   }
 }
+
+@include breakpoint-for('.full-width-search', (to: mobileL)) {
+  padding: 5px;
+
+  .form-text {
+    height: 50px;
+  }
+}

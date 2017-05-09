@@ -131,10 +131,19 @@ form {
   }
 }
 
-.form-file {
-  @include font-size(16);
-  color: $navy-dark;
-  line-height: 1;
+.choose-file {
+  @include font-size(16.8);
+  background: #e9ecee;
+  color: $red;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $oswald;
+  padding: 15px 40px;
+  vertical-align: top;
+
+  &:hover {
+    color: $red-dark;
+  }
 }
 
 .form-date {

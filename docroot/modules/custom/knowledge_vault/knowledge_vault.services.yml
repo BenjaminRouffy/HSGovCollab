@@ -14,3 +14,9 @@ services:
     tags:
       - { name: form_alter, form_id: group_project_add_form }
       - { name: form_alter, form_id: group_project_edit_form }
+
+  knowledge_vault.article_create_alter:
+    class: Drupal\knowledge_vault\Form\Alter\CreateArticleAlter
+    tags:
+      - { name: form_alter, form_id: node_article_form }
+      - { name: form_alter, form_id: node_article_edit_form }

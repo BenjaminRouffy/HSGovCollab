@@ -637,4 +637,12 @@
     }
   };
 
+  Drupal.behaviors.attachFile = {
+    attach: function(context, settings) {
+      $('#choose_file').on('click', function() {
+        $(this).prev('.form-file').click();
+      });
+    }
+  }
+
 })(jQuery, Drupal);

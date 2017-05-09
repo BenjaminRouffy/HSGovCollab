@@ -5658,11 +5658,15 @@ form .social_login iframe {
             appearance: checkbox;
     margin-right: 4px; }
   .block-facet--checkbox label,
-  .block-facet--datebasic label {
+  .block-facet--checkbox .facet-item__value,
+  .block-facet--datebasic label,
+  .block-facet--datebasic .facet-item__value {
     font-size: 0.9625rem;
     font-family: "Fira Sans", sans-serif; }
     .block-facet--checkbox label:hover,
-    .block-facet--datebasic label:hover {
+    .block-facet--checkbox .facet-item__value:hover,
+    .block-facet--datebasic label:hover,
+    .block-facet--datebasic .facet-item__value:hover {
       opacity: .79; }
   .block-facet--checkbox .facet-item__count,
   .block-facet--datebasic .facet-item__count {

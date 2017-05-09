@@ -9,11 +9,9 @@
     - devops/reinstall/vars/global_settings.yml
     - devops/reinstall/vars/environments/global_env.yml
 
-# Please uncomment it in case problem on local env.
-#  roles:
-#    - role: devops/roles/custom/ansible-role-drupal-console
-#      drupal_console_path: /usr/local/bin/drupal
-#      sudo: true
+  roles:
+    - role: devops/roles/custom/ansible-role-drupal-console
+      sudo: true
 
   tasks:
   - name: Include specific variables per environment

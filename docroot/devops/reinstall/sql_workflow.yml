@@ -104,7 +104,7 @@
   register: deploy_files_modified
 
 - name: Apply changes from file
-  shell: "{{ php_env_vars }} drupal -y config:import:single --name `basename {{ item }}` --file {{ item }} -l {{ site_url }}"
+  shell: "{{ php_env_vars }} {{ drupal_console_path }} -y config:import:single --name `basename {{ item }}` --file {{ item }} -l {{ site_url }}"
   when: (deploy_files_modified.stdout_lines | length) > 0
   with_items: deploy_files_modified.stdout_lines
 

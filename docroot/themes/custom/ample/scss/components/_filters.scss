@@ -429,8 +429,11 @@
   }
 }
 
-@include breakpoint-for('.block-facet--checkbox, .block-facet--datebasic', (from: laptop-small + 1)) {
-  display: block !important;
+@media screen and (min-width: 992px) {
+  .block-facet--checkbox,
+  .block-facet--datebasic {
+    display: block !important;
+  }
 }
 
 @include breakpoint-for('.block-facet--checkbox, .block-facet--datebasic', (to: laptop-small)) {

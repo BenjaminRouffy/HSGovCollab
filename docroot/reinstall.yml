@@ -10,7 +10,7 @@
     - devops/reinstall/vars/environments/global_env.yml
 
   roles:
-    - role: ../provisioning/ansible/custom/ansible-role-drupal-console
+    - role: devops/roles/custom/ansible-role-drupal-console
       drupal_console_path: /usr/local/bin/drupal
       sudo: true
 

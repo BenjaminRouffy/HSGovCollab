@@ -9,6 +9,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupContent;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
@@ -52,6 +53,17 @@ function menu_item_visibility_by_group_form_menu_link_content_menu_link_content_
   }
 
   $form['actions']['submit']['#submit'][] = 'menu_item_visibility_by_group_submit_handler';
+
+  // Add description to link field.
+  $form['link']['widget'][0]['uri']['#description'] = new TranslatableMarkup('Start typing the title of a piece of content to select it. You can also enter an internal path such as %add-node or an external URL such as %url. If you want to use entity aliases you should use path such as %group-entity or %node-entity. Enter %front to link to the front page.',
+    [
+      '%front' => '<front>',
+      '%add-node' => '/node/add',
+      '%url' => 'http://example.com',
+      '%group-entity' => 'entity:group/{group_id}',
+      '%node-entity' => 'entity:node/{node_id}',
+    ]
+  );
 }
 
 /**

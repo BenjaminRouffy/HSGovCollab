@@ -606,6 +606,11 @@
           $this.siblings('ul').slideUp();
         }
       });
+
+      $('.show-filters', context).on('click', function() {
+        $(this).toggleClass('open-filters');
+        $facetBox.toggle();
+      });
     }
   };
 

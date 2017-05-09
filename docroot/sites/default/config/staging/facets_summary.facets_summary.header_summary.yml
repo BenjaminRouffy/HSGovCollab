@@ -1,0 +1,69 @@
+uuid: 96f7468e-748a-45ba-a320-09a6262aa4a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default
+    - views.view.search
+  module:
+    - search_customization
+id: header_summary
+name: 'Header summary'
+facets:
+  categories:
+    checked: true
+    label: Categories
+    separator: ', '
+    weight: 0
+    show_count: false
+  content_type:
+    checked: true
+    label: 'Content types'
+    separator: ', '
+    weight: 0
+    show_count: false
+  countries:
+    checked: true
+    label: Countries
+    separator: ', '
+    weight: 0
+    show_count: false
+  kv_categories:
+    checked: true
+    label: 'KV categories'
+    separator: ', '
+    weight: 0
+    show_count: false
+  month:
+    checked: true
+    label: Date
+    separator: ', '
+    weight: 0
+    show_count: false
+  organizations:
+    checked: true
+    label: Organizations
+    separator: ', '
+    weight: 0
+    show_count: false
+  parent_groups_with_type_region:
+    checked: true
+    label: Regions
+    separator: ', '
+    weight: 0
+    show_count: false
+  products:
+    checked: true
+    label: Products
+    separator: ', '
+    weight: 0
+    show_count: false
+  projects:
+    checked: true
+    label: Projects
+    separator: ', '
+    weight: 0
+    show_count: false
+facet_source_id: 'search_api:views_block_with_path__search__block_with_path_1'
+processor_configs: {  }
+empty_behavior: null

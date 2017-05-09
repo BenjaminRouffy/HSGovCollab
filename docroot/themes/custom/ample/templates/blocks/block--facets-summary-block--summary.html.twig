@@ -1,5 +1,5 @@
 {% if attributes.toArray() is not empty %}
-<div{{ attributes }}>
+<div{{ attributes.addClass('reset-filters') }}>
   {% endif %}
   {{ title_prefix }}
   {% if label %}
@@ -7,9 +7,7 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    <div class="reset-filters">
-      {{ content }}
-    </div>
+    {{ content }}
   {% endblock %}
   {% if attributes.toArray() is not empty %}
 </div>

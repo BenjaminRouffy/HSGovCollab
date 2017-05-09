@@ -212,7 +212,6 @@
 
   .sidebar {
     float: left;
-    margin-top: 80px;
     padding-right: 20px;
     width: 25%;
   }
@@ -220,6 +219,15 @@
   .content {
     float: right;
     width: 75%;
+  }
+}
+
+@include breakpoint-for('.left-sidebar', (to: laptop-small)) {
+  .sidebar,
+  .content {
+    float: none;
+    padding: 0;
+    width: 100%;
   }
 }
 

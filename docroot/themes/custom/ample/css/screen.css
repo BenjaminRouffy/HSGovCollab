@@ -3719,10 +3719,17 @@ form {
     .form-my-settings .email-suffix .field-suffix {
       padding-left: 5px; }
 
-.form-file {
-  font-size: 1rem;
-  color: #283b44;
-  line-height: 1; }
+.choose-file {
+  font-size: 1.05rem;
+  background: #e9ecee;
+  color: #ea3a32;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Oswald, sans-serif;
+  padding: 15px 40px;
+  vertical-align: top; }
+  .choose-file:hover {
+    color: #8c2222; }
 
 .form-date {
   border: 1px solid #75a8c0;

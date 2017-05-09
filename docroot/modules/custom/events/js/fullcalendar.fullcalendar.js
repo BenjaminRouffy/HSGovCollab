@@ -21,6 +21,11 @@
       events: function (start, end, timezone, callback) {
         var events = [];
         $('.views-row', _this.$view).each(function () {
+          var color = 'rgb(' +
+            (Math.floor(Math.random() * 256)) + ',' +
+            (Math.floor(Math.random() * 256)) + ',' +
+            (Math.floor(Math.random() * 256)) + ')';
+
           var times = $(this).find('.event-date time');
           var eventId = $(this).find('.event-id').text().trim();
           var langcode = drupalSettings.path.currentLanguage;
@@ -29,6 +34,8 @@
             start: $(times).eq(0).attr('datetime'),
             end: $(times).eq(1).attr('datetime'),
             url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
+            color: color,
+            allDay: true
           });
           $(this).hide();
         });

@@ -1,14 +1,23 @@
 uuid: fd90c825-e6ab-487b-96c0-6eadd1fb68a8
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - user
 id: group_calendar
 label: 'Group Calendar'
 description: ''
 use_admin_theme: false
 path: '/group/{group}/calendar'
 access_logic: and
-access_conditions: {  }
+access_conditions:
+  -
+    id: user_role
+    roles:
+      governance_group_users: governance_group_users
+    negate: false
+    context_mapping:
+      user: current_user
 parameters:
   group:
     machine_name: group

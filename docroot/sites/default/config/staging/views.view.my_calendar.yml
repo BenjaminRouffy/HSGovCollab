@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.calendar_preview
     - field.storage.node.field_date
     - node.type.event
     - taxonomy.vocabulary.categories
+    - user.role.governance_group_users
   module:
     - better_exposed_filters
     - events
@@ -36,9 +36,10 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
+        type: role
         options:
-          perm: 'administer nodes'
+          role:
+            governance_group_users: governance_group_users
       cache:
         type: tag
         options: {  }
@@ -101,6 +102,70 @@ display:
           hide_empty: false
           default_field_elements: true
       fields:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: span
+          element_class: event-id
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_unformatted
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: nid
+          plugin_id: field
         title:
           id: title
           table: node_field_data
@@ -231,57 +296,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        rendered_entity:
-          id: rendered_entity
-          table: node
-          field: rendered_entity
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: div
-          element_class: event-desc
-          element_label_type: '0'
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: '0'
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          view_mode: calendar_preview
-          entity_type: node
-          plugin_id: rendered_entity
       filters:
         status:
           value: '1'
@@ -590,58 +604,8 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
-        - 'config:core.entity_view_display.node.article.banner'
-        - 'config:core.entity_view_display.node.article.comments'
-        - 'config:core.entity_view_display.node.article.default'
-        - 'config:core.entity_view_display.node.article.full'
-        - 'config:core.entity_view_display.node.article.search_result_row'
-        - 'config:core.entity_view_display.node.article.small_teaser'
-        - 'config:core.entity_view_display.node.article.teaser'
-        - 'config:core.entity_view_display.node.basic_page.banner'
-        - 'config:core.entity_view_display.node.basic_page.bottom'
-        - 'config:core.entity_view_display.node.basic_page.comments'
-        - 'config:core.entity_view_display.node.basic_page.default'
-        - 'config:core.entity_view_display.node.basic_page.full'
-        - 'config:core.entity_view_display.node.basic_page.search_result_row'
-        - 'config:core.entity_view_display.node.basic_page.teaser'
-        - 'config:core.entity_view_display.node.basic_page.view_mode_for_section_page'
-        - 'config:core.entity_view_display.node.document.default'
-        - 'config:core.entity_view_display.node.document.search_result_row'
-        - 'config:core.entity_view_display.node.document.teaser'
-        - 'config:core.entity_view_display.node.document.time_line'
-        - 'config:core.entity_view_display.node.event.calendar_preview'
-        - 'config:core.entity_view_display.node.event.comments'
-        - 'config:core.entity_view_display.node.event.default'
-        - 'config:core.entity_view_display.node.event.event_ajax_response'
-        - 'config:core.entity_view_display.node.event.full'
-        - 'config:core.entity_view_display.node.event.news_events_listing'
-        - 'config:core.entity_view_display.node.event.news_events_sidebar'
-        - 'config:core.entity_view_display.node.event.search_result_row'
-        - 'config:core.entity_view_display.node.event.single_line_with_icon'
-        - 'config:core.entity_view_display.node.event.small_teaser'
-        - 'config:core.entity_view_display.node.event.teaser'
-        - 'config:core.entity_view_display.node.event.time_line'
-        - 'config:core.entity_view_display.node.member.default'
-        - 'config:core.entity_view_display.node.member.full'
-        - 'config:core.entity_view_display.node.member.member_icons'
-        - 'config:core.entity_view_display.node.member.search_result_row'
-        - 'config:core.entity_view_display.node.member.teaser'
-        - 'config:core.entity_view_display.node.news.comments'
-        - 'config:core.entity_view_display.node.news.default'
-        - 'config:core.entity_view_display.node.news.full'
-        - 'config:core.entity_view_display.node.news.news_events_listing'
-        - 'config:core.entity_view_display.node.news.news_events_sidebar'
-        - 'config:core.entity_view_display.node.news.search_result_row'
-        - 'config:core.entity_view_display.node.news.single_line_with_icon'
-        - 'config:core.entity_view_display.node.news.small_teaser'
-        - 'config:core.entity_view_display.node.news.teaser'
-        - 'config:core.entity_view_display.node.news.time_line'
-        - 'config:core.entity_view_display.node.social.default'
-        - 'config:core.entity_view_display.node.social.search_result_row'
-        - 'config:core.entity_view_display.node.social.teaser'
-        - 'config:core.entity_view_display.node.social.time_line'
         - 'config:field.storage.node.field_date'
   block_1:
     display_plugin: block
@@ -856,267 +820,92 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_date'
   data_export_1:
     display_plugin: data_export
     id: data_export_1
-    display_title: 'My calendar (export)'
-    position: 2
+    display_title: 'Data export'
+    position: 3
     display_options:
       display_extenders: {  }
-      rendering_language: '***LANGUAGE_language_interface***'
-      fields:
-        nid:
-          id: nid
-          table: node_field_data
-          field: nid
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: span
-          element_class: event-id
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: number_unformatted
-          settings: {  }
-          group_column: entity_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: nid
-          plugin_id: field
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: '/events/get/event/{{ nid }}'
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: true
-            alt: ''
-            rel: ''
-            link_class: use-ajax
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: span
-          element_class: event-title
-          element_label_type: '0'
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: '0'
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-        field_date:
-          id: field_date
-          table: node__field_date
-          field: field_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: span
-          element_class: event-date
-          element_label_type: '0'
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: '0'
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: daterange_multiple_json
-          settings:
-            timezone_override: UTC
-            format_type: html_date
-            separator: '-'
-          group_column: entity_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
+      title: Calendar
       defaults:
-        fields: false
-      display_description: ''
+        title: false
+        relationships: false
+        arguments: false
+      display_description: Governance_Area
+      relationships:
+        group_content:
+          id: group_content
+          table: node_field_data
+          field: group_content
+          relationship: none
+          group_type: group
+          admin_label: 'Content group content'
+          required: true
+          group_content_plugins:
+            'group_node:event': 'group_node:event'
+            'group_node:basic_page': '0'
+            'group_node:document': '0'
+            'group_node:member': '0'
+            'group_node:news': '0'
+            'group_node:social': '0'
+          entity_type: node
+          plugin_id: group_content_to_entity_reverse
+      arguments:
+        group_id_depth:
+          id: group_id_depth
+          table: group_content_field_data
+          field: group_id_depth
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: group_id_from_url
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth:
+            -1: '-1'
+            0: '0'
+            1: '1'
+            2: '2'
+          entity_type: group_content
+          plugin_id: group_id_depth
       path: user/my-calendar/feed
       filename: '[site:name]-[view:label].ical'
-      style:
-        type: data_export
-        options:
-          formats:
-            ical: ical
-          csv_settings:
-            delimiter: ','
-            enclosure: '"'
-            escape_char: \
-            strip_tags: true
-            trim: true
-            encoding: utf8
-          xls_settings:
-            xls_format: Excel2007
-            metadata:
-              creator: ''
-              last_modified_by: ''
-              title: ''
-              description: ''
-              subject: ''
-              keywords: ''
-              category: ''
-              manager: ''
-              company: ''
-      displays:
-        block_1: block_1
-        default: '0'
-        governance_area: '0'
-      row:
-        type: data_field
-        options:
-          field_options:
-            nid:
-              alias: ''
-              raw_output: false
-            title:
-              alias: ''
-              raw_output: false
-            field_date:
-              alias: ''
-              raw_output: false
     cache_metadata:
       max-age: -1
       contexts:
+        - 'languages:language_content'
         - 'languages:language_interface'
         - request_format
+        - route
         - url
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_date'
   governance_area:
@@ -1198,56 +987,6 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
-        - 'config:core.entity_view_display.node.article.banner'
-        - 'config:core.entity_view_display.node.article.comments'
-        - 'config:core.entity_view_display.node.article.default'
-        - 'config:core.entity_view_display.node.article.full'
-        - 'config:core.entity_view_display.node.article.search_result_row'
-        - 'config:core.entity_view_display.node.article.small_teaser'
-        - 'config:core.entity_view_display.node.article.teaser'
-        - 'config:core.entity_view_display.node.basic_page.banner'
-        - 'config:core.entity_view_display.node.basic_page.bottom'
-        - 'config:core.entity_view_display.node.basic_page.comments'
-        - 'config:core.entity_view_display.node.basic_page.default'
-        - 'config:core.entity_view_display.node.basic_page.full'
-        - 'config:core.entity_view_display.node.basic_page.search_result_row'
-        - 'config:core.entity_view_display.node.basic_page.teaser'
-        - 'config:core.entity_view_display.node.basic_page.view_mode_for_section_page'
-        - 'config:core.entity_view_display.node.document.default'
-        - 'config:core.entity_view_display.node.document.search_result_row'
-        - 'config:core.entity_view_display.node.document.teaser'
-        - 'config:core.entity_view_display.node.document.time_line'
-        - 'config:core.entity_view_display.node.event.calendar_preview'
-        - 'config:core.entity_view_display.node.event.comments'
-        - 'config:core.entity_view_display.node.event.default'
-        - 'config:core.entity_view_display.node.event.event_ajax_response'
-        - 'config:core.entity_view_display.node.event.full'
-        - 'config:core.entity_view_display.node.event.news_events_listing'
-        - 'config:core.entity_view_display.node.event.news_events_sidebar'
-        - 'config:core.entity_view_display.node.event.search_result_row'
-        - 'config:core.entity_view_display.node.event.single_line_with_icon'
-        - 'config:core.entity_view_display.node.event.small_teaser'
-        - 'config:core.entity_view_display.node.event.teaser'
-        - 'config:core.entity_view_display.node.event.time_line'
-        - 'config:core.entity_view_display.node.member.default'
-        - 'config:core.entity_view_display.node.member.full'
-        - 'config:core.entity_view_display.node.member.member_icons'
-        - 'config:core.entity_view_display.node.member.search_result_row'
-        - 'config:core.entity_view_display.node.member.teaser'
-        - 'config:core.entity_view_display.node.news.comments'
-        - 'config:core.entity_view_display.node.news.default'
-        - 'config:core.entity_view_display.node.news.full'
-        - 'config:core.entity_view_display.node.news.news_events_listing'
-        - 'config:core.entity_view_display.node.news.news_events_sidebar'
-        - 'config:core.entity_view_display.node.news.search_result_row'
-        - 'config:core.entity_view_display.node.news.single_line_with_icon'
-        - 'config:core.entity_view_display.node.news.small_teaser'
-        - 'config:core.entity_view_display.node.news.teaser'
-        - 'config:core.entity_view_display.node.news.time_line'
-        - 'config:core.entity_view_display.node.social.default'
-        - 'config:core.entity_view_display.node.social.search_result_row'
-        - 'config:core.entity_view_display.node.social.teaser'
-        - 'config:core.entity_view_display.node.social.time_line'
         - 'config:field.storage.node.field_date'

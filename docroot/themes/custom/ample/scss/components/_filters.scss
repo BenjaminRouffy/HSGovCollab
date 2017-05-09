@@ -411,7 +411,8 @@
     margin-right: 4px;
   }
 
-  label {
+  label,
+  .facet-item__value {
     @include font-size(15.4);
     font-family: $fira;
 

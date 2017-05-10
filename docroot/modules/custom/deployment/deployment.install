@@ -5,6 +5,8 @@
  * Contains deployment.install.
  */
 
+use Drupal\Core\Database\Database;
+use Drupal\Core\Database\Driver\mysql\Schema;
 use Drupal\field\Entity\FieldConfig;
 
 /**
@@ -847,4 +849,16 @@ function deployment_update_8064() {
 function deployment_update_8065() {
   deployment_delete_fields('node', 'article', ['field_related_content_selector']);
   field_purge_batch(500);
+}
+
+/**
+ * Update filed "Computed date".
+ */
+function deployment_update_8066() {
+  Database::getConnection()->schema()->changeField(
+    'node_field_data',
+    'computed_date',
+    'computed_date',
+    ['type' => 'int']
+  );
 }

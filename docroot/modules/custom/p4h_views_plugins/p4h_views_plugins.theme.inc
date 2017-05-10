@@ -20,7 +20,7 @@
  * @see template_preprocess_views_mini_pager
  */
 function template_preprocess_p4h_views_plugins(array &$variables) {
-  global $pager_page_array, $pager_total;
+  global $pager_page_array;
 
   \Drupal::moduleHandler()->loadInclude('views', 'inc', 'views.theme');
   template_preprocess_views_mini_pager($variables);

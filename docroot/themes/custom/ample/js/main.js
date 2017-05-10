@@ -606,6 +606,24 @@
           $this.siblings('ul').slideUp();
         }
       });
+
+      $('.show-filters', context).on('click', function() {
+        $(this).toggleClass('open-filters');
+        $facetBox.toggle();
+      });
+    }
+  };
+
+  Drupal.behaviors.calendar = {
+    attach: function(context, settings) {
+      $('.view-governance-area-calendar', context).on('mousedown', function(e) {
+        var $target = $(e.target);
+        var $eventContainer = $('#event-response');
+
+        if (!$eventContainer.is($target) && $eventContainer.has($target).length === 0) {
+          $eventContainer.removeClass('active');
+        }
+      })
     }
   };
 
@@ -623,5 +641,13 @@
       }
     }
   };
+
+  Drupal.behaviors.attachFile = {
+    attach: function(context, settings) {
+      $('.choose-file', context).on('click', function() {
+        $(this).prev('.form-file').click();
+      });
+    }
+  }
 
 })(jQuery, Drupal);

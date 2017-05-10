@@ -54,7 +54,7 @@
     padding-left: 80px;
   }
 
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation):not(.page-search) & {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-my-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation):not(.page-search) & {
     &:before {
       background: $white;
     }
@@ -212,7 +212,6 @@
 
   .sidebar {
     float: left;
-    margin-top: 80px;
     padding-right: 20px;
     width: 25%;
   }
@@ -220,6 +219,15 @@
   .content {
     float: right;
     width: 75%;
+  }
+}
+
+@include breakpoint-for('.left-sidebar', (to: laptop-small)) {
+  .sidebar,
+  .content {
+    float: none;
+    padding: 0;
+    width: 100%;
   }
 }
 

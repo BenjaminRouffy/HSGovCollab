@@ -1311,7 +1311,7 @@ footer > .partners {
     line-height: 72px;
     margin: 20px 0 10px;
     padding: 0; }
-  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .reset-filters a, .reset-filters .country-content-wrapper .follow-link a, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button, .country-content-wrapper .follow-link .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel, .country-content-wrapper .follow-link
+  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .country-content-wrapper .follow-link a, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button, .country-content-wrapper .follow-link .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel, .country-content-wrapper .follow-link
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel, .country-content-wrapper .follow-link
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -1336,7 +1336,7 @@ footer > .partners {
             transform: scale(1.06);
     -webkit-transition: background .2s ease;
     transition: background .2s ease; }
-    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .reset-filters a:hover, .reset-filters .country-content-wrapper .follow-link a:hover, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button:hover, .country-content-wrapper .follow-link .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel:hover, .country-content-wrapper .follow-link
+    .country-content-wrapper .follow-link .form-submit:hover, .country-content-wrapper .follow-link .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .country-content-wrapper .follow-link a:hover, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button:hover, .country-content-wrapper .follow-link .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel:hover, .country-content-wrapper .follow-link
     .article-edit-node .node-article-delete-form #edit-cancel:hover,
     .article-edit-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel:hover, .country-content-wrapper .follow-link
     .article-delete-node .node-article-delete-form #edit-cancel:hover,
@@ -3719,10 +3719,17 @@ form {
     .form-my-settings .email-suffix .field-suffix {
       padding-left: 5px; }
 
-.form-file {
-  font-size: 1rem;
-  color: #283b44;
-  line-height: 1; }
+.choose-file {
+  font-size: 1.05rem;
+  background: #e9ecee;
+  color: #ea3a32;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Oswald, sans-serif;
+  padding: 15px 40px;
+  vertical-align: top; }
+  .choose-file:hover {
+    color: #8c2222; }
 
 .form-date {
   border: 1px solid #75a8c0;
@@ -3883,7 +3890,7 @@ form {
      -moz-appearance: radio;
           appearance: radio; }
 
-.form-submit, .reset-filters a, .ui-dialog.ui-widget-content .button, .article-add-node .node-article-delete-form #edit-cancel,
+.form-submit, .reset-filters ul:not(.contextual-links) a, .ui-dialog.ui-widget-content .button, .article-add-node .node-article-delete-form #edit-cancel,
 .article-edit-node .node-article-delete-form #edit-cancel,
 .article-delete-node .node-article-delete-form #edit-cancel, .article-add-node #edit-delete,
 .article-edit-node #edit-delete,
@@ -3896,7 +3903,7 @@ form {
   text-transform: uppercase;
   -webkit-transition: border .3s ease;
   transition: border .3s ease; }
-  .form-submit:hover, .reset-filters a:hover, .ui-dialog.ui-widget-content .button:hover, .article-add-node .node-article-delete-form #edit-cancel:hover,
+  .form-submit:hover, .reset-filters ul:not(.contextual-links) a:hover, .ui-dialog.ui-widget-content .button:hover, .article-add-node .node-article-delete-form #edit-cancel:hover,
   .article-edit-node .node-article-delete-form #edit-cancel:hover,
   .article-delete-node .node-article-delete-form #edit-cancel:hover, .article-add-node #edit-delete:hover,
   .article-edit-node #edit-delete:hover,
@@ -3966,7 +3973,7 @@ form .social_login iframe {
     content: ": *"; }
   .user-login-form .form-actions {
     margin-top: 20px; }
-  .user-login-form .form-submit, .user-login-form .reset-filters a, .reset-filters .user-login-form a, .user-login-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-login-form .button, .user-login-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-login-form #edit-cancel, .user-login-form
+  .user-login-form .form-submit, .user-login-form .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .user-login-form a, .user-login-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-login-form .button, .user-login-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-login-form #edit-cancel, .user-login-form
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .user-login-form #edit-cancel, .user-login-form
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -3978,7 +3985,7 @@ form .social_login iframe {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-login-form .form-submit:hover, .user-login-form .reset-filters a:hover, .reset-filters .user-login-form a:hover, .user-login-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-login-form .button:hover, .user-login-form .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-login-form #edit-cancel:hover, .user-login-form
+    .user-login-form .form-submit:hover, .user-login-form .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .user-login-form a:hover, .user-login-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-login-form .button:hover, .user-login-form .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-login-form #edit-cancel:hover, .user-login-form
     .article-edit-node .node-article-delete-form #edit-cancel:hover,
     .article-edit-node .node-article-delete-form .user-login-form #edit-cancel:hover, .user-login-form
     .article-delete-node .node-article-delete-form #edit-cancel:hover,
@@ -4066,7 +4073,7 @@ form .social_login iframe {
     margin: 10px 0 55px;
     text-align: center;
     width: 50%; }
-  .form-contact-us .form-submit, .form-contact-us .reset-filters a, .reset-filters .form-contact-us a, .form-contact-us .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-contact-us .button, .form-contact-us .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-contact-us #edit-cancel, .form-contact-us
+  .form-contact-us .form-submit, .form-contact-us .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .form-contact-us a, .form-contact-us .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-contact-us .button, .form-contact-us .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-contact-us #edit-cancel, .form-contact-us
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .form-contact-us #edit-cancel, .form-contact-us
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -4229,7 +4236,7 @@ form .social_login iframe {
     margin: 30px auto 0;
     text-align: center;
     width: 50%; }
-  .user-register-form .form-submit, .user-register-form .reset-filters a, .reset-filters .user-register-form a, .user-register-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-register-form .button, .user-register-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-register-form #edit-cancel, .user-register-form
+  .user-register-form .form-submit, .user-register-form .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .user-register-form a, .user-register-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-register-form .button, .user-register-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-register-form #edit-cancel, .user-register-form
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .user-register-form #edit-cancel, .user-register-form
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -4241,7 +4248,7 @@ form .social_login iframe {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-register-form .form-submit:hover, .user-register-form .reset-filters a:hover, .reset-filters .user-register-form a:hover, .user-register-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-register-form .button:hover, .user-register-form .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-register-form #edit-cancel:hover, .user-register-form
+    .user-register-form .form-submit:hover, .user-register-form .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .user-register-form a:hover, .user-register-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-register-form .button:hover, .user-register-form .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-register-form #edit-cancel:hover, .user-register-form
     .article-edit-node .node-article-delete-form #edit-cancel:hover,
     .article-edit-node .node-article-delete-form .user-register-form #edit-cancel:hover, .user-register-form
     .article-delete-node .node-article-delete-form #edit-cancel:hover,
@@ -4354,7 +4361,7 @@ form .social_login iframe {
   margin-top: 30px;
   text-align: center; }
 
-.user-onetime-form .form-submit:hover, .user-onetime-form .reset-filters a:hover, .reset-filters .user-onetime-form a:hover, .user-onetime-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-onetime-form .button:hover, .user-onetime-form .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-onetime-form #edit-cancel:hover, .user-onetime-form
+.user-onetime-form .form-submit:hover, .user-onetime-form .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .user-onetime-form a:hover, .user-onetime-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-onetime-form .button:hover, .user-onetime-form .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-onetime-form #edit-cancel:hover, .user-onetime-form
 .article-edit-node .node-article-delete-form #edit-cancel:hover,
 .article-edit-node .node-article-delete-form .user-onetime-form #edit-cancel:hover, .user-onetime-form
 .article-delete-node .node-article-delete-form #edit-cancel:hover,
@@ -4379,7 +4386,7 @@ form .social_login iframe {
   .user-onetime-form #catagories-wrapper {
     padding: 10px 0;
     width: 100%; }
-  .user-onetime-form .form-submit, .user-onetime-form .reset-filters a, .reset-filters .user-onetime-form a, .user-onetime-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-onetime-form .button, .user-onetime-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-onetime-form #edit-cancel, .user-onetime-form
+  .user-onetime-form .form-submit, .user-onetime-form .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .user-onetime-form a, .user-onetime-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-onetime-form .button, .user-onetime-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-onetime-form #edit-cancel, .user-onetime-form
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .user-onetime-form #edit-cancel, .user-onetime-form
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -4412,7 +4419,7 @@ form .social_login iframe {
   .user-pass .form-actions {
     margin-top: 25px;
     text-align: center; }
-  .user-pass .form-submit, .user-pass .reset-filters a, .reset-filters .user-pass a, .user-pass .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-pass .button, .user-pass .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-pass #edit-cancel, .user-pass
+  .user-pass .form-submit, .user-pass .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .user-pass a, .user-pass .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-pass .button, .user-pass .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-pass #edit-cancel, .user-pass
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .user-pass #edit-cancel, .user-pass
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -4424,7 +4431,7 @@ form .social_login iframe {
     border-color: #ea3a32;
     font-weight: 700;
     text-transform: none; }
-    .user-pass .form-submit:hover, .user-pass .reset-filters a:hover, .reset-filters .user-pass a:hover, .user-pass .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-pass .button:hover, .user-pass .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-pass #edit-cancel:hover, .user-pass
+    .user-pass .form-submit:hover, .user-pass .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .user-pass a:hover, .user-pass .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-pass .button:hover, .user-pass .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-pass #edit-cancel:hover, .user-pass
     .article-edit-node .node-article-delete-form #edit-cancel:hover,
     .article-edit-node .node-article-delete-form .user-pass #edit-cancel:hover, .user-pass
     .article-delete-node .node-article-delete-form #edit-cancel:hover,
@@ -4473,7 +4480,7 @@ form .social_login iframe {
       .acceptance-form .form-checkbox a:hover,
       .acceptance-form .js-form-type-checkbox a:hover {
         color: #8c2222; }
-  .acceptance-form .form-submit, .acceptance-form .reset-filters a, .reset-filters .acceptance-form a, .acceptance-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .acceptance-form .button, .acceptance-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .acceptance-form #edit-cancel, .acceptance-form
+  .acceptance-form .form-submit, .acceptance-form .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .acceptance-form a, .acceptance-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .acceptance-form .button, .acceptance-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .acceptance-form #edit-cancel, .acceptance-form
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .acceptance-form #edit-cancel, .acceptance-form
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -4576,7 +4583,7 @@ form .social_login iframe {
         color: #8c2222; }
     .form-my-settings #edit-field-avatar-wrapper .image-widget-data summary {
       outline: none; }
-    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .reset-filters a, .reset-filters .form-my-settings #edit-field-avatar-wrapper .image-widget-data a, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-field-avatar-wrapper .image-widget-data #edit-cancel, .form-my-settings #edit-field-avatar-wrapper .image-widget-data
+    .form-my-settings #edit-field-avatar-wrapper .image-widget-data .form-submit, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .form-my-settings #edit-field-avatar-wrapper .image-widget-data a, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-avatar-wrapper .image-widget-data .button, .form-my-settings #edit-field-avatar-wrapper .image-widget-data .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-field-avatar-wrapper .image-widget-data #edit-cancel, .form-my-settings #edit-field-avatar-wrapper .image-widget-data
     .article-edit-node .node-article-delete-form #edit-cancel,
     .article-edit-node .node-article-delete-form .form-my-settings #edit-field-avatar-wrapper .image-widget-data #edit-cancel, .form-my-settings #edit-field-avatar-wrapper .image-widget-data
     .article-delete-node .node-article-delete-form #edit-cancel,
@@ -4721,7 +4728,7 @@ form .social_login iframe {
     display: block;
     font-weight: 400;
     margin-bottom: 20px; }
-  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .reset-filters a, .reset-filters .form-my-settings #edit-field-organisations-wrapper a, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button, .form-my-settings #edit-field-organisations-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper #edit-cancel, .form-my-settings #edit-field-organisations-wrapper
+  .form-my-settings #edit-field-organisations-wrapper .form-submit, .form-my-settings #edit-field-organisations-wrapper .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .form-my-settings #edit-field-organisations-wrapper a, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button, .form-my-settings #edit-field-organisations-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper #edit-cancel, .form-my-settings #edit-field-organisations-wrapper
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper #edit-cancel, .form-my-settings #edit-field-organisations-wrapper
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -4731,7 +4738,7 @@ form .social_login iframe {
   .article-delete-node #edit-delete,
   .article-delete-node .form-my-settings #edit-field-organisations-wrapper #edit-delete,
   .form-my-settings #contact-details .form-submit,
-  .form-my-settings #contact-details .reset-filters a, .reset-filters
+  .form-my-settings #contact-details .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links)
   .form-my-settings #contact-details a,
   .form-my-settings #contact-details .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .form-my-settings #contact-details .button,
@@ -4762,7 +4769,7 @@ form .social_login iframe {
     letter-spacing: 0;
     padding: 0;
     text-transform: none; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .reset-filters a.field-add-more-submit, .reset-filters .form-my-settings #edit-field-organisations-wrapper a.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button, .form-my-settings #edit-field-organisations-wrapper .article-add-node .node-article-delete-form .field-add-more-submit#edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit#edit-cancel, .form-my-settings #edit-field-organisations-wrapper
+    .form-my-settings #edit-field-organisations-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .reset-filters ul:not(.contextual-links) a.field-add-more-submit, .reset-filters ul:not(.contextual-links) .form-my-settings #edit-field-organisations-wrapper a.field-add-more-submit, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit.button, .form-my-settings #edit-field-organisations-wrapper .article-add-node .node-article-delete-form .field-add-more-submit#edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit#edit-cancel, .form-my-settings #edit-field-organisations-wrapper
     .article-edit-node .node-article-delete-form .field-add-more-submit#edit-cancel,
     .article-edit-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit#edit-cancel, .form-my-settings #edit-field-organisations-wrapper
     .article-delete-node .node-article-delete-form .field-add-more-submit#edit-cancel,
@@ -4772,7 +4779,7 @@ form .social_login iframe {
     .article-delete-node .field-add-more-submit#edit-delete,
     .article-delete-node .form-my-settings #edit-field-organisations-wrapper .field-add-more-submit#edit-delete,
     .form-my-settings #contact-details .form-submit.field-add-more-submit,
-    .form-my-settings #contact-details .reset-filters a.field-add-more-submit, .reset-filters
+    .form-my-settings #contact-details .reset-filters ul:not(.contextual-links) a.field-add-more-submit, .reset-filters ul:not(.contextual-links)
     .form-my-settings #contact-details a.field-add-more-submit,
     .form-my-settings #contact-details .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content
     .form-my-settings #contact-details .field-add-more-submit.button,
@@ -4798,7 +4805,7 @@ form .social_login iframe {
     .form-my-settings #contact-details .field-add-more-submit#edit-delete {
       background: url(../images/add-plus-button.png) left top no-repeat;
       padding-left: 21px; }
-    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .reset-filters a:hover, .reset-filters .form-my-settings #edit-field-organisations-wrapper a:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button:hover, .form-my-settings #edit-field-organisations-wrapper .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper #edit-cancel:hover, .form-my-settings #edit-field-organisations-wrapper
+    .form-my-settings #edit-field-organisations-wrapper .form-submit:hover, .form-my-settings #edit-field-organisations-wrapper .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .form-my-settings #edit-field-organisations-wrapper a:hover, .form-my-settings #edit-field-organisations-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings #edit-field-organisations-wrapper .button:hover, .form-my-settings #edit-field-organisations-wrapper .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper #edit-cancel:hover, .form-my-settings #edit-field-organisations-wrapper
     .article-edit-node .node-article-delete-form #edit-cancel:hover,
     .article-edit-node .node-article-delete-form .form-my-settings #edit-field-organisations-wrapper #edit-cancel:hover, .form-my-settings #edit-field-organisations-wrapper
     .article-delete-node .node-article-delete-form #edit-cancel:hover,
@@ -4808,7 +4815,7 @@ form .social_login iframe {
     .article-delete-node #edit-delete:hover,
     .article-delete-node .form-my-settings #edit-field-organisations-wrapper #edit-delete:hover,
     .form-my-settings #contact-details .form-submit:hover,
-    .form-my-settings #contact-details .reset-filters a:hover, .reset-filters
+    .form-my-settings #contact-details .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links)
     .form-my-settings #contact-details a:hover,
     .form-my-settings #contact-details .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content
     .form-my-settings #contact-details .button:hover,
@@ -4879,7 +4886,7 @@ form .social_login iframe {
   left: 0;
   top: -23px; }
 
-.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .reset-filters a.field-add-more-submit, .reset-filters .form-my-settings #edit-field-skype-or-other-wrapper a.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button, .form-my-settings #edit-field-skype-or-other-wrapper .article-add-node .node-article-delete-form .field-add-more-submit#edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit#edit-cancel, .form-my-settings #edit-field-skype-or-other-wrapper
+.form-my-settings #edit-field-skype-or-other-wrapper .form-submit.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .reset-filters ul:not(.contextual-links) a.field-add-more-submit, .reset-filters ul:not(.contextual-links) .form-my-settings #edit-field-skype-or-other-wrapper a.field-add-more-submit, .form-my-settings #edit-field-skype-or-other-wrapper .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit.button, .form-my-settings #edit-field-skype-or-other-wrapper .article-add-node .node-article-delete-form .field-add-more-submit#edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit#edit-cancel, .form-my-settings #edit-field-skype-or-other-wrapper
 .article-edit-node .node-article-delete-form .field-add-more-submit#edit-cancel,
 .article-edit-node .node-article-delete-form .form-my-settings #edit-field-skype-or-other-wrapper .field-add-more-submit#edit-cancel, .form-my-settings #edit-field-skype-or-other-wrapper
 .article-delete-node .node-article-delete-form .field-add-more-submit#edit-cancel,
@@ -4954,7 +4961,7 @@ form .social_login iframe {
       top: 9px; }
     .form-my-settings table .dropbutton-wrapper .dropbutton-arrow {
       border-top-color: #8c2222; }
-  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .reset-filters a, .reset-filters .form-my-settings table .confirm-remove a, .form-my-settings table .confirm-remove .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings table .confirm-remove .button, .form-my-settings table .confirm-remove .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings table .confirm-remove #edit-cancel, .form-my-settings table .confirm-remove
+  .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .form-my-settings table .confirm-remove a, .form-my-settings table .confirm-remove .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings table .confirm-remove .button, .form-my-settings table .confirm-remove .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings table .confirm-remove #edit-cancel, .form-my-settings table .confirm-remove
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .form-my-settings table .confirm-remove #edit-cancel, .form-my-settings table .confirm-remove
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -4964,7 +4971,7 @@ form .social_login iframe {
   .article-delete-node #edit-delete,
   .article-delete-node .form-my-settings table .confirm-remove #edit-delete,
   .form-my-settings table .restore .form-submit,
-  .form-my-settings table .restore .reset-filters a, .reset-filters
+  .form-my-settings table .restore .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links)
   .form-my-settings table .restore a,
   .form-my-settings table .restore .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .form-my-settings table .restore .button,
@@ -5020,7 +5027,7 @@ form .social_login iframe {
   right: 60px;
   top: -3px; }
 
-.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .reset-filters a, .reset-filters .form-my-settings .paragraphs-dropbutton-wrapper a, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .paragraphs-dropbutton-wrapper .button, .form-my-settings .paragraphs-dropbutton-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings .paragraphs-dropbutton-wrapper #edit-cancel, .form-my-settings .paragraphs-dropbutton-wrapper
+.form-my-settings .paragraphs-dropbutton-wrapper .form-submit, .form-my-settings .paragraphs-dropbutton-wrapper .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .form-my-settings .paragraphs-dropbutton-wrapper a, .form-my-settings .paragraphs-dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .paragraphs-dropbutton-wrapper .button, .form-my-settings .paragraphs-dropbutton-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings .paragraphs-dropbutton-wrapper #edit-cancel, .form-my-settings .paragraphs-dropbutton-wrapper
 .article-edit-node .node-article-delete-form #edit-cancel,
 .article-edit-node .node-article-delete-form .form-my-settings .paragraphs-dropbutton-wrapper #edit-cancel, .form-my-settings .paragraphs-dropbutton-wrapper
 .article-delete-node .node-article-delete-form #edit-cancel,
@@ -5030,7 +5037,7 @@ form .social_login iframe {
 .article-delete-node #edit-delete,
 .article-delete-node .form-my-settings .paragraphs-dropbutton-wrapper #edit-delete,
 .form-my-settings .field-add-more-submit.form-submit,
-.form-my-settings .reset-filters a.field-add-more-submit, .reset-filters
+.form-my-settings .reset-filters ul:not(.contextual-links) a.field-add-more-submit, .reset-filters ul:not(.contextual-links)
 .form-my-settings a.field-add-more-submit,
 .form-my-settings .ui-dialog.ui-widget-content .field-add-more-submit.button, .ui-dialog.ui-widget-content
 .form-my-settings .field-add-more-submit.button,
@@ -5074,7 +5081,7 @@ form .social_login iframe {
 .form-my-settings label:after {
   content: none; }
 
-.form-my-settings .form-submit, .form-my-settings .reset-filters a, .reset-filters .form-my-settings a, .form-my-settings .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .button, .form-my-settings .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-cancel, .form-my-settings
+.form-my-settings .form-submit, .form-my-settings .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .form-my-settings a, .form-my-settings .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings .button, .form-my-settings .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings #edit-cancel, .form-my-settings
 .article-edit-node .node-article-delete-form #edit-cancel,
 .article-edit-node .node-article-delete-form .form-my-settings #edit-cancel, .form-my-settings
 .article-delete-node .node-article-delete-form #edit-cancel,
@@ -5088,7 +5095,7 @@ form .social_login iframe {
   font-weight: 700;
   margin: 0 auto 15px;
   text-transform: none; }
-  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .reset-filters a:not(.js-hide), .reset-filters .form-my-settings a:not(.js-hide), .form-my-settings .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .form-my-settings .button:not(.js-hide), .form-my-settings .article-add-node .node-article-delete-form #edit-cancel:not(.js-hide), .article-add-node .node-article-delete-form .form-my-settings #edit-cancel:not(.js-hide), .form-my-settings
+  .form-my-settings .form-submit:not(.js-hide), .form-my-settings .reset-filters ul:not(.contextual-links) a:not(.js-hide), .reset-filters ul:not(.contextual-links) .form-my-settings a:not(.js-hide), .form-my-settings .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .form-my-settings .button:not(.js-hide), .form-my-settings .article-add-node .node-article-delete-form #edit-cancel:not(.js-hide), .article-add-node .node-article-delete-form .form-my-settings #edit-cancel:not(.js-hide), .form-my-settings
   .article-edit-node .node-article-delete-form #edit-cancel:not(.js-hide),
   .article-edit-node .node-article-delete-form .form-my-settings #edit-cancel:not(.js-hide), .form-my-settings
   .article-delete-node .node-article-delete-form #edit-cancel:not(.js-hide),
@@ -5098,7 +5105,7 @@ form .social_login iframe {
   .article-delete-node #edit-delete:not(.js-hide),
   .article-delete-node .form-my-settings #edit-delete:not(.js-hide) {
     display: block; }
-  .form-my-settings .form-submit:hover, .form-my-settings .reset-filters a:hover, .reset-filters .form-my-settings a:hover, .form-my-settings .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings .button:hover, .form-my-settings .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .form-my-settings #edit-cancel:hover, .form-my-settings
+  .form-my-settings .form-submit:hover, .form-my-settings .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .form-my-settings a:hover, .form-my-settings .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .form-my-settings .button:hover, .form-my-settings .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .form-my-settings #edit-cancel:hover, .form-my-settings
   .article-edit-node .node-article-delete-form #edit-cancel:hover,
   .article-edit-node .node-article-delete-form .form-my-settings #edit-cancel:hover, .form-my-settings
   .article-delete-node .node-article-delete-form #edit-cancel:hover,
@@ -5126,7 +5133,7 @@ form .social_login iframe {
     height: 70px;
     margin-bottom: 0;
     padding-left: 20px; }
-  .full-width-search .search-form-wrapper .form-submit, .full-width-search .search-form-wrapper .reset-filters a, .reset-filters .full-width-search .search-form-wrapper a, .full-width-search .search-form-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .full-width-search .search-form-wrapper .button, .full-width-search .search-form-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .full-width-search .search-form-wrapper #edit-cancel, .full-width-search .search-form-wrapper
+  .full-width-search .search-form-wrapper .form-submit, .full-width-search .search-form-wrapper .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .full-width-search .search-form-wrapper a, .full-width-search .search-form-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .full-width-search .search-form-wrapper .button, .full-width-search .search-form-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .full-width-search .search-form-wrapper #edit-cancel, .full-width-search .search-form-wrapper
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .full-width-search .search-form-wrapper #edit-cancel, .full-width-search .search-form-wrapper
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -5136,6 +5143,12 @@ form .social_login iframe {
   .article-delete-node #edit-delete,
   .article-delete-node .full-width-search .search-form-wrapper #edit-delete {
     height: 100%; }
+
+@media (max-width: 479px) {
+  .full-width-search {
+    padding: 5px; }
+    .full-width-search .form-text, .full-width-search .form-textarea {
+      height: 50px; } }
 
 #block-ample-local-tasks {
   background: #fff;
@@ -5244,24 +5257,28 @@ form .social_login iframe {
 .view-news-and-events .title-wrapper,
 .view-my-projects .title-wrapper,
 .view-contacts .title-wrapper,
-.view-knowledge-vault .title-wrapper {
+.view-knowledge-vault .title-wrapper,
+.view-governance-area-calendar .title-wrapper {
   padding-bottom: 10px;
   text-align: center; }
   .view-news-and-events .title-wrapper h1,
   .view-my-projects .title-wrapper h1,
   .view-contacts .title-wrapper h1,
-  .view-knowledge-vault .title-wrapper h1 {
+  .view-knowledge-vault .title-wrapper h1,
+  .view-governance-area-calendar .title-wrapper h1 {
     padding-top: 0; }
     .group-region:not(.page-group-news-and-event) .view-news-and-events .title-wrapper h1, .group-region:not(.page-group-news-and-event)
     .view-my-projects .title-wrapper h1, .group-region:not(.page-group-news-and-event)
     .view-contacts .title-wrapper h1, .group-region:not(.page-group-news-and-event)
-    .view-knowledge-vault .title-wrapper h1 {
+    .view-knowledge-vault .title-wrapper h1, .group-region:not(.page-group-news-and-event)
+    .view-governance-area-calendar .title-wrapper h1 {
       font-size: 2.625rem;
       line-height: 48px; }
   .view-news-and-events .title-wrapper .line,
   .view-my-projects .title-wrapper .line,
   .view-contacts .title-wrapper .line,
-  .view-knowledge-vault .title-wrapper .line {
+  .view-knowledge-vault .title-wrapper .line,
+  .view-governance-area-calendar .title-wrapper .line {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%); }
@@ -5269,7 +5286,8 @@ form .social_login iframe {
 .front .view-news-and-events .title-wrapper, .front
 .view-my-projects .title-wrapper, .front
 .view-contacts .title-wrapper, .front
-.view-knowledge-vault .title-wrapper {
+.view-knowledge-vault .title-wrapper, .front
+.view-governance-area-calendar .title-wrapper {
   background: #f5f5f5;
   margin-top: -72px;
   padding: 10px 20px 0;
@@ -5279,7 +5297,8 @@ form .social_login iframe {
   .front .view-news-and-events .title-wrapper h1, .front
   .view-my-projects .title-wrapper h1, .front
   .view-contacts .title-wrapper h1, .front
-  .view-knowledge-vault .title-wrapper h1 {
+  .view-knowledge-vault .title-wrapper h1, .front
+  .view-governance-area-calendar .title-wrapper h1 {
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 20px;
@@ -5288,7 +5307,8 @@ form .social_login iframe {
   .front .view-news-and-events .title-wrapper .line, .front
   .view-my-projects .title-wrapper .line, .front
   .view-contacts .title-wrapper .line, .front
-  .view-knowledge-vault .title-wrapper .line {
+  .view-knowledge-vault .title-wrapper .line, .front
+  .view-governance-area-calendar .title-wrapper .line {
     left: 0;
     -webkit-transform: none;
             transform: none; }
@@ -5296,7 +5316,8 @@ form .social_login iframe {
 .view-news-and-events > h2,
 .view-my-projects > h2,
 .view-contacts > h2,
-.view-knowledge-vault > h2 {
+.view-knowledge-vault > h2,
+.view-governance-area-calendar > h2 {
   font-size: 1.575rem;
   line-height: 48px;
   margin-bottom: 15px;
@@ -5305,13 +5326,15 @@ form .social_login iframe {
 .view-news-and-events form,
 .view-my-projects form,
 .view-contacts form,
-.view-knowledge-vault form {
+.view-knowledge-vault form,
+.view-governance-area-calendar form {
   max-width: 100%; }
 
 .view-news-and-events .wrapper-filters,
 .view-my-projects .wrapper-filters,
 .view-contacts .wrapper-filters,
-.view-knowledge-vault .wrapper-filters {
+.view-knowledge-vault .wrapper-filters,
+.view-governance-area-calendar .wrapper-filters {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5321,7 +5344,8 @@ form .social_login iframe {
   .ie9 .view-news-and-events .wrapper-filters, .ie9
   .view-my-projects .wrapper-filters, .ie9
   .view-contacts .wrapper-filters, .ie9
-  .view-knowledge-vault .wrapper-filters {
+  .view-knowledge-vault .wrapper-filters, .ie9
+  .view-governance-area-calendar .wrapper-filters {
     display: block;
     -webkit-box-flex: 0;
         -ms-flex: none;
@@ -5330,18 +5354,21 @@ form .social_login iframe {
     .ie9 .view-news-and-events .wrapper-filters > div, .ie9
     .view-my-projects .wrapper-filters > div, .ie9
     .view-contacts .wrapper-filters > div, .ie9
-    .view-knowledge-vault .wrapper-filters > div {
+    .view-knowledge-vault .wrapper-filters > div, .ie9
+    .view-governance-area-calendar .wrapper-filters > div {
       float: left;
       max-width: calc(20% - 20px); }
   .ie10 .view-news-and-events .wrapper-filters > div, .ie10
   .view-my-projects .wrapper-filters > div, .ie10
   .view-contacts .wrapper-filters > div, .ie10
-  .view-knowledge-vault .wrapper-filters > div {
+  .view-knowledge-vault .wrapper-filters > div, .ie10
+  .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(20% - 20px); }
   .view-news-and-events .wrapper-filters > div,
   .view-my-projects .wrapper-filters > div,
   .view-contacts .wrapper-filters > div,
-  .view-knowledge-vault .wrapper-filters > div {
+  .view-knowledge-vault .wrapper-filters > div,
+  .view-governance-area-calendar .wrapper-filters > div {
     margin-left: 10px;
     margin-right: 10px;
     max-width: 20%;
@@ -5350,14 +5377,16 @@ form .social_login iframe {
 .view-news-and-events fieldset,
 .view-my-projects fieldset,
 .view-contacts fieldset,
-.view-knowledge-vault fieldset {
+.view-knowledge-vault fieldset,
+.view-governance-area-calendar fieldset {
   display: none;
   margin: 0; }
 
 .view-news-and-events .fieldset-wrapper,
 .view-my-projects .fieldset-wrapper,
 .view-contacts .fieldset-wrapper,
-.view-knowledge-vault .fieldset-wrapper {
+.view-knowledge-vault .fieldset-wrapper,
+.view-governance-area-calendar .fieldset-wrapper {
   background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.09);
   margin: 0 10px 10px;
@@ -5366,7 +5395,8 @@ form .social_login iframe {
 .view-news-and-events .form-checkboxes,
 .view-my-projects .form-checkboxes,
 .view-contacts .form-checkboxes,
-.view-knowledge-vault .form-checkboxes {
+.view-knowledge-vault .form-checkboxes,
+.view-governance-area-calendar .form-checkboxes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5377,26 +5407,30 @@ form .social_login iframe {
   .view-news-and-events .form-checkboxes .form-item,
   .view-my-projects .form-checkboxes .form-item,
   .view-contacts .form-checkboxes .form-item,
-  .view-knowledge-vault .form-checkboxes .form-item {
+  .view-knowledge-vault .form-checkboxes .form-item,
+  .view-governance-area-calendar .form-checkboxes .form-item {
     padding: 0 10px 30px;
     width: 16.6%; }
     .ie9 .view-news-and-events .form-checkboxes .form-item, .ie9
     .view-my-projects .form-checkboxes .form-item, .ie9
     .view-contacts .form-checkboxes .form-item, .ie9
-    .view-knowledge-vault .form-checkboxes .form-item {
+    .view-knowledge-vault .form-checkboxes .form-item, .ie9
+    .view-governance-area-calendar .form-checkboxes .form-item {
       display: inline-block;
       margin-left: -4px;
       vertical-align: top; }
   .view-news-and-events .form-checkboxes .form-checkbox,
   .view-my-projects .form-checkboxes .form-checkbox,
   .view-contacts .form-checkboxes .form-checkbox,
-  .view-knowledge-vault .form-checkboxes .form-checkbox {
+  .view-knowledge-vault .form-checkboxes .form-checkbox,
+  .view-governance-area-calendar .form-checkboxes .form-checkbox {
     float: left;
     margin: 3px 8px 0 0; }
   .view-news-and-events .form-checkboxes label,
   .view-my-projects .form-checkboxes label,
   .view-contacts .form-checkboxes label,
-  .view-knowledge-vault .form-checkboxes label {
+  .view-knowledge-vault .form-checkboxes label,
+  .view-governance-area-calendar .form-checkboxes label {
     font-size: 0.9625rem;
     float: left;
     font-family: "Fira Sans", sans-serif;
@@ -5517,7 +5551,7 @@ form .social_login iframe {
     padding-right: 60px; }
     .search-form-wrapper .form-text:focus, .search-form-wrapper .form-textarea:focus {
       border-color: rgba(56, 152, 236, 0.32); }
-  .search-form-wrapper .form-submit, .search-form-wrapper .reset-filters a, .reset-filters .search-form-wrapper a, .search-form-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .search-form-wrapper .button, .search-form-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .search-form-wrapper #edit-cancel, .search-form-wrapper
+  .search-form-wrapper .form-submit, .search-form-wrapper .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .search-form-wrapper a, .search-form-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .search-form-wrapper .button, .search-form-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .search-form-wrapper #edit-cancel, .search-form-wrapper
   .article-edit-node .node-article-delete-form #edit-cancel,
   .article-edit-node .node-article-delete-form .search-form-wrapper #edit-cancel, .search-form-wrapper
   .article-delete-node .node-article-delete-form #edit-cancel,
@@ -5540,7 +5574,7 @@ form .social_login iframe {
     transition: transform .1s ease;
     transition: transform .1s ease, -webkit-transform .1s ease;
     width: 60px; }
-    .search-form-wrapper .form-submit:hover, .search-form-wrapper .reset-filters a:hover, .reset-filters .search-form-wrapper a:hover, .search-form-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .search-form-wrapper .button:hover, .search-form-wrapper .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .search-form-wrapper #edit-cancel:hover, .search-form-wrapper
+    .search-form-wrapper .form-submit:hover, .search-form-wrapper .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .search-form-wrapper a:hover, .search-form-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .search-form-wrapper .button:hover, .search-form-wrapper .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .search-form-wrapper #edit-cancel:hover, .search-form-wrapper
     .article-edit-node .node-article-delete-form #edit-cancel:hover,
     .article-edit-node .node-article-delete-form .search-form-wrapper #edit-cancel:hover, .search-form-wrapper
     .article-delete-node .node-article-delete-form #edit-cancel:hover,
@@ -5552,6 +5586,47 @@ form .social_login iframe {
       border: none;
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
+
+.filter-title {
+  margin: 80px 0 15px; }
+  .filter-title h2 {
+    font-size: 1.575rem;
+    line-height: 64px;
+    margin: 0; }
+  .filter-title .show-filters {
+    display: none; }
+  .filter-title .open-filters span:after {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg); }
+
+@media (max-width: 991px) {
+  .filter-title {
+    margin: 0;
+    overflow: hidden; }
+    .filter-title h2 {
+      float: left; }
+    .filter-title .show-filters {
+      color: #283b44;
+      cursor: pointer;
+      display: block;
+      font-family: Oswald, sans-serif;
+      float: right;
+      letter-spacing: .5px;
+      margin-top: 25px; }
+      .filter-title .show-filters:hover {
+        opacity: .79; }
+      .filter-title .show-filters span:after {
+        font-size: 1.5rem;
+        color: #ea3a32;
+        display: inline-block;
+        margin-left: 4px;
+        position: relative;
+        top: 1px;
+        -webkit-transition: -webkit-transform .3s ease;
+        transition: -webkit-transform .3s ease;
+        transition: transform .3s ease;
+        transition: transform .3s ease, -webkit-transform .3s ease;
+        vertical-align: top; } }
 
 .block-facet--checkbox,
 .block-facet--datebasic {
@@ -5590,11 +5665,15 @@ form .social_login iframe {
             appearance: checkbox;
     margin-right: 4px; }
   .block-facet--checkbox label,
-  .block-facet--datebasic label {
+  .block-facet--checkbox .facet-item__value,
+  .block-facet--datebasic label,
+  .block-facet--datebasic .facet-item__value {
     font-size: 0.9625rem;
     font-family: "Fira Sans", sans-serif; }
     .block-facet--checkbox label:hover,
-    .block-facet--datebasic label:hover {
+    .block-facet--checkbox .facet-item__value:hover,
+    .block-facet--datebasic label:hover,
+    .block-facet--datebasic .facet-item__value:hover {
       opacity: .79; }
   .block-facet--checkbox .facet-item__count,
   .block-facet--datebasic .facet-item__count {
@@ -5603,15 +5682,23 @@ form .social_login iframe {
   .block-facet--datebasic .js-facet-deactivate {
     color: #ea3a32; }
 
-.reset-filters {
-  margin-top: 50px; }
-  .reset-filters ul {
-    margin: 0;
-    padding: 0; }
-  .reset-filters a {
+@media screen and (min-width: 992px) {
+  .block-facet--checkbox,
+  .block-facet--datebasic {
+    display: block !important; } }
+
+@media (max-width: 991px) {
+  .block-facet--checkbox, .block-facet--datebasic {
+    display: none; } }
+
+.reset-filters ul:not(.contextual-links) {
+  margin: 0;
+  padding: 0; }
+  .reset-filters ul:not(.contextual-links) a {
     background: transparent;
     display: inline-block;
     font-family: Oswald, sans-serif;
+    margin-bottom: 20px;
     text-decoration: none;
     vertical-align: top; }
 
@@ -5660,8 +5747,29 @@ form .social_login iframe {
     width: 100%; } }
 
 .view-my-projects .wrapper-filters > div,
-.view-knowledge-vault .wrapper-filters > div {
+.view-knowledge-vault .wrapper-filters > div,
+.view-governance-area-calendar .wrapper-filters > div {
   max-width: 30%; }
+
+.view-governance-area-calendar .views-row {
+  display: none; }
+
+.view-governance-area-calendar .feed-ical {
+  font-size: 1.25rem;
+  color: #4c7e96;
+  display: inline-block;
+  font-family: Oswald, sans-serif;
+  margin: 30px 0 40px;
+  text-decoration: none;
+  vertical-align: top; }
+  .view-governance-area-calendar .feed-ical:before {
+    font-size: 1.875rem;
+    content: "F";
+    font-family: P4h, sans-serif;
+    position: relative;
+    top: 4px; }
+  .view-governance-area-calendar .feed-ical:hover {
+    color: #ea3a32; }
 
 .view-knowledge-vault:not(.with-filters) form {
   max-width: 40%; }
@@ -5954,26 +6062,6 @@ form .social_login iframe {
   font-size: 1.5rem;
   line-height: 30px;
   text-align: center; }
-
-.event-content {
-  background: #fff;
-  border: 1px solid #afb7bb;
-  max-height: 600px;
-  padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(0, 0);
-          transform: translateX(-50%) translateY(-50%) scale(0, 0);
-  -webkit-transition: -webkit-transform .3s ease;
-  transition: -webkit-transform .3s ease;
-  transition: transform .3s ease;
-  transition: transform .3s ease, -webkit-transform .3s ease;
-  width: 35%;
-  z-index: 1; }
-  .event-content.active {
-    -webkit-transform: translateX(-50%) translateY(-50%) scale(1, 1);
-            transform: translateX(-50%) translateY(-50%) scale(1, 1); }
 
 #sliding-popup {
   font-size: 0.875rem;
@@ -6657,7 +6745,7 @@ footer {
     position: static; }
   .logged .main-wrapper {
     padding-left: 80px; }
-  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation):not(.page-search) .main-wrapper:before {
+  body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-my-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation):not(.page-search) .main-wrapper:before {
     background: #fff; }
   .main-wrapper > .top-banner-region {
     position: relative;
@@ -6761,12 +6849,18 @@ footer {
   padding-top: 0; }
   .left-sidebar .sidebar {
     float: left;
-    margin-top: 80px;
     padding-right: 20px;
     width: 25%; }
   .left-sidebar .content {
     float: right;
     width: 75%; }
+
+@media (max-width: 991px) {
+  .left-sidebar .sidebar,
+  .left-sidebar .content {
+    float: none;
+    padding: 0;
+    width: 100%; } }
 
 .header-image {
   margin-bottom: 50px;
@@ -7577,11 +7671,11 @@ footer {
 .article-edit-node .image-widget,
 .article-delete-node .image-widget {
   margin-bottom: 20px; }
-  .article-add-node .image-widget .form-submit:not(.js-hide), .article-add-node .image-widget .reset-filters a:not(.js-hide), .reset-filters .article-add-node .image-widget a:not(.js-hide), .article-add-node .image-widget .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .article-add-node .image-widget .button:not(.js-hide), .article-add-node .image-widget .node-article-delete-form #edit-cancel:not(.js-hide), .article-add-node .node-article-delete-form .image-widget #edit-cancel:not(.js-hide),
+  .article-add-node .image-widget .form-submit:not(.js-hide), .article-add-node .image-widget .reset-filters ul:not(.contextual-links) a:not(.js-hide), .reset-filters ul:not(.contextual-links) .article-add-node .image-widget a:not(.js-hide), .article-add-node .image-widget .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content .article-add-node .image-widget .button:not(.js-hide), .article-add-node .image-widget .node-article-delete-form #edit-cancel:not(.js-hide), .article-add-node .node-article-delete-form .image-widget #edit-cancel:not(.js-hide),
   .article-edit-node .node-article-delete-form .article-add-node .image-widget #edit-cancel:not(.js-hide),
   .article-delete-node .node-article-delete-form .article-add-node .image-widget #edit-cancel:not(.js-hide), .article-add-node .image-widget #edit-delete:not(.js-hide),
   .article-edit-node .image-widget .form-submit:not(.js-hide),
-  .article-edit-node .image-widget .reset-filters a:not(.js-hide), .reset-filters
+  .article-edit-node .image-widget .reset-filters ul:not(.contextual-links) a:not(.js-hide), .reset-filters ul:not(.contextual-links)
   .article-edit-node .image-widget a:not(.js-hide),
   .article-edit-node .image-widget .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content
   .article-edit-node .image-widget .button:not(.js-hide), .article-add-node .node-article-delete-form
@@ -7589,7 +7683,7 @@ footer {
   .article-delete-node .node-article-delete-form
   .article-edit-node .image-widget #edit-cancel:not(.js-hide), .article-edit-node .image-widget #edit-delete:not(.js-hide),
   .article-delete-node .image-widget .form-submit:not(.js-hide),
-  .article-delete-node .image-widget .reset-filters a:not(.js-hide), .reset-filters
+  .article-delete-node .image-widget .reset-filters ul:not(.contextual-links) a:not(.js-hide), .reset-filters ul:not(.contextual-links)
   .article-delete-node .image-widget a:not(.js-hide),
   .article-delete-node .image-widget .ui-dialog.ui-widget-content .button:not(.js-hide), .ui-dialog.ui-widget-content
   .article-delete-node .image-widget .button:not(.js-hide), .article-add-node .node-article-delete-form
@@ -7632,11 +7726,11 @@ footer {
 .article-edit-node .form-actions,
 .article-delete-node .form-actions {
   text-align: center; }
-  .article-add-node .form-actions .form-submit, .article-add-node .form-actions .reset-filters a, .reset-filters .article-add-node .form-actions a, .article-add-node .form-actions .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .article-add-node .form-actions .button, .article-add-node .form-actions .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-actions #edit-cancel,
+  .article-add-node .form-actions .form-submit, .article-add-node .form-actions .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .article-add-node .form-actions a, .article-add-node .form-actions .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .article-add-node .form-actions .button, .article-add-node .form-actions .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-actions #edit-cancel,
   .article-edit-node .node-article-delete-form .article-add-node .form-actions #edit-cancel,
   .article-delete-node .node-article-delete-form .article-add-node .form-actions #edit-cancel, .article-add-node .form-actions #edit-delete,
   .article-edit-node .form-actions .form-submit,
-  .article-edit-node .form-actions .reset-filters a, .reset-filters
+  .article-edit-node .form-actions .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links)
   .article-edit-node .form-actions a,
   .article-edit-node .form-actions .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .article-edit-node .form-actions .button, .article-add-node .node-article-delete-form
@@ -7644,7 +7738,7 @@ footer {
   .article-delete-node .node-article-delete-form
   .article-edit-node .form-actions #edit-cancel, .article-edit-node .form-actions #edit-delete,
   .article-delete-node .form-actions .form-submit,
-  .article-delete-node .form-actions .reset-filters a, .reset-filters
+  .article-delete-node .form-actions .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links)
   .article-delete-node .form-actions a,
   .article-delete-node .form-actions .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
   .article-delete-node .form-actions .button, .article-add-node .node-article-delete-form
@@ -7667,6 +7761,9 @@ footer {
   .article-add-node .horizontal-tabs, .article-edit-node .horizontal-tabs, .article-delete-node .horizontal-tabs {
     padding-left: 0;
     padding-right: 0; } }
+
+.calendar-wrapper {
+  position: relative; }
 
 #calendar {
   font-family: Oswald, sans-serif;
@@ -7704,6 +7801,8 @@ footer {
       font-size: 2.1rem;
       color: #4c7e96;
       font-family: P4h, sans-serif; }
+    #calendar .fc-icon:hover:after {
+      color: #ea3a32; }
   #calendar .fc-icon-right-single-arrow:after {
     content: "9"; }
   #calendar .fc-icon-left-single-arrow:after {
@@ -7787,6 +7886,50 @@ footer {
   #calendar .fc-today {
     background: transparent;
     color: #ea3a32; }
+  #calendar .ajax-progress {
+    position: fixed;
+    left: 50%;
+    top: 50%; }
+
+#event-response {
+  background: #fff;
+  border: 1px solid #afb7bb;
+  font-family: "Fira Sans", sans-serif;
+  height: 600px;
+  overflow-y: auto;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(0, 0);
+          transform: translateX(-50%) translateY(-50%) scale(0, 0);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+  width: 35%;
+  z-index: 1; }
+  #event-response.active {
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(1, 1);
+            transform: translateX(-50%) translateY(-50%) scale(1, 1); }
+  #event-response .event-title {
+    font-size: 1.3125rem;
+    font-weight: 400;
+    line-height: 26px;
+    margin: 0 0 5px; }
+  #event-response a {
+    text-decoration: none; }
+    #event-response a:hover {
+      color: #ea3a32; }
+  #event-response .event-info-popup {
+    margin-bottom: 20px; }
+  #event-response .row {
+    margin-bottom: 3px; }
+  #event-response .label {
+    font-weight: 700; }
+  #event-response .event-body {
+    line-height: 24px;
+    margin-bottom: 15px; }
 
 .page-comment-edit-form .comment-form {
   margin: 0 auto 20px;
@@ -7870,7 +8013,9 @@ footer {
     border-radius: 50%;
     float: left;
     margin-right: 20px;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative;
+    z-index: 1; }
   .comment-wrapper .user-info {
     position: relative; }
     .comment-wrapper .user-info .name {
@@ -8005,7 +8150,7 @@ footer {
     padding: 30px 0; }
   .dashboard .follow-link {
     padding-top: 5px; }
-    .dashboard .follow-link .form-submit, .dashboard .follow-link .reset-filters a, .reset-filters .dashboard .follow-link a, .dashboard .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .dashboard .follow-link .button, .dashboard .follow-link .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .dashboard .follow-link #edit-cancel, .dashboard .follow-link
+    .dashboard .follow-link .form-submit, .dashboard .follow-link .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .dashboard .follow-link a, .dashboard .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .dashboard .follow-link .button, .dashboard .follow-link .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .dashboard .follow-link #edit-cancel, .dashboard .follow-link
     .article-edit-node .node-article-delete-form #edit-cancel,
     .article-edit-node .node-article-delete-form .dashboard .follow-link #edit-cancel, .dashboard .follow-link
     .article-delete-node .node-article-delete-form #edit-cancel,
@@ -8169,11 +8314,12 @@ footer {
 
 .search-results {
   background: transparent;
-  margin-top: 0;
+  margin-top: 78px;
   padding: 0; }
   .search-results nav:first-child .js-pager__items {
     float: right;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    margin-top: -63px; }
   .search-results .views-row {
     background: #fff;
     clear: both;
@@ -8188,3 +8334,9 @@ footer {
       font-size: 0.875rem; }
       .search-results .document-teaser a:hover {
         color: #8c2222; }
+
+@media (max-width: 991px) {
+  .search-results {
+    margin-top: 0; }
+    .search-results nav:first-child .js-pager__items {
+      margin-top: 0; } }

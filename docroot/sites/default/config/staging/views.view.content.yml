@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.article
     - node.type.document
     - node.type.event
     - node.type.news
@@ -82,6 +83,22 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
+            group_select_gid:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            global_content:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
             public_content:
               bef_format: default
               more_options:
@@ -90,14 +107,6 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: "True|Public\nFalse|Non-Public"
-            type_1:
-              bef_format: default
-              more_options:
-                bef_select_all_none: false
-                bef_collapsible: false
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
       pager:
         type: full
         options:
@@ -2319,6 +2328,7 @@ display:
         relationships: false
         query: false
         group_by: false
+        exposed_form: false
       filters:
         status_extra:
           id: status_extra
@@ -2384,6 +2394,7 @@ display:
           admin_label: ''
           operator: in
           value:
+            article: article
             document: document
             event: event
             news: news
@@ -2402,11 +2413,12 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -2596,6 +2608,8 @@ display:
           gid:
             country: country
             governance_area: governance_area
+            knowledge_vault: knowledge_vault
+            product: product
             project: project
             region: region
           entity_type: group_content
@@ -2713,6 +2727,7 @@ display:
           admin_label: 'Content group content'
           required: true
           group_content_plugins:
+            'group_node:article': 'group_node:article'
             'group_node:document': 'group_node:document'
             'group_node:event': 'group_node:event'
             'group_node:news': 'group_node:news'
@@ -2730,6 +2745,77 @@ display:
           query_comment: ''
           query_tags: {  }
       group_by: false
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: false
+              timeout: '100'
+              autosubmit_hide: false
+            status:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            type:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            title:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            langcode:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            group_select_gid:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            global_content:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            public_content:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: "True|Public\nFalse|Non-Public"
     display_plugin: page
     display_title: Page
     id: page_2

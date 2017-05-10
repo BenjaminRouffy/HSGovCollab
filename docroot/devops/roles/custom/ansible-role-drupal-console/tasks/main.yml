@@ -1,0 +1,8 @@
+---
+
+- name: Ensure Drupal Console is executable.
+  file:
+    path: "{{ drupal_console_path }}"
+    mode: a+x
+    state: file
+

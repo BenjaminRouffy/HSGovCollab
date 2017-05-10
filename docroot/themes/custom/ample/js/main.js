@@ -294,7 +294,7 @@
 
       setTimeout(function() {
         bannerOverlay.animate({'opacity': 0}, 2000, function() {
-          if (bannerOverlay.siblings('#map').size() || isTouchDevice()) {
+          if (bannerOverlay.siblings('#map').size() || isTouchDevice() || $('body').is('.ie9')) {
             bannerOverlay.remove();
           }
         });

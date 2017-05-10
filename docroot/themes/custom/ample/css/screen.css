@@ -1409,7 +1409,7 @@ footer > .partners {
     -webkit-box-flex: 0;
         -ms-flex: none;
             flex: none;
-    padding-top: 15%; }
+    padding-top: 10%; }
     .ie9 .overlay-wrapper > * {
       display: inline-block;
       vertical-align: top; }
@@ -1430,9 +1430,9 @@ footer > .partners {
     line-height: 50px;
     margin-top: 30px; }
 
-@media (max-width: 1440px) {
+@media (max-width: 767px) {
   .ie9 .overlay-wrapper {
-    padding-top: 19%; } }
+    padding-top: 0; } }
 
 @media (max-width: 991px) {
   .overlay-wrapper h1 {
@@ -1469,6 +1469,10 @@ footer > .partners {
     line-height: 20px; } }
 
 .w-background-video .plyr {
+  max-height: 60vh;
+  overflow: hidden; }
+
+.ie9 .w-background-video .plyr--ready {
   max-height: 60vh;
   overflow: hidden; }
 

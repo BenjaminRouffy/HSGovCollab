@@ -465,7 +465,7 @@
   .ie9 & {
     display: block;
     flex: none;
-    padding-top: 15%;
+    padding-top: 10%;
 
     > * {
       display: inline-block;
@@ -496,9 +496,9 @@
   }
 }
 
-@include breakpoint-for('.overlay-wrapper', (to: desktop)) {
+@include breakpoint-for('.overlay-wrapper', (to: tablet)) {
   .ie9 & {
-    padding-top: 19%;
+    padding-top: 0;
   }
 }
 
@@ -558,6 +558,13 @@
   .plyr {
     max-height: 60vh;
     overflow: hidden;
+  }
+
+  .ie9 & {
+    .plyr--ready {
+      max-height: 60vh;
+      overflow: hidden;
+    }
   }
 
   .plyr__video-embed {

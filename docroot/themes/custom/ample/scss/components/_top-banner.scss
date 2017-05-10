@@ -560,6 +560,13 @@
     overflow: hidden;
   }
 
+  .ie9 & {
+    .plyr--ready {
+      max-height: 60vh;
+      overflow: hidden;
+    }
+  }
+
   .plyr__video-embed {
     margin-top: -13%;
     transition: margin .2s ease;

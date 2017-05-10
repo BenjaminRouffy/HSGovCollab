@@ -682,7 +682,7 @@ function views_query_views_alter(AlterableInterface $query) {
     foreach ($table_metadata['arguments'] as $replacement_key => $value) {
       if (!is_array($value)) {
         if (isset($substitutions[$value])) {
-         $tables[$table_name]['arguments'][$replacement_key] = $substitutions[$value];
+          $tables[$table_name]['arguments'][$replacement_key] = $substitutions[$value];
         }
       }
       else {

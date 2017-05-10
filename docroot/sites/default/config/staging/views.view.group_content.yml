@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.article
     - node.type.document
     - node.type.event
     - node.type.news
@@ -767,6 +768,7 @@ display:
           admin_label: ''
           operator: in
           value:
+            article: article
             document: document
             event: event
             news: news
@@ -790,6 +792,7 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
             reduce: true
           is_grouped: false
           group_info:

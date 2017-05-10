@@ -2,6 +2,10 @@ uuid: 55c3415c-6a83-4482-b870-f2c53a0fe06b
 langcode: en
 status: true
 dependencies:
+  config:
+    - group.type.country
+    - group.type.product
+    - group.type.project
   module:
     - ggroup
     - group
@@ -814,7 +818,10 @@ display:
           group_type: group
           admin_label: ''
           operator: in
-          value: {  }
+          value:
+            country: country
+            product: product
+            project: project
           group: 1
           exposed: true
           expose:
@@ -830,7 +837,13 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-            reduce: false
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+            reduce: true
           is_grouped: false
           group_info:
             label: ''

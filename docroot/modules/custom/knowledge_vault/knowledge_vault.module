@@ -13,7 +13,10 @@ function knowledge_vault_node_presave(EntityInterface $entity) {
   if ('article' == $entity->bundle() && $entity->hasField('field_knowledge_vault')) {
     $current_user = \Drupal::currentUser();
 
-    if (!$current_user->hasPermission('edit field_knowledge_vault')) {
+    if (
+      !$current_user->hasPermission('edit field_knowledge_vault') &&
+      !in_array('knowledge_vault_manager', $current_user->getRoles(TRUE))
+    ) {
       $config = \Drupal::config('knowledge_vault.settings');
       $entity->set('field_knowledge_vault', [
         'entity_gids' => [$config->get('contribute_category')],

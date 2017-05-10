@@ -1276,8 +1276,8 @@ footer > .partners {
   position: relative; }
 
 .country-content-wrapper {
-  max-width: 1200px;
-  padding-top: 10%;
+  max-width: 1240px;
+  padding: 10% 20px 0;
   position: absolute;
   top: 0;
   left: 50%;
@@ -7295,6 +7295,7 @@ footer {
   background-size: cover;
   height: 100%;
   position: relative;
+  padding: 0 20px;
   text-align: center; }
   .fixed .slider-item-wrapper, .fixed
   .banner-image {
@@ -7328,6 +7329,10 @@ footer {
   .header-image .slider-item-wrapper .image-text, .header-image
   .banner-image .image-text {
     width: 80%; }
+
+@media (max-width: 767px) {
+  .slider-item-wrapper, .banner-image {
+    padding: 0; } }
 
 .fixed .slider-item-wrapper {
   height: 84vh; }

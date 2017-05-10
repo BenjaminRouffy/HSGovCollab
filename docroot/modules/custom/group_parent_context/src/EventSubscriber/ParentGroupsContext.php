@@ -11,6 +11,7 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\group\Entity\GroupContent;
+use Drupal\node\Entity\Node;
 use Drupal\page_manager\Event\PageManagerContextEvent;
 use Drupal\Core\Plugin\Context\Context;
 use Drupal\Core\Routing\RouteProviderInterface;
@@ -73,6 +74,11 @@ class ParentGroupsContext implements EventSubscriberInterface {
         if ($request->attributes->has('node')) {
           $node = $request->attributes->get($route_context_name);
           $value = [];
+
+          if (is_numeric($node)) {
+            $node = Node::load($node);
+          }
+
           $group_content_array = GroupContent::loadByEntity($node);
 
           foreach ($group_content_array as $group_content) {

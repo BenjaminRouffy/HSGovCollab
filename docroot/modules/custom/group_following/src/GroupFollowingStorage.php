@@ -37,10 +37,10 @@ class GroupFollowingStorage implements GroupFollowingStorageInterface {
    * @file group_following/src/Plugin/views/join/GroupFollowing.php
    *   GroupFollowing::buildJoin.
    */
-  public function buildJoin(JoinPluginBase $join_plugin, $select_query, $table, $view_query) {
+  public function buildJoin(JoinPluginBase $join_plugin, $select_query, $table, $view_query, $type = 'INNER') {
     $select = $this->buildJoinQuery();
 
-    $select_query->join($select, $table['alias'], db_and()
+    $select_query->addJoin($type, $select, $table['alias'], db_and()
       ->where("{$join_plugin->leftTable}.{$join_plugin->leftField} = {$table['alias']}.{$join_plugin->field}")
 //      ->condition("group_select.uid", \Drupal::currentUser()->getAccount()->id())
     );

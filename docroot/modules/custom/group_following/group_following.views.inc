@@ -43,15 +43,21 @@ function group_following_views_data_alter(array &$data) {
 
   $data['group_graph']['gid'] = [
     'title' => t('Group following GID'),
+    'filter' => [
+      'id' => 'numeric'
+    ],
     'argument' => [
-      'id' => 'string'
+      'id' => 'numeric'
     ],
   ];
 
   $data['group_graph']['uid'] = [
     'title' => t('Group following UID'),
+    'filter' => [
+      'id' => 'numeric'
+    ],
     'argument' => [
-      'id' => 'string'
+      'id' => 'numeric'
     ],
   ];
 

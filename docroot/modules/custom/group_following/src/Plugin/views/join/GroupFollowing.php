@@ -64,7 +64,7 @@ class GroupFollowing extends JoinPluginBase implements ContainerFactoryPluginInt
    *   The source views query.
    */
   public function buildJoin($select_query, $table, $view_query) {
-    $this->groupFollowingStorage->buildJoin($this, $select_query, $table, $view_query);
+    $this->groupFollowingStorage->buildJoin($this, $select_query, $table, $view_query, $this->configuration['type']);
   }
 
 }

@@ -19,7 +19,7 @@ interface GroupFollowingStorageInterface {
    * @file group_following/src/Plugin/views/join/GroupFollowing.php
    *   GroupFollowing::buildJoin.
    */
-  function buildJoin(JoinPluginBase $join_plugin, $select_query, $table, $view_query);
+  function buildJoin(JoinPluginBase $join_plugin, $select_query, $table, $view_query, $type = 'INNER');
 
   /**
    * {@inheritdoc}

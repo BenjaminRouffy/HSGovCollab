@@ -500,7 +500,9 @@ svg {
 .main-menu {
   text-align: center; }
   .main-menu > div {
-    display: inline-block; }
+    display: inline-block;
+    -webkit-transition: padding .3s ease;
+    transition: padding .3s ease; }
   .main-menu ul:not(.contextual-links) li {
     display: inline-block;
     vertical-align: top; }
@@ -526,8 +528,8 @@ svg {
     padding: 25px 30px 15px;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-transition: opacity .2s ease, color .2s ease;
-    transition: opacity .2s ease, color .2s ease; }
+    -webkit-transition: opacity .2s ease, color .2s ease, padding .3s ease;
+    transition: opacity .2s ease, color .2s ease, padding .3s ease; }
     .header-static .main-menu ul:not(.contextual-links) a:hover {
       background: rgba(76, 126, 150, 0.08);
       opacity: .7; }
@@ -748,6 +750,27 @@ svg {
     width: 100%; }
     .dashboard-sidebar.expanded-menu {
       width: 100%; } }
+
+@media (max-width: 1440px) {
+  .header-static .main-menu > div, .header-fixed .main-menu > div {
+    padding-left: 30px; }
+  .header-static .main-menu ul:not(.contextual-links) li a, .header-fixed .main-menu ul:not(.contextual-links) li a {
+    padding-left: 20px;
+    padding-right: 20px; } }
+
+@media screen and (max-width: 1280px) {
+  .header-static .main-menu > div {
+    padding-left: 175px; }
+  .header-static .main-menu ul:not(.contextual-links) li a {
+    padding-left: 10px;
+    padding-right: 10px; } }
+
+@media screen and (max-width: 1280px) {
+  .header-fixed .main-menu > div {
+    padding-left: 60px; }
+  .header-fixed .main-menu ul:not(.contextual-links) li a {
+    padding-left: 15px;
+    padding-right: 15px; } }
 
 @media (max-width: 991px) {
   .header-static .main-menu, .header-fixed .main-menu {

@@ -1,43 +1,33 @@
 diff --git a/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php b/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
-index 9c3e705..4c62b50 100644
+index 3e10f4a..ea05eb2 100644
 --- a/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
 +++ b/core/lib/Drupal/Core/Entity/Element/EntityAutocomplete.php
-@@ -294,7 +294,7 @@ protected static function matchEntityByTitle(SelectionInterface $handler, $input
-       // More helpful error if there are only a few matching entities.
-       $multiples = array();
-       foreach ($entities as $id => $name) {
--        $multiples[] = $name . ' (' . $id . ')';
-+        $multiples[] = strip_tags($name) . ' (' . $id . ')';
+@@ -297,7 +297,9 @@ protected static function matchEntityByTitle(SelectionInterface $handler, $input
+         $multiples[] = $name . ' (' . $id . ')';
        }
        $params['@id'] = $id;
-       $form_state->setError($element, t('Multiple entities match this reference; "%multiple". Specify the one you want by appending the id in parentheses, like "@value (@id)".', array('%multiple' => implode('", "', $multiples)) + $params));
-diff --git a/core/misc/autocomplete.js b/core/misc/autocomplete.js
-index 5a1c156..11f6e75 100644
---- a/core/misc/autocomplete.js
-+++ b/core/misc/autocomplete.js
-@@ -201,7 +201,7 @@
-    */
-   function renderItem(ul, item) {
-     return $('<li>')
--      .append($('<a>').html(item.label))
-+      .append($('<span>').html(item.label))
-       .appendTo(ul);
-   }
+-      $form_state->setError($element, t('Multiple entities match this reference; "%multiple". Specify the one you want by appending the id in parentheses, like "@value (@id)".', ['%multiple' => implode('", "', $multiples)] + $params));
++      // Call strip_tags to clean up the label display if we are getting the
++      // list of matches from an entity reference view.
++      $form_state->setError($element, t('Multiple entities match this reference; "%multiple". Specify the one you want by appending the id in parentheses, like "@value (@id)".', ['%multiple' => strip_tags(implode('", "', $multiples))] + $params));
+     }
+     else {
+       // Take the one and only matching entity.
+diff --git a/core/modules/field/tests/src/Functional/EntityReference/Views/SelectionTest.php b/core/modules/field/tests/src/Functional/EntityReference/Views/SelectionTest.php
+index cfb5ecf..c3fa48b 100644
+--- a/core/modules/field/tests/src/Functional/EntityReference/Views/SelectionTest.php
++++ b/core/modules/field/tests/src/Functional/EntityReference/Views/SelectionTest.php
+@@ -2,6 +2,9 @@
  
-diff --git a/core/modules/field/src/Tests/EntityReference/Views/SelectionTest.php b/core/modules/field/src/Tests/EntityReference/Views/SelectionTest.php
-index e677dbc..3368418 100644
---- a/core/modules/field/src/Tests/EntityReference/Views/SelectionTest.php
-+++ b/core/modules/field/src/Tests/EntityReference/Views/SelectionTest.php
-@@ -2,6 +2,8 @@
+ namespace Drupal\Tests\field\Functional\EntityReference\Views;
  
- namespace Drupal\field\Tests\EntityReference\Views;
- 
++use Drupal\Component\Serialization\Json;
 +use Drupal\Component\Utility\Crypt;
 +use Drupal\Core\Site\Settings;
  use Drupal\field\Entity\FieldConfig;
- use Drupal\simpletest\WebTestBase;
+ use Drupal\Tests\BrowserTestBase;
  use Drupal\views\Views;
-@@ -17,11 +19,18 @@ class SelectionTest extends WebTestBase {
+@@ -17,7 +20,7 @@ class SelectionTest extends BrowserTestBase {
    public static $modules = ['node', 'views', 'entity_reference_test', 'entity_test'];
  
    /**
@@ -46,43 +36,30 @@ index e677dbc..3368418 100644
     *
     * @var array
     */
--  protected $nodes = array();
-+  protected $nodeTitles = [];
-+
-+  /**
-+   * An array of node entities.
-+   *
-+   * @var \Drupal\node\NodeInterface[]
-+   */
-+  protected $nodes = [];
- 
-   /**
-    * The entity reference field to test.
-@@ -36,14 +45,17 @@ class SelectionTest extends WebTestBase {
+@@ -36,14 +39,16 @@ class SelectionTest extends BrowserTestBase {
    protected function setUp() {
      parent::setUp();
  
 -    // Create nodes.
 -    $type = $this->drupalCreateContentType()->id();
--    $node1 = $this->drupalCreateNode(array('type' => $type));
--    $node2 = $this->drupalCreateNode(array('type' => $type));
+-    $node1 = $this->drupalCreateNode(['type' => $type]);
+-    $node2 = $this->drupalCreateNode(['type' => $type]);
 -    $node3 = $this->drupalCreateNode();
 +    // Create content types and nodes.
 +    $type1 = $this->drupalCreateContentType()->id();
 +    $type2 = $this->drupalCreateContentType()->id();
-+
 +    $node1 = $this->drupalCreateNode(['type' => $type1, 'title' => 'Test first node']);
 +    $node2 = $this->drupalCreateNode(['type' => $type1, 'title' => 'Test second node']);
 +    $node3 = $this->drupalCreateNode(['type' => $type2, 'title' => 'Test third node']);
  
-     foreach (array($node1, $node2, $node3) as $node) {
+     foreach ([$node1, $node2, $node3] as $node) {
 -      $this->nodes[$node->getType()][$node->id()] = $node->label();
 +      $this->nodes[] = $node;
 +      $this->nodeTitles[$node->getType()][$node->id()] = $node->label();
      }
  
      // Create a field.
-@@ -77,6 +89,50 @@ protected function setUp() {
+@@ -77,6 +82,50 @@ protected function setUp() {
    }
  
    /**
@@ -97,9 +74,9 @@ index e677dbc..3368418 100644
 +
 +    // Enable the display of the 'type' field so we can test that the output
 +    // does not contain only the entity label.
-+    $fields = $view->displayHandlers->get('default')->getOption('fields');
++    $fields = $view->displayHandlers->get('entity_reference_1')->getOption('fields');
 +    $fields['type']['exclude'] = FALSE;
-+    $view->displayHandlers->get('default')->setOption('fields', $fields);
++    $view->displayHandlers->get('entity_reference_1')->setOption('fields', $fields);
 +    $view->save();
 +
 +    // Prepare the selection settings key needed by the entity reference
@@ -110,20 +87,20 @@ index e677dbc..3368418 100644
 +    $selection_settings_key = Crypt::hmacBase64(serialize($selection_settings) . $target_type . $selection_handler, Settings::getHashSalt());
 +    \Drupal::keyValue('entity_autocomplete')->set($selection_settings_key, $selection_settings);
 +
-+    $result = $this->drupalGetJSON('entity_reference_autocomplete/' . $target_type . '/' . $selection_handler . '/' . $selection_settings_key, ['query' => ['q' => 't']]);
++    $result = Json::decode($this->drupalGet('entity_reference_autocomplete/' . $target_type . '/' . $selection_handler . '/' . $selection_settings_key, ['query' => ['q' => 't']]));
 +
 +    $expected = [
 +      0 => [
 +        'value' => $this->nodes[0]->bundle() . ': ' . $this->nodes[0]->label() . ' (' . $this->nodes[0]->id() . ')',
-+        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[0]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content"><a href="' . $this->nodes[0]->toUrl()->toString() . '" hreflang="en">' . $this->nodes[0]->label() . '</a></span></span>',
++        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[0]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content">' . $this->nodes[0]->label() . '</span></span>',
 +      ],
 +      1 => [
 +        'value' => $this->nodes[1]->bundle() . ': ' . $this->nodes[1]->label() . ' (' . $this->nodes[1]->id() . ')',
-+        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[1]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content"><a href="' . $this->nodes[1]->toUrl()->toString() . '" hreflang="en">' . $this->nodes[1]->label() . '</a></span></span>',
++        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[1]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content">' . $this->nodes[1]->label() . '</span></span>',
 +      ],
 +      2 => [
 +        'value' => $this->nodes[2]->bundle() . ': ' . $this->nodes[2]->label() . ' (' . $this->nodes[2]->id() . ')',
-+        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[2]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content"><a href="' . $this->nodes[2]->toUrl()->toString() . '" hreflang="en">' . $this->nodes[2]->label() . '</a></span></span>',
++        'label' => '<span class="views-field views-field-type"><span class="field-content">' . $this->nodes[2]->bundle() . '</span></span>: <span class="views-field views-field-title"><span class="field-content">' . $this->nodes[2]->label() . '</span></span>',
 +      ],
 +    ];
 +    $this->assertEqual($result, $expected, 'The autocomplete result of the Views entity reference selection handler contains the proper output.');
@@ -133,7 +110,7 @@ index e677dbc..3368418 100644
     * Confirm the expected results are returned.
     *
     * @param array $result
-@@ -86,7 +142,7 @@ protected function assertResults(array $result) {
+@@ -86,7 +135,7 @@ protected function assertResults(array $result) {
      $success = FALSE;
      foreach ($result as $node_type => $values) {
        foreach ($values as $nid => $label) {
@@ -290,10 +267,18 @@ index 3e78c51..c2b7e48 100644
 +        - user.permissions
 +      tags: {  }
 diff --git a/core/modules/views/src/Plugin/EntityReferenceSelection/ViewsSelection.php b/core/modules/views/src/Plugin/EntityReferenceSelection/ViewsSelection.php
-index db19052..b328137 100644
+index 05ac9b9..3db19e4 100644
 --- a/core/modules/views/src/Plugin/EntityReferenceSelection/ViewsSelection.php
 +++ b/core/modules/views/src/Plugin/EntityReferenceSelection/ViewsSelection.php
-@@ -9,6 +9,7 @@
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\views\Plugin\EntityReferenceSelection;
+ 
++use Drupal\Component\Utility\Xss;
+ use Drupal\Core\Database\Query\SelectInterface;
+ use Drupal\Core\Entity\EntityManagerInterface;
+ use Drupal\Core\Entity\EntityReferenceSelection\SelectionInterface;
+@@ -9,6 +10,7 @@
  use Drupal\Core\Form\FormStateInterface;
  use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
  use Drupal\Core\Plugin\PluginBase;
@@ -301,7 +286,7 @@ index db19052..b328137 100644
  use Drupal\Core\Session\AccountInterface;
  use Drupal\Core\Url;
  use Drupal\views\Views;
-@@ -48,6 +49,13 @@ class ViewsSelection extends PluginBase implements SelectionInterface, Container
+@@ -48,6 +50,13 @@ class ViewsSelection extends PluginBase implements SelectionInterface, Container
    protected $currentUser;
  
    /**
@@ -315,7 +300,7 @@ index db19052..b328137 100644
     * Constructs a new SelectionBase object.
     *
     * @param array $configuration
-@@ -62,13 +70,16 @@ class ViewsSelection extends PluginBase implements SelectionInterface, Container
+@@ -62,13 +71,16 @@ class ViewsSelection extends PluginBase implements SelectionInterface, Container
     *   The module handler service.
     * @param \Drupal\Core\Session\AccountInterface $current_user
     *   The current user.
@@ -333,7 +318,7 @@ index db19052..b328137 100644
    }
  
    /**
-@@ -81,7 +92,8 @@ public static function create(ContainerInterface $container, array $configuratio
+@@ -81,7 +93,8 @@ public static function create(ContainerInterface $container, array $configuratio
        $plugin_definition,
        $container->get('entity.manager'),
        $container->get('module_handler'),
@@ -343,16 +328,24 @@ index db19052..b328137 100644
      );
    }
  
-@@ -222,9 +234,9 @@ public function getReferenceableEntities($match = NULL, $match_operator = 'CONTA
+@@ -222,9 +235,17 @@ public function getReferenceableEntities($match = NULL, $match_operator = 'CONTA
  
-     $return = array();
+     $return = [];
      if ($result) {
 -      foreach ($this->view->result as $row) {
 -        $entity = $row->_entity;
 -        $return[$entity->bundle()][$entity->id()] = $entity->label();
++      // These results are usually displayed in an autocomplete field, which is
++      // surrounded by anchor tags. Most tags are allowed inside anchor tags,
++      // except for other anchor tags.
++      $allowed_tags = Xss::getAdminTagList();
++      if (($key = array_search('a', $allowed_tags)) !== FALSE) {
++        unset($allowed_tags[$key]);
++      }
++
 +      foreach ($result as $id => $row) {
 +        $entity = $row['#row']->_entity;
-+        $return[$entity->bundle()][$id] = $this->renderer->renderPlain($row);
++        $return[$entity->bundle()][$id] = Xss::filter($this->renderer->renderPlain($row), $allowed_tags);
        }
      }
      return $return;

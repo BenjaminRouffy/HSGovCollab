@@ -1,0 +1,24 @@
+From 9fe4db373d7523711fbde5b4ba62952bd4fe5257 Mon Sep 17 00:00:00 2001
+From: Normunds Puzo <normunds.puzo@rsu.lv>
+Date: Fri, 9 Dec 2016 17:23:16 +0200
+Subject: [PATCH]  contextual panels fix
+
+---
+ core/modules/contextual/js/contextual.js | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/core/modules/contextual/js/contextual.js b/core/modules/contextual/js/contextual.js
+index 7f93a15..31f4c83 100644
+--- a/core/modules/contextual/js/contextual.js
++++ b/core/modules/contextual/js/contextual.js
+@@ -157,6 +157,7 @@
+       // Collect the IDs for all contextual links placeholders.
+       var ids = [];
+       $placeholders.each(function () {
++        if ($.inArray($(this).attr('data-contextual-id'), ids) < 0)
+         ids.push($(this).attr('data-contextual-id'));
+       });
+ 
+-- 
+2.7.0.windows.1
+

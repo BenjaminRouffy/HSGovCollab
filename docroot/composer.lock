@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd601ab356a41b7d9e77f3ff3627a46f",
+    "content-hash": "60eec84858508f1c69cbc16f4e61ecac",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1570,7 +1570,9 @@
                     "Limiting options for exposed Language filters causes errors and doesn't work for special languages": "https://www.drupal.org/files/issues/drupal-exposed-language-filter-errors-2693727-1.patch",
                     "form #states not working with literal integers as values in IE": "https://www.drupal.org/files/issues/core-states-not-working-with-integers-ie11-1962800.patch",
                     "Contextual links broken because of JS error": "https://www.drupal.org/files/issues/contextual_links_broken-2033275-10.patch",
-                    "Views should not condition joins on the langcode of fields that are not translatable": "https://www.drupal.org/files/issues/views_should_not-2451657-254_0.patch"
+                    "Views should not condition joins on the langcode of fields that are not translatable": "https://www.drupal.org/files/issues/views_should_not-2451657-254_0.patch",
+                    "View output is not used for entityreference options": "https://www.drupal.org/files/issues/2174633-143-entity-reference.patch",
+                    "Confirmation cancel links are incorrect if installed in a subdirectory": "https://www.drupal.org/files/issues/2582295-12.patch"
                 }
             },
             "autoload": {

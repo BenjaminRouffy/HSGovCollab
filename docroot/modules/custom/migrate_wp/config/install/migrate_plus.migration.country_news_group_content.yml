@@ -1,0 +1,25 @@
+id: country_news
+label: Create group content and build the bridge between group and node
+migration_group: wp
+source:
+  plugin: wp_country_post
+destination:
+  plugin: entity:group_content
+process:
+  type:
+    plugin: default_value
+    default_value: country-group_node-news
+  label: post_title
+
+  #TODO
+  gid: entity_generate
+  #TODO
+  entity_id: migration
+
+migration_dependencies:
+  optional:
+    - country_news_node
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

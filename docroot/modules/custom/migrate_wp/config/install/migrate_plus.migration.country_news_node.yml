@@ -1,0 +1,17 @@
+id: country_news_node
+label: Map countries to new site into node.
+migration_group: wp
+source:
+  plugin: wp_country_post
+destination:
+  plugin: entity:node
+process:
+  type:
+    plugin: default_value
+    default_value: news
+  title: post_title
+  'body/value': post_content
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

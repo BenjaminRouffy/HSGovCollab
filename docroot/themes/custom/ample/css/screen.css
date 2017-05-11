@@ -863,6 +863,7 @@ header .social-links .font-social-icon {
     display: inline-block;
     margin: 0;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 0;
     vertical-align: top;
     white-space: nowrap; }
@@ -6675,6 +6676,7 @@ footer {
   font-size: 0.7875rem;
   border-top: 1px solid #fffcfc;
   font-family: "Libre Franklin", sans-serif;
+  overflow: hidden;
   padding: 30px 0 10px;
   position: fixed;
   bottom: 0;

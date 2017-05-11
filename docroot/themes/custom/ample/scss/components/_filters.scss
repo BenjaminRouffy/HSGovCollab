@@ -61,6 +61,11 @@
     display: flex;
     justify-content: center;
 
+    .mobile & {
+      display: block;
+      overflow: hidden;
+    }
+
     .ie9 & {
       display: block;
       flex: none;
@@ -466,6 +471,10 @@
     > div {
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px;
+
+      .mobile & {
+        float: left;
+      }
     }
 
     .ie10 &,

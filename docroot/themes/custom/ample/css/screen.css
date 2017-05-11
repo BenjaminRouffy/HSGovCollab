@@ -5346,6 +5346,13 @@ form .social_login iframe {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
+  .mobile .view-news-and-events .wrapper-filters, .mobile
+  .view-my-projects .wrapper-filters, .mobile
+  .view-contacts .wrapper-filters, .mobile
+  .view-knowledge-vault .wrapper-filters, .mobile
+  .view-governance-area-calendar .wrapper-filters {
+    display: block;
+    overflow: hidden; }
   .ie9 .view-news-and-events .wrapper-filters, .ie9
   .view-my-projects .wrapper-filters, .ie9
   .view-contacts .wrapper-filters, .ie9
@@ -5717,6 +5724,8 @@ form .social_login iframe {
     .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px; }
+      .mobile .view-news-and-events .wrapper-filters > div, .mobile .view-my-projects .wrapper-filters > div, .mobile .view-contacts .wrapper-filters > div {
+        float: left; }
     .ie10 .view-news-and-events .wrapper-filters > div,
     .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
     .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,

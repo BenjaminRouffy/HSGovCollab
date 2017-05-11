@@ -7300,8 +7300,10 @@ footer {
   background-size: cover;
   height: 100%;
   position: relative;
-  padding: 0 20px;
   text-align: center; }
+  .top-banner-region .slider-item-wrapper, .top-banner-region
+  .banner-image {
+    padding: 0 20px; }
   .fixed .slider-item-wrapper, .fixed
   .banner-image {
     height: auto;
@@ -7336,7 +7338,7 @@ footer {
     width: 80%; }
 
 @media (max-width: 767px) {
-  .slider-item-wrapper, .banner-image {
+  .top-banner-region .slider-item-wrapper, .top-banner-region .banner-image {
     padding: 0; } }
 
 .fixed .slider-item-wrapper {

@@ -177,8 +177,11 @@
   background-size: cover;
   height: 100%;
   position: relative;
-  padding: 0 20px;
   text-align: center;
+
+  .top-banner-region & {
+    padding: 0 20px;
+  }
 
   .fixed & {
     height: auto;
@@ -220,7 +223,9 @@
 }
 
 @include breakpoint-for('.slider-item-wrapper, .banner-image', (to: tablet)) {
-  padding: 0;
+  .top-banner-region & {
+    padding: 0;
+  }
 }
 
 .slider-item-wrapper {

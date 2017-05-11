@@ -335,13 +335,15 @@ function ample_preprocess_paragraph(array &$variables) {
     $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     foreach ($variables['content'] as $content_key => $content_item) {
-      $entity_type_id = $variables['paragraph']->get($content_key)->entity->getEntityTypeId();
+      $paragraph_entity_field = $variables['paragraph']->get($content_key);
 
       if (isset($content_item['#field_type']) &&
         $content_item['#field_type'] == 'entity_reference' &&
-        $content_item['#language'] != $current_language
+        $content_item['#language'] != $current_language &&
+        !empty($paragraph_entity_field->referencedEntities())
       ) {
         $entity_keys = Element::children($content_item);
+        $entity_type_id = $paragraph_entity_field->entity->getEntityTypeId();
 
         foreach ($entity_keys as $entity_key) {
           if ($content_item[$entity_key]['#' . $entity_type_id]->hasTranslation($current_language)) {

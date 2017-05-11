@@ -1,12 +1,21 @@
 uuid: 304f8fed-d8df-4dfb-9b71-c12c7cff2c2a
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - group_dashboard
 id: my_projects
 label: 'My projects'
 description: ''
 use_admin_theme: false
 path: /user/my-projects
 access_logic: and
-access_conditions: {  }
+access_conditions:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 parameters: {  }

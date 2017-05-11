@@ -1,12 +1,21 @@
 uuid: c6ae7819-4d98-439a-9c60-e35eab77c554
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - group_dashboard
 id: countries_regions
 label: 'Countries & Regions'
 description: ''
 use_admin_theme: false
 path: /countries_and_regions
 access_logic: and
-access_conditions: {  }
+access_conditions:
+  -
+    id: access_by_user_role
+    roles:
+      authenticated: authenticated
+    negate: 0
+    context_mapping:
+      user: current_user
 parameters: {  }

@@ -7,7 +7,6 @@ dependencies:
     - views.view.search_for_a_country_or_region
   module:
     - panels
-    - user
     - views
 id: projects-panels_variant-0
 label: Panels
@@ -37,13 +36,6 @@ variant_settings:
   builder: standard
 page: projects
 weight: 0
-selection_criteria:
-  -
-    id: user_role
-    roles:
-      authenticated: authenticated
-    negate: false
-    context_mapping:
-      user: current_user
+selection_criteria: {  }
 selection_logic: and
 static_context: {  }

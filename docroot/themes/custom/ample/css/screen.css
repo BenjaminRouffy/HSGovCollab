@@ -832,8 +832,8 @@ svg {
   letter-spacing: .5px;
   padding: 15px 30px;
   text-decoration: none;
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease;
+  -webkit-transition: color .3s ease, padding .3s ease;
+  transition: color .3s ease, padding .3s ease;
   vertical-align: top; }
   .anchor-links a:hover {
     color: #4c7e96; }
@@ -6780,8 +6780,16 @@ header {
     top: 60px; }
   .header-fixed .service-links {
     position: static; }
-  .header-fixed .bottom-head {
-    display: none; } }
+  .header-fixed .anchor-links a {
+    padding: 15px 20px; } }
+
+@media (max-width: 767px) {
+  .header-fixed .bottom-head .anchor-links {
+    height: 50px;
+    padding-top: 2px; }
+  .header-fixed .anchor-links a {
+    font-size: 0.875rem;
+    padding: 15px; } }
 
 .bottom-head {
   background: #e9ecee;

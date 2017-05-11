@@ -572,7 +572,6 @@ header {
   }
 }
 
-
 @include breakpoint-for('.header-fixed', (to: laptop-small)) {
   .mobile-menu-btn {
     color: $white;
@@ -593,8 +592,26 @@ header {
     position: static;
   }
 
+  .anchor-links {
+    a {
+      padding: 15px 20px;
+    }
+  }
+}
+
+@include breakpoint-for('.header-fixed', (to: tablet)) {
   .bottom-head {
-    display: none;
+    .anchor-links {
+      height: 50px;
+      padding-top: 2px;
+    }
+  }
+
+  .anchor-links {
+    a {
+      @include font-size(14);
+      padding: 15px;
+    }
   }
 }
 

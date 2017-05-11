@@ -1701,6 +1701,230 @@ form {
   }
 }
 
+@include breakpoint-for('.form-my-settings', (to: laptop-small)) {
+  #edit-field-avatar-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .field--name-field-person-titles {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+
+    .form-item {
+      width: 100%;
+    }
+  }
+
+  #user-details,
+  #organisation-details,
+  #interests-wrapper,
+  #contact-details,
+  #address-details,
+  #managers-wrapper {
+    .form-wrapper {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  #edit-account {
+    > .form-item {
+      padding: 0 20px;
+    }
+  }
+
+  #organisation-details {
+    justify-content: flex-start;
+
+    .field--name-field-organisation {
+      width: 100%;
+    }
+  }
+
+  #edit-field-organisations-wrapper {
+    thead {
+      .label {
+        padding-left: 20px;
+      }
+    }
+  }
+
+  #edit-field-skype-or-other-wrapper,
+  #edit-field-organisations-wrapper {
+    > .ajax-new-content {
+      padding: 0 20px;
+    }
+
+    .field-add-more-submit {
+      margin-left: 20px;
+    }
+  }
+
+  #edit-field-organisations {
+    padding: 0 20px;
+
+    .field-add-more-submit {
+      margin-left: 0;
+    }
+  }
+
+  table {
+    .paragraph-type-top {
+      padding-right: 20px;
+    }
+
+    .paragraphs-subform {
+      .form-wrapper {
+        padding: 0 20px;
+      }
+    }
+  }
+
+  #edit-field-disclose-your-personal-det-wrapper {
+    padding: 20px;
+  }
+}
+
+@include breakpoint-for('.form-my-settings', (to: tablet)) {
+  #edit-field-avatar-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .field--name-field-person-titles {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #user-details,
+  #organisation-details,
+  #interests-wrapper,
+  #contact-details,
+  #address-details,
+  #managers-wrapper {
+    .form-wrapper {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  #edit-account {
+    > .form-item {
+      padding: 0 10px;
+    }
+  }
+
+  #edit-field-organisations-wrapper {
+    thead {
+      .label {
+        padding-left: 10px;
+      }
+    }
+  }
+
+  #interests-wrapper,
+  #contact-details {
+    .form-wrapper {
+      width: 100%;
+    }
+  }
+
+  #edit-field-skype-or-other-wrapper,
+  #edit-field-organisations-wrapper {
+    > .ajax-new-content {
+      padding: 0 10px;
+    }
+
+    .field-add-more-submit {
+      margin-left: 10px;
+    }
+  }
+
+  #edit-field-skype-or-other-wrapper {
+    .paragraphs-subform {
+      .field--name-field-type,
+      .field--name-field-account {
+        padding: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  #edit-field-organisations {
+    padding: 0 10px;
+
+    .field-add-more-submit {
+      margin-left: 0;
+    }
+  }
+
+  table {
+    .paragraph-type-top {
+      padding-right: 10px;
+    }
+
+    .paragraphs-subform {
+      .form-wrapper {
+        padding: 0 10px;
+      }
+    }
+  }
+
+  #edit-field-disclose-your-personal-det-wrapper {
+    padding: 10px;
+  }
+}
+
+@include breakpoint-for('.form-my-settings', (to: mobileL)) {
+  #edit-field-avatar-wrapper {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+
+    .image-preview {
+      margin: 40px auto 30px;
+    }
+  }
+
+  #user-details,
+  #organisation-details,
+  #interests-wrapper,
+  #contact-details,
+  #address-details,
+  #managers-wrapper {
+    .form-wrapper {
+      width: 100%;
+    }
+  }
+
+  #edit-account {
+    > .form-item {
+      width: 100%;
+    }
+  }
+
+  #edit-field-skype-or-other-wrapper,
+  #edit-field-organisations-wrapper {
+    > .ajax-new-content {
+      width: 100%;
+    }
+  }
+
+  table {
+    .paragraph-type-top {
+      width: 100%;
+    }
+
+    .paragraphs-subform {
+      .form-wrapper {
+        width: 100%;
+      }
+    }
+  }
+}
+
 .full-width-search {
   background: $white;
   margin: 50px auto 27px;

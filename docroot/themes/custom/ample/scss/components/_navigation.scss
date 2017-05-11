@@ -3,6 +3,7 @@
 
   > div {
     display: inline-block;
+    transition: padding .3s ease;
   }
 
   ul:not(.contextual-links) {
@@ -45,7 +46,7 @@
       padding: 25px 30px 15px;
       text-transform: uppercase;
       text-decoration: none;
-      transition: opacity .2s ease, color .2s ease;
+      transition: opacity .2s ease, color .2s ease, padding .3s ease;
 
       .header-static & {
         &:hover {
@@ -444,6 +445,61 @@
 
   &.expanded-menu {
     width: 100%;
+  }
+}
+
+@include breakpoint-for('.header-static, .header-fixed', (to: desktop)) {
+  .main-menu {
+    > div {
+      padding-left: 30px;
+    }
+
+    ul:not(.contextual-links) {
+      li {
+        a {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .header-static {
+    .main-menu {
+      > div {
+        padding-left: 175px;
+      }
+
+      ul:not(.contextual-links) {
+        li {
+          a {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .header-fixed {
+    .main-menu {
+      > div {
+        padding-left: 60px;
+      }
+
+      ul:not(.contextual-links) {
+        li {
+          a {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
+        }
+      }
+    }
   }
 }
 

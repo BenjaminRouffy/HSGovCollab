@@ -36,7 +36,7 @@ function p4h_views_plugins_theme() {
  */
 function p4h_views_plugins_entity_base_field_info(EntityTypeInterface $entity_type) {
   if (in_array($entity_type->id(), ['node', 'group'])) {
-    $fields['computed_date'] = BaseFieldDefinition::create('string')
+    $fields['computed_date'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Computed date'))
       ->setDescription(t('Computed date'));
 

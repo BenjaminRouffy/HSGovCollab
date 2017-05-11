@@ -5,6 +5,9 @@
  * Contains deployment.install.
  */
 
+use Drupal\Core\Database\Database;
+use Drupal\Core\Database\Driver\mysql\Schema;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\field\Entity\FieldConfig;
 
 /**
@@ -847,4 +850,58 @@ function deployment_update_8064() {
 function deployment_update_8065() {
   deployment_delete_fields('node', 'article', ['field_related_content_selector']);
   field_purge_batch(500);
+}
+
+/**
+ * Update filed "Computed date".
+ */
+function deployment_update_8071() {
+  $connection = Database::getConnection();
+  $database =  \Drupal::database();
+  $node_computed_date = [];
+  $group_computed_date = [];
+
+
+  $node_computed_date = $database->select('node_field_data', 'node_field_data')
+    ->fields('node_field_data', ['nid', 'computed_date'])
+    ->execute()
+    ->fetchAll();
+
+  $database->update('node_field_data')
+    ->fields(['computed_date' => NULL])
+    ->execute();
+
+  $group_computed_date = $database->select('groups_field_data', 'groups_field_data')
+    ->fields('groups_field_data', ['id', 'computed_date'])
+    ->execute()
+    ->fetchAll();
+
+  $database->update('groups_field_data')
+    ->fields(['computed_date' => NULL])
+    ->execute();
+
+  \Drupal::entityDefinitionUpdateManager()->applyUpdates();
+
+  foreach (['node_field_data', 'groups_field_data'] as $table) {
+    $connection->schema()->changeField(
+      $table,
+      'computed_date',
+      'computed_date',
+      ['type' => 'int', 'size' => 'big']
+    );
+  }
+
+  foreach ($node_computed_date as $node) {
+    $database->update('node_field_data')
+      ->fields(['computed_date' => $node->computed_date])
+      ->condition('nid', $node->nid)
+      ->execute();
+  }
+
+  foreach ($group_computed_date as $group) {
+    $database->update('groups_field_data')
+      ->fields(['computed_date' => $group->computed_date])
+      ->condition('id', $group->id)
+      ->execute();
+  }
 }

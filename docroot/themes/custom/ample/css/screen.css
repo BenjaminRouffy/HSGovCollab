@@ -7333,6 +7333,9 @@ footer {
     display: inline-block;
     max-height: 100%;
     position: relative; }
+    .ie .slider-item-wrapper .slide-content, .ie
+    .banner-image .slide-content {
+      max-width: 100%; }
   .header-image .slider-item-wrapper .image-text, .header-image
   .banner-image .image-text {
     width: 80%; }

@@ -11,10 +11,17 @@ process:
     default_value: country-group_node-news
   label: post_title
 
-  #TODO
-  gid: entity_generate
-  #TODO
-  entity_id: migration
+  # Group migration
+  gid:
+    plugin: migration
+    migration: country_news_node
+    source: ID
+
+  # Node relation
+  entity_id:
+    plugin: migration
+    migration: country_news_node
+    source: ID
 
 migration_dependencies:
   optional:

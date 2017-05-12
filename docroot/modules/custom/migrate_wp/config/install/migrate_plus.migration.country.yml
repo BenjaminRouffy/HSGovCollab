@@ -1,0 +1,14 @@
+id: country
+label: Create mapping from old countries to new.
+migration_group: wp
+source:
+  plugin: wp_country
+destination:
+  plugin: group_mapping_only
+process:
+  label: post_title
+
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

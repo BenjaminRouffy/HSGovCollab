@@ -20,7 +20,10 @@ class WpCountryPost extends SqlBase {
   public function query() {
     $connection = $this->select('intra_posts', 'posts')
     ->fields('posts', ['ID', 'post_author', 'post_parent', 'post_title', 'post_content', 'post_date', 'post_modified', 'post_type',]);
+
     $connection->leftJoin('intra_posts', 'parent_posts', 'parent_posts.ID = posts.post_parent');
+    $connection = $connection->fields('parent_posts', ['ID', 'post_author', 'post_parent', 'post_title', 'post_content', 'post_date', 'post_modified', 'post_type',]);
+
     // 386 == root page for all countries.
     $connection->condition('parent_posts.post_parent', 386)
       ->condition('parent_posts.post_type', 'page')

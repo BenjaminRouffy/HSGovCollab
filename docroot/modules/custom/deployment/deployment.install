@@ -905,3 +905,13 @@ function deployment_update_8071() {
       ->execute();
   }
 }
+
+/**
+ * Remove module "Fullcalendar" from table "key_value".
+ */
+function deployment_update_8072() {
+  \Drupal::database()->delete('key_value')
+    ->condition('collection', 'system.schema')
+    ->condition('name', ['fullcalendar', 'fullcalendar_options'], 'IN')
+    ->execute();
+}

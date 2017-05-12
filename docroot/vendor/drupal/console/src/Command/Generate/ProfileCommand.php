@@ -85,31 +85,31 @@ class ProfileCommand extends Command
             ->setHelp($this->trans('commands.generate.profile.help'))
             ->addOption(
                 'profile',
-                '',
+                null,
                 InputOption::VALUE_REQUIRED,
                 $this->trans('commands.generate.profile.options.profile')
             )
             ->addOption(
                 'machine-name',
-                '',
+                null,
                 InputOption::VALUE_REQUIRED,
                 $this->trans('commands.generate.profile.options.machine-name')
             )
             ->addOption(
                 'description',
-                '',
+                null,
                 InputOption::VALUE_OPTIONAL,
                 $this->trans('commands.generate.profile.options.description')
             )
             ->addOption(
                 'core',
-                '',
+                null,
                 InputOption::VALUE_OPTIONAL,
                 $this->trans('commands.generate.profile.options.core')
             )
             ->addOption(
                 'dependencies',
-                false,
+                null,
                 InputOption::VALUE_OPTIONAL,
                 $this->trans('commands.generate.profile.options.dependencies'),
                 ''
@@ -123,7 +123,7 @@ class ProfileCommand extends Command
             )
             ->addOption(
                 'distribution',
-                false,
+                null,
                 InputOption::VALUE_OPTIONAL,
                 $this->trans('commands.generate.profile.options.distribution')
             );
@@ -137,7 +137,7 @@ class ProfileCommand extends Command
         $io = new DrupalStyle($input, $output);
 
         if (!$this->confirmGeneration($io)) {
-            return;
+            return 1;
         }
 
         $profile = $this->validator->validateModuleName($input->getOption('profile'));
@@ -178,7 +178,7 @@ class ProfileCommand extends Command
         } catch (\Exception $error) {
             $io->error($error->getMessage());
 
-            return;
+            return 1;
         }
 
         if (!$profile) {
@@ -197,7 +197,7 @@ class ProfileCommand extends Command
         } catch (\Exception $error) {
             $io->error($error->getMessage());
 
-            return;
+            return 1;
         }
 
         if (!$machine_name) {

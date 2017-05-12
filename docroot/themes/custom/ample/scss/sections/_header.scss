@@ -49,6 +49,18 @@ header {
       }
     }
   }
+
+  body:not(.toolbar-fixed) & {
+    .header-fixed {
+      top: 0;
+    }
+
+    &:not(.collapsed) {
+      .header-fixed {
+        top: 39px;
+      }
+    }
+  }
 }
 
 .header-static {
@@ -194,6 +206,7 @@ header {
   position: fixed;
   left: 0;
   top: 0;
+  transition: top .3s ease;
   width: 100%;
   z-index: 400;
 
@@ -441,12 +454,13 @@ header {
 
   .mobile-menu-wrapper {
     height: calc(100vh - 80px);
+    padding-top: 0;
     position: fixed;
     top: 126px;
 
     .toolbar-fixed &,
     .toolbar-vertical & {
-      top: 119px;
+      top: 165px;
     }
   }
 }
@@ -602,8 +616,8 @@ header {
 @include breakpoint-for('.header-fixed', (to: tablet)) {
   .bottom-head {
     .anchor-links {
-      height: 50px;
-      padding-top: 2px;
+      height: 57px;
+      padding-top: 9px;
     }
   }
 
@@ -625,8 +639,20 @@ header {
     height: 60px;
     padding-top: 7px;
 
+    .logged & {
+      padding-left: 80px;
+    }
+
     a {
       display: block;
+    }
+  }
+}
+
+@include breakpoint-for('.bottom-head', (to: tablet)) {
+  .anchor-links {
+    .logged & {
+      padding-left: 0;
     }
   }
 }

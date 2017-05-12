@@ -460,7 +460,9 @@
         localStorage.getItem('dashboard') ? sidebarMenu.addClass('expanded-menu') : false;
       }
 
-      $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function() {
+      $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function(e) {
+        var $target = $(e.target);
+
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
 
         if (!sidebarMenu.is('.expanded-menu')) {
@@ -470,6 +472,10 @@
         else {
           localStorage.removeItem('dashboard');
           sidebarMenu.removeClass('expanded-menu');
+        }
+
+        if ($target.is('.mobile-dashboard-menu-btn')) {
+
         }
       });
 

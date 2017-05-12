@@ -3,3 +3,7 @@ services:
     class: Drupal\events\Encoder\ICalEncoder
     tags:
       - { name: encoder, format: ical }
+  events.route_subscriber:
+    class: Drupal\events\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

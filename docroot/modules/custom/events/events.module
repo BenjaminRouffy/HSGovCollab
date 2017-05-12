@@ -27,9 +27,11 @@ function events_node_view(array &$build, EntityInterface $entity, EntityViewDisp
         '#weight' => -10,
       ];
     }
-    /* @var array $roles */
-    $roles = \Drupal::currentUser()->getRoles();
-    if (in_array("governance_group_users", $roles)) {
+    /** @var \Drupal\Core\Session\AccountInterface $account */
+    $account = \Drupal::currentUser()->getAccount();
+    /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
+    $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
+    if ($check_by_group->check($account, ['governance_area'])) {
       $build['event_registrant'] = views_embed_view('event_sign_up', 'block_1', $entity->id());
     }
   }
@@ -42,8 +44,11 @@ function events_node_view_alter(array &$build, EntityInterface $entity, EntityVi
   /* @var \Drupal\node\Entity\Node $entity */
   $type = $entity->getType();
   if ('event' == $type) {
-    $roles = \Drupal::currentUser()->getRoles();
-    if (!in_array("governance_group_users", $roles)) {
+    /** @var \Drupal\Core\Session\AccountInterface $account */
+    $account = \Drupal::currentUser()->getAccount();
+    /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
+    $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
+    if (!$check_by_group->check($account, ['governance_area'])) {
       $build['like_and_dislike']['#access'] = FALSE;
     }
   }

@@ -5,10 +5,7 @@
  * Allows restricting access to menu items per Group type membership.
  */
 
-use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\group\Entity\GroupContent;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
@@ -87,7 +84,7 @@ function menu_item_visibility_by_group_submit_handler(array &$form, FormStateInt
  */
 function menu_item_visibility_by_group_preprocess_menu(&$variables) {
   $items = $variables['items'];
-  $accessible_items = array();
+  $accessible_items = [];
   foreach ($items as $key => &$item) {
     // Enable recursive parsing.
     if (!empty($item['below'])) {
@@ -96,7 +93,8 @@ function menu_item_visibility_by_group_preprocess_menu(&$variables) {
       $item['below'] = $below['items'];
     }
 
-    $user_role_visibility = menu_item_visibility_by_group_check($key);
+    // @TODO Current implementation check permission to menu link, but there would be better to check access to route.
+    $user_role_visibility = menu_item_visibility_by_group_check_by_rid($key);
     if (!$user_role_visibility) {
       continue;
     }
@@ -110,28 +108,13 @@ function menu_item_visibility_by_group_preprocess_menu(&$variables) {
 /**
  * Helper function to check the role access for menu items.
  */
-function menu_item_visibility_by_group_check($rid) {
-  $group_types_array = \Drupal::config('menu_item_visibility_by_group.settings')->get('mlid.' . $rid . '.group_types');
-  $user = \Drupal::currentUser();
-
-  if (!$user->hasPermission('all access to groups') && !empty($group_types_array)) {
-    /* @var GroupMembershipLoader $membership_loader */
-    $membership_loader = \Drupal::service('group.membership_loader');
-    $user_memberships = $membership_loader->loadByUser();
-    $user_group_types_memberships = [];
-    /* @var GroupMembership $group_membership */
-    foreach ($user_memberships as $group_membership) {
-      if (!empty($group_membership->getGroup()->bundle())) {
-        // Add the groups the user is a member of to use later on.
-        $user_group_types_memberships[] = $group_membership->getGroup()->bundle();
-      }
-    }
-
-    return !empty(array_intersect($group_types_array, $user_group_types_memberships));
-  }
-
-  // No group types were selected; visible to all.
-  return TRUE;
+function menu_item_visibility_by_group_check_by_rid($rid) {
+  $group_types_array = \Drupal::config('menu_item_visibility_by_group.settings')
+    ->get('mlid.' . $rid . '.group_types');
+  $account = \Drupal::currentUser()->getAccount();
+  /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
+  $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
+  return $check_by_group->check($account, $group_types_array);
 }
 
 /**
@@ -140,7 +123,7 @@ function menu_item_visibility_by_group_check($rid) {
  * @return array
  *   Return array of Group Types.
  */
-function  menu_item_visibility_by_group_get_group_types(){
+function menu_item_visibility_by_group_get_group_types() {
   $group_types = \Drupal::entityTypeManager()->getStorage('group_type')->loadMultiple();
 
   return array_map(function ($item) {

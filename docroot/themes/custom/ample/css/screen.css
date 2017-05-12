@@ -1107,10 +1107,10 @@ footer > .partners {
       width: 100%;
       opacity: .37;
       z-index: -1; }
-    .mobile .top-banner-region .section-info-wrapper {
-      background-attachment: scroll;
-      background-position: center;
-      background-size: 400%; }
+      .mobile .top-banner-region .section-info-wrapper:after {
+        background-attachment: scroll;
+        background-position: center;
+        background-size: 400%; }
   .top-banner-region .section-info {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1618,6 +1618,10 @@ footer > .partners {
         height: 100%;
         width: 100%;
         opacity: .37; }
+        .mobile .sidebar .teaser a:after {
+          background-attachment: scroll;
+          background-position: center;
+          background-size: 400%; }
   .teaser h2 {
     font-size: 1.925rem;
     color: #faf7f7;

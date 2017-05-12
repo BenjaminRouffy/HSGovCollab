@@ -42,6 +42,12 @@
         height: 100%;
         width: 100%;
         opacity: .37;
+
+        .mobile & {
+          background-attachment: scroll;
+          background-position: center;
+          background-size: 400%;
+        }
       }
     }
   }

@@ -63,17 +63,17 @@ class ExportCommand extends Command
             )
             ->addOption(
                 'tar',
-                false,
+                null,
                 InputOption::VALUE_NONE,
                 $this->trans('commands.config.export.arguments.tar')
             )->addOption(
                 'remove-uuid',
-                '',
+                null,
                 InputOption::VALUE_NONE,
                 $this->trans('commands.config.export.single.options.remove-uuid')
             )->addOption(
                 'remove-config-hash',
-                '',
+                null,
                 InputOption::VALUE_NONE,
                 $this->trans('commands.config.export.single.options.remove-config-hash')
             );
@@ -106,6 +106,9 @@ class ExportCommand extends Command
                 )
             );
         }
+
+        // Remove previous yaml files before creating new ones
+        array_map('unlink', glob($directory . '/*'));
 
         if ($tar) {
             $dateTime = new \DateTime();

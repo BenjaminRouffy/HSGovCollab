@@ -15,6 +15,7 @@ use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Console\Command\Command;
 use Drupal\Console\Core\Command\Shared\CommandTrait;
 use Drupal\Console\Core\Style\DrupalStyle;
+use \Drupal\Console\Core\Utils\ConfigurationManager;
 
 /**
  * Class ServerCommand
@@ -25,8 +26,14 @@ class ServerCommand extends Command
 {
     use CommandTrait;
 
+    /**
+     * @var string
+     */
     protected $appRoot;
 
+    /**
+     * @var ConfigurationManager
+     */
     protected $configurationManager;
 
     /**
@@ -70,7 +77,7 @@ class ServerCommand extends Command
         $finder = new PhpExecutableFinder();
         if (false === $binary = $finder->find()) {
             $io->error($this->trans('commands.server.errors.binary'));
-            return;
+            return 1;
         }
 
         $router = $this->getRouterPath();
@@ -109,22 +116,26 @@ class ServerCommand extends Command
      */
     private function getRouterPath()
     {
-        $router = sprintf(
-            '%s/.console/router.php',
-            $this->configurationManager->getHomeDirectory()
-        );
+        $routerPath = [
+            sprintf(
+                '%s/.console/router.php',
+                $this->configurationManager->getHomeDirectory()
+            ),
+            sprintf(
+                '%s/console/router.php',
+                $this->configurationManager->getApplicationDirectory()
+            ),
+            sprintf(
+                '%s/%s/config/dist/router.php',
+                $this->configurationManager->getApplicationDirectory(),
+                DRUPAL_CONSOLE_CORE
+            )
+        ];
 
-        if (file_exists($router)) {
-            return $router;
-        }
-
-        $router = sprintf(
-            '%s/config/dist/router.php',
-            $this->configurationManager->getApplicationDirectory()
-        );
-
-        if (file_exists($router)) {
-            return $router;
+        foreach ($routerPath as $router) {
+            if (file_exists($router)) {
+                return $router;
+            }
         }
 
         return null;

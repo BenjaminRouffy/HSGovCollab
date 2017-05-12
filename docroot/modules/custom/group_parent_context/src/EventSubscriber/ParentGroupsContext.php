@@ -75,19 +75,22 @@ class ParentGroupsContext implements EventSubscriberInterface {
           $node = $request->attributes->get($route_context_name);
           $value = [];
 
-          if (is_numeric($node)) {
-            $node = Node::load($node);
-          }
+          if (!empty($node)) {
+            if (is_numeric($node)) {
+              $node = Node::load($node);
+            }
 
-          $group_content_array = GroupContent::loadByEntity($node);
+            $group_content_array = GroupContent::loadByEntity($node);
 
-          foreach ($group_content_array as $group_content) {
-            $value[] = $group_content->getGroup();
+            foreach ($group_content_array as $group_content) {
+              $value[] = $group_content->getGroup();
+            }
           }
         }
         else {
           $value = NULL;
         }
+
         $cacheability = new CacheableMetadata();
         $cacheability->setCacheContexts(['route']);
 

@@ -58,7 +58,7 @@ class RollBackCommand extends Command
             ->addArgument('migration-ids', InputArgument::IS_ARRAY, $this->trans('commands.migrate.rollback.arguments.id'))
             ->addOption(
                 'source-base_path',
-                '',
+                null,
                 InputOption::VALUE_OPTIONAL,
                 $this->trans('commands.migrate.setup.options.source-base_path')
             );
@@ -75,7 +75,7 @@ class RollBackCommand extends Command
         $migrations_list = array_keys($this->getMigrations($version_tag));
         // If migrations weren't provided finish execution
         if (empty($migration_id)) {
-            return;
+            return 1;
         }
 
 
@@ -129,6 +129,8 @@ class RollBackCommand extends Command
                 }
             }
         }
+
+        return 0;
     }
 
     /**

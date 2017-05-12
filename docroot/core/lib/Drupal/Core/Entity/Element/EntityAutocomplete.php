@@ -297,7 +297,9 @@ class EntityAutocomplete extends Textfield {
         $multiples[] = $name . ' (' . $id . ')';
       }
       $params['@id'] = $id;
-      $form_state->setError($element, t('Multiple entities match this reference; "%multiple". Specify the one you want by appending the id in parentheses, like "@value (@id)".', ['%multiple' => implode('", "', $multiples)] + $params));
+      // Call strip_tags to clean up the label display if we are getting the
+      // list of matches from an entity reference view.
+      $form_state->setError($element, t('Multiple entities match this reference; "%multiple". Specify the one you want by appending the id in parentheses, like "@value (@id)".', ['%multiple' => strip_tags(implode('", "', $multiples))] + $params));
     }
     else {
       // Take the one and only matching entity.

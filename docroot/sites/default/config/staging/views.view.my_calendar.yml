@@ -6,7 +6,6 @@ dependencies:
     - field.storage.node.field_date
     - node.type.event
     - taxonomy.vocabulary.categories
-    - user.role.governance_group_users
   module:
     - better_exposed_filters
     - events
@@ -18,7 +17,6 @@ dependencies:
     - rest
     - serialization
     - taxonomy
-    - user
     - views_data_export
 id: my_calendar
 label: 'My Calendar'
@@ -36,10 +34,8 @@ display:
     position: 0
     display_options:
       access:
-        type: role
-        options:
-          role:
-            governance_group_users: governance_group_users
+        type: none
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -682,7 +678,6 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.roles
       tags:
         - 'config:field.storage.node.field_date'
   block_1:
@@ -930,7 +925,6 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.roles
       tags:
         - 'config:field.storage.node.field_date'
   data_export_1:
@@ -1168,7 +1162,6 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.roles
       tags:
         - 'config:field.storage.node.field_date'
   governance_area:
@@ -1399,6 +1392,5 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.roles
       tags:
         - 'config:field.storage.node.field_date'

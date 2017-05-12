@@ -37,6 +37,10 @@
   }
 }
 
+@include breakpoint-for('#block-ample-local-tasks', (to: tablet)) {
+  margin-top: 57px;
+}
+
 .ui-tabs,
 .blocktabs-click {
   background: none;

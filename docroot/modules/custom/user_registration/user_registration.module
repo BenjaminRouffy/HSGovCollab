@@ -117,6 +117,7 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
     }
 
     $form['#attributes']['class'][] = 'form-my-settings';
+    $form['#validate'][] = '_user_registration_group_manager';
 
     _user_registration_manager_field_states($form);
   }
@@ -133,6 +134,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
       $form['account']['password_policy_status'],
       $form['account']['roles']['#ajax']
     );
+
+    $form['#validate'][] = '_user_registration_group_manager';
 
     _user_registration_manager_field_states($form);
   }
@@ -286,4 +289,29 @@ function _user_registration_manager_field_states(array &$form) {
       ],
     ];
   }
+}
+
+/**
+ * Custom validate handler.
+ */
+function _user_registration_group_manager(&$form, FormStateInterface $form_state) {
+  $values = $form_state->getValues();
+
+  if (!isset($values['roles'])) {
+    return;
+  }
+
+  if (!in_array('country_managers', $values['roles']) && isset($values['field_country_manager'])) {
+    $values['field_country_manager'][0]['entity_gids'] = [];
+  }
+
+  if (!in_array('projects_managers', $values['roles']) && isset($values['field_project_manager'])) {
+    $values['field_project_manager'][0]['entity_gids'] = [];
+  }
+
+  if (!in_array('knowledge_vault_manager', $values['roles']) && isset($values['field_knowledge_vault_manager'])) {
+    $values['field_knowledge_vault_manager'][0]['entity_gids'] = [];
+  }
+
+  $form_state->setValues($values);
 }

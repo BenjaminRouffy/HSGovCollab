@@ -135,6 +135,7 @@
   }
 
   .user-info {
+    padding-right: 30px;
     position: relative;
 
     .name {
@@ -301,3 +302,55 @@
   }
 }
 
+@include breakpoint-for('.comment-wrapper', (to: mobileL)) {
+  .comment-item {
+    margin: 25px 0;
+  }
+
+  .user-icon {
+    @include same(40px, height, width);
+    margin-right: 10px;
+  }
+
+  .user-info {
+    .commented {
+      @include font-size(14);
+      margin-left: 7px;
+    }
+  }
+
+  .comment-body {
+    margin-left: 50px;
+  }
+
+  .indented {
+    margin-left: 50px;
+    padding-left: 10px;
+
+    .user-icon {
+      @include same(30px, height, width);
+    }
+
+    .commented {
+      margin-left: 0;
+    }
+
+    .comment-body {
+      margin-left: 40px;
+    }
+  }
+
+  .links {
+    margin-top: 5px;
+
+    li {
+      line-height: 20px;
+      margin-top: 5px;
+    }
+  }
+
+  .form-submit {
+    @include font-size(16);
+    padding: 5px 20px;
+  }
+}

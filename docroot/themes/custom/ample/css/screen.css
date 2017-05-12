@@ -8189,6 +8189,7 @@ footer {
     position: relative;
     z-index: 1; }
   .comment-wrapper .user-info {
+    padding-right: 30px;
     position: relative; }
     .comment-wrapper .user-info .name {
       color: #283b44;
@@ -8288,6 +8289,45 @@ footer {
     text-align: center; }
     .comment-wrapper .form-actions [value="Preview"] {
       display: none; }
+
+@media (max-width: 479px) {
+  .comment-wrapper .comment-item {
+    margin: 25px 0; }
+  .comment-wrapper .user-icon {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px; }
+  .comment-wrapper .user-info .commented {
+    font-size: 0.875rem;
+    margin-left: 7px; }
+  .comment-wrapper .comment-body {
+    margin-left: 50px; }
+  .comment-wrapper .indented {
+    margin-left: 50px;
+    padding-left: 10px; }
+    .comment-wrapper .indented .user-icon {
+      height: 30px;
+      width: 30px; }
+    .comment-wrapper .indented .commented {
+      margin-left: 0; }
+    .comment-wrapper .indented .comment-body {
+      margin-left: 40px; }
+  .comment-wrapper .links {
+    margin-top: 5px; }
+    .comment-wrapper .links li {
+      line-height: 20px;
+      margin-top: 5px; }
+  .comment-wrapper .form-submit, .comment-wrapper .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .comment-wrapper a, .comment-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .comment-wrapper .button, .comment-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .comment-wrapper #edit-cancel, .comment-wrapper
+  .article-edit-node .node-article-delete-form #edit-cancel,
+  .article-edit-node .node-article-delete-form .comment-wrapper #edit-cancel, .comment-wrapper
+  .article-delete-node .node-article-delete-form #edit-cancel,
+  .article-delete-node .node-article-delete-form .comment-wrapper #edit-cancel, .comment-wrapper .article-add-node #edit-delete, .article-add-node .comment-wrapper #edit-delete, .comment-wrapper
+  .article-edit-node #edit-delete,
+  .article-edit-node .comment-wrapper #edit-delete, .comment-wrapper
+  .article-delete-node #edit-delete,
+  .article-delete-node .comment-wrapper #edit-delete {
+    font-size: 1rem;
+    padding: 5px 20px; } }
 
 .faq-list {
   margin: 0 auto;

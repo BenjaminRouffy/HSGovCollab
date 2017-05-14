@@ -24,15 +24,3 @@ function menu_item_visibility_by_group_form_menu_link_content_menu_link_content_
     ]
   );
 }
-
-/**
- * Helper function to check the role access for menu items.
- */
-function menu_item_visibility_by_group_check_by_rid($rid) {
-  $group_types_array = \Drupal::config('menu_item_visibility_by_group.settings')
-    ->get('mlid.' . $rid . '.group_types');
-  $account = \Drupal::currentUser()->getAccount();
-  /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
-  $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-  return $check_by_group->check($account, $group_types_array);
-}

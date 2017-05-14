@@ -14,7 +14,7 @@ access_conditions:
   -
     id: user_role
     roles:
-      governance_group_users: governance_group_users
+      authenticated: authenticated
     negate: false
     context_mapping:
       user: current_user

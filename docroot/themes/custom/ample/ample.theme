@@ -395,8 +395,9 @@ function ample_preprocess_field_multiple_value_form(array &$variables) {
  * Implements hook_preprocess_menu().
  */
 function ample_preprocess_menu(&$variables, $hook) {
-  // Moved to template and added tag context.
+  // Moved to template and added tag context
   // @see ample_preprocess_block()
+  // https://www.drupal.org/node/2576827#comment-11182953
 }
 
 /**

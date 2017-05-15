@@ -66,35 +66,33 @@ class ParentGroupsContext implements EventSubscriberInterface {
 
     if ($route && $route_contexts = $route->getOption('parameters')) {
       foreach ($route_contexts as $route_context_name => $route_context) {
-        // Skip this parameter.
-        if ($route_context_name == 'page_manager_page_variant' || $route_context_name == 'page_manager_page') {
-          continue;
-        }
+        if ($route_context_name == 'node') {
+          if ($request->attributes->has('node')) {
+            $node = $request->attributes->get($route_context_name);
+            $value = [];
 
-        if ($request->attributes->has('node')) {
-          $node = $request->attributes->get($route_context_name);
-          $value = [];
+            if (is_numeric($node)) {
+              $node = Node::load($node);
+            }
 
-          if (is_numeric($node)) {
-            $node = Node::load($node);
+            $group_content_array = GroupContent::loadByEntity($node);
+
+            foreach ($group_content_array as $group_content) {
+              $value[] = $group_content->getGroup();
+            }
+          }
+          else {
+            $value = NULL;
           }
 
-          $group_content_array = GroupContent::loadByEntity($node);
+          $cacheability = new CacheableMetadata();
+          $cacheability->setCacheContexts(['route']);
 
-          foreach ($group_content_array as $group_content) {
-            $value[] = $group_content->getGroup();
-          }
+          $context = new Context(new ContextDefinition('entity:group', $this->t('Parent groups'), FALSE, TRUE), $value);
+          $context->addCacheableDependency($cacheability);
+
+          $page->addContext('parent_groups', $context);
         }
-        else {
-          $value = NULL;
-        }
-        $cacheability = new CacheableMetadata();
-        $cacheability->setCacheContexts(['route']);
-
-        $context = new Context(new ContextDefinition('entity:group', $this->t('Parent groups'), FALSE, TRUE), $value);
-        $context->addCacheableDependency($cacheability);
-
-        $page->addContext('parent_groups', $context);
       }
     }
   }

@@ -30,10 +30,6 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    /* @var $entity \Drupal\entity_legal\Entity\EntityLegalDocumentVersion */
-    $form = parent::buildForm($form, $form_state);
-    $entity = $this->entity;
-
     // Provide default values if a published version already exists.
     if ($this->entity && $this->entity->isNew()) {
       $document = $this->entity->getDocument();
@@ -52,11 +48,12 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
       $form['langcode'] = array(
         '#title' => $this->t('Language'),
         '#type' => 'language_select',
-        '#default_value' => $entity->getUntranslated()->language()->getId(),
+        '#default_value' => $this->entity->getUntranslated()->language()->getId(),
         '#languages' => LanguageInterface::STATE_ALL,
       );
     }
-    return $form;
+
+    return parent::buildForm($form, $form_state);
   }
 
   /**

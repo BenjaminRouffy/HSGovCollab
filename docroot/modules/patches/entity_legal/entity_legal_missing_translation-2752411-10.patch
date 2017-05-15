@@ -238,7 +238,7 @@ index f8e65a1..30817f7 100644
        // Delete old alias if user erased it.
        if (!empty($path['pid']) && empty($path['alias'])) {
 diff --git a/src/Form/EntityLegalDocumentVersionForm.php b/src/Form/EntityLegalDocumentVersionForm.php
-index a13b961..282a650 100644
+index a13b961..347ab6e 100644
 --- a/src/Form/EntityLegalDocumentVersionForm.php
 +++ b/src/Form/EntityLegalDocumentVersionForm.php
 @@ -9,6 +9,8 @@ namespace Drupal\entity_legal\Form;
@@ -250,15 +250,11 @@ index a13b961..282a650 100644
  
  /**
   * Class EntityLegalDocumentVersionForm.
-@@ -27,7 +29,42 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
+@@ -27,7 +29,39 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
    /**
     * {@inheritdoc}
     */
 +  public function buildForm(array $form, FormStateInterface $form_state) {
-+    /* @var $entity \Drupal\entity_legal\Entity\EntityLegalDocumentVersion */
-+    $form = parent::buildForm($form, $form_state);
-+    $entity = $this->entity;
-+
 +    // Provide default values if a published version already exists.
 +    if ($this->entity && $this->entity->isNew()) {
 +      $document = $this->entity->getDocument();
@@ -281,7 +277,8 @@ index a13b961..282a650 100644
 +        '#languages' => LanguageInterface::STATE_ALL,
 +      );
 +    }
-+    return $form;
++
++    return parent::buildForm($form, $form_state);
 +  }
 +
 +  /**
@@ -293,7 +290,7 @@ index a13b961..282a650 100644
      $form['label'] = [
        '#title'         => t('Title'),
        '#type'          => 'textfield',
-@@ -70,7 +107,7 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
+@@ -70,7 +104,7 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
        '#weight'      => 51,
      ];
  

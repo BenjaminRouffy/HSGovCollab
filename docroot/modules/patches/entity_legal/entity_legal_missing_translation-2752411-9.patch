@@ -127,6 +127,27 @@ index 020006f..4aad1ac 100644
              case 'published-version':
                $replacements[$original] = $entity->getPublishedVersion()
                  ->label();
+diff --git a/src/Controller/EntityLegalController.php b/src/Controller/EntityLegalController.php
+index ff9f7ee..d1918e1 100644
+--- a/src/Controller/EntityLegalController.php
++++ b/src/Controller/EntityLegalController.php
+@@ -135,15 +135,13 @@ class EntityLegalController extends ControllerBase {
+   /**
+    * Page title callback for the Entity Legal Document Version edit form.
+    *
+-   * @param string $entity_legal_document
+-   *   The entity legal document id.
+    * @param EntityLegalDocumentVersionInterface $entity_legal_document_version
+    *   The Entity Legal Document version entity.
+    *
+    * @return string
+    *   The page title.
+    */
+-  public function documentVersionEditFormTitle($entity_legal_document, EntityLegalDocumentVersionInterface $entity_legal_document_version) {
++  public function documentVersionEditFormTitle(EntityLegalDocumentVersionInterface $entity_legal_document_version) {
+     return $this->t('Edit %label', ['%label' => $entity_legal_document_version->label()]);
+   }
+ 
 diff --git a/src/Entity/EntityLegalDocumentVersion.php b/src/Entity/EntityLegalDocumentVersion.php
 index b73d77e..89b3bf8 100644
 --- a/src/Entity/EntityLegalDocumentVersion.php

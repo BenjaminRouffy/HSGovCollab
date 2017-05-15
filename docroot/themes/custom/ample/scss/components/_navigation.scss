@@ -113,8 +113,20 @@
       padding-top: 39px;
     }
 
+    .toolbar-vertical:not(.toolbar-fixed) & {
+      padding-top: 117px;
+    }
+
     .toolbar-tray-open & {
       padding-top: 79px;
+    }
+  }
+}
+
+@include breakpoint-for('.collapsed', (to: tablet)) {
+  ~ .dashboard-sidebar {
+    .toolbar-fixed & {
+      padding-top: 156px;
     }
   }
 }
@@ -386,6 +398,14 @@
   }
 }
 
+@include breakpoint-for('.dashboard-sidebar', (to: laptop-small)) {
+  .logo-wrapper {
+    a {
+      height: 107px;
+    }
+  }
+}
+
 @include breakpoint-for('.dashboard-sidebar', (to: tablet)) {
   padding-top: 60px;
   left: auto;
@@ -400,7 +420,11 @@
   }
 
   .toolbar-vertical & {
-    padding-top: 99px;
+    padding-top: 156px;
+  }
+
+  .toolbar-vertical:not(.toolbar-fixed) & {
+    padding-top: 156px;
   }
 
   .logo-wrapper,
@@ -455,11 +479,9 @@
     }
 
     ul:not(.contextual-links) {
-      li {
-        a {
-          padding-left: 20px;
-          padding-right: 20px;
-        }
+      a {
+        padding-left: 20px;
+        padding-right: 20px;
       }
     }
   }
@@ -473,11 +495,9 @@
       }
 
       ul:not(.contextual-links) {
-        li {
-          a {
-            padding-left: 10px;
-            padding-right: 10px;
-          }
+        a {
+          padding-left: 10px;
+          padding-right: 10px;
         }
       }
     }
@@ -492,11 +512,9 @@
       }
 
       ul:not(.contextual-links) {
-        li {
-          a {
-            padding-left: 15px;
-            padding-right: 15px;
-          }
+        a {
+          padding-left: 15px;
+          padding-right: 15px;
         }
       }
     }
@@ -509,6 +527,7 @@
 
     > div {
       display: block;
+      padding-left: 0;
     }
 
     ul:not(.contextual-links) {

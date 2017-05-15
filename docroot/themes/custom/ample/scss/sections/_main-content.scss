@@ -70,6 +70,12 @@
   .logged & {
     padding-left: 0;
   }
+
+  > .top-banner-region {
+    body:not(.logged) & {
+      margin-top: 57px;
+    }
+  }
 }
 
 @include breakpoint-for('.main-wrapper', (to: laptop-small)) {

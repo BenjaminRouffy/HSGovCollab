@@ -19,7 +19,7 @@ class ColorProcessed extends FieldPluginBase {
    * {@inheritdoc}
    */
   public function render(ResultRow $values) {
-    if(!isset($this->cache[$values->nid])) {
+    if (!isset($this->cache[$values->nid])) {
       $this->cache[$values->nid] = RandomColor::one();
     }
     return $this->cache[$values->nid];
@@ -32,4 +32,5 @@ class ColorProcessed extends FieldPluginBase {
     // This function exists to override parent query function.
     // Do nothing.
   }
+
 }

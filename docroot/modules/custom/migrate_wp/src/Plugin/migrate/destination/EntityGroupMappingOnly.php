@@ -37,8 +37,18 @@ class EntityGroupMappingOnly extends EntityContentBase {
     $result = \Drupal::entityTypeManager()
       ->getStorage('group')
       ->loadByProperties(['label' => $row->getSourceProperty('post_title')]);
+
     if (empty($result)) {
-      throw new MigrateException('Unable to load entity by title');
+      $entity = $this->getEntity($row, $old_destination_id_values);
+      if (!$entity) {
+        throw new MigrateException('Unable to get entity');
+      }
+
+      $ids = $this->save($entity, $old_destination_id_values);
+      if (!empty($this->configuration['translations'])) {
+        $ids[] = $entity->language()->getId();
+      }
+      return $ids;
     }
 
     $country = array_shift($result);

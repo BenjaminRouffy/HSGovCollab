@@ -7,7 +7,9 @@ destination:
   plugin: group_mapping_only
 process:
   label: post_title
-
+  type:
+    plugin: default_value
+    default_value: country
 dependencies:
   enforced:
     module:

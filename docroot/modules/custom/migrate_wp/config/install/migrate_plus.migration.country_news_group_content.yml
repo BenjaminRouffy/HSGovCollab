@@ -1,4 +1,4 @@
-id: country_news
+id: country_news_group_content
 label: Create group content and build the bridge between group and node
 migration_group: wp
 source:
@@ -13,13 +13,13 @@ process:
 
   # Group migration
   gid:
-    plugin: migration
-    migration: country_news_node
-    source: ID
+    plugin: migration_lookup
+    migration: country
+    source: parent_posts_post_name
 
   # Node relation
   entity_id:
-    plugin: migration
+    plugin: migration_lookup
     migration: country_news_node
     source: ID
 

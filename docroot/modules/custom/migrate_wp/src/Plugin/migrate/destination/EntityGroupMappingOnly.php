@@ -10,6 +10,7 @@ use Drupal\Core\Field\FieldTypePluginManagerInterface;
 use Drupal\Core\Field\Plugin\Field\FieldType\EmailItem;
 use Drupal\Core\Password\PasswordInterface;
 use Drupal\group\Entity\Group;
+use Drupal\migrate\MigrateException;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\migrate\destination\EntityContentBase;
 use Drupal\migrate\Row;
@@ -25,15 +26,26 @@ class EntityGroupMappingOnly extends EntityContentBase {
   /**
    * {@inheritdoc}
    */
-  protected function save(ContentEntityInterface $entity, array $old_destination_id_values = []) {
-    // TODO find and return id.
-    $i=1;
+  protected static function getEntityTypeId($plugin_id) {
+    return 'group';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function import(Row $row, array $old_destination_id_values = []) {
     $result = \Drupal::entityTypeManager()
       ->getStorage('group')
-      ->loadByProperties(['label' => 'test']);
+      ->loadByProperties(['label' => $row->getSourceProperty('post_title')]);
+    if (empty($result)) {
+      throw new MigrateException('Unable to load entity by title');
+    }
 
-    return [1];
+    $country = array_shift($result);
+
+    return [$country->id()];
   }
+
 
   /**
    * {@inheritdoc}

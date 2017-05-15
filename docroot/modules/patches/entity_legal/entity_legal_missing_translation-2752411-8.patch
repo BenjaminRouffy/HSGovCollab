@@ -1,0 +1,283 @@
+diff --git a/entity_legal.info.yml b/entity_legal.info.yml
+index 2e91f15..c98804d 100644
+--- a/entity_legal.info.yml
++++ b/entity_legal.info.yml
+@@ -1,7 +1,13 @@
+ name: Entity Legal
+ description: Create versionable, trackable legal forms for site users.
+ type: module
+-core: 8.x
++# core: 8.x
+ dependencies:
+   - text
+   - token
++
++# Information added by Drupal.org packaging script on 2016-06-10
++version: '8.x-2.0-beta1'
++core: '8.x'
++project: 'entity_legal'
++datestamp: 1465538959
+diff --git a/entity_legal.links.task.yml b/entity_legal.links.task.yml
+index 073b071..83d7e65 100644
+--- a/entity_legal.links.task.yml
++++ b/entity_legal.links.task.yml
+@@ -2,3 +2,8 @@ entity.entity_legal_document.edit_form:
+   title: 'Edit'
+   route_name: entity.entity_legal_document.edit_form
+   base_route: entity.entity_legal_document.edit_form
++
++entity.entity_legal_document_version.edit_form:
++  title: 'Edit'
++  route_name: entity.entity_legal_document_version.edit_form
++  base_route: entity.entity_legal_document_version.canonical
+diff --git a/entity_legal.module b/entity_legal.module
+index 18e7edd..3a6311a 100644
+--- a/entity_legal.module
++++ b/entity_legal.module
+@@ -77,4 +77,17 @@ function entity_legal_entity_extra_field_info() {
+   }
+ 
+   return $extra;
+-}
+\ No newline at end of file
++}
++
++/**
++ * Implements hook_entity_type_alter().
++ */
++function entity_legal_entity_type_alter(array &$entity_types) {
++  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
++  // Add a translation handler for fields if the language module is enabled.
++  if (\Drupal::moduleHandler()->moduleExists('language')) {
++    $translation = $entity_types['entity_legal_document_version']->get('translation');
++    $translation['entity_legal_document_version'] = TRUE;
++    $entity_types['entity_legal_document_version']->set('translation', $translation);
++  }
++}
+diff --git a/entity_legal.routing.yml b/entity_legal.routing.yml
+index 50ed59d..f0f353a 100644
+--- a/entity_legal.routing.yml
++++ b/entity_legal.routing.yml
+@@ -47,7 +47,7 @@ entity.entity_legal_document_version.add_form:
+     _permission: 'administer entity legal'
+ 
+ entity.entity_legal_document_version.edit_form:
+-  path: '/admin/structure/legal/manage/{entity_legal_document}/manage/{entity_legal_document_version}'
++  path: '/admin/structure/legal/document/{entity_legal_document_version}/edit'
+   defaults:
+     _entity_form: 'entity_legal_document_version.default'
+     _title_callback: 'Drupal\entity_legal\Controller\EntityLegalController::documentVersionEditFormTitle'
+@@ -55,7 +55,7 @@ entity.entity_legal_document_version.edit_form:
+     _entity_access: 'entity_legal_document_version.update'
+ 
+ entity.entity_legal_document_version.canonical:
+-  path: '/legal/document/{entity_legal_document}/{entity_legal_document_version}'
++  path: '/admin/structure/legal/document/{entity_legal_document_version}'
+   defaults:
+     _controller: '\Drupal\entity_legal\Controller\EntityLegalController::documentPage'
+     _title_callback: 'Drupal\entity_legal\Controller\EntityLegalController::documentPageTitle'
+diff --git a/entity_legal.tokens.inc b/entity_legal.tokens.inc
+index 020006f..4aad1ac 100644
+--- a/entity_legal.tokens.inc
++++ b/entity_legal.tokens.inc
+@@ -2,9 +2,10 @@
+ 
+ /**
+  * @file
+- * Builds placeholder replacement tokens for taxonomy terms and vocabularies.
++ * Builds placeholder replacement tokens for entity_legal.
+  */
+ 
++use Drupal\Core\Language\LanguageInterface;
+ use Drupal\Core\Render\BubbleableMetadata;
+ 
+ /**
+@@ -41,6 +42,11 @@ function entity_legal_token_info() {
+     'type'        => ENTITY_LEGAL_DOCUMENT_VERSION_ENTITY_NAME,
+   ];
+ 
++  $document['url'] = [
++    'name'        => t('URL'),
++    'description' => t('The URL of the legal document.'),
++  ];
++
+   // Legal document version related tokens.
+   $document_version['acceptance-label'] = [
+     'name'        => t('Acceptance label'),
+@@ -104,6 +110,11 @@ function entity_legal_token_info() {
+ function entity_legal_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+   $token_service = \Drupal::service('token');
+ 
++  $url_options = array('absolute' => TRUE);
++  if (isset($options['langcode'])) {
++    $url_options['language'] = \Drupal::languageManager()->getLanguage($options['langcode']);
++  }
++
+   $replacements = [];
+   switch ($type) {
+     case ENTITY_LEGAL_DOCUMENT_ENTITY_NAME:
+@@ -116,6 +127,10 @@ function entity_legal_tokens($type, $tokens, array $data, array $options, Bubble
+               $replacements[$original] = $entity->label();
+               break;
+ 
++            case 'url':
++              $replacements[$original] = $entity->toUrl('canonical', $url_options)->toString();
++              break;
++
+             case 'published-version':
+               $replacements[$original] = $entity->getPublishedVersion()
+                 ->label();
+diff --git a/src/Entity/EntityLegalDocumentVersion.php b/src/Entity/EntityLegalDocumentVersion.php
+index b73d77e..89b3bf8 100644
+--- a/src/Entity/EntityLegalDocumentVersion.php
++++ b/src/Entity/EntityLegalDocumentVersion.php
+@@ -26,8 +26,10 @@ use Drupal\entity_legal\EntityLegalDocumentVersionInterface;
+  *     "view_builder" = "Drupal\entity_legal\EntityLegalDocumentVersionViewBuilder",
+  *     "views_data" = "Drupal\views\EntityViewsData",
+  *     "form" = {
+- *       "default" = "Drupal\entity_legal\Form\EntityLegalDocumentVersionForm"
+- *     }
++ *       "default" = "Drupal\entity_legal\Form\EntityLegalDocumentVersionForm",
++ *       "edit" = "Drupal\entity_legal\Form\EntityLegalDocumentVersionForm"
++ *     },
++ *     "translation" = "Drupal\entity_legal\EntityLegalDocumentVersionTranslationHandler"
+  *   },
+  *   admin_permission = "administer entity legal",
+  *   base_table = "entity_legal_document_version",
+@@ -41,9 +43,12 @@ use Drupal\entity_legal\EntityLegalDocumentVersionInterface;
+  *     "bundle" = "document_name"
+  *   },
+  *   links = {
+- *     "canonical" = "/legal/document/{entity_legal_document}/{entity_legal_document_version}",
++ *     "canonical" = "/admin/structure/legal/document/{entity_legal_document_version}",
++ *     "edit-form" = "/admin/structure/legal/document/{entity_legal_document_version}/edit",
+  *   },
+  *   bundle_entity_type = "entity_legal_document",
++ *   field_ui_base_route = "entity.entity_legal_document.edit_form",
++ *   render_cache = FALSE,
+  * )
+  */
+ class EntityLegalDocumentVersion extends ContentEntityBase implements EntityLegalDocumentVersionInterface {
+@@ -184,7 +189,7 @@ class EntityLegalDocumentVersion extends ContentEntityBase implements EntityLega
+   protected function urlRouteParameters($rel) {
+     $uri_route_parameters = parent::urlRouteParameters($rel);
+ 
+-    if ($rel == 'canonical') {
++    if ($rel == 'canonical' || $rel == 'edit-form') {
+       $uri_route_parameters['entity_legal_document'] = $this->bundle();
+     }
+ 
+diff --git a/src/EntityLegalDocumentVersionInterface.php b/src/EntityLegalDocumentVersionInterface.php
+index ea9cae0..a9c8a9e 100644
+--- a/src/EntityLegalDocumentVersionInterface.php
++++ b/src/EntityLegalDocumentVersionInterface.php
+@@ -9,11 +9,12 @@ namespace Drupal\entity_legal;
+ 
+ use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Session\AccountInterface;
++use Drupal\Core\Entity\EntityChangedInterface;
+ 
+ /**
+  * Provides an interface defining a entity legal document version entity.
+  */
+-interface EntityLegalDocumentVersionInterface extends ContentEntityInterface {
++interface EntityLegalDocumentVersionInterface extends ContentEntityInterface, EntityChangedInterface {
+ 
+   /**
+    * Get the acceptances for this entity legal document version.
+diff --git a/src/Form/EntityLegalDocumentForm.php b/src/Form/EntityLegalDocumentForm.php
+index f8e65a1..30817f7 100644
+--- a/src/Form/EntityLegalDocumentForm.php
++++ b/src/Form/EntityLegalDocumentForm.php
+@@ -267,6 +267,13 @@ class EntityLegalDocumentForm extends EntityForm implements ContainerInjectionIn
+       '#parents'          => ['path', 0],
+     ];
+ 
++    $form['path']['langcode'] = array(
++      '#type' => 'language_select',
++      '#title' => t('Language'),
++      '#languages' => LanguageInterface::STATE_ALL,
++      '#default_value' => $this->entity->language()->getId(),
++    );
++
+     $form['path']['alias'] = [
+       '#type'          => 'textfield',
+       '#title'         => t('URL alias'),
+@@ -307,8 +314,11 @@ class EntityLegalDocumentForm extends EntityForm implements ContainerInjectionIn
+ 
+     if (!empty($form_state->getValues()['path'][0]) && (!empty($form_state->getValues()['path'][0]['alias']) || !empty($form_state->getValues()['path'][0]['pid']))) {
+       $path = $form_state->getValues()['path'][0];
++
+       $path['alias'] = trim($path['alias']);
+-      $path['source'] = $this->entity->toUrl()->toString();
++      if (!$path['source']) {
++        $path['source'] = $this->entity->toUrl()->toString();
++      }
+ 
+       // Delete old alias if user erased it.
+       if (!empty($path['pid']) && empty($path['alias'])) {
+diff --git a/src/Form/EntityLegalDocumentVersionForm.php b/src/Form/EntityLegalDocumentVersionForm.php
+index a13b961..282a650 100644
+--- a/src/Form/EntityLegalDocumentVersionForm.php
++++ b/src/Form/EntityLegalDocumentVersionForm.php
+@@ -9,6 +9,8 @@ namespace Drupal\entity_legal\Form;
+ 
+ use Drupal\Core\Entity\ContentEntityForm;
+ use Drupal\Core\Form\FormStateInterface;
++use Drupal\entity_legal\EntityLegalDocumentInterface;
++use Drupal\Core\Language\LanguageInterface;
+ 
+ /**
+  * Class EntityLegalDocumentVersionForm.
+@@ -27,7 +29,42 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
+   /**
+    * {@inheritdoc}
+    */
++  public function buildForm(array $form, FormStateInterface $form_state) {
++    /* @var $entity \Drupal\entity_legal\Entity\EntityLegalDocumentVersion */
++    $form = parent::buildForm($form, $form_state);
++    $entity = $this->entity;
++
++    // Provide default values if a published version already exists.
++    if ($this->entity && $this->entity->isNew()) {
++      $document = $this->entity->getDocument();
++      if ($document instanceof EntityLegalDocumentInterface) {
++        $published_version = $document->getPublishedVersion();
++        if ($published_version) {
++          $clone = $published_version->createDuplicate();
++          // Unset properties that shouldn't be copied over.
++          $clone->set('name', NULL);
++          $clone->set('created', REQUEST_TIME);
++          $clone->set('changed', REQUEST_TIME);
++          $this->setEntity($clone);
++        }
++      }
++
++      $form['langcode'] = array(
++        '#title' => $this->t('Language'),
++        '#type' => 'language_select',
++        '#default_value' => $entity->getUntranslated()->language()->getId(),
++        '#languages' => LanguageInterface::STATE_ALL,
++      );
++    }
++    return $form;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
+   public function form(array $form, FormStateInterface $form_state) {
++    $form = parent::form($form, $form_state);
++
+     $form['label'] = [
+       '#title'         => t('Title'),
+       '#type'          => 'textfield',
+@@ -70,7 +107,7 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
+       '#weight'      => 51,
+     ];
+ 
+-    return parent::form($form, $form_state);
++    return $form;
+   }
+ 
+   /**

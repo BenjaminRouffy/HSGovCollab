@@ -148,6 +148,23 @@ index ff9f7ee..d1918e1 100644
      return $this->t('Edit %label', ['%label' => $entity_legal_document_version->label()]);
    }
  
+diff --git a/src/Entity/EntityLegalDocument.php b/src/Entity/EntityLegalDocument.php
+index 4926c82..33cc103 100644
+--- a/src/Entity/EntityLegalDocument.php
++++ b/src/Entity/EntityLegalDocument.php
+@@ -145,6 +145,12 @@ class EntityLegalDocument extends ConfigEntityBundleBase implements EntityLegalD
+       $published_version = \Drupal::entityTypeManager()
+         ->getStorage(ENTITY_LEGAL_DOCUMENT_VERSION_ENTITY_NAME)
+         ->load($this->published_version);
++
++      $current_langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
++
++      if ($published_version->hasTranslation($current_langcode)) {
++        $published_version = $published_version->getTranslation($current_langcode);
++      }
+     }
+ 
+     return $published_version;
 diff --git a/src/Entity/EntityLegalDocumentVersion.php b/src/Entity/EntityLegalDocumentVersion.php
 index b73d77e..89b3bf8 100644
 --- a/src/Entity/EntityLegalDocumentVersion.php

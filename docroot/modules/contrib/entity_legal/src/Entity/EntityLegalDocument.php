@@ -145,6 +145,12 @@ class EntityLegalDocument extends ConfigEntityBundleBase implements EntityLegalD
       $published_version = \Drupal::entityTypeManager()
         ->getStorage(ENTITY_LEGAL_DOCUMENT_VERSION_ENTITY_NAME)
         ->load($this->published_version);
+
+      $current_langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+      if ($published_version->hasTranslation($current_langcode)) {
+        $published_version = $published_version->getTranslation($current_langcode);
+      }
     }
 
     return $published_version;

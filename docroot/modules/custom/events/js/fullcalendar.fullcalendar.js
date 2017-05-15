@@ -34,7 +34,7 @@
             start: $(times).eq(0).attr('datetime'),
             end: $(times).eq(1).attr('datetime'),
             url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
-            color: color,
+            color: $(this).find('.event-color').text().trim(),
             allDay: true
           });
           $(this).hide();

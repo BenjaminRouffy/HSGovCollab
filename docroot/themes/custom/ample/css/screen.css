@@ -5872,49 +5872,52 @@ form .social_login iframe {
     vertical-align: top; }
 
 @media (max-width: 991px) {
-  .view-news-and-events .wrapper-filters, .view-my-projects .wrapper-filters, .view-contacts .wrapper-filters {
+  .view-news-and-events .wrapper-filters, .view-my-projects .wrapper-filters, .view-contacts .wrapper-filters, .view-governance-area-calendar .wrapper-filters {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start; }
-    .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
+    .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px; }
-      .mobile .view-news-and-events .wrapper-filters > div, .mobile .view-my-projects .wrapper-filters > div, .mobile .view-contacts .wrapper-filters > div {
+      .mobile .view-news-and-events .wrapper-filters > div, .mobile .view-my-projects .wrapper-filters > div, .mobile .view-contacts .wrapper-filters > div, .mobile .view-governance-area-calendar .wrapper-filters > div {
         float: left; }
     .ie10 .view-news-and-events .wrapper-filters > div,
     .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
     .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
-    .ie9 .view-contacts .wrapper-filters > div {
+    .ie9 .view-contacts .wrapper-filters > div, .ie10 .view-governance-area-calendar .wrapper-filters > div,
+    .ie9 .view-governance-area-calendar .wrapper-filters > div {
       max-width: calc(33.33% - 20px); }
-  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
+  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item, .view-governance-area-calendar .form-checkboxes .form-item {
     width: 33.33%; } }
 
 @media (max-width: 767px) {
-  .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
+  .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(50% - 20px); }
   .ie10 .view-news-and-events .wrapper-filters > div,
   .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
   .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
-  .ie9 .view-contacts .wrapper-filters > div {
+  .ie9 .view-contacts .wrapper-filters > div, .ie10 .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(50% - 20px); }
-  .front .view-news-and-events .title-wrapper, .front .view-my-projects .title-wrapper, .front .view-contacts .title-wrapper {
+  .front .view-news-and-events .title-wrapper, .front .view-my-projects .title-wrapper, .front .view-contacts .title-wrapper, .front .view-governance-area-calendar .title-wrapper {
     margin: -40px 0 3px -20px; }
-  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
+  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item, .view-governance-area-calendar .form-checkboxes .form-item {
     width: 50%; } }
 
 @media (max-width: 479px) {
-  .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
+  .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0; }
   .ie10 .view-news-and-events .wrapper-filters > div,
   .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
   .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
-  .ie9 .view-contacts .wrapper-filters > div {
+  .ie9 .view-contacts .wrapper-filters > div, .ie10 .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     max-width: 100%; }
-  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
+  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item, .view-governance-area-calendar .form-checkboxes .form-item {
     width: 100%; } }
 
 .view-my-projects .wrapper-filters > div,
@@ -5946,13 +5949,13 @@ form .social_login iframe {
   max-width: 40%; }
 
 @media (max-width: 991px) {
-  .view-my-projects .wrapper-filters, .view-knowledge-vault .wrapper-filters {
+  .view-my-projects .wrapper-filters, .view-knowledge-vault .wrapper-filters, .view-governance-area-calendar .wrapper-filters {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
-    .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
+    .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
       max-width: calc(40% - 20px); } }
 
 @media (max-width: 991px) {
@@ -5960,7 +5963,7 @@ form .social_login iframe {
     max-width: 60%; } }
 
 @media (max-width: 767px) {
-  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
+  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(50% - 20px); } }
 
 @media (max-width: 767px) {
@@ -5968,7 +5971,7 @@ form .social_login iframe {
     max-width: 80%; } }
 
 @media (max-width: 479px) {
-  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
+  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
     margin-left: 0;
     margin-right: 0;
     max-width: 100%; } }
@@ -8019,6 +8022,10 @@ footer {
     color: #afb7bb;
     font-weight: 400;
     text-align: right; }
+  #calendar .fc-year-main-table > tbody > tr {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%; }
   #calendar .fc-year-main-table * {
     border: none; }
   #calendar .fc-month-view .fc-week-number {
@@ -8045,7 +8052,7 @@ footer {
     border-bottom-width: 1px; }
   #calendar .fc-month-view .fc-day-number {
     padding: 10px 5px; }
-  #calendar .fc-month-view .fc-today span {
+  #calendar .fc-month-view .today {
     height: 23px;
     width: 23px;
     background: #ea3a32;
@@ -8058,7 +8065,8 @@ footer {
   #calendar .fc-month-view .fc-widget-content .fc-sat,
   #calendar .fc-month-view .fc-widget-content .fc-sun {
     background: #e9ecee; }
-  #calendar .fc-day-grid-container {
+  #calendar .fc-day-grid-container,
+  #calendar .fc-year-monthly-td .fc-week {
     height: auto !important; }
   #calendar .fc-year-monthly-name {
     height: 35px; }
@@ -8070,15 +8078,30 @@ footer {
     height: 35px;
     vertical-align: top;
     width: auto !important; }
+  #calendar .fc-year-view .fc-year-monthly-name {
+    margin-top: 0; }
   #calendar .fc-year-view .fc-week-number {
     width: auto !important; }
   #calendar .fc-year-view .fc-day-grid .fc-row {
     min-height: 35px; }
+  #calendar .fc-year-view .fc-content-skeleton tbody {
+    display: none; }
+  #calendar .fc-year-view .has-event:not(.fc-other-month):before {
+    height: 4px;
+    width: 4px;
+    background: #8c2222;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 20px; }
   #calendar .fc-year-month-separator {
     display: none; }
   #calendar .fc-year-monthly-td {
     font-weight: 400;
-    padding: 15px; }
+    padding: 15px;
+    padding-left: 0; }
     #calendar .fc-year-monthly-td table {
       font-size: 0.875rem; }
   #calendar .fc-day-number {
@@ -8098,28 +8121,43 @@ footer {
     position: fixed;
     left: 50%;
     top: 50%; }
+  #calendar .has-event:not(.fc-other-month) {
+    cursor: pointer;
+    position: relative; }
+
+@media (max-width: 991px) {
+  #calendar .fc-year-main-table > tbody > tr {
+    width: 33.33%; } }
+
+@media (max-width: 767px) {
+  #calendar .fc-year-main-table > tbody > tr {
+    width: 50%; } }
+
+@media (max-width: 479px) {
+  #calendar .fc-year-main-table > tbody > tr {
+    width: 100%; } }
 
 #event-response {
   background: #fff;
   border: 1px solid #afb7bb;
   font-family: "Fira Sans", sans-serif;
-  height: 600px;
+  height: 65%;
   overflow-y: auto;
   padding: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(0, 0);
-          transform: translateX(-50%) translateY(-50%) scale(0, 0);
+  -webkit-transform: translateX(-50%) translateY(-37%) scale(0, 0);
+          transform: translateX(-50%) translateY(-37%) scale(0, 0);
   -webkit-transition: -webkit-transform .3s ease;
   transition: -webkit-transform .3s ease;
   transition: transform .3s ease;
   transition: transform .3s ease, -webkit-transform .3s ease;
   width: 35%;
-  z-index: 1; }
+  z-index: 10; }
   #event-response.active {
-    -webkit-transform: translateX(-50%) translateY(-50%) scale(1, 1);
-            transform: translateX(-50%) translateY(-50%) scale(1, 1); }
+    -webkit-transform: translateX(-50%) translateY(-37%) scale(1, 1);
+            transform: translateX(-50%) translateY(-37%) scale(1, 1); }
   #event-response .event-title {
     font-size: 1.3125rem;
     font-weight: 400;
@@ -8138,6 +8176,27 @@ footer {
   #event-response .event-body {
     line-height: 24px;
     margin-bottom: 15px; }
+
+@media (max-width: 991px) {
+  #event-response {
+    padding: 30px;
+    width: 45%; }
+    #event-response.active {
+      -webkit-transform: translateX(-50%) translateY(-32%) scale(1, 1);
+              transform: translateX(-50%) translateY(-32%) scale(1, 1); } }
+
+@media (max-width: 767px) {
+  #event-response {
+    padding: 20px;
+    width: 60%; }
+    #event-response.active {
+      -webkit-transform: translateX(-50%) translateY(-25%) scale(1, 1);
+              transform: translateX(-50%) translateY(-25%) scale(1, 1); } }
+
+@media (max-width: 479px) {
+  #event-response {
+    padding: 15px;
+    width: 90%; } }
 
 .page-comment-edit-form .comment-form {
   margin: 0 auto 20px;

@@ -463,7 +463,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts', (to: laptop-small)) {
+@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: laptop-small)) {
   .wrapper-filters {
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -492,7 +492,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts', (to: tablet)) {
+@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: tablet)) {
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
@@ -519,7 +519,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts', (to: mobileL)) {
+@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: mobileL)) {
   .wrapper-filters {
     > div {
       max-width: 100%;
@@ -588,7 +588,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects, .view-knowledge-vault', (to: laptop-small)) {
+@include breakpoint-for('.view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: laptop-small)) {
   .wrapper-filters {
     flex-wrap: wrap;
     justify-content: center;
@@ -607,7 +607,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects, .view-knowledge-vault', (to: tablet)) {
+@include breakpoint-for('.view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: tablet)) {
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
@@ -623,7 +623,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects, .view-knowledge-vault', (to: mobileL)) {
+@include breakpoint-for('.view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: mobileL)) {
   .wrapper-filters {
     > div {
       margin-left: 0;

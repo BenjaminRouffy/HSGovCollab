@@ -80,6 +80,14 @@
   }
 
   .fc-year-main-table {
+    > tbody {
+      > tr {
+        display: inline-block;
+        vertical-align: top;
+        width: 25%;
+      }
+    }
+
     * {
       border: none;
     }
@@ -126,17 +134,15 @@
       padding: 10px 5px;
     }
 
-    .fc-today {
-      span {
-        @include same(23px, height, width);
-        background: $red;
-        border-radius: 50%;
-        color: $white;
-        display: inline-block;
-        line-height: 21px;
-        text-align: center;
-        vertical-align: top;
-      }
+    .today {
+      @include same(23px, height, width);
+      background: $red;
+      border-radius: 50%;
+      color: $white;
+      display: inline-block;
+      line-height: 21px;
+      text-align: center;
+      vertical-align: top;
     }
 
     .fc-widget-content {
@@ -147,7 +153,8 @@
     }
   }
 
-  .fc-day-grid-container {
+  .fc-day-grid-container,
+  .fc-year-monthly-td .fc-week {
     height: auto !important;
   }
 
@@ -168,6 +175,10 @@
       width: auto !important;
     }
 
+    .fc-year-monthly-name {
+      margin-top: 0;
+    }
+
     .fc-week-number {
       width: auto !important;
     }
@@ -175,6 +186,25 @@
     .fc-day-grid {
       .fc-row {
         min-height: 35px;
+      }
+    }
+
+    .fc-content-skeleton {
+      tbody {
+        display: none;
+      }
+    }
+
+    .has-event:not(.fc-other-month) {
+      &:before {
+        @include same(4px, height, width);
+        background: $red-dark;
+        border-radius: 50%;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 14px;
+        right: 20px;
       }
     }
   }
@@ -186,6 +216,7 @@
   .fc-year-monthly-td {
     font-weight: 400;
     padding: 15px;
+    padding-left: 0;
 
     table {
       @include font-size(14);
@@ -218,25 +249,60 @@
     left: 50%;
     top: 50%;
   }
+
+  .has-event:not(.fc-other-month) {
+    cursor: pointer;
+    position: relative;
+  }
+}
+
+@include breakpoint-for('#calendar', (to: laptop-small)) {
+  .fc-year-main-table {
+    > tbody {
+      > tr {
+        width: 33.33%;
+      }
+    }
+  }
+}
+
+@include breakpoint-for('#calendar', (to: tablet)) {
+  .fc-year-main-table {
+    > tbody {
+      > tr {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@include breakpoint-for('#calendar', (to: mobileL)) {
+  .fc-year-main-table {
+    > tbody {
+      > tr {
+        width: 100%;
+      }
+    }
+  }
 }
 
 #event-response {
   background: $white;
   border: 1px solid #afb7bb;
   font-family: $fira;
-  height: 600px;
+  height: 65%;
   overflow-y: auto;
   padding: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%) scale(0, 0);
+  transform: translateX(-50%) translateY(-37%) scale(0, 0);
   transition: transform .3s ease;
   width: 35%;
-  z-index: 1;
+  z-index: 10;
 
   &.active {
-    transform: translateX(-50%) translateY(-50%) scale(1, 1);
+    transform: translateX(-50%) translateY(-37%) scale(1, 1);
   }
 
   .event-title {
@@ -270,4 +336,27 @@
     line-height: 24px;
     margin-bottom: 15px;
   }
+}
+
+@include breakpoint-for('#event-response', (to: laptop-small)) {
+  padding: 30px;
+  width: 45%;
+
+  &.active {
+    transform: translateX(-50%) translateY(-32%) scale(1, 1);
+  }
+}
+
+@include breakpoint-for('#event-response', (to: tablet)) {
+  padding: 20px;
+  width: 60%;
+
+  &.active {
+    transform: translateX(-50%) translateY(-25%) scale(1, 1);
+  }
+}
+
+@include breakpoint-for('#event-response', (to: mobileL)) {
+  padding: 15px;
+  width: 90%;
 }

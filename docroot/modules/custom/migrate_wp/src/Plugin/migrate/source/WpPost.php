@@ -6,22 +6,20 @@ use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Row;
 
 /**
- * Source plugin for wp user accounts.
+ * Source plugin for wp posts.
  *
  * @MigrateSource(
- *   id = "wp_country"
+ *   id = "wp_post"
  * )
  */
-class WpCountry extends SqlBase {
-
+class WpPost extends SqlBase {
   /**
    * {@inheritdoc}
    */
   public function query() {
     $connection = $this->select('intra_posts', 'posts');
     $connection = $connection->fields('posts', ['post_name', 'post_title']);
-    // 386 == root page for all countries.
-    $connection->condition('posts.post_parent', 386)
+    $connection->condition('posts.post_parent', $this->configuration['root_post'])
       ->condition('posts.post_type', 'page');
     return $connection;
   }

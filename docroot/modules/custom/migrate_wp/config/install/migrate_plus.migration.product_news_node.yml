@@ -1,9 +1,9 @@
-id: country_news_node
+id: product_news_node
 label: Map countries to new site into node.
 migration_group: wp
 source:
   plugin: wp_post_child
-  root_post: 386
+  root_post: 6232
 destination:
   plugin: entity:node
 process:

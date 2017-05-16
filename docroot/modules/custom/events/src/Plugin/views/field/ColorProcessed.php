@@ -20,7 +20,9 @@ class ColorProcessed extends FieldPluginBase {
    */
   public function render(ResultRow $values) {
     if (!isset($this->cache[$values->nid])) {
-      $this->cache[$values->nid] = RandomColor::one();
+      $this->cache[$values->nid] = RandomColor::one([
+        'luminosity' => 'dark',
+      ]);
     }
     return $this->cache[$values->nid];
   }

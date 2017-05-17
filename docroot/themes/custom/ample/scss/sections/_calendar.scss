@@ -322,6 +322,17 @@
 }
 
 @include breakpoint-for('#calendar', (to: mobileL)) {
+  .fc-center {
+    h2 {
+      @include font-size(24);
+      margin: 0 10px;
+    }
+  }
+
+  .fc-icon {
+    margin: 0;
+  }
+
   .fc-year-main-table {
     > tbody {
       > tr {

@@ -1,7 +1,6 @@
 <?php
 
 namespace Unish;
-use Drush\Commands\core\XhprofCommands;
 
 /**
  * Unit tests for xh.drush.inc.
@@ -17,7 +16,10 @@ class xhUnitCase extends UnitUnishTestCase {
    */
   public function testFlags($name, $options, $expected) {
     drush_preflight();
-    $this->assertEquals($expected, XhprofCommands::xhprofFlags($options), $name);
+    foreach ($options as $option_name => $option_value) {
+      drush_set_option($option_name, $option_value);
+    }
+    $this->assertEquals($expected, xh_flags(), $name);
   }
 
   /**

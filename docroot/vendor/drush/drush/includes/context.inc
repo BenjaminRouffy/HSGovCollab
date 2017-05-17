@@ -110,7 +110,7 @@ function _drush_config_file($context, $prefix = NULL, $version = '') {
     }
   }
 
-  if ($drupal_root = \Drush::bootstrapManager()->getRoot()) {
+  if ($drupal_root = drush_get_context('DRUSH_SELECTED_DRUPAL_ROOT')) {
     $configs['drupal'] = array(
       $drupal_root . '/../drush/' . $config_file,
       $drupal_root . '/sites/all/drush/' . $config_file,
@@ -137,6 +137,9 @@ function _drush_config_file($context, $prefix = NULL, $version = '') {
 
   // In the system wide configuration folder.
   $configs['system'] = drush_get_context('DRUSH_SITE_WIDE_CONFIGURATION') . '/' . $config_file;
+
+  // in the drush installation folder
+  $configs['drush'] = dirname(__FILE__) . '/../' . $config_file;
 
   return empty($configs[$context]) ? '' : $configs[$context];
 }
@@ -403,12 +406,6 @@ function drush_get_command() {
  *   Optional. The context to check for the option. If this is set, only this context will be searched.
  */
 function drush_get_option($option, $default = NULL, $context = NULL) {
-  // Uncomment when fumigating.
-//  $backtrace = debug_backtrace()[1];
-//  if (!strpos($backtrace['file'], 'engines') && !strpos($backtrace['file'], 'preflight') && !strpos($backtrace['file'], 'backend')) {
-//    drush_log('drush_get_option() has been deprecated and is unreliable. Called by '. $backtrace['function']. ' in '. $backtrace['file']. ':'. $backtrace['line'], LogLevel::WARNING);
-//  }
-
   $value = NULL;
 
   if ($context) {
@@ -540,6 +537,22 @@ function drush_get_merged_options() {
   foreach (array_reverse($contexts) as $context) {
     if (array_key_exists($context, $cache)) {
       $result = array_merge($result, $cache[$context]);
+    }
+  }
+
+  return $result;
+}
+
+/**
+ * Retrieves a collapsed list of all options
+ * with a specified prefix.
+ */
+function drush_get_merged_prefixed_options($prefix) {
+  $merged_options = drush_get_merged_options();
+  $result = array();
+  foreach ($merged_options as $key => $value) {
+    if ($prefix == substr($key, 0, strlen($prefix))) {
+      $result[substr($key, strlen($prefix))] = $value;
     }
   }
 

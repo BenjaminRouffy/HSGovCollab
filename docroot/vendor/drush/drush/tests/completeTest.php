@@ -18,7 +18,7 @@ class completeCase extends CommandUnishTestCase {
         'uninstall' => 'pm-uninstall',
       );
     ";
-    file_put_contents(self::getSandbox() . '/drushrc.php', trim($contents));
+    file_put_contents(UNISH_SANDBOX . '/drushrc.php', trim($contents));
   }
 
   
@@ -29,8 +29,9 @@ class completeCase extends CommandUnishTestCase {
     }
 
     // We copy our completetest commandfile into our path.
-    // We cannot use --include since complete deliberately avoids Drush command dispatch.
-    copy(__DIR__ . '/completetest.drush.inc', getenv('HOME') . '/.drush/completetest.drush.inc');
+    // We cannot use --include since complete deliberately avoids drush
+    // command dispatch.
+    copy(dirname(__FILE__) . '/completetest.drush.inc', getenv('HOME') . '/.drush/completetest.drush.inc');
 
     $sites = $this->setUpDrupal(2);
     $env = key($sites);
@@ -48,14 +49,14 @@ class completeCase extends CommandUnishTestCase {
     mkdir("asteroid");
     mkdir("asteroid/ceres");
     mkdir("asteroid/chiron");
-    touch('astronaut/aldrin.php');
-    touch('astronaut/armstrong.php');
-    touch('astronaut/yuri gagarin.php');
-    touch('zodiac.php');
+    touch('astronaut/aldrin.tar.gz');
+    touch('astronaut/armstrong.tar.gz');
+    touch('astronaut/yuri gagarin.tar.gz');
+    touch('zodiac.tar.gz');
     touch('zodiac.txt');
 
     // Create directory for temporary debug logs.
-    mkdir(self::getSandbox() . '/complete-debug');
+    mkdir(UNISH_SANDBOX . '/complete-debug');
 
     // Test cache clearing for global cache, which should affect all
     // environments. First clear the cache:
@@ -101,10 +102,7 @@ class completeCase extends CommandUnishTestCase {
     // "aaaaaaaard").
     $this->verifyComplete('@dev aaaaaaaard', 'aaaaaaaard', 'aaaaaaaard-zebra');
     // Global option alone.
-    // @todo changed second value since global options provided by Annotated commands are not yet recognized by drush_get_global_options().
-    // @todo and then commented out with new Help since this code will soon be removed.
-    // $this->verifyComplete('--n', '--no', '--notify-audio');
-    // $this->verifyComplete('--n', '--no', '--nocolor');
+    $this->verifyComplete('--n', '--no', '--notify-audio');
     // Site alias + command.
     $this->verifyComplete('@dev aaaaaaaa', 'aaaaaaaard', 'aaaaaaaard-zebra');
     // Site alias + command, should allow no further site aliases or commands.
@@ -124,45 +122,45 @@ class completeCase extends CommandUnishTestCase {
     // Site alias + command + file/directory argument tests.
     // Current directory substrings.
     // NOTE: This command arg has not been used yet, so cache miss is expected.
-    $this->verifyComplete('php-script ""', 'asteroid/', 'zodiac.php', FALSE);
-    $this->verifyComplete('php-script a', 'asteroid/', 'astronaut/');
-    $this->verifyComplete('php-script ast', 'asteroid/', 'astronaut/');
-    $this->verifyComplete('php-script aste', 'asteroid/', 'asteroid/');
-    $this->verifyComplete('php-script asteroid', 'asteroid/', 'asteroid/');
-    $this->verifyComplete('php-script asteroid/', 'ceres', 'chiron');
-    $this->verifyComplete('php-script asteroid/ch', 'asteroid/chiron/', 'asteroid/chiron/');
-    $this->verifyComplete('php-script astronaut/', 'aldrin.php', 'yuri gagarin.php');
-    $this->verifyComplete('php-script astronaut/y', 'astronaut/yuri\ gagarin.php', 'astronaut/yuri\ gagarin.php');
+    $this->verifyComplete('archive-restore ""', 'asteroid/', 'zodiac.tar.gz', FALSE);
+    $this->verifyComplete('archive-restore a', 'asteroid/', 'astronaut/');
+    $this->verifyComplete('archive-restore ast', 'asteroid/', 'astronaut/');
+    $this->verifyComplete('archive-restore aste', 'asteroid/', 'asteroid/');
+    $this->verifyComplete('archive-restore asteroid', 'asteroid/', 'asteroid/');
+    $this->verifyComplete('archive-restore asteroid/', 'ceres', 'chiron');
+    $this->verifyComplete('archive-restore asteroid/ch', 'asteroid/chiron/', 'asteroid/chiron/');
+    $this->verifyComplete('archive-restore astronaut/', 'aldrin.tar.gz', 'yuri gagarin.tar.gz');
+    $this->verifyComplete('archive-restore astronaut/y', 'astronaut/yuri\ gagarin.tar.gz', 'astronaut/yuri\ gagarin.tar.gz');
     // Leading dot style current directory substrings.
-    $this->verifyComplete('php-script .', './asteroid/', './zodiac.php');
-    $this->verifyComplete('php-script ./', './asteroid/', './zodiac.php');
-    $this->verifyComplete('php-script ./a', './asteroid/', './astronaut/');
-    $this->verifyComplete('php-script ./ast', './asteroid/', './astronaut/');
-    $this->verifyComplete('php-script ./aste', './asteroid/', './asteroid/');
-    $this->verifyComplete('php-script ./asteroid', './asteroid/', './asteroid/');
-    $this->verifyComplete('php-script ./asteroid/', 'ceres', 'chiron');
-    $this->verifyComplete('php-script ./asteroid/ch', './asteroid/chiron/', './asteroid/chiron/');
-    $this->verifyComplete('php-script ./astronaut/', 'aldrin.php', 'yuri gagarin.php');
-    $this->verifyComplete('php-script ./astronaut/y', './astronaut/yuri\ gagarin.php', './astronaut/yuri\ gagarin.php');
+    $this->verifyComplete('archive-restore .', './asteroid/', './zodiac.tar.gz');
+    $this->verifyComplete('archive-restore ./', './asteroid/', './zodiac.tar.gz');
+    $this->verifyComplete('archive-restore ./a', './asteroid/', './astronaut/');
+    $this->verifyComplete('archive-restore ./ast', './asteroid/', './astronaut/');
+    $this->verifyComplete('archive-restore ./aste', './asteroid/', './asteroid/');
+    $this->verifyComplete('archive-restore ./asteroid', './asteroid/', './asteroid/');
+    $this->verifyComplete('archive-restore ./asteroid/', 'ceres', 'chiron');
+    $this->verifyComplete('archive-restore ./asteroid/ch', './asteroid/chiron/', './asteroid/chiron/');
+    $this->verifyComplete('archive-restore ./astronaut/', 'aldrin.tar.gz', 'yuri gagarin.tar.gz');
+    $this->verifyComplete('archive-restore ./astronaut/y', './astronaut/yuri\ gagarin.tar.gz', './astronaut/yuri\ gagarin.tar.gz');
     // Absolute path substrings.
     $path = getcwd();
-    $this->verifyComplete('php-script ' . $path, $path . '/', $path . '/');
-    $this->verifyComplete('php-script ' . $path . '/', 'asteroid', 'zodiac.php');
-    $this->verifyComplete('php-script ' . $path . '/a', $path . '/asteroid', $path . '/astronaut');
-    $this->verifyComplete('php-script ' . $path . '/ast', 'asteroid', 'astronaut');
-    $this->verifyComplete('php-script ' . $path . '/aste', $path . '/asteroid/', $path . '/asteroid/');
-    $this->verifyComplete('php-script ' . $path . '/asteroid', $path . '/asteroid/', $path . '/asteroid/');
-    $this->verifyComplete('php-script ' . $path . '/asteroid/', $path . '/asteroid/ceres', $path . '/asteroid/chiron');
-    $this->verifyComplete('php-script ' . $path . '/asteroid/ch', $path . '/asteroid/chiron/', $path . '/asteroid/chiron/');
-    $this->verifyComplete('php-script ' . $path . '/astronaut/', 'aldrin.php', 'yuri gagarin.php');
-    $this->verifyComplete('php-script ' . $path . '/astronaut/y', $path . '/astronaut/yuri\ gagarin.php', $path . '/astronaut/yuri\ gagarin.php');
+    $this->verifyComplete('archive-restore ' . $path, $path . '/', $path . '/');
+    $this->verifyComplete('archive-restore ' . $path . '/', 'asteroid', 'zodiac.tar.gz');
+    $this->verifyComplete('archive-restore ' . $path . '/a', $path . '/asteroid', $path . '/astronaut');
+    $this->verifyComplete('archive-restore ' . $path . '/ast', 'asteroid', 'astronaut');
+    $this->verifyComplete('archive-restore ' . $path . '/aste', $path . '/asteroid/', $path . '/asteroid/');
+    $this->verifyComplete('archive-restore ' . $path . '/asteroid', $path . '/asteroid/', $path . '/asteroid/');
+    $this->verifyComplete('archive-restore ' . $path . '/asteroid/', $path . '/asteroid/ceres', $path . '/asteroid/chiron');
+    $this->verifyComplete('archive-restore ' . $path . '/asteroid/ch', $path . '/asteroid/chiron/', $path . '/asteroid/chiron/');
+    $this->verifyComplete('archive-restore ' . $path . '/astronaut/', 'aldrin.tar.gz', 'yuri gagarin.tar.gz');
+    $this->verifyComplete('archive-restore ' . $path . '/astronaut/y', $path . '/astronaut/yuri\ gagarin.tar.gz', $path . '/astronaut/yuri\ gagarin.tar.gz');
     // Absolute via parent path substrings.
-    $this->verifyComplete('php-script ' . $path . '/asteroid/../astronaut/', 'aldrin.php', 'yuri gagarin.php');
-    $this->verifyComplete('php-script ' . $path . '/asteroid/../astronaut/y', $path . '/asteroid/../astronaut/yuri\ gagarin.php', $path . '/asteroid/../astronaut/yuri\ gagarin.php');
+    $this->verifyComplete('archive-restore ' . $path . '/asteroid/../astronaut/', 'aldrin.tar.gz', 'yuri gagarin.tar.gz');
+    $this->verifyComplete('archive-restore ' . $path . '/asteroid/../astronaut/y', $path . '/asteroid/../astronaut/yuri\ gagarin.tar.gz', $path . '/asteroid/../astronaut/yuri\ gagarin.tar.gz');
     // Parent directory path substrings.
     chdir('asteroid/chiron');
-    $this->verifyComplete('php-script ../../astronaut/', 'aldrin.php', 'yuri gagarin.php');
-    $this->verifyComplete('php-script ../../astronaut/y', '../../astronaut/yuri\ gagarin.php', '../../astronaut/yuri\ gagarin.php');
+    $this->verifyComplete('archive-restore ../../astronaut/', 'aldrin.tar.gz', 'yuri gagarin.tar.gz');
+    $this->verifyComplete('archive-restore ../../astronaut/y', '../../astronaut/yuri\ gagarin.tar.gz', '../../astronaut/yuri\ gagarin.tar.gz');
     chdir($path);
   }
 
@@ -183,10 +181,10 @@ class completeCase extends CommandUnishTestCase {
   function verifyComplete($command, $first, $last, $cache_hit = TRUE) {
     // We capture debug output to a separate file, so we can check for cache
     // hits/misses.
-    $debug_file = tempnam(self::getSandbox() . '/complete-debug', 'complete-debug');
+    $debug_file = tempnam(UNISH_SANDBOX . '/complete-debug', 'complete-debug');
     // Commands should take the format:
     // drush --early=includes/complete.inc [--complete-debug] drush [@alias] [command]...
-    $exec = sprintf('%s --early=includes/complete.inc --config=%s --complete-debug %s %s 2> %s', self::getDrush(), self::getSandbox() . '/drushrc.php', self::getDrush(), $command, $debug_file);
+    $exec = sprintf('%s --early=includes/complete.inc --config=%s --complete-debug %s %s 2> %s', UNISH_DRUSH, UNISH_SANDBOX . '/drushrc.php', UNISH_DRUSH, $command, $debug_file);
     $this->execute($exec);
     $result = $this->getOutputAsList();
     $actual = reset($result);

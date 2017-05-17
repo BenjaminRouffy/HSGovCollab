@@ -5,17 +5,7 @@
  * Preflight, postflight and shutdown code.
  */
 
-use Consolidation\AnnotatedCommand\Hooks\HookManager;
-use Drush\Cache\CommandCache;
 use Drush\Log\LogLevel;
-use League\Container\Container;
-use Robo\Contract\BuilderAwareInterface;
-use Robo\Robo;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\StringInput;
-use Symfony\Component\Console\Output\OutputInterface;
-use Webmozart\PathUtil\Path;
 
 /**
  * The main Drush function.
@@ -33,10 +23,8 @@ use Webmozart\PathUtil\Path;
  *   Whatever the given command returns.
  */
 function drush_main() {
-  // Load Drush core include files, create the container and
-  // parse commandline arguments
-  $container = drush_preflight_prepare();
-  if ($container === FALSE) {
+  // Load Drush core include files, and parse command line arguments.
+  if (drush_preflight_prepare() === FALSE) {
     return(1);
   }
   // Start code coverage collection.
@@ -71,28 +59,11 @@ function drush_main() {
       }
     }
     else {
-      // TODO: If 'DRUSH_SYMFONY' is set, then disable the legacy command
-      // runner, and use only the Symfony Application.  n.b. the legacy runner
-      // will also try to run commands via the Symfony Application runner if
-      // it cannot find a matching legacy Drush command.
-      if (getenv('DRUSH_SYMFONY')) {
-        drush_log(dt("Dispatching directly with Symfony application (DRUSH_SYMFONY set)"), LogLevel::BOOTSTRAP);
-
-        // Get the application and run it.
-        // TODO: We need a new way to handle @alias arguments,
-        // remote command dispatching, bootstrapping, etc.
-        $application = $container->get('application');
-        $input = drush_symfony_input();
-        $application->run($input);
-      }
-      else {
-        // Do any necessary preprocessing operations on the command,
-        // perhaps handling immediately.
-        $command_handled = drush_preflight_command_dispatch();
-        if (!$command_handled) {
-          drush_log(dt("Dispatching using Drush bootstrap_and_dispatch"), LogLevel::BOOTSTRAP);
-          $return = $bootstrap->bootstrap_and_dispatch();
-        }
+      // Do any necessary preprocessing operations on the command,
+      // perhaps handling immediately.
+      $command_handled = drush_preflight_command_dispatch();
+      if (!$command_handled) {
+        $return = $bootstrap->bootstrap_and_dispatch();
       }
     }
   }
@@ -100,7 +71,7 @@ function drush_main() {
   // the bootstrap object returned from drush_preflight().  This will
   // require some adjustments to Drush bootstrapping.
   // See: https://github.com/drush-ops/drush/pull/1303
-  if ($bootstrap = \Drush::bootstrap()) {
+  if ($bootstrap = drush_get_bootstrap_object()) {
     $bootstrap->terminate();
   }
   drush_postflight();
@@ -119,19 +90,6 @@ function drush_main() {
   return $return;
 }
 
-function drush_symfony_input() {
-  // Symfony ArgvInput is touchy; fix up the args.
-  $argv = $_SERVER['argv'];
-  $scriptname = array_shift($argv);
-  // Get rid of --php= and --php-options=
-  while (strpos($argv[0], '--php') === 0) {
-    array_shift($argv);
-  }
-  array_unshift($argv, $scriptname);
-
-  return new ArgvInput($argv);
-}
-
 /**
  * Prepare Drush for preflight.
  *
@@ -147,11 +105,8 @@ function drush_preflight_prepare() {
   $local_vendor_path = DRUSH_BASE_PATH . '/vendor/autoload.php';
   $global_vendor_path = DRUSH_BASE_PATH . '/../../../vendor/autoload.php';
 
-  // Check for Unish's autoload.php, a local autoload.php, or a global autoload.php.
-  if (file_exists(getenv('DRUSH_AUTOLOAD_PHP'))) {
-    $vendor_path = getenv('DRUSH_AUTOLOAD_PHP');
-  }
-  elseif (file_exists($local_vendor_path)) {
+  // Check for a local composer install or a global composer install. Vendor dirs are in different spots).
+  if (file_exists($local_vendor_path)) {
     $vendor_path = $local_vendor_path;
   }
   elseif (file_exists($global_vendor_path)) {
@@ -162,6 +117,7 @@ function drush_preflight_prepare() {
     fwrite(STDERR, $msg);
     return FALSE;
   }
+
   $classloader = require $vendor_path;
 
   require_once DRUSH_BASE_PATH . '/includes/startup.inc';
@@ -170,6 +126,7 @@ function drush_preflight_prepare() {
   require_once DRUSH_BASE_PATH . '/includes/annotationcommand_adapter.inc';
   require_once DRUSH_BASE_PATH . '/includes/command.inc';
   require_once DRUSH_BASE_PATH . '/includes/drush.inc';
+  require_once DRUSH_BASE_PATH . '/includes/engines.inc';
   require_once DRUSH_BASE_PATH . '/includes/backend.inc';
   require_once DRUSH_BASE_PATH . '/includes/batch.inc';
   require_once DRUSH_BASE_PATH . '/includes/context.inc';
@@ -179,29 +136,15 @@ function drush_preflight_prepare() {
   require_once DRUSH_BASE_PATH . '/includes/output.inc';
   require_once DRUSH_BASE_PATH . '/includes/cache.inc';
   require_once DRUSH_BASE_PATH . '/includes/filesystem.inc';
+  require_once DRUSH_BASE_PATH . '/includes/dbtng.inc';
+  require_once DRUSH_BASE_PATH . '/includes/array_column.inc';
 
-  /*
-   * @deprecated. Use \Drush::getVersion().
-   */
-  define('DRUSH_VERSION', \Drush::getVersion());
+  // Stash our vendor path and classloader.
+  drush_set_context('DRUSH_VENDOR_PATH', dirname($vendor_path));
+  drush_set_context('DRUSH_CLASSLOADER', $classloader);
 
-  /*
-   * @deprecated. Use \Drush::getMajorVersion().
-   */
-  define('DRUSH_MAJOR_VERSION', Drush::getMajorVersion());
-
-  /*
-   * @deprecated. Use \Drush::getMinorVersion().
-   */
-  define('DRUSH_MINOR_VERSION', Drush::getMinorVersion());
-
-  // We need to load our services right away, as we cannot log
-  // or do much else until after this is done.
-  $container = drush_init_dependency_injection_container();
-
-  // Add our core annotation command files to the application.
-  drush_init_annotation_commands($container);
-  drush_init_application_global_options();
+  // Can't log until we have a logger, so we'll create this ASAP.
+  _drush_create_default_logger();
 
   // Terminate immediately unless invoked as a command line script
   if (!drush_verify_cli()) {
@@ -209,7 +152,11 @@ function drush_preflight_prepare() {
   }
 
   // Check supported version of PHP.
-  define('DRUSH_MINIMUM_PHP', '5.6.0');
+  // Note: If this is adjusted, check other code that compares
+  // PHP_VERSION, such as drush_json_encode(), runserver/runserver.drush.inc, and also
+  // adjust _drush_environment_check_php_ini() and the php_prohibited_options
+  // list in the drush script.  See http://drupal.org/node/1748228
+  define('DRUSH_MINIMUM_PHP', '5.4.5');
   if (version_compare(phpversion(), DRUSH_MINIMUM_PHP) < 0 && !getenv('DRUSH_NO_MIN_PHP')) {
     return drush_set_error('DRUSH_REQUIREMENTS_ERROR', dt('Your command line PHP installation is too old. Drush requires at least PHP !version. To suppress this check, set the environment variable DRUSH_NO_MIN_PHP=1', array('!version' => DRUSH_MINIMUM_PHP)));
   }
@@ -217,6 +164,12 @@ function drush_preflight_prepare() {
   if (!$return = _drush_environment_check_php_ini()) {
     return; // An error was logged.
   }
+
+  $drush_info = drush_read_drush_info();
+  define('DRUSH_VERSION', $drush_info['drush_version']);
+  $version_parts = explode('.', DRUSH_VERSION);
+  define('DRUSH_MAJOR_VERSION', $version_parts[0]);
+  define('DRUSH_MINOR_VERSION', $version_parts[1]);
 
   define('DRUSH_REQUEST_TIME', microtime(TRUE));
 
@@ -226,202 +179,13 @@ function drush_preflight_prepare() {
   // Set an error handler and a shutdown function
   set_error_handler('drush_error_handler');
   register_shutdown_function('drush_shutdown');
-
-  // TODO: Remove drush_parse_args
   // We need some global options/arguments processed at this early stage.
   drush_parse_args();
 
   // Process initial global options such as --debug.
   _drush_preflight_global_options();
 
-  drush_log(dt("drush_preflight_prepare() loaded autoloader at !autoloader", array('!autoloader' => Path::canonicalize($vendor_path))), LogLevel::BOOTSTRAP);
-  // Stash our vendor path and classloader.
-  drush_set_context('DRUSH_VENDOR_PATH', dirname($vendor_path));
-  drush_set_context('DRUSH_CLASSLOADER', $classloader);
-
-
-  return $container;
-}
-
-/**
- * Set up our dependency injection container.
- *
- * The Drupal6 boot service is needed in order to show the D6 deprecation message.
- */
-function drush_init_dependency_injection_container($input = null, $output = null) {
-  // Create default input and output objects if they were not provided
-  if (!$input) {
-      $input = new StringInput('');
-  }
-  if (!$output) {
-      $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-  }
-  // Set up our dependency injection container.
-  $container = new \League\Container\Container();
-  $roboConfig = new \Robo\Config(); // TODO: make a global Drush config class derived from \Robo\Config. Then use $drushConfig here instead of $roboConfig
-
-  $application = new \Symfony\Component\Console\Application('Drush Commandline Tool', \Drush::getVersion());
-
-  \Robo\Robo::configureContainer($container, $application, $roboConfig, $input, $output);
-  $container->add('container', $container);
-
-  // Override Robo's logger with our own
-  $container->share('logger', 'Drush\Log\Logger')
-    ->withArgument('output')
-    ->withMethodCall('setLogOutputStyler', ['logStyler']);
-
-  // Override Robo's formatter manager with our own
-  // @todo not sure that we'll use this. Maybe remove it.
-  $container->share('formatterManager', \Drush\Formatters\DrushFormatterManager::class)
-      ->withMethodCall('addDefaultFormatters', [])
-      ->withMethodCall('addDefaultSimplifiers', []);
-
-  // Add some of our own objects to the container
-  $container->share('bootstrap.default', 'Drush\Boot\EmptyBoot');
-  $container->share('bootstrap.drupal6', 'Drush\Boot\DrupalBoot6');
-  $container->share('bootstrap.drupal7', 'Drush\Boot\DrupalBoot7');
-  $container->share('bootstrap.drupal8', 'Drush\Boot\DrupalBoot8');
-  $container->share('bootstrap.manager', 'Drush\Boot\BootstrapManager')
-    ->withArgument('bootstrap.default');
-  $container->extend('bootstrap.manager')
-    ->withMethodCall('add', ['bootstrap.drupal6'])
-    ->withMethodCall('add', ['bootstrap.drupal7'])
-    ->withMethodCall('add', ['bootstrap.drupal8']);
-
-  // Robo does not manage the command discovery object in the container,
-  // but we will register and configure one for our use.
-  $container->share('commandDiscovery', 'Consolidation\AnnotatedCommand\CommandFileDiscovery')
-    ->withMethodCall('addSearchLocation', ['CommandFiles'])
-    ->withMethodCall('setSearchPattern', ['#.*(Commands|CommandFile).php$#']);
-
-  // Store the container in the \Drush object
-  \Drush::setContainer($container);
-  \Robo\Robo::setContainer($container);
-
-
-
-  // Add our own callback to the hook manager
-  $hookManager = $container->get('hookManager');
-  $hookManager->addOutputExtractor(new Drush\Backend\BackendResultSetter());
-  // @todo: do we need both backend result setters? The one below should be removed at some point.
-  $hookManager->add('annotatedcomand_adapter_backend_result', HookManager::EXTRACT_OUTPUT);
-
-  // Install our command cache into the command factory
-  $cacheBackend = _drush_cache_get_object('factory');
-  $commandCacheDataStore = new CommandCache($cacheBackend);
-
-  $factory = $container->get('commandFactory');
-  $factory->setIncludeAllPublicMethods(false);
-  $factory->setDataStore($commandCacheDataStore);
-
-  // It is necessary to set the dispatcher when using configureContainer
-  $eventDispatcher = $container->get('eventDispatcher');
-  $eventDispatcher->addSubscriber(new \Drush\Command\GlobalOptionsEventListener());
-  $application->setDispatcher($eventDispatcher);
-
-  return $container;
-}
-
-// TODO: Where should this go?
-function drush_init_application_global_options() {
-  $application = Drush::getApplication();
-  $definition = $application->getDefinition();
-
-  // TODO: We should make a better way to manage global options
-  $globalOptions = drush_get_global_options();
-
-  foreach ($globalOptions as $option => $info) {
-    $info += [
-      'short-form' => null,
-    ];
-    // TODO: We can't register options that Symfony has already registered,
-    // but we need a better way than this.
-    if (array_key_exists('symfony-conflict', $info)) {
-      continue;
-    }
-    if ($info['short-form'] == 'n') {
-      $info['short-form'] = null;
-    }
-    $description = $info['description'];
-    $default = null;
-    $mode = InputOption::VALUE_NONE;
-    if (array_key_exists('example-value', $info)) {
-      $mode = InputOption::VALUE_REQUIRED;
-      // TODO: at the moment, global options do not know their default values,
-      // but if they did, it would look like this:
-      if (array_key_exists('default-value', $info)) {
-        $default = $info['default-value'];
-        $mode = InputOption::VALUE_OPTIONAL;
-      }
-    }
-    // TODO: Any need to make use of InputOption::VALUE_IS_ARRAY?
-
-    $definition->addOption(
-        new InputOption("--$option", $info['short-form'], $mode, $description, $default)
-    );
-
-    // TODO: If the default is TRUE, add a --no alias option.
-    if ($default === TRUE) {
-      $definition->addOption(
-          new InputOption("--no-$option", null, $mode, "Negation of --$option.", FALSE)
-      );
-    }
-  }
-}
-
-function drush_init_annotation_commands($container) {
-  $application = $container->get('application');
-  /** @var \Consolidation\AnnotatedCommand\CommandFileDiscovery */
-  $discovery = $container->get('commandDiscovery');
-  $commandFiles = $discovery->discover(DRUSH_BASE_PATH . '/lib/Drush', '\Drush');
-  $base_class = Path::join(DRUSH_BASE_PATH, 'lib/Drush/CommandFiles/DrushCommands.php');
-  unset($commandFiles[$base_class]);
-  drush_init_register_command_files($container, $commandFiles);
-}
-
-function drush_init_register_command_files($container, $commandFiles) {
-  foreach ($commandFiles as $sourcePath => $className) {
-    if (!class_exists($className)) {
-      include $sourcePath;
-    }
-    $classAlias = str_replace('\\', '', $className);
-    // Add and fetch our class from the container to apply the inductors
-    $container->share($classAlias, $className);
-    $commandFileInstance = $container->get($classAlias);
-    if ($commandFileInstance instanceof BuilderAwareInterface) {
-        $builder = $container->get('collectionBuilder', [$commandFileInstance]);
-        $commandFileInstance->setBuilder($builder);
-    }
-    drush_add_command_instance($container, $commandFileInstance);
-  }
-}
-
-function drush_add_command_instance($container, $commandInstance, $includeAllPublicMethods = true) {
-  if ($commandInstance instanceof Symfony\Component\Console\Command\Command) {
-    drush_add_command_to_application($container, $commandInstance);
-    return;
-  }
-  drush_create_commands_from_command_instance($container, $commandInstance);
-}
-
-function drush_create_commands_from_command_instance($container, $commandInstance, $includeAllPublicMethods = true) {
-  $application = $container->get('application');
-  $commandFactory = $container->get('commandFactory');
-  $commandList = $commandFactory->createCommandsFromClass($commandInstance, $includeAllPublicMethods);
-  foreach ($commandList as $command) {
-    drush_add_command_to_application($container, $command);
-  }
-}
-
-function drush_add_command_to_application($container, $command) {
-  $application = $container->get('application');
-  $commandName = $command->getName();
-  $drushAlias = strtr($commandName, ':', '-');
-  if ($commandName != $drushAlias) {
-    $aliases = $command->getAliases();
-    $command->setAliases(array_unique(array_merge($aliases, [$drushAlias])));
-  }
-  $application->add($command);
+  drush_log(dt("Drush preflight prepare loaded autoloader at !autoloader", array('!autoloader' => realpath($vendor_path))), LogLevel::PREFLIGHT);
 }
 
 /**
@@ -455,7 +219,7 @@ function drush_preflight() {
   _drush_preflight_columns();
 
   // Display is tidy now that column width has been handled.
-  drush_log(dt('Starting Drush preflight.'), LogLevel::BOOTSTRAP);
+  drush_log(dt('Starting Drush preflight.'), LogLevel::PREFLIGHT);
 
   // Statically define a way to call drush again.
   define('DRUSH_COMMAND', drush_find_drush());
@@ -471,6 +235,8 @@ function drush_preflight() {
     _drush_preflight_alias_path();
   }
   if (!drush_get_option('local')) {
+    // Load a drushrc.php file in the drush.php's directory.
+    drush_load_config('drush');
 
     // Load a drushrc.php file in the $ETC_PREFIX/etc/drush directory.
     drush_load_config('system');
@@ -548,7 +314,7 @@ function drush_preflight() {
   drush_set_environment_vars($alias_record);
 
   // Select the bootstrap object and return it.
-  return \Drush::bootstrapManager()->bootstrap();
+  return drush_select_bootstrap_class();
 }
 
 /**
@@ -562,7 +328,9 @@ function drush_preflight_root() {
   if ($root) {
     $root = realpath($root);
   }
-  \Drush::bootstrapManager()->setRoot($root);
+  // @todo This context name should not mention Drupal.
+  // @todo Drupal code should use DRUSH_DRUPAL_ROOT instead of this constant.
+  drush_set_context('DRUSH_SELECTED_DRUPAL_ROOT', $root);
 
   // Load the config options from Drupal's /drush, ../drush, and sites/all/drush directories,
   // even prior to bootstrapping the root.
@@ -571,6 +339,7 @@ function drush_preflight_root() {
   // Search for commandfiles in the root locations
   $discovery = annotationcommand_adapter_get_discovery();
   $searchpath = [dirname($root) . '/drush', "$root/drush", "$root/sites/all/drush"];
+
   $drush_root_extensions = $discovery->discover($searchpath, '\Drush');
   drush_set_context(
     'DRUSH_ANNOTATED_COMMANDFILES',
@@ -630,22 +399,6 @@ function _drush_preflight_global_options() {
     $nocolor = !($colors === FALSE || (is_numeric($colors) && $colors >= 3));
   }
   drush_set_context('DRUSH_NOCOLOR', $nocolor);
-
-  // Copy the simulated option to the Robo configuration object.
-  // TODO: Long-term there should be a better way to do this (e.g. via an event listener)
-  $config = \Drush::service('config');
-  $config->setSimulated(drush_get_context('DRUSH_SIMULATE'));
-
-  // Copy the output verbosity into the output object
-  $verbosity = OutputInterface::VERBOSITY_NORMAL;
-  if (drush_get_context('DRUSH_VERBOSE')) {
-    $verbosity = OutputInterface::VERBOSITY_VERBOSE;
-  }
-  if (drush_get_context('DRUSH_DEBUG')) {
-    $verbosity = OutputInterface::VERBOSITY_DEBUG;
-  }
-  $output = \Drush::service('output');
-  $output->setVerbosity($verbosity);
 }
 
 /**
@@ -722,6 +475,8 @@ function _drush_preflight_alias_path() {
   $site_wide_configuration_dir = drush_get_context('ETC_PREFIX', $default_prefix_configuration) . '/etc/drush';
   $alias_path[] = drush_sitealias_alias_base_directory($site_wide_configuration_dir);
 
+  $alias_path[] = drush_sitealias_alias_base_directory(dirname(__FILE__) . '/..');
+
   $server_home = drush_server_home();
   if (isset($server_home)) {
     $alias_path[] = drush_sitealias_alias_base_directory($server_home . '/.drush');
@@ -745,15 +500,14 @@ function _drush_preflight_uri() {
 }
 
 function _drush_find_commandfiles_drush() {
-  // Legacy style commands still shipping with Drush.
-  $searchpath[] = dirname(__FILE__) . '/../commands/core';
-  $searchpath[] = dirname(__FILE__) . '/../commands/pm';
+  // Core commands shipping with Drush
+  $searchpath[] = dirname(__FILE__) . '/../commands/';
 
   // User commands, specified by 'include' option
   $include = drush_get_context('DRUSH_INCLUDE', array());
   foreach ($include as $path) {
     if (is_dir($path)) {
-      drush_log('Include ' . $path, LogLevel::INFO);
+      drush_log('Include ' . $path, LogLevel::NOTICE);
       $searchpath[] = $path;
     }
   }
@@ -777,9 +531,9 @@ function _drush_find_commandfiles_drush() {
 
   // Also discover Drush's own annotation commands.
   $discovery = annotationcommand_adapter_get_discovery();
-  $annotation_commandfiles = $discovery->discover(DRUSH_BASE_PATH . '/src', '\Drush');
+  $annotation_commandfiles = $discovery->discover(DRUSH_BASE_PATH . '/lib/Drush', '\Drush');
 
-  // And, finally, search for Annotated commandfiles in the $searchpath.
+  // And, finally, search for commandfiles in the $searchpath
   $searchpath = array_map(
     function ($item) {
       if (strtolower(basename($item)) == 'commands') {
@@ -800,7 +554,7 @@ function _drush_find_commandfiles_drush() {
  * potentially redispatching the command immediately (e.g. for remote
  * commands).
  *
- * @return bool
+ * @return
  *   TRUE if the command was handled remotely.
  */
 function drush_preflight_command_dispatch() {
@@ -817,9 +571,41 @@ function drush_preflight_command_dispatch() {
   $command = drush_parse_command();
   drush_command_default_options($command);
 
+  // If the command sets the 'strict-option-handling' flag, then we will remove
+  // any cli options that appear after the command name from the 'cli' context.
+  // The cli options that appear before the command name are stored in the
+  // 'DRUSH_GLOBAL_CLI_OPTIONS' context, so we will just overwrite the cli context
+  // with this, after doing the neccessary fixup from short-form to long-form options.
+  // After we do that, we put back any local drush options identified by $command['options'].
+  if (is_array($command) && !empty($command['strict-option-handling'])) {
+    $cli_options = drush_get_context('DRUSH_GLOBAL_CLI_OPTIONS', array());
+    // Now we are going to sort out any options that exist in $command['options'];
+    // we will remove these from DRUSH_COMMAND_ARGS and put them back into the
+    // cli options.
+    $cli_context = drush_get_context('cli');
+    $remove_from_command_args = array();
+    foreach ($command['options'] as $option => $info) {
+      if (array_key_exists($option, $cli_context)) {
+        $cli_options[$option] = $cli_context[$option];
+        $remove_from_command_args[$option] = $option;
+      }
+    }
+    if (!empty($remove_from_command_args)) {
+      $drush_command_args = array();
+      foreach (drush_get_context('DRUSH_COMMAND_ARGS') as $arg) {
+        if (!_drush_should_remove_command_arg($arg, $remove_from_command_args)) {
+          $drush_command_args[] = $arg;
+        }
+      }
+      drush_set_context('DRUSH_COMMAND_ARGS', $drush_command_args);
+    }
+    drush_expand_short_form_options($cli_options);
+    drush_set_context('cli', $cli_options);
+    _drush_preflight_global_options();
+  }
   $args = drush_get_arguments();
   $command_name = array_shift($args);
-  $root = \Drush::bootstrapManager()->getRoot();
+  $root = drush_get_context('DRUSH_SELECTED_DRUPAL_ROOT');
   $local_drush = drush_get_option('drush-script');
   if (empty($local_drush) && !empty($root)) {
     $local_drush = find_wrapper_or_launcher($root);
@@ -896,7 +682,22 @@ function drush_preflight_command_dispatch() {
     if (drush_get_option('no-label', FALSE)) {
       $backend_options['no-label'] = TRUE;
     }
-
+    // If the user specified a format, try to look up the
+    // default list separator for the specified format.
+    // If the user did not specify a different label separator,
+    // then pass in the default as an option, so that the
+    // separator between the items in the list and the site
+    // name will be consistent.
+    $format = drush_get_option('format', FALSE);
+    if ($format && !array_key_exists('label-separator', $multi_options)) {
+      $formatter = drush_load_engine('outputformat', $format);
+      if ($formatter) {
+        $list_separator = $formatter->get_info('list-separator');
+        if ($list_separator) {
+          $multi_options['label-separator'] = $list_separator;
+        }
+      }
+    }
     $values = drush_invoke_process($site_record, $command_name, $args, $multi_options, $backend_options);
   }
   if (isset($values)) {
@@ -921,7 +722,7 @@ function drush_preflight_command_dispatch() {
  */
 function drush_preflight_tilde_expansion(&$command) {
   // Skip tilde expansion for commands that use
-  // strict option handling, or those that explicitly
+  // stict option handling, or those that explicitly
   // turn it off via $command['tilde-expansion'] = FALSE.
   if ($command['tilde-expansion'] && !$command['strict-option-handling']) {
     $cli =& drush_get_context('cli');
@@ -984,10 +785,7 @@ function drush_shutdown() {
       case DRUSH_BOOTSTRAP_DRUPAL_FULL :
         ob_end_clean();
         _drush_log_drupal_messages();
-        $message = dt("Drush was not able to start (bootstrap) Drupal.\n");
-        $message .= dt("Hint: This error can only occur once the database connection has already been successfully initiated, therefore this error generally points to a site configuration issue, and not a problem connecting to the database.\n");
-        $message .= dt('More information may be available by running `drush status`');
-        drush_set_error($message);
+        drush_set_error('DRUSH_DRUPAL_BOOTSTRAP_ERROR');
         break;
     }
   }
@@ -997,6 +795,10 @@ function drush_shutdown() {
   }
   elseif (drush_get_context('DRUSH_QUIET', FALSE)) {
     ob_end_clean();
+    // If we are in pipe mode, emit the compact representation of the command, if available.
+    if (drush_get_context('DRUSH_PIPE')) {
+      drush_pipe_output();
+    }
   }
 
   // This way drush_return_status() will always be the last shutdown function (unless other shutdown functions register shutdown functions...)

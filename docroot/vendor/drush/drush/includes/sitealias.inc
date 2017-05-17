@@ -9,7 +9,6 @@
  * @see http://drupal.org/node/670460
  */
 
-use Drush\Commands\core\StatusCommands;
 use Drush\Log\LogLevel;
 use Webmozart\PathUtil\Path;
 
@@ -93,7 +92,7 @@ function drush_sitealias_check_site_env() {
 function drush_sitealias_create_self_alias() {
   $self_record = drush_sitealias_get_record('@self');
   if (!array_key_exists('root', $self_record) && !array_key_exists('remote-host', $self_record)) {
-    $drupal_root = \Drush::bootstrapManager()->getRoot();
+    $drupal_root = drush_get_context('DRUSH_SELECTED_DRUPAL_ROOT');
     $uri = drush_get_context('DRUSH_SELECTED_URI');
     if (!empty($drupal_root) && !empty($uri)) {
       // Create an alias '@self'
@@ -405,7 +404,7 @@ function drush_sitealias_alias_path($alias_path_context = NULL) {
 
   // If the user defined the root of a drupal site, then also
   // look for alias files in /drush and /sites/all/drush.
-  $drupal_root = \Drush::bootstrapManager()->getRoot();
+  $drupal_root = drush_get_context('DRUSH_SELECTED_DRUPAL_ROOT');
   if (!empty($drupal_root)) {
     $site_paths[] = drush_sitealias_alias_base_directory($drupal_root . '/../drush');
     $site_paths[] = drush_sitealias_alias_base_directory($drupal_root . '/drush');
@@ -668,7 +667,7 @@ function _drush_sitealias_find_and_load_alias($aliasname, $alias_path_context = 
       }
     }
     else {
-      $drupal_root = \Drush::bootstrapManager()->getRoot();
+      $drupal_root = drush_get_context('DRUSH_SELECTED_DRUPAL_ROOT');
     }
     if (isset($drupal_root) && !is_array($drupal_root)) {
       drush_sitealias_create_sites_alias($drupal_root);
@@ -1083,7 +1082,7 @@ function drush_sitealias_bootstrapped_site_name() {
     $site_name = $self_record['#name'];
   }
   if (!isset($site_name) || ($site_name == '@self')) {
-    $drupal_root = \Drush::bootstrapManager()->getRoot();
+    $drupal_root = drush_get_context('DRUSH_SELECTED_DRUPAL_ROOT');
     if (isset($drupal_root)) {
       $drupal_uri = drush_get_context('DRUSH_SELECTED_URI', 'default');
       $drupal_uri = str_replace('http://', '', $drupal_uri);
@@ -1124,7 +1123,7 @@ function drush_sitealias_resolve_path_references(&$alias_record, $test_string = 
     // site specified by $alias_record, then we can just
     // call _core_site_status_table() rather than use backend invoke.
     if (drush_sitealias_is_bootstrapped_site($alias_record) && drush_has_boostrapped(DRUSH_BOOTSTRAP_DRUPAL_FULL)) {
-      $status_values = StatusCommands::getPropertyList(['project-list' => $project_list]);
+      $status_values = _core_site_status_table($project_list);
     }
     else {
       $values = drush_invoke_process($alias_record, "core-status", array(), empty($project_list) ? array() : array('project' => $project_list), array('integrate' => FALSE, 'override-simulated' => TRUE));
@@ -1538,7 +1537,7 @@ function _drush_sitealias_find_record_for_local_site($alias, $drupal_root = NULL
   }
 
   if (!isset($drupal_root)) {
-    $drupal_root = \Drush::bootstrapManager()->getRoot();
+    $drupal_root = drush_get_context('DRUSH_SELECTED_DRUPAL_ROOT');
   }
 
   if (!empty($drupal_root)) {
@@ -1568,48 +1567,6 @@ function drush_sitealias_build_record_from_settings_file($site_settings_file, $a
   }
 
   return $alias_record;
-}
-
-/**
- * Use heuristics to attempt to convert from a site directory to a URI.
- * This function should only be used when the URI really is unknown, as
- * the mapping is not perfect.
- *
- * @param site_dir
- *   A directory, such as domain.com.8080.drupal
- *
- * @return string
- *   A uri, such as http://domain.com:8080/drupal
- */
-function _drush_sitealias_site_dir_to_uri($site_dir) {
-  // Protect IP addresses NN.NN.NN.NN by converting them
-  // temporarily to NN_NN_NN_NN for now.
-  $uri = preg_replace("/([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/", "$1_$2_$3_$4", $site_dir);
-  // Convert .[0-9]+. into :[0-9]+/
-  $uri = preg_replace("/\.([0-9]+)\./", ":$1/", $uri);
-  // Convert .[0-9]$ into :[0-9]
-  $uri = preg_replace("/\.([0-9]+)$/", ":$1", $uri);
-  // Convert .(com|net|org|info). into .(com|net|org|info)/
-  $uri = str_replace(array('.com.', '.net.', '.org.', '.info.'), array('.com/', '.net/', '.org/', '.info/'), $uri);
-
-  // If there is a / then convert every . after the / to /
-  // Then again, if we did this we would break if the path contained a "."
-  // I hope that the path would never contain a "."...
-  $pos = strpos($uri, '/');
-  if ($pos !== false) {
-    $uri = substr($uri, 0, $pos + 1) . str_replace('.', '/', substr($uri, $pos + 1));
-  }
-
-  // n.b. this heuristic works all the time if there is a port,
-  // it also works all the time if there is a port and no path,
-  // but it does not work for domains such as .co.jp with no path,
-  // and it can fail horribly if someone makes a domain like "info.org".
-  // Still, I think this is the best we can do short of consulting DNS.
-
-  // Convert from NN_NN_NN_NN back to NN.NN.NN.NN
-  $uri = preg_replace("/([0-9]+)_([0-9]+)_([0-9]+)_([0-9]+)/", "$1.$2.$3.$4", $site_dir);
-
-  return 'http://' . $uri;
 }
 
 /**
@@ -1776,6 +1733,17 @@ function _drush_sitealias_set_context_by_name($alias, $prefix = '') {
 }
 
 /**
+ * Given an alias record, overwrite its values with options
+ * from the command line and other drush contexts as specified
+ * by the provided prefix.  For example, if the prefix is 'source-',
+ * then any option 'source-foo' will set the value 'foo' in the
+ * alias record.
+ */
+function drush_sitealias_overlay_options($site_alias_record, $prefix) {
+  return array_merge($site_alias_record, drush_get_merged_prefixed_options($prefix));
+}
+
+/**
  * First return an option set via drush_sitealias_overlay_options, if
  * any, then fall back on "%" . $option from the path aliases.
  */
@@ -1908,6 +1876,15 @@ function _drush_sitealias_preflight_path($path) {
     }
   }
   return array('alias' => $alias, 'path' => $path, 'machine' => $machine);
+}
+
+/**
+ * Given a properly-escaped options string, replace any occurance of
+ * %files and so on embedded inside it with its corresponding path.
+ */
+function drush_sitealias_evaluate_paths_in_options($option_string) {
+  $path_aliases = _core_path_aliases();
+  return str_replace(array_keys($path_aliases), array_values($path_aliases), $option_string);
 }
 
 /**

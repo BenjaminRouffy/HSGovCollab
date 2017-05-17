@@ -203,7 +203,7 @@
     background: $white;
     margin-bottom: 40px;
     overflow: hidden;
-    padding: 20px 171px;
+    padding: 20px 15%;
 
     li {
       float: left;
@@ -285,6 +285,43 @@
       font-weight: 700;
       text-decoration: underline;
     }
+  }
+}
+
+@include breakpoint-for('.view-article', (to: laptop-small)) {
+  .tags-by-group {
+    margin-bottom: 20px;
+  }
+
+  .wrapper-field-type-target-id {
+    float: none;
+    width: 100%;
+  }
+
+  .search-form-wrapper {
+    float: none;
+    width: 50%;
+  }
+}
+
+@include breakpoint-for('.view-article', (to: tablet)) {
+  .search-form-wrapper {
+    width: 100%;
+  }
+
+  .tags-by-group {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@include breakpoint-for('.view-article', (to: mobileL)) {
+  .tags-by-group {
+    margin-bottom: 0;
+  }
+
+  .search-form-wrapper {
+    width: 100%;
   }
 }
 
@@ -592,6 +629,17 @@
       max-width: 40%;
     }
   }
+
+  .mobile & {
+    .wrapper-filters {
+      text-align: center;
+
+      > div {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
 }
 
 @include breakpoint-for('.view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: laptop-small)) {
@@ -625,6 +673,16 @@
   &:not(.with-filters) {
     form {
       max-width: 80%;
+    }
+  }
+
+  .mobile & {
+    .wrapper-filters {
+      text-align: left;
+      
+      > div {
+        float: left;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 id: product_news_node
-label: Map countries to new site into node.
+label: Map products to new site into node.
 migration_group: wp
 source:
   plugin: wp_post_child
@@ -16,9 +16,11 @@ process:
     plugin: default_value
     default_value: html
   created:
-    plugin: callback
-    callable: strtotime
-    source: post_date
+    - plugin: callback
+      callable: strtotime
+      source: post_date
+    - plugin: convert_wrong_dates
+
   changed:
     plugin: callback
     callable: strtotime

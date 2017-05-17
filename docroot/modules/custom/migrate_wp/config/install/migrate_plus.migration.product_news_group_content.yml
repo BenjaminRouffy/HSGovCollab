@@ -9,25 +9,25 @@ destination:
 process:
   type:
     plugin: default_value
-    default_value: country-group_node-news
+    default_value: product-group_node-news
   label: post_title
 
   # Group migration
   gid:
     plugin: migration_lookup
-    migration: country
+    migration: product
     source: parent_posts_post_name
 
   # Node relation
   entity_id:
     plugin: migration_lookup
-    migration: country_news_node
+    migration: product_news_node
     source: ID
 
 migration_dependencies:
   optional:
-    - country
-    - country_news_node
+    - product
+    - product_news_node
 dependencies:
   enforced:
     module:

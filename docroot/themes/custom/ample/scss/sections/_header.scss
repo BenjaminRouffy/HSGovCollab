@@ -73,6 +73,10 @@ header {
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500;
 
+  body:not(.toolbar-fixed) & {
+    top: 39px;
+  }
+
   .logo-wrapper {
     .logo {
       background: $white;

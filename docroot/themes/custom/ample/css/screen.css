@@ -172,6 +172,8 @@ body {
   min-height: 100%;
   min-width: 320px;
   overflow-x: hidden; }
+  body.mobile {
+    padding-top: 0 !important; }
   body.safari:not(.logged) {
     height: auto;
     padding-bottom: 1px; }
@@ -6499,6 +6501,8 @@ header {
   -webkit-transition: top .3s ease-in-out, min-height .2s ease-in-out;
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500; }
+  body:not(.toolbar-fixed) .header-static {
+    top: 39px; }
   .header-static .logo-wrapper .logo {
     background: #fff;
     border-bottom: 2px solid #ea3a32;

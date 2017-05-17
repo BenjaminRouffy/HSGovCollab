@@ -2431,6 +2431,12 @@ footer > .partners {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start; }
+  .country-list div:empty,
+  .project-list div:empty,
+  .contact-list div:empty,
+  .article-list div:empty,
+  .knowledge-vault-list div:empty {
+    display: none; }
   .country-list .country-item,
   .country-list .project-item,
   .country-list .contact-item,

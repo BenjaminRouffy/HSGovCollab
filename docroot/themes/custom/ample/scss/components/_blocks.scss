@@ -1082,6 +1082,10 @@
   flex-wrap: wrap;
   justify-content: flex-start;
 
+  div:empty {
+    display: none;
+  }
+
   .country-item,
   .project-item,
   .contact-item,

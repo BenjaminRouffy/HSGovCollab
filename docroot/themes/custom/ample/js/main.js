@@ -616,14 +616,21 @@
 
   Drupal.behaviors.calendar = {
     attach: function(context, settings) {
+      var $eventContainer = $('#event-response', context);
+
       $('.view-governance-area-calendar', context).on('mousedown', function(e) {
         var $target = $(e.target);
-        var $eventContainer = $('#event-response');
 
         if (!$eventContainer.is($target) && $eventContainer.has($target).length === 0) {
           $eventContainer.removeClass('active');
         }
-      })
+      });
+
+      $(document).on('keyup', function(e) {
+        if (e.keyCode == 27) {
+          $eventContainer.removeClass('active');
+        }
+      });
     }
   };
 

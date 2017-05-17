@@ -497,6 +497,14 @@ svg {
 .connect-icon > span::after {
   content: "+"; }
 
+.like-icon > a::after,
+.like-icon > span::after {
+  content: "Y"; }
+
+.dislike-icon > a::after,
+.dislike-icon > span::after {
+  content: "U"; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -5925,6 +5933,9 @@ form .social_login iframe {
 .view-governance-area-calendar .wrapper-filters > div {
   max-width: 30%; }
 
+.view-governance-area-calendar .wrapper-filters > div {
+  margin-bottom: 20px; }
+
 .view-governance-area-calendar .views-row {
   display: none; }
 
@@ -8086,17 +8097,18 @@ footer {
     min-height: 35px; }
   #calendar .fc-year-view .fc-content-skeleton tbody {
     display: none; }
-  #calendar .fc-year-view .has-event:not(.fc-other-month):before {
-    height: 4px;
-    width: 4px;
-    background: #8c2222;
-    border-radius: 50%;
-    content: "";
-    cursor: pointer;
-    display: block;
-    position: absolute;
-    top: 14px;
-    right: 20px; }
+  #calendar .fc-year-view .has-event:not(.fc-other-month) {
+    cursor: pointer; }
+    #calendar .fc-year-view .has-event:not(.fc-other-month):before {
+      height: 4px;
+      width: 4px;
+      background: #8c2222;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 14px;
+      right: 20px; }
   #calendar .fc-year-month-separator {
     display: none; }
   #calendar .fc-year-monthly-td {
@@ -8124,6 +8136,39 @@ footer {
     top: 50%; }
   #calendar .has-event:not(.fc-other-month) {
     position: relative; }
+
+.reviews-wrapper .field-content {
+  display: block;
+  line-height: 24px;
+  margin-bottom: 10px; }
+
+.reviews-wrapper .like,
+.reviews-wrapper .dislike {
+  display: inline-block;
+  padding-left: 20px;
+  position: relative;
+  text-indent: -9999px;
+  vertical-align: top; }
+  .reviews-wrapper .like:after,
+  .reviews-wrapper .dislike:after {
+    font-size: 1.225rem;
+    font-family: P4h, sans-serif;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0; }
+
+.reviews-wrapper .like:after {
+  content: "Y";
+  color: #18923b;
+  display: block;
+  text-indent: 0; }
+
+.reviews-wrapper .dislike:after {
+  content: "U";
+  color: #ea3a32;
+  display: block;
+  text-indent: 0; }
 
 @media (max-width: 991px) {
   #calendar .fc-year-main-table > tbody > tr {

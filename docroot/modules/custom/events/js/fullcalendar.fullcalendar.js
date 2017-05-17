@@ -36,27 +36,17 @@
           var times = $(this).find('.event-date time');
           var eventId = $(this).find('.event-id').text().trim();
           var langcode = drupalSettings.path.currentLanguage;
-          events.push({
-            title: $(this).find('.event-title').text().trim(),
-            start: $(times).eq(0).attr('datetime'),
-            end: new Date($(times).eq(1).attr('datetime')) + 1,
-            url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
-            color: $(this).find('.event-color').text().trim(),
-            allDay: true
-          });
-          $(this).hide();
-        });
-        callback(events);
-      },
-      eventAfterRender: function(event, element, view) {
-        var $calendar = $('#calendar').find('.fc-day-number');
-        var startIndex = 0;
-        var endIndex = 0;
+          var startDate = $(times).eq(0).attr('datetime').match(regex)[0];
+          var endDate = $(times).eq(1).attr('datetime').match(regex)[0];
+          var endDateIncr = new Date(endDate);
 
-        $calendar.each(function(index, el) {
-          var $this = $(this);
-          var startDate = event.start._i.match(regex)[0];
-          var endDate = formatDate(event.end._i);
+          endDateIncr.setDate(endDateIncr.getDate() + 1);
+
+          endDateIncr = formatDate(endDateIncr);
+
+          if (startDate !== endDate) {
+            endDate = endDateIncr;
+          }
 
           function formatDate(date) {
             var d = new Date(date),
@@ -70,6 +60,27 @@
             return [year, month, day].join('-');
           }
 
+          events.push({
+            title: $(this).find('.event-title').text().trim(),
+            start: startDate,
+            end: endDate,
+            url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
+            color: $(this).find('.event-color').text().trim()
+          });
+          $(this).hide();
+        });
+        callback(events);
+      },
+      eventAfterRender: function(event, element, view) {
+        var $calendar = $('#calendar').find('.fc-day-number');
+        var startIndex = 0;
+        var endIndex = 0;
+
+        $calendar.each(function(index, el) {
+          var $this = $(this);
+          var startDate = event.start._i;
+          var endDate = event.end._i;
+
           if (startDate === $this.data('date')) {
             startIndex = index;
           }
@@ -78,7 +89,7 @@
           }
         });
 
-        $calendar.slice(startIndex, endIndex + 1).addClass('has-event');
+        $calendar.slice(startIndex, endIndex).addClass('has-event');
       },
       eventAfterAllRender: function (view) {
         weekFullName = $('.fc-day-header').map(function() {

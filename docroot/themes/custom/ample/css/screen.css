@@ -8092,6 +8092,7 @@ footer {
     background: #8c2222;
     border-radius: 50%;
     content: "";
+    cursor: pointer;
     display: block;
     position: absolute;
     top: 14px;
@@ -8122,7 +8123,6 @@ footer {
     left: 50%;
     top: 50%; }
   #calendar .has-event:not(.fc-other-month) {
-    cursor: pointer;
     position: relative; }
 
 @media (max-width: 991px) {
@@ -8162,7 +8162,7 @@ footer {
     font-size: 1.3125rem;
     font-weight: 400;
     line-height: 26px;
-    margin: 0 0 5px; }
+    margin: 0 0 15px; }
   #event-response a {
     text-decoration: none; }
     #event-response a:hover {

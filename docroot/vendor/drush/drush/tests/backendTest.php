@@ -21,7 +21,7 @@ class backendCase extends CommandUnishTestCase {
   function testDispatchUsingAlias() {
     $this->markTestIncomplete('Started failing due to https://github.com/drush-ops/drush/pull/555');
 
-    $aliasPath = UNISH_SANDBOX . '/aliases';
+    $aliasPath = self::getSandbox() . '/aliases';
     mkdir($aliasPath);
     $aliasFile = $aliasPath . '/foo.aliases.drushrc.php';
     $aliasContents = <<<EOD
@@ -57,12 +57,12 @@ EOD;
    */
   function testOrigin() {
     $site_specification = 'user@server/path/to/drupal#sitename';
-    $exec = sprintf('%s %s version arg1 arg2 --simulate --ssh-options=%s 2>/dev/null | grep ssh', UNISH_DRUSH, self::escapeshellarg($site_specification), self::escapeshellarg('-i mysite_dsa'));
+    $exec = sprintf('%s %s version arg1 arg2 --simulate --ssh-options=%s 2>%s', self::getDrush(), self::escapeshellarg($site_specification), self::escapeshellarg('-i mysite_dsa'), self::escapeshellarg($this->bit_bucket()));
     $this->execute($exec);
     $bash = $this->escapeshellarg('drush  --uri=sitename --root=/path/to/drupal  version arg1 arg2 2>&1');
     $expected = "Simulating backend invoke: ssh -i mysite_dsa user@server $bash 2>&1";
     $output = $this->getOutput();
-    $this->assertEquals($expected, $output, 'Expected ssh command was built');
+    $this->assertContains($expected, $output, 'Expected ssh command was built');
 
     // Assure that arguments and options are passed along to a command thats not recognized locally.
     $this->drush('non-existent-command', array('foo'), array('bar' => 'baz', 'simulate' => NULL), $site_specification);
@@ -79,9 +79,10 @@ EOD;
    *   - JSON object is wrapped in expected delimiters.
   */
   function testTarget() {
-    $stdin = json_encode(array('filter'=>'sql'));
-    $exec = sprintf('echo %s | %s version --backend 2>/dev/null', self::escapeshellarg($stdin), UNISH_DRUSH);
-    $this->execute($exec);
+    // Without --strict=0, the version call would fail.
+    $stdin = json_encode(array('strict'=>0));
+    $exec = sprintf('%s version --not-exist --backend 2>%s', self::getDrush(), self::escapeshellarg($this->bit_bucket()));
+    $this->execute($exec, self::EXIT_SUCCESS, NULL, NULL, $stdin);
     $parsed = $this->parse_backend_output($this->getOutput());
     $this->assertTrue((bool) $parsed, 'Successfully parsed backend output');
     $this->assertArrayHasKey('log', $parsed);
@@ -89,7 +90,9 @@ EOD;
     $this->assertArrayHasKey('object', $parsed);
     $this->assertEquals(self::EXIT_SUCCESS, $parsed['error_status']);
     // This assertion shows that `version` was called and that stdin options were respected.
-    $this->assertStringStartsWith(' Drush Version ', $parsed['output']);
+    $this->assertEquals('drush-version', key($parsed['object']));
+    // @todo --backend not currently populating 'output' for Annotated commands.
+    // $this->assertStringStartsWith(' Drush Version ', $parsed['output']);
     $this->assertEquals('Starting Drush preflight.', $parsed['log'][1]['message']);
 
     // Check error propogation by requesting an invalid command (missing Drupal site).
@@ -106,7 +109,7 @@ EOD;
    *   - Insures that the drush output appears before the backend output start marker (output is displayed in 'real time' as it is produced).
    */
   function testRealtimeOutput() {
-    $exec = sprintf('%s core-status --backend --nocolor 2>&1', UNISH_DRUSH);
+    $exec = sprintf('%s core-status --backend --nocolor 2>&1', self::getDrush());
     $this->execute($exec);
 
     $output = $this->getOutput();

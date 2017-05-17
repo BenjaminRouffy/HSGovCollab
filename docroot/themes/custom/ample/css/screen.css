@@ -6501,7 +6501,7 @@ header {
   -webkit-transition: top .3s ease-in-out, min-height .2s ease-in-out;
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500; }
-  body:not(.toolbar-fixed) .header-static {
+  body.logged:not(.toolbar-fixed) .header-static {
     top: 39px; }
   .header-static .logo-wrapper .logo {
     background: #fff;

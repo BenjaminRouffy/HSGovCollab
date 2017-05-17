@@ -5,54 +5,13 @@
  * Allows restricting access to menu items per Group type membership.
  */
 
-use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\group\Entity\GroupContent;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
  */
 function menu_item_visibility_by_group_form_menu_link_content_menu_link_content_form_alter(array &$form, FormStateInterface $form_state) {
-  $config = \Drupal::config('menu_item_visibility_by_group.settings');
-
-  // Visibility settings.
-  $form['visibility_title'] = [
-    '#type' => 'item',
-    '#title' => t('Visibility by Group Type membership settings'),
-  ];
-
-  // Get the Plugin ID of menu item.
-  $menu_link = $form_state->getFormObject()->getEntity();
-
-  /** @var \Drupal\Core\Menu\MenuLinkInterface $menu_link */
-  $mlid = $menu_link->getPluginId();
-
-  // Per-role visibility.
-  $form['visibility']['group_type'] = [
-    '#type' => 'fieldset',
-    '#title' => t('Group Types'),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-    '#group' => 'visibility',
-    '#weight' => 10,
-  ];
-
-  $form['visibility']['group_type']['group_types'] = [
-    '#type' => 'checkboxes',
-    '#title' => t('Show menu link for specific group types members'),
-    '#options' => menu_item_visibility_by_group_get_group_types(),
-    '#description' => t('Show this menu link only for the selected Group type(s) members. If you select no Group types, the menu link will be visible to all users.'),
-  ];
-
-  $group_types = $config->get('mlid.' . $mlid . '.group_types');
-
-  if (is_array($group_types) && count($group_types) > 0) {
-    $form['visibility']['group_type']['group_types']['#default_value'] = $group_types;
-  }
-
-  $form['actions']['submit']['#submit'][] = 'menu_item_visibility_by_group_submit_handler';
 
   // Add description to link field.
   $form['link']['widget'][0]['uri']['#description'] = new TranslatableMarkup('Start typing the title of a piece of content to select it. You can also enter an internal path such as %add-node or an external URL such as %url. If you want to use entity aliases you should use path such as %group-entity or %node-entity. Enter %front to link to the front page.',
@@ -64,86 +23,4 @@ function menu_item_visibility_by_group_form_menu_link_content_menu_link_content_
       '%node-entity' => 'entity:node/{node_id}',
     ]
   );
-}
-
-/**
- * Submit function for menu add / edit form.
- */
-function menu_item_visibility_by_group_submit_handler(array &$form, FormStateInterface $form_state) {
-  $config = \Drupal::configFactory()->getEditable('menu_item_visibility_by_group.settings');
-
-  /** @var \Drupal\Core\Menu\MenuLinkInterface $menu_link */
-  $menu_link = $form_state->getFormObject()->getEntity();
-  $menu_id = $menu_link->getPluginId();
-  $rids = array_keys(array_filter($form_state->getValue('group_types')));
-
-  $config
-    ->set('mlid.' . $menu_id . '.group_types', $rids)
-    ->save();
-}
-
-/**
- * Implements hook_preprocess_menu().
- */
-function menu_item_visibility_by_group_preprocess_menu(&$variables) {
-  $items = $variables['items'];
-  $accessible_items = array();
-  foreach ($items as $key => &$item) {
-    // Enable recursive parsing.
-    if (!empty($item['below'])) {
-      $below = ['items' => $item['below']];
-      menu_item_visibility_by_group_preprocess_menu($below);
-      $item['below'] = $below['items'];
-    }
-
-    $user_role_visibility = menu_item_visibility_by_group_check($key);
-    if (!$user_role_visibility) {
-      continue;
-    }
-    else {
-      $accessible_items[$key] = $item;
-    }
-  }
-  $variables['items'] = $accessible_items;
-}
-
-/**
- * Helper function to check the role access for menu items.
- */
-function menu_item_visibility_by_group_check($rid) {
-  $group_types_array = \Drupal::config('menu_item_visibility_by_group.settings')->get('mlid.' . $rid . '.group_types');
-  $user = \Drupal::currentUser();
-
-  if (!$user->hasPermission('all access to groups') && !empty($group_types_array)) {
-    /* @var GroupMembershipLoader $membership_loader */
-    $membership_loader = \Drupal::service('group.membership_loader');
-    $user_memberships = $membership_loader->loadByUser();
-    $user_group_types_memberships = [];
-    /* @var GroupMembership $group_membership */
-    foreach ($user_memberships as $group_membership) {
-      if (!empty($group_membership->getGroup()->bundle())) {
-        // Add the groups the user is a member of to use later on.
-        $user_group_types_memberships[] = $group_membership->getGroup()->bundle();
-      }
-    }
-
-    return !empty(array_intersect($group_types_array, $user_group_types_memberships));
-  }
-
-  // No group types were selected; visible to all.
-  return TRUE;
-}
-
-/**
- * Get Group types.
- *
- * @return array
- *   Return array of Group Types.
- */
-function  menu_item_visibility_by_group_get_group_types(){
-  $group_types = \Drupal::entityTypeManager()->getStorage('group_type')->loadMultiple();
-
-  return array_map(function ($item) {
-    return $item->label();
-  }, $group_types);
 }

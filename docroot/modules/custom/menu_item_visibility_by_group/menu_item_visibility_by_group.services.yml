@@ -1,0 +1,4 @@
+services:
+  menu_item_visibility_by_group.check_by_group:
+    class: Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup
+    arguments: ['@group.membership_loader']

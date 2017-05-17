@@ -61,8 +61,9 @@ class CountryMenuBlock extends BlockBase {
   public function generateLinks(GroupInterface $group) {
     // @todo Create test.
     $links = [];
-
-    if (\Drupal::currentUser()->isAuthenticated()) {
+    /** @var \Drupal\Core\Session\AccountInterface $account */
+    $account = \Drupal::currentUser();
+    if ($account->isAuthenticated()) {
       $current_path = \Drupal::request()->getRequestUri();
       $group_url = Url::fromRoute("entity.group.canonical", [
         'group' => $group->id(),
@@ -130,7 +131,11 @@ class CountryMenuBlock extends BlockBase {
             break;
 
           case 'calendar':
-            $row = 'not-null';
+            // @TODO Dependencies injection.
+            $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
+            if ($check_by_group->check($account, ['governance_area'])) {
+              $row = ['not-null'];
+            }
             break;
 
           case 'faq':

@@ -142,6 +142,7 @@ class ComposerStaticInitDrupal8
         array (
             'Composer\\Semver\\' => 16,
             'Composer\\Installers\\' => 20,
+            'Colors\\' => 7,
             'Clue\\StreamFilter\\' => 18,
         ),
         'B' => 
@@ -448,6 +449,10 @@ class ComposerStaticInitDrupal8
         'Composer\\Installers\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
+        'Colors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mistic100/randomcolor/src',
         ),
         'Clue\\StreamFilter\\' => 
         array (

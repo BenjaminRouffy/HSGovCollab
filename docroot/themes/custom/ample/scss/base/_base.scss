@@ -15,6 +15,10 @@ body {
   min-width: 320px;
   overflow-x: hidden;
 
+  &.mobile {
+    padding-top: 0 !important;
+  }
+
   &.safari:not(.logged) {
     height: auto;
     padding-bottom: 1px;

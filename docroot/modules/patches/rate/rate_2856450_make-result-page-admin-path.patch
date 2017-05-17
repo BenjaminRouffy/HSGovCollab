@@ -1,0 +1,10 @@
+diff --git a/rate.routing.yml b/rate.routing.yml
+index 3a7d47b..171b35c 100644
+--- a/rate.routing.yml
++++ b/rate.routing.yml
+@@ -25,3 +25,5 @@ rate.results_page:
+     _controller: '\Drupal\rate\Controller\ResultsController::results'
+   requirements:
+     _permission: 'view rate results page'
++  options:
++    _admin_route: TRUE

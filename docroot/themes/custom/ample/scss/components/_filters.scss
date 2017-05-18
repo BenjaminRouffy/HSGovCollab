@@ -665,6 +665,7 @@
 
       > div {
         display: inline-block;
+        max-width: 30%;
         vertical-align: top;
       }
     }
@@ -688,6 +689,14 @@
       max-width: 60%;
     }
   }
+
+  .wrapper-filters {
+    > div {
+      .mobile & {
+
+      }
+    }
+  }
 }
 
 @include breakpoint-for('.view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: tablet)) {
@@ -707,10 +716,8 @@
 
   .mobile & {
     .wrapper-filters {
-      text-align: left;
-
       > div {
-        float: left;
+        max-width: calc(50% - 20px);
       }
     }
   }
@@ -730,6 +737,14 @@
   &:not(.with-filters) {
     form {
       max-width: 100%;
+    }
+  }
+
+  .mobile & {
+    .wrapper-filters {
+      > div {
+        max-width: 100%;
+      }
     }
   }
 }

@@ -6018,6 +6018,7 @@ form .social_login iframe {
   text-align: center; }
   .mobile .view-knowledge-vault .wrapper-filters > div {
     display: inline-block;
+    max-width: 30%;
     vertical-align: top; }
 
 @media (max-width: 991px) {
@@ -6041,10 +6042,8 @@ form .social_login iframe {
 @media (max-width: 767px) {
   .view-knowledge-vault:not(.with-filters) form {
     max-width: 80%; }
-  .mobile .view-knowledge-vault .wrapper-filters {
-    text-align: left; }
-    .mobile .view-knowledge-vault .wrapper-filters > div {
-      float: left; } }
+  .mobile .view-knowledge-vault .wrapper-filters > div {
+    max-width: calc(50% - 20px); } }
 
 @media (max-width: 479px) {
   .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
@@ -6054,6 +6053,8 @@ form .social_login iframe {
 
 @media (max-width: 479px) {
   .view-knowledge-vault:not(.with-filters) form {
+    max-width: 100%; }
+  .mobile .view-knowledge-vault .wrapper-filters > div {
     max-width: 100%; } }
 
 .view-country {
@@ -6520,6 +6521,8 @@ header {
     top: 0; }
   body:not(.toolbar-fixed) header:not(.collapsed) .header-fixed {
     top: 0; }
+  body:not(.toolbar-fixed) header:not(.collapsed) .bottom-head {
+    padding-top: 39px; }
 
 .header-static {
   background: #fff;
@@ -6904,7 +6907,9 @@ header {
 
 .bottom-head {
   background: #e9ecee;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-transition: padding .3s ease;
+  transition: padding .3s ease; }
   .bottom-head .anchor-links {
     margin: 0 auto;
     max-width: 1260px;

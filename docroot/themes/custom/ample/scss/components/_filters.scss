@@ -590,9 +590,18 @@
 }
 
 .view-governance-area-calendar {
-  .wrapper-filters {
+  .wrapper-filters {    
     > div {
       margin-bottom: 20px;
+    }
+    
+    .mobile & {
+      text-align: center;
+      
+      > div {
+        display: inline-block;
+        vertical-align: top;
+      }
     }
   }
 

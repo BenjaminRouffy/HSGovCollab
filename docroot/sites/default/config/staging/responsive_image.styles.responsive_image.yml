@@ -1,0 +1,36 @@
+uuid: 4c6e4b8d-6dfd-4e77-9e66-676f6d2c64f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.1300x900
+    - image.style.65x65
+    - image.style.large
+    - image.style.thumbnail
+  theme:
+    - ample
+id: responsive_image
+label: 'Responsive image'
+image_style_mappings:
+  -
+    breakpoint_id: ample.laptop
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1300x900
+  -
+    breakpoint_id: ample.laptop-small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 1300x900
+  -
+    breakpoint_id: ample.tablet
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: thumbnail
+  -
+    breakpoint_id: ample.mobileL
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 65x65
+breakpoint_group: ample
+fallback_image_style: large

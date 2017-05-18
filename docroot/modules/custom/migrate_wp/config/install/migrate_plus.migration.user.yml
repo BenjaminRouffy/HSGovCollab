@@ -1,0 +1,40 @@
+id: user
+label: Create mapping from old user to new.
+migration_group: wp
+source:
+  plugin: wp_user
+process:
+  mail: email
+  status:
+    plugin: static_map
+    source: status
+    map:
+      1: 1
+      -1: 0
+  field_first_name: firstname
+  field_last_name: lastname
+  name:
+    plugin: concat
+    source:
+      - firstname
+      - lastname
+    delimiter: ' '
+  created: created_at
+  field_organisation:
+    plugin: entity_generate
+    source: organisation
+    entity_type: taxonomy_term
+    bundle_key: vid
+    bundle: organizations
+    value_key: name
+  field_streetname: address
+  field_city: location
+  field_telephone: phone
+  field_mobilephone: mobile_phone
+destination:
+  plugin: 'entity:user'
+
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

@@ -4,6 +4,7 @@ migration_group: wp
 source:
   plugin: wp_post_child
   root_post: 6232
+  post_type: 'page'
 destination:
   plugin: entity:node
 process:

@@ -26,7 +26,7 @@ class WpPostChild extends SqlBase {
 
     $connection->condition('parent_posts.post_parent', $this->configuration['root_post'])
       ->condition('parent_posts.post_type', 'page')
-      ->condition('posts.post_type', 'page');
+      ->condition('posts.post_type', $this->configuration['post_type']);
     return $connection;
   }
 

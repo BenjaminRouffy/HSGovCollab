@@ -13,6 +13,11 @@ process:
     plugin: migration_lookup
     migration: posts_attachment
     source: post_id
+  created: file_mtime
+  uid:
+    - plugin: migration_lookup
+      migration: user
+      source: user_id
 dependencies:
   enforced:
     module:

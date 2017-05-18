@@ -14,10 +14,10 @@ process:
     default_value: 1
   created: file_mtime
   changed: file_mtime
-  # Change author of file
   uid:
-    plugin: default_value
-    default_value: 1
+    - plugin: migration_lookup
+      migration: user
+      source: user_id
 dependencies:
   enforced:
     module:

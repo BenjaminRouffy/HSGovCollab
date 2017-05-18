@@ -11,6 +11,8 @@ use Drupal\Core\Url;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Implements hook_views_data_alter().
@@ -108,4 +110,17 @@ function events_views_post_build(ViewExecutable $view) {
   foreach ($view->feedIcons as &$feed_icon) {
     $feed_icon['#theme'] = 'feed_icon__download';
   }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function events_vote_type_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
+  $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
+  if ($check_by_group->check($account, ['governance_area']) && 'view' == $operation) {
+    return AccessResult::allowed();
+  }
+
+  return AccessResult::neutral();
 }

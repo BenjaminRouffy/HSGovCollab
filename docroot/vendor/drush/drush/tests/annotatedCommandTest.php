@@ -2,8 +2,6 @@
 
 namespace Unish;
 
-use Webmozart\PathUtil\Path;
-
 /**
  * @group base
  */
@@ -47,13 +45,18 @@ class annotatedCommandCase extends CommandUnishTestCase {
     $this->setupModulesForTests($root);
 
     // These are not good asserts, but for the purposes of isolation....
-    $commandFile = Path::join($root, 'modules/contrib/woot/src/Commands/WootCommands.php');
+    $targetDir = $root . DIRECTORY_SEPARATOR . $this->drupalSitewideDirectory() . '/modules/woot';
+    if (UNISH_DRUPAL_MAJOR_VERSION == 8) {
+        $commandFile = $targetDir . "/src/Commands/WootCommands.php";
+    } else {
+        $commandFile = $targetDir . "/Commands/WootCommands.php";
+    }
     $this->assertFileExists(dirname(dirname(dirname($commandFile))));
     $this->assertFileExists(dirname(dirname($commandFile)));
     $this->assertFileExists(dirname($commandFile));
     $this->assertFileExists($commandFile);
 
-    // Enable our module. This will also clear the commandfile cache.
+    // Enable out module. This will also clear the commandfile cache.
     $this->drush('pm-enable', array('woot'), $options);
 
     // In theory this is not necessary, but this test keeps failing.
@@ -142,38 +145,44 @@ EOT;
     $this->assertEquals($expected, json_encode($data));
 
     // drush try-formatters --help
-    $this->drush('try-formatters', array(), $options + ['help' => NULL]);
+    $this->drush('try-formatters', array(), $options + ['help' => NULL], NULL, NULL, self::EXIT_SUCCESS);
     $output = $this->getOutput();
     $this->assertContains('Demonstrate formatters', $output);
     $this->assertContains('try:formatters --fields=first,third', $output);
     $this->assertContains('try:formatters --fields=III,II', $output);
-    // $this->assertContains('--fields=<first, second, third>', $output);
-    $this->assertContains('Available fields:', $output);
-    $this->assertContains('[default: "table"]', $output);
+    $this->assertContains('--fields=<first, second, third>', $output);
+    $this->assertContains('Fields to output. All available', $output);
+    $this->assertContains('--format=<table>', $output);
+    $this->assertContains('Select output format. Available:', $output);
     $this->assertContains('Aliases: try-formatters', $output);
 
+    // If we are running Drupal version 8 or later, then also check to
+    // see if the demo:greet and annotated:greet commands are available.
+    if (UNISH_DRUPAL_MAJOR_VERSION >= 8) {
+        $this->drush('demo:greet symfony', array(), $options, NULL, NULL, self::EXIT_SUCCESS);
+        $output = $this->getOutput();
+        $this->assertEquals('Hello symfony', $output);
 
+        $this->drush('annotated:greet symfony', array(), $options, NULL, NULL, self::EXIT_SUCCESS);
+        $output = $this->getOutput();
+        $this->assertEquals('Hello symfony', $output);
+    }
 
-    $this->drush('demo:greet symfony', array(), $options);
-    $output = $this->getOutput();
-    $this->assertEquals('Hello symfony', $output);
-
-    $this->drush('annotated:greet symfony', array(), $options);
-    $output = $this->getOutput();
-    $this->assertEquals('Hello symfony', $output);
+    // Flush the Drush cache so that our 'woot' command is not cached.
+    $this->drush('cache-clear', array('drush'), $options, NULL, NULL, self::EXIT_SUCCESS);
   }
 
   public function setupGlobalExtensionsForTests() {
     $globalExtension = __DIR__ . '/resources/global-includes';
-    $targetDir = self::getSandbox() . DIRECTORY_SEPARATOR . 'global-includes';
+    $targetDir = UNISH_SANDBOX . DIRECTORY_SEPARATOR . 'global-includes';
     $this->mkdir($targetDir);
     $this->recursive_copy($globalExtension, $targetDir);
     return $targetDir;
   }
 
   public function setupModulesForTests($root) {
-    $wootModule = Path::join(__DIR__, '/resources/modules/d8/woot');
-    $targetDir = Path::join($root, 'modules/contrib/woot');
+    $wootModule = __DIR__ . '/resources/modules/d' . UNISH_DRUPAL_MAJOR_VERSION . '/woot';
+    $targetDir = $root . DIRECTORY_SEPARATOR . $this->drupalSitewideDirectory() . '/modules/woot';
     $this->mkdir($targetDir);
     $this->recursive_copy($wootModule, $targetDir);
   }

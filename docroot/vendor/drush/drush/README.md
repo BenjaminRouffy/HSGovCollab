@@ -4,8 +4,8 @@ Drush is a command line shell and Unix scripting interface for Drupal. Drush cor
 
 Resources
 -----------
-* [Installing (and Upgrading)](http://docs.drush.org/en/master/install/) [(Drush8)](http://docs.drush.org/en/8.x/install/)
-* [General Documentation](http://docs.drush.org) [(Drush8)](http://docs.drush.org/en/8.x)
+* [Installing (and Upgrading)](http://docs.drush.org/en/master/install/)
+* [General Documentation](http://docs.drush.org)
 * [API Documentation](http://api.drush.org)
 * [Drush Commands](http://drushcommands.com)
 * Subscribe [this atom feed](https://github.com/drush-ops/drush/releases.atom) to receive notification on new releases. Also, [Version eye](https://www.versioneye.com/).
@@ -42,7 +42,5 @@ Credits
 * Redesigned by [Franz Heinzmann](http://unbiskant.org) in May 2007 for Drupal 5.
 * Maintained by [Moshe Weitzman](http://drupal.org/moshe) with much help from
   the folks listed at https://github.com/orgs/drush-ops/people.
-* Thanks to [JetBrains](https://www.jetbrains.com) for [supporting this project and open source software](https://www.jetbrains.com/buy/opensource/).
 
 ![Drush Logo](drush_logo-black.png)
-[![PhpStorm Logo](misc/icon_PhpStorm.png)](https://www.jetbrains.com/phpstorm/)

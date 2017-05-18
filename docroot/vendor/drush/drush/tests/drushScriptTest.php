@@ -28,9 +28,12 @@ class drushScriptCase extends CommandUnishTestCase {
   }
 
   public function testDrushFinder() {
-    $this->markTestSkipped('The Finder is not long for this world. Disabling this test.');
+    // We don't really need a real Drupal site; we could
+    // create a fake site, as long as we had the right signature
+    // files to allow us to bootstrap to the DRUPAL_ROOT phase.
+    $this->setUpDrupal(1, TRUE);
 
-    $globalDrushDotPhp = Path::join(self::getDrush(), '../drush.php');
+    $globalDrushDotPhp = Path::join(UNISH_DRUSH, '../drush.php');
 
     // Control: test `drush --root ` ... with no site-local Drush
     $drush_location = $this->getDrushLocation();
@@ -63,9 +66,9 @@ class drushScriptCase extends CommandUnishTestCase {
       $drush_location = $this->getDrushLocation(array('root' => $this->webroot()));
       $this->assertEquals(realpath($drush_root . '/drush.php'), realpath($drush_location));
       // Test to see if --local was added
-      $result = $this->drush('ev', array('var_export(drush_get_option("local"));'), array('root' => $this->webroot()));
+      $result = $this->drush('ev', array('return drush_get_option("local");'), array('root' => $this->webroot()));
       $output = $this->getOutput();
-      $this->assertEquals("true", $output);
+      $this->assertEquals("TRUE", $output);
 
       // Get rid of the symlink and site-local Drush we created
       $this->remove_site_local_drush($drush_base);
@@ -137,9 +140,8 @@ class drushScriptCase extends CommandUnishTestCase {
     $options += array(
       'format' => 'yaml',
       'verbose' => NULL,
-      'fields' => 'drush-script',
     );
-    $result = $this->drush('status', [], $options);
+    $result = $this->drush('status', array('Drush script'), $options);
 
     $output = $this->getOutput();
     list($key, $value) = explode(": ", $output);

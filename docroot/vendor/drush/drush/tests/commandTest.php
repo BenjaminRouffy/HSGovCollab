@@ -48,6 +48,10 @@ class commandCase extends CommandUnishTestCase {
     $return = $this->drush('version', array(), array('pipe' => NULL));
     // Add an unknown option --magic=1234 and insure it fails
     $return = $this->drush('version', array(), array('pipe' => NULL, 'magic' => 1234), NULL, NULL, self::EXIT_ERROR);
+    // Finally, add in a hook that uses hook_drush_help_alter to allow the 'magic' option.
+    // We need to run 'drush cc drush' to clear the commandfile cache; otherwise, our include will not be found.
+    $include_path = dirname(__FILE__) . '/hooks/magic_help_alter';
+    $this->drush('version', array(), array('include' => $include_path, 'pipe' => NULL, 'magic' => '1234', 'strict' => NULL));
   }
 
   /**
@@ -84,6 +88,10 @@ class commandCase extends CommandUnishTestCase {
     $options = array(
       'root' => $root,
       'uri' => $uri,
+      'cache' => NULL,
+    );
+    $this->drush('pm-download', array('devel'), $options);
+    $options += array(
       'backend' => NULL, // To obtain and parse the error log.
     );
     $this->drush('devel-reinstall', array(), $options, NULL, NULL, self::EXIT_ERROR);

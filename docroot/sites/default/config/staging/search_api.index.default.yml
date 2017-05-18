@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_organization
     - field.storage.node.field_category
     - field.storage.group.field_summary
+    - field.storage.group.field_group_status
     - search_api.server.default
   module:
     - search_api
@@ -126,6 +127,19 @@ field_settings:
     dependencies:
       config:
         - field.storage.group.field_summary
+  field_group_status:
+    label: 'Group Status'
+    datasource_id: 'entity:group'
+    property_path: field_group_status
+    type: string
+    dependencies:
+      config:
+        - field.storage.group.field_group_status
+  id:
+    label: ID
+    datasource_id: 'entity:group'
+    property_path: id
+    type: integer
 datasource_settings:
   'entity:node':
     bundles:
@@ -142,14 +156,17 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  rendered_item: {  }
   add_url: {  }
-  entity_status: {  }
   aggregated_field: {  }
   content_access:
     weights:
       preprocess_query: -30
+  entity_status: {  }
+  rendered_item: {  }
   file_attachments: {  }
+  group_access:
+    weights:
+      preprocess_query: -30
   parent_groups: {  }
 tracker_settings:
   default: {  }

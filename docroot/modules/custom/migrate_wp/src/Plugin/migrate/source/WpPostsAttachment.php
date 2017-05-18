@@ -31,6 +31,7 @@ class WpPostsAttachment extends SqlBase {
     $connection->join('intra_postmeta', 'ip', 'ip.post_id = t.ID');
 
     $connection->addField('ip', 'post_id', 'post_id');
+    $connection->addField('t', 'post_title', 'post_title');
     $connection->addField('ip', 'post_id', 'file_id');
     $connection->addExpression('SUBSTRING_INDEX(ip.meta_value, \'/\', -1)', 'file_name');
     $connection->addExpression('CONCAT(\'wp-content://\', ip.meta_value)', 'file_path');
@@ -49,6 +50,7 @@ class WpPostsAttachment extends SqlBase {
   public function fields() {
     $fields = [
       'file_id' => $this->t('File ID'),
+      'post_title' => $this->t('Post Title'),
       'file_name' => $this->t('File name'),
       'file_path' => $this->t('File path'),
       'file_mtime' => $this->t('File date'),

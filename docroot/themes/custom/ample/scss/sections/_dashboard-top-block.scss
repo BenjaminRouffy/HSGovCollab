@@ -164,3 +164,19 @@
     width: 100%;
   }
 }
+
+@include breakpoint-for('.dashboard', (to: tablet)) {
+  .content {
+    padding: 0 10%;
+  }
+}
+
+@include breakpoint-for('.dashboard', (to: mobileL)) {
+  .sidebar {
+    padding: 20px;
+  }
+
+  .content {
+    padding: 0 20px;
+  }
+}

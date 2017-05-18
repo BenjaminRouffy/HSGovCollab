@@ -6514,7 +6514,7 @@ header {
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500; }
   body.logged:not(.toolbar-fixed) .header-static {
-    top: 39px; }
+    margin-top: 39px; }
   .header-static .logo-wrapper .logo {
     background: #fff;
     border-bottom: 2px solid #ea3a32;
@@ -8666,6 +8666,16 @@ footer {
   .dashboard .content {
     float: none;
     width: 100%; } }
+
+@media (max-width: 767px) {
+  .dashboard .content {
+    padding: 0 10%; } }
+
+@media (max-width: 479px) {
+  .dashboard .sidebar {
+    padding: 20px; }
+  .dashboard .content {
+    padding: 0 20px; } }
 
 .document-list {
   background: #fff;

@@ -1,0 +1,24 @@
+ample.mobileL:
+  label: mobileL
+  mediaQuery: 'all and (max-width: 479px)'
+  weight: 0
+  multipliers:
+    - 1x
+ample.tablet:
+  label: tablet
+  mediaQuery: 'all and (max-width: 767px)'
+  weight: 1
+  multipliers:
+    - 1x
+ample.laptop-small:
+  label: laptop-small
+  mediaQuery: 'all and (max-width: 991px)'
+  weight: 2
+  multipliers:
+    - 1x
+ample.laptop:
+  label: laptop
+  mediaQuery: 'all'
+  weight: 3
+  multipliers:
+    - 1x

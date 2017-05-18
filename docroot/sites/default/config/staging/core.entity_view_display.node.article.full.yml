@@ -18,10 +18,11 @@ dependencies:
     - field.field.node.article.field_tags
     - field.field.node.article.field_type
     - node.type.article
+    - responsive_image.styles.responsive_image
   module:
     - datetime
     - entity_reference_revisions
-    - image
+    - responsive_image
     - text
     - user
 id: node.article.full
@@ -92,10 +93,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: responsive_image
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
     region: content
   field_pros:
     type: string

@@ -49,8 +49,8 @@ define('DRUSH_CACHE_LIFETIME_DEFAULT', 86400);
  * Include a file, selecting a version specific file if available.
  *
  * For example, if you pass the path "/var/drush" and the name
- * "update" when bootstrapped on a Drupal 8 site it will first check for
- * the presence of "/var/drush/update_8.inc" in include it if exists. If this
+ * "update" when bootstrapped on a Drupal 6 site it will first check for
+ * the presence of "/var/drush/update_6.inc" in include it if exists. If this
  * file does NOT exist it will proceed and check for "/var/drush/update.inc".
  * If neither file exists, it will return FALSE.
  *
@@ -123,6 +123,68 @@ function drush_get_class($class_name, $constructor_args = array(), $variations =
 }
 
 /**
+ * Generate an .ini file. used by archive-dump."
+ *
+ * @param array $ini
+ *   A two dimensional associative array where top level are sections and
+ *   second level are key => value pairs.
+ *
+ * @return string
+ *   .ini formatted text.
+ */
+function drush_export_ini($ini) {
+  $output = '';
+  foreach ($ini as $section => $pairs) {
+    if ($section) {
+      $output .= "[$section]\n";
+    }
+
+    foreach ($pairs as $k => $v) {
+      if ($v) {
+        $output .= "$k = \"$v\"\n";
+      }
+    }
+  }
+  return $output;
+}
+
+/**
+ * Generate code friendly to the Drupal .info format from a structured array.
+ * Mostly copied from http://drupalcode.org/viewvc/drupal/contributions/modules/features/features.export.inc.
+ *
+ * @param $info
+ *   An array or single value to put in a module's .info file.
+ *
+ * @param boolean $integer_keys
+ *   Use integer in keys.
+ *
+ * @param $parents
+ *   Array of parent keys (internal use only).
+ *
+ * @return
+ *   A code string ready to be written to a module's .info file.
+ */
+function drush_export_info($info, $integer_keys = FALSE, $parents = array()) {
+  $output = '';
+  if (is_array($info)) {
+    foreach ($info as $k => $v) {
+      $child = $parents;
+      $child[] = $k;
+      $output .= drush_export_info($v, $integer_keys, $child);
+    }
+  }
+  else if (!empty($info) && count($parents)) {
+    $line = array_shift($parents);
+    foreach ($parents as $key) {
+      $line .= (!$integer_keys && is_numeric($key)) ? "[]" : "[{$key}]";
+    }
+    $line .=  " = \"{$info}\"\n";
+    return $line;
+  }
+  return $output;
+}
+
+/**
  * Convert a csv string, or an array of items which
  * may contain csv strings, into an array of items.
  *
@@ -168,8 +230,8 @@ function drush_flatten_array($a) {
 }
 
 /**
- * Get the available global options. Used by list/help commands. All other users
- * should pull options from $application.
+ * Get the available global options. Used by help command. Command files may
+ * modify this list using hook_drush_help_alter().
  *
  * @param boolean $brief
  *   Return a reduced set of important options. Used by help command.
@@ -207,61 +269,84 @@ function drush_flatten_array($a) {
  *     - description: The help text for this item. displayed by `drush help`.
  */
 function drush_get_global_options($brief = FALSE) {
-  $options['root']               = array('short-form' => 'r', 'short-has-arg' => TRUE, 'never-post' => TRUE, 'description' => "Drupal root directory to use.", 'example-value' => 'path');
-  $options['uri']                = array('short-form' => 'l', 'short-has-arg' => TRUE, 'never-post' => TRUE, 'description' => 'URI of the drupal site to use.', 'example-value' => 'http://example.com:8888');
-  $options['verbose']            = array('short-form' => 'v', 'context' => 'DRUSH_VERBOSE', 'description' => 'Display extra information about the command.', 'symfony-conflict' => TRUE);
-  $options['debug']              = array('short-form' => 'd', 'context' => 'DRUSH_DEBUG', 'description' => 'Display even more information.');
+  $options['root']               = array('short-form' => 'r', 'short-has-arg' => TRUE, 'never-post' => TRUE, 'description' => "Drupal root directory to use (default: current directory).", 'example-value' => 'path');
+  $options['uri']                = array('short-form' => 'l', 'short-has-arg' => TRUE, 'never-post' => TRUE, 'description' => 'URI of the drupal site to use (only needed in multisite environments or when running on an alternate port).', 'example-value' => 'http://example.com:8888');
+  $options['verbose']            = array('short-form' => 'v', 'context' => 'DRUSH_VERBOSE', 'description' => 'Display extra information about the command.');
+  $options['debug']              = array('short-form' => 'd', 'context' => 'DRUSH_DEBUG', 'description' => 'Display even more information, including internal messages.');
   $options['yes']                = array('short-form' => 'y', 'context' => 'DRUSH_AFFIRMATIVE', 'description' => "Assume 'yes' as answer to all prompts.");
   $options['no']                 = array('short-form' => 'n', 'context' => 'DRUSH_NEGATIVE', 'description' => "Assume 'no' as answer to all prompts.");
+  $options['simulate']           = array('short-form' => 's', 'context' => 'DRUSH_SIMULATE', 'never-propagate' => TRUE, 'description' => "Simulate all relevant actions (don't actually change the system).");
+  $options['pipe']               = array('short-form' => 'p', 'hidden' => TRUE, 'description' => "Emit a compact representation of the command for scripting.");
   $options['help']               = array('short-form' => 'h', 'description' => "This help system.");
 
   if (!$brief) {
-    $options['simulate']           = array('short-form' => 's', 'context' => 'DRUSH_SIMULATE', 'never-propagate' => TRUE, 'description' => "Simulate all relevant actions (don't actually change the system).", 'symfony-conflict' => TRUE);
-    $options['pipe']               = array('short-form' => 'p', 'hidden' => TRUE, 'description' => "Emit a compact representation of the command for scripting.");
+    $options['version']            = array('description' => "Show drush version.");
     $options['php']                = array('description' => "The absolute path to your PHP interpreter, if not 'php' in the path.", 'example-value' => '/path/to/file', 'never-propagate' => TRUE);
     $options['interactive']        = array('short-form' => 'ia', 'description' => "Force interactive mode for commands run on multiple targets (e.g. `drush @site1,@site2 cc --ia`).", 'never-propagate' => TRUE);
     $options['tty']                = array('hidden' => TRUE, 'description' => "Force allocation of tty for remote commands", 'never-propagate' => TRUE);
     $options['quiet']               = array('short-form' => 'q', 'description' => 'Suppress non-error messages.');
-    $options['include']             = array('short-form' => 'i', 'short-has-arg' => TRUE, 'context' => 'DRUSH_INCLUDE', 'never-post' => TRUE, 'propagate-cli-value' => TRUE, 'merge-pathlist' => TRUE, 'description' => "A list of additional directory paths to search for Drush commands. Commandfiles should be placed in a subfolder called 'Commands'.", 'example-value' => '/path/dir');
+    $options['include']             = array('short-form' => 'i', 'short-has-arg' => TRUE, 'context' => 'DRUSH_INCLUDE', 'never-post' => TRUE, 'propagate-cli-value' => TRUE, 'merge-pathlist' => TRUE, 'description' => "A list of additional directory paths to search for drush commands.", 'example-value' => '/path/dir');
     $options['exclude']             = array('propagate-cli-value' => TRUE, 'never-post' => TRUE, 'merge-pathlist' => TRUE, 'description' => "A list of files and directory paths to exclude from consideration when searching for drush commandfiles.", 'example-value' => '/path/dir');
     $options['config']              = array('short-form' => 'c', 'short-has-arg' => TRUE, 'context' => 'DRUSH_CONFIG', 'never-post' => TRUE, 'propagate-cli-value' => TRUE, 'merge-pathlist' => TRUE, 'description' => "Specify an additional config file to load. See example.drushrc.php.", 'example-value' => '/path/file');
+    $options['user']                = array('short-form' => 'u', 'short-has-arg' => TRUE, 'propagate-cli-value' => TRUE, 'description' => "Specify a Drupal user to login with. May be a name or a number.", 'example-value' => 'name_or_number');
     $options['backend']             = array('short-form' => 'b', 'never-propagate' => TRUE, 'description' => "Hide all output and return structured data.");
     $options['choice']              = array('description' => "Provide an answer to a multiple-choice prompt.", 'example-value' => 'number');
+    $options['variables']           = array('description' => "Comma delimited list of name=value pairs. These values take precedence even over settings.php variable overrides.", 'example-value' => 'foo=bar,baz=yaz');
     $options['search-depth']        = array('description' => "Control the depth that drush will search for alias files.", 'example-value' => 'number');
     $options['ignored-modules']     = array('description' => "Exclude some modules from consideration when searching for drush command files.", 'example-value' => 'token,views');
     $options['no-label']            = array('description' => "Remove the site label that drush includes in multi-site command output (e.g. `drush @site1,@site2 status`).");
-    $options['label-separator']     = array('description' => "Specify the separator to use in multi-site command output (e.g. `drush @sites pm-list --label-separator=',' --format=csv`).", 'example-value' => ',');
+    $options['label-separator']     = array('description' => "Specify the separator to use in multi-site command output (e.g. `drush @sites pm-list --label-separator=',' --format=csv`).");
     $options['nocolor']             = array('context' => 'DRUSH_NOCOLOR', 'propagate-cli-value' => TRUE, 'description' => "Suppress color highlighting on log messages.");
+    $options['show-passwords']      = array('description' => "Show database passwords in commands that display connection information.");
     $options['show-invoke']         = array('description' => "Show all function names which could have been called for the current command. See drush_invoke().");
+    $options['watchdog']            = array('description' => "Control logging of Drupal's watchdog() to drush log. Recognized values are 'log', 'print', 'disabled'. Defaults to log. 'print' shows calls to admin but does not add them to the log.", 'example-value' => 'print');
     $options['cache-default-class'] = array('description' => "A cache backend class that implements CacheInterface. Defaults to JSONCache.", 'example-value' => 'JSONCache');
     $options['cache-class-<bin>']   = array('description' => "A cache backend class that implements CacheInterface to use for a specific cache bin.", 'example-value' => 'className');
-    $options['early']               = array('description' => "Include a file (with relative or full path) and call the drush_early_hook() function (where 'hook' is the filename)");
+    $options['early']               = array('description' => "Include a file (with relative or full path) and call the drush_early_hook() function (where 'hook' is the filename). The function is called pre-bootstrap and offers an opportunity to alter the drush bootstrap environment or process (returning FALSE from the function will continue the bootstrap), or return output very rapidly (e.g. from caches). See includes/complete.inc for an example.");
     $options['alias-path']          = array('context' => 'ALIAS_PATH', 'local-context-only' => TRUE, 'merge-pathlist' => TRUE, 'propagate-cli-value' => TRUE, 'description' => "Specifies the list of paths where drush will search for alias files.", 'example-value' => '/path/alias1:/path/alias2');
+    $options['backup-location']     = array('description' => "Specifies the directory where drush will store backups.", 'example-value' => '/path/to/dir');
     $options['confirm-rollback']    = array('description' => 'Wait for confirmation before doing a rollback when something goes wrong.');
     $options['complete-debug']      = array('hidden' => TRUE, 'description' => "Turn on debug mode forf completion code");
     $options['php-options']         = array('description' => "Options to pass to `php` when running drush.  Only effective when using the drush.launcher script.", 'never-propagate' => TRUE, 'example-value' => '-d error_reporting="E_ALL"');
-    $options['halt-on-error']       = array('propagate-cli-value' => TRUE, 'description' => "Manage recoverable errors. Values: 1=Execution halted. 0=Execution continues.");
-    $options['deferred-sanitization'] = array('hidden' => TRUE, 'description' => "Defer calculating the sanitization operations until after the DB is copied. This is the default if the source DB is remote.");
-    $options['remote-host']         = array('hidden' => TRUE, 'description' => 'Remote site to execute drush command on. Managed by site alias.', 'example-value' => 'http://example.com');
-    $options['remote-user']         = array('hidden' => TRUE, 'description' => 'User account to use with a remote drush command. Managed by site alias.', 'example-value' => 'www-data');
-    $options['remote-os']           = array('hidden' => TRUE, 'description' => 'The operating system used on the remote host. Managed by site alias.', 'example-value' => 'linux');
-    $options['site-list']           = array('hidden' => TRUE, 'description' => 'List of sites to run commands on. Managed by site alias.', 'example-value' => '@site1,@site2');
-    $options['reserve-margin']      = array('hidden' => TRUE, 'description' => 'Remove columns from formatted opions. Managed by multi-site command handling.', 'example-value' => 'number');
-    $options['strict']              = array('propagate' => TRUE, 'description' => 'Return an error on unrecognized options. --strict=0: Allow unrecognized options.');
+    $options['halt-on-error']       = array('propagate-cli-value' => TRUE, 'description' => "Controls error handling of recoverable errors (E_RECOVERABLE_ERROR). --halt-on-error=1: Execution is halted. --halt-on-error=0: Drush execution continues");
+    $options['deferred-sanitization'] = array('hidden' => TRUE, 'description' => "Defer calculating the sanitization operations until after the database has been copied. This is done automatically if the source database is remote.");
+    $options['remote-host']         = array('hidden' => TRUE, 'description' => 'Remote site to execute drush command on. Managed by site alias.');
+    $options['remote-user']         = array('hidden' => TRUE, 'description' => 'User account to use with a remote drush command. Managed by site alias.');
+    $options['remote-os']           = array('hidden' => TRUE, 'description' => 'The operating system used on the remote host. Managed by site alias.');
+    $options['site-list']           = array('hidden' => TRUE, 'description' => 'List of sites to run commands on. Managed by site alias.');
+    $options['reserve-margin']      = array('hidden' => TRUE, 'description' => 'Remove columns from formatted opions. Managed by multi-site command handling.');
+    $options['strict']              = array('propagate' => TRUE, 'description' => 'Return an error on unrecognized options. --strict=0: Allow unrecognized options.  --strict=2: Also return an error on any "warning" log messages.  Optional.  Default is 1.');
     $options['command-specific']    = array('hidden' => TRUE, 'merge-associative' => TRUE, 'description' => 'Command-specific options.');
     $options['site-aliases']        = array('hidden' => TRUE, 'merge-associative' => TRUE, 'description' => 'List of site aliases.');
     $options['shell-aliases']       = array('hidden' => TRUE, 'merge' => TRUE, 'never-propagate' => TRUE, 'description' => 'List of shell aliases.');
     $options['path-aliases']        = array('hidden' => TRUE, 'never-propagate' => TRUE, 'description' => 'Path aliases from site alias.');
     $options['ssh-options']         = array('never-propagate' => TRUE, 'description' => 'A string of extra options that will be passed to the ssh command', 'example-value' => '-p 100');
+    $options['editor']              = array('never-propagate' => TRUE, 'description' => 'A string of bash which launches user\'s preferred text editor. Defaults to ${VISUAL-${EDITOR-vi}}.', 'example-value' => 'vi');
+    $options['bg']                  = array('never-propagate' => TRUE, 'description' => 'Run editor in the background. Does not work with editors such as `vi` that run in the terminal. Supresses config-import at the end.');
+    $options['db-url']              = array('hidden' => TRUE, 'description' => 'A Drupal 6 style database URL. Used by various commands.', 'example-value' => 'mysql://root:pass@127.0.0.1/db');
     $options['drush-coverage']      = array('hidden' => TRUE, 'never-post' => TRUE, 'propagate-cli-value' => TRUE, 'description' => 'File to save code coverage data into.');
+    $options['redirect-port']       = array('hidden' => TRUE, 'never-propagate' => TRUE, 'description' => 'Used by the user-login command to specify the redirect port on the local machine; it therefore would not do to pass this to the remote machines.');
+    $options['cache-clear']         = array('propagate' => TRUE, 'description' => 'If 0, Drush skips normal cache clearing; the caller should then clear if needed.', 'example-value' => '0', );
     $options['local']               = array('propagate' => TRUE, 'description' => 'Don\'t look in global locations for commandfiles, config, and site aliases');
 
+    $command = array(
+        'options' => $options,
+        '#brief' => FALSE,
+      ) + drush_command_defaults('global-options', 'global_options', __FILE__);
+    drush_command_invoke_all_ref('drush_help_alter', $command);
 
-
-    // @todo How can Annotated Commands alter global options?
-    // drush_command_invoke_all_ref('drush_help_alter', $command);
+    $options = $command['options'];
   }
   return $options;
+}
+
+/**
+ * Exits with a message. In general, you should use drush_set_error() instead of
+ * this function. That lets drush proceed with other tasks.
+ * TODO: Exit with a correct status code.
+ */
+function drush_die($msg = NULL, $status = NULL) {
+  die($msg ? "drush: $msg\n" : '');
 }
 
 /**
@@ -306,8 +391,6 @@ function _drush_is_drush_shebang_script($script_filename) {
  *
  * @return bool
  *   TRUE if the user enters "y" or FALSE if "n".
- *
- * @deprecated Use $this->io()->confirm() in an Annotated Command.
  */
 function drush_confirm($msg, $indent = 0) {
   drush_print_prompt((string)$msg . " (y/n): ", $indent);
@@ -362,8 +445,6 @@ function drush_confirm($msg, $indent = 0) {
  *   be useful to display both the key and the value; for
  *   example, if the key is a user id and the value is the
  *   user name, use '!value (uid=!key)'.
- *
- * @deprecated Use $this->io()->choice() in an Annotated Command.
  */
 function drush_choice($options, $prompt = 'Enter a number.', $label = '!value', $widths = array()) {
   drush_print(dt($prompt));
@@ -468,8 +549,6 @@ function drush_choice($options, $prompt = 'Enter a number.', $label = '!value', 
  *   in the return value). If this is an empty array (default), then a built in
  *   final option of "Done" will be added to the available options (in this case
  *   no additional keys are added to the return value).
- *
- * @deprecated Use $this>io()->choice() in an Annotated Command.
  */
 function drush_choice_multiple($options, $defaults = FALSE, $prompt = 'Select some numbers.', $label = '!value', $mark = '!value (selected)', $min = 0, $max = NULL, $final_options = array()) {
   $selections = array();
@@ -536,9 +615,9 @@ function drush_choice_multiple($options, $defaults = FALSE, $prompt = 'Select so
  * @param $required
  *   If TRUE, user may continue even when no value is in the input.
  * @param $password
- *   If TRUE, supress printing of the input.
+ *   If TRUE, surpress printing of the input.
  *
- * @deprecated Use $this>io()->ask() in an Annotated Command.
+ * @see drush_confirm()
  */
 function drush_prompt($prompt, $default = NULL, $required = TRUE, $password = FALSE) {
   if (isset($default)) {
@@ -657,6 +736,131 @@ function drush_call_user_func_array($function, $args = array() ) {
 }
 
 /**
+ * Download a file using wget, curl or file_get_contents, or via download cache.
+ *
+ * @param string $url
+ *   The url of the file to download.
+ * @param string $destination
+ *   The name of the file to be saved, which may include the full path.
+ *   Optional, if omitted the filename will be extracted from the url and the
+ *   file downloaded to the current working directory (Drupal root if
+ *   bootstrapped).
+ * @param integer $cache_duration
+ *   The acceptable age of a cached file. If cached file is too old, a fetch
+ *   will occur and cache will be updated. Optional, if ommitted the file will
+ *   be fetched directly.
+ *
+ * @return string
+ *   The path to the downloaded file, or FALSE if the file could not be
+ *   downloaded.
+ */
+function drush_download_file($url, $destination = FALSE, $cache_duration = 0) {
+  // Generate destination if omitted.
+  if (!$destination) {
+    $file = basename(current(explode('?', $url, 2)));
+    $destination = getcwd() . '/' . basename($file);
+  }
+
+  // Simply copy local files to the destination
+  if (!_drush_is_url($url)) {
+    return copy($url, $destination) ? $destination : FALSE;
+  }
+
+  if ($cache_duration !== 0 && $cache_file = drush_download_file_name($url)) {
+    // Check for cached, unexpired file.
+    if (file_exists($cache_file) && filectime($cache_file) > ($_SERVER['REQUEST_TIME']-$cache_duration)) {
+      drush_log(dt('!name retrieved from cache.', array('!name' => $cache_file)));
+    }
+    else {
+      if (_drush_download_file($url, $cache_file, TRUE)) {
+        // Cache was set just by downloading file to right location.
+      }
+      elseif (file_exists($cache_file)) {
+        drush_log(dt('!name retrieved from an expired cache since refresh failed.', array('!name' => $cache_file)), LogLevel::WARNING);
+      }
+      else {
+        $cache_file = FALSE;
+      }
+    }
+
+    if ($cache_file && copy($cache_file, $destination)) {
+      // Copy cached file to the destination
+      return $destination;
+    }
+  }
+  elseif ($return = _drush_download_file($url, $destination)) {
+    drush_register_file_for_deletion($return);
+    return $return;
+  }
+
+  // Unable to retrieve from cache nor download.
+  return FALSE;
+}
+
+/**
+ * Helper function to determine name of cached file.
+ */
+function drush_download_file_name($url) {
+  if ($cache_dir = drush_directory_cache('download')) {
+    $cache_name = str_replace(array(':', '/', '?', '=', '\\'), '-', $url);
+    return $cache_dir . "/" . $cache_name;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Check whether the given path is just a url or a local path
+ * @param string $url
+ * @return boolean
+ *   TRUE if the path does not contain a schema:// part.
+ */
+function _drush_is_url($url) {
+  return parse_url($url, PHP_URL_SCHEME) !== NULL;
+}
+
+/**
+ * Download a file using wget, curl or file_get_contents. Does not use download
+ * cache.
+ *
+ * @param string $url
+ *   The url of the file to download.
+ * @param string $destination
+ *   The name of the file to be saved, which may include the full path.
+ * @param boolean $overwrite
+ *   Overwrite any file thats already at the destination.
+ * @return string
+ *   The path to the downloaded file, or FALSE if the file could not be
+ *   downloaded.
+ */
+function _drush_download_file($url, $destination, $overwrite = TRUE) {
+  static $use_wget;
+  if ($use_wget === NULL) {
+    $use_wget = drush_shell_exec('wget --version');
+  }
+
+  $destination_tmp = drush_tempnam('download_file');
+  if ($use_wget) {
+    drush_shell_exec("wget -q --timeout=30 -O %s %s", $destination_tmp, $url);
+  }
+  else {
+    // Force TLS1+ as per https://github.com/drush-ops/drush/issues/894.
+    drush_shell_exec("curl --tlsv1 --fail -s -L --connect-timeout 30 -o %s %s", $destination_tmp, $url);
+  }
+  if (!drush_file_not_empty($destination_tmp) && $file = @file_get_contents($url)) {
+    @file_put_contents($destination_tmp, $file);
+  }
+  if (!drush_file_not_empty($destination_tmp)) {
+    // Download failed.
+    return FALSE;
+  }
+
+  drush_move_dir($destination_tmp, $destination, $overwrite);
+  return $destination;
+}
+
+/**
  * Determines the MIME content type of the specified file.
  *
  * The power of this function depends on whether the PHP installation
@@ -671,7 +875,7 @@ function drush_call_user_func_array($function, $args = array() ) {
 function drush_mime_content_type($filename) {
   $content_type = drush_attempt_mime_content_type($filename);
   if ($content_type) {
-    drush_log(dt('Mime type for !file is !mt', array('!file' => $filename, '!mt' => $content_type)), LogLevel::INFO);
+    drush_log(dt('Mime type for !file is !mt', array('!file' => $filename, '!mt' => $content_type)), LogLevel::NOTICE);
     return $content_type;
   }
   return drush_set_error('MIME_CONTENT_TYPE_UNKNOWN', dt('Unable to determine mime type for !file.', array('!file' => $filename)));
@@ -966,6 +1170,16 @@ function drush_do_command_redispatch($command, $args = array(), $remote_host = N
   $command_options = $aditional_options + $command_options;
   if (is_array($command)) {
     $command_name = $command['command'];
+    // If we are executing a remote command that uses strict option handling,
+    // then mark all of the options in the alias context as global, so that they
+    // will appear before the command name.
+    if (!empty($command['strict-option-handling'])) {
+      foreach(drush_get_context('alias') as $alias_key => $alias_value) {
+        if (array_key_exists($alias_key, $command_options) && !array_key_exists($alias_key, $command['options'])) {
+          $additional_global_options[$alias_key] = $alias_value;
+        }
+      }
+    }
   }
   else {
     $command_name = $command;
@@ -1031,11 +1245,11 @@ function drush_do_command_redispatch($command, $args = array(), $remote_host = N
  *   The type of message to be logged. Common types are 'warning', 'error', 'success' and 'notice'.
  *   A type of 'ok' or 'success' can also be supplied to flag something that worked.
  *   If you want your log messages to print to screen without the user entering
- *   a -v or --verbose flag, use type 'ok' or 'notice', this prints log messages out to
+ *   a -v or --verbose flag, use type 'ok', this prints log messages out to
  *   STDERR, which prints to screen (unless you have redirected it). All other
- *   types of messages will be assumed to be info.
+ *   types of messages will be assumed to be notices.
  */
-function drush_log($message, $type = LogLevel::INFO, $error = null) {
+function drush_log($message, $type = LogLevel::NOTICE, $error = null) {
   $entry = array(
     'type' => $type,
     'message' => $message,
@@ -1062,9 +1276,7 @@ function _drush_create_default_logger() {
  */
 function _drush_log($entry) {
   $callback = drush_get_context('DRUSH_LOG_CALLBACK');
-  if (!$callback) {
-    $callback = \Drush::logger();
-  }
+
   if ($callback instanceof LoggerInterface) {
     _drush_log_to_logger($callback, $entry);
   }
@@ -1079,7 +1291,7 @@ function _drush_log($entry) {
 // Maintain compatibility with extensions that hook into
 // DRUSH_LOG_CALLBACK (e.g. drush_ctex_bonus)
 function _drush_print_log($entry) {
-  $drush_logger = \Drush::logger();
+  $drush_logger = drush_get_context('DRUSH_LOGGER');
   if ($drush_logger) {
     _drush_log_to_logger($drush_logger, $entry);
   }
@@ -1154,6 +1366,16 @@ function dlm($object) {
   drush_log(print_r($object, TRUE));
 }
 
+/**
+ * Display the pipe output for the current request.
+ */
+function drush_pipe_output() {
+  $pipe = drush_get_context('DRUSH_PIPE_BUFFER');
+  if (!empty($pipe)) {
+    drush_print_r($pipe, NULL, FALSE);
+  }
+}
+
 // Print all timers for the request.
 function drush_print_timers() {
   global $timers;
@@ -1189,7 +1411,7 @@ function drush_print_timers() {
 }
 
 /**
- * Turn drupal_set_message() errors into drush_log errors
+ * Turn drupal_set_message errors into drush_log errors
  */
 function _drush_log_drupal_messages() {
   if (function_exists('drupal_get_messages')) {
@@ -1213,10 +1435,7 @@ function _drush_log_drupal_messages() {
           drush_log(preg_replace('/^warning: /i', '', $error), LogLevel::WARNING);
         }
         elseif (preg_match('/^notice:/i', $error)) {
-          // Drush LogLevel::NOTICE is printed all the time; we map
-          // watchdog notices to LogLevel::INFO, which are only
-          // printed in verbose mode.
-          drush_log(preg_replace('/^notice: /i', '', $error), LogLevel::INFO);
+          drush_log(preg_replace('/^notice: /i', '', $error), LogLevel::NOTICE);
         }
         elseif (preg_match('/^user warning:/i', $error)) {
           // This is a special case. PHP logs sql errors as 'User Warnings', not errors.
@@ -1375,8 +1594,6 @@ function drush_clear_error() {
  * Exit due to user declining a confirmation prompt.
  *
  * Usage:  return drush_user_abort();
- *
- * @deprecated
  */
 function drush_user_abort($msg = NULL) {
   drush_set_context('DRUSH_USER_ABORT', TRUE);
@@ -1462,6 +1679,26 @@ function drush_unset_recursive(&$data, $unset_key) {
       }
     }
   }
+}
+
+/**
+ * Return a list of VCSs reserved files and directories.
+ */
+function drush_version_control_reserved_files() {
+  static $files = FALSE;
+
+  if (!$files) {
+    // Also support VCSs that are not drush vc engines.
+    $files = array('.git', '.gitignore', '.hg', '.hgignore', '.hgrags');
+    $engine_info = drush_get_engines('version_control');
+    $vcs = array_keys($engine_info['engines']);
+    foreach ($vcs as $name) {
+      $version_control = drush_include_engine('version_control', $name);
+      $files = array_merge($files, $version_control->reserved_files());
+    }
+  }
+
+  return $files;
 }
 
 /**

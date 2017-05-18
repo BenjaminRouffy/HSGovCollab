@@ -460,9 +460,7 @@
         localStorage.getItem('dashboard') ? sidebarMenu.addClass('expanded-menu') : false;
       }
 
-      $('.expand-menu-btn, .mobile-dashboard-menu-btn').on('click', function(e) {
-        var $target = $(e.target);
-
+      $('.expand-menu-btn, .mobile-dashboard-menu-btn', context).on('click', function(e) {
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
 
         if (!sidebarMenu.is('.expanded-menu')) {
@@ -472,10 +470,6 @@
         else {
           localStorage.removeItem('dashboard');
           sidebarMenu.removeClass('expanded-menu');
-        }
-
-        if ($target.is('.mobile-dashboard-menu-btn')) {
-
         }
       });
 
@@ -622,14 +616,21 @@
 
   Drupal.behaviors.calendar = {
     attach: function(context, settings) {
+      var $eventContainer = $('#event-response', context);
+
       $('.view-governance-area-calendar', context).on('mousedown', function(e) {
         var $target = $(e.target);
-        var $eventContainer = $('#event-response');
 
         if (!$eventContainer.is($target) && $eventContainer.has($target).length === 0) {
           $eventContainer.removeClass('active');
         }
-      })
+      });
+
+      $(document).on('keyup', function(e) {
+        if (e.keyCode == 27) {
+          $eventContainer.removeClass('active');
+        }
+      });
     }
   };
 

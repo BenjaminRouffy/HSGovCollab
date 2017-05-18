@@ -4,7 +4,6 @@ namespace Unish;
 
 /**
  * @group base
- * @group slow
  */
 class siteSetCommandCase extends CommandUnishTestCase {
 
@@ -18,10 +17,23 @@ class siteSetCommandCase extends CommandUnishTestCase {
 
     $this->drush('ev', array("drush_invoke('site-set', '$alias'); print drush_sitealias_site_get();"));
     $output = $this->getOutput();
-    $this->assertEquals($alias, $output);
+    $this->assertEquals("Site set to $alias\n$alias", $output);
 
-    $this->drush('ev', array("drush_invoke('site-set', '@none'); print drush_sitealias_site_get();"));
+    $this->drush('site-set', array());
     $output = $this->getOutput();
-    $this->assertEquals('', $output);
+    $this->assertEquals('Site set to @none', $output);
+
+    $this->drush('site-set', array($alias));
+    $expected = 'Site set to ' . $alias;
+    $output = $this->getOutput();
+    $this->assertEquals($expected, $output);
+
+    $this->drush('ev', array("drush_invoke('site-set', '@none'); drush_invoke('site-set', '$alias'); drush_invoke('site-set', '@none'); drush_invoke('site-set', '-'); print drush_sitealias_site_get();"));
+    $output = $this->getOutput();
+    $this->assertEquals("Site set to @none
+Site set to $alias
+Site set to @none
+Site set to $alias
+$alias", $output);
   }
 }

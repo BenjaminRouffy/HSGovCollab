@@ -172,6 +172,8 @@ body {
   min-height: 100%;
   min-width: 320px;
   overflow-x: hidden; }
+  body.mobile {
+    padding-top: 0 !important; }
   body.safari:not(.logged) {
     height: auto;
     padding-bottom: 1px; }
@@ -496,6 +498,14 @@ svg {
 .connect-icon > a::after,
 .connect-icon > span::after {
   content: "+"; }
+
+.like-icon > a::after,
+.like-icon > span::after {
+  content: "Y"; }
+
+.dislike-icon > a::after,
+.dislike-icon > span::after {
+  content: "U"; }
 
 .main-menu {
   text-align: center; }
@@ -2421,6 +2431,12 @@ footer > .partners {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start; }
+  .country-list div:empty,
+  .project-list div:empty,
+  .contact-list div:empty,
+  .article-list div:empty,
+  .knowledge-vault-list div:empty {
+    display: none; }
   .country-list .country-item,
   .country-list .project-item,
   .country-list .contact-item,
@@ -5653,7 +5669,7 @@ form .social_login iframe {
   background: #fff;
   margin-bottom: 40px;
   overflow: hidden;
-  padding: 20px 171px; }
+  padding: 20px 15%; }
   .view-article .tags-by-group li {
     float: left;
     margin-right: 5px; }
@@ -5712,6 +5728,29 @@ form .social_login iframe {
     color: #ea3a32;
     font-weight: 700;
     text-decoration: underline; }
+
+@media (max-width: 991px) {
+  .view-article .tags-by-group {
+    margin-bottom: 20px; }
+  .view-article .wrapper-field-type-target-id {
+    float: none;
+    width: 100%; }
+  .view-article .search-form-wrapper {
+    float: none;
+    width: 50%; } }
+
+@media (max-width: 767px) {
+  .view-article .search-form-wrapper {
+    width: 100%; }
+  .view-article .tags-by-group {
+    padding-left: 20px;
+    padding-right: 20px; } }
+
+@media (max-width: 479px) {
+  .view-article .tags-by-group {
+    margin-bottom: 0; }
+  .view-article .search-form-wrapper {
+    width: 100%; } }
 
 .search-form-wrapper {
   position: relative; }
@@ -5872,55 +5911,67 @@ form .social_login iframe {
     vertical-align: top; }
 
 @media (max-width: 991px) {
-  .view-news-and-events .wrapper-filters, .view-my-projects .wrapper-filters, .view-contacts .wrapper-filters {
+  .view-news-and-events .wrapper-filters, .view-my-projects .wrapper-filters, .view-contacts .wrapper-filters, .view-governance-area-calendar .wrapper-filters {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start; }
-    .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
+    .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px; }
-      .mobile .view-news-and-events .wrapper-filters > div, .mobile .view-my-projects .wrapper-filters > div, .mobile .view-contacts .wrapper-filters > div {
+      .mobile .view-news-and-events .wrapper-filters > div, .mobile .view-my-projects .wrapper-filters > div, .mobile .view-contacts .wrapper-filters > div, .mobile .view-governance-area-calendar .wrapper-filters > div {
         float: left; }
     .ie10 .view-news-and-events .wrapper-filters > div,
     .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
     .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
-    .ie9 .view-contacts .wrapper-filters > div {
+    .ie9 .view-contacts .wrapper-filters > div, .ie10 .view-governance-area-calendar .wrapper-filters > div,
+    .ie9 .view-governance-area-calendar .wrapper-filters > div {
       max-width: calc(33.33% - 20px); }
-  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
+  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item, .view-governance-area-calendar .form-checkboxes .form-item {
     width: 33.33%; } }
 
 @media (max-width: 767px) {
-  .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
+  .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(50% - 20px); }
   .ie10 .view-news-and-events .wrapper-filters > div,
   .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
   .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
-  .ie9 .view-contacts .wrapper-filters > div {
+  .ie9 .view-contacts .wrapper-filters > div, .ie10 .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(50% - 20px); }
-  .front .view-news-and-events .title-wrapper, .front .view-my-projects .title-wrapper, .front .view-contacts .title-wrapper {
+  .front .view-news-and-events .title-wrapper, .front .view-my-projects .title-wrapper, .front .view-contacts .title-wrapper, .front .view-governance-area-calendar .title-wrapper {
     margin: -40px 0 3px -20px; }
-  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
+  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item, .view-governance-area-calendar .form-checkboxes .form-item {
     width: 50%; } }
 
 @media (max-width: 479px) {
-  .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div {
+  .view-news-and-events .wrapper-filters > div, .view-my-projects .wrapper-filters > div, .view-contacts .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0; }
   .ie10 .view-news-and-events .wrapper-filters > div,
   .ie9 .view-news-and-events .wrapper-filters > div, .ie10 .view-my-projects .wrapper-filters > div,
   .ie9 .view-my-projects .wrapper-filters > div, .ie10 .view-contacts .wrapper-filters > div,
-  .ie9 .view-contacts .wrapper-filters > div {
+  .ie9 .view-contacts .wrapper-filters > div, .ie10 .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     max-width: 100%; }
-  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item {
+  .view-news-and-events .form-checkboxes .form-item, .view-my-projects .form-checkboxes .form-item, .view-contacts .form-checkboxes .form-item, .view-governance-area-calendar .form-checkboxes .form-item {
     width: 100%; } }
 
 .view-my-projects .wrapper-filters > div,
 .view-knowledge-vault .wrapper-filters > div,
 .view-governance-area-calendar .wrapper-filters > div {
   max-width: 30%; }
+
+.view-governance-area-calendar .wrapper-filters > div {
+  margin-bottom: 20px; }
+
+.mobile .view-governance-area-calendar .wrapper-filters {
+  text-align: center; }
+  .mobile .view-governance-area-calendar .wrapper-filters > div {
+    display: inline-block;
+    vertical-align: top; }
 
 .view-governance-area-calendar .views-row {
   display: none; }
@@ -5945,14 +5996,20 @@ form .social_login iframe {
 .view-knowledge-vault:not(.with-filters) form {
   max-width: 40%; }
 
+.mobile .view-knowledge-vault .wrapper-filters {
+  text-align: center; }
+  .mobile .view-knowledge-vault .wrapper-filters > div {
+    display: inline-block;
+    vertical-align: top; }
+
 @media (max-width: 991px) {
-  .view-my-projects .wrapper-filters, .view-knowledge-vault .wrapper-filters {
+  .view-my-projects .wrapper-filters, .view-knowledge-vault .wrapper-filters, .view-governance-area-calendar .wrapper-filters {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
-    .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
+    .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
       max-width: calc(40% - 20px); } }
 
 @media (max-width: 991px) {
@@ -5960,15 +6017,19 @@ form .social_login iframe {
     max-width: 60%; } }
 
 @media (max-width: 767px) {
-  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
+  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(50% - 20px); } }
 
 @media (max-width: 767px) {
   .view-knowledge-vault:not(.with-filters) form {
-    max-width: 80%; } }
+    max-width: 80%; }
+  .mobile .view-knowledge-vault .wrapper-filters {
+    text-align: left; }
+    .mobile .view-knowledge-vault .wrapper-filters > div {
+      float: left; } }
 
 @media (max-width: 479px) {
-  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div {
+  .view-my-projects .wrapper-filters > div, .view-knowledge-vault .wrapper-filters > div, .view-governance-area-calendar .wrapper-filters > div {
     margin-left: 0;
     margin-right: 0;
     max-width: 100%; } }
@@ -6440,7 +6501,7 @@ header {
   body:not(.toolbar-fixed) header .header-fixed {
     top: 0; }
   body:not(.toolbar-fixed) header:not(.collapsed) .header-fixed {
-    top: 39px; }
+    top: 0; }
 
 .header-static {
   background: #fff;
@@ -6452,6 +6513,8 @@ header {
   -webkit-transition: top .3s ease-in-out, min-height .2s ease-in-out;
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500; }
+  body.logged:not(.toolbar-fixed) .header-static {
+    top: 39px; }
   .header-static .logo-wrapper .logo {
     background: #fff;
     border-bottom: 2px solid #ea3a32;
@@ -6570,7 +6633,8 @@ header {
   .header-fixed .logo-wrapper {
     position: absolute;
     top: 0;
-    left: 0; }
+    left: 0;
+    z-index: 2; }
     .logged .header-fixed .logo-wrapper {
       display: none; }
     .header-fixed .logo-wrapper .logo {
@@ -6805,7 +6869,8 @@ header {
       color: #283b44; }
   .header-fixed .mobile-menu-wrapper {
     height: calc(100% - 60px);
-    top: 60px; }
+    top: 60px;
+    z-index: 1; }
   .header-fixed .service-links {
     position: static; }
   .header-fixed .anchor-links a {
@@ -6946,9 +7011,7 @@ footer {
 
 @media (max-width: 767px) {
   .logged .main-wrapper {
-    padding-left: 0; }
-  body:not(.logged) .main-wrapper > .top-banner-region {
-    margin-top: 57px; } }
+    padding-left: 0; } }
 
 @media (max-width: 991px) {
   .main-wrapper {
@@ -8019,6 +8082,10 @@ footer {
     color: #afb7bb;
     font-weight: 400;
     text-align: right; }
+  #calendar .fc-year-main-table > tbody > tr {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%; }
   #calendar .fc-year-main-table * {
     border: none; }
   #calendar .fc-month-view .fc-week-number {
@@ -8045,7 +8112,7 @@ footer {
     border-bottom-width: 1px; }
   #calendar .fc-month-view .fc-day-number {
     padding: 10px 5px; }
-  #calendar .fc-month-view .fc-today span {
+  #calendar .fc-month-view .today {
     height: 23px;
     width: 23px;
     background: #ea3a32;
@@ -8058,7 +8125,8 @@ footer {
   #calendar .fc-month-view .fc-widget-content .fc-sat,
   #calendar .fc-month-view .fc-widget-content .fc-sun {
     background: #e9ecee; }
-  #calendar .fc-day-grid-container {
+  #calendar .fc-day-grid-container,
+  #calendar .fc-year-monthly-td .fc-week {
     height: auto !important; }
   #calendar .fc-year-monthly-name {
     height: 35px; }
@@ -8070,15 +8138,32 @@ footer {
     height: 35px;
     vertical-align: top;
     width: auto !important; }
+  #calendar .fc-year-view .fc-year-monthly-name {
+    margin-top: 0; }
   #calendar .fc-year-view .fc-week-number {
     width: auto !important; }
   #calendar .fc-year-view .fc-day-grid .fc-row {
     min-height: 35px; }
+  #calendar .fc-year-view .fc-content-skeleton tbody {
+    display: none; }
+  #calendar .fc-year-view .has-event:not(.fc-other-month) {
+    cursor: pointer; }
+    #calendar .fc-year-view .has-event:not(.fc-other-month):before {
+      height: 4px;
+      width: 4px;
+      background: #8c2222;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 14px;
+      right: 20px; }
   #calendar .fc-year-month-separator {
     display: none; }
   #calendar .fc-year-monthly-td {
     font-weight: 400;
-    padding: 15px; }
+    padding: 15px;
+    padding-left: 0; }
     #calendar .fc-year-monthly-td table {
       font-size: 0.875rem; }
   #calendar .fc-day-number {
@@ -8098,33 +8183,85 @@ footer {
     position: fixed;
     left: 50%;
     top: 50%; }
+  #calendar .has-event:not(.fc-other-month) {
+    position: relative; }
+
+.reviews-wrapper .field-content {
+  display: block;
+  line-height: 24px;
+  margin-bottom: 10px; }
+
+.reviews-wrapper .like,
+.reviews-wrapper .dislike {
+  display: inline-block;
+  padding-left: 20px;
+  position: relative;
+  text-indent: -9999px;
+  vertical-align: top; }
+  .reviews-wrapper .like:after,
+  .reviews-wrapper .dislike:after {
+    font-size: 1.225rem;
+    font-family: P4h, sans-serif;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0; }
+
+.reviews-wrapper .like:after {
+  content: "Y";
+  color: #18923b;
+  display: block;
+  text-indent: 0; }
+
+.reviews-wrapper .dislike:after {
+  content: "U";
+  color: #ea3a32;
+  display: block;
+  text-indent: 0; }
+
+@media (max-width: 991px) {
+  #calendar .fc-year-main-table > tbody > tr {
+    width: 33.33%; } }
+
+@media (max-width: 767px) {
+  #calendar .fc-year-main-table > tbody > tr {
+    width: 50%; } }
+
+@media (max-width: 479px) {
+  #calendar .fc-center h2 {
+    font-size: 1.5rem;
+    margin: 0 10px; }
+  #calendar .fc-icon {
+    margin: 0; }
+  #calendar .fc-year-main-table > tbody > tr {
+    width: 100%; } }
 
 #event-response {
   background: #fff;
   border: 1px solid #afb7bb;
   font-family: "Fira Sans", sans-serif;
-  height: 600px;
+  height: 65%;
   overflow-y: auto;
   padding: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(0, 0);
-          transform: translateX(-50%) translateY(-50%) scale(0, 0);
+  -webkit-transform: translateX(-50%) translateY(-37%) scale(0, 0);
+          transform: translateX(-50%) translateY(-37%) scale(0, 0);
   -webkit-transition: -webkit-transform .3s ease;
   transition: -webkit-transform .3s ease;
   transition: transform .3s ease;
   transition: transform .3s ease, -webkit-transform .3s ease;
   width: 35%;
-  z-index: 1; }
+  z-index: 10; }
   #event-response.active {
-    -webkit-transform: translateX(-50%) translateY(-50%) scale(1, 1);
-            transform: translateX(-50%) translateY(-50%) scale(1, 1); }
+    -webkit-transform: translateX(-50%) translateY(-37%) scale(1, 1);
+            transform: translateX(-50%) translateY(-37%) scale(1, 1); }
   #event-response .event-title {
     font-size: 1.3125rem;
     font-weight: 400;
     line-height: 26px;
-    margin: 0 0 5px; }
+    margin: 0 0 15px; }
   #event-response a {
     text-decoration: none; }
     #event-response a:hover {
@@ -8138,6 +8275,27 @@ footer {
   #event-response .event-body {
     line-height: 24px;
     margin-bottom: 15px; }
+
+@media (max-width: 991px) {
+  #event-response {
+    padding: 30px;
+    width: 45%; }
+    #event-response.active {
+      -webkit-transform: translateX(-50%) translateY(-32%) scale(1, 1);
+              transform: translateX(-50%) translateY(-32%) scale(1, 1); } }
+
+@media (max-width: 767px) {
+  #event-response {
+    padding: 20px;
+    width: 60%; }
+    #event-response.active {
+      -webkit-transform: translateX(-50%) translateY(-25%) scale(1, 1);
+              transform: translateX(-50%) translateY(-25%) scale(1, 1); } }
+
+@media (max-width: 479px) {
+  #event-response {
+    padding: 15px;
+    width: 90%; } }
 
 .page-comment-edit-form .comment-form {
   margin: 0 auto 20px;

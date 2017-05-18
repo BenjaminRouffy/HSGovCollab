@@ -6513,7 +6513,7 @@ header {
   -webkit-transition: top .3s ease-in-out, min-height .2s ease-in-out;
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500; }
-  body.logged:not(.toolbar-fixed) .header-static {
+  body.toolbar-vertical:not(.toolbar-fixed) .header-static {
     margin-top: 39px; }
   .header-static .logo-wrapper .logo {
     background: #fff;
@@ -7925,6 +7925,10 @@ footer {
 .article-edit-node details,
 .article-delete-node details {
   padding: 0; }
+  .article-add-node details summary,
+  .article-edit-node details summary,
+  .article-delete-node details summary {
+    display: none; }
 
 .article-add-node .field--type-datetime h4,
 .article-edit-node .field--type-datetime h4,
@@ -8023,6 +8027,13 @@ footer {
 .article-delete-node #edit-delete {
   text-decoration: none; }
 
+.article-delete-node .node-article-delete-form .form-actions .button,
+.article-delete-node .node-article-delete-form .form-actions #edit-cancel {
+  display: inline-block;
+  line-height: normal;
+  margin: 5px;
+  vertical-align: top; }
+
 @media (max-width: 991px) {
   .article-add-node .node-form,
   .article-add-node #block-ample-page-title, .article-edit-node .node-form,
@@ -8032,6 +8043,18 @@ footer {
   .article-add-node .horizontal-tabs, .article-edit-node .horizontal-tabs, .article-delete-node .horizontal-tabs {
     padding-left: 0;
     padding-right: 0; } }
+
+@media (max-width: 479px) {
+  .article-delete-node #block-ample-page-title h1 {
+    font-size: 2.5rem;
+    line-height: 48px;
+    padding-top: 0; }
+  .article-delete-node .node-article-delete-form {
+    width: 100%; }
+    .article-delete-node .node-article-delete-form .form-actions .button,
+    .article-delete-node .node-article-delete-form .form-actions #edit-cancel {
+      font-size: 1rem;
+      padding: 10px 25px; } }
 
 .calendar-wrapper {
   position: relative; }

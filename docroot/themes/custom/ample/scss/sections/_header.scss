@@ -73,7 +73,7 @@ header {
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500;
 
-  body.logged:not(.toolbar-fixed) & {
+  body.toolbar-vertical:not(.toolbar-fixed) & {
     margin-top: 39px;
   }
 

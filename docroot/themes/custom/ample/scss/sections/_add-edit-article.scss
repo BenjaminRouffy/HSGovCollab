@@ -81,6 +81,10 @@
 
   details {
     padding: 0;
+
+    summary {
+      display: none;
+    }
   }
 
   .field--type-datetime {
@@ -146,7 +150,17 @@
 }
 
 .article-delete-node {
-
+  .node-article-delete-form {
+    .form-actions {
+      .button,
+      #edit-cancel {
+        display: inline-block;
+        line-height: normal;
+        margin: 5px;
+        vertical-align: top;
+      }
+    }
+  }
 }
 
 @include breakpoint-for('.article-add-node, .article-edit-node, .article-delete-node', (to: laptop-small)) {
@@ -158,5 +172,27 @@
   .horizontal-tabs {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+@include breakpoint-for('.article-delete-node', (to: mobileL)) {
+  #block-ample-page-title {
+    h1 {
+      @include font-size(40);
+      line-height: 48px;
+      padding-top: 0;
+    }
+  }
+
+  .node-article-delete-form {
+    width: 100%;
+
+    .form-actions {
+      .button,
+      #edit-cancel {
+        @include font-size(16);
+        padding: 10px 25px;
+      }
+    }
   }
 }

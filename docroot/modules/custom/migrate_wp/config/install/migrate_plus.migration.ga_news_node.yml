@@ -20,7 +20,10 @@ process:
       callable: strtotime
       source: post_date
     - plugin: convert_wrong_dates
-
+  uid:
+    plugin: migration_lookup
+    migration: user
+    source: post_author
   changed:
     plugin: callback
     callable: strtotime
@@ -29,6 +32,9 @@ process:
     plugin: callback
     callable: strtotime
     source: post_date
+migration_dependencies:
+  optional:
+    - user
 dependencies:
   enforced:
     module:

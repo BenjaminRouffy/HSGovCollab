@@ -22,6 +22,7 @@ class WpUser extends SqlBase {
 
     $query->leftJoin('intra_participants_database', 'participants', 'users.email=participants.email');
     $query->fields('users', [
+      'user_id',
       'email',
       'firstname',
       'lastname',
@@ -43,6 +44,7 @@ class WpUser extends SqlBase {
    */
   public function fields() {
     $fields = [
+      'user_id' => $this->t('User ID'),
       'email' => $this->t('User mail'),
       'firstname' => $this->t('First name'),
       'lastname' => $this->t('Last name'),
@@ -61,8 +63,8 @@ class WpUser extends SqlBase {
    */
   public function getIds() {
     return [
-      'email' => [
-        'type' => 'string',
+      'user_id' => [
+        'type' => 'integer',
         'alias' => 'users',
       ],
     ];

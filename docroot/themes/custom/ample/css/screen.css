@@ -8525,6 +8525,18 @@ footer {
     .comment-wrapper .form-actions [value="Preview"] {
       display: none; }
 
+@media (max-width: 991px) {
+  .comment-wrapper .form-actions .form-submit, .comment-wrapper .form-actions .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .comment-wrapper .form-actions a, .comment-wrapper .form-actions .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .comment-wrapper .form-actions .button, .comment-wrapper .form-actions .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .comment-wrapper .form-actions #edit-cancel, .comment-wrapper .form-actions
+  .article-edit-node .node-article-delete-form #edit-cancel,
+  .article-edit-node .node-article-delete-form .comment-wrapper .form-actions #edit-cancel, .comment-wrapper .form-actions
+  .article-delete-node .node-article-delete-form #edit-cancel,
+  .article-delete-node .node-article-delete-form .comment-wrapper .form-actions #edit-cancel, .comment-wrapper .form-actions .article-add-node #edit-delete, .article-add-node .comment-wrapper .form-actions #edit-delete, .comment-wrapper .form-actions
+  .article-edit-node #edit-delete,
+  .article-edit-node .comment-wrapper .form-actions #edit-delete, .comment-wrapper .form-actions
+  .article-delete-node #edit-delete,
+  .article-delete-node .comment-wrapper .form-actions #edit-delete {
+    padding: 10px 30px; } }
+
 @media (max-width: 479px) {
   .comment-wrapper .comment-item {
     margin: 25px 0; }

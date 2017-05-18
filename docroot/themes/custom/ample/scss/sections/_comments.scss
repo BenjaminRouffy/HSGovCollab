@@ -302,6 +302,14 @@
   }
 }
 
+@include breakpoint-for('.comment-wrapper', (to: laptop-small)) {
+  .form-actions {
+    .form-submit {
+      padding: 10px 30px;
+    }
+  }
+}
+
 @include breakpoint-for('.comment-wrapper', (to: mobileL)) {
   .comment-item {
     margin: 25px 0;

@@ -25,3 +25,5 @@ rate.results_page:
     _controller: '\Drupal\rate\Controller\ResultsController::results'
   requirements:
     _permission: 'view rate results page'
+  options:
+    _admin_route: TRUE

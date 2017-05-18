@@ -1,0 +1,24 @@
+id: posts_attachment
+label: Create mapping from posts_attachment.
+migration_group: wp
+source:
+  plugin: posts_attachment
+destination:
+  plugin: 'entity:file'
+process:
+  filename: file_name
+  uri: file_path
+  filemime: file_mime
+  status:
+    plugin: default_value
+    default_value: 1
+  created: file_mtime
+  changed: file_mtime
+  uid:
+    plugin: default_value
+    default_value: 1
+dependencies:
+  enforced:
+    module:
+      - migrate_wp
+      - wp_content

@@ -62,8 +62,10 @@
     justify-content: center;
 
     .mobile & {
+      @include font-size(0);
       display: block;
       overflow: hidden;
+      text-align: center;
     }
 
     .ie9 & {
@@ -88,6 +90,12 @@
       margin-right: 10px;
       max-width: 20%;
       width: 100%;
+
+      .mobile & {
+        max-width: calc(20% - 20px);
+        display: inline-block;
+        vertical-align: top;
+      }
     }
   }
 
@@ -505,12 +513,16 @@
     flex-wrap: wrap;
     justify-content: flex-start;
 
+    .mobile & {
+      text-align: left;
+    }
+
     > div {
       max-width: calc(33.33% - 20px);
       margin-bottom: 20px;
 
       .mobile & {
-        float: left;
+        max-width: calc(33.33% - 20px);
       }
     }
 
@@ -533,6 +545,10 @@
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
+
+      .mobile & {
+        max-width: calc(50% - 20px);
+      }
     }
 
     .ie10 &,
@@ -562,6 +578,10 @@
       max-width: 100%;
       margin-left: 0;
       margin-right: 0;
+
+      .mobile & {
+        max-width: 100%;
+      }
     }
 
     .ie10 &,
@@ -590,14 +610,14 @@
 }
 
 .view-governance-area-calendar {
-  .wrapper-filters {    
+  .wrapper-filters {
     > div {
       margin-bottom: 20px;
     }
-    
+
     .mobile & {
       text-align: center;
-      
+
       > div {
         display: inline-block;
         vertical-align: top;

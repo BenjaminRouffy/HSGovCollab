@@ -272,7 +272,7 @@
           });
         }
 
-        $('.anchor-links').on('click', 'a', function(event) {
+        $('.anchor-links', context).on('click', 'a', function(event) {
           var headerHeight = $('.header-fixed').height();
           var adminMenuHeight = parseInt($('body').css('padding-top'));
           var totalHeaderHegiht = headerHeight + adminMenuHeight;

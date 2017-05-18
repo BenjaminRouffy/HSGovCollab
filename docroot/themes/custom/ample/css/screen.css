@@ -6521,6 +6521,8 @@ header {
     top: 0; }
   body:not(.toolbar-fixed) header:not(.collapsed) .header-fixed {
     top: 0; }
+  body:not(.toolbar-fixed) header:not(.collapsed) .bottom-head {
+    padding-top: 39px; }
 
 .header-static {
   background: #fff;
@@ -6905,7 +6907,9 @@ header {
 
 .bottom-head {
   background: #e9ecee;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-transition: padding .3s ease;
+  transition: padding .3s ease; }
   .bottom-head .anchor-links {
     margin: 0 auto;
     max-width: 1260px;

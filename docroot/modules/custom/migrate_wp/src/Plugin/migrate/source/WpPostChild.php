@@ -28,8 +28,6 @@ class WpPostChild extends SqlBase {
       ->condition('parent_posts.post_type', 'page')
       ->condition('posts.post_type', $this->configuration['post_type']);
 
-    $connection->addExpression('DATE_FORMAT(posts.post_date, \'%Y-%m-%d\')', 'post_strtime');
-
     return $connection;
   }
 
@@ -44,7 +42,6 @@ class WpPostChild extends SqlBase {
       'post_title' => $this->t('Title of post'),
       'post_content' => $this->t('Body of post'),
       'post_date' => $this->t('Post date in format 2013-05-29 21:24:27'),
-      'post_strtime' => $this->t('Post date in format 2013-05-29'),
       'post_modified' => $this->t('Post modified in format 2013-05-29 21:24:27'),
       'post_type' => $this->t('Type of post'),
     ];

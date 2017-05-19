@@ -29,7 +29,11 @@ process:
     plugin: callback
     callable: strtotime
     source: post_modified
-  field_content_date: post_strtime
+  field_content_date:
+    plugin: format_date
+    from_format: 'Y-m-d H:i:s'
+    to_format: 'Y-m-d'
+    source: post_date
 migration_dependencies:
   optional:
     - user

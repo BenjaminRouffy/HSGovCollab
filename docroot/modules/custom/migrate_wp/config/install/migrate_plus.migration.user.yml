@@ -4,13 +4,8 @@ migration_group: wp
 source:
   plugin: wp_user
 process:
-  mail: email
-  status:
-    plugin: static_map
-    source: status
-    map:
-      1: 1
-      -1: 0
+  mail: user_email
+  status: '1'
   field_first_name: firstname
   field_last_name: lastname
   name:
@@ -19,7 +14,10 @@ process:
       - firstname
       - lastname
     delimiter: ' '
-  created: created_at
+  created:
+    plugin: callback
+    callable: strtotime
+    source: user_registered
   field_organisation:
     plugin: entity_generate
     source: organisation

@@ -4343,7 +4343,7 @@ var DayGrid = Grid.extend({
 	// Given a cell object, generates a range object
 	computeCellRange: function(cell) {
 		var colCnt = this.colCnt;
-		var index = cell.row * colCnt + (this.isRTL ? colCnt - cell.col - 1: cell.col);
+		var index = cell.row * colCnt + (this.isRTL ? colCnt - cell.col - 1 : cell.col);
 		var start = this.cellDates[index].clone();
 		var end = start.clone().add(1, 'day');
 

@@ -4343,7 +4343,7 @@ var DayGrid = Grid.extend({
 	// Given a cell object, generates a range object
 	computeCellRange: function(cell) {
 		var colCnt = this.colCnt;
-		var index = cell.row * colCnt + (this.isRTL ? colCnt - cell.col : cell.col);
+		var index = cell.row * colCnt + (this.isRTL ? colCnt - cell.col - 1: cell.col);
 		var start = this.cellDates[index].clone();
 		var end = start.clone().add(1, 'day');
 
@@ -10272,6 +10272,7 @@ fcViews.year = View.extend({
 					var cell = $(_cell);
 
 					d = t.dayGrids[i].cellDates[ii + r*t.colCnt];
+					d._d.setDate(d._d.getDate(d) + t.firstDay);
 					if (!t.dateInMonth(d,mi)) {
 						cell.addClass('fc-other-month');
 						if (d.month() == (mi+11)%12) {

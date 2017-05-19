@@ -28,10 +28,7 @@ process:
     plugin: migration_lookup
     migration: user
     source: post_author
-  field_content_date:
-    plugin: callback
-    callable: strtotime
-    source: post_date
+  field_content_date: post_strtime
 migration_dependencies:
   optional:
     - user

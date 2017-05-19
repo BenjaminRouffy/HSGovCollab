@@ -19,7 +19,7 @@
         right: ''
       },
       theme: false,
-      defaultView: default_view,
+      defaultView: 'year',
       yearColumns: 1,
       firstDay: 1,
       eventLimit: false,

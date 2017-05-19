@@ -16,6 +16,7 @@ process:
       source: post_id
     - plugin: paragraphs_import
       paragraph_type: file
+  field_content_date: file_strtime
   created: file_mtime
   changed: file_mtime
   uid:

@@ -36,6 +36,7 @@ class WpPostsAttachment extends SqlBase {
     $connection->addExpression('SUBSTRING_INDEX(ip.meta_value, \'/\', -1)', 'file_name');
     $connection->addExpression('CONCAT(\'wp-content://\', ip.meta_value)', 'file_path');
     $connection->addExpression('UNIX_TIMESTAMP(t.post_date)', 'file_mtime');
+    $connection->addExpression('DATE_FORMAT(t.post_date, \'%Y-%m-%d\')', 'file_strtime');
     $connection->addField('t', 'post_mime_type', 'file_mime');
     $connection->addField('t', 'post_author', 'user_id');
     $connection->condition('t.post_type', 'attachment');
@@ -56,6 +57,7 @@ class WpPostsAttachment extends SqlBase {
       'file_name' => $this->t('File name'),
       'file_path' => $this->t('File path'),
       'file_mtime' => $this->t('File date'),
+      'file_strtime' => $this->t('File str date'),
       'file_mime' => $this->t('File mime'),
       'user_id' => $this->t('Post Author'),
 

@@ -10,6 +10,18 @@
       });
     }
 
+    function formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+
+      return [year, month, day].join('-');
+    }
+
     var regex = /\d{4}-\d{2}-\d{2}/g;
     var default_view = _this.getInput('format').val();
     this._calendar = $calendar.fullCalendar({
@@ -46,18 +58,6 @@
 
           if (startDate !== endDate) {
             endDate = endDateIncr;
-          }
-
-          function formatDate(date) {
-            var d = new Date(date),
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
-
-            if (month.length < 2) month = '0' + month;
-            if (day.length < 2) day = '0' + day;
-
-            return [year, month, day].join('-');
           }
 
           events.push({

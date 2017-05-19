@@ -41,7 +41,7 @@ class WpPostsAttachment extends SqlBase {
     $connection->addField('t', 'post_author', 'user_id');
     $connection->condition('t.post_type', 'attachment');
     $connection->condition('ip.meta_key', '_wp_attached_file');
-    $connection->havingCondition('file_mime', 'image/%', 'NOT LIKE');
+    $connection->condition('t.post_mime_type', 'image/%', 'NOT LIKE');
 //    $connection->range(0,100);
     $connection->orderBy('t.ID');
     return $connection;

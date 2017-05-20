@@ -21,9 +21,9 @@ process:
 
   # Node relation
   entity_id:
-    - plugin: migration_lookup
-      migration: document_node
-      source: ID
+    plugin: migration_lookup
+    migration: document_node
+    source: ID
 migration_dependencies:
   optional:
     - country

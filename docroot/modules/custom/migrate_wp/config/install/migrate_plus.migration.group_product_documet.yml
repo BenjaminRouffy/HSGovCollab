@@ -1,0 +1,35 @@
+id: group_product_documet
+label: Create group content and build the bridge between group and node
+migration_group: wp
+source:
+  plugin: wp_wpfb_product_file
+destination:
+  plugin: entity:group_content
+process:
+  type:
+    plugin: default_value
+    default_value: country-group_node-document
+  label: post_title
+
+  # Group migration
+  gid:
+    - plugin: default_value
+      default_value: cpd
+
+    - plugin: migration_lookup
+      migration: product
+
+  # Node relation
+  entity_id:
+    plugin: migration_lookup
+    migration: document_node
+    source: ID
+
+#migration_dependencies:
+#  optional:
+#    - product
+#    - product_news_node
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

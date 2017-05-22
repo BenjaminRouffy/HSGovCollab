@@ -23,6 +23,9 @@ process:
     - plugin: migration_lookup
       migration: user
       source: user_id
+  migrate_data:
+    plugin: default_value
+    default_value: '1'
 dependencies:
   enforced:
     module:

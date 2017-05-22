@@ -5,7 +5,9 @@ source:
   plugin: wp_user
 process:
   mail: user_email
-  status: '1'
+  status:
+    plugin: default_value
+    default_value: '1'
   field_first_name: firstname
   field_last_name: lastname
   name:
@@ -29,6 +31,9 @@ process:
   field_city: location
   field_telephone: phone
   field_mobilephone: mobile_phone
+  migrate_data:
+    plugin: default_value
+    default_value: '1'
 destination:
   plugin: 'entity:user'
 

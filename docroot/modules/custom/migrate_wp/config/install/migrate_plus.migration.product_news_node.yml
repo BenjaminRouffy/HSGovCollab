@@ -34,6 +34,9 @@ process:
     from_format: 'Y-m-d H:i:s'
     to_format: 'Y-m-d'
     source: post_date
+  migrate_data:
+    plugin: default_value
+    default_value: '1'
 migration_dependencies:
   optional:
     - user

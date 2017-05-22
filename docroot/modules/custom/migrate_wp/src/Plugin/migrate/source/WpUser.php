@@ -18,22 +18,23 @@ class WpUser extends SqlBase {
    * {@inheritdoc}
    */
   public function query() {
-    $query = $this->select('intra_wysija_user', 'users');
+    $query = $this->select('intra_users', 'users');
 
-    $query->leftJoin('intra_participants_database', 'participants', 'users.email=participants.email');
+    $query->leftJoin('intra_participants_database', 'participants', 'users.user_email=participants.email');
+    $query->leftJoin('intra_wysija_user', 'wysija', 'users.user_email=wysija.email');
     $query->fields('users', [
-      'user_id',
-      'email',
-      'firstname',
-      'lastname',
-      'created_at',
-      'status',
+      'ID',
+      'user_email',
+      'user_registered',
     ])->fields('participants', [
       'address',
       'phone',
       'mobile_phone',
       'organisation',
       'location',
+    ])->fields('wysija', [
+      'firstname',
+      'lastname',
     ]);
 
     return $query;
@@ -44,12 +45,11 @@ class WpUser extends SqlBase {
    */
   public function fields() {
     $fields = [
-      'user_id' => $this->t('User ID'),
-      'email' => $this->t('User mail'),
+      'ID' => $this->t('User ID'),
+      'user_email' => $this->t('User mail'),
       'firstname' => $this->t('First name'),
       'lastname' => $this->t('Last name'),
-      'created_at' => $this->t('Created date'),
-      'status' => $this->t('User status'),
+      'user_registered' => $this->t('Created date'),
       'phone' => $this->t('User phone'),
       'mobile_phone' => $this->t('User mobile phone'),
       'location' => $this->t('Location'),
@@ -63,7 +63,7 @@ class WpUser extends SqlBase {
    */
   public function getIds() {
     return [
-      'user_id' => [
+      'ID' => [
         'type' => 'integer',
         'alias' => 'users',
       ],

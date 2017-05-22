@@ -4,6 +4,7 @@ migration_group: wp
 source:
   plugin: wp_post_child
   root_post: 386
+  post_type: 'page'
 destination:
   plugin: entity:node
 process:
@@ -28,8 +29,9 @@ process:
     migration: user
     source: post_author
   field_content_date:
-    plugin: callback
-    callable: strtotime
+    plugin: format_date
+    from_format: 'Y-m-d H:i:s'
+    to_format: 'Y-m-d'
     source: post_date
 migration_dependencies:
   optional:

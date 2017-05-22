@@ -18,6 +18,10 @@ process:
     - plugin: migration_lookup
       migration: user
       source: user_id
+migration_dependencies:
+  optional:
+    - posts_attachment
+    - user
 dependencies:
   enforced:
     module:

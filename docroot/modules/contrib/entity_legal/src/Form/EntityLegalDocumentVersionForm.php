@@ -10,6 +10,7 @@ namespace Drupal\entity_legal\Form;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\entity_legal\EntityLegalDocumentInterface;
+use Drupal\Core\Language\LanguageInterface;
 
 /**
  * Class EntityLegalDocumentVersionForm.
@@ -43,7 +44,15 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
           $this->setEntity($clone);
         }
       }
+
+      $form['langcode'] = array(
+        '#title' => $this->t('Language'),
+        '#type' => 'language_select',
+        '#default_value' => $this->entity->getUntranslated()->language()->getId(),
+        '#languages' => LanguageInterface::STATE_ALL,
+      );
     }
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -51,6 +60,8 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function form(array $form, FormStateInterface $form_state) {
+    $form = parent::form($form, $form_state);
+
     $form['label'] = [
       '#title'         => t('Title'),
       '#type'          => 'textfield',
@@ -93,7 +104,7 @@ class EntityLegalDocumentVersionForm extends ContentEntityForm {
       '#weight'      => 51,
     ];
 
-    return parent::form($form, $form_state);
+    return $form;
   }
 
   /**

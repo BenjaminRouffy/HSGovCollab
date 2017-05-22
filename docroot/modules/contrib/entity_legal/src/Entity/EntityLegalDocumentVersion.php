@@ -26,8 +26,10 @@ use Drupal\entity_legal\EntityLegalDocumentVersionInterface;
  *     "view_builder" = "Drupal\entity_legal\EntityLegalDocumentVersionViewBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
  *     "form" = {
- *       "default" = "Drupal\entity_legal\Form\EntityLegalDocumentVersionForm"
- *     }
+ *       "default" = "Drupal\entity_legal\Form\EntityLegalDocumentVersionForm",
+ *       "edit" = "Drupal\entity_legal\Form\EntityLegalDocumentVersionForm"
+ *     },
+ *     "translation" = "Drupal\entity_legal\EntityLegalDocumentVersionTranslationHandler"
  *   },
  *   admin_permission = "administer entity legal",
  *   base_table = "entity_legal_document_version",
@@ -41,9 +43,12 @@ use Drupal\entity_legal\EntityLegalDocumentVersionInterface;
  *     "bundle" = "document_name"
  *   },
  *   links = {
- *     "canonical" = "/legal/document/{entity_legal_document}/{entity_legal_document_version}",
+ *     "canonical" = "/admin/structure/legal/document/{entity_legal_document_version}",
+ *     "edit-form" = "/admin/structure/legal/document/{entity_legal_document_version}/edit",
  *   },
  *   bundle_entity_type = "entity_legal_document",
+ *   field_ui_base_route = "entity.entity_legal_document.edit_form",
+ *   render_cache = FALSE,
  * )
  */
 class EntityLegalDocumentVersion extends ContentEntityBase implements EntityLegalDocumentVersionInterface {
@@ -184,7 +189,7 @@ class EntityLegalDocumentVersion extends ContentEntityBase implements EntityLega
   protected function urlRouteParameters($rel) {
     $uri_route_parameters = parent::urlRouteParameters($rel);
 
-    if ($rel == 'canonical') {
+    if ($rel == 'canonical' || $rel == 'edit-form') {
       $uri_route_parameters['entity_legal_document'] = $this->bundle();
     }
 

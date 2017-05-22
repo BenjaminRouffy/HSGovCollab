@@ -1,8 +1,8 @@
-id: group_product_documet
+id: group_content_country_document
 label: Create group content and build the bridge between group and node
 migration_group: wp
 source:
-  plugin: wp_wpfb_product_file
+  plugin: wp_wpfb_country_file
 destination:
   plugin: entity:group_content
 process:
@@ -13,22 +13,29 @@ process:
 
   # Group migration
   gid:
-    - plugin: default_value
-      default_value: cpd
+    - plugin: explode
+      source: cat_path
+      delimiter: /
+
+    - plugin: extract
+      index:
+       - 1
+
+    - plugin: skip_on_empty
+      method: row
 
     - plugin: migration_lookup
-      migration: product
+      migration: country
 
   # Node relation
   entity_id:
     plugin: migration_lookup
-    migration: document_node
-    source: ID
+    migration: document_wpfb_node
+    source: file_id
 
-#migration_dependencies:
-#  optional:
-#    - product
-#    - product_news_node
+migration_dependencies:
+  optional:
+    - document_wpfb_node
 dependencies:
   enforced:
     module:

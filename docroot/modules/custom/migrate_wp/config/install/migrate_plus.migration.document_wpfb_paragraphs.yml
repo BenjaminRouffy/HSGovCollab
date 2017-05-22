@@ -1,0 +1,28 @@
+id: document_wpfb_paragraphs
+label: Map document to new site into node.
+migration_group: wp
+source:
+  plugin: wpfb_files
+destination:
+  plugin: entity:paragraph
+process:
+  type:
+    plugin: default_value
+    default_value: file
+  "field_file/target_id":
+    plugin: migration_lookup
+    migration: document_wpfb_file
+    source: file_id
+  created: file_mtime
+  uid:
+    - plugin: migration_lookup
+      migration: user
+      source: file_added_by
+
+migration_dependencies:
+  optional:
+    - document_wpfb_file
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

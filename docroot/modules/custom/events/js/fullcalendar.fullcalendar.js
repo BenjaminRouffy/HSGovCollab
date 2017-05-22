@@ -79,7 +79,12 @@
         $calendar.each(function(index, el) {
           var $this = $(this);
           var startDate = event.start._i;
-          var endDate = event.end._i;
+          var endDate;
+
+          if (event.end !== null) {
+            endDate = event.end._i;
+          }
+
 
           if (startDate === $this.data('date')) {
             startIndex = index;

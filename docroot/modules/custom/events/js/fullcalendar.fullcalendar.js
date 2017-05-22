@@ -89,6 +89,7 @@
           }
         });
 
+
         $calendar.slice(startIndex, endIndex).addClass('has-event');
       },
       eventAfterAllRender: function (view) {
@@ -129,12 +130,12 @@
       }
     });
 
-    var $month = _this.getInput('month').val();
-    var $year = _this.getInput('year').val();
-
-    $($calendar).fullCalendar('gotoDate', new Date($year + "-" + $month));
-    _this.onDisplayChange('.fc-month-button');
-    _this.onDisplayChange('.fc-year-button');
+    // var $month = _this.getInput('month').val();
+    // var $year = _this.getInput('year').val();
+    //
+    // $($calendar).fullCalendar('gotoDate', new Date($year + "-" + $month));
+    // _this.onDisplayChange('.fc-month-button');
+    // _this.onDisplayChange('.fc-year-button');
     return this;
   };
   Drupal.fullcalendar.prototype.getInput = function (selector) {

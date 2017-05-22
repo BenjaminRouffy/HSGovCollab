@@ -4297,7 +4297,10 @@ var DayGrid = Grid.extend({
 
 		if (this.breakOnWeeks) {
 			// count columns until the day-of-week repeats
-			firstDay = cellDates[0].day();
+      if (cellDates[0] !== undefined) {
+        firstDay = cellDates[0].day()
+      }
+
 			for (colCnt = 1; colCnt < cellDates.length; colCnt++) {
 				if (cellDates[colCnt].day() == firstDay) {
 					break;
@@ -4344,7 +4347,10 @@ var DayGrid = Grid.extend({
 	computeCellRange: function(cell) {
 		var colCnt = this.colCnt;
 		var index = cell.row * colCnt + (this.isRTL ? colCnt - cell.col - 1 : cell.col);
-		var start = this.cellDates[index].clone();
+    if (this.cellDates[index] !== undefined) {
+      var start = this.cellDates[index].clone();
+    }
+    console.log('wtf');
 		var end = start.clone().add(1, 'day');
 
 		return { start: start, end: end };

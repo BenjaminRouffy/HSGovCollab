@@ -7,3 +7,13 @@ services:
     class: Drupal\events\Routing\RouteSubscriber
     tags:
       - { name: event_subscriber }
+  events.access_check_calendar:
+    class: Drupal\events\Plugin\Access\CalendarAccessCheck
+    arguments: ['@current_user', '@menu_item_visibility_by_group.check_by_group']
+    tags:
+      - { name: access_check, applies_to: _calendar_access_check }
+  events.access_check_calendar_export:
+    class: Drupal\events\Plugin\Access\CalendarExportAccessCheck
+    arguments: ['@current_user', '@events.access_check_calendar', '@entity.manager']
+    tags:
+      - { name: access_check, applies_to: _calendar_export_access_check }

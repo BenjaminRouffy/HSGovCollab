@@ -30,95 +30,95 @@
         center: 'prev title next',
         right: ''
       },
-      // theme: false,
-      // defaultView: default_view,
-      // yearColumns: 1,
-      // firstDay: 1,
-      // eventLimit: false,
-      // weekNumbers: true,
-      // columnFormat: 'dddd',
-      // events: function (start, end, timezone, callback) {
-      //   var events = [];
-      //   $('.views-row', _this.$view).each(function () {
-      //     var color = 'rgb(' +
-      //       (Math.floor(Math.random() * 256)) + ',' +
-      //       (Math.floor(Math.random() * 256)) + ',' +
-      //       (Math.floor(Math.random() * 256)) + ')';
-      //
-      //     var times = $(this).find('.event-date time');
-      //     var eventId = $(this).find('.event-id').text().trim();
-      //     var langcode = drupalSettings.path.currentLanguage;
-      //     var startDate = $(times).eq(0).attr('datetime').match(regex)[0];
-      //     var endDate = $(times).eq(1).attr('datetime').match(regex)[0];
-      //     var endDateIncr = new Date(endDate);
-      //
-      //     endDateIncr.setDate(endDateIncr.getDate() + 1);
-      //
-      //     endDateIncr = formatDate(endDateIncr);
-      //
-      //     if (startDate !== endDate) {
-      //       endDate = endDateIncr;
-      //     }
-      //
-      //     events.push({
-      //       title: $(this).find('.event-title').text().trim(),
-      //       start: startDate,
-      //       end: endDate,
-      //       url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
-      //       color: $(this).find('.event-color').text().trim()
-      //     });
-      //     $(this).hide();
-      //   });
-      //   callback(events);
-      // },
-      // eventAfterRender: function(event, element, view) {
-      //   var $calendar = $('#calendar').find('.fc-day-number');
-      //   var startIndex = 0;
-      //   var endIndex = 0;
-      //
-      //   $calendar.each(function(index, el) {
-      //     var $this = $(this);
-      //     var startDate = event.start._i;
-      //     var endDate = event.end._i;
-      //
-      //     if (startDate === $this.data('date')) {
-      //       startIndex = index;
-      //     }
-      //     if (endDate === $this.data('date')) {
-      //       endIndex = index;
-      //     }
-      //   });
-      //
-      //   $calendar.slice(startIndex, endIndex).addClass('has-event');
-      // },
-      // eventAfterAllRender: function (view) {
-      //   weekFullName = $('.fc-day-header').map(function() {
-      //     return $(this).text();
-      //   });
-      //
-      //   weekShortName = $('.fc-day-header').map(function() {
-      //     return $(this).text().substring(0, 3);
-      //   });
-      //
-      //   $('.fc-year-monthly-name a', _this.$view).click(function (event) {
-      //     event.preventDefault();
-      //   });
-      //   $('.fc-event-container a', _this.$view).addClass('use-ajax');
-      //   $('.fc-day-number.fc-today').wrapInner('<span class="today"></span>');
-      //   Drupal.attachBehaviors($calendar.get()[0]);
-      // },
-      // windowResize: function(view) {
-      //   if (view.type === "month" && window.innerWidth > 767) {
-      //     $('.fc-day-header').each(function(i, el) {
-      //       $(this).text(weekFullName[i]);
-      //     });
-      //   }
-      //   else {
-      //     $('.fc-day-header').each(function(i, el) {
-      //       $(this).text(weekShortName[i]);
-      //     });
-      //   }
-      // },
+      theme: false,
+      defaultView: default_view,
+      yearColumns: 1,
+      firstDay: 1,
+      eventLimit: false,
+      weekNumbers: true,
+      columnFormat: 'dddd',
+      events: function (start, end, timezone, callback) {
+        var events = [];
+        $('.views-row', _this.$view).each(function () {
+          var color = 'rgb(' +
+            (Math.floor(Math.random() * 256)) + ',' +
+            (Math.floor(Math.random() * 256)) + ',' +
+            (Math.floor(Math.random() * 256)) + ')';
+
+          var times = $(this).find('.event-date time');
+          var eventId = $(this).find('.event-id').text().trim();
+          var langcode = drupalSettings.path.currentLanguage;
+          var startDate = $(times).eq(0).attr('datetime').match(regex)[0];
+          var endDate = $(times).eq(1).attr('datetime').match(regex)[0];
+          var endDateIncr = new Date(endDate);
+
+          endDateIncr.setDate(endDateIncr.getDate() + 1);
+
+          endDateIncr = formatDate(endDateIncr);
+
+          if (startDate !== endDate) {
+            endDate = endDateIncr;
+          }
+
+          events.push({
+            title: $(this).find('.event-title').text().trim(),
+            start: startDate,
+            end: endDate,
+            url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
+            color: $(this).find('.event-color').text().trim()
+          });
+          $(this).hide();
+        });
+        callback(events);
+      },
+      eventAfterRender: function(event, element, view) {
+        var $calendar = $('#calendar').find('.fc-day-number');
+        var startIndex = 0;
+        var endIndex = 0;
+
+        $calendar.each(function(index, el) {
+          var $this = $(this);
+          var startDate = event.start._i;
+          var endDate = event.end._i;
+
+          if (startDate === $this.data('date')) {
+            startIndex = index;
+          }
+          if (endDate === $this.data('date')) {
+            endIndex = index;
+          }
+        });
+
+        $calendar.slice(startIndex, endIndex).addClass('has-event');
+      },
+      eventAfterAllRender: function (view) {
+        weekFullName = $('.fc-day-header').map(function() {
+          return $(this).text();
+        });
+
+        weekShortName = $('.fc-day-header').map(function() {
+          return $(this).text().substring(0, 3);
+        });
+
+        $('.fc-year-monthly-name a', _this.$view).click(function (event) {
+          event.preventDefault();
+        });
+        $('.fc-event-container a', _this.$view).addClass('use-ajax');
+        $('.fc-day-number.fc-today').wrapInner('<span class="today"></span>');
+        Drupal.attachBehaviors($calendar.get()[0]);
+      },
+      windowResize: function(view) {
+        if (view.type === "month" && window.innerWidth > 767) {
+          $('.fc-day-header').each(function(i, el) {
+            $(this).text(weekFullName[i]);
+          });
+        }
+        else {
+          $('.fc-day-header').each(function(i, el) {
+            $(this).text(weekShortName[i]);
+          });
+        }
+      },
       viewDestroy: function (view, element) {
         var _calendar = this,
           view = _calendar.calendar.getView(),

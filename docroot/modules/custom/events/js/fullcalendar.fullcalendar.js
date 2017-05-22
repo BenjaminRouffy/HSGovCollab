@@ -10,6 +10,18 @@
       });
     }
 
+    function formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+
+      return [year, month, day].join('-');
+    }
+
     var regex = /\d{4}-\d{2}-\d{2}/g;
     var default_view = _this.getInput('format').val();
     this._calendar = $calendar.fullCalendar({
@@ -48,18 +60,6 @@
             endDate = endDateIncr;
           }
 
-          function formatDate(date) {
-            var d = new Date(date),
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
-
-            if (month.length < 2) month = '0' + month;
-            if (day.length < 2) day = '0' + day;
-
-            return [year, month, day].join('-');
-          }
-
           events.push({
             title: $(this).find('.event-title').text().trim(),
             start: startDate,
@@ -79,7 +79,11 @@
         $calendar.each(function(index, el) {
           var $this = $(this);
           var startDate = event.start._i;
-          var endDate = event.end._i;
+          var endDate;
+
+          if (event.end !== null) {
+            endDate = event.end._i;
+          }
 
           if (startDate === $this.data('date')) {
             startIndex = index;
@@ -129,12 +133,12 @@
       }
     });
 
-    var $month = _this.getInput('month').val();
-    var $year = _this.getInput('year').val();
-
-    $($calendar).fullCalendar('gotoDate', new Date($year + "-" + $month));
-    _this.onDisplayChange('.fc-month-button');
-    _this.onDisplayChange('.fc-year-button');
+    // var $month = _this.getInput('month').val();
+    // var $year = _this.getInput('year').val();
+    //
+    // $($calendar).fullCalendar('gotoDate', new Date($year + "-" + $month));
+    // _this.onDisplayChange('.fc-month-button');
+    // _this.onDisplayChange('.fc-year-button');
     return this;
   };
   Drupal.fullcalendar.prototype.getInput = function (selector) {

@@ -2,7 +2,7 @@ id: document_grandchild_group_content
 label: Create group content and build the bridge between group and node
 migration_group: wp
 source:
-  plugin: wp_post_grandchild
+  plugin: wp_grandchild_attachment
   root_post: 386
   post_type: 'attachment'
 destination:

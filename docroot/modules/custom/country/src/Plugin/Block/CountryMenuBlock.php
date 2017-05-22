@@ -133,7 +133,7 @@ class CountryMenuBlock extends BlockBase {
           case 'calendar':
             // @TODO Dependencies injection.
             $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-            if ($check_by_group->check($account, ['governance_area'])) {
+            if ($group->getGroupType()->id() == 'governance_area' && $check_by_group->check($account, ['governance_area'])) {
               $row = ['not-null'];
             }
             break;

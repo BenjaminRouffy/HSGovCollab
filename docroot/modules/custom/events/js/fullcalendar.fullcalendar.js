@@ -85,7 +85,6 @@
             endDate = event.end._i;
           }
 
-
           if (startDate === $this.data('date')) {
             startIndex = index;
           }
@@ -93,7 +92,6 @@
             endIndex = index;
           }
         });
-
 
         $calendar.slice(startIndex, endIndex).addClass('has-event');
       },

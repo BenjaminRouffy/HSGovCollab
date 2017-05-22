@@ -4350,7 +4350,6 @@ var DayGrid = Grid.extend({
     if (this.cellDates[index] !== undefined) {
       var start = this.cellDates[index].clone();
     }
-    console.log('wtf');
 		var end = start.clone().add(1, 'day');
 
 		return { start: start, end: end };

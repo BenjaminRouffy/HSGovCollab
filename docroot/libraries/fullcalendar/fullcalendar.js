@@ -4295,7 +4295,7 @@ var DayGrid = Grid.extend({
 		this.updateCellDates(); // populates cellDates and dayToCellOffsets
 		cellDates = this.cellDates;
 
-		if (this.breakOnWeeks && !!cellDates.length) {
+		if (this.breakOnWeeks) {
 			// count columns until the day-of-week repeats
 			firstDay = cellDates[0].day();
 			for (colCnt = 1; colCnt < cellDates.length; colCnt++) {

@@ -59,7 +59,11 @@ header {
       .header-fixed {
         top: 0;
       }
+    }
+  }
 
+  .logged:not(.toolbar-fixed) & {
+    &:not(.collapsed) {
       .bottom-head {
         padding-top: 39px;
       }

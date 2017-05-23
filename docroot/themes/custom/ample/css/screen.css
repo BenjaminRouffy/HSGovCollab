@@ -5986,9 +5986,11 @@ form .social_login iframe {
 .view-governance-area-calendar .wrapper-filters > div {
   margin-bottom: 20px; }
 
-.mobile .view-governance-area-calendar .wrapper-filters {
+.mobile .view-governance-area-calendar .wrapper-filters,
+.ie9 .view-governance-area-calendar .wrapper-filters {
   text-align: center; }
-  .mobile .view-governance-area-calendar .wrapper-filters > div {
+  .mobile .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     display: inline-block;
     max-width: 30%;
     vertical-align: top; }
@@ -6014,7 +6016,8 @@ form .social_login iframe {
     color: #ea3a32; }
 
 @media (max-width: 991px) {
-  .mobile .view-governance-area-calendar .wrapper-filters > div {
+  .mobile .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(40% - 20px); } }
 
 @media (max-width: 767px) {

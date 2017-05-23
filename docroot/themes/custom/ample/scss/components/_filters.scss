@@ -616,7 +616,8 @@
       margin-bottom: 20px;
     }
 
-    .mobile & {
+    .mobile &,
+    .ie9 & {
       text-align: center;
 
       > div {
@@ -657,7 +658,8 @@
 @include breakpoint-for('.view-governance-area-calendar', (to: laptop-small)) {
   .wrapper-filters {
     > div {
-      .mobile & {
+      .mobile &,
+      .ie9 & {
         max-width: calc(40% - 20px);
       }
     }

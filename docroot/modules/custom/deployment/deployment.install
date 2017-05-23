@@ -922,3 +922,10 @@ function deployment_update_8072() {
 function deployment_update_8073() {
   \Drupal::service('module_installer')->install(['pathologic']);
 }
+
+/**
+ * Install module "wp_content".
+ */
+function deployment_update_8074() {
+  \Drupal::service('module_installer')->install(['wp_content']);
+}

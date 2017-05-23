@@ -1,0 +1,13 @@
+id: wp
+label: WordPress
+description: Import from old WP site.
+source_type: WordPress
+shared_configuration:
+  source:
+    # DB connection.
+    key: migrate
+
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

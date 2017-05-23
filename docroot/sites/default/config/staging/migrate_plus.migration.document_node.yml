@@ -1,27 +1,28 @@
-id: document_paragraphs
+id: document_node
 label: Map document to new site into node.
 migration_group: wp
 source:
   plugin: posts_attachment
 destination:
-  plugin: entity:paragraph
+  plugin: entity:node
 process:
   type:
     plugin: default_value
-    default_value: file
-  "field_file/target_id":
-    plugin: migration_lookup
-    migration: posts_attachment
-    source: post_id
+    default_value: document
+  title: file_name
+  field_document:
+    - plugin: migration_lookup
+      migration: document_paragraphs
+      source: post_id
+    - plugin: paragraphs_import
+      paragraph_type: file
+  field_content_date: file_strtime
   created: file_mtime
+  changed: file_mtime
   uid:
     - plugin: migration_lookup
       migration: user
       source: user_id
-migration_dependencies:
-  optional:
-    - posts_attachment
-    - user
 dependencies:
   enforced:
     module:

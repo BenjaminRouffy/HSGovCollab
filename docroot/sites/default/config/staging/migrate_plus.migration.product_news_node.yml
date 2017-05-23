@@ -1,0 +1,43 @@
+id: product_news_node
+label: Map products to new site into node.
+migration_group: wp
+source:
+  plugin: wp_post_child
+  root_post: 6232
+  post_type: 'page'
+destination:
+  plugin: entity:node
+process:
+  type:
+    plugin: default_value
+    default_value: news
+  title: post_title
+  'body/value': post_content
+  'body/format':
+    plugin: default_value
+    default_value: html
+  created:
+    - plugin: callback
+      callable: strtotime
+      source: post_date
+    - plugin: convert_wrong_dates
+  uid:
+    plugin: migration_lookup
+    migration: user
+    source: post_author
+  changed:
+    plugin: callback
+    callable: strtotime
+    source: post_modified
+  field_content_date:
+    plugin: format_date
+    from_format: 'Y-m-d H:i:s'
+    to_format: 'Y-m-d'
+    source: post_date
+migration_dependencies:
+  optional:
+    - user
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

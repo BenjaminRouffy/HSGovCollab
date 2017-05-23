@@ -1,4 +1,4 @@
-id: wpfb_files
+id: document_wpfb_file
 label: Create mapping from wpfb_files.
 migration_group: wp
 source:
@@ -9,6 +9,9 @@ process:
   filename: file_name
   uri: file_path
   filemime: file_mime
+  type:
+    plugin: default_value
+    default_value: 'document'
   status:
     plugin: default_value
     default_value: 1

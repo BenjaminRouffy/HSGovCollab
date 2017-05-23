@@ -73,7 +73,7 @@ class ParentGroups extends ProcessorPluginBase {
 
                 if ($group_type_key == 'country') {
                   $country = Group::load($target_id);
-                  if (!isset($country->field_group_status->getValue()[0]['value']) || $country->field_group_status->getValue()[0]['value'] == 'unpublished') {
+                  if (!isset($country->field_group_status) || !isset($country->field_group_status->getValue()[0]['value']) || $country->field_group_status->getValue()[0]['value'] == 'unpublished') {
                     continue;
                   }
                 }

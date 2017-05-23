@@ -1,8 +1,8 @@
-id: posts_attachment
-label: Create mapping from posts_attachment.
+id: document_wpfb_file
+label: Create mapping from wpfb_files.
 migration_group: wp
 source:
-  plugin: posts_attachment
+  plugin: wpfb_files
 destination:
   plugin: 'entity:file'
 process:
@@ -18,9 +18,8 @@ process:
   created: file_mtime
   changed: file_mtime
   uid:
-    - plugin: migration_lookup
-      migration: user
-      source: user_id
+    plugin: default_value
+    default_value: 1
 dependencies:
   enforced:
     module:

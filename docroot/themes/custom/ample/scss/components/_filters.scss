@@ -611,8 +611,7 @@
   }
 }
 
-.view-governance-area-calendar,
-.view-my-projects {
+.view-governance-area-calendar {
   .wrapper-filters {
     > div {
       margin-bottom: 20px;
@@ -657,7 +656,7 @@
   }
 }
 
-@include breakpoint-for('.view-governance-area-calendar, .view-my-projects', (to: laptop-small)) {
+@include breakpoint-for('.view-governance-area-calendar', (to: laptop-small)) {
   .wrapper-filters {
     > div {
       .mobile &,
@@ -668,7 +667,7 @@
   }
 }
 
-@include breakpoint-for('.view-governance-area-calendar, .view-my-projects', (to: tablet)) {
+@include breakpoint-for('.view-governance-area-calendar', (to: tablet)) {
   .wrapper-filters {
     > div {
       .mobile &,
@@ -679,7 +678,7 @@
   }
 }
 
-@include breakpoint-for('.view-governance-area-calendar, .view-my-projects', (to: mobileL)) {
+@include breakpoint-for('.view-governance-area-calendar', (to: mobileL)) {
   .wrapper-filters {
     > div {
       .mobile &,
@@ -759,6 +758,62 @@
       margin-left: 0;
       margin-right: 0;
       max-width: 100%;
+    }
+  }
+}
+
+.view-my-projects {
+  .wrapper-filters {
+    > div {
+      margin-bottom: 20px;
+    }
+
+    .mobile &,
+    .ie10 &,
+    .ie9 & {
+      text-align: center;
+
+      > div {
+        display: inline-block;
+        max-width: 30%;
+        vertical-align: top;
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: laptop-small)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie10 &,
+      .ie9 & {
+        max-width: calc(40% - 20px);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: tablet)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie10 &,
+      .ie9 & {
+        max-width: calc(50% - 20px);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: mobileL)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie10 &,
+      .ie9 & {
+        max-width: 100%;
+      }
     }
   }
 }

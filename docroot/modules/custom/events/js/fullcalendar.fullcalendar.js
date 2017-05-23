@@ -10,7 +10,7 @@
       });
     }
 
-    var regex = /\d{4}-\d{2}-\d{2}/g;
+    // var regex = /\d{4}ss-\d{2}-\d{2}/g;
     var default_view = _this.getInput('format').val();
     this._calendar = $calendar.fullCalendar({
       header: {
@@ -32,8 +32,8 @@
           var times = $(this).find('.event-date time');
           var eventId = $(this).find('.event-id').text().trim();
           var langcode = drupalSettings.path.currentLanguage;
-          var startDate = $(times).eq(0).attr('datetime').match(regex)[0];
-          var endDate = $(times).eq(1).attr('datetime').match(regex)[0] || startDate;
+          var startDate = $(times).eq(0).text() || $.fullCalendar.moment().format("YYYY-MM-DD");
+          var endDate = $(times).eq(1).text() || startDate;
 
           $(this).hide();
           if (!startDate || !endDate) {

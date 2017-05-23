@@ -618,7 +618,7 @@
     attach: function(context, settings) {
       var $eventContainer = $('#event-response', context);
 
-      $('.page-my-calendar', context).on('mousedown', function(e) {
+      $('.page-my-calendar, .page-group-calendar', context).on('mousedown', function(e) {
         var $target = $(e.target);
 
         if (!$eventContainer.is($target) && $eventContainer.has($target).length === 0) {

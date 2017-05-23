@@ -10,19 +10,7 @@
       });
     }
 
-    function formatDate(date) {
-      var d = new Date(date),
-          month = '' + (d.getMonth() + 1),
-          day = '' + d.getDate(),
-          year = d.getFullYear();
-
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
-
-      return [year, month, day].join('-');
-    }
-
-    var regex = /\d{4}-\d{2}-\d{2}/g;
+    // var regex = /\d{4}ss-\d{2}-\d{2}/g;
     var default_view = _this.getInput('format').val();
     this._calendar = $calendar.fullCalendar({
       header: {
@@ -40,35 +28,30 @@
       events: function (start, end, timezone, callback) {
         var events = [];
         $('.views-row', _this.$view).each(function () {
-          var color = 'rgb(' +
-            (Math.floor(Math.random() * 256)) + ',' +
-            (Math.floor(Math.random() * 256)) + ',' +
-            (Math.floor(Math.random() * 256)) + ')';
 
           var times = $(this).find('.event-date time');
           var eventId = $(this).find('.event-id').text().trim();
           var langcode = drupalSettings.path.currentLanguage;
-          var startDate = $(times).eq(0).attr('datetime').match(regex)[0];
-          var endDate = $(times).eq(1).attr('datetime').match(regex)[0];
-          var endDateIncr = new Date(endDate);
+          var startDate = $(times).eq(0).text() || $.fullCalendar.moment().format("YYYY-MM-DD");
+          var endDate = $(times).eq(1).text() || startDate;
 
-          endDateIncr.setDate(endDateIncr.getDate() + 1);
-
-          endDateIncr = formatDate(endDateIncr);
-
-          if (startDate !== endDate) {
-            endDate = endDateIncr;
+          $(this).hide();
+          if (!startDate || !endDate) {
+            return;
           }
 
-          events.push({
+          var event = {
             title: $(this).find('.event-title').text().trim(),
-            start: startDate,
-            end: endDate,
+            start: $.fullCalendar.moment(startDate + "T06:00:00+00:00"),
+            end: $.fullCalendar.moment(endDate + "T18:00:00+00:00"),
             url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
-            color: $(this).find('.event-color').text().trim()
-          });
-          $(this).hide();
+            color: $(this).find('.event-color').text().trim(),
+            hideTime: true
+          };
+          events.push(event);
+
         });
+
         callback(events);
       },
       eventAfterRender: function(event, element, view) {
@@ -78,11 +61,11 @@
 
         $calendar.each(function(index, el) {
           var $this = $(this);
-          var startDate = event.start._i;
+          var startDate = event.start.format("YYYY-MM-DD");
           var endDate;
 
           if (event.end !== null) {
-            endDate = event.end._i;
+            endDate = event.end.format("YYYY-MM-DD");
           }
 
           if (startDate === $this.data('date')) {
@@ -93,7 +76,7 @@
           }
         });
 
-        $calendar.slice(startIndex, endIndex).addClass('has-event');
+        $calendar.slice(startIndex, endIndex + 1).addClass('has-event');
       },
       eventAfterAllRender: function (view) {
         weekFullName = $('.fc-day-header').map(function() {

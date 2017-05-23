@@ -5998,22 +5998,31 @@ form .social_login iframe {
 .view-governance-area-calendar .wrapper-filters > div {
   max-width: 30%; }
 
-.view-governance-area-calendar .wrapper-filters > div {
+.view-governance-area-calendar .wrapper-filters > div,
+.view-my-projects .wrapper-filters > div {
   margin-bottom: 20px; }
 
 .mobile .view-governance-area-calendar .wrapper-filters,
-.ie9 .view-governance-area-calendar .wrapper-filters {
+.ie9 .view-governance-area-calendar .wrapper-filters, .mobile
+.view-my-projects .wrapper-filters,
+.ie9
+.view-my-projects .wrapper-filters {
   text-align: center; }
   .mobile .view-governance-area-calendar .wrapper-filters > div,
-  .ie9 .view-governance-area-calendar .wrapper-filters > div {
+  .ie9 .view-governance-area-calendar .wrapper-filters > div, .mobile
+  .view-my-projects .wrapper-filters > div,
+  .ie9
+  .view-my-projects .wrapper-filters > div {
     display: inline-block;
     max-width: 30%;
     vertical-align: top; }
 
-.view-governance-area-calendar .views-row {
+.view-governance-area-calendar .views-row,
+.view-my-projects .views-row {
   display: none; }
 
-.view-governance-area-calendar .feed-ical {
+.view-governance-area-calendar .feed-ical,
+.view-my-projects .feed-ical {
   font-size: 1.25rem;
   color: #4c7e96;
   display: inline-block;
@@ -6021,28 +6030,33 @@ form .social_login iframe {
   margin: 30px 0 40px;
   text-decoration: none;
   vertical-align: top; }
-  .view-governance-area-calendar .feed-ical:before {
+  .view-governance-area-calendar .feed-ical:before,
+  .view-my-projects .feed-ical:before {
     font-size: 1.875rem;
     content: "F";
     font-family: P4h, sans-serif;
     position: relative;
     top: 4px; }
-  .view-governance-area-calendar .feed-ical:hover {
+  .view-governance-area-calendar .feed-ical:hover,
+  .view-my-projects .feed-ical:hover {
     color: #ea3a32; }
 
 @media (max-width: 991px) {
   .mobile .view-governance-area-calendar .wrapper-filters > div,
-  .ie9 .view-governance-area-calendar .wrapper-filters > div {
+  .ie9 .view-governance-area-calendar .wrapper-filters > div, .mobile .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div {
     max-width: calc(40% - 20px); } }
 
 @media (max-width: 767px) {
   .mobile .view-governance-area-calendar .wrapper-filters > div,
-  .ie9 .view-governance-area-calendar .wrapper-filters > div {
+  .ie9 .view-governance-area-calendar .wrapper-filters > div, .mobile .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div {
     max-width: calc(50% - 20px); } }
 
 @media (max-width: 479px) {
   .mobile .view-governance-area-calendar .wrapper-filters > div,
-  .ie9 .view-governance-area-calendar .wrapper-filters > div {
+  .ie9 .view-governance-area-calendar .wrapper-filters > div, .mobile .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div {
     max-width: 100%; } }
 
 .view-knowledge-vault:not(.with-filters) form {

@@ -611,7 +611,8 @@
   }
 }
 
-.view-governance-area-calendar {
+.view-governance-area-calendar,
+.view-my-projects {
   .wrapper-filters {
     > div {
       margin-bottom: 20px;
@@ -656,7 +657,7 @@
   }
 }
 
-@include breakpoint-for('.view-governance-area-calendar', (to: laptop-small)) {
+@include breakpoint-for('.view-governance-area-calendar, .view-my-projects', (to: laptop-small)) {
   .wrapper-filters {
     > div {
       .mobile &,
@@ -667,7 +668,7 @@
   }
 }
 
-@include breakpoint-for('.view-governance-area-calendar', (to: tablet)) {
+@include breakpoint-for('.view-governance-area-calendar, .view-my-projects', (to: tablet)) {
   .wrapper-filters {
     > div {
       .mobile &,
@@ -678,7 +679,7 @@
   }
 }
 
-@include breakpoint-for('.view-governance-area-calendar', (to: mobileL)) {
+@include breakpoint-for('.view-governance-area-calendar, .view-my-projects', (to: mobileL)) {
   .wrapper-filters {
     > div {
       .mobile &,

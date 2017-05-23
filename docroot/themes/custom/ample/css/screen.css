@@ -173,6 +173,8 @@ body {
   min-width: 320px;
   overflow-x: hidden; }
   body.mobile {
+    padding-top: 39px !important; }
+  body:not(.toolbar-fixed) {
     padding-top: 0 !important; }
   body.safari:not(.logged) {
     height: auto;
@@ -598,7 +600,7 @@ svg {
   .toolbar-tray-open .dashboard-sidebar {
     padding-top: 125px; }
   .mobile .dashboard-sidebar {
-    padding-top: 39px; }
+    padding-top: 85px; }
   .dashboard-sidebar .logo-wrapper a {
     background: #fff;
     border-bottom: 2px solid #ea3a32;
@@ -1407,6 +1409,9 @@ footer > .partners {
 @media (max-width: 767px) {
   .country-content-wrapper {
     height: 600px; }
+    .group-country .country-content-wrapper:not(.logged),
+    .group-region .country-content-wrapper:not(.logged) {
+      padding-top: 80px; }
     .country-content-wrapper h1 {
       font-size: 3.5rem;
       line-height: 64px;
@@ -6543,7 +6548,7 @@ header {
     top: 0; }
   body:not(.toolbar-fixed) header:not(.collapsed) .header-fixed {
     top: 0; }
-  body:not(.toolbar-fixed) header:not(.collapsed) .bottom-head {
+  .logged:not(.toolbar-fixed) header:not(.collapsed) .bottom-head {
     padding-top: 39px; }
 
 .header-static {

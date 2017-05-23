@@ -415,6 +415,13 @@
 @include breakpoint-for('.country-content-wrapper', (to: tablet)) {
   height: 600px;
 
+  .group-country &,
+  .group-region & {
+    &:not(.logged) {
+      padding-top: 80px;
+    }
+  }
+
   h1 {
     @include font-size(56);
     line-height: 64px;

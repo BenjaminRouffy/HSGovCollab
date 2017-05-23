@@ -11,6 +11,9 @@ process:
   type:
     plugin: default_value
     default_value: product
+  migrate_data:
+    plugin: default_value
+    default_value: '1'
 dependencies:
   enforced:
     module:

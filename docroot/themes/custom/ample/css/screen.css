@@ -4012,6 +4012,8 @@ form .social_login iframe {
     overflow: hidden; }
     .ie9 .user-login-form .login-wrapper {
       float: right; }
+    .ie9 .user-login-form .form-text:last-child, .ie9 .user-login-form .form-textarea:last-child {
+      display: block !important; }
   .user-login-form .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;

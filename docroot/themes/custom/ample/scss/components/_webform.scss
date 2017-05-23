@@ -424,7 +424,7 @@ form {
     }
 
     .form-text {
-      display: none;
+      display: none !important;
 
       &[name="pass"] {
         display: block !important;

@@ -4013,7 +4013,7 @@ form .social_login iframe {
     .ie9 .user-login-form .login-wrapper {
       float: right; }
     .ie9 .user-login-form .form-text, .ie9 .user-login-form .form-textarea {
-      display: none; }
+      display: none !important; }
       .ie9 .user-login-form .form-text[name="pass"], .ie9 .user-login-form [name="pass"].form-textarea {
         display: block !important; }
   .user-login-form .social_login {

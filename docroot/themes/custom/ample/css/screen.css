@@ -6085,6 +6085,35 @@ form .social_login iframe {
     margin-right: 0;
     max-width: 100%; } }
 
+.mobile .view-my-projects .wrapper-filters,
+.ie10 .view-my-projects .wrapper-filters,
+.ie9 .view-my-projects .wrapper-filters {
+  text-align: center; }
+  .mobile .view-my-projects .wrapper-filters > div,
+  .ie10 .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div {
+    display: inline-block;
+    max-width: 30%;
+    vertical-align: top; }
+
+@media (max-width: 991px) {
+  .mobile .view-my-projects .wrapper-filters > div,
+  .ie10 .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div {
+    max-width: calc(40% - 20px); } }
+
+@media (max-width: 767px) {
+  .mobile .view-my-projects .wrapper-filters > div,
+  .ie10 .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div {
+    max-width: calc(50% - 20px); } }
+
+@media (max-width: 479px) {
+  .mobile .view-my-projects .wrapper-filters > div,
+  .ie10 .view-my-projects .wrapper-filters > div,
+  .ie9 .view-my-projects .wrapper-filters > div {
+    max-width: 100%; } }
+
 @media (max-width: 479px) {
   .view-knowledge-vault:not(.with-filters) form {
     max-width: 100%; }

@@ -762,6 +762,58 @@
   }
 }
 
+.view-my-projects {
+  .wrapper-filters {
+    .mobile &,
+    .ie10 &,
+    .ie9 & {
+      text-align: center;
+
+      > div {
+        display: inline-block;
+        max-width: 30%;
+        vertical-align: top;
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: laptop-small)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie10 &,
+      .ie9 & {
+        max-width: calc(40% - 20px);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: tablet)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie10 &,
+      .ie9 & {
+        max-width: calc(50% - 20px);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.view-my-projects', (to: mobileL)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie10 &,
+      .ie9 & {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
 @include breakpoint-for('.view-knowledge-vault', (to: mobileL)) {
   &:not(.with-filters) {
     form {

@@ -1584,6 +1584,11 @@ form {
       .dropbutton-toggle {
         bottom: auto;
         top: 9px;
+
+        button {
+          height: 15px;
+          margin-top: -13px;
+        }
       }
 
       .dropbutton-arrow {
@@ -1821,6 +1826,14 @@ form {
   }
 
   #edit-field-organisations-wrapper {
+    .field--name-field-job-title {
+      label.error {
+        bottom: 5px;
+        right: 0;
+        top: auto;
+      }
+    }
+
     thead {
       .label {
         padding-left: 10px;

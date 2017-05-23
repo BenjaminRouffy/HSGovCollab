@@ -5030,6 +5030,9 @@ form .social_login iframe {
     .form-my-settings table .dropbutton-wrapper .dropbutton-toggle {
       bottom: auto;
       top: 9px; }
+      .form-my-settings table .dropbutton-wrapper .dropbutton-toggle button {
+        height: 15px;
+        margin-top: -13px; }
     .form-my-settings table .dropbutton-wrapper .dropbutton-arrow {
       border-top-color: #8c2222; }
   .form-my-settings table .confirm-remove .form-submit, .form-my-settings table .confirm-remove .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .form-my-settings table .confirm-remove a, .form-my-settings table .confirm-remove .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .form-my-settings table .confirm-remove .button, .form-my-settings table .confirm-remove .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .form-my-settings table .confirm-remove #edit-cancel, .form-my-settings table .confirm-remove
@@ -5256,6 +5259,10 @@ form .social_login iframe {
     padding-right: 10px; }
   .form-my-settings #edit-account > .form-item {
     padding: 0 10px; }
+  .form-my-settings #edit-field-organisations-wrapper .field--name-field-job-title label.error {
+    bottom: 5px;
+    right: 0;
+    top: auto; }
   .form-my-settings #edit-field-organisations-wrapper thead .label {
     padding-left: 10px; }
   .form-my-settings #interests-wrapper .form-wrapper,
@@ -7374,11 +7381,12 @@ footer {
     .post-info > *:not(:first-child):before {
       content: "|";
       font-weight: normal;
-      margin: 0 6px 0 2px; }
+      margin: 0 3px 0 2px; }
   .post-info time ~ time:before {
     display: none; }
   .post-info time,
   .post-info .country {
+    display: inline;
     font-weight: 700; }
   .post-info a {
     color: #4c7e96;

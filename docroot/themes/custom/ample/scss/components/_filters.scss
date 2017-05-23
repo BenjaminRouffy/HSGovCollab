@@ -72,6 +72,7 @@
       display: block;
       flex: none;
       overflow: hidden;
+      text-align: center;
 
       > div {
         display: inline-block;
@@ -669,7 +670,8 @@
 @include breakpoint-for('.view-governance-area-calendar', (to: tablet)) {
   .wrapper-filters {
     > div {
-      .mobile & {
+      .mobile &,
+      .ie9 & {
         max-width: calc(50% - 20px);
       }
     }
@@ -679,7 +681,8 @@
 @include breakpoint-for('.view-governance-area-calendar', (to: mobileL)) {
   .wrapper-filters {
     > div {
-      .mobile & {
+      .mobile &,
+      .ie9 & {
         max-width: 100%;
       }
     }

@@ -4012,8 +4012,6 @@ form .social_login iframe {
     overflow: hidden; }
     .ie9 .user-login-form .login-wrapper {
       float: right; }
-    .ie9 .user-login-form .form-text, .ie9 .user-login-form .form-textarea {
-      display: block !important; }
   .user-login-form .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;
@@ -5539,7 +5537,8 @@ form .social_login iframe {
     -webkit-box-flex: 0;
         -ms-flex: none;
             flex: none;
-    overflow: hidden; }
+    overflow: hidden;
+    text-align: center; }
     .ie9 .view-news-and-events .wrapper-filters > div, .ie9
     .view-my-projects .wrapper-filters > div, .ie9
     .view-contacts .wrapper-filters > div, .ie9
@@ -6021,11 +6020,13 @@ form .social_login iframe {
     max-width: calc(40% - 20px); } }
 
 @media (max-width: 767px) {
-  .mobile .view-governance-area-calendar .wrapper-filters > div {
+  .mobile .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     max-width: calc(50% - 20px); } }
 
 @media (max-width: 479px) {
-  .mobile .view-governance-area-calendar .wrapper-filters > div {
+  .mobile .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     max-width: 100%; } }
 
 .view-knowledge-vault:not(.with-filters) form {

@@ -72,10 +72,12 @@
       display: block;
       flex: none;
       overflow: hidden;
+      text-align: center;
 
       > div {
-        float: left;
+        display: inline-block;
         max-width: calc(20% - 20px);
+        vertical-align: top;
       }
     }
 
@@ -615,11 +617,13 @@
       margin-bottom: 20px;
     }
 
-    .mobile & {
+    .mobile &,
+    .ie9 & {
       text-align: center;
 
       > div {
         display: inline-block;
+        max-width: 30%;
         vertical-align: top;
       }
     }
@@ -648,6 +652,39 @@
 
     &:hover {
       color: $red;
+    }
+  }
+}
+
+@include breakpoint-for('.view-governance-area-calendar', (to: laptop-small)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie9 & {
+        max-width: calc(40% - 20px);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.view-governance-area-calendar', (to: tablet)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie9 & {
+        max-width: calc(50% - 20px);
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.view-governance-area-calendar', (to: mobileL)) {
+  .wrapper-filters {
+    > div {
+      .mobile &,
+      .ie9 & {
+        max-width: 100%;
+      }
     }
   }
 }
@@ -687,14 +724,6 @@
   &:not(.with-filters) {
     form {
       max-width: 60%;
-    }
-  }
-
-  .wrapper-filters {
-    > div {
-      .mobile & {
-
-      }
     }
   }
 }

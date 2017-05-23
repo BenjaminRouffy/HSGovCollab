@@ -4013,7 +4013,9 @@ form .social_login iframe {
     .ie9 .user-login-form .login-wrapper {
       float: right; }
     .ie9 .user-login-form .form-text, .ie9 .user-login-form .form-textarea {
-      display: block !important; }
+      display: none !important; }
+      .ie9 .user-login-form .form-text[name="pass"], .ie9 .user-login-form [name="pass"].form-textarea {
+        display: block !important; }
   .user-login-form .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;
@@ -5539,14 +5541,16 @@ form .social_login iframe {
     -webkit-box-flex: 0;
         -ms-flex: none;
             flex: none;
-    overflow: hidden; }
+    overflow: hidden;
+    text-align: center; }
     .ie9 .view-news-and-events .wrapper-filters > div, .ie9
     .view-my-projects .wrapper-filters > div, .ie9
     .view-contacts .wrapper-filters > div, .ie9
     .view-knowledge-vault .wrapper-filters > div, .ie9
     .view-governance-area-calendar .wrapper-filters > div {
-      float: left;
-      max-width: calc(20% - 20px); }
+      display: inline-block;
+      max-width: calc(20% - 20px);
+      vertical-align: top; }
   .ie10 .view-news-and-events .wrapper-filters > div, .ie10
   .view-my-projects .wrapper-filters > div, .ie10
   .view-contacts .wrapper-filters > div, .ie10
@@ -5985,10 +5989,13 @@ form .social_login iframe {
 .view-governance-area-calendar .wrapper-filters > div {
   margin-bottom: 20px; }
 
-.mobile .view-governance-area-calendar .wrapper-filters {
+.mobile .view-governance-area-calendar .wrapper-filters,
+.ie9 .view-governance-area-calendar .wrapper-filters {
   text-align: center; }
-  .mobile .view-governance-area-calendar .wrapper-filters > div {
+  .mobile .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
     display: inline-block;
+    max-width: 30%;
     vertical-align: top; }
 
 .view-governance-area-calendar .views-row {
@@ -6010,6 +6017,21 @@ form .social_login iframe {
     top: 4px; }
   .view-governance-area-calendar .feed-ical:hover {
     color: #ea3a32; }
+
+@media (max-width: 991px) {
+  .mobile .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
+    max-width: calc(40% - 20px); } }
+
+@media (max-width: 767px) {
+  .mobile .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
+    max-width: calc(50% - 20px); } }
+
+@media (max-width: 479px) {
+  .mobile .view-governance-area-calendar .wrapper-filters > div,
+  .ie9 .view-governance-area-calendar .wrapper-filters > div {
+    max-width: 100%; } }
 
 .view-knowledge-vault:not(.with-filters) form {
   max-width: 40%; }
@@ -8233,7 +8255,8 @@ footer {
     padding: 0;
     position: absolute;
     left: 50%;
-    top: 50%; }
+    top: 50%;
+    z-index: 1; }
   #calendar .has-event:not(.fc-other-month) {
     position: relative; }
 
@@ -8294,6 +8317,7 @@ footer {
   height: 65%;
   max-height: 600px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 40px;
   position: fixed;
   top: 50%;

@@ -424,7 +424,11 @@ form {
     }
 
     .form-text {
-      display: block !important;
+      display: none !important;
+
+      &[name="pass"] {
+        display: block !important;
+      }
     }
   }
 

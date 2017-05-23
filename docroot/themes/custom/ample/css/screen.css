@@ -4012,8 +4012,10 @@ form .social_login iframe {
     overflow: hidden; }
     .ie9 .user-login-form .login-wrapper {
       float: right; }
-    .ie9 .user-login-form .form-text:last-child, .ie9 .user-login-form .form-textarea:last-child {
-      display: block !important; }
+    .ie9 .user-login-form .form-text, .ie9 .user-login-form .form-textarea {
+      display: none; }
+      .ie9 .user-login-form .form-text[name="pass"], .ie9 .user-login-form [name="pass"].form-textarea {
+        display: block !important; }
   .user-login-form .social_login {
     margin: 40px 0 0 !important;
     padding: 0 40px;

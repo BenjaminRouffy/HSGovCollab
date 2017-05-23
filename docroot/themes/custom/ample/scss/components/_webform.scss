@@ -423,8 +423,12 @@ form {
       float: right;
     }
 
-    .form-text:last-child {
-      display: block !important;
+    .form-text {
+      display: none;
+
+      &[name="pass"] {
+        display: block !important;
+      }
     }
   }
 

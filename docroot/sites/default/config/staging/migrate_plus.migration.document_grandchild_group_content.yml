@@ -1,0 +1,35 @@
+id: document_grandchild_group_content
+label: Create group content and build the bridge between group and node
+migration_group: wp
+source:
+  plugin: wp_grandchild_attachment
+  root_post: 386
+  post_type: 'attachment'
+destination:
+  plugin: entity:group_content
+process:
+  type:
+    plugin: default_value
+    default_value: country-group_node-document
+  label: post_title
+
+  # Group migration
+  gid:
+    plugin: migration_lookup
+    migration: country
+    source: grand_parent_post_name
+
+  # Node relation
+  entity_id:
+    plugin: migration_lookup
+    migration: document_node
+    source: ID
+
+migration_dependencies:
+  optional:
+    - country
+    - document_node
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

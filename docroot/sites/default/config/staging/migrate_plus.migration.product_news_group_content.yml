@@ -1,0 +1,35 @@
+id: product_news_group_content
+label: Create group content and build the bridge between group and node
+migration_group: wp
+source:
+  plugin: wp_post_child
+  root_post: 6232
+  post_type: 'page'
+destination:
+  plugin: entity:group_content
+process:
+  type:
+    plugin: default_value
+    default_value: product-group_node-news
+  label: post_title
+
+  # Group migration
+  gid:
+    plugin: migration_lookup
+    migration: product
+    source: parent_posts_post_name
+
+  # Node relation
+  entity_id:
+    plugin: migration_lookup
+    migration: product_news_node
+    source: ID
+
+migration_dependencies:
+  optional:
+    - product
+    - product_news_node
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

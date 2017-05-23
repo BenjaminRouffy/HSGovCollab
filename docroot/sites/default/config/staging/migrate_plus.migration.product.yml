@@ -1,0 +1,17 @@
+id: product
+label: Create mapping from old global to product.
+migration_group: wp
+source:
+  plugin: wp_post
+  root_post: 6232
+destination:
+  plugin: entity:group
+process:
+  label: post_title
+  type:
+    plugin: default_value
+    default_value: product
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

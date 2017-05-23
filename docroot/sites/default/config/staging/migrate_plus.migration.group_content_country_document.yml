@@ -1,0 +1,42 @@
+id: group_content_country_document
+label: Create group content and build the bridge between group and node
+migration_group: wp
+source:
+  plugin: wp_wpfb_country_file
+destination:
+  plugin: entity:group_content
+process:
+  type:
+    plugin: default_value
+    default_value: country-group_node-document
+  label: post_title
+
+  # Group migration
+  gid:
+    - plugin: explode
+      source: cat_path
+      delimiter: /
+
+    - plugin: extract
+      index:
+       - 1
+
+    - plugin: skip_on_empty
+      method: row
+
+    - plugin: migration_lookup
+      migration: country
+
+  # Node relation
+  entity_id:
+    plugin: migration_lookup
+    migration: document_wpfb_node
+    source: file_id
+
+migration_dependencies:
+  optional:
+    - document_wpfb_node
+dependencies:
+  enforced:
+    module:
+      - migrate_wp

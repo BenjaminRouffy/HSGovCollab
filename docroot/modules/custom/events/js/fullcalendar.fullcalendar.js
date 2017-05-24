@@ -10,6 +10,26 @@
       });
     }
 
+    var colors = [
+      '#2f434b',
+      '#627178',
+      '#97a0a4',
+      '#e73b39',
+      '#ed6867',
+      '#f4989a',
+      '#f9d6d5',
+      '#4e7d93',
+      '#7a9daf',
+      '#a6bec9',
+      '#dce5ea',
+      '#a8575b',
+      '#c48d91',
+      '#e7d1d3',
+      '#61a9ba',
+      '#89bdcb',
+      '#afd4dc'
+    ];
+
     // var regex = /\d{4}ss-\d{2}-\d{2}/g;
     var default_view = _this.getInput('format').val();
     this._calendar = $calendar.fullCalendar({
@@ -40,12 +60,13 @@
             return;
           }
 
+          var color = colors[Math.floor(Math.random() * colors.length)];
           var event = {
             title: $(this).find('.event-title').text().trim(),
             start: $.fullCalendar.moment(startDate + "T06:00:00+00:00"),
             end: $.fullCalendar.moment(endDate + "T18:00:00+00:00"),
             url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
-            color: $(this).find('.event-color').text().trim(),
+            color: color,
             hideTime: true
           };
           events.push(event);

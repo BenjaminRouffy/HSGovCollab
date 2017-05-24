@@ -395,6 +395,13 @@
     font-weight: 700;
   }
 
+  .value {
+    > span {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
   .event-body {
     line-height: 24px;
     margin-bottom: 15px;

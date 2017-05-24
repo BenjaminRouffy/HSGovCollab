@@ -780,23 +780,23 @@ svg {
       width: 100%; } }
 
 @media (max-width: 1440px) {
-  .header-static .main-menu > div, .header-fixed .main-menu > div {
+  .logged .header-static .main-menu > div, .logged .header-fixed .main-menu > div {
     padding-left: 30px; }
-  .header-static .main-menu ul:not(.contextual-links) a, .header-fixed .main-menu ul:not(.contextual-links) a {
+  .logged .header-static .main-menu ul:not(.contextual-links) a, .logged .header-fixed .main-menu ul:not(.contextual-links) a {
     padding-left: 20px;
     padding-right: 20px; } }
 
 @media screen and (max-width: 1280px) {
-  .header-static .main-menu > div {
+  .logged .header-static .main-menu > div {
     padding-left: 175px; }
-  .header-static .main-menu ul:not(.contextual-links) a {
+  .logged .header-static .main-menu ul:not(.contextual-links) a {
     padding-left: 10px;
     padding-right: 10px; } }
 
 @media screen and (max-width: 1280px) {
-  .header-fixed .main-menu > div {
+  .logged .header-fixed .main-menu > div {
     padding-left: 60px; }
-  .header-fixed .main-menu ul:not(.contextual-links) a {
+  .logged .header-fixed .main-menu ul:not(.contextual-links) a {
     padding-left: 15px;
     padding-right: 15px; } }
 

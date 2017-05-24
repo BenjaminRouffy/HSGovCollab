@@ -481,15 +481,17 @@
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: desktop)) {
-  .main-menu {
-    > div {
-      padding-left: 30px;
-    }
+  .logged & {
+    .main-menu {
+      > div {
+        padding-left: 30px;
+      }
 
-    ul:not(.contextual-links) {
-      a {
-        padding-left: 20px;
-        padding-right: 20px;
+      ul:not(.contextual-links) {
+        a {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
       }
     }
   }
@@ -497,15 +499,17 @@
 
 @media screen and (max-width: 1280px) {
   .header-static {
-    .main-menu {
-      > div {
-        padding-left: 175px;
-      }
+    .logged & {
+      .main-menu {
+        > div {
+          padding-left: 175px;
+        }
 
-      ul:not(.contextual-links) {
-        a {
-          padding-left: 10px;
-          padding-right: 10px;
+        ul:not(.contextual-links) {
+          a {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
         }
       }
     }
@@ -514,15 +518,17 @@
 
 @media screen and (max-width: 1280px) {
   .header-fixed {
-    .main-menu {
-      > div {
-        padding-left: 60px;
-      }
+    .logged & {
+      .main-menu {
+        > div {
+          padding-left: 60px;
+        }
 
-      ul:not(.contextual-links) {
-        a {
-          padding-left: 15px;
-          padding-right: 15px;
+        ul:not(.contextual-links) {
+          a {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
         }
       }
     }

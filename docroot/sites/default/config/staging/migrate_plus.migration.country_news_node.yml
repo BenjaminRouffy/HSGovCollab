@@ -1,19 +1,25 @@
+uuid: 03653833-cc4a-47c2-93e0-7bf0f38b3ac6
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_wp
 id: country_news_node
-label: Map countries to new site into node.
+migration_tags: null
 migration_group: wp
+label: 'Map countries to new site into node.'
 source:
   plugin: wp_post_child
   root_post: 386
-  post_type: 'page'
-destination:
-  plugin: entity:node
+  post_type: page
 process:
   type:
     plugin: default_value
     default_value: news
   title: post_title
-  'body/value': post_content
-  'body/format':
+  body/value: post_content
+  body/format:
     plugin: default_value
     default_value: html
   created:
@@ -31,12 +37,13 @@ process:
   field_content_date:
     plugin: format_date
     from_format: 'Y-m-d H:i:s'
-    to_format: 'Y-m-d'
+    to_format: Y-m-d
     source: post_date
+  migrate_data:
+    plugin: default_value
+    default_value: '1'
+destination:
+  plugin: 'entity:node'
 migration_dependencies:
   optional:
     - user
-dependencies:
-  enforced:
-    module:
-      - migrate_wp

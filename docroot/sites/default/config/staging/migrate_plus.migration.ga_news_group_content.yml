@@ -1,33 +1,32 @@
+uuid: dd5dcfd7-ae0c-45cf-8bd5-61fc2f88d9b3
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_wp
 id: ga_news_group_content
-label: Create group content and build the bridge between group and node
+migration_tags: null
 migration_group: wp
+label: 'Create group content and build the bridge between group and node'
 source:
   plugin: wp_post_child
   root_post: 387
-  post_type: 'page'
-destination:
-  plugin: entity:group_content
+  post_type: page
 process:
   type:
     plugin: default_value
     default_value: governance_area-group_node-news
   label: post_title
-
-  # Group migration
   gid:
     plugin: default_value
     default_value: 277
-
-  # Node relation
   entity_id:
     plugin: migration_lookup
     migration: ga_news_node
     source: ID
-
+destination:
+  plugin: 'entity:group_content'
 migration_dependencies:
   optional:
     - ga_news_node
-dependencies:
-  enforced:
-    module:
-      - migrate_wp

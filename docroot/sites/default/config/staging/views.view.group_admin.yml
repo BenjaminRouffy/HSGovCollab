@@ -699,32 +699,6 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-    cache_metadata:
-      max-age: 0
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-      tags: {  }
-  page_1:
-    display_plugin: page
-    id: page_1
-    display_title: 'Migrate group'
-    position: 1
-    display_options:
-      display_extenders: {  }
-      display_description: ''
-      path: admin/group/migrate-group
-      menu:
-        type: tab
-        title: 'Migrate group'
-        description: ''
-        expanded: false
-        parent: ''
-        weight: -10
-        context: '0'
-        menu_name: admin
       filters:
         label:
           id: label
@@ -952,44 +926,6 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: list_field
-        migrate_data:
-          id: migrate_data
-          table: groups_field_data
-          field: migrate_data
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: '1'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: group
-          entity_field: migrate_data
-          plugin_id: boolean
       defaults:
         filters: false
         filter_groups: false

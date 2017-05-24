@@ -1,13 +1,15 @@
-id: wp
-label: WordPress
-description: Import from old WP site.
-source_type: WordPress
-shared_configuration:
-  source:
-    # DB connection.
-    key: migrate
-
+uuid: e704a1d1-4a5a-436c-9d9a-fb59d2bf1ae8
+langcode: en
+status: true
 dependencies:
   enforced:
     module:
       - migrate_wp
+id: wp
+label: WordPress
+description: 'Import from old WP site.'
+source_type: WordPress
+module: null
+shared_configuration:
+  source:
+    key: migrate

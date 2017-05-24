@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8af943bb1a3c880209c54d5e9e25aa9c",
-    "content-hash": "7668236e789f64cc48d68ff3e9f438d9",
+    "hash": "7ff6340ba5d19954e76bf1fb35f51da1",
+    "content-hash": "838726593f7333c244e89192c89ec23a",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1676,7 +1676,7 @@
                     "Views should not condition joins on the langcode of fields that are not translatable": "https://www.drupal.org/files/issues/views_should_not-2451657-254_0.patch",
                     "View output is not used for entityreference options": "https://www.drupal.org/files/issues/2174633-143-entity-reference.patch",
                     "Confirmation cancel links are incorrect if installed in a subdirectory": "https://www.drupal.org/files/issues/2582295-12.patch",
-                    "Allow multiple target entity types in the 'entity_autocomplete' Form API element": "https://www.drupal.org/files/issues/allow-multiple-target-entity-types.patch"
+                    "Resaving menu links that points to a non-node entity changes the type to node and breaks the link": "https://www.drupal.org/files/issues/2804391-22.patch"
                 }
             },
             "autoload": {
@@ -2613,46 +2613,6 @@
                 "xml"
             ],
             "time": "2016-09-22 11:01:11"
-        },
-        {
-            "name": "mistic100/randomcolor",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mistic100/RandomColor.php.git",
-                "reference": "a0cfb1322c2184bcc0bd177c77658a0b750cc33e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mistic100/RandomColor.php/zipball/a0cfb1322c2184bcc0bd177c77658a0b750cc33e",
-                "reference": "a0cfb1322c2184bcc0bd177c77658a0b750cc33e",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Colors\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Damien \"Mistic\" Sorel",
-                    "email": "contact@git.strangeplanet.fr",
-                    "homepage": "http://www.strangeplanet.fr"
-                }
-            ],
-            "description": "Generate attractive random colors",
-            "homepage": "https://github.com/mistic100/RandomColor.php",
-            "keywords": [
-                "color",
-                "generator",
-                "random"
-            ],
-            "time": "2015-09-30 18:54:16"
         },
         {
             "name": "nikic/php-parser",

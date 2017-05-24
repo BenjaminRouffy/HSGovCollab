@@ -20,6 +20,7 @@ dependencies:
     - node.type.article
   module:
     - datetime
+    - events
     - user
 id: node.article.small_teaser
 targetEntityType: node
@@ -27,7 +28,7 @@ bundle: article
 mode: small_teaser
 content:
   field_author:
-    type: string
+    type: author_string
     weight: 1
     region: content
     label: hidden

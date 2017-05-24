@@ -801,22 +801,22 @@ svg {
     padding-right: 15px; } }
 
 @media (max-width: 991px) {
-  .header-static .main-menu, .header-fixed .main-menu {
+  .logged .header-static .main-menu, .logged .header-fixed .main-menu {
     text-align: left; }
-    .header-static .main-menu > div, .header-fixed .main-menu > div {
+    .logged .header-static .main-menu > div, .logged .header-fixed .main-menu > div {
       display: block;
       padding-left: 0; }
-    .header-static .main-menu ul:not(.contextual-links) li, .header-fixed .main-menu ul:not(.contextual-links) li {
+    .logged .header-static .main-menu ul:not(.contextual-links) li, .logged .header-fixed .main-menu ul:not(.contextual-links) li {
       display: block; }
-      .header-static .main-menu ul:not(.contextual-links) li.active a, .header-fixed .main-menu ul:not(.contextual-links) li.active a {
+      .logged .header-static .main-menu ul:not(.contextual-links) li.active a, .logged .header-fixed .main-menu ul:not(.contextual-links) li.active a {
         border: none;
         border-left: 3px solid #ea3a32; }
-    .header-static .main-menu ul:not(.contextual-links) a, .header-fixed .main-menu ul:not(.contextual-links) a {
+    .logged .header-static .main-menu ul:not(.contextual-links) a, .logged .header-fixed .main-menu ul:not(.contextual-links) a {
       font-size: 1.1375rem;
       color: #283b44;
       height: auto;
       padding: 30px; }
-      .header-static .main-menu ul:not(.contextual-links) a:hover, .header-fixed .main-menu ul:not(.contextual-links) a:hover {
+      .logged .header-static .main-menu ul:not(.contextual-links) a:hover, .logged .header-fixed .main-menu ul:not(.contextual-links) a:hover {
         background: #f5f5f5;
         color: #ea3a32;
         opacity: 1; } }

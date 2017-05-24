@@ -536,36 +536,38 @@
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {
-  .main-menu {
-    text-align: left;
+  .logged & {
+    .main-menu {
+      text-align: left;
 
-    > div {
-      display: block;
-      padding-left: 0;
-    }
-
-    ul:not(.contextual-links) {
-      li {
+      > div {
         display: block;
-
-        &.active {
-          a {
-            border: none;
-            border-left: 3px solid $red;
-          }
-        }
+        padding-left: 0;
       }
 
-      a {
-        @include font-size(18.2);
-        color: $navy-dark;
-        height: auto;
-        padding: 30px;
+      ul:not(.contextual-links) {
+        li {
+          display: block;
 
-        &:hover {
-          background: $white-dark;
-          color: $red;
-          opacity: 1;
+          &.active {
+            a {
+              border: none;
+              border-left: 3px solid $red;
+            }
+          }
+        }
+
+        a {
+          @include font-size(18.2);
+          color: $navy-dark;
+          height: auto;
+          padding: 30px;
+
+          &:hover {
+            background: $white-dark;
+            color: $red;
+            opacity: 1;
+          }
         }
       }
     }

@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.event.field_location
     - field.field.node.event.field_organization
     - field.field.node.event.field_related_content_selector
+    - field.field.node.event.field_time
     - field.field.node.event.field_timezone
     - node.type.event
   module:
@@ -40,6 +41,9 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  rate_vote_widget:
+    weight: 100
+    region: content
 hidden:
   addtoany: true
   field_category: true

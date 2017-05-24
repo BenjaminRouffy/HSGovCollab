@@ -1,35 +1,35 @@
+uuid: 6bf0e7df-4152-4a5b-909d-4705b2816bf4
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_wp
 id: group_content_product_document
-label: Create group content and build the bridge between group and node
+migration_tags: null
 migration_group: wp
+label: 'Create group content and build the bridge between group and node'
 source:
   plugin: wp_wpfb_product_file
-destination:
-  plugin: entity:group_content
 process:
   type:
     plugin: default_value
     default_value: country-group_node-document
   label: post_title
-
-  # Group migration
   gid:
-    - plugin: default_value
+    -
+      plugin: default_value
       default_value: cpd
-
-    - plugin: migration_lookup
+    -
+      plugin: migration_lookup
       migration: product
-
-  # Node relation
   entity_id:
     plugin: migration_lookup
     migration: document_wpfb_node
     source: file_id
-
+destination:
+  plugin: 'entity:group_content'
 migration_dependencies:
   optional:
     - document_wpfb_node
     - product
-dependencies:
-  enforced:
-    module:
-      - migrate_wp

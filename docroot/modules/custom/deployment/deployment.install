@@ -937,5 +937,6 @@ function deployment_update_8075() {
   // Use warm old style flow, feel so nostalgic.
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'core.date_format.time_line.yml',
+    'views.view.my_calendar.yml',
   ]);
 }

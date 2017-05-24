@@ -104,31 +104,34 @@ class GroupIndexByGlobal extends GroupIndexGid  {
       ->condition('global_content', TRUE);
     $result = $query->execute();
 
-    $result = \Drupal::database()->select('group_content_field_data', 'group_content_field_data')
-      ->fields('group_content_field_data', ['gid'])
-      ->condition('entity_id', $result, 'IN')
-      ->execute()
-      ->fetchCol();
 
-    /* @var GroupContent $group_content */
-    foreach ($result as $group_id) {
-      $group = Group::load($group_id);
+    if (!empty($result)) {
+      $result = \Drupal::database()->select('group_content_field_data', 'group_content_field_data')
+        ->fields('group_content_field_data', ['gid'])
+        ->condition('entity_id', $result, 'IN')
+        ->execute()
+        ->fetchCol();
 
-      if (!in_array($group->bundle(), $this->options['gid'])) {
-        continue;
+      /* @var GroupContent $group_content */
+      foreach ($result as $group_id) {
+        $group = Group::load($group_id);
+
+        if (!in_array($group->bundle(), $this->options['gid'])) {
+          continue;
+        }
+
+        $access = $groupPermissionAccess->checkAccessForFilter($group, $account, ['published', 'content',]);
+
+        if ($access->isAllowed()) {
+          $options[$group->id()] = \Drupal::entityManager()
+            ->getTranslationFromContext($group)
+            ->label();
+        }
       }
 
-      $access = $groupPermissionAccess->checkAccessForFilter($group, $account, ['published', 'content',]);
-
-      if ($access->isAllowed()) {
-        $options[$group->id()] = \Drupal::entityManager()
-          ->getTranslationFromContext($group)
-          ->label();
-      }
+      asort($options);
+      $form_state->set('filter_options', $options);
     }
-
-    asort($options);
-    $form_state->set('filter_options', $options);
 
     parent::valueForm($form, $form_state);
   }

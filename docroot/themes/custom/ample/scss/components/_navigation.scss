@@ -109,6 +109,10 @@
   ~ .dashboard-sidebar {
     padding-top: 0;
 
+    .mobile & {
+      padding-top: 0;
+    }
+
     .toolbar-fixed & {
       padding-top: 39px;
     }
@@ -152,7 +156,7 @@
     padding-top: 125px;
   }
 
-  .mobile & {
+  .mobile.toolbar-vertical & {
     padding-top: 85px;
   }
 

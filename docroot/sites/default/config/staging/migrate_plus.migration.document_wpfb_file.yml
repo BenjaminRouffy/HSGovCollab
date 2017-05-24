@@ -1,17 +1,24 @@
+uuid: 92809972-8c9c-4e73-a0f3-4bc3fec95385
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_wp
+      - wp_content
 id: document_wpfb_file
-label: Create mapping from wpfb_files.
+migration_tags: null
 migration_group: wp
+label: 'Create mapping from wpfb_files.'
 source:
   plugin: wpfb_files
-destination:
-  plugin: 'entity:file'
 process:
   filename: file_name
   uri: file_path
   filemime: file_mime
   type:
     plugin: default_value
-    default_value: 'document'
+    default_value: document
   status:
     plugin: default_value
     default_value: 1
@@ -20,8 +27,6 @@ process:
   uid:
     plugin: default_value
     default_value: 1
-dependencies:
-  enforced:
-    module:
-      - migrate_wp
-      - wp_content
+destination:
+  plugin: 'entity:file'
+migration_dependencies: null

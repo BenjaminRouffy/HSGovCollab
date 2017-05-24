@@ -21,6 +21,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - events
     - responsive_image
     - text
     - user
@@ -38,11 +39,11 @@ content:
     region: content
   field_author:
     weight: 4
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    type: author_string
     region: content
   field_category:
     weight: 7

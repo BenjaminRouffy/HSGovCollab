@@ -21,6 +21,7 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
+    - events
     - responsive_image
     - text
     - user
@@ -47,7 +48,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    type: author_string
     region: content
   field_content:
     type: entity_reference_revisions_entity_view

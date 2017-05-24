@@ -1,17 +1,22 @@
+uuid: e22c0099-39a6-419f-b051-948b6c575a61
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_wp
 id: country
-label: Create mapping from old countries to new.
+migration_tags: null
 migration_group: wp
+label: 'Create mapping from old countries to new.'
 source:
   plugin: wp_post
   root_post: 386
-destination:
-  plugin: group_mapping_only
 process:
   label: post_title
   type:
     plugin: default_value
     default_value: country
-dependencies:
-  enforced:
-    module:
-      - migrate_wp
+destination:
+  plugin: group_mapping_only
+migration_dependencies: null

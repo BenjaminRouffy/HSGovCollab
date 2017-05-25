@@ -1,11 +1,9 @@
-{% spaceless %}
-  {% for item in items %}{%
-    set classes = [
-      loop.first ? 'first',
-      loop.last ? 'last',
-      loop.index % 2 ? 'odd' : 'even',
-    ]
-  %}
-    <span{{ item.attributes.addClass(classes) }}>{{ item.content }}</span>{% if not loop.last %}&#44;{% endif %}
-  {% endfor %}
-{% endspaceless %}
+{% for item in items %}{%
+  set classes = [
+    loop.first ? 'first',
+    loop.last ? 'last',
+    loop.index % 2 ? 'odd' : 'even',
+  ]
+%}
+  <span{{ item.attributes.addClass(classes) }}>{{ item.content }}</span>{% if not loop.last %}&#44;{% endif %}
+{% endfor %}

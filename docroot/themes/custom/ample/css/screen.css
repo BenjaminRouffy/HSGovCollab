@@ -571,6 +571,8 @@ svg {
 
 .collapsed ~ .dashboard-sidebar {
   padding-top: 0; }
+  .mobile .collapsed ~ .dashboard-sidebar {
+    padding-top: 0; }
   .toolbar-fixed .collapsed ~ .dashboard-sidebar {
     padding-top: 39px; }
   .toolbar-vertical:not(.toolbar-fixed) .collapsed ~ .dashboard-sidebar {
@@ -599,7 +601,7 @@ svg {
     padding-top: 85px; }
   .toolbar-tray-open .dashboard-sidebar {
     padding-top: 125px; }
-  .mobile .dashboard-sidebar {
+  .mobile.toolbar-horizontal .dashboard-sidebar {
     padding-top: 85px; }
   .dashboard-sidebar .logo-wrapper a {
     background: #fff;
@@ -778,43 +780,43 @@ svg {
       width: 100%; } }
 
 @media (max-width: 1440px) {
-  .header-static .main-menu > div, .header-fixed .main-menu > div {
+  .logged .header-static .main-menu > div, .logged .header-fixed .main-menu > div {
     padding-left: 30px; }
-  .header-static .main-menu ul:not(.contextual-links) a, .header-fixed .main-menu ul:not(.contextual-links) a {
+  .logged .header-static .main-menu ul:not(.contextual-links) a, .logged .header-fixed .main-menu ul:not(.contextual-links) a {
     padding-left: 20px;
     padding-right: 20px; } }
 
 @media screen and (max-width: 1280px) {
-  .header-static .main-menu > div {
+  .logged .header-static .main-menu > div {
     padding-left: 175px; }
-  .header-static .main-menu ul:not(.contextual-links) a {
+  .logged .header-static .main-menu ul:not(.contextual-links) a {
     padding-left: 10px;
     padding-right: 10px; } }
 
 @media screen and (max-width: 1280px) {
-  .header-fixed .main-menu > div {
+  .logged .header-fixed .main-menu > div {
     padding-left: 60px; }
-  .header-fixed .main-menu ul:not(.contextual-links) a {
+  .logged .header-fixed .main-menu ul:not(.contextual-links) a {
     padding-left: 15px;
     padding-right: 15px; } }
 
 @media (max-width: 991px) {
-  .header-static .main-menu, .header-fixed .main-menu {
+  .logged .header-static .main-menu, .logged .header-fixed .main-menu {
     text-align: left; }
-    .header-static .main-menu > div, .header-fixed .main-menu > div {
+    .logged .header-static .main-menu > div, .logged .header-fixed .main-menu > div {
       display: block;
       padding-left: 0; }
-    .header-static .main-menu ul:not(.contextual-links) li, .header-fixed .main-menu ul:not(.contextual-links) li {
+    .logged .header-static .main-menu ul:not(.contextual-links) li, .logged .header-fixed .main-menu ul:not(.contextual-links) li {
       display: block; }
-      .header-static .main-menu ul:not(.contextual-links) li.active a, .header-fixed .main-menu ul:not(.contextual-links) li.active a {
+      .logged .header-static .main-menu ul:not(.contextual-links) li.active a, .logged .header-fixed .main-menu ul:not(.contextual-links) li.active a {
         border: none;
         border-left: 3px solid #ea3a32; }
-    .header-static .main-menu ul:not(.contextual-links) a, .header-fixed .main-menu ul:not(.contextual-links) a {
+    .logged .header-static .main-menu ul:not(.contextual-links) a, .logged .header-fixed .main-menu ul:not(.contextual-links) a {
       font-size: 1.1375rem;
       color: #283b44;
       height: auto;
       padding: 30px; }
-      .header-static .main-menu ul:not(.contextual-links) a:hover, .header-fixed .main-menu ul:not(.contextual-links) a:hover {
+      .logged .header-static .main-menu ul:not(.contextual-links) a:hover, .logged .header-fixed .main-menu ul:not(.contextual-links) a:hover {
         background: #f5f5f5;
         color: #ea3a32;
         opacity: 1; } }
@@ -938,6 +940,7 @@ header .social-links .font-social-icon {
 
 header > .partners,
 footer > .partners {
+  height: 47px;
   background: #f5f5f5;
   z-index: 410; }
   header > .partners .item-list li,
@@ -2255,6 +2258,9 @@ footer > .partners {
     padding: 8px 0 8px 10px;
     vertical-align: bottom;
     width: 66.66%; }
+    .event-info .value > span {
+      display: inline-block;
+      vertical-align: top; }
     .event-info .value a {
       color: #4c7e96;
       display: inline-block;
@@ -8390,6 +8396,9 @@ footer {
     margin-bottom: 3px; }
   #event-response .label {
     font-weight: 700; }
+  #event-response .value > span {
+    display: inline-block;
+    vertical-align: top; }
   #event-response .event-body {
     line-height: 24px;
     margin-bottom: 15px; }

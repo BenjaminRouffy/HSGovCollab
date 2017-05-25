@@ -109,6 +109,10 @@
   ~ .dashboard-sidebar {
     padding-top: 0;
 
+    .mobile & {
+      padding-top: 0;
+    }
+
     .toolbar-fixed & {
       padding-top: 39px;
     }
@@ -152,7 +156,7 @@
     padding-top: 125px;
   }
 
-  .mobile & {
+  .mobile.toolbar-horizontal & {
     padding-top: 85px;
   }
 
@@ -477,15 +481,17 @@
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: desktop)) {
-  .main-menu {
-    > div {
-      padding-left: 30px;
-    }
+  .logged & {
+    .main-menu {
+      > div {
+        padding-left: 30px;
+      }
 
-    ul:not(.contextual-links) {
-      a {
-        padding-left: 20px;
-        padding-right: 20px;
+      ul:not(.contextual-links) {
+        a {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
       }
     }
   }
@@ -493,15 +499,17 @@
 
 @media screen and (max-width: 1280px) {
   .header-static {
-    .main-menu {
-      > div {
-        padding-left: 175px;
-      }
+    .logged & {
+      .main-menu {
+        > div {
+          padding-left: 175px;
+        }
 
-      ul:not(.contextual-links) {
-        a {
-          padding-left: 10px;
-          padding-right: 10px;
+        ul:not(.contextual-links) {
+          a {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
         }
       }
     }
@@ -510,15 +518,17 @@
 
 @media screen and (max-width: 1280px) {
   .header-fixed {
-    .main-menu {
-      > div {
-        padding-left: 60px;
-      }
+    .logged & {
+      .main-menu {
+        > div {
+          padding-left: 60px;
+        }
 
-      ul:not(.contextual-links) {
-        a {
-          padding-left: 15px;
-          padding-right: 15px;
+        ul:not(.contextual-links) {
+          a {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
         }
       }
     }
@@ -526,36 +536,38 @@
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {
-  .main-menu {
-    text-align: left;
+  .logged & {
+    .main-menu {
+      text-align: left;
 
-    > div {
-      display: block;
-      padding-left: 0;
-    }
-
-    ul:not(.contextual-links) {
-      li {
+      > div {
         display: block;
-
-        &.active {
-          a {
-            border: none;
-            border-left: 3px solid $red;
-          }
-        }
+        padding-left: 0;
       }
 
-      a {
-        @include font-size(18.2);
-        color: $navy-dark;
-        height: auto;
-        padding: 30px;
+      ul:not(.contextual-links) {
+        li {
+          display: block;
 
-        &:hover {
-          background: $white-dark;
-          color: $red;
-          opacity: 1;
+          &.active {
+            a {
+              border: none;
+              border-left: 3px solid $red;
+            }
+          }
+        }
+
+        a {
+          @include font-size(18.2);
+          color: $navy-dark;
+          height: auto;
+          padding: 30px;
+
+          &:hover {
+            background: $white-dark;
+            color: $red;
+            opacity: 1;
+          }
         }
       }
     }

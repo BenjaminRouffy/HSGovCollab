@@ -807,6 +807,9 @@ svg {
       display: block; }
     .header-static .main-menu ul:not(.contextual-links) li, .header-fixed .main-menu ul:not(.contextual-links) li {
       display: block; }
+      .header-static .main-menu ul:not(.contextual-links) li.active a, .header-fixed .main-menu ul:not(.contextual-links) li.active a {
+        border: none;
+        border-left: 3px solid #ea3a32; }
     .header-static .main-menu ul:not(.contextual-links) a, .header-fixed .main-menu ul:not(.contextual-links) a {
       font-size: 1.1375rem; }
   .logged .header-static .main-menu, .logged .header-fixed .main-menu {
@@ -6603,6 +6606,14 @@ header {
     top: 0; }
   .toolbar-vertical:not(.toolbar-fixed) header:not(.collapsed) .bottom-head {
     padding-top: 39px; }
+
+@media (max-width: 767px) {
+  header.has-anchors ~ .system-messages {
+    margin-top: 57px; }
+  header.has-anchors ~ .dashboard-sidebar {
+    padding-top: 117px; }
+    .toolbar-vertical header.has-anchors ~ .dashboard-sidebar {
+      padding-top: 156px; } }
 
 .header-static {
   background: #fff;

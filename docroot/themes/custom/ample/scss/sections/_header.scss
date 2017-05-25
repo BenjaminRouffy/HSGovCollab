@@ -71,6 +71,22 @@ header {
   }
 }
 
+@include breakpoint-for('header', (to: tablet)) {
+  &.has-anchors {
+    ~ .system-messages {
+      margin-top: 57px;
+    }
+
+    ~ .dashboard-sidebar {
+      padding-top: 117px;
+
+      .toolbar-vertical & {
+        padding-top: 156px;
+      }
+    }
+  }
+}
+
 .header-static {
   background: $white;
   box-shadow: 0 2px 4px rgba($black, .1);

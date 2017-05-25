@@ -546,6 +546,13 @@
     ul:not(.contextual-links) {
       li {
         display: block;
+
+        &.active {
+          a {
+            border: none;
+            border-left: 3px solid $red;
+          }
+        }
       }
 
       a {

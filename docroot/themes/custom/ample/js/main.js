@@ -214,6 +214,7 @@
 
       if (!$body.is('.group.logged')) {
         if ($anchorLink.length && $anchorLink.length > 1) {
+          $('header').addClass('has-anchors');
           $bottomHead.append('<div class="anchor-links"><ul></ul></div>');
 
           var headerHeight = $('.header-fixed').height() + 10;

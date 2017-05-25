@@ -1141,6 +1141,8 @@ footer > .partners {
         background-attachment: scroll;
         background-position: center;
         background-size: 400%; }
+      .ie .top-banner-region .section-info-wrapper:after {
+        background-size: 120%; }
   .top-banner-region .section-info {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1148,7 +1150,7 @@ footer > .partners {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto;
     max-width: 1160px;
     padding: 100px 0 50px; }
     .ie9 .top-banner-region .section-info {

@@ -42,13 +42,17 @@
         background-position: center;
         background-size: 400%;
       }
+
+      .ie & {
+        background-size: 120%;
+      }
     }
   }
 
   .section-info {
     display: flex;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto;
     max-width: 1160px;
     padding: 100px 0 50px;
 

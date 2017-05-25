@@ -649,7 +649,7 @@ header {
   transition: padding .3s ease;
 
   &:empty {
-    display: none;
+    padding-top: 0 !important;
   }
 
   .anchor-links {

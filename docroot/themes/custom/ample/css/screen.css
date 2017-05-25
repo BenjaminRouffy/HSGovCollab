@@ -6607,6 +6607,14 @@ header {
   .toolbar-vertical:not(.toolbar-fixed) header:not(.collapsed) .bottom-head {
     padding-top: 39px; }
 
+@media (max-width: 767px) {
+  header.has-anchors ~ .system-messages {
+    margin-top: 57px; }
+  header.has-anchors ~ .dashboard-sidebar {
+    padding-top: 117px; }
+    .toolbar-vertical header.has-anchors ~ .dashboard-sidebar {
+      padding-top: 156px; } }
+
 .header-static {
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

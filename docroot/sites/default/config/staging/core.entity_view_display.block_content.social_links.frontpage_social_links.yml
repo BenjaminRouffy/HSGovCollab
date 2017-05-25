@@ -6,8 +6,10 @@ dependencies:
     - block_content.type.social_links
     - core.entity_view_mode.block_content.frontpage_social_links
     - field.field.block_content.social_links.field_facebook
+    - field.field.block_content.social_links.field_instagram
     - field.field.block_content.social_links.field_linkedin
     - field.field.block_content.social_links.field_twitter
+    - field.field.block_content.social_links.field_youtube
   module:
     - link
 id: block_content.social_links.frontpage_social_links
@@ -27,6 +29,18 @@ content:
     third_party_settings: {  }
     type: link_separate
     region: content
+  field_instagram:
+    type: link_separate
+    weight: 3
+    region: content
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
   field_linkedin:
     weight: 1
     label: above
@@ -51,5 +65,17 @@ content:
     third_party_settings: {  }
     type: link_separate
     region: content
+  field_youtube:
+    type: link_separate
+    weight: 4
+    region: content
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
 hidden:
   langcode: true

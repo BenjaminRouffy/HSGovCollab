@@ -648,6 +648,10 @@ header {
   box-shadow: 0 1px 3px rgba($black, .1);
   transition: padding .3s ease;
 
+  &:empty {
+    display: none;
+  }
+
   .anchor-links {
     margin: 0 auto;
     max-width: 1260px;

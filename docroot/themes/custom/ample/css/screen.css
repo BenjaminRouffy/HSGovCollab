@@ -6979,6 +6979,8 @@ header {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   -webkit-transition: padding .3s ease;
   transition: padding .3s ease; }
+  .bottom-head:empty {
+    display: none; }
   .bottom-head .anchor-links {
     margin: 0 auto;
     max-width: 1260px;

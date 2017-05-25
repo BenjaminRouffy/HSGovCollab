@@ -536,6 +536,24 @@
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {
+  .main-menu {
+    text-align: left;
+
+    > div {
+      display: block;
+    }
+
+    ul:not(.contextual-links) {
+      li {
+        display: block;
+      }
+
+      a {
+        @include font-size(18.2);
+      }
+    }
+  }
+
   .logged & {
     .main-menu {
       text-align: left;

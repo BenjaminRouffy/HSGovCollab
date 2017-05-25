@@ -801,6 +801,14 @@ svg {
     padding-right: 15px; } }
 
 @media (max-width: 991px) {
+  .header-static .main-menu, .header-fixed .main-menu {
+    text-align: left; }
+    .header-static .main-menu > div, .header-fixed .main-menu > div {
+      display: block; }
+    .header-static .main-menu ul:not(.contextual-links) li, .header-fixed .main-menu ul:not(.contextual-links) li {
+      display: block; }
+    .header-static .main-menu ul:not(.contextual-links) a, .header-fixed .main-menu ul:not(.contextual-links) a {
+      font-size: 1.1375rem; }
   .logged .header-static .main-menu, .logged .header-fixed .main-menu {
     text-align: left; }
     .logged .header-static .main-menu > div, .logged .header-fixed .main-menu > div {

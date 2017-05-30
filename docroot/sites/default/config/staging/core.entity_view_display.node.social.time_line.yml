@@ -24,7 +24,7 @@ content:
     type: summarybody_trimmed
     weight: 1
     settings:
-      trim_length: '250'
+      trim_length: '300'
     third_party_settings: {  }
     region: content
   field_permalink_url:
@@ -48,9 +48,9 @@ content:
     region: content
   links:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   addtoany: true
   field_image: true

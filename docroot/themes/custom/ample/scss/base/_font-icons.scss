@@ -36,6 +36,8 @@
   application-pdf: 'A',
   x-office-spreadsheet: 'S',
   x-office-document: 'D',
+  text: 'D',
+  x-office-presentation: "`",
   download: 'F',
   search: 't',
   bell: 'm',
@@ -51,7 +53,10 @@
   like: 'Y',
   dislike: 'U',
   instagram: ',',
-  youtube: '.'
+  youtube: '.',
+  basic_page: '-',
+  article: "'",
+  member: 'v'
 ) {
   .#{$type}-icon {
     > a::after,

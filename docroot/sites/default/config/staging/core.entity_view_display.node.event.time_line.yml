@@ -34,7 +34,7 @@ content:
     type: summarybody_trimmed
     weight: 1
     settings:
-      trim_length: '150'
+      trim_length: '300'
     third_party_settings: {  }
     region: content
   field_date:
@@ -47,6 +47,11 @@ content:
     third_party_settings: {  }
     type: daterange_multiple
     region: content
+  rate_vote_widget:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   addtoany: true
   event_registrant: true

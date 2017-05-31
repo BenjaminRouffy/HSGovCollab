@@ -197,6 +197,7 @@
   Drupal.behaviors.anchorLink = {
     attach: function(context, settings) {
       var $anchorLink = $('[data-anchor-id]', context);
+      var $header = $('header', context);
       var anchorSettings = {
         'region': []
       };
@@ -212,9 +213,13 @@
 
       var $body = $('body');
 
+      if ($('.bottom-head').is('.has-anchor-links')) {
+        $header.addClass('has-anchors');
+      }
+
       if (!$body.is('.group.logged')) {
         if ($anchorLink.length && $anchorLink.length > 1) {
-          $('header').addClass('has-anchors');
+          $header.addClass('has-anchors');
           $bottomHead.append('<div class="anchor-links"><ul></ul></div>');
 
           var headerHeight = $('.header-fixed').height() + 10;

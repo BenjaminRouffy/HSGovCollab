@@ -6629,7 +6629,9 @@ header {
   header.has-anchors ~ .dashboard-sidebar {
     padding-top: 117px; }
     .toolbar-vertical header.has-anchors ~ .dashboard-sidebar {
-      padding-top: 156px; } }
+      padding-top: 156px; }
+    .logged:not(.toolbar-vertical) header.has-anchors ~ .dashboard-sidebar {
+      padding-top: 60px; } }
 
 .header-static {
   background: #fff;

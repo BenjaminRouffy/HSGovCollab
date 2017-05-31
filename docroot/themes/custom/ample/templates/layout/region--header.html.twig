@@ -18,7 +18,7 @@
   </div>
 
   {% spaceless %}
-    <div class="bottom-head">
+    <div class="bottom-head {{ elements.country_menu_block ? 'has-anchor-links' : '' }}">
       {% if elements.country_menu_block %}
         {{ elements.country_menu_block }}
       {% endif %}

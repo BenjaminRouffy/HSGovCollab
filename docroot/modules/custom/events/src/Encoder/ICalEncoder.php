@@ -2,6 +2,7 @@
 
 namespace Drupal\events\Encoder;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Eluceo\iCal\Component\Calendar;
 use Eluceo\iCal\Component\Event;
 use Symfony\Component\Serializer\Encoder\DecoderInterface;
@@ -58,19 +59,33 @@ class ICalEncoder implements EncoderInterface, DecoderInterface {
           break;
         }
 
-        if (!($period = Events::getEventPeriod($node->field_date))) {
+        if (!isset($node->field_date) || empty($node->field_date->get($row['delta']))) {
           break;
         };
 
+        /** @var \Drupal\datetime_range\Plugin\Field\FieldType\DateRangeItem $field */
+        $field = $node->field_date->get($row['delta']);
+
         /** @var \Drupal\Core\Datetime\DrupalDateTime $start_date */
-        $start_date = $period['start_date'];
+
+        $start_date = $field->start_date;
+        $start_date = \Drupal::service('date.formatter')->format(
+          $start_date->getTimestamp(), 'custom', 'Y-m-d'
+        );
+
         /** @var \Drupal\Core\Datetime\DrupalDateTime $end_date */
-        $end_date = $period['end_date'];
+        $end_date = new DrupalDateTime($field->end_date);
+        $end_date = \Drupal::service('date.formatter')->format(
+          $end_date->getTimestamp(), 'custom', 'Y-m-d'
+        );
 
         $vEvent = new Event();
         $vEvent
-          ->setDtStart(new \DateTime($start_date->format("Y-m-d")))
-          ->setDtEnd(new \DateTime($end_date->format("Y-m-d")))
+          ->setDescription(\Drupal::url('entity.node.canonical', [
+            'node' => $node->id(),
+          ], ['absolute' => TRUE]))
+          ->setDtStart(new \DateTime($start_date))
+          ->setDtEnd(new \DateTime($end_date))
           ->setNoTime(TRUE)
           ->setSummary($row['title']);
         $this->vCalendar->addComponent($vEvent);

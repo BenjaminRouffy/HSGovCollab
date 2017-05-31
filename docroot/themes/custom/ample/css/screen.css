@@ -453,6 +453,10 @@ svg {
 .x-office-document-icon > span::after {
   content: "D"; }
 
+.x-office-presentation-icon > a::after,
+.x-office-presentation-icon > span::after {
+  content: "`"; }
+
 .download-icon > a::after,
 .download-icon > span::after {
   content: "F"; }
@@ -516,6 +520,18 @@ svg {
 .youtube-icon > a::after,
 .youtube-icon > span::after {
   content: "."; }
+
+.basic_page-icon > a::after,
+.basic_page-icon > span::after {
+  content: "-"; }
+
+.article-icon > a::after,
+.article-icon > span::after {
+  content: "'"; }
+
+.member-icon > a::after,
+.member-icon > span::after {
+  content: "v"; }
 
 .main-menu {
   text-align: center; }

@@ -164,6 +164,20 @@ header {
         margin-right: 0;
       }
     }
+
+    .instagram-icon {
+      > a {
+        @include font-size(16);
+        line-height: 24px;
+      }
+    }
+
+    .youtube-icon {
+      > a {
+        @include font-size(40);
+        line-height: 24px;
+      }
+    }
   }
 
   .language-switcher-language-url {
@@ -442,6 +456,18 @@ header {
 
     a {
       @include font-size(28);
+    }
+
+    .instagram-icon {
+      > a {
+        @include font-size(24);
+      }
+    }
+
+    .youtube-icon {
+      a {
+        @include font-size(50);
+      }
     }
   }
 

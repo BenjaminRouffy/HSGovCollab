@@ -435,6 +435,11 @@
     padding-top: 156px;
   }
 
+  .logged:not(.toolbar-vertical) & {
+    padding-top: 0;
+    top: 60px;
+  }
+
   .logo-wrapper,
   .expand-menu-btn {
     display: none;

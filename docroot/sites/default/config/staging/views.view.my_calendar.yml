@@ -871,7 +871,7 @@ display:
           click_sort_column: value
           type: daterange_multiple_json
           settings:
-            timezone_override: UTC
+            timezone_override: ''
             format_type: html_date
             separator: '-'
           group_column: entity_id
@@ -1366,6 +1366,22 @@ display:
           table: node__field_date
           field: delta
           plugin_id: numeric
+      row:
+        type: data_field
+        options:
+          field_options:
+            nid:
+              alias: ''
+              raw_output: false
+            title:
+              alias: ''
+              raw_output: false
+            field_date:
+              alias: ''
+              raw_output: false
+            delta:
+              alias: ''
+              raw_output: false
     cache_metadata:
       max-age: -1
       contexts:

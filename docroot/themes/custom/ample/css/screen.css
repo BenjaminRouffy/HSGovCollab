@@ -4809,6 +4809,9 @@ form .social_login iframe {
   .form-my-settings #edit-account fieldset .fieldset-wrapper {
     margin-bottom: 25px; }
 
+body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.error {
+  top: 80px; }
+
 .form-my-settings .role-status-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5295,6 +5298,12 @@ form .social_login iframe {
     padding-right: 10px; }
   .form-my-settings #edit-account > .form-item {
     padding: 0 10px; }
+  body.fr .form-my-settings label {
+    font-size: 1rem; }
+    body.fr .form-my-settings label.error {
+      font-size: 14px !important; }
+  body.fr .form-my-settings #edit-mail {
+    margin-bottom: 20px; }
   .form-my-settings #edit-field-organisations-wrapper .field--name-field-job-title label.error {
     bottom: 5px;
     right: 0;

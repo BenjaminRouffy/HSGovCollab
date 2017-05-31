@@ -2,6 +2,7 @@
 
 namespace Drupal\events\Encoder;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Eluceo\iCal\Component\Calendar;
 use Eluceo\iCal\Component\Event;
 use Symfony\Component\Serializer\Encoder\DecoderInterface;
@@ -58,17 +59,23 @@ class ICalEncoder implements EncoderInterface, DecoderInterface {
           break;
         }
 
-        if (!($period = Events::getEventPeriod($node->field_date))) {
+        if (!isset($node->field_date) || empty($node->field_date->get($row['delta']))) {
           break;
         };
 
+        /** @var \Drupal\datetime_range\Plugin\Field\FieldType\DateRangeItem $field */
+        $field = $node->field_date->get($row['delta']);
+
         /** @var \Drupal\Core\Datetime\DrupalDateTime $start_date */
-        $start_date = $period['start_date'];
+        $start_date = new DrupalDateTime($field->value);
         /** @var \Drupal\Core\Datetime\DrupalDateTime $end_date */
-        $end_date = $period['end_date'];
+        $end_date = new DrupalDateTime($field->end_date);
 
         $vEvent = new Event();
         $vEvent
+          ->setDescription(\Drupal::url('entity.node.canonical', [
+            'node' => $node->id(),
+          ], ['absolute' => TRUE]))
           ->setDtStart(new \DateTime($start_date->format("Y-m-d")))
           ->setDtEnd(new \DateTime($end_date->format("Y-m-d")))
           ->setNoTime(TRUE)

@@ -83,6 +83,10 @@ header {
       .toolbar-vertical & {
         padding-top: 156px;
       }
+
+      .logged:not(.toolbar-vertical) & {
+        padding-top: 60px;
+      }
     }
   }
 }

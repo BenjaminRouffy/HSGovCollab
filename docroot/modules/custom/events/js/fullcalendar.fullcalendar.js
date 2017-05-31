@@ -38,6 +38,7 @@
         center: 'prev title next',
         right: ''
       },
+      lang: drupalSettings.path.currentLanguage,
       theme: false,
       defaultView: default_view,
       yearColumns: 1,

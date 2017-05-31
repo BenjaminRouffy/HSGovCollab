@@ -1382,6 +1382,18 @@ form {
     }
   }
 
+  body.fr & {
+    #edit-mail {
+      .form-item-mail-mail2 {
+        .email-suffix {
+          label.error {
+            top: 80px;
+          }
+        }
+      }
+    }
+  }
+
   .role-status-wrapper {
     display: flex;
     margin-bottom: 15px;
@@ -1822,6 +1834,20 @@ form {
   #edit-account {
     > .form-item {
       padding: 0 10px;
+    }
+  }
+
+  body.fr & {
+    label {
+      @include font-size(16);
+
+      &.error {
+        font-size: 14px !important;
+      }
+    }
+
+    #edit-mail {
+      margin-bottom: 20px;
     }
   }
 

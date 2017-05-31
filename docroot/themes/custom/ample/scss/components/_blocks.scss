@@ -1860,13 +1860,13 @@
 }
 
 .follow-us {
-  margin-top: 20px;
+  margin: 20px 0;
   text-align: center;
 
   h5 {
     @include font-size(14.4);
     color: $navy;
-    margin: 0;
+    margin: 0 0 10px;
     transition: color .2s ease;
 
     &:hover {
@@ -1882,7 +1882,7 @@
     border-radius: 50%;
     display: inline-block;
     line-height: 40px;
-    margin: 20px 3px;
+    margin: 10px 3px 0;
     overflow: hidden;
   }
 
@@ -1895,6 +1895,19 @@
     &:hover {
       border-color: $navy;
       color: $navy;
+    }
+  }
+
+  .instagram-icon {
+    > a {
+      @include font-size(22);
+      line-height: 38px;
+    }
+  }
+
+  .youtube-icon {
+    > a {
+      @include font-size(34);
     }
   }
 }

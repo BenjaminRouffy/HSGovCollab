@@ -509,6 +509,14 @@ svg {
 .dislike-icon > span::after {
   content: "U"; }
 
+.instagram-icon > a::after,
+.instagram-icon > span::after {
+  content: ","; }
+
+.youtube-icon > a::after,
+.youtube-icon > span::after {
+  content: "."; }
+
 .main-menu {
   text-align: center; }
   .main-menu > div {
@@ -3655,12 +3663,12 @@ footer > .partners {
     margin: 8px 0 0 38px; }
 
 .follow-us {
-  margin-top: 20px;
+  margin: 20px 0;
   text-align: center; }
   .follow-us h5 {
     font-size: 0.9rem;
     color: #4c7e96;
-    margin: 0;
+    margin: 0 0 10px;
     -webkit-transition: color .2s ease;
     transition: color .2s ease; }
     .follow-us h5:hover {
@@ -3674,7 +3682,7 @@ footer > .partners {
     border-radius: 50%;
     display: inline-block;
     line-height: 40px;
-    margin: 20px 3px;
+    margin: 10px 3px 0;
     overflow: hidden; }
   .follow-us a {
     color: #283b44;
@@ -3685,6 +3693,11 @@ footer > .partners {
     .follow-us a:hover {
       border-color: #4c7e96;
       color: #4c7e96; }
+  .follow-us .instagram-icon > a {
+    font-size: 1.375rem;
+    line-height: 38px; }
+  .follow-us .youtube-icon > a {
+    font-size: 2.125rem; }
 
 .status-message {
   font-family: Oswald, sans-serif;
@@ -6687,6 +6700,12 @@ header {
           opacity: .7; }
       .logged .header-static .social-links .theme-switcher {
         margin-right: 0; }
+    .header-static .social-links .instagram-icon > a {
+      font-size: 1rem;
+      line-height: 24px; }
+    .header-static .social-links .youtube-icon > a {
+      font-size: 2.5rem;
+      line-height: 24px; }
   .header-static .language-switcher-language-url {
     text-transform: uppercase; }
     .header-static .language-switcher-language-url ~ .desktop-service-links {
@@ -6879,6 +6898,10 @@ header {
         margin-right: 30px; }
       .header-static .social-links a, .header-fixed .social-links a {
         font-size: 1.75rem; }
+      .header-static .social-links .instagram-icon > a, .header-fixed .social-links .instagram-icon > a {
+        font-size: 1.5rem; }
+      .header-static .social-links .youtube-icon a, .header-fixed .social-links .youtube-icon a {
+        font-size: 3.125rem; }
     .header-static .mobile-menu-btn, .header-fixed .mobile-menu-btn {
       display: block; }
       .header-static .mobile-menu-btn.opened, .header-fixed .mobile-menu-btn.opened {

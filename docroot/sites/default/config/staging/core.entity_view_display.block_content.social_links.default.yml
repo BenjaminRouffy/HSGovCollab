@@ -5,8 +5,10 @@ dependencies:
   config:
     - block_content.type.social_links
     - field.field.block_content.social_links.field_facebook
+    - field.field.block_content.social_links.field_instagram
     - field.field.block_content.social_links.field_linkedin
     - field.field.block_content.social_links.field_twitter
+    - field.field.block_content.social_links.field_youtube
   module:
     - link
 id: block_content.social_links.default
@@ -16,6 +18,18 @@ mode: default
 content:
   field_facebook:
     weight: 0
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_instagram:
+    weight: 3
     label: above
     settings:
       trim_length: 80
@@ -40,6 +54,18 @@ content:
     region: content
   field_twitter:
     weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_youtube:
+    weight: 4
     label: above
     settings:
       trim_length: 80

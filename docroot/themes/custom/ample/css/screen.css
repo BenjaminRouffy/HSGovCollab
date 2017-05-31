@@ -753,6 +753,9 @@ svg {
       padding-top: 156px; }
     .toolbar-vertical:not(.toolbar-fixed) .dashboard-sidebar {
       padding-top: 156px; }
+    .logged:not(.toolbar-vertical) .dashboard-sidebar {
+      padding-top: 0;
+      top: 60px; }
     .dashboard-sidebar .logo-wrapper,
     .dashboard-sidebar .expand-menu-btn {
       display: none; }

@@ -53,6 +53,11 @@ function ajax_comments_comment_links_alter(array &$links, CommentInterface &$ent
     // Attach classes to comment delete links to allow ajax_comments.js
     // to attach ajax behaviors to them.
     if (isset($links['comment']['#links']['comment-delete'])) {
+      $links['comment']['#links']['comment-delete']['url'] = Url::fromRoute(
+        'entity.comment.delete_form',
+        ['comment' => $entity->id()]
+      );
+
       $classes = [
         'use-ajax',
         'js-use-ajax-comments',

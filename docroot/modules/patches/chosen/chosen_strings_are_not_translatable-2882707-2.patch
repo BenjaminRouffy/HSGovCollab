@@ -1,0 +1,25 @@
+diff --git a/chosen.module b/chosen.module
+index bb802ac..42bbc46 100644
+--- a/chosen.module
++++ b/chosen.module
+@@ -14,6 +14,7 @@ use Drupal\Core\Language\LanguageInterface;
+ use Drupal\Core\Render\Element;
+ use Drupal\Core\Routing\RouteMatchInterface;
+ use Drupal\Core\Url;
++use Drupal\Core\StringTranslation\TranslatableMarkup;
+ 
+ /**
+  * Define chosen library url.
+@@ -159,9 +160,9 @@ function chosen_attach_library(array &$element) {
+     'disable_search' => (bool) $chosen_conf->get('disable_search'),
+     'disable_search_threshold' => (int) $chosen_conf->get('disable_search_threshold'),
+     'search_contains' => (bool) $chosen_conf->get('search_contains'),
+-    'placeholder_text_multiple' => $chosen_conf->get('placeholder_text_multiple'),
+-    'placeholder_text_single' => $chosen_conf->get('placeholder_text_single'),
+-    'no_results_text' => $chosen_conf->get('no_results_text'),
++    'placeholder_text_multiple' => new TranslatableMarkup($chosen_conf->get('placeholder_text_multiple')),
++    'placeholder_text_single' => new TranslatableMarkup($chosen_conf->get('placeholder_text_single')),
++    'no_results_text' => new TranslatableMarkup($chosen_conf->get('no_results_text')),
+     'inherit_select_classes' => TRUE,
+   );
+ 

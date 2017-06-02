@@ -484,3 +484,13 @@ function ample_preprocess_container(array &$variables) {
     $variables['without_div'] = TRUE;
   }
 }
+
+/**
+ * Implements template_preprocess_input().
+ */
+function ample_preprocess_input(array &$variables) {
+  // Set placeholders translatable.
+  if (isset($variables['attributes']['placeholder']) && !($variables['attributes']['placeholder'] instanceof TranslatableMarkup)) {
+    $variables['attributes']['placeholder'] = new TranslatableMarkup($variables['attributes']['placeholder']);
+  }
+}

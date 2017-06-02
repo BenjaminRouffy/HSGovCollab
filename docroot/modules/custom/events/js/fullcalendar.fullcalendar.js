@@ -2,6 +2,7 @@
 
   Drupal.fullcalendar = function ($calendar, $view) {
     var _this = this;
+    var colorCache = {};
     this.$view = $view;
 
     if (window.innerWidth < 768) {
@@ -61,13 +62,15 @@
             return;
           }
 
-          var color = colors[Math.floor(Math.random() * colors.length)];
+          if (typeof(colorCache[eventId]) == 'undefined' || colorCache[eventId] === null) {
+            colorCache[eventId] = colors[Math.floor(Math.random() * colors.length)];
+          }
           var event = {
             title: $(this).find('.event-title').text().trim(),
             start: $.fullCalendar.moment(startDate + "T06:00:00+00:00"),
             end: $.fullCalendar.moment(endDate + "T18:00:00+00:00"),
             url: drupalSettings.path.baseUrl + langcode + '/events/get-event/' + eventId,
-            color: color,
+            color: colorCache[eventId],
             hideTime: true
           };
           events.push(event);

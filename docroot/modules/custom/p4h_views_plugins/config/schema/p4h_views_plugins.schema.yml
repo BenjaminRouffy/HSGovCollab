@@ -1,0 +1,7 @@
+views.filter.computed_date:
+  type: views.filter.many_to_one
+  label: 'Computed date'
+  mapping:
+    reduce_duplicates:
+      type: boolean
+      label: 'Reduce duplicate'

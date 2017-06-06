@@ -1,0 +1,11 @@
+uuid: 1c9109c4-94dd-4480-b8a1-7eae6a12285f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.process_and_milestones
+id: taxonomy_term.process_and_milestones
+target_entity_type_id: taxonomy_term
+target_bundle: process_and_milestones
+default_langcode: site_default
+language_alterable: false

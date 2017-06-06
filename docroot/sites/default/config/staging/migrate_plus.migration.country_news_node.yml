@@ -39,6 +39,13 @@ process:
     from_format: 'Y-m-d H:i:s'
     to_format: Y-m-d
     source: post_date
+  field_process_and_milestones:
+    plugin: entity_generate
+    source: meta_value
+    entity_type: taxonomy_term
+    bundle_key: vid
+    bundle: process_and_milestones
+    value_key: name
   migrate_data:
     plugin: default_value
     default_value: '1'

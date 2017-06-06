@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.news.field_join_block
     - field.field.node.news.field_news_country_content
     - field.field.node.news.field_organization
+    - field.field.node.news.field_process_and_milestones
     - field.field.node.news.field_related_content_selector
     - node.type.news
   module:
@@ -200,6 +201,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_process_and_milestones:
+    weight: 27
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_related_content_selector:
     weight: 14

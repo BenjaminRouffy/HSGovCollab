@@ -139,6 +139,13 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
 
     _user_registration_manager_field_states($form);
   }
+
+  // Make Social Login block's label translatable.
+  foreach ($form as $key => $element) {
+    if (strpos($key, 'social_login_social_login_providers') !== FALSE) {
+      $form[$key]['#label'] = t($form[$key]['#label']);
+    }
+  }
 }
 
 /**

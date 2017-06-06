@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_country
     - node.type.member
-    - taxonomy.vocabulary.countries
+    - taxonomy.vocabulary.country_icon
 id: node.member.field_country
 field_name: field_country
 entity_type: node
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      countries: countries
+      country_icon: country_icon
     sort:
       field: _none
     auto_create: false

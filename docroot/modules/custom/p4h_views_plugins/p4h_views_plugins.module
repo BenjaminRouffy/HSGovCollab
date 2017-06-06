@@ -143,6 +143,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
  * Implements hook_views_plugins_filter_alter().
  */
 function p4h_views_plugins_views_plugins_filter_alter(array &$plugins) {
+// Class DateSelect not exists.
 //  $plugins['datetime']['class'] = 'Drupal\p4h_views_plugins\Plugin\views\filter\DateSelect';
   $plugins['combine']['class'] = 'Drupal\p4h_views_plugins\Plugin\views\filter\CustomCombine';
 }

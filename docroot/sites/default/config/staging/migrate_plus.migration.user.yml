@@ -30,7 +30,7 @@ process:
     source: user_registered
   field_organisation:
     plugin: entity_generate
-    source: organisation
+    source: meta_value
     entity_type: taxonomy_term
     bundle_key: vid
     bundle: organizations

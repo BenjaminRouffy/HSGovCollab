@@ -22,6 +22,10 @@ class WpUser extends SqlBase {
 
     $query->leftJoin('intra_participants_database', 'participants', 'users.user_email=participants.email');
     $query->leftJoin('intra_wysija_user', 'wysija', 'users.user_email=wysija.email');
+
+    $query->leftJoin('intra_usermeta', 'intra_usermeta', 'intra_usermeta.user_id = users.ID AND intra_usermeta.meta_key = :meta_key', [':meta_key' => 'organisation']);
+    $query = $query->fields('intra_usermeta', ['meta_value', 'meta_key']);
+
     $query->fields('users', [
       'ID',
       'user_email',
@@ -30,7 +34,6 @@ class WpUser extends SqlBase {
       'address',
       'phone',
       'mobile_phone',
-      'organisation',
       'location',
     ])->fields('wysija', [
       'firstname',

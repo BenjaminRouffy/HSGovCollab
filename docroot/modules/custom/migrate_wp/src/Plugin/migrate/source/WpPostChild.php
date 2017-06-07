@@ -24,7 +24,7 @@ class WpPostChild extends SqlBase {
     $connection->leftJoin('intra_posts', 'parent_posts', 'parent_posts.ID = posts.post_parent');
     $connection = $connection->fields('parent_posts', ['ID', 'post_author', 'post_parent', 'post_name', 'post_title', 'post_content', 'post_date', 'post_modified', 'post_type',]);
 
-    $connection->leftJoin('intra_postmeta', 'postmeta', 'postmeta.post_id = posts.post_parent AND postmeta.meta_key = :progress_type', [':progress_type' => 'progress_type']);
+    $connection->leftJoin('intra_postmeta', 'postmeta', 'postmeta.post_id = posts.ID AND postmeta.meta_key = :progress_type', [':progress_type' => 'progress_type']);
     $connection = $connection->fields('postmeta', ['meta_value', 'meta_key']);
 
     $connection->condition('parent_posts.post_parent', $this->configuration['root_post'])

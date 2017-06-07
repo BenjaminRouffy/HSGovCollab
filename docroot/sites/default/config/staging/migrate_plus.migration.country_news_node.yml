@@ -21,7 +21,7 @@ process:
   body/value: post_content
   body/format:
     plugin: default_value
-    default_value: minimal
+    default_value: html
   created:
     plugin: callback
     callable: strtotime

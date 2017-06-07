@@ -7,6 +7,7 @@ dependencies:
     - node.type.document
     - node.type.event
     - node.type.news
+    - taxonomy.vocabulary.process_and_milestones
   module:
     - better_exposed_filters
     - comment
@@ -14,6 +15,7 @@ dependencies:
     - group
     - group_dashboard
     - node
+    - taxonomy
     - user
 _core:
   default_config_hash: fUDNcSYKNw6cTMPsX3G9VhsUGov5yUe6_TBHbcnZHyo
@@ -3707,6 +3709,56 @@ display:
           entity_type: node
           entity_field: migrate_data
           plugin_id: boolean
+        field_process_and_milestones_target_id:
+          id: field_process_and_milestones_target_id
+          table: node__field_process_and_milestones
+          field: field_process_and_milestones_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_process_and_milestones_target_id_op
+            label: 'Process and milestones '
+            description: ''
+            use_operator: false
+            operator: field_process_and_milestones_target_id_op
+            identifier: field_process_and_milestones_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: process_and_milestones
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       filter_groups:
         operator: AND
         groups:

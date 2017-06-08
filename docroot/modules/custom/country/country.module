@@ -4,15 +4,12 @@
  * @file
  * Contains country.module.
  */
+
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\file\Entity\File;
-use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
-use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\group\Access\GroupAccessResult;
 use Drupal\group\Entity\GroupInterface;
 
@@ -24,13 +21,16 @@ define('PUBLIC_GROUP', 9999);
 function country_node_access(NodeInterface $node, $op, AccountInterface $account) {
   if ('view' === $op) {
 
-    /** @var Drupal\Core\Access\AccessResult $result */
+    /**
+     * @see country_module_implements_alter
+     * @var Drupal\Core\Access\AccessResult $result
+     */
     $result = gnode_node_access($node, $op, $account);
 
     if (!is_null($node->public_content)) {
       // Override a group node result, because a public content grants access unrelated to membership.
       $result = AccessResult::allowedIf(1 == $node->public_content->value);
-      if(!$result->isAllowed() && !$account->isAnonymous()) {
+      if (!$result->isAllowed() && !$account->isAnonymous()) {
         // If authorized user still has no access, lets check a global option.
         if (!is_null($node->global_content)) {
           // There is a previous result can be overridden also.
@@ -46,7 +46,7 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
 
         if (GroupAccessResult::allowedIfHasGroupPermission($node, $account, 'view group')
-            ->isAllowed() || $bypass->isAllowed()
+          ->isAllowed() || $bypass->isAllowed()
         ) {
           return AccessResult::allowed();
         }

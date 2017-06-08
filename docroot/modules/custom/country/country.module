@@ -7,6 +7,7 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
@@ -22,25 +23,25 @@ define('PUBLIC_GROUP', 9999);
  */
 function country_node_access(NodeInterface $node, $op, AccountInterface $account) {
   if ('view' === $op) {
-    // Check node's "Public" status.
-    if ($node->hasField('public_content')) {
-      $public_content = $node->get('public_content')->getValue();
 
-      if (!empty($public_content) && !empty(reset($public_content)['value'])) {
-        return AccessResult::allowed();
-      }
-    }
+    /** @var Drupal\Core\Access\AccessResult $result */
+    $result = gnode_node_access($node, $op, $account);
 
-    if ($node->hasField('global_content')) {
-      $global_content = $node->get('global_content')->getValue();
-
-      if (!empty($global_content) && !empty(reset($global_content)['value']) && \Drupal::currentUser()->isAnonymous()) {
-        return AccessResult::forbidden();
+    if (!is_null($node->public_content)) {
+      // Override a group node result, because a public content grants access unrelated to membership.
+      $result = AccessResult::allowedIf(1 == $node->public_content->value);
+      if(!$result->isAllowed() && !$account->isAnonymous()) {
+        // If authorized user still has no access, lets check a global option.
+        if (!is_null($node->global_content)) {
+          // There is a previous result can be overridden also.
+          $result = AccessResult::allowedIf(1 == $node->global_content->value);
+        }
       }
     }
 
     // Check node group content permissions.
     if ($account->hasPermission('always access to node view')) {
+      // @TODO Please check this condition.
       if ($node instanceof GroupInterface) {
         $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
 
@@ -56,7 +57,7 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
     }
   }
 
-  return AccessResult::neutral();
+  return $result;
 }
 
 /**
@@ -151,7 +152,7 @@ function country_node_grants_alter(array &$grants, AccountInterface $account, $o
   if ($op == 'view') {
     $grants['public_group'] = [PUBLIC_GROUP];
 
-    if (\Drupal::currentUser()->isAuthenticated()) {
+    if ($account->isAuthenticated()) {
       $grants['global_group'] = [PUBLIC_GROUP];
     }
   }

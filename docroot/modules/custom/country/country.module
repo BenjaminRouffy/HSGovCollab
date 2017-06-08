@@ -6,47 +6,52 @@
  */
 
 use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
-use Drupal\group\Access\GroupAccessResult;
-use Drupal\group\Entity\GroupInterface;
 
+define('NON_GROUP', 1);
 define('PUBLIC_GROUP', 9999);
+
+/**
+ * Array of content type that can be public/global.
+ *
+ * @return array
+ */
+function _country_public_global_content_types() {
+  return ['news', 'events'];
+}
 
 /**
  * Implements hook_node_access().
  */
 function country_node_access(NodeInterface $node, $op, AccountInterface $account) {
   if ('view' === $op) {
+    $result = gnode_node_access($node, $op, $account);
 
-    $gnode = gnode_node_access($node, $op, $account);
-    // Check node's "Public" status.
-    if (isset($node->public_content)) {
-      $public_content = (int) $node->public_content->value;
-      $public = AccessResult::allowedIf($public_content);
-    }
+    if (in_array($node->getType(), _country_public_global_content_types())) {
 
-    if (isset($node->global_content)) {
-      $global_content = (int) $node->global_content->value;
-      $global = AccessResult::allowedIf($global_content);
-    }
+      if (isset($node->global_content)) {
+        $global_content = (int) $node->global_content->value;
+        $global = AccessResult::allowedIf(1 == $global_content && $account->isAuthenticated());
+      }
 
-    if($public->isAllowed()) {
-      // All users auth/anonymous
-      $result = AccessResult::allowed();
-    }
-    elseif ($global->isAllowed() && $account->isAuthenticated()) {
-      $result = AccessResult::allowed();
-    }
-    else {
-      // Deny in case a group_node module doesn't allow or user is anonymous.
-      $result = AccessResult::forbiddenIf($gnode->isForbidden() || $account->isAnonymous());
+      if (isset($node->public_content)) {
+        $public_content = (int) $node->public_content->value;
+        $public = AccessResult::allowedIf(1 == $public_content);
+      }
+
+      if ($result->isNeutral()) {
+        $result = AccessResult::forbidden();
+      }
+      if ($global->isAllowed() || $public->isAllowed()) {
+        $result = AccessResult::allowed();
+      }
+
     }
 
     // Check node group content permissions.
-    //if ($account->hasPermission('always access to node view')) {
+    // if ($account->hasPermission('always access to node view')) {
     //  if ($node instanceof GroupInterface) {
     //    $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
     //
@@ -59,8 +64,7 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
     //      return AccessResult::forbidden();
     //    }
     //  }
-    //}
-
+    // }
     return $result;
 
   }
@@ -92,21 +96,7 @@ function country_file_access(EntityInterface $entity, $operation, AccountInterfa
                 $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->load(key($value));
                 /* @var Node $node */
                 $node = $paragraph->getParentEntity();
-                $gnode_access = gnode_node_access($node, 'view', $account);
-
-                if ($gnode_access instanceof AccessResultForbidden) {
-                  if ($node->hasField('public_content')) {
-                    $public_content = $node->get('public_content')->getValue();
-
-                    if (!empty($public_content) && !empty(reset($public_content)['value'])) {
-                      return AccessResult::allowed();
-                    }
-                  }
-
-                  return $gnode_access;
-                }
-
-                return AccessResult::allowed();
+                return gnode_node_access($node, 'view', $account);
               }
             }
           }
@@ -122,33 +112,46 @@ function country_file_access(EntityInterface $entity, $operation, AccountInterfa
  * Implements hook_node_access_records_alter().
  */
 function country_node_access_records_alter(array &$grants, NodeInterface $node) {
-  if ($node->hasField('public_content')) {
-    $public_content = $node->get('public_content')->getValue();
 
-    if (!empty($public_content) && !empty(reset($public_content)['value'])) {
-      $grants[] = [
-        'realm' => 'public_group',
-        'gid' => PUBLIC_GROUP,
-        'grant_view' => 1,
-        'grant_update' => 0,
-        'grant_delete' => 0,
-        'priority' => 0,
-      ];
+  if (in_array($node->getType(), _country_public_global_content_types())) {
+
+    $grants[] = [
+      'realm' => 'content:nongroup',
+      'gid' => NON_GROUP,
+      'grant_view' => 1,
+      'grant_update' => 0,
+      'grant_delete' => 0,
+      'priority' => 0,
+    ];
+
+    if (isset($node->public_content)) {
+      $public_content = $node->public_content->value;
+
+      if (1 == $public_content) {
+        $grants[] = [
+          'realm' => 'public_group',
+          'gid' => PUBLIC_GROUP,
+          'grant_view' => 1,
+          'grant_update' => 0,
+          'grant_delete' => 0,
+          'priority' => 0,
+        ];
+      }
     }
-  }
 
-  if ($node->hasField('global_content')) {
-    $global_content = $node->get('global_content')->getValue();
+    if (isset($node->global_content)) {
+      $global_content = $node->global_content->value;
 
-    if (!empty($global_content) && !empty(reset($global_content)['value'])) {
-      $grants[] = [
-        'realm' => 'global_group',
-        'gid' => PUBLIC_GROUP,
-        'grant_view' => 1,
-        'grant_update' => 0,
-        'grant_delete' => 0,
-        'priority' => 0,
-      ];
+      if (1 == $global_content) {
+        $grants[] = [
+          'realm' => 'global_group',
+          'gid' => PUBLIC_GROUP,
+          'grant_view' => 1,
+          'grant_update' => 0,
+          'grant_delete' => 0,
+          'priority' => 0,
+        ];
+      }
     }
   }
 }
@@ -161,6 +164,7 @@ function country_node_grants_alter(array &$grants, AccountInterface $account, $o
     $grants['public_group'] = [PUBLIC_GROUP];
 
     if ($account->isAuthenticated()) {
+      $grants['content:nongroup'] = [NON_GROUP];
       $grants['global_group'] = [PUBLIC_GROUP];
     }
   }

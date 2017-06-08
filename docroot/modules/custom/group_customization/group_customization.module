@@ -61,7 +61,6 @@ function group_customization_group_access(EntityInterface $entity, $operation, A
 
     return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
       'published',
-      // 'content',.
     ]);
   }
 

@@ -35,20 +35,20 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
     $result = ($public->isAllowed() || $global->isAllowed()) ? AccessResult::allowed() : $gnode;
 
     // Check node group content permissions.
-    if ($account->hasPermission('always access to node view')) {
-      if ($node instanceof GroupInterface) {
-        $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
-
-        if (GroupAccessResult::allowedIfHasGroupPermission($node, $account, 'view group')
-          ->isAllowed() || $bypass->isAllowed()
-        ) {
-          return AccessResult::allowed();
-        }
-        else {
-          return AccessResult::forbidden();
-        }
-      }
-    }
+    //if ($account->hasPermission('always access to node view')) {
+    //  if ($node instanceof GroupInterface) {
+    //    $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
+    //
+    //    if (GroupAccessResult::allowedIfHasGroupPermission($node, $account, 'view group')
+    //      ->isAllowed() || $bypass->isAllowed()
+    //    ) {
+    //      return AccessResult::allowed();
+    //    }
+    //    else {
+    //      return AccessResult::forbidden();
+    //    }
+    //  }
+    //}
 
     return $result;
 

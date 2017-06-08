@@ -121,10 +121,10 @@ class FileAccessByGroupTest extends EntityKernelTestBase {
     $this->generateEntity();
 
     $access = country_file_access($this->file, 'view',  $anonymous);
-    $this->assertEquals($access->isAllowed(), TRUE, 'File view is allowed.');
+    $this->assertEquals($access->isForbidden(), FALSE, 'File view is allowed.');
 
     $access = country_file_access($this->file, 'download',  $anonymous);
-    $this->assertEquals($access->isAllowed(), TRUE, 'File download is allowed.');
+    $this->assertEquals($access->isForbidden(), FALSE, 'File download is allowed.');
 
     /* @var Group $group */
     $group = $this->entityTypeManager->getStorage('group')->create([

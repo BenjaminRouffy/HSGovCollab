@@ -30,9 +30,20 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
 
     if (isset($node->global_content)) {
       $global_content = (int) $node->global_content->value;
-      $global = AccessResult::allowedIf($account->isAuthenticated() && $global_content);
+      $global = AccessResult::allowedIf($global_content);
     }
-    $result = ($public->isAllowed() || $global->isAllowed()) ? AccessResult::allowed() : $gnode;
+
+    if($public->isAllowed()) {
+      // All users auth/anonymous
+      $result = AccessResult::allowed();
+    }
+    elseif ($global->isAllowed() && $account->isAuthenticated()) {
+      $result = AccessResult::allowed();
+    }
+    else {
+      // Deny in case a group_node module doesn't allow or user is anonymous.
+      $result = AccessResult::forbiddenIf($gnode->isForbidden() || $account->isAnonymous());
+    }
 
     // Check node group content permissions.
     //if ($account->hasPermission('always access to node view')) {

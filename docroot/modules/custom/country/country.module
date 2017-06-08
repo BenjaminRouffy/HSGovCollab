@@ -21,27 +21,21 @@ define('PUBLIC_GROUP', 9999);
 function country_node_access(NodeInterface $node, $op, AccountInterface $account) {
   if ('view' === $op) {
 
-    /**
-     * @see country_module_implements_alter
-     * @var Drupal\Core\Access\AccessResult $result
-     */
-    $result = gnode_node_access($node, $op, $account);
-
-    if (!is_null($node->public_content)) {
-      // Override a group node result, because a public content grants access unrelated to membership.
-      $result = AccessResult::allowedIf(1 == $node->public_content->value);
-      if (!$result->isAllowed() && !$account->isAnonymous()) {
-        // If authorized user still has no access, lets check a global option.
-        if (!is_null($node->global_content)) {
-          // There is a previous result can be overridden also.
-          $result = AccessResult::allowedIf(1 == $node->global_content->value);
-        }
-      }
+    $gnode = gnode_node_access($node, $op, $account);
+    // Check node's "Public" status.
+    if (isset($node->public_content)) {
+      $public_content = (int) $node->public_content->value;
+      $public = AccessResult::allowedIf($public_content);
     }
+
+    if (isset($node->global_content)) {
+      $global_content = (int) $node->global_content->value;
+      $global = AccessResult::allowedIf($account->isAuthenticated() && $global_content);
+    }
+    $result = ($public->isAllowed() || $global->isAllowed()) ? AccessResult::allowed() : $gnode;
 
     // Check node group content permissions.
     if ($account->hasPermission('always access to node view')) {
-      // @TODO Please check this condition.
       if ($node instanceof GroupInterface) {
         $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
 
@@ -55,9 +49,12 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         }
       }
     }
+
+    return $result;
+
   }
 
-  return $result;
+  return AccessResult::neutral();
 }
 
 /**

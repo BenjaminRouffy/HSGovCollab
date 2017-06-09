@@ -5,18 +5,13 @@
  * Group customization module main file.
  */
 
+use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Config\Entity\ConfigEntityType;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\ggroup\GroupHierarchyManager;
-use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
-use Drupal\node\NodeInterface;
-use Drupal\views\Plugin\views\query\QueryPluginBase;
-use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_preprocess_html().
@@ -66,7 +61,6 @@ function group_customization_group_access(EntityInterface $entity, $operation, A
 
     return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
       'published',
-      'content',
     ]);
   }
 
@@ -120,10 +114,9 @@ function _group_customization_get_unpublished_groups() {
 /**
  * Implements hook_query_TAG_alter().
  */
-function group_customization_query_group_country_alter(Drupal\Core\Database\Query\AlterableInterface $query) {
+function group_customization_query_group_country_alter(AlterableInterface $query) {
   // @TODO Remove tag "group_country" and update views.
 }
-
 
 /**
  * Implements hook_entity_base_field_info().

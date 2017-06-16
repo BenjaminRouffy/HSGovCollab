@@ -327,8 +327,10 @@
 
   .slider-item-wrapper {
     .image-text {
+      @include font-size(15);
+      line-height: 18px;
       left: 50%;
-      padding: 20px;
+      padding: 20px 15px;
       transform: translateX(-50%);
       width: 67%;
     }

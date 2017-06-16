@@ -321,7 +321,7 @@
             var $activeItem = $slider.find('.owl-item.active');
             var activeItemImgHeight = $activeItem.find('.slider-item-wrapper').children('img').height();
 
-            $slider.find('.owl-height').height(activeItemImgHeight);
+            $slider.find('.owl-stage-outer').height(activeItemImgHeight);
           }
         });
       });

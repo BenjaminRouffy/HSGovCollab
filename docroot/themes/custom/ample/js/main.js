@@ -328,9 +328,11 @@
           onTranslated: adaptiveHeight,
           onResized: adaptiveHeight,
           onInitialized: function() {
-            setTimeout(function() {
+            var slideImages = $slider.find('.slider-item-wrapper').children('img');
+
+            $(slideImages[0]).load(function() {
               adaptiveHeight();
-            }, 300);
+            });
           }
         });
       });

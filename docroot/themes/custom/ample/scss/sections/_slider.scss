@@ -7,12 +7,22 @@
   }
 
   .top-banner-region & {
-    height: 650px;
+    //height: 650px;
+
+    .slider-item-wrapper {
+      > img {
+        width: 100%;
+      }
+    }
   }
 
   .header-image & {
     height: 500px;
   }
+}
+
+.owl-height {
+  transition: height .4s ease;
 }
 
 .slider-main {

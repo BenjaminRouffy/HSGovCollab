@@ -7624,10 +7624,14 @@ footer {
   position: relative; }
   .slider-wrapper.background-image {
     height: 409px; }
-  .top-banner-region .slider-wrapper {
-    height: 650px; }
+  .top-banner-region .slider-wrapper .slider-item-wrapper > img {
+    width: 100%; }
   .header-image .slider-wrapper {
     height: 500px; }
+
+.owl-height {
+  -webkit-transition: height .4s ease;
+  transition: height .4s ease; }
 
 .slider-main {
   margin: 50px 0;

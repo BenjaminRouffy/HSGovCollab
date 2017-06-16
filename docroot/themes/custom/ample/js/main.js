@@ -316,7 +316,14 @@
         $slider.owlCarousel({
           items: 1,
           nav: true,
-          smartSpeed: 500
+          smartSpeed: 500,
+          autoHeight: true,
+          onTranslated: function() {
+            var $activeItem = $slider.find('.owl-item.active');
+            var activeItemImgHeight = $activeItem.find('.slider-item-wrapper').children('img').height();
+
+            $slider.find('.owl-height').height(activeItemImgHeight);
+          }
         });
       });
     }

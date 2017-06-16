@@ -21,10 +21,6 @@
   }
 }
 
-.owl-height {
-  transition: height .4s ease;
-}
-
 .slider-main {
   margin: 50px 0;
   position: relative;
@@ -282,6 +278,7 @@
 
 .owl-stage-outer {
   overflow: hidden;
+  transition: height .4s ease;
 }
 
 .owl-stage-outer,

@@ -7629,10 +7629,6 @@ footer {
   .header-image .slider-wrapper {
     height: 500px; }
 
-.owl-height {
-  -webkit-transition: height .4s ease;
-  transition: height .4s ease; }
-
 .slider-main {
   margin: 50px 0;
   position: relative; }
@@ -7810,7 +7806,9 @@ footer {
     width: 100%; } }
 
 .owl-stage-outer {
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-transition: height .4s ease;
+  transition: height .4s ease; }
 
 .owl-stage-outer,
 .owl-stage,

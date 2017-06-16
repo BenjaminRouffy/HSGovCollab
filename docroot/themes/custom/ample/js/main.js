@@ -326,7 +326,12 @@
           smartSpeed: 500,
           autoHeight: true,
           onTranslated: adaptiveHeight,
-          onResized: adaptiveHeight
+          onResized: adaptiveHeight,
+          onInitialized: function() {
+            setTimeout(function() {
+              adaptiveHeight();
+            }, 300);
+          }
         });
       });
     }

@@ -1584,25 +1584,17 @@ footer > .partners {
     line-height: 20px; } }
 
 .w-background-video .plyr {
-  max-height: 60vh;
   overflow: hidden; }
+  .w-background-video .plyr .plyr__controls {
+    background: transparent; }
 
 .ie9 .w-background-video .plyr--ready {
   max-height: 60vh;
   overflow: hidden; }
 
 .w-background-video .plyr__video-embed {
-  margin-top: -13%;
   -webkit-transition: margin .2s ease;
   transition: margin .2s ease; }
-
-@media (max-width: 1440px) {
-  .w-background-video .plyr__video-embed {
-    margin-top: -5%; } }
-
-@media (max-width: 1024px) {
-  .w-background-video .plyr__video-embed {
-    margin-top: 0; } }
 
 .video-embed-field-responsive-video:after {
   content: none; }

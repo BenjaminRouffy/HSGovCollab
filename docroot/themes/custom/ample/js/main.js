@@ -313,10 +313,27 @@
       $('.slider-wrapper').each(function(i, el) {
         var $slider = $(el);
 
+        function adaptiveHeight() {
+          var $activeItem = $slider.find('.owl-item.active');
+          var activeItemImgHeight = $activeItem.find('.slider-item-wrapper').children('img').height();
+
+          $slider.find('.owl-stage-outer').height(activeItemImgHeight);
+        }
+
         $slider.owlCarousel({
           items: 1,
           nav: true,
-          smartSpeed: 500
+          smartSpeed: 500,
+          autoHeight: true,
+          onTranslated: adaptiveHeight,
+          onResized: adaptiveHeight,
+          onInitialized: function() {
+            var slideImages = $slider.find('.slider-item-wrapper').children('img');
+
+            $(slideImages[0]).load(function() {
+              adaptiveHeight();
+            });
+          }
         });
       });
     }

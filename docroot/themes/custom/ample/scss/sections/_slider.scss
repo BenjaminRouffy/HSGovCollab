@@ -7,7 +7,13 @@
   }
 
   .top-banner-region & {
-    height: 650px;
+    //height: 650px;
+
+    .slider-item-wrapper {
+      > img {
+        width: 100%;
+      }
+    }
   }
 
   .header-image & {
@@ -272,6 +278,7 @@
 
 .owl-stage-outer {
   overflow: hidden;
+  transition: height .4s ease;
 }
 
 .owl-stage-outer,

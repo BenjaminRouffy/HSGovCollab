@@ -1373,7 +1373,15 @@ footer > .partners {
     max-width: 100%; }
   .top-banner-region .user-info .paragraph .icon-wrapper {
     height: 100px;
-    width: 100px; } }
+    width: 100px; }
+  .top-banner-region .slider-item-wrapper .image-text {
+    font-size: 0.9375rem;
+    line-height: 18px;
+    left: 50%;
+    padding: 20px 15px;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 67%; } }
 
 .banner-image-wrapper {
   height: 650px;
@@ -7624,8 +7632,8 @@ footer {
   position: relative; }
   .slider-wrapper.background-image {
     height: 409px; }
-  .top-banner-region .slider-wrapper {
-    height: 650px; }
+  .top-banner-region .slider-wrapper .slider-item-wrapper > img {
+    width: 100%; }
   .header-image .slider-wrapper {
     height: 500px; }
 
@@ -7806,7 +7814,9 @@ footer {
     width: 100%; } }
 
 .owl-stage-outer {
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-transition: height .4s ease;
+  transition: height .4s ease; }
 
 .owl-stage-outer,
 .owl-stage,

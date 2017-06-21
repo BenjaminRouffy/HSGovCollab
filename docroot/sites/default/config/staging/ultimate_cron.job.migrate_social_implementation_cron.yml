@@ -1,0 +1,29 @@
+uuid: 35ac8112-4f8c-4cf3-9cff-35015f02a556
+langcode: en
+status: true
+dependencies:
+  module:
+    - migrate_social_implementation
+title: 'Default cron handler'
+id: migrate_social_implementation_cron
+weight: 0
+module: migrate_social_implementation
+callback: migrate_social_implementation_cron
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '*/15+@ * * * *'
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

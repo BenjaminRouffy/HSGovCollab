@@ -940,3 +940,10 @@ function deployment_update_8075() {
     'views.view.my_calendar.yml',
   ]);
 }
+
+/**
+ * Install module "ultimate_cron".
+ */
+function deployment_update_8076() {
+  \Drupal::service('module_installer')->install(['ultimate_cron']);
+}

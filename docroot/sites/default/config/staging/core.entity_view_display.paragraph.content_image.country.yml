@@ -9,6 +9,8 @@ dependencies:
     - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
+  module:
+    - image
 id: paragraph.content_image.country
 targetEntityType: paragraph
 bundle: content_image
@@ -18,10 +20,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      view_mode: file_uri
-      link: false
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: image
     region: content
   field_description:
     type: string

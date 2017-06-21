@@ -1384,7 +1384,6 @@ footer > .partners {
     width: 67%; } }
 
 .banner-image-wrapper {
-  height: 650px;
   position: relative; }
 
 .country-content-wrapper {
@@ -7624,8 +7623,6 @@ footer {
   position: relative; }
   .slider-wrapper.background-image {
     height: 409px; }
-  .top-banner-region .slider-wrapper .slider-item-wrapper > img {
-    width: 100%; }
   .header-image .slider-wrapper {
     height: 500px; }
 
@@ -7737,6 +7734,9 @@ footer {
   height: 100%;
   position: relative;
   text-align: center; }
+  .top-banner-region .slider-item-wrapper > img, .top-banner-region
+  .banner-image > img {
+    width: 100%; }
   .fixed .slider-item-wrapper, .fixed
   .banner-image {
     height: auto;
@@ -7772,9 +7772,6 @@ footer {
   .header-image .slider-item-wrapper .image-text, .header-image
   .banner-image .image-text {
     width: 80%; }
-
-.top-banner-region .banner-image {
-  padding: 0 20px; }
 
 @media (max-width: 767px) {
   .top-banner-region .slider-item-wrapper, .top-banner-region .banner-image {

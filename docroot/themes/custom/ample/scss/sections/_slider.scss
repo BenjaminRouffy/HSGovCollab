@@ -8,12 +8,6 @@
 
   .top-banner-region & {
     //height: 650px;
-
-    .slider-item-wrapper {
-      > img {
-        width: 100%;
-      }
-    }
   }
 
   .header-image & {
@@ -185,6 +179,12 @@
   position: relative;
   text-align: center;
 
+  .top-banner-region & {
+    > img {
+      width: 100%;
+    }
+  }
+
   .fixed & {
     height: auto;
     position: relative;
@@ -228,11 +228,11 @@
   }
 }
 
-.banner-image {
-  .top-banner-region & {
-    padding: 0 20px;
-  }
-}
+//.banner-image {
+//  .top-banner-region & {
+//    padding: 0 20px;
+//  }
+//}
 
 @include breakpoint-for('.slider-item-wrapper, .banner-image', (to: tablet)) {
   .top-banner-region & {

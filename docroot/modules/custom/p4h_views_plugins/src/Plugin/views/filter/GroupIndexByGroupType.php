@@ -95,6 +95,11 @@ class GroupIndexByGroupType extends GroupIndexGid  {
   protected function valueForm(&$form, FormStateInterface $form_state) {
     $options = [];
     $account = \Drupal::currentUser();
+    $types = [];
+
+    if (!empty($this->view->filter['type'])) {
+      $types = $this->view->filter['type']->value;
+    }
 
     foreach (array_filter($this->options['gid']) as $group_type_id) {
       $group_type = $this->groupType->load($group_type_id);
@@ -110,6 +115,7 @@ class GroupIndexByGroupType extends GroupIndexGid  {
       $groupPermissionAccess = \Drupal::getContainer()
         ->get('group_customization.group.permission');
 
+      /* @var Group $group */
       foreach ($groups as $group) {
         /* @var AccessResult $access */
         $access =  $groupPermissionAccess->checkAccessForFilter($group, $account, [
@@ -117,7 +123,24 @@ class GroupIndexByGroupType extends GroupIndexGid  {
           'content',
         ]);
 
-        if ($access->isAllowed()) {
+        if (!empty($types)) {
+          $query = \Drupal::database()->select('group_content_field_data', 'group_content_field_data')
+            ->fields('group_content_field_data', ['id'])
+            ->condition('gid', $group->id());
+
+          $or_condition = $query->orConditionGroup();
+
+          foreach ($types as $type) {
+            $or_condition->condition('type', '%' . $query->escapeLike($type), 'LIKE');
+          }
+
+          $result = $query->condition($or_condition)
+            ->execute()
+            ->fetchCol();
+        }
+
+
+        if ($access->isAllowed() && !empty($result)) {
           $options[$group->id()] = \Drupal::entityManager()
             ->getTranslationFromContext($group)
             ->label();

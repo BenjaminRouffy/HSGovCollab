@@ -139,7 +139,6 @@ class GroupIndexByGroupType extends GroupIndexGid  {
             ->fetchCol();
         }
 
-
         if ($access->isAllowed() && !empty($result)) {
           $options[$group->id()] = \Drupal::entityManager()
             ->getTranslationFromContext($group)

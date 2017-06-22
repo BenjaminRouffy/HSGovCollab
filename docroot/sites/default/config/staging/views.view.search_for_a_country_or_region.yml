@@ -65,15 +65,16 @@ display:
               allow_secondary: false
               secondary_label: 'Advanced options'
               autosubmit: true
-              autosubmit_hide: true
-            combine:
-              bef_format: bef_ul
+              timeout: '100'
+              autosubmit_hide: false
+            combine_1:
+              bef_format: default
               more_options:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            combine_1:
-              bef_format: default
+            combine:
+              bef_format: bef_ul
               more_options:
                 is_secondary: false
                 rewrite:
@@ -426,12 +427,12 @@ display:
         - 'languages:language_interface'
         - url
       tags:
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.search_result_row'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
@@ -451,6 +452,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
@@ -458,16 +461,12 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.search_result_row'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
-        - 'config:core.entity_view_display.group.region.country_list_by_region'
-        - 'config:core.entity_view_display.group.region.default'
-        - 'config:core.entity_view_display.group.product.default'
-        - 'config:core.entity_view_display.group.product.search_country'
-        - 'config:core.entity_view_display.group.project.default'
-        - 'config:core.entity_view_display.group.project.teaser'
   block_1:
     display_plugin: block
     id: block_1
@@ -501,6 +500,7 @@ display:
         fields: false
         filters: false
         filter_groups: false
+        use_ajax: false
       empty:
         area_text_custom:
           id: area_text_custom
@@ -960,6 +960,7 @@ display:
         groups:
           1: OR
           2: AND
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -992,6 +993,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
@@ -1433,6 +1436,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
@@ -1473,7 +1478,7 @@ display:
             description: ''
             use_operator: false
             operator: combine_1_op
-            identifier: combine_1
+            identifier: combine_2
             required: false
             remember: false
             multiple: false
@@ -1485,6 +1490,7 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -1633,6 +1639,7 @@ display:
         filter_groups: false
         pager: false
         fields: false
+        use_ajax: false
       filter_groups:
         operator: AND
         groups:
@@ -1773,6 +1780,7 @@ display:
           view_mode: country_list_by_region
           entity_type: group
           plugin_id: rendered_entity
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1805,6 +1813,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
@@ -2421,6 +2431,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
@@ -2883,6 +2895,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
@@ -3136,6 +3150,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
@@ -3437,6 +3453,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
@@ -3775,6 +3793,8 @@ display:
         - 'config:core.entity_view_display.group.product.default'
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
+        - 'config:core.entity_view_display.group.product.teaser'
+        - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
         - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'

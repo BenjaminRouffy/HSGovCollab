@@ -96,6 +96,7 @@ class GroupIndexByGroupType extends GroupIndexGid  {
     $options = [];
     $account = \Drupal::currentUser();
     $types = [];
+    $is_anonymous = \Drupal::currentUser()->isAnonymous();
 
     if (!empty($this->view->filter['type'])) {
       $types = $this->view->filter['type']->value;
@@ -128,10 +129,15 @@ class GroupIndexByGroupType extends GroupIndexGid  {
             ->fields('group_content_field_data', ['id'])
             ->condition('gid', $group->id());
 
+          if ($is_anonymous) {
+            $query->leftJoin('node_field_data', 'node_field_data', 'group_content_field_data.entity_id=node_field_data.nid');
+            $query->condition('node_field_data.public_content', 1);
+          }
+
           $or_condition = $query->orConditionGroup();
 
           foreach ($types as $type) {
-            $or_condition->condition('type', '%' . $query->escapeLike($type), 'LIKE');
+            $or_condition->condition('group_content_field_data.type', '%' . $query->escapeLike($type), 'LIKE');
           }
 
           $result = $query->condition($or_condition)

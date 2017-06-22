@@ -1,5 +1,10 @@
 services:
- admin_customizations.taxonomy_term_subscriber:
-   class: 'Drupal\admin_customizations\Routing\TaxonomyTermSubscriber'
-   tags:
-     - { name: 'event_subscriber' }
+  admin_customizations.taxonomy_term_subscriber:
+    class: 'Drupal\admin_customizations\Routing\TaxonomyTermSubscriber'
+    tags:
+      - { name: 'event_subscriber' }
+
+  admin_customizations.tagadelic_subscriber:
+    class: 'Drupal\admin_customizations\Routing\TagadelicSubscriber'
+    tags:
+      - { name: 'event_subscriber' }

@@ -9,6 +9,7 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\Database\Driver\mysql\Schema;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\field\Entity\FieldConfig;
+use \Drupal\user\Entity\User;
 
 /**
  * Install and configure contrib modules.
@@ -946,4 +947,24 @@ function deployment_update_8075() {
  */
 function deployment_update_8076() {
   \Drupal::service('module_installer')->install(['ultimate_cron']);
+}
+
+/**
+ * Update user role.
+ */
+function deployment_update_8078() {
+  /**
+   * UID 44: Helga Mahler
+   * UID 52: Gwenael Dhaene
+   */
+  foreach ([44, 52] as $id) {
+    /* @var User $user */
+    $user = User::load($id);
+
+    $user->removeRole('governance_group_users');
+    $user->removeRole('coordination_desk_users');
+    $user->addRole('co_admin');
+
+    $user->save();
+  }
 }

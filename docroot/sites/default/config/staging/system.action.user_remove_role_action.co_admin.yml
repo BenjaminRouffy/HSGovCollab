@@ -1,0 +1,14 @@
+uuid: b1a789d9-b6dd-432c-883c-2f93e734fc38
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.co_admin
+  module:
+    - user
+id: user_remove_role_action.co_admin
+label: 'Remove the Co-Admin role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: co_admin

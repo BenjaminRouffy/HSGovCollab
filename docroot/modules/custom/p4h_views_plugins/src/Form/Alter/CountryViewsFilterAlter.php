@@ -15,7 +15,11 @@ class CountryViewsFilterAlter implements FormAlterServiceBaseInterface, FormAlte
    * @inheritdoc
    */
   public function hasMatch(&$form, FormStateInterface $form_state, $form_id) {
-    return $form['#id'] == 'views-exposed-form-search-for-a-country-or-region-block-1';
+    return in_array($form['#id'], [
+      'views-exposed-form-search-for-a-country-or-region-block-4',
+      'views-exposed-form-search-for-a-country-or-region-block-1',
+      'views-exposed-form-search-for-a-country-or-region-block-2',
+    ]);
   }
 
   /**

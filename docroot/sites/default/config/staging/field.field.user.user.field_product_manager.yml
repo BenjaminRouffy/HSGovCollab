@@ -1,0 +1,23 @@
+uuid: ed8e93af-62ae-4d6b-99b4-d17e6256f82d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_product_manager
+  module:
+    - group_content_field
+    - user
+id: user.user.field_product_manager
+field_name: field_product_manager
+entity_type: user
+bundle: user
+label: 'Product manager'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

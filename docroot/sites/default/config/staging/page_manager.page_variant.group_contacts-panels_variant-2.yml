@@ -1,0 +1,49 @@
+uuid: fbcef6fe-bb4a-496d-a537-6059e2f67269
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group_contacts
+    - views.view.cd_user_view
+  module:
+    - group
+    - panels
+    - views
+id: group_contacts-panels_variant-2
+label: Product
+variant: panels_variant
+variant_settings:
+  blocks:
+    e32b9ec7-f789-4d6f-b5ee-156231602096:
+      id: 'views_block:cd_user_view-block_3'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: e32b9ec7-f789-4d6f-b5ee-156231602096
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 1abeb3da-1337-4d7e-9366-08ba0882260b
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group_contacts-panels_variant-2
+  builder: standard
+page: group_contacts
+weight: 0
+selection_criteria:
+  -
+    id: group_type
+    group_types:
+      product: product
+    negate: 0
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

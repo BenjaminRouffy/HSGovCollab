@@ -124,10 +124,7 @@ class CountryMenuBlock extends BlockBase {
             break;
 
           case 'contact':
-            if ($group->bundle() !== 'product') {
-              $row = ['not-null'];
-            }
-
+            $row = ['not-null'];
             break;
 
           case 'calendar':

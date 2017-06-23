@@ -296,6 +296,19 @@ function _user_registration_manager_field_states(array &$form) {
       ],
     ];
   }
+
+  if (isset($form['field_product_manager'])) {
+    $form['field_product_manager']['widget'][0]['entity_gids'] += [
+      '#states' => [
+        'required' => [
+          ':input[name="roles[product_manager]"]' => ['checked' => TRUE],
+        ],
+        'visible' => [
+          ':input[name="roles[product_manager]"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+  }
 }
 
 /**
@@ -318,6 +331,10 @@ function _user_registration_group_manager(&$form, FormStateInterface $form_state
 
   if (!in_array('knowledge_vault_manager', $values['roles']) && isset($values['field_knowledge_vault_manager'])) {
     $values['field_knowledge_vault_manager'][0]['entity_gids'] = [];
+  }
+
+  if (!in_array('product_manager', $values['roles']) && isset($values['field_product_manager'])) {
+    $values['field_product_manager'][0]['entity_gids'] = [];
   }
 
   $form_state->setValues($values);

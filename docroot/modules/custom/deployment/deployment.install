@@ -968,3 +968,21 @@ function deployment_update_8078() {
     $user->save();
   }
 }
+
+/**
+ * Update password expiration.
+ */
+function deployment_update_8080() {
+  $result = \Drupal::database()->select('user__field_password_expiration', 'user__field_password_expiration')
+    ->fields('user__field_password_expiration', ['entity_id'])
+    ->condition('field_password_expiration_value', '1')
+    ->execute()
+    ->fetchCol();
+
+  foreach ($result as $id) {
+    $user = User::load($id);
+    $user->get('field_password_expiration')->setValue(0);
+    $user->save();
+  }
+
+}

@@ -968,3 +968,14 @@ function deployment_update_8078() {
     $user->save();
   }
 }
+
+/**
+ * Install module "simplenews".
+ */
+function deployment_update_8079() {
+  \Drupal::service('module_installer')->uninstall(['smtp']);
+  \Drupal::service('module_installer')->install([
+    'simplenews_scheduler',
+    'simplenews'
+  ]);
+}

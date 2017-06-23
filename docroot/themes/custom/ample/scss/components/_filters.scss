@@ -883,7 +883,7 @@
     }
   }
 
-  .js-form-type-textfield {
+  .wrapper-filters {
     background: $white;
     overflow: hidden;
     margin-bottom: 20px;
@@ -894,7 +894,7 @@
       float: left;
       line-height: 31px;
       margin-top: 10px;
-      width: 33.33%;
+      width: 42%;
     }
 
     .form-text {
@@ -904,14 +904,28 @@
       font-weight: 300;
       margin-top: 20px;
       padding-left: 20px;
-      width: 45.5%;
+      width: 58%;
     }
+
+    .form-submit {
+      top: auto;
+      bottom: 25px;
+    }
+  }
+
+  .search-form-wrapper {
+    overflow: hidden;
+    width: 78%;
   }
 }
 
 @include breakpoint-for('.view-country', (to: laptop-small)) {
-  .js-form-type-textfield {
+  .wrapper-filters {
     margin-bottom: 0;
+
+    .search-form-wrapper {
+      width: 100%;
+    }
 
     label,
     .form-text {
@@ -921,6 +935,10 @@
 
     .form-text {
       margin: 0;
+    }
+
+    .form-submit {
+      bottom: 0;
     }
   }
 }

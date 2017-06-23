@@ -105,7 +105,7 @@ class GroupAdminFilter extends FilterPluginBase {
       $membership_loader = \Drupal::service('group.membership_loader');
 
       /* @var GroupMembership $group_membership */
-      foreach ($membership_loader->loadByUser($user, array_keys($this->options['roles'])) as $group_membership) {
+      foreach ($membership_loader->loadByUser($user, array_keys(array_filter($this->options['roles']))) as $group_membership) {
         if (!empty($group_membership->getGroupContent()->id())) {
           // Add the groups the user is a member of to use later on.
           $member_gids[] = $group_membership->getGroup()->id();

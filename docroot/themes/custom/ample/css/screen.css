@@ -6224,36 +6224,62 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
         left: 50%;
         -webkit-transform: translateX(-50%);
                 transform: translateX(-50%); }
-  .view-country .js-form-type-textfield {
+  .view-country .wrapper-filters {
     background: #fff;
     overflow: hidden;
     margin-bottom: 20px;
     padding: 20px; }
-    .view-country .js-form-type-textfield label {
+    .view-country .wrapper-filters label {
       font-size: 1.4rem;
       float: left;
       line-height: 31px;
       margin-top: 10px;
-      width: 33.33%; }
-    .view-country .js-form-type-textfield .form-text, .view-country .js-form-type-textfield .form-textarea {
+      width: 42%; }
+    .view-country .wrapper-filters .form-text, .view-country .wrapper-filters .form-textarea {
       font-size: 1.47rem;
       border-color: rgba(40, 59, 68, 0.32);
       float: left;
       font-weight: 300;
       margin-top: 20px;
       padding-left: 20px;
-      width: 45.5%; }
+      width: 58%; }
+    .view-country .wrapper-filters .form-submit, .view-country .wrapper-filters .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .view-country .wrapper-filters a, .view-country .wrapper-filters .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .view-country .wrapper-filters .button, .view-country .wrapper-filters .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .view-country .wrapper-filters #edit-cancel, .view-country .wrapper-filters
+    .article-edit-node .node-article-delete-form #edit-cancel,
+    .article-edit-node .node-article-delete-form .view-country .wrapper-filters #edit-cancel, .view-country .wrapper-filters
+    .article-delete-node .node-article-delete-form #edit-cancel,
+    .article-delete-node .node-article-delete-form .view-country .wrapper-filters #edit-cancel, .view-country .wrapper-filters .article-add-node #edit-delete, .article-add-node .view-country .wrapper-filters #edit-delete, .view-country .wrapper-filters
+    .article-edit-node #edit-delete,
+    .article-edit-node .view-country .wrapper-filters #edit-delete, .view-country .wrapper-filters
+    .article-delete-node #edit-delete,
+    .article-delete-node .view-country .wrapper-filters #edit-delete {
+      top: auto;
+      bottom: 25px; }
+  .view-country .search-form-wrapper {
+    overflow: hidden;
+    width: 78%; }
 
 @media (max-width: 991px) {
-  .view-country .js-form-type-textfield {
+  .view-country .wrapper-filters {
     margin-bottom: 0; }
-    .view-country .js-form-type-textfield label,
-    .view-country .js-form-type-textfield .form-text,
-    .view-country .js-form-type-textfield .form-textarea {
+    .view-country .wrapper-filters .search-form-wrapper {
+      width: 100%; }
+    .view-country .wrapper-filters label,
+    .view-country .wrapper-filters .form-text,
+    .view-country .wrapper-filters .form-textarea {
       float: none;
       width: 100%; }
-    .view-country .js-form-type-textfield .form-text, .view-country .js-form-type-textfield .form-textarea {
-      margin: 0; } }
+    .view-country .wrapper-filters .form-text, .view-country .wrapper-filters .form-textarea {
+      margin: 0; }
+    .view-country .wrapper-filters .form-submit, .view-country .wrapper-filters .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .view-country .wrapper-filters a, .view-country .wrapper-filters .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .view-country .wrapper-filters .button, .view-country .wrapper-filters .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .view-country .wrapper-filters #edit-cancel, .view-country .wrapper-filters
+    .article-edit-node .node-article-delete-form #edit-cancel,
+    .article-edit-node .node-article-delete-form .view-country .wrapper-filters #edit-cancel, .view-country .wrapper-filters
+    .article-delete-node .node-article-delete-form #edit-cancel,
+    .article-delete-node .node-article-delete-form .view-country .wrapper-filters #edit-cancel, .view-country .wrapper-filters .article-add-node #edit-delete, .article-add-node .view-country .wrapper-filters #edit-delete, .view-country .wrapper-filters
+    .article-edit-node #edit-delete,
+    .article-edit-node .view-country .wrapper-filters #edit-delete, .view-country .wrapper-filters
+    .article-delete-node #edit-delete,
+    .article-delete-node .view-country .wrapper-filters #edit-delete {
+      bottom: 0; } }
 
 @media (max-width: 767px) {
   .view-country .js-form-type-textfield label {

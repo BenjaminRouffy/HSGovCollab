@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Set a weight of module.
+ */
+function bricks_customizations_install() {
+  module_set_weight('bricks_customizations', 10);
+}
+
+/**
+ * Set a weight of module.
+ *
+ * This update has been added for compatibility.
+ */
+function bricks_customizations_update_8001() {
+  bricks_customizations_install();
+}

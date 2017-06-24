@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Bricks_customizations module.
+ */
+
+/**
+ * Prepares variables for `field-multiple-value-form.html.twig`.
+ */
+function bricks_customizations_preprocess_inline_entity_form_entity_table(&$variables) {
+  if (!empty($variables['table']) && !empty($variables['table']['#tabledrag'])) {
+    foreach ($variables['table']['#tabledrag'] as &$item) {
+      $item['limit'] = $variables['form']['#level'];
+    }
+  }
+}

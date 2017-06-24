@@ -976,6 +976,13 @@ function deployment_update_8079() {
   \Drupal::service('module_installer')->uninstall(['smtp']);
   \Drupal::service('module_installer')->install([
     'simplenews_scheduler',
-    'simplenews'
+    'simplenews',
+    'action',
+    'bricks',
+    'bricks_inline',
+    'inline_entity_form',
+    'simplenews',
+    'simplenews_customizations',
+    'bricks_customizations',
   ]);
 }

@@ -1,0 +1,38 @@
+uuid: c1554c89-31ef-4c67-adcc-bf975d9c617c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.newsletter_banner.body
+    - field.field.node.newsletter_banner.field_image
+    - image.style.email_banner
+    - node.type.newsletter_banner
+  module:
+    - image
+    - text
+    - user
+id: node.newsletter_banner.default
+targetEntityType: node
+bundle: newsletter_banner
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: email_banner
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  addtoany: true
+  langcode: true
+  links: true

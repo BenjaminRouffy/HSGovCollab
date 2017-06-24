@@ -1,9 +1,9 @@
-uuid: 595d84b8-78d5-46b1-855d-93f466a736b9
+uuid: 1754e700-7290-485d-a404-4a052ef18ae2
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.email_html
+    - core.entity_view_mode.node.teaser
     - field.field.node.simplenews_issue.field_templates
     - field.field.node.simplenews_issue.simplenews_issue
     - node.type.simplenews_issue
@@ -11,11 +11,11 @@ dependencies:
     - bricks
     - user
 _core:
-  default_config_hash: k7huXut68pdao0qGHWeETfwtQudI0SZ260TyVyGTOFg
-id: node.simplenews_issue.email_html
+  default_config_hash: n2xAKuCwCLXGUcR4BjVa08OIbG6UDdyIQFjq_S91h50
+id: node.simplenews_issue.teaser
 targetEntityType: node
 bundle: simplenews_issue
-mode: email_html
+mode: teaser
 content:
   field_templates:
     type: bricks_nested
@@ -23,7 +23,7 @@ content:
     region: content
     label: hidden
     settings:
-      view_mode: email_html
+      view_mode: teaser
       link: false
     third_party_settings: {  }
 hidden:

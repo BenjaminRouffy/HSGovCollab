@@ -1,0 +1,30 @@
+uuid: 4336313a-12d3-4b1b-a8d2-ad9eb196e19d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.newsletter_banner.body
+    - field.field.node.newsletter_banner.field_image
+    - node.type.newsletter_banner
+  module:
+    - text
+    - user
+id: node.newsletter_banner.teaser
+targetEntityType: node
+bundle: newsletter_banner
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 0
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+hidden:
+  addtoany: true
+  field_image: true
+  langcode: true
+  links: true

@@ -1,58 +1,65 @@
-uuid: ed426f37-ca7b-4af1-9616-b2982db1fde8
+uuid: 0181e2b3-10d2-45c4-8502-6661c2a960ef
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.simplenews_issue.field_templates
-    - field.field.node.simplenews_issue.simplenews_issue
-    - node.type.simplenews_issue
+    - entity_browser.browser.browse_files_modal
+    - field.field.node.newsletter_banner.body
+    - field.field.node.newsletter_banner.field_image
+    - node.type.newsletter_banner
   module:
-    - bricks_customizations
+    - entity_browser
     - path
-_core:
-  default_config_hash: WqeUSrMFjkfE6sD1OFP-91spC9kIXK8gtJ_qXf4bKDg
-id: node.simplenews_issue.default
+    - text
+id: node.newsletter_banner.default
 targetEntityType: node
-bundle: simplenews_issue
+bundle: newsletter_banner
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 10
-    settings: {  }
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
     third_party_settings: {  }
     region: content
-  field_templates:
-    weight: 31
-    settings:
-      form_mode: default
-      label_singular: ''
-      label_plural: ''
-      allow_new: '1'
-      allow_existing: '1'
-      match_operator: CONTAINS
-      level: '1'
-      hidden_view_mode: '1'
-      override_labels: 0
+  created:
+    type: datetime_timestamp
+    weight: 5
+    region: content
+    settings: {  }
     third_party_settings: {  }
-    type: bricks_tree_inline_depth
+  field_image:
+    weight: 1
+    settings:
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      view_mode: default
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: entity_browser_file
     region: content
   global_content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 9
     region: content
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -60,39 +67,43 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 15
-    third_party_settings: {  }
+    weight: 7
     region: content
+    third_party_settings: {  }
   public_content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 10
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
-    third_party_settings: {  }
+    weight: 8
     region: content
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  translation:
+    weight: 6
     region: content
+    settings: {  }
+    third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-    third_party_settings: {  }
     region: content
-hidden:
-  simplenews_issue: true
+    third_party_settings: {  }
+hidden: {  }

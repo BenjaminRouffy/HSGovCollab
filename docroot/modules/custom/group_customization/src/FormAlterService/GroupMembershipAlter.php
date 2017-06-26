@@ -12,6 +12,7 @@ use Drupal\Core\Url;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceBaseInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceSubmitInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceValidateInterface;
+use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\user\Entity\User;
 
@@ -24,20 +25,32 @@ class GroupMembershipAlter implements FormAlterServiceSubmitInterface, FormAlter
    */
   public function formSubmit(&$form, FormStateInterface $form_state) {
     foreach ($form_state->getValue('entity_id') as $entity_id) {
-      $entity = User::load($entity_id['target_id']);
+      /* @var User $user */
+      $user = User::load($entity_id['target_id']);
+      $roles = array_column($form_state->getValue('group_roles'), 'target_id');
 
-      foreach ($form_state->getValue('group_roles') as $role) {
-        switch ($role['target_id']) {
-          case 'country-admin':
-            $entity->addRole('country_managers');
-            break;
-          case 'project-admin':
-            $entity->addRole('projects_managers');
-            break;
-        }
+      /* @var Group $group */
+      $group = $form_state->getFormObject()->getEntity()->getGroup();
+
+      switch ($group->getGroupType()->id()) {
+        case 'country':
+          $user->{in_array('country-admin', $roles) ? 'addRole' : 'removeRole'}('country_managers');
+          break;
+        case 'project':
+          $user->{in_array('project-admin', $roles) ? 'addRole' : 'removeRole'}('projects_managers');
+          break;
+        case 'product':
+          $user->{in_array('product-admin', $roles) ? 'addRole' : 'removeRole'}('product_manager');
+          break;
+        case 'knowledge_vault':
+          $user->{in_array('knowledge_vault-admin', $roles) ? 'addRole' : 'removeRole'}('knowledge_vault_manager');
+          break;
+        case 'governance_area':
+          $user->{in_array('governance_area-manager', $roles) ? 'addRole' : 'removeRole'}('governance_group_users');
+          break;
       }
 
-      $entity->save();
+      $user->save();
     }
   }
 

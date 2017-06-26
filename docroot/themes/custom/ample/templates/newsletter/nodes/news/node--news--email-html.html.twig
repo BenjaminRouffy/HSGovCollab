@@ -9,8 +9,7 @@
       </div>
 
       <div class="newsletter-image-wide">
-        {#{{ content.field_image }}#}
-        <img src="{{ content.field_image }}" alt="Image" style="max-width: 100%;">
+        <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
       </div>
       <div class="newsletter-body">
         {% if node.body.summary %}

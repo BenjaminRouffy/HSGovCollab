@@ -1,0 +1,22 @@
+uuid: 0c100f55-c8b6-41da-9d83-e9365980ad8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.newsletter_banner
+id: node.newsletter_banner.promote
+field_name: promote
+entity_type: node
+bundle: newsletter_banner
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

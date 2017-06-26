@@ -427,12 +427,12 @@ display:
         - 'languages:language_interface'
         - url
       tags:
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.search_result_row'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
@@ -2473,7 +2473,7 @@ display:
             description: ''
             use_operator: false
             operator: combine_1_op
-            identifier: combine_1
+            identifier: combine_2
             required: false
             remember: false
             multiple: false
@@ -2485,6 +2485,8 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -2518,7 +2520,7 @@ display:
             description: ''
             use_operator: false
             operator: combine_op
-            identifier: combine_2
+            identifier: combine_3
             required: true
             remember: false
             multiple: false
@@ -2530,6 +2532,8 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
           is_grouped: false
           group_info:
             label: ''

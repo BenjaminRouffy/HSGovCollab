@@ -1,10 +1,9 @@
 <table width="100%" cellspacing="0" cellpadding="0">
   <tr>
-    <td {{ attributes }} style="padding: 40px 20px;" align="center">
+    <td {{ attributes }} align="center">
       <div class="newsletter-large-image" style="margin-bottom: 10px;">
-        {#{{ content.field_image }}#}
-        <img src="{{ content.field_image }}" alt="Image" style="max-width: 100%;">
-        <div class="newsletter-bg" style="font-size: 14px; background: #ea3a32; color: #ffffff; margin-top: 0; margin-bottom: 20px; overflow: hidden;">
+        <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
+        <div class="newsletter-bg" style="font-size: 14px; background: #ea3a32; color: #ffffff; margin-top: 0; margin-bottom: 20px; overflow: hidden; padding: 40px 20px;">
           {{ content.body }}
         </div>
       </div>

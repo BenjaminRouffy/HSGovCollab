@@ -5,7 +5,10 @@ dependencies:
   config:
     - page_manager.page.products
     - views.view.search_for_a_country_or_region
+  content:
+    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
   module:
+    - block_content
     - panels
     - views
 id: products-panels_variant-0
@@ -23,6 +26,18 @@ variant_settings:
       region: content
       weight: 0
       uuid: 48ff5c1b-00af-40e2-8191-2e5baa4ede4b
+      context_mapping: {  }
+    486c7064-e79c-44de-a11c-ea5258a012e3:
+      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
+      label: 'Contact us'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: bottom
+      weight: 0
+      uuid: 486c7064-e79c-44de-a11c-ea5258a012e3
       context_mapping: {  }
   id: panels_variant
   uuid: b39646c0-cbdf-4d9c-b757-c28a7b86b90b

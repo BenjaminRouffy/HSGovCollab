@@ -6,6 +6,12 @@ services:
       - { name: form_alter, form_id: group_content_country-group_membership_edit_form }
       - { name: form_alter, form_id: group_content_project-group_membership_add_form }
       - { name: form_alter, form_id: group_content_project-group_membership_edit_form }
+      - { name: form_alter, form_id: group_content_knowledge_vault-group_membership_add_form }
+      - { name: form_alter, form_id: group_content_knowledge_vault-group_membership_edit_form }
+      - { name: form_alter, form_id: group_content_governance_area-group_membership_add_form }
+      - { name: form_alter, form_id: group_content_governance_area-group_membership_edit_form }
+      - { name: form_alter, form_id: group_content_product-group_membership_add_form }
+      - { name: form_alter, form_id: group_content_product-group_membership_edit_form }
 
   group_customization.group.permission:
     class: 'Drupal\group_customization\Access\GroupPermissionAccessCheck'

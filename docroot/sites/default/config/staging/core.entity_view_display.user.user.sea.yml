@@ -25,6 +25,7 @@ dependencies:
     - field.field.user.user.field_organisations
     - field.field.user.user.field_password_expiration
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_product_manager
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_skype_or_other
     - field.field.user.user.field_streetname
@@ -51,7 +52,7 @@ content:
     type: taxonomy_image_formatter
     region: content
   field_country:
-    weight: 11
+    weight: 12
     label: hidden
     settings:
       link: false
@@ -67,14 +68,14 @@ content:
     region: content
   field_first_name:
     type: string
-    weight: 12
+    weight: 13
     region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_job_title:
-    weight: 9
+    weight: 10
     label: hidden
     settings:
       link_to_entity: false
@@ -90,7 +91,7 @@ content:
     third_party_settings: {  }
   field_last_name:
     type: string
-    weight: 14
+    weight: 15
     region: content
     label: hidden
     settings:
@@ -98,14 +99,14 @@ content:
     third_party_settings: {  }
   field_middle_name:
     type: string
-    weight: 13
+    weight: 14
     region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_mobilephone:
-    weight: 6
+    weight: 7
     label: hidden
     settings:
       link_to_entity: false
@@ -113,7 +114,7 @@ content:
     type: string
     region: content
   field_non_member_organization:
-    weight: 8
+    weight: 9
     label: hidden
     settings:
       link_to_entity: false
@@ -121,7 +122,7 @@ content:
     type: string
     region: content
   field_organisation:
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       link: false
@@ -130,12 +131,19 @@ content:
     region: content
   field_organisations:
     type: entity_reference_revisions_entity_view
-    weight: 10
+    weight: 11
     region: content
     label: hidden
     settings:
       view_mode: default
       link: ''
+    third_party_settings: {  }
+  field_product_manager:
+    type: group_content_manager_list
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
   field_project_manager:
     weight: 2
@@ -146,7 +154,7 @@ content:
     region: content
   field_skype_or_other:
     type: entity_reference_revisions_entity_view
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       view_mode: default
@@ -154,7 +162,7 @@ content:
     third_party_settings: {  }
     region: content
   field_telephone:
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       link_to_entity: false

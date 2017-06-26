@@ -25,6 +25,7 @@ dependencies:
     - field.field.user.user.field_organisations
     - field.field.user.user.field_password_expiration
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_product_manager
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_skype_or_other
     - field.field.user.user.field_streetname
@@ -44,12 +45,12 @@ content:
     settings: {  }
     third_party_settings: {  }
   captcha:
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   contact:
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -117,6 +118,12 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_product_manager:
+    type: group_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_project_manager:
     type: group_select
     weight: 10
@@ -129,7 +136,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   timezone:
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -1,0 +1,27 @@
+uuid: 3bfd9c60-46cb-403f-9263-e33e1e7c436a
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - group_content_field
+    - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: user.field_product_manager
+field_name: field_product_manager
+entity_type: user
+type: group_content_item
+settings:
+  group_type: product
+  plugin_type: group_content_group_membership
+  group_roles: product-admin
+  plugin_enabler_id: {  }
+module: group_content_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

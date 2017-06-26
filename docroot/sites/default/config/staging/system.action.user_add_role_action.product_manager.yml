@@ -1,0 +1,14 @@
+uuid: 4603ab2d-2042-4d4a-9714-9f02352d6b8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.product_manager
+  module:
+    - user
+id: user_add_role_action.product_manager
+label: 'Add the Product manager role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: product_manager

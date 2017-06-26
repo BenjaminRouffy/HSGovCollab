@@ -25,6 +25,7 @@ dependencies:
     - field.field.user.user.field_organisations
     - field.field.user.user.field_password_expiration
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_product_manager
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_skype_or_other
     - field.field.user.user.field_streetname
@@ -48,6 +49,7 @@ third_party_settings:
         - field_country_manager
         - field_project_manager
         - field_knowledge_vault_manager
+        - field_product_manager
         - captcha
         - legal_terms_and_conditions
         - field_disclose_your_personal_det
@@ -96,7 +98,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   captcha:
-    weight: 30
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -108,7 +110,7 @@ content:
     third_party_settings: {  }
   field_disclose_your_personal_det:
     type: boolean_checkbox
-    weight: 32
+    weight: 33
     region: content
     settings:
       display_label: true
@@ -171,6 +173,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_product_manager:
+    type: group_select
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_project_manager:
     type: group_select
     weight: 28
@@ -178,7 +186,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   legal_terms_and_conditions:
-    weight: 31
+    weight: 32
     region: content
     settings: {  }
     third_party_settings: {  }

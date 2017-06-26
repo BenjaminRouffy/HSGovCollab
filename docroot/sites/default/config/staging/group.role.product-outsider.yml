@@ -12,7 +12,9 @@ audience: outsider
 group_type: product
 permissions_ui: true
 permissions:
-  - 'view group_node:document entity'
-  - 'view group_node:event entity'
-  - 'view group_node:news entity'
-  - 'view group'
+  0: 'view group_node:document entity'
+  1: 'view group_node:event entity'
+  2: 'view group_node:news entity'
+  3: 'view group'
+  5: 'access group_node overview'
+  9: 'access to view all group content'

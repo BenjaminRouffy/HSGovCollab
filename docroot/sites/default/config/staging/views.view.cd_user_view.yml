@@ -11,6 +11,8 @@ dependencies:
     - user.role.coordination_desk_users
     - user.role.country_managers
     - user.role.governance_group_users
+    - user.role.knowledge_vault_manager
+    - user.role.product_manager
     - user.role.projects_managers
   module:
     - better_exposed_filters
@@ -341,6 +343,8 @@ display:
             projects_managers: projects_managers
             governance_group_users: governance_group_users
             coordination_desk_users: coordination_desk_users
+            knowledge_vault_manager: knowledge_vault_manager
+            product_manager: product_manager
           group: 1
           exposed: true
           expose:
@@ -361,6 +365,9 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -892,6 +899,7 @@ display:
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
         - 'config:field.storage.user.field_last_name'
@@ -1048,6 +1056,8 @@ display:
             projects_managers: projects_managers
             governance_group_users: governance_group_users
             coordination_desk_users: coordination_desk_users
+            knowledge_vault_manager: knowledge_vault_manager
+            product_manager: product_manager
           group: 1
           exposed: true
           expose:
@@ -1068,6 +1078,9 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -1745,6 +1758,7 @@ display:
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
         - 'config:field.storage.user.field_last_name'
@@ -1902,6 +1916,8 @@ display:
             projects_managers: projects_managers
             governance_group_users: governance_group_users
             coordination_desk_users: coordination_desk_users
+            knowledge_vault_manager: knowledge_vault_manager
+            product_manager: product_manager
           group: 1
           exposed: true
           expose:
@@ -1922,6 +1938,9 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -2491,6 +2510,7 @@ display:
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
         - 'config:field.storage.user.field_last_name'
@@ -2647,6 +2667,8 @@ display:
             projects_managers: projects_managers
             governance_group_users: governance_group_users
             coordination_desk_users: coordination_desk_users
+            knowledge_vault_manager: knowledge_vault_manager
+            product_manager: product_manager
           group: 1
           exposed: true
           expose:
@@ -2667,6 +2689,9 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -3344,6 +3369,7 @@ display:
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
         - 'config:field.storage.user.field_last_name'
@@ -3500,6 +3526,8 @@ display:
             projects_managers: projects_managers
             governance_group_users: governance_group_users
             coordination_desk_users: coordination_desk_users
+            knowledge_vault_manager: knowledge_vault_manager
+            product_manager: product_manager
           group: 1
           exposed: true
           expose:
@@ -3520,6 +3548,9 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -4192,6 +4223,7 @@ display:
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
         - 'config:field.storage.user.field_last_name'
@@ -4435,4 +4467,5 @@ display:
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'

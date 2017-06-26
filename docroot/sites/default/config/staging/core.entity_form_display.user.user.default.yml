@@ -24,6 +24,7 @@ dependencies:
     - field.field.user.user.field_organisations
     - field.field.user.user.field_password_expiration
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_product_manager
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_skype_or_other
     - field.field.user.user.field_streetname
@@ -168,6 +169,7 @@ third_party_settings:
         - field_project_manager
         - field_country_manager
         - field_knowledge_vault_manager
+        - field_product_manager
       parent_name: group_my_profile
       weight: 7
       format_type: html_element
@@ -327,6 +329,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_product_manager:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
     region: content
   field_project_manager:
     type: group_select

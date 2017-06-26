@@ -1,15 +1,15 @@
-<table>
+<table width="100%" cellspacing="0" cellpadding="0">
   <tr>
-    <td{{ attributes }}>
+    <td{{ attributes }} style="padding: 40px 20px;" align="center">
       <div class="newsletter-large-image">
         {{ content.field_image }}
-        <div class="newsletter-bg">
+        <div class="newsletter-bg" style="font-size: 14px; background: #ea3a32; color: #ffffff; margin-top: 0; margin-bottom: 20px;">
           {{ content.body }}
         </div>
       </div>
 
       {% if content.childs|length %}
-        <table>
+        <table width="100%" cellspacing="0" cellpadding="0">
           {% for row in content.childs|batch(2, ' ') %}
             <tr>
               {% for subentity in row %}
@@ -17,7 +17,6 @@
               {% endfor %}
             </tr>
           {% endfor %}
-
         </table>
       {% endif %}
     </td>

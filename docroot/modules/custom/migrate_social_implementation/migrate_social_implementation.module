@@ -20,7 +20,7 @@ function migrate_social_implementation_cron() {
       $drush_configs->get('drush_path')
     );
 
-    shell_exec("$drush mi --update --all");
+    shell_exec("$drush mi --update --group=social_networks");
     shell_exec("$drush search-api-index");
 
     $state->set('migrate_social_implementation.next_execution', REQUEST_TIME + 24 * 60 * 60);

@@ -5,12 +5,13 @@
         <h3 class="page-title" style="font-size: 17px; margin-bottom: 20px; margin-top: 0;">
           {{ label }}
         </h3>
-        <div class="line"></div>
       </div>
 
-      <div class="newsletter-image-wide">
-        <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
-      </div>
+      {% if content.field_image|field_value %}
+        <div class="newsletter-image-wide">
+          <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
+        </div>
+      {% endif %}
       <div class="newsletter-body">
         {% if node.body.summary %}
           <div class="summary-text">

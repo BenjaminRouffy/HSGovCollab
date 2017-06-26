@@ -7,6 +7,7 @@
 
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\ContentEntityType;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
@@ -28,6 +29,7 @@ function group_customization_preprocess_html(array &$variables) {
  */
 function group_customization_entity_type_alter(array &$entity_types) {
   if (!empty($entity_types['group'])) {
+    $entity_types['group']->setFormClass('delete', 'Drupal\group_customization\Entity\Form\GroupDeleteForm');
     $entity_types['group']->setClass('Drupal\group_customization\Entity\Group');
   }
 }

@@ -1,0 +1,38 @@
+<table>
+  <tr>
+    <td{{ attributes }}>
+      <div class="title-wrapper">
+        <h3 class="page-title">
+          {{ label }}
+        </h3>
+        <div class="line"></div>
+      </div>
+
+      <div class="newsletter-image-wide">
+        {{ content.field_image }}
+      </div>
+      <div class="newsletter-body">
+        {% if node.body.summary %}
+          <div class="summary-text">
+            <p>{{ node.body.summary }}</p>
+          </div>
+        {% else %}
+          {{ content.body }}
+        {% endif %}
+      </div>
+
+      {% if content.childs|length %}
+        <table>
+          {% for row in content.childs|batch(2, ' ') %}
+            <tr>
+              {% for subentity in row %}
+                <td>{{ subentity }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+
+        </table>
+      {% endif %}
+    </td>
+  </tr>
+</table>

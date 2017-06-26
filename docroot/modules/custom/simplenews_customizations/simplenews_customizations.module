@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains simplenews_customizations.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function simplenews_customizations_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the simplenews_customizations module.
+    case 'help.page.simplenews_customizations':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Simplenews Customizations') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,22 @@
+uuid: 7d958075-f077-4832-8e7b-69bb643fa9dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.newsletter_banner
+  module:
+    - text
+id: node.newsletter_banner.body
+field_name: body
+entity_type: node
+bundle: newsletter_banner
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

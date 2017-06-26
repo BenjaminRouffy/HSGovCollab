@@ -1,25 +1,25 @@
 <table width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td{{ attributes }} style="padding: 40px 20px;" align="center">
-      <div class="newsletter-large-image">
+      <div class="newsletter-large-image" style="margin-bottom: 10px;">
         {{ content.field_image }}
-        <div class="newsletter-bg" style="font-size: 14px; background: #ea3a32; color: #ffffff; margin-top: 0; margin-bottom: 20px;">
+        <div class="newsletter-bg" style="font-size: 14px; background: #ea3a32; color: #ffffff; margin-top: 0; margin-bottom: 20px; overflow: hidden;">
           {{ content.body }}
         </div>
       </div>
-
-      {% if content.childs|length %}
-        <table width="100%" cellspacing="0" cellpadding="0">
-          {% for row in content.childs|batch(2, ' ') %}
-            <tr>
-              {% for subentity in row %}
-                <td>{{ subentity }}</td>
-              {% endfor %}
-            </tr>
-          {% endfor %}
-        </table>
-      {% endif %}
     </td>
   </tr>
 </table>
+
+{% if content.childs|length %}
+  <table width="100%" cellspacing="0" cellpadding="0">
+    {% for row in content.childs|batch(2, ' ') %}
+      <tr>
+        {% for subentity in row %}
+          <td>{{ subentity }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+{% endif %}
 

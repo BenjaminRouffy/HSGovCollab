@@ -1,16 +1,16 @@
-uuid: 88c87f9c-a71c-49a4-bbbb-36fb7bde0630
+uuid: 55752fec-f0f6-4bb8-b0ec-08cd4286427d
 langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.regions
+    - taxonomy.vocabulary.western_africa
   module:
     - content_translation
 third_party_settings:
   content_translation:
     enabled: true
-id: taxonomy_term.regions
+id: taxonomy_term.western_africa
 target_entity_type_id: taxonomy_term
-target_bundle: regions
-default_langcode: current_interface
+target_bundle: western_africa
+default_langcode: site_default
 language_alterable: true

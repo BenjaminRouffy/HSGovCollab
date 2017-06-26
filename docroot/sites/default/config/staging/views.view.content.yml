@@ -7,7 +7,6 @@ dependencies:
     - node.type.document
     - node.type.event
     - node.type.news
-    - taxonomy.vocabulary.process_and_milestones
   module:
     - better_exposed_filters
     - comment
@@ -15,7 +14,6 @@ dependencies:
     - group
     - group_dashboard
     - node
-    - taxonomy
     - user
 _core:
   default_config_hash: fUDNcSYKNw6cTMPsX3G9VhsUGov5yUe6_TBHbcnZHyo
@@ -1595,6 +1593,52 @@ display:
           plugin_id: language
           entity_type: node
           entity_field: langcode
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: uid_op
+            label: 'Authored by'
+            description: ''
+            use_operator: false
+            operator: uid_op
+            identifier: uid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: uid
+          plugin_id: user_name
       filter_groups:
         operator: AND
         groups:
@@ -2964,6 +3008,52 @@ display:
           entity_type: node
           entity_field: public_content
           plugin_id: boolean
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: uid_op
+            label: 'Authored by'
+            description: ''
+            use_operator: false
+            operator: uid_op
+            identifier: uid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: uid
+          plugin_id: user_name
       filter_groups:
         operator: AND
         groups:
@@ -3709,27 +3799,27 @@ display:
           entity_type: node
           entity_field: migrate_data
           plugin_id: boolean
-        field_process_and_milestones_target_id:
-          id: field_process_and_milestones_target_id
-          table: node__field_process_and_milestones
-          field: field_process_and_milestones_target_id
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
+          operator: in
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_process_and_milestones_target_id_op
-            label: 'Process and milestones '
+            operator_id: uid_op
+            label: 'Authored by'
             description: ''
             use_operator: false
-            operator: field_process_and_milestones_target_id_op
-            identifier: field_process_and_milestones_target_id
+            operator: uid_op
+            identifier: uid
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
@@ -3752,13 +3842,9 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: process_and_milestones
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
+          entity_type: node
+          entity_field: uid
+          plugin_id: user_name
       filter_groups:
         operator: AND
         groups:

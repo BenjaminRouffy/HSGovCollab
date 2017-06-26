@@ -1,15 +1,16 @@
-<table>
+<table width="100%" style="color: #416170; padding: 10px; table-layout: fixed;" cellpadding="0" cellspacing="0">
   <tr>
-    <td{{ attributes }}>
+    <td{{ attributes }} style="padding: 10px 0;">
       <div class="title-wrapper">
-        <h3 class="page-title">
+        <h3 class="page-title" style="font-size: 17px; margin-bottom: 20px; margin-top: 0;">
           {{ label }}
         </h3>
         <div class="line"></div>
       </div>
 
       <div class="newsletter-image-wide">
-        {{ content.field_image }}
+        {#{{ content.field_image }}#}
+        <img src="{{ content.field_image }}" alt="Image" style="max-width: 100%;">
       </div>
       <div class="newsletter-body">
         {% if node.body.summary %}
@@ -20,19 +21,18 @@
           {{ content.body }}
         {% endif %}
       </div>
-
-      {% if content.childs|length %}
-        <table>
-          {% for row in content.childs|batch(2, ' ') %}
-            <tr>
-              {% for subentity in row %}
-                <td>{{ subentity }}</td>
-              {% endfor %}
-            </tr>
-          {% endfor %}
-
-        </table>
-      {% endif %}
     </td>
   </tr>
 </table>
+
+{% if content.childs|length %}
+  <table width="100%" cellspacing="0" cellpadding="0">
+    {% for row in content.childs|batch(2, ' ') %}
+      <tr>
+        {% for subentity in row %}
+          <td style="vertical-align: top;">{{ subentity }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+{% endif %}

@@ -5,7 +5,10 @@ dependencies:
   config:
     - blocktabs.blocktabs.countries_regions
     - page_manager.page.countries_regions
+  content:
+    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
   module:
+    - block_content
     - blocktabs
     - panels
 id: countries_regions-panels_variant-0
@@ -21,6 +24,18 @@ variant_settings:
       region: content
       weight: 0
       uuid: a613ecaf-2ab9-4ca7-a9a2-71aa3936fcda
+      context_mapping: {  }
+    b094d4af-8b03-4594-8d79-82dc664e55b6:
+      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
+      label: 'Contact us'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: bottom
+      weight: 0
+      uuid: b094d4af-8b03-4594-8d79-82dc664e55b6
       context_mapping: {  }
   id: panels_variant
   uuid: ee4ffa0a-189c-4f0d-830f-30d88f8490db

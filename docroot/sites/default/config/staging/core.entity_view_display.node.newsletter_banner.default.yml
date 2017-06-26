@@ -5,10 +5,9 @@ dependencies:
   config:
     - field.field.node.newsletter_banner.body
     - field.field.node.newsletter_banner.field_image
-    - image.style.email_banner
     - node.type.newsletter_banner
   module:
-    - image
+    - image_url_formatter
     - text
     - user
 id: node.newsletter_banner.default
@@ -29,8 +28,9 @@ content:
     settings:
       image_style: email_banner
       image_link: ''
+      url_type: ''
     third_party_settings: {  }
-    type: image
+    type: image_url
     region: content
 hidden:
   addtoany: true

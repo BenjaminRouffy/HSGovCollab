@@ -70,6 +70,7 @@ AddEncoding gzip svgz
 ################################
 <IfModule mod_rewrite.c>
     RewriteEngine on
+    RewriteCond %{REQUEST_URI} !/piwik/.*
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -161,6 +162,7 @@ AddEncoding gzip svgz
   # Copy and adapt this rule to directly execute PHP files in contributed or
   # custom modules or to run another PHP application in the same directory.
   RewriteCond %{REQUEST_URI} !/core/modules/statistics/statistics.php$
+  RewriteCond %{REQUEST_URI} !/piwik/.*
   # Deny access to any other PHP files that do not match the rules above.
   # Specifically, disallow autoload.php from being served directly.
   RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]

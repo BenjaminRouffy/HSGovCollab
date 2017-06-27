@@ -16,3 +16,4 @@ env:
     - { name: '$config["stage_file_proxy.settings"]["origin"]', status: true, value: '{{ origin_site_url }}' }
     - { name: '$config["stage_file_proxy.settings"]["hotlink"]', status: true, value: '1' }
     - { name: '$settings["cache"]["bins"]["render"]', status: false, value: 'cache.backend.memory' }
+    - { name: '$settings["http_client_config"]["verify"]', status: true, value: 'false' }

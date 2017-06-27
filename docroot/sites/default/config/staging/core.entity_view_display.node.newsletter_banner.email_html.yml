@@ -6,10 +6,9 @@ dependencies:
     - core.entity_view_mode.node.email_html
     - field.field.node.newsletter_banner.body
     - field.field.node.newsletter_banner.field_image
-    - image.style.email_banner
     - node.type.newsletter_banner
   module:
-    - image
+    - image_url_formatter
     - text
     - user
 id: node.newsletter_banner.email_html
@@ -28,10 +27,11 @@ content:
     weight: 1
     label: hidden
     settings:
+      url_type: '0'
       image_style: email_banner
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: image_url
     region: content
 hidden:
   addtoany: true

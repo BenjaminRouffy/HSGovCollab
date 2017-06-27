@@ -1,0 +1,9 @@
+services:
+  simplenews_customizations.route_subscriber:
+    class: Drupal\simplenews_customizations\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  plugin.manager.simplenews_recipient_handler:
+    class: Drupal\simplenews_customizations\RecipientHandler\RecipientHandlerExtraManager
+    parent: default_plugin_manager

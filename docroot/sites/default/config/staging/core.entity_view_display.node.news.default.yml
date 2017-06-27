@@ -17,13 +17,14 @@ dependencies:
     - field.field.node.news.field_process_and_milestones
     - field.field.node.news.field_related_content_selector
     - node.type.news
+    - responsive_image.styles.responsive_image
   module:
     - datetime
     - entity_reference_revisions
     - events
     - group_content_formatters
-    - image_url_formatter
     - rel_content
+    - responsive_image
     - text
     - user
 id: node.news.default
@@ -81,11 +82,10 @@ content:
     weight: 2
     label: above
     settings:
-      url_type: '0'
-      image_style: email_banner
+      responsive_image_style: responsive_image
       image_link: ''
     third_party_settings: {  }
-    type: image_url
+    type: responsive_image
     region: content
   field_join_block:
     weight: 5

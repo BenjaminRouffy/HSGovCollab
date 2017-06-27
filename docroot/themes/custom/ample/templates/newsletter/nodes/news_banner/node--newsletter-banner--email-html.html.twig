@@ -2,7 +2,7 @@
   <tr>
     <td {{ attributes }} align="center">
       {% if content.field_image|field_value %}
-        <div class="newsletter-large-image" style="margin-bottom: 10px;">
+        <div class="newsletter-large-image">
           <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
         <div class="newsletter-bg" style="font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px;">
       {% endif %}
@@ -14,11 +14,11 @@
 </table>
 
 {% if content.childs|length %}
-  <table width="100%" cellspacing="0" cellpadding="0" style="padding: 10px;">
+  <table width="100%" cellspacing="0" cellpadding="0" style="padding: 10px 0;">
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
         {% for subentity in row %}
-          <td style="border-bottom: 1px solid #ea3a32; vertical-align: top; padding: 40px 10px;">{{ subentity }}</td>
+          <td style="vertical-align: top; padding: 40px 10px 10px;">{{ subentity }}</td>
         {% endfor %}
       </tr>
     {% endfor %}

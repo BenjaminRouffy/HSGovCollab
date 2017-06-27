@@ -1,4 +1,4 @@
-<table width="100%" cellspacing="0" cellpadding="0" style="padding: 10px 20px;">
+<table width="100%" cellspacing="0" cellpadding="0" style="font-size: 14px; line-height: 1.4; padding: 10px 20px;">
   <tr>
     <td {{ attributes }} align="center">
       {% if content.field_image|field_value %}
@@ -14,7 +14,7 @@
 </table>
 
 {% if content.childs|length %}
-  <table width="100%" cellspacing="0" cellpadding="0" style="padding: 10px 0;" class="two-column-wrapper">
+  <table width="100%" cellspacing="0" cellpadding="0" style="font-size: 14px; line-height: 1.4; padding: 10px 0;" class="two-column-wrapper">
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
         {% for subentity in row %}

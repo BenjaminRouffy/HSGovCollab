@@ -13,6 +13,7 @@ use Drupal\Core\Routing\CurrentRouteMatch;
 use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -93,6 +94,10 @@ class AjaxCommentsForm extends CommentForm {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildForm($form, $form_state);
+    if (!empty($form['field_comment_body']['widget'][0]['value']['#placeholder'])) {
+      $placeholder = $form['field_comment_body']['widget'][0]['value']['#placeholder'];
+      $form['field_comment_body']['widget'][0]['value']['#placeholder'] = new TranslatableMarkup($placeholder);
+    }
     $request = $this->requestStack->getCurrentRequest();
     $is_ajax = Utility::isAjaxRequest($request, $form_state->getUserInput());
     $route_name = $this->currentRouteMatch->getRouteName();

@@ -1,4 +1,4 @@
-<table width="100%" style="color: #416170; padding: 10px; table-layout: fixed;" cellpadding="0" cellspacing="0">
+<table width="100%" style="color: #416170; table-layout: fixed;" cellpadding="0" cellspacing="0">
   <tr>
     <td{{ attributes }} style="padding: 10px 0;">
       <div class="title-wrapper">
@@ -12,7 +12,7 @@
           <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
         </div>
       {% endif %}
-      <div class="newsletter-body">
+      <div class="newsletter-body" style="">
         {% if node.body.summary %}
           <div class="summary-text">
             <p>{{ node.body.summary }}</p>

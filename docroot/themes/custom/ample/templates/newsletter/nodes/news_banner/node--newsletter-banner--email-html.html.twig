@@ -17,9 +17,11 @@
   <table width="100%" cellspacing="0" cellpadding="0" style="padding: 10px 0;" class="table2">
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
-        {% for subentity in row %}
-          <td style="vertical-align: top; padding: 40px 0 10px;">{{ subentity }}</td>
-        {% endfor %}
+        <td style="vertical-align: top;">
+          {% for subentity in row %}
+            {{ subentity }}
+          {% endfor %}
+        </td>
       </tr>
     {% endfor %}
   </table>

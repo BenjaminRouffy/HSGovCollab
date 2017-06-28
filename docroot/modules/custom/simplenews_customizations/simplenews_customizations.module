@@ -22,3 +22,12 @@ function simplenews_customizations_help($route_name, RouteMatchInterface $route_
     default:
   }
 }
+
+/**
+ * Implements hook_tokens_alter().
+ */
+/*function simplenews_customizations_tokens_alter(array &$replacements, array $context, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
+if(isset($replacements['[simplenews-subscriber:unsubscribe-url]'])) {
+$replacements['[simplenews-subscriber:unsubscribe-url]'] = Drupal::url('<front>');
+}
+}*/

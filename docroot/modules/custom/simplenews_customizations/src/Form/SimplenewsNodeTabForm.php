@@ -101,7 +101,7 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
         '#description' => t('Please select to configure who to send the email to.'),
         '#options' => $options,
         '#default_value' => $default_option,
-        '#access' => count($options) > 1,
+        '#access' => count($options) > 1 ? 1 : 1,
         '#ajax' => [
           'callback' => '::ajaxUpdateRecipientHandlerSettings',
           'wrapper' => 'recipient-handler-settings',

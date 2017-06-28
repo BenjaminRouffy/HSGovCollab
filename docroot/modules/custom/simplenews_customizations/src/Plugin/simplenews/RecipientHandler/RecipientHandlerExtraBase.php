@@ -42,7 +42,7 @@ class RecipientHandlerExtraBase extends RecipientHandlerBase {
    */
   public function settingsForm($element, $settings, $form_state) {
     // Add some text to describe the send situation.
-    $subscriber_count = $this->count([]);
+    $subscriber_count = $this->count('default');
     $element['count'] = [
       '#type' => 'item',
       '#markup' => t('Send newsletter issue to @count subscribers.', ['@count' => $subscriber_count]),

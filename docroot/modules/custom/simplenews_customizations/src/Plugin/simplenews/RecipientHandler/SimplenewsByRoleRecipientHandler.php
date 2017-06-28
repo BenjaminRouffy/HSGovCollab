@@ -62,7 +62,7 @@ class SimplenewsByRoleRecipientHandler extends RecipientHandlerExtraBase impleme
    *
    */
   public function buildRecipientQuery($settings = NULL) {
-    $select = parent::buildRecipientQuery();
+    $select = parent::buildRecipientQuery('default');
 
     $select->join('users_field_data', 'ud', db_and()
       ->where('s.mail = ud.mail')

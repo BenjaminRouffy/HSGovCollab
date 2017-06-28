@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: hj6zGNwndnW_J6lKfFcg-tY5e5YqWfgXyt0qioGtXL8
-name: 'Default newsletter'
+name: 'All users'
 id: default
 description: 'This is an example newsletter. Change it.'
 format: html
@@ -15,5 +15,5 @@ subject: '[[simplenews-newsletter:name]] [node:title]'
 from_address: p4h@network.com
 hyperlinks: false
 new_account: 'on'
-opt_inout: hidden
+opt_inout: double
 weight: 0

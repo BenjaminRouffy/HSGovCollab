@@ -84,16 +84,16 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       /*$handler = (!empty($recipient_handler) ? $recipient_handler : ($this->recipientHandler->getDefaultOptions($newsletter->id()) ?: $node->simplenews_issue->handler));
       $handler_settings = $node->simplenews_issue->handler_settings;*/
 
-      /** @var \Drupal\simplenews\RecipientHandler\RecipientHandlerInterface */
-      $recipient_handler = simplenews_get_recipient_handler($newsletter, $handler, $handler_settings);
-
       $options = $this->recipientHandler->getOptions($newsletter->id());
       if (!in_array($handler, array_keys($options))) {
-        $default_option = $this->recipientHandler->getDefaultOptions($newsletter->id());
+        $default_option = $this->recipientHandler->getDefaultOptions($newsletter->id()) ?: $handler;
       }
       else {
         $default_option = $handler;
       }
+
+      /** @var \Drupal\simplenews\RecipientHandler\RecipientHandlerInterface */
+      $recipient_handler = simplenews_get_recipient_handler($newsletter, $default_option, $handler_settings);
 
       $form['send']['recipient_handler'] = [
         '#type' => 'select',
@@ -101,7 +101,7 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
         '#description' => t('Please select to configure who to send the email to.'),
         '#options' => $options,
         '#default_value' => $default_option,
-      // '#access' => count($options) > 1,.
+        '#access' => count($options) > 1,
         '#ajax' => [
           'callback' => '::ajaxUpdateRecipientHandlerSettings',
           'wrapper' => 'recipient-handler-settings',
@@ -111,7 +111,7 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       ];
 
       // Get the handler class.
-      $class = $this->recipientHandler->getDefinition($handler)['class'];
+      $class = $this->recipientHandler->getDefinition($default_option)['class'];
       if (method_exists($class, 'settingsForm')) {
         $element = [
           '#parents' => ['recipient_handler_settings'],

@@ -5,6 +5,7 @@
  * Contains simplenews_customizations.module.
  */
 
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
@@ -26,8 +27,22 @@ function simplenews_customizations_help($route_name, RouteMatchInterface $route_
 /**
  * Implements hook_tokens_alter().
  */
-/*function simplenews_customizations_tokens_alter(array &$replacements, array $context, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
-if(isset($replacements['[simplenews-subscriber:unsubscribe-url]'])) {
-$replacements['[simplenews-subscriber:unsubscribe-url]'] = Drupal::url('<front>');
+function simplenews_customizations_tokens_alter(array &$replacements, array $context, BubbleableMetadata $bubbleable_metadata) {
+
+  if ($context['type'] == 'simplenews-subscriber' && isset($replacements['[simplenews-subscriber:unsubscribe-url]'])) {
+    $subscriber = $context['data']['simplenews_subscriber'];
+    $hash = simplenews_generate_hash($subscriber->getMail(), 'remove');
+    $route_parameters = ['snid' => $subscriber->id(), 'timestamp' => REQUEST_TIME];
+    $language = $subscriber->getLangcode();
+
+    $url_arguments = ['absolute' => TRUE, 'langcode' => $language];
+    $bubbleable_metadata->setCacheMaxAge(0);
+    $route_parameters += [
+      'action' => 'remove',
+      'newsletter_id' => 'default',
+      'hash' => $hash,
+    ];
+    $replacements['[simplenews-subscriber:unsubscribe-url]'] = \Drupal::url('simplenews.newsletter_confirm_subscription', $route_parameters, $url_arguments);
+  }
+
 }
-}*/

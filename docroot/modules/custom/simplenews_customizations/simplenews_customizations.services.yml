@@ -7,5 +7,5 @@ services:
     class: Drupal\simplenews_customizations\RecipientHandler\RecipientHandlerExtraManager
     parent: default_plugin_manager
   simplenews.spool_storage:
-    class: Drupal\simplenews_customizations\Spool\SpoolStorage
+    class: Drupal\simplenews_customizations\Spool\SpoolExtraStorage
     arguments: ['@database', '@lock', '@config.factory', '@module_handler']

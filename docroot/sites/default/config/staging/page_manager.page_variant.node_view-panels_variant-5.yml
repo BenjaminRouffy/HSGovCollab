@@ -1,0 +1,47 @@
+uuid: 2cb4e512-bc02-4af6-8c28-1b306b1cb027
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+  module:
+    - ctools
+    - panels
+id: node_view-panels_variant-5
+label: Newsletter
+variant: panels_variant
+variant_settings:
+  blocks:
+    31d80da9-85a9-4045-932d-9721622bd1ea:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: email_html
+      region: content
+      weight: 0
+      uuid: 31d80da9-85a9-4045-932d-9721622bd1ea
+      context_mapping:
+        entity: node
+  id: panels_variant
+  uuid: 32e53df6-534a-4ccb-9cd3-fd4ed5d7abf3
+  label: null
+  weight: 0
+  layout: default_layout
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-5
+  builder: standard
+page: node_view
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      simplenews_issue: simplenews_issue
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }

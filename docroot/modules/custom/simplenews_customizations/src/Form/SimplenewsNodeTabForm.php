@@ -6,7 +6,7 @@ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
 use Drupal\simplenews\Form\NodeTabForm;
-use Drupal\simplenews\RecipientHandler\RecipientHandlerManager;
+use Drupal\simplenews_customizations\RecipientHandler\RecipientHandlerExtraManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -19,7 +19,7 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
   /**
    *
    */
-  public function __construct(ContainerInterface $container, RecipientHandlerManager $recipient_handler) {
+  public function __construct(ContainerInterface $container, RecipientHandlerExtraManager $recipient_handler) {
     $this->recipientHandler = $recipient_handler;
   }
 
@@ -76,31 +76,32 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
         '#open' => TRUE,
         '#title' => t('Send'),
       ];
-      $recipient_handler = $form_state->getValue('recipient_handler');
-      $default_handler = !empty($recipient_handler) ? $recipient_handler : $node->simplenews_issue->handler;
 
-      if (is_string($default_handler)) {
+      $newsletter = $node->simplenews_issue->entity;
+      $handler = $form_state->getValue('recipient_handler') ?: $node->simplenews_issue->handler;
+      $handler_settings = $form_state->getValue('recipient_handler_settings') ?: $node->simplenews_issue->handler_settings;
 
-        $newsletter = $node->simplenews_issue->entity;
-        // $handler = $node->simplenews_issue->handler;.
-        $handler_settings = $node->simplenews_issue->handler_settings;
+      /*$handler = (!empty($recipient_handler) ? $recipient_handler : ($this->recipientHandler->getDefaultOptions($newsletter->id()) ?: $node->simplenews_issue->handler));
+      $handler_settings = $node->simplenews_issue->handler_settings;*/
 
-        /** @var \Drupal\simplenews\RecipientHandler\RecipientHandlerInterface */
-        $recipient_handler = simplenews_get_recipient_handler($newsletter, $default_handler, $handler_settings);
-
-        /*$recipient_handler = $this->recipientHandler->createInstance($default_handler, [
-        '' => '',
-        ]);*/
-      }
+      /** @var \Drupal\simplenews\RecipientHandler\RecipientHandlerInterface */
+      $recipient_handler = simplenews_get_recipient_handler($newsletter, $handler, $handler_settings);
 
       $options = $this->recipientHandler->getOptions($newsletter->id());
+      if (!in_array($handler, array_keys($options))) {
+        $default_option = $this->recipientHandler->getDefaultOptions($newsletter->id());
+      }
+      else {
+        $default_option = $handler;
+      }
+
       $form['send']['recipient_handler'] = [
         '#type' => 'select',
         '#title' => t('Recipients'),
         '#description' => t('Please select to configure who to send the email to.'),
         '#options' => $options,
-        '#default_value' => $default_handler,
-        '#access' => count($options) > 1,
+        '#default_value' => $default_option,
+      // '#access' => count($options) > 1,.
         '#ajax' => [
           'callback' => '::ajaxUpdateRecipientHandlerSettings',
           'wrapper' => 'recipient-handler-settings',
@@ -110,20 +111,15 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       ];
 
       // Get the handler class.
-      $handler_definitions = $this->recipientHandler->getDefinitions();
-      $handler = $handler_definitions[$default_handler];
-      $class = $handler['class'];
-
-      $settings = $node->simplenews_issue->handler_settings;
-
+      $class = $this->recipientHandler->getDefinition($handler)['class'];
       if (method_exists($class, 'settingsForm')) {
         $element = [
-          '#parents' => ['simplenews', 'recipient_handler_settings'],
+          '#parents' => ['recipient_handler_settings'],
           '#prefix' => '<div id="recipient-handler-settings">',
           '#suffix' => '</div>',
         ];
 
-        $form['send']['recipient_handler_settings'] = $recipient_handler->settingsForm($element, $settings);
+        $form['send']['recipient_handler_settings'] = $recipient_handler->settingsForm($element, $handler_settings, $form_state);
       }
       else {
         $form['send']['recipient_handler']['#suffix'] = '<div id="recipient-handler-settings"></div>';
@@ -182,6 +178,53 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       }
     }
     return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $values = $form_state->getValues();
+
+    // Validate recipient handler settings.
+    if (!empty($form['send']['recipient_handler_settings'])) {
+      $handler = $values['recipient_handler'];
+      $handler_definitions = \Drupal::service('plugin.manager.simplenews_recipient_handler')->getDefinitions();
+
+      // Get the handler class.
+      $handler = $handler_definitions[$handler];
+      $class = $handler['class'];
+
+      if (method_exists($class, 'settingsFormValidate')) {
+        $class::settingsFormValidate($form['send']['recipient_handler_settings'], $form_state);
+      }
+    }
+
+    parent::validateForm($form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    $values = $form_state->getValues();
+    $node = $form_state->get('node');
+
+    // Save the recipient handler and it's settings.
+    $node->simplenews_issue->handler = $values['recipient_handler'];
+
+    if (!empty($form['send']['recipient_handler_settings'])) {
+      $handler = $values['recipient_handler'];
+      $handler_definitions = \Drupal::service('plugin.manager.simplenews_recipient_handler')->getDefinitions();
+      $handler = $handler_definitions[$handler];
+      $class = $handler['class'];
+
+      if (method_exists($class, 'settingsFormSubmit')) {
+        $settings = $class::settingsFormSubmit($form['send']['recipient_handler_settings'], $form_state);
+        $node->simplenews_issue->handler_settings = (array) $settings;
+      }
+    }
+    $node->save();
   }
 
   /**

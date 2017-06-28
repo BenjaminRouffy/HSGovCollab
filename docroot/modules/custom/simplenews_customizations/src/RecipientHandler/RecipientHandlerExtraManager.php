@@ -18,18 +18,31 @@ class RecipientHandlerExtraManager extends RecipientHandlerManager {
    * Returns the array of recipient handler labels.
    *
    * @todo documentation
+   *
+   * @param null $id
+   *
+   * @return array
    */
-  public function getOptions($id) {
+  public function getOptions($id = NULL) {
     $handlers = $this->getDefinitions();
 
     $allowed_values = [];
     foreach ($handlers as $handler => $settings) {
-      if (in_array($id, $settings['types'])) {
+      if (is_null($id) || empty($settings['types']) || in_array($id, $settings['types'])) {
         $allowed_values[$handler] = Xss::filter($settings['title']);
       }
     }
 
     return $allowed_values;
+  }
+
+  /**
+   *
+   */
+  public function getDefaultOptions($id) {
+    $options = $this->getOptions($id);
+    reset($options);
+    return $options ? key($options) : FALSE;
   }
 
 }

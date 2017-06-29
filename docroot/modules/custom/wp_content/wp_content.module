@@ -3,3 +3,27 @@
 /**
  * @file
  */
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function wp_content_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if (in_array($entity_type->id(), ['node', 'group', 'user'])) {
+    $fields['migrate_data'] = BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Migrate data'))
+      ->setDescription(t('Migrate data'));
+
+    return $fields;
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function wp_content_plugins_views_data_alter(array &$data) {
+  $data['node_field_data']['migrate_data']['filter']['id'] = 'migrate_data';
+  $data['group_field_data']['migrate_data']['filter']['id'] = 'migrate_data';
+  $data['users_field_data']['migrate_data']['filter']['id'] = 'migrate_data';
+}

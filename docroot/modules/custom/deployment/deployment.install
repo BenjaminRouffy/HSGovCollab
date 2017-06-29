@@ -993,3 +993,10 @@ function deployment_update_8079() {
 function deployment_update_8080() {
   \Drupal::service('module_installer')->install(['piwik']);
 }
+
+/**
+ * Disable migrate_wp.
+ */
+function deployment_update_8081() {
+  \Drupal::service('module_installer')->uninstall(['migrate_wp']);
+}

@@ -1000,3 +1000,10 @@ function deployment_update_8080() {
 function deployment_update_8081() {
   \Drupal::service('module_installer')->uninstall(['migrate_wp']);
 }
+
+/**
+ * Install module "SMTP" and "CDN".
+ */
+function deployment_update_8082() {
+  \Drupal::service('module_installer')->install(['smtp', 'cdn', 'cdn_ui']);
+}

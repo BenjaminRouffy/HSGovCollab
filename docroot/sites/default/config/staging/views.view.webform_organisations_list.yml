@@ -370,6 +370,23 @@ display:
           inline: {  }
           separator: '-'
           hide_empty: false
+      sorts:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: standard
+      defaults:
+        sorts: false
     cache_metadata:
       max-age: -1
       contexts:

@@ -63,6 +63,15 @@ function ample_preprocess_html(array &$variables) {
 }
 
 /**
+ * Implements hook_preprocess_mimemail_messages().
+ */
+function ample_preprocess_mimemail_messages(array &$variables) {
+  global $base_url;
+
+  $variables['site_base_url'] = $base_url;
+}
+
+/**
  * Implements hook_css_alter().
  */
 function ample_css_alter(&$css, AttachedAssetsInterface $assets) {

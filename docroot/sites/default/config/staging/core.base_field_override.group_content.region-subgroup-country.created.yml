@@ -1,0 +1,18 @@
+uuid: 2c8cc14e-e0a9-407a-b534-492796979e59
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.region-subgroup-country
+id: group_content.region-subgroup-country.created
+field_name: created
+entity_type: group_content
+bundle: region-subgroup-country
+label: 'Created on'
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

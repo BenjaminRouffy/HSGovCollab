@@ -3,7 +3,7 @@
     <span></span>
   </div>
   <h4 role="heading">
-    {{ label }}
+    {{ content.body|field_value|render|striptags|trim }}
   </h4>
   <a href="{{ content.field_permalink_url|field_value }}" role="link" target="_blank" >
     {{ 'Read more'|t }}

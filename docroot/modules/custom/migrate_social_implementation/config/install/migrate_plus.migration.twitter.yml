@@ -12,7 +12,8 @@ process:
   # Note that the source field names here (machine_name and friendly_name) were
   # defined by the 'fields' configuration for the source plugin above.
   id: id
-  title:
+  title: id
+  body:
     plugin: get
     source:
       - text

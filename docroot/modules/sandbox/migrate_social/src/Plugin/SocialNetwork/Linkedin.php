@@ -12,7 +12,7 @@ use Drupal\views\Views;
  *
  * @SocialNetwork(
  *   id = "linkedin",
- *   description = @Translation("Twitter migrate plugin.")
+ *   description = @Translation("Linkedin migrate plugin.")
  * )
  */
 class Linkedin extends SocialNetworkBase {
@@ -21,18 +21,38 @@ class Linkedin extends SocialNetworkBase {
    * {@inheritdoc}
    */
   protected function nextSource() {
-    $result = $this->instance->setResponseDataType('array')->get('v1/updates', [
-      'query' => [
-        'count' => 10000,
-      ],
-    ]);
+    if (!empty($this->configuration['source_type'])) {
+      switch ($this->configuration['source_type']) {
+        case 'company':
+          $source_id = $this->configuration['source_id'];
+          $result = $this->instance->setResponseDataType('array')
+            ->get("v1/companies/$source_id/updates");
+
+          if (!empty($result['values'])) {
+            $this->iterator = new \ArrayIterator($result['values']);
+            return TRUE;
+          }
+
+          break;
+      }
 
 
-    if (!empty($result[0]['id'])) {
-      $this->iterator = new \ArrayIterator($result);
-      return TRUE;
     }
 
+    return FALSE;
+  }
+
+  /**
+   * Migrate ids.
+   */
+  public function getIds() {
+    return [
+      'updateKey' => [
+        'type' => 'string',
+        'max_length' => 64,
+        'is_ascii' => TRUE,
+      ],
+    ];
   }
 
 }

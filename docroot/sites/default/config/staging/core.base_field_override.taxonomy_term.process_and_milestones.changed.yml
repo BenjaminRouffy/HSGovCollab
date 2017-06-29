@@ -1,0 +1,18 @@
+uuid: 3f480085-5202-4061-8c0a-00f7accbba40
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.process_and_milestones
+id: taxonomy_term.process_and_milestones.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: process_and_milestones
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

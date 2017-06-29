@@ -110,13 +110,13 @@ handlers:
     status: true
     weight: 1
     settings:
-      to_mail: default
+      to_mail: helga.mahler@giz.de
       cc_mail: ''
       bcc_mail: ''
       from_mail: '[webform_submission:values:email:raw]'
-      from_name: '[webform_submission:values:name:value]'
+      from_name: '[webform_submission:values:sender_name:value]'
       subject: '[webform_submission:values:subject:value]'
-      body: '[webform_submission:values:message:value]'
+      body: "From: [webform_submission:values:sender_name:value]<br />\nOrganization:&nbsp;[webform_submission:values:organisation:value][webform_submission:values:non_member_organisation:value]<br />\n<br />\n[webform_submission:values:message:value]"
       excluded_elements: {  }
       html: true
       attachments: false

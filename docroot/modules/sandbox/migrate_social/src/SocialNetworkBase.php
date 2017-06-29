@@ -6,7 +6,7 @@ use Drupal\Component\Plugin\PluginBase;
 use Drupal\migrate_social\SocialNetworkInterface;
 
 /**
- * A base class to help developers implement their own sandwich plugins.
+ * A base class to help developers implement their own plugins.
  *
  * @see \Drupal\migrate_social\Annotation\RelatedContent
  * @see \Drupal\migrate_social\RelatedContentInterface
@@ -23,7 +23,7 @@ abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInte
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->instance = sdk($this->pluginId);
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -48,6 +48,7 @@ abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInte
     // it.
     $this->fetchNextRow();
   }
+
   /**
    * {@inheritdoc}
    */
@@ -60,6 +61,7 @@ abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInte
       $this->iterator->next();
     }
   }
+
   /**
    * Advances the data parser to the next source url.
    *

@@ -1,0 +1,18 @@
+uuid: 1f3f7a19-592e-4009-bbc4-eb1186a8bada
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.timeline_social
+id: paragraph.timeline_social.created
+field_name: created
+entity_type: paragraph
+bundle: timeline_social
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -15,7 +15,8 @@ source:
   social_network_plugin: facebook
 process:
   id: id
-  title:
+  title: id
+  body:
     plugin: get
     source:
       - story
@@ -34,7 +35,7 @@ process:
   field_permalink_url:
     plugin: callback
     source: permalink_url
-    callable: urldecode
+    callable: html_entity_decode
 destination:
   plugin: 'entity:node'
 migration_dependencies: null

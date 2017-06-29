@@ -1,0 +1,18 @@
+uuid: be2bd889-9262-4614-bef3-5d38e0b9ae8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.region-subgroup-project
+id: group_content.region-subgroup-project.changed
+field_name: changed
+entity_type: group_content
+bundle: region-subgroup-project
+label: 'Changed on'
+description: 'The time that the group content was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

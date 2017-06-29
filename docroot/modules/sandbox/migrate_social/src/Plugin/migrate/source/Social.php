@@ -77,12 +77,17 @@ class Social extends SourcePluginBase {
    * {@inheritdoc}
    */
   public function getIds() {
-    return [
-       'id' => [
-         'type' => 'string',
-         'max_length' => 64,
-         'is_ascii' => TRUE,
-       ],
-     ];
+    if (method_exists($this->socialNetworkPlugin, 'getIds')) {
+      return $this->socialNetworkPlugin->getIds();
+    }
+    else {
+      return [
+         'id' => [
+           'type' => 'string',
+           'max_length' => 64,
+           'is_ascii' => TRUE,
+         ],
+      ];
+    }
   }
 }

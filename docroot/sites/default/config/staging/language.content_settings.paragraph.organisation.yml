@@ -4,6 +4,11 @@ status: true
 dependencies:
   config:
     - paragraphs.paragraphs_type.organisation
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
 id: paragraph.organisation
 target_entity_type_id: paragraph
 target_bundle: organisation

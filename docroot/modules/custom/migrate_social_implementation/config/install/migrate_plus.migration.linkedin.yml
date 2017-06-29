@@ -5,21 +5,30 @@ source:
   plugin: social_network
   track_changes: true
   social_network_plugin: linkedin
+  source_type: company
+  source_id: 11178588
 destination:
   plugin: entity:node
 
 process:
-  # Note that the source field names here (machine_name and friendly_name) were
-  # defined by the 'fields' configuration for the source plugin above.
-  id: id
+  id: updateKey
   title:
-    plugin: get
-    source:
-      - text
+    - plugin: extract
+      source: updateContent
+      index:
+        - companyStatusUpdate
+        - share
+        - comment
+
+  # Remove micro seconds.
   created:
-    plugin: callback
-    source: created_at
-    callable: strtotime
+    - plugin: callback
+      source: timestamp
+      callable: strval
+
+    - plugin: substr
+      start: 0
+      length: 10
 
   # Hardcode the destination node type.
   type:
@@ -31,21 +40,26 @@ process:
     plugin: default_value
     default_value: linkedin
 
-  # Twiiter return or null or array in array.
-  field_media:
-    - plugin: iterator
-      source: extended_entities
-      process:
-        media:
-          plugin: get
-          source: '0'
+  # TODO Temp value to insert it with @ below, may be can do it better.
+  temp_link:
+    - plugin: default_value
+      default_value: 'https://www.linkedin.com/feed/update/urn:li:activity:'
+
+  temp_link_id:
+    - plugin: explode
+      source: updateKey
+      delimiter: '-'
 
     - plugin: extract
-      default: ''
       index:
-        - media
-        - media
-        - media_url
+        - 2
+
+  field_permalink_url:
+    - plugin: get
+      source:
+        - '@temp_link'
+        - '@temp_link_id'
+    - plugin: concat
 
 dependencies:
   enforced:

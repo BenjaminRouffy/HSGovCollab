@@ -825,6 +825,10 @@ form {
     border: none;
     margin: 0;
     padding: 0;
+
+    .description {
+      display: none;
+    }
   }
 
   .form-actions {
@@ -1698,6 +1702,10 @@ form {
     margin-bottom: 14px;
   }
 
+  #edit-subscriptions {
+    padding: 0 40px;
+  }
+
   label {
     &:after {
       content: none;
@@ -1812,6 +1820,10 @@ form {
   #edit-field-disclose-your-personal-det-wrapper {
     padding: 20px;
   }
+
+  #edit-subscriptions {
+    padding: 0 20px;
+  }
 }
 
 @include breakpoint-for('.form-my-settings', (to: tablet)) {
@@ -1923,6 +1935,10 @@ form {
 
   #edit-field-disclose-your-personal-det-wrapper {
     padding: 10px;
+  }
+
+  #edit-subscriptions {
+    padding: 0 10px;
   }
 }
 

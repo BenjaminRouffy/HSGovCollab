@@ -4368,6 +4368,8 @@ form .social_login iframe {
     border: none;
     margin: 0;
     padding: 0; }
+    .user-register-form fieldset .description {
+      display: none; }
   .user-register-form .form-actions {
     margin: 30px auto 0;
     text-align: center;
@@ -5220,6 +5222,9 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   padding: 20px 40px;
   margin-bottom: 14px; }
 
+.form-my-settings #edit-subscriptions {
+  padding: 0 40px; }
+
 .form-my-settings label:after {
   content: none; }
 
@@ -5308,7 +5313,9 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   .form-my-settings table .paragraphs-subform .form-wrapper {
     padding: 0 20px; }
   .form-my-settings #edit-field-disclose-your-personal-det-wrapper {
-    padding: 20px; } }
+    padding: 20px; }
+  .form-my-settings #edit-subscriptions {
+    padding: 0 20px; } }
 
 @media (max-width: 767px) {
   .form-my-settings #edit-field-avatar-wrapper {
@@ -5361,7 +5368,9 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   .form-my-settings table .paragraphs-subform .form-wrapper {
     padding: 0 10px; }
   .form-my-settings #edit-field-disclose-your-personal-det-wrapper {
-    padding: 10px; } }
+    padding: 10px; }
+  .form-my-settings #edit-subscriptions {
+    padding: 0 10px; } }
 
 @media (max-width: 479px) {
   .form-my-settings #edit-field-avatar-wrapper {
@@ -7298,10 +7307,12 @@ footer {
     max-width: 600px;
     padding: 0 10px;
     width: 100%; }
-    .node-simplenews-issue .content-with-sidebar .content article > h2 {
-      text-align: center; }
-      .node-simplenews-issue .content-with-sidebar .content article > h2 a {
-        color: #416170; }
+    .node-simplenews-issue .content-with-sidebar .content article {
+      width: 100%; }
+      .node-simplenews-issue .content-with-sidebar .content article > h2 {
+        text-align: center; }
+        .node-simplenews-issue .content-with-sidebar .content article > h2 a {
+          color: #416170; }
   .content-with-sidebar .content .header-image figure {
     margin: 0; }
 

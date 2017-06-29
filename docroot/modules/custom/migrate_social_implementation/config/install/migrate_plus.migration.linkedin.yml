@@ -45,7 +45,8 @@ process:
   temp_link:
     - plugin: default_value
       default_value: 'https://www.linkedin.com/feed/update/urn:li:activity:'
-
+  # Example of updateKey 'UPDATE-c1337-998877665544332211'
+  # We need only last part which we append to link above.
   temp_link_id:
     - plugin: explode
       source: updateKey

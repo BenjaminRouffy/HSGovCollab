@@ -53,6 +53,7 @@ third_party_settings:
         - captcha
         - legal_terms_and_conditions
         - field_disclose_your_personal_det
+        - simplenews
       parent_name: ''
       weight: 0
       format_type: html_element
@@ -187,6 +188,16 @@ content:
     third_party_settings: {  }
   legal_terms_and_conditions:
     weight: 32
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  piwik:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simplenews:
+    weight: 34
     region: content
     settings: {  }
     third_party_settings: {  }

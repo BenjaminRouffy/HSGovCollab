@@ -81,19 +81,16 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       $handler = $form_state->getValue('recipient_handler') ?: $node->simplenews_issue->handler;
       $handler_settings = $form_state->getValue('recipient_handler_settings') ?: $node->simplenews_issue->handler_settings;
 
-      /*$handler = (!empty($recipient_handler) ? $recipient_handler : ($this->recipientHandler->getDefaultOptions($newsletter->id()) ?: $node->simplenews_issue->handler));
-      $handler_settings = $node->simplenews_issue->handler_settings;*/
-
-      /** @var \Drupal\simplenews\RecipientHandler\RecipientHandlerInterface */
-      $recipient_handler = simplenews_get_recipient_handler($newsletter, $handler, $handler_settings);
-
       $options = $this->recipientHandler->getOptions($newsletter->id());
       if (!in_array($handler, array_keys($options))) {
-        $default_option = $this->recipientHandler->getDefaultOptions($newsletter->id());
+        $default_option = $this->recipientHandler->getDefaultOptions($newsletter->id()) ?: $handler;
       }
       else {
         $default_option = $handler;
       }
+
+      /** @var \Drupal\simplenews\RecipientHandler\RecipientHandlerInterface */
+      $recipient_handler = simplenews_get_recipient_handler($newsletter, $default_option, $handler_settings);
 
       $form['send']['recipient_handler'] = [
         '#type' => 'select',
@@ -101,7 +98,7 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
         '#description' => t('Please select to configure who to send the email to.'),
         '#options' => $options,
         '#default_value' => $default_option,
-      // '#access' => count($options) > 1,.
+        '#access' => count($options) > 1 ? 1 : 1,
         '#ajax' => [
           'callback' => '::ajaxUpdateRecipientHandlerSettings',
           'wrapper' => 'recipient-handler-settings',
@@ -111,7 +108,7 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       ];
 
       // Get the handler class.
-      $class = $this->recipientHandler->getDefinition($handler)['class'];
+      $class = $this->recipientHandler->getDefinition($default_option)['class'];
       if (method_exists($class, 'settingsForm')) {
         $element = [
           '#parents' => ['recipient_handler_settings'],
@@ -225,6 +222,33 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       }
     }
     $node->save();
+  }
+
+  /**
+   * @TODO Move to another place.
+   */
+  public function submitUpdate(&$form, FormStateInterface $form_state) {
+    /** @var \Drupal\Core\Session\AccountInterface $account */
+    $account = $form_state->getFormObject()->getEntity();
+
+    /** @var \Drupal\simplenews\Subscription\SubscriptionManagerInterface $subscription_manager */
+    $subscription_manager = \Drupal::service('simplenews.subscription_manager');
+    foreach ($this->extractNewsletterIds($form_state, TRUE) as $newsletter_id) {
+      $subscription_manager->subscribe($account->getEmail(), $newsletter_id, FALSE, 'website');
+    }
+    foreach ($this->extractNewsletterIds($form_state, FALSE) as $newsletter_id) {
+      $subscription_manager->unsubscribe($account->getEmail(), $newsletter_id, FALSE, 'website');
+    }
+
+  }
+
+  /**
+   *
+   */
+  private function extractNewsletterIds($form_state, $status) {
+    return array_keys(array_filter($form_state->getValue('subscriptions'), function ($v, $k) use ($status) {
+      return ($status ? $v !== 0 : $v === 0);
+    }, ARRAY_FILTER_USE_BOTH));
   }
 
   /**

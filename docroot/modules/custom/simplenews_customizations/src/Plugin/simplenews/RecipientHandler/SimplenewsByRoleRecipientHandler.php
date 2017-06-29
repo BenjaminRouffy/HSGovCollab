@@ -4,9 +4,9 @@ namespace Drupal\simplenews_customizations\Plugin\simplenews\RecipientHandler;
 
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\simplenews\Plugin\simplenews\RecipientHandler\RecipientHandlerBase;
 use Drupal\simplenews\RecipientHandler\RecipientHandlerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\simplenews_customizations\RecipientHandlerBaseTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\group_following\GroupFollowingManager;
 
@@ -16,12 +16,13 @@ use Drupal\group_following\GroupFollowingManager;
  *  title = @Translation("Simplenews by role."),
  *  description = @Translation("Simplenews by role."),
  *  types = {
- *    "default",
  *    "by_roles"
  *  }
  * )
  */
-class SimplenewsByRoleRecipientHandler extends RecipientHandlerBase implements RecipientHandlerInterface, ContainerFactoryPluginInterface {
+class SimplenewsByRoleRecipientHandler extends RecipientHandlerExtraBase implements RecipientHandlerInterface, ContainerFactoryPluginInterface {
+
+  use RecipientHandlerBaseTrait;
 
   /**
    * Drupal\group_following\GroupFollowingManager definition.
@@ -61,25 +62,12 @@ class SimplenewsByRoleRecipientHandler extends RecipientHandlerBase implements R
    *
    */
   public function buildRecipientQuery($settings = NULL) {
+    $select = parent::buildRecipientQuery('default');
 
-    $simplenews_subscriber = db_select('simplenews_subscriber', 's');
-    $simplenews_subscriber->addField('s', 'mail');
-    $simplenews_subscriber->addField('ss', 'subscriptions_status', 'status');
-    $simplenews_subscriber->join('simplenews_subscriber__subscriptions', 'ss', db_and()
-      ->where('s.id = ss.entity_id')
-    );
-
-    $select = db_select('users', 'u');
-    $select->addField('u', 'uid', 'snid');
-    $select->addField('ud', 'mail', 'mail');
-    $select->addExpression('\'default\'', 'newsletter_id');
     $select->join('users_field_data', 'ud', db_and()
-      ->where('u.uid = ud.uid')
+      ->where('s.mail = ud.mail')
     );
-    $select->leftJoin($simplenews_subscriber, 'ss', db_and()
-      ->where('ud.mail = ss.mail')
-    );
-    $select->where('ifnull(ss.status, 1) = 1');
+
     if (is_null($settings) || empty($settings)) {
       $settings = $this->configuration;
     }
@@ -90,22 +78,7 @@ class SimplenewsByRoleRecipientHandler extends RecipientHandlerBase implements R
       $select->condition('ur.roles_target_id', $settings['type']);
     }
 
-    $select->isNotNull('ud.mail');
     return $select;
-  }
-
-  /**
-   *
-   */
-  public function buildRecipientCountQuery($settings = NULL) {
-    return $this->buildRecipientQuery($settings)->countQuery();
-  }
-
-  /**
-   *
-   */
-  public function count($settings = NULL) {
-    return $this->buildRecipientCountQuery($settings)->execute()->fetchField();
   }
 
   /**

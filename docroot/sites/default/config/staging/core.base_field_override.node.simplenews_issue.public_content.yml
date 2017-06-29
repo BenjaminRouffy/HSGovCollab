@@ -1,0 +1,22 @@
+uuid: 8cee7f20-79ec-4a8e-a6e2-ac3a5bcf7e4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.simplenews_issue
+id: node.simplenews_issue.public_content
+field_name: public_content
+entity_type: node
+bundle: simplenews_issue
+label: 'Public content'
+description: 'For making the page public'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

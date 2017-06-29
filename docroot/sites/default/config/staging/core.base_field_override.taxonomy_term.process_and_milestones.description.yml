@@ -1,0 +1,20 @@
+uuid: d830e268-f8a4-4467-8941-93f439b70bfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.process_and_milestones
+  module:
+    - text
+id: taxonomy_term.process_and_milestones.description
+field_name: description
+entity_type: taxonomy_term
+bundle: process_and_milestones
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

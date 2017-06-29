@@ -1,16 +1,16 @@
-uuid: ca4eb40b-b10e-4a72-889f-06ff82f3833a
+uuid: fe52630e-b910-4999-b364-683f69a52b3c
 langcode: en
 status: true
 dependencies:
   config:
-    - paragraphs.paragraphs_type.timeline_social
+    - node.type.simplenews_issue
   module:
     - content_translation
 third_party_settings:
   content_translation:
     enabled: false
-id: paragraph.timeline_social
-target_entity_type_id: paragraph
-target_bundle: timeline_social
+id: node.simplenews_issue
+target_entity_type_id: node
+target_bundle: simplenews_issue
 default_langcode: site_default
 language_alterable: false

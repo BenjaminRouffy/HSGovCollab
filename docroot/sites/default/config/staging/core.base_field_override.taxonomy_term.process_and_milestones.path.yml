@@ -1,0 +1,20 @@
+uuid: d7ec557a-0269-4caf-9fce-52ed663b900b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.process_and_milestones
+  module:
+    - path
+id: taxonomy_term.process_and_milestones.path
+field_name: path
+entity_type: taxonomy_term
+bundle: process_and_milestones
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

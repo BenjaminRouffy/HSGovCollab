@@ -12,7 +12,8 @@ destination:
 
 process:
   id: updateKey
-  title:
+  title: updateKey
+  body:
     - plugin: extract
       source: updateContent
       index:

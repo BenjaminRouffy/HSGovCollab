@@ -22,7 +22,7 @@ function wp_content_entity_base_field_info(EntityTypeInterface $entity_type) {
 /**
  * Implements hook_views_data_alter().
  */
-function wp_content_views_data_alter(array &$data) {
+function wp_content_plugins_views_data_alter(array &$data) {
   $data['node_field_data']['migrate_data']['filter']['id'] = 'migrate_data';
   $data['group_field_data']['migrate_data']['filter']['id'] = 'migrate_data';
   $data['users_field_data']['migrate_data']['filter']['id'] = 'migrate_data';

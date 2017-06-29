@@ -81,9 +81,6 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       $handler = $form_state->getValue('recipient_handler') ?: $node->simplenews_issue->handler;
       $handler_settings = $form_state->getValue('recipient_handler_settings') ?: $node->simplenews_issue->handler_settings;
 
-      /*$handler = (!empty($recipient_handler) ? $recipient_handler : ($this->recipientHandler->getDefaultOptions($newsletter->id()) ?: $node->simplenews_issue->handler));
-      $handler_settings = $node->simplenews_issue->handler_settings;*/
-
       $options = $this->recipientHandler->getOptions($newsletter->id());
       if (!in_array($handler, array_keys($options))) {
         $default_option = $this->recipientHandler->getDefaultOptions($newsletter->id()) ?: $handler;
@@ -225,6 +222,33 @@ class SimplenewsNodeTabForm extends NodeTabForm implements ContainerInjectionInt
       }
     }
     $node->save();
+  }
+
+  /**
+   * @TODO Move to another place.
+   */
+  public function submitUpdate(&$form, FormStateInterface $form_state) {
+    /** @var \Drupal\Core\Session\AccountInterface $account */
+    $account = $form_state->getFormObject()->getEntity();
+
+    /** @var \Drupal\simplenews\Subscription\SubscriptionManagerInterface $subscription_manager */
+    $subscription_manager = \Drupal::service('simplenews.subscription_manager');
+    foreach ($this->extractNewsletterIds($form_state, TRUE) as $newsletter_id) {
+      $subscription_manager->subscribe($account->getEmail(), $newsletter_id, FALSE, 'website');
+    }
+    foreach ($this->extractNewsletterIds($form_state, FALSE) as $newsletter_id) {
+      $subscription_manager->unsubscribe($account->getEmail(), $newsletter_id, FALSE, 'website');
+    }
+
+  }
+
+  /**
+   *
+   */
+  private function extractNewsletterIds($form_state, $status) {
+    return array_keys(array_filter($form_state->getValue('subscriptions'), function ($v, $k) use ($status) {
+      return ($status ? $v !== 0 : $v === 0);
+    }, ARRAY_FILTER_USE_BOTH));
   }
 
   /**

@@ -2,8 +2,6 @@
 
 namespace Drupal\simplenews_customizations\Plugin\simplenews\RecipientHandler;
 
-use Drupal\Component\Utility\Xss;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\simplenews\RecipientHandler\RecipientHandlerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\simplenews_customizations\RecipientHandlerBaseTrait;
@@ -57,6 +55,5 @@ class SimplenewsMembersRecipientHandler extends RecipientHandlerExtraBase implem
       $container->get('group_following.manager')
     );
   }
-
 
 }

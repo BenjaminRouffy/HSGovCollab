@@ -63,6 +63,13 @@ function ample_preprocess_html(array &$variables) {
 }
 
 /**
+ * Implements hook_preprocess_mimemail_messages().
+ */
+function ample_preprocess_mimemail_messages(array &$variables) {
+  $variables['site_base_url'] = \Drupal::request()->getSchemeAndHttpHost();
+}
+
+/**
  * Implements hook_css_alter().
  */
 function ample_css_alter(&$css, AttachedAssetsInterface $assets) {

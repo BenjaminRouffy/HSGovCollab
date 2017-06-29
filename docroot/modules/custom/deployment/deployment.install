@@ -986,3 +986,10 @@ function deployment_update_8079() {
     'bricks_customizations',
   ]);
 }
+
+/**
+ * Install module "piwik".
+ */
+function deployment_update_8080() {
+  \Drupal::service('module_installer')->install(['piwik']);
+}

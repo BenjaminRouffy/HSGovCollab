@@ -2,7 +2,11 @@
   {{ elements.dashlogos_2 }}
   <div class="sidebar-menu">
     {{ elements.dashboardmenu }}
-    {{ elements.languageswitchercontent_2 }}
+    {% if elements.languageswitchercontent_2 %}
+      <div class="language-switcher-wrapper">
+        {{ elements.languageswitchercontent_2 }}
+      </div>
+    {% endif %}
     <div class="expand-menu-btn font-social-icon expand-icon">
       <span></span>
     </div>

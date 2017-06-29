@@ -135,6 +135,12 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
       $form['account']['roles']['#ajax']
     );
 
+    /**
+     * @see email_registration_form_user_register_form_alter().
+     */
+    $form['account']['name']['#type'] = 'value';
+    $form['account']['name']['#value'] = 'email_registration_' . user_password();
+
     $form['#validate'][] = '_user_registration_group_manager';
 
     _user_registration_manager_field_states($form);

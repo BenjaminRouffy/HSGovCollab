@@ -697,14 +697,14 @@ svg {
       color: #ea3a32; }
   .dashboard-sidebar .sidebar-menu .sign-out {
     word-break: break-all; }
-  .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li {
+  .dashboard-sidebar .sidebar-menu .language-switcher-wrapper .links li {
     display: inline-block;
     vertical-align: top;
     width: 50%; }
-    .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li:last-child a {
+    .dashboard-sidebar .sidebar-menu .language-switcher-wrapper .links li:last-child a {
       padding-left: 10px;
       padding-right: 14px; }
-    .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li a {
+    .dashboard-sidebar .sidebar-menu .language-switcher-wrapper .links li a {
       font-size: 0.875rem;
       font-style: italic;
       line-height: 1.2;
@@ -799,11 +799,11 @@ svg {
       .dashboard-sidebar .sidebar-menu li:nth-child(n) a:before {
         font-size: 2.1875rem;
         position: static; }
-    .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li,
-    .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li:last-child {
+    .dashboard-sidebar .sidebar-menu .language-switcher-wrapper .links li,
+    .dashboard-sidebar .sidebar-menu .language-switcher-wrapper .links li:last-child {
       width: auto; }
-      .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li a,
-      .dashboard-sidebar .sidebar-menu .language-switcher-language-url .links li:last-child a {
+      .dashboard-sidebar .sidebar-menu .language-switcher-wrapper .links li a,
+      .dashboard-sidebar .sidebar-menu .language-switcher-wrapper .links li:last-child a {
         padding: 30px;
         text-align: left; } }
 
@@ -6652,19 +6652,19 @@ header {
     margin: 0 auto;
     position: relative; }
   header .desktop-service-links,
-  header .language-switcher-language-url {
+  header .language-switcher-wrapper {
     position: absolute;
     bottom: 10px;
     right: 0;
     height: 60px; }
     header .desktop-service-links ul:not(.contextual-links),
     header .desktop-service-links ul:not(.contextual-links) li,
-    header .language-switcher-language-url ul:not(.contextual-links),
-    header .language-switcher-language-url ul:not(.contextual-links) li {
+    header .language-switcher-wrapper ul:not(.contextual-links),
+    header .language-switcher-wrapper ul:not(.contextual-links) li {
       display: inline-block;
       vertical-align: top; }
     header .desktop-service-links a,
-    header .language-switcher-language-url a {
+    header .language-switcher-wrapper a {
       font-size: 0.7875rem;
       display: block;
       color: #283b44;
@@ -6672,7 +6672,7 @@ header {
       padding: 32px 5px 15px;
       text-decoration: none; }
       header .desktop-service-links a:hover,
-      header .language-switcher-language-url a:hover {
+      header .language-switcher-wrapper a:hover {
         opacity: .7; }
   header .links a.is-active {
     color: #8c2222; }
@@ -6768,11 +6768,11 @@ header {
     .header-static .social-links .youtube-icon > a {
       font-size: 2.5rem;
       line-height: 24px; }
-  .header-static .language-switcher-language-url {
+  .header-static .language-switcher-wrapper {
     text-transform: uppercase; }
-    .header-static .language-switcher-language-url ~ .desktop-service-links {
+    .header-static .language-switcher-wrapper ~ .desktop-service-links {
       right: 50px; }
-    .header-static .language-switcher-language-url li {
+    .header-static .language-switcher-wrapper li {
       display: inline-block;
       vertical-align: top; }
 
@@ -6880,9 +6880,9 @@ header {
     .header-static .logo-wrapper img, .header-fixed .logo-wrapper img {
       height: 86px;
       width: 103px; }
-    .header-static .language-switcher-language-url,
+    .header-static .language-switcher-wrapper,
     .header-static .service-links,
-    .header-static .social-links, .header-fixed .language-switcher-language-url,
+    .header-static .social-links, .header-fixed .language-switcher-wrapper,
     .header-fixed .service-links,
     .header-fixed .social-links {
       position: static;
@@ -6898,7 +6898,7 @@ header {
         display: block;
         text-decoration: none;
         text-transform: uppercase; }
-    .header-static .language-switcher-language-url, .header-fixed .language-switcher-language-url {
+    .header-static .language-switcher-wrapper, .header-fixed .language-switcher-wrapper {
       height: auto; }
     .header-static .links a, .header-fixed .links a {
       font-size: 1.1375rem;

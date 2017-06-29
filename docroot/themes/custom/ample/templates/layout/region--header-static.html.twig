@@ -15,7 +15,11 @@
       <div class="mobile-service-links">
         {{ elements.usermenu_2 }}
       </div>
-      {{ elements.languageswitchercontent }}
+      {% if elements.languageswitchercontent %}
+        <div class="language-switcher-wrapper">
+          {{ elements.languageswitchercontent }}
+        </div>
+      {% endif %}
       <div class="desktop-service-links">
         {{ elements.usermenu_2 }}
       </div>

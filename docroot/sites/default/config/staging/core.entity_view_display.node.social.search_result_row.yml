@@ -21,9 +21,10 @@ mode: search_result_row
 content:
   body:
     label: hidden
-    type: text_default
+    type: text_summary_or_trimmed
     weight: 101
-    settings: {  }
+    settings:
+      trim_length: 300
     third_party_settings: {  }
     region: content
   field_media:
@@ -59,9 +60,9 @@ content:
     region: content
   links:
     weight: 100
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   addtoany: true
   langcode: true

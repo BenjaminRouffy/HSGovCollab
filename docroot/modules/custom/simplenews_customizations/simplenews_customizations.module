@@ -43,7 +43,7 @@ function simplenews_customizations_tokens_alter(array &$replacements, array $con
       'newsletter_id' => 'default',
       'hash' => $hash,
     ];
-    $replacements['[simplenews-subscriber:unsubscribe-url]'] = \Drupal::url('simplenews.newsletter_confirm_subscription', $route_parameters, $url_arguments);
+    $replacements['[simplenews-subscriber:unsubscribe-url]'] = \Drupal::url('simplenews.newsletter_confirm_subscription_immediate', $route_parameters, $url_arguments);
   }
 
 }

@@ -390,7 +390,8 @@
 }
 
 .content,
-.more-content {
+.more-content,
+.summary-text {
   @include font-size(18.2);
   color: $navy-dark;
   font-family: $fira;
@@ -495,6 +496,13 @@
     color: $red;
     font-weight: 400;
     text-decoration: none;
+  }
+}
+
+.summary-text {
+  ul,
+  ol {
+    list-style-position: inside;
   }
 }
 

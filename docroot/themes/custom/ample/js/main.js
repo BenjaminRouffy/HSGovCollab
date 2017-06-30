@@ -335,6 +335,16 @@
             });
           }
         });
+
+        if ($('body').is('.ie')) {
+          $(slideImages[0]).load(function() {
+            adaptiveHeight();
+          });
+
+          if ($(slideImages[0]).complete) {
+            adaptiveHeight();
+          }
+        }
       });
     }
   };

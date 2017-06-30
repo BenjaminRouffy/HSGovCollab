@@ -328,23 +328,9 @@
           onTranslated: adaptiveHeight,
           onResized: adaptiveHeight,
           onInitialized: function() {
-            var slideImages = $slider.find('.slider-item-wrapper').children('img');
-
-            $(slideImages[0]).load(function() {
-              adaptiveHeight();
-            });
+            $(window).load(adaptiveHeight);
           }
         });
-
-        if ($('body').is('.ie')) {
-          $(slideImages[0]).load(function() {
-            adaptiveHeight();
-          });
-
-          if ($(slideImages[0]).complete) {
-            adaptiveHeight();
-          }
-        }
       });
     }
   };

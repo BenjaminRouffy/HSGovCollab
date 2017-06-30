@@ -184,6 +184,16 @@
       padding: 0 10px;
       width: 100%;
 
+      .title-wrapper {
+        margin: 0;
+        padding: 0;
+      }
+
+      a {
+        color: #ea3a32;
+        text-decoration: none;
+      }
+
       article {
         width: 100% !important;
 
@@ -193,6 +203,12 @@
           a {
             color: #416170;
           }
+        }
+      }
+
+      h3 {
+        a {
+          color: inherit;
         }
       }
     }

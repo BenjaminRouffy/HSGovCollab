@@ -8431,7 +8431,7 @@ footer {
     color: #afb7bb;
     padding-top: 6px;
     text-align: right; }
-  #calendar .fc-today {
+  #calendar .fc-today:not(.fc-prev-month):not(.fc-next-month) {
     background: transparent;
     color: #ea3a32; }
   #calendar .ajax-progress {

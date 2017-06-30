@@ -241,7 +241,7 @@
     text-align: right;
   }
 
-  .fc-today {
+  .fc-today:not(.fc-prev-month):not(.fc-next-month) {
     background: transparent;
     color: $red;
   }

@@ -1,7 +1,12 @@
 uuid: e658a4bf-53f0-4a93-b9b1-a18790b5a2db
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - simplenews_customizations
+third_party_settings:
+  simplenews_customizations:
+    simplenews_footer: '2'
 id: member_icons
 label: 'Member icons'
 revision: 1

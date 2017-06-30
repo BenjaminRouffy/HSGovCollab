@@ -9,3 +9,7 @@ services:
   simplenews.spool_storage:
     class: Drupal\simplenews_customizations\Spool\SpoolExtraStorage
     arguments: ['@database', '@lock', '@config.factory', '@module_handler']
+  simplenews_customizations.simplenews_settings_alter:
+    class:  Drupal\simplenews_customizations\Form\Alter\SimplenewsSettingsAlter
+    tags:
+      - { name: form_alter, form_id: simplenews_admin_settings_newsletter }

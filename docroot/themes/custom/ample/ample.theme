@@ -518,10 +518,6 @@ function ample_preprocess_simplenews_newsletter_body(array &$variables) {
   $view_builder = \Drupal::entityTypeManager()->getViewBuilder('block_content');
 
   if (!empty($block)) {
-    $block = $view_builder->view($block, 'footer');
-
-    foreach (Element::children($block['field_member_icons']) as $member_icon) {
-      $variables['icons'][] = $block['field_member_icons'][$member_icon];
-    }
+    $variables['icons'] = $view_builder->view($block, 'simplenews');
   }
 }

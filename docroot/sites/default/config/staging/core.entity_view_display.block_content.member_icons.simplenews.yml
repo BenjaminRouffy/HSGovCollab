@@ -1,0 +1,26 @@
+uuid: 511cf260-0c21-4a79-9962-e410d0f2d0ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.member_icons
+    - core.entity_view_mode.block_content.simplenews
+    - field.field.block_content.member_icons.field_copyright
+    - field.field.block_content.member_icons.field_member_icons
+id: block_content.member_icons.simplenews
+targetEntityType: block_content
+bundle: member_icons
+mode: simplenews
+content:
+  field_member_icons:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: member_icons
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_copyright: true
+  langcode: true

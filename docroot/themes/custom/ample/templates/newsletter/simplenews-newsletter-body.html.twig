@@ -8,26 +8,11 @@
   </tr>
   <tr>
     <td align="center" style="text-align: center; padding-bottom: 10px;">
-      <div style="display: inline-block; vertical-align: top; margin: 0 10px; padding: 10px 0;">
-        <a href="#">
-          <img style="height: 35px;" src="http://uploads.webflow.com/585112966264df375d6ffa87/5853bddf10ceda66486bd115_theworldbank2_blue.svg" alt="">
-        </a>
-      </div>
-      <div style="display: inline-block; vertical-align: top; margin: 0 10px; padding: 10px 0;">
-        <a href="#">
-          <img style="height: 35px;" src="http://uploads.webflow.com/585112966264df375d6ffa87/5853bdfb6414b2244c3c58a2_WHO._blue.svg" alt="">
-        </a>
-      </div>
-      <div style="display: inline-block; vertical-align: top; margin: 0 10px; padding: 10px 0;">
-        <a href="#">
-          <img style="height: 35px;" src="http://uploads.webflow.com/585112966264df375d6ffa87/5853be0a83194999407c04f8_african-development-bank_blue.svg" alt="">
-        </a>
-      </div>
-      <div style="display: inline-block; vertical-align: top; margin: 0 10px; padding: 10px 0;">
-        <a href="#">
-          <img style="height: 35px;" src="http://uploads.webflow.com/585112966264df375d6ffa87/5853bded0f691332411a54ac_ilo-logo-vector_blue.svg" alt="">
-        </a>
-      </div>
+      {% for icon in icons %}
+        <div style="display: inline-block; vertical-align: top; margin: 0 10px; padding: 10px 0;">
+          {{ icon|render|striptags('<img>')|raw }}
+        </div>
+      {% endfor %}
     </td>
   </tr>
   <tr>

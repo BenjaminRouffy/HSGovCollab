@@ -5,6 +5,9 @@
  * ample.theme
  */
 
+use Drupal\block\Entity\Block;
+use Drupal\block_content\Entity\BlockContent;
+use Drupal\block_content\Entity\BlockContentType;
 use Drupal\file\Entity\File;
 use Drupal\Core\Asset\AttachedAssetsInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -13,6 +16,7 @@ use Drupal\group\Entity\GroupType;
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Render\Element;
+use Drupal\node\Entity\Node;
 
 /**
  * Additional settings for ample setting form.
@@ -501,5 +505,23 @@ function ample_preprocess_input(array &$variables) {
   // Set placeholders translatable.
   if (isset($variables['attributes']['placeholder']) && !($variables['attributes']['placeholder'] instanceof TranslatableMarkup)) {
     $variables['attributes']['placeholder'] = new TranslatableMarkup($variables['attributes']['placeholder']);
+  }
+}
+
+/**
+ * Implements template_preprocess_simplenews_newsletter_body().
+ */
+function ample_preprocess_simplenews_newsletter_body(array &$variables) {
+  /* Block member icon */
+  $block = BlockContentType::load('member_icons')->getThirdPartySetting('simplenews_customizations', 'simplenews_footer', 0);
+  $block = BlockContent::load($block);
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('block_content');
+
+  if (!empty($block)) {
+    $block = $view_builder->view($block, 'footer');
+
+    foreach (Element::children($block['field_member_icons']) as $member_icon) {
+      $variables['icons'][] = $block['field_member_icons'][$member_icon];
+    }
   }
 }

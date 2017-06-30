@@ -275,31 +275,38 @@ svg {
   text-decoration: none; }
 
 .corners, .image-text, .content blockquote,
-.more-content blockquote {
+.more-content blockquote,
+.summary-text blockquote {
   position: relative; }
   .corners:before, .image-text:before, .content blockquote:before,
-  .more-content blockquote:before, .corners:after, .image-text:after, .content blockquote:after,
-  .more-content blockquote:after {
+  .more-content blockquote:before,
+  .summary-text blockquote:before, .corners:after, .image-text:after, .content blockquote:after,
+  .more-content blockquote:after,
+  .summary-text blockquote:after {
     content: "";
     display: block;
     height: 32px;
     position: absolute;
     width: 30px; }
   .corners:before, .image-text:before, .content blockquote:before,
-  .more-content blockquote:before {
+  .more-content blockquote:before,
+  .summary-text blockquote:before {
     background: url(../images/CornerUpRight.svg) left top no-repeat;
     left: 0;
     top: 0; }
   .corners:after, .image-text:after, .content blockquote:after,
-  .more-content blockquote:after {
+  .more-content blockquote:after,
+  .summary-text blockquote:after {
     background: url(../images/CornerDownLeft.svg) left top no-repeat;
     bottom: 0;
     right: 0; }
 
 @media (max-width: 991px) {
   .corners:before, .image-text:before, .content blockquote:before,
-  .more-content blockquote:before, .corners:after, .image-text:after, .content blockquote:after,
-  .more-content blockquote:after {
+  .more-content blockquote:before,
+  .summary-text blockquote:before, .corners:after, .image-text:after, .content blockquote:after,
+  .more-content blockquote:after,
+  .summary-text blockquote:after {
     height: 23px;
     width: 20px; } }
 
@@ -1757,30 +1764,39 @@ footer > .partners {
   margin-bottom: 50px; }
   .news-events-list.corners, .news-events-list.image-text, .content blockquote.news-events-list,
   .more-content blockquote.news-events-list,
+  .summary-text blockquote.news-events-list,
   .related-docs.corners,
   .related-docs.image-text,
   .content blockquote.related-docs,
   .more-content blockquote.related-docs,
+  .summary-text blockquote.related-docs,
   .timeline.corners,
   .timeline.image-text,
   .content blockquote.timeline,
-  .more-content blockquote.timeline {
+  .more-content blockquote.timeline,
+  .summary-text blockquote.timeline {
     padding: 30px 0 20px;
     margin-bottom: 40px; }
     .news-events-list.corners li, .news-events-list.image-text li, .content blockquote.news-events-list li,
     .more-content blockquote.news-events-list li,
+    .summary-text blockquote.news-events-list li,
     .related-docs.corners li, .related-docs.image-text li, .content blockquote.related-docs li,
     .more-content blockquote.related-docs li,
+    .summary-text blockquote.related-docs li,
     .timeline.corners li, .timeline.image-text li, .content blockquote.timeline li,
-    .more-content blockquote.timeline li {
+    .more-content blockquote.timeline li,
+    .summary-text blockquote.timeline li {
       border-color: #4c7e96;
       padding: 20px 15px 10px; }
       .news-events-list.corners li:hover, .news-events-list.image-text li:hover, .content blockquote.news-events-list li:hover,
       .more-content blockquote.news-events-list li:hover,
+      .summary-text blockquote.news-events-list li:hover,
       .related-docs.corners li:hover, .related-docs.image-text li:hover, .content blockquote.related-docs li:hover,
       .more-content blockquote.related-docs li:hover,
+      .summary-text blockquote.related-docs li:hover,
       .timeline.corners li:hover, .timeline.image-text li:hover, .content blockquote.timeline li:hover,
-      .more-content blockquote.timeline li:hover {
+      .more-content blockquote.timeline li:hover,
+      .summary-text blockquote.timeline li:hover {
         background: #fff; }
   .news-events-list h2,
   .related-docs h2,
@@ -7442,37 +7458,44 @@ footer {
     padding-bottom: 10px; } }
 
 .content,
-.more-content {
+.more-content,
+.summary-text {
   font-size: 1.1375rem;
   color: #283b44;
   font-family: "Fira Sans", sans-serif;
   font-weight: 300;
   line-height: 28px; }
   .legal .content, .legal
-  .more-content {
+  .more-content, .legal
+  .summary-text {
     margin: 0 auto;
     width: 66.64%; }
     .legal .content article, .legal
-    .more-content article {
+    .more-content article, .legal
+    .summary-text article {
       margin-right: 20%; }
   .content h1,
-  .more-content h1 {
+  .more-content h1,
+  .summary-text h1 {
     font-size: 3.0625rem;
     line-height: 56px;
     margin: 20px 0 21px;
     padding: 0; }
     @media screen and (max-width: 479px) {
       .content h1,
-      .more-content h1 {
+      .more-content h1,
+      .summary-text h1 {
         font-size: 2.275rem;
         margin-bottom: 10px; } }
   .content h2,
-  .more-content h2 {
+  .more-content h2,
+  .summary-text h2 {
     font-size: 1.575rem;
     line-height: 48px;
     margin: 0 0 21px; }
   .content h4,
-  .more-content h4 {
+  .more-content h4,
+  .summary-text h4 {
     font-size: 1.225rem;
     color: #283b44;
     font-family: "Fira Sans", sans-serif;
@@ -7480,11 +7503,13 @@ footer {
     line-height: 24px;
     margin: 30px 0 10px; }
   .content figure,
-  .more-content figure {
+  .more-content figure,
+  .summary-text figure {
     clear: both;
     margin: 30px 0; }
   .content figcaption,
-  .more-content figcaption {
+  .more-content figcaption,
+  .summary-text figcaption {
     font-size: 0.875rem;
     color: #4c7e96;
     font-family: "Fira Sans", sans-serif;
@@ -7492,7 +7517,8 @@ footer {
     line-height: 29px;
     margin-top: 5px; }
   .content li,
-  .more-content li {
+  .more-content li,
+  .summary-text li {
     font-size: 1.1375rem;
     font-family: "Fira Sans", sans-serif;
     color: #4c7e96;
@@ -7500,13 +7526,16 @@ footer {
     line-height: 29px;
     margin-top: 10px; }
   .content ul,
-  .more-content ul {
+  .more-content ul,
+  .summary-text ul {
     list-style-type: disc; }
   .content ol,
-  .more-content ol {
+  .more-content ol,
+  .summary-text ol {
     list-style-type: decimal; }
   .content blockquote,
-  .more-content blockquote {
+  .more-content blockquote,
+  .summary-text blockquote {
     font-size: 1.75rem;
     border: none;
     color: #4c7e96;
@@ -7522,20 +7551,27 @@ footer {
     transition: opacity .2s, transform .6s;
     transition: opacity .2s, transform .6s, -webkit-transform .6s; }
     .content-with-sidebar .content blockquote, .content-with-sidebar
-    .more-content blockquote {
+    .more-content blockquote, .content-with-sidebar
+    .summary-text blockquote {
       width: 70%; }
     .content blockquote p,
-    .more-content blockquote p {
+    .more-content blockquote p,
+    .summary-text blockquote p {
       font-size: 1.75rem;
       color: #4c7e96;
       font-family: Oswald, sans-serif;
       font-weight: 300;
       line-height: 35px; }
   .content a,
-  .more-content a {
+  .more-content a,
+  .summary-text a {
     color: #ea3a32;
     font-weight: 400;
     text-decoration: none; }
+
+.summary-text ul,
+.summary-text ol {
+  list-style-position: inside; }
 
 @media (max-width: 1440px) {
   .content-with-sidebar .content blockquote, .content-with-sidebar .more-content blockquote {

@@ -14,7 +14,7 @@
       $('#map').after(markerInfo);
     }
 
-    initMap();
+    $(window).load(initMap();
   });
 
   function initMap() {

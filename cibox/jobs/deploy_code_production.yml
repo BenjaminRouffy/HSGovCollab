@@ -1,0 +1,16 @@
+---
+- hosts: p4h.world
+  gather_facts: yes
+
+  vars:
+    workspace: ./
+    build_number: 1
+    server_docroot_folder: /var/www
+    project_docroot_folder: docroot
+    source: "/var/www/p4h_stage/docroot"
+    destination: "{{ server_docroot_folder }}/build{{ build_number }}"
+
+  roles:
+    - { role: ../custom/prod-preparation }
+    - { role: ../custom/cibox-git-diff, tags: [ 'gitlog' ] }
+    - { role: ../custom/cibox-code-deploy }

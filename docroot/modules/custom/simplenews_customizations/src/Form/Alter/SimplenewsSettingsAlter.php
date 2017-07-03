@@ -9,7 +9,6 @@ use Drupal\form_alter_service\Interfaces\FormAlterServiceAlterInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceBaseInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceSubmitInterface;
 
-
 /**
  * Class GroupContentAlter.
  */
@@ -56,4 +55,5 @@ class SimplenewsSettingsAlter implements FormAlterServiceBaseInterface, FormAlte
     $block_type->setThirdPartySetting('simplenews_customizations', 'simplenews_footer', $form_state->getValue('footer'));
     $block_type->save();
   }
+
 }

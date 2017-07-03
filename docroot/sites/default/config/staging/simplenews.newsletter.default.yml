@@ -4,15 +4,15 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: hj6zGNwndnW_J6lKfFcg-tY5e5YqWfgXyt0qioGtXL8
-name: 'All users'
+name: 'Subscribe to newsletter'
 id: default
 description: 'Subscribe to newsletter'
 format: html
 priority: 3
 receipt: false
 from_name: P4H
-subject: '[[simplenews-newsletter:name]] [node:title]'
-from_address: p4h@network.com
+subject: '[site:name] - [node:title]'
+from_address: noreply@p4h.world
 hyperlinks: false
 new_account: 'on'
 opt_inout: double

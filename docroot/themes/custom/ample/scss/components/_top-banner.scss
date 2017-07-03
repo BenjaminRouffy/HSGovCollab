@@ -1,6 +1,11 @@
 .top-banner-region {
   background: $white-dark;
 
+  .page-frontpage &,
+  .page-where & {
+    overflow: hidden;
+  }
+
   .contact-us &,
   .page-user-contact-form & {
     padding-top: 120px;

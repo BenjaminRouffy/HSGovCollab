@@ -41,6 +41,7 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
 
     $form['account']['current_pass']['#weight'] = 10;
     $form['account']['pass']['#weight'] = 11;
+    $form['account']['pass']['#type'] = 'boosted_password_confirm';
     $form['account']['current_pass']['#prefix'] = '<div class="form-item">';
     $form['account']['pass']['#suffix'] = '</div>';
 

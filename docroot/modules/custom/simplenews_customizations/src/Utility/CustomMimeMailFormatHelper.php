@@ -48,11 +48,12 @@ class CustomMimeMailFormatHelper extends MimeMailFormatHelper {
       $content = rtrim(chunk_split(base64_encode($content)));
     }
 
-    $document = array(array(
+    $document = [[
       'Content-Type' => "text/html; charset=utf-8",
       'Content-Transfer-Encoding' => $encoding,
       'content' => $content,
-    ));
+    ],
+    ];
 
     $files = static::mimeMailFile();
 
@@ -64,7 +65,7 @@ class CustomMimeMailFormatHelper extends MimeMailFormatHelper {
    *
    * @param string $url
    *   The file path.
-   * @param boolean $to_embed
+   * @param bool $to_embed
    *   (optional) Wheter the URL is used to embed the file. Defaults to NULL.
    *
    * @return string
@@ -121,7 +122,7 @@ class CustomMimeMailFormatHelper extends MimeMailFormatHelper {
 
     // Default language settings.
     $prefix = '';
-    $language =  \Drupal::languageManager()->getDefaultLanguage();
+    $language = \Drupal::languageManager()->getDefaultLanguage();
 
     // Check for language prefix.
     $args = explode('/', $path);
@@ -134,13 +135,13 @@ class CustomMimeMailFormatHelper extends MimeMailFormatHelper {
       }
     }
 
-    $options = array(
-      'query' => ($query) ? parse_url($query) : array(),
+    $options = [
+      'query' => ($query) ? parse_url($query) : [],
       'fragment' => $fragment,
       'absolute' => TRUE,
       'language' => $language,
       'prefix' => $prefix,
-    );
+    ];
 
     $url = Url::fromUserInput($path, $options)->toString();
 

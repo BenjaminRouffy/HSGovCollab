@@ -37,6 +37,9 @@ class RecipientHandlerExtraBase extends RecipientHandlerBase {
     $select->condition('t.subscriptions_status', SIMPLENEWS_SUBSCRIPTION_STATUS_SUBSCRIBED);
     $select->condition('s.status', SubscriberInterface::ACTIVE);
 
+    $select->groupBy('s.id');
+    $select->groupBy('s.mail');
+    $select->groupBy('t.subscriptions_target_id');
     return $select;
   }
 

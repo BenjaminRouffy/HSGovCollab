@@ -77,6 +77,7 @@ class SimplenewsByRoleRecipientHandler extends RecipientHandlerExtraBase impleme
       $select->condition('ur.roles_target_id', $settings['type']);
     }
 
+    $select->groupBy('ud.mail');
     return $select;
   }
 

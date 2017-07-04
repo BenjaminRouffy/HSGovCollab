@@ -100,7 +100,7 @@ class SimplenewsFollowersRecipientHandler extends RecipientHandlerExtraBase impl
 
       $select->condition($or);
     }
-
+    $select->groupBy('ud.mail');
     return $select;
   }
 

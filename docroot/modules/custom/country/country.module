@@ -179,4 +179,10 @@ function country_module_implements_alter(array &$implementations, $hook) {
     unset($implementations['gnode']);
     array_merge(['gnode' => $gnode], $implementations);
   }
+
+  if ('form_alter' === $hook && isset($implementations['password_policy'])) {
+    $password_policy = $implementations['password_policy'];
+    unset($implementations['password_policy']);
+    $implementations = array_merge(['password_policy' => $password_policy], $implementations);
+  }
 }

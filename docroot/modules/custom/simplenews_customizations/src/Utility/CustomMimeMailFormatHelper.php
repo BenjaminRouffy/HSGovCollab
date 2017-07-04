@@ -84,6 +84,7 @@ class CustomMimeMailFormatHelper extends MimeMailFormatHelper {
       }
     }
     else {
+      $url = str_replace([' ', '+'], ['%20', '%2B'], $url);
       if (\Drupal::service('module_handler')->moduleExists('cdn')) {
         $url = preg_replace('!^' . base_path() . '!', $_SERVER['REQUEST_SCHEME'] . ':/', $url, 1);
       }
@@ -102,7 +103,6 @@ class CustomMimeMailFormatHelper extends MimeMailFormatHelper {
           // @see https://drupal.org/drupal-7.20-release-notes
           $url = preg_replace('/\\?itok=.*$/', '', $url);
         }
-        $url = str_replace([' ', '+'], ['%20', '%2B'], $url);
       }
       return $url;
     }

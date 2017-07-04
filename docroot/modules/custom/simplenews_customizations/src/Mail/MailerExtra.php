@@ -3,9 +3,27 @@
 namespace Drupal\simplenews_customizations\Mail;
 
 use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
 use Drupal\simplenews\Mail\Mailer;
 use Drupal\simplenews\Spool\SpoolStorageInterface;
 use Drupal\user\Entity\User;
+
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Lock\LockBackendInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\Core\Mail\MailManagerInterface;
+use Drupal\Core\Session\AccountSwitcherInterface;
+use Drupal\Core\Session\AnonymousUserSession;
+use Drupal\Core\State\StateInterface;
+use Drupal\node\Entity\Node;
+use Drupal\simplenews\Entity\Subscriber;
+use Drupal\simplenews\NewsletterInterface;
+use Drupal\simplenews\Mail\MailEntity;
+use Drupal\simplenews\Mail\MailInterface;
+use Drupal\simplenews\SkipMailException;
+use Drupal\simplenews\SubscriberInterface;
+
 
 /**
  *
@@ -128,6 +146,58 @@ class MailerExtra extends Mailer {
       $this->accountSwitcher->switchBack();
       return $count_success;
     }
+  }
+
+  public function sendTest(NodeInterface $node, array $test_addresses) {
+    // Force the current user to anonymous to ensure consistent permissions.
+    $super_user = User::load(1);
+    $this->accountSwitcher->switchTo($super_user);
+
+    // Send the test newsletter to the test address(es) specified in the node.
+    // Build array of test email addresses.
+
+    // Send newsletter to test addresses.
+    // Emails are send direct, not using the spool.
+    $recipients = array('anonymous' => array(), 'user' => array());
+    foreach ($test_addresses as $mail) {
+      $mail = trim($mail);
+      if (!empty($mail)) {
+        $subscriber = simplenews_subscriber_load_by_mail($mail);
+        if (!$subscriber) {
+          // Create a stub subscriber. Use values from the user having the given
+          // address, or if there is no such user, the anonymous user.
+          if ($user = user_load_by_mail($mail)) {
+            $subscriber = Subscriber::create()->fillFromAccount($user);
+          }
+          else {
+            $subscriber = Subscriber::create(['mail' => $mail]);
+          }
+          // Keep the current language.
+          $subscriber->setLangcode(\Drupal::languageManager()->getCurrentLanguage());
+        }
+
+        if ($subscriber->getUserId()) {
+          $account = $subscriber->uid->entity;
+          $recipients['user'][] = $account->getUserName() . ' <' . $mail . '>';
+        }
+        else {
+          $recipients['anonymous'][] = $mail;
+        }
+        $mail = new MailEntity($node, $subscriber, \Drupal::service('simplenews.mail_cache'));
+        $mail->setKey('test');
+        $this->sendMail($mail);
+      }
+    }
+    if (count($recipients['user'])) {
+      $recipients_txt = implode(', ', $recipients['user']);
+      drupal_set_message(t('Test newsletter sent to user %recipient.', array('%recipient' => $recipients_txt)));
+    }
+    if (count($recipients['anonymous'])) {
+      $recipients_txt = implode(', ', $recipients['anonymous']);
+      drupal_set_message(t('Test newsletter sent to anonymous %recipient.', array('%recipient' => $recipients_txt)));
+    }
+
+    $this->accountSwitcher->switchBack();
   }
 
 }

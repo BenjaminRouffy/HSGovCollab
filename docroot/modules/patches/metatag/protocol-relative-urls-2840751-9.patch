@@ -1,0 +1,18 @@
+diff --git a/src/MetatagToken.php b/src/MetatagToken.php
+index ebaf310..12a79ea 100644
+--- a/src/MetatagToken.php
++++ b/src/MetatagToken.php
+@@ -44,7 +44,7 @@ class MetatagToken {
+ 
+     // Ensure that there are no double-slash sequences due to empty token
+     // values.
+-    $replaced = preg_replace('/(?<!:)\/+\//', '/', $replaced);
++    $replaced = preg_replace('/(?<!:)(?<!^)\/+\//', '/', $replaced);
+ 
+     return $replaced;
+   }
+@@ -84,3 +84,4 @@ class MetatagToken {
+   }
+ 
+ }
++

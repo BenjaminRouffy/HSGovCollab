@@ -1,6 +1,0 @@
----
-  - name: Dump before do changes.
-    shell: 'cd {{ source }} && drush sql-dump | gzip -9 > /tmp/proddump-before.sql.gz'
-
-  - name: Update codebase.
-    shell: 'cd {{ source }} && git pull --ff-only origin live'

@@ -14,7 +14,12 @@
       $('#map').after(markerInfo);
     }
 
-    $(window).load(initMap());
+    var timer = setInterval(function() {
+      if (!!google) {
+        initMap();
+        clearInterval(timer);
+      }
+    }, 100);
   });
 
   function initMap() {

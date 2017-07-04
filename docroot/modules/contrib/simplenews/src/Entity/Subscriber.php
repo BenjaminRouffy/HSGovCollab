@@ -290,10 +290,16 @@ class Subscriber extends ContentEntityBase implements SubscriberInterface {
   public function postCreate(EntityStorageInterface $storage) {
     parent::postCreate($storage);
 
+    $user_ids = NULL;
     // Set the uid field if there is a user with the same email.
-    $user_ids = \Drupal::entityQuery('user')
-      ->condition('mail', $this->getMail())
-      ->execute();
+    $select = \Drupal::entityQuery('user');
+    if($mail = $this->getMail()) {
+      // @TODO Check needed. The getMail function return a "null" value,
+      // but the "mail" field of db is filled correctly.
+      $select->condition('mail', $mail);
+      $user_ids = $select->execute();
+    }
+
     if (!empty($user_ids)) {
       $this->setUserId(array_pop($user_ids));
     }

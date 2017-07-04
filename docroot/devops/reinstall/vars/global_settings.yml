@@ -27,7 +27,7 @@ rebuild_registry: false
 local_backup_environment: 'stage'
 # htpasswd protection for securing backups.
 backup_user: admin
-backup_pass: 4a2bf8DjyUCynFdc
+backup_pass: 08212PmskOK4
 # Site url to download assets via stage_file_proxy.
 origin_site_url: https://{{ backup_user }}:{{ backup_pass }}@cibox07.m2.propeople.com.ua/stage
 # Stage hash_salt key

@@ -1,15 +1,4 @@
 ---
-#- shell: pwd
-#  register: result
-#
-#- debug:
-#    var: result
-#    verbosity: 2
-
-#
-#- name: Ensure Drupal Console is executable.
-#  file:
-#    path: "{{ php_env_vars }} {{ drupal_console_path }}"
-#    mode: a+x
-#    state: file
-#
+- name: Ensure Drupal Console is executable.
+  sudo: yes
+  shell: "{{ php_env_vars }} chmod a+x {{ drupal_console_path }}"

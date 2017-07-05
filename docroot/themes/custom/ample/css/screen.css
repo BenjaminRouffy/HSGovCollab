@@ -4024,8 +4024,11 @@ form {
   border-radius: 0;
   overflow: visible; }
 
-.ie9 .chosen-choices {
+.ie9 .content-container.form-select .chosen-choices {
   border: none; }
+
+.ie9 .form-item-field-country .select-wrapper {
+  overflow: visible; }
 
 .ie9 .form-select {
   background: transparent;

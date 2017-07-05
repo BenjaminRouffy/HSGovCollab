@@ -329,8 +329,18 @@ form {
     overflow: visible;
   }
 
-  .chosen-choices {
-    border: none;
+  .content-container {
+    &.form-select {
+      .chosen-choices {
+        border: none;
+      }
+    }
+  }
+
+  .form-item-field-country {
+    .select-wrapper {
+      overflow: visible;
+    }
   }
 
   .form-select {

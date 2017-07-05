@@ -325,9 +325,23 @@ form {
   }
 
   .chosen-select-wrapper {
-    border: none;
     border-radius: 0;
     overflow: visible;
+  }
+
+  .chosen-container {
+    &.form-select {
+      .chosen-choices {
+        border: none;
+      }
+    }
+  }
+
+  .form-item-field-country {
+    .select-wrapper {
+      border-radius: 0;
+      overflow: visible;
+    }
   }
 
   .form-select {
@@ -421,14 +435,6 @@ form {
 
     .login-wrapper {
       float: right;
-    }
-
-    .form-text {
-      display: none !important;
-
-      &[name="pass"] {
-        display: block !important;
-      }
     }
   }
 
@@ -909,7 +915,9 @@ form {
     justify-content: center;
 
     .ie9 & {
-      overflow: hidden;
+      @include clearfix;
+      display: block;
+      flex: none;
     }
 
     .form-wrapper:empty {
@@ -1293,7 +1301,10 @@ form {
     padding: 20px 0;
 
     .ie9 & {
-      overflow: hidden;
+      @include clearfix;
+      display: block;
+      flex: none;
+      //overflow: hidden;
 
       .form-wrapper {
         float: left;
@@ -1364,7 +1375,10 @@ form {
     padding: 20px 0;
 
     .ie9 & {
-      overflow: hidden;
+      @include clearfix;
+      display: block;
+      flex: none;
+      //overflow: hidden;
 
       > .form-item {
         float: left;
@@ -1576,7 +1590,10 @@ form {
       flex-wrap: wrap;
 
       .ie9 & {
-        overflow: hidden;
+        @include clearfix;
+        display: block;
+        flex: none;
+        //overflow: hidden;
 
         .form-wrapper {
           float: left;

@@ -8,7 +8,10 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 
 define('NON_GROUP', 1);
 define('PUBLIC_GROUP', 9999);
@@ -96,7 +99,9 @@ function country_file_access(EntityInterface $entity, $operation, AccountInterfa
                 $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->load(key($value));
                 /* @var Node $node */
                 $node = $paragraph->getParentEntity();
-                return country_node_access($node, 'view', $account);
+                $access = country_node_access($node, 'view', $account);
+
+                return $access->isForbidden() ? $access : AccessResult::allowed();
               }
             }
           }

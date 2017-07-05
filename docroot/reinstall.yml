@@ -14,6 +14,11 @@
       sudo: true
 
   tasks:
+  - name: Getting pwd
+    shell: "{{ php_env_vars }} pwd"
+    register: pwd
+    when: is_windows == false
+
   - name: Include specific variables per environment
     include_vars: "devops/reinstall/vars/environments/{{ pp_environment }}_env.yml"
     tags: [ 'settings', 'pre-settings', 'post-settings', 'modules-enable', 'drush-commands' ]

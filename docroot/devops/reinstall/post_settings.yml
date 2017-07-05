@@ -6,7 +6,7 @@
   when: is_windows
 
 - name: Getting name for settings (UNIX)
-  set_fact: platform_settings_file={{ settings_file_path }}
+  set_fact: platform_settings_file="{{ pwd.stdout }}/{{ settings_file_path }}"
   when: is_windows == false
 
 - name: Copy settings to tmp folder (WINDOWS)

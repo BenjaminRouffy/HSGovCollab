@@ -18,7 +18,7 @@ pp_environment: 'default'
 # From installation profile = 'profile', from sql dump = 'sql'.
 workflow_type: 'sql'
 is_windows: false
-ci_server_username: 'jenkins'
+ci_server_username: 'ubuntu'
 # This variable allows make backup from CI environment before processing.
 # true, false.
 make_backup: false
@@ -34,7 +34,7 @@ origin_site_url: https://{{ backup_user }}:{{ backup_pass }}@cibox07.m2.propeopl
 hash_salt: ZunPn4qWYDhQ1FEwGWlI2aQNNcAEZ5UdSob7R9Z0IeFIQPW5_pFt7wPVlpbrwEfqdWOLAxcUUA
 # Source backup database that will be downloaded to build site.
 # In many cases this is production dump.
-source_backup_name: latest_local_stage.sql.gz
+source_backup_name: latest_local_p4h_stage.sql.gz
 # URL to the source database. Can be overridden by CI server.
 source_database: http://{{ backup_user }}:{{ backup_pass }}@cibox07.m2.propeople.com.ua/backup/{{ source_backup_name }}
 # Path where settings.php should be placed.

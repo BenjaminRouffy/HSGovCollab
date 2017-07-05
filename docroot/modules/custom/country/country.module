@@ -8,7 +8,10 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 
 define('NON_GROUP', 1);
 define('PUBLIC_GROUP', 9999);
@@ -41,7 +44,7 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         $public = AccessResult::allowedIf(1 == $public_content);
       }
 
-      if ($result->isNeutral()) {
+      if ($result->isNeutral() && $account->isAnonymous()) {
         $result = AccessResult::forbidden();
       }
       if ($global->isAllowed() || $public->isAllowed()) {
@@ -96,7 +99,9 @@ function country_file_access(EntityInterface $entity, $operation, AccountInterfa
                 $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->load(key($value));
                 /* @var Node $node */
                 $node = $paragraph->getParentEntity();
-                return country_node_access($node, 'view', $account);
+                $access = country_node_access($node, 'view', $account);
+
+                return $access->isForbidden() ? $access : AccessResult::allowed();
               }
             }
           }
@@ -114,15 +119,18 @@ function country_file_access(EntityInterface $entity, $operation, AccountInterfa
 function country_node_access_records_alter(array &$grants, NodeInterface $node) {
 
   if (in_array($node->getType(), _country_public_global_content_types())) {
+    $gnode_grants = gnode_node_access_records($node);
 
-    $grants[] = [
-      'realm' => 'content:nongroup',
-      'gid' => NON_GROUP,
-      'grant_view' => 1,
-      'grant_update' => 0,
-      'grant_delete' => 0,
-      'priority' => 0,
-    ];
+    if (empty($gnode_grants)) {
+      $grants[] = [
+        'realm' => 'content:nongroup',
+        'gid' => NON_GROUP,
+        'grant_view' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
+        'priority' => -1,
+      ];
+    }
 
     if (isset($node->public_content)) {
       $public_content = $node->public_content->value;

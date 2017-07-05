@@ -41,7 +41,7 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         $public = AccessResult::allowedIf(1 == $public_content);
       }
 
-      if ($result->isNeutral()) {
+      if ($result->isNeutral() && $account->isAnonymous()) {
         $result = AccessResult::forbidden();
       }
       if ($global->isAllowed() || $public->isAllowed()) {

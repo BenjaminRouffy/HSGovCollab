@@ -4480,7 +4480,14 @@ form .social_login iframe {
       -ms-flex-pack: center;
           justify-content: center; }
   .ie9 .user-onetime-form #fields-wrapper {
-    overflow: hidden; }
+    display: block;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none; }
+    .ie9 .user-onetime-form #fields-wrapper:after {
+      content: "";
+      display: table;
+      clear: both; }
   .user-onetime-form #fields-wrapper .form-wrapper:empty {
     display: none; }
     .ie9 .user-onetime-form #fields-wrapper .form-wrapper:empty ~ #catagories-wrapper {

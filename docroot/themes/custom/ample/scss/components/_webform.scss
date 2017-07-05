@@ -915,7 +915,9 @@ form {
     justify-content: center;
 
     .ie9 & {
-      overflow: hidden;
+      @include clearfix;
+      display: block;
+      flex: none;
     }
 
     .form-wrapper:empty {

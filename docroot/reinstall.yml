@@ -1,7 +1,7 @@
 ---
 # This playbook should be executed using reinstall.sh script
 # Developed for ansible version >= 1.7
-- hosts: localhost
+- hosts: "{{ hosts_override | default('localhost') }}"
   connection: local
   gather_facts: yes
 
@@ -14,6 +14,11 @@
       sudo: true
 
   tasks:
+  - name: Getting pwd
+    shell: "{{ php_env_vars }} pwd"
+    register: pwd
+    when: is_windows == false
+
   - name: Include specific variables per environment
     include_vars: "devops/reinstall/vars/environments/{{ pp_environment }}_env.yml"
     tags: [ 'settings', 'pre-settings', 'post-settings', 'modules-enable', 'drush-commands' ]
@@ -24,10 +29,11 @@
     tags: [ 'database-backup' ]
 
   - include: devops/reinstall/prepare_environment.yml
+    when: pp_environment == "demo" or pp_environment == "default"
     tags: [ 'prepare-environment' ]
 
   - include: devops/reinstall/pre_settings.yml
-    when: workflow_type == "sql"
+    when: workflow_type == "sql" and (pp_environment == "demo" or pp_environment == "default")
     tags: [ 'settings', 'pre-settings', 'sql-workflow' ]
 
   - include: devops/reinstall/sql_workflow.yml
@@ -39,9 +45,11 @@
     tags: [ 'profile-workflow' ]
 
   - include: devops/reinstall/prepare_environment.yml
+    when: pp_environment == "demo" or pp_environment == "default"
     tags: [ 'prepare-environment' ]
 
   - include: devops/reinstall/post_settings.yml
+    when: pp_environment == "demo" or pp_environment == "default"
     tags: [ 'settings', 'post-settings' ]
 
   - include: devops/reinstall/modules_enable.yml

@@ -41,17 +41,17 @@
 # CI server build.
 - name: Copy latest backup to build folder
   sudo: yes
-  copy: src={{ backup_folder }}/{{ source_backup_name }} dest=./latest.sql.gz force=yes mode=0644
+  shell: cp -f {{ backup_folder }}/{{ source_backup_name }} {{ pwd.stdout }}/latest.sql.gz
   when: (pp_environment == "default" or pp_environment == "demo") and ((ansible_env.USER is defined and ansible_env.USER == "{{ ci_server_username }}") or (ansible_env.SUDO_USER is defined and ansible_env.SUDO_USER == "{{ ci_server_username }}"))
 
 - name: Importing from local backup
-  mysql_db: name={{ mysql_db }} state=import target=./latest.sql.gz login_host={{ mysql_host }} login_user={{ mysql_user }} login_password={{ mysql_pass }}
+  mysql_db: name={{ mysql_db }} state=import target={{ pwd.stdout }}/latest.sql.gz login_host={{ mysql_host }} login_user={{ mysql_user }} login_password={{ mysql_pass }}
   sudo: yes
   when: (pp_environment == "default" or pp_environment == "demo") and ((ansible_env.USER is defined and ansible_env.USER == "{{ ci_server_username }}") or (ansible_env.SUDO_USER is defined and ansible_env.SUDO_USER == "{{ ci_server_username }}"))
 
 - name: Remove local backup from build folder
   sudo: yes
-  file: name=./latest.sql.gz state=absent
+  file: name={{ pwd.stdout }}/latest.sql.gz state=absent
   when: pp_environment == "default" or pp_environment == "demo"
 
 # Run registry rebuild.
@@ -91,7 +91,7 @@
   register: updates
 
 - name: Gets deleted config files form log
-  shell: "cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^D' | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev || true"
+  shell: "{{ php_env_vars }} cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^D' | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev || true"
   register: deploy_files_deleted
 
 - name: Remove single config from configuration manager.
@@ -100,7 +100,7 @@
   with_items: deploy_files_deleted.stdout_lines
 
 - name: Gets added/modified config files form log
-  shell: "cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^(A|M)' | grep staging | awk '{print $2}' || true"
+  shell: "{{ php_env_vars }} cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^(A|M)' | grep staging | awk '{print $2}' || true"
   register: deploy_files_modified
 
 - name: Apply changes from file

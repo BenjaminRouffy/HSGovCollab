@@ -18,25 +18,25 @@ pp_environment: 'default'
 # From installation profile = 'profile', from sql dump = 'sql'.
 workflow_type: 'sql'
 is_windows: false
-ci_server_username: 'jenkins'
+ci_server_username: 'ubuntu'
 # This variable allows make backup from CI environment before processing.
 # true, false.
 make_backup: false
 rebuild_registry: false
 # Local environment that will be used from backup.
-local_backup_environment: 'stage'
+local_backup_environment: 'p4h'
 # htpasswd protection for securing backups.
-backup_user: admin
-backup_pass: 08212PmskOK4
+backup_user: p4h
+backup_pass: KzX9ObrdZ7DP
 # Site url to download assets via stage_file_proxy.
 origin_site_url: https://{{ backup_user }}:{{ backup_pass }}@cibox07.m2.propeople.com.ua/stage
 # Stage hash_salt key
 hash_salt: ZunPn4qWYDhQ1FEwGWlI2aQNNcAEZ5UdSob7R9Z0IeFIQPW5_pFt7wPVlpbrwEfqdWOLAxcUUA
 # Source backup database that will be downloaded to build site.
 # In many cases this is production dump.
-source_backup_name: latest_local_stage.sql.gz
+source_backup_name: latest_local_p4h_stage.sql.gz
 # URL to the source database. Can be overridden by CI server.
-source_database: http://{{ backup_user }}:{{ backup_pass }}@cibox07.m2.propeople.com.ua/backup/{{ source_backup_name }}
+source_database: https://{{ backup_user }}:{{ backup_pass }}@p4h.world/backup/{{ source_backup_name }}
 # Path where settings.php should be placed.
 settings_file_path: sites/default/settings.php
 settings_default_file_path: sites/default/default.settings.php

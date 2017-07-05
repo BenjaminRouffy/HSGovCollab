@@ -1,8 +1,4 @@
 ---
-
 - name: Ensure Drupal Console is executable.
-  file:
-    path: "{{ drupal_console_path }}"
-    mode: a+x
-    state: file
-
+  sudo: yes
+  shell: "{{ php_env_vars }} chmod a+x {{ drupal_console_path }}"

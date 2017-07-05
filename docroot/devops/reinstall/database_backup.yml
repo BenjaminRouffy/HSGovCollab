@@ -13,11 +13,27 @@
   sudo: yes
   file: path={{ backup_folder }}/{{ local_backup_environment }}_local state=directory recurse=yes
 
+- name: Install the package "libmysqlclient-dev"
+  apt:
+    name: libmysqlclient-dev
+    state: present
+  sudo: yes
+
+- name: Install the Python MySQLB module
+  pip: name=MySQL-python
+  sudo: yes
+
 - name: Making regular backup from {{ local_backup_environment }} environment
   sudo: yes
-  mysql_db: name={{ local_backup_environment }} state=dump target={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql.gz login_user={{ mysql_user }} login_password={{ mysql_pass }}
+  mysql_db: name={{ local_backup_environment }} state=dump target={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql.gz login_host={{ mysql_host }} login_user={{ mysql_user }} login_password={{ mysql_pass }}
+
+- name: Chmod
+  sudo: yes
+  file:
+    path: "{{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql.gz"
+    mode: 0777
 
 - name: Make new backup as latest
   sudo: yes
-  copy: src={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql.gz dest={{ backup_folder }}//latest_local_{{ local_backup_environment }}.sql.gz force=yes mode=0777
+  shell: "cp -f {{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql.gz {{ backup_folder }}//latest_local_{{ local_backup_environment }}.sql.gz"
   when: op == "after"

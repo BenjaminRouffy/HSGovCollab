@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: "{{ hosts_override | default('localhost') }}"
   connection: local
   gather_facts: yes
 

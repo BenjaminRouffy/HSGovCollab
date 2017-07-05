@@ -4021,9 +4021,11 @@ form {
     width: 16px; }
 
 .ie9 .chosen-select-wrapper {
-  border: none;
   border-radius: 0;
   overflow: visible; }
+
+.ie9 .chosen-choices {
+  border: none; }
 
 .ie9 .form-select {
   background: transparent;
@@ -4788,7 +4790,19 @@ form .social_login iframe {
   .form-my-settings #contact-details, .ie9
   .form-my-settings #address-details, .ie9
   .form-my-settings #managers-wrapper {
-    overflow: hidden; }
+    display: block;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none; }
+    .ie9 .form-my-settings #user-details:after, .ie9
+    .form-my-settings #organisation-details:after, .ie9
+    .form-my-settings #interests-wrapper:after, .ie9
+    .form-my-settings #contact-details:after, .ie9
+    .form-my-settings #address-details:after, .ie9
+    .form-my-settings #managers-wrapper:after {
+      content: "";
+      display: table;
+      clear: both; }
     .ie9 .form-my-settings #user-details .form-wrapper, .ie9
     .form-my-settings #organisation-details .form-wrapper, .ie9
     .form-my-settings #interests-wrapper .form-wrapper, .ie9
@@ -4849,7 +4863,14 @@ form .social_login iframe {
   margin-bottom: 15px;
   padding: 20px 0; }
   .ie9 .form-my-settings #edit-account {
-    overflow: hidden; }
+    display: block;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none; }
+    .ie9 .form-my-settings #edit-account:after {
+      content: "";
+      display: table;
+      clear: both; }
     .ie9 .form-my-settings #edit-account > .form-item {
       float: left; }
   .form-my-settings #edit-account > .form-item {
@@ -5107,7 +5128,14 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
     .ie9 .form-my-settings table .paragraphs-subform {
-      overflow: hidden; }
+      display: block;
+      -webkit-box-flex: 0;
+          -ms-flex: none;
+              flex: none; }
+      .ie9 .form-my-settings table .paragraphs-subform:after {
+        content: "";
+        display: table;
+        clear: both; }
       .ie9 .form-my-settings table .paragraphs-subform .form-wrapper {
         float: left; }
     .form-my-settings table .paragraphs-subform .form-wrapper {

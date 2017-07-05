@@ -661,9 +661,6 @@
         $('.form-select[multiple]', context).each(function() {
           $(this).parent().addClass('chosen-select-wrapper');
         });
-
-        // Placeholder
-        $('input, textarea').placeholder();
       }
     }
   };

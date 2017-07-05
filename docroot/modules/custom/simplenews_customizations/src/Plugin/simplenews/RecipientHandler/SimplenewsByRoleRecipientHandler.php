@@ -3,7 +3,6 @@
 namespace Drupal\simplenews_customizations\Plugin\simplenews\RecipientHandler;
 
 use Drupal\Component\Utility\Xss;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\simplenews\RecipientHandler\RecipientHandlerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\simplenews_customizations\RecipientHandlerBaseTrait;
@@ -71,13 +70,14 @@ class SimplenewsByRoleRecipientHandler extends RecipientHandlerExtraBase impleme
     if (is_null($settings) || empty($settings)) {
       $settings = $this->configuration;
     }
-    if (!empty($settings['type']) && $settings['type'] != 'authenticated') {
+    if (isset($settings['type']) && !empty($settings['type']) && $settings['type'] != 'authenticated') {
       $select->join('user__roles', 'ur', db_and()
         ->where('ud.uid = ur.entity_id')
       );
       $select->condition('ur.roles_target_id', $settings['type']);
     }
 
+    $select->groupBy('ud.mail');
     return $select;
   }
 
@@ -113,27 +113,6 @@ class SimplenewsByRoleRecipientHandler extends RecipientHandlerExtraBase impleme
       '#suffix' => '</div>',
     ];
     return $element;
-  }
-
-  /**
-   *
-   */
-  public static function settingsFormSubmit($settings, FormStateInterface $form_state) {
-    $values = [];
-    foreach (['type'] as $item) {
-      if ($form_state->getValue($item)) {
-        $values[$item] = $form_state->getValue($item);
-      }
-    }
-    return $values;
-  }
-
-  /**
-   * @TODO remane
-   */
-  public function ajaxUpdateRecipientHandlerSettings($form, FormStateInterface $form_state) {
-    return empty($form['send']['recipient_handler_settings']['count']) ? [] : $form['send']['recipient_handler_settings']['count'];
-
   }
 
 }

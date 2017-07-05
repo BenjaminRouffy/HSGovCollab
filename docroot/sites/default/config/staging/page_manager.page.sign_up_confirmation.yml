@@ -1,12 +1,21 @@
 uuid: 57bd199a-9ee3-477d-a58d-77d7e13247b4
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - group_dashboard
 id: sign_up_confirmation
 label: 'Sign up confirmation'
 description: ''
 use_admin_theme: false
 path: /user/sign-up/confirm
 access_logic: and
-access_conditions: {  }
+access_conditions:
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
 parameters: {  }

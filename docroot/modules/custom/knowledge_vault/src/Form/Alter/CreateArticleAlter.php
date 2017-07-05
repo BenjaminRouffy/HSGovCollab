@@ -24,15 +24,6 @@ class CreateArticleAlter implements FormAlterServiceBaseInterface, FormAlterServ
    * @inheritdoc
    */
   public function formAlter(&$form, FormStateInterface $form_state) {
-    $group = \Drupal::routeMatch()->getParameter('group');
-
-    if (!empty($group) && isset($form['field_knowledge_vault'])) {
-      unset($form['field_knowledge_vault']);
-    }
-    else {
-      $form['field_knowledge_vault']['widget'][0]['entity_gids']['#required'] = TRUE;
-    }
-
     if (isset($form['title'])) {
       $form['title']['widget'][0]['value']['#attributes']['placeholder'] = $this->t('Enter title');
     }

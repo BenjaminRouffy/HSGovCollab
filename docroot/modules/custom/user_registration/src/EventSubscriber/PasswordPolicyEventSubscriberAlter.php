@@ -32,6 +32,7 @@ class PasswordPolicyEventSubscriberAlter extends PasswordPolicyEventSubscriber {
         'system.ajax',
         'user.logout',
         'page_manager.page_view_my_settings',
+        'page_manager.page_view_sign_up_confirmation',
         'page_manager.page_view_page_403',
         'page_manager.page_view_page_404',
       ];

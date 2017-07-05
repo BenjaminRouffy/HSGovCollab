@@ -119,15 +119,18 @@ function country_file_access(EntityInterface $entity, $operation, AccountInterfa
 function country_node_access_records_alter(array &$grants, NodeInterface $node) {
 
   if (in_array($node->getType(), _country_public_global_content_types())) {
+    $gnode_grants = gnode_node_access_records($node);
 
-    $grants[] = [
-      'realm' => 'content:nongroup',
-      'gid' => NON_GROUP,
-      'grant_view' => 1,
-      'grant_update' => 0,
-      'grant_delete' => 0,
-      'priority' => 0,
-    ];
+    if (empty($gnode_grants)) {
+      $grants[] = [
+        'realm' => 'content:nongroup',
+        'gid' => NON_GROUP,
+        'grant_view' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
+        'priority' => -1,
+      ];
+    }
 
     if (isset($node->public_content)) {
       $public_content = $node->public_content->value;

@@ -1,6 +1,6 @@
 ---
   - name: Update codebase.
-    shell: 'cd {{ source }} && git pull --ff-only origin live'
+    shell: 'cd {{ source }} && git fetch origin && git pull --ff-only origin live'
     when: deploy_type == 'remote'
 
   # @TODO Ensure that an origin remote is correct.

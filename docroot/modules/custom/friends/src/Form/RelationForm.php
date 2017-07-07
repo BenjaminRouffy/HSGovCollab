@@ -94,7 +94,7 @@ class RelationForm extends FormBase {
     }
     else {
       $form['container']['connect_link'] = [
-        '#title' => $this->t('I would like to connect'),
+        '#title' => $this->t('I would like to collaborate'),
         '#url' => Url::fromRoute('friends.connect', ['user' => $user->id()]),
         '#type' => 'link',
         '#attributes' => [

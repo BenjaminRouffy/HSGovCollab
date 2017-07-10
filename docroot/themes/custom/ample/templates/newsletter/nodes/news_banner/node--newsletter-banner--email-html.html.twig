@@ -6,7 +6,7 @@
           <td>
             {% if content.field_image|field_value %}
               <div class="newsletter-large-image">
-                <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
+                <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;" width="100%">
               </div>
             {% endif %}
           </td>
@@ -26,11 +26,11 @@
 </table>
 
 {% if content.childs|length %}
-  <table width="100%" cellspacing="0" cellpadding="0" style="font-family: Arial, 'sans-serif'; font-size: 14px; line-height: 1.4; padding: 10px 0;" class="two-column-wrapper">
+  <table width="100%" cellspacing="0" cellpadding="0" style="font-family: Arial, 'sans-serif'; font-size: 14px; line-height: 1.4; padding: 10px 0; table-layout: fixed;" class="two-column-wrapper">
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
         {% for subentity in row %}
-          <td style="vertical-align: top;" width="50%">{{ subentity }}</td>
+          <td style="font-family: Arial, 'sans-serif'; vertical-align: top;" width="50%">{{ subentity }}</td>
         {% endfor %}
       </tr>
     {% endfor %}

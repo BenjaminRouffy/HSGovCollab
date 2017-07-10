@@ -30,7 +30,7 @@
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
         {% for subentity in row %}
-          <td style="vertical-align: top;">{{ subentity }}</td>
+          <td style="vertical-align: top;" width="50%">{{ subentity }}</td>
         {% endfor %}
       </tr>
     {% endfor %}

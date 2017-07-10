@@ -13,8 +13,10 @@
         </tr>
         <tr>
           <td style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px;">
-            <div class="newsletter-bg" style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px; overflow: hidden; margin: 0;">
-              {{ content.body }}
+            <div class="newsletter-bg" style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; margin: 0;">
+              <p style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; margin: 0;">
+                {{ content.body }}
+              </p>
             </div>
           </td>
         </tr>
@@ -28,7 +30,7 @@
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
         {% for subentity in row %}
-          <td style="vertical-align: top;">{{ subentity }}</td>
+          <td style="vertical-align: top;" width="50%">{{ subentity }}</td>
         {% endfor %}
       </tr>
     {% endfor %}

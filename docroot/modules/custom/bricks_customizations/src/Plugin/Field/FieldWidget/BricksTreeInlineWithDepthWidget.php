@@ -83,7 +83,7 @@ class BricksTreeInlineWithDepthWidget extends BricksTreeInlineWidget {
   private function formElementAlter(&$element, $item, $value) {
     if ($this->getSetting('hidden_view_mode')) {
       // @see _bricks_nest_items()
-      unset($element['options']['view_mode']);
+      // unset($element['options']['view_mode']);
     }
   }
 

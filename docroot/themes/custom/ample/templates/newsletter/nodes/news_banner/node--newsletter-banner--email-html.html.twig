@@ -1,14 +1,24 @@
 <table class="banner-wrapper" width="100%" cellspacing="0" cellpadding="0" style="font-size: 14px; line-height: 1.4; padding: 10px 20px;">
   <tr>
     <td {{ attributes }} align="center">
-      {% if content.field_image|field_value %}
-        <div class="newsletter-large-image">
-          <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
-        </div>
-      {% endif %}
-      <div class="newsletter-bg" style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px; overflow: hidden;">
-        {{ content.body }}
-      </div>
+      <table width="100%" cellspacing="0" cellpadding="0" >
+        <tr>
+          <td>
+            {% if content.field_image|field_value %}
+              <div class="newsletter-large-image">
+                <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">
+              </div>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px;">
+            <div class="newsletter-bg" style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px; overflow: hidden; margin: 0;">
+              {{ content.body }}
+            </div>
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
 </table>

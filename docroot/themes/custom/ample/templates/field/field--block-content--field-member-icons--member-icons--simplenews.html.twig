@@ -1,3 +1,5 @@
 {% for item in items %}
-  {{ item.content|render|striptags('<img>')|raw }}
+  <span style="display: inline-block; vertical-align: top; padding: 10px;">
+    {{ item.content|render|striptags('<img>')|raw }}
+  </span>
 {% endfor %}

@@ -1,5 +1,5 @@
 <h2 style="font-family: Arial, 'sans-serif'; text-align: center; text-decoration: none; padding: 20px 0;">
-  <a style="font-family: Arial, 'sans-serif'; text-align: center; color: #333; text-decoration: none; padding: 20px 0;" href="{{ path('entity.node.canonical', {'node': node.id()}) }}">
+  <a style="font-family: Arial, 'sans-serif'; text-align: center; color: #333; text-decoration: none; padding: 20px 0;" href="{{ url('entity.node.canonical', {'node': node.id()}, { absolute: true }) }}">
     <span style="font-family: Arial, 'sans-serif'; text-align: center; color: #333; text-decoration: none; padding: 20px 0;">{{ title }}</span>
   </a>
 </h2>

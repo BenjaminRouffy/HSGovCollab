@@ -1,9 +1,9 @@
-uuid: 5ae339ff-4cdf-4c83-9e59-f02d4ea696a3
+uuid: c0b2707f-5e97-4798-b99d-40fd01402bfe
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.email_textalt
+    - core.entity_view_mode.node.email_html_two
     - field.field.node.news.body
     - field.field.node.news.field_author
     - field.field.node.news.field_category
@@ -18,20 +18,19 @@ dependencies:
     - field.field.node.news.field_process_and_milestones
     - field.field.node.news.field_related_content_selector
     - node.type.news
-    - responsive_image.styles.responsive_image
   module:
     - datetime
     - entity_reference_revisions
     - events
     - group_content_formatters
+    - image_url_formatter
     - rel_content
-    - responsive_image
     - text
     - user
-id: node.news.email_textalt
+id: node.news.email_html_two
 targetEntityType: node
 bundle: news
-mode: email_textalt
+mode: email_html_two
 content:
   addtoany:
     weight: 10
@@ -81,12 +80,13 @@ content:
     region: content
   field_image:
     weight: 2
-    label: above
+    label: hidden
     settings:
-      responsive_image_style: responsive_image
+      url_type: '0'
+      image_style: 250x165
       image_link: ''
     third_party_settings: {  }
-    type: responsive_image
+    type: image_url
     region: content
   field_join_block:
     weight: 5

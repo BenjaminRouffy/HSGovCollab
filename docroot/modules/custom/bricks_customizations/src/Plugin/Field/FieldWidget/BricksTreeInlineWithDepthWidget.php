@@ -83,8 +83,17 @@ class BricksTreeInlineWithDepthWidget extends BricksTreeInlineWidget {
   private function formElementAlter(&$element, $item, $value) {
     if ($this->getSetting('hidden_view_mode')) {
       // @see _bricks_nest_items()
-      // unset($element['options']['view_mode']);
+      unset($element['options']['view_mode']);
     }
+  }
+
+  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
+    $values =  parent::massageFormValues($values, $form, $form_state);
+    foreach ($values as &$value) {
+      // @TODO Sorry for hard coded display mode.
+      $value['options']['view_mode'] = ($value['depth'] == 0 ? 'email_html' : 'email_html_two');
+    }
+    return $values;
   }
 
 }

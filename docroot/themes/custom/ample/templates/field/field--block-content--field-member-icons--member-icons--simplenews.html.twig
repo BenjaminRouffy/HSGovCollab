@@ -1,6 +1,6 @@
-<div style="display: inline-block; vertical-align: top;">
+<div style="display: inline-block; vertical-align: top; padding: 10px;">
   {% for item in items %}
-    <div style="display: inline-block; vertical-align: top;">
+    <div style="display: inline-block; vertical-align: top; padding: 10px;">
       {{ item.content|render|striptags('<img>')|raw }}
     </div>
   {% endfor %}

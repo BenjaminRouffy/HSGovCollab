@@ -8,21 +8,15 @@
     <td {{ attributes }} align="center" style="padding: 10px 20px;">
       <table width="100%" cellspacing="0" cellpadding="0">
         <tr>
-          <td>
+          <td class="newsletter-large-image" style="padding: 0 0 10px 0;">
             {% if content.field_image|field_value %}
-              <div class="newsletter-large-image">
-                <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image box" style="max-width: 100%; margin-bottom: 10px;">
-              </div>
+              <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image box" style="max-width: 100%;">
             {% endif %}
           </td>
         </tr>
         <tr>
-          <td style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px;">
-            <div class="newsletter-bg" style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; margin: 0;">
-              <span style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; margin: 0;">
-                {{ content.body }}
-              </span>
-            </div>
+          <td class="newsletter-bg" style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px; text-align: center;">
+            {{ content.body }}
           </td>
         </tr>
       </table>

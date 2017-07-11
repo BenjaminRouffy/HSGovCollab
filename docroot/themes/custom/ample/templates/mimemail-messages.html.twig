@@ -71,49 +71,45 @@
     </style>
   </head>
   <body style="font-size: 14px; color: #416170; line-height: 1.4; margin: 0; padding: 0; -webkit-text-size-adjust: 100%; word-wrap: break-word;" id="mimemail-body" class="test" {% if ( module | length > 0 ) and ( key | length > 0 ) %}  {% set class = 'class="' ~ module ~ '-' ~ key ~ '"' %} {% endif %} >
-    <!--[if (gte mso 9)|(IE)]>
-      <table width="580" align="center" cellpadding="0" cellspacing="0" border="0" style="width: 580px;">
-        <tr>
-          <td>
-    <![endif]-->
-    <table class="wrapper" align="center" width="100%" style="font-size: 14px; font-family: Arial, sans-serif; line-height: 20px; border-collapse: collapse; table-layout: fixed; max-width: 600px; min-width: 320px; background-color: #e9ecee;" cellpadding="0" cellspacing="0" role="presentation">
+    <table width="580" align="center" cellpadding="0" cellspacing="0" border="0" style="width: 580px;">
       <tr>
         <td>
-          <table width="100%" style="font-size: 12px; line-height: 1.4; color: #416170; padding: 20px 10px;" cellpadding="0" cellspacing="0" class="table5" align="center">
-            <tr>
-              <td></td>
-              <td width="200">
-                <a href="{{ site_base_url }}" style="width: 200px; display: block; margin: 0 auto;">
-                  <img src="{{ site_base_url }}/themes/custom/ample/images/P4H_logo.7.png" alt="Logo">
-                </a>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td align="center" style="font-family: Arial, sans-serif; padding: 30px 0 0; text-align: center;">{{ "now"|date("d M. Y") }}</td>
-              <td></td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <table width="100%" style="font-size: 14px; line-height: 1.4; padding: 10px;" cellspacing="0" cellpadding="0" align="center">
+          <table class="wrapper" align="center" width="100%" style="font-size: 14px; font-family: Arial, sans-serif; line-height: 20px; border-collapse: collapse; table-layout: fixed; max-width: 600px; min-width: 320px; background-color: #e9ecee;" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
               <td>
-                {{ body|raw }}
+                <table width="100%" style="font-size: 12px; line-height: 1.4; color: #416170; padding: 20px 10px;" cellpadding="0" cellspacing="0" class="table5" align="center">
+                  <tr>
+                    <td></td>
+                    <td width="200">
+                      <a href="{{ site_base_url }}" style="width: 200px; display: block; margin: 0 auto;">
+                        <img src="{{ site_base_url }}/themes/custom/ample/images/P4H_logo.7.png" alt="Logo">
+                      </a>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td align="center" style="font-family: Arial, sans-serif; padding: 30px 0 0; text-align: center;">{{ "now"|date("d M. Y") }}</td>
+                    <td></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <table width="100%" style="font-size: 14px; line-height: 1.4; padding: 10px 10px 0 10px;" cellspacing="0" cellpadding="0" align="center">
+                  <tr>
+                    <td>
+                      {{ body|raw }}
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
-    <!--[if (gte mso 9)|(IE)]>
-        </td>
-      </tr>
-    </table>
-    <![endif]-->
   </body>
 </html>

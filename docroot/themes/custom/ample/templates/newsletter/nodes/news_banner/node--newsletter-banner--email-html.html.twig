@@ -1,18 +1,18 @@
-<table class="banner-wrapper" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0; font-size: 14px; line-height: 1.4; table-layout: fixed;">
+<table class="banner-wrapper" width="100%" cellspacing="0" cellpadding="0" style="font-size: 14px; line-height: 1.4; table-layout: fixed;">
   <tr>
-    <td {{ attributes }} align="center" style="padding: 10px 20px; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
-      <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+    <td {{ attributes }} align="center" style="padding: 10px 20px;">
+      <table width="100%" cellspacing="0" cellpadding="0">
         <tr>
-          <td style="border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+          <td>
             {% if content.field_image|field_value %}
               <div class="newsletter-large-image">
-                <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image box" style="max-width: 100%; margin-bottom: 10px;" width="100%">
+                <img src="{{ content.field_image|field_value|render|striptags|trim }}" alt="Image box" style="max-width: 100%; margin-bottom: 10px;">
               </div>
             {% endif %}
           </td>
         </tr>
         <tr>
-          <td style="border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0; font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px;">
+          <td style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; padding: 25px 20px;">
             <div class="newsletter-bg" style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; margin: 0;">
               <span style="font-family: Arial, 'sans-serif'; font-size: 14px; background: #ea3a32; color: #ffffff; margin: 0;">
                 {{ content.body }}
@@ -26,11 +26,11 @@
 </table>
 
 {% if content.childs|length %}
-  <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0; font-family: Arial, 'sans-serif'; font-size: 14px; line-height: 1.4; padding: 10px 0; table-layout: fixed;" class="two-column-wrapper">
+  <table width="100%" cellspacing="0" cellpadding="0" style="font-family: Arial, 'sans-serif'; font-size: 14px; line-height: 1.4; padding: 10px 0; table-layout: fixed;" class="two-column-wrapper">
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
         {% for subentity in row %}
-          <td style="border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0; font-family: Arial, 'sans-serif'; vertical-align: top;" width="50%">
+          <td style="font-family: Arial, 'sans-serif'; vertical-align: top;" width="50%">
             <!--[if (gte mso 9)|(IE)]>
             <table width="280" align="center" cellpadding="10" cellspacing="0" border="0" style="width: 280px;">
               <tr>

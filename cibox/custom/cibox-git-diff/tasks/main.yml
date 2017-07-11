@@ -1,4 +1,8 @@
 ---
+  - name: Update codebase.
+    shell: 'cd {{ source }} && git fetch origin && git pull --ff-only origin live'
+    when: deploy_type == 'remote'
+
   # @TODO Ensure that an origin remote is correct.
   - name: Get the latest tag.
     shell: cd {{ source }} && git describe --tags `git rev-list --tags --max-count=1` 2> /dev/null || echo 'origin/master'

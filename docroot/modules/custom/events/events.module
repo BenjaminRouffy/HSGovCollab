@@ -124,3 +124,13 @@ function events_vote_type_access(EntityInterface $entity, $operation, AccountInt
 
   return AccessResult::neutral();
 }
+
+/**
+ * Implements hook_views_plugins_display_alter().
+ */
+function events_views_plugins_display_alter(array &$plugins) {
+  if(isset($plugins['data_export'])){
+    $data_export = &$plugins['data_export'];
+    $data_export['class'] = 'Drupal\events\Custom\views\display\DataExport';
+  }
+}

@@ -1,0 +1,17 @@
+uuid: e0042850-d436-4fbb-b708-58ee57d69a11
+langcode: en
+status: true
+dependencies:
+  module:
+    - auto_login_url
+title: 'Default cron handler'
+id: auto_login_url_cron
+weight: 0
+module: auto_login_url
+callback: auto_login_url_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

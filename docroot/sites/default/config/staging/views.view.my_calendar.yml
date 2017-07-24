@@ -6,7 +6,9 @@ dependencies:
     - field.storage.node.field_date
     - node.type.event
     - taxonomy.vocabulary.categories
+    - user.role.authenticated
   module:
+    - auto_login_url
     - better_exposed_filters
     - events
     - ggroup
@@ -17,6 +19,7 @@ dependencies:
     - rest
     - serialization
     - taxonomy
+    - user
     - views_data_export
 id: my_calendar
 label: 'My Calendar'
@@ -34,8 +37,10 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: role
+        options:
+          role:
+            authenticated: authenticated
       cache:
         type: tag
         options: {  }
@@ -680,6 +685,7 @@ display:
         - url
         - user
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.field_date'
   block_1:
@@ -936,6 +942,7 @@ display:
         - url
         - user
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.field_date'
   data_export_1:
@@ -1382,6 +1389,33 @@ display:
             delta:
               alias: ''
               raw_output: false
+      auth:
+        - auto_login_url
+      style:
+        type: data_export
+        options:
+          formats:
+            ical: ical
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+          xls_settings:
+            xls_format: Excel2007
+            metadata:
+              creator: ''
+              last_modified_by: ''
+              title: ''
+              description: ''
+              subject: ''
+              keywords: ''
+              category: ''
+              manager: ''
+              company: ''
+      enabled: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1392,6 +1426,7 @@ display:
         - url
         - user
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.field_date'
   governance_area:
@@ -1820,5 +1855,6 @@ display:
         - url
         - user
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.field_date'

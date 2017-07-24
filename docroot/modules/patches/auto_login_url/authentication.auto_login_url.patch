@@ -1,7 +1,7 @@
-diff --git b/docroot/modules/contrib/auto_login_url/auto_login_url.services.yml a/docroot/modules/contrib/auto_login_url/auto_login_url.services.yml
+diff --git b/auto_login_url.services.yml a/auto_login_url.services.yml
 index e48dd3c34..65aee9228 100644
---- b/docroot/modules/contrib/auto_login_url/auto_login_url.services.yml
-+++ a/docroot/modules/contrib/auto_login_url/auto_login_url.services.yml
+--- b/auto_login_url.services.yml
++++ a/auto_login_url.services.yml
 @@ -8,4 +8,9 @@ services:
    auto_login_url.general:
      class: Drupal\auto_login_url\AutoLoginUrlGeneral
@@ -11,12 +11,12 @@ index e48dd3c34..65aee9228 100644
 +    arguments: ['@config.factory', '@entity_type.manager']
 +    tags:
 +      - { name: authentication_provider, provider_id: auto_login_url, priority: 100 }
- 
-diff --git b/docroot/modules/contrib/auto_login_url/src/Authentication/Provider/AutoLoginUrlAuthProvider.php a/docroot/modules/contrib/auto_login_url/src/Authentication/Provider/AutoLoginUrlAuthProvider.php
+
+diff --git b/src/Authentication/Provider/AutoLoginUrlAuthProvider.php a/src/Authentication/Provider/AutoLoginUrlAuthProvider.php
 new file mode 100644
 index 000000000..87e4aa312
 --- /dev/null
-+++ a/docroot/modules/contrib/auto_login_url/src/Authentication/Provider/AutoLoginUrlAuthProvider.php
++++ a/src/Authentication/Provider/AutoLoginUrlAuthProvider.php
 @@ -0,0 +1,89 @@
 +<?php
 +
@@ -107,10 +107,10 @@ index 000000000..87e4aa312
 +  }
 +
 +}
-diff --git b/docroot/modules/contrib/auto_login_url/src/AutoLoginUrlLogin.php a/docroot/modules/contrib/auto_login_url/src/AutoLoginUrlLogin.php
+diff --git b/src/AutoLoginUrlLogin.php a/src/AutoLoginUrlLogin.php
 index aba7f0d4c..5bd501176 100644
---- b/docroot/modules/contrib/auto_login_url/src/AutoLoginUrlLogin.php
-+++ a/docroot/modules/contrib/auto_login_url/src/AutoLoginUrlLogin.php
+--- b/src/AutoLoginUrlLogin.php
++++ a/src/AutoLoginUrlLogin.php
 @@ -22,19 +22,12 @@ public function __construct() {
    }
  

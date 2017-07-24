@@ -231,7 +231,7 @@ class DataExport extends Serializer {
   public function attachTo(array &$build, $display_id, Url $url, $title) {
     // @todo This mostly hard-codes CSV handling. Figure out how to abstract.
 
-    $url_options = [];
+    $url_options = (array) $url->getOptions();
     $input = $this->view->getExposedInput();
     if ($input) {
       $url_options['query'] = $input;

@@ -179,7 +179,7 @@ class DataExport extends RestExport {
    * {@inheritdoc}
    */
   public function attachTo(ViewExecutable $clone, $display_id, array &$build) {
-
+    global $base_url;
     $displays = $this->getOption('displays');
     if (empty($displays[$display_id])) {
       return;
@@ -191,9 +191,20 @@ class DataExport extends RestExport {
     $clone->setDisplay($this->display['id']);
     $clone->buildTitle();
     if ($plugin = $clone->display_handler->getPlugin('style')) {
-      $plugin->attachTo($build, $display_id, $clone->getUrl(), $clone->getTitle());
+      /** @var \Drupal\Core\Url $url */
+      $url = $clone->getUrl();
+      /** @var \Drupal\Core\Session\AccountInterface $user */
+      $user = \Drupal::currentUser()->getAccount();
+      $hash = end(explode('/',auto_login_url_create($user->id(), '<front>', FALSE)));
+      $url->setOption('query', [
+        'provider_user' => $user->id(),
+        'provider_access' => $hash,
+      ]);
+      $url->setOption('base_url', preg_replace('~^(\w{2,5})\:~is', 'webcal:', $base_url));
+      // @TODO Add a webcal schema here.
+      $plugin->attachTo($build, $display_id, $url, $clone->getTitle());
       foreach ($clone->feedIcons as $feed_icon) {
-        $this->view->feedIcons[] = $feed_icon;
+          $this->view->feedIcons[] = $feed_icon;
       }
     }
 

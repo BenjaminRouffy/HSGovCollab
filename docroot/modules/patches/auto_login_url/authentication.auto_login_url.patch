@@ -1,0 +1,171 @@
+diff --git b/docroot/modules/contrib/auto_login_url/auto_login_url.services.yml a/docroot/modules/contrib/auto_login_url/auto_login_url.services.yml
+index e48dd3c34..65aee9228 100644
+--- b/docroot/modules/contrib/auto_login_url/auto_login_url.services.yml
++++ a/docroot/modules/contrib/auto_login_url/auto_login_url.services.yml
+@@ -8,4 +8,9 @@ services:
+   auto_login_url.general:
+     class: Drupal\auto_login_url\AutoLoginUrlGeneral
+     arguments: []
++  authentication.auto_login_url:
++    class: Drupal\auto_login_url\Authentication\Provider\AutoLoginUrlAuthProvider
++    arguments: ['@config.factory', '@entity_type.manager']
++    tags:
++      - { name: authentication_provider, provider_id: auto_login_url, priority: 100 }
+ 
+diff --git b/docroot/modules/contrib/auto_login_url/src/Authentication/Provider/AutoLoginUrlAuthProvider.php a/docroot/modules/contrib/auto_login_url/src/Authentication/Provider/AutoLoginUrlAuthProvider.php
+new file mode 100644
+index 000000000..87e4aa312
+--- /dev/null
++++ a/docroot/modules/contrib/auto_login_url/src/Authentication/Provider/AutoLoginUrlAuthProvider.php
+@@ -0,0 +1,89 @@
++<?php
++
++namespace Drupal\auto_login_url\Authentication\Provider;
++
++use Drupal\Core\Authentication\AuthenticationProviderInterface;
++use Drupal\Core\Config\ConfigFactoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\user\Entity\User;
++use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
++use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
++use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
++
++/**
++ * Class AutoLoginUrlAuthProvider.
++ *
++ * @package Drupal\auto_login_url\Authentication\Provider
++ */
++class AutoLoginUrlAuthProvider implements AuthenticationProviderInterface {
++
++  /**
++   * The config factory.
++   *
++   * @var \Drupal\Core\Config\ConfigFactoryInterface
++   */
++  protected $configFactory;
++
++  /**
++   * The entity type manager.
++   *
++   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
++   */
++  protected $entityTypeManager;
++
++  /**
++   * RouteMatch interface.
++   *
++   * @var \Drupal\auto_login_url\Authentication\Provider\RouteMatchInterface
++   */
++  protected $routeMatch;
++
++  /**
++   * Constructs a HTTP basic authentication provider object.
++   *
++   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
++   *   The config factory.
++   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
++   *   The entity type manager service.
++   */
++  public function __construct(ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager) {
++    $this->configFactory = $config_factory;
++    $this->entityTypeManager = $entity_type_manager;
++  }
++
++  /**
++   * Checks whether suitable authentication credentials are on the request.
++   *
++   * @param \Symfony\Component\HttpFoundation\Request $request
++   *   The request object.
++   *
++   * @return bool
++   *   TRUE if authentication credentials suitable for this provider are on the
++   *   request, FALSE otherwise.
++   */
++  public function applies(Request $request) {
++    return ($request->query->has('provider_access') && $request->query->has('provider_access'));
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function authenticate(Request $request) {
++
++    if($request->query->has('provider_access') && $request->query->has('provider_access')) {
++
++      // Check hash is unique.
++      $result = \Drupal::service('auto_login_url.login')->getUserByHash(
++        $request->query->get('provider_user'),
++        $request->query->get('provider_access')
++      );
++
++      if (count($result) > 0 && isset($result['uid'])) {
++        return User::load($result['uid']);
++      }
++    }
++    throw new AccessDeniedHttpException();
++  }
++
++}
+diff --git b/docroot/modules/contrib/auto_login_url/src/AutoLoginUrlLogin.php a/docroot/modules/contrib/auto_login_url/src/AutoLoginUrlLogin.php
+index aba7f0d4c..5bd501176 100644
+--- b/docroot/modules/contrib/auto_login_url/src/AutoLoginUrlLogin.php
++++ a/docroot/modules/contrib/auto_login_url/src/AutoLoginUrlLogin.php
+@@ -22,19 +22,12 @@ public function __construct() {
+   }
+ 
+   /**
+-   * Get destination URL for autologin hash.
+-   *
+-   * @param integer $uid
+-   *   User id.
+-   * @param string $hash
+-   *   Hash string.
++   * Load user object by hash id.
+    *
+-   * @return string|bool
+-   *   Destination or FALSE
++   * @param $hash
++   *   Hashed key.
+    */
+-  function login($uid, $hash) {
+-
+-    $config = \Drupal::config('auto_login_url.settings');
++  function getUserByHash($uid, $hash) {
+     $connection = \Drupal::database();
+ 
+     // Get ALU secret.
+@@ -47,12 +40,32 @@ function login($uid, $hash) {
+     $key = Settings::getHashSalt() . $auto_login_url_secret . $password;
+ 
+     // Get if the hash is in the db.
+-    $result = $connection->select('auto_login_url', 'a')
++    return $connection->select('auto_login_url', 'a')
+       ->fields('a', array('id', 'uid', 'destination'))
+       ->condition('hash', Crypt::hmacBase64($hash, $key), '=')
+       ->execute()
+       ->fetchAssoc();
+ 
++  }
++
++  /**
++   * Get destination URL for autologin hash.
++   *
++   * @param integer $uid
++   *   User id.
++   * @param string $hash
++   *   Hash string.
++   *
++   * @return string|bool
++   *   Destination or FALSE
++   */
++  function login($uid, $hash) {
++
++    $config = \Drupal::config('auto_login_url.settings');
++    $connection = \Drupal::database();
++
++    $result = $this->getUserByHash($uid, $hash);
++
+     if (count($result) > 0 && isset($result['uid'])) {
+       $account = User::load($result['uid']);
+       user_login_finalize($account);

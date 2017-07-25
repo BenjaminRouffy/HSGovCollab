@@ -1,6 +1,8 @@
 <div class="slider-item-wrapper" {#style="background-image: url({{ file_url(content.field_content_image|render|striptags|trim) }})"#}>
   {% if content.field_content_image %}
-    {{ content.field_content_image }}
+    <div class="image-wrapper">
+      {{ content.field_content_image }}
+    </div>
   {% endif %}
 
   {% if content.field_description|field_value %}

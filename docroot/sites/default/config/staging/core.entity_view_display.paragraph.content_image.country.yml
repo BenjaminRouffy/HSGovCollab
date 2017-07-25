@@ -9,8 +9,9 @@ dependencies:
     - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
     - paragraphs.paragraphs_type.content_image
+    - responsive_image.styles.banner_image
   module:
-    - image
+    - responsive_image
 id: paragraph.content_image.country
 targetEntityType: paragraph
 bundle: content_image
@@ -20,10 +21,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: banner_image
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
     region: content
   field_description:
     type: string

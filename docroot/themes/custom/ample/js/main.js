@@ -315,7 +315,7 @@
 
         function adaptiveHeight() {
           var $activeItem = $slider.find('.owl-item.active');
-          var activeItemImgHeight = $activeItem.find('.slider-item-wrapper').children('img').height();
+          var activeItemImgHeight = $activeItem.find('.image-wrapper img').height();
 
           $slider.find('.owl-stage-outer').height(activeItemImgHeight);
         }

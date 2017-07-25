@@ -1,0 +1,18 @@
+uuid: 02c80f92-fcbe-46d1-b45c-fba65616871f
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.767xauto
+  theme:
+    - ample
+id: banner_image
+label: 'Banner image'
+image_style_mappings:
+  -
+    breakpoint_id: ample.tablet
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 767xauto
+breakpoint_group: ample
+fallback_image_style: '_original image_'

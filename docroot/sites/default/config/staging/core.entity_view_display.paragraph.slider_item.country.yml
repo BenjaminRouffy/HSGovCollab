@@ -7,8 +7,9 @@ dependencies:
     - field.field.paragraph.slider_item.field_content_image
     - field.field.paragraph.slider_item.field_description
     - paragraphs.paragraphs_type.slider_item
+    - responsive_image.styles.banner_image
   module:
-    - image
+    - responsive_image
 id: paragraph.slider_item.country
 targetEntityType: paragraph
 bundle: slider_item
@@ -18,10 +19,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: banner_image
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
     region: content
   field_description:
     weight: 0

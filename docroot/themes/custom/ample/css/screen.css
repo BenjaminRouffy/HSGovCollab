@@ -7901,8 +7901,11 @@ footer {
   height: 100%;
   position: relative;
   text-align: center; }
-  .top-banner-region .slider-item-wrapper > img, .top-banner-region
-  .banner-image > img {
+  .top-banner-region .slider-item-wrapper > img,
+  .top-banner-region .slider-item-wrapper > picture img, .top-banner-region
+  .banner-image > img,
+  .top-banner-region
+  .banner-image > picture img {
     width: 100%; }
   .fixed .slider-item-wrapper, .fixed
   .banner-image {

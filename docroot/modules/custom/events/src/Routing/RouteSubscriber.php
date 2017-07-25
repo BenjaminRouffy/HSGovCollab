@@ -20,9 +20,9 @@ class RouteSubscriber extends RouteSubscriberBase {
     if ($route = $collection->get('group.calendar')) {
       $route->addRequirements(['_calendar_access_check' => 'TRUE']);
     }
-    if ($route = $collection->get('view.my_calendar.data_export_1')) {
-      $route->addRequirements(['_calendar_export_access_check' => 'TRUE']);
-    }
+    //if ($route = $collection->get('view.my_calendar.data_export_1')) {
+    //  $route->addRequirements(['_calendar_export_access_check' => 'TRUE']);
+    //}
   }
 
 }

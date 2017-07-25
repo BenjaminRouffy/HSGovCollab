@@ -1014,3 +1014,12 @@ function deployment_update_8082() {
 function deployment_update_8083() {
   \Drupal::service('module_installer')->install(['imagemagick']);
 }
+
+/**
+ * Auto Login Url enable.
+ */
+function deployment_update_8084() {
+  \Drupal::service('module_installer')->install([
+    'auto_login_url',
+  ]);
+}

@@ -1490,11 +1490,33 @@ footer > .partners {
     height: 600px; }
     .group-country .country-content-wrapper:not(.logged),
     .group-region .country-content-wrapper:not(.logged) {
-      padding-top: 80px; }
+      padding-top: 40px; }
     .country-content-wrapper h1 {
-      font-size: 3.5rem;
-      line-height: 64px;
-      margin-bottom: 20px; } }
+      font-size: 2rem;
+      line-height: 48px; } }
+
+@media screen and (max-width: 600px) {
+  .country-content-wrapper .country-icon-wrapper {
+    height: 70px;
+    width: 70px; }
+  .country-content-wrapper h1 {
+    margin-top: 10px; }
+  .country-content-wrapper .follow-link .form-submit, .country-content-wrapper .follow-link .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .country-content-wrapper .follow-link a, .country-content-wrapper .follow-link .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .country-content-wrapper .follow-link .button, .country-content-wrapper .follow-link .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel, .country-content-wrapper .follow-link
+  .article-edit-node .node-article-delete-form #edit-cancel,
+  .article-edit-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel, .country-content-wrapper .follow-link
+  .article-delete-node .node-article-delete-form #edit-cancel,
+  .article-delete-node .node-article-delete-form .country-content-wrapper .follow-link #edit-cancel, .country-content-wrapper .follow-link .article-add-node #edit-delete, .article-add-node .country-content-wrapper .follow-link #edit-delete, .country-content-wrapper .follow-link
+  .article-edit-node #edit-delete,
+  .article-edit-node .country-content-wrapper .follow-link #edit-delete, .country-content-wrapper .follow-link
+  .article-delete-node #edit-delete,
+  .article-delete-node .country-content-wrapper .follow-link #edit-delete {
+    border-width: 2px;
+    margin-top: 30px;
+    margin-left: 0;
+    padding: 5px 20px; }
+  .group-country:not(.logged) .country-content-wrapper,
+  .group-region:not(.logged) .country-content-wrapper {
+    padding-top: 20px; } }
 
 @media (max-width: 479px) {
   .country-content-wrapper {
@@ -1505,11 +1527,13 @@ footer > .partners {
       float: none;
       margin: 0 auto; }
     .country-content-wrapper h1 {
-      font-size: 2rem;
-      line-height: 48px;
-      text-align: center; }
+      display: none; }
     .country-content-wrapper .follow-link {
       margin-left: 0; } }
+
+@media (max-width: 320px) {
+  .country-content-wrapper {
+    padding-top: 20px; } }
 
 .video-wrapper {
   position: relative; }

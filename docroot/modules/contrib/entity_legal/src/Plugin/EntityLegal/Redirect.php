@@ -45,6 +45,11 @@ class Redirect extends EntityLegalPluginBase {
       $event = &$context['event'];
       $response = new TrustedRedirectResponse($entity_url->toString());
       $event->setResponse($response);
+
+      // Remove destination cause the RedirectResponseSubscriber redirects and in some cases it brings redirect loops.
+      $request = $event->getRequest();
+      $request->query->remove('destination');
+      $request->request->remove('destination');
     }
   }
 

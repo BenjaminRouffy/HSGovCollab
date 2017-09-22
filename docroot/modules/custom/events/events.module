@@ -9,6 +9,8 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\datetime_range\Plugin\Field\FieldType\DateRangeFieldItemList;
+use Drupal\node\NodeInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
 use Drupal\Core\Session\AccountInterface;
@@ -132,5 +134,26 @@ function events_views_plugins_display_alter(array &$plugins) {
   if(isset($plugins['data_export'])){
     $data_export = &$plugins['data_export'];
     $data_export['class'] = 'Drupal\events\Custom\views\display\DataExport';
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_ID_create().
+ */
+function events_node_create(NodeInterface $node) {
+  if ($node->bundle() == 'event' && $node->hasField('field_date')
+    && $date = \Drupal::request()->query->get('date'))
+  {
+    $field = $node->get('field_date');
+    $default_value = [
+      [
+        'default_date_type' => 'custom',
+        'default_date' => format_date(strtotime($date . " 00:00:00"), 'custom', DATETIME_DATETIME_STORAGE_FORMAT, 'UTC'),
+        'default_end_date_type' => 'custom',
+        'default_end_date' => format_date(strtotime($date . " 23:59:59"), 'custom', DATETIME_DATETIME_STORAGE_FORMAT, 'UTC'),
+      ],
+    ];
+    $value = DateRangeFieldItemList::processDefaultValue($default_value, $node, $field->getFieldDefinition());
+    $field->setValue($value, TRUE);
   }
 }

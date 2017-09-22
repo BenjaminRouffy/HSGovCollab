@@ -1,0 +1,13 @@
+diff --git b/src/Plugin/views/style/DataExport.php a/src/Plugin/views/style/DataExport.php
+index e6a6e72c1..d97252c37 100644
+--- b/src/Plugin/views/style/DataExport.php
++++ a/src/Plugin/views/style/DataExport.php
+@@ -231,7 +231,7 @@ public function submitOptionsForm(&$form, FormStateInterface $form_state) {
+   public function attachTo(array &$build, $display_id, Url $url, $title) {
+     // @todo This mostly hard-codes CSV handling. Figure out how to abstract.
+ 
+-    $url_options = [];
++    $url_options = (array) $url->getOptions();
+     $input = $this->view->getExposedInput();
+     if ($input) {
+       $url_options['query'] = $input;

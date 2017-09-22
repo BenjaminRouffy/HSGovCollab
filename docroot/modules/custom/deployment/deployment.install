@@ -1014,3 +1014,24 @@ function deployment_update_8082() {
 function deployment_update_8083() {
   \Drupal::service('module_installer')->install(['imagemagick']);
 }
+
+/**
+ * Auto Login Url enable.
+ */
+function deployment_update_8084() {
+  \Drupal::service('module_installer')->install([
+    'auto_login_url',
+  ]);
+}
+
+
+/**
+ * Change flood interval to 10 mins.
+ */
+function deployment_update_8085() {
+  // 10 minutes.
+  $flood_interval = 60 * 10;
+  \Drupal::configFactory()->getEditable('user.flood')
+    ->set('user_window', $flood_interval)
+    ->save();
+}

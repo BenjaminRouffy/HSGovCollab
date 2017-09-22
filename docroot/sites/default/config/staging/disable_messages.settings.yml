@@ -3,7 +3,7 @@ disable_messages_filter_by_page: 0
 disable_messages_page_filter_paths: ''
 disable_messages_enable_debug: '0'
 disable_messages_debug_visible_div: '0'
-disable_messages_ignore_patterns: "The crop \".*\" were successfully updated for image \".*\".\r\nThe crop \".*\" was successfully added for image \".*\".\r\nYour vote was canceled.\r\nYour .* vote was added.\r\nYou are not allowed to vote the same way multiple times.\r\nA previous vote was not found.\r\nThe comment and all its replies have been deleted.\r\nYour comment has been posted."
+disable_messages_ignore_patterns: "The crop \".*\" were successfully updated for image \".*\".\r\nThe crop \".*\" was successfully added for image \".*\".\r\nYour vote was canceled.\r\nYour .* vote was added.\r\nYou are not allowed to vote the same way multiple times.\r\nA previous vote was not found.\r\nThe comment and all its replies have been deleted.\r\nYour comment has been posted.\r\nOne or more problems were detected with your Drupal installation.*"
 disable_messages_exclude_users: ''
 disable_messages_ignore_case: '1'
 disable_messages_ignore_regex:
@@ -15,5 +15,6 @@ disable_messages_ignore_regex:
   - '/^A previous vote was not found.$/i'
   - '/^The comment and all its replies have been deleted.$/i'
   - '/^Your comment has been posted.$/i'
+  - '/^One or more problems were detected with your Drupal installation.*$/i'
 _core:
   default_config_hash: i8jRi1xdFrnvhl-PF4yccZSKtXcGgJAWYTDmKkOMIPE

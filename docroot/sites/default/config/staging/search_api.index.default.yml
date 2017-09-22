@@ -7,10 +7,13 @@ dependencies:
     - field.storage.node.field_documents
     - field.storage.node.field_organization
     - field.storage.node.field_category
+    - field.storage.node.field_document
+    - field.storage.paragraph.field_file
     - field.storage.group.field_summary
     - field.storage.group.field_group_status
     - search_api.server.default
   module:
+    - paragraphs
     - search_api
     - search_api_attachments
     - search_customization
@@ -109,6 +112,17 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: computed_date
     type: date
+  field_file:
+    label: 'Document » Paragraph » File'
+    datasource_id: 'entity:node'
+    property_path: 'field_document:entity:field_file'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_document
+        - field.storage.paragraph.field_file
+      module:
+        - paragraphs
   label:
     label: Title
     datasource_id: 'entity:group'
@@ -143,8 +157,15 @@ field_settings:
 datasource_settings:
   'entity:node':
     bundles:
-      default: true
-      selected: {  }
+      default: false
+      selected:
+        - article
+        - basic_page
+        - document
+        - event
+        - member
+        - news
+        - social
     languages:
       default: true
       selected: {  }
@@ -156,18 +177,18 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  add_url: {  }
   aggregated_field: {  }
   content_access:
     weights:
       preprocess_query: -30
-  entity_status: {  }
   rendered_item: {  }
+  entity_status: {  }
+  add_url: {  }
   file_attachments: {  }
+  parent_groups: {  }
   group_access:
     weights:
       preprocess_query: -30
-  parent_groups: {  }
 tracker_settings:
   default: {  }
 options:

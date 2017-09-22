@@ -1,4 +1,4 @@
-uuid: 2cb4e512-bc02-4af6-8c28-1b306b1cb027
+uuid: c9a428bb-b731-4ad7-b396-467c08c292f2
 langcode: en
 status: true
 dependencies:
@@ -7,12 +7,12 @@ dependencies:
   module:
     - ctools
     - panels
-id: node_view-panels_variant-5
+id: node_view-panels_variant-7
 label: Newsletter
 variant: panels_variant
 variant_settings:
   blocks:
-    31d80da9-85a9-4045-932d-9721622bd1ea:
+    31c0645b-f90d-4d8c-ac74-379bdf69eb4f:
       id: 'entity_view:node'
       label: 'Entity view (Content)'
       provider: ctools
@@ -20,18 +20,18 @@ variant_settings:
       view_mode: email_html
       region: content
       weight: 0
-      uuid: 31d80da9-85a9-4045-932d-9721622bd1ea
+      uuid: 31c0645b-f90d-4d8c-ac74-379bdf69eb4f
       context_mapping:
         entity: node
   id: panels_variant
-  uuid: 32e53df6-534a-4ccb-9cd3-fd4ed5d7abf3
+  uuid: b55ef48c-465f-4164-9183-2da4e873aa57
   label: null
   weight: 0
   layout: default_layout
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager
-  storage_id: node_view-panels_variant-5
+  storage_id: node_view-panels_variant-7
   builder: standard
 page: node_view
 weight: 0

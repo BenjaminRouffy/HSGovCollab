@@ -7,7 +7,6 @@ dependencies:
     - views.view.news_and_events_group
   module:
     - ctools
-    - ctools_block
     - group_customization
     - panels
     - views
@@ -16,23 +15,6 @@ label: 'Governance area'
 variant: panels_variant
 variant_settings:
   blocks:
-    662e3a5b-b3c2-407b-bd48-9108a9fce9d3:
-      id: 'entity_field:group:field_join_block'
-      label: 'Join block'
-      provider: ctools_block
-      label_display: '0'
-      formatter:
-        label: hidden
-        type: entity_reference_entity_view
-        settings:
-          view_mode: link
-        third_party_settings: {  }
-        weight: 0
-      region: bottom
-      weight: 0
-      uuid: 662e3a5b-b3c2-407b-bd48-9108a9fce9d3
-      context_mapping:
-        entity: group
     6d558bf4-781f-4601-b5bf-e6c821fefc3f:
       id: 'views_block:news_and_events_group-documents_by_group'
       label: ''

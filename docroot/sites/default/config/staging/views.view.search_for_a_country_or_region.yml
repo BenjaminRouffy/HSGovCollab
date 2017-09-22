@@ -756,7 +756,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Search for a country or region'
-          operator: starts
+          operator: contains
           value: ''
           group: 1
           exposed: true
@@ -773,6 +773,14 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -1107,7 +1115,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Search for a country or region'
-          operator: starts
+          operator: contains
           value: ''
           group: 1
           exposed: true
@@ -1129,6 +1137,9 @@ display:
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -1468,7 +1479,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Search for a country or region'
-          operator: starts
+          operator: contains
           value: ''
           group: 1
           exposed: true
@@ -1491,6 +1502,8 @@ display:
               coordination_desk_users: '0'
               specific_users: '0'
               knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -1888,7 +1901,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Search for a country or region'
-          operator: starts
+          operator: contains
           value: ''
           group: 1
           exposed: true
@@ -1905,6 +1918,14 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -2463,7 +2484,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Search for a country or region'
-          operator: starts
+          operator: contains
           value: ''
           group: 1
           exposed: true
@@ -2487,6 +2508,7 @@ display:
               specific_users: '0'
               knowledge_vault_manager: '0'
               co_admin: '0'
+              product_manager: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -3522,7 +3544,7 @@ display:
         empty: false
       css_class: view-project
       display_description: ''
-      title: Projects
+      title: Collaborations
       filters:
         langcode:
           id: langcode

@@ -7,7 +7,7 @@ dependencies:
     - views.view.news_events
     - views.view.social_recent
   content:
-    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
+    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
     - 'block_content:map:88f5fb11-3c7b-4152-a2c0-5a7ba2d6b7d7'
     - 'block_content:social_links:df1384ff-6757-4475-a105-445191f983ec'
   module:
@@ -30,18 +30,6 @@ variant_settings:
       region: right
       weight: 0
       uuid: 75985333-dc66-4756-9083-e160f74c15ed
-      context_mapping: {  }
-    96236dee-ad40-4363-b355-9003727b0507:
-      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
-      label: 'Interested in becoming a member?'
-      provider: block_content
-      label_display: '0'
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
-      region: bottom
-      weight: -2
-      uuid: 96236dee-ad40-4363-b355-9003727b0507
       context_mapping: {  }
     8541392a-5791-4d60-9dbc-64b79df10dd1:
       id: 'views_block:news_events-block_frontpage'
@@ -76,6 +64,18 @@ variant_settings:
       region: right
       weight: -1
       uuid: d0518fbb-863a-4d06-b635-e6e218e0bc62
+      context_mapping: {  }
+    41345f69-8092-4908-99d4-1764c8c83785:
+      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
+      label: 'Contact us'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: bottom
+      weight: 0
+      uuid: 41345f69-8092-4908-99d4-1764c8c83785
       context_mapping: {  }
   id: panels_variant
   uuid: 73741361-9a0a-4f97-b5ed-a202074df3b0

@@ -5,10 +5,7 @@ dependencies:
   config:
     - page_manager.page.document_list_group
     - views.view.news_and_events_group
-  content:
-    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
   module:
-    - block_content
     - ctools
     - panels
     - user
@@ -18,18 +15,6 @@ label: Product
 variant: panels_variant
 variant_settings:
   blocks:
-    caed58c6-c658-45e7-b7dc-2732cda83256:
-      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
-      label: 'Interested in becoming a member?'
-      provider: block_content
-      label_display: '0'
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
-      region: bottom
-      weight: 0
-      uuid: caed58c6-c658-45e7-b7dc-2732cda83256
-      context_mapping: {  }
     8ce20589-87db-4445-a882-917e21c010c6:
       id: 'views_block:news_and_events_group-product_documents'
       label: ''

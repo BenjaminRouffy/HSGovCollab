@@ -1,0 +1,17 @@
+uuid: fa8c4188-e9fd-4b32-a8fc-af90de9e3ac8
+langcode: en
+status: true
+dependencies:
+  module:
+    - piwik
+title: 'Default cron handler'
+id: piwik_cron
+weight: 0
+module: piwik
+callback: piwik_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

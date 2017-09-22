@@ -1,9 +1,9 @@
 hash_expiration: 86400
 newsletter:
-  format: plain
-  priority: 0
+  format: html
+  priority: 3
   receipt: true
-  from_address: p4h@network.com
+  from_address: noreply@p4h.world
   from_name: P4H
 subscriber:
   sync_fields: true
@@ -25,9 +25,10 @@ subscription:
   confirm_unsubscribe_page: ''
 mail:
   use_cron: true
-  throttle: 20
+  throttle: 10
   spool_progress_expiration: 3600
   spool_expire: 0
   debug: false
+  source_cache: null
 _core:
   default_config_hash: cy-hJPYCnfCsuUZA7VDoAwssKhRJCa8N88iJTaWiims

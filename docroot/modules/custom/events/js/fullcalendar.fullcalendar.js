@@ -117,6 +117,20 @@
         });
         $('.fc-event-container a', _this.$view).addClass('use-ajax');
         $('.fc-day-number.fc-today').wrapInner('<span class="today"></span>');
+        if (drupalSettings.events && drupalSettings.events.group_node_event_path) {
+          $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
+            // Do not bother in case of year view dots clicked.
+            if ($(this).hasClass('has-event') && $(this).closest('.fc-year-view').length) {
+              return false;
+            }
+
+            // /group/{group}/content/create/{plugin_id}
+            var date = $(this).attr('data-date'),
+                path = drupalSettings.events.group_node_event_path,
+                uri = path + '?date=' + encodeURIComponent(date) + '&destination=' + encodeURIComponent(window.location.pathname);
+            window.location.href = uri;
+          });
+        }
         Drupal.attachBehaviors($calendar.get()[0]);
       },
       windowResize: function(view) {
@@ -180,7 +194,7 @@
         }
       }
 
-      $('.has-event', context).on('click', function() {
+      $('.fc-year-view .has-event', context).on('click', function() {
         $(this).parents('.fc-year-monthly-td').find('.fc-year-monthly-name a').click();
       });
     }

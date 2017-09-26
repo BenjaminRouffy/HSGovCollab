@@ -5,10 +5,14 @@
  * This is the Custom Events module.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\datetime_range\Plugin\Field\FieldType\DateRangeFieldItemList;
+use Drupal\group\Entity\Group;
+use Drupal\node\NodeInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
 use Drupal\Core\Session\AccountInterface;
@@ -112,6 +116,37 @@ function events_views_post_build(ViewExecutable $view) {
   }
 }
 
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * @see \Drupal\gnode\Plugin\GroupContentEnabler\GroupNode::getGroupOperations()
+ */
+function events_views_pre_render(ViewExecutable $view) {
+  if (!in_array($view->id(), ['my_calendar'])) {
+    return $view;
+  }
+
+  // Check if user has access to a group_node:event create form.
+  if (!empty($view->argument['group_id_depth'])
+    /** @var \Drupal\group\Entity\GroupInterface $group */
+    && ($group = Group::load($view->argument['group_id_depth']->getValue())))
+  {
+    $account = \Drupal::currentUser();
+    $plugin_id = 'group_node:event';
+
+    if ($group->hasPermission("create $plugin_id entity", $account)) {
+      $route_params = ['group' => $group->id(), 'plugin_id' => $plugin_id];
+      $url = Url::fromRoute('entity.group_content.create_form', $route_params);
+      $view->element['#attached']['drupalSettings']['events'] = [
+        'group_node_event_path' => Html::escape($url->toString()),
+      ];
+    }
+  }
+
+  return $view;
+}
+
 /**
  * Implements hook_ENTITY_TYPE_access().
  */
@@ -132,5 +167,26 @@ function events_views_plugins_display_alter(array &$plugins) {
   if(isset($plugins['data_export'])){
     $data_export = &$plugins['data_export'];
     $data_export['class'] = 'Drupal\events\Custom\views\display\DataExport';
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_ID_create().
+ */
+function events_node_create(NodeInterface $node) {
+  if ($node->bundle() == 'event' && $node->hasField('field_date')
+    && $date = \Drupal::request()->query->get('date'))
+  {
+    $field = $node->get('field_date');
+    $default_value = [
+      [
+        'default_date_type' => 'custom',
+        'default_date' => format_date(strtotime($date . " 00:00:00"), 'custom', DATETIME_DATETIME_STORAGE_FORMAT, 'UTC'),
+        'default_end_date_type' => 'custom',
+        'default_end_date' => format_date(strtotime($date . " 23:59:59"), 'custom', DATETIME_DATETIME_STORAGE_FORMAT, 'UTC'),
+      ],
+    ];
+    $value = DateRangeFieldItemList::processDefaultValue($default_value, $node, $field->getFieldDefinition());
+    $field->setValue($value, TRUE);
   }
 }

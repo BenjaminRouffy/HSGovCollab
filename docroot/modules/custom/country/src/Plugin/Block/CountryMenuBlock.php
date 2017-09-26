@@ -79,7 +79,7 @@ class CountryMenuBlock extends BlockBase {
 
       $entities = [
         'country' => $this->t('Countries'),
-        'project' => $this->t('Projects'),
+        'project' => $this->t('Collaborations'),
         'news_and_event' => $this->t('News&Events'),
         'document' => $this->t('Documents'),
         'contact' => $this->t('Contacts'),

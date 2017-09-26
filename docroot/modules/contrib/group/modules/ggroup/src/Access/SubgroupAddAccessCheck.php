@@ -39,7 +39,7 @@ class SubgroupAddAccessCheck implements AccessInterface {
     }
 
     // Determine whether the user can create groups of the provided type.
-    $access = $group->hasPermission('create ' . $group_type->id() . ' subgroup', $account);
+    $access = $group->hasPermission('create ' . $plugin_id . ' content', $account);
 
     // Only allow access if the user can create subgroups of the provided type
     // or if he doesn't need access to do so.

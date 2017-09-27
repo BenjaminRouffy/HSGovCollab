@@ -62,18 +62,24 @@ class DataExport extends DefaultDataExport implements ContainerFactoryPluginInte
     $clone->setArguments($this->view->args);
     $clone->setDisplay($this->display['id']);
     $clone->buildTitle();
+
+    /** @var \Drupal\views_data_export\Plugin\views\style\DataExport $plugin */
     if ($plugin = $clone->display_handler->getPlugin('style')) {
       /** @var \Drupal\Core\Url $url */
       $url = $clone->getUrl();
       /** @var \Drupal\Core\Session\AccountInterface $user */
       $user = \Drupal::currentUser()->getAccount();
       // @TODO I'm not sure that calling create is absolutely correct approach.
-      $hash = end(explode('/', $this->autoLoginUrl->create($user->id(), '<front>', FALSE)));
-      $url->setOption('query', [
-        'provider_user' => $user->id(),
-        'provider_access' => $hash,
-      ]);
-      $url->setOption('base_url', preg_replace('~^(\w{2,5})\:~is', 'webcal:', $base_url));
+      if (($auth = $this->getOption('auth')) && in_array('auto_login_url', $auth)) {
+        $hash = @end(explode('/', $this->autoLoginUrl->create($user->id(), '<front>', FALSE)));
+        $url->setOption('query', [
+          'provider_user' => $user->id(),
+          'provider_access' => $hash,
+        ]);
+      }
+      if (isset($plugin->getFormats()['ical'])) {
+        $url->setOption('base_url', preg_replace('~^(\w{2,5})\:~is', 'webcal:', $base_url));
+      }
       $plugin->attachTo($build, $display_id, $url, $clone->getTitle());
       foreach ($clone->feedIcons as $feed_icon) {
         $this->view->feedIcons[] = $feed_icon;

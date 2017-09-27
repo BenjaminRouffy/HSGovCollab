@@ -98,7 +98,9 @@ function events_views_query_alter(ViewExecutable $view, QueryPluginBase $query) 
   if (!in_array($view->id(), ['my_calendar'])) {
     return;
   }
-  if ($view->current_display == 'block_1') {
+
+  if (in_array($view->current_display, ['block_1', 'data_export_2'])) {
+    // group_graph_group_content_field_data.uid
     $query->where[2]['conditions'][0]['value'] = \Drupal::currentUser()->id();
   }
 }

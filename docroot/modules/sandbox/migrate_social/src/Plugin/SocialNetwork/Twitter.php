@@ -24,6 +24,7 @@ class Twitter extends SocialNetworkBase {
     $this->instance->setDecodeJsonAsArray(TRUE);
 
     $result =  $this->instance->get('statuses/user_timeline', [
+      'tweet_mode' => 'extended',
       'count' => 100000,
     ]);
 

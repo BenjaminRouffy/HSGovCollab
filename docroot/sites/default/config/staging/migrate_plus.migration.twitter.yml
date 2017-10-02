@@ -16,10 +16,13 @@ source:
 process:
   id: id
   title: id
-  body:
-    plugin: get
-    source:
-      - text
+  'body/value':
+    plugin: callback
+    source: full_text
+    callable: html_entity_decode
+  'body/format':
+    plugin: default_value
+    default_value: plain_text
   created:
     plugin: callback
     source: created_at

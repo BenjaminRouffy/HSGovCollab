@@ -34,6 +34,7 @@ class GroupContentManagerLabel extends FormatterBase {
 
       /* @var Group $group */
       foreach (Group::loadMultiple($value['entity_gids']) as $group) {
+        $group_bundles = \Drupal::service('entity_type.bundle.info')->getBundleInfo($group->getEntityTypeId());
         $group_type = str_replace('_', ' ', $group->bundle());
         switch ($group_type) {
           // @todo add relation with real roles.
@@ -51,7 +52,7 @@ class GroupContentManagerLabel extends FormatterBase {
               '#type' => 'markup',
               '#markup' => $this->t('@label @group_type manager', [
                 '@label' => $group->label(),
-                '@group_type' => str_replace('_', ' ', $group->bundle()),
+                '@group_type' => $group_bundles[$group->bundle()]['label'],
               ]),
             ];
             break;

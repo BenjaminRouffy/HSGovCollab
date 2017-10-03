@@ -33,7 +33,7 @@ class ProductAndProjectFilterAlter implements FormAlterServiceBaseInterface, For
       $form['wrap']['child_type'] = $form['child_type'];
       unset($form['child_type']);
     }
-    $form['label']['#attributes']['placeholder'] = t('Search in products and projects');
+    $form['label']['#attributes']['placeholder'] = t('Search in products and collaborations');
 
     $form['label']['#prefix'] = '<div class="search-form-wrapper">';
     $form['actions']['#suffix'] = '</div>';

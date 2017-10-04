@@ -13,6 +13,11 @@ source:
   plugin: social_network
   track_changes: true
   social_network_plugin: twitter
+  constants:
+    entity_type: social
+    social_type: twitter
+    body_format: plain_text
+    status_url: 'https://twitter.com/P4HNetwork/status/'
 process:
   id: id
   title: id
@@ -20,46 +25,33 @@ process:
     plugin: callback
     source: full_text
     callable: html_entity_decode
-  'body/format':
-    plugin: default_value
-    default_value: plain_text
+  'body/format': 'constants/body_format'
   created:
     plugin: callback
     source: created_at
     callable: strtotime
-  type:
-    plugin: default_value
-    default_value: social
-  field_social_type:
-    plugin: default_value
-    default_value: twitter
+  type: 'constants/entity_type'
+  field_social_type: 'constants/social_type'
+  temp_media:
+    plugin: iterator
+    source: 'extended_entities/media'
+    process:
+      uri: media_url
+  temp_retweeted_media:
+    plugin: iterator
+    source: 'retweeted_status/extended_entities/media'
+    process:
+      uri: media_url
   field_media:
-    -
-      plugin: iterator
-      source: extended_entities
-      process:
-        media:
-          plugin: get
-          source: '0'
-    -
-      plugin: extract
-      default: ''
-      index:
-        - media
-        - media
-        - media_url
-  temp_twitter_link:
-    -
-      plugin: default_value
-      default_value: 'https://twitter.com/P4HNetwork/status/'
+    plugin: merge
+    source:
+      - '@temp_media'
+      - '@temp_retweeted_media'
   field_permalink_url:
-    -
-      plugin: get
-      source:
-        - '@temp_twitter_link'
-        - id_str
-    -
-      plugin: concat
+    plugin: concat
+    source:
+      - 'constants/status_url'
+      - id_str
 destination:
   plugin: 'entity:node'
 migration_dependencies: null

@@ -13,7 +13,7 @@ dependencies:
     - group_following
     - p4h_views_plugins
 id: my_projects
-label: 'My projects'
+label: 'My collaborations'
 module: views
 description: ''
 tag: ''
@@ -297,7 +297,7 @@ display:
           entity_type: group_content
           plugin_id: group_index_by_following
       sorts: {  }
-      title: 'My projects'
+      title: 'My collaborations'
       header:
         area_text_custom:
           id: area_text_custom

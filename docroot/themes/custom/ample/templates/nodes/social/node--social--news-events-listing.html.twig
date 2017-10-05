@@ -16,6 +16,6 @@
       </div>
     {% endif %}
 
-    <div class="teaser-text">{{ content.body|field_value|render|striptags|trim }}</div>
+    <div class="teaser-text">{{ content.body|field_value|render|striptags|trim|raw }}</div>
   </a>
 </div>

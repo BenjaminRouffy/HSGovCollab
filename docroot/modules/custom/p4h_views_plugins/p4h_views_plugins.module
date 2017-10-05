@@ -108,7 +108,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         unset($form['actions']);
         $form['wrap']['label'] = $form['label'];
         unset($form['label']);
-        $form['wrap']['label']['#attributes']['placeholder'] = t('Search in projects');
+        $form['wrap']['label']['#attributes']['placeholder'] = t('Search in collaborations');
         $form['#attributes']['data-accordion'] = $form['#id'];
 
         $form['wrap']['label']['#prefix'] = '<div class="search-form-wrapper">';
@@ -162,11 +162,12 @@ function p4h_views_plugins_better_exposed_filters_display_options_alter(&$displa
  */
 function p4h_views_plugins_entity_presave(EntityInterface $entity) {
   if (in_array($entity->getEntityTypeId(), ['node', 'group'])) {
+    /** @var \Drupal\p4h_views_plugins\ComputedDateManager $manager */
     $manager = \Drupal::service('plugin.manager.computed_date');
-    $plugins = $manager->getDefinitions($entity->bundle());
+    $plugins = $manager->getDefinitions();
 
     if (in_array($entity->bundle(), array_keys($plugins))) {
-      /* @var $plugin Drupal\p4h_views_plugins\ComputedDateInterface */
+      /** @var \Drupal\p4h_views_plugins\ComputedDateBase $plugin */
       $plugin = $manager->createInstance($entity->bundle(), ['entity' => $entity]);
       $plugin->updateValue();
     }

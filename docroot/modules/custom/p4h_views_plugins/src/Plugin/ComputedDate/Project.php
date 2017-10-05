@@ -8,7 +8,7 @@ use Drupal\Core\Entity\EntityInterface;
 /**
  * @ComputedDate(
  *   id = "project",
- *   name = @Translation("Project"),
+ *   name = @Translation("Collaboration"),
  * )
  */
 class Project extends ComputedDateBase {

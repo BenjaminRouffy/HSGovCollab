@@ -20,7 +20,7 @@
     {% if not logged_in %}
       <div class="bottom-link">
         {# TODO Should use here a router.#}
-        {{ link('Signup to know more'|t, 'base:user/sign-up', { 'class':[ 'read-more' ] }) }}
+        {{ link('Sign up to know more'|t, 'base:user/sign-up', { 'class':[ 'read-more' ] }) }}
       </div>
     {% else %}
       {{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}
@@ -28,4 +28,3 @@
     {% endif %}
   </div>
 </div>
-

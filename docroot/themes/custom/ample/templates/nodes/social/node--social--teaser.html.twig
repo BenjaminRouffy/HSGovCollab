@@ -5,5 +5,5 @@
   <time datetime="{{ node.createdtime | date("Y-m-d") }}">
     {{ node.createdtime | format_date('time_line') }}
   </time>
-  <p class="tweet">{{ content.body|field_value|render|striptags|trim }}</p>
+  <p class="tweet">{{ content.body|field_value|render|striptags|trim|raw }}</p>
 </a>

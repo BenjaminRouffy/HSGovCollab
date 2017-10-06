@@ -45,7 +45,7 @@ abstract class GroupContentDecoratorBase implements GroupContentDecoratorInterfa
   }
 
   /**
-   * Method which assign selected content to group.
+   * @inheritdoc
    */
   function createMemberContent($parent_entity, $add_gid) {
     $properties = $this->getBuildProperties($parent_entity);
@@ -57,7 +57,6 @@ abstract class GroupContentDecoratorBase implements GroupContentDecoratorInterfa
       ->loadByProperties($properties);
 
     if (empty($result)) {
-      // TODO Add only role if membership exist.
       GroupContent::create($properties)->save();
     }
   }
@@ -74,7 +73,6 @@ abstract class GroupContentDecoratorBase implements GroupContentDecoratorInterfa
       ->loadByProperties($properties);
 
     foreach ($result as $group_content) {
-      // TODO Remove only role.
       $group_content->delete();
     }
   }

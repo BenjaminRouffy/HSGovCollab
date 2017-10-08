@@ -18,8 +18,18 @@ fullcalendar:
     - core/jquery
     - core/jquery.ui.draggable
 
+iziymodal:
+  js:
+    /libraries/izimodal/js/iziModal.min.js: {}
+  css:
+    theme:
+      /libraries/izimodal/css/iziModal.min.css: { media: screen }
+  dependencies:
+    - core/jquery
+
 fullcalendar.settings:
   js:
     js/fullcalendar.fullcalendar.js: { }
   dependencies:
     - events/fullcalendar
+    - events/iziymodal

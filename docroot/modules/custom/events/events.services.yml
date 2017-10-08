@@ -17,3 +17,6 @@ services:
     arguments: ['@current_user', '@events.access_check_calendar', '@entity.manager']
     tags:
       - { name: access_check, applies_to: _calendar_export_access_check }
+  events.add_event:
+      class: \Drupal\group\Entity\Controller\GroupContentController
+      arguments: ['@user.private_tempstore', '@entity_type.manager', '@entity.form_builder', '@renderer']

@@ -11,9 +11,11 @@ dependencies:
     - field.field.group.region.field_faq
     - field.field.group.region.field_infographic
     - field.field.group.region.field_join_block
+    - field.field.group.region.field_protected
     - field.field.group.region.field_region_icon
     - field.field.group.region.field_summary
     - field.field.group.region.field_time_line
+    - field.field.group.region.field_type
     - group.type.region
   module:
     - datetime
@@ -26,13 +28,15 @@ third_party_settings:
   field_group:
     group_tabs_panel:
       children:
+        - field_type
+        - field_protected
         - group_banner
         - group_content
         - group_infographic_timeline
         - group_bottom
         - group_faq
       parent_name: ''
-      weight: 0
+      weight: 1
       format_type: tabs
       format_settings:
         id: ''
@@ -47,7 +51,7 @@ third_party_settings:
         - field_date
         - langcode
       parent_name: group_tabs_panel
-      weight: 6
+      weight: 2
       format_type: tab
       format_settings:
         id: ''
@@ -61,7 +65,7 @@ third_party_settings:
         - field_summary
         - field_content
       parent_name: group_tabs_panel
-      weight: 7
+      weight: 3
       format_type: tab
       format_settings:
         id: ''
@@ -75,7 +79,7 @@ third_party_settings:
         - field_infographic
         - field_time_line
       parent_name: group_tabs_panel
-      weight: 8
+      weight: 4
       format_type: tab
       format_settings:
         id: ''
@@ -89,7 +93,7 @@ third_party_settings:
         - field_join_block
         - field_bottom_link
       parent_name: group_tabs_panel
-      weight: 9
+      weight: 5
       format_type: tab
       format_settings:
         id: ''
@@ -102,7 +106,7 @@ third_party_settings:
       children:
         - field_faq
       parent_name: group_tabs_panel
-      weight: 10
+      weight: 6
       format_type: tab
       format_settings:
         id: ''
@@ -117,7 +121,7 @@ bundle: region
 mode: default
 content:
   field_banner:
-    weight: 5
+    weight: 13
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -128,7 +132,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_bottom_link:
-    weight: 12
+    weight: 13
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -150,7 +154,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 8
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -167,7 +171,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_infographic:
-    weight: 10
+    weight: 13
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -186,8 +190,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_protected:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_region_icon:
-    weight: 7
+    weight: 15
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -208,7 +219,7 @@ content:
     type: text_textarea
     region: content
   field_time_line:
-    weight: 11
+    weight: 14
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -218,9 +229,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
+  field_type:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   label:
     type: string_textfield
-    weight: 6
+    weight: 14
     region: content
     settings:
       size: 60
@@ -228,13 +245,18 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 9
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 4
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }

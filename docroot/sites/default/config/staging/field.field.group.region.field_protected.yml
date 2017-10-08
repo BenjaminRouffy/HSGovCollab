@@ -1,0 +1,23 @@
+uuid: 904cdd37-de6a-4a7c-a0d4-787bd6e35469
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_protected
+    - group.type.region
+id: group.region.field_protected
+field_name: field_protected
+entity_type: group
+bundle: region
+label: 'Governance area'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

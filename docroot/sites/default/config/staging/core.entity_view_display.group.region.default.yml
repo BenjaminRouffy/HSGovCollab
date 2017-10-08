@@ -10,9 +10,11 @@ dependencies:
     - field.field.group.region.field_faq
     - field.field.group.region.field_infographic
     - field.field.group.region.field_join_block
+    - field.field.group.region.field_protected
     - field.field.group.region.field_region_icon
     - field.field.group.region.field_summary
     - field.field.group.region.field_time_line
+    - field.field.group.region.field_type
     - group.type.region
   module:
     - entity_reference_revisions
@@ -55,8 +57,10 @@ hidden:
   field_date: true
   field_faq: true
   field_join_block: true
+  field_protected: true
   field_region_icon: true
   field_time_line: true
+  field_type: true
   label: true
   langcode: true
   uid: true

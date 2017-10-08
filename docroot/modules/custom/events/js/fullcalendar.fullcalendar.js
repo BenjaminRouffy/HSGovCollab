@@ -119,14 +119,22 @@
         $('.fc-day-number.fc-today').wrapInner('<span class="today"></span>');
 
         if (drupalSettings.events && drupalSettings.events.group_node_event_path) {
-          var $addEventModal = $('.add-event-modal');
+          var $addEventModal = $('.add-event-popup-form');
 
-          // Initialize event modal.
+          $('.fc-day-number')
+            .prepend('<span class="add-event">' + Drupal.t('Add Event') + '</span>');
+          $(_this.$view).addClass('add-event-calendar');
+
           $addEventModal.iziModal({
+            title: Drupal.t('Add Event'),
+            headerColor: '#283b44',
+            padding: 15,
+            restoreDefaultContent: true,
             onOpening: function (modal) {
-              var date = $(this).data('date');
-
               modal.startLoading();
+
+              Drupal.detachBehaviors($('.add-event-popup-form').get()[0]);
+              Drupal.attachBehaviors($('.add-event-popup-form').get()[0]);
 
               // Append date to input.
 
@@ -135,12 +143,7 @@
             }
           });
 
-          $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
-            // Do not bother in case of year view dots clicked.
-            if ($(this).hasClass('has-event') && $(this).closest('.fc-year-view').length) {
-              return false;
-            }
-
+          $('.fc-day-number', _this.$view).click(function () {
             // The date that has been clicked.
             var date = $(this).attr('data-date');
 
@@ -148,10 +151,13 @@
             $addEventModal.attr('data-date', date);
             // Open the event modal.
             $addEventModal.iziModal('open');
-            // Close the event modal.
-            // $addEventModal.iziModal('close');
+          });
 
-
+          $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
+            // Do not bother in case of year view dots clicked.
+            if ($(this).hasClass('has-event') && $(this).closest('.fc-year-view').length) {
+              return false;
+            }
 
             // /group/{group}/content/create/{plugin_id}
             // @TODO Remove commented code bellow after event popup works.

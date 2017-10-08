@@ -3,7 +3,6 @@
 namespace Drupal\events\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a 'AddEventForm' block.
@@ -42,7 +41,6 @@ class AddEventForm extends BlockBase {
 
     $display_fields = array(
       'title',
-      'body',
       'field_date',
     );
 

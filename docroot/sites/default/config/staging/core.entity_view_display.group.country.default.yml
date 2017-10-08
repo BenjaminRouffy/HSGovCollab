@@ -14,8 +14,10 @@ dependencies:
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
+    - field.field.group.country.field_protected
     - field.field.group.country.field_summary
     - field.field.group.country.field_time_line
+    - field.field.group.country.field_type
     - group.type.country
   module:
     - entity_reference_revisions
@@ -62,7 +64,9 @@ hidden:
   field_group_status: true
   field_join_block: true
   field_location: true
+  field_protected: true
   field_time_line: true
+  field_type: true
   label: true
   langcode: true
   uid: true

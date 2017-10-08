@@ -131,13 +131,19 @@
             padding: 15,
             restoreDefaultContent: true,
             onOpening: function (modal) {
+              var date = $addEventModal.attr('data-date');
+
               modal.startLoading();
 
               Drupal.detachBehaviors($('.add-event-popup-form').get()[0]);
               Drupal.attachBehaviors($('.add-event-popup-form').get()[0]);
 
               // Append date to input.
-
+              $addEventModal
+                .find('.js-form-type-date')
+                .not('[class*="end-value-date"]')
+                .find('input[type="date"]')
+                .val(date);
 
               modal.stopLoading();
             }

@@ -11,7 +11,6 @@ dependencies:
     - field.field.group.region.field_faq
     - field.field.group.region.field_infographic
     - field.field.group.region.field_join_block
-    - field.field.group.region.field_protected
     - field.field.group.region.field_region_icon
     - field.field.group.region.field_summary
     - field.field.group.region.field_time_line
@@ -189,13 +188,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
-  field_protected:
-    weight: 1
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
     region: content
   field_region_icon:
     weight: 15

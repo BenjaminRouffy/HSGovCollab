@@ -14,7 +14,6 @@ dependencies:
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
-    - field.field.group.country.field_protected
     - field.field.group.country.field_summary
     - field.field.group.country.field_time_line
     - field.field.group.country.field_type
@@ -259,13 +258,6 @@ content:
       target_address_field: null
     third_party_settings: {  }
     type: geolocation_googlegeocoder
-    region: content
-  field_protected:
-    weight: 1
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
     region: content
   field_summary:
     weight: 7

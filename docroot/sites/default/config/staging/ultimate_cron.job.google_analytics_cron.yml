@@ -1,14 +1,14 @@
-uuid: fa8c4188-e9fd-4b32-a8fc-af90de9e3ac8
+uuid: 8452c10b-8013-405d-9a1e-f78da17d6dab
 langcode: en
 status: true
 dependencies:
   module:
-    - piwik
+    - google_analytics
 title: 'Default cron handler'
-id: piwik_cron
+id: google_analytics_cron
 weight: 0
-module: piwik
-callback: piwik_cron
+module: google_analytics
+callback: google_analytics_cron
 scheduler:
   id: simple
 launcher:

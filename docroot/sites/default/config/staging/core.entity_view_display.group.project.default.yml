@@ -6,6 +6,7 @@ dependencies:
     - field.field.group.project.field_based_on
     - field.field.group.project.field_content
     - field.field.group.project.field_date
+    - field.field.group.project.field_end_date
     - field.field.group.project.field_faq
     - field.field.group.project.field_join_block
     - field.field.group.project.field_knowledge_vault
@@ -16,6 +17,7 @@ dependencies:
     - field.field.group.project.field_time_line
     - group.type.project
   module:
+    - datetime
     - entity_reference_revisions
     - image
     - text
@@ -32,6 +34,15 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
+  field_end_date:
+    weight: 6
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   field_join_block:
     weight: 4

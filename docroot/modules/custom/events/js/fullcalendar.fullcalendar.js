@@ -117,7 +117,48 @@
         });
         $('.fc-event-container a', _this.$view).addClass('use-ajax');
         $('.fc-day-number.fc-today').wrapInner('<span class="today"></span>');
+
         if (drupalSettings.events && drupalSettings.events.group_node_event_path) {
+          var $addEventModal = $('.add-event-popup-form');
+
+          $('.fc-day-number')
+            .prepend('<span class="add-event">' + Drupal.t('Add Event') + '</span>');
+          $(_this.$view).addClass('add-event-calendar');
+
+          $addEventModal.iziModal({
+            title: Drupal.t('Add Event'),
+            headerColor: '#283b44',
+            padding: 15,
+            restoreDefaultContent: true,
+            onOpening: function (modal) {
+              var date = $addEventModal.attr('data-date');
+
+              modal.startLoading();
+
+              Drupal.detachBehaviors($('.add-event-popup-form').get()[0]);
+              Drupal.attachBehaviors($('.add-event-popup-form').get()[0]);
+
+              // Append date to input.
+              $addEventModal
+                .find('.js-form-type-date')
+                .not('[class*="end-value-date"]')
+                .find('input[type="date"]')
+                .val(date);
+
+              modal.stopLoading();
+            }
+          });
+
+          $('.fc-day-number', _this.$view).click(function () {
+            // The date that has been clicked.
+            var date = $(this).attr('data-date');
+
+            // Used to append the correct date to the add event form.
+            $addEventModal.attr('data-date', date);
+            // Open the event modal.
+            $addEventModal.iziModal('open');
+          });
+
           $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
             // Do not bother in case of year view dots clicked.
             if ($(this).hasClass('has-event') && $(this).closest('.fc-year-view').length) {
@@ -125,10 +166,11 @@
             }
 
             // /group/{group}/content/create/{plugin_id}
-            var date = $(this).attr('data-date'),
-                path = drupalSettings.events.group_node_event_path,
-                uri = path + '?date=' + encodeURIComponent(date) + '&destination=' + encodeURIComponent(window.location.pathname);
-            window.location.href = uri;
+            // @TODO Remove commented code bellow after event popup works.
+            // var date = $(this).attr('data-date'),
+            //     path = drupalSettings.events.group_node_event_path,
+            //     uri = path + '?date=' + encodeURIComponent(date) + '&destination=' + encodeURIComponent(window.location.pathname);
+            // window.location.href = uri;
           });
         }
         Drupal.attachBehaviors($calendar.get()[0]);

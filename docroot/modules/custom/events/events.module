@@ -17,6 +17,7 @@ use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_views_data_alter().
@@ -190,5 +191,47 @@ function events_node_create(NodeInterface $node) {
     ];
     $value = DateRangeFieldItemList::processDefaultValue($default_value, $node, $field->getFieldDefinition());
     $field->setValue($value, TRUE);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'node_event_form') {
+    if(\Drupal::routeMatch()->getRouteName() === 'group.calendar') {
+      foreach (array_keys($form['actions']) as $action) {
+        if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+          $form['actions'][$action]['#submit'][] = 'events_popup_form_custom_submit_redirect';
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Custom form submit handler.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function events_popup_form_custom_submit_redirect($form, FormStateInterface $form_state) {
+  $group = $form_state->get('group');
+
+  $url = Url::fromRoute('group.calendar', array('group' => $group->id()), array('fragment' => 'calendar'));
+  $form_state->setRedirectUrl($url);
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function events_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'form_alter') {
+    // In events_form_alter is added custom submit handler which redirects user
+    // back to the calendar page. Form_alter in group module overrides this
+    // redirect and it is important the custom redirect to be executed last.
+    $group = $implementations['events'];
+    unset($implementations['events']);
+    $implementations['events'] = $group;
   }
 }

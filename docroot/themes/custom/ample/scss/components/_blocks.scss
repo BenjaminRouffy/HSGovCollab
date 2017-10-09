@@ -1217,6 +1217,16 @@
           content: "o";
         }
       }
+
+      a {
+        position: relative;
+        z-index: 10;
+
+        &:hover {
+          border-color: $red;
+          opacity: .66;
+        }
+      }
     }
 
     .group-manager-icon {

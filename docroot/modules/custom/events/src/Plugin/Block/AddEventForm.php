@@ -33,17 +33,23 @@ class AddEventForm extends BlockBase {
    * @return mixed
    */
   private function getAddEventForm() {
+    // Get the group from the URL.
     $group = \Drupal::request()->get('group');
 
+    // Get the for with group functionality.
     $form = \Drupal::service('events.add_event')->createForm($group, 'group_node:event');
     $form['advanced']['#access'] = FALSE;
+
+    // Remove grouping on the form.
     $form['#group_children'] = array();
 
+    // Array with the fields to be displayed on the form.
     $display_fields = array(
       'title',
       'field_date',
     );
 
+    // Array with the fields on the form.
     $fields = array(
       'body',
       'field_category',
@@ -62,6 +68,7 @@ class AddEventForm extends BlockBase {
       'langcode',
     );
 
+    // Hide the field that are not in the display_fields array.
     foreach ($form as $key => $value) {
       if (in_array($key, $fields)) {
         if (!in_array($key, $display_fields)) {

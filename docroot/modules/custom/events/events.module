@@ -218,7 +218,7 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 function events_popup_form_custom_submit_redirect($form, FormStateInterface $form_state) {
   $group = $form_state->get('group');
 
-  $url = Url::fromRoute('group.calendar', array('group' => $group->id()));
+  $url = Url::fromRoute('group.calendar', array('group' => $group->id()), array('fragment' => 'calendar'));
   $form_state->setRedirectUrl($url);
 }
 

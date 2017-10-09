@@ -1,0 +1,26 @@
+diff --git a/modules/ggroup/src/Access/SubgroupAddAccessCheck.php b/modules/ggroup/src/Access/SubgroupAddAccessCheck.php
+index 2e251ff..9847492 100644
+--- a/modules/ggroup/src/Access/SubgroupAddAccessCheck.php
++++ b/modules/ggroup/src/Access/SubgroupAddAccessCheck.php
+@@ -39,7 +39,7 @@ public function access(Route $route, AccountInterface $account, GroupInterface $
+     }
+ 
+     // Determine whether the user can create groups of the provided type.
+-    $access = $group->hasPermission('create ' . $group_type->id() . ' subgroup', $account);
++    $access = $group->hasPermission('create ' . $plugin_id . ' content', $account);
+ 
+     // Only allow access if the user can create subgroups of the provided type
+     // or if he doesn't need access to do so.
+diff --git a/src/Access/GroupAccessResult.php b/src/Access/GroupAccessResult.php
+index 8f85c7d..5b4e990 100644
+--- a/src/Access/GroupAccessResult.php
++++ b/src/Access/GroupAccessResult.php
+@@ -64,7 +64,7 @@ public static function allowedIfHasGroupPermissions(GroupInterface $group, Accou
+     }
+     else {
+       foreach ($permissions as $permission) {
+-        if ($group->hasPermission($permission, $account)) {
++        if ($account->hasPermission($permission) || $group->hasPermission($permission, $account)) {
+           $access = TRUE;
+           break;
+         }

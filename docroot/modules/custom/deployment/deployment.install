@@ -1035,3 +1035,11 @@ function deployment_update_8085() {
     ->set('user_window', $flood_interval)
     ->save();
 }
+
+/**
+ * Disable piwik, enable GA.
+ */
+function deployment_update_8086() {
+  \Drupal::service('module_installer')->uninstall(['piwik']);
+  \Drupal::service('module_installer')->install(['google_analytics']);
+}

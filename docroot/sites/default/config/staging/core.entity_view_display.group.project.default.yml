@@ -14,6 +14,7 @@ dependencies:
     - field.field.group.project.field_summary
     - field.field.group.project.field_summary_public
     - field.field.group.project.field_time_line
+    - field.field.group.project.field_type
     - group.type.project
   module:
     - entity_reference_revisions
@@ -83,5 +84,6 @@ hidden:
   field_knowledge_vault: true
   field_product: true
   field_summary_public: true
+  field_type: true
   langcode: true
   uid: true

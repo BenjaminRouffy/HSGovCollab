@@ -842,6 +842,45 @@ display:
             label: label
           alphabet: 1
           plugin_id: combine
+        field_group_status_value:
+          id: field_group_status_value
+          table: group__field_group_status
+          field: field_group_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            published: published
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
         langcode:
           id: langcode
           table: groups_field_data
@@ -894,7 +933,7 @@ display:
           operator: in
           value:
             country: country
-          group: 2
+          group: 3
           exposed: false
           expose:
             operator_id: ''
@@ -924,17 +963,17 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        field_group_status_value:
-          id: field_group_status_value
-          table: group__field_group_status
-          field: field_group_status_value
+        field_type_value:
+          id: field_type_value
+          table: group__field_type
+          field: field_type_value
           relationship: none
           group_type: group
           admin_label: ''
           operator: or
           value:
-            published: published
-          group: 1
+            geographical: geographical
+          group: 3
           exposed: false
           expose:
             operator_id: ''
@@ -968,6 +1007,7 @@ display:
         groups:
           1: OR
           2: AND
+          3: AND
       use_ajax: true
     cache_metadata:
       max-age: -1
@@ -1156,6 +1196,45 @@ display:
             label: label
           alphabet: 0
           plugin_id: combine
+        field_group_status_value:
+          id: field_group_status_value
+          table: group__field_group_status
+          field: field_group_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            published: published
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
         langcode:
           id: langcode
           table: groups_field_data
@@ -1238,45 +1317,6 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        field_group_status_value:
-          id: field_group_status_value
-          table: group__field_group_status
-          field: field_group_status_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value:
-            published: published
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
       filter_groups:
         operator: AND
         groups:
@@ -1647,6 +1687,45 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
+        field_type_value:
+          id: field_type_value
+          table: group__field_type
+          field: field_type_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            geographical: geographical
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
       defaults:
         filters: false
         filter_groups: false
@@ -1658,6 +1737,7 @@ display:
         groups:
           1: OR
           2: AND
+          3: AND
       pager:
         type: mini_with_items
         options:
@@ -1987,6 +2067,45 @@ display:
             label: label
           alphabet: 1
           plugin_id: combine
+        field_group_status_value:
+          id: field_group_status_value
+          table: group__field_group_status
+          field: field_group_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            published: published
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
         langcode:
           id: langcode
           table: groups_field_data
@@ -2039,7 +2158,7 @@ display:
           operator: in
           value:
             country: country
-          group: 2
+          group: 3
           exposed: false
           expose:
             operator_id: ''
@@ -2069,17 +2188,17 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        field_group_status_value:
-          id: field_group_status_value
-          table: group__field_group_status
-          field: field_group_status_value
+        field_type_value:
+          id: field_type_value
+          table: group__field_type
+          field: field_type_value
           relationship: none
           group_type: group
           admin_label: ''
           operator: or
           value:
-            published: published
-          group: 1
+            geographical: geographical
+          group: 3
           exposed: false
           expose:
             operator_id: ''
@@ -2113,6 +2232,7 @@ display:
         groups:
           1: OR
           2: AND
+          3: AND
       query:
         type: views_query
         options:
@@ -2654,6 +2774,45 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
+        field_type_value:
+          id: field_type_value
+          table: group__field_type
+          field: field_type_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            geographical: geographical
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
       defaults:
         filters: false
         filter_groups: false
@@ -2669,6 +2828,7 @@ display:
         groups:
           1: OR
           2: AND
+          3: AND
       pager:
         type: mini_with_items
         options:

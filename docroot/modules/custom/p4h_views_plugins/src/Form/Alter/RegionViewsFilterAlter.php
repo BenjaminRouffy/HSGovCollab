@@ -35,6 +35,7 @@ class RegionViewsFilterAlter implements FormAlterServiceBaseInterface, FormAlter
     unset($form['actions']);
     $form['wrap']['combine_2'] = $form['combine_2'];
     $form['wrap']['combine_2']['#title'] = $form['#info']['filter-combine_1']['label'];
+    $form['wrap']['combine_2']['#attributes']['placeholder'] = $form['#info']['filter-combine_1']['label'];
     unset($form['combine_2']);
 
     $form['wrap']['combine_2']['#prefix'] = '<div class="search-form-wrapper">';

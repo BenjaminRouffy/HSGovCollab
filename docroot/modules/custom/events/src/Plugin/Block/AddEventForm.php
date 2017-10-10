@@ -3,6 +3,7 @@
 namespace Drupal\events\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\node\Entity\NodeType;
 
 /**
  * Provides a 'AddEventForm' block.
@@ -43,11 +44,22 @@ class AddEventForm extends BlockBase {
     // Remove grouping on the form.
     $form['#group_children'] = array();
 
+    $route = \Drupal::routeMatch()->getRouteName();
+
     // Array with the fields to be displayed on the form.
-    $display_fields = array(
-      'title',
-      'field_date',
-    );
+    if($route === 'group.calendar') {
+      $display_fields = array(
+        'title',
+        'field_date',
+      );
+    }
+    elseif ($route === 'page_manager.page_view_my_calendar') {
+      $display_fields = array(
+        'title',
+        'field_date',
+        'field_add_event_in_group',
+      );
+    }
 
     // Array with the fields on the form.
     $fields = array(
@@ -66,6 +78,7 @@ class AddEventForm extends BlockBase {
       'title',
       'field_join_block',
       'langcode',
+      'field_add_event_in_group',
     );
 
     // Hide the field that are not in the display_fields array.
@@ -76,6 +89,8 @@ class AddEventForm extends BlockBase {
         }
       }
     }
+
+    $form['field_date']['#weight'] = 30;
 
     return $form;
   }

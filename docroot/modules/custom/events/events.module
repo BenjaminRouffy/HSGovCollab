@@ -51,9 +51,16 @@ function events_node_view(array &$build, EntityInterface $entity, EntityViewDisp
     }
     /** @var \Drupal\Core\Session\AccountInterface $account */
     $account = \Drupal::currentUser()->getAccount();
+    // List with groups that should have access to calendar page.
+    $groups = array(
+      'governance_area',
+      'region',
+      'country',
+      'project',
+    );
     /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
     $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-    if ($check_by_group->check($account, ['governance_area'])) {
+    if ($check_by_group->check($account, $groups)) {
       $build['event_registrant'] = views_embed_view('event_sign_up', 'block_1', $entity->id());
     }
   }
@@ -68,9 +75,16 @@ function events_node_view_alter(array &$build, EntityInterface $entity, EntityVi
   if ('event' == $type) {
     /** @var \Drupal\Core\Session\AccountInterface $account */
     $account = \Drupal::currentUser()->getAccount();
+    // List with groups that should have access to calendar page.
+    $groups = array(
+      'governance_area',
+      'region',
+      'country',
+      'project',
+    );
     /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
     $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-    if (!$check_by_group->check($account, ['governance_area'])) {
+    if (!$check_by_group->check($account, $groups)) {
       $build['like_and_dislike']['#access'] = FALSE;
     }
   }
@@ -199,7 +213,15 @@ function events_node_create(NodeInterface $node) {
  */
 function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id === 'node_event_form') {
-    if(\Drupal::routeMatch()->getRouteName() === 'group.calendar') {
+    $route = \Drupal::routeMatch()->getRouteName();
+    if($route === 'node.add' || $route === 'page_manager.page_view_my_calendar') {
+      foreach (array_keys($form['actions']) as $action) {
+        if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+          $form['actions'][$action]['#submit'][] = 'events_add_new_event_custom_submit';
+        }
+      }
+    }
+    if($route === 'group.calendar') {
       foreach (array_keys($form['actions']) as $action) {
         if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
           $form['actions'][$action]['#submit'][] = 'events_popup_form_custom_submit_redirect';
@@ -233,5 +255,34 @@ function events_module_implements_alter(&$implementations, $hook) {
     $group = $implementations['events'];
     unset($implementations['events']);
     $implementations['events'] = $group;
+  }
+}
+
+/**
+ * Custom submit handler to attach event to group.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function events_add_new_event_custom_submit($form, FormStateInterface $form_state) {
+  $selected_group = $form_state->getValue('field_add_event_in_group');
+
+  if (!empty($selected_group[0]['target_id'])) {
+    // Get the selected group object.
+    $selected_gid = $selected_group[0]['target_id'];
+    $group = Drupal::entityTypeManager()->getStorage('group')->load($selected_gid);
+
+    /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+    $entity = $form_state->getFormObject()->getEntity();
+
+    // Add the new event to the selected group.
+    $group->addContent($entity, 'group_node:event');
+
+    $url = Url::fromRoute('page_manager.page_view_my_calendar',
+      array('group' => $group->id()),
+      array('fragment' => 'calendar')
+    );
+
+    $form_state->setRedirectUrl($url);
   }
 }

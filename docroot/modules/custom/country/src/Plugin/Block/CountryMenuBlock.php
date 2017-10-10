@@ -143,8 +143,15 @@ class CountryMenuBlock extends BlockBase {
 
           case 'calendar':
             // @TODO Dependencies injection.
+            // List with groups that should have access to calendar page.
+            $groups = array(
+              'governance_area',
+              'region',
+              'country',
+              'project',
+            );
             $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-            if ($group->getGroupType()->id() == 'governance_area' && $check_by_group->check($account, ['governance_area'])) {
+            if (in_array($group->getGroupType()->id(), $groups) && $check_by_group->check($account, $groups)) {
               $row = ['not-null'];
             }
             break;

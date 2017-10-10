@@ -46,8 +46,15 @@ class CalendarAccessCheck implements AccessInterface {
    * @return \Drupal\Core\Access\AccessResult
    */
   public function access(Route $route, RouteMatchInterface $route_match, GroupInterface $group) {
-    $user_is_ga = $this->menuItemVisibilityCheckByGroup->check($this->account, ['governance_area']);
-    $group_type = ($group->getGroupType()->id() == 'governance_area');
+    // List with groups that should have access to calendar page.
+    $groups = array(
+      'governance_area',
+      'region',
+      'country',
+      'project',
+    );
+    $user_is_ga = $this->menuItemVisibilityCheckByGroup->check($this->account, $groups);
+    $group_type = (in_array($group->getGroupType()->id(), $groups));
     return AccessResult::allowedIf($user_is_ga && $group_type);
   }
 

@@ -203,7 +203,7 @@ function country_module_implements_alter(array &$implementations, $hook) {
 function country_views_post_render($view) {
   // The title of "Countries" view (list_of_projects:block_3) can be overriden
   // by setting a value in label field of UO Region group.
-  if ($view->id() == 'list_of_projects' && $view->current_display == 'block_3') {
+  if ($view->id() == 'list_of_projects' && ($view->current_display == 'block_3' || $view->current_display == 'block_5')) {
 
     // The parent Region group is passed as argument, we load it to get its
     // label value.

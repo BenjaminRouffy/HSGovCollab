@@ -1,0 +1,16 @@
+uuid: 97dd8776-54ff-46e0-bc32-7a3126b1c411
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+    - group.type.governance_area
+id: governance_area-subgroup-country
+label: 'Governance area: Subgroup (Universal Object - Country)'
+description: 'Adds <em class="placeholder">Universal Object - Country</em> groups to groups both publicly and privately.'
+group_type: governance_area
+content_plugin: 'subgroup:country'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: true

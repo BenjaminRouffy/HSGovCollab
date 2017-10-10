@@ -11,6 +11,7 @@ dependencies:
     - field.field.group.governance_area.field_ga_icon
     - field.field.group.governance_area.field_infographic
     - field.field.group.governance_area.field_join_block
+    - field.field.group.governance_area.field_label
     - field.field.group.governance_area.field_summary
     - field.field.group.governance_area.field_time_line
     - group.type.governance_area
@@ -30,7 +31,7 @@ third_party_settings:
         - group_bottom
         - group_faq
       parent_name: ''
-      weight: 0
+      weight: 1
       format_type: tabs
       format_settings:
         id: ''
@@ -39,6 +40,7 @@ third_party_settings:
       label: 'Tabs panel'
     group_banner:
       children:
+        - field_label
         - field_banner
         - label
         - field_ga_icon
@@ -147,7 +149,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_faq:
-    weight: 16
+    weight: 21
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -158,7 +160,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_ga_icon:
-    weight: 12
+    weight: 13
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -171,7 +173,7 @@ content:
     type: entity_browser_file
     region: content
   field_infographic:
-    weight: 18
+    weight: 21
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -187,6 +189,14 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_label:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_summary:
     weight: 17
     settings:
@@ -196,7 +206,7 @@ content:
     type: text_textarea
     region: content
   field_time_line:
-    weight: 19
+    weight: 22
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -208,7 +218,7 @@ content:
     region: content
   label:
     type: string_textfield
-    weight: 11
+    weight: 12
     region: content
     settings:
       size: 60
@@ -222,12 +232,12 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }

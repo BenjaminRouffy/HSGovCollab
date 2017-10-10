@@ -149,7 +149,12 @@
             }
           });
 
-          $('.fc-day-number', _this.$view).click(function () {
+          $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
+            // Do not bother in case of year view dots clicked.
+            if ($(this).hasClass('has-event') && $(this).closest('.fc-year-view').length) {
+              return false;
+            }
+
             // The date that has been clicked.
             var date = $(this).attr('data-date');
 
@@ -157,20 +162,6 @@
             $addEventModal.attr('data-date', date);
             // Open the event modal.
             $addEventModal.iziModal('open');
-          });
-
-          $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
-            // Do not bother in case of year view dots clicked.
-            if ($(this).hasClass('has-event') && $(this).closest('.fc-year-view').length) {
-              return false;
-            }
-
-            // /group/{group}/content/create/{plugin_id}
-            // @TODO Remove commented code bellow after event popup works.
-            // var date = $(this).attr('data-date'),
-            //     path = drupalSettings.events.group_node_event_path,
-            //     uri = path + '?date=' + encodeURIComponent(date) + '&destination=' + encodeURIComponent(window.location.pathname);
-            // window.location.href = uri;
           });
         }
         Drupal.attachBehaviors($calendar.get()[0]);

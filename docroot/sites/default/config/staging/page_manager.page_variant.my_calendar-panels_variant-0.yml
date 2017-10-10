@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.my_calendar
     - views.view.my_calendar
   module:
+    - events
     - panels
     - views
 id: my_calendar-panels_variant-0
@@ -23,6 +24,15 @@ variant_settings:
       region: middle
       weight: 0
       uuid: 354685d7-15b2-4df6-8bcc-14d896a8e6f4
+      context_mapping: {  }
+    529ba7d4-62bb-4c16-8c13-375f939d6c9f:
+      id: add_event_form
+      label: 'Add Event popup form'
+      provider: events
+      label_display: visible
+      region: middle
+      weight: 1
+      uuid: 529ba7d4-62bb-4c16-8c13-375f939d6c9f
       context_mapping: {  }
   id: panels_variant
   uuid: 7240df95-c7be-45f3-bbef-ea7f9f069397

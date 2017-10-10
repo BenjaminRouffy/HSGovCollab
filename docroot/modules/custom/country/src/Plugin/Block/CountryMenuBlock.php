@@ -77,8 +77,15 @@ class CountryMenuBlock extends BlockBase {
         'active' => $group_url->toString() === $current_path,
       ];
 
+      // @TODO: Block cache has to be invalidated on node save.
+      $label = $this->t('Countries');
+      if ($group->hasField('field_label') && !empty($group->get('field_label')->value)) {
+        $label = $group->get('field_label')->value;
+      }
+
       $entities = [
-        'country' => $this->t('Countries'),
+        // Country menu item could be overridden by label field.
+        'country' => $label,
         'project' => $this->t('Collaborations'),
         'news_and_event' => $this->t('News&Events'),
         'document' => $this->t('Documents'),

@@ -1,7 +1,9 @@
 uuid: 91440c85-ebdf-4fed-a9b6-3f28350f73f6
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - video_embed_wysiwyg
 name: Minimal
 format: minimal
 weight: -10
@@ -18,6 +20,12 @@ filters:
   filter_autop:
     id: filter_autop
     provider: filter
+    status: true
+    weight: 0
+    settings: {  }
+  video_embed_wysiwyg:
+    id: video_embed_wysiwyg
+    provider: video_embed_wysiwyg
     status: true
     weight: 0
     settings: {  }

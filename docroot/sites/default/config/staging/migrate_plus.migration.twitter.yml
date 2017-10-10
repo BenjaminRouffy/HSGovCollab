@@ -36,12 +36,12 @@ process:
     plugin: iterator
     source: 'extended_entities/media'
     process:
-      uri: media_url
+      uri: media_url_https
   temp_retweeted_media:
     plugin: iterator
     source: 'retweeted_status/extended_entities/media'
     process:
-      uri: media_url
+      uri: media_url_https
   field_media:
     plugin: merge
     source:

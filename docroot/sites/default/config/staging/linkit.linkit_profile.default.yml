@@ -7,7 +7,12 @@ dependencies:
 id: default
 label: Default
 description: ''
-attributes: {  }
+attributes:
+  target:
+    id: target
+    weight: 0
+    settings:
+      widget_type: simple_checkbox
 matchers:
   7ca6bdbf-5291-4cee-aec2-8ee5b0925adb:
     uuid: 7ca6bdbf-5291-4cee-aec2-8ee5b0925adb

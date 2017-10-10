@@ -1,0 +1,14 @@
+uuid: 9a48fc02-6b58-4f05-bfd3-3346a27893a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.conference_oxford
+  module:
+    - user
+id: user_add_role_action.conference_oxford
+label: 'Add the Conference Oxford role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: conference_oxford

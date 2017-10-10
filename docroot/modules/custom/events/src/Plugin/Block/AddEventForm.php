@@ -21,7 +21,14 @@ class AddEventForm extends BlockBase {
   public function build() {
     $build = [];
 
-    $form = $this->getAddEventForm();
+    $route = \Drupal::routeMatch()->getRouteName();
+
+    if($route === 'group.calendar') {
+      $form = $this->getGovernanceAreaEventAddForm();
+    }
+    elseif ($route === 'page_manager.page_view_my_calendar') {
+      $form = $this->getMyCalendarEventAddForm();
+    }
 
     $build['add_event_form']['#markup'] = render($form);
 
@@ -33,7 +40,7 @@ class AddEventForm extends BlockBase {
    *
    * @return mixed
    */
-  private function getAddEventForm() {
+  private function getGovernanceAreaEventAddForm() {
     // Get the group from the URL.
     $group = \Drupal::request()->get('group');
 
@@ -44,22 +51,67 @@ class AddEventForm extends BlockBase {
     // Remove grouping on the form.
     $form['#group_children'] = array();
 
-    $route = \Drupal::routeMatch()->getRouteName();
+    // Array with the fields to be displayed on the form.
+    $display_fields = array(
+      'title',
+      'field_date',
+    );
+
+    // Array with the fields on the form.
+    $fields = array(
+      'body',
+      'field_category',
+      'field_comments',
+      'field_date',
+      'field_documents',
+      'field_event_author',
+      'field_event_link',
+      'field_event_slider',
+      'field_location',
+      'field_organization',
+      'field_related_content_selector',
+      'field_timezone',
+      'title',
+      'field_join_block',
+      'langcode',
+      'field_add_event_in_group',
+    );
+
+    // Hide the field that are not in the display_fields array.
+    foreach ($form as $key => $value) {
+      if (in_array($key, $fields)) {
+        if (!in_array($key, $display_fields)) {
+          $form[$key]['#access'] = FALSE;
+        }
+      }
+    }
+
+    $form['field_date']['#weight'] = 30;
+
+    return $form;
+  }
+
+  private function getMyCalendarEventAddForm() {
+    $type = NodeType::load('event');
+    $node = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->create(array('type' => $type->id()));
+
+    $form = \Drupal::entityTypeManager()->getFormObject('node', 'default')->setEntity($node);
+
+    $form = \Drupal::formBuilder()->getForm($form);
+
+    $form['advanced']['#access'] = FALSE;
+
+    // Remove grouping on the form.
+    $form['#group_children'] = array();
 
     // Array with the fields to be displayed on the form.
-    if($route === 'group.calendar') {
-      $display_fields = array(
-        'title',
-        'field_date',
-      );
-    }
-    elseif ($route === 'page_manager.page_view_my_calendar') {
-      $display_fields = array(
-        'title',
-        'field_date',
-        'field_add_event_in_group',
-      );
-    }
+    $display_fields = array(
+      'title',
+      'field_date',
+      'field_add_event_in_group',
+    );
 
     // Array with the fields on the form.
     $fields = array(

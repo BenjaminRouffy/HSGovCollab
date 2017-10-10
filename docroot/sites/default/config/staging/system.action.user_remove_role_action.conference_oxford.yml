@@ -1,0 +1,14 @@
+uuid: 91391add-238c-49b0-a5af-ff67acddf757
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.conference_oxford
+  module:
+    - user
+id: user_remove_role_action.conference_oxford
+label: 'Remove the Conference Oxford role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: conference_oxford

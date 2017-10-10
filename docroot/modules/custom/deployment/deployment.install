@@ -1024,7 +1024,6 @@ function deployment_update_8084() {
   ]);
 }
 
-
 /**
  * Change flood interval to 10 mins.
  */
@@ -1042,4 +1041,14 @@ function deployment_update_8085() {
 function deployment_update_8086() {
   \Drupal::service('module_installer')->uninstall(['piwik']);
   \Drupal::service('module_installer')->install(['google_analytics']);
+}
+
+/**
+ * Vimeo + Youtube
+ */
+function deployment_update_8087() {
+  \Drupal::service('module_installer')->install([
+      'video_embed_wysiwyg',
+      'video_embed_field_background',
+    ]);
 }

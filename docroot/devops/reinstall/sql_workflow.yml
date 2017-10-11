@@ -41,7 +41,7 @@
 # CI server build.
 - name: Copy latest backup to build folder
   sudo: yes
-  shell: cp -f {{ backup_folder }}/{{ source_backup_name }} {{ pwd.stdout }}/latest.sql.gz
+  shell: cp -f {{ backup_folder }}/latest_local_{{ local_backup_environment }}.sql.gz {{ pwd.stdout }}/latest.sql.gz
   when: (pp_environment == "default" or pp_environment == "demo") and ((ansible_env.USER is defined and ansible_env.USER == "{{ ci_server_username }}") or (ansible_env.SUDO_USER is defined and ansible_env.SUDO_USER == "{{ ci_server_username }}"))
 
 - name: Importing from local backup
@@ -87,7 +87,7 @@
 # Update database. See https://www.youtube.com/watch?v=vFsgNjhGr4Y how-to update configs with http://dgo.to/confi
 - name: Updating database
   sudo: yes
-  shell: "{{ php_env_vars }} drush -dvy updb -l {{ site_url }}"
+  shell: "{{ php_env_vars }} drush -y updb -l {{ site_url }}"
   register: updates
 
 - name: Gets deleted config files form log

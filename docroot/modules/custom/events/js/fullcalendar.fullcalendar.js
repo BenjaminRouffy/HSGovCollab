@@ -121,10 +121,14 @@
         if (drupalSettings.events && drupalSettings.events.group_allow_access_to_popup) {
           var $addEventModal = $('.add-event-popup-form');
 
-          $('.fc-day-number')
+          // Attach add event text to the days if we are in month view.
+          $('.fc-month-view .fc-day-number')
             .prepend('<span class="add-event">' + Drupal.t('Add Event') + '</span>');
+          // Add helper classes.
           $(_this.$view).addClass('add-event-calendar');
+          $('body').addClass('has-event-calendar-popup');
 
+          // Initialize the modal.
           $addEventModal.iziModal({
             title: Drupal.t('Add Event'),
             headerColor: '#283b44',
@@ -135,17 +139,24 @@
 
               modal.startLoading();
 
+              // Re attach behaviours because we are appending the content into easy modal.
               Drupal.detachBehaviors($('.add-event-popup-form').get()[0]);
               Drupal.attachBehaviors($('.add-event-popup-form').get()[0]);
 
-              // Append date to input.
+              // Append date to input to the correct input - the start date.
               $addEventModal
                 .find('.js-form-type-date')
                 .not('[class*="end-value-date"]')
                 .find('input[type="date"]')
                 .val(date);
 
+              // Hide the body scroll.
+              $('body').css('overflow-y', 'hidden');
+
               modal.stopLoading();
+            },
+            onClosing: function () {
+              $('body').css('overflow-y', 'auto');
             }
           });
 

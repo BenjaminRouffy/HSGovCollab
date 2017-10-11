@@ -201,9 +201,18 @@ function country_module_implements_alter(array &$implementations, $hook) {
  * Implements hook_views_post_render().
  */
 function country_views_post_render($view) {
-  // The title of "Countries" view (list_of_projects:block_3) can be overriden
-  // by setting a value in label field of UO Region group.
-  if ($view->id() == 'list_of_projects' && ($view->current_display == 'block_3' || $view->current_display == 'block_5')) {
+  // By doing this we override the title of UO - Countries listing pages with
+  // a value provided in the parent group.
+  //
+  // list_of_projects:block_3 is related to Universal Object - Countries for
+  // Geographical, Knowledge and Products objects.
+  //
+  // list_of_projects:block_5 is related to Universal Object - Countries for
+  // GA object.
+  //
+  // search_for_a_country_or_region:block_2 is related to UO Country subpage.
+  if (($view->id() == 'list_of_projects' && ($view->current_display == 'block_3' || $view->current_display == 'block_5'))
+    || ($view->id() == 'search_for_a_country_or_region' && ($view->current_display == 'block_2'))) {
 
     // The parent Region group is passed as argument, we load it to get its
     // label value.

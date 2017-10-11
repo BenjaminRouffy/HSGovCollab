@@ -99,14 +99,7 @@ class CountryMenuBlock extends BlockBase {
 
         switch($index) {
           case 'country':
-            // It is possible to have country link at Governance area, and in
-            // this case we need to get the result from other view.
-            if ($group->bundle() == 'governance_area') {
-              $row = views_get_view_result('search_for_a_country_or_region', 'block_4');
-            }
-            else {
-              $row = views_get_view_result('search_for_a_country_or_region', 'block_2');
-            }
+            $row = views_get_view_result('search_for_a_country_or_region', 'block_2');
             break;
 
           case 'news_and_event':

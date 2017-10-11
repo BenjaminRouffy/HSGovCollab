@@ -1,0 +1,118 @@
+diff --git a/crop.module b/crop.module
+index a5aeafa..32951fb 100644
+--- a/crop.module
++++ b/crop.module
+@@ -6,7 +6,7 @@
+  *
+  * Provides storage and API for image crops.
+  */
+-
++use Drupal\Component\Utility\UrlHelper;
+ use \Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\StreamWrapper\PublicStream;
+ use Drupal\crop\Entity\Crop;
+@@ -114,19 +114,21 @@ function crop_file_delete(FileInterface $file) {
+  */
+ function crop_file_url_alter(&$uri) {
+   // Process only files that are stored in "styles" directory.
+-  if (strpos($uri, PublicStream::basePath() . '/styles/') !== FALSE) {
+-    // Handle the case of multiple "/styles/" in URI.
+-    $uri_parts = explode('/styles/', $uri);
+-    $image_style_part = end($uri_parts);
++  if (strpos($uri, '/styles/') !== FALSE && preg_match('/\/styles\/(.*?)\/(.*?)\/(.+)/', $uri, $match)) {
+     // Match image style, schema, file subdirectory and file name.
+-    preg_match("/(.*?)\/(.*?)\/(.*+)/", $image_style_part, $match);
+     // Get the image style ID.
+     $image_style = $match[1];
+     // Get the file path without query parameter.
+-    $parsed_uri = parse_url($match[3]);
++    $parsed_uri = UrlHelper::parse($match[3]);
+     // Get the file URI using parsed schema and file path.
+     $file_uri = $match[2] . '://' . $parsed_uri['path'];
+ 
++    // Prevent double hashing, if there is a hash argument already, do not add
++    // it again.
++    if (!empty($parsed_uri['query']['h'])) {
++      return;
++    }
++
+     /** @var \Drupal\image\Entity\ImageStyle $image_style */
+     if (!$image_style = ImageStyle::load($image_style)) {
+       return;
+@@ -148,7 +150,25 @@ function crop_file_url_alter(&$uri) {
+       // Found a crop for this image, append a hash of it to the URL,
+       // so that browsers reload the image and CDNs and proxies can be bypassed.
+       $shortened_hash = substr(md5(implode($crop->position()) . implode($crop->anchor())), 0, 8);
+-      $uri .= '&h=' . $shortened_hash;
++
++      // If the URI has a schema and that is not http, https or data, convert
++      // the URI to the external URL. Otherwise the appended query argument
++      // will be encoded.
++      // @see file_create_url()
++      $scheme = \Drupal::service('file_system')->uriScheme($uri);
++      if ($scheme && !in_array($scheme, ['http', 'https', 'data'])) {
++        if ($wrapper = \Drupal::service('stream_wrapper_manager')->getViaUri($uri)) {
++          $uri = $wrapper->getExternalUrl();
++        }
++      }
++
++      // Append either with a ? or a & if there are existing query arguments.
++      if (strpos($uri, '?') === FALSE) {
++        $uri .= '?h=' . $shortened_hash;
++      }
++      else {
++        $uri .= '&h=' . $shortened_hash;
++      }
+     }
+   }
+ }
+diff --git a/src/Tests/CropFunctionalTest.php b/src/Tests/CropFunctionalTest.php
+index 8dd93b3..70123c5 100644
+--- a/src/Tests/CropFunctionalTest.php
++++ b/src/Tests/CropFunctionalTest.php
+@@ -166,30 +166,34 @@ class CropFunctionalTest extends WebTestBase {
+     $crop = Crop::create($values);
+     $crop->save();
+ 
++    // Test that the hash is appended both when a URL is created and passed
++    // through file_create_url() and when a URL is created, without additional
++    // file_create_url() calls.
++    $shortened_hash = substr(md5(implode($crop->position()) . implode($crop->anchor())), 0, 8);
++
+     // Build an image style derivative for the file URI.
+     $image_style_uri = $this->testStyle->buildUri($file_uri);
++    $image_style_uri_url = file_create_url($image_style_uri);
++    $this->assertTrue(strpos($image_style_uri_url, $shortened_hash) !== FALSE, 'The image style URL contains a shortened hash.');
++
+     // Build an image style URL.
+-    $image_style_url = $this->testStyle->buildUrl($image_style_uri);
+-    // This triggers crop_file_url_alter().
+-    $altered_image_style_url = file_create_url($image_style_url);
+-
+-    $shortened_hash = substr(md5(implode($crop->position()) . implode($crop->anchor())), 0, 8);
+-    $this->assertTrue(strpos($altered_image_style_url, $shortened_hash) !== FALSE, 'The image style URL contains a shortened hash.');
++    $image_style_url = $this->testStyle->buildUrl($file_uri);
++    $this->assertTrue(strpos($image_style_url, $shortened_hash) !== FALSE, 'The image style URL contains a shortened hash.');
+ 
+     // Update the crop to assert the hash has changed.
+     $crop->setPosition('80', '80')->save();
+     $old_hash = $shortened_hash;
+     $new_hash = substr(md5(implode($crop->position()) . implode($crop->anchor())), 0, 8);
+-    $altered_image_style_url = file_create_url($image_style_url);
+-    $this->assertFalse(strpos($altered_image_style_url, $old_hash) !== FALSE, 'The image style URL does not contain the old hash.');
+-    $this->assertTrue(strpos($altered_image_style_url, $new_hash) !== FALSE, 'The image style URL contains an updated hash.');
++    $image_style_url = $this->testStyle->buildUrl($file_uri);
++    $this->assertFalse(strpos($image_style_url, $old_hash) !== FALSE, 'The image style URL does not contain the old hash.');
++    $this->assertTrue(strpos($image_style_url, $new_hash) !== FALSE, 'The image style URL contains an updated hash.');
+ 
+     // Delete the file and the crop entity associated,
+     // the crop entity are auto cleaned by crop_file_delete().
+     $file->delete();
+ 
+-    // Check if crop entity are correctly deleted.
+-    $this->assertFalse(Crop::cropExists($file_uri), 'The Crop entity are correctly deleted after file delete.');
++    // Check that the crop entity is correctly deleted.
++    $this->assertFalse(Crop::cropExists($file_uri), 'The Crop entity was correctly deleted after file delete.');
+   }
+ 
+ }

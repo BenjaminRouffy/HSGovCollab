@@ -118,7 +118,7 @@
         $('.fc-event-container a', _this.$view).addClass('use-ajax');
         $('.fc-day-number.fc-today').wrapInner('<span class="today"></span>');
 
-        if (drupalSettings.events && drupalSettings.events.group_node_event_path) {
+        if (drupalSettings.events && drupalSettings.events.group_allow_access_to_popup) {
           var $addEventModal = $('.add-event-popup-form');
 
           $('.fc-day-number')

@@ -36,6 +36,7 @@ class CountryViewsFilterAlter implements FormAlterServiceBaseInterface, FormAlte
     unset($form['actions']);
     $form['wrap']['combine_1'] = $form['combine_1'];
     $form['wrap']['combine_1']['#title'] = $form['#info']['filter-combine_1']['label'];
+    $form['wrap']['combine_1']['#attributes']['placeholder'] = t('Type in first letters or scroll down');
     unset($form['combine_1']);
 
     $form['wrap']['combine_1']['#prefix'] = '<div class="search-form-wrapper">';

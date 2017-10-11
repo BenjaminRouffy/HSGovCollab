@@ -24,7 +24,7 @@
       {% if elements['#user_mail'] is not empty %}
         <div class="font-social-icon mail-icon">
         <span>
-          {{ elements['#user_mail'] }}
+          <a href="mailto:{{ elements['#user_mail'] }}">{{ elements['#user_mail'] }}</a>
         </span>
         </div>
       {% endif %}

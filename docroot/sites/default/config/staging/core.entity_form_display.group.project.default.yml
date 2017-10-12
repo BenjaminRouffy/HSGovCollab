@@ -7,6 +7,7 @@ dependencies:
     - field.field.group.project.field_based_on
     - field.field.group.project.field_content
     - field.field.group.project.field_date
+    - field.field.group.project.field_end_date
     - field.field.group.project.field_faq
     - field.field.group.project.field_join_block
     - field.field.group.project.field_knowledge_vault
@@ -46,6 +47,7 @@ third_party_settings:
       children:
         - label
         - field_date
+        - field_end_date
         - langcode
         - translation
         - path
@@ -158,6 +160,12 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_end_date:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
   field_faq:
     weight: 8
     settings:
@@ -191,7 +199,7 @@ content:
     type: group_select
     region: content
   field_project_icon:
-    weight: 6
+    weight: 7
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -240,18 +248,18 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     region: content
   translation:
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }

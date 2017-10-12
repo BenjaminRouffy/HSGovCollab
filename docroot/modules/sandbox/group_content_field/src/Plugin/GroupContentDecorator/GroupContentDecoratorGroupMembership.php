@@ -58,4 +58,62 @@ class GroupContentDecoratorGroupMembership extends GroupContentDecoratorBase {
 
     return $element;
   }
+
+  /**
+   * @inheritdoc
+   *
+   * Special care: don't create group content if already exist.
+   */
+  function createMemberContent($parent_entity, $add_gid) {
+    $properties = $this->getBuildProperties($parent_entity);
+
+    // Try to find exist group content.
+    unset($properties['group_roles']);
+    $group_role = $this->groupContentItem->getSetting('group_roles');
+
+    $properties['gid'] = $add_gid;
+
+    $result = \Drupal::entityTypeManager()
+      ->getStorage('group_content')
+      ->loadByProperties($properties);
+
+    if (empty($result)) {
+      $properties['group_roles'] = $group_role;
+      GroupContent::create($properties)->save();
+    }
+    else {
+      /* @var GroupContent $group_content */
+      foreach ($result as $group_content) {
+        $group_content->group_roles->setValue($group_role);
+        $group_content->save();
+      }
+    }
+  }
+
+  /**
+   * @inheritdoc
+   *
+   * Special care: don't remove group content, just remove role.
+   */
+  function removeMemberContent($parent_entity, $delete_gid) {
+    $properties = $this->getBuildProperties($parent_entity);
+    $group_role = $this->groupContentItem->getSetting('group_roles');
+
+    $properties['gid'] = $delete_gid;
+
+    $result = \Drupal::entityTypeManager()
+      ->getStorage('group_content')
+      ->loadByProperties($properties);
+
+    foreach ($result as $group_content) {
+      foreach($group_content->group_roles as $delta => $item)  {
+        if ($item->getValue()['target_id'] == $group_role) {
+          unset($group_content->group_roles[$delta]);
+          $group_content->save();
+          break;
+        }
+      }
+    }
+  }
+
 }

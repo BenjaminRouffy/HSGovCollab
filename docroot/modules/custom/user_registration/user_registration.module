@@ -394,5 +394,18 @@ function _user_registration_group_manager(&$form, FormStateInterface $form_state
     $values['field_product_manager'][0]['entity_gids'] = [];
   }
 
+  if (in_array('country_managers', $values['roles']) && isset($values['field_country_manager']) && empty($values['field_country_manager'][0]['entity_gids'])) {
+    $form_state->setErrorByName('field_country_manager', t('The @title value is required', ['@title' => $form['field_country_manager']['widget']['#title']]));
+  }
+  if (in_array('projects_managers', $values['roles']) && isset($values['field_project_manager']) && empty($values['field_project_manager'][0]['entity_gids'])) {
+    $form_state->setErrorByName('field_project_manager', t('The @title value is required', ['@title' => $form['field_project_manager']['widget']['#title']]));
+  }
+  if (in_array('product_manager', $values['roles']) && isset($values['field_product_manager']) && empty($values['field_product_manager'][0]['entity_gids'])) {
+    $form_state->setErrorByName('field_product_manager', t('The @title value is required', ['@title' => $form['field_product_manager']['widget']['#title']]));
+  }
+  if (in_array('knowledge_vault_manager', $values['roles']) && isset($values['field_knowledge_vault_manager']) && empty($values['field_knowledge_vault_manager'][0]['entity_gids'])) {
+    $form_state->setErrorByName('field_knowledge_vault_manager', t('The @title value is required', ['@title' => $form['field_knowledge_vault_manager']['widget']['#title']]));
+  }
+
   $form_state->setValues($values);
 }

@@ -38,13 +38,21 @@ settings:
           name: Media
           items:
             - Blockquote
+            - video_embed
   plugins:
-    language:
-      language_list: un
     stylescombo:
       styles: 'span.hash|Hash Tag'
+    language:
+      language_list: un
     linkit:
       linkit_profile: default
+    video_embed:
+      defaults:
+        children:
+          autoplay: false
+          responsive: true
+          width: '854'
+          height: '480'
 image_upload:
   status: false
   scheme: public

@@ -21,27 +21,27 @@ source:
 process:
   id: id
   title: id
-  'body/value':
+  body/value:
     plugin: callback
     source: full_text
     callable: html_entity_decode
-  'body/format': 'constants/body_format'
+  body/format: constants/body_format
   created:
     plugin: callback
     source: created_at
     callable: strtotime
-  type: 'constants/entity_type'
-  field_social_type: 'constants/social_type'
+  type: constants/entity_type
+  field_social_type: constants/social_type
   temp_media:
     plugin: iterator
-    source: 'extended_entities/media'
+    source: extended_entities/media
     process:
-      uri: media_url
+      uri: media_url_https
   temp_retweeted_media:
     plugin: iterator
-    source: 'retweeted_status/extended_entities/media'
+    source: retweeted_status/extended_entities/media
     process:
-      uri: media_url
+      uri: media_url_https
   field_media:
     plugin: merge
     source:
@@ -50,7 +50,7 @@ process:
   field_permalink_url:
     plugin: concat
     source:
-      - 'constants/status_url'
+      - constants/status_url
       - id_str
 destination:
   plugin: 'entity:node'

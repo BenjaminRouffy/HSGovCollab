@@ -78,15 +78,7 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            field_organization_target_id:
-              bef_format: bef
-              more_options:
-                bef_select_all_none: false
-                bef_collapsible: false
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
-            field_category_target_id:
+            type:
               bef_format: bef
               more_options:
                 bef_select_all_none: false
@@ -739,7 +731,7 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: 'News & Events'
     position: 1
     display_options:
       display_extenders: {  }
@@ -805,48 +797,6 @@ display:
           expose:
             operator: ''
           group: 1
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value:
-            event: event
-            news: news
-            social: social
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
         gid:
           id: gid
           table: group_content_field_data
@@ -898,94 +848,104 @@ display:
           entity_type: group_content
           entity_field: gid
           plugin_id: group_index_gid
-        field_organization_target_id:
-          id: field_organization_target_id
-          table: node__field_organization
-          field: field_organization_target_id
+        type:
+          id: type
+          table: node_field_data
+          field: type
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
-          value: {  }
+          operator: in
+          value:
+            event: event
+            news: news
+            social: social
           group: 1
           exposed: true
           expose:
-            operator_id: field_organization_target_id_op
-            label: 'Select organization'
-            description: ''
+            operator_id: type_op
+            label: 'Content type'
+            description: null
             use_operator: false
-            operator: field_organization_target_id_op
-            identifier: organization
+            operator: type_op
+            identifier: type
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
             reduce: false
-          is_grouped: false
+          is_grouped: true
           group_info:
-            label: ''
+            label: 'Select type'
             description: ''
-            identifier: ''
+            identifier: type
             optional: true
-            widget: select
+            widget: radios
             multiple: false
             remember: false
-            default_group: All
+            default_group: '1'
             default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: organizations
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        field_category_target_id:
-          id: field_category_target_id
-          table: node__field_category
-          field: field_category_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_category_target_id_op
-            label: 'Select category'
-            description: ''
-            use_operator: false
-            operator: field_category_target_id_op
-            identifier: category
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: categories
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
+            group_items:
+              1:
+                title: All
+                operator: in
+                value:
+                  event: event
+                  news: news
+                  social: social
+                  all: '0'
+                  article: '0'
+                  newsletter_banner: '0'
+                  document: '0'
+                  member: '0'
+                  simplenews_issue: '0'
+                  basic_page: '0'
+              2:
+                title: 'News&Events'
+                operator: in
+                value:
+                  event: event
+                  news: news
+                  all: '0'
+                  article: '0'
+                  newsletter_banner: '0'
+                  document: '0'
+                  member: '0'
+                  simplenews_issue: '0'
+                  social: '0'
+                  basic_page: '0'
+              3:
+                title: News
+                operator: in
+                value:
+                  news: news
+                  all: '0'
+                  article: '0'
+                  newsletter_banner: '0'
+                  document: '0'
+                  event: '0'
+                  member: '0'
+                  simplenews_issue: '0'
+                  social: '0'
+                  basic_page: '0'
+              4:
+                title: Events
+                operator: in
+                value:
+                  event: event
+                  all: '0'
+                  article: '0'
+                  newsletter_banner: '0'
+                  document: '0'
+                  member: '0'
+                  news: '0'
+                  simplenews_issue: '0'
+                  social: '0'
+                  basic_page: '0'
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
         computed_date:
           id: computed_date
           table: node_field_data
@@ -1131,6 +1091,7 @@ display:
           replica: false
           query_comment: ''
           query_tags: null
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -1138,7 +1099,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:

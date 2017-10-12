@@ -893,24 +893,31 @@
     label {
       @include font-size(22.4);
       float: left;
-      line-height: 31px;
+      line-height: 1;
       margin-top: 10px;
       width: 42%;
+
+      @media only screen and (max-width: 991px) {
+        margin-bottom: 20px;
+      }
     }
 
     .form-text {
-      @include font-size(23.52);
       border-color: rgba($navy-dark, .32);
       float: left;
       font-weight: 300;
-      margin-top: 20px;
+      margin: 0;
       padding-left: 20px;
       width: 58%;
     }
 
     .form-submit {
-      top: auto;
+      top: 0;
       bottom: 25px;
+
+      @media only screen and (max-width: 991px) {
+        top: auto;
+      }
     }
   }
 

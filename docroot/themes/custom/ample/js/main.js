@@ -1,4 +1,4 @@
-(function($, Drupal) {
+(function ($, Drupal) {
   'use strict';
 
   // Detect IE browser.
@@ -36,7 +36,7 @@
   isTouchDevice();
 
   Drupal.behaviors.accordionExposedFilter = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
 
       var $forms = $('[data-accordion]', context);
 
@@ -64,19 +64,19 @@
             .filter('[' + settings.defaultAttributeSelector + '="' + parentAttribute + '"]')
             // Change a label of tab.
             .find(settings.defaultAccordionTabText).html(function () {
-              return $(settings.defaultFieldsetLegend, parent).html();
-              // Gets all checked inputs and ...
-              /*return $('input:checked + label', parent).map(function () {
-                  // ... and gets its labels.
-                  return $(this).html();
-                })
-                // Return all labels or default value of tab.
-                .get().join() || $(settings.defaultFieldsetLegend, parent).html()*/
-            });
+            return $(settings.defaultFieldsetLegend, parent).html();
+            // Gets all checked inputs and ...
+            /*return $('input:checked + label', parent).map(function () {
+             // ... and gets its labels.
+             return $(this).html();
+             })
+             // Return all labels or default value of tab.
+             .get().join() || $(settings.defaultFieldsetLegend, parent).html()*/
+          });
 
         };
 
-        var addLabel = function(form, parent) {
+        var addLabel = function (form, parent) {
           var legend = $(settings.defaultFieldsetLegend, parent)
             .hide()
             .html();
@@ -84,11 +84,11 @@
           $(parent).hide();
 
           var template = '<div class="wrapper accordion-button ' + settings.defaultAccordionTab.substr(1) + '">' +
-                            '<div class="text">' +
-                              '<span class="' + settings.defaultAccordionTabText.substr(1) + '"></span>' +
-                              '<span class="button"></span>' +
-                            '</div>' +
-                          '</div>';
+            '<div class="text">' +
+            '<span class="' + settings.defaultAccordionTabText.substr(1) + '"></span>' +
+            '<span class="button"></span>' +
+            '</div>' +
+            '</div>';
 
           var parentAttribute = $(parent).attr(settings.defaultAttributeSelector);
           var new_div = $(template)
@@ -104,10 +104,10 @@
         var _this = this;
         $('fieldset', $form)
           .filter('[' + settings.defaultAttributeSelector + ']').each(function () {
-            addLabel($form, this);
-          });
+          addLabel($form, this);
+        });
 
-        $(".click-item", $form).click(function() {
+        $(".click-item", $form).click(function () {
           var attr = $(this).attr(settings.defaultAttributeSelector);
           $('fieldset', $form).filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings("fieldset").slideUp(100);
           $(this).toggleClass(settings.defaultClosed).siblings(settings.defaultAccordionTab).addClass(settings.defaultClosed);
@@ -122,11 +122,11 @@
   };
 
   Drupal.behaviors.fadeOut = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var $blockquote = $('blockquote');
       var $timelineItem = $('.timeline-content').find('.paragraph');
 
-      $blockquote.add($timelineItem).each(function(i, el) {
+      $blockquote.add($timelineItem).each(function (i, el) {
         var $el = $(el);
 
         if (!$el.isVisible(true)) {
@@ -137,13 +137,13 @@
         }
       });
 
-      $(window).scroll(function() {
+      $(window).scroll(function () {
         var $window = $(window);
         var thirdhWinHeight = $window.height() / 3;
         var viewTop = $window.scrollTop();
         var viewBottom = viewTop + $window.height();
 
-        $timelineItem.each(function(i, el) {
+        $timelineItem.each(function (i, el) {
           var $el = $(el);
           var elemTopPos = $el.offset().top;
 
@@ -152,7 +152,7 @@
           }
         });
 
-        $blockquote.each(function(i, el) {
+        $blockquote.each(function (i, el) {
           var $el = $(el);
 
           if ($el.isVisible(true)) {
@@ -181,13 +181,13 @@
   }
 
   Drupal.behaviors.relatedContent = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var $relatedContent = $('.related-wrapper', context);
 
       if ($relatedContent.length) {
         showRelated();
 
-        $(window).scroll(function() {
+        $(window).scroll(function () {
           showRelated();
         });
       }
@@ -195,13 +195,13 @@
   };
 
   Drupal.behaviors.anchorLink = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var $anchorLink = $('[data-anchor-id]', context);
       var $header = $('header', context);
       var anchorSettings = {
         'region': []
       };
-      $anchorLink.each(function(index, element) {
+      $anchorLink.each(function (index, element) {
         if (this.hasAttribute('data-region')) {
           anchorSettings['region'].push($(this).attr('data-region'));
         }
@@ -228,7 +228,7 @@
             headerHeight += 90;
           }
 
-          $anchorLink.each(function(index, element) {
+          $anchorLink.each(function (index, element) {
 
             var anchorLabel = false;
             if (this.hasAttribute('data-anchor-label')) {
@@ -246,10 +246,10 @@
 
             $bottomHead.find('.anchor-links ul').append('<li><a href="#' + id + '">' + title + '</a></li>');
 
-            $(window).on('scroll', function() {
+            $(window).on('scroll', function () {
               var menuItems = $('.anchor-links').find("a");
 
-              var scrollItems = menuItems.map(function(){
+              var scrollItems = menuItems.map(function () {
                 var item = $($(this).attr("href"));
 
                 if (item.length) {
@@ -258,12 +258,12 @@
               });
 
               var fromTop = $(this).scrollTop() + headerHeight;
-              var cur = scrollItems.map(function(){
+              var cur = scrollItems.map(function () {
                 if ($(this).offset().top < fromTop)
                   return this;
               });
 
-              cur = cur[cur.length-1];
+              cur = cur[cur.length - 1];
 
               var id = cur && cur.length ? cur[0].id : "";
 
@@ -278,7 +278,7 @@
           });
         }
 
-        $('.anchor-links', context).on('click', 'a', function(event) {
+        $('.anchor-links', context).on('click', 'a', function (event) {
           var headerHeight = $('.header-fixed').height();
           var adminMenuHeight = parseInt($('body').css('padding-top'));
           var totalHeaderHegiht = headerHeight + adminMenuHeight;
@@ -295,11 +295,11 @@
 
 
   Drupal.behaviors.overlay = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var bannerOverlay = $('.overlay-wrapper', context);
 
-      setTimeout(function() {
-        bannerOverlay.animate({'opacity': 0}, 2000, function() {
+      setTimeout(function () {
+        bannerOverlay.animate({'opacity': 0}, 2000, function () {
           if (bannerOverlay.siblings('#map').size() || isTouchDevice() || $('body').is('.ie9')) {
             bannerOverlay.remove();
           }
@@ -309,8 +309,8 @@
   };
 
   Drupal.behaviors.carousel = {
-    attach: function(context, settings) {
-      $('.slider-wrapper').each(function(i, el) {
+    attach: function (context, settings) {
+      $('.slider-wrapper').each(function (i, el) {
         var $slider = $(el);
 
         $slider.owlCarousel({
@@ -318,10 +318,10 @@
           nav: true,
           smartSpeed: 500,
           autoHeight: true,
-          onInitialized: function() {
+          onInitialized: function () {
             var $this = this;
 
-            $(window).load(function() {
+            $(window).load(function () {
               $($this.$element).trigger('refresh.owl.carousel');
             });
           }
@@ -331,7 +331,7 @@
   };
 
   Drupal.behaviors.thumbCarousel = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var maxThumbs = 7;
       var speed = 500;
       var sliderSettings = {
@@ -342,7 +342,7 @@
         dotsSpeed: speed
       };
 
-      $('.slider-main', context).each(function(i, el) {
+      $('.slider-main', context).each(function (i, el) {
         var $slider = $(el).find('.content-slider-wrapper', context);
         var $thumbs = $(el).find('.thumb-slider-wrapper', context);
         var thumbNumber = $thumbs.find('.slider-item-thumb').length;
@@ -364,19 +364,19 @@
 
         $thumbs.find('.active').first().addClass('current');
 
-        $thumbs.on('click', '.owl-item', function(property) {
+        $thumbs.on('click', '.owl-item', function (property) {
           $(this).addClass('current').siblings().removeClass('current');
           $slider.trigger('to.owl.carousel', [$(property.target).parents('.owl-item').index(), speed, true]);
         });
 
-        $slider.on('changed.owl.carousel', function(property) {
+        $slider.on('changed.owl.carousel', function (property) {
           $thumbs.trigger('to.owl.carousel', [property.item.index, speed, true]);
           $thumbs.find('.owl-item').eq(property.item.index).addClass('current')
             .siblings().removeClass('current');
         });
       });
 
-      $('.trigger-full-page', context).on('click', function() {
+      $('.trigger-full-page', context).on('click', function () {
         var $this = $(this);
         var $slider = $this.siblings('.content-slider-wrapper');
         var $thumbs = $this.siblings('.thumb-slider-wrapper');
@@ -412,33 +412,33 @@
   };
 
   Drupal.behaviors.showMoreLink = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var hiddenContent = $('.more-content');
 
       if (!hiddenContent.children().length) {
         hiddenContent.parent().remove();
       }
 
-      $('.show-more', context).on('click', function() {
+      $('.show-more', context).on('click', function () {
         hiddenContent.slideToggle(300);
       });
     }
   };
 
   Drupal.behaviors.showSharing = {
-    attach: function(context, settings) {
-      $('.toggle-sharing-btn', context).on('click', function() {
+    attach: function (context, settings) {
+      $('.toggle-sharing-btn', context).on('click', function () {
         $(this).next().toggleClass('expanded');
       });
     }
   };
 
   Drupal.behaviors.mobileMenu = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var mobileMenuBtn = $('.mobile-menu-btn', context);
       var $body = $('body');
 
-      mobileMenuBtn.on('click', function() {
+      mobileMenuBtn.on('click', function () {
         var $this = $(this);
 
         $('.dashboard-sidebar').is('.expanded-menu') ? closeMobileMenu(context) : false;
@@ -452,9 +452,9 @@
         $this.toggleClass('opened');
       });
 
-      $.resizeAction(function() {
+      $.resizeAction(function () {
         return window.innerWidth >= 991;
-      }, function(state) {
+      }, function (state) {
         mobileMenuBtn.removeClass('opened');
       });
     }
@@ -467,14 +467,14 @@
   }
 
   Drupal.behaviors.sidebarMenu = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var sidebarMenu = $('.dashboard-sidebar', context);
 
       if (window.innerWidth > 767) {
         localStorage.getItem('dashboard') ? sidebarMenu.addClass('expanded-menu') : false;
       }
 
-      $('.expand-menu-btn, .mobile-dashboard-menu-btn', context).on('click', function(e) {
+      $('.expand-menu-btn, .mobile-dashboard-menu-btn', context).on('click', function (e) {
         $('.mobile-menu-btn').is('.opened') ? closeMobileMenu(context) : false;
 
         if (!sidebarMenu.is('.expanded-menu')) {
@@ -487,16 +487,16 @@
         }
       });
 
-      $.resizeAction(function() {
+      $.resizeAction(function () {
         return window.innerWidth >= 767;
-      }, function(state) {
+      }, function (state) {
         sidebarMenu.removeClass('expanded-menu');
       });
     }
   };
 
   function hidePopup(context) {
-    $('body', context).on('click', function(e) {
+    $('body', context).on('click', function (e) {
       var $target = $(e.target);
 
       if ($target.is('.cancel-link')) {
@@ -507,9 +507,9 @@
     });
   }
 
-  Drupal.behaviors.themeSwitcher =  {
-    attach: function(context, settings) {
-      $('.theme-switcher', context).on('click', function(e) {
+  Drupal.behaviors.themeSwitcher = {
+    attach: function (context, settings) {
+      $('.theme-switcher', context).on('click', function (e) {
         e.preventDefault();
 
         $('.popup-wrapper').add($('#overlay')).addClass('showed');
@@ -520,10 +520,10 @@
   };
 
   Drupal.behaviors.stopScroll = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var $bodyHTML = $('body, html', context);
 
-      $bodyHTML.on('scroll mousedown DOMMouseScroll mousewheel keyup', function(e) {
+      $bodyHTML.on('scroll mousedown DOMMouseScroll mousewheel keyup', function (e) {
         if (e.which > 0 || e.type === 'mousedown' || e.type === 'mousewheel') {
           $bodyHTML.stop();
         }
@@ -532,8 +532,8 @@
   };
 
   Drupal.behaviors.accordion = {
-    attach: function(context, settings) {
-      $('.accordion-item', context).on('click', '.accordion-title', function() {
+    attach: function (context, settings) {
+      $('.accordion-item', context).on('click', '.accordion-title', function () {
         var $this = $(this);
         var $parent = $this.parent();
         var $content = $('.accordion-content');
@@ -552,23 +552,23 @@
   };
 
   Drupal.behaviors.header = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var $window = $(window);
       var $header = $('header', context);
 
       $window.scrollTop() > 0 ? $header.addClass('collapsed') : $header.removeClass('collapsed');
 
-      $.scrollAction(function() {
+      $.scrollAction(function () {
         return $window.scrollTop() > 0;
-      }, function(isTrue) {
+      }, function (isTrue) {
         $header.toggleClassCondition(isTrue, 'collapsed');
       });
     }
   };
 
   Drupal.behaviors.comments = {
-    attach: function(context, settings) {
-      $('.comment-show', context).on('click', function() {
+    attach: function (context, settings) {
+      $('.comment-show', context).on('click', function () {
         var $this = $(this);
 
         $this.parents('.comment-item').siblings('.indented').first().addClass('expanded');
@@ -578,18 +578,18 @@
   };
 
   Drupal.behaviors.mobileFeatures = {
-    attach: function(context, settings) {
-      $('.section-info', context).on('touchstart', '.paragraph', function() {
+    attach: function (context, settings) {
+      $('.section-info', context).on('touchstart', '.paragraph', function () {
         $(this).toggleClass('hover').siblings().removeClass('hover');
       });
 
       if (isTouchDevice()) {
-        $('.wrapper-filters', context).on('click', '.accordion-button', function() {
+        $('.wrapper-filters', context).on('click', '.accordion-button', function () {
           var $this = $(this),
-              $parent = $this.parent(),
-              parentHeight = $parent.height(),
-              parentTopOffset = $parent.offset().top,
-              headerHeight = $('header').height();
+            $parent = $this.parent(),
+            parentHeight = $parent.height(),
+            parentTopOffset = $parent.offset().top,
+            headerHeight = $('header').height();
 
           if (!$this.is('.closed')) {
             $('html, body').animate({
@@ -602,11 +602,11 @@
   };
 
   Drupal.behaviors.searchFilterAccordion = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var $facetBox = $('.block-facet--checkbox, .block-facet--datebasic', context);
       var $facetCheckboxList = $facetBox.children('ul');
 
-      $facetBox.on('click', 'h2', function() {
+      $facetBox.on('click', 'h2', function () {
         var $this = $(this);
 
         if (!$this.parent().is('[expanded]')) {
@@ -621,7 +621,7 @@
         }
       });
 
-      $('.show-filters', context).on('click', function() {
+      $('.show-filters', context).on('click', function () {
         $(this).toggleClass('open-filters');
         $facetBox.toggle();
       });
@@ -629,10 +629,10 @@
   };
 
   Drupal.behaviors.calendar = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var $eventContainer = $('#event-response', context);
 
-      $('.page-my-calendar, .page-group-calendar', context).on('mousedown', function(e) {
+      $('.page-my-calendar, .page-group-calendar', context).on('mousedown', function (e) {
         var $target = $(e.target);
 
         if (!$eventContainer.is($target) && $eventContainer.has($target).length === 0) {
@@ -640,7 +640,7 @@
         }
       });
 
-      $(document).on('keyup', function(e) {
+      $(document).on('keyup', function (e) {
         if (e.keyCode == 27) {
           $eventContainer.removeClass('active');
         }
@@ -649,11 +649,11 @@
   };
 
   Drupal.behaviors.ieFixes = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       // IE 9
       if ($('body').is('.ie9')) {
         // Multiple select
-        $('.form-select[multiple]', context).each(function() {
+        $('.form-select[multiple]', context).each(function () {
           $(this).parent().addClass('chosen-select-wrapper');
         });
       }
@@ -661,11 +661,54 @@
   };
 
   Drupal.behaviors.attachFile = {
-    attach: function(context, settings) {
-      $('.choose-file', context).on('click', function() {
+    attach: function (context, settings) {
+      $('.choose-file', context).on('click', function () {
         $(this).prev('.form-file').click();
       });
     }
-  }
+  };
+
+  Drupal.behaviors.contactExpand = {
+    attach: function (context) {
+      var $contactCompact = $('.compact-view', context);
+
+      var minHeight = $contactCompact.map(function () {
+        return $(this).height();
+      }).get();
+
+      var minHeightVal = Math.min.apply(Math, minHeight);
+
+      if (isFinite(minHeightVal)) {
+        $contactCompact.each(function () {
+          var $self = $(this);
+
+          if ($self.height() > minHeightVal) {
+            var initHeight = $self.height();
+
+            $self.css({
+              maxHeight: Math.min.apply(this, minHeight)
+            }).addClass('contact-expanded');
+
+            $self.on('click', '.contact-expand', function(evt) {
+
+              if(!$self.hasClass('expanded')) {
+                $self.css({
+                  maxHeight: (initHeight  + 40)
+                }).addClass('expanded');
+                return;
+              }
+              else {
+                $self.css({
+                  maxHeight: minHeightVal
+                }).removeClass('expanded');
+              }
+
+            });
+
+          }
+        });
+      }
+    }
+  };
 
 })(jQuery, Drupal);

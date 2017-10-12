@@ -1,0 +1,22 @@
+uuid: 5ab2b8de-a96d-4eda-b5c8-ff7b94358de8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.newsletter_banner
+id: node.newsletter_banner.public_content
+field_name: public_content
+entity_type: node
+bundle: newsletter_banner
+label: 'Public content'
+description: 'For making the page public'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

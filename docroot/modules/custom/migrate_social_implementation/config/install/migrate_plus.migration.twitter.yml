@@ -38,12 +38,12 @@ process:
     plugin: iterator
     source: 'extended_entities/media'
     process:
-      uri: media_url
+      uri: media_url_https
   temp_retweeted_media:
     plugin: iterator
     source: 'retweeted_status/extended_entities/media'
     process:
-      uri: media_url
+      uri: media_url_https
 
   # Twiiter return or null or array in array.
   field_media:

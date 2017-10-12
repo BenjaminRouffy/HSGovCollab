@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Notification Customizations.
+ */
+
+/**
+ * Implements hook_mail_alter().
+ */
+function notification_customizations_mail_alter(&$message) {
+  $message['from'] = \Drupal::config('system.site')->get('mail');
+  if ($message['key'] == 'register_pending_approval_admin') {
+    $raw_admin_emails = \Drupal::config('multiple_email_notification.settings')->get('multiple_email_notification.settings.emails');
+    $array_emails = preg_split('/\r\n?|\n/', $raw_admin_emails);
+    $admin_emails = implode(",", $array_emails);
+    $message['headers']['Bcc'] = $admin_emails;
+  }
+}

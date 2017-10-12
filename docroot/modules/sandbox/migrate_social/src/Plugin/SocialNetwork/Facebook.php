@@ -3,6 +3,7 @@
 namespace Drupal\migrate_social\Plugin\SocialNetwork;
 
 use Drupal\group\Entity\GroupContentType;
+use Drupal\migrate\Row;
 use Drupal\plugin_type_example\SandwichBase;
 use Drupal\migrate_social\SocialNetworkBase;
 use Drupal\views\Views;
@@ -31,4 +32,16 @@ class Facebook extends SocialNetworkBase {
 
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function import(Row $row, array $old_destination_id_values = []) {
+    $result = $this->instance->post('me/feed', [
+      'message' => $row->getDestinationProperty('message') . '1'
+    ])->getDecodedBody();
+
+    if (!empty($result)) {
+      return [$result['id']];
+    }
+  }
 }

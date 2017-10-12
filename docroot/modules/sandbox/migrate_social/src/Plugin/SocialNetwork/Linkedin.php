@@ -3,6 +3,7 @@
 namespace Drupal\migrate_social\Plugin\SocialNetwork;
 
 use Drupal\group\Entity\GroupContentType;
+use Drupal\migrate\Row;
 use Drupal\plugin_type_example\SandwichBase;
 use Drupal\migrate_social\SocialNetworkBase;
 use Drupal\views\Views;
@@ -55,4 +56,10 @@ class Linkedin extends SocialNetworkBase {
     ];
   }
 
+  /**
+   * Import/update one row to social network.
+   */
+  protected function import(Row $row, array $old_destination_id_values = []) {
+    // TODO: Implement import() method.
+  }
 }

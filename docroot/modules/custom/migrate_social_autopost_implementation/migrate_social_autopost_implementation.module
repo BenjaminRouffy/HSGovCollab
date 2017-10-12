@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Companies Migration.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function migrate_social_autopost_implementation_cron() {
+  $state = Drupal::state();
+
+  // TODO Cron.
+  if (false && REQUEST_TIME >= (int) $state->get('migrate_social_implementation.next_execution')) {
+    $drush_configs = \Drupal::config('migrate_social_implementation.settings');
+
+    $drush = sprintf('%s %s%s',
+      $drush_configs->get('drush_env'),
+      $drush_configs->get('drush_drupal_root') ? DRUPAL_ROOT : '',
+      $drush_configs->get('drush_path')
+    );
+
+    shell_exec("$drush mi --update --group=social_networks");
+    shell_exec("$drush search-api-index");
+
+    $state->set('migrate_social_implementation.next_execution', REQUEST_TIME + 24 * 60 * 60);
+  }
+}

@@ -41,13 +41,13 @@ class RelationForm extends FormBase {
       return $form;
     }
 
-    $form['#prefix'] = '<div class = "relation_form_' . $user->id() . ' font-social-icon">';
+    $form['#prefix'] = '<div class = "relation_form_' . $user->id() . '>';
     $form['#suffix'] = '</div>';
 
     $form['container'] = [
       '#type' => 'container',
       '#attributes' => [
-        'class' => 'relation-link',
+        'class' => 'relation-link-wrapper',
       ],
       '#cache' => [
         'contexts' => [
@@ -82,7 +82,7 @@ class RelationForm extends FormBase {
             '#url' => Url::fromRoute('friends.approve', ['user' => $user->id()]),
             '#type' => 'link',
             '#attributes' => [
-              'class' => ['use-ajax'],
+              'class' => ['use-ajax red-btn-link'],
             ]
           ];
         }
@@ -98,7 +98,7 @@ class RelationForm extends FormBase {
         '#url' => Url::fromRoute('friends.connect', ['user' => $user->id()]),
         '#type' => 'link',
         '#attributes' => [
-          'class' => ['use-ajax'],
+          'class' => ['use-ajax red-btn-link'],
         ]
       ];
     }

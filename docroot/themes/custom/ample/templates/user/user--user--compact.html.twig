@@ -83,9 +83,12 @@
         </span>
         </div>
       {% endif %}
-      {{ content.relation_form }}
 
       <span class="contact-expand">Click to expand</span>
+    </div>
+
+    <div class="contact-to-user">
+      {{ content.relation_form }}
     </div>
 
     {% if elements['#current_user'] != user.id() %}

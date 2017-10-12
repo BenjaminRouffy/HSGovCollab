@@ -13,7 +13,11 @@ var PATH = {
 
 gulp.task('sass', function () {
   return gulp.src(PATH.scss)
-    .pipe(sass())
+    .pipe(sass({
+      errLogToConsole: true,
+      outputStyle: 'expanded'
+    }))
+    .on('error', swallowError)
     .pipe(autoprefixer())
     .pipe(gulp.dest('css'))
 });
@@ -31,3 +35,10 @@ gulp.task('watch', ['sass'], function () {
 gulp.task('default', ['watch']);
 
 gulp.task('build', ['cssnano']);
+
+
+function swallowError(error) {
+  // If you want details of the error in the console
+  console.log(error.toString());
+  this.emit('end')
+}

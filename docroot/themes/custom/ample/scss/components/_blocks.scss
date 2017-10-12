@@ -1322,6 +1322,7 @@
 
   .contact-to-user {
     text-align: center;
+    padding: 0 10px;
 
     a {
       @include font-size(14);
@@ -1331,6 +1332,8 @@
       padding: 15px 40px;
       position: relative;
       z-index: 10;
+      max-width: 290px;
+      width: 100%;
 
       &:hover {
         border-color: $red-dark;
@@ -1356,6 +1359,8 @@
     @include font-size(16.8);
     line-height: 25px;
     letter-spacing: .5px;
+    word-break: break-all;
+    overflow: hidden;
   }
 
   .summary {

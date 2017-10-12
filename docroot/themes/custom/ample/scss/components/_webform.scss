@@ -385,6 +385,114 @@ form {
   }
 }
 
+// Single radio button item
+.form-type-radio {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-bottom: 10px;
+  position: relative;
+
+  // Hide native radio item
+  .form-radio {
+    @extend %element-invisible;
+
+    // Active state
+    &:checked + .option {
+      &::after {
+        opacity: 1;
+        transform: scale(.5);
+        background: $red-dark;
+      }
+    }
+
+    // Disabled state
+    &:disabled + .option {
+      color: $navy-dark;
+      cursor: not-allowed;
+
+      &::before {
+        background: $navy-light;
+
+        .description-content & {
+          background: rgba($grey-light, .7);
+        }
+      }
+
+      &:hover::after {
+        transform: scale(0);
+      }
+    }
+
+    // Active-Disabled state
+    &:disabled:checked + .option {
+
+      &::after {
+        opacity: 1;
+        background: $grey-light;
+
+        .description-content & {
+          background: rgba($grey-light, .5);
+        }
+      }
+
+      &:hover::after {
+        transform: scale(.5);
+      }
+    }
+  }
+
+
+  // Create 'fake' radio element
+  .option {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0;
+    cursor: pointer;
+
+    // Need for position of checkbox state
+    position: relative;
+
+    &::before,
+    &::after {
+      content: ' ';
+    }
+
+    // 'Fake radio'
+    &::before {
+      display: inline-block;
+      height: 20px;
+      min-width: 20px;
+      background: $white;
+      border-radius: 50%;
+      margin: 2px 8px 0 0;
+
+    }
+
+    &::after {
+      width: 20px;
+      height: 20px;
+      background: $red-dark;
+      border-radius: 100%;
+      position: absolute;
+      top: 2px;
+      left: 0;
+      opacity: 0;
+      transition: all .5s ease;
+      transform-origin: center;
+      transform: scale(0);
+    }
+
+    // Hover effect
+    &:hover {
+      &::after {
+        opacity: 1;
+        transform: scale(.5);
+      }
+    }
+  }
+}
+
 form {
   .social_login {
     label {

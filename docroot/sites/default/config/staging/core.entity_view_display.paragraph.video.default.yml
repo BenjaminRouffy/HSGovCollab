@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.video.field_video_link
     - paragraphs.paragraphs_type.video
   module:
-    - video_embed_field
+    - video_embed_field_background
 id: paragraph.video.default
 targetEntityType: paragraph
 bundle: video
@@ -38,7 +38,7 @@ content:
       height: 480
       autoplay: true
     third_party_settings: {  }
-    type: video_embed_field_video
+    type: video_embed_field_video_background
     region: content
 hidden:
   created: true

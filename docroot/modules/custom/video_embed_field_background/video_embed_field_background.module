@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Module file for video_embed_field.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_theme().
+ */
+function video_embed_field_background_theme() {
+  return [
+    'video_embed_background' => [
+      'variables' => [
+        'url' => '',
+        'query' => [],
+        'attributes' => [],
+        'fragment' => '',
+      ],
+    ],
+  ];
+}

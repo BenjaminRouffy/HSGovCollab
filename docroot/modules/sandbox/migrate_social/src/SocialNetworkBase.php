@@ -3,6 +3,7 @@
 namespace Drupal\migrate_social;
 
 use Drupal\Component\Plugin\PluginBase;
+use Drupal\migrate\Row;
 use Drupal\migrate_social\SocialNetworkInterface;
 
 /**
@@ -69,6 +70,12 @@ abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInte
    *   TRUE if a valid source URL was opened
    */
   abstract protected function nextSource();
+
+  /**
+   * Import/update one row to social network.
+   */
+  abstract public function import(Row $row, array $old_destination_id_values = []);
+
   /**
    * {@inheritdoc}
    */

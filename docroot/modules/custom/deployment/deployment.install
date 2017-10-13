@@ -1052,3 +1052,10 @@ function deployment_update_8087() {
       'video_embed_field_background',
     ]);
 }
+
+/**
+ * Email notification customizations.
+ */
+function deployment_update_8088() {
+  \Drupal::service('module_installer')->install(['notification_customizations']);
+}

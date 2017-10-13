@@ -398,6 +398,14 @@ form {
     display: inline-flex;
   }
 
+  @media only screen and (min-width: 991px) {
+
+    .ie9 & {
+      display: inline-block;
+    }
+
+  }
+
   // Hide native radio item
   .form-radio {
     @extend %element-invisible;

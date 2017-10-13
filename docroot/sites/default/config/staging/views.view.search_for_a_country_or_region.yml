@@ -7,10 +7,10 @@ dependencies:
     - core.entity_view_mode.group.region_search_for_countries
     - core.entity_view_mode.group.search_country
     - core.entity_view_mode.group.single_line_with_icon
-    - core.entity_view_mode.group.teaser
+    - group.content_type.country-subgroup-project
+    - group.content_type.region-subgroup-project
     - group.type.country
     - group.type.product
-    - group.type.project
     - group.type.region
   module:
     - better_exposed_filters
@@ -3518,15 +3518,17 @@ display:
               autosubmit: true
               timeout: '1000'
               autosubmit_hide: false
-            combine_1:
+            label:
               bef_format: default
               more_options:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            combine:
-              bef_format: bef_ul
+            gid:
+              bef_format: bef
               more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
@@ -3542,106 +3544,25 @@ display:
         use_ajax: false
         header: false
         empty: false
+        relationships: false
       css_class: view-project
       display_description: ''
       title: Collaborations
       filters:
-        langcode:
-          id: langcode
-          table: groups_field_data
-          field: langcode
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
-            und: und
-            zxx: zxx
-          group: 2
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: group
-          entity_field: langcode
-          plugin_id: language
-        type:
-          id: type
-          table: groups_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value:
-            project: project
-          group: 2
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: group
-          entity_field: type
-          plugin_id: bundle
         label:
           id: label
-          table: groups_field_data
+          table: group_content_field_data
           field: label
-          relationship: none
+          relationship: group_content
           group_type: group
           admin_label: ''
-          operator: contains
+          operator: '='
           value: ''
           group: 1
           exposed: true
           expose:
             operator_id: label_op
-            label: ''
+            label: Title
             description: ''
             use_operator: false
             operator: label_op
@@ -3651,12 +3572,16 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+              conference_oxford: '0'
               anonymous: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
               specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -3669,9 +3594,147 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: group
+          entity_type: group_content
           entity_field: label
           plugin_id: string
+        gid:
+          id: gid
+          table: group_content_field_data
+          field: gid
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 2
+          exposed: true
+          expose:
+            operator_id: gid_op
+            label: 'Select location'
+            description: ''
+            use_operator: false
+            operator: gid_op
+            identifier: gid
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              conference_oxford: '0'
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          gid:
+            country: country
+            region: region
+            governance_area: 0
+            knowledge_vault: 0
+            product: 0
+            project: 0
+          entity_type: group_content
+          entity_field: gid
+          plugin_id: group_index_gid
+        type:
+          id: type
+          table: group_content_field_data
+          field: type
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            country-subgroup-project: country-subgroup-project
+            region-subgroup-project: region-subgroup-project
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group_content
+          entity_field: type
+          plugin_id: bundle
+        langcode_1:
+          id: langcode_1
+          table: group_content_field_data
+          field: langcode
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group_content
+          entity_field: langcode
+          plugin_id: language
       filter_groups:
         operator: AND
         groups:
@@ -3680,24 +3743,24 @@ display:
       sorts:
         label:
           id: label
-          table: groups_field_data
+          table: group_content_field_data
           field: label
-          relationship: none
+          relationship: group_content
           group_type: group
           admin_label: ''
           order: ASC
           exposed: false
           expose:
             label: ''
-          entity_type: group
+          entity_type: group_content
           entity_field: label
           plugin_id: standard
       fields:
-        rendered_entity:
-          id: rendered_entity
-          table: groups
+        rendered_entity_1:
+          id: rendered_entity_1
+          table: group_content
           field: rendered_entity
-          relationship: none
+          relationship: group_content
           group_type: group
           admin_label: ''
           label: ''
@@ -3736,13 +3799,13 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
+          element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          view_mode: teaser
-          entity_type: group
+          view_mode: default
+          entity_type: group_content
           plugin_id: rendered_entity
       pager:
         type: mini_with_items
@@ -3787,6 +3850,24 @@ display:
           tokenize: false
           content: 'Nothing has been found'
           plugin_id: text_custom
+      relationships:
+        group_content:
+          id: group_content
+          table: groups_field_data
+          field: group_content
+          relationship: none
+          group_type: group
+          admin_label: 'Group group content'
+          required: false
+          group_content_plugins:
+            'subgroup:project': 'subgroup:project'
+            'subgroup:country': '0'
+            'subgroup:governance_area': '0'
+            'subgroup:knowledge_vault': '0'
+            'subgroup:product': '0'
+            'subgroup:region': '0'
+          entity_type: group
+          plugin_id: group_content_to_entity_reverse
     cache_metadata:
       max-age: -1
       contexts:
@@ -3794,43 +3875,29 @@ display:
         - url
         - url.query_args
       tags:
-        - 'config:core.entity_view_display.group.country.banner'
-        - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.search_country'
-        - 'config:core.entity_view_display.group.country.search_result_row'
-        - 'config:core.entity_view_display.group.country.single_line_with_icon'
-        - 'config:core.entity_view_display.group.country.time_line'
-        - 'config:core.entity_view_display.group.country.token'
-        - 'config:core.entity_view_display.group.governance_area.banner'
-        - 'config:core.entity_view_display.group.governance_area.bottom'
-        - 'config:core.entity_view_display.group.governance_area.default'
-        - 'config:core.entity_view_display.group.governance_area.map'
-        - 'config:core.entity_view_display.group.governance_area.search_result_row'
-        - 'config:core.entity_view_display.group.governance_area.single_line_with_icon'
-        - 'config:core.entity_view_display.group.governance_area.time_line'
-        - 'config:core.entity_view_display.group.governance_area.token'
-        - 'config:core.entity_view_display.group.knowledge_vault.default'
-        - 'config:core.entity_view_display.group.knowledge_vault.search_result_row'
-        - 'config:core.entity_view_display.group.product.banner'
-        - 'config:core.entity_view_display.group.product.bottom'
-        - 'config:core.entity_view_display.group.product.default'
-        - 'config:core.entity_view_display.group.product.search_country'
-        - 'config:core.entity_view_display.group.product.search_result_row'
-        - 'config:core.entity_view_display.group.product.teaser'
-        - 'config:core.entity_view_display.group.project.based_on'
-        - 'config:core.entity_view_display.group.project.bottom'
-        - 'config:core.entity_view_display.group.project.default'
-        - 'config:core.entity_view_display.group.project.search_result_row'
-        - 'config:core.entity_view_display.group.project.teaser'
-        - 'config:core.entity_view_display.group.project.time_line'
-        - 'config:core.entity_view_display.group.region.banner'
-        - 'config:core.entity_view_display.group.region.bottom'
-        - 'config:core.entity_view_display.group.region.country_list_by_region'
-        - 'config:core.entity_view_display.group.region.default'
-        - 'config:core.entity_view_display.group.region.search_country'
-        - 'config:core.entity_view_display.group.region.search_result_row'
-        - 'config:core.entity_view_display.group.region.time_line'
-        - 'config:core.entity_view_display.group.region.token'
+        - 'config:core.entity_view_display.group_content.country-group_membership.default'
+        - 'config:core.entity_view_display.group_content.country-group_node-document.default'
+        - 'config:core.entity_view_display.group_content.country-group_node-event.default'
+        - 'config:core.entity_view_display.group_content.country-group_node-event.news_events_block'
+        - 'config:core.entity_view_display.group_content.country-group_node-news.default'
+        - 'config:core.entity_view_display.group_content.country-group_node-news.news_events_block'
+        - 'config:core.entity_view_display.group_content.country-subgroup-project.default'
+        - 'config:core.entity_view_display.group_content.governance_area-group_membership.default'
+        - 'config:core.entity_view_display.group_content.governance_area-group_node-event.default'
+        - 'config:core.entity_view_display.group_content.governance_area-group_node-news.default'
+        - 'config:core.entity_view_display.group_content.group_content_type_69666f89104df.default'
+        - 'config:core.entity_view_display.group_content.group_content_type_d4e68e259fa0e.default'
+        - 'config:core.entity_view_display.group_content.knowledge_vault-group_membership.default'
+        - 'config:core.entity_view_display.group_content.product-group_membership.default'
+        - 'config:core.entity_view_display.group_content.product-group_node-document.default'
+        - 'config:core.entity_view_display.group_content.product-group_node-event.default'
+        - 'config:core.entity_view_display.group_content.product-group_node-news.default'
+        - 'config:core.entity_view_display.group_content.project-group_membership.default'
+        - 'config:core.entity_view_display.group_content.project-group_node-document.default'
+        - 'config:core.entity_view_display.group_content.project-group_node-event.default'
+        - 'config:core.entity_view_display.group_content.project-group_node-news.default'
+        - 'config:core.entity_view_display.group_content.region-group_membership.default'
+        - 'config:core.entity_view_display.group_content.region-group_node-document.default'
+        - 'config:core.entity_view_display.group_content.region-group_node-event.default'
+        - 'config:core.entity_view_display.group_content.region-group_node-news.default'
+        - 'config:core.entity_view_display.group_content.region-subgroup-project.default'

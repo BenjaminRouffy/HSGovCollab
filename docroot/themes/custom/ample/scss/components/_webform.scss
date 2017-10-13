@@ -386,37 +386,47 @@ form {
 }
 
 // Single radio button item
-.form-type-radio {
+.view-news-and-events .js-form-type-radio {
   display: flex;
   flex-direction: column;
   align-content: center;
-  margin-bottom: 10px;
+  margin: 0 0 20px;
   position: relative;
+
+  @media only screen and (min-width: 991px) {
+    margin: 0 10px;
+    display: inline-flex;
+  }
+
+  @media only screen and (min-width: 991px) {
+
+    .ie9 & {
+      display: inline-block;
+    }
+
+  }
 
   // Hide native radio item
   .form-radio {
     @extend %element-invisible;
 
     // Active state
-    &:checked + .option {
+    &:checked + label {
       &::after {
         opacity: 1;
         transform: scale(.5);
-        background: $red-dark;
+        background: $red;
       }
     }
 
     // Disabled state
-    &:disabled + .option {
-      color: $navy-dark;
+    &:disabled + label {
+      color: #cacaca;
       cursor: not-allowed;
 
       &::before {
-        background: $navy-light;
-
-        .description-content & {
-          background: rgba($grey-light, .7);
-        }
+        background: $white;
+        box-shadow: 0 0 1px rgba($black, .1) inset;
       }
 
       &:hover::after {
@@ -425,15 +435,10 @@ form {
     }
 
     // Active-Disabled state
-    &:disabled:checked + .option {
-
+    &:disabled:checked + label {
       &::after {
         opacity: 1;
-        background: $grey-light;
-
-        .description-content & {
-          background: rgba($grey-light, .5);
-        }
+        background: $white;
       }
 
       &:hover::after {
@@ -444,7 +449,7 @@ form {
 
 
   // Create 'fake' radio element
-  .option {
+  label {
     display: flex;
     align-items: flex-start;
     margin-bottom: 0;
@@ -463,16 +468,16 @@ form {
       display: inline-block;
       height: 20px;
       min-width: 20px;
-      background: $white;
+      background: $white-dark;
       border-radius: 50%;
       margin: 2px 8px 0 0;
-
+      box-shadow: 0 1px 1px rgba($black, .1) inset;
     }
 
     &::after {
       width: 20px;
       height: 20px;
-      background: $red-dark;
+      background: rgba($red, .5);
       border-radius: 100%;
       position: absolute;
       top: 2px;

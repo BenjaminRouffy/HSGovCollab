@@ -104,9 +104,11 @@
   register: deploy_files_modified
 
 - name: Apply changes from file
-  shell: "{{ php_env_vars }} {{ drupal_console_path }} -y config:import:single --name `basename {{ item }}` --file {{ item }} -l {{ site_url }}"
-  when: (deploy_files_modified.stdout_lines | length) > 0
-  with_items: deploy_files_modified.stdout_lines
+#  @TODO: It is used only for dev branch. Replace it with the command below when dev is ready to be merged on master.
+  shell: "{{ php_env_vars }} drush cim -y"
+#  shell: "{{ php_env_vars }} {{ drupal_console_path }} -y config:import:single --name `basename {{ item }}` --file {{ item }} -l {{ site_url }}"
+#  when: (deploy_files_modified.stdout_lines | length) > 0
+#  with_items: deploy_files_modified.stdout_lines
 
 - name: Apply pending entity schema updates
   sudo: yes

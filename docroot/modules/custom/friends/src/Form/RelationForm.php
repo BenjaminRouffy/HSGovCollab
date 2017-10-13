@@ -41,7 +41,7 @@ class RelationForm extends FormBase {
       return $form;
     }
 
-    $form['#prefix'] = '<div class = "relation_form_' . $user->id() . '>';
+    $form['#prefix'] = '<div class = "relation_form_' . $user->id() . '">';
     $form['#suffix'] = '</div>';
 
     $form['container'] = [

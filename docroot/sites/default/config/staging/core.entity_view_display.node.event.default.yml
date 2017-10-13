@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.event.field_event_country_content
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
+    - field.field.node.event.field_is_conference
     - field.field.node.event.field_join_block
     - field.field.node.event.field_location
     - field.field.node.event.field_organization
@@ -151,9 +152,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  rate_vote_widget:
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   event_registrant: true
   field_comments: true
   field_documents: true
+  field_is_conference: true
   field_time: true
   langcode: true

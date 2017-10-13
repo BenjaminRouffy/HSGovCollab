@@ -1,0 +1,23 @@
+uuid: 242be0ab-8b5d-47f4-bd3d-228c7037d9c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_conference
+    - node.type.event
+id: node.event.field_is_conference
+field_name: field_is_conference
+entity_type: node
+bundle: event
+label: 'Event is a conference link'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

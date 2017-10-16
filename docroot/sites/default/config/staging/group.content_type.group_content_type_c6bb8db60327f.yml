@@ -1,0 +1,15 @@
+uuid: 8a824751-970a-468c-ac92-ac2cac3541d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+    - group.type.project_protected
+id: group_content_type_c6bb8db60327f
+label: 'Universal Object - Country - Closed: Subgroup (Universal Object - Collaboration - Closed)'
+description: 'Adds <em class="placeholder">Universal Object - Collaboration - Closed</em> groups to groups both publicly and privately.'
+group_type: country_protected
+content_plugin: 'subgroup:project_protected'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1

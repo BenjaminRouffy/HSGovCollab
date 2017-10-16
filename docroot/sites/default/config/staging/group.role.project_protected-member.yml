@@ -11,4 +11,9 @@ internal: true
 audience: member
 group_type: project_protected
 permissions_ui: true
-permissions: {  }
+permissions:
+  - 'view group'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'
+  - 'access to view all group content'

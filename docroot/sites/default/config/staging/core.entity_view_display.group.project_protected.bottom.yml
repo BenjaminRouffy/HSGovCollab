@@ -1,0 +1,54 @@
+uuid: 874dc016-0914-4ba6-90fe-9035abbbc66b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.bottom
+    - field.field.group.project_protected.field_based_on
+    - field.field.group.project_protected.field_content
+    - field.field.group.project_protected.field_date
+    - field.field.group.project_protected.field_end_date
+    - field.field.group.project_protected.field_faq
+    - field.field.group.project_protected.field_join_block
+    - field.field.group.project_protected.field_knowledge_vault
+    - field.field.group.project_protected.field_product
+    - field.field.group.project_protected.field_project_icon
+    - field.field.group.project_protected.field_summary
+    - field.field.group.project_protected.field_summary_public
+    - field.field.group.project_protected.field_time_line
+    - field.field.group.project_protected.field_type
+    - group.type.project_protected
+  module:
+    - timeline
+id: group.project_protected.bottom
+targetEntityType: group
+bundle: project_protected
+mode: bottom
+content:
+  field_time_line:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: Timeline_by_date
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_based_on: true
+  field_content: true
+  field_date: true
+  field_end_date: true
+  field_faq: true
+  field_join_block: true
+  field_knowledge_vault: true
+  field_product: true
+  field_project_icon: true
+  field_summary: true
+  field_summary_public: true
+  field_type: true
+  label: true
+  langcode: true
+  uid: true

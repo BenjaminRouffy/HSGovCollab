@@ -1,0 +1,21 @@
+uuid: 767a88c3-6541-4bb6-b7cd-373c54d032bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_type
+    - group.type.project_protected
+  module:
+    - options
+id: group.project_protected.field_type
+field_name: field_type
+entity_type: group
+bundle: project_protected
+label: Type
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

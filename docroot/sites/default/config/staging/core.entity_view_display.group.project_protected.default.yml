@@ -1,0 +1,100 @@
+uuid: 17a36bec-f696-4549-ae98-fefaefa912a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.project_protected.field_based_on
+    - field.field.group.project_protected.field_content
+    - field.field.group.project_protected.field_date
+    - field.field.group.project_protected.field_end_date
+    - field.field.group.project_protected.field_faq
+    - field.field.group.project_protected.field_join_block
+    - field.field.group.project_protected.field_knowledge_vault
+    - field.field.group.project_protected.field_product
+    - field.field.group.project_protected.field_project_icon
+    - field.field.group.project_protected.field_summary
+    - field.field.group.project_protected.field_summary_public
+    - field.field.group.project_protected.field_time_line
+    - field.field.group.project_protected.field_type
+    - group.type.project_protected
+  module:
+    - datetime
+    - entity_reference_revisions
+    - image
+    - text
+id: group.project_protected.default
+targetEntityType: group
+bundle: project_protected
+mode: default
+content:
+  field_content:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_end_date:
+    weight: 6
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_join_block:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_project_icon:
+    weight: 5
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_summary:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_time_line:
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  field_based_on: true
+  field_date: true
+  field_faq: true
+  field_knowledge_vault: true
+  field_product: true
+  field_summary_public: true
+  field_type: true
+  langcode: true
+  uid: true

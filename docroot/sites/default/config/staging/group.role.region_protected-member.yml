@@ -1,0 +1,21 @@
+uuid: 0c8d25e2-5223-4d4b-9e1b-e96efc411fc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+id: region_protected-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: region_protected
+permissions_ui: true
+permissions:
+  - 'view group'
+  - 'access group_node overview'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'
+  - 'view group_node:news content'
+  - 'access to view all group content'

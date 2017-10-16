@@ -1,0 +1,73 @@
+uuid: bc1f8f60-d4d9-446f-93b6-c42bd710e083
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.map
+    - field.field.group.country_protected.field_banner
+    - field.field.group.country_protected.field_bottom_link
+    - field.field.group.country_protected.field_content
+    - field.field.group.country_protected.field_country_icon
+    - field.field.group.country_protected.field_country_options
+    - field.field.group.country_protected.field_date
+    - field.field.group.country_protected.field_faq
+    - field.field.group.country_protected.field_group_status
+    - field.field.group.country_protected.field_infographic
+    - field.field.group.country_protected.field_join_block
+    - field.field.group.country_protected.field_location
+    - field.field.group.country_protected.field_summary
+    - field.field.group.country_protected.field_summary_content
+    - field.field.group.country_protected.field_time_line
+    - field.field.group.country_protected.field_type
+    - group.type.country_protected
+  module:
+    - entity_reference_revisions
+    - geolocation
+id: group.country_protected.map
+targetEntityType: group
+bundle: country_protected
+mode: map
+content:
+  field_country_options:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_infographic:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: map
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_location:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_bottom_link: true
+  field_content: true
+  field_country_icon: true
+  field_date: true
+  field_faq: true
+  field_group_status: true
+  field_join_block: true
+  field_summary: true
+  field_summary_content: true
+  field_time_line: true
+  field_type: true
+  label: true
+  langcode: true
+  uid: true

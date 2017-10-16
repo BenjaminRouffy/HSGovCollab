@@ -1,0 +1,14 @@
+uuid: 99801e33-ff19-47d4-96ee-36b057ae518b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+id: region_protected-manager
+label: Manager
+weight: -10
+internal: false
+audience: member
+group_type: region_protected
+permissions_ui: true
+permissions: {  }

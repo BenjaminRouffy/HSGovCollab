@@ -1,0 +1,61 @@
+uuid: 21214ac3-28d1-4da9-8b3d-c19c11b1f879
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.bottom
+    - field.field.group.region_protected.field_banner
+    - field.field.group.region_protected.field_bottom_link
+    - field.field.group.region_protected.field_content
+    - field.field.group.region_protected.field_date
+    - field.field.group.region_protected.field_faq
+    - field.field.group.region_protected.field_infographic
+    - field.field.group.region_protected.field_join_block
+    - field.field.group.region_protected.field_label
+    - field.field.group.region_protected.field_region_icon
+    - field.field.group.region_protected.field_summary
+    - field.field.group.region_protected.field_time_line
+    - field.field.group.region_protected.field_type
+    - group.type.region_protected
+  module:
+    - entity_reference_revisions
+    - timeline
+id: group.region_protected.bottom
+targetEntityType: group
+bundle: region_protected
+mode: bottom
+content:
+  field_bottom_link:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_time_line:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: Timeline_by_date
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_content: true
+  field_date: true
+  field_faq: true
+  field_infographic: true
+  field_join_block: true
+  field_label: true
+  field_region_icon: true
+  field_summary: true
+  field_type: true
+  label: true
+  langcode: true
+  uid: true

@@ -1,0 +1,19 @@
+uuid: b7971725-6e8c-4ec1-8d6a-0309c40770d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_label
+    - group.type.region_protected
+id: group.region_protected.field_label
+field_name: field_label
+entity_type: group
+bundle: region_protected
+label: Label
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

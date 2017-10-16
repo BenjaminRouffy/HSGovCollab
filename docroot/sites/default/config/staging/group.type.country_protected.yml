@@ -1,0 +1,30 @@
+uuid: 635da806-329d-4683-b154-2bd0ae006256
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_dashboard
+    - group_following
+third_party_settings:
+  group_following:
+    confirmation_popup_status: true
+    confirmation_popup_following_header: 'If you follow the country'
+    confirmation_popup_following_body: 'You will automatically follow all collaborations inside the country'
+    confirmation_popup_unfollowing_header: 'If you unfollow the country'
+    confirmation_popup_unfollowing_body: 'You will automatically unfollow all collaborations inside the country'
+  group_dashboard:
+    access_to_subgroup_functionality: 0
+    access_to_related_entities_functionality: 0
+    access_to_different_entities:
+      group_content_type_c211294266398: 0
+      group_content_type_28010aae7b90d: 0
+      group_content_type_2195f3fb01122: 0
+      group_content_type_63e6677ef8307: 0
+      group_content_type_bd1c359f1021e: 0
+    hide_follow_button: 0
+id: country_protected
+label: 'Universal Object - Country - Closed'
+description: 'Protected country area. Only members can view its content.'
+creator_membership: true
+creator_roles:
+  - country_protected-manager

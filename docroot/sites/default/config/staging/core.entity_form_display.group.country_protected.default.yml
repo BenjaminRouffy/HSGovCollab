@@ -1,0 +1,320 @@
+uuid: c653c7e3-3a2c-47a4-a8af-0ce502108adf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.country_protected.field_banner
+    - field.field.group.country_protected.field_bottom_link
+    - field.field.group.country_protected.field_content
+    - field.field.group.country_protected.field_country_icon
+    - field.field.group.country_protected.field_country_options
+    - field.field.group.country_protected.field_date
+    - field.field.group.country_protected.field_faq
+    - field.field.group.country_protected.field_group_status
+    - field.field.group.country_protected.field_infographic
+    - field.field.group.country_protected.field_join_block
+    - field.field.group.country_protected.field_location
+    - field.field.group.country_protected.field_summary
+    - field.field.group.country_protected.field_summary_content
+    - field.field.group.country_protected.field_time_line
+    - field.field.group.country_protected.field_type
+    - group.type.country_protected
+  module:
+    - datetime
+    - field_group
+    - geolocation
+    - paragraphs
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_ta:
+      children:
+        - field_type
+        - group_banner
+        - group_brief
+        - group_content
+        - group_infographic_timeline
+        - group_bottom
+        - group_faq
+      parent_name: ''
+      weight: 3
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: 'Tabs panel'
+    group_banner:
+      children:
+        - field_banner
+        - label
+        - field_country_icon
+        - field_group_status
+      parent_name: group_ta
+      weight: 7
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Banner
+    group_brief:
+      children:
+        - field_country_options
+        - field_date
+        - field_location
+        - langcode
+      parent_name: group_ta
+      weight: 8
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Brief
+    group_content:
+      children:
+        - field_summary
+        - field_summary_content
+        - field_content
+      parent_name: group_ta
+      weight: 9
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+    group_infographic_timeline:
+      children:
+        - field_infographic
+        - field_time_line
+      parent_name: group_ta
+      weight: 10
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Infographic/Timeline
+    group_bottom:
+      children:
+        - field_join_block
+        - field_bottom_link
+      parent_name: group_ta
+      weight: 11
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Bottom
+    group_faq:
+      children:
+        - field_faq
+      parent_name: group_ta
+      weight: 13
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: FAQ
+id: group.country_protected.default
+targetEntityType: group
+bundle: country_protected
+mode: default
+content:
+  field_banner:
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: banner
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_bottom_link:
+    weight: 15
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_content:
+    weight: 18
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_country_icon:
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_country_options:
+    weight: 9
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_date:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_faq:
+    weight: 11
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_group_status:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_infographic:
+    weight: 13
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_join_block:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_location:
+    weight: 11
+    settings:
+      default_longitude: '13.4050'
+      default_latitude: '52.5200'
+      google_map_settings:
+        type: ROADMAP
+        zoom: '10'
+        mapTypeControl: 1
+        streetViewControl: 1
+        zoomControl: 1
+        scrollwheel: 1
+        gestureHandling: auto
+        draggable: 1
+        style: ''
+        height: 400px
+        width: 100%
+        info_auto_display: 1
+        disableAutoPan: 1
+        preferScrollingToZooming: 0
+        disableDoubleClickZoom: 0
+      auto_client_location: '0'
+      auto_client_location_marker: '0'
+      allow_override_map_settings: 0
+      populate_address_field: ''
+      target_address_field: null
+    third_party_settings: {  }
+    type: geolocation_googlegeocoder
+    region: content
+  field_summary:
+    weight: 16
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_summary_content:
+    weight: 17
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_time_line:
+    weight: 14
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_type:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  label:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

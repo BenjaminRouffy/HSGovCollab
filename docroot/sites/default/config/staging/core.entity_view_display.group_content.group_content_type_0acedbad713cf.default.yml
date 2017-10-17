@@ -1,0 +1,23 @@
+uuid: 26654248-a973-4949-b900-bb264a8e38d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_0acedbad713cf
+id: group_content.group_content_type_0acedbad713cf.default
+targetEntityType: group_content
+bundle: group_content_type_0acedbad713cf
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

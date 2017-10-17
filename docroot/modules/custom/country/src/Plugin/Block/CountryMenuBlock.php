@@ -132,6 +132,9 @@ class CountryMenuBlock extends BlockBase {
             elseif ($group->bundle() == 'region_protected') {
               $row = views_get_view_result('list_of_projects', 'block_7');
             }
+            elseif ($group->bundle() == 'country_protected') {
+              $row = views_get_view_result('list_of_projects', 'block_8');
+            }
             else {
               $row = views_get_view_result('list_of_projects', 'block_1');
             }

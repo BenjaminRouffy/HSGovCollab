@@ -211,7 +211,8 @@ function country_views_post_render($view) {
   // GA object.
   //
   // search_for_a_country_or_region:block_2 is related to UO Country subpage.
-  if (($view->id() == 'list_of_projects' && ($view->current_display == 'block_3' || $view->current_display == 'block_5'))
+  if (($view->id() == 'list_of_projects'
+    && ($view->current_display == 'block_3' || $view->current_display == 'block_5' || $view->current_display == 'block_6'))
     || ($view->id() == 'search_for_a_country_or_region' && ($view->current_display == 'block_2'))) {
 
     // The parent Region group is passed as argument, we load it to get its

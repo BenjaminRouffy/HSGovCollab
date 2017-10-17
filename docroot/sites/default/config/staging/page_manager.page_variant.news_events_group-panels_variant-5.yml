@@ -1,22 +1,22 @@
-uuid: 7afc012f-eb4f-459e-af6b-4fe25a19ff9d
+uuid: 2ea0fab0-4da5-4046-b2ff-ef632483a14f
 langcode: en
 status: true
 dependencies:
   config:
-    - page_manager.page.document_list_group
+    - page_manager.page.news_events_group
     - views.view.news_and_events_group
   module:
     - ctools
+    - group_dashboard
     - panels
-    - user
     - views
-id: document_list_group-panels_variant-2
-label: Product
+id: news_events_group-panels_variant-5
+label: 'Region - Closed'
 variant: panels_variant
 variant_settings:
   blocks:
-    8ce20589-87db-4445-a882-917e21c010c6:
-      id: 'views_block:news_and_events_group-product_documents'
+    b561a267-916a-4dd6-b726-cbce311960bb:
+      id: 'views_block:news_and_events_group-closed_region_news_events'
       label: ''
       provider: views
       label_display: '0'
@@ -24,34 +24,34 @@ variant_settings:
       items_per_page: none
       region: content
       weight: 0
-      uuid: 8ce20589-87db-4445-a882-917e21c010c6
+      uuid: b561a267-916a-4dd6-b726-cbce311960bb
       pager: view
       context_mapping: {  }
   id: panels_variant
-  uuid: c1ebfa60-fca6-4ee7-93f0-4185458c141c
+  uuid: 73464baf-4b5d-40df-940f-540795339ce7
   label: null
   weight: 0
   layout: stacked
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager
-  storage_id: document_list_group-panels_variant-2
+  storage_id: news_events_group-panels_variant-5
   builder: standard
-page: document_list_group
-weight: -7
+page: news_events_group
+weight: 0
 selection_criteria:
   -
     id: 'entity_bundle:group'
     bundles:
-      product: product
+      region_protected: region_protected
     negate: false
     context_mapping:
       group: group
   -
-    id: user_role
+    id: access_by_user_role
     roles:
-      authenticated: authenticated
-    negate: false
+      anonymous: anonymous
+    negate: 1
     context_mapping:
       user: current_user
 selection_logic: and

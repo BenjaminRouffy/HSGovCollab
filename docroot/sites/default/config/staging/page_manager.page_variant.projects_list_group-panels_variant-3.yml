@@ -1,0 +1,57 @@
+uuid: e08c2ee6-2a6e-436c-b3d0-b4bbc7e0a56c
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.projects_list_group
+    - views.view.list_of_projects
+  module:
+    - group
+    - group_dashboard
+    - panels
+    - views
+id: projects_list_group-panels_variant-3
+label: 'Closed Region'
+variant: panels_variant
+variant_settings:
+  blocks:
+    22c7d3f0-54d8-4796-9155-396b25fd4382:
+      id: 'views_block:list_of_projects-closed_region_full_block'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 22c7d3f0-54d8-4796-9155-396b25fd4382
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 2a7eba05-7b72-4060-8bad-502a21251c71
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: projects_list_group-panels_variant-3
+  builder: standard
+page: projects_list_group
+weight: 0
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
+  -
+    id: group_type
+    group_types:
+      region_protected: region_protected
+    negate: 0
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

@@ -1,57 +1,56 @@
-uuid: 7afc012f-eb4f-459e-af6b-4fe25a19ff9d
+uuid: 087ac3fd-ec66-469b-a4c8-5d434abf0a3a
 langcode: en
 status: true
 dependencies:
   config:
-    - page_manager.page.document_list_group
-    - views.view.news_and_events_group
+    - page_manager.page.countries
+    - views.view.search_for_a_country_or_region
   module:
     - ctools
+    - group_dashboard
     - panels
-    - user
     - views
-id: document_list_group-panels_variant-2
-label: Product
+id: countries-panels_variant-1
+label: 'Closed Countries'
 variant: panels_variant
 variant_settings:
   blocks:
-    8ce20589-87db-4445-a882-917e21c010c6:
-      id: 'views_block:news_and_events_group-product_documents'
+    16b8a1af-13da-4cff-a5d6-13fb3b892638:
+      id: 'views_block:search_for_a_country_or_region-block_6'
       label: ''
       provider: views
       label_display: '0'
       views_label: ''
       items_per_page: none
-      region: content
+      region: middle
       weight: 0
-      uuid: 8ce20589-87db-4445-a882-917e21c010c6
-      pager: view
+      uuid: 16b8a1af-13da-4cff-a5d6-13fb3b892638
       context_mapping: {  }
   id: panels_variant
-  uuid: c1ebfa60-fca6-4ee7-93f0-4185458c141c
+  uuid: 6e56e61d-8964-4444-b399-a0541223e42f
   label: null
   weight: 0
-  layout: stacked
+  layout: separate_column
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager
-  storage_id: document_list_group-panels_variant-2
+  storage_id: countries-panels_variant-1
   builder: standard
-page: document_list_group
-weight: -7
+page: countries
+weight: 0
 selection_criteria:
   -
     id: 'entity_bundle:group'
     bundles:
-      product: product
+      region_protected: region_protected
     negate: false
     context_mapping:
       group: group
   -
-    id: user_role
+    id: access_by_user_role
     roles:
-      authenticated: authenticated
-    negate: false
+      anonymous: anonymous
+    negate: 1
     context_mapping:
       user: current_user
 selection_logic: and

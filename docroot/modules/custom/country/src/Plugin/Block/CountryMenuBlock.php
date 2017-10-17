@@ -99,7 +99,12 @@ class CountryMenuBlock extends BlockBase {
 
         switch($index) {
           case 'country':
-            $row = views_get_view_result('search_for_a_country_or_region', 'block_2');
+            if ($group->bundle() === 'region_protected') {
+              $row = views_get_view_result('list_of_projects', 'block_6');
+            }
+            else {
+              $row = views_get_view_result('search_for_a_country_or_region', 'block_2');
+            }
             break;
 
           case 'news_and_event':
@@ -108,6 +113,9 @@ class CountryMenuBlock extends BlockBase {
             }
             elseif ($group->bundle() == 'governance_area') {
               $row = views_get_view_result('news_and_events_group', 'ga_news_events');
+            }
+            elseif ($group->bundle() == 'region_protected') {
+              $row = views_get_view_result('news_and_events_group', 'closed_region_news_events_without_filter');
             }
             else {
               $row = views_get_view_result('news_and_events_group', 'news_and_events_by_group');
@@ -121,13 +129,21 @@ class CountryMenuBlock extends BlockBase {
             elseif ($group->bundle() == 'governance_area') {
               $row = views_get_view_result('list_of_projects', 'block_4');
             }
+            elseif ($group->bundle() == 'region_protected') {
+              $row = views_get_view_result('list_of_projects', 'block_7');
+            }
             else {
               $row = views_get_view_result('list_of_projects', 'block_1');
             }
             break;
 
           case 'document':
-            $row = views_get_view_result('news_and_events_group', 'documents_by_group');
+            if ($group->bundle() == 'region_protected') {
+              $row = views_get_view_result('news_and_events_group', 'closed_documents_by_group');
+            }
+            else {
+              $row = views_get_view_result('news_and_events_group', 'documents_by_group');
+              }
             break;
 
           case 'contact':

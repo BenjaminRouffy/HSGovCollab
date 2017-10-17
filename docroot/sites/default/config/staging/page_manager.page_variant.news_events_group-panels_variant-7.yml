@@ -1,0 +1,73 @@
+uuid: 4570cb02-be2c-41d4-aab8-a03ed99d91f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.news_events_group
+    - views.view.news_and_events_group
+  content:
+    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
+  module:
+    - block_content
+    - ctools
+    - group_dashboard
+    - panels
+    - views
+id: news_events_group-panels_variant-7
+label: 'Collaboration - Closed'
+variant: panels_variant
+variant_settings:
+  blocks:
+    53b64a30-4b2f-4500-844c-873ec0f94dad:
+      id: 'views_block:news_and_events_group-closed_collaboration_news_events'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 53b64a30-4b2f-4500-844c-873ec0f94dad
+      pager: view
+      context_mapping: {  }
+    7f346ce4-2bcd-4b27-bcff-9c8a338eef21:
+      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
+      label: 'Interested in becoming a member?'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: bottom
+      weight: 0
+      uuid: 7f346ce4-2bcd-4b27-bcff-9c8a338eef21
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 063d2326-d834-4e5a-9bc0-3bc6906c4313
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: news_events_group-panels_variant-7
+  builder: standard
+page: news_events_group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      project_protected: project_protected
+    negate: false
+    context_mapping:
+      group: group
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

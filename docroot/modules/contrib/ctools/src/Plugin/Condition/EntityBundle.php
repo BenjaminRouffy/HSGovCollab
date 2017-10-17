@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\ctools\Plugin\Condition\EntityBundle.
- */
 
 namespace Drupal\ctools\Plugin\Condition;
 
@@ -106,17 +102,8 @@ class EntityBundle extends ConditionPluginBase implements ConstraintConditionInt
     if (empty($this->configuration['bundles']) && !$this->isNegated()) {
       return TRUE;
     }
-
-    $context_value = $this->getContextValue($this->bundleOf->id());
-    if (is_object($context_value) && in_array('Drupal\Core\Entity\ContentEntityInterface', class_implements($context_value))) {
-      $entity = $context_value;
-    }
-    else {
-      $entity = \Drupal::entityTypeManager()
-        ->getStorage($this->bundleOf->id())
-        ->load($context_value);
-    }
-
+    /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+    $entity = $this->getContextValue($this->bundleOf->id());
     return !empty($this->configuration['bundles'][$entity->bundle()]);
   }
 

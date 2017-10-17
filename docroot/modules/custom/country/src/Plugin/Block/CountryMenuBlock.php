@@ -117,6 +117,9 @@ class CountryMenuBlock extends BlockBase {
             elseif ($group->bundle() == 'region_protected') {
               $row = views_get_view_result('news_and_events_group', 'closed_region_news_events_without_filter');
             }
+            elseif ($group->bundle() == 'project_protected') {
+              $row = views_get_view_result('news_and_events_group', 'closed_collaboration_news_events');
+            }
             else {
               $row = views_get_view_result('news_and_events_group', 'news_and_events_by_group');
             }

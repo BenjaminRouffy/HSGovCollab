@@ -1,0 +1,65 @@
+uuid: dccc8d3a-25eb-469a-ba36-ba177abd9a73
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.news_events_group
+    - views.view.news_and_events_group
+  content:
+    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
+  module:
+    - block_content
+    - ctools
+    - panels
+    - views
+id: news_events_group-panels_variant-6
+label: 'Country - Closed'
+variant: panels_variant
+variant_settings:
+  blocks:
+    c111cffa-bd0d-4002-b0a2-589962cc6b8d:
+      id: 'views_block:news_and_events_group-closed_news_and_events_by_group'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: c111cffa-bd0d-4002-b0a2-589962cc6b8d
+      pager: view
+      context_mapping: {  }
+    13935b7f-36a2-4b79-aa8d-7e245c010124:
+      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
+      label: 'Contact us'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: bottom
+      weight: 0
+      uuid: 13935b7f-36a2-4b79-aa8d-7e245c010124
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 9bd7eb7b-c5ab-4e41-90c9-3cdd5f0a938c
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: news_events_group-panels_variant-6
+  builder: standard
+page: news_events_group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      country_protected: country_protected
+    negate: false
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

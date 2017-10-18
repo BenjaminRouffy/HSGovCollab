@@ -103,6 +103,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
       case 'views-exposed-form-list-of-projects-block-full':
       case 'views-exposed-form-list-of-projects-ga-block-full':
       case 'views-exposed-form-list-of-projects-region-full-block':
+      case 'views-exposed-form-list-of-projects-closed-region-full-block':
       case 'views-exposed-form-my-projects-block-my-projects':
       case 'views-exposed-form-search-for-a-country-or-region-projects':
         $form['wrap'] = [

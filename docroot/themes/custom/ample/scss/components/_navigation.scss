@@ -461,6 +461,13 @@
     display: none;
   }
 
+  a.notification-icon {
+    &:after {
+      top: 44px;
+      left: 56px;
+    }
+  }
+
   .sidebar-menu {
     li:nth-child(n) {
       a {

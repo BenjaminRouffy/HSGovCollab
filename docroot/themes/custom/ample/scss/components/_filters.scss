@@ -10,7 +10,8 @@
     h1 {
       padding-top: 0;
 
-      .group-region:not(.page-group-news-and-event) & {
+      .group-region:not(.page-group-news-and-event) &,
+      .group-region_protected:not(.page-group-news-and-event) & {
         @include font-size(42);
         line-height: 48px;
       }
@@ -864,7 +865,8 @@
   }
 
   .group-region &,
-  .group-governance_area.page-group-country & {
+  .group-governance_area.page-group-country &,
+  .group-region_protected & {
     margin-top: 0;
 
     .title-wrapper {

@@ -28,8 +28,6 @@ third_party_settings:
   field_group:
     group_tabs_panel:
       children:
-        - field_type
-        - field_label
         - group_banner
         - group_content
         - group_infographic_timeline
@@ -51,7 +49,7 @@ third_party_settings:
         - field_date
         - langcode
       parent_name: group_tabs_panel
-      weight: 2
+      weight: 1
       format_type: tab
       format_settings:
         id: ''
@@ -65,7 +63,7 @@ third_party_settings:
         - field_summary
         - field_content
       parent_name: group_tabs_panel
-      weight: 3
+      weight: 2
       format_type: tab
       format_settings:
         id: ''
@@ -79,7 +77,7 @@ third_party_settings:
         - field_infographic
         - field_time_line
       parent_name: group_tabs_panel
-      weight: 4
+      weight: 3
       format_type: tab
       format_settings:
         id: ''
@@ -93,7 +91,7 @@ third_party_settings:
         - field_join_block
         - field_bottom_link
       parent_name: group_tabs_panel
-      weight: 5
+      weight: 4
       format_type: tab
       format_settings:
         id: ''
@@ -106,7 +104,7 @@ third_party_settings:
       children:
         - field_faq
       parent_name: group_tabs_panel
-      weight: 6
+      weight: 5
       format_type: tab
       format_settings:
         id: ''
@@ -199,7 +197,7 @@ content:
     type: string_textfield
     region: content
   field_region_icon:
-    weight: 16
+    weight: 15
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true

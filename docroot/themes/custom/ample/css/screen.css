@@ -865,6 +865,22 @@ svg {
   line-height: 0;
 }
 
+.dashboard-sidebar a.notification-icon {
+  position: relative;
+}
+
+.dashboard-sidebar a.notification-icon:after {
+  content: "";
+  position: absolute;
+  top: 37px;
+  right: 32px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #EA3A32;
+}
+
 .ie .dashboard-sidebar .sidebar-menu {
   margin-bottom: 74px;
 }

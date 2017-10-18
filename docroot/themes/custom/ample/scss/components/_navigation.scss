@@ -216,6 +216,22 @@
     }
   }
 
+  a.notification-icon {
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 37px;
+      right: 32px;
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #EA3A32;
+    }
+  }
+
   .sidebar-menu {
     .ie & {
       margin-bottom: 74px;

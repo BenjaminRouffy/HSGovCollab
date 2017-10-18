@@ -2563,7 +2563,8 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .group-region .timeline,
 .group-country .timeline,
-.timeline .group-governance_area {
+.group-governance_area .timeline,
+.group-region_protected .timeline {
   margin-top: 100px;
 }
 
@@ -2590,7 +2591,8 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .group-region .timeline .title-wrapper h2,
 .group-country .timeline .title-wrapper h2,
-.timeline .title-wrapper h2 .group-governance_area {
+.group-governance_area .timeline .title-wrapper h2,
+.group-region_protected .timeline .title-wrapper h2 {
   font-size: 2.625rem;
   padding-bottom: 20px;
 }

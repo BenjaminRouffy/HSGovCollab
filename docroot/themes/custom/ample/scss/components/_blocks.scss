@@ -250,7 +250,8 @@
 .timeline {
   .group-region &,
   .group-country &,
-  .group-governance_area {
+  .group-governance_area &,
+  .group-region_protected & {
     margin-top: 100px;
   }
 
@@ -274,7 +275,8 @@
 
       .group-region &,
       .group-country &,
-      .group-governance_area {
+      .group-governance_area &,
+      .group-region_protected & {
         @include font-size(42);
         padding-bottom: 20px;
       }

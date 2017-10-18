@@ -1183,12 +1183,14 @@ svg {
   border-color: #ea3a32;
 }
 
-.group-country .anchor-links li:first-child a {
+.group-country .anchor-links li:first-child a,
+.anchor-links li .group-country_protected:first-child a {
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.group-country .anchor-links li:first-child a:before {
+.group-country .anchor-links li:first-child a:before,
+.anchor-links li .group-country_protected:first-child a:before {
   font-size: 1.05rem;
   content: 'f';
   font-family: P4h, sans-serif;
@@ -1196,7 +1198,9 @@ svg {
 }
 
 .group-project .anchor-links li:first-child a,
+.group-project_protected .anchor-links li:first-child a,
 .group-region .anchor-links li:first-child a,
+.group-region_protected .anchor-links li:first-child a,
 .group-governance_area .anchor-links li:first-child a,
 .group-product .anchor-links li:first-child a {
   font-weight: 700;
@@ -2562,9 +2566,10 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .group-region .timeline,
+.group-region_protected .timeline,
 .group-country .timeline,
-.group-governance_area .timeline,
-.group-region_protected .timeline {
+.group-country_protected .timeline,
+.group-governance_area .timeline {
   margin-top: 100px;
 }
 
@@ -2590,7 +2595,9 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .group-region .timeline .title-wrapper h2,
+.group-region_protected .timeline .title-wrapper h2,
 .group-country .timeline .title-wrapper h2,
+.group-country_protected .timeline .title-wrapper h2,
 .group-governance_area .timeline .title-wrapper h2,
 .group-region_protected .timeline .title-wrapper h2 {
   font-size: 2.625rem;
@@ -8322,29 +8329,29 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 }
 
 .group-region .view-country,
-.group-governance_area.page-group-country .view-country,
-.group-region_protected .view-country {
+.group-region_protected .view-country,
+.group-governance_area.page-group-country .view-country {
   margin-top: 0;
 }
 
 .group-region .view-country .title-wrapper,
-.group-governance_area.page-group-country .view-country .title-wrapper,
-.group-region_protected .view-country .title-wrapper {
+.group-region_protected .view-country .title-wrapper,
+.group-governance_area.page-group-country .view-country .title-wrapper {
   padding-bottom: 10px;
   text-align: center;
 }
 
 .group-region .view-country .title-wrapper h1,
-.group-governance_area.page-group-country .view-country .title-wrapper h1,
-.group-region_protected .view-country .title-wrapper h1 {
+.group-region_protected .view-country .title-wrapper h1,
+.group-governance_area.page-group-country .view-country .title-wrapper h1 {
   font-size: 4.2rem;
   line-height: 78px;
   padding-top: 30px;
 }
 
 .group-region .view-country .title-wrapper .line,
-.group-governance_area.page-group-country .view-country .title-wrapper .line,
-.group-region_protected .view-country .title-wrapper .line {
+.group-region_protected .view-country .title-wrapper .line,
+.group-governance_area.page-group-country .view-country .title-wrapper .line {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -9696,7 +9703,7 @@ footer a:hover {
   padding-left: 80px;
 }
 
-body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.group-region_protected):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-my-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation):not(.page-search) .main-wrapper:before {
+body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-country_protected):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.group-region_protected):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-my-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation):not(.page-search) .main-wrapper:before {
   background: #fff;
 }
 

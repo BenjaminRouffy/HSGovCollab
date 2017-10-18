@@ -78,6 +78,37 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
 /**
  * Implements hook_ENTITY_TYPE_access().
  */
+function country_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  // Custom access check to verify if the current user have access to Universal
+  // Object Country group attached to Governance area.
+  // First we check if the current user has "Co-Admin" role assigned. If not,
+  // we check if the current user is member to the UO Country group. If not,
+  // we check if the current user is member to the parent Governance area group.
+  if ($entity->bundle() === 'country' && ($entity->hasField('field_type') && $entity->get('field_type')->value === 'governance_area')) {
+    if (in_array('co_admin', $account->getRoles())) {
+      return AccessResult::allowed();
+    }
+    elseif ($entity->getMember($account)) {
+      return AccessResult::allowed();
+    }
+    else {
+      $manager = Drupal::service('ggroup.group_hierarchy_manager');
+      $super_groups = $manager->getGroupSupergroups($entity);
+
+      foreach ($super_groups as $super_group) {
+        if ($super_group->getMember($account)) {
+          return AccessResult::allowed();
+        }
+      }
+    }
+
+    return AccessResult::forbidden();
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
 function country_file_access(EntityInterface $entity, $operation, AccountInterface $account) {
   if (in_array($operation, ['download', 'view'])) {
     $file = \Drupal::entityTypeManager()

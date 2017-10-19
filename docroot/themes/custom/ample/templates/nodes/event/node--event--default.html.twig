@@ -1,12 +1,14 @@
 {#@todo: add event slider.#}
-{% if content.field_event_slider %}
+{% set isConf = is_conference ? 'event-conference' : '' %}
+
+{% if content.field_event_slider|field_value %}
   <div class="header-image">
     {{ content.field_event_slider|field_value }}
   </div>
 {% endif %}
 
 <article{{ attributes }} role="article">
-  <div class="post-info">
+  <div class="post-info {{ isConf }}">
     {% if content.field_date['#period'] %}
       {{ content.field_date['#period'] }}
     {% endif %}

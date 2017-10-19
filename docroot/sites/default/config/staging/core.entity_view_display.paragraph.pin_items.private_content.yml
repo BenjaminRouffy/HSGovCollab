@@ -1,0 +1,27 @@
+uuid: e9bd5ed2-ac6e-4738-8b98-ac02623ee063
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.private_content
+    - field.field.paragraph.pin_items.field_pin_item
+    - paragraphs.paragraphs_type.pin_items
+  module:
+    - entity_reference_revisions
+id: paragraph.pin_items.private_content
+targetEntityType: paragraph
+bundle: pin_items
+mode: private_content
+content:
+  field_pin_item:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  uid: true

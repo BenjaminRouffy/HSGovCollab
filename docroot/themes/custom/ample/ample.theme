@@ -170,6 +170,10 @@ function ample_preprocess_node(array &$variables) {
 
     $variables['contextual_link_access'] = $update_access || $delete_access;
   }
+
+  if ('event' == $node->bundle()) {
+    $variables['is_conference'] = isset($node->field_is_conference->value) ? $node->field_is_conference->value : 0;
+  }
 }
 
 /**

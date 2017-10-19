@@ -1016,8 +1016,8 @@
     }
 
     .event-conference {
-      background: rgba($navy-light, .3) url(../images/calendar-conf-icon.svg) 15px 30px no-repeat;
-      background-size: 50px 60px;
+      background: rgba($navy-light, .3) url(../images/calendar-conf-icon.svg) 20px 30px no-repeat;
+      background-size: 40px 48px;
 
       &:hover {
         background-color: rgba($navy-light, .1);;
@@ -1062,12 +1062,12 @@
   background-image: url(../images/calendar-conf-icon.svg);
   background-repeat: no-repeat;
   background-position: center -10px;
-  background-size: 35px;
+  background-size: 30px 36px;
   padding: 40px 0 0;
   line-height: 36px;
 
   @media screen and (min-width: 479px) {
-    background-position: 0 -10px;
+    background-position: 0 0;
     padding: 0 0 0 40px;
   }
 }

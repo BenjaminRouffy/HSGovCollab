@@ -32,6 +32,7 @@ backup_pass: KzX9ObrdZ7DP
 origin_site_url: https://{{ backup_user }}:{{ backup_pass }}@cibox07.m2.propeople.com.ua/stage
 # Stage hash_salt key
 hash_salt: ZunPn4qWYDhQ1FEwGWlI2aQNNcAEZ5UdSob7R9Z0IeFIQPW5_pFt7wPVlpbrwEfqdWOLAxcUUA
+sync_stage: sites/default/config/staging
 # Source backup database that will be downloaded to build site.
 # In many cases this is production dump.
 source_backup_name: latest_local_p4h.sql.gz

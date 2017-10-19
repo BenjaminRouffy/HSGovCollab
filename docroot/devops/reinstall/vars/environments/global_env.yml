@@ -5,7 +5,7 @@ global_env:
   pre_settings:
     - { name: '$settings["install_profile"]', status: true, value: "{{ installation_profile_name }}" }
     - { name: '$settings["hash_salt"]', status: true, value: '{{ hash_salt }}' }
-    - { name: '$config_directories[CONFIG_SYNC_DIRECTORY]', status: true, value: 'sites/default/config/staging' }
+    - { name: '$config_directories[CONFIG_SYNC_DIRECTORY]', status: true, value: '{{ sync_stage }}' }
     - { name: '$settings["file_private_path"]', status: true, value: 'sites/default/files/private' }
   pre_settings_raw:
     - { name: '$databases["migrate"]["default"]', status: true, value:  '[

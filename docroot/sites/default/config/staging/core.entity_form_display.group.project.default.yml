@@ -17,7 +17,6 @@ dependencies:
     - field.field.group.project.field_summary
     - field.field.group.project.field_summary_public
     - field.field.group.project.field_time_line
-    - field.field.group.project.field_type
     - group.type.project
   module:
     - datetime
@@ -248,12 +247,6 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
-    region: content
-  field_type:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
   label:
     type: string_textfield

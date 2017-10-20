@@ -9,13 +9,13 @@ dependencies:
     - field.field.group.region.field_content
     - field.field.group.region.field_date
     - field.field.group.region.field_faq
+    - field.field.group.region.field_geographical_object
     - field.field.group.region.field_infographic
     - field.field.group.region.field_join_block
     - field.field.group.region.field_label
     - field.field.group.region.field_region_icon
     - field.field.group.region.field_summary
     - field.field.group.region.field_time_line
-    - field.field.group.region.field_type
     - group.type.region
   module:
     - datetime
@@ -227,12 +227,6 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     type: entity_reference_paragraphs
-    region: content
-  field_type:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
   label:
     type: string_textfield

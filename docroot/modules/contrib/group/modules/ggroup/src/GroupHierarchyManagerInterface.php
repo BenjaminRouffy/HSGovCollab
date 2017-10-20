@@ -2,6 +2,7 @@
 
 namespace Drupal\ggroup;
 
+use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group\Entity\GroupContentInterface;
 
@@ -13,7 +14,7 @@ interface GroupHierarchyManagerInterface {
   /**
    * Relates one group to another as a subgroup.
    *
-   * @param GroupContentInterface $group_content
+   * @param \Drupal\group\Entity\GroupContentInterface $group_content
    *   The group content representing the subgroup relationship.
    */
   public function addSubgroup(GroupContentInterface $group_content);
@@ -21,20 +22,20 @@ interface GroupHierarchyManagerInterface {
   /**
    * Removes the relationship of a subgroup.
    *
-   * @param GroupContentInterface $group_content
+   * @param \Drupal\group\Entity\GroupContentInterface $group_content
    *   The group content representing the subgroup relationship.
    */
   public function removeSubgroup(GroupContentInterface $group_content);
 
   /**
-   * Checks if a given group has another group as a subgroup anywhere in its
-   * descendent subgroups.
+   * Checks if a group has a subgroup anywhere in its descendents.
    *
-   * @param GroupInterface $group
+   * @param \Drupal\group\Entity\GroupInterface $group
    *   The parent group whose subgroups will be checked.
-   * @param GroupInterface $subgroup
+   * @param \Drupal\group\Entity\GroupInterface $subgroup
    *   The subgroup that will be searched for within the parent group's
    *   subgroups.
+   *
    * @return bool
    *   TRUE if the given group has the given subgroup, or FALSE if not.
    */
@@ -43,41 +44,65 @@ interface GroupHierarchyManagerInterface {
   /**
    * Loads the subgroups of a given group.
    *
-   * @param GroupInterface $group
+   * @param int $group_id
    *   The group for which subgroups will be loaded.
-   * @return GroupInterface[]
+   *
+   * @return \Drupal\group\Entity\GroupInterface[]
    *   An array of subgroups for the given group.
    */
-  public function getGroupSubgroups(GroupInterface $group);
+  public function getGroupSubgroups($group_id);
 
   /**
    * Gets the IDs of the subgroups of a given group.
    *
-   * @param GroupInterface $group
+   * @param int $group_id
    *   The group for which subgroups will be loaded.
+   *
    * @return int[]
    *   An array of subgroup IDs for the given group.
    */
-  public function getGroupSubgroupIds(GroupInterface $group);
+  public function getGroupSubgroupIds($group_id);
 
   /**
    * Loads the supergroups of a given group.
    *
-   * @param GroupInterface $group
+   * @param int $group_id
    *   The group for which supergroups will be loaded.
-   * @return GroupInterface[]
+   *
+   * @return \Drupal\group\Entity\GroupInterface[]
    *   An array of supergroups for the given group.
    */
-  public function getGroupSupergroups(GroupInterface $group);
+  public function getGroupSupergroups($group_id);
 
   /**
    * Gets the IDs of the supergroups of a given group.
    *
-   * @param GroupInterface $group
+   * @param int $group_id
    *   The group for which supergroups will be loaded.
+   *
    * @return int[]
    *   An array of supergroup IDs for the given group.
    */
-  public function getGroupSupergroupIds(GroupInterface $group);
+  public function getGroupSupergroupIds($group_id);
+
+  /**
+   * Get all (inherited) group roles for a group and a user account.
+   *
+   * Check if the account is a direct member of any subgroups/supergroups of
+   * the group. For each subgroup/supergroup, we check which roles we are
+   * allowed to map. We map the roles up/down for each relation in the full
+   * path between the original group and the subgroup/supergroup. The result
+   * contains a list of all roles we have inherited from 1 or more subgroups or
+   * supergroups.
+   *
+   * @param \Drupal\group\Entity\GroupInterface $group
+   *   The group for which inherited roles will be loaded.
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   An account to map only the roles for a specific user.
+   *
+   * @return \Drupal\group\Entity\GroupRoleInterface[]
+   *   An array of group roles for the given group.
+   */
+  public function getInheritedGroupRoles(GroupInterface $group, AccountInterface $account);
 
 }

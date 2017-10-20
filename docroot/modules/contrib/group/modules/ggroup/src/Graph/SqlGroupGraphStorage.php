@@ -3,14 +3,52 @@
 namespace Drupal\ggroup\Graph;
 
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Database\Database;
-use Drupal\ggroup\Graph\GroupGraphStorageInterface;
-use Drupal\ggroup\Graph\CyclicGraphException;
+use Drupal\Core\Database\Query\Condition;
 
 /**
  * SQL based storage of the group relationship graph.
  */
 class SqlGroupGraphStorage implements GroupGraphStorageInterface {
+
+  /**
+   * Static cache for ancestor lookup.
+   *
+   * This array allow us to retrieve the ancestors faster.
+   *
+   * @var int[][]
+   *   An nested array containing all ancestor group IDs for a group.
+   */
+  protected $ancestors;
+
+  /**
+   * Static cache for descendant lookup.
+   *
+   * This array allow us to retrieve the ancestors faster.
+   *
+   * @var int[][]
+   *   An nested array containing all ancestor group IDs for a group.
+   */
+  protected $descendants;
+
+  /**
+   * Static cache for direct ancestor lookup.
+   *
+   * This array allow us to retrieve the ancestors faster.
+   *
+   * @var int[][]
+   *   An nested array containing all ancestor group IDs for a group.
+   */
+  protected $directAncestors;
+
+  /**
+   * Static cache for direct descendant lookup.
+   *
+   * This array allow us to retrieve the ancestors faster.
+   *
+   * @var int[][]
+   *   An nested array containing all ancestor group IDs for a group.
+   */
+  protected $directDescendants;
 
   /**
    * The database connection.
@@ -24,51 +62,72 @@ class SqlGroupGraphStorage implements GroupGraphStorageInterface {
    *
    * @param \Drupal\Core\Database\Connection $connection
    *   The database connection.
-   * @return static
-   *   A new class instance.
    */
   public function __construct(Connection $connection) {
     $this->connection = $connection;
+    $this->updateStaticCache();
   }
 
   /**
-   * Gets the edge ID relating parent group A to child group B.
+   * Fetch all records from graph and cache descendants and ancestors.
    *
-   * @param int $a
-   *   The ID of the parent group.
-   * @param int $b
-   *   The ID of the child group.
-   * @return int
-   *   The ID of the edge relating parent group A to child group B.
+   * This is mostly done for performance reason. When having lost of groups,
+   * getting/checking the ancestors for each one in a seperate query is a lot
+   * slower.
    */
-  protected function getEdgeId($a, $b) {
-    return $this->connection->query('SELECT gg.id FROM {group_graph} gg WHERE
-      gg.start_vertex = :a AND
-      gg.end_vertex = :b AND
-      gg.hops = 0', [
-        ':a' => $a,
-        ':b' => $b,
-    ])->fetchField();
+  protected function updateStaticCache() {
+    $query = $this->connection->select('group_graph', 'gg')
+      ->fields('gg', ['start_vertex', 'end_vertex']);
+    $this->descendants = $query->execute()->fetchAll(\PDO::FETCH_COLUMN | \PDO::FETCH_GROUP);
+    $this->ancestors = $query->execute()->fetchAll(\PDO::FETCH_COLUMN | \PDO::FETCH_GROUP, 1);
+
+    $query = $this->connection->select('group_graph', 'gg')
+      ->fields('gg', ['start_vertex', 'end_vertex']);
+    $query->condition('hops', 0);
+    $this->directDescendants = $query->execute()->fetchAll(\PDO::FETCH_COLUMN | \PDO::FETCH_GROUP);
+    $this->directAncestors = $query->execute()->fetchAll(\PDO::FETCH_COLUMN | \PDO::FETCH_GROUP, 1);
   }
 
   /**
-   * Relates parent group A to child group B so that child group B can be
-   * considered a subgroup of group A. This method only creates the relationship
-   * from group A to group B and not any of the inferred relationships based on
-   * what other relationships group A and group B already have.
+   * Gets the edge ID relating the parent group to the child group.
    *
-   * @param int $a
+   * @param int $parent_group_id
    *   The ID of the parent group.
-   * @param int $b
+   * @param int $child_group_id
    *   The ID of the child group.
+   *
    * @return int
-   *   The ID of the new edge relating parent group A to child group B.
+   *   The ID of the edge relating the parent group to the child group.
    */
-  protected function insertEdge($a, $b) {
+  protected function getEdgeId($parent_group_id, $child_group_id) {
+    $query = $this->connection->select('group_graph', 'gg')
+      ->fields('gg', ['id']);
+    $query->condition('start_vertex', $parent_group_id);
+    $query->condition('end_vertex', $child_group_id);
+    $query->condition('hops', 0);
+    return $query->execute()->fetchField();
+  }
+
+  /**
+   * Relates the parent group to the child group.
+   *
+   * This method only creates the relationship from the parent group to the
+   * child group and not any of the inferred relationships based on what other
+   * relationships the parent group and the child group already have.
+   *
+   * @param int $parent_group_id
+   *   The ID of the parent group.
+   * @param int $child_group_id
+   *   The ID of the child group.
+   *
+   * @return int
+   *   The ID of the new edge relating the parent group to the child group.
+   */
+  protected function insertEdge($parent_group_id, $child_group_id) {
     $new_edge_id = $this->connection->insert('group_graph')
       ->fields([
-        'start_vertex' => $a,
-        'end_vertex' => $b,
+        'start_vertex' => $parent_group_id,
+        'end_vertex' => $child_group_id,
         'hops' => 0,
       ])
       ->execute();
@@ -86,147 +145,142 @@ class SqlGroupGraphStorage implements GroupGraphStorageInterface {
   }
 
   /**
-   * @todo Add description.
+   * Insert parent group incoming edges to child group.
    *
    * @param int $edge_id
-   *   The existing edge ID relating parent group A to child group B.
-   * @param int $a
+   *   The existing edge ID relating the parent group to the child group.
+   * @param int $parent_group_id
    *   The ID of the parent group.
-   * @param int $b
+   * @param int $child_group_id
    *   The ID of the child group.
    */
-  protected function insertEdgesAIncomingToB($edge_id, $a, $b) {
-    // A's incoming edges to B.
-    $insert_query = <<<EOT
-      INSERT INTO {group_graph} (
-          entry_edge_id,
-          direct_edge_id,
-          exit_edge_id,
-          start_vertex,
-          end_vertex,
-          hops)
-        SELECT gg.id,
-          :edge_id,
-          :edge_id,
-          gg.start_vertex,
-          :b,
-          gg.hops + 1
-        FROM {group_graph} gg
-        WHERE end_vertex = :a
-EOT;
+  protected function insertEdgesParentIncomingToChild($edge_id, $parent_group_id, $child_group_id) {
+    // Since fields are added before expressions, all fields are added as
+    // expressions to keep the field order intact.
+    $query = $this->connection->select('group_graph', 'gg');
+    $query->addExpression('gg.id', 'entry_edge_id');
+    $query->addExpression($edge_id, 'direct_edge_id');
+    $query->addExpression($edge_id, 'exit_edge_id');
+    $query->addExpression('gg.start_vertex', 'start_vertex');
+    $query->addExpression($child_group_id, 'end_vertex');
+    $query->addExpression('gg.hops + 1', 'hops');
+    $query->condition('end_vertex', $parent_group_id);
 
-    $this->connection->query($insert_query, [
-      ':edge_id' => $edge_id,
-      ':a' => $a,
-      ':b' => $b,
-    ]);
+    $this->connection->insert('group_graph')
+      ->fields([
+        'entry_edge_id',
+        'direct_edge_id',
+        'exit_edge_id',
+        'start_vertex',
+        'end_vertex',
+        'hops',
+      ])
+      ->from($query)
+      ->execute();
   }
 
   /**
-   * @todo Add description.
+   * Insert parent group outgoing edges to child group.
    *
    * @param int $edge_id
-   *   The existing edge ID relating parent group A to child group B.
-   * @param int $a
+   *   The existing edge ID relating the parent group to the child group.
+   * @param int $parent_group_id
    *   The ID of the parent group.
-   * @param int $b
+   * @param int $child_group_id
    *   The ID of the child group.
    */
-  protected function insertEdgesAToBOutgoing($edge_id, $a, $b) {
-    // A to B's outgoing edges.
-    $insert_query = <<<EOT
-      INSERT INTO {group_graph} (
-          entry_edge_id,
-          direct_edge_id,
-          exit_edge_id,
-          start_vertex,
-          end_vertex,
-          hops)
-        SELECT :edge_id,
-          :edge_id,
-          gg.id,
-          :a,
-          gg.end_vertex,
-          gg.hops + 1
-        FROM {group_graph} gg
-        WHERE start_vertex = :b
-EOT;
+  protected function insertEdgesParentToChildOutgoing($edge_id, $parent_group_id, $child_group_id) {
+    // Since fields are added before expressions, all fields are added as
+    // expressions to keep the field order intact.
+    $query = $this->connection->select('group_graph', 'gg');
+    $query->addExpression($edge_id, 'entry_edge_id');
+    $query->addExpression($edge_id, 'direct_edge_id');
+    $query->addExpression('gg.id', 'exit_edge_id');
+    $query->addExpression($parent_group_id, 'start_vertex');
+    $query->addExpression('gg.end_vertex', 'end_vertex');
+    $query->addExpression('gg.hops + 1', 'hops');
+    $query->condition('start_vertex', $child_group_id);
 
-    $this->connection->query($insert_query, [
-      ':edge_id' => $edge_id,
-      ':a' => $a,
-      ':b' => $b,
-    ]);
+    $this->connection->insert('group_graph')
+      ->fields([
+        'entry_edge_id',
+        'direct_edge_id',
+        'exit_edge_id',
+        'start_vertex',
+        'end_vertex',
+        'hops',
+      ])
+      ->from($query)
+      ->execute();
   }
 
   /**
-   * @todo Add description.
+   * Insert the parent group incoming edges to the child group outgoing edges.
    *
    * @param int $edge_id
-   *   The existing edge ID relating parent group A to child group B.
-   * @param int $a
+   *   The existing edge ID relating the parent group to the child group.
+   * @param int $parent_group_id
    *   The ID of the parent group.
-   * @param int $b
+   * @param int $child_group_id
    *   The ID of the child group.
    */
-  protected function insertEdgesAIncomingToBOutgoing($edge_id, $a, $b) {
-    // A’s incoming edges to B's outgoing edges.
-    $insert_query = <<<EOT
-      INSERT INTO {group_graph} (
-          entry_edge_id,
-          direct_edge_id,
-          exit_edge_id,
-          start_vertex,
-          end_vertex,
-          hops)
-        SELECT a.id,
-          :edge_id,
-          b.id,
-          a.start_vertex,
-          b.end_vertex,
-          a.hops + b.hops + 1
-        FROM {group_graph} a
-          CROSS JOIN {group_graph} b
-        WHERE a.end_vertex = :a
-          AND b.start_vertex = :b
-EOT;
+  protected function insertEdgesParentIncomingToChildOutgoing($edge_id, $parent_group_id, $child_group_id) {
+    // Since fields are added before expressions, all fields are added as
+    // expressions to keep the field order intact.
+    $query = $this->connection->select('group_graph', 'parent_gg');
+    $query->join('group_graph', 'child_gg');
+    $query->addExpression('parent_gg.id', 'entry_edge_id');
+    $query->addExpression($edge_id, 'direct_edge_id');
+    $query->addExpression('child_gg.id', 'exit_edge_id');
+    $query->addExpression('parent_gg.start_vertex', 'start_vertex');
+    $query->addExpression('child_gg.end_vertex', 'end_vertex');
+    $query->addExpression('parent_gg.hops + child_gg.hops + 1', 'hops');
+    $query->condition('parent_gg.end_vertex', $parent_group_id);
+    $query->condition('child_gg.start_vertex', $child_group_id);
 
-    $this->connection->query($insert_query, [
-      ':edge_id' => $edge_id,
-      ':a' => $a,
-      ':b' => $b,
-    ]);
-
+    $this->connection->insert('group_graph')
+      ->fields([
+        'entry_edge_id',
+        'direct_edge_id',
+        'exit_edge_id',
+        'start_vertex',
+        'end_vertex',
+        'hops',
+      ])
+      ->from($query)
+      ->execute();
   }
 
   /**
    * {@inheritdoc}
    */
-  public function addEdge($a, $b) {
-    if ($a === $b) {
+  public function addEdge($parent_group_id, $child_group_id) {
+    if ($parent_group_id === $child_group_id) {
       return FALSE;
     }
 
-    $ab_edge_id = $this->getEdgeId($a, $b);
+    $parent_child_edge_id = $this->getEdgeId($parent_group_id, $child_group_id);
 
-    if (!empty($ab_edge_id)) {
-      return $ab_edge_id;
+    if (!empty($parent_child_edge_id)) {
+      return $parent_child_edge_id;
     }
 
-    $ba_edge_id = $this->getEdgeId($a, $b);
+    $child_parent_edge_id = $this->getEdgeId($parent_group_id, $child_group_id);
 
-    if (!empty($ba_edge_id)) {
-      return $ba_edge_id;
+    if (!empty($child_parent_edge_id)) {
+      return $child_parent_edge_id;
     }
 
-    if ($this->isDescendant($a, $b)) {
-      throw new CyclicGraphException($a, $b);
+    if ($this->isDescendant($parent_group_id, $child_group_id)) {
+      throw new CyclicGraphException($parent_group_id, $child_group_id);
     }
 
-    $new_edge_id = $this->insertEdge($a, $b);
-    $this->insertEdgesAIncomingToB($new_edge_id, $a, $b);
-    $this->insertEdgesAToBOutgoing($new_edge_id, $a, $b);
-    $this->insertEdgesAIncomingToBOutgoing($new_edge_id, $a, $b);
+    $new_edge_id = $this->insertEdge($parent_group_id, $child_group_id);
+    $this->insertEdgesParentIncomingToChild($new_edge_id, $parent_group_id, $child_group_id);
+    $this->insertEdgesParentToChildOutgoing($new_edge_id, $parent_group_id, $child_group_id);
+    $this->insertEdgesParentIncomingToChildOutgoing($new_edge_id, $parent_group_id, $child_group_id);
+
+    $this->updateStaticCache();
 
     return $new_edge_id;
   }
@@ -234,8 +288,8 @@ EOT;
   /**
    * {@inheritdoc}
    */
-  public function removeEdge($a, $b) {
-    $edge_id = $this->getEdgeId($a, $b);
+  public function removeEdge($parent_group_id, $child_group_id) {
+    $edge_id = $this->getEdgeId($parent_group_id, $child_group_id);
 
     if (empty($edge_id)) {
       return;
@@ -243,9 +297,10 @@ EOT;
 
     $edges_to_delete = [];
 
-    $results = $this->connection->query('SELECT gg.id FROM {group_graph} gg WHERE direct_edge_id = :edge_id', [
-      ':edge_id' => $edge_id
-    ]);
+    $query = $this->connection->select('group_graph', 'gg')
+      ->fields('gg', ['id']);
+    $query->condition('direct_edge_id', $edge_id);
+    $results = $query->execute();
 
     while ($id = $results->fetchField()) {
       $edges_to_delete[] = $id;
@@ -255,18 +310,18 @@ EOT;
       return;
     }
 
-    $select_query = <<<EOT
-      SELECT id FROM {group_graph} WHERE hops > 0 AND
-        (entry_edge_id IN (:edge_ids[]) OR exit_edge_id IN (:edge_ids[])) AND
-        (id NOT IN (:edge_ids[]))
-EOT;
-
     do {
       $total_edges = count($edges_to_delete);
 
-      $results = $this->connection->query($select_query, [
-        ':edge_ids[]' => $edges_to_delete,
-      ]);
+      $query = $this->connection->select('group_graph', 'gg')
+        ->fields('gg', ['id']);
+      $query->condition('hops', 0);
+      $query->condition('id', $edges_to_delete, 'NOT IN');
+      $query_or_conditions = new Condition('OR');
+      $query_or_conditions->condition('entry_edge_id', $edges_to_delete, 'IN');
+      $query_or_conditions->condition('exit_edge_id', $edges_to_delete, 'IN');
+      $query->condition($query_or_conditions);
+      $results = $query->execute();
 
       while ($id = $results->fetchField()) {
         $edges_to_delete[] = $id;
@@ -276,41 +331,86 @@ EOT;
     $this->connection->delete('group_graph')
       ->condition('id', $edges_to_delete, 'IN')
       ->execute();
+
+    $this->updateStaticCache();
   }
 
   /**
    * {@inheritdoc}
    */
   public function getDescendants($group_id) {
-    return $this->connection->query('SELECT end_vertex FROM {group_graph} WHERE start_vertex = :group_id', [
-      ':group_id' => $group_id,
-    ])->fetchAll(\PDO::FETCH_COLUMN);
+    return isset($this->descendants[$group_id]) ? $this->descendants[$group_id] : [];
   }
 
   /**
    * {@inheritdoc}
    */
   public function getAncestors($group_id) {
-    return $this->connection->query('SELECT start_vertex FROM {group_graph} WHERE end_vertex = :group_id', [
-      ':group_id' => $group_id,
-    ])->fetchAll(\PDO::FETCH_COLUMN);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function isAncestor($a, $b) {
-    return $this->isDescendant($b, $a);
+    return isset($this->ancestors[$group_id]) ? $this->ancestors[$group_id] : [];
   }
 
   /**
    * {@inheritdoc}
    */
   public function isDescendant($a, $b) {
-    return $this->connection->query('SELECT COUNT(id) FROM {group_graph} WHERE start_vertex = :b AND end_vertex = :a', [
-      ':a' => $a,
-      ':b' => $b,
-    ])->fetchField() > 0;
+    return isset($this->descendants[$b]) ? in_array($a, $this->descendants[$b]) : FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isAncestor($a, $b) {
+    return isset($this->ancestors[$b]) ? in_array($a, $this->ancestors[$b]) : FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getPath($parent_group_id, $child_group_id) {
+    if (!$this->isAncestor($parent_group_id, $child_group_id)) {
+      return [];
+    }
+
+    $visited = [];
+    $solutions = [];
+
+    // Enqueue the origin vertex and mark as visited.
+    $queue = new \SplQueue();
+    $queue->enqueue($child_group_id);
+    $visited[$child_group_id] = TRUE;
+
+    // This is used to track the path back from each node.
+    $paths = [];
+    $paths[$child_group_id][] = $child_group_id;
+
+    // While queue is not empty and destination not found.
+    while (!$queue->isEmpty() && $queue->bottom() != $parent_group_id) {
+      $child_id = $queue->dequeue();
+
+      // Get parents for child in queue.
+      $parent_ids = $this->directAncestors[$child_id];
+
+      foreach ($parent_ids as $parent_id) {
+        if ((int) $parent_id === (int) $parent_group_id) {
+          // Add this path to the list of solutions.
+          $solution = $paths[$child_id];
+          $solution[] = $parent_id;
+          $solutions[] = $solution;
+        }
+        else {
+          if (!isset($visited[$parent_id])) {
+            // If not yet visited, enqueue parent id and mark as visited.
+            $queue->enqueue($parent_id);
+            $visited[$parent_id] = TRUE;
+            // Add parent to current path.
+            $paths[$parent_id] = $paths[$child_id];
+            $paths[$parent_id][] = $parent_id;
+          }
+        }
+      }
+    }
+
+    return $solutions;
   }
 
 }

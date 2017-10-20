@@ -7,6 +7,7 @@ dependencies:
     - views.view.search_for_a_country_or_region
   module:
     - ctools
+    - group_customization
     - group_dashboard
     - panels
     - views
@@ -52,6 +53,22 @@ selection_criteria:
       anonymous: anonymous
     negate: 1
     context_mapping:
+      user: current_user
+  -
+    id: access_by_group_roles
+    group_roles:
+      country_protected-attendee: country_protected-attendee
+      region_protected-attendee: region_protected-attendee
+      project_protected-attendee: project_protected-attendee
+      country_protected-manager: country_protected-manager
+      country_protected-stakeholder: country_protected-stakeholder
+      project_protected-manager: project_protected-manager
+      region_protected-manager: region_protected-manager
+      region_protected-stakeholder: region_protected-stakeholder
+      project_protected-stakeholder: project_protected-stakeholder
+    negate: 0
+    context_mapping:
+      group: group
       user: current_user
 selection_logic: and
 static_context: {  }

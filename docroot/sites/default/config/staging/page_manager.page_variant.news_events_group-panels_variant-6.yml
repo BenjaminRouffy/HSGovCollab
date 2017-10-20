@@ -10,6 +10,7 @@ dependencies:
   module:
     - block_content
     - ctools
+    - group_customization
     - panels
     - views
 id: news_events_group-panels_variant-6
@@ -61,5 +62,21 @@ selection_criteria:
     negate: false
     context_mapping:
       group: group
+  -
+    id: access_by_group_roles
+    group_roles:
+      country_protected-attendee: country_protected-attendee
+      region_protected-attendee: region_protected-attendee
+      project_protected-attendee: project_protected-attendee
+      country_protected-manager: country_protected-manager
+      country_protected-stakeholder: country_protected-stakeholder
+      project_protected-manager: project_protected-manager
+      region_protected-manager: region_protected-manager
+      region_protected-stakeholder: region_protected-stakeholder
+      project_protected-stakeholder: project_protected-stakeholder
+    negate: 0
+    context_mapping:
+      group: group
+      user: current_user
 selection_logic: and
 static_context: {  }

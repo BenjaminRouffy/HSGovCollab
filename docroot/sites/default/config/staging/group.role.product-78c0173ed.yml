@@ -1,0 +1,17 @@
+uuid: 65545507-eed5-49d9-8e21-805cb220de45
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+  enforced:
+    config:
+      - user.role.co_admin
+id: product-78c0173ed
+label: Co-Admin
+weight: 9
+internal: true
+audience: outsider
+group_type: product
+permissions_ui: false
+permissions: {  }

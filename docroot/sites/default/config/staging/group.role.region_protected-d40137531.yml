@@ -1,0 +1,17 @@
+uuid: b5d310db-bb72-4e31-a98e-ea01f9eef951
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+  enforced:
+    config:
+      - user.role.product_manager
+id: region_protected-d40137531
+label: 'Product manager'
+weight: 10
+internal: true
+audience: outsider
+group_type: region_protected
+permissions_ui: false
+permissions: {  }

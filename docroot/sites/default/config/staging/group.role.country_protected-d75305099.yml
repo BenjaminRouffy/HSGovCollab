@@ -1,0 +1,17 @@
+uuid: 5661af94-e2c1-4a17-884c-ab7bc2f72ac9
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+  enforced:
+    config:
+      - user.role.specific_users
+id: country_protected-d75305099
+label: 'Specific users'
+weight: 7
+internal: true
+audience: outsider
+group_type: country_protected
+permissions_ui: false
+permissions: {  }

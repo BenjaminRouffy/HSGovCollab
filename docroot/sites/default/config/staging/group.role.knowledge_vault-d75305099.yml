@@ -1,0 +1,17 @@
+uuid: 0990ccff-eeb3-45ff-b7bd-6681dca999e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+  enforced:
+    config:
+      - user.role.specific_users
+id: knowledge_vault-d75305099
+label: 'Specific users'
+weight: 7
+internal: true
+audience: outsider
+group_type: knowledge_vault
+permissions_ui: false
+permissions: {  }

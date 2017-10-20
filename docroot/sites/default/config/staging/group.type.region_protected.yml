@@ -13,11 +13,11 @@ third_party_settings:
     confirmation_popup_unfollowing_header: 'If you unfollow the region'
     confirmation_popup_unfollowing_body: 'You will be still following all countries and collaborations inside the region'
   group_dashboard:
-    access_to_subgroup_functionality: 0
+    access_to_subgroup_functionality: 1
     access_to_related_entities_functionality: 0
     access_to_different_entities:
-      group_content_type_e2aa4a32c5729: 0
-      group_content_type_4df8090ebabc8: 0
+      group_content_type_e2aa4a32c5729: group_content_type_e2aa4a32c5729
+      group_content_type_4df8090ebabc8: group_content_type_4df8090ebabc8
       group_content_type_0acedbad713cf: 0
       group_content_type_e8b17d665e6f2: 0
       region_protected-group_node-news: 0
@@ -27,5 +27,6 @@ id: region_protected
 label: 'Universal Object - Region - Closed'
 description: 'Protected region area. Only members can view its content.'
 creator_membership: true
+creator_wizard: true
 creator_roles:
   - region_protected-manager

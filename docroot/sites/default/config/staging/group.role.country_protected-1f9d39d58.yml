@@ -1,0 +1,17 @@
+uuid: cd5e8d18-7d0d-47a9-85fa-2661e7aa06fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+  enforced:
+    config:
+      - user.role.governance_group_users
+id: country_protected-1f9d39d58
+label: 'Governance group user'
+weight: 5
+internal: true
+audience: outsider
+group_type: country_protected
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,17 @@
+uuid: 429a8f20-0a3b-435b-b943-c1f1a5208205
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+  enforced:
+    config:
+      - user.role.conference_oxford
+id: region_protected-228384b69
+label: 'Conference Oxford'
+weight: -10
+internal: true
+audience: outsider
+group_type: region_protected
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,17 @@
+uuid: 580d093a-e4a7-41f6-8134-0d83361a75e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+  enforced:
+    config:
+      - user.role.specific_users
+id: project_protected-d75305099
+label: 'Specific users'
+weight: 7
+internal: true
+audience: outsider
+group_type: project_protected
+permissions_ui: false
+permissions: {  }

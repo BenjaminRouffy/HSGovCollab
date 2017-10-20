@@ -1,0 +1,17 @@
+uuid: 9b2c9f9d-6c20-4dfa-b02d-6c3026b02216
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+  enforced:
+    config:
+      - user.role.country_managers
+id: product-f08343669
+label: 'Country manager'
+weight: 3
+internal: true
+audience: outsider
+group_type: product
+permissions_ui: false
+permissions: {  }

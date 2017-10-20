@@ -13,6 +13,36 @@ content_plugin: 'subgroup:project'
 plugin_config:
   group_cardinality: 0
   entity_cardinality: 1
-  info_text:
-    value: "<p>By submitting this form you will add this subgroup to the group.<br />\r\nIt will then be subject to the access control settings that were configured for the group.<br />\r\nPlease fill out any available fields to describe the relation between the subgroup and the group.</p>\r\n"
-    format: minimal
+  use_creation_wizard: true
+  parent_role_mapping:
+    country-0ef571b28: project-0ef571b28
+    country-128ade90e: project-128ade90e
+    country-1879bad9c: project-1879bad9c
+    country-1f9d39d58: project-1f9d39d58
+    country-228384b69: project-228384b69
+    country-78c0173ed: project-78c0173ed
+    country-admin: project-admin
+    country-anonymous: project-anonymous
+    country-attendee: project-attendee
+    country-d40137531: project-d40137531
+    country-d75305099: project-d75305099
+    country-f08343669: project-f08343669
+    country-member: project-member
+    country-outsider: project-outsider
+    country-stakeholder: project-stakeholder
+  child_role_mapping:
+    project-0ef571b28: country-0ef571b28
+    project-128ade90e: country-128ade90e
+    project-1879bad9c: country-1879bad9c
+    project-1f9d39d58: country-1f9d39d58
+    project-228384b69: country-228384b69
+    project-78c0173ed: country-78c0173ed
+    project-admin: country-admin
+    project-anonymous: country-anonymous
+    project-attendee: country-attendee
+    project-d40137531: country-d40137531
+    project-d75305099: country-d75305099
+    project-f08343669: country-f08343669
+    project-member: country-member
+    project-outsider: country-outsider
+    project-stakeholder: country-stakeholder

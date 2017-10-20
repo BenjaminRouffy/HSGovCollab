@@ -14,3 +14,35 @@ plugin_config:
   group_cardinality: 0
   entity_cardinality: 1
   use_creation_wizard: true
+  parent_role_mapping:
+    region_protected-0ef571b28: project_protected-0ef571b28
+    region_protected-128ade90e: project_protected-128ade90e
+    region_protected-1879bad9c: project_protected-1879bad9c
+    region_protected-1f9d39d58: project_protected-1f9d39d58
+    region_protected-228384b69: project_protected-228384b69
+    region_protected-78c0173ed: project_protected-78c0173ed
+    region_protected-anonymous: project_protected-anonymous
+    region_protected-attendee: project_protected-attendee
+    region_protected-d40137531: project_protected-d40137531
+    region_protected-d75305099: project_protected-d75305099
+    region_protected-f08343669: project_protected-f08343669
+    region_protected-manager: project_protected-member
+    region_protected-member: project_protected-member
+    region_protected-outsider: project_protected-outsider
+    region_protected-stakeholder: project_protected-stakeholder
+  child_role_mapping:
+    project_protected-0ef571b28: region_protected-0ef571b28
+    project_protected-128ade90e: region_protected-128ade90e
+    project_protected-1879bad9c: region_protected-1879bad9c
+    project_protected-1f9d39d58: region_protected-1f9d39d58
+    project_protected-228384b69: region_protected-228384b69
+    project_protected-78c0173ed: region_protected-78c0173ed
+    project_protected-anonymous: region_protected-anonymous
+    project_protected-attendee: region_protected-attendee
+    project_protected-d40137531: region_protected-d40137531
+    project_protected-d75305099: region_protected-d75305099
+    project_protected-f08343669: region_protected-f08343669
+    project_protected-manager: region_protected-manager
+    project_protected-member: region_protected-member
+    project_protected-outsider: region_protected-outsider
+    project_protected-stakeholder: region_protected-stakeholder

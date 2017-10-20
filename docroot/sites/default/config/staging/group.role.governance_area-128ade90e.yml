@@ -1,0 +1,17 @@
+uuid: a2633827-c326-4d7b-964f-dd8aaaa5bbb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.projects_managers
+id: governance_area-128ade90e
+label: 'Collaboration manager'
+weight: 4
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

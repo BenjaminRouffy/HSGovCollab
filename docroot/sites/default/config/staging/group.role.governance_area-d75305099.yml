@@ -1,0 +1,17 @@
+uuid: ab3453aa-2770-470d-bfd8-58c889dee652
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.specific_users
+id: governance_area-d75305099
+label: 'Specific users'
+weight: 7
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

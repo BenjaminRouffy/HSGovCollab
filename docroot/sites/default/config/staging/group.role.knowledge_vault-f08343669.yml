@@ -1,0 +1,17 @@
+uuid: 037a261b-d4f9-4926-a4a1-5475fb6ede71
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+  enforced:
+    config:
+      - user.role.country_managers
+id: knowledge_vault-f08343669
+label: 'Country manager'
+weight: 3
+internal: true
+audience: outsider
+group_type: knowledge_vault
+permissions_ui: false
+permissions: {  }

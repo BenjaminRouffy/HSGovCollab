@@ -1,0 +1,24 @@
+uuid: 7bd33a18-d8bb-4c8e-a2e9-7392cc688ced
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+id: region_protected-attendee
+label: Attendee
+weight: -10
+internal: false
+audience: member
+group_type: region_protected
+permissions_ui: true
+permissions:
+  - 'view group'
+  - 'access group_node overview'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'
+  - 'view group_node:news content'
+  - 'access to view all group content'
+  - 'access subgroup overview'
+  - 'view subgroup:country_protected content'
+  - 'view subgroup:country_protected entity'

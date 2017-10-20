@@ -1,0 +1,21 @@
+uuid: 3b799918-ee3f-4009-bd12-cf39ce773f7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+id: region-attendee
+label: Attendee
+weight: -10
+internal: false
+audience: member
+group_type: region
+permissions_ui: true
+permissions:
+  - 'view group'
+  - 'access group_node overview'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'
+  - 'view group_node:news content'
+  - 'access to view all group content'

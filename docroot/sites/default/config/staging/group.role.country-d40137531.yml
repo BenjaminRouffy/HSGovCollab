@@ -1,0 +1,17 @@
+uuid: 41c5e02a-cf41-4647-880c-920209410389
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+  enforced:
+    config:
+      - user.role.product_manager
+id: country-d40137531
+label: 'Product manager'
+weight: 10
+internal: true
+audience: outsider
+group_type: country
+permissions_ui: false
+permissions: {  }

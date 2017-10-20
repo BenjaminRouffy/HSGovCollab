@@ -1,0 +1,17 @@
+uuid: 533edc6d-376b-4aa8-93b3-59f9fd535d03
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+  enforced:
+    config:
+      - user.role.coordination_desk_users
+id: project_protected-1879bad9c
+label: 'Coordination desk user'
+weight: 6
+internal: true
+audience: outsider
+group_type: project_protected
+permissions_ui: false
+permissions: {  }

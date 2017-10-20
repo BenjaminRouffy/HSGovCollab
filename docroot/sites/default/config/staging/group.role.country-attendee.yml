@@ -1,0 +1,21 @@
+uuid: 7ed29611-58af-48dd-a0db-de4dc640c9c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+id: country-attendee
+label: Attendee
+weight: -10
+internal: false
+audience: member
+group_type: country
+permissions_ui: true
+permissions:
+  - 'view group'
+  - 'access group_node overview'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'
+  - 'view group_node:news content'
+  - 'access to view all group content'

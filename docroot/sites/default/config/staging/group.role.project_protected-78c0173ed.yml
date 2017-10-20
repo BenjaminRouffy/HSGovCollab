@@ -1,0 +1,17 @@
+uuid: 22b93fdd-9a25-4220-aff4-7fbc7780d2f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+  enforced:
+    config:
+      - user.role.co_admin
+id: project_protected-78c0173ed
+label: Co-Admin
+weight: 9
+internal: true
+audience: outsider
+group_type: project_protected
+permissions_ui: false
+permissions: {  }

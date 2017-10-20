@@ -57,6 +57,9 @@ function events_node_view(array &$build, EntityInterface $entity, EntityViewDisp
       'region',
       'country',
       'project',
+      'region_protected',
+      'country_protected',
+      'project_protected',
     );
     /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
     $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
@@ -81,6 +84,9 @@ function events_node_view_alter(array &$build, EntityInterface $entity, EntityVi
       'region',
       'country',
       'project',
+      'region_protected',
+      'country_protected',
+      'project_protected',
     );
     /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
     $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
@@ -173,6 +179,9 @@ function events_views_pre_render(ViewExecutable $view) {
         'region',
         'country',
         'project',
+        'region_protected',
+        'country_protected',
+        'project_protected',
       );
 
       foreach ($results as $result) {

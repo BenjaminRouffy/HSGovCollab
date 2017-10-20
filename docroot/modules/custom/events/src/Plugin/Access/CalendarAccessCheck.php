@@ -52,6 +52,10 @@ class CalendarAccessCheck implements AccessInterface {
       'region',
       'country',
       'project',
+      'region_protected',
+      'country_protected',
+      'project_protected',
+
     );
     $user_is_ga = $this->menuItemVisibilityCheckByGroup->check($this->account, $groups);
     $group_type = (in_array($group->getGroupType()->id(), $groups));

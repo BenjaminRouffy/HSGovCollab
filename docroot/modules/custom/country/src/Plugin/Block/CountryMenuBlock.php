@@ -164,6 +164,9 @@ class CountryMenuBlock extends BlockBase {
               'region',
               'country',
               'project',
+              'region_protected',
+              'country_protected',
+              'project_protected',
             );
             $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
             if (in_array($group->getGroupType()->id(), $groups) && $check_by_group->check($account, $groups)) {

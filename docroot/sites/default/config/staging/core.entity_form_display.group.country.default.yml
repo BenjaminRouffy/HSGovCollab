@@ -10,6 +10,7 @@ dependencies:
     - field.field.group.country.field_country_options
     - field.field.group.country.field_date
     - field.field.group.country.field_faq
+    - field.field.group.country.field_geographical_object
     - field.field.group.country.field_group_status
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
@@ -46,6 +47,7 @@ third_party_settings:
       label: 'Tabs panel'
     group_banner:
       children:
+        - field_geographical_object
         - field_banner
         - label
         - field_country_icon
@@ -141,7 +143,7 @@ mode: default
 content:
   field_banner:
     type: entity_reference_paragraphs
-    weight: 1
+    weight: 31
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -173,7 +175,7 @@ content:
     third_party_settings: {  }
     region: content
   field_country_icon:
-    weight: 3
+    weight: 33
     settings:
       match_operator: CONTAINS
       size: 60
@@ -209,8 +211,15 @@ content:
       form_display_mode: default
     third_party_settings: {  }
     region: content
+  field_geographical_object:
+    weight: 30
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_group_status:
-    weight: 28
+    weight: 35
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -299,7 +308,7 @@ content:
     region: content
   label:
     type: string_textfield
-    weight: 2
+    weight: 32
     settings:
       size: 60
       placeholder: ''
@@ -318,7 +327,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   translation:
-    weight: 13
+    weight: 34
     region: content
     settings: {  }
     third_party_settings: {  }

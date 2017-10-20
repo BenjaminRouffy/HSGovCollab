@@ -1052,10 +1052,3 @@ function deployment_update_8087() {
       'video_embed_field_background',
     ]);
 }
-
-/**
- * Enable notifications module.
- */
-function deployment_update_8088(){
-  Drupal::service('module_installer')->install(['notifications']);
-}

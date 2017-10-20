@@ -172,6 +172,7 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
+          group: 1
         langcode:
           id: langcode
           table: groups_field_data
@@ -329,16 +330,15 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: list_field
-        field_type_value:
-          id: field_type_value
-          table: group__field_type
-          field: field_type_value
+        field_geographical_object_value:
+          id: field_geographical_object_value
+          table: group__field_geographical_object
+          field: field_geographical_object_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
-          value:
-            geographical: geographical
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -353,7 +353,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -366,8 +365,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
+          plugin_id: boolean
       sorts: {  }
       title: Map
       header: {  }
@@ -376,6 +374,10 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:

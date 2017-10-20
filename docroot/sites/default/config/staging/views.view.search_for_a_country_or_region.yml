@@ -427,17 +427,26 @@ display:
         - 'languages:language_interface'
         - url
       tags:
+        - 'config:core.entity_view_display.group.country.banner'
+        - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.map'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.search_result_row'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
+        - 'config:core.entity_view_display.group.country.token'
         - 'config:core.entity_view_display.group.country_protected.banner'
         - 'config:core.entity_view_display.group.country_protected.bottom'
+        - 'config:core.entity_view_display.group.country_protected.default'
         - 'config:core.entity_view_display.group.country_protected.map'
+        - 'config:core.entity_view_display.group.country_protected.region_search_for_countries'
         - 'config:core.entity_view_display.group.country_protected.search_country'
         - 'config:core.entity_view_display.group.country_protected.search_result_row'
         - 'config:core.entity_view_display.group.country_protected.single_line_with_icon'
         - 'config:core.entity_view_display.group.country_protected.time_line'
+        - 'config:core.entity_view_display.group.country_protected.token'
         - 'config:core.entity_view_display.group.governance_area.banner'
         - 'config:core.entity_view_display.group.governance_area.bottom'
         - 'config:core.entity_view_display.group.governance_area.default'
@@ -466,30 +475,21 @@ display:
         - 'config:core.entity_view_display.group.project_protected.search_result_row'
         - 'config:core.entity_view_display.group.project_protected.teaser'
         - 'config:core.entity_view_display.group.project_protected.time_line'
+        - 'config:core.entity_view_display.group.region.banner'
+        - 'config:core.entity_view_display.group.region.bottom'
         - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.search_result_row'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
+        - 'config:core.entity_view_display.group.region_protected.banner'
+        - 'config:core.entity_view_display.group.region_protected.bottom'
         - 'config:core.entity_view_display.group.region_protected.country_list_by_region'
+        - 'config:core.entity_view_display.group.region_protected.default'
         - 'config:core.entity_view_display.group.region_protected.search_country'
         - 'config:core.entity_view_display.group.region_protected.search_result_row'
         - 'config:core.entity_view_display.group.region_protected.time_line'
-        - 'config:core.entity_view_display.group.country.banner'
-        - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.search_country'
-        - 'config:core.entity_view_display.group.country.token'
-        - 'config:core.entity_view_display.group.country_protected.default'
-        - 'config:core.entity_view_display.group.country_protected.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country_protected.token'
-        - 'config:core.entity_view_display.group.region.banner'
-        - 'config:core.entity_view_display.group.region.bottom'
-        - 'config:core.entity_view_display.group.region.default'
-        - 'config:core.entity_view_display.group.region_protected.banner'
-        - 'config:core.entity_view_display.group.region_protected.bottom'
-        - 'config:core.entity_view_display.group.region_protected.default'
         - 'config:core.entity_view_display.group.region_protected.token'
   block_1:
     display_plugin: block
@@ -987,17 +987,16 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        field_type_value:
-          id: field_type_value
-          table: group__field_type
-          field: field_type_value
+        field_geographical_object_value:
+          id: field_geographical_object_value
+          table: group__field_geographical_object
+          field: field_geographical_object_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
-          value:
-            geographical: geographical
-          group: 3
+          operator: '='
+          value: '1'
+          group: 1
           exposed: false
           expose:
             operator_id: ''
@@ -1011,7 +1010,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1024,8 +1022,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -1759,16 +1756,15 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        field_type_value:
-          id: field_type_value
-          table: group__field_type
-          field: field_type_value
+        field_geographical_object_value:
+          id: field_geographical_object_value
+          table: group__field_geographical_object
+          field: field_geographical_object_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
-          value:
-            geographical: geographical
+          operator: '='
+          value: '1'
           group: 3
           exposed: false
           expose:
@@ -1783,7 +1779,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1796,8 +1791,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
+          plugin_id: boolean
       defaults:
         filters: false
         filter_groups: false
@@ -2244,6 +2238,42 @@ display:
           entity_type: group
           entity_field: langcode
           plugin_id: language
+        field_geographical_object_value:
+          id: field_geographical_object_value
+          table: group__field_geographical_object
+          field: field_geographical_object_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: boolean
         type:
           id: type
           table: groups_field_data
@@ -2284,45 +2314,6 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        field_type_value:
-          id: field_type_value
-          table: group__field_type
-          field: field_type_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value:
-            geographical: geographical
-          group: 3
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
       filter_groups:
         operator: AND
         groups:
@@ -2894,16 +2885,15 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        field_type_value:
-          id: field_type_value
-          table: group__field_type
-          field: field_type_value
+        field_geographical_object_value:
+          id: field_geographical_object_value
+          table: group__field_geographical_object
+          field: field_geographical_object_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
-          value:
-            geographical: geographical
+          operator: '='
+          value: '1'
           group: 3
           exposed: false
           expose:
@@ -2918,7 +2908,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -2931,8 +2920,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
+          plugin_id: boolean
       defaults:
         filters: false
         filter_groups: false

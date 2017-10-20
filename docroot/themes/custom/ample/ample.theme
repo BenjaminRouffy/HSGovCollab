@@ -338,7 +338,7 @@ function ample_preprocess_paragraph(array &$variables) {
   }
 
   if ($variables['paragraph']->bundle() === 'link_to_file') {
-    $link = $variables['content']['field_link'][0]['#url']->getUri();
+    $link = $variables['paragraph']->field_link[0]->getUrl()->getUri();
     $parse = parse_url($link);
 
     if (strpos($parse['host'], 'google') !== FALSE) {

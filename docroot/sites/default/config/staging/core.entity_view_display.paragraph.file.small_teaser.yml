@@ -1,0 +1,25 @@
+uuid: 1e587b9c-289d-4d3a-886c-01e685a6a713
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.small_teaser
+    - field.field.paragraph.file.field_file
+    - paragraphs.paragraphs_type.file
+  module:
+    - file
+id: paragraph.file.small_teaser
+targetEntityType: paragraph
+bundle: file
+mode: small_teaser
+content:
+  field_file:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: file_url_plain
+    region: content
+hidden:
+  created: true
+  uid: true

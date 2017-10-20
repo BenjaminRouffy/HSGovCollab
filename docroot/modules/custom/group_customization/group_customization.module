@@ -30,43 +30,7 @@ function group_customization_preprocess_html(array &$variables) {
 function group_customization_entity_type_alter(array &$entity_types) {
   if (!empty($entity_types['group'])) {
     $entity_types['group']->setFormClass('delete', 'Drupal\group_customization\Entity\Form\GroupDeleteForm');
-    $entity_types['group']->setClass('Drupal\group_customization\Entity\Group');
   }
-}
-
-/**
- * Implements hook_ENTITY_TYPE_access().
- */
-function group_customization_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
-  if ('view' === $operation) {
-    if ('project' == $entity->bundle()) {
-      /* @var GroupHierarchyManager $subgroup_manage */
-      $subgroup_manage = \Drupal::service('ggroup.group_hierarchy_manager');
-
-      /* @var Group[] $parents */
-      $parents = $subgroup_manage->getGroupSupergroups($entity);
-
-      if (empty($parents)) {
-        return AccessResult::neutral();
-      }
-
-      foreach ($parents as $index => $parent) {
-        $parents[$index] = $parent->hasPermission('view group', $account);
-      }
-
-      return in_array(TRUE, $parents) ? AccessResult::allowed() : AccessResult::forbidden();
-    }
-
-    // @var \Drupal\group_customization\Access\GroupPermissionAccessCheck $groupPermissionAccess
-    $groupPermissionAccess = \Drupal::getContainer()
-      ->get('group_customization.group.permission');
-
-    return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
-      'published',
-    ]);
-  }
-
-  return AccessResult::neutral();
 }
 
 /**

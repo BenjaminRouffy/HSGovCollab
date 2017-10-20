@@ -4,24 +4,25 @@
  * @file
  * Contains deployment.module.
  */
+use Drupal\field\Entity\FieldConfig;
 
 /**
- * Updating all the existing regions, countries and collaborations to have type.
+ * Updating all the existing regions, countries and collaborations to Geographical objects.
  */
-function deployment_update_universal_objects() {
+function deployment_update_universal_objects_geographical_object() {
   // TODO: This should be reworked at some point.
   // It was designed to be an update hook, but it doesn't work correctly,
-  // because "Type" field doesn't exist in the database back up used for
+  // because "Geographical object" field doesn't exist in the database back up used for
   // reinstall script. This should be executed only once
 
 
-  // A new field "Type" has been added to all Universal Objects (Region,
+  // A new field "Geographical object" has been added to all Universal Objects (Region,
   // Country and Collaboration) that specifies its object type, for example:
   // (Knowledge object, Product object and Geographical object).
 
   // Get all universal objects that don't have type set up.
   $query = Drupal::database()->select('groups', 'groups');
-  $query->leftJoin('group__field_type', 'type', 'type.entity_id = groups.id');
+  $query->leftJoin('group__field_geographical_object', 'geo_obj', 'geo_obj.entity_id = groups.id');
   $query->fields('groups', ['id', 'langcode', 'type']);
 
   $condition = $query->orConditionGroup();
@@ -31,19 +32,42 @@ function deployment_update_universal_objects() {
 
   $query->condition($condition);
 
-  $query->isNull('type.field_type_value');
+  $query->isNull('geo_obj.field_geographical_object_value');
   $universal_objects = $query->execute()->fetchAll(PDO::FETCH_ASSOC);
 
   // Set "Geographical object" type to all the existing Universal Objects.
   if (!empty($universal_objects)) {
-    $fields = ['bundle', 'deleted', 'entity_id', 'revision_id', 'langcode', 'delta', 'field_type_value'];
+    $fields = ['bundle', 'deleted', 'entity_id', 'revision_id', 'langcode', 'delta', 'field_geographical_object_value'];
 
     foreach ($universal_objects as $universal_object) {
-      $values = [$universal_object['type'], 0, $universal_object['id'], $universal_object['id'], $universal_object['langcode'], 0, 'geographical'];
-      $query = Drupal::database()->insert('group__field_type');
+      $values = [$universal_object['type'], 0, $universal_object['id'], $universal_object['id'], $universal_object['langcode'], 0, 1];
+      $query = Drupal::database()->insert('group__field_geographical_object');
       $query->fields($fields);
       $query->values($values);
       $query->execute();
     }
   }
+}
+
+/**
+ * Remove field_type from groups.
+ */
+function deployment_remove_field_type() {
+  $bundles = array('region', 'country', 'project');
+
+  foreach ($bundles as $bundle) {
+    $field = FieldConfig::loadByName('group', $bundle, 'field_type');
+
+    if (NULL !== $field) {
+      $field->delete();
+    }
+  }
+}
+
+/**
+ * Helper function for performing all required changes.
+ */
+function deployment_dev_environment_deploy(){
+  deployment_update_universal_objects_geographical_object();
+  deployment_remove_field_type();
 }

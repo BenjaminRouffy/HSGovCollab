@@ -186,8 +186,9 @@
               return false;
             }
 
-            var date = $(this).attr('data-date');
-            window.location.href = '/simplified/content/add/event?date=' + encodeURIComponent(date);
+            var date = $(this).attr('data-date'),
+              path = drupalSettings.events.group_node_event_path;
+            window.location.href = path + '?date=' + encodeURIComponent(date);
 
           });
         }

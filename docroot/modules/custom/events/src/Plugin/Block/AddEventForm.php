@@ -67,7 +67,10 @@ class AddEventForm extends BlockBase {
       // Array with the fields to be displayed on the form.
       $display_fields = array(
         'title',
+        'field_event_slider',
+        'body',
         'field_date',
+        'field_documents',
       );
     }
     elseif ($route === 'page_manager.page_view_my_calendar') {
@@ -82,7 +85,10 @@ class AddEventForm extends BlockBase {
       // Array with the fields to be displayed on the form.
       $display_fields = array(
         'title',
+        'field_event_slider',
+        'body',
         'field_date',
+        'field_documents',
         'field_add_event_in_group',
       );
     }
@@ -100,8 +106,6 @@ class AddEventForm extends BlockBase {
         }
       }
     }
-
-    $form['field_date']['#weight'] = 30;
 
     return $form;
   }

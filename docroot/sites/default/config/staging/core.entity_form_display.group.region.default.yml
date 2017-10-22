@@ -43,6 +43,7 @@ third_party_settings:
       label: 'Tabs panel'
     group_banner:
       children:
+        - field_geographical_object
         - field_banner
         - label
         - field_region_icon
@@ -119,7 +120,7 @@ bundle: region
 mode: default
 content:
   field_banner:
-    weight: 13
+    weight: 1
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -152,7 +153,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 17
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -168,6 +169,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
+  field_geographical_object:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_infographic:
     weight: 6
     settings:
@@ -197,7 +205,7 @@ content:
     type: string_textfield
     region: content
   field_region_icon:
-    weight: 15
+    weight: 3
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -230,7 +238,7 @@ content:
     region: content
   label:
     type: string_textfield
-    weight: 14
+    weight: 2
     region: content
     settings:
       size: 60
@@ -238,7 +246,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 18
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -254,5 +262,4 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_geographical_object: true
   uid: true

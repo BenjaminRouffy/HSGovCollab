@@ -190,7 +190,7 @@ function events_views_pre_render(ViewExecutable $view) {
 
         if (in_array($type, $groups) && $group->hasPermission("create group_node:event entity", $account)) {
           $view->element['#attached']['drupalSettings']['events'] = [
-            'group_allow_access_to_popup' => TRUE,
+            'group_allow_access_to_popup' => FALSE,
           ];
         }
       }
@@ -250,7 +250,60 @@ function events_node_create(NodeInterface $node) {
 function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $route = \Drupal::routeMatch()->getRouteName();
   if ($form_id === 'node_event_form') {
-    if($route === 'node.add' || $route === 'page_manager.page_view_my_calendar') {
+    if(in_array($route, array('node.add', 'page_manager.page_view_my_calendar', 'events.add_content_simplified'))) {
+      if ($route === 'events.add_content_simplified') {
+        // Remove grouping on the form.
+        $form['#group_children'] = array();
+
+        // Array with the fields or form elements to be displayed on the form.
+        $display_elements = array(
+          'field_add_event_in_group',
+          'title',
+          'field_event_slider',
+          'body',
+          'field_date',
+          'field_documents',
+        );
+
+        // Array with the fields and elements on the form.
+        $form_elements = array(
+          'body',
+          'field_category',
+          'field_comments',
+          'field_date',
+          'field_documents',
+          'field_event_author',
+          'field_event_link',
+          'field_event_slider',
+          'field_location',
+          'field_organization',
+          'field_related_content_selector',
+          'field_timezone',
+          'title',
+          'field_join_block',
+          'langcode',
+          'field_add_event_in_group',
+          'advanced',
+          'path',
+          'field_comments',
+          'public_content',
+          'revision_log',
+          'revision_information',
+          'custom_publish_options',
+          'menu',
+          'path_settings',
+        );
+
+        // Hide the field and form elements that are not in the display_elements array.
+        foreach ($form as $key => $value) {
+          if (in_array($key, $form_elements)) {
+            if (!in_array($key, $display_elements)) {
+              $form[$key]['#access'] = FALSE;
+            }
+          }
+        }
+      }
+
       foreach (array_keys($form['actions']) as $action) {
         if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
           $form['actions'][$action]['#submit'][] = 'events_add_new_event_custom_submit';
@@ -325,7 +378,6 @@ function events_add_new_event_custom_submit($form, FormStateInterface $form_stat
     $group->addContent($entity, 'group_node:event');
 
     $url = Url::fromRoute('page_manager.page_view_my_calendar',
-      array('group' => $group->id()),
       array('fragment' => 'calendar')
     );
 

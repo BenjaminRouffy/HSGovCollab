@@ -248,8 +248,8 @@ function events_node_create(NodeInterface $node) {
  * Implements hook_form_alter().
  */
 function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $route = \Drupal::routeMatch()->getRouteName();
   if ($form_id === 'node_event_form') {
-    $route = \Drupal::routeMatch()->getRouteName();
     if($route === 'node.add' || $route === 'page_manager.page_view_my_calendar') {
       foreach (array_keys($form['actions']) as $action) {
         if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
@@ -265,6 +265,12 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       }
     }
     if($route === 'entity.group_content.create_form') {
+      // Hide group's autocomplete.
+      $form['field_add_event_in_group']['#access'] = FALSE;
+    }
+  }
+  if ($form_id === 'node_event_edit_form') {
+    if($route === 'entity.node.edit_form') {
       // Hide group's autocomplete.
       $form['field_add_event_in_group']['#access'] = FALSE;
     }

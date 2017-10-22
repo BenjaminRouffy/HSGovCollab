@@ -53,7 +53,7 @@ third_party_settings:
         - field_event_slider
         - field_event_author
       parent_name: group_tabs_panel
-      weight: 20
+      weight: 1
       format_type: tab
       format_settings:
         id: ''
@@ -67,7 +67,7 @@ third_party_settings:
         - body
         - langcode
       parent_name: group_tabs_panel
-      weight: 21
+      weight: 6
       format_type: tab
       format_settings:
         label: Brief
@@ -84,7 +84,7 @@ third_party_settings:
         - field_location
         - field_event_link
       parent_name: group_tabs_panel
-      weight: 22
+      weight: 9
       format_type: tab
       format_settings:
         id: ''
@@ -99,7 +99,7 @@ third_party_settings:
         - field_category
         - field_organization
       parent_name: group_tabs_panel
-      weight: 23
+      weight: 14
       format_type: tab
       format_settings:
         id: ''
@@ -113,7 +113,7 @@ third_party_settings:
         - field_related_content_selector
         - field_documents
       parent_name: group_tabs_panel
-      weight: 24
+      weight: 18
       format_type: tab
       format_settings:
         id: ''
@@ -129,7 +129,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 3
+    weight: 7
     settings:
       rows: 9
       summary_rows: 3
@@ -137,12 +137,12 @@ content:
     third_party_settings: {  }
     region: content
   custom_date_widget:
-    weight: 1
+    weight: 21
     region: content
     settings: {  }
     third_party_settings: {  }
   field_add_event_in_group:
-    weight: 26
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
@@ -151,19 +151,19 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_category:
-    weight: 12
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_comments:
-    weight: 6
+    weight: 26
     settings: {  }
     third_party_settings: {  }
     type: comment_default
     region: content
   field_date:
-    weight: 9
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: daterange_eventdaterangelist
@@ -178,7 +178,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_event_author:
-    weight: 29
+    weight: 5
     settings:
       size: 60
       placeholder: ''
@@ -187,7 +187,7 @@ content:
     region: content
   field_event_link:
     type: link_default
-    weight: 12
+    weight: 13
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -195,7 +195,7 @@ content:
     region: content
   field_event_slider:
     type: entity_reference_paragraphs
-    weight: 28
+    weight: 4
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -205,13 +205,13 @@ content:
     third_party_settings: {  }
     region: content
   field_join_block:
-    weight: 11
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_location:
-    weight: 11
+    weight: 12
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -219,19 +219,19 @@ content:
     type: link_default
     region: content
   field_organization:
-    weight: 13
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_related_content_selector:
-    weight: 18
+    weight: 19
     settings: {  }
     third_party_settings: {  }
     type: list_rel_content_select
     region: content
   field_timezone:
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -240,18 +240,18 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 24
     third_party_settings: {  }
     region: content
   langcode:
     type: language_select
-    weight: 4
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 3
+    weight: 23
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -259,19 +259,19 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 25
     third_party_settings: {  }
     region: content
   title:
     type: string_textfield
-    weight: 27
+    weight: 3
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     region: content
   translation:
-    weight: 2
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -60,6 +60,18 @@ function group_customization_node_grants_alter(array &$grants, AccountInterface 
     }
   }
 }
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function group_customization_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  // @var \Drupal\group_customization\Access\GroupPermissionAccessCheck $groupPermissionAccess
+  $groupPermissionAccess = \Drupal::getContainer()
+    ->get('group_customization.group.permission');
+  return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
+    'published',
+    'content',
+  ]);
+}
 
 /**
  * Return unpublished group IDs.

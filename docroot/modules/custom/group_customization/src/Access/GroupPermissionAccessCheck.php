@@ -10,6 +10,7 @@ use Drupal\Core\Routing\Access\AccessInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Access\GroupAccessResult;
+use Drupal\group\Access\GroupPermissions;
 use Drupal\group\Entity\GroupInterface;
 use Symfony\Component\Routing\Route;
 
@@ -17,6 +18,58 @@ use Symfony\Component\Routing\Route;
  * Class GroupPermissionAccessCheck.
  */
 class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInterface {
+
+  /**
+   * This function will check permission on entity load.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   Group Entity.
+   * @param string $operation
+   *   String value most of cases contains ('view', 'view group', 'edit') etc.
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   Current account.
+   * @param array $group_statuses
+   *   Array of statuses that is allowed in current case.
+   *
+   * @return \Drupal\Core\Access\AccessResultInterface
+   *   Access result implementation.
+   *
+   * @see ContentEntityBase::access()
+   * @see group_customization_group_access()
+   */
+  public function checkAccess(EntityInterface $entity, string $operation, AccountInterface $account, array $group_statuses = []) {
+    if ('view' === $operation) {
+      // @TODO Ensure that it is correct permission.
+      $bypass = AccessResult::allowedIfHasPermissions($account, ['bypass group access']);
+      //$group_by_pass = GroupAccessResult::allowedIfHasGroupPermissions($entity, $account, [
+      //  'bypass administer group status',
+      //  'bypass administer group ' . $operation,
+      //], 'OR');
+      if (!$bypass->isAllowed()/* && !$group_by_pass->isAllowed()*/) {
+        if ($entity instanceof GroupInterface && $entity->hasField('field_group_status') && $entity->hasField('field_geographical_object')) {
+          if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'edit group')->isAllowed()) {
+            return AccessResult::allowed();
+          }
+
+          if (!$entity->get('field_group_status')) {
+            return AccessResult::neutral();
+          }
+
+          $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
+          $is_geographical_object = $entity->get('field_geographical_object')->value;
+
+          // The only way to have Universal object - Country available for
+          // anonymous is to have "Published" or "With Content" group status
+          // and to have "Geographical object" checked.
+          if (!in_array($group_status, $group_statuses) || !$is_geographical_object) {
+            return AccessResult::forbidden();
+          }
+        }
+      }
+    }
+
+    return AccessResult::neutral();
+  }
 
   /**
    * This function will check permission for views exposed filter.

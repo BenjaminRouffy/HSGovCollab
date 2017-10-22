@@ -264,6 +264,10 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
         }
       }
     }
+    if($route === 'entity.group_content.create_form') {
+      // Hide group's autocomplete.
+      $form['field_add_event_in_group']['#access'] = FALSE;
+    }
   }
 }
 

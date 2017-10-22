@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - group.type.country
+    - group.type.country_protected
     - group.type.governance_area
     - group.type.project
+    - group.type.project_protected
     - group.type.region
+    - group.type.region_protected
   module:
     - group
     - user
@@ -223,8 +226,11 @@ display:
           value:
             governance_area: governance_area
             project: project
+            project_protected: project_protected
             country: country
+            country_protected: country_protected
             region: region
+            region_protected: region_protected
           group: 1
           exposed: false
           expose:

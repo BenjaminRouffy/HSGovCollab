@@ -175,6 +175,22 @@
             $addEventModal.iziModal('open');
           });
         }
+        else {
+          // Attach add event text to the days if we are in month view.
+          $('.fc-month-view .fc-day-number')
+            .prepend('<span class="add-event">' + Drupal.t('Add Event') + '</span>');
+
+          $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
+            // Do not bother in case of year view dots clicked.
+            if ($(this).hasClass('has-event') && $(this).closest('.fc-year-view').length) {
+              return false;
+            }
+
+            var date = $(this).attr('data-date');
+            window.location.href = '/simplified/content/add/event?date=' + encodeURIComponent(date);
+
+          });
+        }
         Drupal.attachBehaviors($calendar.get()[0]);
       },
       windowResize: function(view) {

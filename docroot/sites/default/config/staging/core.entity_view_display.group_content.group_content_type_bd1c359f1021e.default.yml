@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.group_content.group_content_type_bd1c359f1021e.field_follower
     - field.field.group_content.group_content_type_bd1c359f1021e.group_roles
     - group.content_type.group_content_type_bd1c359f1021e
 id: group_content.group_content_type_bd1c359f1021e.default
@@ -15,10 +16,11 @@ content:
     type: entity_reference_label
     settings:
       link: false
-    weight: -4
+    weight: 0
     third_party_settings: {  }
     region: content
 hidden:
   entity_id: true
+  field_follower: true
   langcode: true
   uid: true

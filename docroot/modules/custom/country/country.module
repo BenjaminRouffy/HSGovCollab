@@ -26,6 +26,17 @@ function _country_public_global_content_types() {
 }
 
 /**
+ * Implements hook_form_alter().
+ */
+function country_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // The google map is shown and hidden based on field conditions and custom
+  // js is needed to calculate its dimensions once it is displayed again.
+  if ($form_id === 'group_country_edit_form' || $form_id === 'group_country_add_form') {
+    $form['#attached'];
+    $form['#attached']['library'][] = 'country/country.map';
+  }
+}
+/**
  * Implements hook_node_access().
  */
 function country_node_access(NodeInterface $node, $op, AccountInterface $account) {

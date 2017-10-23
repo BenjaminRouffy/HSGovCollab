@@ -14,6 +14,11 @@
             {{ content.field_article_join_block }}
           </div>
         {% endif %}
+        {% if content.field_anonymous_join_block|field_value %}
+          <div class="teaser corners">
+            {{ content.field_anonymous_join_block }}
+          </div>
+        {% endif %}
 
         {{ content.field_documents }}
       </aside>

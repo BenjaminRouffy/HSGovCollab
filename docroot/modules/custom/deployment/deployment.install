@@ -1091,6 +1091,8 @@ function deployment_update_8091() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'field.storage.group.field_anonymous_join_block',
     'field.storage.node.field_anonymous_join_block',
+    'field.storage.group.field_join_block',
+    'field.storage.node.field_join_block',
   ]);
 }
 

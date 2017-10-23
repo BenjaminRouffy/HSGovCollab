@@ -2,9 +2,9 @@
 
 namespace Drupal\migrate_social\Plugin\SocialNetwork;
 
+use Drupal\Core\Database\Database;
 use Drupal\group\Entity\GroupContentType;
 use Drupal\migrate\Row;
-use Drupal\plugin_type_example\SandwichBase;
 use Drupal\migrate_social\SocialNetworkBase;
 use Drupal\views\Views;
 
@@ -18,29 +18,30 @@ use Drupal\views\Views;
  */
 class Linkedin extends SocialNetworkBase {
 
+  var $companyId = 0;
+
+  /**
+   * @inheritdoc
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->companyId = $this->instance->setResponseDataType('array')->get("v1/companies?format=json&is-company-admin=true")['values'][0]['id'];
+  }
+
   /**
    * {@inheritdoc}
    */
-  protected function nextSource() {
+  protected function getSocialRows() {
     if (!empty($this->configuration['source_type'])) {
       switch ($this->configuration['source_type']) {
         case 'company':
-          $source_id = $this->configuration['source_id'];
           $result = $this->instance->setResponseDataType('array')
-            ->get("v1/companies/$source_id/updates");
-
-          if (!empty($result['values'])) {
-            $this->iterator = new \ArrayIterator($result['values']);
-            return TRUE;
-          }
-
+            ->get("v1/companies/{$this->companyId}/updates");
           break;
       }
-
-
     }
 
-    return FALSE;
+    return empty($result['values']) ? [] : $result['values'];
   }
 
   /**
@@ -57,9 +58,36 @@ class Linkedin extends SocialNetworkBase {
   }
 
   /**
-   * Import/update one row to social network.
+   * @inheritdoc
    */
-  protected function import(Row $row, array $old_destination_id_values = []) {
-    // TODO: Implement import() method.
+  public function import(Row $row, array $old_destination_id_values = []) {
+    if (empty($old_destination_id_values[0])) {
+      $body = [
+        'content' => [
+          'submitted-url' => $row->getDestinationProperty('submitted-url'),
+        ],
+        'comment' => substr($row->getDestinationProperty('comment'), 0, 699),
+        'visibility' => [
+          'code' => 'anyone',
+        ],
+      ];
+      $images = $row->getDestinationProperty('submitted-image-url');
+
+      if (!empty($images[0]['url'])) {
+        $body['content']['submitted-image-url'] = $images[0]['url'];
+      }
+
+      $result = $this->instance->setResponseDataType('array')
+        ->post("v1/companies/{$this->companyId}/shares?format=json", [
+          'body' => json_encode($body),
+        ]);
+
+      if (!empty($result['updateKey'])) {
+        return [$result['updateKey']];
+      }
+    }
+
+    // No updates for linkedin.
+    return $old_destination_id_values;
   }
 }

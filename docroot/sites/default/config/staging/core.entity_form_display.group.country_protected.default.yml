@@ -29,7 +29,6 @@ third_party_settings:
   field_group:
     group_ta:
       children:
-        - field_type
         - group_banner
         - group_brief
         - group_content
@@ -145,6 +144,7 @@ content:
       edit_mode: closed
       add_mode: dropdown
       form_display_mode: banner
+      default_paragraph_type: ''
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -156,6 +156,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -167,6 +168,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: private_content
+      default_paragraph_type: ''
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -187,6 +189,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -204,6 +207,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -221,6 +225,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: private_content
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -275,6 +280,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -286,6 +292,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content

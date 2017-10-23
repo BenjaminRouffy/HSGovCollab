@@ -21,25 +21,34 @@ class Twitter extends SocialNetworkBase {
   /**
    * {@inheritdoc}
    */
-  protected function nextSource() {
+  protected function getSocialRows() {
     $this->instance->setDecodeJsonAsArray(TRUE);
 
-    $result =  $this->instance->get('statuses/user_timeline', [
+    $result = $this->instance->get('statuses/user_timeline', [
       'tweet_mode' => 'extended',
       'count' => 100000,
     ]);
 
-    if (!empty($result[0]['id'])) {
-      $this->iterator = new \ArrayIterator($result);
-      return TRUE;
-    }
+    return empty($result[0]['id']) ? [] : $result;
 
   }
 
   /**
    * Import/update one row to social network.
    */
-  protected function import(Row $row, array $old_destination_id_values = []) {
-    // TODO: Implement import() method.
+  public function import(Row $row, array $old_destination_id_values = []) {
+    if (!empty($old_destination_id_values[0])) {
+      // Do nothing cause twitter doesn't allow editing.
+      return [$old_destination_id_values[0]];
+    }
+    else {
+      $result = $this->instance->post('statuses/update', [
+        'status' => $row->getDestinationProperty('status'),
+      ]);
+
+      if (empty($result->errors)) {
+        return [$result->id];
+      }
+    }
   }
 }

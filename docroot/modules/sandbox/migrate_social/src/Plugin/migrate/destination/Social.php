@@ -45,7 +45,8 @@ class Social extends DestinationBase {
     return [
        'id' => [
          'type' => 'string',
-         'size' => '64',
+         'max_length' => 64,
+         'is_ascii' => TRUE,
        ],
      ];
   }

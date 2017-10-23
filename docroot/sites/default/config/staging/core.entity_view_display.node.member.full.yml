@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.member.body
+    - field.field.node.member.field_anonymous_join_block
     - field.field.node.member.field_content_paragraph
     - field.field.node.member.field_country
     - field.field.node.member.field_join_block
@@ -31,6 +32,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_anonymous_join_block:
+    type: entity_reference_entity_view
+    weight: 8
+    region: content
+    label: hidden
+    settings:
+      view_mode: view_mode_registration_block
+      link: false
+    third_party_settings: {  }
   field_content_paragraph:
     type: entity_reference_revisions_entity_view
     weight: 5
@@ -50,7 +60,7 @@ content:
     region: content
   field_join_block:
     weight: 7
-    label: above
+    label: hidden
     settings:
       view_mode: view_mode_registration_block
       link: false
@@ -88,9 +98,9 @@ content:
     region: content
   links:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   addtoany: true
   langcode: true

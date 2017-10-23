@@ -1,0 +1,234 @@
+.pins-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.pins-list .pin-item {
+  background: #feffec;
+  font-family: $fira;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  text-align: left;
+
+  z-index: 1;
+  margin: 10px 10px 30px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 6px rgba($black, .1);
+
+  width: 100%;
+
+  @media screen and (min-width: 1024px) {
+    width: calc(33.33% - 20px);
+
+  }
+
+  .content-with-sidebar & {
+    width: 100%;
+
+    @media screen and (min-width: 1280px) {
+      width: calc(50% - 20px);
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px rgba($black, .2);
+
+    &::before {
+      box-shadow: inset 0 10px 6px -6px rgba($black, 0.1);
+    }
+  }
+
+  &::after,
+  &::before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &::before {
+    box-shadow: inset 0 10px 6px -6px rgba($black, 0.05);
+    background: #f5f5f5;
+    width: 55px;
+    height: 33px;
+    transform: rotate(-45deg);
+    right: -20px;
+    bottom: -8px;
+    z-index: 11;
+  }
+
+  &::after {
+    right: -1px;
+    border-style: solid;
+    border-width: 20px;
+    border-color: #e4e5d8 transparent transparent #e4e5d8;
+    z-index: 10;
+  }
+
+  .pin-icon {
+    content: ' ';
+    width: 35px;
+    height: 40px;
+    background: url(../images/paper-pin.svg) no-repeat;
+    position: absolute;
+    left: 15px;
+    top: -20px;
+  }
+
+  // Heading
+  h2 {
+    @include font-size(24);
+    text-transform: uppercase;
+    line-height: 1.15;
+    padding: 30px 20px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e4e6c7;
+    max-width: 100%;
+  }
+
+  // Description
+  .description {
+    @include font-size(15);
+    font-weight: 400;
+    padding: 20px 20px 0;
+    line-height: 1.625;
+    color: $navy-dark;
+
+    a {
+      color: $red;
+    }
+
+    li {
+      font-weight: 400;
+    }
+
+    ol,
+    ul {
+      padding-left: 18px;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  blockquote {
+    @extend .corners;
+    text-align: center;
+    border: 0;
+
+    p {
+      @include font-size(16);
+      margin-bottom: 0;
+      color: $navy-dark;
+      font-weight: normal;
+    }
+  }
+
+  // Attached file
+  article {
+    padding: 20px;
+    position: relative;
+
+    @media screen and (min-width: 600px) {
+      padding-right: 100px;
+    }
+
+    h4 {
+      @include font-size(16);
+      margin: 0 0 15px;
+      line-height: 1.2;
+      font-weight: 400;
+
+      @media screen and (min-width: 600px) {
+        margin: 0;
+      }
+    }
+
+    a {
+      @include font-size(14);
+    }
+  }
+
+  .download,
+  .font-social-icon {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+
+    @media screen and (min-width: 600px) {
+      position: absolute;
+      right: 0;
+      top: 55%;
+      transform: translateY(-50%);
+      width: 100px;
+    }
+  }
+
+  .font-social-icon {
+    @media screen and (min-width: 600px) {
+      margin-top: -20px;
+    }
+
+    span::after {
+      @include font-size(20);
+      color: $red;
+    }
+  }
+
+  .download {
+    color: $red;
+  }
+
+  // View more link with arrow from the right side
+  .link {
+    padding: 20px 20px 0;
+    margin-top: auto;
+
+    a {
+      @include font-size(16);
+      color: $red;
+      padding-right: 10px;
+      position: relative;
+      display: inline-block;
+
+      &:hover {
+        &::after {
+          right: -3px;
+          transition: right .3s ease;
+        }
+      }
+
+      &::after {
+        content: ' ';
+        width: 8px;
+        height: 8px;
+        border: solid $red;
+        border-width: 2px 2px 0 0;
+        transform: rotate(45deg) translateY(-50%);
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transition: right .3s ease;
+
+      }
+    }
+  }
+
+}
+
+

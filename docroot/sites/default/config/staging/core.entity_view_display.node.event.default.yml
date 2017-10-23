@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.event.field_location
     - field.field.node.event.field_organization
     - field.field.node.event.field_related_content_selector
+    - field.field.node.event.field_social_autopost
     - field.field.node.event.field_time
     - field.field.node.event.field_timezone
     - node.type.event
@@ -144,6 +145,13 @@ content:
     third_party_settings: {  }
     type: list_rel_content_id
     region: content
+  field_social_autopost:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_timezone:
     weight: 4
     label: above
@@ -162,7 +170,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   rate_vote_widget:
-    weight: 15
+    weight: 100
     region: content
     settings: {  }
     third_party_settings: {  }

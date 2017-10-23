@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.basic_page.field_comments
     - field.field.node.basic_page.field_content_paragraph
     - field.field.node.basic_page.field_join_block
+    - field.field.node.basic_page.field_social_autopost
     - field.field.node.basic_page.field_time_line
     - node.type.basic_page
   module:
@@ -26,6 +27,7 @@ third_party_settings:
         - group_content
         - group_timeline
         - group_bottom
+        - group_publishing_options
       parent_name: ''
       weight: 0
       format_type: tabs
@@ -104,6 +106,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Bottom
+    group_publishing_options:
+      children:
+        - field_social_autopost
+      parent_name: group_t
+      weight: 25
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Publishing options'
 id: node.basic_page.default
 targetEntityType: node
 bundle: basic_page
@@ -167,6 +182,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_social_autopost:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
     region: content
   field_time_line:
     type: entity_reference_paragraphs

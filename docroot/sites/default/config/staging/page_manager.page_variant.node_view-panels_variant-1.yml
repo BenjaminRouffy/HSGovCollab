@@ -99,6 +99,23 @@ variant_settings:
       uuid: 43f1223e-7dff-4c93-bed9-866684f32a2a
       context_mapping:
         entity: node
+    6a2d7b27-c84d-49fa-9652-8fd893d618d1:
+      id: 'entity_field:node:field_anonymous_join_block'
+      label: 'Anonymous join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: view_mode_registration_block
+        third_party_settings: {  }
+        weight: 0
+      region: right
+      weight: 0
+      uuid: 6a2d7b27-c84d-49fa-9652-8fd893d618d1
+      context_mapping:
+        entity: node
   id: panels_variant
   uuid: a4e95dba-bbbc-4daa-86e1-f8c74bfc1868
   label: null

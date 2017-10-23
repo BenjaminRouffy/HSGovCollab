@@ -1,0 +1,50 @@
+id: facebook_autopost_event
+label: Migrate event nodes to facebook
+migration_group: social_networks_autopost
+source:
+  social_type: facebook
+  bundle: event
+  plugin: d8_node_social
+  track_changes: true
+
+destination:
+  social_network_plugin: facebook
+
+process:
+  temp_node_url:
+    - plugin: nid_2_url
+      source: nid
+
+  temp_event_date:
+    - plugin: callback_with_args
+      callable: substr
+      source: 'field_date/0/value'
+      args:
+        start: 0
+        length: 10
+
+  message:
+    - plugin: concat
+      source:
+        - 'title'
+        - 'body/0/value'
+        - 'field_event_author/0/value'
+        - '@temp_event_date'
+        - '@temp_node_url'
+      delimiter: "\r\n\r\n"
+
+    - plugin: callback_with_args
+      callable: strip_tags
+
+    - plugin: callback
+      callable: html_entity_decode
+
+  attached_media:
+    plugin: iterator
+    source: field_event_slider
+    process:
+      url:
+        - plugin: get_first_image_fid
+          source: target_id
+
+        - plugin: fid_2_url

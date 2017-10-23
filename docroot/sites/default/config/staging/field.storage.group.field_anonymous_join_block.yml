@@ -1,0 +1,24 @@
+uuid: 6f53c93d-cdd1-46ab-984b-9d2cfa213d63
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - group
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: group.field_anonymous_join_block
+field_name: field_anonymous_join_block
+entity_type: group
+type: entity_reference
+settings:
+  target_type: block_content
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

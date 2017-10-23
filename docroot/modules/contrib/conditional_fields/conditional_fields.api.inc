@@ -84,6 +84,21 @@ function conditional_fields_form_after_build($form, FormStateInterface &$form_st
         $options['values'] = explode("\r\n", $options['values']);
       }
 
+      if (in_array($options['state'], ['required', '!required'])
+        && $dependent_form_field['#type'] === 'container') {
+        if (isset($dependent_form_field['widget'][0]['value'])) {
+          $dependent_location = array_merge($dependent_location, [
+            'widget',
+            0,
+            'value'
+          ]);
+          $dependent_form_field = $dependent_form_field['widget'][0]['value'];
+        }
+        elseif (isset($dependent_form_field['widget']['#type'])) {
+          $dependent_location = array_merge($dependent_location, ['widget']);
+          $dependent_form_field = $dependent_form_field['widget'];
+        }
+      }
       $options['selector'] = conditional_fields_get_selector($options['selector'], $dependee_form_field);
 
       $state = conditional_fields_get_state($form_display, $dependee, $dependee_form_field, $options);
@@ -574,7 +589,7 @@ function conditional_fields_evaluate_dependency($context, $values, $options) {
     // thus checking this field requires a different handling in case of
     // 'checked or '!checked' conditions, where $value has 0 or 1.
     if ($options['condition'] === 'checked' || $options['condition'] === '!checked') {
-      $dependency_values = (int) ($options['condition'] === 'checked');
+      $dependency_values = array('value' => ($options['condition'] === 'checked'));
     }
 
 
@@ -606,7 +621,7 @@ function conditional_fields_evaluate_dependency($context, $values, $options) {
       // If $dependency_values is not an array, we can only assume that it
       // should map to the first key of the first value of $values.
       if (!is_array($dependency_values)) {
-        if (is_null(current($values))) {
+        if (is_null(current($values)) || empty($options['value'][0])) {
           return FALSE;
         }
         $key = current(array_keys((array) current($values)));

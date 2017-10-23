@@ -13,6 +13,10 @@ source:
   plugin: social_network
   track_changes: true
   social_network_plugin: facebook
+  autopost_migrations:
+    - facebook_autopost_basic_page
+    - facebook_autopost_event
+    - facebook_autopost_news
 process:
   id: id
   title: id

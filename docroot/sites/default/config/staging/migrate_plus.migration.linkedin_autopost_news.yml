@@ -1,0 +1,43 @@
+uuid: 2863da19-0df9-4ee2-ba86-44e10b1c0f45
+langcode: en
+status: true
+dependencies: {  }
+id: linkedin_autopost_news
+migration_tags: null
+migration_group: social_networks_autopost
+label: 'Migrate news nodes to linkedin'
+source:
+  social_type: linkedin
+  bundle: news
+  plugin: d8_node_social
+  track_changes: true
+process:
+  comment:
+    -
+      plugin: concat
+      source:
+        - title
+        - field_author/0/value
+        - field_content_date/0/value
+      delimiter: "\r\n\r\n"
+    -
+      plugin: callback_with_args
+      callable: strip_tags
+    -
+      plugin: callback
+      callable: html_entity_decode
+  submitted-url:
+    -
+      plugin: nid_2_url
+      source: nid
+  submitted-image-url:
+    plugin: iterator
+    source: field_image
+    process:
+      url:
+        -
+          plugin: fid_2_url
+          source: target_id
+destination:
+  social_network_plugin: linkedin
+migration_dependencies: null

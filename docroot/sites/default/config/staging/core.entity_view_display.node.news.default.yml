@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.news.field_organization
     - field.field.node.news.field_process_and_milestones
     - field.field.node.news.field_related_content_selector
+    - field.field.node.news.field_social_autopost
     - image.style.767xauto
     - node.type.news
   module:
@@ -24,6 +25,7 @@ dependencies:
     - events
     - group_content_formatters
     - image
+    - options
     - rel_content
     - text
     - user
@@ -124,6 +126,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_rel_content_id
+    region: content
+  field_social_autopost:
+    weight: 13
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: content
   links:
     weight: 0

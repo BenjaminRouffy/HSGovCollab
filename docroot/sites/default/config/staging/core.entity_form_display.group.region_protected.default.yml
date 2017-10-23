@@ -44,6 +44,7 @@ third_party_settings:
       children:
         - field_banner
         - label
+        - field_label
         - field_region_icon
         - field_date
         - langcode
@@ -151,7 +152,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 14
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -188,7 +189,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_label:
-    weight: 1
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -196,7 +197,7 @@ content:
     type: string_textfield
     region: content
   field_region_icon:
-    weight: 13
+    weight: 14
     settings:
       entity_browser: browse_files
       field_widget_edit: true
@@ -237,7 +238,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }

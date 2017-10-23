@@ -46,6 +46,7 @@ third_party_settings:
         - field_geographical_object
         - field_banner
         - label
+        - field_label
         - field_region_icon
         - field_date
         - langcode
@@ -153,7 +154,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -197,7 +198,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_label:
-    weight: 1
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -205,7 +206,7 @@ content:
     type: string_textfield
     region: content
   field_region_icon:
-    weight: 3
+    weight: 4
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -246,7 +247,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

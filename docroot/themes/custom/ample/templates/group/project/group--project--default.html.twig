@@ -21,6 +21,12 @@
     {{ content.field_summary }}
   </div>
 
+  {% if content.field_pin_items|field_value %}
+    <div class="top-banner-region">
+      {{ content.field_pin_items|field_value }}
+    </div>
+  {% endif %}
+
   <div class="more-content-wrapper">
     <div class="read-more show-more">{{ 'Read more'|t }}</div>
     <div class="more-content">

@@ -11,6 +11,7 @@ dependencies:
     - field.field.group.project.field_join_block
     - field.field.group.project.field_knowledge_vault
     - field.field.group.project.field_label_end_date
+    - field.field.group.project.field_pin_items
     - field.field.group.project.field_product
     - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
@@ -60,6 +61,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_pin_items:
+    weight: 8
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
   field_project_icon:
     weight: 5

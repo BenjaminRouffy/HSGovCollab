@@ -1,0 +1,16 @@
+uuid: f676db77-238a-43b3-b768-7be8fff6e0fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.pin_items
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.pin_items
+target_entity_type_id: paragraph
+target_bundle: pin_items
+default_langcode: site_default
+language_alterable: true

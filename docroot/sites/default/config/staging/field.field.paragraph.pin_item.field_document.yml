@@ -1,0 +1,25 @@
+uuid: 5561015d-d396-4516-b384-5b732f6c9f73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_document
+    - paragraphs.paragraphs_type.pin_item
+id: paragraph.pin_item.field_document
+field_name: field_document
+entity_type: paragraph
+bundle: pin_item
+label: Document
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: content_reference
+      display_name: document_content_reference
+      arguments: {  }
+field_type: entity_reference

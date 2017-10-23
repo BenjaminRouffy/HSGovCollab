@@ -1,0 +1,96 @@
+uuid: 449a875d-ea53-46f6-ac9d-f2bd8966e7ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_pin_items
+    - group.type.project
+    - paragraphs.paragraphs_type.pin_items
+  module:
+    - entity_reference_revisions
+id: group.project.field_pin_items
+field_name: field_pin_items
+entity_type: group
+bundle: project
+label: 'Pin items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      pin_items: pin_items
+    target_bundles_drag_drop:
+      cd_user:
+        weight: 24
+        enabled: false
+      content_image:
+        weight: 25
+        enabled: false
+      content_text:
+        weight: 26
+        enabled: false
+      country_and_project:
+        weight: 27
+        enabled: false
+      country_option:
+        weight: 28
+        enabled: false
+      custom_content:
+        weight: 29
+        enabled: false
+      exist_content:
+        weight: 30
+        enabled: false
+      faq_item:
+        weight: 31
+        enabled: false
+      file:
+        weight: 32
+        enabled: false
+      infographic:
+        weight: 33
+        enabled: false
+      infographic_item:
+        weight: 34
+        enabled: false
+      link:
+        weight: 35
+        enabled: false
+      link_to_file:
+        weight: 36
+        enabled: false
+      member_icon:
+        weight: 37
+        enabled: false
+      organisation:
+        weight: 38
+        enabled: false
+      pin_item:
+        weight: 39
+        enabled: false
+      pin_items:
+        enabled: true
+        weight: 40
+      slider:
+        weight: 41
+        enabled: false
+      slider_item:
+        weight: 42
+        enabled: false
+      software_application:
+        weight: 43
+        enabled: false
+      timeline_social:
+        weight: 44
+        enabled: false
+      time_line:
+        weight: 45
+        enabled: false
+      video:
+        weight: 46
+        enabled: false
+field_type: entity_reference_revisions

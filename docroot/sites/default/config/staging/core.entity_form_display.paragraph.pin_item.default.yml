@@ -1,0 +1,57 @@
+uuid: a9e238ff-4644-4e79-952d-f29e7dd7f08c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.pin_item.field_body
+    - field.field.paragraph.pin_item.field_document
+    - field.field.paragraph.pin_item.field_link
+    - field.field.paragraph.pin_item.field_private_content
+    - field.field.paragraph.pin_item.field_title
+    - paragraphs.paragraphs_type.pin_item
+  module:
+    - link
+    - text
+id: paragraph.pin_item.default
+targetEntityType: paragraph
+bundle: pin_item
+mode: default
+content:
+  field_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_document:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_link:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  field_private_content: true
+  status: true
+  uid: true

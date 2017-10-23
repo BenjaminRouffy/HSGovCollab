@@ -1,22 +1,22 @@
-uuid: 4227bd22-18ef-4770-a20d-4bc60e04b066
+uuid: 7fbb9bf9-5b4a-4014-befa-8ea5a05767b8
 langcode: en
 status: true
 dependencies:
   module:
+    - entity_reference_revisions
     - field_permissions
+    - group
     - paragraphs
 third_party_settings:
   field_permissions:
     permission_type: public
-id: paragraph.field_title
-field_name: field_title
-entity_type: paragraph
-type: string
+id: group.field_pin_items
+field_name: field_pin_items
+entity_type: group
+type: entity_reference_revisions
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
-module: core
+  target_type: paragraph
+module: entity_reference_revisions
 locked: false
 cardinality: 1
 translatable: true

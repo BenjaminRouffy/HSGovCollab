@@ -83,6 +83,13 @@ class SolrFieldType extends ConfigEntityBase implements SolrFieldTypeInterface {
   protected $field_type_language_code;
 
   /**
+   * The targeted content domains.
+   *
+   * @var string[]
+   */
+  protected $domains;
+
+  /**
    * Array of various text files required by the Solr Field Type definition.
    *
    * @var array
@@ -101,6 +108,29 @@ class SolrFieldType extends ConfigEntityBase implements SolrFieldTypeInterface {
    */
   public function getFieldTypeLanguageCode() {
     return $this->field_type_language_code;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDomains() {
+    return empty($this->domains) ? ['generic'] : $this->domains;
+  }
+
+  /**
+   * Get all available domains form solr filed type configs.
+   *
+   * @return string[]
+   */
+  public static function getAvailableDomains() {
+    $domains = ['generic'];
+    $config_factory = \Drupal::configFactory();
+    foreach ($config_factory->listAll('search_api_solr_multilingual.solr_field_type.') as $field_type_name) {
+      $config = $config_factory->get($field_type_name);
+      $domains = array_merge($domains, $config->get('domains'));
+    }
+    sort($domains);
+    return array_unique($domains);
   }
 
   /**
@@ -162,22 +192,20 @@ class SolrFieldType extends ConfigEntityBase implements SolrFieldTypeInterface {
 
     $f = function (\SimpleXMLElement $element, array $attributes) use (&$f) {
       foreach ($attributes as $key => $value) {
-        if (!empty($value)) {
-          if (is_scalar($value)) {
-            $element->addAttribute($key, $value);
-          }
-          elseif (is_array($value)) {
-            if (array_key_exists(0, $value)) {
-              $key = rtrim($key, 's');
-              foreach ($value as $inner_attributes) {
-                $child = $element->addChild($key);
-                $f($child, $inner_attributes);
-              }
-            }
-            else {
+        if (is_scalar($value)) {
+          $element->addAttribute($key, $value);
+        }
+        elseif (is_array($value)) {
+          if (array_key_exists(0, $value)) {
+            $key = rtrim($key, 's');
+            foreach ($value as $inner_attributes) {
               $child = $element->addChild($key);
-              $f($child, $value);
+              $f($child, $inner_attributes);
             }
+          }
+          else {
+            $child = $element->addChild($key);
+            $f($child, $value);
           }
         }
       }

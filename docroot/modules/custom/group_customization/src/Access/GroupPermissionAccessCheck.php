@@ -61,8 +61,11 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
           // The only way to have Universal object - Country available for
           // anonymous is to have "Published" or "With Content" group status
           // and to have "Geographical object" checked.
-          if (!in_array($group_status, $group_statuses) || !$is_geographical_object) {
-            return AccessResult::forbidden();
+
+          if ($account->isAnonymous()) {
+            if (!in_array($group_status, $group_statuses) || !$is_geographical_object) {
+              return AccessResult::forbidden();
+            }
           }
         }
       }

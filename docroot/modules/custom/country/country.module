@@ -12,6 +12,7 @@ use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\group\Entity\GroupContentType;
 
 define('NON_GROUP', 1);
 define('PUBLIC_GROUP', 9999);
@@ -22,7 +23,7 @@ define('PUBLIC_GROUP', 9999);
  * @return array
  */
 function _country_public_global_content_types() {
-  return ['news', 'events'];
+  return ['news', 'event'];
 }
 
 /**
@@ -49,6 +50,13 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
       }
       if ($global->isAllowed() || $public->isAllowed()) {
         $result = AccessResult::allowed();
+      }
+
+      $parents = _get_parent_supergroups($node);
+      if (!empty($parents)) {
+        foreach ($parents as $supergroup) {
+
+        }
       }
 
     }
@@ -193,4 +201,32 @@ function country_module_implements_alter(array &$implementations, $hook) {
     unset($implementations['password_policy']);
     $implementations = array_merge(['password_policy' => $password_policy], $implementations);
   }
+}
+
+function _get_parent_supergroups($node) {
+  $parents = [];
+  $plugin_id = 'group_node:' . $node->bundle();
+  $group_content_types = GroupContentType::loadByContentPluginId($plugin_id);
+  // Load all the group content for this node.
+  $group_contents = \Drupal::entityTypeManager()
+    ->getStorage('group_content')
+    ->loadByProperties([
+      'type' => array_keys($group_content_types),
+      'entity_id' => $node->id(),
+    ]);
+
+  if (!empty($group_contents)) {
+    foreach ($group_contents as $group_content) {
+      /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+      $group = $group_content->getGroup();
+      /* @var GroupHierarchyManager $subgroup_manage */
+      $subgroup_manage = \Drupal::service('ggroup.group_hierarchy_manager');
+
+      /* @var Group[] $parents */
+      $parents = $subgroup_manage->getGroupSupergroups($group);
+
+    }
+  }
+
+  return $parents;
 }

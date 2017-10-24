@@ -87,7 +87,7 @@ class CountryMenuBlock extends BlockBase {
         // Country menu item could be overridden by label field.
         'country' => $label,
         'project' => $this->t('Collaborations'),
-        'news_and_event' => $this->t('News&Events'),
+        'news_and_event' => $this->t('Highlights'),
         'document' => $this->t('Documents'),
         'contact' => $this->t('Contacts'),
         'calendar' => $this->t('Calendar'),

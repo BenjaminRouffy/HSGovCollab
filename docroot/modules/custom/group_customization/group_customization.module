@@ -122,3 +122,27 @@ function group_customization_entity_presave(EntityInterface $entity) {
     }
   }
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function group_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, array('group_content_group_content_type_bd1c359f1021e_add_form',
+    'group_content_group_content_type_8f1540bfd3b5b_add_form'))) {
+    // Change autocomplete handler for Users, which could be added to Closed groups.
+    // This is applicable only for Universal Object Country - Closed and
+    // Universal Object Country - Collaboration.
+    $gid = \Drupal::request()->get('group')->id();
+    if (!empty($form['entity_id']['widget']) && isset($form['entity_id']['widget'][0]) && isset($form['entity_id']['widget'][0]['target_id'])) {
+      $form['entity_id']['widget'][0]['target_id']['#selection_handler'] = 'views';
+      $form['entity_id']['widget'][0]['target_id']['#selection_settings'] = [
+        'view' => array(
+          'view_name' => 'closed_group_user_reference',
+          'display_name' => 'entity_reference_1',
+          'arguments' => array($gid),
+        ),
+        'match_operator' => 'CONTAINS',
+      ];
+    }
+  }
+}

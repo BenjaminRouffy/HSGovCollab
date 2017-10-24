@@ -1093,6 +1093,7 @@ function deployment_update_8091() {
     'field.storage.node.field_anonymous_join_block',
     'field.storage.group.field_join_block',
     'field.storage.node.field_join_block',
+    'field.storage.block_content.field_is_non_public',
   ]);
 }
 
@@ -1107,5 +1108,6 @@ function deployment_update_8092() {
     'field.field.node.event.field_anonymous_join_block',
     'field.field.node.member.field_anonymous_join_block',
     'field.field.node.news.field_anonymous_join_block',
+    'field.field.block_content.link.field_is_non_public',
   ]);
 }

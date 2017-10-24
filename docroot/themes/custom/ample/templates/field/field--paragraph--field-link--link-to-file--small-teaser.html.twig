@@ -1,0 +1,5 @@
+{% spaceless %}
+  {% for item in items %}
+    {{ item.content['#url'] }}
+  {% endfor %}
+{% endspaceless %}

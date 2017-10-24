@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.custom_content.field_body
     - field.field.paragraph.custom_content.field_date
+    - field.field.paragraph.custom_content.field_document
     - field.field.paragraph.custom_content.field_link
     - paragraphs.paragraphs_type.custom_content
   module:
@@ -33,17 +34,26 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_document:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: small_teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
   field_link:
     weight: 2
     label: hidden
     settings:
       trim_length: 80
-      url_only: true
+      url_only: false
       url_plain: false
       rel: '0'
       target: '0'
     third_party_settings: {  }
-    type: link
+    type: link_separate
     region: content
 hidden:
   created: true

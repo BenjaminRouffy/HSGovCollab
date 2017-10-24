@@ -1,0 +1,15 @@
+display:
+  article:
+    display_options:
+      filters:
+        field_type_target_id:
+          expose:
+            label: 'Filtrer selon:'
+        tags_by_group:
+          expose:
+            label: 'Nuage journalier'
+  default:
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'

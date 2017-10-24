@@ -3,6 +3,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+
+  .ie9 & {
+    display: block;
+    font-size: 0;
+  }
 }
 
 .pins-list .pin-item {
@@ -18,12 +23,10 @@
   margin: 10px 10px 30px;
   padding-bottom: 20px;
   box-shadow: 0 0 6px rgba($black, .1);
-
   width: 100%;
 
   @media screen and (min-width: 1024px) {
     width: calc(33.33% - 20px);
-
   }
 
   .content-with-sidebar & {
@@ -41,6 +44,34 @@
       box-shadow: inset 0 10px 6px -6px rgba($black, 0.1);
     }
   }
+
+  // IE 9 fixes :(
+  @media screen and (min-width: 1024px) {
+    .ie9 & {
+      display: inline-block;
+      margin-left: 0;
+      margin-right: 20px;
+      vertical-align: top;
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+
+    .ie9 .content-with-sidebar & {
+      @media screen and (min-width: 1280px) {
+        display: inline-block;
+        margin-left: 0;
+        margin-right: 20px;
+        vertical-align: top;
+
+        &:nth-child(even) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  // <--- IE 9 fixes END's here
 
   &::after,
   &::before {
@@ -61,6 +92,10 @@
     right: -20px;
     bottom: -8px;
     z-index: 11;
+
+    .bottom-teaser & {
+      background: $white;
+    }
   }
 
   &::after {
@@ -196,19 +231,20 @@
 
   // View more link with arrow from the right side
   .link {
-    padding: 20px 20px 0;
+    padding: 20px;
     margin-top: auto;
 
     a {
       @include font-size(16);
       color: $red;
-      padding-right: 10px;
+      padding-right: 20px;
       position: relative;
       display: inline-block;
+      line-height: 20px;
 
       &:hover {
         &::after {
-          right: -3px;
+          right: 5px;
           transition: right .3s ease;
         }
       }
@@ -222,7 +258,7 @@
         transform: rotate(45deg) translateY(-50%);
         position: absolute;
         top: 50%;
-        right: 0;
+        right: 8px;
         transition: right .3s ease;
 
       }

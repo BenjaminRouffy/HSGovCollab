@@ -1,0 +1,31 @@
+label: 'Mon calendrier'
+display:
+  default:
+    display_options:
+      filters:
+        gid_following:
+          expose:
+            label: 'Selectionner emplacement'
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+      title: 'Mon calendrier'
+  block_1:
+    display_title: 'Mon calendrier'
+  data_export_1:
+    display_options:
+      title: Calendrier
+      filters:
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+  governance_area:
+    display_options:
+      title: Calendrier
+      filters:
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'

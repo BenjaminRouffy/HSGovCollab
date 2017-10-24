@@ -1,0 +1,77 @@
+display:
+  all_contacts:
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+      filters:
+        combine_taxonomy_term:
+          expose:
+            label: Organisation
+        field_country_target_id:
+          expose:
+            label: Pays
+  block_1:
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+      filters:
+        field_country_target_id:
+          expose:
+            label: Pays
+        combine_taxonomy_term:
+          expose:
+            label: Organisation
+  block_2:
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+      filters:
+        field_country_target_id:
+          expose:
+            label: Pays
+        combine_taxonomy_term:
+          expose:
+            label: Organisation
+  block_my_contacts:
+    display_options:
+      title: 'Mes contatcs'
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+      filters:
+        combine_taxonomy_term:
+          expose:
+            label: Organisation
+        field_country_target_id:
+          expose:
+            label: Pays
+  block_3:
+    display_options:
+      filters:
+        field_country_target_id:
+          expose:
+            label: Pays
+        combine_taxonomy_term:
+          expose:
+            label: Organisation
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'

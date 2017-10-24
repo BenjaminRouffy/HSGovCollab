@@ -159,40 +159,20 @@ function events_views_pre_render(ViewExecutable $view) {
     $plugin_id = 'group_node:event';
 
     if ($group->hasPermission("create $plugin_id entity", $account)) {
+      $url = Url::fromRoute('node.add', array('node_type' => 'event'));
       $view->element['#attached']['drupalSettings']['events'] = [
-        'group_allow_access_to_popup' => TRUE,
+        'group_node_event_path' => Html::escape($url->toString()),
       ];
     }
   }
   elseif ($view->current_display === 'block_1') {
-    $uid = Drupal::currentUser()->id();
+    $account = \Drupal::currentUser();
 
-    $get_memberships = \Drupal\Core\Database\Database::getConnection()->select('group_content_field_data', 'group_content_field_data');
-    $get_memberships->fields('group_content_field_data', array('gid'));
-    $get_memberships->condition('group_content_field_data.entity_id', $uid, '=');
-    $results = $get_memberships->execute()->fetchAll();
-
-    if (!empty($results)){
-      $account = \Drupal::currentUser();
-      $groups = array(
-        'governance_area',
-        'region',
-        'country',
-        'project',
-        'region_protected',
-        'country_protected',
-        'project_protected',
-      );
-
-      foreach ($results as $result) {
-        if ($account->hasPermission("create event content")) {
-          $url = Url::fromRoute('events.add_content_simplified', array('node_type' => 'event'));
-          $view->element['#attached']['drupalSettings']['events'] = [
-            'group_allow_access_to_popup' => FALSE,
-            'group_node_event_path' => Html::escape($url->toString()),
-          ];
-        }
-      }
+    if ($account->hasPermission("create event content")) {
+      $url = Url::fromRoute('node.add', array('node_type' => 'event'));
+      $view->element['#attached']['drupalSettings']['events'] = [
+        'group_node_event_path' => Html::escape($url->toString()),
+      ];
     }
   }
 
@@ -250,57 +230,21 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $route = \Drupal::routeMatch()->getRouteName();
   if ($form_id === 'node_event_form') {
     if(in_array($route, array('node.add', 'page_manager.page_view_my_calendar', 'events.add_content_simplified'))) {
-      if ($route === 'events.add_content_simplified') {
-        // Remove grouping on the form.
-        $form['#group_children'] = array();
-
-        // Array with the fields or form elements to be displayed on the form.
-        $display_elements = array(
-          'field_add_event_in_group',
-          'title',
-          'field_event_slider',
-          'body',
-          'field_date',
-          'field_documents',
-        );
-
-        // Array with the fields and elements on the form.
-        $form_elements = array(
-          'body',
-          'field_category',
-          'field_comments',
-          'field_date',
-          'field_documents',
-          'field_event_author',
-          'field_event_link',
-          'field_event_slider',
-          'field_location',
-          'field_organization',
-          'field_related_content_selector',
-          'field_timezone',
-          'title',
-          'field_join_block',
-          'langcode',
-          'field_add_event_in_group',
-          'advanced',
-          'path',
-          'field_comments',
-          'public_content',
-          'revision_log',
-          'revision_information',
-          'custom_publish_options',
-          'menu',
-          'path_settings',
-        );
-
-        // Hide the field and form elements that are not in the display_elements array.
-        foreach ($form as $key => $value) {
-          if (in_array($key, $form_elements)) {
-            if (!in_array($key, $display_elements)) {
-              $form[$key]['#access'] = FALSE;
+      $accout = Drupal::currentUser();
+      if (!$accout->hasPermission('view the administration theme')) {
+        if (!empty($form['#group_children'])) {
+          foreach ($form['#group_children'] as $element_key => $group_key) {
+            if ($group_key !== 'group_tabs_panel' && $group_key !== 'group_ba') {
+              // Hide fields which are not on the general tab.
+              $form[$element_key]['#access'] = FALSE;
             }
           }
         }
+        // Hide slider paragraphas authenticated users doesn't have access
+        // to add paragraphs. They should use the image field only.
+        $form['field_event_slider']['#access'] = FALSE;
+        // Hide Revision information block.
+        $form['revision_information']['#access'] = FALSE;
       }
 
       foreach (array_keys($form['actions']) as $action) {

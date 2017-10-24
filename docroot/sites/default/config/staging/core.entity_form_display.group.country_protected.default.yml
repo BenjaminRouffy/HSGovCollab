@@ -3,25 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files_modal
     - field.field.group.country_protected.field_banner
     - field.field.group.country_protected.field_bottom_link
     - field.field.group.country_protected.field_content
-    - field.field.group.country_protected.field_country_icon
-    - field.field.group.country_protected.field_country_options
     - field.field.group.country_protected.field_date
     - field.field.group.country_protected.field_faq
     - field.field.group.country_protected.field_group_status
     - field.field.group.country_protected.field_infographic
     - field.field.group.country_protected.field_join_block
-    - field.field.group.country_protected.field_location
+    - field.field.group.country_protected.field_region_icon
     - field.field.group.country_protected.field_summary
     - field.field.group.country_protected.field_summary_content
     - field.field.group.country_protected.field_time_line
     - group.type.country_protected
   module:
     - datetime
+    - entity_browser
     - field_group
-    - geolocation
     - paragraphs
     - path
     - text
@@ -48,6 +47,7 @@ third_party_settings:
         - field_banner
         - label
         - field_country_icon
+        - field_region_icon
         - field_group_status
       parent_name: group_ta
       weight: 7
@@ -61,9 +61,7 @@ third_party_settings:
       label: Banner
     group_brief:
       children:
-        - field_country_options
         - field_date
-        - field_location
         - langcode
       parent_name: group_ta
       weight: 8
@@ -172,27 +170,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
-  field_country_icon:
-    weight: 7
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_country_options:
-    weight: 9
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
-    third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   field_date:
     weight: 10
     settings: {  }
@@ -212,7 +189,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_group_status:
-    weight: 8
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -235,34 +212,18 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  field_location:
-    weight: 11
+  field_region_icon:
+    weight: 8
     settings:
-      default_longitude: '13.4050'
-      default_latitude: '52.5200'
-      google_map_settings:
-        type: ROADMAP
-        zoom: '10'
-        mapTypeControl: 1
-        streetViewControl: 1
-        zoomControl: 1
-        scrollwheel: 1
-        gestureHandling: auto
-        draggable: 1
-        style: ''
-        height: 400px
-        width: 100%
-        info_auto_display: 1
-        disableAutoPan: 1
-        preferScrollingToZooming: 0
-        disableDoubleClickZoom: 0
-      auto_client_location: '0'
-      auto_client_location_marker: '0'
-      allow_override_map_settings: 0
-      populate_address_field: ''
-      target_address_field: null
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
     third_party_settings: {  }
-    type: geolocation_googlegeocoder
+    type: entity_browser_file
     region: content
   field_summary:
     weight: 16

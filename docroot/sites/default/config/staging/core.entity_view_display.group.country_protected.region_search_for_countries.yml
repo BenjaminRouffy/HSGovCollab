@@ -7,36 +7,26 @@ dependencies:
     - field.field.group.country_protected.field_banner
     - field.field.group.country_protected.field_bottom_link
     - field.field.group.country_protected.field_content
-    - field.field.group.country_protected.field_country_icon
-    - field.field.group.country_protected.field_country_options
     - field.field.group.country_protected.field_date
     - field.field.group.country_protected.field_faq
     - field.field.group.country_protected.field_group_status
     - field.field.group.country_protected.field_infographic
     - field.field.group.country_protected.field_join_block
-    - field.field.group.country_protected.field_location
+    - field.field.group.country_protected.field_region_icon
     - field.field.group.country_protected.field_summary
     - field.field.group.country_protected.field_summary_content
     - field.field.group.country_protected.field_time_line
     - group.type.country_protected
   module:
     - entity_reference_revisions
+    - image
 id: group.country_protected.region_search_for_countries
 targetEntityType: group
 bundle: country_protected
 mode: region_search_for_countries
 content:
-  field_country_icon:
-    weight: 0
-    label: hidden
-    settings:
-      link: true
-      view_mode: default
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
   field_infographic:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       view_mode: search_for_a_country
@@ -44,18 +34,25 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
+  field_region_icon:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
 hidden:
   changed: true
   created: true
   field_banner: true
   field_bottom_link: true
   field_content: true
-  field_country_options: true
   field_date: true
   field_faq: true
   field_group_status: true
   field_join_block: true
-  field_location: true
   field_summary: true
   field_summary_content: true
   field_time_line: true

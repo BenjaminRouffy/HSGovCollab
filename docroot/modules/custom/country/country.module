@@ -12,9 +12,11 @@ use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\group\Entity\GroupContentType;
 
 define('NON_GROUP', 1);
 define('PUBLIC_GROUP', 9999);
+define('GA_GROUP', 9998);
 
 /**
  * Array of content type that can be public/global.
@@ -49,6 +51,19 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
       }
       if ($global->isAllowed() || $public->isAllowed()) {
         $result = AccessResult::allowed();
+      }
+
+      // Check for GA supergroup access.
+      $parents = _get_parent_supergroups($node);
+      $parent_access = TRUE;
+      if (!empty($parents)) {
+        foreach ($parents as $supergroup) {
+          $plugin_id = $node->bundle();
+          if ('governance_area' == $supergroup->getGroupType()->id() && !$supergroup->hasPermission("view group_node:$plugin_id entity", $account)) {
+            $parent_access = FALSE;
+          }
+        }
+        $result = AccessResult::forbiddenIf($parent_access === FALSE);
       }
 
     }
@@ -161,6 +176,24 @@ function country_node_access_records_alter(array &$grants, NodeInterface $node) 
         ];
       }
     }
+
+    if ($is_ga = _check_governance_area_group($node)) {
+      $base_grant_realm = 'gnode:' . $node->getType();
+      foreach ($grants as $key => $grant) {
+        if ($grant['realm'] == $base_grant_realm) {
+          unset($grants[$key]);
+        }
+      }
+
+      $grants[] = [
+        'realm' => 'content:ga_group',
+        'gid' => GA_GROUP,
+        'grant_view' => 1,
+        'grant_update' => 0,
+        'grant_delete' => 0,
+        'priority' => 0,
+      ];
+    }
   }
 }
 
@@ -174,6 +207,15 @@ function country_node_grants_alter(array &$grants, AccountInterface $account, $o
     if ($account->isAuthenticated()) {
       $grants['content:nongroup'] = [NON_GROUP];
       $grants['global_group'] = [PUBLIC_GROUP];
+    }
+
+    /* @var \Drupal\group\GroupMembershipLoaderInterface $membership_loader */
+    $membership_loader = \Drupal::service('group.membership_loader');
+    foreach ($membership_loader->loadByUser($account) as $group_membership) {
+      $group = $group_membership->getGroup();
+      if ('governance_area' == $group->getGroupType()->id()) {
+        $grants['content:ga_group'] = [GA_GROUP];
+      }
     }
   }
 }
@@ -193,4 +235,63 @@ function country_module_implements_alter(array &$implementations, $hook) {
     unset($implementations['password_policy']);
     $implementations = array_merge(['password_policy' => $password_policy], $implementations);
   }
+}
+
+/**
+ * Get group content parent groups.
+ *
+ * @param Node $node
+ *   Node entity
+ *
+ * @return array|\Group[]
+ *   Array of parent Groups
+ */
+function _get_parent_supergroups($node) {
+  $parents = [];
+  $plugin_id = 'group_node:' . $node->bundle();
+  $group_content_types = GroupContentType::loadByContentPluginId($plugin_id);
+  // Load all the group content for this node.
+  $group_contents = \Drupal::entityTypeManager()
+    ->getStorage('group_content')
+    ->loadByProperties([
+      'type' => array_keys($group_content_types),
+      'entity_id' => $node->id(),
+    ]);
+
+  if (!empty($group_contents)) {
+    foreach ($group_contents as $group_content) {
+      /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+      $group = $group_content->getGroup();
+      /* @var GroupHierarchyManager $subgroup_manage */
+      $subgroup_manage = \Drupal::service('ggroup.group_hierarchy_manager');
+
+      /* @var Group[] $parents */
+      $parents = $subgroup_manage->getGroupSupergroups($group);
+    }
+  }
+
+  return $parents;
+}
+
+/**
+ * Check for Governance Area supergroup node.
+ *
+ * @param Node $node
+ *   Node object.
+ *
+ * @return bool
+ *   Node is in Governance Area status.
+ */
+function _check_governance_area_group($node) {
+  $parents = _get_parent_supergroups($node);
+  $is_ga = FALSE;
+  if (!empty($parents)) {
+    foreach ($parents as $supergroup) {
+      if ('governance_area' == $supergroup->getGroupType()->id()) {
+        $is_ga = TRUE;
+      }
+    }
+  }
+
+  return $is_ga;
 }

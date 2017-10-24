@@ -14,6 +14,7 @@ dependencies:
     - search_api.server.default
   module:
     - paragraphs
+    - search_api_solr
     - search_api
     - search_api_attachments
     - search_customization
@@ -51,6 +52,13 @@ field_settings:
     label: 'Parent groups with type Knowledge Vault'
     property_path: parent_groups_knowledge_vault
     type: string
+  saa_file_property:
+    label: 'Search API attachments'
+    property_path: saa_file_property
+    type: text
+    configuration:
+      fields:
+        - field_file
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -116,7 +124,7 @@ field_settings:
     label: 'Document » Paragraph » File'
     datasource_id: 'entity:node'
     property_path: 'field_document:entity:field_file'
-    type: text
+    type: solr_string_storage
     dependencies:
       config:
         - field.storage.node.field_document
@@ -177,18 +185,23 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  aggregated_field: {  }
   content_access:
     weights:
       preprocess_query: -30
-  rendered_item: {  }
   entity_status: {  }
   add_url: {  }
-  file_attachments: {  }
-  parent_groups: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
+  file_attachments:
+    excluded_extensions: 'aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv'
+    number_indexed: 0
+    max_filesize: '0'
+    excluded_private: 0
+    excluded_mimes: 'audio/x-aiff image/x-jg video/x-msvideo image/x-ms-bmp image/gif image/vnd.microsoft.icon video/quicktime audio/ogg video/ogg image/png image/x-photoshop audio/x-realaudio audio/x-pn-realaudio image/x-rgb video/x-flv'
   group_access:
     weights:
       preprocess_query: -30
+  parent_groups: {  }
 tracker_settings:
   default: {  }
 options:

@@ -4,8 +4,10 @@ namespace Drupal\search_api_solr;
 
 use Drupal\Component\Plugin\ConfigurablePluginInterface;
 use Solarium\Core\Client\Endpoint;
+use Solarium\Core\Client\Request;
 use Solarium\Core\Client\Response;
 use Solarium\Core\Query\QueryInterface;
+use Solarium\QueryType\Extract\Result as ExtractResult;
 use Solarium\QueryType\Update\Query\Query as UpdateQuery;
 use Solarium\QueryType\Select\Query\Query;
 
@@ -223,6 +225,14 @@ interface SolrConnectorInterface extends ConfigurablePluginInterface {
   public function getSelectQuery();
 
   /**
+   * Creates a new Solarium more like this query.
+   *
+   * @return \Solarium\QueryType\MorelikeThis\Query
+   *   The MoreLikeThis query.
+   */
+  public function getMoreLikeThisQuery();
+
+  /**
    * Creates a new Solarium terms query.
    *
    * @return \Solarium\QueryType\Terms\Query
@@ -286,8 +296,22 @@ interface SolrConnectorInterface extends ConfigurablePluginInterface {
    * @param \Solarium\Core\Client\Endpoint|null $endpoint
    *
    * @return \Solarium\Core\Query\Result\ResultInterface
+   *
+   * @throws \Drupal\search_api_solr\SearchApiSolrException
    */
   public function execute(QueryInterface $query, Endpoint $endpoint = NULL);
+
+  /**
+   * Executes a request and returns the response.
+   *
+   * @param \Solarium\Core\Client\Request $request
+   * @param \Solarium\Core\Client\Endpoint|null $endpoint
+   *
+   * @return \Solarium\Core\Client\Response
+   *
+   * @throws \Drupal\search_api_solr\SearchApiSolrException
+   */
+  public function executeRequest(Request $request, Endpoint $endpoint = null);
 
   /**
    * Optimizes the Solr index.
@@ -297,13 +321,24 @@ interface SolrConnectorInterface extends ConfigurablePluginInterface {
   public function optimize(Endpoint $endpoint = NULL);
 
   /**
-   * Execute a extract query.
+   * Executes an extract query.
    *
    * @param \Solarium\Core\Query\QueryInterface|\Solarium\QueryType\Extract\Query $query
    *
    * @return \Solarium\QueryType\Extract\Result
    */
   public function extract(QueryInterface $query);
+
+  /**
+   * Gets the content from an extract query result.
+   *
+   * @param \Solarium\QueryType\Extract\Result $result
+   *
+   * @param string $filepath
+   *
+   * @return string
+   */
+  public function getContentFromExtractResult(ExtractResult $result, $filepath);
 
   /**
    * Returns an endpoint.
@@ -327,8 +362,6 @@ interface SolrConnectorInterface extends ConfigurablePluginInterface {
    * @return \Solarium\Core\Client\Response
    *   A Solarium response object containing either the file contents or a file
    *   list.
-   *
-   * @throws \Drupal\search_api_solr\SearchApiSolrException
    */
   public function getFile($file = NULL);
 

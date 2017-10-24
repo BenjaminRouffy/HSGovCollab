@@ -29,8 +29,8 @@ use Drupal\search_api\Query\ConditionGroupInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\SearchApiException;
 use Drupal\search_api\Utility\DataTypeHelper;
-use Drupal\search_api_autocomplete\Entity\SearchApiAutocompleteSearch;
 use Drupal\search_api_autocomplete\Suggestion;
+use Drupal\search_api_autocomplete\Suggestion\SuggestionFactory;
 use Drupal\search_api_db\DatabaseCompatibility\DatabaseCompatibilityHandlerInterface;
 use Drupal\search_api_db\DatabaseCompatibility\GenericDatabase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -713,7 +713,7 @@ class Database extends BackendPluginBase implements PluginFormInterface {
    *
    * @todo Write a test to ensure a field named "value" doesn't break this.
    */
-  protected function createFieldTable(FieldInterface $field = NULL, $db, $type = 'field') {
+  protected function createFieldTable(FieldInterface $field = NULL, array $db, $type = 'field') {
     $new_table = !$this->database->schema()->tableExists($db['table']);
     if ($new_table) {
       $table = [
@@ -728,6 +728,11 @@ class Database extends BackendPluginBase implements PluginFormInterface {
           ],
         ],
       ];
+      // For the denormalized index table, add a primary key right away. For
+      // newly created field tables we first need to add the "value" column.
+      if ($type === 'index') {
+        $table['primary key'] = ['item_id'];
+      }
       $this->database->schema()->createTable($db['table'], $table);
       $this->dbmsCompatibility->alterNewTable($db['table'], $type);
     }
@@ -795,16 +800,9 @@ class Database extends BackendPluginBase implements PluginFormInterface {
       $this->logException($e, '%type while trying to add a database index for column %column to table %table: @message in %function (line %line of %file).', $variables, RfcLogLevel::WARNING);
     }
 
-    if ($new_table) {
-      // Add a covering index for fields with multiple values.
-      if (!isset($db['column'])) {
-        $this->database->schema()->addPrimaryKey($db['table'], ['item_id', $column]);
-      }
-      // This is a denormalized table with many columns, where we can't predict
-      // the best covering index.
-      else {
-        $this->database->schema()->addPrimaryKey($db['table'], ['item_id']);
-      }
+    // Add a covering index for field tables.
+    if ($new_table && $type == 'field') {
+      $this->database->schema()->addPrimaryKey($db['table'], ['item_id', $column]);
     }
   }
 
@@ -823,6 +821,7 @@ class Database extends BackendPluginBase implements PluginFormInterface {
   protected function sqlType($type) {
     switch ($type) {
       case 'text':
+        return ['type' => 'varchar', 'length' => 30];
       case 'string':
       case 'uri':
         return ['type' => 'varchar', 'length' => 255];
@@ -1056,7 +1055,7 @@ class Database extends BackendPluginBase implements PluginFormInterface {
    * @param string $index_table
    *   The table which stores the denormalized data for this field.
    */
-  protected function removeFieldStorage($name, $field, $index_table) {
+  protected function removeFieldStorage($name, array $field, $index_table) {
     if ($this->getDataTypeHelper()->isTextType($field['type'])) {
       // Remove data from the text table.
       $this->database->delete($field['table'])
@@ -1802,7 +1801,7 @@ class Database extends BackendPluginBase implements PluginFormInterface {
    * @return array
    *   The processed keywords.
    */
-  protected function eliminateDuplicates($keys, &$words = []) {
+  protected function eliminateDuplicates(array $keys, array &$words = []) {
     foreach ($keys as $i => $word) {
       if (!Element::child($i)) {
         continue;
@@ -2469,15 +2468,14 @@ class Database extends BackendPluginBase implements PluginFormInterface {
   }
 
   /**
-   * Implements SearchApiAutocompleteInterface::getAutocompleteSuggestions().
+   * Implements AutocompleteBackendInterface::getAutocompleteSuggestions().
+   *
+   * @todo Add type-hint for $search as soon as we can rely on the class name.
    */
-  public function getAutocompleteSuggestions(QueryInterface $query, SearchApiAutocompleteSearch $search, $incomplete_key, $user_input) {
-    $settings = isset($this->configuration['autocomplete']) ? $this->configuration['autocomplete'] : [];
-    $settings += [
-      'suggest_suffix' => TRUE,
-      'suggest_words' => TRUE,
-    ];
-    // If none of these options is checked, the user apparently chose a very
+  public function getAutocompleteSuggestions(QueryInterface $query, $search, $incomplete_key, $user_input) {
+    $settings = $this->configuration['autocomplete'];
+
+    // If none of the options is checked, the user apparently chose a very
     // roundabout way of telling us he doesn't want autocompletion.
     if (!array_filter($settings)) {
       return [];
@@ -2492,6 +2490,10 @@ class Database extends BackendPluginBase implements PluginFormInterface {
     $fields = $this->getFieldInfo($index);
 
     $suggestions = [];
+    $factory = NULL;
+    if (class_exists(SuggestionFactory::class)) {
+      $factory = new SuggestionFactory($user_input);
+    }
     $passes = [];
     $incomplete_like = NULL;
 
@@ -2522,9 +2524,6 @@ class Database extends BackendPluginBase implements PluginFormInterface {
     // suggest them.
     $keys = static::splitIntoWords($user_input);
     $keys = array_combine($keys, $keys);
-    if ($incomplete_key) {
-      $keys[$incomplete_key] = $incomplete_key;
-    }
 
     foreach ($passes as $pass) {
       if ($pass == 2 && $incomplete_key) {
@@ -2601,7 +2600,12 @@ class Database extends BackendPluginBase implements PluginFormInterface {
       $incomp_len = strlen($incomplete_key);
       foreach ($db_query->execute() as $row) {
         $suffix = ($pass == 1) ? substr($row->word, $incomp_len) : ' ' . $row->word;
-        $suggestions[] = Suggestion::fromSuggestionSuffix($suffix, $row->results, $user_input);
+        if ($factory) {
+          $suggestions[] = $factory->createFromSuggestionSuffix($suffix, $row->results);
+        }
+        else {
+          $suggestions[] = Suggestion::fromSuggestionSuffix($suffix, $row->results, $user_input);
+        }
       }
     }
 

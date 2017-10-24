@@ -6,18 +6,22 @@ use Drupal\Component\Utility\Bytes;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;
 use Drupal\field\Entity\FieldConfig;
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
+use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Processor\ProcessorPluginBase;
-use Drupal\search_api\Datasource\DatasourceInterface;
+use Drupal\search_api\Processor\ProcessorProperty;
+use Drupal\search_api\Utility\FieldsHelperInterface;
+use Drupal\search_api_attachments\Plugin\search_api\processor\Property\FilesExtractorProperty;
 use Drupal\search_api_attachments\TextExtractorPluginInterface;
 use Drupal\search_api_attachments\TextExtractorPluginManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\search_api\Processor\ProcessorProperty;
-use Drupal\file\Entity\File;
 use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesserInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 
 /**
  * Provides file fields processor.
@@ -31,7 +35,7 @@ use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesserInterface;
  *   }
  * )
  */
-class FilesExtrator extends ProcessorPluginBase {
+class FilesExtrator extends ProcessorPluginBase implements PluginFormInterface {
 
   /**
    * Name of the config being edited.
@@ -39,17 +43,9 @@ class FilesExtrator extends ProcessorPluginBase {
   const CONFIGNAME = 'search_api_attachments.admin_config';
 
   /**
-   * Name of the "virtual" field that handles file entity type extractions.
-   *
-   * This is used per example in a File datasource index or mixed
-   * datasources index.
+   * Property name of the fields provided by this module.
    */
-  const SAA_FILE_ENTITY = 'saa_file_entity';
-
-  /**
-   * Prefix of the properties provided by this module.
-   */
-  const SAA_PREFIX = 'saa_';
+  const SAA_PROPERTY = 'saa_file_property';
 
   /**
    * The plugin manager for our text extractor.
@@ -94,9 +90,16 @@ class FilesExtrator extends ProcessorPluginBase {
   protected $moduleHandler;
 
   /**
+   * Search API field helper.
+   *
+   * @var \Drupal\search_api\Utility\FieldsHelperInterface
+   */
+  protected $fieldHelper;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, TextExtractorPluginManager $text_extractor_plugin_manager, MimeTypeGuesserInterface $mime_type_guesser, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, KeyValueFactoryInterface $key_value, ModuleHandlerInterface $module_handler) {
+  public function __construct(array $configuration, $plugin_id, array $plugin_definition, TextExtractorPluginManager $text_extractor_plugin_manager, MimeTypeGuesserInterface $mime_type_guesser, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, KeyValueFactoryInterface $key_value, ModuleHandlerInterface $module_handler, FieldsHelperInterface $field_helper) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->textExtractorPluginManager = $text_extractor_plugin_manager;
     $this->mimeTypeGuesser = $mime_type_guesser;
@@ -104,6 +107,7 @@ class FilesExtrator extends ProcessorPluginBase {
     $this->entityTypeManager = $entity_type_manager;
     $this->keyValue = $key_value;
     $this->moduleHandler = $module_handler;
+    $this->fieldHelper = $field_helper;
   }
 
   /**
@@ -111,7 +115,7 @@ class FilesExtrator extends ProcessorPluginBase {
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-        $configuration, $plugin_id, $plugin_definition, $container->get('plugin.manager.search_api_attachments.text_extractor'), $container->get('file.mime_type.guesser'), $container->get('config.factory'), $container->get('entity_type.manager'), $container->get('keyvalue'), $container->get('module_handler')
+        $configuration, $plugin_id, $plugin_definition, $container->get('plugin.manager.search_api_attachments.text_extractor'), $container->get('file.mime_type.guesser'), $container->get('config.factory'), $container->get('entity_type.manager'), $container->get('keyvalue'), $container->get('module_handler'), $container->get('search_api.fields_helper')
     );
   }
 
@@ -122,16 +126,13 @@ class FilesExtrator extends ProcessorPluginBase {
     $properties = [];
 
     if (!$datasource) {
-      // Add properties for all index available file fields and for file entity.
-      foreach ($this->getFileFieldsAndFileEntityItems() as $field_name => $label) {
-        $definition = [
-          'label' => $this->t('Search api attachments: @label', ['@label' => $label]),
-          'description' => $this->t('Search api attachments: @label', ['@label' => $label]),
-          'type' => 'string',
-          'processor_id' => $this->getPluginId(),
-        ];
-        $properties[static::SAA_PREFIX . $field_name] = new ProcessorProperty($definition);
-      }
+      $definition = [
+        'label' => $this->t('Search API attachments'),
+        'description' => $this->t('Search API attachments'),
+        'type' => 'string',
+        'processor_id' => $this->getPluginId(),
+      ];
+      $properties[static::SAA_PROPERTY] = new FilesExtractorProperty($definition);
     }
 
     return $properties;
@@ -141,51 +142,41 @@ class FilesExtrator extends ProcessorPluginBase {
    * {@inheritdoc}
    */
   public function addFieldValues(ItemInterface $item) {
-    $files = [];
     $config = $this->configFactory->getEditable(static::CONFIGNAME);
     $extractor_plugin_id = $config->get('extraction_method');
-    if ($extractor_plugin_id != '') {
-      $configuration = $config->get($extractor_plugin_id . '_configuration');
-      $extractor_plugin = $this->textExtractorPluginManager->createInstance($extractor_plugin_id, $configuration);
-      // Get the entity.
-      $entity = $item->getOriginalObject()->getValue();
-      $is_entity_type_file = $entity->getEntityTypeId() == 'file';
-      foreach ($this->getFileFieldsAndFileEntityItems() as $field_name => $label) {
-        // If the parent entity is not a file, no need to parse the
-        // saa static::SAA_FILE_ENTITY item.
-        if (!$is_entity_type_file && $field_name == static::SAA_FILE_ENTITY) {
-          break;
-        }
-        if ($is_entity_type_file && $field_name == static::SAA_FILE_ENTITY) {
-          $files[] = $entity;
-        }
+    if ($extractor_plugin_id == '') {
+      return;
+    }
 
-        $property_path = static::SAA_PREFIX . $field_name;
+    $configuration = $config->get($extractor_plugin_id . '_configuration');
+    $extractor_plugin = $this->textExtractorPluginManager->createInstance($extractor_plugin_id, $configuration);
 
-        // A way to load $field.
-        foreach ($this->getFieldsHelper()->filterForPropertyPath($item->getFields(), NULL, $property_path) as $field) {
-          if ($entity->hasField($field_name)) {
-            $filefield_values = $entity->get($field_name)->getValue();
+    $file_extract_fields = $this->getFieldsHelper()
+      ->filterForPropertyPath($item->getFields(), NULL, static::SAA_PROPERTY);
+    foreach ($file_extract_fields as $field) {
+      $all_fids = [];
 
-            $all_fids = [];
-            foreach ($filefield_values as $filefield_value) {
-              $all_fids[] = $filefield_value['target_id'];
-            }
-            $fids = $this->limitToAllowedNumber($all_fids);
-            // Retrieve the files.
-            $files = $this->entityTypeManager
-                ->getStorage('file')
-                ->loadMultiple($fids);
+      // Loop through the extracted fields to get the file ids.
+      foreach ($field->getConfiguration()['fields'] as $field_name) {
+        $extracted_field = $item->getField($field_name);
+        if ($extracted_field && $extracted_field_values = $extracted_field->getValues()) {
+          foreach ($extracted_field_values as $extracted_field_value) {
+            $all_fids[] = $extracted_field_value;
           }
-          if (!empty($files)) {
-            $extraction = '';
+        }
+      }
 
-            foreach ($files as $file) {
-              if ($this->isFileIndexable($file, $item, $field_name)) {
-                $extraction .= $this->extractOrGetFromCache($file, $extractor_plugin);
-              }
-            }
-            $field->addValue($extraction);
+      $fids = $this->limitToAllowedNumber($all_fids);
+
+      // Retrieve the files.
+      $files = $this->entityTypeManager
+        ->getStorage('file')
+        ->loadMultiple($fids);
+
+      if (!empty($files)) {
+        foreach ($files as $file) {
+          if ($this->isFileIndexable($file, $item, $field)) {
+            $field->addValue($this->extractOrGetFromCache($file, $extractor_plugin));
           }
         }
       }
@@ -330,7 +321,7 @@ class FilesExtrator extends ProcessorPluginBase {
     // Know if private files are allowed to be indexed.
     $private_allowed = FALSE;
     if (isset($this->configuration['excluded_private'])) {
-      $private_allowed = $this->configuration['excluded_private'];
+      $private_allowed = !(bool)$this->configuration['excluded_private'];
     }
     // Know if current file is private.
     $uri = $file->getFileUri();
@@ -348,36 +339,9 @@ class FilesExtrator extends ProcessorPluginBase {
   }
 
   /**
-   * Get the file fields of indexed bundles and an entity file general item.
-   *
-   * @return array
-   *   An array of file field with field name as key and label as value and
-   *   an element for generic file entity item.
-   */
-  protected function getFileFieldsAndFileEntityItems() {
-    $file_elements = [];
-
-    // Retrieve file fields of indexed bundles.
-    foreach ($this->getIndex()->getDatasources() as $datasource) {
-      if ($datasource->getPluginId() == 'entity:file') {
-        $file_elements[static::SAA_FILE_ENTITY] = $this->t('File entity');
-      }
-      foreach ($datasource->getPropertyDefinitions() as $property) {
-        if ($property instanceof FieldConfig) {
-          if ($property->get('field_type') == 'file') {
-            $file_elements[$property->get('field_name')] = $property->get('label');
-          }
-        }
-      }
-    }
-    return $file_elements;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form = parent::buildConfigurationForm($form, $form_state);
     if (isset($this->configuration['excluded_extensions'])) {
       $default_excluded_extensions = $this->configuration['excluded_extensions'];
     }
@@ -418,10 +382,17 @@ class FilesExtrator extends ProcessorPluginBase {
   }
 
   /**
-   * {@inheritdoc}
+   * Form validation handler.
+   *
+   * @param array $form
+   *   An associative array containing the structure of the plugin form as built
+   *   by static::buildConfigurationForm().
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the complete form.
+   *
+   * @see \Drupal\Core\Plugin\PluginFormInterface::validateConfigurationForm()
    */
   public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
-    parent::validateConfigurationForm($form, $form_state);
     $max_filesize = trim($form_state->getValue('max_filesize'));
     if ($max_filesize != '0') {
       $size_info = explode(' ', $max_filesize);
@@ -440,15 +411,22 @@ class FilesExtrator extends ProcessorPluginBase {
   }
 
   /**
-   * {@inheritdoc}
+   * Form submission handler.
+   *
+   * @param array $form
+   *   An associative array containing the structure of the plugin form as built
+   *   by static::buildConfigurationForm().
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the complete form.
+   *
+   * @see \Drupal\Core\Plugin\PluginFormInterface::submitConfigurationForm()
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
-    parent::submitConfigurationForm($form, $form_state);
     $excluded_extensions = $form_state->getValue('excluded_extensions');
     $excluded_extensions_array = explode(' ', $excluded_extensions);
     $excluded_mimes_array = $this->getExcludedMimes($excluded_extensions_array);
     $excluded_mimes_string = implode(' ', $excluded_mimes_array);
-    $this->setConfiguration($this->getConfiguration() + ['excluded_mimes' => $excluded_mimes_string]);
+    $this->setConfiguration($form_state->getValues() + ['excluded_mimes' => $excluded_mimes_string]);
   }
 
   /**
@@ -458,24 +436,7 @@ class FilesExtrator extends ProcessorPluginBase {
    *   string of file extensions separated by a space.
    */
   public function defaultExcludedExtensions() {
-    $excluded = [
-      'aif',
-      'art',
-      'avi',
-      'bmp',
-      'gif',
-      'ico',
-      'mov',
-      'oga',
-      'ogv',
-      'png',
-      'psd',
-      'ra',
-      'ram',
-      'rgb',
-      'flv',
-    ];
-    return implode(' ', $excluded);
+    return 'aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv';
   }
 
   /**
@@ -497,9 +458,8 @@ class FilesExtrator extends ProcessorPluginBase {
       $excluded_mimes = explode(' ', $excluded_mimes_string);
     }
     else {
-
       if (!$extensions) {
-        $extensions = $this->defaultExcludedExtensions();
+        $extensions = explode(' ', $this->defaultExcludedExtensions());
       }
       $excluded_mimes = [];
       foreach ($extensions as $extension) {

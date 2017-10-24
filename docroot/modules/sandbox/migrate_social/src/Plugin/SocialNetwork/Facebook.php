@@ -38,10 +38,12 @@ class Facebook extends SocialNetworkBase {
 
     // FB supports add image only on creation.
     foreach ($row->getDestinationProperty('attached_media') as $delta => $picture) {
-      $result = $this->instance->post('me/photos', [
-        'url' => $picture['url'],
-        'published' => FALSE,
-      ])->getDecodedBody();
+      if (!empty($picture['url'])) {
+        $result = $this->instance->post('me/photos', [
+          'url' => $picture['url'],
+          'published' => FALSE,
+        ])->getDecodedBody();
+      }
 
       if (!empty($result['id'])) {
         $post["attached_media[$delta]"] = ['media_fbid' => $result['id']];

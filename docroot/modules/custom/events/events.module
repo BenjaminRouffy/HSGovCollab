@@ -185,10 +185,7 @@ function events_views_pre_render(ViewExecutable $view) {
       );
 
       foreach ($results as $result) {
-        $group = Drupal::entityTypeManager()->getStorage('group')->load($result->gid);
-        $type = $group->getGroupType()->id();
-
-        if (in_array($type, $groups) && $group->hasPermission("create group_node:event entity", $account)) {
+        if ($account->hasPermission("create event content")) {
           $url = Url::fromRoute('events.add_content_simplified', array('node_type' => 'event'));
           $view->element['#attached']['drupalSettings']['events'] = [
             'group_allow_access_to_popup' => FALSE,

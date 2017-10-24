@@ -1059,28 +1059,40 @@ function deployment_update_8087() {
 function deployment_update_8088() {
   // Remove custom notification customizations.
 }
-
+// After cim we don't need those updates.
 /**
  * Fix storage config.
  */
-function deployment_update_8089() {
-  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
-    'field.storage.node.field_is_conference',
-    'field.storage.group.field_end_date',
-    'field.storage.group.field_label_end_date',
-    'field.storage.group.field_summary_content',
-  ]);
-}
+//function deployment_update_8089() {
+//  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+//    'field.storage.node.field_is_conference',
+//    'field.storage.group.field_end_date',
+//    'field.storage.group.field_label_end_date',
+//    'field.storage.group.field_summary_content',
+//  ]);
+//}
 
 /**
  * Fix inctances config.
  */
-function deployment_update_8090() {
+//function deployment_update_8090() {
+//  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+//    'field.field.node.event.field_is_conference',
+//    'field.field.group.country.field_summary_content',
+//    'field.field.group.project.field_end_date',
+//    'field.field.group.project.field_label_end_date',
+//  ]);
+//}
+
+/**
+ * Install config_split.
+ */
+function deployment_update_8091() {
+  \Drupal::service('module_installer')->install(['config_split']);
+
+  // Import configuration for config split.
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
-    'field.field.node.event.field_is_conference',
-    'field.field.group.country.field_summary_content',
-    'field.field.group.project.field_end_date',
-    'field.field.group.project.field_label_end_date',
+    'config_split.config_split.dev',
   ]);
 }
 

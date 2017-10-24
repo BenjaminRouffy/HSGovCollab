@@ -4,7 +4,8 @@ env:
   pre_settings:
     - { name: '$settings["file_public_path"]', status: true, value: 'sites/default/files' }
     - { name: '$config["system.file"]["path.temporary"]', status: true, value: '/tmp' }
-    - { name: '$config["config_split.config_split.config_dev"]["status"]', status: true, value: '1' }
+    # Enable default split.
+    - { name: '$config["config_split.config_split.dev"]["status"]', status: true, value: '1' }
   modules:
     - { name: 'devel config_inspector config_devel', status: false }
   drush_commands:
@@ -14,7 +15,6 @@ env:
     # Update: New meta config_split for local configs
     - { name: 'cr', status: true, arguments: "" }
     - { name: 'search-index', status: false, arguments: "" }
-    - { name: 'csim', status: true, arguments: "config_dev" }
   post_settings:
     - { name: '$config["stage_file_proxy.settings"]["origin"]', status: true, value: '{{ origin_site_url }}' }
     - { name: '$config["stage_file_proxy.settings"]["hotlink"]', status: true, value: '1' }

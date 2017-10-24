@@ -11,7 +11,7 @@
 function migrate_social_autopost_implementation_cron() {
   $state = Drupal::state();
 
-  if (false && REQUEST_TIME >= (int) $state->get('migrate_social_autopost_implementation.next_execution')) {
+  if (REQUEST_TIME >= (int) $state->get('migrate_social_autopost_implementation.next_execution')) {
     $drush_configs = \Drupal::config('migrate_social_autopost_implementation.settings');
 
     $drush = sprintf('%s %s%s',

@@ -14,6 +14,7 @@ dependencies:
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
+    - field.field.group.country.field_pin_items
     - field.field.group.country.field_summary
     - field.field.group.country.field_summary_content
     - field.field.group.country.field_time_line
@@ -32,6 +33,7 @@ third_party_settings:
         - group_banner
         - group_s
         - group_content
+        - group_pi
         - group_infographic_timeline
         - group_bottom
         - group_faq
@@ -97,7 +99,7 @@ third_party_settings:
         - field_infographic
         - field_time_line
       parent_name: group_t
-      weight: 23
+      weight: 24
       format_type: tab
       format_settings:
         id: ''
@@ -111,7 +113,7 @@ third_party_settings:
         - field_join_block
         - field_bottom_link
       parent_name: group_t
-      weight: 24
+      weight: 25
       format_type: tab
       format_settings:
         id: ''
@@ -124,7 +126,7 @@ third_party_settings:
       children:
         - field_faq
       parent_name: group_t
-      weight: 25
+      weight: 26
       format_type: tab
       format_settings:
         id: ''
@@ -133,6 +135,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: FAQ
+    group_pi:
+      children:
+        - field_pin_items
+      parent_name: group_t
+      weight: 23
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Pin items'
 id: group.country.default
 targetEntityType: group
 bundle: country
@@ -259,6 +274,17 @@ content:
       target_address_field: null
     third_party_settings: {  }
     type: geolocation_googlegeocoder
+    region: content
+  field_pin_items:
+    type: entity_reference_paragraphs
+    weight: 30
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+    third_party_settings: {  }
     region: content
   field_summary:
     weight: 7

@@ -1,0 +1,64 @@
+uuid: f4d02c62-2a66-473a-9f26-830e74f04644
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.private_content
+    - field.field.paragraph.pin_item.field_body
+    - field.field.paragraph.pin_item.field_document
+    - field.field.paragraph.pin_item.field_link
+    - field.field.paragraph.pin_item.field_private_content
+    - field.field.paragraph.pin_item.field_title
+    - paragraphs.paragraphs_type.pin_item
+  module:
+    - link
+    - text
+id: paragraph.pin_item.private_content
+targetEntityType: paragraph
+bundle: pin_item
+mode: private_content
+content:
+  field_body:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_document:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_private_content:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

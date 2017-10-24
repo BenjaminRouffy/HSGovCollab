@@ -1,7 +1,9 @@
 ---
 env:
   trusted_host_patterns: []
-  pre_settings: []
+  pre_settings:
+    # Enable default split.
+    - { name: '$config["config_split.config_split.dev"]["status"]', status: true, value: '1' }
   modules: []
   drush_commands: []
   post_settings: []

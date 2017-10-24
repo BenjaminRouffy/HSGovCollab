@@ -20,9 +20,9 @@ function migrate_social_autopost_implementation_cron() {
       $drush_configs->get('drush_path')
     );
 
-    shell_exec("$drush mi --group=social_networks_autopost");
+    shell_exec("$drush mi --group=social_networks_autopost -l {$_SERVER['HTTP_HOST']}");
 
     // Every 5 min.
-    $state->set('migrate_social_implementation.next_execution', REQUEST_TIME + 5 * 60);
+    $state->set('migrate_social_autopost_implementation.next_execution', REQUEST_TIME + 3 * 60);
   }
 }

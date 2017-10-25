@@ -32,7 +32,7 @@ class UserAdminSettingsFormAlter implements FormAlterServiceBaseInterface, FormA
     $form['registration_cancellation']['admin_mail_notification_addresses'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Additional notification administration email addresses'),
-      '#default_value' => \Drupal::config('multiple_email_notification.settings')->get('multiple_email_notification.settings.emails'),
+      '#default_value' => \Drupal::config('notification_customizations.settings')->get('notification_customizations.settings.emails'),
       '#description' => $this->t("If <em>'Visitors, but administrator approval is required'</em> is selected above, a notification email will also be sent to this addresses for any new registrations. Please enter one email per line", ['%site-email' => $site_email]),
     ];
 
@@ -43,9 +43,9 @@ class UserAdminSettingsFormAlter implements FormAlterServiceBaseInterface, FormA
    * @inheritdoc
    */
   public function formSubmit(&$form, FormStateInterface $form_state) {
-    $mail_config = \Drupal::configFactory()->getEditable('multiple_email_notification.settings');
+    $mail_config = \Drupal::configFactory()->getEditable('notification_customizations.settings');
     $emails = $form_state->getValue('admin_mail_notification_addresses');
-    $mail_config->set('multiple_email_notification.settings.emails', trim($emails))->save();
+    $mail_config->set('notification_customizations.settings.emails', trim($emails))->save();
   }
 
   /**

@@ -62,15 +62,6 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_pin_items:
-    weight: 8
-    label: hidden
-    settings:
-      view_mode: private_content
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
   field_project_icon:
     weight: 5
     label: hidden
@@ -111,6 +102,7 @@ hidden:
   field_date: true
   field_faq: true
   field_knowledge_vault: true
+  field_pin_items: true
   field_product: true
   field_summary_public: true
   langcode: true

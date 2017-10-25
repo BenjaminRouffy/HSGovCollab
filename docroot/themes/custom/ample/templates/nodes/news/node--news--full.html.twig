@@ -46,9 +46,16 @@
     </section>
 
     <aside class="sidebar">
-      <div class="teaser corners">
-        {{ content.field_join_block }}
-      </div>
+      {% if content.field_join_block|field_value %}
+        <div class="teaser corners">
+          {{ content.field_join_block }}
+        </div>
+      {% endif %}
+      {% if content.field_anonymous_join_block|field_value %}
+        <div class="teaser corners">
+          {{ content.field_anonymous_join_block }}
+        </div>
+      {% endif %}
     </aside>
   </section>
 </div>

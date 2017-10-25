@@ -7,9 +7,12 @@ dependencies:
     - field.field.group.project.field_based_on
     - field.field.group.project.field_content
     - field.field.group.project.field_date
+    - field.field.group.project.field_end_date
     - field.field.group.project.field_faq
     - field.field.group.project.field_join_block
     - field.field.group.project.field_knowledge_vault
+    - field.field.group.project.field_label_end_date
+    - field.field.group.project.field_pin_items
     - field.field.group.project.field_product
     - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
@@ -17,14 +20,24 @@ dependencies:
     - field.field.group.project.field_time_line
     - group.type.project
   module:
+    - entity_reference_revisions
     - timeline
 id: group.project.bottom
 targetEntityType: group
 bundle: project
 mode: bottom
 content:
-  field_time_line:
+  field_pin_items:
+    type: entity_reference_revisions_entity_view
     weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+  field_time_line:
+    weight: 1
     label: hidden
     settings:
       view_mode: default
@@ -38,9 +51,11 @@ hidden:
   field_based_on: true
   field_content: true
   field_date: true
+  field_end_date: true
   field_faq: true
   field_join_block: true
   field_knowledge_vault: true
+  field_label_end_date: true
   field_product: true
   field_project_icon: true
   field_summary: true

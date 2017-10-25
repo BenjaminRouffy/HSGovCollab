@@ -1,3 +1,5 @@
-<div class="teaser corners">
-  {{ content }}
-</div>
+{% if content.field | field_value %}
+  <div class="teaser corners">
+    {{ content }}
+  </div>
+{% endif %}

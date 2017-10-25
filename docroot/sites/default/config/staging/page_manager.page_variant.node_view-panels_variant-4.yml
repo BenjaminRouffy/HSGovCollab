@@ -70,7 +70,7 @@ variant_settings:
         third_party_settings: {  }
         weight: 0
       region: right
-      weight: -2
+      weight: -3
       uuid: d5a5b8e9-cd34-4cf1-86ba-cf5654db3bd9
       context_mapping:
         entity: node
@@ -89,6 +89,23 @@ variant_settings:
       region: right
       weight: -1
       uuid: 12ef6b72-e9db-4ba7-9df2-15a484aae531
+      context_mapping:
+        entity: node
+    f5b2a435-12a3-40d5-a450-ff19d7d097d5:
+      id: 'entity_field:node:field_anonymous_join_block'
+      label: 'Anonymous join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: default
+        third_party_settings: {  }
+        weight: 0
+      region: right
+      weight: -2
+      uuid: f5b2a435-12a3-40d5-a450-ff19d7d097d5
       context_mapping:
         entity: node
   id: panels_variant

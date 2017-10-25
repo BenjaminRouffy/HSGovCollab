@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.field_anonymous_join_block
     - field.field.node.article.field_article_join_block
     - field.field.node.article.field_author
     - field.field.node.article.field_comments
@@ -78,6 +79,7 @@ content:
     type: responsive_image
     region: content
 hidden:
+  field_anonymous_join_block: true
   field_article_join_block: true
   field_comments: true
   field_cons: true

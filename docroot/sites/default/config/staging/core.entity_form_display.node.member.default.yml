@@ -5,6 +5,7 @@ dependencies:
   config:
     - entity_browser.browser.browse_files_modal
     - field.field.node.member.body
+    - field.field.node.member.field_anonymous_join_block
     - field.field.node.member.field_content_paragraph
     - field.field.node.member.field_country
     - field.field.node.member.field_join_block
@@ -82,6 +83,7 @@ third_party_settings:
     group_bottom:
       children:
         - field_join_block
+        - field_anonymous_join_block
         - field_member_link
       parent_name: group_t
       weight: 23
@@ -106,6 +108,12 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
+  field_anonymous_join_block:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_content_paragraph:
     type: entity_reference_paragraphs
@@ -150,7 +158,7 @@ content:
     type: entity_browser_file
     region: content
   field_member_link:
-    weight: 9
+    weight: 10
     settings:
       placeholder_url: ''
       placeholder_title: ''

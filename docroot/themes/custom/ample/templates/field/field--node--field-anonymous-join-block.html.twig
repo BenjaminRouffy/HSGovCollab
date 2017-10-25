@@ -1,0 +1,13 @@
+{% for item in items %}
+  <a href="{{ item.content.field_link[0]['#url'] }}">
+    <h2 role="heading">
+      {{ item.content.field_link[0]['#title'] }}
+    </h2>
+
+    {% if item.content.field_link_description|field_value %}
+      <p>
+        {{ item.content.field_link_description|field_value }}
+      </p>
+    {% endif %}
+  </a>
+{% endfor %}

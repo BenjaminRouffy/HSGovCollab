@@ -1,3 +1,11 @@
+{% set is_public = 1 %}
+{% if not logged_in and is_non_public %}
+  {% set is_public = 0 %}
+{% endif %}
+{% if logged_in and not is_non_public %}
+  {% set is_public = 0 %}
+{% endif %}
+{% if is_public != 0 %}
 <div{{ attributes }}>
   <div class="bottom-link">
     {{ title_prefix }}
@@ -7,3 +15,4 @@
     {{ title_suffix }}
   </div>
 </div>
+{% endif %}

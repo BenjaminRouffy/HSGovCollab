@@ -17,6 +17,7 @@ use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Render\Element;
 use Drupal\node\Entity\Node;
+use Drupal\Component\Utility\UrlHelper;
 
 /**
  * Additional settings for ample setting form.
@@ -371,6 +372,15 @@ function ample_preprocess_paragraph(array &$variables) {
       }
     }
   }
+
+  if ($variables['paragraph']->bundle() === 'pin_item') {
+    $link = $variables['paragraph']->get('field_link')->getValue();
+    $variables['is_external'] = FALSE;
+    if (!empty($link)) {
+      $is_external = UrlHelper::isExternal($variables['paragraph']->field_link->uri);
+      $variables['is_external'] = $is_external;
+    }
+  }
 }
 
 /**
@@ -428,7 +438,9 @@ function ample_preprocess_block(&$variables) {
       if (isset($variables['content']) && isset($variables['content']['#block_content'])) {
         $content = &$variables['content'];
         $block_content = &$content['#block_content'];
-
+        if ($block_content->hasField('field_is_non_public')) {
+          $variables['is_non_public'] = isset($block_content->field_is_non_public->value) ? $block_content->field_is_non_public->value : 0;
+        }
         // Designed to invalidate cache on content of block was modified.
         // Add a "block_content:<entity_id>" cache tag.
         $variables['#cache']['tags'] = $block_content->getCacheTags();

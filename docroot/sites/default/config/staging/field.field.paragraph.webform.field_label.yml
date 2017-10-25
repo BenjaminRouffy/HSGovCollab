@@ -1,0 +1,19 @@
+uuid: 4645ba1b-43d5-4697-9105-740553a83fde
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_label
+    - paragraphs.paragraphs_type.webform
+id: paragraph.webform.field_label
+field_name: field_label
+entity_type: paragraph
+bundle: webform
+label: Label
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

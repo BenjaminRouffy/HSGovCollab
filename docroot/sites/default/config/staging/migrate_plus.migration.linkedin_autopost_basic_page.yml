@@ -14,11 +14,15 @@ source:
 process:
   temp_field_content_paragraph_summary:
     -
-      plugin: pid_2_paragraph
-      source: field_content_paragraph/0/target_id
+      plugin: get_first_text_from_paragraph
+      source: field_content_paragraph
     -
       plugin: get_field_value
       field_name: field_content_text
+    -
+      plugin: default_value
+      default_value:
+        - null
     -
       plugin: extract
       index:

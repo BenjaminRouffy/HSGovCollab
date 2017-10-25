@@ -2130,6 +2130,25 @@ form {
       margin-right: 20px;
     }
 
+    .field--type-daterange {
+      .form-submit {
+        @include font-size(16.8);
+        border: 0;
+        text-transform: none;
+        background: #e9ecee;
+        color: $red;
+        cursor: pointer;
+        display: inline-block;
+        font-family: $oswald;
+        padding: 15px 40px;
+        vertical-align: top;
+
+        &:hover {
+          color: $red-dark;
+        }
+      }
+    }
+
     // Increase distance between specific fields
     .field--type-image,
     .field--type-language,

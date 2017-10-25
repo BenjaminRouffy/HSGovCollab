@@ -1,0 +1,23 @@
+uuid: 62781e57-0528-4cde-a397-6eb0df61dfb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+    - field.storage.block_content.field_is_non_public
+id: block_content.link.field_is_non_public
+field_name: field_is_non_public
+entity_type: block_content
+bundle: link
+label: 'Is non-public'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

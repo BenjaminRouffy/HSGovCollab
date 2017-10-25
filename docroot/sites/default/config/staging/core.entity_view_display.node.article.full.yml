@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.article.body
+    - field.field.node.article.field_anonymous_join_block
     - field.field.node.article.field_article_join_block
     - field.field.node.article.field_author
     - field.field.node.article.field_comments
@@ -37,6 +38,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_anonymous_join_block:
+    type: entity_reference_entity_view
+    weight: 9
+    region: content
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
   field_article_join_block:
     type: entity_reference_entity_view
     weight: 8

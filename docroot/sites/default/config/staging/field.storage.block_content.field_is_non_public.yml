@@ -1,20 +1,18 @@
-uuid: d385754b-9bb6-416a-9291-215f7ce2d268
+uuid: d5cb618c-c797-485d-a5f2-36549fd2b700
 langcode: en
 status: true
 dependencies:
   module:
     - block_content
     - field_permissions
-    - node
 third_party_settings:
   field_permissions:
-    permission_type: custom
-id: node.field_join_block
-field_name: field_join_block
-entity_type: node
-type: entity_reference
-settings:
-  target_type: block_content
+    permission_type: public
+id: block_content.field_is_non_public
+field_name: field_is_non_public
+entity_type: block_content
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

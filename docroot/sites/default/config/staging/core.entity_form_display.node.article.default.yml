@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.field_anonymous_join_block
     - field.field.node.article.field_article_join_block
     - field.field.node.article.field_author
     - field.field.node.article.field_comments
@@ -79,6 +80,7 @@ third_party_settings:
       children:
         - field_documents
         - field_article_join_block
+        - field_anonymous_join_block
       parent_name: group_tabs_panel
       weight: 13
       format_type: tab
@@ -117,8 +119,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
-  field_article_join_block:
+  field_anonymous_join_block:
     weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_article_join_block:
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -215,6 +223,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

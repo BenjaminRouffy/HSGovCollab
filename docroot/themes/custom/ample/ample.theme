@@ -438,7 +438,9 @@ function ample_preprocess_block(&$variables) {
       if (isset($variables['content']) && isset($variables['content']['#block_content'])) {
         $content = &$variables['content'];
         $block_content = &$content['#block_content'];
-
+        if ($block_content->hasField('field_is_non_public')) {
+          $variables['is_non_public'] = isset($block_content->field_is_non_public->value) ? $block_content->field_is_non_public->value : 0;
+        }
         // Designed to invalidate cache on content of block was modified.
         // Add a "block_content:<entity_id>" cache tag.
         $variables['#cache']['tags'] = $block_content->getCacheTags();

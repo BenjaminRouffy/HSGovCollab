@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.group.country.field_anonymous_join_block
     - field.field.group.country.field_banner
     - field.field.group.country.field_bottom_link
     - field.field.group.country.field_content
@@ -73,6 +74,7 @@ content:
 hidden:
   changed: true
   created: true
+  field_anonymous_join_block: true
   field_banner: true
   field_bottom_link: true
   field_country_icon: true

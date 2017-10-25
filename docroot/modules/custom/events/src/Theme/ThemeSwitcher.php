@@ -41,6 +41,7 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
         'event',
         'news',
         'document',
+        'article',
       );
 
       if (in_array($node_type, $types)) {

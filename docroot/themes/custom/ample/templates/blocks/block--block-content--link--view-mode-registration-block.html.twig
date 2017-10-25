@@ -2,6 +2,9 @@
 {% if not logged_in and is_non_public %}
   {% set is_public = 0 %}
 {% endif %}
+{% if logged_in and not is_non_public %}
+  {% set is_public = 0 %}
+{% endif %}
 {% if is_public != 0 %}
 <div class="teaser corners">
   <div{{ attributes }}>

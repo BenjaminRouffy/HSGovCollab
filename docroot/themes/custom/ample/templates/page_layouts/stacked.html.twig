@@ -19,7 +19,7 @@
   </div>
 {% endif %}
 
-<section class="content-container content-with-sidebar {{ content.bottom ? 'bottom-teaser' : '' }}">
+<section class="content-container {{ content.bottom ? 'bottom-teaser' : '' }}">
   <div class="region-wrapper">
     {{ content.content|without('#prefix', '#suffix') }}
   </div>

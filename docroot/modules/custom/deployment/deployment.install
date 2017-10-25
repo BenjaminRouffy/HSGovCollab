@@ -1057,7 +1057,7 @@ function deployment_update_8087() {
  * Email notification customizations.
  */
 function deployment_update_8088() {
-  \Drupal::service('module_installer')->install(['notification_customizations']);
+  // Remove custom notification customizations.
 }
 
 /**

@@ -1099,7 +1099,7 @@ function deployment_update_8091() {
 /**
  * Fix inctances config.
  */
-function deployment_update_8091() {
+function deployment_update_8092() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'field.storage.group.field_anonymous_join_block',
     'field.storage.node.field_anonymous_join_block',
@@ -1112,7 +1112,7 @@ function deployment_update_8091() {
 /**
  * Fix inctances config.
  */
-function deployment_update_8092() {
+function deployment_update_8093() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'field.field.group.country.field_anonymous_join_block',
     'field.field.node.article.field_anonymous_join_block',

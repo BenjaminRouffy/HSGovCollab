@@ -1,3 +1,5 @@
+{% set target = is_external ? 'target="_blank" rel="nofollow"' : '' %}
+
 <div class="pin-item">
   <i class="pin-icon"></i>
   <h2 role="heading">
@@ -16,7 +18,7 @@
 
   {% if content.field_link|field_value %}
     <div class="link">
-        <a href="{{ content.field_link.0['#url'] }}">
+        <a href="{{ content.field_link.0['#url'] }}" {{ target }}>
           {{ content.field_link.0['#title'] }}
         </a>
       </div>

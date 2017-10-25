@@ -1,0 +1,30 @@
+friend_approve:
+  subject: 'Nouvelle demande de contact'
+  body: "<a href=\"[current-user:url:absolute]\">[current-user:display-name]</a> désire vous contacter.\r\nSi vous désirez contacter l'utilisateur, prière de <a href=\"[current-user:approve-url]\">ici</a>. \r\nSi vous ne désirez pas contacter l'utilisateur, prière d'ignorer le message. \r\n\r\nCordialement,                                   \r\nBureau de Coordination P4H"
+cancel_confirm:
+  body: "[user:display-name],\r\n\r\nune demande d'annulation de votre compte a été faite auprès de [site:name].\r\n\r\nVeuillez à présent annuler votre compte sur le cite en cliquant sur ce link ou en faisant un copier-coller de ce même link sur votre navigateur:\r\n\r\n[user:cancel-url]\r\n\r\nNOTER: l'annulation de votre compte est irréversible. \r\n\r\nCe link expire dans un jour il ne se passera rien s'il n'est pas utilisé.                                    \r\n\r\nCordialement,                                    \r\nBureau de Coordination P4H"
+  subject: 'Demande d''annulation du compte pour [user:display-name] chez [site:name]'
+password_reset:
+  body: "Cher [user:display-name], \r\n\r\npour réinitialiser le mot de passe, prière de cliquer <a href=\"[user:one-time-login-url]\">click here</a>. \r\n\r\nCordialement,                                    \r\nBureau de Coordination P4H"
+  subject: 'Pour réinitialiser le mot de passe pour [user:display-name] chez [site:name]'
+register_admin_created:
+  body: "Cher [user:display-name], \r\n\r\n[current-user:display-name] invite à joindre P4H réseau de la couverture sociale de la santé.\r\nPour suivre l'invitation, prière <a href=\"[user:one-time-login-url]\">de cliquer</a> ici pour signer ou recevoir plus d'informations.\r\n\r\nP4H est un réseau global pour la Couverture Universelle de la Santé (UHC) et pour la Protection Sociale de la Santé (SHP). C'est la réponse au défi planétaire où des millions de personnes ne peuvent se permettre des soins de santé et où les soins médicaux ne sont accessibles qu'après avoir franchi d'importants obstacles. Depuis 2007, le réseau P4H est une plateforme où a lieu un échange de connaissances et de collaboration.  Ce réseau soutien les pays et les régions dans la création ou l'élargissement de systèmes de santé et de protection sociale durable pour UHC/SHP.        \r\n\r\nCordialement,                                     \r\nBureau de Coordination P4H"
+  subject: '[current-user:display-name] vous a invité à joindre le réseau P4H pour la protection sociale de la santé'
+register_no_approval_required:
+  body: "Félicitations, vous êtes inscrit!\r\n\r\nnous vous souhaitons la bienvenue sur le réseau de la protection sociale de la santé P4H et comptons sur votre collaboration.\r\nPrière de  <a href=\"[user:one-time-login-url]\">cliquer ici</a> afin de commencer à naviguer dans le réseau.\r\n\r\nCordialement,                                   \r\nBureau de Coordination P4H"
+  subject: 'Félicitations, vous êtes inscrit!'
+register_pending_approval:
+  body: "[user:display-name],\r\nmerci de vous être enregistré chez [site:name]. Votre candidature pour l'ourverture d'un compte n'a pas encore été acceptée.    \r\n\r\nCordialement,                                  \r\nBureau de Coordination P4H"
+  subject: 'Details du compte pour les [user:display-name] de [site:name]'
+register_pending_approval_admin:
+  body: "[user:display-name] l'utilisateur a solliciter l'ouverture d'un compte.\r\n\r\n[user:edit-url]\r\n\r\nCordialement,                                  \r\nBureau de Coordination P4H"
+  subject: 'Details du compte pour les [user:display-name] de [site:name]'
+status_activated:
+  body: "Félicitations, vous êtes inscrit!\r\n\r\nnous vous souhaitons la bienvenue sur le réseau de la protection sociale de la santé P4H et comptons sur votre collaboration.\r\nPrière de  <a href=\"[user:one-time-login-url]\">cliquer ici</a> afin de commencer à naviguer dans le réseau.\r\n\r\nCordialement,                                   \r\nBureau de Coordination P4H"
+  subject: 'Félicitations, vous êtes inscrit!'
+status_blocked:
+  body: "[user:display-name],\r\n\r\n Votre compte sur [site:name] a été bloqué.\r\n\r\n--  [site:name] team"
+  subject: 'Details du compte pour les [user:display-name] de [site:name] (bloqué)'
+status_canceled:
+  body: "Cher [user:display-name], \r\n\r\nmerci pour l'intérêt que vous portez au réseau de la protection sociale de la santé P4H! Malheureusement, nous ne sommes actuellement pas en mesure d'accepter votre canditaure pour rejoindre le réseau.\r\n\r\nCordialement,                                   \r\nBureau de Coordination P4H"
+  subject: 'details du compte pour les [user:display-name] de [site:name]'

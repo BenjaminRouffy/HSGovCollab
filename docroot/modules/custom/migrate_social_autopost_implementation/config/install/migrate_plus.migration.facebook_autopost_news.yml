@@ -1,0 +1,39 @@
+id: facebook_autopost_news
+label: Migrate news nodes to facebook
+migration_group: social_networks_autopost
+source:
+  social_type: facebook
+  bundle: news
+  plugin: d8_node_social
+  track_changes: true
+destination:
+  social_network_plugin: facebook
+
+process:
+  temp_node_url:
+    - plugin: nid_2_url
+      source: nid
+
+  message:
+    - plugin: concat
+      source:
+        - 'title'
+        - 'body/0/value'
+        - 'field_author/0/value'
+        - 'field_content_date/0/value'
+        - '@temp_node_url'
+      delimiter: "\r\n\r\n"
+
+    - plugin: callback_with_args
+      callable: strip_tags
+
+    - plugin: callback
+      callable: html_entity_decode
+
+  attached_media:
+    plugin: iterator
+    source: field_image
+    process:
+      url:
+        - plugin: fid_2_url
+          source: target_id

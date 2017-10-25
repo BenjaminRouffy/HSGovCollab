@@ -1,0 +1,163 @@
+display:
+  default:
+    display_options:
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      title: 'Actualités par pays'
+  block_governance_area:
+    display_options:
+      use_more_text: 'Lire plus d''actualités'
+      title: 'Actualités par pays et évènements'
+  block_news_events_project:
+    display_options:
+      filters:
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organisation'
+        computed_date:
+          expose:
+            label: Année
+        computed_date_1:
+          expose:
+            label: Mois
+      title: 'Actualités relativess au projet et évènements'
+    display_title: 'Actualités relativess au projet et évènements'
+  ga_news_events:
+    display_options:
+      filters:
+        gid_sub_group:
+          expose:
+            label: 'Selectionner emplacement'
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organisation'
+        computed_date:
+          admin_label: Année
+          expose:
+            label: Année
+        computed_date_1:
+          admin_label: Mois
+          expose:
+            label: Mois
+      title: 'Actualités du comité de pilotage'
+    display_title: 'Actualités du comité de pilotage'
+  product_news_and_events:
+    display_options:
+      filters:
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organisation'
+        computed_date:
+          expose:
+            label: Année
+        computed_date_1:
+          expose:
+            label: Mois
+      title: 'Actualités relatifs aux produits et évènements'
+    display_title: 'Actualités relatifs aux produits et évènements'
+  region_news_events:
+    display_options:
+      filters:
+        gid_sub_group:
+          expose:
+            label: 'Selectionner emplacement'
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organisation'
+        computed_date:
+          expose:
+            label: Année
+          admin_label: Année
+        computed_date_1:
+          expose:
+            label: Mois
+          admin_label: Mois
+      title: 'Actualités relatives à la region et évènements'
+    display_title: 'Actualités relatives à la region et évènements'
+  region_news_events_without_filter:
+    display_options:
+      use_more_text: 'Lire plus d''actualités'
+      title: 'Actualités relatives à la region'
+  news_and_events_by_group:
+    display_options:
+      filters:
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organisation'
+        computed_date:
+          expose:
+            label: Année
+          admin_label: Année
+        computed_date_1:
+          expose:
+            label: Mois
+          admin_label: Mois
+        gid_sub_group:
+          expose:
+            label: 'Selectionner emplacement'
+    display_title: 'Actualités par pays'
+  news_and_events_with_out_filter:
+    display_options:
+      use_more_text: 'Lire plus d''actualités'
+      title: 'Actualités par pays'
+  product_news_and_events_with_out_filter:
+    display_options:
+      use_more_text: 'Lire plus d''actualités'
+      title: 'Actualités relatifs aux produits'
+  product_documents:
+    display_title: 'Documents relatifs aux produits'
+    display_options:
+      filters:
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organisation'
+        computed_date_1:
+          admin_label: Année
+          expose:
+            label: Année
+        computed_date:
+          admin_label: Mois
+          expose:
+            label: Mois
+  documents_by_group:
+    display_options:
+      filters:
+        gid_sub_group:
+          expose:
+            label: 'Selectionner emplacement'
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organization'
+        computed_date_1:
+          admin_label: Année
+          expose:
+            label: Année
+        computed_date:
+          admin_label: Mois
+          expose:
+            label: Mois

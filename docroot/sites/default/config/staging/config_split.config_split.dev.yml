@@ -1,0 +1,18 @@
+uuid: c1a85ef0-2825-4d45-b15f-c1ae477ee193
+langcode: en
+status: false
+dependencies: {  }
+id: dev
+label: Development
+folder: sites/default/config_dev
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - sdk.sdk.facebook
+  - sdk.sdk.linkedin
+  - sdk.sdk.twitter
+  - search_api.server.default
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

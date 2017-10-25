@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.event.field_location
     - field.field.node.event.field_organization
     - field.field.node.event.field_related_content_selector
+    - field.field.node.event.field_social_autopost
     - field.field.node.event.field_time
     - field.field.node.event.field_timezone
     - node.type.event
@@ -39,6 +40,7 @@ third_party_settings:
         - group_event_date_time
         - group_bo
         - group_related_content
+        - group_publishing_options
       parent_name: ''
       weight: 0
       format_type: tabs
@@ -124,6 +126,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Related content'
+    group_publishing_options:
+      children:
+        - field_social_autopost
+      parent_name: group_tabs_panel
+      weight: 25
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Publishing options'
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -235,6 +250,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_rel_content_select
+    region: content
+  field_social_autopost:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
     region: content
   field_timezone:
     weight: 6

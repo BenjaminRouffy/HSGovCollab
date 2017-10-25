@@ -3,6 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-bottom: 60px;
 
   .ie9 & {
     display: block;
@@ -27,14 +28,6 @@
 
   @media screen and (min-width: 1024px) {
     width: calc(33.33% - 20px);
-  }
-
-  .content-with-sidebar & {
-    width: 100%;
-
-    @media screen and (min-width: 1280px) {
-      width: calc(50% - 20px);
-    }
   }
 
   &:hover {

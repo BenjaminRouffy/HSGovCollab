@@ -7,10 +7,15 @@ dependencies:
     - field.field.node.document.field_category
     - field.field.node.document.field_content_date
     - field.field.node.document.field_document
+    - field.field.node.document.field_document_file
+    - field.field.node.document.field_document_link
     - field.field.node.document.field_organization
     - node.type.document
   module:
+    - conditional_fields
     - datetime
+    - file
+    - link
     - paragraphs
     - path
     - text
@@ -20,7 +25,7 @@ bundle: document
 mode: default
 content:
   body:
-    weight: 7
+    weight: 9
     settings:
       rows: 9
       summary_rows: 3
@@ -29,7 +34,7 @@ content:
     type: text_textarea_with_summary
     region: content
   field_category:
-    weight: 8
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -49,10 +54,49 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
-    third_party_settings: {  }
+      default_paragraph_type: ''
+    third_party_settings:
+      conditional_fields: {  }
+    region: content
+  field_document_file:
+    weight: 8
+    settings:
+      progress_indicator: throbber
+    third_party_settings:
+      conditional_fields: {  }
+    type: file_generic
+    region: content
+  field_document_link:
+    weight: 7
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings:
+      conditional_fields:
+        ff4448c4-db6f-46c0-8648-c42b7920139c:
+          dependee: field_document_file
+          settings:
+            state: required
+            condition: empty
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                fids: {  }
+                display: '1'
+                description: ''
+                upload: ''
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: document
+    type: link_default
     region: content
   field_organization:
-    weight: 9
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: options_select

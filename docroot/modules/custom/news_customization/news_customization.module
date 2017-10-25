@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function news_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'node_news_form') {
+    $account = Drupal::currentUser();
+    if (!$account->hasPermission('view the administration theme')) {
+      if (!empty($form['#group_children'])) {
+        foreach ($form['#group_children'] as $element_key => $group_key) {
+          if ($group_key !== 'group_tabs_panel' && $group_key !== 'group_b') {
+            // Hide fields which are not on the general tab.
+            $form[$element_key]['#access'] = FALSE;
+          }
+        }
+      }
+
+      // Hide Revision information block.
+      $form['revision_information']['#access'] = FALSE;
+    }
+  }
+}

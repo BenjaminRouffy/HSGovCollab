@@ -11,4 +11,14 @@ internal: true
 audience: member
 group_type: region_protected
 permissions_ui: true
-permissions: {  }
+permissions:
+  - 'view group'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'
+  - 'view group_node:news content'
+  - 'access to view all group content'
+  - 'view subgroup:project_protected content'
+  - 'view subgroup:project_protected entity'
+  - 'view subgroup:country_protected content'
+  - 'view subgroup:country_protected entity'

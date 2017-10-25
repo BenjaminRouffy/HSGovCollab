@@ -159,7 +159,7 @@ function events_views_pre_render(ViewExecutable $view) {
     $plugin_id = 'group_node:event';
 
     if ($group->hasPermission("create $plugin_id entity", $account)) {
-      $url = Url::fromRoute('node.add', array('node_type' => 'event'));
+      $url = Url::fromRoute('entity.group_content.create_form', array('group' => $group->id(), 'plugin_id' => $plugin_id));
       $view->element['#attached']['drupalSettings']['events'] = [
         'group_node_event_path' => Html::escape($url->toString()),
       ];
@@ -267,6 +267,22 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   }
   if ($form_id === 'node_event_edit_form') {
     if($route === 'entity.node.edit_form') {
+      $accout = Drupal::currentUser();
+      if (!$accout->hasPermission('view the administration theme')) {
+        if (!empty($form['#group_children'])) {
+          foreach ($form['#group_children'] as $element_key => $group_key) {
+            if ($group_key !== 'group_tabs_panel' && $group_key !== 'group_ba') {
+              // Hide fields which are not on the general tab.
+              $form[$element_key]['#access'] = FALSE;
+            }
+          }
+        }
+        // Hide slider paragraphas authenticated users doesn't have access
+        // to add paragraphs. They should use the image field only.
+        $form['field_event_slider']['#access'] = FALSE;
+        // Hide Revision information block.
+        $form['revision_information']['#access'] = FALSE;
+      }
       // Hide group's autocomplete.
       $form['field_add_event_in_group']['#access'] = FALSE;
     }

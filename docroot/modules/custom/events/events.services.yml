@@ -20,3 +20,7 @@ services:
   events.add_event:
       class: \Drupal\group\Entity\Controller\GroupContentController
       arguments: ['@user.private_tempstore', '@entity_type.manager', '@entity.form_builder', '@renderer']
+  theme.negotiator.events_themeswitcher:
+    class: Drupal\events\Theme\ThemeSwitcher
+    tags:
+      - { name: theme_negotiator, priority: 500 }

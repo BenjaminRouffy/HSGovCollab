@@ -1,0 +1,8 @@
+services:
+  migrate_social_autopost_implementation.node_edit_check_autopost_alter:
+    class: Drupal\migrate_social_autopost_implementation\Form\Alter\NodeEditCheckAutopostAlter
+    tags:
+      - { name: form_alter, form_id: node_news_form }
+      - { name: form_alter, form_id: node_news_edit_form }
+      - { name: form_alter, form_id: node_event_form }
+      - { name: form_alter, form_id: node_event_edit_form }

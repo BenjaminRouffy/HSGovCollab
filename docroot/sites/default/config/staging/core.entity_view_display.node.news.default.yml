@@ -26,7 +26,6 @@ dependencies:
     - events
     - group_content_formatters
     - image
-    - options
     - rel_content
     - text
     - user
@@ -136,13 +135,6 @@ content:
     third_party_settings: {  }
     type: list_rel_content_id
     region: content
-  field_social_autopost:
-    weight: 13
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
   links:
     weight: 0
     region: content
@@ -151,4 +143,5 @@ content:
 hidden:
   field_comments: true
   field_documents: true
+  field_social_autopost: true
   langcode: true

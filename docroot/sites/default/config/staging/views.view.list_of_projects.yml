@@ -252,11 +252,7 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
-        - 'config:core.entity_view_display.group.country_protected.banner'
-        - 'config:core.entity_view_display.group.country_protected.bottom'
-        - 'config:core.entity_view_display.group.country_protected.default'
         - 'config:core.entity_view_display.group.country_protected.map'
-        - 'config:core.entity_view_display.group.country_protected.region_search_for_countries'
         - 'config:core.entity_view_display.group.country_protected.search_country'
         - 'config:core.entity_view_display.group.country_protected.search_result_row'
         - 'config:core.entity_view_display.group.country_protected.single_line_with_icon'
@@ -286,9 +282,7 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.project_protected.based_on'
         - 'config:core.entity_view_display.group.project_protected.bottom'
-        - 'config:core.entity_view_display.group.project_protected.default'
         - 'config:core.entity_view_display.group.project_protected.search_result_row'
-        - 'config:core.entity_view_display.group.project_protected.teaser'
         - 'config:core.entity_view_display.group.project_protected.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
@@ -298,14 +292,20 @@ display:
         - 'config:core.entity_view_display.group.region.search_result_row'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
-        - 'config:core.entity_view_display.group.region_protected.banner'
-        - 'config:core.entity_view_display.group.region_protected.bottom'
         - 'config:core.entity_view_display.group.region_protected.country_list_by_region'
-        - 'config:core.entity_view_display.group.region_protected.default'
         - 'config:core.entity_view_display.group.region_protected.search_country'
         - 'config:core.entity_view_display.group.region_protected.search_result_row'
         - 'config:core.entity_view_display.group.region_protected.time_line'
         - 'config:core.entity_view_display.group.region_protected.token'
+        - 'config:core.entity_view_display.group.country_protected.banner'
+        - 'config:core.entity_view_display.group.country_protected.bottom'
+        - 'config:core.entity_view_display.group.country_protected.default'
+        - 'config:core.entity_view_display.group.country_protected.region_search_for_countries'
+        - 'config:core.entity_view_display.group.project_protected.default'
+        - 'config:core.entity_view_display.group.project_protected.teaser'
+        - 'config:core.entity_view_display.group.region_protected.banner'
+        - 'config:core.entity_view_display.group.region_protected.bottom'
+        - 'config:core.entity_view_display.group.region_protected.default'
   block_1:
     display_plugin: block
     id: block_1
@@ -1617,6 +1617,7 @@ display:
         title: false
         relationships: false
         fields: false
+        query: false
       use_more: true
       use_more_always: false
       use_more_text: 'See all countries'
@@ -1876,6 +1877,14 @@ display:
           view_mode: region_search_for_countries
           entity_type: group
           plugin_id: rendered_entity
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
     cache_metadata:
       max-age: -1
       contexts:

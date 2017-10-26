@@ -1168,6 +1168,7 @@ display:
         arguments: false
         title: false
         relationships: false
+        query: false
       filters:
         type:
           id: type
@@ -1570,6 +1571,14 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
@@ -2072,6 +2081,7 @@ display:
         sorts: false
         arguments: false
         relationships: false
+        query: false
       filters:
         type:
           id: type
@@ -2518,6 +2528,14 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
@@ -2562,6 +2580,7 @@ display:
         arguments: false
         sorts: false
         relationships: false
+        query: false
       filters:
         type:
           id: type
@@ -2791,6 +2810,14 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
@@ -2827,6 +2854,7 @@ display:
         arguments: false
         title: false
         relationships: false
+        query: false
       filters:
         type:
           id: type
@@ -3275,6 +3303,14 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
@@ -3319,6 +3355,7 @@ display:
         arguments: false
         sorts: false
         relationships: false
+        query: false
       filters:
         type:
           id: type
@@ -3562,6 +3599,14 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:

@@ -56,7 +56,6 @@ third_party_settings:
         - field_image
         - field_event_slider
         - field_event_author
-        - langcode
         - body
         - field_date
         - field_timezone
@@ -74,7 +73,8 @@ third_party_settings:
         classes: ''
       label: General
     group_summary:
-      children: {  }
+      children:
+        - langcode
       parent_name: group_tabs_panel
       weight: 21
       format_type: tab

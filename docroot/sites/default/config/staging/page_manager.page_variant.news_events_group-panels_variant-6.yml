@@ -18,18 +18,6 @@ label: 'Country - Closed'
 variant: panels_variant
 variant_settings:
   blocks:
-    c111cffa-bd0d-4002-b0a2-589962cc6b8d:
-      id: 'views_block:news_and_events_group-closed_news_and_events_by_group'
-      label: ''
-      provider: views
-      label_display: '0'
-      views_label: ''
-      items_per_page: none
-      region: content
-      weight: 0
-      uuid: c111cffa-bd0d-4002-b0a2-589962cc6b8d
-      pager: view
-      context_mapping: {  }
     13935b7f-36a2-4b79-aa8d-7e245c010124:
       id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
       label: 'Contact us'
@@ -41,6 +29,18 @@ variant_settings:
       region: bottom
       weight: 0
       uuid: 13935b7f-36a2-4b79-aa8d-7e245c010124
+      context_mapping: {  }
+    be7a94a8-5e6a-4e61-a309-d8d7a00c9230:
+      id: 'views_block:news_and_events_group-closed_news_and_events_by_group'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: be7a94a8-5e6a-4e61-a309-d8d7a00c9230
+      pager: view
       context_mapping: {  }
   id: panels_variant
   uuid: 9bd7eb7b-c5ab-4e41-90c9-3cdd5f0a938c
@@ -65,15 +65,15 @@ selection_criteria:
   -
     id: access_by_group_roles
     group_roles:
-      country_protected-attendee: country_protected-attendee
-      region_protected-attendee: region_protected-attendee
-      project_protected-attendee: project_protected-attendee
+      project_protected-member: project_protected-member
+      region_protected-member: region_protected-member
+      country_protected-member: country_protected-member
       country_protected-manager: country_protected-manager
       country_protected-stakeholder: country_protected-stakeholder
-      project_protected-manager: project_protected-manager
       region_protected-manager: region_protected-manager
-      region_protected-stakeholder: region_protected-stakeholder
+      project_protected-manager: project_protected-manager
       project_protected-stakeholder: project_protected-stakeholder
+      region_protected-stakeholder: region_protected-stakeholder
     negate: 0
     context_mapping:
       group: group

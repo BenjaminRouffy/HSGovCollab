@@ -65,9 +65,41 @@ function deployment_remove_field_type() {
 }
 
 /**
+ * Remove field_document_file from documents.
+ */
+function deployment_remove_document_file_fields() {
+  $field = FieldConfig::loadByName('node', 'document', 'field_document_file');
+
+  if (NULL !== $field) {
+    $field_storage = $field->getFieldStorageDefinition();
+    $field->delete();
+    if ($field_storage) {
+      $field_storage->delete();
+    }
+  }
+}
+
+/**
+ * Remove field_document_link from documents.
+ */
+function deployment_remove_document_link_fields() {
+  $field = FieldConfig::loadByName('node', 'document', 'field_document_link');
+
+  if (NULL !== $field) {
+    $field_storage = $field->getFieldStorageDefinition();
+    $field->delete();
+    if ($field_storage) {
+      $field_storage->delete();
+    }
+  }
+}
+
+/**
  * Helper function for performing all required changes.
  */
 function deployment_dev_environment_deploy(){
   deployment_update_universal_objects_geographical_object();
   deployment_remove_field_type();
+  deployment_remove_document_file_fields();
+  deployment_remove_document_link_fields();
 }

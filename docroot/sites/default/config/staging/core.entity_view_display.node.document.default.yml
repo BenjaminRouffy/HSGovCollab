@@ -8,13 +8,10 @@ dependencies:
     - field.field.node.document.field_category
     - field.field.node.document.field_content_date
     - field.field.node.document.field_document
-    - field.field.node.document.field_document_file
-    - field.field.node.document.field_document_link
     - field.field.node.document.field_organization
     - node.type.document
   module:
     - entity_reference_revisions
-    - link
     - user
 id: node.document.default
 targetEntityType: node
@@ -29,27 +26,6 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    region: content
-  field_document_file:
-    weight: 2
-    label: hidden
-    settings:
-      view_mode: related_document
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
-  field_document_link:
-    weight: 1
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link_separate
     region: content
 hidden:
   addtoany: true

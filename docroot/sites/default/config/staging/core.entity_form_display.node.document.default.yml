@@ -8,15 +8,11 @@ dependencies:
     - field.field.node.document.field_category
     - field.field.node.document.field_content_date
     - field.field.node.document.field_document
-    - field.field.node.document.field_document_file
-    - field.field.node.document.field_document_link
     - field.field.node.document.field_organization
     - node.type.document
   module:
     - conditional_fields
     - datetime
-    - file
-    - link
     - paragraphs
     - path
     - text
@@ -26,7 +22,7 @@ bundle: document
 mode: default
 content:
   body:
-    weight: 10
+    weight: 7
     settings:
       rows: 9
       summary_rows: 3
@@ -44,7 +40,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_category:
-    weight: 11
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -57,7 +53,7 @@ content:
     region: content
   field_document:
     type: entity_reference_paragraphs
-    weight: 7
+    weight: 6
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -68,58 +64,15 @@ content:
     third_party_settings:
       conditional_fields: {  }
     region: content
-  field_document_file:
-    weight: 9
-    settings:
-      progress_indicator: throbber
-    third_party_settings:
-      conditional_fields: {  }
-    type: file_generic
-    region: content
-  field_document_link:
-    weight: 8
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings:
-      conditional_fields:
-        ff4448c4-db6f-46c0-8648-c42b7920139c:
-          dependee: field_document_file
-          settings:
-            state: required
-            condition: empty
-            grouping: AND
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form:
-              -
-                fids: {  }
-                display: '1'
-                description: ''
-                upload: ''
-            effect: show
-            effect_options: {  }
-            selector: ''
-          entity_type: node
-          bundle: document
-    type: link_default
-    region: content
   field_organization:
-    weight: 12
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
-  langcode:
-    type: language_select
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   path:
     type: path
-    weight: 6
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -127,7 +80,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 4
     third_party_settings: {  }
     region: content
   title:
@@ -139,13 +92,14 @@ content:
     third_party_settings: {  }
     region: content
   translation:
-    weight: 4
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
   global_content: true
+  langcode: true
   promote: true
   sticky: true
   uid: true

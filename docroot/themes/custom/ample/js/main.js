@@ -671,8 +671,9 @@
   Drupal.behaviors.contactExpand = {
     attach: function (context) {
       var $contactCompact = $('.compact-view', context);
+      var $contactCompactMain = $('.compact-view-main', context);
 
-      var minHeight = $contactCompact.map(function () {
+      var minHeight = $contactCompactMain.map(function () {
         return $(this).height();
       }).get();
 

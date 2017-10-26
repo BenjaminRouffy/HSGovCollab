@@ -20,42 +20,7 @@
         {% endif %}
       </div>
     </div>
-    <div class="compact-view">
-      {% if elements['#user_mail'] is not empty %}
-        <div class="font-social-icon mail-icon">
-        <span>
-          <a href="mailto:{{ elements['#user_mail'] }}">{{ elements['#user_mail'] }}</a>
-        </span>
-        </div>
-      {% endif %}
-
-      {% if content.field_country_manager|field_value %}
-        {{ content.field_country_manager }}
-      {% endif %}
-
-      {% if content.field_project_manager|field_value %}
-        {{ content.field_project_manager }}
-      {% endif %}
-
-      {% if content.field_knowledge_vault_manager|field_value %}
-        {{ content.field_knowledge_vault_manager }}
-      {% endif %}
-
-      {% if content.field_product_manager|field_value %}
-        {{ content.field_product_manager }}
-      {% endif %}
-
-      {% if content.field_skype_or_other|field_value %}
-        {{ content.field_skype_or_other|field_value }}
-      {% endif %}
-
-      {% if content.field_telephone|field_value %}
-        {{ content.field_telephone }}
-      {% endif %}
-
-      {% if content.field_mobilephone|field_value %}
-        {{ content.field_mobilephone }}
-      {% endif %}
+    <div class="compact-view-main">
 
       <div class="font-social-icon organization-icon">
         {% if elements['#organization'] is not empty %}
@@ -72,10 +37,6 @@
       </span>
       </div>
 
-      {% if content.field_organisations|field_value %}
-        {{ content.field_organisations }}
-      {% endif %}
-
       {% if content.field_country|field_value %}
         <div class="font-social-icon country-icon">
         <span>
@@ -84,9 +45,50 @@
         </div>
       {% endif %}
 
-      <span class="contact-expand">Click to expand</span>
-    </div>
+      {% if content.field_organisations|field_value %}
+        {{ content.field_organisations }}
+      {% endif %}
 
+      <div class="compact-view">
+        {% if content.field_country_manager|field_value %}
+          {{ content.field_country_manager }}
+        {% endif %}
+
+        {% if content.field_project_manager|field_value %}
+          {{ content.field_project_manager }}
+        {% endif %}
+
+        {% if content.field_knowledge_vault_manager|field_value %}
+          {{ content.field_knowledge_vault_manager }}
+        {% endif %}
+
+        {% if content.field_product_manager|field_value %}
+          {{ content.field_product_manager }}
+        {% endif %}
+
+        {% if elements['#user_mail'] is not empty %}
+          <div class="font-social-icon mail-icon">
+        <span>
+          <a href="mailto:{{ elements['#user_mail'] }}">{{ elements['#user_mail'] }}</a>
+        </span>
+          </div>
+        {% endif %}
+
+        {% if content.field_skype_or_other|field_value %}
+          {{ content.field_skype_or_other|field_value }}
+        {% endif %}
+
+        {% if content.field_telephone|field_value %}
+          {{ content.field_telephone }}
+        {% endif %}
+
+        {% if content.field_mobilephone|field_value %}
+          {{ content.field_mobilephone }}
+        {% endif %}
+
+        <span class="contact-expand">Click to expand</span>
+      </div>
+    </div>
     <div class="contact-items">
       <div class="contact-to-user">
         {{ content.relation_form }}

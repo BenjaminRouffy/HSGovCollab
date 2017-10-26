@@ -1085,21 +1085,9 @@ function deployment_update_8090() {
 }
 
 /**
- * Install config_split.
- */
-function deployment_update_8091() {
-  \Drupal::service('module_installer')->install(['config_split']);
-
-  // Import configuration for config split.
-  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
-    'config_split.config_split.dev',
-  ]);
-}
-
-/**
  * Fix inctances config.
  */
-function deployment_update_8092() {
+function deployment_update_8091() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'field.storage.group.field_anonymous_join_block',
     'field.storage.node.field_anonymous_join_block',
@@ -1112,7 +1100,7 @@ function deployment_update_8092() {
 /**
  * Fix inctances config.
  */
-function deployment_update_8093() {
+function deployment_update_8092() {
   deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
     'field.field.group.country.field_anonymous_join_block',
     'field.field.node.article.field_anonymous_join_block',
@@ -1121,5 +1109,17 @@ function deployment_update_8093() {
     'field.field.node.member.field_anonymous_join_block',
     'field.field.node.news.field_anonymous_join_block',
     'field.field.block_content.link.field_is_non_public',
+  ]);
+}
+
+/**
+ * Install config_split.
+ */
+function deployment_update_8093() {
+  \Drupal::service('module_installer')->install(['config_split']);
+
+  // Import configuration for config split.
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'config_split.config_split.dev',
   ]);
 }

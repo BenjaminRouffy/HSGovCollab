@@ -230,21 +230,12 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $route = \Drupal::routeMatch()->getRouteName();
   if ($form_id === 'node_event_form') {
     if(in_array($route, array('node.add', 'page_manager.page_view_my_calendar', 'events.add_content_simplified'))) {
-      $accout = Drupal::currentUser();
-      if (!$accout->hasPermission('view the administration theme')) {
-        if (!empty($form['#group_children'])) {
-          foreach ($form['#group_children'] as $element_key => $group_key) {
-            if ($group_key !== 'group_tabs_panel' && $group_key !== 'group_ba') {
-              // Hide fields which are not on the general tab.
-              $form[$element_key]['#access'] = FALSE;
-            }
-          }
-        }
+      $account = Drupal::currentUser();
+      if (!$account->hasPermission('create paragraph content image')
+        || !$account->hasPermission('create paragraph content slider')) {
         // Hide slider paragraphas authenticated users doesn't have access
         // to add paragraphs. They should use the image field only.
         $form['field_event_slider']['#access'] = FALSE;
-        // Hide Revision information block.
-        $form['revision_information']['#access'] = FALSE;
       }
 
       foreach (array_keys($form['actions']) as $action) {
@@ -267,21 +258,12 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   }
   if ($form_id === 'node_event_edit_form') {
     if($route === 'entity.node.edit_form') {
-      $accout = Drupal::currentUser();
-      if (!$accout->hasPermission('view the administration theme')) {
-        if (!empty($form['#group_children'])) {
-          foreach ($form['#group_children'] as $element_key => $group_key) {
-            if ($group_key !== 'group_tabs_panel' && $group_key !== 'group_ba') {
-              // Hide fields which are not on the general tab.
-              $form[$element_key]['#access'] = FALSE;
-            }
-          }
-        }
+      $account = Drupal::currentUser();
+      if (!$account->hasPermission('create paragraph content image')
+        || !$account->hasPermission('create paragraph content slider')) {
         // Hide slider paragraphas authenticated users doesn't have access
         // to add paragraphs. They should use the image field only.
         $form['field_event_slider']['#access'] = FALSE;
-        // Hide Revision information block.
-        $form['revision_information']['#access'] = FALSE;
       }
       // Hide group's autocomplete.
       $form['field_add_event_in_group']['#access'] = FALSE;

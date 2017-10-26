@@ -6,12 +6,10 @@
 function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   if ($form_id === 'node_document_form' || $form_id === 'node_document_edit_form') {
     $account = Drupal::currentUser();
-    if (!$account->hasPermission('view the administration theme')) {
-      // Hide slider paragraphas authenticated users doesn't have access
+    if (!$account->hasPermission('create paragraph content document')) {
+      // Hide slider paragraphs authenticated users doesn't have access
       // to add paragraphs. They should use the image field only.
       $form['field_document']['#access'] = FALSE;
-      // Hide Revision information block.
-      $form['revision_information']['#access'] = FALSE;
       // Add custom validate handler to check if Document link or
       // Document file field is filled.
       $form['#validate'][] = 'document_customization_custom_validate';

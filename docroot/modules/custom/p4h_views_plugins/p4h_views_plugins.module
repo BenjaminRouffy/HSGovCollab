@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_theme().
@@ -41,6 +42,30 @@ function p4h_views_plugins_entity_base_field_info(EntityTypeInterface $entity_ty
       ->setDescription(t('Computed date'));
 
     return $fields;
+  }
+}
+
+/**
+ * Implements hook_views_pre_build().
+ */
+function p4h_views_plugins_views_pre_build(ViewExecutable $view) {
+  if (!in_array($view->id(), ['news_events'])) {
+    return;
+  }
+
+  if (in_array($view->current_display, ['block_frontpage'])) {
+    $account = \Drupal::currentUser();
+
+    // Let front "recent news" list work as "my news" for authenticated users.
+    if ($account->isAuthenticated()) {
+      $view->setArguments([$account->id()]);
+      $view->display_handler->setOption('title', t('My news'));
+    }
+    // Otherwise - show all public items.
+    else {
+      $view->setArguments([]);
+      unset($view->filter['global_content']);
+    }
   }
 }
 

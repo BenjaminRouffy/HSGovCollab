@@ -8,6 +8,11 @@ dependencies:
     - core.entity_view_mode.group.search_country
     - core.entity_view_mode.group.single_line_with_icon
     - core.entity_view_mode.group.teaser
+    - group.content_type.governance_area-group_membership
+    - group.content_type.governance_area-group_node-event
+    - group.content_type.governance_area-group_node-news
+    - group.content_type.governance_area-subgroup-project
+    - group.content_type.group_content_type_69666f89104df
     - group.type.country
     - group.type.product
     - group.type.project
@@ -3551,6 +3556,50 @@ display:
       display_description: ''
       title: Collaborations
       filters:
+        type_1:
+          id: type_1
+          table: group_content_field_data
+          field: type
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          operator: 'not in'
+          value:
+            governance_area-group_membership: governance_area-group_membership
+            group_content_type_69666f89104df: group_content_type_69666f89104df
+            governance_area-group_node-event: governance_area-group_node-event
+            governance_area-group_node-news: governance_area-group_node-news
+            governance_area-subgroup-project: governance_area-subgroup-project
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: group_content
+          entity_field: type
+          plugin_id: bundle
         gid:
           id: gid
           table: group_content_field_data
@@ -3600,10 +3649,10 @@ display:
           reduce_duplicates: 0
           gid:
             country: country
-            governance_area: governance_area
             knowledge_vault: knowledge_vault
             product: product
             region: region
+            governance_area: 0
             project: 0
           entity_type: group_content
           entity_field: gid

@@ -928,6 +928,11 @@
         border-color: $red;
       }
     }
+
+    &:first-child {
+      margin-bottom: 20px;
+      width: 50%;
+    }
   }
 
   .country {
@@ -1073,8 +1078,14 @@
 }
 
 @include breakpoint-for('.news-and-events-list', (to: laptop-small)) {
-  .item:nth-child(n) {
-    width: 33.33%;
+  .item {
+    &:nth-child(n) {
+      width: 33.33%;
+    }
+
+    &:first-child {
+      width: 66.66%;
+    }
   }
 
   .front & {
@@ -1085,8 +1096,14 @@
 }
 
 @include breakpoint-for('.news-and-events-list', (to: tablet)) {
-  .item:nth-child(n) {
-    width: 50%;
+  .item {
+    &:nth-child(n) {
+      width: 50%;
+    }
+
+    &:first-child {
+      width: 100%;
+    }
   }
 }
 

@@ -90,6 +90,10 @@
   shell: "{{ php_env_vars }} drush --nocolor -y updb -l {{ site_url }}"
   register: updates
 
+- name: Drush cc drush
+  sudo: yes
+  shell: "{{ php_env_vars }} drush --nocolor cc drush -l {{ site_url }}"
+
 - name: Import configs
   sudo: yes
   shell: "{{ php_env_vars }} drush --nocolor -y csim -l {{ site_url }}"

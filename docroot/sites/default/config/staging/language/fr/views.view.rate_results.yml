@@ -1,0 +1,41 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      fields:
+        user_id:
+          label: User
+          separator: ', '
+        type:
+          label: State
+          separator: ', '
+        value:
+          separator: ', '
+        timestamp:
+          label: Date
+          separator: ', '
+      arguments:
+        entity_id:
+          exception:
+            title: Tous
+        entity_type:
+          exception:
+            title: Tous
+  results_block:
+    display_title: Block
+  summary_block:
+    display_title: Block
+    display_options:
+      fields:
+        type:
+          label: State
+          separator: ', '
+        value:
+          separator: ', '

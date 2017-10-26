@@ -1,0 +1,41 @@
+uuid: d44a1b61-1819-4dfe-aa91-e643931238bc
+langcode: en
+status: true
+dependencies: {  }
+id: twitter_autopost
+migration_tags: null
+migration_group: social_networks_autopost
+label: 'Migrate nodes to twitter'
+source:
+  social_type: twitter
+  plugin: d8_node_social
+  track_changes: true
+process:
+  temp_node_url:
+    -
+      plugin: nid_2_url
+      source: nid
+    -
+      plugin: callback
+      callable: shorten_url
+  temp_title:
+    -
+      plugin: shortify_text_with_dots
+      source: title
+      length: 100
+  status:
+    -
+      plugin: concat
+      source:
+        - '@temp_title'
+        - '@temp_node_url'
+      delimiter: ' '
+    -
+      plugin: callback_with_args
+      callable: strip_tags
+    -
+      plugin: callback
+      callable: html_entity_decode
+destination:
+  social_network_plugin: twitter
+migration_dependencies: null

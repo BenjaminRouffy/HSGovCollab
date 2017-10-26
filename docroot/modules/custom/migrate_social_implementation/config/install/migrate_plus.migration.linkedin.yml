@@ -6,7 +6,10 @@ source:
   track_changes: true
   social_network_plugin: linkedin
   source_type: company
-  source_id: 11178588
+  autopost_migrations:
+    - linkedin_autopost_basic_page
+    - linkedin_autopost_event
+    - linkedin_autopost_news
 destination:
   plugin: entity:node
 

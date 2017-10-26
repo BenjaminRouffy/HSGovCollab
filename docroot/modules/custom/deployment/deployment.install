@@ -1111,3 +1111,15 @@ function deployment_update_8092() {
     'field.field.block_content.link.field_is_non_public',
   ]);
 }
+
+/**
+ * Install config_split.
+ */
+function deployment_update_8093() {
+  \Drupal::service('module_installer')->install(['config_split']);
+
+  // Import configuration for config split.
+  deployment_import_configs(CONFIG_SYNC_DIRECTORY, [
+    'config_split.config_split.dev',
+  ]);
+}

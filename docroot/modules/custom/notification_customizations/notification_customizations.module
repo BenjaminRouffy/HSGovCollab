@@ -11,7 +11,7 @@
 function notification_customizations_mail_alter(&$message) {
   $message['from'] = \Drupal::config('system.site')->get('mail');
   if ($message['key'] == 'register_pending_approval_admin') {
-    $raw_admin_emails = \Drupal::config('multiple_email_notification.settings')->get('multiple_email_notification.settings.emails');
+    $raw_admin_emails = \Drupal::config('notification_customizations.settings')->get('notification_customizations.settings.emails');
     if (!empty($raw_admin_emails)) {
       $array_emails = preg_split('/\r\n?|\n/', $raw_admin_emails);
       $admin_emails = implode(",", $array_emails);

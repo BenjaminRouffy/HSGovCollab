@@ -1,0 +1,12 @@
+id: social_networks_autopost
+label: Social networks autopost
+description: Post to social networks like Facebook.
+source_type: Drupal8
+shared_configuration:
+  source:
+    # Use default database, cause we migrate into social.
+    key: default
+  destination:
+    plugin: social_destination
+  process:
+    id: id

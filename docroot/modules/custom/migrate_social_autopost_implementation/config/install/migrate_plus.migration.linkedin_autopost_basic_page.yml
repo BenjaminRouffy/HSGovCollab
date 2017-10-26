@@ -1,0 +1,55 @@
+id: linkedin_autopost_basic_page
+label: Migrate basic page nodes to linkedin
+migration_group: social_networks_autopost
+source:
+  social_type: linkedin
+  bundle: basic_page
+  plugin: d8_node_social
+  track_changes: true
+destination:
+  social_network_plugin: linkedin
+
+process:
+  temp_field_content_paragraph_summary:
+    - plugin: get_first_text_from_paragraph
+      source: 'field_content_paragraph'
+
+    - plugin: get_field_value
+      field_name: field_content_text
+
+    - plugin: default_value
+      default_value:
+        -
+
+    - plugin: extract
+      index:
+        - 0
+        - summary
+
+  comment:
+    - plugin: concat
+      source:
+        - 'title'
+        - '@temp_field_content_paragraph_summary'
+        - 'field_author/0/value'
+      delimiter: "\r\n\r\n"
+
+    - plugin: callback_with_args
+      callable: strip_tags
+
+    - plugin: callback
+      callable: html_entity_decode
+
+  submitted-url:
+    - plugin: nid_2_url
+      source: nid
+
+  submitted-image-url:
+    plugin: iterator
+    source: field_banner
+    process:
+      url:
+        - plugin: get_first_image_fid
+          source: target_id
+
+        - plugin: fid_2_url

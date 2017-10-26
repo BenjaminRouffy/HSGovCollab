@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.news.field_organization
     - field.field.node.news.field_process_and_milestones
     - field.field.node.news.field_related_content_selector
+    - field.field.node.news.field_social_autopost
     - image.style.767xauto
     - node.type.news
   module:
@@ -142,4 +143,5 @@ content:
 hidden:
   field_comments: true
   field_documents: true
+  field_social_autopost: true
   langcode: true

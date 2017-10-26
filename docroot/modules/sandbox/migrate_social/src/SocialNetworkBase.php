@@ -3,6 +3,8 @@
 namespace Drupal\migrate_social;
 
 use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\Database\Database;
+use Drupal\migrate\Row;
 use Drupal\migrate_social\SocialNetworkInterface;
 
 /**
@@ -12,7 +14,7 @@ use Drupal\migrate_social\SocialNetworkInterface;
  * @see \Drupal\migrate_social\RelatedContentInterface
  */
 abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInterface {
-  private $currentItem;
+  protected $currentItem;
   protected $instance;
   protected $iterator;
 
@@ -68,7 +70,53 @@ abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInte
    * @return bool
    *   TRUE if a valid source URL was opened
    */
-  abstract protected function nextSource();
+  private function nextSource() {
+    $values = $this->getSocialRows();
+
+    if (empty($values)) {
+      return FALSE;
+    }
+
+    $posts = [];
+
+    if (!empty($this->configuration['autopost_migrations'])) {
+      $autopost_results = [];
+
+      foreach ($this->configuration['autopost_migrations'] as $migration) {
+        $autopost_results += Database::getConnection('default')
+          ->select("migrate_map_$migration", 'l')
+          ->fields('l', ['destid1'])
+          ->execute()
+          ->fetchAllAssoc('destid1');
+      }
+      $ids = $this->getIds();
+      $id = key($ids);
+      foreach ($values as $post) {
+        if (isset($autopost_results[$post[$id]])) {
+          continue;
+        }
+
+        $posts[] = $post;
+      }
+    }
+    else {
+      $posts = $values;
+    }
+
+    $this->iterator = new \ArrayIterator($posts);
+    return TRUE;
+  }
+
+  /**
+   * Get data from social.
+   */
+  abstract protected function getSocialRows();
+
+  /**
+   * Import/update one row to social network.
+   */
+  abstract public function import(Row $row, array $old_destination_id_values = []);
+
   /**
    * {@inheritdoc}
    */
@@ -109,5 +157,18 @@ abstract class SocialNetworkBase extends PluginBase implements SocialNetworkInte
       }
     }
     return $this->iterator->count();
+  }
+
+  /**
+   * Migrate ids.
+   */
+  public function getIds() {
+    return [
+      'id' => [
+        'type' => 'string',
+        'max_length' => 64,
+        'is_ascii' => TRUE,
+      ],
+    ];
   }
 }

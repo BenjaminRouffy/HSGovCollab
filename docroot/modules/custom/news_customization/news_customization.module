@@ -4,20 +4,41 @@
  * Implements hook_form_alter().
  */
 function news_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $route = \Drupal::routeMatch()->getRouteName();
   if ($form_id === 'node_news_form') {
-    $account = Drupal::currentUser();
-    if (!$account->hasPermission('view the administration theme')) {
-      if (!empty($form['#group_children'])) {
-        foreach ($form['#group_children'] as $element_key => $group_key) {
-          if ($group_key !== 'group_tabs_panel' && $group_key !== 'group_b') {
-            // Hide fields which are not on the general tab.
-            $form[$element_key]['#access'] = FALSE;
-          }
-        }
-      }
-
-      // Hide Revision information block.
-      $form['revision_information']['#access'] = FALSE;
+    if ($route === 'entity.group_content.create_form') {
+      // Hide group's autocomplete.
+      $form['field_add_event_in_group']['#access'] = FALSE;
     }
+    foreach (array_keys($form['actions']) as $action) {
+      if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+        $form['actions'][$action]['#submit'][] = 'news_customization_add_new_news_custom_submit';
+      }
+    }
+  }
+  if ($form_id === 'node_news_edit_form') {
+    $form['field_add_event_in_group']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Custom submit handler to attach news to group.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function news_customization_add_new_news_custom_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $selected_group = $form_state->getValue('field_add_event_in_group');
+
+  if (!empty($selected_group[0]['target_id'])) {
+    // Get the selected group object.
+    $selected_gid = $selected_group[0]['target_id'];
+    $group = Drupal::entityTypeManager()->getStorage('group')->load($selected_gid);
+
+    /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+    $entity = $form_state->getFormObject()->getEntity();
+
+    // Add the new event to the selected group.
+    $group->addContent($entity, 'group_node:news');
   }
 }

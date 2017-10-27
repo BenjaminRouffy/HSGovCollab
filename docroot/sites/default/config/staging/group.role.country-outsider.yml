@@ -12,10 +12,11 @@ audience: outsider
 group_type: country
 permissions_ui: true
 permissions:
-  - 'access group_node overview'
   - 'join group'
   - 'view group'
   - 'view group_node:event entity'
   - 'view group_node:news entity'
   - 'view group_node:document entity'
   - 'access to view all group content'
+  - 'view subgroup:project content'
+  - 'view subgroup:project entity'

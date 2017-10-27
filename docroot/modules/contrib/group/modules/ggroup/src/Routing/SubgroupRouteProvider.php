@@ -6,7 +6,7 @@ use Drupal\group\Entity\GroupType;
 use Symfony\Component\Routing\Route;
 
 /**
- * Provides routes for subsubgroup content.
+ * Provides routes for subgroup content.
  */
 class SubgroupRouteProvider {
 
@@ -21,7 +21,7 @@ class SubgroupRouteProvider {
 
       $plugin_ids[] = $plugin_id;
       $permissions_add[] = "create $plugin_id content";
-      $permissions_create[] = "create $name group";
+      $permissions_create[] = "create $plugin_id entity";
     }
 
     // If there are no group types yet, we cannot have any plugin IDs and should
@@ -47,6 +47,7 @@ class SubgroupRouteProvider {
       ->setDefaults([
         '_title' => 'Create subgroup',
         '_controller' => '\Drupal\ggroup\Controller\SubgroupWizardController::addPage',
+        'create_mode' => TRUE,
       ])
       ->setRequirement('_group_permission', implode('+', $permissions_create))
       ->setRequirement('_group_installed_content', implode('+', $plugin_ids))

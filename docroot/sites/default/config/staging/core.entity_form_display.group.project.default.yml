@@ -9,6 +9,7 @@ dependencies:
     - field.field.group.project.field_date
     - field.field.group.project.field_end_date
     - field.field.group.project.field_faq
+    - field.field.group.project.field_geographical_object
     - field.field.group.project.field_join_block
     - field.field.group.project.field_knowledge_vault
     - field.field.group.project.field_label_end_date
@@ -39,7 +40,7 @@ third_party_settings:
         - group_bottom
         - group_faq
       parent_name: ''
-      weight: 0
+      weight: 1
       format_type: tabs
       format_settings:
         id: ''
@@ -48,6 +49,7 @@ third_party_settings:
       label: 'Tabs panel'
     group_summary:
       children:
+        - field_geographical_object
         - label
         - field_date
         - field_label_end_date
@@ -57,7 +59,7 @@ third_party_settings:
         - path
         - field_project_icon
       parent_name: group_tabs_panel
-      weight: 2
+      weight: 1
       format_type: tab
       format_settings:
         id: ''
@@ -72,7 +74,7 @@ third_party_settings:
         - field_summary
         - field_content
       parent_name: group_tabs_panel
-      weight: 4
+      weight: 3
       format_type: tab
       format_settings:
         id: ''
@@ -127,7 +129,7 @@ third_party_settings:
         - field_knowledge_vault
         - field_product
       parent_name: group_tabs_panel
-      weight: 3
+      weight: 2
       format_type: tab
       format_settings:
         id: ''
@@ -168,11 +170,12 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: banner
+      default_paragraph_type: ''
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 2
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -191,8 +194,16 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
+    region: content
+  field_geographical_object:
+    weight: 9
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_join_block:
     weight: 7
@@ -271,12 +282,13 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
   label:
     type: string_textfield
-    weight: 1
+    weight: 10
     settings:
       size: 60
       placeholder: ''

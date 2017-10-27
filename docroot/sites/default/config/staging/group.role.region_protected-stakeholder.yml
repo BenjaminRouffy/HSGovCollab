@@ -1,0 +1,24 @@
+uuid: c325a91c-4ca4-447c-b183-a7eacfb88116
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+id: region_protected-stakeholder
+label: Stakeholder
+weight: -8
+internal: false
+audience: member
+group_type: region_protected
+permissions_ui: true
+permissions:
+  - 'view group'
+  - 'view group_node:document entity'
+  - 'view group_node:event entity'
+  - 'view group_node:news entity'
+  - 'view group_node:news content'
+  - 'access to view all group content'
+  - 'view subgroup:country_protected content'
+  - 'view subgroup:country_protected entity'
+  - 'view subgroup:project_protected content'
+  - 'view subgroup:project_protected entity'

@@ -6,7 +6,7 @@ dependencies:
     - group.type.project
 id: project-admin
 label: Manager
-weight: 100
+weight: -9
 internal: false
 audience: member
 group_type: project
@@ -59,3 +59,9 @@ permissions:
   - 'update own group_node:news content'
   - 'translate group'
   - 'access to view all group content'
+  - 'administer group'
+  - 'delete group'
+  - 'administer members'
+  - 'update own group_membership content'
+  - 'leave group'
+  - 'bypass administer group status'

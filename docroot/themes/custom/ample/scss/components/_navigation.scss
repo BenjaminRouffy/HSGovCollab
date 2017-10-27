@@ -216,6 +216,22 @@
     }
   }
 
+  a.notification-icon {
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 36px;
+      left: 39px;
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #EA3A32;
+    }
+  }
+
   .sidebar-menu {
     .ie & {
       margin-bottom: 74px;
@@ -445,6 +461,13 @@
     display: none;
   }
 
+  a.notification-icon {
+    &:after {
+      top: 44px;
+      left: 56px;
+    }
+  }
+
   .sidebar-menu {
     li:nth-child(n) {
       a {
@@ -625,7 +648,8 @@
       border-color: $red;
     }
 
-    .group-country & {
+    .group-country &,
+    .group-country_protected {
       &:first-child {
         a {
           font-weight: 700;
@@ -642,7 +666,9 @@
     }
 
     .group-project &,
+    .group-project_protected &,
     .group-region &,
+    .group-region_protected &,
     .group-governance_area &,
     .group-product & {
       &:first-child {

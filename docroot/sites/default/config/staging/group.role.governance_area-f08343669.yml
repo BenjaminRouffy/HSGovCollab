@@ -1,0 +1,17 @@
+uuid: 6461ad0b-8b59-46ed-9142-f0c5acadc2e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.country_managers
+id: governance_area-f08343669
+label: 'Country manager'
+weight: 3
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

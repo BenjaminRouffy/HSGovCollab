@@ -1,0 +1,25 @@
+uuid: 69fa7b8b-73f7-4739-be5c-6768b9902400
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_add_event_in_group
+    - node.type.document
+id: node.document.field_add_event_in_group
+field_name: field_add_event_in_group
+entity_type: node
+bundle: document
+label: 'Add document in group'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: events_group_reference
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

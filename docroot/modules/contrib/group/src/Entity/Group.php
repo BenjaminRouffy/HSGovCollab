@@ -9,6 +9,8 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\group\Event\GroupEvents;
+use Drupal\group\Event\GroupPermissionEvent;
 use Drupal\user\UserInterface;
 
 /**
@@ -34,7 +36,6 @@ use Drupal\user\UserInterface;
  *       "html" = "Drupal\group\Entity\Routing\GroupRouteProvider",
  *     },
  *     "form" = {
- *       "default" = "Drupal\group\Entity\Form\GroupForm",
  *       "add" = "Drupal\group\Entity\Form\GroupForm",
  *       "edit" = "Drupal\group\Entity\Form\GroupForm",
  *       "delete" = "Drupal\group\Entity\Form\GroupDeleteForm",
@@ -97,6 +98,15 @@ class Group extends ContentEntityBase implements GroupInterface {
   }
 
   /**
+   * Gets the event dispatcher.
+   *
+   * @return \Symfony\Component\EventDispatcher\EventDispatcherInterface
+   */
+  protected function eventDispatcher() {
+    return \Drupal::service('event_dispatcher');
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getCreatedTime() {
@@ -151,18 +161,9 @@ class Group extends ContentEntityBase implements GroupInterface {
    * {@inheritdoc}
    */
   public function addContent(ContentEntityInterface $entity, $plugin_id, $values = []) {
-    $plugin = $this->getGroupType()->getContentPlugin($plugin_id);
-
-    // Only add the entity if the provided plugin supports it.
-    // @todo Verify bundle as well and throw exceptions?
-    if ($entity->getEntityTypeId() == $plugin->getEntityTypeId()) {
-      $keys = [
-        'type' => $plugin->getContentTypeConfigId(),
-        'gid' => $this->id(),
-        'entity_id' => $entity->id(),
-      ];
-      GroupContent::create($keys + $values)->save();
-    }
+    $storage = $this->groupContentStorage();
+    $group_content = $storage->createForEntityInGroup($entity, $this, $plugin_id, $values);
+    $storage->save($group_content);
   }
 
   /**
@@ -248,16 +249,10 @@ class Group extends ContentEntityBase implements GroupInterface {
       }
     }
 
-    // Check permission for supergroups if subgroup module is enabled.
-    $moduleHandler = \Drupal::service('module_handler');
-    if ($moduleHandler->moduleExists('ggroup')){
-      /** @var \Drupal\ggroup\GroupHierarchyManager $group_hierarchy_manager */
-      $supergroups = \Drupal::service('ggroup.group_hierarchy_manager')->getGroupSupergroups($this);
-      foreach ($supergroups as $group) {
-        if ($group->hasPermission($permission, $account)) {
-          return TRUE;
-        }
-      }
+    /** @var \Drupal\group\Event\GroupPermissionEvent $permission_event */
+    $permission_event = $this->eventDispatcher()->dispatch(GroupEvents::PERMISSION, new GroupPermissionEvent($permission, $this, $account));
+    if ($permission_event->hasPermission()) {
+      return TRUE;
     }
 
     // If no role had the requested permission, we deny access.
@@ -301,32 +296,32 @@ class Group extends ContentEntityBase implements GroupInterface {
       ->setLabel(t('Created on'))
       ->setDescription(t('The time that the group was created.'))
       ->setTranslatable(TRUE)
-      ->setDisplayOptions('view', array(
+      ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => 0,
-      ))
+      ])
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed on'))
       ->setDescription(t('The time that the group was last edited.'))
       ->setTranslatable(TRUE)
-      ->setDisplayOptions('view', array(
+      ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => 0,
-      ))
+      ])
       ->setDisplayConfigurable('view', TRUE);
 
     if (\Drupal::moduleHandler()->moduleExists('path')) {
       $fields['path'] = BaseFieldDefinition::create('path')
         ->setLabel(t('URL alias'))
         ->setTranslatable(TRUE)
-        ->setDisplayOptions('form', array(
+        ->setDisplayOptions('form', [
           'type' => 'path',
           'weight' => 30,
-        ))
+        ])
         ->setDisplayConfigurable('form', TRUE)
         ->setComputed(TRUE);
     }
@@ -354,6 +349,9 @@ class Group extends ContentEntityBase implements GroupInterface {
 
     // If a new group is created and the group type is configured to grant group
     // creators a membership by default, add the creator as a member.
+    // @todo Deprecate in 8.x-2.x in favor of a form-only approach. API-created
+    //   groups should not get this functionality because it may create
+    //   incomplete group memberships.
     $group_type = $this->getGroupType();
     if ($update === FALSE && $group_type->creatorGetsMembership()) {
       $values = ['group_roles' => $group_type->getCreatorRoleIds()];

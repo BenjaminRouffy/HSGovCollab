@@ -1,0 +1,17 @@
+uuid: 57ccbb02-e178-45db-b187-dcdb2427c714
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+  enforced:
+    config:
+      - user.role.country_managers
+id: region_protected-f08343669
+label: 'Country manager'
+weight: 3
+internal: true
+audience: outsider
+group_type: region_protected
+permissions_ui: false
+permissions: {  }

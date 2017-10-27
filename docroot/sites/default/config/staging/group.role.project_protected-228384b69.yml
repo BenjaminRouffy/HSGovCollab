@@ -1,0 +1,17 @@
+uuid: f0acf2fe-6ab3-4818-84bd-60bed005cffa
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+  enforced:
+    config:
+      - user.role.conference_oxford
+id: project_protected-228384b69
+label: 'Conference Oxford'
+weight: -10
+internal: true
+audience: outsider
+group_type: project_protected
+permissions_ui: false
+permissions: {  }

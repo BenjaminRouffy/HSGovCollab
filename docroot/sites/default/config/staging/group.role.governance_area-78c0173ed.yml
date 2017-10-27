@@ -1,0 +1,17 @@
+uuid: 6aca4bf6-e8f9-4c2e-a916-647b4549ef69
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.co_admin
+id: governance_area-78c0173ed
+label: Co-Admin
+weight: 9
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

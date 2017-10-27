@@ -1,0 +1,17 @@
+uuid: 20e633e8-8eb6-48bb-b272-b6e05d1363e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+  enforced:
+    config:
+      - user.role.projects_managers
+id: knowledge_vault-128ade90e
+label: 'Collaboration manager'
+weight: 4
+internal: true
+audience: outsider
+group_type: knowledge_vault
+permissions_ui: false
+permissions: {  }

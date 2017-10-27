@@ -1,0 +1,14 @@
+uuid: 347f636f-dfe3-4a85-a7f9-0afb3c4ad761
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+id: project_protected-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: project_protected
+permissions_ui: true
+permissions: {  }

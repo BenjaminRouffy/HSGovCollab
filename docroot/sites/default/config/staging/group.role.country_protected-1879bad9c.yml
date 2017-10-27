@@ -1,0 +1,17 @@
+uuid: bdce6b5f-8959-4334-93ff-2346054c5c7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+  enforced:
+    config:
+      - user.role.coordination_desk_users
+id: country_protected-1879bad9c
+label: 'Coordination desk user'
+weight: 6
+internal: true
+audience: outsider
+group_type: country_protected
+permissions_ui: false
+permissions: {  }

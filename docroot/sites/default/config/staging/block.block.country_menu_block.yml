@@ -31,10 +31,13 @@ visibility:
     id: 'entity_bundle:group'
     bundles:
       country: country
+      country_protected: country_protected
       governance_area: governance_area
       product: product
       project: project
+      project_protected: project_protected
       region: region
+      region_protected: region_protected
     negate: false
     context_mapping:
       group: '@group.group_route_context:group'

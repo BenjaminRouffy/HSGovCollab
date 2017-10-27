@@ -106,7 +106,7 @@ class SubgroupWizardController extends ControllerBase {
   public function addForm(GroupInterface $group, GroupTypeInterface $group_type) {
     $plugin_id = 'subgroup:' . $group_type->id();
     $storage_id = $plugin_id . ':' . $group->id();
-
+    $creation_wizard = $group->getGroupType()->getContentPlugin($plugin_id)->getConfiguration()['use_creation_wizard'];
     // If we are on step one, we need to build a group form.
     if ($this->privateTempStore->get("$storage_id:step") !== 2) {
       $this->privateTempStore->set("$storage_id:step", 1);
@@ -124,10 +124,20 @@ class SubgroupWizardController extends ControllerBase {
         'type' => $plugin->getContentTypeConfigId(),
         'gid' => $group->id(),
       ]);
+      if (!$creation_wizard && $entity = $this->privateTempStore->get("$storage_id:group")) {
+         $entity->save();
+         $group->addContent($entity, $plugin_id);
+
+          // We also clear the private store so we can start fresh next time around.
+          $this->privateTempStore->delete("$storage_id:step");
+          $this->privateTempStore->delete("$storage_id:group");
+
+         return $this->redirect('entity.group.canonical', ['group' => $entity ->id()]);
+      }
     }
 
     // Return the form with the group and storage ID added to the form state.
-    $extra = ['group' => $group, 'storage_id' => $storage_id];
+    $extra = ['group' => $group, 'storage_id' => $storage_id, 'wizard' => $creation_wizard];
     return $this->entityFormBuilder()->getForm($entity, 'ggroup-form', $extra);
   }
 
@@ -152,8 +162,9 @@ class SubgroupWizardController extends ControllerBase {
    * @param \Drupal\group\Entity\GroupInterface $group
    *   The group to add the subgroup to.
    *
-   * @return array
-   *   The subgroup creation overview page.
+   * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+   *   The subgroup creation overview page or a redirect to the create form if
+   *   we only have 1 bundle.
    */
   public function addPage(GroupInterface $group) {
     // We do not set the "entity_add_list" template's "#add_bundle_message" key

@@ -49,8 +49,10 @@ selection_criteria:
   -
     id: 'entity_bundle:group'
     bundles:
+      governance_area: governance_area
       region: region
     negate: false
-    context_mapping: {  }
+    context_mapping:
+      group: group
 selection_logic: and
 static_context: {  }

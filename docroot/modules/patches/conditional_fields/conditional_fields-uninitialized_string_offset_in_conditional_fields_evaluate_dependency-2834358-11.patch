@@ -1,0 +1,13 @@
+diff --git a/conditional_fields.api.inc b/conditional_fields.api.inc
+index fc1c229..09a85cd 100644
+--- a/conditional_fields.api.inc
++++ b/conditional_fields.api.inc
+@@ -591,7 +591,7 @@ function conditional_fields_evaluate_dependency($context, $values, $options) {
+       // If $dependency_values is not an array, we can only assume that it
+       // should map to the first key of the first value of $values.
+       if (!is_array($dependency_values)) {
+-        if (is_null(current($values))) {
++        if (is_null(current($values)) || empty($options['value'][0])) {
+           return FALSE;
+         }
+         $key = current(array_keys((array) current($values)));

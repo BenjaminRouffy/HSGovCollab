@@ -1,0 +1,17 @@
+uuid: 1f213f9a-16c8-48ab-98b6-2b2a0b661d32
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+  enforced:
+    config:
+      - user.role.product_manager
+id: knowledge_vault-d40137531
+label: 'Product manager'
+weight: 10
+internal: true
+audience: outsider
+group_type: knowledge_vault
+permissions_ui: false
+permissions: {  }

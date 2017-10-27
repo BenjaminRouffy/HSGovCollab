@@ -1,0 +1,17 @@
+uuid: 6c374e05-3cf8-4e63-a6bf-c5e7928fc97a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.knowledge_vault_manager
+id: governance_area-0ef571b28
+label: 'Category manager'
+weight: 8
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

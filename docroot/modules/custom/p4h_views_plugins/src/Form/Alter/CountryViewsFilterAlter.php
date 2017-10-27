@@ -19,6 +19,7 @@ class CountryViewsFilterAlter implements FormAlterServiceBaseInterface, FormAlte
       'views-exposed-form-search-for-a-country-or-region-block-4',
       'views-exposed-form-search-for-a-country-or-region-block-1',
       'views-exposed-form-search-for-a-country-or-region-block-2',
+      'views-exposed-form-search-for-a-country-or-region-block-6',
     ]);
   }
 

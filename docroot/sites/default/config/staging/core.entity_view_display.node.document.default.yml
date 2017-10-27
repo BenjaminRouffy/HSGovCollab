@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.document.body
+    - field.field.node.document.field_add_event_in_group
     - field.field.node.document.field_category
     - field.field.node.document.field_content_date
     - field.field.node.document.field_document
@@ -29,6 +30,7 @@ content:
 hidden:
   addtoany: true
   body: true
+  field_add_event_in_group: true
   field_category: true
   field_content_date: true
   field_organization: true

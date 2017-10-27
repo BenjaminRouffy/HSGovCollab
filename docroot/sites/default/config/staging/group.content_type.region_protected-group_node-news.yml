@@ -1,0 +1,19 @@
+uuid: e1f206d6-f661-481e-a078-9447e7d4e953
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+    - node.type.news
+  module:
+    - gnode
+    - node
+id: region_protected-group_node-news
+label: 'Universal Object - Region - Closed: Group node (News)'
+description: 'Adds <em class="placeholder">News</em> content to groups both publicly and privately.'
+group_type: region_protected
+content_plugin: 'group_node:news'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

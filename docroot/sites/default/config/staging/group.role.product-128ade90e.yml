@@ -1,0 +1,17 @@
+uuid: 4da3d8f6-caf3-4b1f-a188-07986449f238
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+  enforced:
+    config:
+      - user.role.projects_managers
+id: product-128ade90e
+label: 'Collaboration manager'
+weight: 4
+internal: true
+audience: outsider
+group_type: product
+permissions_ui: false
+permissions: {  }

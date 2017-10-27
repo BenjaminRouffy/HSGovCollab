@@ -1,0 +1,17 @@
+uuid: 7558db3b-3cea-4208-8756-e24cd09ed4c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+  enforced:
+    config:
+      - user.role.governance_group_users
+id: product-1f9d39d58
+label: 'Governance group user'
+weight: 5
+internal: true
+audience: outsider
+group_type: product
+permissions_ui: false
+permissions: {  }

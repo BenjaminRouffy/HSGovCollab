@@ -5,6 +5,7 @@ dependencies:
   config:
     - entity_browser.browser.browse_files_modal
     - field.field.node.news.body
+    - field.field.node.news.field_add_event_in_group
     - field.field.node.news.field_anonymous_join_block
     - field.field.node.news.field_author
     - field.field.node.news.field_category
@@ -15,9 +16,11 @@ dependencies:
     - field.field.node.news.field_image
     - field.field.node.news.field_join_block
     - field.field.node.news.field_news_country_content
+    - field.field.node.news.field_news_image
     - field.field.node.news.field_organization
     - field.field.node.news.field_process_and_milestones
     - field.field.node.news.field_related_content_selector
+    - image.style.thumbnail
     - field.field.node.news.field_social_autopost
     - node.type.news
   module:
@@ -25,6 +28,7 @@ dependencies:
     - datetime
     - entity_browser
     - field_group
+    - image
     - paragraphs
     - path
     - rel_content
@@ -49,23 +53,26 @@ third_party_settings:
       label: 'Tabs panel'
     group_b:
       children:
+        - field_add_event_in_group
         - title
         - field_image
+        - field_news_image
         - field_content_date
+        - field_author
+        - body
       parent_name: group_tabs_panel
       weight: 20
       format_type: tab
       format_settings:
-        id: ''
-        classes: ''
+        label: General
         formatter: open
         description: ''
         required_fields: true
-      label: Banner
+        id: ''
+        classes: ''
+      label: General
     group_s:
       children:
-        - field_author
-        - body
         - langcode
         - field_process_and_milestones
       parent_name: group_tabs_panel
@@ -142,13 +149,21 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 9
+    weight: 34
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
     region: content
+  field_add_event_in_group:
+    weight: 28
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_anonymous_join_block:
     weight: 10
     settings: {  }
@@ -156,7 +171,7 @@ content:
     type: options_select
     region: content
   field_author:
-    weight: 8
+    weight: 33
     settings:
       size: 60
       placeholder: ''
@@ -176,19 +191,20 @@ content:
     type: comment_default
     region: content
   field_content_date:
-    weight: 3
+    weight: 32
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_content_paragraph:
-    weight: 10
+    weight: 29
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -202,15 +218,15 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_image:
-    weight: 2
+    weight: 30
     settings:
       entity_browser: browse_files_modal
+      field_widget_edit: true
       field_widget_remove: true
       selection_mode: selection_append
-      preview_image_style: thumbnail
-      field_widget_edit: true
-      open: false
       view_mode: default
+      open: false
+      preview_image_style: thumbnail
     third_party_settings: {  }
     type: entity_browser_file
     region: content
@@ -220,6 +236,14 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_news_image:
+    weight: 31
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
   field_organization:
     weight: 12
     settings: {  }
@@ -227,7 +251,7 @@ content:
     type: options_select
     region: content
   field_process_and_milestones:
-    weight: 11
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -253,7 +277,7 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 10
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -272,7 +296,7 @@ content:
     region: content
   title:
     type: string_textfield
-    weight: 1
+    weight: 29
     settings:
       size: 60
       placeholder: ''

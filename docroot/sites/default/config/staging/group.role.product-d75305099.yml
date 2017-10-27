@@ -1,0 +1,17 @@
+uuid: 092f079e-c018-4644-95d5-d46f42f00aa4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+  enforced:
+    config:
+      - user.role.specific_users
+id: product-d75305099
+label: 'Specific users'
+weight: 7
+internal: true
+audience: outsider
+group_type: product
+permissions_ui: false
+permissions: {  }

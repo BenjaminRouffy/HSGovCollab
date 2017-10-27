@@ -28,6 +28,17 @@ function _country_public_global_content_types() {
 }
 
 /**
+ * Implements hook_form_alter().
+ */
+function country_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // The google map is shown and hidden based on field conditions and custom
+  // js is needed to calculate its dimensions once it is displayed again.
+  if ($form_id === 'group_country_edit_form' || $form_id === 'group_country_add_form') {
+    $form['#attached'];
+    $form['#attached']['library'][] = 'country/country.map';
+  }
+}
+/**
  * Implements hook_node_access().
  */
 function country_node_access(NodeInterface $node, $op, AccountInterface $account) {
@@ -88,6 +99,37 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
   }
 
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function country_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  // Custom access check to verify if the current user have access to Universal
+  // Object Country group attached to Governance area.
+  // First we check if the current user has "Co-Admin" role assigned. If not,
+  // we check if the current user is member to the UO Country group. If not,
+  // we check if the current user is member to the parent Governance area group.
+  if ($entity->bundle() === 'country' && ($entity->hasField('field_type') && $entity->get('field_type')->value === 'governance_area')) {
+    if (in_array('co_admin', $account->getRoles())) {
+      return AccessResult::allowed();
+    }
+    elseif ($entity->getMember($account)) {
+      return AccessResult::allowed();
+    }
+    else {
+      $manager = Drupal::service('ggroup.group_hierarchy_manager');
+      $super_groups = $manager->getGroupSupergroups($entity);
+
+      foreach ($super_groups as $super_group) {
+        if ($super_group->getMember($account)) {
+          return AccessResult::allowed();
+        }
+      }
+    }
+
+    return AccessResult::forbidden();
+  }
 }
 
 /**
@@ -234,6 +276,42 @@ function country_module_implements_alter(array &$implementations, $hook) {
     $password_policy = $implementations['password_policy'];
     unset($implementations['password_policy']);
     $implementations = array_merge(['password_policy' => $password_policy], $implementations);
+  }
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function country_views_post_render($view) {
+  // By doing this we override the title of UO - Countries listing pages with
+  // a value provided in the parent group.
+  //
+  // list_of_projects:block_3 is related to Universal Object - Countries for
+  // Geographical, Knowledge and Products objects.
+  //
+  // list_of_projects:block_5 is related to Universal Object - Countries for
+  // GA object.
+  //
+  // search_for_a_country_or_region:block_2 is related to UO Country subpage.
+  if (($view->id() == 'list_of_projects'
+      && ($view->current_display == 'block_3' || $view->current_display == 'block_5' || $view->current_display == 'block_6'))
+      || ($view->id() == 'search_for_a_country_or_region' && ($view->current_display == 'block_2' || $view->current_display == 'block_6'))
+  ) {
+
+    // The parent Region group is passed as argument, we load it to get its
+    // label value.
+    $group_id = reset($view->args);
+    if ($group_id) {
+      $group = \Drupal\group\Entity\Group::load($group_id);
+
+      if ($group->hasField('field_label')) {
+        $label = $group->get('field_label')->value;
+
+        if (!empty($label)) {
+          $view->setTitle($label);
+        }
+      }
+    }
   }
 }
 

@@ -1,0 +1,17 @@
+uuid: 9ad0b6ce-f213-4ad8-92e6-c8f713b08d99
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+  enforced:
+    config:
+      - user.role.closed_country_manager
+id: region-da24a751a
+label: 'Closed Country Manager'
+weight: 11
+internal: true
+audience: outsider
+group_type: region
+permissions_ui: false
+permissions: {  }

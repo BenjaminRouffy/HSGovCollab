@@ -1,0 +1,17 @@
+uuid: 43e17529-373a-4de3-9418-246c038e5bb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.conference_oxford
+id: governance_area-228384b69
+label: 'Conference Oxford'
+weight: -10
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

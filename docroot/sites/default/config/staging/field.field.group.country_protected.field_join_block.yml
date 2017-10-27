@@ -1,0 +1,25 @@
+uuid: f8fe7a12-a0bb-45ba-9049-2104923313bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_join_block
+    - group.type.country_protected
+id: group.country_protected.field_join_block
+field_name: field_join_block
+entity_type: group
+bundle: country_protected
+label: 'Join block'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: block_reference
+      display_name: entity_reference_block
+      arguments: {  }
+field_type: entity_reference

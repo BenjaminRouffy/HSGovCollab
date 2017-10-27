@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files_modal
     - field.field.group.country.field_anonymous_join_block
     - field.field.group.country.field_banner
     - field.field.group.country.field_bottom_link
@@ -11,17 +12,21 @@ dependencies:
     - field.field.group.country.field_country_options
     - field.field.group.country.field_date
     - field.field.group.country.field_faq
+    - field.field.group.country.field_geographical_object
     - field.field.group.country.field_group_status
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
+    - field.field.group.country.field_region_icon
     - field.field.group.country.field_pin_items
     - field.field.group.country.field_summary
     - field.field.group.country.field_summary_content
     - field.field.group.country.field_time_line
     - group.type.country
   module:
+    - conditional_fields
     - datetime
+    - entity_browser
     - field_group
     - geolocation
     - paragraphs
@@ -39,7 +44,7 @@ third_party_settings:
         - group_bottom
         - group_faq
       parent_name: ''
-      weight: 0
+      weight: 2
       format_type: tabs
       format_settings:
         id: ''
@@ -48,9 +53,11 @@ third_party_settings:
       label: 'Tabs panel'
     group_banner:
       children:
+        - field_geographical_object
         - field_banner
         - label
         - field_country_icon
+        - field_region_icon
         - translation
         - field_group_status
       parent_name: group_t
@@ -163,13 +170,14 @@ content:
     region: content
   field_banner:
     type: entity_reference_paragraphs
-    weight: 1
+    weight: 31
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
       add_mode: dropdown
       form_display_mode: banner
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_bottom_link:
@@ -181,26 +189,60 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     region: content
   field_content:
     type: entity_reference_paragraphs
-    weight: 9
+    weight: 10
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
       add_mode: dropdown
       form_display_mode: private_content
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_country_icon:
-    weight: 3
+    weight: 33
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: Country
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b94369df-17b3-4abc-a8f8-5911f5586c71:
+          dependee: field_geographical_object
+          settings:
+            state: required
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: group
+          bundle: country
+        977706dc-dfe0-4ec6-be2a-6f666229c051:
+          dependee: field_geographical_object
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: group
+          bundle: country
     type: entity_reference_autocomplete
     region: content
   field_country_options:
@@ -212,7 +254,24 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
-    third_party_settings: {  }
+      default_paragraph_type: _none
+    third_party_settings:
+      conditional_fields:
+        d54a47fb-864a-4011-9aa2-1a7337b783d7:
+          dependee: field_geographical_object
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: group
+          bundle: country
     region: content
   field_date:
     weight: 7
@@ -229,23 +288,32 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     region: content
+  field_geographical_object:
+    weight: 30
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_group_status:
-    weight: 28
+    weight: 36
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_infographic:
     type: entity_reference_paragraphs
-    weight: 9
+    weight: 26
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
       form_display_mode: private_content
+      default_paragraph_type: _none
     third_party_settings: {  }
     region: content
   field_join_block:
@@ -255,7 +323,7 @@ content:
     type: options_select
     region: content
   field_location:
-    weight: 8
+    weight: 9
     settings:
       default_longitude: '13.4050'
       default_latitude: '52.5200'
@@ -280,9 +348,55 @@ content:
       allow_override_map_settings: 0
       populate_address_field: ''
       target_address_field: null
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        5d08345d-8993-4f7d-a261-3ed8205022b3:
+          dependee: field_geographical_object
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: group
+          bundle: country
     type: geolocation_googlegeocoder
     region: content
+  field_region_icon:
+    weight: 34
+    settings:
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
+    third_party_settings:
+      conditional_fields:
+        bad813f0-678d-444e-8d4b-329f40b0098d:
+          dependee: field_geographical_object
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: group
+          bundle: country
+    type: entity_browser_file
   field_pin_items:
     type: entity_reference_paragraphs
     weight: 30
@@ -304,29 +418,31 @@ content:
     region: content
   field_summary_content:
     type: entity_reference_paragraphs
-    weight: 8
+    weight: 9
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_time_line:
     type: entity_reference_paragraphs
-    weight: 10
+    weight: 27
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     region: content
   label:
     type: string_textfield
-    weight: 2
+    weight: 32
     settings:
       size: 60
       placeholder: ''
@@ -334,18 +450,18 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 9
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 1
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   translation:
-    weight: 13
+    weight: 35
     region: content
     settings: {  }
     third_party_settings: {  }

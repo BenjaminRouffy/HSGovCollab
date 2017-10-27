@@ -1,0 +1,23 @@
+uuid: 9e8f61e4-ab68-41b1-8891-f90c73407a38
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_63e6677ef8307
+id: group_content.group_content_type_63e6677ef8307.default
+targetEntityType: group_content
+bundle: group_content_type_63e6677ef8307
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: news_events_listing
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

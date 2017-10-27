@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($form_id === 'node_document_form') {
+    foreach (array_keys($form['actions']) as $action) {
+      if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+        $form['actions'][$action]['#submit'][] = 'document_customization_add_new_document_custom_submit';
+      }
+    }
+    if ($route === 'entity.group_content.create_form') {
+      // Hide group's autocomplete.
+      $form['field_add_event_in_group']['#access'] = FALSE;
+    }
+  }
+  if ($form_id === 'node_document_edit_form') {
+    $form['field_add_event_in_group']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Custom validate handler for document create form used by authenticated users.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *
+ * @return bool
+ */
+function document_customization_custom_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  if($form['#form_id'] === 'node_document_form' || $form['#form_id'] === 'node_document_edit_form') {
+    $values = $form_state->getValues();
+    if (!empty($values['field_document_link']) && !empty($values['field_document_link'][0]['uri'])) {
+      return TRUE;
+    }
+    elseif (!empty($values['field_document_link']) && !empty($values['field_document_file'][0]['fids'])) {
+      return TRUE;
+    }
+    else {
+      $form_state->setError($form, t('Document link or Document file field shouldn\'t be empty.'));
+    }
+  }
+}
+
+/**
+ * Custom submit handler to attach document to group.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function document_customization_add_new_document_custom_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $selected_group = $form_state->getValue('field_add_event_in_group');
+
+  if (!empty($selected_group[0]['target_id'])) {
+    // Get the selected group object.
+    $selected_gid = $selected_group[0]['target_id'];
+    $group = Drupal::entityTypeManager()->getStorage('group')->load($selected_gid);
+
+    /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+    $entity = $form_state->getFormObject()->getEntity();
+
+    // Add the new event to the selected group.
+    $group->addContent($entity, 'group_node:document');
+  }
+}

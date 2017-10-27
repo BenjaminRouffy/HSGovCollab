@@ -1,0 +1,19 @@
+uuid: 197a2966-f21d-4a19-be24-863ea4fe76c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_label
+    - group.type.region
+id: group.region.field_label
+field_name: field_label
+entity_type: group
+bundle: region
+label: 'Name of the objects within the region'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

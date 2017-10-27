@@ -1,0 +1,19 @@
+uuid: 415e1504-d3bd-4e7f-8dbe-8db5562acc48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_label
+    - group.type.governance_area
+id: group.governance_area.field_label
+field_name: field_label
+entity_type: group
+bundle: governance_area
+label: 'Name of the objects within the region'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,120 @@
+uuid: 6c56d07a-2c73-40b6-b106-36f53f0ed423
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group
+    - views.view.article
+    - views.view.group_users
+  module:
+    - ctools
+    - ctools_block
+    - group_dashboard
+    - panels
+    - views
+id: group-panels_variant-8
+label: 'Collaboration - Closed'
+variant: panels_variant
+variant_settings:
+  blocks:
+    efe0f974-219f-48b7-9b33-4da58db109e9:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: dashboard
+      weight: 0
+      uuid: efe0f974-219f-48b7-9b33-4da58db109e9
+      context_mapping:
+        entity: group
+    992afdc3-6d72-40b5-88e2-07ea7ac5137d:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: based_on
+      region: dashboard_sidebar
+      weight: 0
+      uuid: 992afdc3-6d72-40b5-88e2-07ea7ac5137d
+      context_mapping:
+        entity: group
+    204fbea1-b82a-4476-9e9b-fbc686364190:
+      id: 'views_block:group_users-block_project_managers'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: dashboard_sidebar
+      weight: -1
+      uuid: 204fbea1-b82a-4476-9e9b-fbc686364190
+      context_mapping: {  }
+    1d2e2ef3-c2f2-437c-bab6-a1f3cb3fca08:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: bottom
+      region: content
+      weight: 0
+      uuid: 1d2e2ef3-c2f2-437c-bab6-a1f3cb3fca08
+      context_mapping:
+        entity: group
+    59f51cf4-664e-4492-bc43-4b2b8ae861ab:
+      id: 'views_block:article-parents_content'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 59f51cf4-664e-4492-bc43-4b2b8ae861ab
+      context_mapping: {  }
+    3e72b138-97e5-46d0-a409-478a963c3e53:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: view_mode_registration_block
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: 3e72b138-97e5-46d0-a409-478a963c3e53
+      context_mapping:
+        entity: group
+  id: panels_variant
+  uuid: 3ec12e44-918b-41ea-bf67-738577a6963e
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group-panels_variant-8
+  builder: standard
+page: group
+weight: 0
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      project_protected: project_protected
+    negate: false
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

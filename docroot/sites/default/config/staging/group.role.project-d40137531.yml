@@ -1,0 +1,17 @@
+uuid: 5aab8c84-fc35-4029-8b27-09483c93fb25
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project
+  enforced:
+    config:
+      - user.role.product_manager
+id: project-d40137531
+label: 'Product manager'
+weight: 10
+internal: true
+audience: outsider
+group_type: project
+permissions_ui: false
+permissions: {  }

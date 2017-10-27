@@ -1,0 +1,16 @@
+uuid: e22306ef-4cc0-497c-bd45-906f73d2cedf
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+  module:
+    - user
+id: group_content_type_bd1c359f1021e
+label: 'Universal Object - Country - Closed: Group membership'
+description: 'Adds users to groups as members.'
+group_type: country_protected
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1

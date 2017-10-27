@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.document.body
+    - field.field.node.document.field_add_event_in_group
     - field.field.node.document.field_category
     - field.field.node.document.field_content_date
     - field.field.node.document.field_document
     - field.field.node.document.field_organization
     - node.type.document
   module:
+    - conditional_fields
     - datetime
     - paragraphs
     - path
@@ -28,6 +30,15 @@ content:
     third_party_settings: {  }
     type: text_textarea_with_summary
     region: content
+  field_add_event_in_group:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_category:
     weight: 8
     settings: {  }
@@ -35,7 +46,7 @@ content:
     type: options_select
     region: content
   field_content_date:
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -49,19 +60,15 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
-    third_party_settings: {  }
+      default_paragraph_type: ''
+    third_party_settings:
+      conditional_fields: {  }
     region: content
   field_organization:
     weight: 9
     settings: {  }
     third_party_settings: {  }
     type: options_select
-    region: content
-  langcode:
-    type: language_select
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
     region: content
   path:
     type: path
@@ -78,7 +85,7 @@ content:
     region: content
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
@@ -92,6 +99,7 @@ content:
 hidden:
   created: true
   global_content: true
+  langcode: true
   promote: true
   sticky: true
   uid: true

@@ -1,0 +1,74 @@
+uuid: 087ac3fd-ec66-469b-a4c8-5d434abf0a3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.countries
+    - views.view.search_for_a_country_or_region
+  module:
+    - ctools
+    - group_customization
+    - group_dashboard
+    - panels
+    - views
+id: countries-panels_variant-1
+label: 'Closed Countries'
+variant: panels_variant
+variant_settings:
+  blocks:
+    16b8a1af-13da-4cff-a5d6-13fb3b892638:
+      id: 'views_block:search_for_a_country_or_region-block_6'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 16b8a1af-13da-4cff-a5d6-13fb3b892638
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 6e56e61d-8964-4444-b399-a0541223e42f
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: countries-panels_variant-1
+  builder: standard
+page: countries
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      region_protected: region_protected
+    negate: false
+    context_mapping:
+      group: group
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
+  -
+    id: access_by_group_roles
+    group_roles:
+      region_protected-member: region_protected-member
+      project_protected-member: project_protected-member
+      country_protected-member: country_protected-member
+      country_protected-manager: country_protected-manager
+      country_protected-stakeholder: country_protected-stakeholder
+      project_protected-manager: project_protected-manager
+      region_protected-manager: region_protected-manager
+      region_protected-stakeholder: region_protected-stakeholder
+      project_protected-stakeholder: project_protected-stakeholder
+    negate: 0
+    context_mapping:
+      group: group
+      user: current_user
+selection_logic: and
+static_context: {  }

@@ -35,21 +35,6 @@ class GroupContentSubscriber extends RouteSubscriberBase {
     }
 
     $routes = [
-      'view.subgroups.page_1',
-      'entity.group_content.subgroup_add_form',
-    ];
-
-    foreach ($routes as $item) {
-      $route = $collection->get($item);
-
-      if (!empty($route)) {
-        $route->addRequirements([
-          '_custom_access' => '\Drupal\group_dashboard\Controller\GroupAdminSubgroupController::AccessToCreateSubgroup',
-        ]);
-      }
-    }
-
-    $routes = [
       'entity.group_content.collection',
       'entity.group_content.add_page',
       'entity.group_content.create_page',

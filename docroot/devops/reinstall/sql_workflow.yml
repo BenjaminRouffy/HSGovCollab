@@ -41,7 +41,7 @@
 # CI server build.
 - name: Copy latest backup to build folder
   sudo: yes
-  shell: cp -f {{ backup_folder }}/{{ source_backup_name }} {{ pwd.stdout }}/latest.sql.gz
+  shell: cp -f {{ backup_folder }}/latest_local_{{ local_backup_environment }}.sql.gz {{ pwd.stdout }}/latest.sql.gz
   when: (pp_environment == "default" or pp_environment == "demo") and ((ansible_env.USER is defined and ansible_env.USER == "{{ ci_server_username }}") or (ansible_env.SUDO_USER is defined and ansible_env.SUDO_USER == "{{ ci_server_username }}"))
 
 - name: Importing from local backup

@@ -36,7 +36,7 @@ variant_settings:
       label_display: '0'
       view_mode: default
       region: content
-      weight: -2
+      weight: -3
       uuid: 417af5ad-94ff-449b-891f-b666ec7de0de
       context_mapping:
         entity: group
@@ -46,7 +46,7 @@ variant_settings:
       provider: addtoany
       label_display: '0'
       region: content
-      weight: -1
+      weight: -2
       uuid: ea1f3347-ed38-46ad-898a-b7c1c8780c33
       context_mapping: {  }
     a71e8292-99ae-4aa6-8608-4612e33aef4e:
@@ -100,6 +100,17 @@ variant_settings:
       uuid: 30aa4c35-e8b3-4955-8d72-33a53493d42a
       context_mapping:
         entity: group
+    d3cf1a0f-d354-4a90-9857-35a35d7fa387:
+      id: 'views_block:list_of_projects-block_5'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -1
+      uuid: d3cf1a0f-d354-4a90-9857-35a35d7fa387
+      context_mapping: {  }
   id: panels_variant
   uuid: 58f96e63-44d0-4083-813a-ef4caeff950d
   label: null

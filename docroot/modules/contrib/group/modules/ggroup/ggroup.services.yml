@@ -3,14 +3,14 @@ services:
     class: Drupal\ggroup\Access\SubgroupAddAccessCheck
     tags:
       - { name: access_check, applies_to: _subgroup_add_access }
-  ggroup.membership_loader.membership_subscriber:
-    class: 'Drupal\ggroup\GroupMembershipSubscriber'
-    arguments: ['@ggroup.group_hierarchy_manager', '@entity_type.manager']
+  ggroup.event_subscriber:
+    class: Drupal\ggroup\EventSubscriber\GroupEventSubscriber
+    arguments: ['@ggroup.group_hierarchy_manager']
     tags:
-      - { name: 'event_subscriber' }
+      - {name: event_subscriber}
   ggroup.group_hierarchy_manager:
-    class: 'Drupal\ggroup\GroupHierarchyManager'
-    arguments: ['@ggroup.group_graph_storage', '@entity_type.manager']
+    class: Drupal\ggroup\GroupHierarchyManager
+    arguments: ['@ggroup.group_graph_storage', '@entity_type.manager', '@group.membership_loader']
   ggroup.group_graph_storage:
-    class: 'Drupal\ggroup\Graph\SqlGroupGraphStorage'
+    class: Drupal\ggroup\Graph\SqlGroupGraphStorage
     arguments: ['@database']

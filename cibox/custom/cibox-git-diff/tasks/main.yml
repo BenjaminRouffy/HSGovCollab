@@ -10,4 +10,4 @@
 
   # @TODO Config path (config/staging) should be taken from drupal config, but we haven't a drupal instalation here yet.
   - name: Create git status file.
-    shell: cd {{ source }} && git diff {{ latest_tag.stdout }} HEAD --name-status | grep '{{ config_path }}' | sed 's/{{ project_docroot_folder }}\///g' > {{ source }}/config_stage_changes.log
+    shell: cd {{ source }} && git diff {{ latest_tag.stdout }} HEAD --name-status | grep "{{ config_path }}" | sed "s/{{ project_docroot_folder }}\///g" > {{ source }}/config_stage_changes.log

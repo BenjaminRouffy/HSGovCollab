@@ -1,0 +1,22 @@
+uuid: 4f91c834-2fdc-42ba-aa39-5589c6148728
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - group
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: group.field_geographical_object
+field_name: field_geographical_object
+entity_type: group
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

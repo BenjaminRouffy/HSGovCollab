@@ -1,0 +1,23 @@
+uuid: 25d50559-d09f-4ff7-a04a-42518123b1ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_product
+    - group.type.project_protected
+  module:
+    - group_content_field
+id: group.project_protected.field_product
+field_name: field_product
+entity_type: group
+bundle: project_protected
+label: Product
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

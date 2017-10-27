@@ -17,6 +17,7 @@ use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_views_data_alter().
@@ -50,9 +51,19 @@ function events_node_view(array &$build, EntityInterface $entity, EntityViewDisp
     }
     /** @var \Drupal\Core\Session\AccountInterface $account */
     $account = \Drupal::currentUser()->getAccount();
+    // List with groups that should have access to calendar page.
+    $groups = array(
+      'governance_area',
+      'region',
+      'country',
+      'project',
+      'region_protected',
+      'country_protected',
+      'project_protected',
+    );
     /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
     $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-    if ($check_by_group->check($account, ['governance_area'])) {
+    if ($check_by_group->check($account, $groups)) {
       $build['event_registrant'] = views_embed_view('event_sign_up', 'block_1', $entity->id());
     }
   }
@@ -67,9 +78,19 @@ function events_node_view_alter(array &$build, EntityInterface $entity, EntityVi
   if ('event' == $type) {
     /** @var \Drupal\Core\Session\AccountInterface $account */
     $account = \Drupal::currentUser()->getAccount();
+    // List with groups that should have access to calendar page.
+    $groups = array(
+      'governance_area',
+      'region',
+      'country',
+      'project',
+      'region_protected',
+      'country_protected',
+      'project_protected',
+    );
     /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
     $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-    if (!$check_by_group->check($account, ['governance_area'])) {
+    if (!$check_by_group->check($account, $groups)) {
       $build['like_and_dislike']['#access'] = FALSE;
     }
   }
@@ -138,8 +159,17 @@ function events_views_pre_render(ViewExecutable $view) {
     $plugin_id = 'group_node:event';
 
     if ($group->hasPermission("create $plugin_id entity", $account)) {
-      $route_params = ['group' => $group->id(), 'plugin_id' => $plugin_id];
-      $url = Url::fromRoute('entity.group_content.create_form', $route_params);
+      $url = Url::fromRoute('entity.group_content.create_form', array('group' => $group->id(), 'plugin_id' => $plugin_id));
+      $view->element['#attached']['drupalSettings']['events'] = [
+        'group_node_event_path' => Html::escape($url->toString()),
+      ];
+    }
+  }
+  elseif ($view->current_display === 'block_1') {
+    $account = \Drupal::currentUser();
+
+    if ($account->hasPermission("create event content")) {
+      $url = Url::fromRoute('node.add', array('node_type' => 'event'));
       $view->element['#attached']['drupalSettings']['events'] = [
         'group_node_event_path' => Html::escape($url->toString()),
       ];
@@ -190,5 +220,107 @@ function events_node_create(NodeInterface $node) {
     ];
     $value = DateRangeFieldItemList::processDefaultValue($default_value, $node, $field->getFieldDefinition());
     $field->setValue($value, TRUE);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($form_id === 'node_event_form') {
+    $account = Drupal::currentUser();
+    if (!$account->hasPermission('create paragraph content image')
+      || !$account->hasPermission('create paragraph content slider')) {
+      // Hide slider paragraphas authenticated users doesn't have access
+      // to add paragraphs. They should use the image field only.
+      $form['field_event_slider']['#access'] = FALSE;
+    }
+    if(in_array($route, array('node.add', 'page_manager.page_view_my_calendar', 'events.add_content_simplified'))) {
+      foreach (array_keys($form['actions']) as $action) {
+        if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+          $form['actions'][$action]['#submit'][] = 'events_add_new_event_custom_submit';
+        }
+      }
+    }
+    if($route === 'group.calendar') {
+      foreach (array_keys($form['actions']) as $action) {
+        if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+          $form['actions'][$action]['#submit'][] = 'events_popup_form_custom_submit_redirect';
+        }
+      }
+    }
+    if($route === 'entity.group_content.create_form') {
+      // Hide group's autocomplete.
+      $form['field_add_event_in_group']['#access'] = FALSE;
+    }
+  }
+  if ($form_id === 'node_event_edit_form') {
+    if($route === 'entity.node.edit_form') {
+      $account = Drupal::currentUser();
+      if (!$account->hasPermission('create paragraph content image')
+        || !$account->hasPermission('create paragraph content slider')) {
+        // Hide slider paragraphas authenticated users doesn't have access
+        // to add paragraphs. They should use the image field only.
+        $form['field_event_slider']['#access'] = FALSE;
+      }
+      // Hide group's autocomplete.
+      $form['field_add_event_in_group']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Custom form submit handler.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function events_popup_form_custom_submit_redirect($form, FormStateInterface $form_state) {
+  $group = $form_state->get('group');
+
+  $url = Url::fromRoute('group.calendar', array('group' => $group->id()), array('fragment' => 'calendar'));
+  $form_state->setRedirectUrl($url);
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function events_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'form_alter') {
+    // In events_form_alter is added custom submit handler which redirects user
+    // back to the calendar page. Form_alter in group module overrides this
+    // redirect and it is important the custom redirect to be executed last.
+    $group = $implementations['events'];
+    unset($implementations['events']);
+    $implementations['events'] = $group;
+  }
+}
+
+/**
+ * Custom submit handler to attach event to group.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function events_add_new_event_custom_submit($form, FormStateInterface $form_state) {
+  $selected_group = $form_state->getValue('field_add_event_in_group');
+
+  if (!empty($selected_group[0]['target_id'])) {
+    // Get the selected group object.
+    $selected_gid = $selected_group[0]['target_id'];
+    $group = Drupal::entityTypeManager()->getStorage('group')->load($selected_gid);
+
+    /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+    $entity = $form_state->getFormObject()->getEntity();
+
+    // Add the new event to the selected group.
+    $group->addContent($entity, 'group_node:event');
+
+    $url = Url::fromRoute('page_manager.page_view_my_calendar',
+      array('fragment' => 'calendar')
+    );
+
+    $form_state->setRedirectUrl($url);
   }
 }

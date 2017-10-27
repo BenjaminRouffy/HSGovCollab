@@ -1,0 +1,23 @@
+uuid: 17193394-d711-4491-a75c-f65f05503cac
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_28010aae7b90d
+id: group_content.group_content_type_28010aae7b90d.default
+targetEntityType: group_content
+bundle: group_content_type_28010aae7b90d
+mode: default
+content:
+  entity_id:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  uid: true

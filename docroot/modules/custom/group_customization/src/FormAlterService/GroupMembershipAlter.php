@@ -33,6 +33,15 @@ class GroupMembershipAlter implements FormAlterServiceSubmitInterface, FormAlter
       $group = $form_state->getFormObject()->getEntity()->getGroup();
 
       switch ($group->getGroupType()->id()) {
+        case 'region_protected':
+          $user->{in_array('region_protected-manager', $roles) ? 'addRole' : 'removeRole'}('closed_country_manager');
+          break;
+        case 'country_protected':
+          $user->{in_array('country_protected-manager', $roles) ? 'addRole' : 'removeRole'}('closed_country_manager');
+          break;
+        case 'project_protected':
+          $user->{in_array('project_protected-manager', $roles) ? 'addRole' : 'removeRole'}('closed_country_manager');
+          break;
         case 'country':
           $user->{in_array('country-admin', $roles) ? 'addRole' : 'removeRole'}('country_managers');
           break;

@@ -1,0 +1,21 @@
+uuid: 7385f045-3439-4c2f-ba02-80778c929951
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_based_on
+    - group.type.project_protected
+  module:
+    - options
+id: group.project_protected.field_based_on
+field_name: field_based_on
+entity_type: group
+bundle: project_protected
+label: 'Based on'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

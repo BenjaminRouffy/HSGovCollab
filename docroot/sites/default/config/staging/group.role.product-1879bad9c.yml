@@ -1,0 +1,17 @@
+uuid: 7b0e7984-f425-4995-a5ac-4e293455fb0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.product
+  enforced:
+    config:
+      - user.role.coordination_desk_users
+id: product-1879bad9c
+label: 'Coordination desk user'
+weight: 6
+internal: true
+audience: outsider
+group_type: product
+permissions_ui: false
+permissions: {  }

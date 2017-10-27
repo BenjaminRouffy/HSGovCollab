@@ -1,0 +1,17 @@
+uuid: 4b888eac-d35b-45eb-91af-4fb9011a314c
+langcode: en
+status: true
+dependencies:
+  module:
+    - notifications
+title: 'Default cron handler'
+id: notifications_cron
+weight: 0
+module: notifications
+callback: notifications_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

@@ -1,0 +1,14 @@
+uuid: fd457d13-8d01-400d-a118-21b100275455
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+id: region_protected-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: region_protected
+permissions_ui: true
+permissions: {  }

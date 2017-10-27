@@ -1,0 +1,17 @@
+uuid: 7ad0133e-86bc-4014-8649-09c20e0d90f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+  enforced:
+    config:
+      - user.role.governance_group_users
+id: project_protected-1f9d39d58
+label: 'Governance group user'
+weight: 5
+internal: true
+audience: outsider
+group_type: project_protected
+permissions_ui: false
+permissions: {  }

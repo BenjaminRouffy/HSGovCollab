@@ -93,12 +93,41 @@
         }
       },
       eventAfterAllRender: function (view) {
+        weekFullName = $('.fc-day-header').map(function() {
+          return $(this).text();
+        });
+
+        weekShortName = $('.fc-day-header').map(function() {
+          return $(this).text().substring(0, 3);
+        });
+
+        $('.fc-year-monthly-name a', _this.$view).click(function (event) {
+          event.preventDefault();
+        });
+        $('.fc-event-container a', _this.$view).addClass('use-ajax');
+        $('.fc-day-number.fc-today').wrapInner('<span class="today"></span>');
+
+        if (drupalSettings.events && drupalSettings.events.group_node_event_path) {
+          // Attach add event text to the days if we are in month view.
+          $('.fc-month-view .fc-day-number')
+              .prepend('<span class="add-event">' + Drupal.t('Add Event') + '</span>');
+
+          $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
+            // Do not bother in case of year view dots clicked.
+            if ($(this).hasClass('has-event') && $(this).closest('.fc-year-view').length) {
+              return false;
+            }
+
+            var date = $(this).attr('data-date'),
+                path = drupalSettings.events.group_node_event_path;
+            window.location.href = path + '?date=' + encodeURIComponent(date);
+          });
+        }
         if (view.type === 'year') {
           $('.fc-year-monthly-name a', _this.$view).click(function (event) {
             event.preventDefault();
           });
         }
-        $('.fc-day-number.fc-today', _this.$view).wrapInner('<span class="today"></span>');
         Drupal.attachBehaviors($calendar.get(0));
       },
       dayClick: function(date, jsEvent, view) {

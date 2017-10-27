@@ -1,0 +1,17 @@
+uuid: 5bfe07c4-0cd7-4b4b-81a8-f5c05b688d58
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+  enforced:
+    config:
+      - user.role.co_admin
+id: country-78c0173ed
+label: Co-Admin
+weight: 9
+internal: true
+audience: outsider
+group_type: country
+permissions_ui: false
+permissions: {  }

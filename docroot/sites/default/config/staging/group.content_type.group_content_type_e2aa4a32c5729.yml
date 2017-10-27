@@ -1,0 +1,48 @@
+uuid: 198bd2f6-d526-485f-bb66-cd4f4fd037fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+    - group.type.region_protected
+id: group_content_type_e2aa4a32c5729
+label: 'Universal Object - Region - Closed: Subgroup (Universal Object - Country - Closed)'
+description: 'Adds <em class="placeholder">Universal Object - Country - Closed</em> groups to groups both publicly and privately.'
+group_type: region_protected
+content_plugin: 'subgroup:country_protected'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false
+  parent_role_mapping:
+    region_protected-0ef571b28: country_protected-0ef571b28
+    region_protected-128ade90e: country_protected-128ade90e
+    region_protected-1879bad9c: country_protected-1879bad9c
+    region_protected-1f9d39d58: country_protected-1f9d39d58
+    region_protected-228384b69: country_protected-228384b69
+    region_protected-78c0173ed: country_protected-78c0173ed
+    region_protected-anonymous: country_protected-anonymous
+    region_protected-attendee: country_protected-attendee
+    region_protected-d40137531: country_protected-d40137531
+    region_protected-d75305099: country_protected-d75305099
+    region_protected-f08343669: country_protected-f08343669
+    region_protected-manager: country_protected-manager
+    region_protected-member: country_protected-member
+    region_protected-outsider: country_protected-outsider
+    region_protected-stakeholder: country_protected-stakeholder
+  child_role_mapping:
+    country_protected-0ef571b28: region_protected-0ef571b28
+    country_protected-128ade90e: region_protected-128ade90e
+    country_protected-1879bad9c: region_protected-1879bad9c
+    country_protected-1f9d39d58: region_protected-1f9d39d58
+    country_protected-228384b69: region_protected-228384b69
+    country_protected-78c0173ed: region_protected-78c0173ed
+    country_protected-anonymous: region_protected-anonymous
+    country_protected-attendee: region_protected-attendee
+    country_protected-d40137531: region_protected-d40137531
+    country_protected-d75305099: region_protected-d75305099
+    country_protected-f08343669: region_protected-f08343669
+    country_protected-manager: region_protected-manager
+    country_protected-member: region_protected-member
+    country_protected-outsider: region_protected-outsider
+    country_protected-stakeholder: region_protected-stakeholder

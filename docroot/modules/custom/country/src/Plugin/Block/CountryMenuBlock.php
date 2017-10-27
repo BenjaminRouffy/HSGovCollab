@@ -77,10 +77,17 @@ class CountryMenuBlock extends BlockBase {
         'active' => $group_url->toString() === $current_path,
       ];
 
+      // @TODO: Block cache has to be invalidated on node save.
+      $label = $this->t('Countries');
+      if ($group->hasField('field_label') && !empty($group->get('field_label')->value)) {
+        $label = $group->get('field_label')->value;
+      }
+
       $entities = [
-        'country' => $this->t('Countries'),
+        // Country menu item could be overridden by label field.
+        'country' => $label,
         'project' => $this->t('Collaborations'),
-        'news_and_event' => $this->t('News&Events'),
+        'news_and_event' => $this->t('Highlights'),
         'document' => $this->t('Documents'),
         'contact' => $this->t('Contacts'),
         'calendar' => $this->t('Calendar'),
@@ -92,7 +99,12 @@ class CountryMenuBlock extends BlockBase {
 
         switch($index) {
           case 'country':
-            $row = views_get_view_result('search_for_a_country_or_region', 'block_2');
+            if ($group->bundle() === 'region_protected') {
+              $row = views_get_view_result('list_of_projects', 'block_6');
+            }
+            else {
+              $row = views_get_view_result('search_for_a_country_or_region', 'block_2');
+            }
             break;
 
           case 'news_and_event':
@@ -101,6 +113,12 @@ class CountryMenuBlock extends BlockBase {
             }
             elseif ($group->bundle() == 'governance_area') {
               $row = views_get_view_result('news_and_events_group', 'ga_news_events');
+            }
+            elseif ($group->bundle() == 'region_protected') {
+              $row = views_get_view_result('news_and_events_group', 'closed_region_news_events_without_filter');
+            }
+            elseif ($group->bundle() == 'project_protected') {
+              $row = views_get_view_result('news_and_events_group', 'closed_collaboration_news_events');
             }
             else {
               $row = views_get_view_result('news_and_events_group', 'news_and_events_by_group');
@@ -114,13 +132,24 @@ class CountryMenuBlock extends BlockBase {
             elseif ($group->bundle() == 'governance_area') {
               $row = views_get_view_result('list_of_projects', 'block_4');
             }
+            elseif ($group->bundle() == 'region_protected') {
+              $row = views_get_view_result('list_of_projects', 'block_7');
+            }
+            elseif ($group->bundle() == 'country_protected') {
+              $row = views_get_view_result('list_of_projects', 'block_8');
+            }
             else {
               $row = views_get_view_result('list_of_projects', 'block_1');
             }
             break;
 
           case 'document':
-            $row = views_get_view_result('news_and_events_group', 'documents_by_group');
+            if ($group->bundle() == 'region_protected') {
+              $row = views_get_view_result('news_and_events_group', 'closed_documents_by_group');
+            }
+            else {
+              $row = views_get_view_result('news_and_events_group', 'documents_by_group');
+              }
             break;
 
           case 'contact':
@@ -129,8 +158,18 @@ class CountryMenuBlock extends BlockBase {
 
           case 'calendar':
             // @TODO Dependencies injection.
+            // List with groups that should have access to calendar page.
+            $groups = array(
+              'governance_area',
+              'region',
+              'country',
+              'project',
+              'region_protected',
+              'country_protected',
+              'project_protected',
+            );
             $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-            if ($group->getGroupType()->id() == 'governance_area' && $check_by_group->check($account, ['governance_area'])) {
+            if (in_array($group->getGroupType()->id(), $groups) && $check_by_group->check($account, $groups)) {
               $row = ['not-null'];
             }
             break;

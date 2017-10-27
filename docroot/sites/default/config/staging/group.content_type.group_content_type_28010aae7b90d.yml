@@ -1,0 +1,19 @@
+uuid: e6d2a230-3add-4da5-92c8-3c6e19ec0214
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+    - node.type.document
+  module:
+    - gnode
+    - node
+id: group_content_type_28010aae7b90d
+label: 'Universal Object - Country - Closed: Group node (Document)'
+description: 'Adds <em class="placeholder">Document</em> content to groups both publicly and privately.'
+group_type: country_protected
+content_plugin: 'group_node:document'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

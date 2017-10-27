@@ -1,0 +1,17 @@
+uuid: 868fd2f2-7806-4d4e-85f7-25cc97356594
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+  enforced:
+    config:
+      - user.role.projects_managers
+id: region_protected-128ade90e
+label: 'Collaboration manager'
+weight: 4
+internal: true
+audience: outsider
+group_type: region_protected
+permissions_ui: false
+permissions: {  }

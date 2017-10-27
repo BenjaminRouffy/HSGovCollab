@@ -1,0 +1,60 @@
+uuid: a3ff773b-b25f-446d-869a-14c6d83cd74e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.time_line
+    - field.field.group.project_protected.field_based_on
+    - field.field.group.project_protected.field_content
+    - field.field.group.project_protected.field_date
+    - field.field.group.project_protected.field_end_date
+    - field.field.group.project_protected.field_faq
+    - field.field.group.project_protected.field_join_block
+    - field.field.group.project_protected.field_knowledge_vault
+    - field.field.group.project_protected.field_product
+    - field.field.group.project_protected.field_project_icon
+    - field.field.group.project_protected.field_summary
+    - field.field.group.project_protected.field_summary_public
+    - field.field.group.project_protected.field_time_line
+    - group.type.project_protected
+  module:
+    - datetime
+    - text
+id: group.project_protected.time_line
+targetEntityType: group
+bundle: project_protected
+mode: time_line
+content:
+  field_date:
+    weight: 1
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_summary:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 300
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_based_on: true
+  field_content: true
+  field_end_date: true
+  field_faq: true
+  field_join_block: true
+  field_knowledge_vault: true
+  field_product: true
+  field_project_icon: true
+  field_summary_public: true
+  field_time_line: true
+  label: true
+  langcode: true
+  uid: true

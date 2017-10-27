@@ -72,9 +72,7 @@ function gnode_node_access(NodeInterface $node, $op, AccountInterface $account) 
     $groups[$group->id()] = $group;
   }
 
-  // From this point on you need group to allow you to perform the requested
-  // operation. If you are not granted access for a node belonging to a group,
-  // you should be denied access instead.
+  // From this point on you need group to allow you to perform the operation.
   switch ($op) {
     case 'view':
       foreach ($groups as $group) {
@@ -102,14 +100,18 @@ function gnode_node_access(NodeInterface $node, $op, AccountInterface $account) 
       break;
   }
 
-  return AccessResult::forbidden();
+  // Instead of outright forbidding access when no group granted it, we return
+  // a neutral access result to play nice with other modules. If the end result
+  // is still neutral, Drupal will deny access anyway unless the node grants
+  // system allows the operation in a last ditch effort to determine access.
+  return AccessResult::neutral();
 }
 
 /**
  * Implements hook_node_grants().
  *
  * We define the following grants:
- * - 'gnode:NODE_TYPE': Grants view access for this node type.
+ * - 'gnode:NODE_TYPE': Grants view and update or delete any access to nodes.
  * - 'gnode_unpublished:NODE_TYPE': Grants view access to unpublished nodes.
  * - 'gnode_author:UID:NODE_TYPE': Grants update or delete access to authors.
  * - 'gnode_bypass': Given to anyone with the 'bypass group access' permission.

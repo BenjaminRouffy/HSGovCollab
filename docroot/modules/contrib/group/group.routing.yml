@@ -1,6 +1,6 @@
 # General routes for the Group module.
 group.settings:
-  path: 'admin/group/settings'
+  path: '/admin/group/settings'
   defaults:
     _form: '\Drupal\group\Form\GroupSettingsForm'
     _title: 'Group settings'
@@ -33,6 +33,14 @@ entity.group_type.permissions_form:
   defaults:
     _form: '\Drupal\group\Form\GroupPermissionsTypeSpecificForm'
     _title: 'Edit group type permissions'
+  requirements:
+    _permission: 'administer group'
+
+entity.group_type.outsider_permissions_form:
+  path: '/admin/group/types/manage/{group_type}/permissions/outsider'
+  defaults:
+    _form: '\Drupal\group\Form\GroupPermissionsOutsiderForm'
+    _title: 'Edit advanced outsider permissions'
   requirements:
     _permission: 'administer group'
 

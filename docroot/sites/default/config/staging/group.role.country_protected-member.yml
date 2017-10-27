@@ -1,0 +1,27 @@
+uuid: 6fbcc45c-9ab3-4701-81c6-df51a6adcf09
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+id: country_protected-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: country_protected
+permissions_ui: true
+permissions:
+  0: 'view group'
+  1: 'view group_node:document entity'
+  2: 'view group_node:document content'
+  3: 'view group_node:event entity'
+  4: 'view group_node:event content'
+  5: 'view group_node:news entity'
+  6: 'view group_node:news content'
+  7: 'access to view all group content'
+  8: 'view subgroup:project_protected content'
+  9: 'view subgroup:project_protected entity'
+  11: 'create group_node:document entity'
+  14: 'create group_node:event entity'
+  17: 'create group_node:news entity'

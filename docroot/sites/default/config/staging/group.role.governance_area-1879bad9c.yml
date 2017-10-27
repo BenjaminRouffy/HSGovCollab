@@ -1,0 +1,17 @@
+uuid: 88996f20-6840-4fe9-bd1f-af37e6077ea4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.coordination_desk_users
+id: governance_area-1879bad9c
+label: 'Coordination desk user'
+weight: 6
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

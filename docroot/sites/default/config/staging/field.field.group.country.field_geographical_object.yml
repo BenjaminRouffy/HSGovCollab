@@ -1,0 +1,23 @@
+uuid: 5154fb3a-b5cc-4b4b-b065-16eb9b150d27
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_geographical_object
+    - group.type.country
+id: group.country.field_geographical_object
+field_name: field_geographical_object
+entity_type: group
+bundle: country
+label: 'Geographical object'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

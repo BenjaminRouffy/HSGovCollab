@@ -1,0 +1,17 @@
+uuid: 1f45a071-aaa9-4df6-8103-ea6c041d8c22
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+  enforced:
+    config:
+      - user.role.specific_users
+id: region_protected-d75305099
+label: 'Specific users'
+weight: 7
+internal: true
+audience: outsider
+group_type: region_protected
+permissions_ui: false
+permissions: {  }

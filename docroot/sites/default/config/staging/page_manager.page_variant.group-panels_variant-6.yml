@@ -1,0 +1,134 @@
+uuid: 8412bea5-5377-40f2-8ee3-83fbe631402a
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group
+    - views.view.list_of_projects
+    - views.view.news_and_events_group
+  module:
+    - addtoany
+    - ctools
+    - ctools_block
+    - panels
+    - views
+id: group-panels_variant-6
+label: 'Region - Closed'
+variant: panels_variant
+variant_settings:
+  blocks:
+    77a0d59c-ed1f-443a-ae37-4f912f8d8093:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: banner
+      region: banner
+      weight: 0
+      uuid: 77a0d59c-ed1f-443a-ae37-4f912f8d8093
+      context_mapping:
+        entity: group
+    bda621bc-3ae2-4183-9c5e-34719dbeb4f4:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: -2
+      uuid: bda621bc-3ae2-4183-9c5e-34719dbeb4f4
+      context_mapping:
+        entity: group
+    a7846fcb-691a-4474-9e78-cf53a256bbee:
+      id: addtoany_block
+      label: 'AddToAny buttons'
+      provider: addtoany
+      label_display: '0'
+      region: content
+      weight: -3
+      uuid: a7846fcb-691a-4474-9e78-cf53a256bbee
+      context_mapping: {  }
+    31c3f19b-96bc-4bc1-844d-a927d6d7568f:
+      id: 'views_block:list_of_projects-block_6'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -1
+      uuid: 31c3f19b-96bc-4bc1-844d-a927d6d7568f
+      context_mapping: {  }
+    9bc6756f-de3b-4d34-8846-f93fb6935014:
+      id: 'views_block:list_of_projects-block_7'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 9bc6756f-de3b-4d34-8846-f93fb6935014
+      context_mapping: {  }
+    0d3133ab-365e-44fe-b5cb-2912d1058282:
+      id: 'views_block:news_and_events_group-closed_region_news_events_without_filter'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 1
+      uuid: 0d3133ab-365e-44fe-b5cb-2912d1058282
+      pager: view
+      context_mapping: {  }
+    64ae00d0-33b3-4b60-b470-6ec6e319f07a:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: bottom
+      region: content
+      weight: 2
+      uuid: 64ae00d0-33b3-4b60-b470-6ec6e319f07a
+      context_mapping:
+        entity: group
+    f133f88b-1d79-4a00-80ce-301279082dd9:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: f133f88b-1d79-4a00-80ce-301279082dd9
+      context_mapping:
+        entity: group
+  id: panels_variant
+  uuid: f03970d6-7f77-41d1-905e-28d1196f5002
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group-panels_variant-6
+  builder: standard
+page: group
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:group'
+    bundles:
+      region_protected: region_protected
+    negate: false
+    context_mapping:
+      group: group
+selection_logic: and
+static_context: {  }

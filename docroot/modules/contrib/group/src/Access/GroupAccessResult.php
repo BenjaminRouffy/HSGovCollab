@@ -64,7 +64,7 @@ abstract class GroupAccessResult extends AccessResult {
     }
     else {
       foreach ($permissions as $permission) {
-        if ($account->hasPermission($permission) || $group->hasPermission($permission, $account)) {
+        if ($group->hasPermission($permission, $account)) {
           $access = TRUE;
           break;
         }

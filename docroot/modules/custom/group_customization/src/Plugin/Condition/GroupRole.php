@@ -120,7 +120,7 @@ class GroupRole extends ConditionPluginBase implements ContainerFactoryPluginInt
       return TRUE;
     }
 
-    $group = $this->getContextValue('group');
+    $route_group = $this->getContextValue('group');
     $user = $this->getContextValue('user');
 
     $bypass = AccessResult::allowedIfHasPermissions($user, ['bypass group access']);
@@ -129,14 +129,19 @@ class GroupRole extends ConditionPluginBase implements ContainerFactoryPluginInt
       return TRUE;
     }
 
-    // Check if current user has group roles.
-    $user_roles = [];
-    $memberships = $group->getMember($user);
+    $manager = \Drupal::service('ggroup.group_hierarchy_manager');
 
-    if (!empty($memberships)) {
-      foreach ($memberships->getRoles() as $role) {
-        if (in_array($role->id(), $this->configuration['group_roles'])) {
-          $user_roles[] = $role->id();
+    $groups = $manager->getGroupSupergroups($route_group->id());
+    $groups[] = $route_group;
+
+    foreach ($groups as $group) {
+      $memberships = $group->getMember($user);
+
+      if ($memberships) {
+        foreach ($memberships->getRoles() as $role) {
+          if (in_array($role->id(), $this->configuration['group_roles'])) {
+            $user_roles[] = $role->id();
+          }
         }
       }
     }

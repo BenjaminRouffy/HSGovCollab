@@ -1,0 +1,74 @@
+uuid: 55a55188-d660-47fa-a78c-66e17a0344b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.country_protected.field_banner
+    - field.field.group.country_protected.field_bottom_link
+    - field.field.group.country_protected.field_content
+    - field.field.group.country_protected.field_date
+    - field.field.group.country_protected.field_faq
+    - field.field.group.country_protected.field_group_status
+    - field.field.group.country_protected.field_infographic
+    - field.field.group.country_protected.field_join_block
+    - field.field.group.country_protected.field_region_icon
+    - field.field.group.country_protected.field_summary
+    - field.field.group.country_protected.field_summary_content
+    - field.field.group.country_protected.field_time_line
+    - group.type.country_protected
+  module:
+    - entity_reference_revisions
+    - text
+id: group.country_protected.default
+targetEntityType: group
+bundle: country_protected
+mode: default
+content:
+  field_content:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_infographic:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_summary:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_summary_content:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_bottom_link: true
+  field_date: true
+  field_faq: true
+  field_group_status: true
+  field_join_block: true
+  field_region_icon: true
+  field_time_line: true
+  label: true
+  langcode: true
+  uid: true

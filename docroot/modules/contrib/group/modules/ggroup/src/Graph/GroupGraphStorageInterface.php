@@ -8,37 +8,42 @@ namespace Drupal\ggroup\Graph;
 interface GroupGraphStorageInterface {
 
   /**
-   * Relates group A and group B such that group B will be a child of group A.
-   * Inferred relationships based on existing relationships to group A and
-   * group B will also be created.
+   * Relates the parent group and the child group.
    *
-   * @param int $a
+   * Inferred relationships based on existing relationships to the parent group
+   * and the child group will also be created.
+   *
+   * @param int $parent_group_id
    *   The ID of the parent group.
-   * @param int $b
+   * @param int $child_group_id
    *   The ID of the child group.
-   * @return int|FALSE
-   *   The ID of the graph edge relating parent group A to child group B or
+   *
+   * @return int|false
+   *   The ID of the graph edge relating the parent group to the child group or
    *   FALSE if the relationship could not be created.
    */
-  public function addEdge($a, $b);
+  public function addEdge($parent_group_id, $child_group_id);
 
   /**
-   * Removes the relationship between group A and group B. Group B will no
-   * longer be a child of group A. Inferred relationships based on existing
-   * relationships to group A and group B will also be removed.
+   * Removes the relationship between the parent group and the child group.
    *
-   * @param int $a
+   * The child group will no longer be a child of the parent group. Inferred
+   * relationships based on existing relationships to the parent group will
+   * also be removed.
+   *
+   * @param int $parent_group_id
    *   The ID of the parent group.
-   * @param int $b
+   * @param int $child_group_id
    *   The ID of the child group.
    */
-  public function removeEdge($a, $b);
+  public function removeEdge($parent_group_id, $child_group_id);
 
   /**
    * Gets all descendant child groups of the given parent group.
    *
    * @param int $group_id
    *   The parent group ID.
+   *
    * @return int[]
    *   An array of descendant child group IDs.
    */
@@ -49,6 +54,7 @@ interface GroupGraphStorageInterface {
    *
    * @param int $group_id
    *   The child group ID.
+   *
    * @return int[]
    *   An array of ancestor parent group IDs.
    */
@@ -61,6 +67,7 @@ interface GroupGraphStorageInterface {
    *   The group whose ancestry status will be checked.
    * @param int $b
    *   The group for which ancestry status will be checked against.
+   *
    * @return bool
    *   TRUE if group A is an ancestor of group B.
    */
@@ -73,9 +80,26 @@ interface GroupGraphStorageInterface {
    *   The group whose descent status will be checked.
    * @param int $b
    *   The group for which descent status will be checked against.
+   *
    * @return bool
    *   TRUE if group A is an descendant of group B.
    */
   public function isDescendant($a, $b);
+
+  /**
+   * Use the Breadth-first search algoritm to find the path between groups.
+   *
+   * @param int $parent_group_id
+   *   The ID of the parent group.
+   * @param int $child_group_id
+   *   The ID of the child group.
+   *
+   * @return array[]
+   *   An nested array containing a path between the groups.
+   *
+   * @see https://en.wikipedia.org/wiki/Breadth-first_search
+   * @see https://www.sitepoint.com/data-structures-4/
+   */
+  public function getPath($parent_group_id, $child_group_id);
 
 }

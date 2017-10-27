@@ -5,7 +5,9 @@
         {% if key == 0 %}
           <div class="country-content-wrapper">
             {% if 'country' == group_bundle  %}
-              {{ group_icon }}
+              <div class="country-icon-wrapper">
+                <img src="{{ file_url(group_icon) }}">
+              </div>
             {% elseif group_icon is not empty %}
               <img src="{{ file_url(group_icon) }}">
             {% else %}

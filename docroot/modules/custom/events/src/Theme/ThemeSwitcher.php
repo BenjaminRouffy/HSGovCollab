@@ -13,7 +13,8 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
   public function applies(RouteMatchInterface $route_match) {
     $routes = array('node.add', 'entity.node.edit_form', 'entity.group_content.create_form');
     if (in_array($route_match->getRouteName(), $routes)) {
-      $parameters = $route_match->getParameter('node_type');
+      $node_type_parameter = $route_match->getParameter('node_type');
+      $node_parameter = $route_match->getParameter('node');
       $user = \Drupal::currentUser();
 
       $user_roles = $user->getRoles();
@@ -33,7 +34,15 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
         }
       }
       else {
-        $node_type = $parameters->get('type');
+        if ($node_type_parameter) {
+          $node_type = $node_type_parameter->get('type');
+        }
+        elseif (isset($node_parameter)) {
+          $node_type = $node_parameter->getType();
+        }
+        else {
+          return FALSE;
+        }
       }
 
       // Node types which should be displayed on different theme.
@@ -47,7 +56,7 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
       if (in_array($node_type, $types)) {
         // If the group is set, assume that the user is accessing the form
         // from group page (calendar, news, etc.).
-        if ($group) {
+        if (isset($group)) {
           $member = $group->getMember($user);
           $member_roles = $member->getRoles();
           foreach ($member_roles as $role) {

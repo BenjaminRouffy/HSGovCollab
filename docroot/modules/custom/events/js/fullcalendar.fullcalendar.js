@@ -128,7 +128,6 @@
             event.preventDefault();
           });
         }
-        $('.fc-day-number.fc-today', _this.$view).wrapInner('<span class="today"></span>');
         Drupal.attachBehaviors($calendar.get(0));
       },
       dayClick: function(date, jsEvent, view) {

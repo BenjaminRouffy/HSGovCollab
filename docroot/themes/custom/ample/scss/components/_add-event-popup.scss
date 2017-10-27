@@ -1,72 +1,10 @@
-.add-event-popup-form {
-  display: none;
-
-  h4 {
-    color: #283b44;
-    display: block;
-    margin-bottom: 10px;
-    letter-spacing: .5px;
-    font-size: 1.1375rem;
-    font-family: Oswald, sans-serif;
-    font-weight: normal;
-    text-align: left;
-  }
-
-  fieldset {
-    margin: 0;
-    border: 1px solid #75a8c0;
-  }
-
-  .filter-wrapper {
-    display: none;
-  }
-
-  .tabledrag-toggle-weight-wrapper {
-    display: none;
-  }
-
-  .field-multiple-table {
-    width: 100%;
-
-    .field-multiple-drag {
-      display: none;
-    }
-  }
-
-  .fieldset-wrapper {
-    & > h4,
-    & > div {
-      display: inline-block;
-      margin-top: 5px;
-      width: 45%;
-      vertical-align: top;
-    }
-  }
-
-  .form-date {
-    margin-bottom: 8px;
-  }
-
-  .form-submit {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .form-time {
-    margin-bottom: 15px;
-    border: 1px solid #75a8c0;
-  }
+.fc-day-number {
+  cursor: pointer;
 }
 
-.add-event-calendar {
-  .fc-day-number {
-    cursor: pointer;
-  }
-
-  .add-event {
-    display: inline-block;
-    padding-right: 35px;
-  }
+.add-event {
+  display: inline-block;
+  padding-right: 35px;
 }
 
 .has-event-calendar-popup {

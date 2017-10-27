@@ -1,24 +1,27 @@
-uuid: 662e3433-6248-43c8-aa05-43bcfa264d96
+uuid: ea660e6f-e410-4101-9f79-a32498a4eb07
 langcode: en
 status: true
 dependencies:
   config:
-    - group.type.country_protected
-id: country_protected-stakeholder
-label: Stakeholder
-weight: -8
+    - group.type.region_protected
+id: region_protected-attendee
+label: Attendee
+weight: -10
 internal: false
 audience: member
-group_type: country_protected
+group_type: region_protected
 permissions_ui: true
 permissions:
   - 'view group'
+  - 'create group_node:document entity'
   - 'view group_node:document entity'
-  - 'view group_node:document content'
+  - 'create group_node:event entity'
   - 'view group_node:event entity'
-  - 'view group_node:event content'
+  - 'create group_node:news entity'
   - 'view group_node:news entity'
   - 'view group_node:news content'
   - 'access to view all group content'
   - 'view subgroup:project_protected content'
   - 'view subgroup:project_protected entity'
+  - 'view subgroup:country_protected content'
+  - 'view subgroup:country_protected entity'

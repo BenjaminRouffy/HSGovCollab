@@ -134,6 +134,7 @@ class GroupRole extends ConditionPluginBase implements ContainerFactoryPluginInt
     $groups = $manager->getGroupSupergroups($route_group->id());
     $groups[] = $route_group;
 
+    $user_roles = [];
     foreach ($groups as $group) {
       $memberships = $group->getMember($user);
 

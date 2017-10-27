@@ -1955,6 +1955,7 @@ display:
         relationships: false
         title: false
         arguments: false
+        query: false
       filter_groups:
         operator: AND
         groups:
@@ -2044,6 +2045,14 @@ display:
             1: '1'
           entity_type: group_content
           plugin_id: group_id_depth
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:

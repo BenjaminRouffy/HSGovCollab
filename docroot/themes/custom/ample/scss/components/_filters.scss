@@ -1,4 +1,5 @@
 .view-news-and-events,
+.view-project,
 .view-my-projects,
 .view-contacts,
 .view-knowledge-vault,
@@ -511,7 +512,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: laptop-small)) {
+@include breakpoint-for('.view-news-and-events, .view-project, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: laptop-small)) {
   .wrapper-filters {
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -544,7 +545,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: tablet)) {
+@include breakpoint-for('.view-news-and-events, .view-project, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: tablet)) {
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
@@ -575,7 +576,7 @@
   }
 }
 
-@include breakpoint-for('.view-news-and-events, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: mobileL)) {
+@include breakpoint-for('.view-news-and-events, .view-project, .view-my-projects, .view-contacts, .view-governance-area-calendar', (to: mobileL)) {
   .wrapper-filters {
     > div {
       max-width: 100%;
@@ -602,6 +603,7 @@
   }
 }
 
+.view-project,
 .view-my-projects,
 .view-knowledge-vault,
 .view-governance-area-calendar {
@@ -710,7 +712,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: laptop-small)) {
+@include breakpoint-for('.view-project, .view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: laptop-small)) {
   .wrapper-filters {
     flex-wrap: wrap;
     justify-content: center;
@@ -729,7 +731,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: tablet)) {
+@include breakpoint-for('.view-project, .view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: tablet)) {
   .wrapper-filters {
     > div {
       max-width: calc(50% - 20px);
@@ -753,7 +755,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: mobileL)) {
+@include breakpoint-for('.view-project, .view-my-projects, .view-knowledge-vault, .view-governance-area-calendar', (to: mobileL)) {
   .wrapper-filters {
     > div {
       margin-left: 0;
@@ -763,6 +765,7 @@
   }
 }
 
+.view-project,
 .view-my-projects {
   .wrapper-filters {
     .mobile &,
@@ -779,7 +782,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects', (to: laptop-small)) {
+@include breakpoint-for('.view-project, .view-my-projects', (to: laptop-small)) {
   .wrapper-filters {
     > div {
       .mobile &,
@@ -791,7 +794,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects', (to: tablet)) {
+@include breakpoint-for('.view-project, .view-my-projects', (to: tablet)) {
   .wrapper-filters {
     > div {
       .mobile &,
@@ -803,7 +806,7 @@
   }
 }
 
-@include breakpoint-for('.view-my-projects', (to: mobileL)) {
+@include breakpoint-for('.view-project, .view-my-projects', (to: mobileL)) {
   .wrapper-filters {
     > div {
       .mobile &,

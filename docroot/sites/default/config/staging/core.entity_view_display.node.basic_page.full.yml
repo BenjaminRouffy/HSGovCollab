@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.full
+    - field.field.node.basic_page.field_anonymous_join_block
     - field.field.node.basic_page.field_author
     - field.field.node.basic_page.field_banner
     - field.field.node.basic_page.field_bottom_link
@@ -21,6 +22,15 @@ targetEntityType: node
 bundle: basic_page
 mode: full
 content:
+  field_anonymous_join_block:
+    type: entity_reference_entity_view
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      view_mode: view_mode_registration_block
+      link: false
+    third_party_settings: {  }
   field_author:
     type: author_string
     weight: 0
@@ -40,7 +50,7 @@ content:
     region: content
   field_bottom_link:
     type: entity_reference_revisions_entity_view
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       view_mode: default
@@ -67,7 +77,7 @@ content:
     region: content
   field_time_line:
     type: entity_reference_revisions_entity_view
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       view_mode: default
@@ -75,7 +85,7 @@ content:
     third_party_settings: {  }
     region: content
   links:
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

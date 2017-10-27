@@ -1,0 +1,21 @@
+uuid: 89af837f-b4ef-4e3a-9209-02b2f25e1a13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_autopost
+    - node.type.event
+  module:
+    - options
+id: node.event.field_social_autopost
+field_name: field_social_autopost
+entity_type: node
+bundle: event
+label: 'Social autopost'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

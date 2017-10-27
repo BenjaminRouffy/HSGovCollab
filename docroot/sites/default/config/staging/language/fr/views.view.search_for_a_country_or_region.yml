@@ -1,0 +1,86 @@
+display:
+  default:
+    display_options:
+      filters:
+        combine_1:
+          admin_label: 'Recherche d''un pays ou d''une région'
+          expose:
+            label: 'Recherche d''un pays ou d''une région'
+      empty:
+        area_text_custom:
+          content: "<div class=\"empty-result\">\r\n      <p>Rien n’a été trouvé</p>\r\n\r\n    </div>"
+  block_1:
+    display_title: Pays
+    display_options:
+      filters:
+        combine_1:
+          expose:
+            label: 'Recherche d''un pays ou d''une région'
+          admin_label: 'Recherche d''un pays ou d''une région'
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+  block_2:
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      title: 'Pays de la région'
+      filters:
+        combine_1:
+          admin_label: 'Recherche d''un pays ou d''une région'
+          expose:
+            label: 'Recherche d''un pays'
+    display_title: 'Pays de la région'
+  products:
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      title: Produits
+    display_title: Produits
+  projects:
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Rien n’a été trouvé'
+      title: Projets
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+    display_title: Projets
+  block_4:
+    display_title: 'Mes pays'
+    display_options:
+      filters:
+        combine_1:
+          admin_label: 'Recherche d''un pays ou d''une région'
+          expose:
+            label: 'Recherche d''un pays ou d''une région'
+      header:
+        custom_to_page:
+          title: Edition
+        area_text_custom:
+          content: 'Filtrer selon:'
+  block_5:
+    display_title: 'Mes régions'
+    display_options:
+      filters:
+        combine_1:
+          expose:
+            label: 'Recherche d''un pays ou d''une région'
+          admin_label: 'Recherche d''un pays ou d''une région'
+      header:
+        custom_to_page:
+          title: Edition
+        area_text_custom:
+          content: 'Filtrer selon:'
+  block_3:
+    display_options:
+      filters:
+        combine_1:
+          expose:
+            label: 'Recherche d''un pays ou d''une région'
+          admin_label: 'Recherche d''un pays ou d''une région'
+    display_title: Régions
+label: 'Recherche d''un pays ou d''une région'

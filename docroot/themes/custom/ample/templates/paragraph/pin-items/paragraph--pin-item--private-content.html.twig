@@ -1,0 +1,28 @@
+{% if private_content is null %}
+  {% set target = is_external ? 'target="_blank" rel="nofollow"' : '' %}
+  <div class="pin-item">
+    <i class="pin-icon"></i>
+    <h2 role="heading">
+      {{ content.field_title|field_value }}
+    </h2>
+
+    {% if content.field_body|field_value %}
+      <div class="description">
+        {{ content.field_body|field_value }}
+      </div>
+    {% endif %}
+
+    {% if content.field_document|field_value %}
+      {{ content.field_document|field_value }}
+    {% endif %}
+
+    {% if content.field_link|field_value %}
+      <div class="link">
+        <a href="{{ content.field_link.0['#url'] }}" {{ target }}>
+          {{ content.field_link.0['#title'] }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+{% endif %}

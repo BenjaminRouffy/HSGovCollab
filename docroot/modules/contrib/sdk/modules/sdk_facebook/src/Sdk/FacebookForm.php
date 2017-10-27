@@ -82,6 +82,7 @@ class FacebookForm extends BaseForm {
         'read_page_mailboxes' => $this->t('Read page mailboxes'),
         'manage_pages' => $this->t('Manage pages'),
         'publish_pages' => $this->t('Publish pages'),
+        'publish_stream' => $this->t('Publish stream'),
         'publish_actions' => $this->t('Publish actions'),
         'rsvp_event' => $this->t('RSVP event'),
         'pages_show_list' => $this->t('Show pages list'),

@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.content_image
     - paragraphs.paragraphs_type.content_text
     - paragraphs.paragraphs_type.slider
+    - paragraphs.paragraphs_type.webform
   module:
     - entity_reference_revisions
 id: node.news.field_content_paragraph
@@ -27,6 +28,7 @@ settings:
       content_image: content_image
       content_text: content_text
       slider: slider
+      webform: webform
     target_bundles_drag_drop:
       content_image:
         enabled: true
@@ -51,5 +53,53 @@ settings:
         weight: 15
       video:
         weight: 16
+        enabled: false
+      webform:
+        enabled: true
+        weight: 25
+      cd_user:
+        weight: 26
+        enabled: false
+      country_and_project:
+        weight: 29
+        enabled: false
+      country_option:
+        weight: 30
+        enabled: false
+      faq_item:
+        weight: 33
+        enabled: false
+      file:
+        weight: 34
+        enabled: false
+      infographic_item:
+        weight: 36
+        enabled: false
+      link:
+        weight: 37
+        enabled: false
+      link_to_file:
+        weight: 38
+        enabled: false
+      organisation:
+        weight: 40
+        enabled: false
+      pin_item:
+        weight: 41
+        enabled: false
+      pin_items:
+        weight: 42
+        enabled: false
+      slider_item:
+        weight: 44
+        enabled: false
+      software_application:
+        weight: 45
+        enabled: false
+      time_line:
+        weight: 46
+        enabled: false
+      timeline_social:
+        weight: 47
         enabled: false
 field_type: entity_reference_revisions

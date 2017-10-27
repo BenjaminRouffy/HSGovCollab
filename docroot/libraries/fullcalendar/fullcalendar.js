@@ -57,7 +57,8 @@ var defaults = {
 	maxDate: null,
 
 	// year view
-	firstDay: 0, // start day of the week (Sunday)
+	firstDay: null, // start day of the week (0 - Sunday)
+	firstWeek: null, // start week of the year (6 - Saturday)
 	yearTitleFormat: 'YYYY',
 	yearFormat: 'YYYY',
 
@@ -7053,9 +7054,10 @@ function Calendar(element, instanceOptions) {
 	if (options.dayNamesShort) {
 		localeData._weekdaysShort = options.dayNamesShort;
 	}
-	if (options.firstDay != null) {
-		var _week = createObject(localeData._week); // _week: { dow: # }
-		_week.dow = options.firstDay;
+	if (options.firstDay !== null || options.firstWeek !== null) {
+    var _week = createObject(localeData._week); // _week: { dow: #, doy: # }
+		_week.dow = options.firstDay || 0;
+		_week.doy = options.firstWeek || 6;
 		localeData._week = _week;
 	}
 
@@ -9924,6 +9926,7 @@ fcViews.year = View.extend({
 	dit: null,
 
 	firstDay: null,
+	firstWeek: null,
 	firstMonth: null,
 	lastMonth: null,
 	yearColumns: 2,
@@ -9958,6 +9961,7 @@ fcViews.year = View.extend({
 			this.dit = 0;
 		}
 		this.firstDay = parseInt(this.opt('firstDay'), 10);
+		this.firstWeek = parseInt(this.opt('firstWeek'), 10);
 		this.firstMonth = parseInt(this.opt('firstMonth'), 10) || 0;
 		this.lastMonth = this.opt('lastMonth') || this.firstMonth+12;
 		this.hiddenMonths = this.opt('hiddenMonths') || [];
@@ -9974,7 +9978,7 @@ fcViews.year = View.extend({
 	// Computes what the title at the top of the calendar should be for this view
 	computeTitle: function() {
 		if (this.opt('yearTitleFormat') !== null) {
-			var title = this.intervalStart.locale(this.lang).format(this.opt('yearTitleFormat'));
+			var title = this.intervalStart.format(this.opt('yearTitleFormat'));
 			var endMonth = this.intervalStart.clone().add(this.nbMonths - 1, 'months');
 			if (endMonth.year() != this.intervalStart.year()) {
 				title += this.intervalEnd.format(' - YYYY');
@@ -9995,7 +9999,7 @@ fcViews.year = View.extend({
 			// school
 			startMonth = (this.firstMonth + startMonth) % 12;
 		}
-		this.intervalStart = fc.moment([this.intervalStart.year(), startMonth, 1]);
+		this.intervalStart = this.calendar.moment([this.intervalStart.year(), startMonth, 1]);
 		this.intervalEnd = this.intervalStart.clone().add(this.nbMonths, 'months').add(-15, 'minutes');
 
 		this.start = this.intervalStart.clone();
@@ -10062,7 +10066,7 @@ fcViews.year = View.extend({
 		this.rowCnt = 0;
 		// init days based on 2013-12 (1st is Sunday)
 		for (n=0; n<7; n++) {
-			weekNames[n] = fc.moment([2013,11,1+n]).locale(this.lang).format('ddd');
+			weekNames[n] = this.calendar.moment([2013,11,1+n]).format('ddd');
 		}
 		s = '<table class="fc-year-main-table fc-border-separate" style="width:100%;"><tr>';
 		s += '<td class="fc-year-month-border fc-first"></td>';
@@ -10071,8 +10075,8 @@ fcViews.year = View.extend({
 			var m = (this.intervalStart.month() + n);
 			var hiddenMonth = ($.inArray((m % 12), this.hiddenMonths) != -1);
 			var display = (hiddenMonth ? 'display:none;' : '');
-			var di = fc.moment([miYear+(m / 12),(m % 12),1]).locale(this.lang);
-			var monthName = capitaliseFirstLetter(di.format('MMMM'));
+			var di = this.calendar.moment([miYear+(m / 12),(m % 12),1]);
+			var monthName = di.format('MMMM');
 			var monthID = di.format('YYYYMM');
 			y = di.year();
 			if (this.firstMonth + this.nbMonths > 12) {
@@ -10104,9 +10108,11 @@ fcViews.year = View.extend({
 
 			s += this.headIntroHtml();
 
-			for (i = this.firstDay; i < (this.colCnt+this.firstDay); i++) {
-				s += '<th class="fc-day-header fc-year-weekly-head fc-'+dayIDs[i%7]+' '+headerClass+'">'+ // width="'+(Math.round(100/this.colCnt)||10)+'%"
-				weekNames[i%7] + '</th>';
+			var firstDay = this.intervalStart.clone().startOf('week');
+			for (i = 0; i < this.colCnt; i++) {
+				var date = firstDay.clone().add(i, 'days');
+				s += '<th class="fc-day-header fc-year-weekly-head fc-'+dayIDs[date.day()]+' '+headerClass+'">'+ // width="'+(Math.round(100/this.colCnt)||10)+'%"
+        weekNames[date.day()] + '</th>';
 			}
 
 			s += '</tr><tr>' +
@@ -10157,7 +10163,7 @@ fcViews.year = View.extend({
 			nums.push(i + this.intervalStart.month());
 		}
 
-		var baseDate = view.intervalStart.clone().add(7, 'days'); // to be sure we are in month
+		var baseDate = view.intervalStart.clone().add(7, 'days').startOf('month'); // to be sure we are in month
 		view.dayGrids = [];
 		$.each(nums, function(offset, m) {
 
@@ -10273,7 +10279,6 @@ fcViews.year = View.extend({
 					var cell = $(_cell);
 
 					d = t.dayGrids[i].cellDates[ii + r*t.colCnt];
-					d._d.setDate(d._d.getDate(d) + t.firstDay);
 					if (!t.dateInMonth(d,mi)) {
 						cell.addClass('fc-other-month');
 						if (d.month() == (mi+11)%12) {
@@ -10393,7 +10398,6 @@ fcViews.year = View.extend({
 		}
 
 		var date = cell.start;
-		date._d.setDate(date._d.getDate(date) + this.firstDay);
 
 		var classes = this.dayGrid.getDayClasses(date);
 		classes.unshift('fc-day-number');
@@ -10431,7 +10435,7 @@ fcViews.year = View.extend({
 	},
 
 	daysInMonth: function(year, month) {
-		return fc.moment([year, month, 0]).date();
+		return this.calendar.moment([year, month, 0]).date();
 	},
 
 	dateInMonth: function(date, mi) {
@@ -10594,7 +10598,7 @@ fcViews.year = View.extend({
 		if (!this.opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
 			var match = this.className.match(/fc\-day\-(\d+)\-(\d+)\-(\d+)/);
 			var date = new Date(match[1], match[2]-1, match[3]);
-			$.trigger('dayClick', this, fc.moment(date), true, ev);
+			$.trigger('dayClick', this, this.calendar.moment(date), true, ev);
 		}
 	},
 

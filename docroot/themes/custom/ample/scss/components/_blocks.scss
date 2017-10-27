@@ -933,6 +933,11 @@
         border-color: $red;
       }
     }
+
+    &:first-child {
+      margin-bottom: 20px;
+      width: 50%;
+    }
   }
 
   .country {
@@ -1019,6 +1024,16 @@
         border-color: $red;
       }
     }
+
+    .event-conference {
+      background: rgba($navy-light, .3) url(../images/calendar-conf-icon.svg) 20px 30px no-repeat;
+      background-size: 40px 48px;
+
+      &:hover {
+        background-color: rgba($navy-light, .1);;
+        border-color: $navy;
+      }
+    }
   }
 
   a {
@@ -1053,9 +1068,29 @@
   }
 }
 
+.post-info.event-conference {
+  background-image: url(../images/calendar-conf-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center -10px;
+  background-size: 30px 36px;
+  padding: 40px 0 0;
+  line-height: 36px;
+
+  @media screen and (min-width: 479px) {
+    background-position: 0 0;
+    padding: 0 0 0 40px;
+  }
+}
+
 @include breakpoint-for('.news-and-events-list', (to: laptop-small)) {
-  .item:nth-child(n) {
-    width: 33.33%;
+  .item {
+    &:nth-child(n) {
+      width: 33.33%;
+    }
+
+    &:first-child {
+      width: 66.66%;
+    }
   }
 
   .front & {
@@ -1066,8 +1101,14 @@
 }
 
 @include breakpoint-for('.news-and-events-list', (to: tablet)) {
-  .item:nth-child(n) {
-    width: 50%;
+  .item {
+    &:nth-child(n) {
+      width: 50%;
+    }
+
+    &:first-child {
+      width: 100%;
+    }
   }
 }
 
@@ -1191,6 +1232,9 @@
   .contact-content {
     font-family: $oswald;
     padding: 30px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
     .font-social-icon {
       color: $navy-dark;
@@ -1325,8 +1369,13 @@
     }
   }
 
+  .contact-items {
+    margin-top: auto;
+  }
+
   .contact-to-user {
     text-align: center;
+    padding: 0 10px;
 
     a {
       @include font-size(14);
@@ -1336,11 +1385,18 @@
       padding: 15px 40px;
       position: relative;
       z-index: 10;
+      max-width: 290px;
+      width: 100%;
 
       &:hover {
         border-color: $red-dark;
         color: $red-dark;
       }
+    }
+
+    span {
+      display: inline-block;
+      margin: 11px 0;
     }
   }
 
@@ -1361,6 +1417,8 @@
     @include font-size(16.8);
     line-height: 25px;
     letter-spacing: .5px;
+    word-break: break-all;
+    overflow: hidden;
   }
 
   .summary {
@@ -1525,6 +1583,7 @@
   }
 
   .contact-content {
+    flex-direction: row;
     overflow: hidden;
     padding: 30px 20px 50px;
   }

@@ -56,63 +56,89 @@
 
 # Run registry rebuild.
 - name: Check if registry_rebuild is installed
-  shell: "{{ php_env_vars }} drush | grep -c registry_rebuild"
+  shell: "{{ php_env_vars }} drush --nocolor | grep -c registry_rebuild"
   when: rebuild_registry
   register: registry_rebuild_installed
   ignore_errors: true
 
 - name: Downloading registry_rebuild
   sudo: yes
-  shell: "{{ php_env_vars }} drush -y dl registry_rebuild"
+  shell: "{{ php_env_vars }} drush --nocolor -y dl registry_rebuild"
   when: rebuild_registry and registry_rebuild_installed.stdout == "0"
 
-- name: Clear drush cache
+- name: Clear drush --nocolor cache
   sudo: yes
-  shell: "{{ php_env_vars }} drush cc drush"
+  shell: "{{ php_env_vars }} drush --nocolor cc drush"
   when: rebuild_registry and registry_rebuild_installed.stdout == "0"
 
 - name: Rebuilding drupal registry
   sudo: yes
-  shell: "{{ php_env_vars }} drush -y rr -l {{ site_url }} || true"
+  shell: "{{ php_env_vars }} drush --nocolor -y rr -l {{ site_url }} || true"
   when: rebuild_registry
 
 - name: Drush clear command cache
   sudo: yes
-  shell: "{{ php_env_vars }} drush -y cc drush -l {{ site_url }} || true"
+  shell: "{{ php_env_vars }} drush --nocolor -y cc drush --nocolor -l {{ site_url }} || true"
 
 - name: Rebuilding cache
   sudo: yes
-  shell: "{{ php_env_vars }} drush -y cr -l {{ site_url }} || true"
+  shell: "{{ php_env_vars }} drush --nocolor -y cr -l {{ site_url }} || true"
 
 # Update database. See https://www.youtube.com/watch?v=vFsgNjhGr4Y how-to update configs with http://dgo.to/confi
 - name: Updating database
   sudo: yes
-  shell: "{{ php_env_vars }} drush -y updb -l {{ site_url }}"
+  shell: "{{ php_env_vars }} drush --nocolor -y updb -l {{ site_url }}"
   register: updates
 
-- name: Gets deleted config files form log
-  shell: "{{ php_env_vars }} cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^D' | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev || true"
-  register: deploy_files_deleted
+- name: Drush cc drush
+  sudo: yes
+  shell: "{{ php_env_vars }} drush --nocolor cc drush -l {{ site_url }}"
 
-- name: Remove single config from configuration manager.
-  shell: "{{ php_env_vars }} drush -dvy ev \"Drupal::configFactory()->getEditable('{{ item }}')->delete();\" -l {{ site_url }}"
-  when: deploy_files_deleted.stdout != ''
-  with_items: deploy_files_deleted.stdout_lines
+- name: Import configs
+  sudo: yes
+  shell: "{{ php_env_vars }} drush --nocolor -y csim -l {{ site_url }}"
 
-- name: Gets added/modified config files form log
-  shell: "{{ php_env_vars }} cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^(A|M)' | grep staging | awk '{print $2}' || true"
-  register: deploy_files_modified
+# Now use cim
 
-- name: Apply changes from file
-#  @TODO: It is used only for dev branch. Replace it with the command below when dev is ready to be merged on master.
-  shell: "{{ php_env_vars }} drush cim -y"
+#- name: Gets deleted config files form log
+#  shell: "{{ php_env_vars }} cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^D' | awk '{print $2}' | rev | cut -d'/' -f1 | cut -d'.' -f2- | rev || true"
+#  register: deploy_files_deleted
+#
+#- name: Remove single config from configuration manager.
+#  shell: "{{ php_env_vars }} drush --nocolor -y ev \"Drupal::configFactory()->getEditable('{{ item }}')->delete();\" -l {{ site_url }}"
+#  when: deploy_files_deleted.stdout != ''
+#  with_items: deploy_files_deleted.stdout_lines
+#
+#- name: Gets added/modified config files form log
+#  shell: "{{ php_env_vars }} cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^(A|M)' | grep staging | grep -E '/field\\.storage\\.' | awk '{print $2}' || true"
+#  register: deploy_files_modified1
+#
+#- name: Apply changes from file
 #  shell: "{{ php_env_vars }} {{ drupal_console_path }} -y config:import:single --name `basename {{ item }}` --file {{ item }} -l {{ site_url }}"
-#  when: (deploy_files_modified.stdout_lines | length) > 0
-#  with_items: deploy_files_modified.stdout_lines
+#  when: (deploy_files_modified1.stdout_lines | length) > 0
+#  with_items: deploy_files_modified1.stdout_lines
+#
+#- name: Gets added/modified config files form log
+#  shell: "{{ php_env_vars }} cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^(A|M)' | grep staging | grep -E '/field\\.field\\.' | awk '{print $2}' || true"
+#  register: deploy_files_modified2
+#
+#- name: Apply changes from file
+#  shell: "{{ php_env_vars }} {{ drupal_console_path }} -y config:import:single --name `basename {{ item }}` --file {{ item }} -l {{ site_url }}"
+#  when: (deploy_files_modified2.stdout_lines | length) > 0
+#  with_items: deploy_files_modified2.stdout_lines
+#
+#- name: Gets added/modified config files form log
+#  shell: "{{ php_env_vars }} cat config_stage_changes.log | grep -v 'staging/language/' | grep -E '^(A|M)' | grep staging | grep -Ev '(/field\\.storage\\.|/field\\.field\\.)' | awk '{print $2}' || true"
+#  register: deploy_files_modified3
+#
+#- name: Apply changes from file
+#  shell: "{{ php_env_vars }} {{ drupal_console_path }} -y config:import:single --name `basename {{ item }}` --file {{ item }} -l {{ site_url }}"
+#  when: (deploy_files_modified3.stdout_lines | length) > 0
+#  with_items: deploy_files_modified3.stdout_lines
 
 - name: Apply pending entity schema updates
   sudo: yes
-  shell: "{{ php_env_vars }} drush -y entup -l {{ site_url }}"
+  shell: "{{ php_env_vars }} drush --nocolor -y entup -l {{ site_url }}"
 
 # Display updates output.
 - name: Updates listing

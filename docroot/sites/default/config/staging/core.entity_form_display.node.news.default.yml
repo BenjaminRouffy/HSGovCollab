@@ -6,6 +6,7 @@ dependencies:
     - entity_browser.browser.browse_files_modal
     - field.field.node.news.body
     - field.field.node.news.field_add_event_in_group
+    - field.field.node.news.field_anonymous_join_block
     - field.field.node.news.field_author
     - field.field.node.news.field_category
     - field.field.node.news.field_comments
@@ -20,6 +21,7 @@ dependencies:
     - field.field.node.news.field_process_and_milestones
     - field.field.node.news.field_related_content_selector
     - image.style.thumbnail
+    - field.field.node.news.field_social_autopost
     - node.type.news
   module:
     - comment
@@ -40,6 +42,7 @@ third_party_settings:
         - group_content
         - group_bottom
         - group_related_content
+        - group_publishing_options
       parent_name: ''
       weight: 0
       format_type: tabs
@@ -99,6 +102,7 @@ third_party_settings:
     group_bottom:
       children:
         - field_join_block
+        - field_anonymous_join_block
         - field_category
         - field_organization
       parent_name: group_tabs_panel
@@ -125,6 +129,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Related content'
+    group_publishing_options:
+      children:
+        - field_social_autopost
+      parent_name: group_tabs_panel
+      weight: 25
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Publishing options'
 id: node.news.default
 targetEntityType: node
 bundle: news
@@ -147,6 +164,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_anonymous_join_block:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_author:
     weight: 33
@@ -157,13 +179,13 @@ content:
     type: string_textfield
     region: content
   field_category:
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_comments:
-    weight: 26
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: comment_default
@@ -223,7 +245,7 @@ content:
     type: image_image
     region: content
   field_organization:
-    weight: 11
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -240,11 +262,17 @@ content:
     third_party_settings: {  }
     type: list_rel_content_select
     region: content
+  field_social_autopost:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   global_content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     third_party_settings: {  }
     region: content
   langcode:
@@ -255,7 +283,7 @@ content:
     region: content
   path:
     type: path
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -263,7 +291,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 4
     third_party_settings: {  }
     region: content
   title:
@@ -275,7 +303,7 @@ content:
     third_party_settings: {  }
     region: content
   translation:
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }

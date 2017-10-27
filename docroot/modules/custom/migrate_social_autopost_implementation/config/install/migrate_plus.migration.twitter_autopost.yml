@@ -1,0 +1,36 @@
+id: twitter_autopost
+label: Migrate nodes to twitter
+migration_group: social_networks_autopost
+source:
+  social_type: twitter
+  plugin: d8_node_social
+  track_changes: true
+
+destination:
+  social_network_plugin: twitter
+
+process:
+  temp_node_url:
+    - plugin: nid_2_url
+      source: nid
+
+    - plugin: callback
+      callable: shorten_url
+
+  temp_title:
+    - plugin: shortify_text_with_dots
+      source: title
+      length: 100
+
+  status:
+    - plugin: concat
+      source:
+        - '@temp_title'
+        - '@temp_node_url'
+      delimiter: " "
+
+    - plugin: callback_with_args
+      callable: strip_tags
+
+    - plugin: callback
+      callable: html_entity_decode

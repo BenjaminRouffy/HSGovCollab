@@ -1,0 +1,66 @@
+display:
+  default:
+    display_options:
+      empty:
+        area:
+          content:
+            value: "<p>Rien n’a été trouvé</p>\r\n"
+            format: minimal
+          admin_label: 'Rien n’a été trouvé'
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+  block_frontpage:
+    display_options:
+      title: 'Nouvelles récentes'
+      use_more_text: 'Lire plus d''actualités'
+  block_1:
+    display_options:
+      filters:
+        gid:
+          expose:
+            label: 'Selectionner emplacement'
+        computed_date:
+          expose:
+            label: Année
+        computed_date_1:
+          expose:
+            label: Mois
+  block_2:
+    display_title: 'Mes nouvelles'
+    display_options:
+      filters:
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organisation'
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        computed_date:
+          expose:
+            label: Année
+        computed_date_1:
+          expose:
+            label: Mois
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'
+  block_3:
+    display_title: 'Nouvelles de P4H'
+    display_options:
+      filters:
+        field_organization_target_id:
+          expose:
+            label: 'Selectionner organisation'
+        field_category_target_id:
+          expose:
+            label: 'Selectionner catégorie'
+        computed_date:
+          expose:
+            label: Année
+        computed_date_1:
+          expose:
+            label: Mois
+      header:
+        area_text_custom:
+          content: 'Filtrer selon:'

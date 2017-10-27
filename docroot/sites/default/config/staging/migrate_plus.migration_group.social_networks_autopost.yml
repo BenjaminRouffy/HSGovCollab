@@ -1,0 +1,16 @@
+uuid: 535e6c3a-abf2-4c93-813a-4e68171ffc69
+langcode: en
+status: true
+dependencies: {  }
+id: social_networks_autopost
+label: 'Social networks autopost'
+description: 'Post to social networks like Facebook.'
+source_type: Drupal8
+module: null
+shared_configuration:
+  source:
+    key: default
+  destination:
+    plugin: social_destination
+  process:
+    id: id

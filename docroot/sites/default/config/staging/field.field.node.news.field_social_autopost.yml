@@ -1,0 +1,21 @@
+uuid: 8af6c121-fcf6-42c1-86ca-41a15b1ad38d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_autopost
+    - node.type.news
+  module:
+    - options
+id: node.news.field_social_autopost
+field_name: field_social_autopost
+entity_type: node
+bundle: news
+label: 'Social autopost'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

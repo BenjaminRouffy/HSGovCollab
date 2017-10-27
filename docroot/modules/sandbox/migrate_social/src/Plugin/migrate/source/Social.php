@@ -59,6 +59,7 @@ class Social extends SourcePluginBase {
     if (!isset($this->socialNetworkPlugin)) {
       $this->socialNetworkPlugin = \Drupal::service('plugin.manager.migrate_social.social_network')->createInstance($this->configuration['social_network_plugin'], $this->configuration);
     }
+
     return $this->socialNetworkPlugin;
   }
 

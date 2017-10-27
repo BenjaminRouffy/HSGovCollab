@@ -5,6 +5,7 @@ dependencies:
   config:
     - block_content.type.link
     - core.entity_view_mode.block_content.view_mode_registration_block
+    - field.field.block_content.link.field_is_non_public
     - field.field.block_content.link.field_link
     - field.field.block_content.link.field_link_description
   module:
@@ -14,6 +15,16 @@ targetEntityType: block_content
 bundle: link
 mode: view_mode_registration_block
 content:
+  field_is_non_public:
+    type: boolean
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
   field_link:
     weight: 0
     label: hidden

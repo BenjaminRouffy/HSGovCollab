@@ -13,6 +13,7 @@ dependencies:
     - field.field.group.region.field_infographic
     - field.field.group.region.field_join_block
     - field.field.group.region.field_label
+    - field.field.group.region.field_pin_items
     - field.field.group.region.field_region_icon
     - field.field.group.region.field_summary
     - field.field.group.region.field_time_line
@@ -30,6 +31,7 @@ third_party_settings:
       children:
         - group_banner
         - group_content
+        - group_pin_items
         - group_infographic_timeline
         - group_bottom
         - group_faq
@@ -79,7 +81,7 @@ third_party_settings:
         - field_infographic
         - field_time_line
       parent_name: group_tabs_panel
-      weight: 3
+      weight: 9
       format_type: tab
       format_settings:
         id: ''
@@ -93,7 +95,7 @@ third_party_settings:
         - field_join_block
         - field_bottom_link
       parent_name: group_tabs_panel
-      weight: 4
+      weight: 10
       format_type: tab
       format_settings:
         id: ''
@@ -106,7 +108,7 @@ third_party_settings:
       children:
         - field_faq
       parent_name: group_tabs_panel
-      weight: 5
+      weight: 11
       format_type: tab
       format_settings:
         id: ''
@@ -115,6 +117,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: FAQ
+    group_pin_items:
+      children:
+        - field_pin_items
+      parent_name: group_tabs_panel
+      weight: 8
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Pin items'
 id: group.region.default
 targetEntityType: group
 bundle: region
@@ -209,6 +224,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_pin_items:
+    weight: 15
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
     region: content
   field_region_icon:
     weight: 4
@@ -265,6 +290,11 @@ content:
     third_party_settings: {  }
   translation:
     weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

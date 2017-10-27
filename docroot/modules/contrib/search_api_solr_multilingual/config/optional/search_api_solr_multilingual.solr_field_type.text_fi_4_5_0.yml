@@ -11,6 +11,7 @@ label: 'Finnish Text Field'
 managed_schema: false
 minimum_solr_version: 4.5.0
 field_type_language_code: fi
+domains: {}
 field_type:
   name: text_fi
   class: solr.TextField
@@ -53,7 +54,6 @@ field_type:
           class: solr.EdgeNGramFilterFactory
           minGramSize: 2
           maxGramSize: 50
-          side: front
         -
           class: solr.DictionaryCompoundWordTokenFilterFactory
           dictionary: nouns_fi.txt
@@ -6762,6 +6762,6 @@ text_files:
     # ﬄ => ffl
     "\uFB04" => "ffl"
     # ﬅ => ft
-    "\uFB05" => "ft"
+    "\uFB05" => "st"
     # ﬆ => st
     "\uFB06" => "st"

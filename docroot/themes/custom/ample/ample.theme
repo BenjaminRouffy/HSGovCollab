@@ -17,6 +17,7 @@ use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Render\Element;
 use Drupal\node\Entity\Node;
+use Drupal\Component\Utility\UrlHelper;
 
 /**
  * Additional settings for ample setting form.
@@ -169,6 +170,10 @@ function ample_preprocess_node(array &$variables) {
     $delete_access = $delete_access->isAllowed() || $delete_access->isNeutral() ? TRUE : FALSE;
 
     $variables['contextual_link_access'] = $update_access || $delete_access;
+  }
+
+  if ('event' == $node->bundle()) {
+    $variables['is_conference'] = isset($node->field_is_conference->value) ? $node->field_is_conference->value : 0;
   }
 }
 
@@ -334,7 +339,7 @@ function ample_preprocess_paragraph(array &$variables) {
   }
 
   if ($variables['paragraph']->bundle() === 'link_to_file') {
-    $link = $variables['content']['field_link'][0]['#url']->getUri();
+    $link = $variables['paragraph']->field_link[0]->getUrl()->getUri();
     $parse = parse_url($link);
 
     if (strpos($parse['host'], 'google') !== FALSE) {
@@ -365,6 +370,15 @@ function ample_preprocess_paragraph(array &$variables) {
           }
         }
       }
+    }
+  }
+
+  if ($variables['paragraph']->bundle() === 'pin_item') {
+    $link = $variables['paragraph']->get('field_link')->getValue();
+    $variables['is_external'] = FALSE;
+    if (!empty($link)) {
+      $is_external = UrlHelper::isExternal($variables['paragraph']->field_link->uri);
+      $variables['is_external'] = $is_external;
     }
   }
 }
@@ -424,7 +438,9 @@ function ample_preprocess_block(&$variables) {
       if (isset($variables['content']) && isset($variables['content']['#block_content'])) {
         $content = &$variables['content'];
         $block_content = &$content['#block_content'];
-
+        if ($block_content->hasField('field_is_non_public')) {
+          $variables['is_non_public'] = isset($block_content->field_is_non_public->value) ? $block_content->field_is_non_public->value : 0;
+        }
         // Designed to invalidate cache on content of block was modified.
         // Add a "block_content:<entity_id>" cache tag.
         $variables['#cache']['tags'] = $block_content->getCacheTags();

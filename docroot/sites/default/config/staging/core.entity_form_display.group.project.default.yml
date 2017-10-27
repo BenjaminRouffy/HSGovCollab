@@ -12,6 +12,8 @@ dependencies:
     - field.field.group.project.field_geographical_object
     - field.field.group.project.field_join_block
     - field.field.group.project.field_knowledge_vault
+    - field.field.group.project.field_label_end_date
+    - field.field.group.project.field_pin_items
     - field.field.group.project.field_product
     - field.field.group.project.field_project_icon
     - field.field.group.project.field_summary
@@ -33,6 +35,7 @@ third_party_settings:
         - group_summary
         - group_based_on
         - group_content
+        - group_pin_items
         - group_timeline
         - group_bottom
         - group_faq
@@ -49,6 +52,7 @@ third_party_settings:
         - field_geographical_object
         - label
         - field_date
+        - field_label_end_date
         - field_end_date
         - langcode
         - translation
@@ -83,7 +87,7 @@ third_party_settings:
       children:
         - field_time_line
       parent_name: group_tabs_panel
-      weight: 4
+      weight: 6
       format_type: tab
       format_settings:
         label: Timeline
@@ -97,7 +101,7 @@ third_party_settings:
       children:
         - field_join_block
       parent_name: group_tabs_panel
-      weight: 5
+      weight: 7
       format_type: tab
       format_settings:
         id: ''
@@ -110,7 +114,7 @@ third_party_settings:
       children:
         - field_faq
       parent_name: group_tabs_panel
-      weight: 6
+      weight: 8
       format_type: tab
       format_settings:
         id: ''
@@ -134,6 +138,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Based on'
+    group_pin_items:
+      children:
+        - field_pin_items
+      parent_name: group_tabs_panel
+      weight: 5
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Pin items'
 id: group.project.default
 targetEntityType: group
 bundle: project
@@ -164,7 +181,7 @@ content:
     type: datetime_default
     region: content
   field_end_date:
-    weight: 12
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -203,6 +220,25 @@ content:
     third_party_settings: {  }
     type: group_select
     region: content
+  field_label_end_date:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_pin_items:
+    weight: 9
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
   field_product:
     weight: 4
     settings: {  }
@@ -210,7 +246,7 @@ content:
     type: group_select
     region: content
   field_project_icon:
-    weight: 16
+    weight: 8
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -260,18 +296,18 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 13
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 15
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     region: content
   translation:
-    weight: 14
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

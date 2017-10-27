@@ -13,6 +13,8 @@ source:
   plugin: social_network
   track_changes: true
   social_network_plugin: twitter
+  autopost_migrations:
+    - twitter_autopost
   constants:
     entity_type: social
     social_type: twitter

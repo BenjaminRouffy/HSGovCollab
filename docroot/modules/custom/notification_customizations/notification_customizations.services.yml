@@ -1,0 +1,5 @@
+services:
+  notification_customizations.account_settings_form_alter:
+    class: Drupal\notification_customizations\Form\Alter\UserAdminSettingsFormAlter
+    tags:
+      - { name: form_alter, form_id: user_admin_settings }

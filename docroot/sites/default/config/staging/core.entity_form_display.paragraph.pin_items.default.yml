@@ -1,0 +1,32 @@
+uuid: 30ea1344-c3e5-4f70-bc54-6ebea211e778
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.pin_items.field_pin_item
+    - paragraphs.paragraphs_type.pin_items
+  module:
+    - paragraphs
+id: paragraph.pin_items.default
+targetEntityType: paragraph
+bundle: pin_items
+mode: default
+content:
+  field_pin_item:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    region: content
+  translation:
+    weight: 10
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

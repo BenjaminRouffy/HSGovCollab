@@ -1,0 +1,79 @@
+uuid: 70965896-6340-4fcb-912a-f6ba02b82241
+langcode: en
+status: true
+dependencies: {  }
+id: facebook_autopost_basic_page
+migration_tags: null
+migration_group: social_networks_autopost
+label: 'Migrate basic page nodes to facebook'
+source:
+  social_type: facebook
+  bundle: basic_page
+  plugin: d8_node_social
+  track_changes: true
+process:
+  temp_node_url:
+    -
+      plugin: nid_2_url
+      source: nid
+  temp_field_content_paragraph_summary:
+    -
+      plugin: get_first_text_from_paragraph
+      source: field_content_paragraph
+    -
+      plugin: get_field_value
+      field_name: field_content_text
+    -
+      plugin: default_value
+      default_value:
+        - null
+    -
+      plugin: extract
+      index:
+        - 0
+        - summary
+  temp_field_content_paragraph_value:
+    -
+      plugin: get_first_text_from_paragraph
+      source: field_content_paragraph
+    -
+      plugin: get_field_value
+      field_name: field_content_text
+    -
+      plugin: default_value
+      default_value:
+        - null
+    -
+      plugin: extract
+      index:
+        - 0
+        - value
+  message:
+    -
+      plugin: concat
+      source:
+        - title
+        - '@temp_field_content_paragraph_summary'
+        - '@temp_field_content_paragraph_value'
+        - field_author/0/value
+        - '@temp_node_url'
+      delimiter: "\r\n\r\n"
+    -
+      plugin: callback_with_args
+      callable: strip_tags
+    -
+      plugin: callback
+      callable: html_entity_decode
+  attached_media:
+    plugin: iterator
+    source: field_banner
+    process:
+      url:
+        -
+          plugin: get_first_image_fid
+          source: target_id
+        -
+          plugin: fid_2_url
+destination:
+  social_network_plugin: facebook
+migration_dependencies: null

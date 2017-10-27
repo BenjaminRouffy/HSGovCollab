@@ -1,0 +1,14 @@
+uuid: 372364b3-00ce-4a2f-96c2-55d39c5f5f23
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.closed_country_manager
+  module:
+    - user
+id: user_remove_role_action.closed_country_manager
+label: 'Remove the Closed Country Manager role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: closed_country_manager

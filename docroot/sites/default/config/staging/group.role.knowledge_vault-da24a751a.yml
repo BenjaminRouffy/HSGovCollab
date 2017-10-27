@@ -1,0 +1,17 @@
+uuid: b1fec599-3745-4a30-989d-c169c19b6cd1
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+  enforced:
+    config:
+      - user.role.closed_country_manager
+id: knowledge_vault-da24a751a
+label: 'Closed Country Manager'
+weight: 11
+internal: true
+audience: outsider
+group_type: knowledge_vault
+permissions_ui: false
+permissions: {  }

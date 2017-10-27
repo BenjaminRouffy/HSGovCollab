@@ -297,9 +297,15 @@ function ample_preprocess_paragraph(array &$variables) {
         $icon = \Drupal::entityTypeManager()
           ->getStorage('taxonomy_term')
           ->load($icon[0]['target_id']);
-        $view_builder = \Drupal::entityTypeManager()->getViewBuilder($icon->getEntityTypeId());
 
-        $variables['group_icon'] = $view_builder->view($icon, 'default');
+        if ($icon->hasField('field_icon')) {
+          $icon = $icon->get('field_icon')->getValue();
+
+          if (is_array($icon) && !empty($icon)) {
+            $image = File::load($icon[0]['target_id']);
+            $variables['group_icon'] = $image->getFileUri();
+          }
+        }
       }
     }
 

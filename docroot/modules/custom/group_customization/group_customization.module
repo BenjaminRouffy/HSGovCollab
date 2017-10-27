@@ -146,3 +146,14 @@ function group_customization_entity_presave(EntityInterface $entity) {
     }
   }
 }
+
+/**
+ * Implements hook_local_tasks_alter().
+ *
+ * Rename "Related entities" to Relate/add content.
+ */
+function group_customization_local_tasks_alter(&$local_tasks) {
+  if (!empty($local_tasks['group.content']['title'])) {
+    $local_tasks['group.content']['title'] = t('Relate/add content');
+  }
+}

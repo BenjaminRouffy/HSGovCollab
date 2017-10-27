@@ -17,3 +17,8 @@ services:
     class: 'Drupal\group_customization\Access\GroupPermissionAccessCheck'
     tags:
       - { name: access_check, applies_to: _entity_access }
+
+  group_customization.group_collection_route_alter_subscriber:
+      class: Drupal\group_customization\Routing\GroupCollectionRouteAlterSubscriber
+      tags:
+        - { name: event_subscriber }

@@ -386,6 +386,7 @@ form {
 }
 
 // Single radio button item
+.webform-body .js-form-type-radio,
 .view-news-and-events .js-form-type-radio {
   display: flex;
   flex-direction: column;
@@ -396,9 +397,6 @@ form {
   @media only screen and (min-width: 991px) {
     margin: 0 10px;
     display: inline-flex;
-  }
-
-  @media only screen and (min-width: 991px) {
 
     .ie9 & {
       display: inline-block;
@@ -437,7 +435,7 @@ form {
     &:disabled:checked + label {
       &::after {
         opacity: 1;
-        background: $white;
+        background: $red;
       }
 
       &:hover::after {
@@ -445,7 +443,6 @@ form {
       }
     }
   }
-
 
   // Create 'fake' radio element
   label {
@@ -482,6 +479,117 @@ form {
       top: 2px;
       left: 0;
       opacity: 0;
+      transition: all .5s ease;
+      transform-origin: center;
+      transform: scale(0);
+    }
+
+    // Hover effect
+    &:hover {
+      &::after {
+        opacity: 1;
+        transform: scale(.5);
+      }
+    }
+  }
+}
+
+// Checkboxes
+.js-form-type-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 0 0 20px;
+  position: relative;
+
+  @media only screen and (min-width: 991px) {
+    margin: 0 10px;
+    display: inline-flex;
+  }
+
+  @media only screen and (min-width: 991px) {
+    .ie9 & {
+      display: inline-block;
+    }
+  }
+
+  // Hide native radio item
+  .form-checkbox {
+    @extend %element-invisible;
+
+    // Active state
+    &:checked + label {
+      &::after {
+        opacity: 1;
+        transform: scale(.5);
+        background: $red;
+      }
+    }
+
+    // Disabled state
+    &:disabled + label {
+      color: #cacaca;
+      cursor: not-allowed;
+
+      &::before {
+        background: $white;
+        box-shadow: 0 0 1px rgba($black, .1) inset;
+      }
+
+      &:hover::after {
+        transform: scale(0);
+      }
+    }
+
+    // Active-Disabled state
+    &:disabled:checked + label {
+      &::after {
+        opacity: 1;
+        background: $red;
+      }
+
+      &:hover::after {
+        transform: scale(.5);
+      }
+    }
+  }
+
+  // Create 'fake' radio element
+  label {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0;
+    cursor: pointer;
+    line-height: 1.2;
+
+    // Need for position of checkbox state
+    position: relative;
+
+    &::before,
+    &::after {
+      content: ' ';
+    }
+
+    // 'Fake radio'
+    &::before {
+      display: inline-block;
+      height: 20px;
+      min-width: 20px;
+      background: $white-dark;
+      border-radius: 3px;
+      margin: 0 8px 0 0;
+      box-shadow: 0 1px 1px rgba($black, .1) inset;
+    }
+
+    &::after {
+      width: 20px;
+      height: 20px;
+      background: rgba($red, .5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      border-radius: 3px;
       transition: all .5s ease;
       transform-origin: center;
       transform: scale(0);
@@ -674,7 +782,6 @@ form {
     padding-left: 20px;
     width: 66.64%;
   }
-
 
   .terms {
     padding-top: 25px;
@@ -2144,5 +2251,54 @@ form {
 
   .form-text {
     height: 50px;
+  }
+}
+
+// Paragraph webform
+
+.webform-title {
+  text-align: center;
+  margin-bottom: 30px;
+
+  &::after {
+    content: ' ';
+    background: #ea3a32;
+    display: block;
+    height: 2px;
+    margin: auto;
+    width: 180px;
+  }
+
+  h3 {
+    @include font-size(36);
+    margin-bottom: 20px;
+  }
+}
+
+.webform-body {
+  .form-composite {
+    margin: 0 0 30px;
+
+    // Title (Legend)
+    .fieldset-legend {
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: block;
+    }
+  }
+  // Radio buttons
+  .js-form-type-radio,
+  .js-form-type-checkbox {
+    margin: 0 0 20px;
+    display: block;
+
+    label {
+      line-height: 1.2;
+    }
+  }
+
+  // Form actions
+  .form-actions {
+    text-align: center;
   }
 }

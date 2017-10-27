@@ -496,7 +496,8 @@ form {
 }
 
 // Checkboxes
-.js-form-type-checkbox {
+.webform-body .js-form-type-checkbox,
+.view-news-and-events .js-form-type-checkbox {
   display: flex;
   flex-direction: column;
   align-content: center;

@@ -82,6 +82,16 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         if (!empty($form['type'])) {
           $form['type']['#access'] = Drupal::currentUser()->isAuthenticated();
           unset($form['type']['#options']['All']);
+
+          $form['type']['#attributes']['data-accordion'] = 'none';
+          $form['wrap-top'] = [
+            '#prefix' => '<div class="wrapper-filters">',
+            '#suffix' => '</div>',
+            '#weight' => -200,
+          ];
+          $form['wrap-top']['type'] = $form['type'];
+
+          unset($form['type']);
         }
 
       case 'views-exposed-form-news-and-events-group-news-and-events-by-group':

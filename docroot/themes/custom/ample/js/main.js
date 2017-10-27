@@ -38,7 +38,7 @@
   Drupal.behaviors.accordionExposedFilter = {
     attach: function (context, settings) {
 
-      var $forms = $('[data-accordion]', context);
+      var $forms = $('form[data-accordion]', context);
 
       $.each($forms, function (i, v) {
         var $form = v;
@@ -97,23 +97,23 @@
             .attr(settings.defaultAttributeSelector, parentAttribute);
 
           $(new_div).find(settings.defaultAccordionTabText).html(legend);
-          $('.wrapper-filters', form).prepend(new_div);
+          $('.wrapper-filters:last', form).prepend(new_div);
           applyCheckboxesLabel(parent);
         };
 
         var _this = this;
-        $('fieldset', $form)
+        $('fieldset:not([data-accordion="none"])', $form)
           .filter('[' + settings.defaultAttributeSelector + ']').each(function () {
           addLabel($form, this);
         });
 
         $(".click-item", $form).click(function () {
           var attr = $(this).attr(settings.defaultAttributeSelector);
-          $('fieldset', $form).filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings("fieldset").slideUp(100);
+          $('fieldset', $form).filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings('fieldset:not([data-accordion="none"])').slideUp(100);
           $(this).toggleClass(settings.defaultClosed).siblings(settings.defaultAccordionTab).addClass(settings.defaultClosed);
         });
 
-        $('fieldset[' + settings.defaultAttributeSelector + '] input', $form).change(function () {
+        $('fieldset:not([data-accordion="none"])[' + settings.defaultAttributeSelector + '] input', $form).change(function () {
           var parent = $(this).parents('fieldset');
           applyCheckboxesLabel(parent);
         });

@@ -672,7 +672,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: false
+          empty: true
           tokenize: false
           content: 'Filter by:'
           plugin_id: text_custom
@@ -854,7 +854,7 @@ display:
           field: type
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: Type
           operator: in
           value:
             event: event
@@ -877,7 +877,7 @@ display:
             reduce: false
           is_grouped: true
           group_info:
-            label: 'Select type'
+            label: ''
             description: ''
             identifier: type
             optional: true
@@ -1079,6 +1079,7 @@ display:
         filters: false
         filter_groups: false
         query: false
+        header: false
       filter_groups:
         operator: AND
         groups:
@@ -1092,6 +1093,18 @@ display:
           query_comment: ''
           query_tags: null
       display_description: ''
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'Filter by:'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:

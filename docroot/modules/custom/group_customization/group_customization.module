@@ -30,43 +30,7 @@ function group_customization_preprocess_html(array &$variables) {
 function group_customization_entity_type_alter(array &$entity_types) {
   if (!empty($entity_types['group'])) {
     $entity_types['group']->setFormClass('delete', 'Drupal\group_customization\Entity\Form\GroupDeleteForm');
-    $entity_types['group']->setClass('Drupal\group_customization\Entity\Group');
   }
-}
-
-/**
- * Implements hook_ENTITY_TYPE_access().
- */
-function group_customization_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
-  if ('view' === $operation) {
-    if ('project' == $entity->bundle()) {
-      /* @var GroupHierarchyManager $subgroup_manage */
-      $subgroup_manage = \Drupal::service('ggroup.group_hierarchy_manager');
-
-      /* @var Group[] $parents */
-      $parents = $subgroup_manage->getGroupSupergroups($entity);
-
-      if (empty($parents)) {
-        return AccessResult::neutral();
-      }
-
-      foreach ($parents as $index => $parent) {
-        $parents[$index] = $parent->hasPermission('view group', $account);
-      }
-
-      return in_array(TRUE, $parents) ? AccessResult::allowed() : AccessResult::forbidden();
-    }
-
-    // @var \Drupal\group_customization\Access\GroupPermissionAccessCheck $groupPermissionAccess
-    $groupPermissionAccess = \Drupal::getContainer()
-      ->get('group_customization.group.permission');
-
-    return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
-      'published',
-    ]);
-  }
-
-  return AccessResult::neutral();
 }
 
 /**
@@ -95,6 +59,18 @@ function group_customization_node_grants_alter(array &$grants, AccountInterface 
       }
     }
   }
+}
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function group_customization_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  // @var \Drupal\group_customization\Access\GroupPermissionAccessCheck $groupPermissionAccess
+  $groupPermissionAccess = \Drupal::getContainer()
+    ->get('group_customization.group.permission');
+  return $groupPermissionAccess->checkAccess($entity, $operation, $account, [
+    'published',
+    'content',
+  ]);
 }
 
 /**
@@ -144,5 +120,57 @@ function group_customization_entity_presave(EntityInterface $entity) {
         $entity->set('group_status', $group_status);
       }
     }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function group_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, array('group_content_group_content_type_bd1c359f1021e_add_form',
+    'group_content_group_content_type_8f1540bfd3b5b_add_form'))) {
+    // Change autocomplete handler for Users, which could be added to Closed groups.
+    // This is applicable only for Universal Object Country - Closed and
+    // Universal Object Country - Collaboration.
+    $gid = \Drupal::request()->get('group')->id();
+    if (!empty($form['entity_id']['widget']) && isset($form['entity_id']['widget'][0]) && isset($form['entity_id']['widget'][0]['target_id'])) {
+      $form['entity_id']['widget'][0]['target_id']['#selection_handler'] = 'views';
+      $form['entity_id']['widget'][0]['target_id']['#selection_settings'] = [
+        'view' => array(
+          'view_name' => 'closed_group_user_reference',
+          'display_name' => 'entity_reference_1',
+          'arguments' => array($gid),
+        ),
+        'match_operator' => 'CONTAINS',
+      ];
+    }
+  }
+
+  // Attendee group role is used in Closed groups. It's not visible for the
+  // user that's why when someone is added as member without specified
+  // role we use Attendee as default. Custom role is needed here, because
+  // the default "Member" group role isn't mapped correctly and its
+  // permissions doesn't work.
+  $closed_membership_forms = [
+    'group_content_group_content_type_d99f0eda380b7_add_form',
+    'group_content_group_content_type_d99f0eda380b7_edit_form',
+    'group_content_group_content_type_bd1c359f1021e_add_form',
+    'group_content_group_content_type_bd1c359f1021e_edit_form',
+    'group_content_group_content_type_8f1540bfd3b5b_add_form',
+    'group_content_group_content_type_8f1540bfd3b5b_edit_form',
+  ];
+
+  if (in_array($form_id, $closed_membership_forms)) {
+    unset($form['group_roles']['widget']['#options']['region_protected-attendee']);
+  }
+}
+
+/** Implements hook_local_tasks_alter().
+ *
+ * Rename "Related entities" to Relate/add content.
+ */
+function group_customization_local_tasks_alter(&$local_tasks) {
+  if (!empty($local_tasks['group.content']['title'])) {
+    $local_tasks['group.content']['title'] = t('Relate/add content');
   }
 }

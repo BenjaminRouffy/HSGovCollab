@@ -1,0 +1,26 @@
+uuid: f05b3e9f-6862-4b95-acfa-34b5e93afac7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.group_content_type_8f1540bfd3b5b.field_follower
+    - field.field.group_content.group_content_type_8f1540bfd3b5b.group_roles
+    - group.content_type.group_content_type_8f1540bfd3b5b
+id: group_content.group_content_type_8f1540bfd3b5b.default
+targetEntityType: group_content
+bundle: group_content_type_8f1540bfd3b5b
+mode: default
+content:
+  group_roles:
+    label: above
+    type: entity_reference_label
+    settings:
+      link: false
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  entity_id: true
+  field_follower: true
+  langcode: true
+  uid: true

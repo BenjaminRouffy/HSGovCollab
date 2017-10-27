@@ -16,9 +16,20 @@ fullcalendar:
   dependencies:
     - core/jquery
     - core/jquery.ui.draggable
+    - core/drupal.ckeditor
+
+izimodal:
+  js:
+    /libraries/izimodal/js/iziModal.min.js: {}
+  css:
+    theme:
+      /libraries/izimodal/css/iziModal.min.css: { media: screen }
+  dependencies:
+    - core/jquery
 
 fullcalendar.settings:
   js:
     js/fullcalendar.fullcalendar.js: { }
   dependencies:
     - events/fullcalendar
+    - events/izimodal

@@ -1,0 +1,263 @@
+uuid: 59ed5812-6fe6-4813-8440-41cf60f1371b
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.browse_files
+    - field.field.group.project_protected.field_based_on
+    - field.field.group.project_protected.field_content
+    - field.field.group.project_protected.field_date
+    - field.field.group.project_protected.field_end_date
+    - field.field.group.project_protected.field_faq
+    - field.field.group.project_protected.field_join_block
+    - field.field.group.project_protected.field_knowledge_vault
+    - field.field.group.project_protected.field_product
+    - field.field.group.project_protected.field_project_icon
+    - field.field.group.project_protected.field_summary
+    - field.field.group.project_protected.field_summary_public
+    - field.field.group.project_protected.field_time_line
+    - group.type.project_protected
+  module:
+    - datetime
+    - entity_browser
+    - field_group
+    - group_content_field
+    - paragraphs
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_tabs_panel:
+      children:
+        - group_summary
+        - group_based
+        - group_content
+        - group_timeline
+        - group_bottom
+        - group_faq
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: 'Tabs panel'
+    group_summary:
+      children:
+        - label
+        - field_date
+        - field_end_date
+        - langcode
+        - path
+        - field_project_icon
+      parent_name: group_tabs_panel
+      weight: 8
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Summary
+    group_based:
+      children:
+        - field_based_on
+        - field_knowledge_vault
+        - field_product
+      parent_name: group_tabs_panel
+      weight: 9
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Based on'
+    group_content:
+      children:
+        - field_summary_public
+        - field_summary
+        - field_content
+      parent_name: group_tabs_panel
+      weight: 10
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+    group_timeline:
+      children:
+        - field_time_line
+      parent_name: group_tabs_panel
+      weight: 11
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Timeline
+    group_bottom:
+      children:
+        - field_join_block
+      parent_name: group_tabs_panel
+      weight: 12
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Bottom
+    group_faq:
+      children:
+        - field_faq
+      parent_name: group_tabs_panel
+      weight: 13
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: FAQ
+id: group.project_protected.default
+targetEntityType: group
+bundle: project_protected
+mode: default
+content:
+  field_based_on:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_content:
+    weight: 16
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: banner
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_date:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_end_date:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_faq:
+    weight: 16
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_join_block:
+    weight: 17
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_knowledge_vault:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
+    region: content
+  field_product:
+    weight: 13
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
+    region: content
+  field_project_icon:
+    weight: 7
+    settings:
+      entity_browser: browse_files
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: entity_browser_file
+    region: content
+  field_summary:
+    weight: 15
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_summary_public:
+    weight: 14
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_time_line:
+    weight: 22
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  label:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

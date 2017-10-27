@@ -1,0 +1,17 @@
+uuid: 402819dc-57a2-42bc-a93a-537080f9a8ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+  enforced:
+    config:
+      - user.role.co_admin
+id: region_protected-78c0173ed
+label: Co-Admin
+weight: 9
+internal: true
+audience: outsider
+group_type: region_protected
+permissions_ui: false
+permissions: {  }

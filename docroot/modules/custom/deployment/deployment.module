@@ -4,3 +4,102 @@
  * @file
  * Contains deployment.module.
  */
+use Drupal\field\Entity\FieldConfig;
+
+/**
+ * Updating all the existing regions, countries and collaborations to Geographical objects.
+ */
+function deployment_update_universal_objects_geographical_object() {
+  // TODO: This should be reworked at some point.
+  // It was designed to be an update hook, but it doesn't work correctly,
+  // because "Geographical object" field doesn't exist in the database back up used for
+  // reinstall script. This should be executed only once
+
+
+  // A new field "Geographical object" has been added to all Universal Objects (Region,
+  // Country and Collaboration) that specifies its object type, for example:
+  // (Knowledge object, Product object and Geographical object).
+
+  // Get all universal objects that don't have type set up.
+  $query = Drupal::database()->select('groups', 'groups');
+  $query->leftJoin('group__field_geographical_object', 'geo_obj', 'geo_obj.entity_id = groups.id');
+  $query->fields('groups', ['id', 'langcode', 'type']);
+
+  $condition = $query->orConditionGroup();
+  $condition->condition('groups.type', 'country', '=');
+  $condition->condition('groups.type', 'region', '=');
+  $condition->condition('groups.type', 'project', '=');
+
+  $query->condition($condition);
+
+  $query->isNull('geo_obj.field_geographical_object_value');
+  $universal_objects = $query->execute()->fetchAll(PDO::FETCH_ASSOC);
+
+  // Set "Geographical object" type to all the existing Universal Objects.
+  if (!empty($universal_objects)) {
+    $fields = ['bundle', 'deleted', 'entity_id', 'revision_id', 'langcode', 'delta', 'field_geographical_object_value'];
+
+    foreach ($universal_objects as $universal_object) {
+      $values = [$universal_object['type'], 0, $universal_object['id'], $universal_object['id'], $universal_object['langcode'], 0, 1];
+      $query = Drupal::database()->insert('group__field_geographical_object');
+      $query->fields($fields);
+      $query->values($values);
+      $query->execute();
+    }
+  }
+}
+
+/**
+ * Remove field_type from groups.
+ */
+function deployment_remove_field_type() {
+  $bundles = array('region', 'country', 'project');
+
+  foreach ($bundles as $bundle) {
+    $field = FieldConfig::loadByName('group', $bundle, 'field_type');
+
+    if (NULL !== $field) {
+      $field->delete();
+    }
+  }
+}
+
+/**
+ * Remove field_document_file from documents.
+ */
+function deployment_remove_document_file_fields() {
+  $field = FieldConfig::loadByName('node', 'document', 'field_document_file');
+
+  if (NULL !== $field) {
+    $field_storage = $field->getFieldStorageDefinition();
+    $field->delete();
+    if ($field_storage) {
+      $field_storage->delete();
+    }
+  }
+}
+
+/**
+ * Remove field_document_link from documents.
+ */
+function deployment_remove_document_link_fields() {
+  $field = FieldConfig::loadByName('node', 'document', 'field_document_link');
+
+  if (NULL !== $field) {
+    $field_storage = $field->getFieldStorageDefinition();
+    $field->delete();
+    if ($field_storage) {
+      $field_storage->delete();
+    }
+  }
+}
+
+/**
+ * Helper function for performing all required changes.
+ */
+function deployment_dev_environment_deploy(){
+  deployment_update_universal_objects_geographical_object();
+  deployment_remove_field_type();
+  deployment_remove_document_file_fields();
+  deployment_remove_document_link_fields();
+}

@@ -1,0 +1,17 @@
+uuid: 518a826f-2c3f-4470-a55c-ffd21f4a77ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.governance_group_users
+id: governance_area-1f9d39d58
+label: 'Governance group user'
+weight: 5
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

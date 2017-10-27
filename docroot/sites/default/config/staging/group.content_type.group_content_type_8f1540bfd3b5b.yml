@@ -1,0 +1,16 @@
+uuid: f97f0258-b0d4-4d22-9942-62d09f50701d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+  module:
+    - user
+id: group_content_type_8f1540bfd3b5b
+label: 'Universal Object - Collaboration - Closed: Group membership'
+description: 'Adds users to groups as members.'
+group_type: project_protected
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1

@@ -23,7 +23,7 @@ class SubgroupAddAccessCheck implements AccessInterface {
    *   The currently logged in account.
    * @param \Drupal\group\Entity\GroupInterface $group
    *   The group to create the subgroup in.
-   * @param \Drupal\group\GroupTypeInterface $group_type
+   * @param \Drupal\group\Entity\GroupTypeInterface $group_type
    *   The type of subgroup to create in the group.
    *
    * @return \Drupal\Core\Access\AccessResultInterface
@@ -39,7 +39,7 @@ class SubgroupAddAccessCheck implements AccessInterface {
     }
 
     // Determine whether the user can create groups of the provided type.
-    $access = $group->hasPermission('create ' . $plugin_id . ' content', $account);
+    $access = $group->hasPermission('create subgroup:' . $group_type->id() . ' content', $account);
 
     // Only allow access if the user can create subgroups of the provided type
     // or if he doesn't need access to do so.

@@ -1,0 +1,17 @@
+uuid: dc2642f0-6290-4426-9f3d-e9c48cf4d564
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+  enforced:
+    config:
+      - user.role.product_manager
+id: country_protected-d40137531
+label: 'Product manager'
+weight: 10
+internal: true
+audience: outsider
+group_type: country_protected
+permissions_ui: false
+permissions: {  }

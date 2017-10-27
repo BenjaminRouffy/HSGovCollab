@@ -1,0 +1,17 @@
+uuid: 3544e1a1-2f71-4b07-9388-050494d00066
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region
+  enforced:
+    config:
+      - user.role.knowledge_vault_manager
+id: region-0ef571b28
+label: 'Category manager'
+weight: 8
+internal: true
+audience: outsider
+group_type: region
+permissions_ui: false
+permissions: {  }

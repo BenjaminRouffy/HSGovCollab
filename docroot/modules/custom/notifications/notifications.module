@@ -1,0 +1,96 @@
+<?php
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_cron().
+ */
+function notifications_cron() {
+  $config = Drupal::configFactory()->getEditable('notifications.cron_settings');
+  $last_run = $config->get('last_run') ? $config->get('last_run') : strtotime('-15 minutes', time());
+
+  $query = Drupal::database()->select('group_content_field_data', 'gcfd');
+  $query->fields('gcfd', array('entity_id', 'gid', 'type'));
+  $query->condition('gcfd.type', '%news', 'LIKE');
+  $query->condition('gcfd.changed', $last_run, '>');
+  $results = $query->execute()->fetchAllAssoc('entity_id');
+
+  if (!empty($results)) {
+    $group_ids = array();
+    foreach ($results as $key => $result) {
+      if (!in_array($result->gid, $group_ids)){
+        $group_ids[] = $result->gid;
+      }
+    }
+
+    // Collect followers uids.
+    $uids_query = Drupal::database()->select('group_following_cache', 'gfc');
+    $uids_query->fields('gfc', array('uid'));
+    $uids_query->condition('gfc.gid', $group_ids, 'IN');
+    $uids = $uids_query->execute()->fetchAllAssoc('uid');
+
+    if (!empty($uids)) {
+      foreach ($uids as $key => $value) {
+        // Populated uids which should have notifications icon.
+        $query = Drupal::database()->merge('notifications_mapping');
+        $query->key('uid', $key);
+        $query->fields(array('uid', 'type', 'notification'), array($key, 'news', 1));
+        $query->execute();
+      }
+    }
+  }
+
+  $config->set('last_run', time());
+  $config->save(TRUE);
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function notifications_block_view_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+  if ($block->getDerivativeId() === 'dashboard-menu' && $build['#id'] === 'dashboardmenu') {
+    $current_user = Drupal::currentUser();
+
+    $query = Drupal::database()->select('notifications_mapping', 'nm');
+    $query->fields('nm', array('uid', 'type', 'notification'));
+    $query->condition('nm.uid', $current_user->id(), '=');
+    $results = $query->execute()->fetchAllAssoc('uid');
+
+    $build['#attached']['library'][] = 'notifications/notifications-icon';
+    $build['#cache']['max-age'] = 0;
+
+    foreach ($results as $key => $result) {
+      if ($result->notification === '1') {
+        $build['#attached']['drupalSettings']['notifications'] = array('news' => $result->notification);
+      }
+      else {
+        $build['#attached']['drupalSettings']['notifications'] = array('news' => 0);
+      }
+    }
+  }
+}
+
+/**
+ * Helper function for changing users notification status.
+ *
+ * @return bool
+ */
+function notifications_remove_user_notifications() {
+  $current_user = Drupal::currentUser();
+
+  $query = Drupal::database()->update('notifications_mapping');
+  $query->fields(array('notification' => 0));
+  $query->condition('uid', $current_user->id(), '=');
+  $query->execute();
+
+  return TRUE;
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function notifications_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  if ($view->id() === 'news_events' && $display_id === 'block_2') {
+    notifications_remove_user_notifications();
+  }
+}

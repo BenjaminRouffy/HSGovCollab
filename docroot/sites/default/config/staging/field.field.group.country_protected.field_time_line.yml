@@ -1,0 +1,90 @@
+uuid: bd44a7b7-96a2-4b29-804f-9291d9336d78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_time_line
+    - group.type.country_protected
+    - paragraphs.paragraphs_type.time_line
+  module:
+    - entity_reference_revisions
+id: group.country_protected.field_time_line
+field_name: field_time_line
+entity_type: group
+bundle: country_protected
+label: 'Time line'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      time_line: time_line
+    target_bundles_drag_drop:
+      cd_user:
+        weight: 22
+        enabled: false
+      content_image:
+        weight: 23
+        enabled: false
+      content_text:
+        weight: 24
+        enabled: false
+      country_and_project:
+        weight: 25
+        enabled: false
+      country_option:
+        weight: 26
+        enabled: false
+      custom_content:
+        weight: 27
+        enabled: false
+      exist_content:
+        weight: 28
+        enabled: false
+      faq_item:
+        weight: 29
+        enabled: false
+      file:
+        weight: 30
+        enabled: false
+      infographic:
+        weight: 31
+        enabled: false
+      infographic_item:
+        weight: 32
+        enabled: false
+      link:
+        weight: 33
+        enabled: false
+      link_to_file:
+        weight: 34
+        enabled: false
+      member_icon:
+        weight: 35
+        enabled: false
+      organisation:
+        weight: 36
+        enabled: false
+      slider:
+        weight: 37
+        enabled: false
+      slider_item:
+        weight: 38
+        enabled: false
+      software_application:
+        weight: 39
+        enabled: false
+      time_line:
+        enabled: true
+        weight: 40
+      timeline_social:
+        weight: 41
+        enabled: false
+      video:
+        weight: 42
+        enabled: false
+field_type: entity_reference_revisions

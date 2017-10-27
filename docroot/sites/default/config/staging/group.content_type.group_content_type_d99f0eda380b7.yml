@@ -1,0 +1,16 @@
+uuid: 48b23e57-ec03-4d73-94d0-89efa8a99daa
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+  module:
+    - user
+id: group_content_type_d99f0eda380b7
+label: 'Universal Object - Region - Closed: Group membership'
+description: 'Adds users to groups as members.'
+group_type: region_protected
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1

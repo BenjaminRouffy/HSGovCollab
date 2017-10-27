@@ -32,7 +32,29 @@ class GroupMembershipAlter implements FormAlterServiceSubmitInterface, FormAlter
       /* @var Group $group */
       $group = $form_state->getFormObject()->getEntity()->getGroup();
 
+      // Attendee group role is used in Closed groups. It's not visible for the
+      // user that's why when someone is added as member without specified
+      // role we use Attendee as default. Custom role is needed here, because
+      // the default "Member" group role isn't mapped correctly and its
+      // permissions doesn't work.
+      if (empty($roles) && in_array($group->getGroupType()->id(), ['region_protected', 'country_protected', 'project_protected'])) {
+        if ($group->getMember($user)) {
+          $group->removeMember($user);
+        }
+
+        $group->addMember($user, ['group_roles' => ['region_protected-attendee']]);
+      }
+
       switch ($group->getGroupType()->id()) {
+        case 'region_protected':
+          $user->{in_array('region_protected-manager', $roles) ? 'addRole' : 'removeRole'}('closed_country_manager');
+          break;
+        case 'country_protected':
+          $user->{in_array('country_protected-manager', $roles) ? 'addRole' : 'removeRole'}('closed_country_manager');
+          break;
+        case 'project_protected':
+          $user->{in_array('project_protected-manager', $roles) ? 'addRole' : 'removeRole'}('closed_country_manager');
+          break;
         case 'country':
           $user->{in_array('country-admin', $roles) ? 'addRole' : 'removeRole'}('country_managers');
           break;

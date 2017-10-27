@@ -2,6 +2,15 @@ services:
   form_alter_service.group_membership_alter:
     class: Drupal\group_customization\FormAlterService\GroupMembershipAlter
     tags:
+        # Closed region membership add and edit forms.
+      - { name: form_alter, form_id: group_content_group_content_type_d99f0eda380b7_add_form }
+      - { name: form_alter, form_id: group_content_group_content_type_d99f0eda380b7_edit_form }
+        # Closed country membership add and edit forms.
+      - { name: form_alter, form_id: group_content_group_content_type_bd1c359f1021e_add_form }
+      - { name: form_alter, form_id: group_content_group_content_type_bd1c359f1021e_edit_form }
+        # Closed collaboration membership add and edit forms.
+      - { name: form_alter, form_id: group_content_group_content_type_8f1540bfd3b5b_add_form }
+      - { name: form_alter, form_id: group_content_group_content_type_8f1540bfd3b5b_edit_form }
       - { name: form_alter, form_id: group_content_country-group_membership_add_form }
       - { name: form_alter, form_id: group_content_country-group_membership_edit_form }
       - { name: form_alter, form_id: group_content_project-group_membership_add_form }
@@ -17,3 +26,8 @@ services:
     class: 'Drupal\group_customization\Access\GroupPermissionAccessCheck'
     tags:
       - { name: access_check, applies_to: _entity_access }
+
+  group_customization.group_collection_route_alter_subscriber:
+      class: Drupal\group_customization\Routing\GroupCollectionRouteAlterSubscriber
+      tags:
+        - { name: event_subscriber }

@@ -1,0 +1,17 @@
+uuid: 5bd174c4-77cc-4b29-bde3-ba1076ea8b67
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country
+  enforced:
+    config:
+      - user.role.closed_country_manager
+id: country-da24a751a
+label: 'Closed Country Manager'
+weight: 11
+internal: true
+audience: outsider
+group_type: country
+permissions_ui: false
+permissions: {  }

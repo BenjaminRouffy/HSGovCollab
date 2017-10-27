@@ -1,0 +1,24 @@
+uuid: d7f9c3e0-37e5-42d0-924d-5f52a1efb569
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_date
+    - group.type.project_protected
+  module:
+    - datetime
+id: group.project_protected.field_date
+field_name: field_date
+entity_type: group
+bundle: project_protected
+label: Date
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

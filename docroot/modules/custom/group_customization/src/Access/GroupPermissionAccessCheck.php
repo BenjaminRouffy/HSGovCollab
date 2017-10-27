@@ -10,6 +10,7 @@ use Drupal\Core\Routing\Access\AccessInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Access\GroupAccessResult;
+use Drupal\group\Access\GroupPermissions;
 use Drupal\group\Entity\GroupInterface;
 use Symfony\Component\Routing\Route;
 
@@ -19,48 +20,18 @@ use Symfony\Component\Routing\Route;
 class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInterface {
 
   /**
-   * Router access callback.
-   *
-   * Add an access verification to each route with group parameter.
-   *
-   * @see group_customization.services.yml
-   */
-  public function access(Route $route, RouteMatchInterface $route_match, AccountInterface $account) {
-    $result = parent::access($route, $route_match, $account);
-
-    // Don't interfere if no group was specified.
-    $parameters = $route_match->getParameters();
-    if (!$parameters->has('group')) {
-      return $result;
-    }
-    // Don't interfere if the group isn't a real group.
-    $group = $parameters->get('group');
-
-    if (!$group instanceof GroupInterface) {
-      return AccessResult::neutral();
-    }
-
-    $group_check = $this->checkAccess($group, 'view group', $account, [
-      'published',
-    ]);
-    $result = $result->orIf($group_check);
-
-    return $result;
-  }
-
-  /**
    * This function will check permission on entity load.
    *
-   * @param EntityInterface $entity
+   * @param \Drupal\Core\Entity\EntityInterface $entity
    *   Group Entity.
    * @param string $operation
    *   String value most of cases contains ('view', 'view group', 'edit') etc.
-   * @param AccountInterface $account
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   Current account.
    * @param array $group_statuses
    *   Array of statuses that is allowed in current case.
    *
-   * @return AccessResultInterface
+   * @return \Drupal\Core\Access\AccessResultInterface
    *   Access result implementation.
    *
    * @see ContentEntityBase::access()
@@ -75,26 +46,24 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
       //  'bypass administer group ' . $operation,
       //], 'OR');
       if (!$bypass->isAllowed()/* && !$group_by_pass->isAllowed()*/) {
-        if ($entity instanceof GroupInterface) {
+        if ($entity instanceof GroupInterface && $entity->hasField('field_group_status') && $entity->hasField('field_geographical_object')) {
           if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'edit group')->isAllowed()) {
             return AccessResult::allowed();
           }
 
-          if ($entity->hasField('field_group_status')) {
-            if (!$entity->get('field_group_status')) {
-              return AccessResult::neutral();
-            }
-
-            $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
-            $status = AccessResult::forbiddenIf(!in_array($group_status, $group_statuses));
-
-            return $status;
+          if (!$entity->get('field_group_status')) {
+            return AccessResult::neutral();
           }
-          else {
-            if (GroupAccessResult::allowedIfHasGroupPermission($entity, $account, 'view group')->isAllowed()) {
-              return AccessResult::allowed();
-            }
-            else {
+
+          $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
+          $is_geographical_object = $entity->get('field_geographical_object')->value;
+
+          // The only way to have Universal object - Country available for
+          // anonymous is to have "Published" or "With Content" group status
+          // and to have "Geographical object" checked.
+
+          if ($account->isAnonymous()) {
+            if (!in_array($group_status, $group_statuses) || !$is_geographical_object) {
               return AccessResult::forbidden();
             }
           }

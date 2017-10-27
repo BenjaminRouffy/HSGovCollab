@@ -1,0 +1,17 @@
+uuid: 02f794fc-ef80-4487-9ea2-8a4929c7227b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+  enforced:
+    config:
+      - user.role.closed_country_manager
+id: project_protected-da24a751a
+label: 'Closed Country Manager'
+weight: 11
+internal: true
+audience: outsider
+group_type: project_protected
+permissions_ui: false
+permissions: {  }

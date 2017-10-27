@@ -1,0 +1,23 @@
+uuid: 5ed13af7-f7eb-4111-8552-31f1ed54165a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.field_follower
+    - group.content_type.group_content_type_bd1c359f1021e
+id: group_content.group_content_type_bd1c359f1021e.field_follower
+field_name: field_follower
+entity_type: group_content
+bundle: group_content_type_bd1c359f1021e
+label: Follower
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

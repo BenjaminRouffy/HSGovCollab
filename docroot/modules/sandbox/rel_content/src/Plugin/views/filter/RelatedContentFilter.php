@@ -89,12 +89,14 @@ class RelatedContentFilter extends FilterPluginBase {
       if ('list_rel_content' == $field->getFieldDefinition()->getType()) {
         foreach ($field as $delta => $item) {
           list($plugin_machine_name, $id) = explode(':', $item->value);
-          $instance = $this->relatedContentManager->createInstance($plugin_machine_name, [
-            'items' => $field,
-            'delta' => $delta,
-            'id' => $id,
-          ]);
-          $instance->viewsAlteration($this);
+          if (isset($plugin_machine_name) && isset($id)) {
+            $instance = $this->relatedContentManager->createInstance($plugin_machine_name, [
+              'items' => $field,
+              'delta' => $delta,
+              'id' => $id,
+            ]);
+            $instance->viewsAlteration($this);
+          }
         }
       }
     }

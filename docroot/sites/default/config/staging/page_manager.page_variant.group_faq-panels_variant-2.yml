@@ -1,0 +1,94 @@
+uuid: a76f3a3f-aa04-4315-b609-7ace26fc8561
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.group_faq
+    - views.view.group_faq
+  module:
+    - ctools_block
+    - group
+    - group_customization
+    - group_dashboard
+    - panels
+    - views
+id: group_faq-panels_variant-2
+label: 'Closed Group'
+variant: panels_variant
+variant_settings:
+  blocks:
+    03559a10-12ae-467b-90ce-67bdbae50845:
+      id: 'views_block:group_faq-faq_block'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 03559a10-12ae-467b-90ce-67bdbae50845
+      context_mapping: {  }
+    61db183e-b2c9-4946-a780-a93d0b3eadd8:
+      id: 'entity_field:group:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: link
+        third_party_settings: {  }
+        weight: 0
+      region: bottom
+      weight: 0
+      uuid: 61db183e-b2c9-4946-a780-a93d0b3eadd8
+      context_mapping:
+        entity: group
+  id: panels_variant
+  uuid: 37910756-ef22-46ab-9534-1784abf6a136
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: group_faq-panels_variant-2
+  builder: standard
+page: group_faq
+weight: 0
+selection_criteria:
+  -
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+    negate: 1
+    context_mapping:
+      user: current_user
+  -
+    id: group_type
+    group_types:
+      country_protected: country_protected
+      project_protected: project_protected
+      region_protected: region_protected
+    negate: 0
+    context_mapping:
+      group: group
+  -
+    id: access_by_group_roles
+    group_roles:
+      project_protected-member: project_protected-member
+      region_protected-member: region_protected-member
+      country_protected-member: country_protected-member
+      country_protected-manager: country_protected-manager
+      country_protected-stakeholder: country_protected-stakeholder
+      region_protected-manager: region_protected-manager
+      project_protected-manager: project_protected-manager
+      project_protected-stakeholder: project_protected-stakeholder
+      region_protected-stakeholder: region_protected-stakeholder
+    negate: 0
+    context_mapping:
+      group: group
+      user: current_user
+selection_logic: and
+static_context: {  }

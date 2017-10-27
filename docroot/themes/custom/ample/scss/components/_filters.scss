@@ -11,7 +11,8 @@
     h1 {
       padding-top: 0;
 
-      .group-region:not(.page-group-news-and-event) & {
+      .group-region:not(.page-group-news-and-event) &,
+      .group-region_protected:not(.page-group-news-and-event) & {
         @include font-size(42);
         line-height: 48px;
       }
@@ -866,7 +867,9 @@
     }
   }
 
-  .group-region & {
+  .group-region &,
+  .group-region_protected &,
+  .group-governance_area & {
     margin-top: 0;
 
     .title-wrapper {

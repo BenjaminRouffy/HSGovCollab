@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
+    - field.field.node.event.field_add_event_in_group
     - field.field.node.event.field_anonymous_join_block
     - field.field.node.event.field_category
     - field.field.node.event.field_comments
@@ -13,6 +14,7 @@ dependencies:
     - field.field.node.event.field_event_country_content
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
+    - field.field.node.event.field_image
     - field.field.node.event.field_is_conference
     - field.field.node.event.field_join_block
     - field.field.node.event.field_location
@@ -21,11 +23,13 @@ dependencies:
     - field.field.node.event.field_social_autopost
     - field.field.node.event.field_time
     - field.field.node.event.field_timezone
+    - image.style.thumbnail
     - node.type.event
   module:
     - comment
     - events
     - field_group
+    - image
     - link
     - paragraphs
     - path
@@ -51,22 +55,29 @@ third_party_settings:
       label: 'Tabs panel'
     group_ba:
       children:
+        - field_add_event_in_group
         - title
+        - field_image
         - field_event_slider
         - field_event_author
+        - body
+        - field_date
+        - field_timezone
+        - field_location
+        - field_event_link
       parent_name: group_tabs_panel
       weight: 20
       format_type: tab
       format_settings:
-        id: ''
-        classes: ''
+        label: General
         formatter: open
         description: ''
         required_fields: true
-      label: Banner
+        id: ''
+        classes: ''
+      label: General
     group_summary:
       children:
-        - body
         - langcode
       parent_name: group_tabs_panel
       weight: 21
@@ -80,12 +91,7 @@ third_party_settings:
         classes: ''
       label: Brief
     group_event_date_time:
-      children:
-        - field_date
-        - field_timezone
-        - field_location
-        - field_event_link
-        - field_is_conference
+      children: {  }
       parent_name: group_tabs_panel
       weight: 22
       format_type: tab
@@ -146,7 +152,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 3
+    weight: 32
     settings:
       rows: 9
       summary_rows: 3
@@ -158,6 +164,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_add_event_in_group:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_anonymous_join_block:
     weight: 12
     settings: {  }
@@ -177,7 +192,7 @@ content:
     type: comment_default
     region: content
   field_date:
-    weight: 5
+    weight: 33
     settings: {  }
     third_party_settings: {  }
     type: daterange_eventdaterangelist
@@ -192,7 +207,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_event_author:
-    weight: 3
+    weight: 30
     settings:
       size: 60
       placeholder: ''
@@ -201,7 +216,7 @@ content:
     region: content
   field_event_link:
     type: link_default
-    weight: 8
+    weight: 36
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -209,14 +224,23 @@ content:
     region: content
   field_event_slider:
     type: entity_reference_paragraphs
-    weight: 2
+    weight: 29
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
       form_display_mode: simple_image
+      default_paragraph_type: ''
     third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 28
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
     region: content
   field_is_conference:
     weight: 9
@@ -232,7 +256,7 @@ content:
     type: options_select
     region: content
   field_location:
-    weight: 7
+    weight: 35
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -258,7 +282,7 @@ content:
     type: options_buttons
     region: content
   field_timezone:
-    weight: 6
+    weight: 34
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -272,7 +296,7 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 4
+    weight: 31
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -291,7 +315,7 @@ content:
     region: content
   title:
     type: string_textfield
-    weight: 1
+    weight: 27
     settings:
       size: 60
       placeholder: ''

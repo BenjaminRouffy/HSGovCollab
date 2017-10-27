@@ -22,7 +22,7 @@ class GroupIdDepth extends ArgumentPluginBase implements ContainerFactoryPluginI
   protected function defineOptions() {
     $options = parent::defineOptions();
 
-    $options['depth'] = array('default' => -1);
+    $options['depth'] = ['default' => -1];
 
     return $options;
   }
@@ -31,7 +31,7 @@ class GroupIdDepth extends ArgumentPluginBase implements ContainerFactoryPluginI
    * @inheritdoc
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
-    $form['depth'] = array(
+    $form['depth'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Depth'),
       '#default_value' => $this->options['depth'],
@@ -42,7 +42,7 @@ class GroupIdDepth extends ArgumentPluginBase implements ContainerFactoryPluginI
         '2' => $this->t('Subgroup 3 level'),
       ],
       '#description' => $this->t('The depth will match group content with hierarchy. So if you have country group "Germany" with project group "Germany project" as subgroup, and selected "Content from parent group" + "Subgroup 1 level" that will result to filter all group content from "Germany" and "Germany project" groups'),
-    );
+    ];
 
     parent::buildOptionsForm($form, $form_state);
   }
@@ -62,7 +62,7 @@ class GroupIdDepth extends ArgumentPluginBase implements ContainerFactoryPluginI
    */
   protected function defaultActions($which = NULL) {
     if ($which) {
-      if (in_array($which, array('ignore', 'not found', 'empty', 'default'))) {
+      if (in_array($which, ['ignore', 'not found', 'empty', 'default'])) {
         return parent::defaultActions($which);
       }
       return;
@@ -81,12 +81,12 @@ class GroupIdDepth extends ArgumentPluginBase implements ContainerFactoryPluginI
   public function query($group_by = FALSE) {
     $table = $this->ensureMyTable();
 
-    $definition = array(
+    $definition = [
       'table' => 'group_graph',
       'field' => 'end_vertex',
       'left_table' => $table,
       'left_field' => 'gid',
-    );
+    ];
 
     $join = Views::pluginManager('join')->createInstance('standard', $definition);
     $this->query->addRelationship('group_graph', $join, 'group_graph');

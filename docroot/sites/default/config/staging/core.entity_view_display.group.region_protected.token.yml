@@ -1,0 +1,47 @@
+uuid: 5c9fbbaa-5e5e-4cca-afb2-5f492c40365f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.token
+    - field.field.group.region_protected.field_banner
+    - field.field.group.region_protected.field_bottom_link
+    - field.field.group.region_protected.field_content
+    - field.field.group.region_protected.field_date
+    - field.field.group.region_protected.field_faq
+    - field.field.group.region_protected.field_infographic
+    - field.field.group.region_protected.field_join_block
+    - field.field.group.region_protected.field_label
+    - field.field.group.region_protected.field_region_icon
+    - field.field.group.region_protected.field_summary
+    - field.field.group.region_protected.field_time_line
+    - group.type.region_protected
+id: group.region_protected.token
+targetEntityType: group
+bundle: region_protected
+mode: token
+content:
+  label:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  field_banner: true
+  field_bottom_link: true
+  field_content: true
+  field_date: true
+  field_faq: true
+  field_infographic: true
+  field_join_block: true
+  field_label: true
+  field_region_icon: true
+  field_summary: true
+  field_time_line: true
+  langcode: true
+  uid: true

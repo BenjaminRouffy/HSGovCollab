@@ -1,0 +1,14 @@
+uuid: f71bbd26-cb33-4ff7-9bbf-171a2ed5093a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.country_protected
+id: country_protected-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: country_protected
+permissions_ui: true
+permissions: {  }

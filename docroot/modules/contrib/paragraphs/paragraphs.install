@@ -181,3 +181,35 @@ function paragraphs_update_8008() {
 function paragraphs_update_8009() {
   module_set_weight('paragraphs', 11);
 }
+
+/**
+ * Add behavior plugins fields.
+ */
+function paragraphs_update_8010() {
+  $storage_definition = BaseFieldDefinition::create('string_long')
+    ->setLabel(t('Behavior settings'))
+    ->setDescription(t('The behavior plugin settings'));
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('behavior_settings', 'paragraph', 'paragraph', $storage_definition);
+}
+
+/**
+ * Make the behavior plugins field of Paragraphs revisionable.
+ */
+function paragraphs_update_8011() {
+  \Drupal::database()->update('paragraphs_item_field_data')
+    ->fields(['behavior_settings' => NULL])
+    ->execute();
+
+  /** @var \Drupal\Core\Field\BaseFieldDefinition $storage_definition */
+  $storage_definition = \Drupal::entityDefinitionUpdateManager()->getFieldStorageDefinition('behavior_settings', 'paragraph');
+  $storage_definition->setRevisionable(TRUE);
+  \Drupal::entityDefinitionUpdateManager()->updateFieldStorageDefinition($storage_definition);
+}
+
+/**
+ * Install file module.
+ */
+function paragraphs_update_8012() {
+  \Drupal::service('module_installer')->install(['file']);
+}

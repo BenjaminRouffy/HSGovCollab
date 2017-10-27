@@ -1,0 +1,17 @@
+uuid: 684134f7-f7b3-4b79-9861-e251c5066d8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.knowledge_vault
+  enforced:
+    config:
+      - user.role.conference_oxford
+id: knowledge_vault-228384b69
+label: 'Conference Oxford'
+weight: -10
+internal: true
+audience: outsider
+group_type: knowledge_vault
+permissions_ui: false
+permissions: {  }

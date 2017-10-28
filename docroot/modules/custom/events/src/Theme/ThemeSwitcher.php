@@ -4,6 +4,7 @@ namespace Drupal\events\Theme;
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Theme\ThemeNegotiatorInterface;
+use Drupal\group\Entity\Group;
 
 class ThemeSwitcher implements ThemeNegotiatorInterface {
 
@@ -69,8 +70,36 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
           return TRUE;
         }
         else {
-          // If there is no group user should use only the Ample theme.
-          return TRUE;
+          if (isset($node_parameter)) {
+            $query = \Drupal::database()->select('group_content_field_data', 'gcfd');
+            $query->fields('gcfd', ['gid']);
+            $query->condition('entity_id', $node_parameter->id(), '=');
+            $results = $query->execute()->fetchAll();
+
+            if (!empty($results)) {
+              foreach ($results as $key => $result) {
+                $group = Group::load($result->gid);
+                if (isset($group)) {
+                  $member = $group->getMember($user);
+                  $member_roles = $member->getRoles();
+                  foreach ($member_roles as $role) {
+                    if ($role->get('label') === 'Manager') {
+                      // If the user is manager in the group let him
+                      return FALSE;
+                    }
+                  }
+                }
+              }
+            }
+            else {
+              // Let the user user the Ample theme.
+              return TRUE;
+            }
+          }
+          else {
+            // If there is no group or node user should use the Ample theme.
+            return TRUE;
+          }
         }
       }
     }

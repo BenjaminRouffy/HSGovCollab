@@ -236,6 +236,18 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       // to add paragraphs. They should use the image field only.
       $form['field_event_slider']['#access'] = FALSE;
     }
+
+    $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
+    if ($active_theme->getName() === 'ample') {
+      // Hide 'Add more' button on 'When' section when the current theme is apmle.
+      $form['field_date']['widget']['add_more']['#access'] = FALSE;
+
+      if (isset($form['field_date']['widget'][1])) {
+        // Remove second 'When' element for ample theme.
+        $form['field_date']['widget'][1]['#access'] = FALSE;
+      }
+    }
+
     if(in_array($route, array('node.add', 'page_manager.page_view_my_calendar', 'events.add_content_simplified'))) {
       foreach (array_keys($form['actions']) as $action) {
         if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
@@ -264,6 +276,18 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
         // to add paragraphs. They should use the image field only.
         $form['field_event_slider']['#access'] = FALSE;
       }
+
+      $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
+      if ($active_theme->getName() === 'ample') {
+        // Hide 'Add more' button on 'When' section when the current theme is apmle.
+        $form['field_date']['widget']['add_more']['#access'] = FALSE;
+
+        if (isset($form['field_date']['widget'][1])) {
+          // Remove second 'When' element for ample theme.
+          $form['field_date']['widget'][1]['#access'] = FALSE;
+        }
+      }
+
       // Hide group's autocomplete.
       $form['field_add_event_in_group']['#access'] = FALSE;
     }

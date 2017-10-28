@@ -62,9 +62,6 @@ third_party_settings:
         - field_event_author
         - body
         - field_date
-        - field_timezone
-        - field_location
-        - field_event_link
       parent_name: group_tabs_panel
       weight: 20
       format_type: tab
@@ -91,7 +88,10 @@ third_party_settings:
         classes: ''
       label: Brief
     group_event_date_time:
-      children: {  }
+      children:
+        - field_timezone
+        - field_location
+        - field_event_link
       parent_name: group_tabs_panel
       weight: 22
       format_type: tab
@@ -166,12 +166,9 @@ content:
     third_party_settings: {  }
   field_add_event_in_group:
     weight: 26
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_anonymous_join_block:
     weight: 12

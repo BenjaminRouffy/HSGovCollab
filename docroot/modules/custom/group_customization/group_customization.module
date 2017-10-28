@@ -162,6 +162,8 @@ function group_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInter
 
   if (in_array($form_id, $closed_membership_forms)) {
     unset($form['group_roles']['widget']['#options']['region_protected-attendee']);
+    unset($form['group_roles']['widget']['#options']['country_protected-attendee']);
+    unset($form['group_roles']['widget']['#options']['project_protected-attendee']);
   }
 }
 

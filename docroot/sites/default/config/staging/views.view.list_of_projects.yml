@@ -252,7 +252,11 @@ display:
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
+        - 'config:core.entity_view_display.group.country_protected.banner'
+        - 'config:core.entity_view_display.group.country_protected.bottom'
+        - 'config:core.entity_view_display.group.country_protected.default'
         - 'config:core.entity_view_display.group.country_protected.map'
+        - 'config:core.entity_view_display.group.country_protected.region_search_for_countries'
         - 'config:core.entity_view_display.group.country_protected.search_country'
         - 'config:core.entity_view_display.group.country_protected.search_result_row'
         - 'config:core.entity_view_display.group.country_protected.single_line_with_icon'
@@ -282,7 +286,9 @@ display:
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.project_protected.based_on'
         - 'config:core.entity_view_display.group.project_protected.bottom'
+        - 'config:core.entity_view_display.group.project_protected.default'
         - 'config:core.entity_view_display.group.project_protected.search_result_row'
+        - 'config:core.entity_view_display.group.project_protected.teaser'
         - 'config:core.entity_view_display.group.project_protected.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
@@ -292,20 +298,14 @@ display:
         - 'config:core.entity_view_display.group.region.search_result_row'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
+        - 'config:core.entity_view_display.group.region_protected.banner'
+        - 'config:core.entity_view_display.group.region_protected.bottom'
         - 'config:core.entity_view_display.group.region_protected.country_list_by_region'
+        - 'config:core.entity_view_display.group.region_protected.default'
         - 'config:core.entity_view_display.group.region_protected.search_country'
         - 'config:core.entity_view_display.group.region_protected.search_result_row'
         - 'config:core.entity_view_display.group.region_protected.time_line'
         - 'config:core.entity_view_display.group.region_protected.token'
-        - 'config:core.entity_view_display.group.country_protected.banner'
-        - 'config:core.entity_view_display.group.country_protected.bottom'
-        - 'config:core.entity_view_display.group.country_protected.default'
-        - 'config:core.entity_view_display.group.country_protected.region_search_for_countries'
-        - 'config:core.entity_view_display.group.project_protected.default'
-        - 'config:core.entity_view_display.group.project_protected.teaser'
-        - 'config:core.entity_view_display.group.region_protected.banner'
-        - 'config:core.entity_view_display.group.region_protected.bottom'
-        - 'config:core.entity_view_display.group.region_protected.default'
   block_1:
     display_plugin: block
     id: block_1
@@ -1758,16 +1758,15 @@ display:
           entity_type: group
           entity_field: langcode
           plugin_id: language
-        field_group_status_value:
-          id: field_group_status_value
-          table: group__field_group_status
-          field: field_group_status_value
+        group_status:
+          id: group_status
+          table: groups_field_data
+          field: group_status
           relationship: gc__group
           group_type: group
           admin_label: ''
-          operator: or
-          value:
-            published: published
+          operator: '='
+          value: published
           group: 1
           exposed: false
           expose:
@@ -1782,7 +1781,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1795,8 +1793,9 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
+          entity_type: group
+          entity_field: group_status
+          plugin_id: string
       filter_groups:
         operator: AND
         groups:

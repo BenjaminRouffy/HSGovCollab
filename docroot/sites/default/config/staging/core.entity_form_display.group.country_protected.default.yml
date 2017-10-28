@@ -9,7 +9,6 @@ dependencies:
     - field.field.group.country_protected.field_content
     - field.field.group.country_protected.field_date
     - field.field.group.country_protected.field_faq
-    - field.field.group.country_protected.field_group_status
     - field.field.group.country_protected.field_infographic
     - field.field.group.country_protected.field_join_block
     - field.field.group.country_protected.field_region_icon
@@ -187,12 +186,6 @@ content:
       default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
-    region: content
-  field_group_status:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
-    type: options_buttons
     region: content
   field_infographic:
     weight: 13

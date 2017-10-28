@@ -114,10 +114,15 @@ function group_customization_entity_base_field_info(EntityTypeInterface $entity_
  */
 function group_customization_entity_presave(EntityInterface $entity) {
   if (in_array($entity->getEntityTypeId(), ['group'])) {
-    if ($entity instanceof GroupInterface && $entity->hasField('field_group_status')) {
-      if ($entity->get('field_group_status')) {
-        $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
-        $entity->set('group_status', $group_status);
+    if ($entity instanceof GroupInterface) {
+      if ($entity->getGroupType()->id() !== 'country_protected') {
+        if ($entity->hasField('field_group_status')) {
+          $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
+          $entity->set('group_status', $group_status);
+        }
+      }
+      else {
+        $entity->set('group_status', 'published');
       }
     }
   }

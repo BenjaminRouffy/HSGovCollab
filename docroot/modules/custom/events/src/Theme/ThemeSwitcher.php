@@ -59,15 +59,41 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
         // from group page (calendar, news, etc.).
         if (isset($group)) {
           $member = $group->getMember($user);
-          $member_roles = $member->getRoles();
-          foreach ($member_roles as $role) {
-            if ($role->get('label') === 'Manager') {
-              // if the user is manager in the group let him
-              return FALSE;
+          if ($member) {
+            $member_roles = $member->getRoles();
+            foreach ($member_roles as $role) {
+              if ($role->get('label') === 'Manager') {
+                // if the user is manager in the group let him
+                return FALSE;
+              }
             }
           }
-          // Let the user user the Ample theme.
-          return TRUE;
+          else {
+            $manager = \Drupal::service('ggroup.group_hierarchy_manager');
+            $groups = $manager->getGroupSupergroups($group->id());
+
+            if (!empty($groups)) {
+              foreach ($groups as $group) {
+                $memberships = $group->getMember($user);
+
+                if ($memberships) {
+                  foreach ($memberships->getRoles() as $role) {
+                    if ($role->get('label') === 'Manager') {
+                      // If the user is manager in the group let him
+                      return FALSE;
+                    }
+                  }
+                }
+              }
+              // If user is not member of the parent groups
+              // should use the Ample theme for adding content.
+              return TRUE;
+            }
+            else {
+              // Let the user user the Ample theme.
+              return TRUE;
+            }
+          }
         }
         else {
           if (isset($node_parameter)) {
@@ -81,11 +107,39 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
                 $group = Group::load($result->gid);
                 if (isset($group)) {
                   $member = $group->getMember($user);
-                  $member_roles = $member->getRoles();
-                  foreach ($member_roles as $role) {
-                    if ($role->get('label') === 'Manager') {
-                      // If the user is manager in the group let him
-                      return FALSE;
+                  if ($member) {
+                    $member_roles = $member->getRoles();
+                    foreach ($member_roles as $role) {
+                      if ($role->get('label') === 'Manager') {
+                        // if the user is manager in the group let him
+                        return FALSE;
+                      }
+                    }
+                  }
+                  else {
+                    $manager = \Drupal::service('ggroup.group_hierarchy_manager');
+                    $groups = $manager->getGroupSupergroups($group->id());
+
+                    if (!empty($groups)) {
+                      foreach ($groups as $group) {
+                        $memberships = $group->getMember($user);
+
+                        if ($memberships) {
+                          foreach ($memberships->getRoles() as $role) {
+                            if ($role->get('label') === 'Manager') {
+                              // If the user is manager in the group let him
+                              return FALSE;
+                            }
+                          }
+                        }
+                      }
+                      // If user is not member of the parent groups
+                      // should use the Ample theme for adding content.
+                      return TRUE;
+                    }
+                    else {
+                      // Let the user user the Ample theme.
+                      return TRUE;
                     }
                   }
                 }

@@ -11,6 +11,8 @@ services:
         # Closed collaboration membership add and edit forms.
       - { name: form_alter, form_id: group_content_group_content_type_8f1540bfd3b5b_add_form }
       - { name: form_alter, form_id: group_content_group_content_type_8f1540bfd3b5b_edit_form }
+      - { name: form_alter, form_id: group_content_region-group_membership_add_form }
+      - { name: form_alter, form_id: group_content_region-group_membership_edit_form }
       - { name: form_alter, form_id: group_content_country-group_membership_add_form }
       - { name: form_alter, form_id: group_content_country-group_membership_edit_form }
       - { name: form_alter, form_id: group_content_project-group_membership_add_form }

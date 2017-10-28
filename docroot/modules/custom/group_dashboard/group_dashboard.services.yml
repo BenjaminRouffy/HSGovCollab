@@ -1,9 +1,4 @@
 services:
-  group_dashboard.group_content_subscriber:
-    class: Drupal\group_dashboard\Routing\GroupContentSubscriber
-    tags:
-      - { name: event_subscriber }
-
   group_dashboard.group_type_alter:
     class: Drupal\group_dashboard\Form\Alter\GroupTypeAlter
     tags:

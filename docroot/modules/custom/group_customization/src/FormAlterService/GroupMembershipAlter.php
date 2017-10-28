@@ -46,6 +46,10 @@ class GroupMembershipAlter implements FormAlterServiceSubmitInterface, FormAlter
       }
 
       switch ($group->getGroupType()->id()) {
+        // @TODO: Create additional role for Region managers.
+        case 'region':
+          $user->{in_array('region-admin', $roles) ? 'addRole' : 'removeRole'}('closed_country_manager');
+          break;
         case 'region_protected':
           $user->{in_array('region_protected-manager', $roles) ? 'addRole' : 'removeRole'}('closed_country_manager');
           break;

@@ -712,4 +712,32 @@
     }
   };
 
+  Drupal.behaviors.addTimezoneToSelect = {
+    attach: function (context, settings) {
+      var $articles = $('.article-add-node,' +
+        '.article-edit-node,' +
+        '.article-delete-node');
+
+      if (!$articles.length) return;
+
+      var $timezoneSelect = $articles.find('.form-item-field-timezone select');
+
+      if (!$timezoneSelect.length) return;
+
+      var utcHour = (moment(new Date()).utcOffset() / 60);
+      var paddedUtcHour = padDigitsWithSigns(utcHour, 2);
+
+      if (paddedUtcHour === '+00') paddedUtcHour = '00';
+
+      var $utcOption = $timezoneSelect
+        .find('option[value*="' + paddedUtcHour + ':00"]').val();
+
+      $timezoneSelect.val($utcOption);
+    }
+  };
+
+  function padDigitsWithSigns(number, digits) {
+    return (number < 0 ? '-' : '+') + Array(Math.max(digits - String(Math.abs(number)).length + 1, 0)).join(0) + Math.abs(number);
+  }
+
 })(jQuery, Drupal);

@@ -121,7 +121,7 @@ function crop_file_url_alter(&$uri) {
     // Get the file path without query parameter.
     $parsed_uri = UrlHelper::parse($match[3]);
     // Get the file URI using parsed schema and file path.
-    $file_uri = $match[2] . '://' . $parsed_uri['path'];
+    $file_uri = $match[2] . '://' . rawurldecode($parsed_uri['path']);
 
     // Prevent double hashing, if there is a hash argument already, do not add
     // it again.

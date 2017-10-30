@@ -188,8 +188,7 @@ function group_customization_local_tasks_alter(&$local_tasks) {
 function group_customization_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
   $route = \Drupal::routeMatch()->getRouteName();
   if ($route === 'entity.group.add_form') {
-    $params = \Drupal::routeMatch()->getParameters();
-    $group_type = $params->get('group_type');
+    $group_type = \Drupal::routeMatch()->getParameter('group_type');
     if (isset($group_type) && $group_type->id() === 'country_protected') {
       // If group is closed country hide private content checkbox.
       if ($element['#entity_type'] === 'paragraph') {

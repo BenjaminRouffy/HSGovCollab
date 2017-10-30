@@ -103,7 +103,7 @@
     }
   }
 
-  fieldset {
+  fieldset:not([data-accordion="none"]) {
     display: none;
     margin: 0;
   }
@@ -341,6 +341,7 @@
   position: relative;
 
   .form-text {
+    @include font-size(16);
     border-color: rgba($navy-dark, .32);
     padding-right: 60px;
 

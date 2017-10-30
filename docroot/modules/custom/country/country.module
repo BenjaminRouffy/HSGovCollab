@@ -64,6 +64,26 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         $result = AccessResult::allowed();
       }
 
+      // Restrict the access to related entities if its parent group is country
+      // and it's unpublished.
+      $group_contents = \Drupal::entityTypeManager()
+        ->getStorage('group_content')
+        ->loadByProperties([
+          'entity_id' => $node->id(),
+        ]);
+
+      foreach ($group_contents as $group_content) {
+        /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+        $group = $group_content->getGroup();
+        if ($group->getGroupType()->id() === 'country') {
+          if ($group->hasField('field_group_status') && $group->get('field_group_status')->value === 'unpublished') {
+            if (!\Drupal\group\Access\GroupAccessResult::allowedIfHasGroupPermission($group, $account, 'edit group')->isAllowed()) {
+              return AccessResult::forbidden();
+            }
+          }
+        }
+      }
+
       // Check for GA supergroup access.
 //      $parents = _get_parent_supergroups($node);
 //      $parent_access = TRUE;
@@ -311,6 +331,19 @@ function country_views_post_render($view) {
           $view->setTitle($label);
         }
       }
+    }
+  }
+
+  // Override "See all countries" link on Region and Closed region page.
+  if ($view->id() === 'list_of_projects' && ($view->current_display === 'block_3' || $view->current_display === 'block_6')) {
+    if (empty($label)) {
+      if ($group->hasField('field_label')) {
+        $label = $group->get('field_label')->value;
+      }
+    }
+
+    if (!empty($label)) {
+      $view->display_handler->setOption('use_more_text', t("See all @objects", ['@objects' => $label]));
     }
   }
 }

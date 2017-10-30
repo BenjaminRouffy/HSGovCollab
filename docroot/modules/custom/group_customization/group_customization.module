@@ -181,3 +181,27 @@ function group_customization_local_tasks_alter(&$local_tasks) {
     $local_tasks['group.content']['title'] = t('Relate/add content');
   }
 }
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function group_customization_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route === 'entity.group.add_form') {
+    $group_type = \Drupal::routeMatch()->getParameter('group_type');
+    if (isset($group_type) && $group_type->id() === 'country_protected') {
+      // If group is closed country hide private content checkbox.
+      if ($element['#entity_type'] === 'paragraph') {
+        // Paragraph bundles for which this checkn=box needs to be hidden.
+        $bundles = array('infographic_item', 'content_image', 'content_text');
+        if (in_array($element['#bundle'], $bundles)) {
+          $item = $context['items'];
+          if ($item->getName() === 'field_private_content') {
+            // Hide private content checkbox.
+            $element['#access'] = FALSE;
+          }
+        }
+      }
+    }
+  }
+}

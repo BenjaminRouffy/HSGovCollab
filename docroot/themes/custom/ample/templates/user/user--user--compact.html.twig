@@ -37,19 +37,20 @@
       </span>
       </div>
 
-      {% if content.field_country|field_value %}
-        <div class="font-social-icon country-icon">
-        <span>
-          {{ content.field_country|field_value }}
-        </span>
-        </div>
-      {% endif %}
 
       {% if content.field_organisations|field_value %}
         {{ content.field_organisations }}
       {% endif %}
 
       <div class="compact-view">
+        {% if content.field_country|field_value %}
+          <div class="font-social-icon country-icon">
+            <span>
+              {{ content.field_country|field_value }}
+            </span>
+          </div>
+        {% endif %}
+
         {% if content.field_country_manager|field_value %}
           {{ content.field_country_manager }}
         {% endif %}

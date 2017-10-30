@@ -13,6 +13,7 @@ dependencies:
     - field.field.group.region.field_infographic
     - field.field.group.region.field_join_block
     - field.field.group.region.field_label
+    - field.field.group.region.field_objects_icon
     - field.field.group.region.field_pin_items
     - field.field.group.region.field_region_icon
     - field.field.group.region.field_summary
@@ -50,6 +51,7 @@ third_party_settings:
         - label
         - field_label
         - field_region_icon
+        - field_objects_icon
         - field_date
         - langcode
       parent_name: group_tabs_panel
@@ -148,7 +150,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_bottom_link:
-    weight: 13
+    weight: 12
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -172,7 +174,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -225,8 +227,21 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_objects_icon:
+    weight: 5
+    settings:
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      view_mode: default
+      open: false
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: entity_browser_file
+    region: content
   field_pin_items:
-    weight: 15
+    weight: 8
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -259,7 +274,7 @@ content:
     type: text_textarea
     region: content
   field_time_line:
-    weight: 7
+    weight: 8
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -280,7 +295,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

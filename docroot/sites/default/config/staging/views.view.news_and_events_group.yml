@@ -400,7 +400,7 @@ display:
           entity_field: langcode
           plugin_id: language
       sorts: {  }
-      title: 'Country News & Events'
+      title: 'Highlights '
       header:
         area_text_custom:
           id: area_text_custom
@@ -409,7 +409,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: false
+          empty: true
           tokenize: false
           content: 'Filter by:'
           plugin_id: text_custom
@@ -1129,7 +1129,7 @@ display:
             0: '0'
           entity_type: group_content
           plugin_id: group_id_depth
-      title: 'Collaboration News & Events'
+      title: 'Highlights '
     cache_metadata:
       max-age: -1
       contexts:
@@ -1534,7 +1534,7 @@ display:
             0: '0'
           entity_type: group_content
           plugin_id: group_id_depth
-      title: 'Collaboration News & Events'
+      title: Highlights
       relationships:
         gc__group:
           id: gc__group
@@ -1955,6 +1955,7 @@ display:
         relationships: false
         title: false
         arguments: false
+        query: false
       filter_groups:
         operator: AND
         groups:
@@ -2044,6 +2045,14 @@ display:
             1: '1'
           entity_type: group_content
           plugin_id: group_id_depth
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: true
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: -1
       contexts:
@@ -3501,7 +3510,7 @@ display:
             offset_label: Offset
       use_more: true
       use_more_always: false
-      use_more_text: 'Read more news'
+      use_more_text: 'Read more'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
       block_hide_empty: true
@@ -7258,7 +7267,7 @@ display:
             offset_label: Offset
       use_more: true
       use_more_always: false
-      use_more_text: 'Read more news'
+      use_more_text: 'Read more'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
       block_hide_empty: true

@@ -496,7 +496,8 @@ form {
 }
 
 // Checkboxes
-.js-form-type-checkbox {
+.webform-body .js-form-type-checkbox,
+.view-news-and-events .js-form-type-checkbox {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -2301,5 +2302,243 @@ form {
   // Form actions
   .form-actions {
     text-align: center;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Event form
+.content-add-form {
+
+  .node-form {
+    margin: 0 auto 80px;
+    max-width: 770px;
+    padding: 0 40px;
+
+    .description {
+      @include font-size(15.4);
+      color: $navy;
+      margin-bottom: 30px;
+    }
+
+    .form-item:not(.js-form-type-managed-file) {
+      position: relative;
+      padding-top: 5px;
+
+      .description {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+
+        &:before {
+          content: "?";
+          display: inline-block;
+          padding-top: 5px;
+          width: 30px;
+          height: 30px;
+          border-radius: 100%;
+          background-color: #283b44;
+          color: white;
+          text-align: center;
+          font-size: 18px;
+          transition: opacity 0.2s ease 0s;
+          cursor: pointer;
+        }
+
+        &-inner {
+          z-index: 500;
+          position: absolute;
+          top: 5px;
+          right: 40px;
+          display: none;
+          padding: 20px;
+          width: 300px;
+          background-color: #283b44;
+          color: white;
+          font-size: 14px;
+          text-align: left;
+          box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .21);
+        }
+
+        &:hover  {
+          &:before {
+            opacity: 0.79;
+          }
+
+          .description-inner {
+            display: block;
+          }
+        }
+      }
+    }
+
+    input + .description {
+      margin-top: -5px;
+    }
+
+    .horizontal-tabs {
+      border: 0;
+      margin: 0;
+    }
+
+    // Tabs list
+    // Drag functionality
+    .horizontal-tabs-list,
+    .tabledrag-toggle-weight-wrapper {
+      display: none;
+    }
+
+    .horizontal-tabs-pane {
+      padding: 0;
+    }
+
+    // CK editor
+    .cke_chrome {
+      border: 1px solid #fafafa;
+      box-shadow: 0 0 5px rgba($black, .06);
+    }
+
+    .cke_top,
+    .cke_bottom {
+      border: 0;
+    }
+
+    // Drag table items
+    #field-date-values {
+      width: 100%;
+
+      h4 {
+        font-family: $oswald;
+        margin-top: 10px;
+        display: inline-block;
+        min-width: 150px;
+        font-weight: 300;
+
+        + div {
+          margin-bottom: 30px;
+
+          @media screen and (min-width: 645px) {
+            margin-bottom: 0;
+            display: inline-block;
+            width: calc(100% - 160px);
+          }
+        }
+      }
+
+      th h4 {
+        text-align: left;
+        display: block;
+        font-weight: 400;
+      }
+
+      .form-date {
+        margin-bottom: 10px;
+      }
+    }
+
+    .image-widget,
+    .form-managed-file {
+      margin-bottom: 20px;
+    }
+
+    .delta-order,
+    .field-multiple-drag {
+      display: none;
+    }
+
+    // Date
+    .js-form-type-date {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .field--type-daterange {
+      .form-submit {
+        @include font-size(16.8);
+        border: 0;
+        text-transform: none;
+        background: #e9ecee;
+        color: $red;
+        cursor: pointer;
+        display: inline-block;
+        font-family: $oswald;
+        padding: 15px 40px;
+        vertical-align: top;
+
+        &:hover {
+          color: $red-dark;
+        }
+      }
+    }
+
+    // Increase distance between specific fields
+    .field--type-image,
+    .field--type-language,
+    .field--type-daterange {
+      margin-bottom: 40px;
+    }
+
+    // Fieldset
+    fieldset {
+      border: 0;
+      padding: 0;
+      margin: 0 0 30px;
+
+      legend {
+        padding: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    // Summary / Body
+    .field--type-text-with-summary {
+      margin-bottom: 60px;
+
+      .filter-wrapper {
+        display: none;
+      }
+    }
+
+    // Summary edit link
+    .link-edit-summary {
+      background: none;
+      color: $red;
+      text-decoration: none;
+    }
+
+    // Form actions
+    .form-actions {
+      text-align: center;
+    }
+
+    // Multiple select
+    .form-select[multiple='multiple'] {
+      min-height: 200px;
+    }
+  }
+}
+
+@include breakpoint-for('.content-add-form', (to: laptop-small)) {
+  .node-form,
+  #block-ample-page-title {
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .horizontal-tabs {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .form-item:not(.js-form-type-managed-file) {
+    position: relative;
+
+    .description {
+      &-inner {
+        top: 35px;
+        right: -10px;
+      }
+    }
   }
 }

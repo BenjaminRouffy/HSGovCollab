@@ -875,16 +875,26 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           roles:
-            product-admin: product-admin
             country-admin: country-admin
+            country_protected-manager: country_protected-manager
             governance_area-manager: governance_area-manager
             knowledge_vault-admin: knowledge_vault-admin
+            product-admin: product-admin
             project-admin: project-admin
+            project_protected-manager: project_protected-manager
             region-admin: region-admin
+            region_protected-manager: region_protected-manager
             country-stakeholder: 0
+            country_protected-attendee: 0
+            country_protected-stakeholder: 0
+            governance_area-stakeholder: 0
             product-stakeholder: 0
             project-stakeholder: 0
+            project_protected-attendee: 0
+            project_protected-stakeholder: 0
             region-stakeholder: 0
+            region_protected-attendee: 0
+            region_protected-stakeholder: 0
           entity_type: group
           plugin_id: group_admin_filter
         field_group_status_value:

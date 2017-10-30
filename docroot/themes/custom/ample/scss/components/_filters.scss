@@ -103,7 +103,7 @@
     }
   }
 
-  fieldset {
+  fieldset:not([data-accordion="none"]) {
     display: none;
     margin: 0;
   }

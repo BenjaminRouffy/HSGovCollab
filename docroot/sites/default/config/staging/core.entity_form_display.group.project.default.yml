@@ -49,15 +49,15 @@ third_party_settings:
       label: 'Tabs panel'
     group_summary:
       children:
-        - field_geographical_object
-        - label
-        - field_date
         - field_label_end_date
         - field_end_date
         - langcode
         - translation
         - path
         - field_project_icon
+        - field_geographical_object
+        - label
+        - field_date
       parent_name: group_tabs_panel
       weight: 1
       format_type: tab
@@ -236,6 +236,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: private_content
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content

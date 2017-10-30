@@ -64,18 +64,38 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         $result = AccessResult::allowed();
       }
 
-      // Check for GA supergroup access.
-      $parents = _get_parent_supergroups($node);
-      $parent_access = TRUE;
-      if (!empty($parents)) {
-        foreach ($parents as $supergroup) {
-          $plugin_id = $node->bundle();
-          if ('governance_area' == $supergroup->getGroupType()->id() && !$supergroup->hasPermission("view group_node:$plugin_id entity", $account)) {
-            $parent_access = FALSE;
+      // Restrict the access to related entities if its parent group is country
+      // and it's unpublished.
+      $group_contents = \Drupal::entityTypeManager()
+        ->getStorage('group_content')
+        ->loadByProperties([
+          'entity_id' => $node->id(),
+        ]);
+
+      foreach ($group_contents as $group_content) {
+        /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+        $group = $group_content->getGroup();
+        if ($group->getGroupType()->id() === 'country') {
+          if ($group->hasField('field_group_status') && $group->get('field_group_status')->value === 'unpublished') {
+            if (!\Drupal\group\Access\GroupAccessResult::allowedIfHasGroupPermission($group, $account, 'edit group')->isAllowed()) {
+              return AccessResult::forbidden();
+            }
           }
         }
-        $result = AccessResult::forbiddenIf($parent_access === FALSE);
       }
+
+      // Check for GA supergroup access.
+//      $parents = _get_parent_supergroups($node);
+//      $parent_access = TRUE;
+//      if (!empty($parents)) {
+//        foreach ($parents as $supergroup) {
+//          $plugin_id = $node->bundle();
+//          if ('governance_area' == $supergroup->getGroupType()->id() && !$supergroup->hasPermission("view group_node:$plugin_id entity", $account)) {
+//            $parent_access = FALSE;
+//          }
+//        }
+//        $result = AccessResult::forbiddenIf($parent_access === FALSE);
+//      }
 
     }
 
@@ -219,23 +239,23 @@ function country_node_access_records_alter(array &$grants, NodeInterface $node) 
       }
     }
 
-    if ($is_ga = _check_governance_area_group($node)) {
-      $base_grant_realm = 'gnode:' . $node->getType();
-      foreach ($grants as $key => $grant) {
-        if ($grant['realm'] == $base_grant_realm) {
-          unset($grants[$key]);
-        }
-      }
-
-      $grants[] = [
-        'realm' => 'content:ga_group',
-        'gid' => GA_GROUP,
-        'grant_view' => 1,
-        'grant_update' => 0,
-        'grant_delete' => 0,
-        'priority' => 0,
-      ];
-    }
+//    if ($is_ga = _check_governance_area_group($node)) {
+//      $base_grant_realm = 'gnode:' . $node->getType();
+//      foreach ($grants as $key => $grant) {
+//        if ($grant['realm'] == $base_grant_realm) {
+//          unset($grants[$key]);
+//        }
+//      }
+//
+//      $grants[] = [
+//        'realm' => 'content:ga_group',
+//        'gid' => GA_GROUP,
+//        'grant_view' => 1,
+//        'grant_update' => 0,
+//        'grant_delete' => 0,
+//        'priority' => 0,
+//      ];
+//    }
   }
 }
 
@@ -269,7 +289,7 @@ function country_module_implements_alter(array &$implementations, $hook) {
   if ('node_access' === $hook && isset($implementations['gnode'])) {
     $gnode = $implementations['gnode'];
     unset($implementations['gnode']);
-    array_merge(['gnode' => $gnode], $implementations);
+    $implementations = array_merge(['gnode' => $gnode], $implementations);
   }
 
   if ('form_alter' === $hook && isset($implementations['password_policy'])) {
@@ -313,63 +333,76 @@ function country_views_post_render($view) {
       }
     }
   }
-}
 
-/**
- * Get group content parent groups.
- *
- * @param Node $node
- *   Node entity
- *
- * @return array|\Group[]
- *   Array of parent Groups
- */
-function _get_parent_supergroups($node) {
-  $parents = [];
-  $plugin_id = 'group_node:' . $node->bundle();
-  $group_content_types = GroupContentType::loadByContentPluginId($plugin_id);
-  // Load all the group content for this node.
-  $group_contents = \Drupal::entityTypeManager()
-    ->getStorage('group_content')
-    ->loadByProperties([
-      'type' => array_keys($group_content_types),
-      'entity_id' => $node->id(),
-    ]);
-
-  if (!empty($group_contents)) {
-    foreach ($group_contents as $group_content) {
-      /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
-      $group = $group_content->getGroup();
-      /* @var GroupHierarchyManager $subgroup_manage */
-      $subgroup_manage = \Drupal::service('ggroup.group_hierarchy_manager');
-
-      /* @var Group[] $parents */
-      $parents = $subgroup_manage->getGroupSupergroups($group);
-    }
-  }
-
-  return $parents;
-}
-
-/**
- * Check for Governance Area supergroup node.
- *
- * @param Node $node
- *   Node object.
- *
- * @return bool
- *   Node is in Governance Area status.
- */
-function _check_governance_area_group($node) {
-  $parents = _get_parent_supergroups($node);
-  $is_ga = FALSE;
-  if (!empty($parents)) {
-    foreach ($parents as $supergroup) {
-      if ('governance_area' == $supergroup->getGroupType()->id()) {
-        $is_ga = TRUE;
+  // Override "See all countries" link on Region and Closed region page.
+  if ($view->id() === 'list_of_projects' && ($view->current_display === 'block_3' || $view->current_display === 'block_6')) {
+    if (empty($label)) {
+      if ($group->hasField('field_label')) {
+        $label = $group->get('field_label')->value;
       }
     }
-  }
 
-  return $is_ga;
+    if (!empty($label)) {
+      $view->display_handler->setOption('use_more_text', t("See all @objects", ['@objects' => $label]));
+    }
+  }
 }
+
+///**
+// * Get group content parent groups.
+// *
+// * @param Node $node
+// *   Node entity
+// *
+// * @return array|\Group[]
+// *   Array of parent Groups
+// */
+//function _get_parent_supergroups($node) {
+//  $parents = [];
+//  $plugin_id = 'group_node:' . $node->bundle();
+//  $group_content_types = GroupContentType::loadByContentPluginId($plugin_id);
+//  // Load all the group content for this node.
+//  $group_contents = \Drupal::entityTypeManager()
+//    ->getStorage('group_content')
+//    ->loadByProperties([
+//      'type' => array_keys($group_content_types),
+//      'entity_id' => $node->id(),
+//    ]);
+//
+//  if (!empty($group_contents)) {
+//    foreach ($group_contents as $group_content) {
+//      /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+//      $group = $group_content->getGroup();
+//      /* @var GroupHierarchyManager $subgroup_manage */
+//      $subgroup_manage = \Drupal::service('ggroup.group_hierarchy_manager');
+//
+//      /* @var Group[] $parents */
+//      $parents = $subgroup_manage->getGroupSupergroups($group);
+//    }
+//  }
+//
+//  return $parents;
+//}
+
+///**
+// * Check for Governance Area supergroup node.
+// *
+// * @param Node $node
+// *   Node object.
+// *
+// * @return bool
+// *   Node is in Governance Area status.
+// */
+//function _check_governance_area_group($node) {
+//  $parents = _get_parent_supergroups($node);
+//  $is_ga = FALSE;
+//  if (!empty($parents)) {
+//    foreach ($parents as $supergroup) {
+//      if ('governance_area' == $supergroup->getGroupType()->id()) {
+//        $is_ga = TRUE;
+//      }
+//    }
+//  }
+//
+//  return $is_ga;
+//}

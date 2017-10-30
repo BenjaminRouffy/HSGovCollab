@@ -6,6 +6,12 @@
 function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   $route = \Drupal::routeMatch()->getRouteName();
   if ($form_id === 'node_document_form') {
+    $current_them = \Drupal::service('theme.manager')->getActiveTheme();
+    if ($current_them->getName() === 'ample') {
+      // Hide organization field when user is using the ample theme.
+      $form['field_organization']['#access'] = FALSE;
+    }
+
     foreach (array_keys($form['actions']) as $action) {
       if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
         $form['actions'][$action]['#submit'][] = 'document_customization_add_new_document_custom_submit';
@@ -17,6 +23,12 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
     }
   }
   if ($form_id === 'node_document_edit_form') {
+    $current_them = \Drupal::service('theme.manager')->getActiveTheme();
+    if ($current_them->getName() === 'ample') {
+      // Hide organization field when user is using the ample theme.
+      $form['field_organization']['#access'] = FALSE;
+    }
+
     $form['field_add_event_in_group']['#access'] = FALSE;
   }
 }

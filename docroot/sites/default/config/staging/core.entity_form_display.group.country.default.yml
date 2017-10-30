@@ -17,8 +17,8 @@ dependencies:
     - field.field.group.country.field_infographic
     - field.field.group.country.field_join_block
     - field.field.group.country.field_location
-    - field.field.group.country.field_region_icon
     - field.field.group.country.field_pin_items
+    - field.field.group.country.field_region_icon
     - field.field.group.country.field_summary
     - field.field.group.country.field_summary_content
     - field.field.group.country.field_time_line
@@ -368,6 +368,18 @@ content:
           bundle: country
     type: geolocation_googlegeocoder
     region: content
+  field_pin_items:
+    type: entity_reference_paragraphs
+    weight: 30
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
   field_region_icon:
     weight: 34
     settings:
@@ -397,16 +409,6 @@ content:
           entity_type: group
           bundle: country
     type: entity_browser_file
-  field_pin_items:
-    type: entity_reference_paragraphs
-    weight: 30
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: private_content
-    third_party_settings: {  }
     region: content
   field_summary:
     weight: 7

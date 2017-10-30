@@ -20,8 +20,8 @@ dependencies:
     - field.field.node.news.field_organization
     - field.field.node.news.field_process_and_milestones
     - field.field.node.news.field_related_content_selector
-    - image.style.thumbnail
     - field.field.node.news.field_social_autopost
+    - image.style.thumbnail
     - node.type.news
   module:
     - comment
@@ -158,12 +158,10 @@ content:
     region: content
   field_add_event_in_group:
     weight: 28
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
+    region: content
   field_anonymous_join_block:
     weight: 10
     settings: {  }

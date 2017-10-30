@@ -224,6 +224,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_pin_items:
     weight: 15
     settings:
@@ -232,6 +233,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: private_content
+      default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
@@ -290,11 +292,6 @@ content:
     third_party_settings: {  }
   translation:
     weight: 4
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  translation:
-    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

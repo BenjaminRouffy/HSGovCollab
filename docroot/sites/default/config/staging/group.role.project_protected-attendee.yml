@@ -1,0 +1,24 @@
+uuid: 6872a51a-c983-48f7-9470-3374ba585162
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.project_protected
+id: project_protected-attendee
+label: Attendee
+weight: -10
+internal: false
+audience: member
+group_type: project_protected
+permissions_ui: true
+permissions:
+  - 'view group'
+  - 'create group_node:document entity'
+  - 'view group_node:document entity'
+  - 'view group_node:document content'
+  - 'view group_node:event entity'
+  - 'view group_node:event content'
+  - 'create group_node:news entity'
+  - 'view group_node:news entity'
+  - 'view group_node:news content'
+  - 'access to view all group content'

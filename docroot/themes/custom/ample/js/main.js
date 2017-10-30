@@ -38,7 +38,7 @@
   Drupal.behaviors.accordionExposedFilter = {
     attach: function (context, settings) {
 
-      var $forms = $('[data-accordion]', context);
+      var $forms = $('form[data-accordion]', context);
 
       $.each($forms, function (i, v) {
         var $form = v;
@@ -97,23 +97,23 @@
             .attr(settings.defaultAttributeSelector, parentAttribute);
 
           $(new_div).find(settings.defaultAccordionTabText).html(legend);
-          $('.wrapper-filters', form).prepend(new_div);
+          $('.wrapper-filters:last', form).prepend(new_div);
           applyCheckboxesLabel(parent);
         };
 
         var _this = this;
-        $('fieldset', $form)
+        $('fieldset:not([data-accordion="none"])', $form)
           .filter('[' + settings.defaultAttributeSelector + ']').each(function () {
           addLabel($form, this);
         });
 
         $(".click-item", $form).click(function () {
           var attr = $(this).attr(settings.defaultAttributeSelector);
-          $('fieldset', $form).filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings("fieldset").slideUp(100);
+          $('fieldset', $form).filter('[' + settings.defaultAttributeSelector + '="' + attr + '"]').slideToggle(100).siblings('fieldset:not([data-accordion="none"])').slideUp(100);
           $(this).toggleClass(settings.defaultClosed).siblings(settings.defaultAccordionTab).addClass(settings.defaultClosed);
         });
 
-        $('fieldset[' + settings.defaultAttributeSelector + '] input', $form).change(function () {
+        $('fieldset:not([data-accordion="none"])[' + settings.defaultAttributeSelector + '] input', $form).change(function () {
           var parent = $(this).parents('fieldset');
           applyCheckboxesLabel(parent);
         });
@@ -711,5 +711,33 @@
       }
     }
   };
+
+  Drupal.behaviors.addTimezoneToSelect = {
+    attach: function (context, settings) {
+      var $articles = $('.article-add-node,' +
+        '.article-edit-node,' +
+        '.article-delete-node');
+
+      if (!$articles.length) return;
+
+      var $timezoneSelect = $articles.find('.form-item-field-timezone select');
+
+      if (!$timezoneSelect.length) return;
+
+      var utcHour = (moment(new Date()).utcOffset() / 60);
+      var paddedUtcHour = padDigitsWithSigns(utcHour, 2);
+
+      if (paddedUtcHour === '+00') paddedUtcHour = '00';
+
+      var $utcOption = $timezoneSelect
+        .find('option[value*="' + paddedUtcHour + ':00"]').val();
+
+      $timezoneSelect.val($utcOption);
+    }
+  };
+
+  function padDigitsWithSigns(number, digits) {
+    return (number < 0 ? '-' : '+') + Array(Math.max(digits - String(Math.abs(number)).length + 1, 0)).join(0) + Math.abs(number);
+  }
 
 })(jQuery, Drupal);

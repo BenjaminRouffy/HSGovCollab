@@ -108,7 +108,6 @@
       margin-top: 25px;
     }
   }
-
   .description {
     @include font-size(15.4);
     color: $navy;
@@ -166,12 +165,25 @@
 @include breakpoint-for('.article-add-node, .article-edit-node, .article-delete-node', (to: laptop-small)) {
   .node-form,
   #block-ample-page-title {
+    padding-right: 0;
+    padding-left: 0;
     width: 100%;
   }
 
   .horizontal-tabs {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .form-item:not(.js-form-type-managed-file) {
+    position: relative;
+
+    .description {
+      &-inner {
+        top: 35px;
+        right: -10px;
+      }
+    }
   }
 }
 

@@ -92,6 +92,26 @@ class GroupJoinBlockForm extends FormBase {
     $following = $this->isFollower ? 'unfollow' : 'follow';
     $redirect_url = Url::fromRoute("group_following.$following", ['group' => $this->group->id()]);
 
+    // {{ group_title }} and {{ group_objects }} placeholders has been added
+    // to the following confirmation popup and here we replace them with their
+    // actual values.
+    $header = $group_type_settings["confirmation_popup_{$following}ing_header"];
+    $header = str_replace('{{ group_title }}', $this->group->label(), $header);
+
+    $body = $group_type_settings["confirmation_popup_{$following}ing_body"];
+    if ($this->group->getGroupType()->id() === 'region' || $this->group->getGroupType()->id() === 'region_protected') {
+      if ($this->group->hasField('field_label')) {
+        if ($this->group->get('field_label')->value) {
+          $body = str_replace('{{ group_objects }}', $this->group->get('field_label')->value, $body);
+        }
+        else {
+          $body = str_replace('{{ group_objects }}', 'countries', $body);
+        }
+      }
+    }
+    $body = str_replace('{{ group_title }}', $this->group->label(), $body);
+
+
     if ($group_type_settings['confirmation_popup_status']) {
       $content['container'] = [
         '#type' => 'container',
@@ -114,7 +134,7 @@ class GroupJoinBlockForm extends FormBase {
 
       $content['container']['title_wrapper']['title'] = [
         '#type' => 'markup',
-        '#markup' => '<h1 role="heading">' . $group_type_settings["confirmation_popup_{$following}ing_header"] . '</h1>',
+        '#markup' => '<h1 role="heading">' . $header . '</h1>',
         '#suffix' =>'<div class="line"></div>'
       ];
 
@@ -128,7 +148,7 @@ class GroupJoinBlockForm extends FormBase {
       ];
       $content['container']['summary_text']['value'] = [
         '#type' => 'markup',
-        '#markup' => '<p>' . $group_type_settings["confirmation_popup_{$following}ing_body"] . '</p>',
+        '#markup' => '<p>' . $body . '</p>',
       ];
 
       $content['container']['action_links'] = [

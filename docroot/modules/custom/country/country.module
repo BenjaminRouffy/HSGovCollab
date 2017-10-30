@@ -64,6 +64,26 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
         $result = AccessResult::allowed();
       }
 
+      // Restrict the access to related entities if its parent group is country
+      // and it's unpublished.
+      $group_contents = \Drupal::entityTypeManager()
+        ->getStorage('group_content')
+        ->loadByProperties([
+          'entity_id' => $node->id(),
+        ]);
+
+      foreach ($group_contents as $group_content) {
+        /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+        $group = $group_content->getGroup();
+        if ($group->getGroupType()->id() === 'country') {
+          if ($group->hasField('field_group_status') && $group->get('field_group_status')->value === 'unpublished') {
+            if (!\Drupal\group\Access\GroupAccessResult::allowedIfHasGroupPermission($group, $account, 'edit group')->isAllowed()) {
+              return AccessResult::forbidden();
+            }
+          }
+        }
+      }
+
       // Check for GA supergroup access.
 //      $parents = _get_parent_supergroups($node);
 //      $parent_access = TRUE;

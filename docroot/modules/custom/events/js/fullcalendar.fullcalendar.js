@@ -109,8 +109,7 @@
 
         if (drupalSettings.events && drupalSettings.events.group_node_event_path) {
           // Attach add event text to the days if we are in month view.
-          $('.fc-month-view .fc-day-number')
-              .prepend('<span class="add-event">' + Drupal.t('Add Event') + '</span>');
+          $('.fc-day-number, .fc-day', _this.$view).addClass('can-add-event');
 
           $('.fc-day-number, .fc-bg .fc-day', _this.$view).click(function () {
             // Do not bother in case of year view dots clicked.
@@ -137,10 +136,9 @@
         }
         else {
           if (drupalSettings.events && drupalSettings.events.group_node_event_path) {
-            // /group/{group}/content/create/{plugin_id}
-            window.location.href = drupalSettings.events.group_node_event_path
-              + '?date=' + encodeURIComponent(date.toISOString())
-              + '&destination=' + encodeURIComponent(window.location.pathname);
+            var date = $(this).attr('data-date'),
+              path = drupalSettings.events.group_node_event_path;
+            window.location.href = path + '?date=' + encodeURIComponent(date);
           }
         }
       },

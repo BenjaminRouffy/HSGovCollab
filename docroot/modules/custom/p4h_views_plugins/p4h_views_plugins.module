@@ -102,6 +102,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
       case 'views-exposed-form-news-and-events-group-closed-region-news-events':
       case 'views-exposed-form-news-and-events-group-ga-news-events':
       case 'views-exposed-form-news-and-events-group-block-news-events-project':
+      case 'views-exposed-form-news-and-events-group-closed-collaboration-news-events':
       case 'views-exposed-form-my-calendar-governance-area':
       case 'views-exposed-form-my-calendar-block-1':
         $form['wrap'] = [

@@ -269,7 +269,7 @@ function country_module_implements_alter(array &$implementations, $hook) {
   if ('node_access' === $hook && isset($implementations['gnode'])) {
     $gnode = $implementations['gnode'];
     unset($implementations['gnode']);
-    array_merge(['gnode' => $gnode], $implementations);
+    $implementations = array_merge(['gnode' => $gnode], $implementations);
   }
 
   if ('form_alter' === $hook && isset($implementations['password_policy'])) {
@@ -311,6 +311,19 @@ function country_views_post_render($view) {
           $view->setTitle($label);
         }
       }
+    }
+  }
+
+  // Override "See all countries" link on Region and Closed region page.
+  if ($view->id() === 'list_of_projects' && ($view->current_display === 'block_3' || $view->current_display === 'block_6')) {
+    if (empty($label)) {
+      if ($group->hasField('field_label')) {
+        $label = $group->get('field_label')->value;
+      }
+    }
+
+    if (!empty($label)) {
+      $view->display_handler->setOption('use_more_text', t("See all @objects", ['@objects' => $label]));
     }
   }
 }

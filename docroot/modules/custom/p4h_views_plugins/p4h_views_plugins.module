@@ -60,6 +60,7 @@ function p4h_views_plugins_views_pre_build(ViewExecutable $view) {
     if ($account->isAuthenticated()) {
       $view->setArguments([$account->id()]);
       $view->display_handler->setOption('title', t('My news'));
+      $view->display_handler->setOption('link_url', 'user/my-news');
     }
     // Otherwise - show all public items.
     else {

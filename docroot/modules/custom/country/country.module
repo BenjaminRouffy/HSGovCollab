@@ -348,6 +348,32 @@ function country_views_post_render($view) {
   }
 }
 
+/**
+ * Implements hook_views_pre_execute().
+ */
+function country_views_pre_execute($view) {
+  // Number of objects field has been added to Region and Closed region group
+  // type, which allows us to control how many countries will be displayed on
+  // the region page. If the field has "0" value all the countries will be
+  // displayed, if the field is empty only 3 objects will be displayed,
+  // in any other case we show the number of countries specified in the field.
+  if (($view->id() == 'list_of_projects' && ($view->current_display == 'block_6' || $view->current_display == 'block_3'))) {
+    $connection = \Drupal\Core\Database\Database::getConnection();
+
+    $group_id = reset($view->args);
+    if (!empty($group_id)) {
+      $query = $connection->select('group__field_number_of_objects', 'no');
+      $query->fields('no', ['field_number_of_objects_value']);
+      $query->condition('no.entity_id', $group_id, '=');
+      $number_of_objects = $query->execute()->fetchField();
+
+
+      if ($number_of_objects !== FALSE) {
+        $view->query->setLimit($number_of_objects);
+      }
+    }
+  }
+}
 ///**
 // * Get group content parent groups.
 // *

@@ -530,10 +530,8 @@ function ample_preprocess_simplenews_newsletter_body(array &$variables) {
 function ample_get_country_icon_by_group($entity) {
   $group_icon_uri = '';
 
-  /*
-   * If the passed entity is not a group entity and
-   * not a country group return empty string.
-   */
+  // If the passed entity is not a group entity and
+  // not a country group return empty string.
   if ($entity->getEntityTypeId() !== 'group' &&
       ( $entity->bundle() !== 'country' ||
         $entity->bundle() !== 'country_protected'
@@ -588,12 +586,45 @@ function ample_get_country_icon_by_group($entity) {
     }
   }
 
-  if ($entity->hasField('field_ga_icon')) {
-    $icon = $entity->get('field_ga_icon')->getValue();
+  // If we are on the region or closed region page we get the default objects
+  // icon from it, otherwise if we are on the country or country_protected page
+  // we get the icon from its first parent group.
+  if (empty($group_icon_uri)) {
+    $parent_group = Drupal::routeMatch()->getParameter('group');
+    if (!empty($parent_group) && ($parent_group->getGroupType()
+          ->id() === 'region' || $parent_group->getGroupType()
+          ->id() === 'region_protected')
+    ) {
+      if ($parent_group->hasField('field_objects_icon')) {
+        $icon = $parent_group->get('field_objects_icon')->getValue();
 
-    if (is_array($icon) && !empty($icon)) {
-      $image = File::load($icon[0]['target_id']);
-      $group_icon_uri = $image->getFileUri();
+        // If it is not a geographical object then get the region icon.
+        if (is_array($icon) && !empty($icon[0]['target_id'])) {
+          $image = File::load($icon[0]['target_id']);
+          $group_icon_uri = $image->getFileUri();
+        }
+      }
+    }
+    elseif ($entity->getGroupType()->id() === 'country' || $entity->getGroupType()->id() === 'country_protected') {
+      $manager = \Drupal::service('ggroup.group_hierarchy_manager');
+
+      $groups = $manager->getGroupSupergroups($entity->id());
+      // @TODO: We get the objects icon from the first parent group. It should
+      // @TODO: be fixed. One way is to disable the relate functionality for
+      // @TODO: groups.
+      if (!empty($groups)) {
+        $first_group = reset($groups);
+
+        if ($first_group->hasField('field_objects_icon')) {
+          $icon = $first_group->get('field_objects_icon')->getValue();
+
+          // If it is not a geographical object then get the region icon.
+          if (is_array($icon) && !empty($icon[0]['target_id'])) {
+            $image = File::load($icon[0]['target_id']);
+            $group_icon_uri = $image->getFileUri();
+          }
+        }
+      }
     }
   }
 

@@ -1113,8 +1113,14 @@
 }
 
 @include breakpoint-for('.news-and-events-list', (to: mobileL)) {
-  .item:nth-child(n) {
-    width: 100%;
+  .item {
+    &:nth-child(n) {
+      width: 100%;
+    }
+
+    &:first-child {
+      width: 100%;
+    }
   }
 
   .front & {

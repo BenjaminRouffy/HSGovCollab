@@ -13,7 +13,7 @@
       {% if items.min or items.max  %}
         <li>
           {% trans %}
-            {{ items.min }} - {{ items.max }}
+            {{ items.min }} - {{ items.max }} out of {{ options.total_rows }}
           {% endtrans %}
         </li>
       {% endif %}

@@ -5758,15 +5758,11 @@ form textarea ~ label.error:after {
 
 .webform-body .js-form-type-checkbox label,
 .view-news-and-events .js-form-type-checkbox label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  padding-left: 25px;
   margin-bottom: 0;
   cursor: pointer;
   line-height: 1.2;
+  float: none;
   position: relative;
 }
 
@@ -5789,7 +5785,9 @@ form textarea ~ label.error:after {
 
 .webform-body .js-form-type-checkbox label::before,
 .view-news-and-events .js-form-type-checkbox label::before {
-  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
   height: 20px;
   min-width: 20px;
   background: #f5f5f5;

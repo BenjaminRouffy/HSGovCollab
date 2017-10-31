@@ -1558,13 +1558,31 @@
   }
 }
 
-.knowledge-vault-list {
+.knowledge-vault-list,
+.country-list,
+.project-list {
   .knowledge-vault-link {
     > a {
       &:before {
         content: none;
       }
     }
+  }
+}
+
+.country-list {
+  .project-bottom-link {
+    margin-top: auto;
+  }
+
+  .knowledge-vault-link {
+    margin-top: 14px;
+  }
+}
+
+.project-list {
+  .knowledge-vault-link {
+    margin-top: auto;
   }
 }
 
@@ -1583,9 +1601,12 @@
   }
 
   .contact-content {
-    flex-direction: row;
     overflow: hidden;
     padding: 30px 20px 50px;
+
+    @media screen  and (min-width: 768px) {
+      flex-direction: row;
+    }
   }
 
   .user-icon-wrapper {
@@ -1786,6 +1807,7 @@
 @include breakpoint-for('.single-contact', (to: tablet)) {
   .user-contacts {
     width: 100%;
+    padding-left: 0;
   }
 }
 
@@ -2089,6 +2111,13 @@
     &:hover {
       color: $red;
     }
+  }
+}
+
+.group-members {
+  a:before {
+    content: '';
+    display: none;
   }
 }
 

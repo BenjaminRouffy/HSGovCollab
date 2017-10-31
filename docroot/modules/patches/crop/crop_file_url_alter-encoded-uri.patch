@@ -1,0 +1,13 @@
+diff --git a/crop.module b/crop.module
+index a5aeafa..3ba6941 100644
+--- a/crop.module
++++ b/crop.module
+@@ -125,7 +125,7 @@ function crop_file_url_alter(&$uri) {
+     // Get the file path without query parameter.
+     $parsed_uri = parse_url($match[3]);
+     // Get the file URI using parsed schema and file path.
+-    $file_uri = $match[2] . '://' . $parsed_uri['path'];
++    $file_uri = $match[2] . '://' . rawurldecode($parsed_uri['path']);
+ 
+     /** @var \Drupal\image\Entity\ImageStyle $image_style */
+     if (!$image_style = ImageStyle::load($image_style)) {

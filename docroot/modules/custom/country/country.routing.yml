@@ -63,6 +63,8 @@ country.collapsed_update:
   defaults:
     _controller: '\Drupal\country\Controller\CollapsedController::toggle'
     _title: 'collapsedUpdate'
+  options:
+    no_cache: TRUE
   requirements:
     _permission: 'access content'
     group: \d+

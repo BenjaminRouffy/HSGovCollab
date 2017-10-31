@@ -5,6 +5,7 @@ namespace Drupal\country;
 use Drupal\Component\Render\HtmlEscapedText;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\user\UserData;
+use Drupal\user\UserDataInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 /**
@@ -35,7 +36,7 @@ class CountryCollapsibleService {
   /**
    * Constructs a new CountryCollapsibleService object.
    */
-  public function __construct(AccountProxyInterface $current_user, UserData $user_data) {
+  public function __construct(AccountProxyInterface $current_user, UserDataInterface $user_data) {
     $this->currentUser = $current_user;
     $this->userData = $user_data;
     $this->uid = $this->currentUser->getAccount()->id();

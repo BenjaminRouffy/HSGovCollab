@@ -91,14 +91,5 @@ class CollapsedLinkBlock extends BlockBase implements ContainerFactoryPluginInte
     return $build;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  protected function blockAccess(AccountInterface $account) {
-    if (!$account->isAnonymous() ) {
-      return AccessResult::allowed()->addCacheContexts(['route.name']);
-    }
-    return AccessResult::forbidden();
-  }
 
 }

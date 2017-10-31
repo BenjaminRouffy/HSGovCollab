@@ -744,18 +744,15 @@ display:
         disable_filters: '0'
         configure_sorts: '0'
       filters:
-        langcode_1:
-          id: langcode_1
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
-            und: und
-            zxx: zxx
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -770,7 +767,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -784,8 +780,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
         status:
           value: '1'
           table: node_field_data
@@ -1093,6 +1089,7 @@ display:
           query_comment: ''
           query_tags: null
       display_description: ''
+      rendering_language: '***LANGUAGE_language_interface***'
       header:
         area_text_custom:
           id: area_text_custom
@@ -1108,7 +1105,6 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
@@ -1133,18 +1129,15 @@ display:
         disable_filters: '0'
         configure_sorts: '0'
       filters:
-        langcode_1:
-          id: langcode_1
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
-            und: und
-            zxx: zxx
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1159,7 +1152,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1173,8 +1165,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
         status:
           value: '1'
           table: node_field_data
@@ -1644,10 +1636,10 @@ display:
           transform_dash: false
           break_phrase: false
           plugin_id: string
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
@@ -1673,18 +1665,15 @@ display:
         disable_filters: '0'
         configure_sorts: '0'
       filters:
-        langcode_1:
-          id: langcode_1
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
-            und: und
-            zxx: zxx
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1699,7 +1688,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1713,8 +1701,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
         status:
           value: '1'
           table: node_field_data
@@ -2150,10 +2138,10 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
@@ -2199,18 +2187,15 @@ display:
           items_per_page: 5
           offset: 0
       filters:
-        langcode_1:
-          id: langcode_1
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
-            und: und
-            zxx: zxx
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -2225,7 +2210,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -2239,8 +2223,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
         status:
           value: '1'
           table: node_field_data
@@ -2439,10 +2423,10 @@ display:
           break_phrase: false
           not: false
           plugin_id: numeric
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'

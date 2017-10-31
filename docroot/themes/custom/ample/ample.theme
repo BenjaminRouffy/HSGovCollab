@@ -12,6 +12,7 @@ use Drupal\file\Entity\File;
 use Drupal\Core\Asset\AttachedAssetsInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\group\Entity\GroupInterface;
 use Drupal\group\Entity\GroupType;
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -183,13 +184,26 @@ function ample_preprocess_node(array &$variables) {
 function ample_preprocess_group(array &$variables) {
   $group = $variables['group'];
 
-  if ('default' === $variables['view_mode']) {
-    /* @var Group $group */
-    $group_type = GroupType::load($group->bundle());
-
-    if (!$group_type->getThirdPartySetting('group_dashboard', 'hide_follow_button', 0)) {
-      $variables['following_form'] = \Drupal::formBuilder()
-        ->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $group);
+  if (in_array($variables['view_mode'], ['default', 'banner'])) {
+    if ('default' === $variables['view_mode']) {
+      /* @var Group $group */
+      $group_type = GroupType::load($group->bundle());
+      if (!$group_type->getThirdPartySetting('group_dashboard', 'hide_follow_button', 0)) {
+        $variables['following_form'] = \Drupal::formBuilder()
+          ->getForm('Drupal\group_following\Form\GroupJoinBlockForm', $group);
+      }
+    }
+    /**
+     * @var \Drupal\country\CountryCollapsibleService $collapsed_group
+     */
+    $collapsed_group = \Drupal::service('country.collapsible_display_mode');
+    if (isset($variables['group'])) {
+      $group = $variables['group'];
+      if ($group instanceof GroupInterface) {
+        $variables['attributes']['class'][] = 'group-collapsible';
+        $variables['attributes']['class'][] = $collapsed_group->isCollapsedText($group->id());
+        $variables['attributes']['data-group-collapsible'] = $group->id();
+      }
     }
   }
 

@@ -1,0 +1,5 @@
+services:
+
+  country.collapsible_display_mode:
+    class: Drupal\country\CountryCollapsibleService
+    arguments: ['@current_user', '@user.data']

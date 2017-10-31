@@ -740,4 +740,14 @@
     return (number < 0 ? '-' : '+') + Array(Math.max(digits - String(Math.abs(number)).length + 1, 0)).join(0) + Math.abs(number);
   }
 
+  Drupal.behaviors.countryCollapsedUpdate = {
+    attach: function (context, settings) {
+      $('.group-link-collapsible', context).click(function (event) {
+        event.preventDefault();
+        var _id = $(this).attr('data-group-collapsible'),
+            _name = '[data-group-collapsible=' + _id + ']';
+        $(_name).toggleClass('collapsed uncollapsed');
+      });
+    }
+  }
 })(jQuery, Drupal);

@@ -57,3 +57,13 @@ group.country:
     _title: 'Countries'
   requirements:
     group: \d+
+
+country.collapsed_update:
+  path: '/country/collapsed/toggle/{group}/{js}'
+  defaults:
+    _controller: '\Drupal\country\Controller\CollapsedController::toggle'
+    _title: 'collapsedUpdate'
+  requirements:
+    _permission: 'access content'
+    group: \d+
+    js: 'nojs|ajax'

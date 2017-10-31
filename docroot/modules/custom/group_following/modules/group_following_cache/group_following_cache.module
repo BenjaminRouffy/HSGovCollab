@@ -121,6 +121,9 @@ function group_following_cache_group_content_insert(Drupal\Core\Entity\EntityInt
  */
 function group_following_cache_module_implements_alter(&$implementations, $hook) {
   if ($hook === 'group_content_insert') {
+    // In order the user who is following certain region or country and
+    // to follow new content the 'group_graph' table should be updated.
+    // This action is perform in ggroup module's 'group_content_insert' hook.
     $group = $implementations['group_following_cache'];
     unset($implementations['group_following_cache']);
     $implementations['group_following_cache'] = $group;

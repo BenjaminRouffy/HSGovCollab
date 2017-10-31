@@ -585,16 +585,15 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -609,7 +608,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -623,8 +621,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -729,10 +727,10 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -1032,16 +1030,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1056,7 +1053,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1070,8 +1066,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -1130,10 +1126,10 @@ display:
           entity_type: group_content
           plugin_id: group_id_depth
       title: 'Highlights '
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -1437,16 +1433,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1461,7 +1456,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1475,8 +1469,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -1579,10 +1573,10 @@ display:
           replica: false
           query_comment: ''
           query_tags: null
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -1909,16 +1903,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1933,7 +1926,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1947,8 +1939,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       defaults:
         filters: false
         filter_groups: false
@@ -2053,10 +2045,10 @@ display:
           replica: false
           query_comment: ''
           query_tags: null
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -2404,16 +2396,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -2428,7 +2419,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -2442,8 +2432,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -2545,10 +2535,10 @@ display:
           replica: false
           query_comment: ''
           query_tags: null
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -2670,16 +2660,15 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -2694,7 +2683,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -2708,8 +2696,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -2827,10 +2815,10 @@ display:
           replica: false
           query_comment: ''
           query_tags: null
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -3177,16 +3165,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -3201,7 +3188,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -3215,8 +3201,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -3320,10 +3306,10 @@ display:
           replica: false
           query_comment: ''
           query_tags: null
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -3445,16 +3431,15 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -3469,7 +3454,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -3483,8 +3467,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -3616,10 +3600,10 @@ display:
           replica: false
           query_comment: ''
           query_tags: null
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -3945,16 +3929,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -3969,7 +3952,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -3983,8 +3965,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       defaults:
         filters: false
         filter_groups: false
@@ -4075,10 +4057,10 @@ display:
             1: '1'
           entity_type: group_content
           plugin_id: group_id_depth
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -4426,16 +4408,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -4450,7 +4431,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -4464,8 +4444,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -4555,10 +4535,10 @@ display:
           entity_type: group_content
           plugin_id: group_content_to_entity
       title: 'Governance Area News & Events'
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -4904,16 +4884,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -4928,7 +4907,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -4942,8 +4920,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -5001,10 +4979,10 @@ display:
             0: '0'
           entity_type: group_content
           plugin_id: group_id_depth
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -5125,16 +5103,15 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -5149,7 +5126,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -5163,8 +5139,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -5271,10 +5247,10 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -5312,16 +5288,15 @@ display:
           separator: ''
           hide_empty: false
       filters:
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: groups_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__group
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -5336,7 +5311,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -5350,8 +5324,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: group
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -5485,10 +5459,10 @@ display:
       use_ajax: false
       title: ''
       display_description: ''
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - user.permissions
@@ -5767,16 +5741,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -5791,7 +5764,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -5805,8 +5777,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       defaults:
         filters: false
         filter_groups: false
@@ -5895,10 +5867,10 @@ display:
             -1: '-1'
           entity_type: group_content
           plugin_id: group_id_depth
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -6201,16 +6173,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -6225,7 +6196,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -6239,8 +6209,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -6331,10 +6301,10 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -6455,16 +6425,15 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -6479,7 +6448,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -6493,8 +6461,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -6600,10 +6568,10 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -6949,16 +6917,15 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: computed_date
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -6973,7 +6940,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -6987,8 +6953,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -7078,10 +7044,10 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -7202,16 +7168,15 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: gc__node
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -7226,7 +7191,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -7240,8 +7204,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -7359,10 +7323,10 @@ display:
             'group_node:news': '0'
           entity_type: group_content
           plugin_id: group_content_to_entity
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url

@@ -386,6 +386,21 @@ form {
   }
 }
 
+.ie {
+  .webform-body,
+  .view-news-and-events {
+    @media screen and (min-width: 991px) {
+      .fieldgroup {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
 // Single radio button item
 .webform-body .js-form-type-radio,
 .view-news-and-events .js-form-type-radio {
@@ -2373,7 +2388,7 @@ form {
           box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .21);
         }
 
-        &:hover  {
+        &:hover {
           &:before {
             opacity: 0.79;
           }

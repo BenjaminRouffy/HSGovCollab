@@ -5551,6 +5551,10 @@ form textarea ~ label.error:after {
 }
 
 @media screen and (min-width: 991px) {
+  .ie .webform-body .fieldset-wrapper,
+  .ie .view-news-and-events .fieldset-wrapper {
+    width: 100%;
+  }
   .ie .webform-body .fieldgroup,
   .ie .view-news-and-events .fieldgroup {
     display: -webkit-box;

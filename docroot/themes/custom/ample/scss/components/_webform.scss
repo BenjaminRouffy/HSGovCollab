@@ -390,6 +390,10 @@ form {
   .webform-body,
   .view-news-and-events {
     @media screen and (min-width: 991px) {
+      .fieldset-wrapper {
+        width: 100%;
+      }
+
       .fieldgroup {
         display: flex;
         flex-direction: row;

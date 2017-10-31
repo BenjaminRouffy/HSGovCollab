@@ -8,6 +8,7 @@ dependencies:
     - views.view.news_and_events_group
   module:
     - addtoany
+    - country
     - ctools
     - ctools_block
     - group
@@ -25,7 +26,7 @@ variant_settings:
       label_display: '0'
       view_mode: banner
       region: banner
-      weight: 0
+      weight: -4
       uuid: ef881c02-301d-4b45-abe4-8e123ddaf9ee
       context_mapping:
         entity: group
@@ -35,7 +36,7 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: default
-      region: content
+      region: banner
       weight: -3
       uuid: 2f0cc89f-4066-41a0-8d55-7ee88752c7a9
       context_mapping:
@@ -63,7 +64,7 @@ variant_settings:
       provider: addtoany
       label_display: '0'
       region: content
-      weight: -2
+      weight: -9
       uuid: bed5e72d-db52-4762-b392-e45a06cac43f
     12839f20-16fc-4d17-a8d6-b09d4647662b:
       id: 'views_block:list_of_projects-block_1'
@@ -73,7 +74,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: content
-      weight: -1
+      weight: -8
       uuid: 12839f20-16fc-4d17-a8d6-b09d4647662b
       context_mapping: {  }
     7f324896-62e3-4c75-af68-8b34cf0bb035:
@@ -84,7 +85,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: content
-      weight: 0
+      weight: -7
       uuid: 7f324896-62e3-4c75-af68-8b34cf0bb035
       pager: view
       context_mapping: {  }
@@ -95,7 +96,7 @@ variant_settings:
       label_display: '0'
       view_mode: bottom
       region: content
-      weight: 1
+      weight: -6
       uuid: 185dc861-980b-40c2-946c-23225683eff9
       context_mapping:
         entity: group
@@ -116,6 +117,16 @@ variant_settings:
       uuid: 90ae0882-d0e5-48a5-821b-a56324e01b89
       context_mapping:
         entity: group
+    dc2fa524-a5d9-4bf3-88d8-d5f492615030:
+      id: collapsed_link_block
+      label: 'Collapsed link block'
+      provider: country
+      label_display: '0'
+      region: banner
+      weight: -2
+      uuid: dc2fa524-a5d9-4bf3-88d8-d5f492615030
+      context_mapping:
+        group: group
   id: panels_variant
   uuid: 14af9b0f-c8d4-49af-b2d0-16c80419c1b1
   label: null

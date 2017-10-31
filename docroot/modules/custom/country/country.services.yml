@@ -1,0 +1,21 @@
+services:
+
+  country.collapsible_display_mode:
+    class: Drupal\country\CountryCollapsibleService
+    arguments: ['@current_user', '@country.user_context']
+
+  country.user_context_factory:
+      class: Drupal\country\UserContextFactory
+      arguments: ['@request_stack']
+
+  country.user_context:
+      class:  Drupal\country\UserContextFactory
+      factory: 'country.user_context_factory:getUserContext'
+      arguments: ['@current_user', '@user.data']
+
+  country.collapsible_subscriber:
+    class: Drupal\country\EventSubscriber\CollapsibleSubscriber
+    arguments: ['@country.user_context']
+    tags:
+      - { name: event_subscriber }
+

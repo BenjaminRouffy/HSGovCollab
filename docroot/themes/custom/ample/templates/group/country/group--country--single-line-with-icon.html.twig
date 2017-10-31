@@ -1,6 +1,10 @@
 <div class="country-title">
   <a href="{{ url }}">
-    {{ content.field_country_icon }}
+    {% if group_icon %}
+      <div class="country-icon-wrapper">
+        <img src="{{ file_url(group_icon) }}">
+      </div>
+    {% endif %}
     <h3 role="heading">
       {{ label }}
     </h3>

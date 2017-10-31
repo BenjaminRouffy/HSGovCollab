@@ -9,13 +9,18 @@
 {{ title_preffix }}
 {{ title_suffix }}
 <div class="country-title">
-  {{ content.field_country_icon }}
+  {% if group_icon %}
+    <div class="country-icon-wrapper">
+      <img src="{{ file_url(group_icon) }}">
+    </div>
+  {% endif %}
   <h3 role="heading">{{ label }}</h3>
 </div>
 {% if not logged_in %}
   {{ content.field_infographic }}
 {% else %}
   {{ drupal_view('last_news_by_group', 'embed_1', group.id.value) }}
+  {{ drupal_view('cd_user_view', 'kv_manager', group.id.value) }}
 {% endif %}
 
 <a href="{{ url }}" class="country-link"></a>

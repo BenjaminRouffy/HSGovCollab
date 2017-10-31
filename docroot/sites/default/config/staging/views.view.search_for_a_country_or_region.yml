@@ -434,24 +434,15 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.search_result_row'
-        - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
         - 'config:core.entity_view_display.group.country.token'
-        - 'config:core.entity_view_display.group.country_protected.banner'
-        - 'config:core.entity_view_display.group.country_protected.bottom'
-        - 'config:core.entity_view_display.group.country_protected.default'
         - 'config:core.entity_view_display.group.country_protected.map'
-        - 'config:core.entity_view_display.group.country_protected.region_search_for_countries'
         - 'config:core.entity_view_display.group.country_protected.search_country'
         - 'config:core.entity_view_display.group.country_protected.search_result_row'
         - 'config:core.entity_view_display.group.country_protected.single_line_with_icon'
         - 'config:core.entity_view_display.group.country_protected.time_line'
-        - 'config:core.entity_view_display.group.country_protected.token'
         - 'config:core.entity_view_display.group.governance_area.banner'
         - 'config:core.entity_view_display.group.governance_area.bottom'
         - 'config:core.entity_view_display.group.governance_area.default'
@@ -468,33 +459,42 @@ display:
         - 'config:core.entity_view_display.group.product.search_country'
         - 'config:core.entity_view_display.group.product.search_result_row'
         - 'config:core.entity_view_display.group.product.teaser'
-        - 'config:core.entity_view_display.group.project.based_on'
-        - 'config:core.entity_view_display.group.project.bottom'
-        - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
-        - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.project.time_line'
-        - 'config:core.entity_view_display.group.project_protected.based_on'
-        - 'config:core.entity_view_display.group.project_protected.bottom'
-        - 'config:core.entity_view_display.group.project_protected.default'
         - 'config:core.entity_view_display.group.project_protected.search_result_row'
-        - 'config:core.entity_view_display.group.project_protected.teaser'
         - 'config:core.entity_view_display.group.project_protected.time_line'
-        - 'config:core.entity_view_display.group.region.banner'
-        - 'config:core.entity_view_display.group.region.bottom'
-        - 'config:core.entity_view_display.group.region.country_list_by_region'
-        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.search_result_row'
         - 'config:core.entity_view_display.group.region.time_line'
         - 'config:core.entity_view_display.group.region.token'
-        - 'config:core.entity_view_display.group.region_protected.banner'
-        - 'config:core.entity_view_display.group.region_protected.bottom'
         - 'config:core.entity_view_display.group.region_protected.country_list_by_region'
-        - 'config:core.entity_view_display.group.region_protected.default'
         - 'config:core.entity_view_display.group.region_protected.search_country'
         - 'config:core.entity_view_display.group.region_protected.search_result_row'
         - 'config:core.entity_view_display.group.region_protected.time_line'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.search_country'
+        - 'config:core.entity_view_display.group.country.single_line_with_icon'
+        - 'config:core.entity_view_display.group.country_protected.banner'
+        - 'config:core.entity_view_display.group.country_protected.bottom'
+        - 'config:core.entity_view_display.group.country_protected.default'
+        - 'config:core.entity_view_display.group.country_protected.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country_protected.token'
+        - 'config:core.entity_view_display.group.project.based_on'
+        - 'config:core.entity_view_display.group.project.bottom'
+        - 'config:core.entity_view_display.group.project.default'
+        - 'config:core.entity_view_display.group.project.teaser'
+        - 'config:core.entity_view_display.group.project_protected.based_on'
+        - 'config:core.entity_view_display.group.project_protected.bottom'
+        - 'config:core.entity_view_display.group.project_protected.default'
+        - 'config:core.entity_view_display.group.project_protected.teaser'
+        - 'config:core.entity_view_display.group.region.banner'
+        - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
+        - 'config:core.entity_view_display.group.region_protected.banner'
+        - 'config:core.entity_view_display.group.region_protected.bottom'
+        - 'config:core.entity_view_display.group.region_protected.default'
         - 'config:core.entity_view_display.group.region_protected.token'
   block_1:
     display_plugin: block
@@ -776,6 +776,58 @@ display:
           view: news_and_events_group
           display: parent_region
           arguments: '{{ fields.id }}'
+          plugin_id: view
+        view_1:
+          id: view_1
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view: cd_user_view
+          display: kv_manager
+          arguments: '{{ raw_fields.id }}'
           plugin_id: view
       filters:
         combine_1:
@@ -2571,6 +2623,58 @@ display:
           view: news_and_events_group
           display: parent_region
           arguments: '{{ fields.id }}'
+          plugin_id: view
+        view_1:
+          id: view_1
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view: cd_user_view
+          display: kv_manager
+          arguments: '{{ raw_fields.id }}'
           plugin_id: view
       title: ''
       header:

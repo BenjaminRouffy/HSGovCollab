@@ -24,10 +24,21 @@ class MiniWithItems extends Mini {
   /**
    * {@inheritdoc}
    */
+  public function query() {
+    // Force the query to calculate the total number of results.
+    $this->view->get_total_rows = TRUE;
+
+    parent::query();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function useCountQuery() {
     // TODO for search
     return TRUE;
   }
+
   /**
    * {@inheritdoc}
    */

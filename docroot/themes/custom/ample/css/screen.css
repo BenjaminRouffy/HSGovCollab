@@ -105,7 +105,6 @@ textarea {
   font-size: 100%;
   font-family: inherit;
   border-radius: 0;
-  -webkit-transition: border linear .2s, box-shadow linear .2s, background linear .2s;
   transition: border linear .2s, box-shadow linear .2s, background linear .2s;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -407,7 +406,6 @@ svg {
 #slider-overlay.showed {
   height: 100%;
   opacity: 1;
-  -webkit-transition: opacity .4s ease;
   transition: opacity .4s ease;
 }
 
@@ -703,7 +701,6 @@ svg {
 
 .main-menu > div {
   display: inline-block;
-  -webkit-transition: padding .3s ease;
   transition: padding .3s ease;
 }
 
@@ -742,7 +739,6 @@ svg {
   padding: 25px 30px 15px;
   text-transform: uppercase;
   text-decoration: none;
-  -webkit-transition: opacity .2s ease, color .2s ease, padding .3s ease;
   transition: opacity .2s ease, color .2s ease, padding .3s ease;
 }
 
@@ -819,7 +815,6 @@ svg {
   position: fixed;
   top: 0;
   left: 0;
-  -webkit-transition: padding .3s ease;
   transition: padding .3s ease;
   width: 80px;
   z-index: 400;
@@ -916,7 +911,6 @@ svg {
   min-height: 70px;
   padding: 26px 0 20px 15px;
   text-decoration: none;
-  -webkit-transition: background .4s ease;
   transition: background .4s ease;
 }
 
@@ -1006,7 +1000,6 @@ svg {
   bottom: 0;
   left: 0;
   text-align: center;
-  -webkit-transition: background .4s ease;
   transition: background .4s ease;
   width: 80px;
 }
@@ -1067,7 +1060,6 @@ svg {
     padding-top: 60px;
     left: auto;
     right: -75%;
-    -webkit-transition: -webkit-transform .4s ease;
     transition: -webkit-transform .4s ease;
     transition: transform .4s ease;
     transition: transform .4s ease, -webkit-transform .4s ease;
@@ -1216,7 +1208,6 @@ svg {
   border-bottom: 2px solid transparent;
   display: inline-block;
   height: 100%;
-  -webkit-transition: border .4s ease;
   transition: border .4s ease;
   vertical-align: top;
 }
@@ -1259,7 +1250,6 @@ svg {
   letter-spacing: .5px;
   padding: 15px 30px;
   text-decoration: none;
-  -webkit-transition: color .3s ease, padding .3s ease;
   transition: color .3s ease, padding .3s ease;
   vertical-align: top;
 }
@@ -1279,7 +1269,6 @@ svg {
 
 .social-links .menu {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   margin: 0;
@@ -1289,7 +1278,6 @@ svg {
 .ie9 .social-links .menu {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   overflow: hidden;
@@ -1304,7 +1292,6 @@ svg {
   display: block;
   color: #283b44;
   text-decoration: none;
-  -webkit-transition: color .2s ease;
   transition: color .2s ease;
 }
 
@@ -1324,7 +1311,6 @@ header .social-links .font-social-icon {
   position: relative;
   top: 0;
   text-align: center;
-  -webkit-transition: top .3s ease-in-out;
   transition: top .3s ease-in-out;
 }
 
@@ -1422,7 +1408,6 @@ footer > .partners .item-list li {
   padding: 20px 40px;
   text-align: center;
   text-decoration: none;
-  -webkit-transition: border .3s ease;
   transition: border .3s ease;
 }
 
@@ -1430,7 +1415,6 @@ footer > .partners .item-list li {
   font-size: 1.3125rem;
   margin: 0;
   padding: 20px 40px;
-  -webkit-transition: border .3s ease;
   transition: border .3s ease;
 }
 
@@ -1465,7 +1449,6 @@ footer > .partners .item-list li {
   margin: 10px 0;
   padding: 15px 40px;
   text-decoration: none;
-  -webkit-transition: border .3s ease;
   transition: border .3s ease;
 }
 
@@ -1503,7 +1486,6 @@ footer > .partners .item-list li {
   padding: 15px 50px 0 10px;
   position: relative;
   text-align: center;
-  -webkit-transition: box-shadow .2s ease;
   transition: box-shadow .2s ease;
 }
 
@@ -1515,7 +1497,6 @@ footer > .partners .item-list li {
   position: absolute;
   top: 15px;
   right: 10px;
-  -webkit-transition: -webkit-transform .2s ease;
   transition: -webkit-transform .2s ease;
   transition: transform .2s ease;
   transition: transform .2s ease, -webkit-transform .2s ease;
@@ -1554,7 +1535,6 @@ footer > .partners .item-list li {
   position: absolute;
   bottom: 15px;
   right: 0;
-  -webkit-transition: color .3s ease;
   transition: color .3s ease;
 }
 
@@ -1646,11 +1626,9 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .top-banner-region .section-info {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 auto;
@@ -1661,7 +1639,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 .ie9 .top-banner-region .section-info {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   overflow: hidden;
@@ -1740,9 +1717,8 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .top-banner-region .user-info {
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding-top: 0;
 }
 
@@ -1776,7 +1752,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   position: absolute;
   top: 100%;
   left: 0;
-  -webkit-transition: top 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
   transition: top 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
   width: 100%;
   z-index: 100;
@@ -1841,9 +1816,8 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 @media (max-width: 991px) {
   .top-banner-region .section-info {
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     margin-bottom: 0;
   }
   .top-banner-region .section-info .paragraph {
@@ -1926,7 +1900,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
           transform: translateX(-50%);
-  -webkit-transition: padding .3s ease;
   transition: padding .3s ease;
   width: 100%;
   z-index: 10;
@@ -1993,7 +1966,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   -webkit-transform: scale(1.06);
       -ms-transform: scale(1.06);
           transform: scale(1.06);
-  -webkit-transition: background .2s ease;
   transition: background .2s ease;
 }
 
@@ -2096,20 +2068,16 @@ body:not(.group):not(.page-search) .top-banner-region {
   background: rgba(0, 0, 0, 0.53);
   color: #fff;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
   text-align: center;
@@ -2124,7 +2092,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 .ie9 .overlay-wrapper {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   padding-top: 10%;
@@ -2223,7 +2190,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .w-background-video .plyr__video-embed {
-  -webkit-transition: margin .2s ease;
   transition: margin .2s ease;
 }
 
@@ -2244,7 +2210,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .node-pager .prev-wrapper,
 .node-pager .next-wrapper {
-  -webkit-transition: opacity .2s ease;
   transition: opacity .2s ease;
   max-width: 50%;
 }
@@ -2289,7 +2254,26 @@ body:not(.group):not(.page-search) .top-banner-region {
   margin: 0 auto;
   padding: 10px 0;
   text-align: center;
-  width: 200px;
+  max-width: 280px;
+  width: 100%;
+}
+
+@media screen and (min-width: 479px) {
+  .js-pager__items {
+    max-width: 80%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .js-pager__items {
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .js-pager__items {
+    max-width: 400px;
+  }
 }
 
 .js-pager__items li {
@@ -2300,11 +2284,11 @@ body:not(.group):not(.page-search) .top-banner-region {
   display: inline-block;
   letter-spacing: 1px;
   vertical-align: top;
-  width: 60%;
+  width: 80%;
 }
 
 .js-pager__items .font-social-icon {
-  width: 20%;
+  width: 10%;
 }
 
 .js-pager__items .font-social-icon span {
@@ -2315,7 +2299,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   font-size: 1.4rem;
   color: #ea3a32;
   text-decoration: none;
-  -webkit-transition: color .2s ease;
   transition: color .2s ease;
 }
 
@@ -2327,7 +2310,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   background: #4c7e96;
   color: #fff;
   margin-bottom: 40px;
-  -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }
 
@@ -2389,7 +2371,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   margin: 0;
   position: relative;
   text-decoration: none;
-  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   z-index: 1;
 }
@@ -2852,7 +2833,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   border: 1px solid #4c7e96;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   padding: 20px 30px;
-  -webkit-transition: border .3s ease;
   transition: border .3s ease;
   width: 75%;
 }
@@ -2862,7 +2842,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .timeline-content-item time {
-  -webkit-transition: color .2s ease;
   transition: color .2s ease;
 }
 
@@ -2937,7 +2916,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .member-block {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   width: 33.33%;
@@ -2954,7 +2932,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   margin: 10px;
   position: relative;
-  -webkit-transition: box-shadow .3s ease;
   transition: box-shadow .3s ease;
   width: 100%;
 }
@@ -3030,7 +3007,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   bottom: 0;
   text-decoration: none;
   text-overflow: ellipsis;
-  -webkit-transition: border .3s ease, color .3s ease;
   transition: border .3s ease, color .3s ease;
   width: 100%;
 }
@@ -3060,7 +3036,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .faded {
-  -webkit-transition: opacity .5s, -webkit-transform 1s;
   transition: opacity .5s, -webkit-transform 1s;
   transition: opacity .5s, transform 1s;
   transition: opacity .5s, transform 1s, -webkit-transform 1s;
@@ -3079,7 +3054,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   -webkit-transform: translateY(150%);
       -ms-transform: translateY(150%);
           transform: translateY(150%);
-  -webkit-transition: -webkit-transform .6s ease;
   transition: -webkit-transform .6s ease;
   transition: transform .6s ease;
   transition: transform .6s ease, -webkit-transform .6s ease;
@@ -3113,7 +3087,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .related-wrapper .item-list {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   margin: 0;
@@ -3336,7 +3309,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 .news-and-events-list .item .event-container,
 .news-and-events-list .item .news-container {
   border-bottom: 2px solid transparent;
-  -webkit-transition: background .2s ease, border .2s ease;
   transition: background .2s ease, border .2s ease;
 }
 
@@ -3392,7 +3364,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   background: #fff;
   border-bottom: 2px solid transparent;
   padding: 20px;
-  -webkit-transition: border .3s ease;
   transition: border .3s ease;
 }
 
@@ -3450,7 +3421,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .news-and-events-list img {
-  -webkit-transition: -webkit-transform .4s ease;
   transition: -webkit-transform .4s ease;
   transition: transform .4s ease;
   transition: transform .4s ease, -webkit-transform .4s ease;
@@ -3530,14 +3500,11 @@ body:not(.group):not(.page-search) .top-banner-region {
 .article-list,
 .knowledge-vault-list {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
@@ -3663,16 +3630,13 @@ body:not(.group):not(.page-search) .top-banner-region {
 .knowledge-vault-list .article-content,
 .knowledge-vault-list .knowledge-vault-content {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 100%;
@@ -3785,12 +3749,10 @@ body:not(.group):not(.page-search) .top-banner-region {
   padding: 30px 20px;
   height: 100%;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
 }
@@ -3803,7 +3765,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   color: #283b44;
   min-height: 50px;
   padding: 5px 0;
-  -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
 }
 
@@ -3958,7 +3919,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   vertical-align: top;
   border-bottom: 2px solid transparent;
   padding: 6px 0 12px 34px;
-  -webkit-transition: border .3s ease, opacity .3s ease;
   transition: border .3s ease, opacity .3s ease;
 }
 
@@ -4190,7 +4150,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
   white-space: nowrap;
 }
@@ -4312,7 +4271,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 .knowledge-vault-list .section-info .paragraph a {
   border-bottom: 2px solid transparent;
   display: inline-block;
-  -webkit-transition: border .3s ease;
   transition: border .3s ease;
   vertical-align: top;
   position: relative;
@@ -4348,7 +4306,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   float: left;
   height: 40px;
   margin-right: 10px;
-  -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
   width: 26px;
 }
@@ -4371,7 +4328,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   letter-spacing: .5px;
   line-height: 20px;
   margin: 8px 0 0;
-  -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
 }
 
@@ -4421,7 +4377,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   .single-contact .contact-content {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
   }
@@ -4497,20 +4452,17 @@ body:not(.group):not(.page-search) .top-banner-region {
 .contact-expanded {
   overflow: hidden;
   position: relative;
-  -webkit-transition: max-height .5s ease-in;
   transition: max-height .5s ease-in;
 }
 
 .contact-expanded::after {
   content: ' ';
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 60%);
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 60%);
   position: absolute;
   bottom: 0;
   left: 0;
   height: 60px;
   width: 100%;
-  -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
 
@@ -4524,7 +4476,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .project-list .project-content {
   -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
@@ -4541,7 +4492,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   border-bottom: 2px solid transparent;
   display: block;
   padding: 5px 0;
-  -webkit-transition: border .3s ease;
   transition: border .3s ease;
 }
 
@@ -4556,7 +4506,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .country-list-by-region .country-title .country-icon-wrapper,
 .country-list-by-region .country-title h3 {
-  -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
 }
 
@@ -4989,20 +4938,16 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .error-block {
   -webkit-box-align: center;
-  -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 100vh;
@@ -5013,7 +4958,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 .ie9 .error-block {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   margin-top: 100px;
@@ -5061,7 +5005,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   font-family: "Fira Sans", sans-serif;
   font-weight: 700;
   padding: 0;
-  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   vertical-align: top;
   width: 100%;
@@ -5100,7 +5043,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   min-height: 50px;
   padding: 5px 0;
   position: relative;
-  -webkit-transition: border .2s ease;
   transition: border .2s ease;
   vertical-align: top;
   z-index: 10;
@@ -5134,7 +5076,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   font-size: 0.9rem;
   color: #4c7e96;
   margin: 0 0 10px;
-  -webkit-transition: color .2s ease;
   transition: color .2s ease;
 }
 
@@ -5159,7 +5100,6 @@ body:not(.group):not(.page-search) .top-banner-region {
   color: #283b44;
   display: block;
   text-decoration: none;
-  -webkit-transition: all .2s ease;
   transition: all .2s ease;
 }
 
@@ -5209,7 +5149,6 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .status-message a {
   color: #8c2222;
-  -webkit-transition: color .2s ease;
   transition: color .2s ease;
 }
 
@@ -5296,7 +5235,6 @@ form textarea ~ label.error:after {
   line-height: 26px;
   margin-bottom: 25px;
   padding: 1px 12px;
-  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   text-overflow: ellipsis;
   width: 100%;
@@ -5415,7 +5353,6 @@ form textarea ~ label.error:after {
 
 .form-select {
   font-size: 1.05rem;
-  background-image: url(../images/select-arrows.png), -webkit-linear-gradient(#fff 0, #f3f3f3 100%);
   background-image: url(../images/select-arrows.png), linear-gradient(#fff 0, #f3f3f3 100%);
   background-position: right center;
   background-repeat: no-repeat;
@@ -5497,7 +5434,6 @@ form textarea ~ label.error:after {
 }
 
 .form-select.chosen-container .chosen-single {
-  background-image: url(../images/select-arrows.png), -webkit-linear-gradient(#fff 0, #f3f3f3 100%);
   background-image: url(../images/select-arrows.png), linear-gradient(#fff 0, #f3f3f3 100%);
   background-position: right center;
   background-repeat: no-repeat;
@@ -5625,7 +5561,6 @@ form textarea ~ label.error:after {
   letter-spacing: 1px;
   padding: 15px 41px;
   text-transform: uppercase;
-  -webkit-transition: border .3s ease;
   transition: border .3s ease;
 }
 
@@ -5646,22 +5581,17 @@ form textarea ~ label.error:after {
   .ie .webform-body .form-radios,
   .ie .view-news-and-events .form-radios {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-align-content: center;
-        -ms-flex-line-pack: center;
-            align-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-line-pack: center;
+        align-content: center;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
@@ -5678,17 +5608,14 @@ form textarea ~ label.error:after {
 .view-news-and-events .js-form-type-radio {
   font-size: 1rem;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   margin: 0 0 20px;
   position: relative;
 }
@@ -5698,7 +5625,6 @@ form textarea ~ label.error:after {
   .view-news-and-events .js-form-type-radio {
     margin: 0 10px;
     display: -webkit-inline-box;
-    display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
   }
@@ -5752,11 +5678,9 @@ form textarea ~ label.error:after {
 .webform-body .js-form-type-radio label,
 .view-news-and-events .js-form-type-radio label {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
-  -webkit-align-items: flex-start;
       -ms-flex-align: start;
           align-items: flex-start;
   margin-bottom: 0;
@@ -5796,7 +5720,6 @@ form textarea ~ label.error:after {
   top: 0;
   left: 0;
   opacity: 0;
-  -webkit-transition: all .5s ease;
   transition: all .5s ease;
   -webkit-transform-origin: center;
       -ms-transform-origin: center;
@@ -5817,17 +5740,14 @@ form textarea ~ label.error:after {
 .webform-body .js-form-type-checkbox,
 .view-news-and-events .js-form-type-checkbox {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   margin: 0 0 20px;
   position: relative;
 }
@@ -5837,7 +5757,6 @@ form textarea ~ label.error:after {
   .view-news-and-events .js-form-type-checkbox {
     margin: 0 10px;
     display: -webkit-inline-box;
-    display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
   }
@@ -5907,7 +5826,6 @@ form textarea ~ label.error:after {
 .ie10
 .view-news-and-events .js-form-type-checkbox label {
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   display: inline-block;
@@ -5942,7 +5860,6 @@ form textarea ~ label.error:after {
   left: 0;
   opacity: 0;
   border-radius: 3px;
-  -webkit-transition: all .5s ease;
   transition: all .5s ease;
   -webkit-transform-origin: center;
       -ms-transform-origin: center;
@@ -5990,17 +5907,14 @@ form .social_login iframe {
 
 .user-login-form {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
-  -webkit-flex-direction: row-reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 0 auto 40px;
   max-width: 1160px;
   padding: 0 20px;
@@ -6091,7 +6005,6 @@ form .social_login iframe {
   .user-login-form {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
-    -webkit-flex-direction: column-reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
     padding: 0;
@@ -6110,18 +6023,15 @@ form .social_login iframe {
 
 .form-contact-us {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .ie9 .form-contact-us {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   overflow: hidden;
@@ -6174,7 +6084,6 @@ form .social_login iframe {
 }
 
 .form-contact-us .terms a {
-  -webkit-transition: color .2s ease;
   transition: color .2s ease;
 }
 
@@ -6317,14 +6226,11 @@ form .social_login iframe {
 
 .user-register-form {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
@@ -6496,7 +6402,6 @@ form .social_login iframe {
   .user-register-form {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
   }
@@ -6533,14 +6438,11 @@ form .social_login iframe {
 
 .user-onetime-form #fields-wrapper {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
@@ -6548,7 +6450,6 @@ form .social_login iframe {
 .ie9 .user-onetime-form #fields-wrapper {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
 }
@@ -6676,11 +6577,9 @@ form .social_login iframe {
 
 .user-pass .captcha {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 25px;
@@ -6971,12 +6870,10 @@ form .social_login iframe {
 .form-my-settings #address-details,
 .form-my-settings #managers-wrapper {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-bottom: 15px;
   padding: 20px 0;
 }
@@ -6989,7 +6886,6 @@ form .social_login iframe {
 .form-my-settings #managers-wrapper {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
 }
@@ -7036,7 +6932,6 @@ form .social_login iframe {
 
 .form-my-settings #organisation-details {
   -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
@@ -7057,7 +6952,6 @@ form .social_login iframe {
 
 .form-my-settings #contact-details {
   -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
@@ -7080,12 +6974,10 @@ form .social_login iframe {
 
 .form-my-settings #edit-account {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-bottom: 15px;
   padding: 20px 0;
 }
@@ -7093,7 +6985,6 @@ form .social_login iframe {
 .ie9 .form-my-settings #edit-account {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
 }
@@ -7132,7 +7023,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .form-my-settings .role-status-wrapper {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 15px;
@@ -7413,18 +7303,15 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .form-my-settings table .paragraphs-subform {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .ie9 .form-my-settings table .paragraphs-subform {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
 }
@@ -7681,7 +7568,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   }
   .form-my-settings #organisation-details {
     -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
@@ -7940,7 +7826,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   color: white;
   text-align: center;
   font-size: 18px;
-  -webkit-transition: opacity 0.2s ease 0s;
   transition: opacity 0.2s ease 0s;
   cursor: pointer;
 }
@@ -8164,7 +8049,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   font-family: Oswald, sans-serif;
   padding: 20px 30px;
   text-decoration: none;
-  -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }
 
@@ -8401,11 +8285,9 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .view-knowledge-vault .wrapper-filters,
 .view-governance-area-calendar .wrapper-filters {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
@@ -8418,6 +8300,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .view-governance-area-calendar .wrapper-filters {
   font-size: 0rem;
   display: block;
+  text-align: center;
   overflow: hidden;
 }
 
@@ -8429,7 +8312,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .view-governance-area-calendar .wrapper-filters {
   display: block;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   overflow: hidden;
@@ -8508,12 +8390,10 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .view-knowledge-vault .form-checkboxes,
 .view-governance-area-calendar .form-checkboxes {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   overflow: hidden;
   width: 100%;
 }
@@ -8597,7 +8477,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 }
 
 .view-article .title-wrapper a {
-  -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
   text-decoration: none;
 }
@@ -8806,7 +8685,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   top: 0;
   right: 0;
   text-indent: -9999px;
-  -webkit-transition: -webkit-transform .1s ease;
   transition: -webkit-transform .1s ease;
   transition: transform .1s ease;
   transition: transform .1s ease, -webkit-transform .1s ease;
@@ -8875,7 +8753,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
     margin-left: 4px;
     position: relative;
     top: 1px;
-    -webkit-transition: -webkit-transform .3s ease;
     transition: -webkit-transform .3s ease;
     transition: transform .3s ease;
     transition: transform .3s ease, -webkit-transform .3s ease;
@@ -8989,11 +8866,9 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 @media (max-width: 991px) {
   .view-news-and-events .wrapper-filters, .view-project .wrapper-filters, .view-my-projects .wrapper-filters, .view-contacts .wrapper-filters, .view-governance-area-calendar .wrapper-filters {
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
@@ -9151,11 +9026,9 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 @media (max-width: 991px) {
   .view-project .wrapper-filters, .view-my-projects .wrapper-filters, .view-knowledge-vault .wrapper-filters, .view-governance-area-calendar .wrapper-filters {
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
@@ -9527,7 +9400,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   height: auto;
   opacity: 1;
   padding: 5%;
-  -webkit-transition: all .4s ease;
   transition: all .4s ease;
 }
 
@@ -9682,7 +9554,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   padding: 10px;
   right: 5%;
   text-align: left;
-  -webkit-transition: width .3s ease, right .3s ease;
   transition: width .3s ease, right .3s ease;
   width: 500px !important;
 }
@@ -9744,7 +9615,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   margin-bottom: 5px;
   padding: 20px 40px 20px 20px;
   position: relative;
-  -webkit-transition: box-shadow .3s ease;
   transition: box-shadow .3s ease;
 }
 
@@ -9760,7 +9630,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   position: absolute;
   top: 20px;
   right: 15px;
-  -webkit-transition: -webkit-transform .4s ease;
   transition: -webkit-transform .4s ease;
   transition: transform .4s ease;
   transition: transform .4s ease, -webkit-transform .4s ease;
@@ -9832,7 +9701,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   -webkit-transform: translateY(-100%);
       -ms-transform: translateY(-100%);
           transform: translateY(-100%);
-  -webkit-transition: -webkit-transform .2s ease;
   transition: -webkit-transform .2s ease;
   transition: transform .2s ease;
   transition: transform .2s ease, -webkit-transform .2s ease;
@@ -9860,7 +9728,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   color: #283b44;
   font-family: P4h, sans-serif;
   line-height: 40px;
-  -webkit-transition: color .3s ease;
   transition: color .3s ease;
 }
 
@@ -9912,19 +9779,15 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .pins-list {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   margin-bottom: 60px;
@@ -9939,17 +9802,14 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   background: #feffec;
   font-family: "Fira Sans", sans-serif;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   position: relative;
   text-align: left;
   z-index: 1;
@@ -10167,7 +10027,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .pins-list .pin-item .link a:hover::after {
   right: 5px;
-  -webkit-transition: right .3s ease;
   transition: right .3s ease;
 }
 
@@ -10183,7 +10042,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   position: absolute;
   top: 50%;
   right: 8px;
-  -webkit-transition: right .3s ease;
   transition: right .3s ease;
 }
 
@@ -10273,7 +10131,6 @@ body:not(.toolbar-fixed) header:not(.collapsed) .header-fixed {
   position: relative;
   text-align: center;
   top: 0;
-  -webkit-transition: top .3s ease-in-out, min-height .2s ease-in-out;
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500;
 }
@@ -10345,7 +10202,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   font-family: Oswald, sans-serif;
   margin-right: 30px;
   padding: 10px 2px 10px 20px;
-  -webkit-transition: opacity .2s ease;
   transition: opacity .2s ease;
   vertical-align: top;
 }
@@ -10404,7 +10260,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   right: 0;
   top: 0;
   text-align: center;
-  -webkit-transition: color .2s ease;
   transition: color .2s ease;
 }
 
@@ -10416,7 +10271,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 .mobile-dashboard-menu-btn {
   color: #4c7e96;
   display: none;
-  -webkit-transition: color .2s ease, background .2s ease;
   transition: color .2s ease, background .2s ease;
 }
 
@@ -10429,7 +10283,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   position: fixed;
   left: 0;
   top: 0;
-  -webkit-transition: top .3s ease;
   transition: top .3s ease;
   width: 100%;
   z-index: 400;
@@ -10445,7 +10298,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 
 .header-fixed .top-head {
   background: #283b44;
-  background-image: -webkit-linear-gradient(top, #334c58, #283b44);
   background-image: linear-gradient(180deg, #334c58, #283b44);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
   height: 60px;
@@ -10599,7 +10451,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
     -webkit-transform: translateX(100%);
         -ms-transform: translateX(100%);
             transform: translateX(100%);
-    -webkit-transition: right .4s ease-in-out, -webkit-transform .4s ease-in-out;
     transition: right .4s ease-in-out, -webkit-transform .4s ease-in-out;
     transition: transform .4s ease-in-out, right .4s ease-in-out;
     transition: transform .4s ease-in-out, right .4s ease-in-out, -webkit-transform .4s ease-in-out;
@@ -10804,7 +10655,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 .bottom-head {
   background: #e9ecee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  -webkit-transition: padding .3s ease;
   transition: padding .3s ease;
 }
 
@@ -11408,7 +11258,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   padding: 20px 50px;
   position: relative;
   left: -46px;
-  -webkit-transition: opacity .2s, -webkit-transform .6s;
   transition: opacity .2s, -webkit-transform .6s;
   transition: opacity .2s, transform .6s;
   transition: opacity .2s, transform .6s, -webkit-transform .6s;
@@ -11641,12 +11490,10 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 
 .members-list ul {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding: 0;
 }
 
@@ -11804,7 +11651,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   top: 0;
   left: 0;
   height: 100%;
-  -webkit-transition: background .2s ease;
   transition: background .2s ease;
   width: 100%;
 }
@@ -11924,7 +11770,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 
 .owl-stage-outer {
   overflow: hidden;
-  -webkit-transition: height .4s ease;
   transition: height .4s ease;
 }
 
@@ -11958,7 +11803,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   top: 50%;
   margin-top: -25px;
   text-indent: -9999px;
-  -webkit-transition: all .2s ease;
   transition: all .2s ease;
 }
 
@@ -12027,7 +11871,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   opacity: .8;
   top: 2vh;
   right: 0;
-  -webkit-transition: opacity .3s;
   transition: opacity .3s;
   width: 68px;
 }
@@ -12061,7 +11904,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   -webkit-transform: translateX(110%);
       -ms-transform: translateX(110%);
           transform: translateX(110%);
-  -webkit-transition: -webkit-transform .2s ease;
   transition: -webkit-transform .2s ease;
   transition: transform .2s ease;
   transition: transform .2s ease, -webkit-transform .2s ease;
@@ -12106,7 +11948,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 
 .marker-info .option-item {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   overflow: hidden;
@@ -12822,7 +12663,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   -webkit-transform: translateX(-50%) translateY(-37%) scale(0, 0);
       -ms-transform: translateX(-50%) translateY(-37%) scale(0, 0);
           transform: translateX(-50%) translateY(-37%) scale(0, 0);
-  -webkit-transition: -webkit-transform .3s ease;
   transition: -webkit-transform .3s ease;
   transition: transform .3s ease;
   transition: transform .3s ease, -webkit-transform .3s ease;
@@ -13366,7 +13206,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   min-height: 60px;
   padding: 10px 20px 10px 0;
   text-decoration: none;
-  -webkit-transition: opacity .3s ease, border .3s ease;
   transition: opacity .3s ease, border .3s ease;
 }
 
@@ -13415,7 +13254,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   display: block;
   font-weight: 400;
   line-height: 20px;
-  -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
 }
 
@@ -13525,7 +13363,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   letter-spacing: .5px;
   margin: 15px 0;
   text-decoration: none;
-  -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
   vertical-align: top;
 }

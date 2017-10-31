@@ -67,7 +67,6 @@
       @include font-size(0);
       display: block;
       overflow: hidden;
-      text-align: center;
     }
 
     .ie9 & {
@@ -103,7 +102,7 @@
     }
   }
 
-  fieldset {
+  fieldset:not([data-accordion="none"]) {
     display: none;
     margin: 0;
   }
@@ -144,6 +143,24 @@
       letter-spacing: normal;
       margin-bottom: 0;
       width: calc(100% - 25px);
+    }
+  }
+}
+
+.view-news-and-events {
+  .wrapper-filters,
+  .form-wrapper {
+    width: 100%;
+  }
+
+  .form-wrapper {
+    margin-bottom: 40px;
+  }
+  .webform-options-display-one-column {
+    text-align: center;
+
+    label {
+      text-align: left;
     }
   }
 }
@@ -341,6 +358,7 @@
   position: relative;
 
   .form-text {
+    @include font-size(16);
     border-color: rgba($navy-dark, .32);
     padding-right: 60px;
 
@@ -551,7 +569,7 @@
       max-width: calc(50% - 20px);
 
       .mobile & {
-        max-width: calc(50% - 20px);
+        max-width: calc(100% - 20px);
       }
     }
 

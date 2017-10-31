@@ -25,6 +25,7 @@
             </div>
         {% else %}
             {{ drupal_view('last_news_by_closed_group', 'closed_groups', group.id.value) }}
+            {{ drupal_view('cd_user_view', 'kv_manager', group.id.value) }}
             <a href="{{ url }}" class="project-link"></a>
         {% endif %}
     </div>

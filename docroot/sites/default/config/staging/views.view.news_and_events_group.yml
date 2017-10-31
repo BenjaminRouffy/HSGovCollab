@@ -409,7 +409,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: false
+          empty: true
           tokenize: false
           content: 'Filter by:'
           plugin_id: text_custom
@@ -3510,7 +3510,7 @@ display:
             offset_label: Offset
       use_more: true
       use_more_always: false
-      use_more_text: 'Read more news'
+      use_more_text: 'Read more'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
       block_hide_empty: true
@@ -7267,7 +7267,7 @@ display:
             offset_label: Offset
       use_more: true
       use_more_always: false
-      use_more_text: 'Read more news'
+      use_more_text: 'Read more'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
       block_hide_empty: true

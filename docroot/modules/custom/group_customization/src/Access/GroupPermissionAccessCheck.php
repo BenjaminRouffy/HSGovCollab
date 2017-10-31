@@ -56,16 +56,9 @@ class GroupPermissionAccessCheck extends EntityAccessCheck implements AccessInte
           }
 
           $group_status = $entity->get('field_group_status')->value ?: 'unpublished';
-          $is_geographical_object = $entity->get('field_geographical_object')->value;
 
-          // The only way to have Universal object - Country available for
-          // anonymous is to have "Published" or "With Content" group status
-          // and to have "Geographical object" checked.
-
-          if ($account->isAnonymous()) {
-            if (!in_array($group_status, $group_statuses) || !$is_geographical_object) {
-              return AccessResult::forbidden();
-            }
+          if ($group_status !== 'published') {
+            return AccessResult::forbidden();
           }
         }
       }

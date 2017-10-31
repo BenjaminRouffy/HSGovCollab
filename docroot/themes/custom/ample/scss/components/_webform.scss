@@ -405,6 +405,17 @@ form {
   }
 }
 
+.ie9 {
+  .webform-body,
+  .view-news-and-events {
+    @media screen and (min-width: 991px) {
+      .form-checkboxes {
+        text-align: left;
+      }
+    }
+  }
+}
+
 // Single radio button item
 .webform-body .js-form-type-radio,
 .view-news-and-events .js-form-type-radio {

@@ -5574,6 +5574,13 @@ form textarea ~ label.error:after {
   }
 }
 
+@media screen and (min-width: 991px) {
+  .ie9 .webform-body .form-checkboxes,
+  .ie9 .view-news-and-events .form-checkboxes {
+    text-align: left;
+  }
+}
+
 .webform-body .js-form-type-radio,
 .view-news-and-events .js-form-type-radio {
   font-size: 1rem;

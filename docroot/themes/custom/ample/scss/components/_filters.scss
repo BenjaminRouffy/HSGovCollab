@@ -67,14 +67,12 @@
       @include font-size(0);
       display: block;
       overflow: hidden;
-      text-align: center;
     }
 
     .ie9 & {
       display: block;
       flex: none;
       overflow: hidden;
-      text-align: center;
 
       > div {
         display: inline-block;

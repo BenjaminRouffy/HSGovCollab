@@ -41,9 +41,6 @@ gulp.task('sass', () => {
     }))
     .on('error', swallowError)
     .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
-    .pipe(postcss([
-      mqpacker()
-    ]))
     .pipe(gulp.dest('css'))
     .pipe(browserSync.reload({
       stream: true

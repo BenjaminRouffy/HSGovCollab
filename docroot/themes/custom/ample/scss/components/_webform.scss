@@ -386,9 +386,40 @@ form {
   }
 }
 
+.ie {
+  .webform-body,
+  .view-news-and-events {
+    @media screen and (min-width: 991px) {
+      .fieldset-wrapper {
+        width: 100%;
+      }
+
+      .form-radios {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.ie9 {
+  .webform-body,
+  .view-news-and-events {
+    @media screen and (min-width: 991px) {
+      .form-checkboxes {
+        text-align: left;
+      }
+    }
+  }
+}
+
 // Single radio button item
 .webform-body .js-form-type-radio,
 .view-news-and-events .js-form-type-radio {
+  @include font-size(16);
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -455,6 +486,10 @@ form {
     // Need for position of checkbox state
     position: relative;
 
+    .ie9 & {
+      line-height: 20px;
+    }
+
     &::before,
     &::after {
       content: ' ';
@@ -467,7 +502,7 @@ form {
       min-width: 20px;
       background: $white-dark;
       border-radius: 50%;
-      margin: 2px 8px 0 0;
+      margin: 0 8px 0 0;
       box-shadow: 0 1px 1px rgba($black, .1) inset;
     }
 
@@ -477,7 +512,7 @@ form {
       background: rgba($red, .5);
       border-radius: 100%;
       position: absolute;
-      top: 2px;
+      top: 0;
       left: 0;
       opacity: 0;
       transition: all .5s ease;
@@ -558,14 +593,20 @@ form {
 
   // Create 'fake' radio element
   label {
-    display: flex;
-    align-items: flex-start;
+    padding-left: 25px;
     margin-bottom: 0;
     cursor: pointer;
     line-height: 1.2;
+    float: none;
 
     // Need for position of checkbox state
     position: relative;
+
+    .ie9 &,
+    .ie10 & {
+      flex: none;
+      display: inline-block;
+    }
 
     &::before,
     &::after {
@@ -574,7 +615,9 @@ form {
 
     // 'Fake radio'
     &::before {
-      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
       height: 20px;
       min-width: 20px;
       background: $white-dark;
@@ -2360,7 +2403,7 @@ form {
           box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .21);
         }
 
-        &:hover  {
+        &:hover {
           &:before {
             opacity: 0.79;
           }

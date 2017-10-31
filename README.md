@@ -66,7 +66,8 @@ Tools
 * Adminer
 * XHProf
 * PHP Daemon
-* PHP, SASS, JS sniffers/lints/hints
+* PHP 
+* SCSS, JS sniffers/lints/hints
 
 ##Adminer
 Adminer for mysql administration (credentials drupal:drupal and root:root)
@@ -224,4 +225,63 @@ docker run -d -p 4444:8910 --restart=always \
 $ cd /var/lib/jenkins/jobs/PR_BUILDER/workspace/sourcecode/tests/behat
 $ bin/behat -c behat-console.yml features
 
+```
+
+# Frontend setup
+#### Node JS
+You need to download and install stable [NodeJS](https://nodejs.org/en/) manually.
+
+Manual -[Installing Node.js](https://docs.npmjs.com/getting-started/installing-node)
+
+**Version** - 6.xx.x
+ ```
+node -v
+```
+
+#### Gulp
+You will find all information at the official site[Install Gulp](https://gulpjs.com/)
+
+**CLI version 3.9.1** or above.
+```
+gulp -v
+```
+
+#### Install modules
+Open theme folder
+```
+cd /docroot/themes/custom/ample
+```
+run 
+```
+npm install
+```
+**Important**
+
+If you will get following message:
+```
+UNMET PEER DEPENDENCY babel-core@6 || 7 || ^7.0.0-alpha || ^7.0.0-beta || ^7.0.0-rc
+```
+run this command and try again 
+```
+npm i babel-core
+```
+
+#### Code run
+
+Development
+```
+gulp serve
+```
+
+Production
+```
+gulp build
+```
+
+##### Useful tasks
+```
+gulp scss-lint
+```
+```
+gulp js-lint
 ```

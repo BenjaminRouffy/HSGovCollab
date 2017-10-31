@@ -5634,6 +5634,11 @@ form textarea ~ label.error:after {
   position: relative;
 }
 
+.ie9 .webform-body .js-form-type-radio label, .ie9
+.view-news-and-events .js-form-type-radio label {
+  line-height: 20px;
+}
+
 .webform-body .js-form-type-radio label::before, .webform-body .js-form-type-radio label::after,
 .view-news-and-events .js-form-type-radio label::before,
 .view-news-and-events .js-form-type-radio label::after {
@@ -5647,7 +5652,7 @@ form textarea ~ label.error:after {
   min-width: 20px;
   background: #f5f5f5;
   border-radius: 50%;
-  margin: 2px 8px 0 0;
+  margin: 0 8px 0 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
 }
 
@@ -5658,7 +5663,7 @@ form textarea ~ label.error:after {
   background: rgba(234, 58, 50, 0.5);
   border-radius: 100%;
   position: absolute;
-  top: 2px;
+  top: 0;
   left: 0;
   opacity: 0;
   transition: all .5s ease;
@@ -5763,6 +5768,17 @@ form textarea ~ label.error:after {
   cursor: pointer;
   line-height: 1.2;
   position: relative;
+}
+
+.ie9 .webform-body .js-form-type-checkbox label,
+.ie10 .webform-body .js-form-type-checkbox label, .ie9
+.view-news-and-events .js-form-type-checkbox label,
+.ie10
+.view-news-and-events .js-form-type-checkbox label {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  display: inline-block;
 }
 
 .webform-body .js-form-type-checkbox label::before, .webform-body .js-form-type-checkbox label::after,
@@ -8246,6 +8262,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
       -ms-flex: none;
           flex: none;
   overflow: hidden;
+  text-align: center;
 }
 
 .ie9 .view-news-and-events .wrapper-filters > div, .ie9
@@ -8380,6 +8397,14 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .view-news-and-events .form-wrapper {
   margin-bottom: 40px;
+}
+
+.view-news-and-events .webform-options-display-one-column {
+  text-align: center;
+}
+
+.view-news-and-events .webform-options-display-one-column label {
+  text-align: left;
 }
 
 .view-contacts .wrapper-filters > div {

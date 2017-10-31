@@ -73,6 +73,7 @@
       display: block;
       flex: none;
       overflow: hidden;
+      text-align: center;
 
       > div {
         display: inline-block;
@@ -154,6 +155,13 @@
 
   .form-wrapper {
     margin-bottom: 40px;
+  }
+  .webform-options-display-one-column {
+    text-align: center;
+
+    label {
+      text-align: left;
+    }
   }
 }
 

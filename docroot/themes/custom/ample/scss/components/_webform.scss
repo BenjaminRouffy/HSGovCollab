@@ -456,6 +456,10 @@ form {
     // Need for position of checkbox state
     position: relative;
 
+    .ie9 & {
+      line-height: 20px;
+    }
+
     &::before,
     &::after {
       content: ' ';
@@ -468,7 +472,7 @@ form {
       min-width: 20px;
       background: $white-dark;
       border-radius: 50%;
-      margin: 2px 8px 0 0;
+      margin: 0 8px 0 0;
       box-shadow: 0 1px 1px rgba($black, .1) inset;
     }
 
@@ -478,7 +482,7 @@ form {
       background: rgba($red, .5);
       border-radius: 100%;
       position: absolute;
-      top: 2px;
+      top: 0;
       left: 0;
       opacity: 0;
       transition: all .5s ease;
@@ -567,6 +571,12 @@ form {
 
     // Need for position of checkbox state
     position: relative;
+
+    .ie9 &,
+    .ie10 & {
+      flex: none;
+      display: inline-block;
+    }
 
     &::before,
     &::after {

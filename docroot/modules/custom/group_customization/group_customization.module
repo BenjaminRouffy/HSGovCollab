@@ -220,11 +220,8 @@ function group_customization_query_alter(AlterableInterface $query) {
   if ($query->hasTag('views_news_and_events_group') && !empty($tables['group_content_field_data'])) {
     $fields =& $query->getFields();
 
-    foreach ($fields as $field) {
-      $query->addExpression('MAX('. $field['table'] . '.' . $field['field'] . ')', $field['alias']);
-    }
-
     foreach ($fields as $key => $field) {
+      $query->addExpression('MAX('. $field['table'] . '.' . $field['field'] . ')', $field['alias']);
       unset($fields[$key]);
     }
 

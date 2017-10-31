@@ -148,6 +148,17 @@
   }
 }
 
+.view-news-and-events {
+  .wrapper-filters,
+  .form-wrapper {
+    width: 100%;
+  }
+
+  .form-wrapper {
+    margin-bottom: 40px;
+  }
+}
+
 .view-contacts {
   .wrapper-filters {
     > div {
@@ -552,7 +563,7 @@
       max-width: calc(50% - 20px);
 
       .mobile & {
-        max-width: calc(50% - 20px);
+        max-width: calc(100% - 20px);
       }
     }
 

@@ -389,6 +389,7 @@ form {
 // Single radio button item
 .webform-body .js-form-type-radio,
 .view-news-and-events .js-form-type-radio {
+  @include font-size(16);
   display: flex;
   flex-direction: column;
   align-content: center;

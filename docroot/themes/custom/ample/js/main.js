@@ -203,7 +203,7 @@
       };
       $anchorLink.each(function (index, element) {
         if (this.hasAttribute('data-region')) {
-          anchorSettings['region'].push($(this).attr('data-region'));
+          anchorSettings.region.push($(this).attr('data-region'));
         }
       });
       anchorSettings = $.extend(true, {

@@ -1,4 +1,6 @@
 (function($) {
+  'use strict';
+
   if (!window.plyr) {
     return;
   }

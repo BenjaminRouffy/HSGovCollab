@@ -5,12 +5,21 @@
   "main": "script.js",
   "dependencies": {},
   "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.18.13",
     "css-mqpacker": "^6.0.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
+    "gulp-jshint": "^2.0.4",
     "gulp-postcss": "^7.0.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "gulp-scss-lint": "^0.5.0",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,7 +28,7 @@
     "type": "git",
     "url": "git+https://github.com/redlable/p4h.git"
   },
-  "author": "anton.rylov@propeople.com.ua",
+  "author": "anton.rylov@propeople.com.ua, alexander.mikhutkin@ffwagancy.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/redlable/p4h/issues"

@@ -54,3 +54,78 @@ function group_following_cache_entity_update(EntityInterface $entity) {
 
   }
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function group_following_cache_group_content_insert(Drupal\Core\Entity\EntityInterface $entity) {
+  // List with group content plugin ids,
+  // for which the following inheritance should be applied.
+  $group_plugin_ids = array(
+    'subgroup:country',
+    'subgroup:project',
+    'subgroup:country_protected',
+    'subgroup:project_protected',
+  );
+  // Current group content plugin id.
+  $content_plugin_id = $entity->getGroupContentType()->getContentPluginId();
+
+  if ($entity->getEntityType()->id() === 'group_content'
+    && in_array($content_plugin_id, $group_plugin_ids)) {
+    // The group into which the subgroup is being added.
+    $route_group = \Drupal::routeMatch()->getParameter('group');
+    if (isset($route_group)) {
+      $manager = \Drupal::service('ggroup.group_hierarchy_manager');
+
+      // Get current group super-groups.
+      $groups = $manager->getGroupSupergroups($route_group->id());
+      $groups[] = $route_group;
+
+      if (!empty($groups)) {
+        foreach ($groups as $group) {
+          // Get group members.
+          $memberships = $group->getMembers();
+
+          if (!empty($memberships)) {
+            foreach ($memberships as $member) {
+              $group_member = $member->getGroupContent();
+              if ($group_member->hasField('field_follower')) {
+                // Reuse logic which updated following cache for group member,
+                // when the group member is updated.
+                $uid = $group_member->getEntity()->id();
+
+                /** @var \Drupal\group_following\GroupFollowingManagerInterface $manager */
+                $manager = \Drupal::getContainer()
+                  ->get('group_following.manager');
+
+                $gids = $manager->getStorage()
+                  ->getFollowedForUserSql($group_member->getEntity(), FALSE);
+
+                db_delete('group_following_cache')
+                  ->condition('uid', $uid)
+                  ->execute();
+
+                $insert = db_insert('group_following_cache');
+                $insert->from($gids)->execute();
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function group_following_cache_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'group_content_insert') {
+    // In order the user who is following certain region or country and
+    // to follow new content the 'group_graph' table should be updated.
+    // This action is perform in ggroup module's 'group_content_insert' hook.
+    $group = $implementations['group_following_cache'];
+    unset($implementations['group_following_cache']);
+    $implementations['group_following_cache'] = $group;
+  }
+}

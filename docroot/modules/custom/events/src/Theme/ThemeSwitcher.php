@@ -12,7 +12,7 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
    * @inheritdoc
    */
   public function applies(RouteMatchInterface $route_match) {
-    $routes = array('node.add', 'entity.node.edit_form', 'entity.group_content.create_form');
+    $routes = array('node.add', 'entity.node.edit_form', 'entity.node.delete_form', 'entity.group_content.create_form');
     if (in_array($route_match->getRouteName(), $routes)) {
       $node_type_parameter = $route_match->getParameter('node_type');
       $node_parameter = $route_match->getParameter('node');

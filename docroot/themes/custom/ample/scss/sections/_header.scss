@@ -214,6 +214,29 @@ header {
   }
 }
 
+.h-with-anchors {
+  box-shadow: none;
+
+  .mobile-menu-wrapper {
+    padding-top: 20px;
+  }
+
+  // Anchors
+  .bottom-head {
+    box-shadow: none;
+
+    .anchor-links {
+      padding-top: 0;
+      height: 39px;
+
+      a {
+        @include font-size(12.6);
+        padding: 9px 15px;
+      }
+    }
+  }
+}
+
 .mobile-service-links {
   display: none;
 }
@@ -225,7 +248,7 @@ header {
   color: $navy-dark;
   cursor: pointer;
   display: none;
-  padding-top: 26px;
+  padding-top: 20px;
   position: absolute;
   right: 0;
   top: 0;
@@ -507,20 +530,31 @@ header {
 }
 
 @include breakpoint-for('.header-static', (to: laptop-small)) {
+  min-height: 60px;
+
+  .bottom-head {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+  }
+
   .collapsed & {
     min-height: 60px;
     top: -150px;
   }
+
+
 
   .mobile-menu-wrapper {
     height: calc(100vh - 80px);
     padding-top: 0;
     position: fixed;
     top: 126px;
+    z-index: 10;
 
     .toolbar-fixed &,
     .toolbar-vertical & {
-      top: 165px;
+      top: 146px;
     }
   }
 }
@@ -559,7 +593,7 @@ header {
     padding-top: 20px;
   }
 
-  .mobile-menu-wrapper{
+  .mobile-menu-wrapper {
     height: calc(100% - 60px);
     top: 60px;
     right: -85%;
@@ -603,6 +637,10 @@ header {
 }
 
 @include breakpoint-for('.header-static', (to: tablet)) {
+  .bottom-head {
+    display: none;
+  }
+
   .mobile-menu-wrapper {
     height: calc(100vh - 60px);
     top: 60px;

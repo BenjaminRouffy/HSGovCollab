@@ -1948,6 +1948,7 @@ display:
         title: false
         arguments: false
         query: false
+        sorts: false
       filter_groups:
         operator: AND
         groups:
@@ -2046,6 +2047,21 @@ display:
           query_comment: ''
           query_tags: null
       rendering_language: '***LANGUAGE_language_interface***'
+      sorts:
+        computed_date:
+          id: computed_date
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
@@ -3973,6 +3989,7 @@ display:
         relationships: false
         title: false
         arguments: false
+        sorts: false
       filter_groups:
         operator: AND
         groups:
@@ -4058,6 +4075,21 @@ display:
           entity_type: group_content
           plugin_id: group_id_depth
       rendering_language: '***LANGUAGE_language_interface***'
+      sorts:
+        computed_date:
+          id: computed_date
+          table: node_field_data
+          field: computed_date
+          relationship: gc__node
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: computed_date
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:

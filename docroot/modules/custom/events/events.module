@@ -244,8 +244,38 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
           if ($key !== '_none') {
             // Rename select list group names.
             unset($form['field_add_event_in_group']['widget']['#options'][$key]);
-            $new_key = str_replace('Universal Object - ', '', $key);
-            $form['field_add_event_in_group']['widget']['#options'][$new_key] = $values;
+
+            if (!empty($values)) {
+              foreach ($values as $gid => $group_name) {
+                // Change the grouping for the options in add in group select list.
+                $group = Drupal::entityTypeManager()->getStorage('group')->load($gid);
+                if ($group) {
+                  $geo_object = array();
+                  if ($group->hasField('field_geographical_object')) {
+                    $geo_object = $group->get('field_geographical_object')->getValue();
+                  }
+                  $group_type = $group->getGroupType()->id();
+                  if (!empty($geo_object) && isset($geo_object[0]) && $geo_object[0]['value'] === '1') {
+                    switch ($group_type) {
+                      case 'country':
+                        $form['field_add_event_in_group']['widget']['#options']['Country'][$gid] = $group_name;
+                        break;
+                      case 'region':
+                        $form['field_add_event_in_group']['widget']['#options']['Region'][$gid] = $group_name;
+                        break;
+                      case 'project':
+                        $form['field_add_event_in_group']['widget']['#options']['Collaborations'][$gid] = $group_name;
+                        break;
+                      default:
+                        break;
+                    }
+                  }
+                  else {
+                    $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $group_name;
+                  }
+                }
+              }
+            }
           }
         }
       }

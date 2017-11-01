@@ -1270,6 +1270,10 @@ svg {
   text-decoration: none;
   transition: color .3s ease, padding .3s ease;
   vertical-align: top;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 250px;
 }
 
 .anchor-links a:hover {
@@ -2059,9 +2063,12 @@ body:not(.group):not(.page-search) .top-banner-region {
   }
   .country-content-wrapper .country-icon-wrapper {
     float: none;
-    margin: 0 20px 0 0;
+    margin-right: 0;
     display: inline-block;
     vertical-align: middle;
+  }
+  .logged .country-content-wrapper .country-icon-wrapper {
+    margin: 0 20px 0 0;
   }
   .country-content-wrapper h1 {
     display: none;
@@ -2242,6 +2249,7 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 .group-collapsible.collapsed .country-content-wrapper {
   padding: 20px;
+  max-width: 900px;
 }
 
 @media screen and (min-width: 480px) {
@@ -2250,7 +2258,7 @@ body:not(.group):not(.page-search) .top-banner-region {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1600px) {
   .group-collapsible.collapsed .country-content-wrapper {
     padding: 20px;
   }
@@ -2260,6 +2268,10 @@ body:not(.group):not(.page-search) .top-banner-region {
   .group-collapsible.collapsed .country-content-wrapper {
     padding-left: 115px;
   }
+}
+
+.logged .group-collapsible.collapsed .country-content-wrapper {
+  max-width: 1240px;
 }
 
 .group-collapsible.collapsed .country-content-wrapper .country-icon-wrapper {
@@ -7954,6 +7966,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .webform-title h3 {
   font-size: 2.25rem;
   margin-bottom: 20px;
+  line-height: 1.45;
 }
 
 .webform-body .form-composite {
@@ -7962,7 +7975,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .webform-body .form-composite .fieldset-legend {
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: block;
 }
 

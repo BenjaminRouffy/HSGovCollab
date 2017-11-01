@@ -11,6 +11,7 @@ dependencies:
     - field.field.group.country_protected.field_faq
     - field.field.group.country_protected.field_infographic
     - field.field.group.country_protected.field_join_block
+    - field.field.group.country_protected.field_priority
     - field.field.group.country_protected.field_region_icon
     - field.field.group.country_protected.field_summary
     - field.field.group.country_protected.field_summary_content
@@ -43,6 +44,7 @@ third_party_settings:
       label: 'Tabs panel'
     group_banner:
       children:
+        - field_priority
         - field_banner
         - label
         - field_country_icon
@@ -134,7 +136,7 @@ bundle: country_protected
 mode: default
 content:
   field_banner:
-    weight: 5
+    weight: 20
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -205,8 +207,15 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_priority:
+    weight: 19
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_region_icon:
-    weight: 8
+    weight: 22
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -252,7 +261,7 @@ content:
     region: content
   label:
     type: string_textfield
-    weight: 6
+    weight: 21
     region: content
     settings:
       size: 60

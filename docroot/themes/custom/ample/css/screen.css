@@ -2256,6 +2256,12 @@ body:not(.group):not(.page-search) .top-banner-region {
   }
 }
 
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .group-collapsible.collapsed .country-content-wrapper {
+    padding-left: 115px;
+  }
+}
+
 .group-collapsible.collapsed .country-content-wrapper .country-icon-wrapper {
   width: 70px;
   height: 70px;
@@ -10431,6 +10437,12 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   box-shadow: none;
 }
 
+@media screen and (max-width: 991px) {
+  .h-with-anchors {
+    margin-bottom: 38px;
+  }
+}
+
 .h-with-anchors .mobile-menu-wrapper {
   padding-top: 20px;
 }
@@ -10725,12 +10737,12 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
     height: calc(100vh - 80px);
     padding-top: 0;
     position: fixed;
-    top: 126px;
-    z-index: 10;
+    top: 107px;
+    z-index: 9;
   }
   .toolbar-fixed .header-static .mobile-menu-wrapper,
   .toolbar-vertical .header-static .mobile-menu-wrapper {
-    top: 146px;
+    top: 165px;
   }
 }
 

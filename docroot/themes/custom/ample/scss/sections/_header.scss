@@ -217,6 +217,10 @@ header {
 .h-with-anchors {
   box-shadow: none;
 
+  @media screen and (max-width: 991px) {
+    margin-bottom: 38px;
+  }
+
   .mobile-menu-wrapper {
     padding-top: 20px;
   }
@@ -543,18 +547,16 @@ header {
     top: -150px;
   }
 
-
-
   .mobile-menu-wrapper {
     height: calc(100vh - 80px);
     padding-top: 0;
     position: fixed;
-    top: 126px;
-    z-index: 10;
+    top: 107px;
+    z-index: 9;
 
     .toolbar-fixed &,
     .toolbar-vertical & {
-      top: 146px;
+      top: 165px;
     }
   }
 }

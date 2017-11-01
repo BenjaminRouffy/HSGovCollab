@@ -677,6 +677,8 @@
         return $(this).height();
       }).get();
 
+      if (minHeight.length == 1) minHeight.push(100);
+
       var minHeightVal = Math.min.apply(Math, minHeight);
 
       if (isFinite(minHeightVal)) {

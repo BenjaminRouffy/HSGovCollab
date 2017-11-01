@@ -239,6 +239,17 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
     $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
     if ($active_theme->getName() === 'ample') {
+      if (!empty($form['field_add_event_in_group']['widget']['#options'])) {
+        foreach ($form['field_add_event_in_group']['widget']['#options'] as $key => $values) {
+          if ($key !== '_none') {
+            // Rename select list group names.
+            unset($form['field_add_event_in_group']['widget']['#options'][$key]);
+            $new_key = str_replace('Universal Object - ', '', $key);
+            $form['field_add_event_in_group']['widget']['#options'][$new_key] = $values;
+          }
+        }
+      }
+
       // Hide 'Add more' button on 'When' section when the current theme is apmle.
       $form['field_date']['widget']['add_more']['#access'] = FALSE;
 

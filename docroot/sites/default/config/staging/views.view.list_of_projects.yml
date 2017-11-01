@@ -165,7 +165,33 @@ display:
           entity_type: group_content
           entity_field: type
           plugin_id: bundle
-      sorts: {  }
+      sorts:
+        field_priority_value:
+          id: field_priority_value
+          table: group__field_priority
+          field: field_priority_value
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+        label:
+          id: label
+          table: group_content_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: group_content
+          entity_field: label
+          plugin_id: standard
       title: Collaborations
       header: {  }
       footer: {  }
@@ -323,6 +349,9 @@ display:
         pager: false
         filters: false
         filter_groups: false
+        sorts: false
+        link_display: false
+        link_url: false
       use_more: true
       use_more_always: false
       use_more_text: 'See all collaborations'
@@ -429,6 +458,35 @@ display:
         operator: AND
         groups:
           1: AND
+      sorts:
+        field_priority_value:
+          id: field_priority_value
+          table: group__field_priority
+          field: field_priority_value
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+        label:
+          id: label
+          table: group_content_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: group_content
+          entity_field: label
+          plugin_id: standard
+      link_display: custom_url
+      link_url: 'group/{{ raw_arguments.group_id_depth }}/projects'
     cache_metadata:
       max-age: -1
       contexts:
@@ -521,6 +579,7 @@ display:
         filter_groups: false
         link_display: false
         link_url: false
+        sorts: false
       use_more: true
       use_more_always: false
       use_more_text: 'See all collaborations'
@@ -629,6 +688,33 @@ display:
           1: AND
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/projects'
+      sorts:
+        field_priority_value:
+          id: field_priority_value
+          table: group__field_priority
+          field: field_priority_value
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+        label:
+          id: label
+          table: group_content_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: group_content
+          entity_field: label
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
@@ -724,6 +810,7 @@ display:
         title: false
         relationships: false
         fields: false
+        sorts: false
       use_more: true
       use_more_always: false
       use_more_text: 'See all countries'
@@ -977,6 +1064,33 @@ display:
           view_mode: region_search_for_countries
           entity_type: group
           plugin_id: rendered_entity
+      sorts:
+        field_priority_value:
+          id: field_priority_value
+          table: group__field_priority
+          field: field_priority_value
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+        label:
+          id: label
+          table: group_content_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: group_content
+          entity_field: label
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
@@ -2421,6 +2535,7 @@ display:
         use_ajax: false
         title: false
         empty: false
+        sorts: false
       block_hide_empty: false
       link_display: '0'
       link_url: 'group/{{ arguments.gid }}/projects'
@@ -2593,6 +2708,33 @@ display:
           tokenize: false
           content: 'Nothing has been found'
           plugin_id: text_custom
+      sorts:
+        field_priority_value:
+          id: field_priority_value
+          table: group__field_priority
+          field: field_priority_value
+          relationship: gc__group
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+        label:
+          id: label
+          table: group_content_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: group_content
+          entity_field: label
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:

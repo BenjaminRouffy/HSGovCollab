@@ -28,6 +28,7 @@ dependencies:
     - entity_reference_revisions
     - events
     - group_content_formatters
+    - image
     - link
     - options
     - rel_content
@@ -116,10 +117,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: image
     region: content
   field_join_block:
     weight: 10

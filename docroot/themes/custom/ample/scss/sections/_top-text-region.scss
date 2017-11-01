@@ -60,6 +60,10 @@
 @include breakpoint-for('.top-text-region', (to: laptop-small)) {
   margin-bottom: 20px;
   width: 100%;
+
+  .summary-text {
+    padding: 0 20px;
+  }
 }
 
 @include breakpoint-for('.top-text-region', (to: tablet)) {

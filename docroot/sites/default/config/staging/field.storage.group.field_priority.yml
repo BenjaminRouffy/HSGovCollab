@@ -1,0 +1,22 @@
+uuid: 82c3f03d-8c92-4cc6-950f-ce470db2d3aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - group
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: group.field_priority
+field_name: field_priority
+entity_type: group
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

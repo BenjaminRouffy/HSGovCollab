@@ -1,0 +1,23 @@
+uuid: 04288eef-d92b-4cb7-8df0-117138b279cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_priority
+    - group.type.project_protected
+id: group.project_protected.field_priority
+field_name: field_priority
+entity_type: group
+bundle: project_protected
+label: Priority
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

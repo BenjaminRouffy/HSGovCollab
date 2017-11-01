@@ -5,6 +5,10 @@
   <div class="header-image">
     {{ content.field_event_slider|field_value }}
   </div>
+{% elseif content.field_image|field_value %}
+  <div class="header-image">
+    {{ content.field_image|field_value }}
+  </div>
 {% endif %}
 
 <article{{ attributes }} role="article">

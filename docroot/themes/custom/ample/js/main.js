@@ -690,11 +690,11 @@
               maxHeight: Math.min.apply(this, minHeight)
             }).addClass('contact-expanded');
 
-            $self.on('click', '.contact-expand', function(evt) {
+            $self.on('click', '.contact-expand', function (evt) {
 
-              if(!$self.hasClass('expanded')) {
+              if (!$self.hasClass('expanded')) {
                 $self.css({
-                  maxHeight: (initHeight  + 40)
+                  maxHeight: (initHeight + 40)
                 }).addClass('expanded');
                 return;
               }
@@ -740,4 +740,28 @@
     return (number < 0 ? '-' : '+') + Array(Math.max(digits - String(Math.abs(number)).length + 1, 0)).join(0) + Math.abs(number);
   }
 
+  Drupal.behaviors.countryCollapsedUpdate = {
+    attach: function (context, settings) {
+      var $toggleBtn = $('.group-link-collapsible', context),
+        viewTitle = Drupal.t('view details'),
+        hideTitle = Drupal.t('hide details'),
+
+        updateTitle = function (item) {
+          return item.hasClass('collapsed') ? item.html(viewTitle) : item.html(hideTitle);
+        };
+
+      updateTitle($toggleBtn);
+
+
+      $toggleBtn.on('click', function (event) {
+        event.preventDefault();
+        var $self = $(this),
+          id = $self.attr('data-group-collapsible'),
+          name = '[data-group-collapsible=' + id + ']';
+
+        $(name).toggleClass('collapsed uncollapsed');
+        updateTitle($self);
+      });
+    }
+  }
 })(jQuery, Drupal);

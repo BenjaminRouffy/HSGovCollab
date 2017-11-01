@@ -1,5 +1,5 @@
 {{ elements.membericons_3 }}
-<div class="header-static">
+<div class="header-static {{ elements.countrymenublock ? 'h-with-anchors' : '' }}">
   {{ elements.dashlogos }}
   <div class="wrapper">
     {{ elements.logos }}
@@ -28,4 +28,11 @@
       {{ elements.membericons_3 }}
     </div>
   </div>
+  {% spaceless %}
+    <div class="bottom-head {{ elements.countrymenublock ? 'has-anchor-links' : '' }}">
+      {% if elements.countrymenublock %}
+        {{ elements.countrymenublock }}
+      {% endif %}
+    </div>
+  {% endspaceless %}
 </div>

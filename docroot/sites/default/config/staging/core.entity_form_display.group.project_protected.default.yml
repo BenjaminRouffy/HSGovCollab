@@ -11,6 +11,7 @@ dependencies:
     - field.field.group.project_protected.field_faq
     - field.field.group.project_protected.field_join_block
     - field.field.group.project_protected.field_knowledge_vault
+    - field.field.group.project_protected.field_priority
     - field.field.group.project_protected.field_product
     - field.field.group.project_protected.field_project_icon
     - field.field.group.project_protected.field_summary
@@ -45,6 +46,7 @@ third_party_settings:
       label: 'Tabs panel'
     group_summary:
       children:
+        - field_priority
         - label
         - field_date
         - field_end_date
@@ -154,13 +156,13 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 3
+    weight: 25
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_end_date:
-    weight: 4
+    weight: 26
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -192,6 +194,13 @@ content:
     third_party_settings: {  }
     type: group_select
     region: content
+  field_priority:
+    weight: 23
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_product:
     weight: 13
     settings: {  }
@@ -199,7 +208,7 @@ content:
     type: group_select
     region: content
   field_project_icon:
-    weight: 7
+    weight: 29
     settings:
       entity_browser: browse_files
       field_widget_edit: true
@@ -241,7 +250,7 @@ content:
     region: content
   label:
     type: string_textfield
-    weight: 2
+    weight: 24
     region: content
     settings:
       size: 60
@@ -249,13 +258,13 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 5
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 6
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }

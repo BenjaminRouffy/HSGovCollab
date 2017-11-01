@@ -10,6 +10,24 @@ function news_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterf
       // Hide group's autocomplete.
       $form['field_add_event_in_group']['#access'] = FALSE;
     }
+
+    $current_them = \Drupal::service('theme.manager')->getActiveTheme();
+    if ($current_them->getName() === 'ample') {
+      // Hide organization field when user is using the ample theme.
+      $form['field_organization']['#access'] = FALSE;
+
+      if (!empty($form['field_add_event_in_group']['widget']['#options'])) {
+        foreach ($form['field_add_event_in_group']['widget']['#options'] as $key => $values) {
+          if ($key !== '_none') {
+            // Rename select list group names.
+            unset($form['field_add_event_in_group']['widget']['#options'][$key]);
+            $new_key = str_replace('Universal Object - ', '', $key);
+            $form['field_add_event_in_group']['widget']['#options'][$new_key] = $values;
+          }
+        }
+      }
+    }
+
     foreach (array_keys($form['actions']) as $action) {
       if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
         $form['actions'][$action]['#submit'][] = 'news_customization_add_new_news_custom_submit';

@@ -1,6 +1,10 @@
-{% if content.field_image %}
+{% if content.field_image|field_value %}
   <div class="header-image">
     {{ content.field_image|field_value }}
+  </div>
+{% elseif content.field_news_image|field_value %}
+  <div class="header-image">
+    {{ content.field_news_image|field_value }}
   </div>
 {% endif %}
 

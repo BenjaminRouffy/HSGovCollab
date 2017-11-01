@@ -73,8 +73,10 @@ class CollapsedLinkBlock extends BlockBase implements ContainerFactoryPluginInte
 
     $build = [];
     $build['colapsed_link_block'] = [
+      '#prefix' => '<div class="group-link-collapsible-wrapper">',
+      '#suffix' => '</div>',
       '#type' => 'link',
-      '#title' => 'toggle collapsed view',
+      '#title' => 'view details',
       '#url' => Url::fromRoute('country.collapsed_update', [
         'js' => 'nojs',
         'group' => $group->id(),

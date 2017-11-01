@@ -350,6 +350,8 @@ display:
         filters: false
         filter_groups: false
         sorts: false
+        link_display: false
+        link_url: false
       use_more: true
       use_more_always: false
       use_more_text: 'See all collaborations'
@@ -483,6 +485,8 @@ display:
           entity_type: group_content
           entity_field: label
           plugin_id: standard
+      link_display: custom_url
+      link_url: 'group/{{ raw_arguments.group_id_depth }}/projects'
     cache_metadata:
       max-age: -1
       contexts:

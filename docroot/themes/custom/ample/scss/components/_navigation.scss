@@ -715,6 +715,10 @@
     text-decoration: none;
     transition: color .3s ease, padding .3s ease;
     vertical-align: top;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 250px;
 
     &:hover {
       color: $navy;

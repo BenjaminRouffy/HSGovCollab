@@ -484,9 +484,13 @@
 
   .country-icon-wrapper {
     float: none;
-    margin: 0 20px 0 0;
+    margin-right: 0;
     display: inline-block;
     vertical-align: middle;
+
+    .logged & {
+      margin: 0 20px 0 0;
+    }
 
   }
 
@@ -680,17 +684,22 @@
     // Content
     .country-content-wrapper {
       padding: 20px;
+      max-width: 900px;
 
       @media screen and (min-width: 480px) {
         padding: 20px 70px;
       }
 
-      @media screen and (min-width: 992px) {
+      @media screen and (min-width: 1600px) {
         padding: 20px;
       }
 
       @media screen and (max-width: 1024px) and (orientation: landscape) {
         padding-left: 115px;
+      }
+
+      .logged & {
+        max-width: 1240px;
       }
 
       .country-icon-wrapper {

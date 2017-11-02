@@ -1143,3 +1143,22 @@ function deployment_update_8095() {
   $query->fields(array('field_disclose_your_personal_det_value' => 0));
   $query->execute();
 }
+
+/**
+ * Update expiration date for all users.
+ */
+function deployment_update_8096() {
+  $connection = Database::getConnection();
+
+  $connection->update('user__field_last_password_reset')
+    ->fields([
+      'field_last_password_reset_value' => date('Y-m-d\TH:i:s'),
+    ])
+    ->execute();
+
+  $connection->update('user__field_password_expiration')
+    ->fields([
+      'field_password_expiration_value' => 0,
+    ])
+    ->execute();
+}

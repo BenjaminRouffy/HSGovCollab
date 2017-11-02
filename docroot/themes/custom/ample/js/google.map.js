@@ -44,62 +44,68 @@
     map.mapTypes.set('dark', darkColoredMap);
     map.setMapTypeId('dark');
 
+    var i = 0;
     var pins = [];
-    for (var i = 0; i < markers.length; i++) {
-      (function (i) {
-        var data = markers[i];
-        var countryId = data.countryId;
-        var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-        var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          icon: {
-            url: imagesPath + 'pin.png',
-            scaledSize: new google.maps.Size(15, 23)
-          },
-          optimized: false,
-          id: countryId
-        });
+    var interval = setInterval(function() {
+      var data = markers[i];
+      var countryId = data.countryId;
+      var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+      var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        icon: {
+          url: imagesPath + 'pin.png',
+          scaledSize: new google.maps.Size(15, 23)
+        },
+        optimized: false,
+        animation: google.maps.Animation.DROP,
+        id: countryId
+      });
 
-        pins.push(marker);
+      pins.push(marker);
 
-        google.maps.event.addListener(marker, 'mouseover', function() {
-          marker.setIcon(imagesPath + 'pin-active.png');
-        });
+      google.maps.event.addListener(marker, 'mouseover', function() {
+        marker.setIcon(imagesPath + 'pin-active.png');
+      });
 
-        google.maps.event.addListener(marker, 'mouseout', function() {
-          marker.setIcon(imagesPath + 'pin.png');
-        });
+      google.maps.event.addListener(marker, 'mouseout', function() {
+        marker.setIcon(imagesPath + 'pin.png');
+      });
 
-        google.maps.event.addListener(marker, "click", function() {
-          var elementId = $('#' + this.id);
-          var markerInfo = $('.marker-info');
+      google.maps.event.addListener(marker, "click", function() {
+        var elementId = $('#' + this.id);
+        var markerInfo = $('.marker-info');
 
-          for (var i in pins) {
-            pins[i].setAnimation(null);
-          }
+        for (var i in pins) {
+          pins[i].setAnimation(null);
+        }
 
-          if (!elementId.is('.active')) {
-            markerInfo.removeClass('active');
-            elementId.addClass('active');
-          }
-          else {
-            elementId.removeClass('active');
-          }
+        if (!elementId.is('.active')) {
+          markerInfo.removeClass('active');
+          elementId.addClass('active');
+        }
+        else {
+          elementId.removeClass('active');
+        }
 
-          if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-          } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
-        });
-
-        $('.close-btn').on('click', function() {
-          $(this).parent('.marker-info').removeClass('active');
+        if (marker.getAnimation() !== null) {
           marker.setAnimation(null);
-        });
-      })(i);
-    }
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+      });
+
+      $('.close-btn').on('click', function() {
+        $(this).parent('.marker-info').removeClass('active');
+        marker.setAnimation(null);
+      });
+
+      i++;
+
+      if (i == markers.length) {
+        clearInterval(interval);
+      }
+    }, 200);
 
     $('.color-switcher').on('click', function() {
       if (map.getMapTypeId() === 'dark') {

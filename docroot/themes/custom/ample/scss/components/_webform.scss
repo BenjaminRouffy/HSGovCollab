@@ -2317,6 +2317,7 @@ form {
   h3 {
     @include font-size(36);
     margin-bottom: 20px;
+    line-height: 1.45;
   }
 }
 
@@ -2327,7 +2328,7 @@ form {
     // Title (Legend)
     .fieldset-legend {
       font-weight: 500;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       display: block;
     }
   }
@@ -2361,6 +2362,19 @@ form {
       @include font-size(15.4);
       color: $navy;
       margin-bottom: 30px;
+    }
+
+    select {
+      optgroup {
+        color: #FC000E;
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      option {
+        color: #000;
+        font-style: normal;
+      }
     }
 
     .form-item:not(.js-form-type-managed-file) {

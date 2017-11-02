@@ -76,6 +76,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
       ]))
     ]);
 
+    $form['field_disclose_your_personal_det']['#access'] = FALSE;
+
     _user_registration_manager_field_states($form);
   }
   if ($form_id == 'user_onetime_form') {
@@ -144,6 +146,8 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
         array_unshift($form['submit3']['#submit'], '_user_registration_user_profile_form_submit');
       }
     }
+
+    $form['field_disclose_your_personal_det']['#access'] = FALSE;
 
     _user_registration_manager_field_states($form);
   }

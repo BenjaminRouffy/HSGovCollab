@@ -271,7 +271,30 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
                     }
                   }
                   else {
-                    $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $group_name;
+                    switch ($group_type) {
+                      case 'country':
+                      case 'country_protected':
+                        $manager = \Drupal::service('ggroup.group_hierarchy_manager');
+                        $parent_groups = $manager->getGroupSupergroups($group->id());
+
+                        if (!empty($parent_groups)) {
+                          $parent_group = $parent_groups[key($parent_groups)];
+                          if (isset($parent_group)) {
+                            $parent_label = $parent_group->get('label')->getValue();
+                            if (!empty($parent_label) && isset($parent_label[0])) {
+                              $parent_label = $parent_label[0]['value'];
+                              $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $parent_label . ' - ' . $group_name;
+                            }
+                            else {
+                              $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $group_name;
+                            }
+                          }
+                        }
+                        break;
+                      default:
+                        $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $group_name;
+                        break;
+                    }
                   }
                 }
               }

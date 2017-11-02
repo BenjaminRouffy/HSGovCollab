@@ -1136,9 +1136,18 @@ function deployment_update_8094() {
 }
 
 /**
- * Update expiration date for all users.
+ * Set field_disclose_your_personal_det value to 0.
  */
 function deployment_update_8095() {
+  $query = \Drupal::database()->update('user__field_disclose_your_personal_det');
+  $query->fields(array('field_disclose_your_personal_det_value' => 0));
+  $query->execute();
+}
+
+/**
+ * Update expiration date for all users.
+ */
+function deployment_update_8096() {
   $connection = Database::getConnection();
 
   $connection->update('user__field_last_password_reset')
@@ -1152,13 +1161,4 @@ function deployment_update_8095() {
       'field_password_expiration_value' => 0,
     ])
     ->execute();
-}
-
-/**
- * Set field_disclose_your_personal_det value to 0.
- */
-function deployment_update_8096() {
-  $query = \Drupal::database()->update('user__field_disclose_your_personal_det');
-  $query->fields(array('field_disclose_your_personal_det_value' => 0));
-  $query->execute();
 }

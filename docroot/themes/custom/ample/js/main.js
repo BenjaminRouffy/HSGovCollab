@@ -662,7 +662,7 @@
 
   Drupal.behaviors.attachFile = {
     attach: function (context, settings) {
-      $('.choose-file', context).on('click', function () {
+      $('.choose-file', context).once('attach-file').on('click', function () {
         $(this).prev('.form-file').click();
       });
     }

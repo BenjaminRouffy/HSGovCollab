@@ -558,6 +558,7 @@ display:
         - 'config:core.entity_view_display.node.basic_page.view_mode_for_section_page'
         - 'config:core.entity_view_display.node.document.default'
         - 'config:core.entity_view_display.node.document.search_result_row'
+        - 'config:core.entity_view_display.node.document.small_teaser'
         - 'config:core.entity_view_display.node.document.teaser'
         - 'config:core.entity_view_display.node.document.time_line'
         - 'config:core.entity_view_display.node.event.calendar_preview'
@@ -579,6 +580,10 @@ display:
         - 'config:core.entity_view_display.node.member.teaser'
         - 'config:core.entity_view_display.node.news.comments'
         - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.email_html'
+        - 'config:core.entity_view_display.node.news.email_html_two'
+        - 'config:core.entity_view_display.node.news.email_plain'
+        - 'config:core.entity_view_display.node.news.email_textalt'
         - 'config:core.entity_view_display.node.news.full'
         - 'config:core.entity_view_display.node.news.news_events_listing'
         - 'config:core.entity_view_display.node.news.news_events_sidebar'
@@ -587,6 +592,16 @@ display:
         - 'config:core.entity_view_display.node.news.small_teaser'
         - 'config:core.entity_view_display.node.news.teaser'
         - 'config:core.entity_view_display.node.news.time_line'
+        - 'config:core.entity_view_display.node.newsletter_banner.default'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_html'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_plain'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_textalt'
+        - 'config:core.entity_view_display.node.newsletter_banner.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
         - 'config:core.entity_view_display.node.social.default'
         - 'config:core.entity_view_display.node.social.search_result_row'
         - 'config:core.entity_view_display.node.social.teaser'
@@ -815,16 +830,15 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -839,7 +853,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -853,16 +866,16 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
           1: AND
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -888,6 +901,7 @@ display:
         - 'config:core.entity_view_display.node.basic_page.view_mode_for_section_page'
         - 'config:core.entity_view_display.node.document.default'
         - 'config:core.entity_view_display.node.document.search_result_row'
+        - 'config:core.entity_view_display.node.document.small_teaser'
         - 'config:core.entity_view_display.node.document.teaser'
         - 'config:core.entity_view_display.node.document.time_line'
         - 'config:core.entity_view_display.node.event.calendar_preview'
@@ -909,6 +923,10 @@ display:
         - 'config:core.entity_view_display.node.member.teaser'
         - 'config:core.entity_view_display.node.news.comments'
         - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.email_html'
+        - 'config:core.entity_view_display.node.news.email_html_two'
+        - 'config:core.entity_view_display.node.news.email_plain'
+        - 'config:core.entity_view_display.node.news.email_textalt'
         - 'config:core.entity_view_display.node.news.full'
         - 'config:core.entity_view_display.node.news.news_events_listing'
         - 'config:core.entity_view_display.node.news.news_events_sidebar'
@@ -917,6 +935,16 @@ display:
         - 'config:core.entity_view_display.node.news.small_teaser'
         - 'config:core.entity_view_display.node.news.teaser'
         - 'config:core.entity_view_display.node.news.time_line'
+        - 'config:core.entity_view_display.node.newsletter_banner.default'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_html'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_plain'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_textalt'
+        - 'config:core.entity_view_display.node.newsletter_banner.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
         - 'config:core.entity_view_display.node.social.default'
         - 'config:core.entity_view_display.node.social.search_result_row'
         - 'config:core.entity_view_display.node.social.teaser'
@@ -1047,16 +1075,15 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1071,7 +1098,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1085,8 +1111,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -1115,6 +1141,7 @@ display:
         options:
           items_per_page: 3
           offset: 0
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1141,6 +1168,7 @@ display:
         - 'config:core.entity_view_display.node.basic_page.view_mode_for_section_page'
         - 'config:core.entity_view_display.node.document.default'
         - 'config:core.entity_view_display.node.document.search_result_row'
+        - 'config:core.entity_view_display.node.document.small_teaser'
         - 'config:core.entity_view_display.node.document.teaser'
         - 'config:core.entity_view_display.node.document.time_line'
         - 'config:core.entity_view_display.node.event.calendar_preview'
@@ -1162,6 +1190,10 @@ display:
         - 'config:core.entity_view_display.node.member.teaser'
         - 'config:core.entity_view_display.node.news.comments'
         - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.email_html'
+        - 'config:core.entity_view_display.node.news.email_html_two'
+        - 'config:core.entity_view_display.node.news.email_plain'
+        - 'config:core.entity_view_display.node.news.email_textalt'
         - 'config:core.entity_view_display.node.news.full'
         - 'config:core.entity_view_display.node.news.news_events_listing'
         - 'config:core.entity_view_display.node.news.news_events_sidebar'
@@ -1170,6 +1202,16 @@ display:
         - 'config:core.entity_view_display.node.news.small_teaser'
         - 'config:core.entity_view_display.node.news.teaser'
         - 'config:core.entity_view_display.node.news.time_line'
+        - 'config:core.entity_view_display.node.newsletter_banner.default'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_html'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_plain'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_textalt'
+        - 'config:core.entity_view_display.node.newsletter_banner.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
         - 'config:core.entity_view_display.node.social.default'
         - 'config:core.entity_view_display.node.social.search_result_row'
         - 'config:core.entity_view_display.node.social.teaser'
@@ -1239,16 +1281,15 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        langcode:
-          id: langcode
+        default_langcode:
+          id: default_langcode
           table: node_field_data
-          field: langcode
+          field: default_langcode
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          operator: '='
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1263,7 +1304,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1277,8 +1317,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: default_langcode
+          plugin_id: boolean
       defaults:
         filters: false
         filter_groups: false
@@ -1527,10 +1567,10 @@ display:
           inline: {  }
           separator: ''
           hide_empty: false
+      rendering_language: '***LANGUAGE_language_interface***'
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - route
         - url
@@ -1554,6 +1594,7 @@ display:
         - 'config:core.entity_view_display.node.basic_page.view_mode_for_section_page'
         - 'config:core.entity_view_display.node.document.default'
         - 'config:core.entity_view_display.node.document.search_result_row'
+        - 'config:core.entity_view_display.node.document.small_teaser'
         - 'config:core.entity_view_display.node.document.teaser'
         - 'config:core.entity_view_display.node.document.time_line'
         - 'config:core.entity_view_display.node.event.calendar_preview'
@@ -1575,6 +1616,10 @@ display:
         - 'config:core.entity_view_display.node.member.teaser'
         - 'config:core.entity_view_display.node.news.comments'
         - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.email_html'
+        - 'config:core.entity_view_display.node.news.email_html_two'
+        - 'config:core.entity_view_display.node.news.email_plain'
+        - 'config:core.entity_view_display.node.news.email_textalt'
         - 'config:core.entity_view_display.node.news.full'
         - 'config:core.entity_view_display.node.news.news_events_listing'
         - 'config:core.entity_view_display.node.news.news_events_sidebar'
@@ -1583,6 +1628,16 @@ display:
         - 'config:core.entity_view_display.node.news.small_teaser'
         - 'config:core.entity_view_display.node.news.teaser'
         - 'config:core.entity_view_display.node.news.time_line'
+        - 'config:core.entity_view_display.node.newsletter_banner.default'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_html'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_plain'
+        - 'config:core.entity_view_display.node.newsletter_banner.email_textalt'
+        - 'config:core.entity_view_display.node.newsletter_banner.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
         - 'config:core.entity_view_display.node.social.default'
         - 'config:core.entity_view_display.node.social.search_result_row'
         - 'config:core.entity_view_display.node.social.teaser'

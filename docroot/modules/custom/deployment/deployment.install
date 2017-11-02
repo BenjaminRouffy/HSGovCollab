@@ -1153,3 +1153,12 @@ function deployment_update_8095() {
     ])
     ->execute();
 }
+
+/**
+ * Set field_disclose_your_personal_det value to 0.
+ */
+function deployment_update_8096() {
+  $query = \Drupal::database()->update('user__field_disclose_your_personal_det');
+  $query->fields(array('field_disclose_your_personal_det_value' => 0));
+  $query->execute();
+}

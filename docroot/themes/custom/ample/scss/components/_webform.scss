@@ -2364,6 +2364,19 @@ form {
       margin-bottom: 30px;
     }
 
+    select {
+      optgroup {
+        color: #FC000E;
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      option {
+        color: #000;
+        font-style: normal;
+      }
+    }
+
     .form-item:not(.js-form-type-managed-file) {
       position: relative;
       padding-top: 5px;

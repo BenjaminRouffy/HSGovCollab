@@ -82,6 +82,13 @@ class CountryMenuBlock extends BlockBase {
       if ($group->hasField('field_label') && !empty($group->get('field_label')->value)) {
         $label = $group->get('field_label')->value;
       }
+      elseif ($group->hasField('field_geographical_object') && empty($group->get('field_geographical_object')->value)) {
+        $label =$this->t('Groups');
+      }
+      elseif ($group->getGroupType()->id() === 'region_protected') {
+        $label =$this->t('Groups');
+      }
+
 
       $entities = [
         // Country menu item could be overridden by label field.

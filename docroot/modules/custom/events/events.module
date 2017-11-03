@@ -312,6 +312,14 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       }
     }
 
+    $user_display_name = \Drupal::currentUser()->getDisplayName();
+    if (!empty($form['field_event_author']['widget'])
+      && isset($form['field_event_author']['widget'][0])
+      && !empty($form['field_event_author']['widget'][0]['value'])) {
+      // Set current user as author of the node.
+      $form['field_event_author']['widget'][0]['value']['#default_value'] = $user_display_name;
+    }
+
     if(in_array($route, array('node.add', 'page_manager.page_view_my_calendar', 'events.add_content_simplified'))) {
       foreach (array_keys($form['actions']) as $action) {
         if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {

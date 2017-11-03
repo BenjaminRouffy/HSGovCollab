@@ -6,7 +6,13 @@
           <td{{ attributes.addClass('row') }} style="border-bottom: 1px solid #ea3a32; padding: 40px 10px 35px; text-align: left;">
             <div class="title-wrapper">
               <h3 class="page-title" style="font-family: Arial, 'sans-serif'; font-size: 17px; line-height: 22px; margin-bottom: 20px; margin-top: 0; text-align: left;">
-                <a style="font-family: Arial, 'sans-serif'; color: #333333; text-decoration: none;" href="{{ url('entity.node.canonical', {'node': node.id()}, { absolute: true }) }}" rel="bookmark" target="_blank">{{ label }}</a>
+                {% if node.isPublished() %}
+                  <a style="font-family: Arial, 'sans-serif'; color: #333333; text-decoration: none;" href="{{ url('entity.node.canonical', {'node': node.id()}, { absolute: true }) }}" rel="bookmark" target="_blank">
+                    {{ label }}
+                  </a>
+                {%  else %}
+                  <span style="font-family: Arial, 'sans-serif'; color: #333333; text-decoration: none;">{{ label }}</span>
+                {% endif %}
               </h3>
             </div>
 
@@ -21,7 +27,9 @@
                   <p style="text-align: left; font-family: Arial, 'sans-serif';">{{ node.body.summary }}</p>
                 </div>
               {% else %}
-                {{ content.body }}
+                <div style="text-align: justify">
+                  {{ content.body }}
+                </div>
               {% endif %}
             </div>
           </td>

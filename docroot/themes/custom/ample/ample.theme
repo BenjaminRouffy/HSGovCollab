@@ -219,6 +219,16 @@ function ample_preprocess_group(array &$variables) {
  */
 function ample_preprocess_field(array &$variables) {
   switch ($variables['field_name']) {
+    case 'field_event_file':
+      if (!empty($variables['items'])
+        && !empty($variables['items'][0])
+        && !empty($variables['items'][0]['content'])) {
+        $file = $variables['items'][0]['content']['#file'];
+        $variables['document_type'] = file_icon_class($file->getMimeType());
+        $variables['file_name'] = $file->getFilename();
+        $variables['file_url'] = file_create_url($file->getFileUri());
+      }
+      break;
     case 'field_video_link':
       foreach ($variables['items'] as $i => $item) {
         $variables['items'][$i]['content']['children']['#attributes']['data-type'] = $item['content']['children']['#provider'];
@@ -643,4 +653,18 @@ function ample_get_country_icon_by_group($entity) {
   }
 
   return $group_icon_uri;
+}
+
+/**
+ * @param $variables
+ */
+function ample_preprocess_input__date(&$variables) {
+  if (!empty($variables['attributes'])) {
+    if (isset($variables['attributes']['type']) && $variables['attributes']['type'] === 'time') {
+      if (isset($variables['attributes']['step'])) {
+        // Remove the step attribute from time select widget.
+        unset($variables['attributes']['step']);
+      }
+    }
+  }
 }

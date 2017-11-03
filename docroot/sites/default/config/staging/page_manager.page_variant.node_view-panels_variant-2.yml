@@ -121,6 +121,23 @@ variant_settings:
       uuid: 68ad81d2-9f8d-4e6c-9a14-e640c74ac64e
       context_mapping:
         entity: node
+    cffe9a50-699c-457c-94db-67670b0a99df:
+      id: 'entity_field:node:field_event_file'
+      label: 'Event File'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: default
+        third_party_settings: {  }
+        weight: 0
+      region: right_sidebar
+      weight: 0
+      uuid: cffe9a50-699c-457c-94db-67670b0a99df
+      context_mapping:
+        entity: node
   id: panels_variant
   uuid: 76a1f3ee-747e-4f12-a884-90568b049c4a
   label: null

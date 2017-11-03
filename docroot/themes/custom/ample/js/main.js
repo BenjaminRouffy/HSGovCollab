@@ -750,10 +750,14 @@
 
         updateTitle = function (item) {
           return item.hasClass('collapsed') ? item.html(viewTitle) : item.html(hideTitle);
+        },
+        scrollToTop = function(speed) {
+          $('html, body').animate({
+            scrollTop: 0
+          }, speed || 0)
         };
 
       updateTitle($toggleBtn);
-
 
       $toggleBtn.on('click', function (event) {
         event.preventDefault();
@@ -763,6 +767,12 @@
 
         $(name).toggleClass('collapsed uncollapsed');
         updateTitle($self);
+
+        if ($self.hasClass('collapsed')) {
+          setTimeout(function(){
+            scrollToTop(800)
+          }, 500);
+        }
       });
     }
   }

@@ -732,9 +732,11 @@
       if (paddedUtcHour === '+00') paddedUtcHour = '00';
 
       var $utcOption = $timezoneSelect
-        .find('option[value*="' + paddedUtcHour + ':00"]').val();
+        .find('option[value*="' + paddedUtcHour + ':00"]');
 
-      $timezoneSelect.val($utcOption);
+      if ($utcOption.length) {
+        $timezoneSelect.val($utcOption.val());
+      }
     }
   };
 

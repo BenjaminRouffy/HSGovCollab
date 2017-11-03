@@ -124,6 +124,17 @@
   }
 }
 
+.related-docs {
+
+  & + .related-user-docs {
+    margin-top: -50px;
+
+    .related-user-docs--title {
+      display: none;
+    }
+  }
+}
+
 .news-events-list,
 .related-docs,
 .timeline {

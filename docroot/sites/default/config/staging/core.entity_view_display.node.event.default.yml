@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.event.field_documents
     - field.field.node.event.field_event_author
     - field.field.node.event.field_event_country_content
+    - field.field.node.event.field_event_file
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
     - field.field.node.event.field_image
@@ -27,6 +28,7 @@ dependencies:
   module:
     - entity_reference_revisions
     - events
+    - file
     - group_content_formatters
     - image
     - link
@@ -91,6 +93,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: group_content_country_list
+    region: content
+  field_event_file:
+    weight: 18
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: file_url_plain
     region: content
   field_event_link:
     type: link_separate
@@ -175,7 +184,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   rate_vote_widget:
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -1,0 +1,27 @@
+uuid: e7af4c58-bf50-4e3a-816f-7b409c1a2814
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_file
+    - node.type.event
+  module:
+    - file
+id: node.event.field_event_file
+field_name: field_event_file
+entity_type: node
+bundle: event
+label: 'Event File'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc docx xls xlsx pdf ppt pptx'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

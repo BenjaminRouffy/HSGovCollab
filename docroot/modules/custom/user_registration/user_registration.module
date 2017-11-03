@@ -149,6 +149,121 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
 
     $form['field_disclose_your_personal_det']['#access'] = FALSE;
 
+    // List with field which users can use for following groups.
+    $fields = array(
+      'field_following_regions',
+      'field_following_countries',
+      'field_following_projects',
+      'field_following_p4h_areas'
+    );
+
+    // Collect all groups.
+    $query = Drupal::database()->select('groups', 'g');
+    $query->leftJoin('groups_field_data', 'gfd', 'g.id = gfd.id');
+    $query->fields('g', array('id'));
+    $query->fields('gfd', array('label', 'type', 'group_status'));
+    $results = $query->execute()->fetchAllAssoc('id');
+
+    // Prepare arrays for collecting options for the different fields.
+    $region_option = array();
+    $country_option = array();
+    $project_option = array();
+    $p4h_areas_option = array();
+
+    // If Group is geographical object should be displayed in appropriate following field.
+    // If Group isn't geographical object or is protected should be displayed in P4H areas following field.
+    foreach ($results as $group) {
+      switch ($group->type) {
+        case 'country':
+          if($group->group_status === 'published') {
+            $group_entity = \Drupal::entityTypeManager()->getStorage('group')->load($group->id);
+            if ($group_entity->hasField('field_geographical_object')) {
+              $geo_object = $group_entity->get('field_geographical_object')->getValue();
+            }
+            if (!empty($geo_object) && isset($geo_object[0]) && $geo_object[0]['value'] === '1') {
+              if ($group_entity->access('view', $current_user)) {
+                $country_option[$group->id] = $group->label;
+              }
+            }
+            else {
+              if ($group_entity->access('view', $current_user)) {
+                $p4h_areas_option[$group->id] = $group->label;
+              }
+            }
+          }
+          break;
+        case 'region':
+          $group_entity = \Drupal::entityTypeManager()->getStorage('group')->load($group->id);
+          if ($group_entity->hasField('field_geographical_object')) {
+            $geo_object = $group_entity->get('field_geographical_object')->getValue();
+          }
+          if (!empty($geo_object) && isset($geo_object[0]) && $geo_object[0]['value'] === '1') {
+            if ($group_entity->access('view', $current_user)) {
+              $region_option[$group->id] = $group->label;
+            }
+          }
+          else {
+            if ($group_entity->access('view', $current_user)) {
+              $p4h_areas_option[$group->id] = $group->label;
+            }
+          }
+          break;
+        case 'project':
+          $group_entity = \Drupal::entityTypeManager()->getStorage('group')->load($group->id);
+          if ($group_entity->hasField('field_geographical_object')) {
+            $geo_object = $group_entity->get('field_geographical_object')->getValue();
+          }
+          if (!empty($geo_object) && isset($geo_object[0]) && $geo_object[0]['value'] === '1') {
+            if ($group_entity->access('view', $current_user)) {
+              $project_option[$group->id] = $group->label;
+            }
+          }
+          else {
+            if ($group_entity->access('view', $current_user)) {
+              $p4h_areas_option[$group->id] = $group->label;
+            }
+          }
+          break;
+        case 'region_protected':
+        case 'country_protected':
+        case 'project_protected':
+          $group_entity = \Drupal::entityTypeManager()->getStorage('group')->load($group->id);
+          if ($group_entity->access('view', $current_user)) {
+            $project_option[$group->id] = $group->label;
+          }
+          break;
+        default:
+          break;
+      }
+    }
+
+    // Set the new options list to the fields.
+    foreach ($fields as $field_id) {
+      if (!empty($form[$field_id]['widget']) && !empty($form[$field_id]['widget'][0])
+        && !empty($form[$field_id]['widget'][0]['entity_gids'])) {
+        switch ($field_id) {
+          case 'field_following_countries':
+            asort($country_option);
+            $form[$field_id]['widget'][0]['entity_gids']['#options'] = $country_option;
+            break;
+          case 'field_following_projects':
+            asort($project_option);
+            $form[$field_id]['widget'][0]['entity_gids']['#options'] = $project_option;
+            break;
+          case 'field_following_regions':
+            asort($region_option);
+            $form[$field_id]['widget'][0]['entity_gids']['#options'] = $region_option;
+            break;
+          case 'field_following_p4h_areas':
+            asort($p4h_areas_option);
+            $form[$field_id]['widget'][0]['entity_gids']['#options'] = $p4h_areas_option;
+            break;
+          default:
+            break;
+        }
+      }
+    }
+
     _user_registration_manager_field_states($form);
   }
 

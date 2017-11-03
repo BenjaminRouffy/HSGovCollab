@@ -11,6 +11,7 @@ dependencies:
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_following_countries
+    - field.field.user.user.field_following_p4h_areas
     - field.field.user.user.field_following_projects
     - field.field.user.user.field_following_regions
     - field.field.user.user.field_job_title
@@ -149,6 +150,7 @@ third_party_settings:
         - field_following_regions
         - field_following_countries
         - field_following_projects
+        - field_following_p4h_areas
       parent_name: group_my_profile
       weight: 6
       format_type: html_element
@@ -248,6 +250,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: group_country_select
+    region: content
+  field_following_p4h_areas:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: group_select
     region: content
   field_following_projects:
     weight: 27

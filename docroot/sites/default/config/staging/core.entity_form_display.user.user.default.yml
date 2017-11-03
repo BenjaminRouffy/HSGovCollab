@@ -42,8 +42,6 @@ third_party_settings:
   field_group:
     group_my_profile:
       children:
-        - field_avatar
-        - field_person_titles
         - group_user_details
         - account
         - group_organisation_details
@@ -52,6 +50,7 @@ third_party_settings:
         - group_managers
         - group_contact_details
         - group_address_details
+        - group_profile_info
       parent_name: ''
       weight: 0
       format_type: html_element
@@ -184,6 +183,59 @@ third_party_settings:
         effect: none
         speed: fast
       label: Managers
+    group_profile_info:
+      children:
+        - group_profile_column_1
+        - group_profile_column_2
+      parent_name: group_my_profile
+      weight: 1
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: profile-info
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Profile Info'
+    group_profile_column_1:
+      children:
+        - field_avatar
+        - field_person_titles
+      parent_name: group_profile_info
+      weight: 0
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: profile-col
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Profile Column 1'
+    group_profile_column_2:
+      children:
+        - info_block
+      parent_name: group_profile_info
+      weight: 1
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: profile-col
+        element: div
+        show_label: false
+        label_element: h3
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Profile Column 2'
 id: user.user.default
 targetEntityType: user
 bundle: user
@@ -322,6 +374,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_person_titles:
@@ -351,6 +404,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_streetname:
@@ -377,6 +431,21 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  google_analytics:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  info_block:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simplenews:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   submit3:
     weight: 3
     region: content
@@ -386,10 +455,8 @@ hidden:
   captcha: true
   contact: true
   field_accept_term_conditions: true
-  field_knowledge_vault_manager: true
   field_last_password_reset: true
   field_password_expiration: true
-  info_block: true
   langcode: true
   language: true
   legal_terms_and_conditions: true

@@ -320,6 +320,15 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       $form['field_event_author']['widget'][0]['value']['#default_value'] = $user_display_name;
     }
 
+    $date_url = \Drupal::request()->get('date');
+    if (isset($date_url)) {
+      // Set default start/end time in event 'when' widget,
+      // when there is date parameter in URL.
+      $date_array = explode('-', $date_url);
+      $form['field_date']['widget'][0]['value']['#default_value']->setDate($date_array[0], $date_array[1], $date_array[2])->setTime(9, 0, 0);
+      $form['field_date']['widget'][0]['end_value']['#default_value']->setDate($date_array[0], $date_array[1], $date_array[2])->setTime(17, 0, 0);
+    }
+
     if(in_array($route, array('node.add', 'page_manager.page_view_my_calendar', 'events.add_content_simplified'))) {
       foreach (array_keys($form['actions']) as $action) {
         if ($action !== 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {

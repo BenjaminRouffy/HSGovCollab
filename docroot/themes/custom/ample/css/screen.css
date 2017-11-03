@@ -7975,8 +7975,11 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .webform-body .form-composite .fieldset-legend {
   font-weight: 500;
-  margin-bottom: 20px;
   display: block;
+}
+
+.webform-body .form-composite .fieldset-wrapper {
+  padding-top: 20px;
 }
 
 .webform-body .js-form-type-radio,
@@ -8101,8 +8104,9 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .content-add-form .node-form #field-date-values h4 {
   font-family: Oswald, sans-serif;
-  margin-top: 10px;
+  margin-top: 18px;
   display: inline-block;
+  vertical-align: top;
   min-width: 150px;
   font-weight: 300;
 }
@@ -8126,12 +8130,35 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 }
 
 .content-add-form .node-form #field-date-values .form-date {
-  margin-bottom: 10px;
+  width: 100%;
+}
+
+@media screen and (min-width: 480px) {
+  .content-add-form .node-form #field-date-values .form-date {
+    width: auto;
+  }
 }
 
 .content-add-form .node-form .image-widget,
 .content-add-form .node-form .form-managed-file {
   margin-bottom: 20px;
+}
+
+.content-add-form .node-form .form-managed-file .file {
+  margin-right: 20px;
+}
+
+.content-add-form .node-form .form-managed-file .file ~ .form-submit, .content-add-form .node-form .form-managed-file .reset-filters ul:not(.contextual-links) .file ~ a, .reset-filters ul:not(.contextual-links) .content-add-form .node-form .form-managed-file .file ~ a, .content-add-form .node-form .form-managed-file .ui-dialog.ui-widget-content .file ~ .button, .ui-dialog.ui-widget-content .content-add-form .node-form .form-managed-file .file ~ .button, .content-add-form .node-form .form-managed-file .article-add-node .node-article-delete-form .file ~ #edit-cancel, .article-add-node .node-article-delete-form .content-add-form .node-form .form-managed-file .file ~ #edit-cancel, .content-add-form .node-form .form-managed-file
+.article-edit-node .node-article-delete-form .file ~ #edit-cancel,
+.article-edit-node .node-article-delete-form .content-add-form .node-form .form-managed-file .file ~ #edit-cancel, .content-add-form .node-form .form-managed-file
+.article-delete-node .node-article-delete-form .file ~ #edit-cancel,
+.article-delete-node .node-article-delete-form .content-add-form .node-form .form-managed-file .file ~ #edit-cancel, .content-add-form .node-form .form-managed-file .article-add-node .file ~ #edit-delete, .article-add-node .content-add-form .node-form .form-managed-file .file ~ #edit-delete, .content-add-form .node-form .form-managed-file
+.article-edit-node .file ~ #edit-delete,
+.article-edit-node .content-add-form .node-form .form-managed-file .file ~ #edit-delete, .content-add-form .node-form .form-managed-file
+.article-delete-node .file ~ #edit-delete,
+.article-delete-node .content-add-form .node-form .form-managed-file .file ~ #edit-delete {
+  font-size: 0.9375rem;
+  padding: 10px 15px;
 }
 
 .content-add-form .node-form .delta-order,
@@ -8140,8 +8167,43 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 }
 
 .content-add-form .node-form .js-form-type-date {
-  display: inline-block;
-  margin-right: 20px;
+  display: block;
+  margin-bottom: 25px;
+}
+
+@media screen and (min-width: 480px) {
+  .content-add-form .node-form .js-form-type-date {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px 35px 0;
+  }
+}
+
+.content-add-form .node-form .js-form-type-date input[type="time"] {
+  padding: 10px;
+  width: 100%;
+}
+
+@media screen and (min-width: 480px) {
+  .content-add-form .node-form .js-form-type-date input[type="time"] {
+    width: auto;
+  }
+}
+
+.content-add-form .node-form .js-form-type-date .form-date {
+  margin-bottom: 0;
+}
+
+.content-add-form .node-form .js-form-type-date input ~ label.error {
+  top: 100%;
+  font-size: 0.875rem;
+}
+
+@media screen and (min-width: 480px) {
+  .content-add-form .node-form .js-form-type-date input ~ label.error {
+    font-size: 1rem;
+    top: -20px;
+  }
 }
 
 .content-add-form .node-form .field--type-daterange .form-submit, .content-add-form .node-form .field--type-daterange .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .content-add-form .node-form .field--type-daterange a, .content-add-form .node-form .field--type-daterange .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .content-add-form .node-form .field--type-daterange .button, .content-add-form .node-form .field--type-daterange .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .content-add-form .node-form .field--type-daterange #edit-cancel, .content-add-form .node-form .field--type-daterange
@@ -8177,12 +8239,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   color: #8c2222;
 }
 
-.content-add-form .node-form .field--type-image,
-.content-add-form .node-form .field--type-language,
-.content-add-form .node-form .field--type-daterange {
-  margin-bottom: 40px;
-}
-
 .content-add-form .node-form fieldset {
   border: 0;
   padding: 0;
@@ -8195,7 +8251,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 }
 
 .content-add-form .node-form .field--type-text-with-summary {
-  margin-bottom: 60px;
+  margin: 0 0 40px;
 }
 
 .content-add-form .node-form .field--type-text-with-summary .filter-wrapper {
@@ -8214,6 +8270,127 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .content-add-form .node-form .form-select[multiple='multiple'] {
   min-height: 200px;
+}
+
+.content-add-form .node-form .paragraph-type-top {
+  background: #f5f5f5;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: -20px -20px 30px -20px;
+}
+
+.content-add-form .node-form .paragraph-type-top .paragraph-type-title {
+  padding-left: 20px;
+}
+
+.content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper {
+  position: relative;
+}
+
+.content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper .form-submit, .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper a, .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper .button, .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper #edit-cancel, .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper
+.article-edit-node .node-article-delete-form #edit-cancel,
+.article-edit-node .node-article-delete-form .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper #edit-cancel, .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper
+.article-delete-node .node-article-delete-form #edit-cancel,
+.article-delete-node .node-article-delete-form .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper #edit-cancel, .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper .article-add-node #edit-delete, .article-add-node .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper #edit-delete, .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper
+.article-edit-node #edit-delete,
+.article-edit-node .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper #edit-delete, .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper
+.article-delete-node #edit-delete,
+.article-delete-node .content-add-form .node-form .paragraph-type-top .paragraphs-dropbutton-wrapper #edit-delete {
+  font-size: 0.9375rem;
+  background: transparent;
+  border: 0;
+  padding: 10px 15px;
+}
+
+.content-add-form .node-form .field--name-field-document {
+  border: 1px solid #f5f5f5;
+  padding: 20px;
+}
+
+.content-add-form .node-form .field--name-field-document .ajax-progress {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  margin-left: -15px;
+  z-index: 100;
+}
+
+.content-add-form .node-form .field--name-field-document strong {
+  margin-bottom: 20px;
+  display: block;
+  font-weight: 400;
+}
+
+.content-add-form .node-form .field--name-field-document strong + .form-wrapper {
+  margin-bottom: 20px;
+}
+
+.content-add-form .node-form .field--name-field-document .dropbutton-multiple.open .dropbutton-arrow {
+  border-bottom-color: #4c7e96;
+  border-top-width: 0;
+}
+
+.content-add-form .node-form .field--name-field-document .dropbutton-action {
+  text-align: left;
+}
+
+.content-add-form .node-form .field--name-field-document .dropbutton-action .form-submit, .content-add-form .node-form .field--name-field-document .dropbutton-action .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .content-add-form .node-form .field--name-field-document .dropbutton-action a, .content-add-form .node-form .field--name-field-document .dropbutton-action .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .content-add-form .node-form .field--name-field-document .dropbutton-action .button, .content-add-form .node-form .field--name-field-document .dropbutton-action .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .content-add-form .node-form .field--name-field-document .dropbutton-action #edit-cancel, .content-add-form .node-form .field--name-field-document .dropbutton-action
+.article-edit-node .node-article-delete-form #edit-cancel,
+.article-edit-node .node-article-delete-form .content-add-form .node-form .field--name-field-document .dropbutton-action #edit-cancel, .content-add-form .node-form .field--name-field-document .dropbutton-action
+.article-delete-node .node-article-delete-form #edit-cancel,
+.article-delete-node .node-article-delete-form .content-add-form .node-form .field--name-field-document .dropbutton-action #edit-cancel, .content-add-form .node-form .field--name-field-document .dropbutton-action .article-add-node #edit-delete, .article-add-node .content-add-form .node-form .field--name-field-document .dropbutton-action #edit-delete, .content-add-form .node-form .field--name-field-document .dropbutton-action
+.article-edit-node #edit-delete,
+.article-edit-node .content-add-form .node-form .field--name-field-document .dropbutton-action #edit-delete, .content-add-form .node-form .field--name-field-document .dropbutton-action
+.article-delete-node #edit-delete,
+.article-delete-node .content-add-form .node-form .field--name-field-document .dropbutton-action #edit-delete {
+  background: #4c7e96;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  text-transform: none;
+  border: 0;
+  text-align: left;
+  color: #fff;
+}
+
+.content-add-form .node-form .field--name-field-document .dropbutton-arrow {
+  border-top-color: #4c7e96;
+}
+
+.content-add-form .node-form .field--name-field-document .paragraphs-subform .status-message {
+  display: none;
+}
+
+.content-add-form .node-form .field--name-field-document .paragraphs-subform .form-item .status-message {
+  font-size: 1rem;
+  line-height: 1.2;
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.article-delete-node .node-news-delete-form {
+  font-size: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ea3a32;
+}
+
+.article-delete-node .form-actions {
+  font-size: 1rem;
+  margin-top: 40px;
+  text-transform: none;
+}
+
+.article-delete-node .form-actions a {
+  text-decoration: none;
+  margin: 0 40px;
 }
 
 @media (max-width: 991px) {
@@ -12359,7 +12536,17 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 .article-delete-node .node-form,
 .article-delete-node .node-article-delete-form {
   margin: 0 auto;
-  width: 66.64%;
+}
+
+@media screen and (min-width: 1280px) {
+  .article-add-node .node-form,
+  .article-add-node .node-article-delete-form,
+  .article-edit-node .node-form,
+  .article-edit-node .node-article-delete-form,
+  .article-delete-node .node-form,
+  .article-delete-node .node-article-delete-form {
+    width: 66.64%;
+  }
 }
 
 .article-add-node .node-form label:not(.error):after,

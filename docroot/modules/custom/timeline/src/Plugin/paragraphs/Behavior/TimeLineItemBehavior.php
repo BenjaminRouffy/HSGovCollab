@@ -1,4 +1,7 @@
 <?php
+/**
+ * @TODO What is this class doing???
+ */
 
 namespace Drupal\timeline\Plugin\paragraphs\Behavior;
 

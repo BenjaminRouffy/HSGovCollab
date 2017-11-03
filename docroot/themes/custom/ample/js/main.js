@@ -752,10 +752,14 @@
 
         updateTitle = function (item) {
           return item.hasClass('collapsed') ? item.html(viewTitle) : item.html(hideTitle);
+        },
+        scrollToTop = function(speed) {
+          $('html, body').animate({
+            scrollTop: 0
+          }, speed || 0)
         };
 
       updateTitle($toggleBtn);
-
 
       $toggleBtn.on('click', function (event) {
         event.preventDefault();
@@ -765,7 +769,27 @@
 
         $(name).toggleClass('collapsed uncollapsed');
         updateTitle($self);
+
+        if ($self.hasClass('collapsed')) {
+          setTimeout(function(){
+            scrollToTop(800)
+          }, 500);
+        }
       });
+    }
+  };
+
+  Drupal.behaviors.profileSettingsHelp = {
+    attach: function(context) {
+      var $helpWrapper = $('.profile-help-wrapper', context),
+          $helpToggle = $('.toggle-help', context);
+
+      $helpToggle.on('click', function(evt){
+        evt.preventDefault();
+        $helpWrapper.toggleClass('profile-help-collapsed');
+
+        $('.profile-help-info', context).slideToggle(500);
+      })
     }
   }
 })(jQuery, Drupal);

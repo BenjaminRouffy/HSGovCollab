@@ -2,14 +2,10 @@
 
 namespace Drupal\user_registration\Form\Alter;
 
+use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
-use Drupal\Core\Url;
-use Drupal\file\Entity\File;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceAlterInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceBaseInterface;
-use Drupal\form_alter_service\Interfaces\FormAlterServiceSubmitInterface;
-use Drupal\taxonomy\Entity\Term;
 
 /**
  * Class DefaultUserEditAlter.
@@ -80,6 +76,17 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
       $form['submit3'] = $form['actions']['submit'];
     }
     $form['actions']['submit']['#access'] = FALSE;
+
+    // Load "Profile useful information" block and attach it to the form.
+    if ($block = BlockContent::load(45)) {
+      $element = \Drupal::entityTypeManager()
+        ->getViewBuilder('block_content')
+        ->view($block);
+
+      $form['info_block']['#type'] = 'container';
+      $form['info_block']['#theme'] = 'useful_information';
+      $form['info_block']['content'] = $element;
+    }
   }
 
 }

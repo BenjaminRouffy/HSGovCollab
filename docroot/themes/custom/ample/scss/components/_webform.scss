@@ -2328,8 +2328,10 @@ form {
     // Title (Legend)
     .fieldset-legend {
       font-weight: 500;
-      margin-bottom: 20px;
       display: block;
+    }
+    .fieldset-wrapper {
+      padding-top: 20px;
     }
   }
   // Radio buttons
@@ -2466,8 +2468,9 @@ form {
 
       h4 {
         font-family: $oswald;
-        margin-top: 10px;
+        margin-top: 18px;
         display: inline-block;
+        vertical-align: top;
         min-width: 150px;
         font-weight: 300;
 
@@ -2489,13 +2492,28 @@ form {
       }
 
       .form-date {
-        margin-bottom: 10px;
+        width: 100%;
+
+        @media screen and (min-width: 480px) {
+          width: auto;
+        }
       }
     }
 
     .image-widget,
     .form-managed-file {
       margin-bottom: 20px;
+    }
+
+    .form-managed-file {
+      .file {
+        margin-right: 20px;
+
+        ~ .form-submit {
+          @include font-size(15);
+          padding: 10px 15px;
+        }
+      }
     }
 
     .delta-order,
@@ -2505,8 +2523,37 @@ form {
 
     // Date
     .js-form-type-date {
-      display: inline-block;
-      margin-right: 20px;
+      display: block;
+      margin-bottom: 25px;
+
+      @media screen and (min-width: 480px) {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 20px 35px 0;
+      }
+
+      input[type="time"] {
+        padding: 10px;
+        width: 100%;
+
+        @media screen and (min-width: 480px) {
+          width: auto;
+        }
+      }
+
+      .form-date {
+        margin-bottom: 0;
+      }
+
+      input ~ label.error {
+        top: 100%;
+        @include font-size(14);
+
+        @media screen and (min-width: 480px) {
+          @include font-size(16);
+          top: -20px;
+        }
+      }
     }
 
     .field--type-daterange {
@@ -2528,13 +2575,6 @@ form {
       }
     }
 
-    // Increase distance between specific fields
-    .field--type-image,
-    .field--type-language,
-    .field--type-daterange {
-      margin-bottom: 40px;
-    }
-
     // Fieldset
     fieldset {
       border: 0;
@@ -2549,7 +2589,7 @@ form {
 
     // Summary / Body
     .field--type-text-with-summary {
-      margin-bottom: 60px;
+      margin: 0 0 40px;
 
       .filter-wrapper {
         display: none;
@@ -2571,6 +2611,128 @@ form {
     // Multiple select
     .form-select[multiple='multiple'] {
       min-height: 200px;
+    }
+
+    // Paragraph
+    .paragraph-type-top {
+      background: $white-dark;
+      align-items: center;
+      margin: -20px -20px 30px -20px;
+
+      // Header
+      .paragraph-type-title {
+        padding-left: 20px;
+      }
+
+      // Remove button
+      .paragraphs-dropbutton-wrapper {
+        position: relative;
+
+        .form-submit {
+          @include font-size(15);
+          background: transparent;
+          border: 0;
+          padding: 10px 15px;
+        }
+      }
+    }
+
+    .field--name-field-document {
+      border: 1px solid $white-dark;
+      padding: 20px;
+
+      // Ajax throbber override
+      .ajax-progress {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-left: -15px;
+        z-index: 100;
+      }
+
+      // No paragraphs message
+      strong {
+        margin-bottom: 20px;
+        display: block;
+        font-weight: 400;
+
+        + {
+          .form-wrapper {
+            margin-bottom: 20px;
+          }
+        }
+      }
+
+      // Dropdown
+      .dropbutton-multiple.open {
+        .dropbutton-arrow {
+          border-bottom-color: $navy;
+          border-top-width: 0;
+        }
+      }
+
+      .dropbutton-action {
+        text-align: left;
+
+        .form-submit {
+          background: $navy;
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          text-transform: none;
+          border: 0;
+          text-align: left;
+          color: #fff;
+        }
+      }
+
+      .dropbutton-arrow {
+        border-top-color: $navy;
+      }
+
+      // Bottom form
+      .paragraphs-subform {
+
+        // Hide duplicated status message
+        .status-message {
+          display: none;
+        }
+
+        // Show message only if it appear in form element
+        .form-item {
+          .status-message {
+            @include font-size(16);
+            line-height: 1.2;
+            display: block;
+            padding: 10px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.article-delete-node {
+
+  .node-news-delete-form {
+    @include font-size(24);
+    text-align: center;
+    text-transform: uppercase;
+    color: $red;
+  }
+
+  .form-actions {
+    @include font-size(16);
+    margin-top: 40px;
+    text-transform: none;
+
+    a {
+      text-decoration: none;
+      margin: 0 40px;
     }
   }
 }

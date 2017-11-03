@@ -39,7 +39,10 @@
   .node-form,
   .node-article-delete-form {
     margin: 0 auto;
-    width: 66.64%;
+
+    @media screen and (min-width: 1280px) {
+      width: 66.64%;
+    }
 
     label:not(.error) {
       &:after {

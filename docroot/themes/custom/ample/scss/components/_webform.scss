@@ -2832,7 +2832,8 @@ form {
 
 .article-delete-node {
 
-  .node-news-delete-form {
+  .node-news-delete-form,
+  .node-document-delete-form {
     @include font-size(24);
     text-align: center;
     text-transform: uppercase;

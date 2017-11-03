@@ -1401,11 +1401,124 @@ form {
   }
 }
 
+// ----------------------------------------------------------------------------
+// Profile Help block
+.profile-help {
+  margin: 40px 0;
+
+  @media screen and (max-width: 991px) {
+    margin: 0 0 40px;
+  }
+
+  .profile-help-wrapper {
+    background: $white;
+    box-shadow: 0 0 6px rgba($black, .1);
+    padding: 30px;
+    transition: background .5s ease, padding .5s ease, box-shdow 5s ease 1s;
+
+  }
+
+  .profile-help-collapsed {
+    background: transparent;
+    padding-bottom: 0;
+    box-shadow: none;
+  }
+
+  // Title
+  .profile-help-title {
+    h1 {
+      @include font-size(18);
+      padding: 0;
+      margin-bottom: 25px;
+      line-height: 1;
+      font-weight: 500;
+    }
+  }
+
+  .profile-help-info {
+    font-family: $fira;
+    text-align: left;
+    margin-bottom: 0;
+
+    p {
+      @include font-size(16);
+      font-weight: 400;
+      line-height: 1.5;
+      margin: 0 0 1.5rem;
+      color: #2b2b2b;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Bottom side
+  .profile-help-bottom {
+    background: transparent;
+    border-top: 2px solid $red;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .toggle-help {
+    font-size: 0;
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $red;
+    position: relative;
+    top: -20px;
+    transition: top .3s ease;
+
+    &:hover {
+      top: -15px;
+    }
+
+    &::after {
+      content: ' ';
+      width: 10px;
+      height: 10px;
+      border: solid $white;
+      border-width: 0 1px 1px 0;
+      position: absolute;
+      left: 50%;
+      bottom: 7px;
+      transform: rotate(-135deg) translateY(-50%);
+      margin-left: -1px;
+      transform-origin: center;
+    }
+  }
+
+  .profile-help-collapsed + .profile-help-bottom .toggle-help::after {
+    transform: rotate(45deg) translateY(-50%);
+    margin-left: -8px;
+  }
+}
+
 .form-my-settings {
   #my_profile,
   #interest,
   #newsletter {
     margin-bottom: 100px;
+  }
+
+  // Helpful information layout only,
+  .profile-info {
+    @include clearfix();
+
+    .profile-col {
+      padding: 0 20px;
+
+      @media screen and (min-width: 992px) {
+        padding: 20px 40px 10px;
+        width: 50%;
+        float: left;
+      }
+    }
   }
 
   .title-wrapper {
@@ -1482,8 +1595,7 @@ form {
 
   .field--name-field-person-titles {
     margin-bottom: 15px;
-    padding: 20px 40px;
-    width: 50%;
+    padding: 20px 0;
 
     .form-item {
       margin-bottom: 0;
@@ -1492,8 +1604,7 @@ form {
   }
 
   #edit-field-avatar-wrapper {
-    padding: 20px 40px 10px;
-    width: 50%;
+
 
     label {
       display: none;
@@ -2114,8 +2225,8 @@ form {
   }
 
   .field--name-field-person-titles {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   #user-details,
@@ -2224,16 +2335,6 @@ form {
 }
 
 @include breakpoint-for('.form-my-settings', (to: mobileL)) {
-  #edit-field-avatar-wrapper {
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-
-    .image-preview {
-      margin: 40px auto 30px;
-    }
-  }
-
   #user-details,
   #organisation-details,
   #interests-wrapper,
@@ -2267,6 +2368,19 @@ form {
       .form-wrapper {
         width: 100%;
       }
+    }
+  }
+}
+
+
+@media screen  and (max-width: 991px) {
+ .form-my-settings #edit-field-avatar-wrapper {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+
+    .image-preview {
+      margin: 40px auto 30px;
     }
   }
 }

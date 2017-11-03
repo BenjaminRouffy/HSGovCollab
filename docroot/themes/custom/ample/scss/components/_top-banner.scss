@@ -687,7 +687,12 @@
       max-width: 900px;
 
       @media screen and (min-width: 480px) {
+        max-width: 80%;
         padding: 20px 70px;
+      }
+
+      @media screen and (min-width: 1125px) {
+        max-width: 900px;
       }
 
       @media screen and (min-width: 1600px) {
@@ -699,7 +704,16 @@
       }
 
       .logged & {
-        max-width: 1240px;
+        @media screen and (min-width: 480px) {
+          max-width: none;
+        }
+
+        @media screen and (min-width: 1025px) {
+          max-width: 85%;
+        }
+        @media screen and (min-width: 1366px) {
+          max-width: 1240px;
+        }
       }
 
       .country-icon-wrapper {

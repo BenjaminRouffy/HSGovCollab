@@ -348,7 +348,8 @@ function ample_preprocess_paragraph(array &$variables) {
     $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     foreach ($variables['content'] as $content_key => $content_item) {
-      $paragraph_entity_field = $variables['paragraph']->get($content_key);
+      // @TODO @see TimeLineItemBehavior.php it should be researched and fixed.
+      $paragraph_entity_field = $variables['paragraph']->{$content_key};
 
       if (isset($content_item['#field_type']) &&
         $content_item['#field_type'] == 'entity_reference' &&

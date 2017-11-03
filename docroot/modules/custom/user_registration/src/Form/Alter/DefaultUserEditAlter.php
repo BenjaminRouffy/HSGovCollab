@@ -79,13 +79,13 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
 
     // Load "Profile useful information" block and attach it to the form.
     if ($block = BlockContent::load(45)) {
-      $form['info_block'] = \Drupal::entityTypeManager()
+      $element = \Drupal::entityTypeManager()
         ->getViewBuilder('block_content')
         ->view($block);
 
       $form['info_block']['#type'] = 'container';
-      $form['info_block']['#prefix'] = '<div class="profile-help">';
-      $form['info_block']['#suffix'] = '</div>';
+      $form['info_block']['#theme'] = 'useful_information';
+      $form['info_block']['content'] = $element;
     }
   }
 

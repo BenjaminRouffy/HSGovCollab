@@ -1,0 +1,25 @@
+uuid: 0c862866-7593-4d0c-b6fd-d10594018833
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_following_p4h_areas
+  module:
+    - group_content_field
+    - user
+id: user.user.field_following_p4h_areas
+field_name: field_following_p4h_areas
+entity_type: user
+bundle: user
+label: 'P4H Areas'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    entity_gids: {  }
+  -
+    entity_gids: {  }
+default_value_callback: ''
+settings: {  }
+field_type: group_content_item

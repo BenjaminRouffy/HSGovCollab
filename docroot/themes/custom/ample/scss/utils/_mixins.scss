@@ -266,7 +266,7 @@
 //------------------------------------------------------------------------------
 // Clearfix
 @mixin clearfix {
-  &:after {
+  &::after {
     content: "";
     display: table;
     clear: both;

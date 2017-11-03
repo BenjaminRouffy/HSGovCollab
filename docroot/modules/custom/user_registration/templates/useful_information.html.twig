@@ -1,19 +1,20 @@
 <div{{ attributes.addClass('profile-help') }}>
   {{ title_prefix }}
-  <div class="top-text-region">
+  <div class="profile-help-wrapper">
     {% if element.content.field_title|field_value %}
-      <div class="title-wrapper">
+      <div class="profile-help-title">
         <h1>{{ element.content.field_title|field_value }}</h1>
-        <div class="line"></div>
       </div>
     {% endif %}
 
-    <div class="summary-text">
+    <div class="profile-help-info">
       {% if element.content.field_description|field_value %}
-        <p>{{ element.content.field_description|field_value }}</p>
+        {{ element.content.field_description|field_value }}
       {% endif %}
     </div>
-    <div class="profile-bottom"><a class="toggle-help" href="#">{{ 'Toggle help'|t }}</a></div>
+  </div>
+  <div class="profile-help-bottom">
+    <a class="toggle-help" href="#">{{ 'Toggle help'|t }}</a>
   </div>
   {{ title_suffix }}
 </div>

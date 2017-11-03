@@ -777,5 +777,19 @@
         }
       });
     }
+  };
+
+  Drupal.behaviors.profileSettingsHelp = {
+    attach: function(context) {
+      var $helpWrapper = $('.profile-help-wrapper', context),
+          $helpToggle = $('.toggle-help', context);
+
+      $helpToggle.on('click', function(evt){
+        evt.preventDefault();
+        $helpWrapper.toggleClass('profile-help-collapsed');
+
+        $('.profile-help-info', context).slideToggle(500);
+      })
+    }
   }
 })(jQuery, Drupal);

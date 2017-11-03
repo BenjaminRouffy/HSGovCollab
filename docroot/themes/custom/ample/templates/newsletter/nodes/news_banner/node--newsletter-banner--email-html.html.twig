@@ -1,10 +1,10 @@
-<table cellpadding="0" cellspacing="0" border="0">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
   <tr>
     <td style="padding: 0 10px;">
-      <table class="banner-wrapper" width="100%" cellspacing="0" cellpadding="0" style="font-size: 14px; line-height: 1.4; table-layout: fixed;">
+      <table class="banner-wrapper" width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 14px; line-height: 1.4; table-layout: fixed;">
         <tr>
           <td {{ attributes }} align="center" style="padding: 10px;">
-            <table width="100%" cellspacing="0" cellpadding="0">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
               <tr>
                 <td class="newsletter-large-image" style="padding: 0 0 10px 0;">
                   {% if content.field_image|field_value %}
@@ -26,7 +26,7 @@
 </table>
 
 {% if content.childs|length %}
-  <table width="100%" cellspacing="0" cellpadding="0" style="font-family: Arial, 'sans-serif'; font-size: 14px; line-height: 1.4; padding: 10px 0; table-layout: fixed;" class="two-column-wrapper">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" style="font-family: Arial, 'sans-serif'; font-size: 14px; line-height: 1.4; padding: 10px 0; table-layout: fixed;" class="two-column-wrapper">
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
         {% for subentity in row %}

@@ -1,0 +1,13 @@
+<div>
+  <span class="event-id">
+    {{ node.id }}
+  </span>
+</div>
+<span class="event-title">
+  <a href="{{ url('events.get_event', {nid: node.id}) }}" class="use-ajax">{{ label }}</a>
+</span>
+<span class="event-date">
+  {% if content.field_date['#period'] %}
+    {{ content.field_date['#period'] }}
+  {% endif %}
+</span>

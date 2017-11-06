@@ -33,6 +33,20 @@ class UserRegistrationResetLogin extends RouteSubscriberBase {
       $route->setRequirement('_user_is_onetime_access', 'user_registration.login_onetime');
     }
 
+    if ($route = $collection->get('page_manager.page_view_my_settings')) {
+      $route->setRequirement('_user_is_onetime_access', 'user_registration.login_onetime');
+    }
+
+    // Extend Account settings form to include Initial User setup emil configs.
+    if ($route = $collection->get('entity.user.admin_form')) {
+      $route->setDefault('_form', '\Drupal\user_registration\Form\CustomAccountSettingsForm');
+    }
+
+    // Extend Site information form.
+    if ($route = $collection->get('system.site_information_settings')) {
+      $route->setDefault('_form', '\Drupal\user_registration\Form\CustomSiteInformationForm');
+    }
+
   }
 
   /**

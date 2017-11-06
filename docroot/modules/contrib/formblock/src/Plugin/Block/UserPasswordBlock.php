@@ -4,6 +4,7 @@ namespace Drupal\formblock\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Form\FormBuilderInterface;
 
@@ -64,7 +65,14 @@ class UserPasswordBlock extends BlockBase implements ContainerFactoryPluginInter
   public function build() {
     $build = [];
 
-    $build['form'] = $this->formBuilder->getForm('Drupal\user\Form\UserPasswordForm');
+    $route_name = \Drupal::request()->attributes->get(RouteObjectInterface::ROUTE_NAME);
+    if ($route_name === 'page_manager.page_view_user_password_init') {
+      $build['form'] = $this->formBuilder->getForm('Drupal\user_registration\Form\CustomUserPasswordForm');
+
+    }
+    else {
+      $build['form'] = $this->formBuilder->getForm('Drupal\user\Form\UserPasswordForm');
+    }
 
     return $build;
   }

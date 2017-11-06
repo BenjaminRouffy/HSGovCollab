@@ -87,6 +87,19 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
       $form['info_block']['#theme'] = 'useful_information';
       $form['info_block']['content'] = $element;
     }
+
+    // Add 'Good to know' block to the form.
+    // @see Drupal\user_registration\ProfileOnetimeForm
+    if($block = BlockContent::load(22)) {
+      $form['good_to_know_block'] = \Drupal::entityManager()
+        ->getViewBuilder('block_content')
+        ->view($block);
+
+      $form['good_to_know_block']['field_title']['#theme_wrappers'][] = 'good_to_know';
+      $form['good_to_know_block']['#prefix'] = '<div class="content top-text-region">';
+      $form['good_to_know_block']['#suffix'] = '</div>';
+      $form['good_to_know_block']['#weight'] = 1;
+    }
   }
 
 }

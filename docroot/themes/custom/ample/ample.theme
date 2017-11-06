@@ -669,3 +669,14 @@ function ample_preprocess_input__date(&$variables) {
     }
   }
 }
+
+/**
+ * @param $variables
+ */
+function ample_preprocess_file_upload_help(&$variables) {
+  if (!empty($variables['description'])) {
+    // If there is help text set in the field settings don't display
+    // hardcoded settings string in the template.
+    $variables['hide_hardcoded_string'] = TRUE;
+  }
+}

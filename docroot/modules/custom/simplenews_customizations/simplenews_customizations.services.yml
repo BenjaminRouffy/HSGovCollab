@@ -16,3 +16,5 @@ services:
   simplenews.mailer:
     class: Drupal\simplenews_customizations\Mail\MailerExtra
     arguments: ['@simplenews.spool_storage', '@plugin.manager.mail', '@state', '@logger.channel.simplenews', '@account_switcher', '@lock', '@config.factory']
+  simplenews.mail_cache:
+    class: Drupal\simplenews_customizations\Mail\MailCacheBuild

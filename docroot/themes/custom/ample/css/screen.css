@@ -5608,6 +5608,12 @@ form textarea ~ label.error:after {
   font-weight: 300;
 }
 
+.field--name-field-following-p4h-areas .form-select .group-result {
+  color: #FC000E;
+  font-weight: 500 !important;
+  font-style: italic;
+}
+
 .form-select.chosen-container {
   background: #fff;
   border: none;
@@ -7735,6 +7741,11 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .article-delete-node
 .form-my-settings table .restore #edit-delete {
   margin-top: 0 !important;
+}
+
+.form-my-settings .field--name-field-skype-or-other tr:first-child td > div {
+  position: relative;
+  margin-top: 20px;
 }
 
 .form-my-settings thead .label {

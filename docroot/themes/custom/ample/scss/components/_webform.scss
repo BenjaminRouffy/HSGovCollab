@@ -200,6 +200,14 @@ form {
     font-weight: 300;
   }
 
+  .field--name-field-following-p4h-areas & {
+    .group-result {
+      color: #FC000E;
+      font-weight: 500 !important;
+      font-style: italic;
+    }
+  }
+
   &.chosen-container {
     background: $white;
     border: none;
@@ -2015,6 +2023,13 @@ form {
       .form-submit {
         margin-top: 0 !important;
       }
+    }
+  }
+
+  .field--name-field-skype-or-other {
+    tr:first-child td > div {
+      position: relative;
+      margin-top: 20px;
     }
   }
 

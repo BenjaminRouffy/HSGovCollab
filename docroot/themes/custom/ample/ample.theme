@@ -358,7 +358,8 @@ function ample_preprocess_paragraph(array &$variables) {
     $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     foreach ($variables['content'] as $content_key => $content_item) {
-      $paragraph_entity_field = $variables['paragraph']->get($content_key);
+      // @TODO @see TimeLineItemBehavior.php it should be researched and fixed.
+      $paragraph_entity_field = $variables['paragraph']->{$content_key};
 
       if (isset($content_item['#field_type']) &&
         $content_item['#field_type'] == 'entity_reference' &&
@@ -666,5 +667,16 @@ function ample_preprocess_input__date(&$variables) {
         unset($variables['attributes']['step']);
       }
     }
+  }
+}
+
+/**
+ * @param $variables
+ */
+function ample_preprocess_file_upload_help(&$variables) {
+  if (!empty($variables['description'])) {
+    // If there is help text set in the field settings don't display
+    // hardcoded settings string in the template.
+    $variables['hide_hardcoded_string'] = TRUE;
   }
 }

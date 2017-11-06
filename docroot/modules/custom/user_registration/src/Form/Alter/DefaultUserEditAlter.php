@@ -38,8 +38,11 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
     $form['account']['current_pass']['#weight'] = 10;
     $form['account']['pass']['#weight'] = 11;
     $form['account']['pass']['#type'] = 'boosted_password_confirm';
-    $form['account']['current_pass']['#prefix'] = '<div class="form-item">';
-    $form['account']['pass']['#suffix'] = '</div>';
+
+    if (!empty($form['account']['current_pass']) && $form['account']['current_pass']['#access'] !== FALSE) {
+      $form['account']['current_pass']['#prefix'] = '<div class="form-item">';
+      $form['account']['pass']['#suffix'] = '</div>';
+    }
 
     foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {
       if (is_array($option)) {
@@ -86,6 +89,19 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
       $form['info_block']['#type'] = 'container';
       $form['info_block']['#theme'] = 'useful_information';
       $form['info_block']['content'] = $element;
+    }
+
+    // Add 'Good to know' block to the form.
+    // @see Drupal\user_registration\ProfileOnetimeForm
+    if($block = BlockContent::load(22)) {
+      $form['good_to_know_block'] = \Drupal::entityManager()
+        ->getViewBuilder('block_content')
+        ->view($block);
+
+      $form['good_to_know_block']['field_title']['#theme_wrappers'][] = 'good_to_know';
+      $form['good_to_know_block']['#prefix'] = '<div class="content top-text-region">';
+      $form['good_to_know_block']['#suffix'] = '</div>';
+      $form['good_to_know_block']['#weight'] = 1;
     }
   }
 

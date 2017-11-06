@@ -130,7 +130,7 @@ class UserController extends ControllerBase {
       $_SESSION['pass_reset_' . $user->id()] = $token;
       return $this->redirect(
       // @TODO Add more complicated condition here.
-        (time() - $user->getLastLoginTime() > 100 && $first_access != 0) ? 'entity.user.edit_form' : 'page_manager.page_view_sign_up_confirmation',
+        (time() - $user->getLastLoginTime() > 100 && $first_access != 0) ? 'entity.user.edit_form' : 'page_manager.page_view_my_settings',
         ['user' => $user->id()],
         [
           'query' => ['pass-reset-token' => $token],

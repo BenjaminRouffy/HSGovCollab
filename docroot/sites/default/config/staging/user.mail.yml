@@ -31,3 +31,6 @@ _core:
 friend_approve:
   subject: 'New connection request'
   body: "<a href=\"[current-user:url:absolute]\">[current-user:display-name]</a> would like to connect with you. \r\nIf you want to connect with the user, please click <a href=\"[current-user:approve-url]\">here</a>. \r\nIf you don't want to connect the user please just ignore the message.\r\n\r\nYours P4H Coordination Desk"
+email_user_init:
+  body: "Dear P4H Web platform user,\r\nYou are now a click away from entering your own personal space on the P4H Web platform.\r\nThe link below will confirm the activation of your secured account.\r\n\r\n<a href=\"[user:one-time-login-url]\">Login</a>. \r\n\r\nYour P4H team awaits you online !"
+  subject: 'A click away from a unique user''s experience'

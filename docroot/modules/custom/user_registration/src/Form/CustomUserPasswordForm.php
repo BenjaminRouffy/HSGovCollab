@@ -22,6 +22,12 @@ class CustomUserPasswordForm extends UserPasswordForm {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildForm($form, $form_state);
 
+    // Redirect user to My Settings page if he or she is logged in.
+    $user = \Drupal::currentUser();
+    if (!$user->isAnonymous()) {
+      return $this->redirect('page_manager.page_view_my_settings');
+    }
+
     if (!empty($form['name'])) {
       $form['name']['#title'] = t('E-mail');
     }

@@ -425,6 +425,7 @@ display:
           2: AND
       css_class: view-country
       group_by: true
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -434,7 +435,10 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
+        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.search_result_row'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
@@ -467,7 +471,9 @@ display:
         - 'config:core.entity_view_display.group.product.teaser'
         - 'config:core.entity_view_display.group.project.based_on'
         - 'config:core.entity_view_display.group.project.bottom'
+        - 'config:core.entity_view_display.group.project.default'
         - 'config:core.entity_view_display.group.project.search_result_row'
+        - 'config:core.entity_view_display.group.project.teaser'
         - 'config:core.entity_view_display.group.project.time_line'
         - 'config:core.entity_view_display.group.project_protected.based_on'
         - 'config:core.entity_view_display.group.project_protected.bottom'
@@ -477,6 +483,8 @@ display:
         - 'config:core.entity_view_display.group.project_protected.time_line'
         - 'config:core.entity_view_display.group.region.banner'
         - 'config:core.entity_view_display.group.region.bottom'
+        - 'config:core.entity_view_display.group.region.country_list_by_region'
+        - 'config:core.entity_view_display.group.region.default'
         - 'config:core.entity_view_display.group.region.search_country'
         - 'config:core.entity_view_display.group.region.search_result_row'
         - 'config:core.entity_view_display.group.region.time_line'
@@ -489,13 +497,6 @@ display:
         - 'config:core.entity_view_display.group.region_protected.search_result_row'
         - 'config:core.entity_view_display.group.region_protected.time_line'
         - 'config:core.entity_view_display.group.region_protected.token'
-        - 'config:core.entity_view_display.group.country.default'
-        - 'config:core.entity_view_display.group.country.map'
-        - 'config:core.entity_view_display.group.country.search_country'
-        - 'config:core.entity_view_display.group.project.default'
-        - 'config:core.entity_view_display.group.project.teaser'
-        - 'config:core.entity_view_display.group.region.country_list_by_region'
-        - 'config:core.entity_view_display.group.region.default'
   block_1:
     display_plugin: block
     id: block_1

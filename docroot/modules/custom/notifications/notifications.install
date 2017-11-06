@@ -31,3 +31,10 @@ function notifications_schema() {
 
   return $schema;
 }
+
+/**
+ * A notifications.cron_settings config has been removed.
+ */
+function notifications_update_8001() {
+  \Drupal::configFactory()->getEditable('notifications.cron_settings')->delete();
+}

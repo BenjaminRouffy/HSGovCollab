@@ -7743,6 +7743,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   margin-top: 0 !important;
 }
 
+.form-my-settings .field--name-field-organisations tr:first-child td > div,
 .form-my-settings .field--name-field-skype-or-other tr:first-child td > div {
   position: relative;
   margin-top: 20px;
@@ -8041,6 +8042,10 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   .form-my-settings #address-details .form-wrapper,
   .form-my-settings #managers-wrapper .form-wrapper {
     width: 100%;
+  }
+  .form-my-settings .field--name-field-organisations .paragraph-type-top {
+    top: -20px;
+    padding-left: 10px;
   }
   .form-my-settings #edit-account > .form-item {
     width: 100%;

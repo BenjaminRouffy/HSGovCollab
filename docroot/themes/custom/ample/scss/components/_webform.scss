@@ -1455,13 +1455,11 @@ form {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .1);
     padding: 30px;
-    transition: background .5s ease, padding .5s ease, box-shdow 5s ease 1s;
-
+    transition: background .5s ease, box-shdow 5s ease 1s;
   }
 
   .profile-help-collapsed {
     background: transparent;
-    padding-bottom: 0;
     box-shadow: none;
   }
 
@@ -1470,7 +1468,7 @@ form {
     h1 {
       @include font-size(18);
       padding: 0;
-      margin-bottom: 25px;
+      margin-bottom: 0;
       line-height: 1;
       font-weight: 500;
     }
@@ -1480,6 +1478,7 @@ form {
     font-family: $fira;
     text-align: left;
     margin-bottom: 0;
+    padding-top: 25px;
 
     p {
       @include font-size(16);

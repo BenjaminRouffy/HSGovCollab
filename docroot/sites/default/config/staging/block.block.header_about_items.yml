@@ -1,24 +1,28 @@
-uuid: b070ce5a-480b-4d2f-bd4b-ea18308d9bec
+uuid: 40ee2cc0-fef3-4ac8-9fe4-7a6cc238bd4e
 langcode: en
 status: true
 dependencies:
+  config:
+    - system.menu.header-about
   module:
     - admin_customizations
-    - group_dashboard
-    - language
+    - system
+    - user
   theme:
     - ample
-id: languageswitchercontent
+id: header_about_items
 theme: ample
 region: header_static
-weight: -11
+weight: -6
 provider: null
-plugin: 'language_block:language_content'
+plugin: 'system_menu_block:header-about'
 settings:
-  id: 'language_block:language_content'
-  label: 'Language switcher (Content)'
-  provider: language
+  id: 'system_menu_block:header-about'
+  label: 'Header About Items'
+  provider: system
   label_display: '0'
+  level: 2
+  depth: 0
 visibility:
   http_status:
     id: http_status
@@ -27,10 +31,10 @@ visibility:
       403: '403'
       404: '404'
     context_mapping: {  }
-  access_by_user_role:
-    id: access_by_user_role
+  user_role:
+    id: user_role
     roles:
-      anonymous: anonymous
+      authenticated: authenticated
     negate: false
     context_mapping:
       user: '@user.current_user_context:current_user'

@@ -6834,12 +6834,14 @@ form .social_login iframe {
   }
 }
 
+.user-registration-custom-user-password,
 .user-pass {
   margin: 0 auto 15px;
   padding: 20px 40px;
   width: 50%;
 }
 
+.user-registration-custom-user-password .captcha,
 .user-pass .captcha {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6850,46 +6852,100 @@ form .social_login iframe {
   margin-top: 25px;
 }
 
-.ie9 .user-pass .g-recaptcha > div {
+.ie9 .user-registration-custom-user-password .g-recaptcha > div, .ie9
+.user-pass .g-recaptcha > div {
   margin: 0 auto;
 }
 
+.user-registration-custom-user-password label:after,
 .user-pass label:after {
   content: ":";
 }
 
+.user-registration-custom-user-password label.form-required:after,
 .user-pass label.form-required:after {
   content: ": *";
 }
 
+.user-registration-custom-user-password .form-actions,
 .user-pass .form-actions {
   margin-top: 25px;
   text-align: center;
 }
 
-.user-pass .form-submit, .user-pass .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .user-pass a, .user-pass .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-pass .button, .user-pass .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-pass #edit-cancel, .user-pass
+.user-registration-custom-user-password .form-submit, .user-registration-custom-user-password .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .user-registration-custom-user-password a, .user-registration-custom-user-password .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .user-registration-custom-user-password .button, .user-registration-custom-user-password .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .user-registration-custom-user-password #edit-cancel, .user-registration-custom-user-password
 .article-edit-node .node-article-delete-form #edit-cancel,
-.article-edit-node .node-article-delete-form .user-pass #edit-cancel, .user-pass
+.article-edit-node .node-article-delete-form .user-registration-custom-user-password #edit-cancel, .user-registration-custom-user-password
 .article-delete-node .node-article-delete-form #edit-cancel,
-.article-delete-node .node-article-delete-form .user-pass #edit-cancel, .user-pass .article-add-node #edit-delete, .article-add-node .user-pass #edit-delete, .user-pass
+.article-delete-node .node-article-delete-form .user-registration-custom-user-password #edit-cancel, .user-registration-custom-user-password .article-add-node #edit-delete, .article-add-node .user-registration-custom-user-password #edit-delete, .user-registration-custom-user-password
 .article-edit-node #edit-delete,
-.article-edit-node .user-pass #edit-delete, .user-pass
+.article-edit-node .user-registration-custom-user-password #edit-delete, .user-registration-custom-user-password
 .article-delete-node #edit-delete,
-.article-delete-node .user-pass #edit-delete {
+.article-delete-node .user-registration-custom-user-password #edit-delete,
+.user-pass .form-submit,
+.user-pass .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links)
+.user-pass a,
+.user-pass .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content
+.user-pass .button,
+.user-pass .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form
+.user-pass #edit-cancel,
+.user-pass
+.article-edit-node .node-article-delete-form #edit-cancel,
+.article-edit-node .node-article-delete-form
+.user-pass #edit-cancel,
+.user-pass
+.article-delete-node .node-article-delete-form #edit-cancel,
+.article-delete-node .node-article-delete-form
+.user-pass #edit-cancel,
+.user-pass .article-add-node #edit-delete, .article-add-node
+.user-pass #edit-delete,
+.user-pass
+.article-edit-node #edit-delete,
+.article-edit-node
+.user-pass #edit-delete,
+.user-pass
+.article-delete-node #edit-delete,
+.article-delete-node
+.user-pass #edit-delete {
   border-color: #ea3a32;
   font-weight: 700;
   text-transform: none;
 }
 
-.user-pass .form-submit:hover, .user-pass .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .user-pass a:hover, .user-pass .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-pass .button:hover, .user-pass .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-pass #edit-cancel:hover, .user-pass
+.user-registration-custom-user-password .form-submit:hover, .user-registration-custom-user-password .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .user-registration-custom-user-password a:hover, .user-registration-custom-user-password .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .user-registration-custom-user-password .button:hover, .user-registration-custom-user-password .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .user-registration-custom-user-password #edit-cancel:hover, .user-registration-custom-user-password
 .article-edit-node .node-article-delete-form #edit-cancel:hover,
-.article-edit-node .node-article-delete-form .user-pass #edit-cancel:hover, .user-pass
+.article-edit-node .node-article-delete-form .user-registration-custom-user-password #edit-cancel:hover, .user-registration-custom-user-password
 .article-delete-node .node-article-delete-form #edit-cancel:hover,
-.article-delete-node .node-article-delete-form .user-pass #edit-cancel:hover, .user-pass .article-add-node #edit-delete:hover, .article-add-node .user-pass #edit-delete:hover, .user-pass
+.article-delete-node .node-article-delete-form .user-registration-custom-user-password #edit-cancel:hover, .user-registration-custom-user-password .article-add-node #edit-delete:hover, .article-add-node .user-registration-custom-user-password #edit-delete:hover, .user-registration-custom-user-password
 .article-edit-node #edit-delete:hover,
-.article-edit-node .user-pass #edit-delete:hover, .user-pass
+.article-edit-node .user-registration-custom-user-password #edit-delete:hover, .user-registration-custom-user-password
 .article-delete-node #edit-delete:hover,
-.article-delete-node .user-pass #edit-delete:hover {
+.article-delete-node .user-registration-custom-user-password #edit-delete:hover,
+.user-pass .form-submit:hover,
+.user-pass .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links)
+.user-pass a:hover,
+.user-pass .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content
+.user-pass .button:hover,
+.user-pass .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form
+.user-pass #edit-cancel:hover,
+.user-pass
+.article-edit-node .node-article-delete-form #edit-cancel:hover,
+.article-edit-node .node-article-delete-form
+.user-pass #edit-cancel:hover,
+.user-pass
+.article-delete-node .node-article-delete-form #edit-cancel:hover,
+.article-delete-node .node-article-delete-form
+.user-pass #edit-cancel:hover,
+.user-pass .article-add-node #edit-delete:hover, .article-add-node
+.user-pass #edit-delete:hover,
+.user-pass
+.article-edit-node #edit-delete:hover,
+.article-edit-node
+.user-pass #edit-delete:hover,
+.user-pass
+.article-delete-node #edit-delete:hover,
+.article-delete-node
+.user-pass #edit-delete:hover {
   border-color: #8c2222;
   color: #8c2222;
   -webkit-transform: none;
@@ -6898,13 +6954,13 @@ form .social_login iframe {
 }
 
 @media (max-width: 991px) {
-  .user-pass {
+  .user-pass, .user-registration-custom-user-password {
     padding: 20px;
   }
 }
 
 @media (max-width: 767px) {
-  .user-pass {
+  .user-pass, .user-registration-custom-user-password {
     padding: 20px 10px;
     width: 100%;
   }

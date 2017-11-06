@@ -1331,6 +1331,7 @@ form {
   }
 }
 
+.user-registration-custom-user-password,
 .user-pass {
   margin: 0 auto 15px;
   padding: 20px 40px;
@@ -1380,11 +1381,11 @@ form {
   }
 }
 
-@include breakpoint-for('.user-pass', (to: laptop-small)) {
+@include breakpoint-for('.user-pass, .user-registration-custom-user-password', (to: laptop-small)) {
   padding: 20px;
 }
 
-@include breakpoint-for('.user-pass', (to: tablet)) {
+@include breakpoint-for('.user-pass, .user-registration-custom-user-password', (to: tablet)) {
   padding: 20px 10px;
   width: 100%;
 }

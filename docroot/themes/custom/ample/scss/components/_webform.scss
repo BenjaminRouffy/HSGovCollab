@@ -2026,6 +2026,7 @@ form {
     }
   }
 
+  .field--name-field-organisations,
   .field--name-field-skype-or-other {
     tr:first-child td > div {
       position: relative;
@@ -2358,6 +2359,13 @@ form {
   #managers-wrapper {
     .form-wrapper {
       width: 100%;
+    }
+  }
+
+  .field--name-field-organisations {
+    .paragraph-type-top {
+      top: -20px;
+      padding-left: 10px;
     }
   }
 

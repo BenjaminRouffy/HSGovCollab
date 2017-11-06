@@ -187,7 +187,14 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
             }
             else {
               if ($group_entity->access('view', $current_user)) {
-                $p4h_areas_option[$group->id] = $group->label;
+                $manager = \Drupal::service('ggroup.group_hierarchy_manager');
+                $parent_groups = $manager->getGroupSupergroups($group->id);
+
+                if (!empty($parent_groups)) {
+                  foreach ($parent_groups as $parent_group) {
+                    $p4h_areas_option[$parent_group->label()][$group->id] = $parent_group->label() . ' - ' . $group->label;
+                  }
+                }
               }
             }
           }
@@ -204,7 +211,7 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
           }
           else {
             if ($group_entity->access('view', $current_user)) {
-              $p4h_areas_option[$group->id] = $group->label;
+              $p4h_areas_option[$group->label][$group->id] = $group->label;
             }
           }
           break;
@@ -220,12 +227,24 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
           }
           else {
             if ($group_entity->access('view', $current_user)) {
-              $p4h_areas_option[$group->id] = $group->label;
+              $project_option[$group->id] = $group->label;
             }
           }
           break;
         case 'region_protected':
         case 'country_protected':
+          $group_entity = \Drupal::entityTypeManager()->getStorage('group')->load($group->id);
+          if ($group_entity->access('view', $current_user)) {
+            $manager = \Drupal::service('ggroup.group_hierarchy_manager');
+            $parent_groups = $manager->getGroupSupergroups($group->id);
+
+            if (!empty($parent_groups)) {
+              foreach ($parent_groups as $parent_group) {
+                $p4h_areas_option[$parent_group->label()][$group->id] = $parent_group->label() . ' - ' . $group->label;
+              }
+            }
+          }
+          break;
         case 'project_protected':
           $group_entity = \Drupal::entityTypeManager()->getStorage('group')->load($group->id);
           if ($group_entity->access('view', $current_user)) {
@@ -256,6 +275,9 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
             break;
           case 'field_following_p4h_areas':
             asort($p4h_areas_option);
+            foreach ($p4h_areas_option as $key => $values) {
+              asort($p4h_areas_option[$key]);
+            }
             $form[$field_id]['widget'][0]['entity_gids']['#options'] = $p4h_areas_option;
             break;
           default:

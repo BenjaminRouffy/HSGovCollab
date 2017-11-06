@@ -2018,6 +2018,13 @@ form {
     }
   }
 
+  .field--name-field-skype-or-other {
+    tr:first-child td > div {
+      position: relative;
+      margin-top: 20px;
+    }
+  }
+
   thead {
     .label {
       @include font-size(18.2);

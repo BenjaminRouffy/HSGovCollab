@@ -12,9 +12,13 @@
       <div class="mobile-menu-wrapper">
         {{ elements.header_menu }}
         {{ elements.headerabout_2 }}
-        <div class="about-items">
-          {{ elements.header_about_items_2 }}
-        </div>
+
+        {% if elements.header_about_items_2 %}
+          <div class="about-items">
+            {{ elements.header_about_items_2 }}
+          </div>
+        {% endif %}
+
         {{ elements.headerdashboardmenu_2 }}
         {{ elements.user_menu }}
       </div>

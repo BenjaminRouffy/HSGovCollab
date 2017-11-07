@@ -1,0 +1,47 @@
+{% if content.field_image %}
+  <div class="header-image">
+    {{ content.field_image|field_value }}
+  </div>
+{% endif %}
+
+<article{{ attributes }} role="article">
+  {% if display_submitted %}
+    <div class="post-info">
+      <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+        {{ content.field_content_date|field_value }}
+      </time>
+      {% if content.field_category|field_value %}
+        {% for category in content.field_category|field_value %}
+          <span class="country">
+            {{ category }}
+          </span>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {{ title_prefix }}
+  <div class="title-wrapper">
+    <h1 class="page-title">
+      {{ label }}
+    </h1>
+    <div class="line"></div>
+  </div>
+  {% if contextual_link_access %}
+    {{ title_suffix }}
+  {% endif %}
+
+  {% if node.body.summary %}
+    <div class="summary-text">
+      <p>{{ node.body.summary }}</p>
+    </div>
+  {% endif %}
+
+  {{ content.body }}
+
+  {{ content.addtoany }}
+
+  {% if content.field_content|field_value %}
+    {{ content.field_content|field_value }}
+  {% endif %}
+</article>

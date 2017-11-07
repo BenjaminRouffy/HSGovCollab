@@ -7,7 +7,6 @@ dependencies:
     - node.type.blog
     - paragraphs.paragraphs_type.content_image
     - paragraphs.paragraphs_type.content_text
-    - paragraphs.paragraphs_type.link
     - paragraphs.paragraphs_type.slider
     - paragraphs.paragraphs_type.webform
   module:
@@ -29,7 +28,6 @@ settings:
     target_bundles:
       content_image: content_image
       content_text: content_text
-      link: link
       slider: slider
       webform: webform
     target_bundles_drag_drop:
@@ -67,8 +65,8 @@ settings:
         weight: 35
         enabled: false
       link:
-        enabled: true
         weight: 36
+        enabled: false
       link_to_file:
         weight: 37
         enabled: false

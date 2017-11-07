@@ -60,7 +60,7 @@ variant_settings:
         third_party_settings: {  }
         weight: 0
       region: right_sidebar
-      weight: 0
+      weight: -2
       uuid: 8703ad78-6e03-40d7-a571-1dd3ce78ea9d
       context_mapping:
         entity: node
@@ -77,7 +77,7 @@ variant_settings:
         third_party_settings: {  }
         weight: 0
       region: right_sidebar
-      weight: 0
+      weight: -1
       uuid: 0192ef89-71ab-47eb-8be3-f2be9918e41a
       context_mapping:
         entity: node
@@ -92,6 +92,23 @@ variant_settings:
       weight: 0
       uuid: d8c30891-4ffd-4f0a-9a8e-2d544873fe95
       context_mapping: {  }
+    7056d9e8-8c9b-4982-be77-af5447a71ac4:
+      id: 'entity_field:node:uid'
+      label: 'Authored by'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: blog_author
+        third_party_settings: {  }
+        weight: 0
+      region: right_sidebar
+      weight: -3
+      uuid: 7056d9e8-8c9b-4982-be77-af5447a71ac4
+      context_mapping:
+        entity: node
   id: panels_variant
   uuid: 63f42b1b-4b99-4c30-960f-3b6e3ed42731
   label: null

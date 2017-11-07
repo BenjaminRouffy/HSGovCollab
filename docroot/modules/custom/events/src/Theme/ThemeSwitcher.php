@@ -67,6 +67,7 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
                 return FALSE;
               }
             }
+            return TRUE;
           }
           else {
             $manager = \Drupal::service('ggroup.group_hierarchy_manager');
@@ -115,6 +116,7 @@ class ThemeSwitcher implements ThemeNegotiatorInterface {
                         return FALSE;
                       }
                     }
+                    return TRUE;
                   }
                   else {
                     $manager = \Drupal::service('ggroup.group_hierarchy_manager');

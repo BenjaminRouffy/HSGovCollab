@@ -1,0 +1,13 @@
+diff --git a/modules/facets_range_widget/src/Plugin/facets/widget/RangeSliderWidget.php b/modules/facets_range_widget/src/Plugin/facets/widget/RangeSliderWidget.php
+index b8eed11..890ff7e 100644
+--- a/modules/facets_range_widget/src/Plugin/facets/widget/RangeSliderWidget.php
++++ b/modules/facets_range_widget/src/Plugin/facets/widget/RangeSliderWidget.php
+@@ -41,7 +41,7 @@ class RangeSliderWidget extends SliderWidget {
+    * {@inheritdoc}
+    */
+   public function isPropertyRequired($name, $type) {
+-    if ($name === 'slider' && $type === 'processors') {
++    if ($name === 'range_slider' && $type === 'processors') {
+       return TRUE;
+     }
+     if ($name === 'show_only_one_result' && $type === 'settings') {

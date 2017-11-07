@@ -604,8 +604,8 @@
 
   Drupal.behaviors.searchFilterAccordion = {
     attach: function (context, settings) {
-      var $facetBox = $('.block-facet--checkbox, .block-facet--datebasic', context);
-      var $facetCheckboxList = $facetBox.children('ul');
+      var $facetBox = $('.block-facet', context);
+      var $facetCheckboxList = $facetBox.children('.facet-items');
 
       $facetBox.on('click', 'h2', function () {
         var $this = $(this);
@@ -614,11 +614,11 @@
           $facetBox.removeAttr('expanded');
           $this.parent().attr('expanded', '');
           $facetCheckboxList.slideUp();
-          $this.siblings('ul').slideDown();
+          $this.siblings('.facet-items').slideDown();
         }
         else {
           $facetBox.removeAttr('expanded');
-          $this.siblings('ul').slideUp();
+          $this.siblings('.facet-items').slideUp();
         }
       });
 

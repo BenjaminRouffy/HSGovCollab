@@ -9697,13 +9697,11 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   }
 }
 
-.block-facet--checkbox,
-.block-facet--datebasic {
+.block-facet {
   margin-bottom: 20px;
 }
 
-.block-facet--checkbox h2,
-.block-facet--datebasic h2 {
+.block-facet h2 {
   font-size: 0.875rem;
   cursor: pointer;
   font-weight: 400;
@@ -9712,77 +9710,68 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   margin: 0 0 10px;
 }
 
-.block-facet--checkbox h2:hover,
-.block-facet--datebasic h2:hover {
+.block-facet h2:hover {
   opacity: .79;
 }
 
-.block-facet--checkbox > ul,
-.block-facet--datebasic > ul {
+.block-facet .facet-items {
   background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.09);
   display: none;
-  margin: 0;
   padding: 30px 20px;
 }
 
-.block-facet--checkbox li,
-.block-facet--datebasic li {
+.block-facet .facet-items > ul {
+  margin: 0;
+  padding: 0;
+}
+
+.block-facet li {
   margin-bottom: 15px;
 }
 
-.block-facet--checkbox a,
-.block-facet--datebasic a {
+.block-facet a {
   text-decoration: none;
 }
 
-.block-facet--checkbox a:hover,
-.block-facet--datebasic a:hover {
+.block-facet a:hover {
   opacity: .79;
 }
 
-.block-facet--checkbox [type="checkbox"],
-.block-facet--datebasic [type="checkbox"] {
+.block-facet [type="checkbox"] {
   -webkit-appearance: checkbox;
      -moz-appearance: checkbox;
           appearance: checkbox;
   margin-right: 4px;
 }
 
-.block-facet--checkbox label,
-.block-facet--checkbox .facet-item__value,
-.block-facet--datebasic label,
-.block-facet--datebasic .facet-item__value {
+.block-facet label,
+.block-facet .facet-item__value {
   font-size: 0.9625rem;
   font-family: "Fira Sans", sans-serif;
 }
 
-.block-facet--checkbox label:hover,
-.block-facet--checkbox .facet-item__value:hover,
-.block-facet--datebasic label:hover,
-.block-facet--datebasic .facet-item__value:hover {
+.block-facet label:hover,
+.block-facet .facet-item__value:hover {
   opacity: .79;
 }
 
-.block-facet--checkbox .facet-item__count,
-.block-facet--datebasic .facet-item__count {
+.block-facet .facet-item__count {
   color: #4c7e96;
 }
 
-.block-facet--checkbox .js-facet-deactivate,
-.block-facet--datebasic .js-facet-deactivate {
+.block-facet .js-facet-deactivate {
   color: #ea3a32;
 }
 
 @media screen and (min-width: 992px) {
-  .block-facet--checkbox,
-  .block-facet--datebasic {
+  .block-facet {
     display: block !important;
   }
 }
 
 @media (max-width: 991px) {
-  .block-facet--checkbox, .block-facet--datebasic {
+  .block-facet {
     display: none;
   }
 }

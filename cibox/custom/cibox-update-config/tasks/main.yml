@@ -15,8 +15,8 @@
   - name: Get configs from prod.
     shell: 'cd {{ prod_source }} && drush cex -y --destination={{ source }}/sites/default/config/staging'
 
-  - name: Commit changes(jenkins manage to push).
+  - name: Commit changes.
     shell: 'cd {{ source }} && git commit -am "Update configs #{{ build_number }}"'
 
-  - name: Commit changes(jenkins manage to push).
+  - name: Push changes.
     shell: 'cd {{ source }} && git push --force origin {{ branch }}'

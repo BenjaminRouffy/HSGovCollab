@@ -41,8 +41,9 @@ class GroupContentManagerLabel extends FormatterBase {
           case 'country':
             $elements[] = [
               '#type' => 'markup',
-              '#markup' => $this->t('@label P4H Country Focal Person', [
+              '#markup' => $this->t('@label P4H @manager', [
                 '@label' => $group->label(),
+                '@manager' => $group->field_geographical_object->value ? 'Country Focal Person' : 'Area manager',
               ]),
             ];
             break;

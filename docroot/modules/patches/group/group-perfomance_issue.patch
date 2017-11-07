@@ -1,0 +1,47 @@
+diff --git a/modules/gnode/gnode.module b/modules/gnode/gnode.module
+index 0efb6b1..daf8048 100644
+--- a/modules/gnode/gnode.module
++++ b/modules/gnode/gnode.module
+@@ -6,6 +6,7 @@
+  */
+ 
+ use Drupal\Core\Access\AccessResult;
++use Drupal\Core\Cache\CacheBackendInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\group\Entity\GroupContentType;
+ use Drupal\node\NodeInterface;
+@@ -119,6 +120,17 @@ function gnode_node_access(NodeInterface $node, $op, AccountInterface $account)
+  * @see gnode_node_access_records()
+  */
+ function gnode_node_grants(AccountInterface $account, $op) {
++  $grants = &drupal_static(__FUNCTION__, []);
++  $grants_name = sprintf('gnode_node_grants:%s:%s', $account->id(), $op);
++
++  if(isset($grants[$grants_name])) {
++    return $grants[$grants_name];
++  }
++
++  if ($cache = \Drupal::cache()->get($grants_name)) {
++    return ($grants[$grants_name] = $cache->data);
++  }
++
+   // Provide the master grant for users who can bypass group access.
+   if ($account->hasPermission('bypass group access')) {
+     return ['gnode_bypass' => [GNODE_MASTER_GRANT_ID]];
+@@ -240,7 +252,15 @@ function gnode_node_grants(AccountInterface $account, $op) {
+   }
+ 
+   // Recursively merge the member grants with the anonymous/outsider grants.
+-  return array_merge_recursive($grants_m, $grants_ao);
++  $data = array_merge_recursive($grants_m, $grants_ao);
++
++  $grants[$grants_name] = $data;
++  \Drupal::cache()->set($grants_name, $data,
++    CacheBackendInterface::CACHE_PERMANENT,
++    // @TODO There is needed to implement cache invalidation.
++    []);
++
++  return $grants[$grants_name];
+ }
+ 
+ /**

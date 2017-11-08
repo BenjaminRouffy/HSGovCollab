@@ -1,0 +1,12 @@
+<div class="news-events-list">
+  <h2>{{ 'Other author posts'|t }}</h2>
+
+  {{ rows }}
+
+  {% if rows is not empty and more %}
+    <div class="bottom-link">
+      <a href="{{ more["#url"] }}" class="read-more">{{ more["#title"] }}</a>
+    </div>
+  {% endif %}
+
+</div>

@@ -1,0 +1,37 @@
+<div{{ attributes.addClass('item').addClass('blog') }}>
+  {% if contextual_link_access %}
+    {{ title_suffix.contextual_links|render }}
+  {% endif %}
+
+  <div class="news-container">
+    {% if content.field_image %}
+      <div class="image-wrapper">
+        {{ content.field_image|field_value }}
+      </div>
+    {% endif %}
+
+    {% if display_submitted %}
+      <div class="post-info">
+        <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+          {{ content.field_content_date|field_value }}
+        </time>
+
+        <span class="country">
+          {{ node.uid.entity.field_first_name.value }} {{ node.uid.entity.field_last_name.value }}
+        </span>
+
+        {% if content.field_category|field_value %}
+          {% for category in content.field_category|field_value %}
+            <span class="country">
+              {{ category }}
+            </span>
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <h2>{{ label }}</h2>
+  </div>
+
+  <a href="{{ url }}" rel="bookmark"></a>
+</div>

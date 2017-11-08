@@ -89,6 +89,12 @@ class CollapsedLinkBlock extends BlockBase implements ContainerFactoryPluginInte
         ],
         'data-group-collapsible' => $group->id(),
       ],
+      '#attached' => [
+        'library' => [
+          'core/jquery.form',
+          'core/drupal.ajax',
+        ],
+      ],
     ];
     return $build;
   }

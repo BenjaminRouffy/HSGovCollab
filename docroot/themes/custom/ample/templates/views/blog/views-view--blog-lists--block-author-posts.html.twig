@@ -1,5 +1,13 @@
 <div class="news-events-list">
-  <h2>{{ 'Other author posts'|t }}</h2>
+  {% if header %}
+    {% if header_without_wrapper is not defined %}
+      <{{ header_tag|default('h2') }}{{ header_classes }}>
+        {{ header }}
+      </{{ header_tag|default('h2') }}>
+    {% else %}
+      {{ header }}
+    {% endif %}
+  {% endif %}
 
   {{ rows }}
 

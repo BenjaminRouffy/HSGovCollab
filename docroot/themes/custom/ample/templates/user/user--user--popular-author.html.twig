@@ -1,0 +1,19 @@
+<div class="popular-author">
+  {% if content %}
+    <div class="user-icon">
+      {{ content.field_avatar }}
+    </div>
+    <h2 role="heading">
+      {% if content.field_first_name %}
+        {{ content.field_first_name }}
+      {% endif %}
+      {% if content.field_last_name %}
+        {{ content.field_last_name }}
+      {% endif %}
+      {% if content.field_organisation %}
+        <br>
+        {{ content.field_organisation }}
+      {% endif %}
+    </h2>
+  {% endif %}
+</div>

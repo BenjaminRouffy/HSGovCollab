@@ -1,0 +1,41 @@
+uuid: 7559aa40-5e11-4161-bff2-488962b01078
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.blog_list_page
+    - views.view.blog_lists
+  module:
+    - panels
+    - views
+id: blog_list_page-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    be0b9ff9-c570-4d64-a0c9-7f9aef06dde4:
+      id: 'views_block:blog_lists-most_popular'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: bottom
+      weight: 0
+      uuid: be0b9ff9-c570-4d64-a0c9-7f9aef06dde4
+      context_mapping: {  }
+  id: panels_variant
+  uuid: ebe0edd4-2b8c-421c-91dc-323203054473
+  label: null
+  weight: 0
+  layout: stacked
+  layout_settings: {  }
+  page_title: Blog
+  storage_type: page_manager
+  storage_id: blog_list_page-panels_variant-0
+  builder: standard
+page: blog_list_page
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

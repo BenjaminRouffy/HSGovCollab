@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.group
     - views.view.article
     - views.view.group_users
+    - views.view.news_and_events_group
   module:
     - ctools
     - ctools_block
@@ -63,10 +64,22 @@ variant_settings:
       label_display: '0'
       view_mode: bottom
       region: content
-      weight: 0
+      weight: -1
       uuid: 6ee2d1b4-49d9-452a-8fb9-11f9dfd9fc09
       context_mapping:
         entity: group
+    70d2b458-1d4f-44dd-8b97-4b67743d56b0:
+      id: 'views_block:news_and_events_group-news_and_events_with_out_filter'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -2
+      uuid: 70d2b458-1d4f-44dd-8b97-4b67743d56b0
+      pager: view
+      context_mapping: {  }
     907fc550-14aa-4079-b8f9-43f7a7691dc9:
       id: 'views_block:article-parents_content'
       label: ''
@@ -75,7 +88,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: content
-      weight: 0
+      weight: -3
       uuid: 907fc550-14aa-4079-b8f9-43f7a7691dc9
       context_mapping: {  }
     d33aefc2-c036-4836-9a33-7dde89fc8db0:

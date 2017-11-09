@@ -888,8 +888,11 @@ svg {
   border-bottom-color: #e9ecee;
 }
 
-.header-fixed .main-menu .submenu a {
-  padding: 9px 15px;
+@media only screen and (min-width: 1201px) {
+  .header-fixed .main-menu .submenu a {
+    font-size: 1.05rem;
+    padding: 15px 30px;
+  }
 }
 
 .toolbar-fixed #block-headerdashboardmenu {
@@ -1008,6 +1011,9 @@ svg {
         -ms-transform: none;
             transform: none;
     bottom: auto;
+  }
+  .h-with-anchors.header-fixed .display-second-menu .submenu {
+    top: calc(100% - 50px);
   }
   .toolbar-fixed .header-fixed .display-second-menu .submenu {
     top: 100%;
@@ -1128,6 +1134,7 @@ svg {
   content: 'f';
   font-family: P4h, sans-serif;
   text-transform: none;
+  line-height: 1.2;
 }
 
 .group-project .submenu li:first-child a,
@@ -1173,6 +1180,8 @@ svg {
 
 .header-fixed .submenu a, .header-fixed
 .anchor-links a {
+  font-size: 1.05rem;
+  padding: 15px 30px;
   text-transform: none;
 }
 
@@ -1189,7 +1198,7 @@ svg {
 
 .group-country .anchor-links li:first-child a,
 .group-country_protected .anchor-links li:first-child a {
-  line-height: .9;
+  line-height: 1;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -11186,11 +11195,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   padding-top: 0;
 }
 
-.h-with-anchors .bottom-head .anchor-links a {
-  font-size: 0.7875rem;
-  padding: 9px 15px;
-}
-
 .mobile-service-links {
   display: none;
 }
@@ -11435,6 +11439,9 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 
 @media (max-width: 767px) {
   .header-static, .header-fixed {
+    min-height: 60px;
+  }
+  .has-anchors .header-static, .has-anchors .header-fixed {
     min-height: 60px;
   }
   .header-static .logo-wrapper .logo, .header-fixed .logo-wrapper .logo {

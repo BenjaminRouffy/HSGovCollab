@@ -359,12 +359,6 @@ header {
 
     .anchor-links {
       padding-top: 0;
-      //height: 39px;
-
-      a {
-        @include font-size(12.6);
-        padding: 9px 15px;
-      }
     }
   }
 }
@@ -647,6 +641,10 @@ header {
 
 @include breakpoint-for('.header-static, .header-fixed', (to: tablet)) {
   min-height: 60px;
+
+  .has-anchors &{
+    min-height: 60px;
+  }
 
   .logo-wrapper {
     .logo {

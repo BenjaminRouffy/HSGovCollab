@@ -1,10 +1,9 @@
-
 // Logged user
 // Replace last link with search icon
 .logged {
   .dashboard-menu {
 
-   > div > ul > li:not(.expanded):last-child a {  // FUCK!!!
+    > div > ul > li:not(.expanded):last-child a { // FUCK!!!
       font-size: 0;
 
       &:after {
@@ -16,7 +15,6 @@
     }
   }
 }
-
 
 .main-menu {
   @include font-size(0);
@@ -223,8 +221,11 @@
 }
 
 // Second level menu for fixed header
-.header-fixed .main-menu .submenu a  {
-  padding: 9px 15px;
+.header-fixed .main-menu .submenu a {
+  @include media-q(min, 1201) {
+    @include font-size(16.8);
+    padding: 15px 30px;
+  }
 }
 
 // Need to remove relative position in case of
@@ -329,6 +330,10 @@
         transition: none;
         transform: none;
         bottom: auto;
+      }
+
+      .h-with-anchors.header-fixed & {
+        top: calc(100% - 50px);
       }
 
       .toolbar-fixed .header-fixed & {
@@ -488,6 +493,7 @@
             content: 'f';
             font-family: P4h, sans-serif;
             text-transform: none;
+            line-height: 1.2;
           }
         }
       }
@@ -527,8 +533,8 @@
     max-width: 250px;
 
     .header-fixed & {
-      //@include font-size(16.8);
-      //padding: 15px 30px;
+      @include font-size(16.8);
+      padding: 15px 30px;
       text-transform: none;
     }
 
@@ -547,11 +553,10 @@
 .group-country_protected {
   .anchor-links {
     li:first-child a {
-      line-height: .9;
+      line-height: 1;
     }
   }
 }
-
 
 // Fix of menu width for users who has
 // Contextual links

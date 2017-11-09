@@ -13,10 +13,10 @@ backend_config:
   connector: standard
   connector_config:
     scheme: http
-    host: localhost
-    port: '8983'
+    host: ip-172-31-34-82.eu-central-1.compute.internal
+    port: '8080'
     path: /solr
-    core: default
+    core: p4h_tika
     timeout: 5
     index_timeout: 5
     optimize_timeout: 10

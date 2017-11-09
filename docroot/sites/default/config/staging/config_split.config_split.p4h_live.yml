@@ -1,15 +1,11 @@
-uuid: c1a85ef0-2825-4d45-b15f-c1ae477ee193
+uuid: 525e7040-17ba-4a2a-ad8c-d9a4cc2b96e7
 langcode: en
 status: false
 dependencies: {  }
-id: dev
-label: Development
-folder: sites/default/config/split/config_dev
-module:
-  dblog: 0
-  devel: 0
-  devel_generate: 0
-  stage_file_proxy: 0
+id: p4h_live
+label: 'P4H Live'
+folder: sites/default/config/split/config_live
+module: {  }
 theme: {  }
 blacklist: {  }
 graylist:
@@ -17,6 +13,7 @@ graylist:
   - sdk.sdk.linkedin
   - sdk.sdk.twitter
   - search_api.server.default
+  - smtp.settings
 graylist_dependents: false
 graylist_skip_equal: true
 weight: 0

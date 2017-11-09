@@ -1,15 +1,11 @@
-uuid: c1a85ef0-2825-4d45-b15f-c1ae477ee193
+uuid: af0d5080-a8c9-4ac5-8232-5792827cf996
 langcode: en
 status: false
 dependencies: {  }
-id: dev
-label: Development
-folder: sites/default/config/split/config_dev
-module:
-  dblog: 0
-  devel: 0
-  devel_generate: 0
-  stage_file_proxy: 0
+id: stage_cibox
+label: 'Stage & PRs'
+folder: sites/default/config/split/config_cibox
+module: {  }
 theme: {  }
 blacklist: {  }
 graylist:

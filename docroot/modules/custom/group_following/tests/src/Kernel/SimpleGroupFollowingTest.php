@@ -129,7 +129,7 @@ class SimpleGroupFollowingTest extends EntityKernelTestBase {
     ]);
 
     $subgroups = \Drupal::service('ggroup.group_hierarchy_manager')
-      ->getGroupSubgroups($region);
+      ->getGroupSubgroups($region->id());
 
     foreach ($subgroups as $subgroup) {
       /* @var GroupFollowingManager $manager */

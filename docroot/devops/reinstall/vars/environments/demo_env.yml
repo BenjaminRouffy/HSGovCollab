@@ -10,3 +10,7 @@ env:
   post_settings:
     - { name: '$config["stage_file_proxy.settings"]["origin"]', status: true, value: '{{ origin_site_url }}' }
     - { name: '$config["stage_file_proxy.settings"]["hotlink"]', status: true, value: '1' }
+    - { name: '$settings["memcache"]["servers"]', status: true, value: '["127.0.0.1:11211" => "default"]' }
+    - { name: '$settings["memcache"]["bins"]', status: true, value: '["default" => "default"]' }
+    - { name: '$settings["memcache"]["key_prefix"]', status: true, value: '{{ pp_environment }}' }
+    - { name: '$settings["cache"]["default"]', status: true, value: 'cache.backend.memcache' }

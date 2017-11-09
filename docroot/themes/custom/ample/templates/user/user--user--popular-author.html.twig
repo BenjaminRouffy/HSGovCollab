@@ -1,5 +1,7 @@
+{% set user_link = url('page_manager.page_view_blog_list_page', {'uid': user.id()}) %}
 <div class="popular-author">
   {% if content %}
+  <a href="{{ user_link }}" class="contact-link"></a>
     <div class="user-icon">
       {{ content.field_avatar }}
     </div>

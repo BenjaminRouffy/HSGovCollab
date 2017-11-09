@@ -1,3 +1,8 @@
+{% if view.args is defined and view.args[1] is defined and view.args[1] is not empty %}
+  {% set user_link = url('page_manager.page_view_blog_list_page', {'uid': view.args[1]}) %}
+{% else %}
+  {% set user_link = url('page_manager.page_view_blog_list_page') %}
+{% endif %}
 <div class="news-events-list">
   {% if header %}
     {% if header_without_wrapper is not defined %}
@@ -11,9 +16,9 @@
 
   {{ rows }}
 
-  {% if rows is not empty and more %}
+  {% if rows is not empty %}
     <div class="bottom-link">
-      <a href="{{ more["#url"] }}" class="read-more">{{ more["#title"] }}</a>
+      <a href="{{ user_link }}" class="read-more">{{ 'See all posts'|t }}</a>
     </div>
   {% endif %}
 

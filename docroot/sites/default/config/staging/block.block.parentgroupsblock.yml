@@ -1,0 +1,35 @@
+uuid: 6e130555-40a0-4c16-8015-789fb4698936
+langcode: en
+status: true
+dependencies:
+  module:
+    - admin_customizations
+    - group_customization
+    - node
+  theme:
+    - ample
+id: parentgroupsblock
+theme: ample
+region: content
+weight: 0
+provider: null
+plugin: parent_groups_block
+settings:
+  id: parent_groups_block
+  label: 'Parent groups block'
+  provider: group_customization
+  label_display: '0'
+visibility:
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      event: event
+      news: news
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

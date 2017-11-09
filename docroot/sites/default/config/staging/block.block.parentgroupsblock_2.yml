@@ -1,0 +1,48 @@
+uuid: 228920b2-d25c-4811-bc56-e2bfc279e141
+langcode: en
+status: true
+dependencies:
+  module:
+    - admin_customizations
+    - ctools
+    - group
+    - group_customization
+  theme:
+    - ample
+id: parentgroupsblock_2
+theme: ample
+region: content
+weight: 0
+provider: null
+plugin: parent_groups_block
+settings:
+  id: parent_groups_block
+  label: 'Parent groups block'
+  provider: group_customization
+  label_display: '0'
+visibility:
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    bundles:
+      country: country
+      country_protected: country_protected
+      project: project
+      project_protected: project_protected
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+  group_type:
+    id: group_type
+    group_types:
+      country: country
+      country_protected: country_protected
+      project: project
+      project_protected: project_protected
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'

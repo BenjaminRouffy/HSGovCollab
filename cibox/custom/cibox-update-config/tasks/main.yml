@@ -1,0 +1,22 @@
+---
+  - name: Fetch the repo.
+    shell: cd {{ source }} && git fetch origin
+
+  - name: Get the latest tag.
+    shell: cd {{ source }} && git describe --tags `git rev-list --tags --max-count=1` 2> /dev/null || echo 'origin/master'
+    register: latest_tag
+
+  - name: Checkout to latest live tag.
+    shell: 'cd {{ source }} && git checkout -B {{ branch }}'
+
+  - name: Checkout to latest live tag.
+    shell: 'cd {{ source }} && git reset --hard {{ latest_tag.stdout }}'
+
+  - name: Get configs from prod.
+    shell: 'cd {{ prod_source }} && drush cex -y --destination={{ source }}/sites/default/config/staging'
+
+  - name: Commit changes.
+    shell: 'cd {{ source }} && git commit -am "Update configs #{{ build_number }}"'
+
+  - name: Push changes.
+    shell: 'cd {{ source }} && git push --force origin {{ branch }}'

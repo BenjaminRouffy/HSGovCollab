@@ -10685,6 +10685,11 @@ header {
   position: relative;
 }
 
+.page-page-403 header,
+.page-page-404 header {
+  display: none;
+}
+
 header ul {
   margin: 0;
   padding: 0;
@@ -11454,6 +11459,11 @@ footer a:hover {
   overflow-x: hidden;
   position: relative;
   z-index: 310;
+}
+
+.page-page-403 .main-wrapper,
+.page-page-404 .main-wrapper {
+  margin-bottom: 0;
 }
 
 .main-wrapper:before {

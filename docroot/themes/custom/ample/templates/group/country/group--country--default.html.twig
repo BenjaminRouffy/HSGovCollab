@@ -43,7 +43,9 @@
 
   {% if content.field_pin_items|field_value %}
     <div class="top-banner-region">
-      {{ content.field_pin_items|field_value }}
+      <div class="top-text-region">
+        {{ content.field_pin_items|field_value }}
+      </div>
     </div>
   {% endif %}
 </div>

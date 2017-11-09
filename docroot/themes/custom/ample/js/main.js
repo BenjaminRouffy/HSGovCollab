@@ -844,7 +844,7 @@
         }
       }
 
-      $('.expanded a').once('').on('click', function (evt) {
+      $('.expanded > a').once('').on('click', function (evt) {
         var $self = $(this);
         evt.preventDefault();
 

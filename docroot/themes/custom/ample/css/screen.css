@@ -730,8 +730,7 @@ svg {
   position: absolute;
 }
 
-.main-menu a,
-.main-menu li span {
+.main-menu a {
   font-size: 0.875rem;
   color: #283b44;
   display: block;
@@ -743,13 +742,11 @@ svg {
   cursor: pointer;
 }
 
-.main-menu a.is-active,
-.main-menu li span.is-active {
+.main-menu a.is-active {
   position: relative;
 }
 
-.main-menu a.is-active::before,
-.main-menu li span.is-active::before {
+.main-menu a.is-active::before {
   content: ' ';
   height: 2px;
   width: 100%;
@@ -759,44 +756,37 @@ svg {
   background: #ea3a32;
 }
 
-.header-static .main-menu a:hover, .header-static
-.main-menu li span:hover {
+.header-static .main-menu a:hover {
   background: rgba(76, 126, 150, 0.08);
   opacity: .7;
 }
 
-.header-fixed .main-menu a, .header-fixed
-.main-menu li span {
+.header-fixed .main-menu a {
   padding: 20px 30px;
   color: #fff;
   font-weight: 200;
 }
 
-.header-fixed .main-menu a:hover, .header-fixed
-.main-menu li span:hover {
+.header-fixed .main-menu a:hover {
   color: rgba(255, 255, 255, 0.56);
 }
 
-.logged .main-menu a, .logged
-.main-menu li span {
+.logged .main-menu a {
   font-size: 0.7875rem;
   color: #283b44;
   font-weight: 400;
 }
 
-.logged .header-static .main-menu a:hover, .logged .header-static
-.main-menu li span:hover {
+.logged .header-static .main-menu a:hover {
   background: transparent;
 }
 
-.logged .header-fixed .main-menu a, .logged .header-fixed
-.main-menu li span {
+.logged .header-fixed .main-menu a {
   color: #283b44;
   font-weight: 400;
 }
 
-.logged .header-fixed .main-menu a:hover, .logged .header-fixed
-.main-menu li span:hover {
+.logged .header-fixed .main-menu a:hover {
   background: transparent;
   color: #283b44;
   opacity: .7;
@@ -804,6 +794,10 @@ svg {
 
 .main-menu .expanded a {
   position: relative;
+}
+
+.main-menu .expanded a::before {
+  display: none;
 }
 
 .main-menu .expanded a:hover {
@@ -894,6 +888,10 @@ svg {
   border-bottom-color: #e9ecee;
 }
 
+.header-fixed .main-menu .submenu a {
+  padding: 9px 15px;
+}
+
 .toolbar-fixed #block-headerdashboardmenu {
   position: static;
 }
@@ -908,7 +906,7 @@ svg {
   z-index: -1;
 }
 
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1200px) {
   .submenu {
     max-height: 0;
     overflow: hidden;
@@ -918,7 +916,7 @@ svg {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1201px) {
   .submenu {
     visibility: hidden;
     opacity: 0;
@@ -957,7 +955,7 @@ svg {
   text-align: left;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1201px) {
   .submenu .submenu-col {
     text-align: center;
   }
@@ -977,7 +975,7 @@ svg {
   display: none;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1201px) {
   .submenu .submenu-col a {
     max-width: 250px;
     padding-left: 15px;
@@ -1000,6 +998,7 @@ svg {
     transition: transform .3s ease;
     transition: transform .3s ease, -webkit-transform .3s ease;
   }
+  .has-anchors .display-second-menu .submenu,
   .h-with-anchors.header-fixed .display-second-menu .submenu,
   .h-with-anchors.header-static .display-second-menu .submenu {
     z-index: 1;
@@ -1174,8 +1173,6 @@ svg {
 
 .header-fixed .submenu a, .header-fixed
 .anchor-links a {
-  font-size: 1.05rem;
-  padding: 15px 30px;
   text-transform: none;
 }
 
@@ -1190,7 +1187,12 @@ svg {
   color: #4c7e96;
 }
 
-@media only screen and (min-width: 992px) {
+.group-country .anchor-links li:first-child a,
+.group-country_protected .anchor-links li:first-child a {
+  line-height: .9;
+}
+
+@media only screen and (min-width: 1200px) {
   .header-fixed .contextual-region .submenu {
     margin: 0 -50%;
     width: 200%;
@@ -10874,7 +10876,7 @@ header .desktop-service-links,
 header .language-switcher-wrapper {
   position: absolute;
   bottom: 10px;
-  right: 0;
+  right: 20px;
   height: 60px;
 }
 
@@ -10958,6 +10960,10 @@ body:not(.toolbar-fixed) header:not(.collapsed) .header-fixed {
   min-height: 60px;
 }
 
+.has-anchors .header-static {
+  min-height: 98px;
+}
+
 body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   margin-top: 39px;
 }
@@ -10992,7 +10998,7 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 .header-static .social-links {
   position: absolute;
   top: 22px;
-  right: 0;
+  right: 20px;
 }
 
 .logged .header-static .social-links {
@@ -11045,7 +11051,7 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 }
 
 .header-static .language-switcher-wrapper ~ .desktop-service-links {
-  right: 50px;
+  right: 70px;
 }
 
 .header-static .language-switcher-wrapper li {
@@ -11115,7 +11121,7 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1201px) {
   .mobile-menu-wrapper {
     padding-bottom: 0;
     box-shadow: none;
@@ -11474,7 +11480,7 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .header-fixed .mobile-menu-btn {
     color: #fff;
     height: 60px;
@@ -11486,18 +11492,11 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   .header-fixed .service-links {
     position: static;
   }
-  .header-fixed .anchor-links a {
-    padding: 15px 20px;
-  }
 }
 
 @media (max-width: 767px) {
   .header-fixed .bottom-head .anchor-links {
     padding-top: 17px;
-  }
-  .header-fixed .anchor-links a {
-    font-size: 0.875rem;
-    padding: 18px 15px;
   }
 }
 

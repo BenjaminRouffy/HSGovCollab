@@ -10,6 +10,7 @@ dependencies:
     - field.field.group.country_protected.field_faq
     - field.field.group.country_protected.field_infographic
     - field.field.group.country_protected.field_join_block
+    - field.field.group.country_protected.field_pin_items
     - field.field.group.country_protected.field_priority
     - field.field.group.country_protected.field_region_icon
     - field.field.group.country_protected.field_summary
@@ -35,6 +36,15 @@ content:
     region: content
   field_infographic:
     weight: 3
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_pin_items:
+    weight: 4
     label: hidden
     settings:
       view_mode: private_content

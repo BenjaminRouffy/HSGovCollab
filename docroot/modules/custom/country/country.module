@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultNeutral;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\file\Entity\File;
@@ -46,7 +47,7 @@ function country_node_access(NodeInterface $node, $op, AccountInterface $account
     $result = gnode_node_access($node, $op, $account);
 
     if (in_array($node->getType(), _country_public_global_content_types())) {
-
+      $global = $public = new AccessResultNeutral();
       if (isset($node->global_content)) {
         $global_content = (int) $node->global_content->value;
         $global = AccessResult::allowedIf(1 == $global_content && $account->isAuthenticated());

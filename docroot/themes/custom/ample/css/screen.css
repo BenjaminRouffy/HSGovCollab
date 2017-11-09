@@ -2335,17 +2335,26 @@ body:not(.group):not(.page-search) .top-banner-region {
   line-height: 1;
 }
 
-.country-group.collapsed {
+.region-group.collapsed,
+.country-group.collapsed,
+.region_protected-group.collapsed,
+.country_protected-group.collapsed {
   overflow: hidden;
   max-height: 0;
 }
 
-.country-group.uncollapsed {
+.region-group.uncollapsed,
+.country-group.uncollapsed,
+.region_protected-group.uncollapsed,
+.country_protected-group.uncollapsed {
   padding: 20px 0 50px;
 }
 
 @media screen and (min-width: 768px) {
-  .country-group.uncollapsed {
+  .region-group.uncollapsed,
+  .country-group.uncollapsed,
+  .region_protected-group.uncollapsed,
+  .country_protected-group.uncollapsed {
     padding: 120px 0 50px;
   }
 }

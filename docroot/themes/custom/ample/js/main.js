@@ -247,9 +247,9 @@
             $bottomHead.find('.anchor-links ul').append('<li><a href="#' + id + '">' + title + '</a></li>');
 
             $(window).on('scroll', function () {
-              var menuItems = $('.anchor-links').find("a");
+              var itemExpandeds = $('.anchor-links').find("a");
 
-              var scrollItems = menuItems.map(function () {
+              var scrollItems = itemExpandeds.map(function () {
                 var item = $($(this).attr("href"));
 
                 if (item.length) {
@@ -270,7 +270,7 @@
               if (lastId !== id) {
                 lastId = id;
 
-                menuItems
+                itemExpandeds
                   .parent().removeClass("active")
                   .end().filter("[href='#" + id + "']").parent().addClass("active");
               }
@@ -377,12 +377,12 @@
       });
 
       $('.trigger-full-page', context).on('click', function () {
-        var $this = $(this);
-        var $slider = $this.siblings('.content-slider-wrapper');
-        var $thumbs = $this.siblings('.thumb-slider-wrapper');
-        var thumbNumber = $thumbs.find('.slider-item-thumb').length;
-        var sliderCurrentIndex = $slider.find('.active').index();
-        var thumbCurrentIndex = $thumbs.find('.current').index();
+        var $this = $(this),
+          $slider = $this.siblings('.content-slider-wrapper'),
+          $thumbs = $this.siblings('.thumb-slider-wrapper'),
+          thumbNumber = $thumbs.find('.slider-item-thumb').length,
+          sliderCurrentIndex = $slider.find('.active').index(),
+          thumbCurrentIndex = $thumbs.find('.current').index();
 
         $('#slider-overlay').toggleClass('showed');
         $this.parent($('.slider-main')).toggleClass('fixed');
@@ -405,6 +405,7 @@
           touchDrag: false,
           mouseDrag: false
         });
+
         $thumbs.trigger('to.owl.carousel', [thumbCurrentIndex, 0, true]);
         $thumbs.find('.owl-item').eq(thumbCurrentIndex).addClass('current');
       });
@@ -753,7 +754,7 @@
         updateTitle = function (item) {
           return item.hasClass('collapsed') ? item.html(viewTitle) : item.html(hideTitle);
         },
-        scrollToTop = function(speed) {
+        scrollToTop = function (speed) {
           $('html, body').animate({
             scrollTop: 0
           }, speed || 0)
@@ -771,7 +772,7 @@
         updateTitle($self);
 
         if ($self.hasClass('collapsed')) {
-          setTimeout(function(){
+          setTimeout(function () {
             scrollToTop(800)
           }, 500);
         }
@@ -780,16 +781,77 @@
   };
 
   Drupal.behaviors.profileSettingsHelp = {
-    attach: function(context) {
+    attach: function (context) {
       var $helpWrapper = $('.profile-help-wrapper', context),
-          $helpToggle = $('.toggle-help', context);
+        $helpToggle = $('.toggle-help', context);
 
-      $helpToggle.on('click', function(evt){
+      $helpToggle.on('click', function (evt) {
         evt.preventDefault();
         $helpWrapper.toggleClass('profile-help-collapsed');
 
         $('.profile-help-info', context).slideToggle(500);
       })
     }
-  }
+  };
+
+
+  // Need outer (global scope) variable to store menus
+  // Because menus are come not in the same time
+  var menus = [];
+
+  Drupal.behaviors.dashboardMainMenu = {
+    attach: function (context) {
+      var $staticMenu = $('.main-menu', context);
+
+      // Each time when behavior fire
+      // check if there is a menu inside, and add it to array of menus
+      if ($staticMenu.length > 0) {
+        menus.push($staticMenu);
+      }
+
+      // Toggle second level menus
+      // accept an index of clicked parent item
+      function toggleMenu(ind) {
+        var i, j,
+          itemExpanded,
+          linkItem;
+
+        // Loop through all menus
+        for (i = 0; i < menus.length; i++) {
+          itemExpanded = menus[i].find('.expanded');
+
+          // Loop through expanded menus items
+          for (j = 0; j < itemExpanded.length; j++) {
+            linkItem = $(itemExpanded[j]);
+
+            // If current item index is equal to clicked item
+            // open menu which is relevant to menu item
+            if (linkItem.index() === ind) {
+              // Open single menu if it was closed
+              if (!(linkItem.hasClass('display-second-menu') )) {
+                linkItem.addClass('display-second-menu')
+              }
+              // Close same single menu
+              else {
+                linkItem.removeClass('display-second-menu')
+              }
+            }
+            // Close all menus
+            else {
+              linkItem.removeClass('display-second-menu')
+            }
+          }
+        }
+      }
+
+      $('.expanded a').once('').on('click', function (evt) {
+        var $self = $(this);
+        evt.preventDefault();
+
+        // Toggle menu by item click, and pass an index of clicked item
+        toggleMenu($self.parent().index());
+      });
+
+    }
+  };
 })(jQuery, Drupal);

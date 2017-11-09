@@ -7,16 +7,23 @@ global_env:
     - { name: '$settings["hash_salt"]', status: true, value: '{{ hash_salt }}' }
     - { name: '$config_directories[CONFIG_SYNC_DIRECTORY]', status: true, value: '{{ sync_stage }}' }
     - { name: '$settings["file_private_path"]', status: true, value: 'sites/default/files/private' }
+
+    - name: '$config["config_split.config_split.{{ pp_split_config }}"]["status"]'
+      status: true
+      value: '1'
+
   pre_settings_raw:
-    - { name: '$databases["migrate"]["default"]', status: true, value:  '[
-                                                                            "database" => "db11149163-p4hintranet",
-                                                                            "username" => "{{ mysql_user }}",
-                                                                            "password" => "{{ mysql_pass }}",
-                                                                            "driver" => "{{ mysql_driver | default("mysql") }}",
-                                                                            "prefix" => "{{ mysql_prefix | default }}",
-                                                                            "port" => {{ mysql_port | default(3306) }},
-                                                                            "host" => "{{ mysql_host }}",
-                                                                          ];' }
+    - name: '$databases["migrate"]["default"]'
+      status: true
+      value:  '[
+        "database" => "db11149163-p4hintranet",
+        "username" => "{{ mysql_user }}",
+        "password" => "{{ mysql_pass }}",
+        "driver" => "{{ mysql_driver | default("mysql") }}",
+        "prefix" => "{{ mysql_prefix | default }}",
+        "port" => {{ mysql_port | default(3306) }},
+        "host" => "{{ mysql_host }}",
+      ];'
   modules: []
   drush_commands: []
       #- { name: 'cset', status: true, arguments: "system.site uuid b0409d58-21df-4959-aec9-4b93adf7d064 -y" }

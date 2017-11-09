@@ -14,6 +14,10 @@ site_url: 'http://drupal.p4h.xip.io' # No trailing slash!
 # This variable will be used for variable_get('environment'). Can be overridden by CI server.
 # development = 'default', demo = 'demo', staging = 'staging', production = 'production'.
 pp_environment: 'default'
+
+## this variable should be overridden by console
+# pp_split_config: dev
+
 # This variable allows select type of installation. Can be overridden by CI server.
 # From installation profile = 'profile', from sql dump = 'sql'.
 workflow_type: 'sql'

@@ -12,6 +12,12 @@ header {
     max-width: 1260px;
     margin: 0 auto;
     position: relative;
+
+    // According to layout of second level menu
+    // we need to remove relative position from wrapper
+    .logged & {
+      position: static;
+    }
   }
 
   .desktop-service-links,
@@ -91,15 +97,32 @@ header {
   }
 }
 
+.header-fixed,
+.header-static {
+  &::after {
+    content: ' ';
+    position: absolute;
+    background: $white;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+}
+
 .header-static {
   background: $white;
   box-shadow: 0 2px 4px rgba($black, .1);
   min-height: 120px;
   position: relative;
   text-align: center;
-  top: 0;
   transition: top .3s ease-in-out, min-height .2s ease-in-out;
   z-index: 500;
+
+  &.without-anchors {
+    min-height: 60px;
+  }
 
   body.toolbar-vertical:not(.toolbar-fixed) & {
     margin-top: 39px;
@@ -132,19 +155,6 @@ header {
     max-width: 60%;
     position: relative;
     z-index: 1;
-  }
-
-  .mobile-menu-wrapper {
-    overflow-x: hidden;
-    padding-top: 52px;
-
-    .contextual {
-      display: none;
-    }
-
-    .partners {
-      display: none;
-    }
   }
 
   .social-links {
@@ -214,12 +224,127 @@ header {
   }
 }
 
+// ----------------------------------------------------------------------------
+// Header menu
+.mobile-menu-wrapper {
+  // Mobile view
+  background: $grey-medium;
+  box-shadow: -1px 7px 14px rgba($black, .11);
+  background: $grey-medium;
+  height: calc(100% - 60px);
+  padding-top: 37px;
+  position: fixed;
+  right: -60%;
+  top: 60px;
+  width: 100%;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  transform: translateX(100%);
+  transition: transform .4s ease-in-out, right .4s ease-in-out;
+
+  z-index: 9;
+
+  .header-fixed & {
+    padding-top: 0;
+  }
+
+
+  .toolbar-vertical .header-fixed & {
+    height: calc(100% - 99px);
+    top: 99px;
+  }
+
+  .toolbar-vertical &{
+    padding-bottom: 100px;
+    top: 99px;
+  }
+
+  // Tablet
+  @include media-q(min, 768) {
+    width: 50%;
+    top: 107px;
+    height: calc(100% - 107px);
+
+    // Anonymous
+    .header-fixed & {
+      top: 60px;
+      height: calc(100% - 60px);
+    }
+
+    // Logged with toolbars
+    // Header static
+    .toolbar-horizontal & {
+      top: 185px;
+      height: calc(100% - 185px);
+    }
+
+    .toolbar-vertical & {
+      top: 146px;
+      height: calc(100% - 146px);
+    }
+    // Header fixed
+    .toolbar-horizontal .header-fixed & {
+      top: 139px;
+      height: calc(100% - 139px);
+    }
+
+
+    .toolbar-vertical .header-fixed & {
+      top: 99px;
+    }
+  }
+
+  // from Laptop to Desktop
+  @include media-q(min, 1200) {
+    padding-bottom: 0;
+    box-shadow: none;
+    background-color: transparent;
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none;
+    overflow-y: visible;
+
+    .toolbar-fixed &,
+    .toolbar-vertical & {
+      padding-bottom: 0;
+    }
+  }
+
+  .contextual {
+    display: none;
+  }
+
+  .partners {
+    display: block;
+    margin-left: 28px;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding-top: 50px;
+    text-align: left;
+
+    .item-list {
+      display: block;
+    }
+
+    li {
+      height: 57px;
+      margin-left: 10px;
+      margin-right: 4%;
+    }
+
+    @include media-q(min, 768) {
+      display: none;
+    }
+  }
+}
+
+
 .h-with-anchors {
   box-shadow: none;
-
-  @media screen and (max-width: 991px) {
-    margin-bottom: 38px;
-  }
 
   .mobile-menu-wrapper {
     padding-top: 20px;
@@ -231,7 +356,7 @@ header {
 
     .anchor-links {
       padding-top: 0;
-      height: 39px;
+      //height: 39px;
 
       a {
         @include font-size(12.6);
@@ -291,11 +416,12 @@ header {
     top: 79px;
   }
 
+  // Top header
   .top-head {
     background: $navy-dark;
     background-image: linear-gradient(180deg, #334c58, $navy-dark);
     box-shadow: 0 1px 8px rgba($black, .16);
-    height: 60px;
+    min-height: 60px;
 
     .logged & {
       background: $white;
@@ -306,7 +432,7 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 10;
 
     .logged & {
       display: none;
@@ -326,24 +452,6 @@ header {
       display: block;
       margin: 0 auto;
       width: 63px;
-    }
-  }
-
-  .main-menu {
-    ul {
-      a {
-        border-bottom: 2px solid transparent;
-        color: $white;
-        font-weight: 200;
-        height: 60px;
-        padding: 20px 30px;
-      }
-    }
-
-    .active {
-      a {
-        border-bottom: 2px solid $red;
-      }
     }
   }
 
@@ -372,8 +480,8 @@ header {
   }
 }
 
-@include breakpoint-for('.header-static, .header-fixed', (to: laptop-small)) {
-  min-height: 80px;
+@include breakpoint-for('.header-static, .header-fixed', (to: 1200px)) {
+  //min-height: 80px;
 
   .logo-wrapper {
     .logo {
@@ -461,20 +569,6 @@ header {
     }
   }
 
-  .mobile-menu-wrapper {
-    background: #e9ecee;
-    box-shadow: -1px 7px 14px rgba($black, .11);
-    height: calc(100% - 80px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    position: fixed;
-    top: 80px;
-    right: -60%;
-    transform: translateX(100%);
-    transition: transform .4s ease-in-out, right .4s ease-in-out;
-    width: 50%;
-  }
-
   .social-links {
     padding: 22px 20px;
 
@@ -533,39 +627,18 @@ header {
   }
 }
 
-@include breakpoint-for('.header-static', (to: laptop-small)) {
-  min-height: 60px;
+@include breakpoint-for('.header-static', (to: 1200px)) {
+  min-height: 100px;
 
   .bottom-head {
     position: absolute;
     width: 100%;
-    top: 100%;
+    bottom: 0;
   }
 
   .collapsed & {
     min-height: 60px;
     top: -150px;
-  }
-
-  .mobile-menu-wrapper {
-    height: calc(100vh - 80px);
-    padding-top: 0;
-    position: fixed;
-    top: 107px;
-    z-index: 9;
-
-    .toolbar-fixed &,
-    .toolbar-vertical & {
-      top: 165px;
-    }
-  }
-}
-
-@include breakpoint-for('.header-fixed', (to: laptop-small)) {
-  .mobile-menu-wrapper {
-    .toolbar-fixed & {
-      top: 99px;
-    }
   }
 }
 
@@ -585,46 +658,10 @@ header {
     }
   }
 
-  .partners {
-    display: none;
-  }
-
   .mobile-menu-btn,
   .mobile-dashboard-menu-btn {
     height: 60px;
     padding-top: 20px;
-  }
-
-  .mobile-menu-wrapper {
-    height: calc(100% - 60px);
-    top: 60px;
-    right: -85%;
-    width: 75%;
-
-    .toolbar-fixed &,
-    .toolbar-vertical & {
-      top: 99px;
-    }
-
-    .partners {
-      display: block;
-      margin-left: 28px;
-      max-height: 100%;
-      max-width: 100%;
-      overflow: hidden;
-      padding-top: 50px;
-      text-align: left;
-
-      .item-list {
-        display: block;
-      }
-
-      li {
-        height: 57px;
-        margin-left: 10px;
-        margin-right: 4%;
-      }
-    }
   }
 
   .logged & {
@@ -643,16 +680,6 @@ header {
     display: none;
   }
 
-  .mobile-menu-wrapper {
-    height: calc(100vh - 60px);
-    top: 60px;
-
-    .toolbar-fixed &,
-    .toolbar-vertical & {
-      padding-bottom: 100px;
-      top: 99px;
-    }
-  }
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: mobileL)) {
@@ -671,22 +698,9 @@ header {
   .mobile-menu-btn {
     width: 60px;
   }
-
-  .mobile-menu-wrapper {
-    width: 100%;
-
-    .partners {
-      margin-left: 9px;
-
-      li {
-        height: 47px;
-        margin-right: 10px;
-      }
-    }
-  }
 }
 
-@include breakpoint-for('.header-fixed', (to: laptop-small)) {
+@include breakpoint-for('.header-fixed', (to: 1024px)) {
   .mobile-menu-btn {
     color: $white;
     height: 60px;
@@ -695,12 +709,6 @@ header {
     .logged & {
       color: $navy-dark;
     }
-  }
-
-  .mobile-menu-wrapper {
-    height: calc(100% - 60px);
-    top: 60px;
-    z-index: 1;
   }
 
   .service-links {
@@ -717,15 +725,14 @@ header {
 @include breakpoint-for('.header-fixed', (to: tablet)) {
   .bottom-head {
     .anchor-links {
-      height: 57px;
-      padding-top: 9px;
+      padding-top: 17px;
     }
   }
 
   .anchor-links {
     a {
       @include font-size(14);
-      padding: 15px;
+      padding: 18px 15px;
     }
   }
 }
@@ -742,8 +749,8 @@ header {
   .anchor-links {
     margin: 0 auto;
     max-width: 1260px;
-    height: 60px;
-    padding-top: 7px;
+    //height: 60px;
+    //padding-top: 7px;
 
     .logged & {
       padding-left: 80px;
@@ -770,15 +777,6 @@ header {
     }
   }
 
-  .mobile-menu-wrapper {
-    .toolbar-vertical & {
-      top: 60px;
-    }
-
-    .toolbar-fixed & {
-      top: 99px;
-    }
-  }
 }
 
 @include breakpoint-for('.header-fixed', (to: mobileL)) {

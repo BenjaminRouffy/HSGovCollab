@@ -259,4 +259,12 @@ function p4h_views_plugins_views_data_alter(array &$data) {
       'id' => 'combine_taxonomy_term',
     ),
   );
+
+  $data['node_field_data']['content_author_name'] = [
+    'real field' => 'uid',
+    'filter' => [
+      'title' => t('Node type Author filter'),
+      'id' => 'content_author_name',
+    ],
+  ];
 }

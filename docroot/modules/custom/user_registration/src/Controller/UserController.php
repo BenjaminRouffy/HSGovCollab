@@ -2,9 +2,12 @@
 
 namespace Drupal\user_registration\Controller;
 
+use Drupal\block_content\Entity\BlockContent;
 use Drupal\Component\Utility\Crypt;
+use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\user\UserDataInterface;
 use Drupal\user\UserStorageInterface;
 use Psr\Log\LoggerInterface;
@@ -141,6 +144,35 @@ class UserController extends ControllerBase {
 
     drupal_set_message($this->t('You have tried to use a one-time login link that has either been used or is no longer valid. Please request a new one using the form below.'), 'error');
     return $this->redirect('user.pass');
+  }
+
+  /**
+   * Toggles Useful Information user block.
+   *
+   * @param \Drupal\Core\Session\AccountInterface $user
+   *   Current user object.
+   * @param mixed $display
+   *   State of the Profile useful information block.
+   *
+   * @return \Symfony\Component\HttpFoundation\Response
+   */
+  public function toggleUsefulInfo(AccountInterface $user, $display = NULL) {
+    if ($this->currentUser()->id() !== $user->id()) {
+      throw new AccessDeniedHttpException();
+    }
+
+    $response = new AjaxResponse();
+
+    /** @var \Drupal\user_registration\CollapsibleBlockService $collapsible_block */
+    $collapsible_block = \Drupal::service('user_registration.collapsible_block');
+
+    // Load "Profile useful information" block and toggle its display.
+    if ($block = BlockContent::load(45)) {
+      $collapsible_block->toggle($block, $display);
+      $response->setData(['collapsed' => $collapsible_block->isCollapsed($block)]);
+    }
+
+    return $response;
   }
 
 }

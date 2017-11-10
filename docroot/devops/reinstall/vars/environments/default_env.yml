@@ -1,6 +1,7 @@
 ---
 env:
   trusted_host_patterns: []
+  pre_settings_raw: []
   pre_settings:
     - { name: '$settings["file_public_path"]', status: true, value: 'sites/default/files' }
     - { name: '$config["system.file"]["path.temporary"]', status: true, value: '/tmp' }

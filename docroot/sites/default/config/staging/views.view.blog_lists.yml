@@ -376,6 +376,8 @@ display:
         - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
         - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
         - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_text.default'
+        - 'config:core.entity_view_display.node.simple_text.teaser'
         - 'config:core.entity_view_display.node.social.default'
         - 'config:core.entity_view_display.node.social.search_result_row'
         - 'config:core.entity_view_display.node.social.teaser'
@@ -476,6 +478,8 @@ display:
         - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
         - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
         - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_text.default'
+        - 'config:core.entity_view_display.node.simple_text.teaser'
         - 'config:core.entity_view_display.node.social.default'
         - 'config:core.entity_view_display.node.social.search_result_row'
         - 'config:core.entity_view_display.node.social.teaser'
@@ -808,7 +812,9 @@ display:
             group_items: {  }
           reduce_duplicates: 0
           tags: 1
-          count: '20'
+          count: '10'
+          view_selection: 'tagadelic_terms:tags_by_content'
+          view_display_selection: ''
           entity_type: taxonomy_term
           plugin_id: content_tags_cloud
       filter_groups:
@@ -856,7 +862,7 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-      group_by: false
+      group_by: true
       query:
         type: views_query
         options:
@@ -944,6 +950,8 @@ display:
         - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
         - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
         - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_text.default'
+        - 'config:core.entity_view_display.node.simple_text.teaser'
         - 'config:core.entity_view_display.node.social.default'
         - 'config:core.entity_view_display.node.social.search_result_row'
         - 'config:core.entity_view_display.node.social.teaser'

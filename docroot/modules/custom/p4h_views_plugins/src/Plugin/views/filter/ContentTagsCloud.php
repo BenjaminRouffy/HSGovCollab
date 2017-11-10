@@ -4,6 +4,7 @@ namespace Drupal\p4h_views_plugins\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\filter\ManyToOne;
+use Drupal\views\Views;
 
 /**
  * Custom Filter handler for content tagadelic tags.
@@ -28,6 +29,8 @@ class ContentTagsCloud extends ManyToOne {
 
     $options['tags'] = ['default' => ''];
     $options['count'] = ['default' => 20];
+    $options['view_selection'] = ['default' => ''];
+    $options['view_display_selection'] = ['default' => ''];
 
     return $options;
   }
@@ -50,6 +53,14 @@ class ContentTagsCloud extends ManyToOne {
       '#max' => 50,
       '#required' => TRUE,
     ];
+
+    $form['view_selection'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('Select tagadelic view display'),
+      '#options' => Views::getViewsAsOptions(FALSE, 'enabled'),
+      '#default_value' => $this->options['view_selection'],
+      '#required' => TRUE,
+    ];
   }
 
   /**
@@ -59,8 +70,9 @@ class ContentTagsCloud extends ManyToOne {
     parent::valueForm($form, $form_state);
     $options = [];
 
-    // @todo Change hardcode view name and display name to options.
-    $tags = views_get_view_result('tagadelic_terms', 'tags_by_content');
+    $view_selection = explode(':', $this->options['view_selection']);
+
+    $tags = views_get_view_result($view_selection[0], $view_selection[1]);
 
     if (count($tags) > $this->options['count']) {
       $rand = array_rand($tags, $this->options['count']);

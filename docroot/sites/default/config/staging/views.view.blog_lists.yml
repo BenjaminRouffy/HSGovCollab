@@ -388,6 +388,17 @@ display:
     display_options:
       display_extenders: {  }
       rendering_language: '***LANGUAGE_language_interface***'
+      use_more: true
+      defaults:
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+      use_more_always: false
+      use_more_text: 'See all posts'
+      link_display: custom_url
+      link_url: blog
     cache_metadata:
       max-age: -1
       contexts:
@@ -545,7 +556,16 @@ display:
           entity_type: node
           plugin_id: rendered_entity
       rendering_language: '***LANGUAGE_language_interface***'
-      relationships: {  }
+      relationships:
+        field_tags:
+          id: field_tags
+          table: node__field_tags
+          field: field_tags
+          relationship: none
+          group_type: group
+          admin_label: 'field_tags: Taxonomy term'
+          required: false
+          plugin_id: standard
       header: {  }
       pager:
         type: mini_with_items
@@ -739,6 +759,58 @@ display:
           type: blog
           entity_type: node
           plugin_id: content_author_name
+        content_tags_cloud:
+          id: content_tags_cloud
+          table: taxonomy_term_field_data
+          field: content_tags_cloud
+          relationship: field_tags
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: content_tags_cloud_op
+            label: Tagcloud
+            description: ''
+            use_operator: false
+            operator: content_tags_cloud_op
+            identifier: content_tags_cloud
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              conference_oxford: '0'
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
+              closed_country_manager: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          tags: 1
+          count: '20'
+          entity_type: taxonomy_term
+          plugin_id: content_tags_cloud
       filter_groups:
         operator: AND
         groups:
@@ -768,8 +840,16 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            uid:
-              bef_format: bef
+            content_author_name:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            content_tags_cloud:
+              bef_format: default
               more_options:
                 bef_select_all_none: false
                 bef_collapsible: false

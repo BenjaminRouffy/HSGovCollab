@@ -267,4 +267,12 @@ function p4h_views_plugins_views_data_alter(array &$data) {
       'id' => 'content_author_name',
     ],
   ];
+
+  $data['taxonomy_term_field_data']['content_tags_cloud'] = [
+    'real field' => 'tid',
+    'filter' => [
+      'title' => t('Tags by content'),
+      'id' => 'content_tags_cloud',
+    ],
+  ];
 }

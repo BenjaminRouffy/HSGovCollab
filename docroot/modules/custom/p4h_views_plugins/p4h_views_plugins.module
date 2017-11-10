@@ -191,11 +191,9 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         unset($form['label']);
         $form['#attributes']['data-accordion'] = $form['#id'];
 
-        $form['wrap']['uid'] = $form['uid'];
-        unset($form['uid']);
-
         $form['wrap']['label']['#prefix'] = '<div class="search-form-wrapper">';
         $form['wrap']['actions']['#suffix'] = '</div>';
+
     }
 
     // Set autocomplete attribute

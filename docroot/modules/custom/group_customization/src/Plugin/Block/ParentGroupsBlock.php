@@ -10,6 +10,7 @@ use Drupal\Core\Database\Driver\mysql\Select;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupContentType;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\Entity\Node;
 
@@ -29,24 +30,26 @@ class ParentGroupsBlock extends BlockBase {
    */
   public function build() {
     $class = 'parent-groups-list-';
+
+
     if ($entity = \Drupal::request()->attributes->get('node')) {
-      $plugin_name = 'group_node';
       $class .= $entity->getEntityType()->id(). '-' . $entity->getType();
     }
     elseif ($entity = \Drupal::request()->attributes->get('group')) {
-      $plugin_name = 'subgroup';
       $class .= $entity->getEntityType()->id() . '-' . $entity->getGroupType()->id();
     }
     else {
       return [];
     }
 
+    $plugin_ids = array_keys(GroupContentType::loadByEntityTypeId($entity->getEntityType()->id()));
+
     $query = \Drupal::database()->select('group_content_field_data', 'gc');
     $query->leftJoin('group_graph', 'gp', 'gc.gid = gp.end_vertex');
 
     $result = $query->fields('gc', ['id', 'gid'])
       ->fields('gp', ['start_vertex', 'hops'])
-      ->condition('gc.type', "%$plugin_name%", 'LIKE')
+      ->condition('gc.type', $plugin_ids, 'IN')
       ->condition('gc.entity_id', $entity->id())
       ->execute()
       ->fetchAllAssoc('id');

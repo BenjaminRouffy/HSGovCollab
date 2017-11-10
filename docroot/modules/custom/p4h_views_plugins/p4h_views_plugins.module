@@ -178,6 +178,24 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         $form['label']['#prefix'] = '<div class="search-form-wrapper">';
         $form['actions']['#suffix'] = '</div>';
         break;
+
+      case 'views-exposed-form-blog-lists-blog-posts':
+        $form['wrap'] = [
+          '#prefix' => '<div class="wrapper-filters">',
+          '#suffix' => '</div>',
+          '#weight' => -100,
+        ];
+        $form['wrap']['actions'] = $form['actions'];
+        unset($form['actions']);
+        $form['wrap']['label'] = $form['label'];
+        unset($form['label']);
+        $form['#attributes']['data-accordion'] = $form['#id'];
+
+        $form['wrap']['uid'] = $form['uid'];
+        unset($form['uid']);
+
+        $form['wrap']['label']['#prefix'] = '<div class="search-form-wrapper">';
+        $form['wrap']['actions']['#suffix'] = '</div>';
     }
 
     // Set autocomplete attribute

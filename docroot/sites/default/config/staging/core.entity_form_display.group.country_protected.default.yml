@@ -11,6 +11,7 @@ dependencies:
     - field.field.group.country_protected.field_faq
     - field.field.group.country_protected.field_infographic
     - field.field.group.country_protected.field_join_block
+    - field.field.group.country_protected.field_pin_items
     - field.field.group.country_protected.field_priority
     - field.field.group.country_protected.field_region_icon
     - field.field.group.country_protected.field_summary
@@ -31,6 +32,7 @@ third_party_settings:
         - group_banner
         - group_brief
         - group_content
+        - group_pin_items
         - group_infographic_timeline
         - group_bottom
         - group_faq
@@ -47,9 +49,7 @@ third_party_settings:
         - field_priority
         - field_banner
         - label
-        - field_country_icon
         - field_region_icon
-        - field_group_status
       parent_name: group_ta
       weight: 7
       format_type: tab
@@ -94,7 +94,7 @@ third_party_settings:
         - field_infographic
         - field_time_line
       parent_name: group_ta
-      weight: 10
+      weight: 11
       format_type: tab
       format_settings:
         id: ''
@@ -108,7 +108,7 @@ third_party_settings:
         - field_join_block
         - field_bottom_link
       parent_name: group_ta
-      weight: 11
+      weight: 12
       format_type: tab
       format_settings:
         id: ''
@@ -130,6 +130,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: FAQ
+    group_pin_items:
+      children:
+        - field_pin_items
+      parent_name: group_ta
+      weight: 10
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Pin items'
 id: group.country_protected.default
 targetEntityType: group
 bundle: country_protected
@@ -206,6 +219,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_pin_items:
+    weight: 23
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
     region: content
   field_priority:
     weight: 19

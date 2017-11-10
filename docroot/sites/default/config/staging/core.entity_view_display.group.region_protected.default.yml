@@ -13,6 +13,7 @@ dependencies:
     - field.field.group.region_protected.field_label
     - field.field.group.region_protected.field_number_of_objects
     - field.field.group.region_protected.field_objects_icon
+    - field.field.group.region_protected.field_pin_items
     - field.field.group.region_protected.field_region_icon
     - field.field.group.region_protected.field_summary
     - field.field.group.region_protected.field_time_line
@@ -36,6 +37,15 @@ content:
     region: content
   field_infographic:
     weight: 2
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_pin_items:
+    weight: 3
     label: hidden
     settings:
       view_mode: private_content

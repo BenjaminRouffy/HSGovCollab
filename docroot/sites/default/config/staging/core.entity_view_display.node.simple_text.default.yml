@@ -1,0 +1,42 @@
+uuid: 26b24fd5-7727-4e93-a8f2-b565f80823d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.simple_text.body
+    - field.field.node.simple_text.field_image
+    - node.type.simple_text
+  module:
+    - image_url_formatter
+    - text
+    - user
+id: node.simple_text.default
+targetEntityType: node
+bundle: simple_text
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      url_type: '0'
+      image_style: 250x165
+      image_link: ''
+    third_party_settings: {  }
+    type: image_url
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  langcode: true

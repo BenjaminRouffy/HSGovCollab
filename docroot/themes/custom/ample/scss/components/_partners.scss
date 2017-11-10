@@ -16,8 +16,12 @@
     li {
       float: left;
       height: 46px;
-      margin: 0 12px;
+      margin: 0 8px;
       padding: 8px 0;
+
+      @include media-q(min, 1024) {
+        margin: 0 12px;
+      }
     }
   }
 

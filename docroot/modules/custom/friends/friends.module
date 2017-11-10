@@ -180,6 +180,7 @@ function friends_form_alter(&$form, FormStateInterface $form_state, $form_id) {
         $form['wrap']['roles_target_id'] =  $form['roles_target_id'];
         $form['wrap']['roles_target_id']['#options']['All'] = $form['#info']['filter-roles_target_id']['label'];
         $form['#info']['filter-roles_target_id']['label'] = '';
+        unset($form['roles_target_id']);
       }
 
       if(!empty($form['field_relation_status_value'])) {

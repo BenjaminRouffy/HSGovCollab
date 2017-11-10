@@ -121,10 +121,10 @@ class FileAccessByGroupTest extends EntityKernelTestBase {
     $this->generateEntity();
 
     $access = country_file_access($this->file, 'view',  $anonymous);
-    $this->assertEquals($access->isForbidden(), FALSE, 'File view is allowed.');
+    $this->assertEquals($access->isForbidden(), TRUE, 'File view is allowed.');
 
     $access = country_file_access($this->file, 'download',  $anonymous);
-    $this->assertEquals($access->isForbidden(), FALSE, 'File download is allowed.');
+    $this->assertEquals($access->isForbidden(), TRUE, 'File download is allowed.');
 
     /* @var Group $group */
     $group = $this->entityTypeManager->getStorage('group')->create([
@@ -150,7 +150,7 @@ class FileAccessByGroupTest extends EntityKernelTestBase {
   public function attachNodeTypeToGroup() {
     // Create a node type.
     $this->contentType = $this->drupalCreateContentType([
-      'type' => 'page',
+      'type' => 'document',
       'name' => 'Basic page',
       'display_submitted' => FALSE,
     ]);
@@ -233,6 +233,7 @@ class FileAccessByGroupTest extends EntityKernelTestBase {
     // Create some node.
     $this->node = $this->drupalCreateNode([
       'title' => 'A node with a file',
+      'type' => 'document',
       'node_paragraph_field' => [$paragraph1],
     ]);
   }

@@ -2,6 +2,11 @@
 env:
   trusted_host_patterns: []
   pre_settings: []
+  pre_settings_raw:
+    - { name: '$settings["memcache"]["servers"]', status: true, value: '["127.0.0.1:11211" => "default"];' }
+    - { name: '$settings["memcache"]["bins"]', status: true, value: '["default" => "default"];' }
+    - { name: '$settings["memcache"]["key_prefix"]', status: true, value: '"{{ pp_environment }}";' }
+    - { name: '$settings["cache"]["default"]', status: true, value: '"cache.backend.memcache";' }
   modules: []
   drush_commands:
     - { name: 'sqlq', status: true, arguments: "\"UPDATE users_field_data SET name='{{ drupal_user }}' WHERE uid=1\"" }

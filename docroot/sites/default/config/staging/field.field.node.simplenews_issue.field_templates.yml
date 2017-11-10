@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_templates
     - node.type.news
     - node.type.newsletter_banner
+    - node.type.simple_text
     - node.type.simplenews_issue
   module:
     - bricks
@@ -25,6 +26,7 @@ settings:
     target_bundles:
       newsletter_banner: newsletter_banner
       news: news
+      simple_text: simple_text
     sort:
       field: _none
     auto_create: 0

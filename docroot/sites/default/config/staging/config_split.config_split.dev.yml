@@ -4,8 +4,12 @@ status: false
 dependencies: {  }
 id: dev
 label: Development
-folder: sites/default/config_dev
-module: {  }
+folder: sites/default/config/split/config_dev
+module:
+  dblog: 0
+  devel: 0
+  devel_generate: 0
+  stage_file_proxy: 0
 theme: {  }
 blacklist: {  }
 graylist:

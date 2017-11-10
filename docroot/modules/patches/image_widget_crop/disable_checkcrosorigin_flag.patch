@@ -1,0 +1,12 @@
+diff --git a/js/imageWidgetCrop.js b/js/imageWidgetCrop.js
+index 16092cf..ed7cde6 100644
+--- a/js/imageWidgetCrop.js
++++ b/js/imageWidgetCrop.js
+@@ -22,6 +22,7 @@
+     viewMode: 1,
+     autoCropArea: 1,
+     responsive: false,
++    checkCrossOrigin: false,
+     // Callback function, fires when crop is applied.
+     cropend: function (e) {
+       var $this = $(this);

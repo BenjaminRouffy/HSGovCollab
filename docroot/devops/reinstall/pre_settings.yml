@@ -49,6 +49,11 @@
   when: item.status == true
   with_items: global_env.pre_settings_raw
 
+- name: Add env raw pre-settings to settings.php
+  lineinfile: dest='{{ platform_settings_file }}' line='{{ item.name }} = {{ item.value }}'
+  when: item.status == true
+  with_items: env.pre_settings_raw
+
 - name: Add environment specific pre-settings
   lineinfile: dest='{{ platform_settings_file }}' line='{{ item.name }} = \"{{ item.value }}\";'
   when: item.status == true

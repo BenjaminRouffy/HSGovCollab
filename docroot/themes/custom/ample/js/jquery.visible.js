@@ -1,13 +1,15 @@
 (function($) {
+  'use strict';
+
   $.fn.isVisible = function(partial) {
-    var $this = $(this);
-    var $window = $(window);
-    var viewTop = $window.scrollTop();
-    var viewBottom = viewTop + $window.height();
-    var elemTopPos = $this.offset().top;
-    var elemBottomPos = elemTopPos + $this.height();
-    var compareTop = partial === true ? elemBottomPos : elemTopPos;
-    var compareBottom = partial === true ? elemTopPos : elemBottomPos;
+    var $this = $(this),
+     $window = $(window),
+     viewTop = $window.scrollTop(),
+     viewBottom = viewTop + $window.height(),
+     elemTopPos = $this.offset().top,
+     elemBottomPos = elemTopPos + $this.height(),
+     compareTop = partial === true ? elemBottomPos : elemTopPos,
+     compareBottom = partial === true ? elemTopPos : elemBottomPos;
 
     return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
   };

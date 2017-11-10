@@ -92,6 +92,7 @@ class ComposerStaticInitDrupal8
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
+            'Pelago\\' => 7,
         ),
         'M' => 
         array (
@@ -337,6 +338,10 @@ class ComposerStaticInitDrupal8
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Pelago\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pelago/emogrifier/Classes',
         ),
         'Masterminds\\' => 
         array (

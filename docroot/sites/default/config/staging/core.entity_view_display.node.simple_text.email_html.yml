@@ -1,0 +1,43 @@
+uuid: ffcedf0c-6485-41be-be5a-95f2404c2041
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.email_html
+    - field.field.node.simple_text.body
+    - field.field.node.simple_text.field_image
+    - node.type.simple_text
+  module:
+    - image_url_formatter
+    - text
+    - user
+id: node.simple_text.email_html
+targetEntityType: node
+bundle: simple_text
+mode: email_html
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      url_type: '0'
+      image_style: email_banner
+      image_link: ''
+    third_party_settings: {  }
+    type: image_url
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  langcode: true

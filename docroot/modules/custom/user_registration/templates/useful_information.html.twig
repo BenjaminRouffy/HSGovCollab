@@ -1,6 +1,6 @@
 <div{{ attributes.addClass('profile-help') }}>
   {{ title_prefix }}
-  <div class="profile-help-wrapper">
+  <div class="profile-help-wrapper{% if element['#collapsed'] %} profile-help-collapsed{% endif %}">
     {% if element.content.field_title|field_value %}
       <div class="profile-help-title">
         <h1>{{ element.content.field_title|field_value }}</h1>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="profile-help-bottom">
-    <a class="toggle-help" href="#">{{ 'Toggle help'|t }}</a>
+    <a class="toggle-help use-ajax" href="{{ element['#toggle'] }}">{{ 'Toggle help'|t }}</a>
   </div>
   {{ title_suffix }}
 </div>

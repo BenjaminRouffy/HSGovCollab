@@ -782,15 +782,17 @@
 
   Drupal.behaviors.profileSettingsHelp = {
     attach: function (context) {
-      var $helpWrapper = $('.profile-help-wrapper', context),
-        $helpToggle = $('.toggle-help', context);
+      $('.profile-help', context).once('profile-settings-help').each(function () {
+        var $profileHelp = $(this);
 
-      $helpToggle.on('click', function (evt) {
-        evt.preventDefault();
-        $helpWrapper.toggleClass('profile-help-collapsed');
+        $profileHelp.find('.toggle-help').on('click', function (event) {
+          event.preventDefault();
 
-        $('.profile-help-info', context).slideToggle(500);
-      })
+          $profileHelp.find('.profile-help-info').slideToggle(500, function () {
+            $(this).closest('.profile-help-wrapper').toggleClass('profile-help-collapsed', $(this).is(':hidden'));
+          });
+        })
+      });
     }
   };
 

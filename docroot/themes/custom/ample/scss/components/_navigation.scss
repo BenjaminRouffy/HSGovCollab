@@ -6,11 +6,15 @@
     > div > ul > li:not(.expanded):last-child a { // FUCK!!!
       font-size: 0;
 
-      &:after {
+      &::after {
         @include font-size(28);
         content: 't';
         color: $navy;
         text-transform: none;
+      }
+
+      &::before {
+        display: none;
       }
     }
   }

@@ -7339,6 +7339,10 @@ form .social_login iframe {
   box-shadow: none;
 }
 
+.profile-help .profile-help-collapsed .profile-help-info {
+  display: none;
+}
+
 .profile-help .profile-help-title h1 {
   font-size: 1.125rem;
   padding: 0;
@@ -7372,6 +7376,10 @@ form .social_login iframe {
   position: relative;
   text-align: center;
   overflow: hidden;
+}
+
+.profile-help .profile-help-bottom .ajax-progress {
+  display: none;
 }
 
 .profile-help .toggle-help {

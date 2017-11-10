@@ -5,6 +5,7 @@
 
     > div > ul > li:not(.expanded):last-child a { // FUCK!!!
       font-size: 0;
+      position: relative;
 
       &::after {
         @include font-size(28);

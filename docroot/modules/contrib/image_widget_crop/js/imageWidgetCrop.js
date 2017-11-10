@@ -22,6 +22,7 @@
     viewMode: 1,
     autoCropArea: 1,
     responsive: false,
+    checkCrossOrigin: false,
     // Callback function, fires when crop is applied.
     cropend: function (e) {
       var $this = $(this);

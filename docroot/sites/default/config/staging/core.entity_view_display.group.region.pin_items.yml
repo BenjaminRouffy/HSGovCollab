@@ -1,8 +1,9 @@
-uuid: be43d32b-ca71-4e35-8fa5-788605f2d66c
+uuid: 2ff2cc12-3ef5-47a7-b0be-cc06dc87ebdb
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.group.pin_items
     - field.field.group.region.field_banner
     - field.field.group.region.field_bottom_link
     - field.field.group.region.field_content
@@ -21,51 +22,36 @@ dependencies:
     - group.type.region
   module:
     - entity_reference_revisions
-    - text
-id: group.region.default
+id: group.region.pin_items
 targetEntityType: group
 bundle: region
-mode: default
+mode: pin_items
 content:
-  field_content:
-    weight: 1
-    label: hidden
-    settings:
-      view_mode: private_content
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  field_infographic:
-    weight: 2
-    label: hidden
-    settings:
-      view_mode: private_content
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  field_summary:
+  field_pin_items:
     weight: 0
     label: hidden
-    settings: {  }
+    settings:
+      view_mode: private_content
+      link: ''
     third_party_settings: {  }
-    type: text_default
+    type: entity_reference_revisions_entity_view
     region: content
 hidden:
   changed: true
   created: true
   field_banner: true
   field_bottom_link: true
+  field_content: true
   field_date: true
   field_faq: true
   field_geographical_object: true
+  field_infographic: true
   field_join_block: true
   field_label: true
   field_number_of_objects: true
   field_objects_icon: true
-  field_pin_items: true
   field_region_icon: true
+  field_summary: true
   field_time_line: true
   label: true
   langcode: true

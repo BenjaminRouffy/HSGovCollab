@@ -110,6 +110,17 @@ variant_settings:
       uuid: 9485e19d-8f7d-4747-81e6-b6413f61b8f8
       context_mapping:
         group: group
+    d79f2e0d-9b7b-48eb-a3a1-0ae53a8a06d5:
+      id: 'entity_view:group'
+      label: 'Entity view (Group) Pin items'
+      provider: ctools
+      label_display: '0'
+      view_mode: pin_items
+      region: banner
+      weight: 0
+      uuid: d79f2e0d-9b7b-48eb-a3a1-0ae53a8a06d5
+      context_mapping:
+        entity: group
   id: panels_variant
   uuid: 940a744c-930b-4df7-ba15-9ab8150de0d2
   label: null

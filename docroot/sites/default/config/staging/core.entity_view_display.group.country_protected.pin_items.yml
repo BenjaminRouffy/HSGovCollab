@@ -1,8 +1,9 @@
-uuid: 55a55188-d660-47fa-a78c-66e17a0344b2
+uuid: e92d02a7-8b56-4942-8be1-36399980d7da
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.group.pin_items
     - field.field.group.country_protected.field_banner
     - field.field.group.country_protected.field_bottom_link
     - field.field.group.country_protected.field_content
@@ -19,42 +20,16 @@ dependencies:
     - group.type.country_protected
   module:
     - entity_reference_revisions
-    - text
-id: group.country_protected.default
+id: group.country_protected.pin_items
 targetEntityType: group
 bundle: country_protected
-mode: default
+mode: pin_items
 content:
-  field_content:
-    weight: 2
-    label: hidden
-    settings:
-      view_mode: private_content
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  field_infographic:
-    weight: 3
-    label: hidden
-    settings:
-      view_mode: private_content
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
-  field_summary:
+  field_pin_items:
     weight: 0
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
-  field_summary_content:
-    weight: 1
-    label: hidden
     settings:
-      view_mode: default
+      view_mode: private_content
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
@@ -64,12 +39,15 @@ hidden:
   created: true
   field_banner: true
   field_bottom_link: true
+  field_content: true
   field_date: true
   field_faq: true
+  field_infographic: true
   field_join_block: true
-  field_pin_items: true
   field_priority: true
   field_region_icon: true
+  field_summary: true
+  field_summary_content: true
   field_time_line: true
   label: true
   langcode: true

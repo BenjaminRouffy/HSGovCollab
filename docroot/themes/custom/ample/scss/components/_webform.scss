@@ -1917,6 +1917,14 @@ form {
       .paragraph-type-top {
         padding-right: 0;
       }
+
+      .paragraph-type-top,
+      .field--name-field-job-title,
+      .field--name-field-organisation {
+        @include media-q(max, 479) {
+          padding: 0;
+        }
+      }
     }
   }
 

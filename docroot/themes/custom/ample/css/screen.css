@@ -1476,6 +1476,8 @@ svg {
 
 .dashboard-sidebar.expanded-menu .dashboard-logo.big {
   display: block;
+  max-width: 80%;
+  margin: 10px auto 0;
 }
 
 .dashboard-sidebar.expanded-menu ul:not(.contextual-links) li a {
@@ -7950,6 +7952,17 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   padding-right: 0;
 }
 
+@media only screen and (max-width: 479px) {
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .paragraph-type-top,
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .field--name-field-job-title,
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .field--name-field-organisation,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .paragraph-type-top,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .field--name-field-job-title,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .field--name-field-organisation {
+    padding: 0;
+  }
+}
+
 .ie9 .form-my-settings #edit-field-skype-or-other-wrapper .paragraphs-subform {
   overflow: visible;
 }
@@ -11145,6 +11158,20 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
       -ms-transform: translateX(50%);
           transform: translateX(50%);
   width: 1029px;
+  transition: margin-right .3s ease;
+  margin-right: -30px;
+}
+
+@media only screen and (min-width: 1281px) {
+  .logged .header-static .social-links {
+    margin-right: 40px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .logged .header-static .social-links {
+    margin-right: -20px;
+  }
 }
 
 .logged .header-static .social-links a {
@@ -11152,15 +11179,9 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   color: #4c7e96;
   display: inline-block;
   font-family: Oswald, sans-serif;
-  margin-right: 30px;
-  padding: 10px 2px 10px 20px;
+  padding: 10px 20px;
   transition: opacity .2s ease;
   vertical-align: top;
-}
-
-.logged .header-static .social-links a:before {
-  content: "j";
-  font-family: P4h, sans-serif;
 }
 
 .logged .header-static .social-links a:hover {

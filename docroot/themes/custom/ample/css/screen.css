@@ -693,6 +693,7 @@ svg {
 
 .logged .dashboard-menu > div > ul > li:not(.expanded):last-child a {
   font-size: 0;
+  position: relative;
 }
 
 .logged .dashboard-menu > div > ul > li:not(.expanded):last-child a::after {
@@ -700,6 +701,7 @@ svg {
   content: 't';
   color: #4c7e96;
   text-transform: none;
+  right: 20px;
 }
 
 .logged .dashboard-menu > div > ul > li:not(.expanded):last-child a::before {

@@ -26,7 +26,7 @@
 </table>
 
 {% if content.childs|length %}
-  <table width="100%" cellspacing="0" cellpadding="0" border="0" style="font-family: Arial, 'sans-serif'; font-size: 14px; line-height: 1.4; padding: 10px 0; table-layout: fixed;" class="two-column-wrapper">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" style="font-family: Arial, 'sans-serif'; font-size: 14px; line-height: 1.4; padding: 10px 0; table-layout: fixed; border-bottom: 1px solid #ea3a32;" class="two-column-wrapper">
     {% for row in content.childs|batch(2, ' ') %}
       <tr>
         {% for subentity in row %}

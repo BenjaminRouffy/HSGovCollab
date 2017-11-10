@@ -83,6 +83,18 @@ variant_settings:
       uuid: 0d3133ab-365e-44fe-b5cb-2912d1058282
       pager: view
       context_mapping: {  }
+    d3c97718-8bb7-4533-9e96-29cbca29a2ab:
+      id: 'views_block:news_and_events_group-closed_documents_without_filter'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: '3'
+      region: content
+      weight: -5
+      uuid: d3c97718-8bb7-4533-9e96-29cbca29a2ab
+      pager: some
+      context_mapping: {  }
     64ae00d0-33b3-4b60-b470-6ec6e319f07a:
       id: 'entity_view:group'
       label: 'Entity view (Group)'
@@ -90,7 +102,7 @@ variant_settings:
       label_display: '0'
       view_mode: bottom
       region: content
-      weight: -5
+      weight: -4
       uuid: 64ae00d0-33b3-4b60-b470-6ec6e319f07a
       context_mapping:
         entity: group

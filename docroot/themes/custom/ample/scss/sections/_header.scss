@@ -32,6 +32,17 @@ header {
     right: 20px;
     height: 60px;
 
+    .logged & {
+      float: right;
+      position: static;
+      margin: -70px 20px 0 0;
+
+      @include media-q(max, 1200) {
+        margin: 0 0 0 30px;
+        float: none;
+      }
+    }
+
     ul:not(.contextual-links),
     ul:not(.contextual-links) li {
       display: inline-block;
@@ -46,8 +57,15 @@ header {
       padding: 32px 5px 15px;
       text-decoration: none;
 
+      .logged & {
+        padding: 0 5px;
+
+        @include media-q(max, 1200) {
+          padding: 10px;
+        }
+      }
+
       &:hover {
-        //background: rgba($navy, .08);
         opacity: .7;
       }
     }

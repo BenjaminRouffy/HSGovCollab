@@ -270,12 +270,12 @@ class GroupHierarchyManager implements GroupHierarchyManagerInterface {
         // Store results in static cache.
         $path_supergroup_ids_cache[] = $path_supergroup_id;
         foreach ($path_supergroup_ids_cache as $path_supergroup_id) {
-          $this->inheritedSubgroupRoleIds[$account_id][$path_subgroup_id][$path_supergroup_id] = $inherited_role_ids;
+          $this->inheritedSupergroupRoleIds[$account_id][$path_subgroup_id][$path_supergroup_id] = $inherited_role_ids;
         }
       }
     }
 
-    return $this->inheritedSubgroupRoleIds[$account_id][$group->id()][$supergroup_id] = $role_ids;
+    return $this->inheritedSupergroupRoleIds[$account_id][$group->id()][$supergroup_id] = $role_ids;
   }
 
   /**

@@ -29,7 +29,7 @@ class ParentGroupsBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $class = 'parent-groups-list-';
+    $class = 'custom-bc-wrapper parent-groups-list-';
 
 
     if ($entity = \Drupal::request()->attributes->get('node')) {
@@ -73,6 +73,9 @@ class ParentGroupsBlock extends BlockBase {
         '#markup' => t('Part of: '),
       ];
 
+      $elements['title']['#prefix'] = '<div class="custom-bc-title">';
+      $elements['title']['#suffix'] = '</div>';
+
       foreach ($parents as $parent) {
         /* @var GroupInterface $group */
         foreach (Group::loadMultiple($parent) as $group) {
@@ -92,7 +95,7 @@ class ParentGroupsBlock extends BlockBase {
               '#markup' => $group->label(),
             ];
           }
-          $elements[$id]['#prefix'] = '<div class="list-element">';
+          $elements[$id]['#prefix'] = '<div class="custom-bc-item">';
           $elements[$id]['#suffix'] = '</div>';
         }
       }

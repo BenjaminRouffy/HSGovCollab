@@ -5,6 +5,7 @@
   top: 170px;
   text-align: center;
   z-index: 100;
+  padding: 1px 0 0 2px;
 
   .toolbar-fixed & {
     top: 210px;
@@ -17,6 +18,7 @@
   .toggle-sharing-btn {
     @include font-size(22.4);
     @include same(40px, height, width);
+    box-shadow: 0 0 3px rgba($black, .15);
     background: $white;
     color: $red;
     cursor: pointer;

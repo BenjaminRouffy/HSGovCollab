@@ -4,7 +4,6 @@ namespace Drupal\country;
 
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\user\UserDataInterface;
-use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -78,8 +77,7 @@ class UserContextFactory implements UserDataInterface {
    *   The value to store. Non-scalar values are serialized automatically.
    */
   public function set($module, $uid, $name, $value) {
-    $cookie = new Cookie($name, (int) $value, 0, '/', NULL, TRUE);
-    $this->cookiesUpdate[] = $cookie;
+    // Nothing to do for anonymous user.
   }
 
   /**
@@ -97,7 +95,7 @@ class UserContextFactory implements UserDataInterface {
    *   $module and $uid is deleted.
    */
   public function delete($module = NULL, $uid = NULL, $name = NULL) {
-    $this->request->cookies->remove($name);
+    // Nothing to do for anonymous user.
   }
 
 }

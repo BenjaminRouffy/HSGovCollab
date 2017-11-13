@@ -10406,7 +10406,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
     width: 90%;
   }
   .popup-wrapper h1 {
-    font-size: 3.25rem;
+    font-size: 2.5rem;
     line-height: 1.2;
   }
 }
@@ -10420,7 +10420,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
     margin-top: 40px;
   }
   .popup-wrapper .action-links a {
-    font-size: 1.625rem;
+    font-size: 1.125rem;
   }
   .popup-wrapper .action-links .logout-link {
     margin-right: 10px;
@@ -10436,6 +10436,22 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   padding: 5%;
   width: 50% !important;
   z-index: 610 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .ui-dialog.ui-widget-content {
+    width: 75% !important;
+  }
+  .ui-dialog.ui-widget-content .summary-text p {
+    font-size: 1.125rem;
+    line-height: 1.2;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .ui-dialog.ui-widget-content {
+    width: 90% !important;
+  }
 }
 
 .ui-dialog.ui-widget-content .popup-wrapper {
@@ -10737,15 +10753,16 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-bottom: 60px;
 }
 
 .ie9 .pins-list {
   display: block;
   font-size: 0;
+  text-align: center;
 }
 
 .pins-list .pin-item {
@@ -12777,13 +12794,9 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 
 @media (max-width: 991px) {
   .country-desc .image-text {
-    width: 75%;
-  }
-}
-
-@media (max-width: 767px) {
-  .country-desc .image-text {
     width: 100%;
+    position: static;
+    background: #283b44;
   }
 }
 

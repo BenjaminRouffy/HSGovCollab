@@ -67,7 +67,7 @@
   width: 90%;
 
   h1 {
-    @include font-size(52);
+    @include font-size(40);
     line-height: 1.2;
   }
 }
@@ -82,7 +82,7 @@
     margin-top: 40px;
 
     a {
-      @include font-size(26);
+      @include font-size(18);
     }
 
     .logout-link {
@@ -102,6 +102,19 @@
     padding: 5%;
     width: 50% !important;
     z-index: 610 !important;
+
+    @include media-q(max, 768) {
+      width: 75% !important;
+
+      .summary-text p {
+        @include font-size(18);
+        line-height: 1.2;
+      }
+    }
+
+    @include media-q(max, 600) {
+      width: 90% !important;
+    }
 
     .popup-wrapper {
       height: auto;

@@ -268,13 +268,9 @@
 
 @include breakpoint-for('.country-desc', (to: laptop-small)) {
   .image-text {
-    width: 75%;
-  }
-}
-
-@include breakpoint-for('.country-desc', (to: tablet)) {
-  .image-text {
     width: 100%;
+    position: static;
+    background: $navy-dark;
   }
 }
 

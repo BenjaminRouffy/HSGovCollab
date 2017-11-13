@@ -149,6 +149,42 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
+        group_roles_target_id_1:
+          id: group_roles_target_id_1
+          table: group_content__group_roles
+          field: group_roles_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: manager
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
       sorts: {  }
       title: 'About this space'
       header: {  }
@@ -205,6 +241,10 @@ display:
           entity_field: gid
           plugin_id: group_id
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: OR
     cache_metadata:
       max-age: -1
       contexts:
@@ -215,10 +255,10 @@ display:
         - 'config:core.entity_view_display.user.user.cd_user_block'
         - 'config:core.entity_view_display.user.user.comment_author'
         - 'config:core.entity_view_display.user.user.compact'
+        - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
         - 'config:core.entity_view_display.user.user.sea'
-        - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.small_teaser'
   block_project_managers:
     display_plugin: block

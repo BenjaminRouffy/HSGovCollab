@@ -5,3 +5,13 @@ user_registration.admin_settings_form:
     _title: 'Mail settings'
   requirements:
     _permission: 'administer user registration'
+
+user_registration.toggle_useful_info:
+  path: '/user/{user}/toggle-useful-info/{display}'
+  defaults:
+    _controller: 'Drupal\user_registration\Controller\UserController::toggleUsefulInfo'
+    display: null
+  options:
+    no_cache: TRUE
+  requirements:
+    _user_is_logged_in: 'TRUE'

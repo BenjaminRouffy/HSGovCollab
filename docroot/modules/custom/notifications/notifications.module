@@ -6,8 +6,9 @@ use Drupal\views\ViewExecutable;
  * Implements hook_cron().
  */
 function notifications_cron() {
-  $config = Drupal::configFactory()->getEditable('notifications.cron_settings');
-  $last_run = $config->get('last_run') ? $config->get('last_run') : strtotime('-15 minutes', time());
+  /** @var \Drupal\Core\State\State $state */
+  $state = Drupal::state();
+  $last_run = $state->get('notifications.cron_settings.last_run', strtotime('-15 minutes', time()));
 
   $query = Drupal::database()->select('group_content_field_data', 'gcfd');
   $query->fields('gcfd', array('entity_id', 'gid', 'type'));
@@ -40,8 +41,7 @@ function notifications_cron() {
     }
   }
 
-  $config->set('last_run', time());
-  $config->save(TRUE);
+  $state->set('notifications.cron_settings.last_run', time());
 }
 
 /**

@@ -147,6 +147,49 @@
   }
 }
 
+// ----------------------------------------------------------------------------
+// Media queries
+// Accept three parameters
+// @point to break
+// @min/@max word and concatenate it with word -'width'
+// @orientation, l - landscape, p - portrait
+//
+// examples:
+//   @include media-q(min, 980); -  @media only screen and (min-width: 980px) { ... }
+//   @include media-q(min, 320, p); -  @media only screen and (min-width: 320px) and (orientation: portrait) { ... }
+@mixin media-q($extrema: null, $point: null, $orient: null) {
+
+  @if $extrema == 'min' {
+    $extrema: min;
+  }
+
+  @if $extrema == 'max' {
+    $extrema: max;
+  }
+
+  @if $orient == 'p' {
+    $orient: portrait
+  }
+
+  @if $orient == 'l' {
+    $orient: landscape
+  }
+
+  @if $orient == null {
+    @media only screen and (#{$extrema}-width: $point+'px') {
+      @content;
+    }
+  }
+
+  @else {
+    @media only screen and (#{$extrema}-width: $point+'px') and (orientation: #{$orient}) {
+      @content;
+    }
+  }
+}
+
+
+
 //-------------------------------------------------------------------------------
 // All style mixin
 

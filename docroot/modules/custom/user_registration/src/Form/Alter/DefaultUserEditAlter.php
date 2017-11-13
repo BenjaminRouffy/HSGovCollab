@@ -4,6 +4,7 @@ namespace Drupal\user_registration\Form\Alter;
 
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceAlterInterface;
 use Drupal\form_alter_service\Interfaces\FormAlterServiceBaseInterface;
 
@@ -80,7 +81,11 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
     }
     $form['actions']['submit']['#access'] = FALSE;
 
+    /** @var \Drupal\user_registration\CollapsibleBlockService $collapsible_block */
+    $collapsible_block = \Drupal::service('user_registration.collapsible_block');
+
     // Load "Profile useful information" block and attach it to the form.
+    // @see \Drupal\user_registration\Controller\UserController::toggleUsefulInfo
     if ($block = BlockContent::load(45)) {
       $element = \Drupal::entityTypeManager()
         ->getViewBuilder('block_content')
@@ -88,6 +93,8 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
 
       $form['info_block']['#type'] = 'container';
       $form['info_block']['#theme'] = 'useful_information';
+      $form['info_block']['#collapsed'] = $collapsible_block->isCollapsed($block);
+      $form['info_block']['#toggle'] = Url::fromRoute('user_registration.toggle_useful_info', ['user' => \Drupal::currentUser()->id()]);
       $form['info_block']['content'] = $element;
     }
 

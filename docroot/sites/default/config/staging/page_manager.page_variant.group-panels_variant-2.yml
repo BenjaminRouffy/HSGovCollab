@@ -8,6 +8,7 @@ dependencies:
     - views.view.news_and_events_group
   module:
     - addtoany
+    - country
     - ctools
     - ctools_block
     - panels
@@ -25,7 +26,7 @@ variant_settings:
       label_display: '0'
       view_mode: banner
       region: banner
-      weight: 0
+      weight: -3
       uuid: 20988424-4463-4913-8d4c-a667222b5d4d
       context_mapping:
         entity: group
@@ -35,8 +36,8 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: default
-      region: content
-      weight: -3
+      region: banner
+      weight: -2
       uuid: b9980591-1f35-45d2-a9a7-ef5c27950686
       context_mapping:
         entity: group
@@ -46,7 +47,7 @@ variant_settings:
       provider: addtoany
       label_display: '0'
       region: content
-      weight: -2
+      weight: -9
       uuid: 0127320e-69c9-455b-b5af-e730016e5d01
       context_mapping: {  }
     2b5554aa-32ef-4847-8c06-916b2e78a1e6:
@@ -57,7 +58,7 @@ variant_settings:
       views_label: ''
       items_per_page: '3'
       region: content
-      weight: 0
+      weight: -7
       uuid: 2b5554aa-32ef-4847-8c06-916b2e78a1e6
       context_mapping: {  }
     fe3889c0-09b2-4ef6-b7e9-712d6c824b6e:
@@ -68,7 +69,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: content
-      weight: 1
+      weight: -6
       uuid: fe3889c0-09b2-4ef6-b7e9-712d6c824b6e
       pager: view
       context_mapping: {  }
@@ -79,7 +80,7 @@ variant_settings:
       label_display: '0'
       view_mode: bottom
       region: content
-      weight: 2
+      weight: -5
       uuid: c0e33000-eb63-4d2f-9eb4-7da6cfa4b59d
       context_mapping:
         entity: group
@@ -91,7 +92,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: content
-      weight: -1
+      weight: -8
       uuid: f1c4fe4a-7fa8-4ed9-bd73-21d2713b1413
       context_mapping: {  }
     16ff8aec-43c8-46af-b035-e43394795d69:
@@ -109,6 +110,27 @@ variant_settings:
       region: bottom
       weight: -3
       uuid: 16ff8aec-43c8-46af-b035-e43394795d69
+      context_mapping:
+        entity: group
+    eb5a2c62-e8d5-48ca-a5d2-094c555f4d36:
+      id: collapsed_link_block
+      label: 'Collapsed link block'
+      provider: country
+      label_display: '0'
+      region: banner
+      weight: 0
+      uuid: eb5a2c62-e8d5-48ca-a5d2-094c555f4d36
+      context_mapping:
+        group: group
+    9d8569ed-e016-4092-8559-6b00ccf429aa:
+      id: 'entity_view:group'
+      label: 'Entity view (Group) Pin items'
+      provider: ctools
+      label_display: '0'
+      view_mode: pin_items
+      region: banner
+      weight: 0
+      uuid: 9d8569ed-e016-4092-8559-6b00ccf429aa
       context_mapping:
         entity: group
   id: panels_variant

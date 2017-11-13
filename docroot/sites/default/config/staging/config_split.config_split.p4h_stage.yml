@@ -1,0 +1,18 @@
+uuid: e0c5d7c0-f13c-465e-b2e0-932b01011aa3
+langcode: en
+status: false
+dependencies: {  }
+id: p4h_stage
+label: 'P4H Stage'
+folder: sites/default/config/split/config_stage
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - sdk.sdk.facebook
+  - sdk.sdk.linkedin
+  - sdk.sdk.twitter
+  - search_api.server.default
+graylist_dependents: false
+graylist_skip_equal: true
+weight: 0

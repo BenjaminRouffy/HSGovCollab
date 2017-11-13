@@ -14,6 +14,7 @@ dependencies:
     - field.field.group.region_protected.field_label
     - field.field.group.region_protected.field_number_of_objects
     - field.field.group.region_protected.field_objects_icon
+    - field.field.group.region_protected.field_pin_items
     - field.field.group.region_protected.field_region_icon
     - field.field.group.region_protected.field_summary
     - field.field.group.region_protected.field_time_line
@@ -31,6 +32,7 @@ third_party_settings:
       children:
         - group_ban
         - group_content
+        - group_pin_items
         - group_infographic_timeline
         - group_bottom
         - group_faq
@@ -81,7 +83,7 @@ third_party_settings:
         - field_infographic
         - field_time_line
       parent_name: group_tabs_panel
-      weight: 4
+      weight: 5
       format_type: tab
       format_settings:
         id: ''
@@ -95,7 +97,7 @@ third_party_settings:
         - field_join_block
         - field_bottom_link
       parent_name: group_tabs_panel
-      weight: 5
+      weight: 6
       format_type: tab
       format_settings:
         id: ''
@@ -108,7 +110,7 @@ third_party_settings:
       children:
         - field_faq
       parent_name: group_tabs_panel
-      weight: 6
+      weight: 7
       format_type: tab
       format_settings:
         id: ''
@@ -117,6 +119,19 @@ third_party_settings:
         description: ''
         required_fields: true
       label: FAQ
+    group_pin_items:
+      children:
+        - field_pin_items
+      parent_name: group_tabs_panel
+      weight: 4
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Pin items'
 id: group.region_protected.default
 targetEntityType: group
 bundle: region_protected
@@ -224,6 +239,18 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: entity_browser_file
+    region: content
+  field_pin_items:
+    weight: 19
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
     region: content
   field_region_icon:
     weight: 15

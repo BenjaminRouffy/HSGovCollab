@@ -1,0 +1,18 @@
+uuid: af0d5080-a8c9-4ac5-8232-5792827cf996
+langcode: en
+status: false
+dependencies: {  }
+id: stage_cibox
+label: 'Stage & PRs'
+folder: sites/default/config/split/config_cibox
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - sdk.sdk.facebook
+  - sdk.sdk.linkedin
+  - sdk.sdk.twitter
+  - search_api.server.default
+graylist_dependents: false
+graylist_skip_equal: true
+weight: 0

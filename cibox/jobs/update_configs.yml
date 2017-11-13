@@ -1,0 +1,16 @@
+---
+- hosts: "{{ hosts_override | default('localhost') }}"
+  connection: local
+  gather_facts: yes
+
+  vars:
+    workspace: ./
+    build_number: 1
+    server_docroot_folder: /var/www
+    project_docroot_folder: docroot
+    source: "{{ workspace }}/sourcecode/{{ project_docroot_folder }}"
+    prod_source: "{{ workspace }}/sourcecode/{{ project_docroot_folder }}"
+    destination: "{{ server_docroot_folder }}/build{{ build_number }}"
+
+  roles:
+    - { role: ../custom/cibox-update-config }

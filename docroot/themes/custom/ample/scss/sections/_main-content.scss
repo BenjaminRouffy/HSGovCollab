@@ -5,6 +5,11 @@
   position: relative;
   z-index: 310;
 
+  .page-page-403 &,
+  .page-page-404 & {
+    margin-bottom: 0;
+  }
+
   &:before {
     background-color: $white-dark;
     box-shadow: inset 0 0 8px rgba($black, .11);
@@ -52,6 +57,10 @@
 
   .logged & {
     padding-left: 80px;
+  }
+
+  .toolbar-vertical.toolbar-tray-open & {
+    padding-left: 0;
   }
 
   body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-country_protected):not(.group-product):not(.page-group-faq):not(.page-group-document):not(.page-group-news-and-event):not(.group-region):not(.group-region_protected):not(.front):not(.page-my-settings):not(.page-countries-regions):not(.page-my-projects):not(.projects):not(.page-my-countries-and-regions):not(.page-my-news):not(.group-governance_area):not(.page-my-calendar):not(.page-contacts):not(.page-my-contacts):not(.page-user-canonical):not(.page-group-contact):not(.page-products):not(.group-knowledge_vault):not(.page-knowledge-vault):not(.page-sign-up-confirmation):not(.page-search) & {
@@ -192,6 +201,13 @@
       a {
         color: #ea3a32;
         text-decoration: none;
+      }
+      
+      .newsletter-bg {
+        a {
+          color: #fff;
+          text-decoration: underline;
+        }
       }
 
       article {

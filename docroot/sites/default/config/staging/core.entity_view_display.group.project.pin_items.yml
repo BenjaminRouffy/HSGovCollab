@@ -1,9 +1,9 @@
-uuid: aa82e10b-14fb-4dc6-9dcf-415018c08f27
+uuid: 842c6b6e-4892-4713-abee-d2764f01983e
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.group.bottom
+    - core.entity_view_mode.group.pin_items
     - field.field.group.project.field_based_on
     - field.field.group.project.field_content
     - field.field.group.project.field_date
@@ -22,21 +22,21 @@ dependencies:
     - field.field.group.project.field_time_line
     - group.type.project
   module:
-    - timeline
-id: group.project.bottom
+    - entity_reference_revisions
+id: group.project.pin_items
 targetEntityType: group
 bundle: project
-mode: bottom
+mode: pin_items
 content:
-  field_time_line:
+  field_pin_items:
+    type: entity_reference_revisions_entity_view
     weight: 0
+    region: content
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: Timeline_by_date
-    region: content
 hidden:
   changed: true
   created: true
@@ -49,12 +49,12 @@ hidden:
   field_join_block: true
   field_knowledge_vault: true
   field_label_end_date: true
-  field_pin_items: true
   field_priority: true
   field_product: true
   field_project_icon: true
   field_summary: true
   field_summary_public: true
+  field_time_line: true
   label: true
   langcode: true
   uid: true

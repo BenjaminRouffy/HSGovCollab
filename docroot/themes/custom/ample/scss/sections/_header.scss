@@ -271,8 +271,13 @@ header {
   }
 
   .toolbar-vertical .header-fixed & {
-    height: calc(100% - 99px);
-    top: 99px;
+    height: calc(100% - 60px);
+    top: 60px;
+
+    @include media-q(min, 610) {
+      height: calc(100% - 99px);
+      top: 99px;
+    }
   }
 
   .toolbar-vertical & {

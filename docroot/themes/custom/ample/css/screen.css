@@ -11242,8 +11242,15 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 }
 
 .toolbar-vertical .header-fixed .mobile-menu-wrapper {
-  height: calc(100% - 99px);
-  top: 99px;
+  height: calc(100% - 60px);
+  top: 60px;
+}
+
+@media only screen and (min-width: 610px) {
+  .toolbar-vertical .header-fixed .mobile-menu-wrapper {
+    height: calc(100% - 99px);
+    top: 99px;
+  }
 }
 
 .toolbar-vertical .mobile-menu-wrapper {

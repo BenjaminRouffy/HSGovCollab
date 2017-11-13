@@ -303,6 +303,9 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
         }
       }
 
+      // Set custom page title.
+      $form['#title'] = new TranslatableMarkup('Add an Item');
+
       // Hide 'Add more' button on 'When' section when the current theme is apmle.
       $form['field_date']['widget']['add_more']['#access'] = FALSE;
 

@@ -31,7 +31,6 @@ class ParentGroupsBlock extends BlockBase {
   public function build() {
     $class = 'custom-bc-wrapper parent-groups-list-';
 
-
     if ($entity = \Drupal::request()->attributes->get('node')) {
       $class .= $entity->getEntityType()->id(). '-' . $entity->getType();
     }

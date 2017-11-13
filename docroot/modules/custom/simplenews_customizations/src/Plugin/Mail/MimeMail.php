@@ -83,6 +83,8 @@ class MimeMail extends BaseMimeMail {
     ];
 
     $body = \Drupal::service('renderer')->renderRoot($body);
+    $emogrifier = new \Pelago\Emogrifier($body);
+    $body = $emogrifier->emogrify();
 
     $from = CustomMimeMailFormatHelper::mimeMailAddress($from);
     $mail = CustomMimeMailFormatHelper::mimeMailHtmlBody($body, $subject, $plain, $plaintext, $attachments);

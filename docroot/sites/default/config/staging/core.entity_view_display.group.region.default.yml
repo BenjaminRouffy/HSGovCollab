@@ -45,15 +45,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_pin_items:
-    weight: 3
-    label: hidden
-    settings:
-      view_mode: private_content
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
-    region: content
   field_summary:
     weight: 0
     label: hidden
@@ -73,6 +64,7 @@ hidden:
   field_label: true
   field_number_of_objects: true
   field_objects_icon: true
+  field_pin_items: true
   field_region_icon: true
   field_time_line: true
   label: true

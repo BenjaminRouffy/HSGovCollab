@@ -1,0 +1,152 @@
+diff --git a/simplenews.module b/simplenews.module
+index 8f74742..07dbe88 100644
+--- a/simplenews.module
++++ b/simplenews.module
+@@ -462,8 +462,6 @@ function simplenews_user_login(UserInterface $account) {
+  * @see simplenews_user_insert()
+  */
+ function simplenews_user_presave(UserInterface $account) {
+-  $syncing = &drupal_static(__FUNCTION__, FALSE);
+-
+   // Don't do anything if the user has no email.
+   if (!$account->getEmail()) {
+     return;
+@@ -474,7 +472,7 @@ function simplenews_user_presave(UserInterface $account) {
+     simplenews_subscriber_load_by_mail($account->getEmail()) :
+     simplenews_subscriber_load_by_uid($account->id());
+   if ($subscriber && !$subscriber->isSyncing()) {
+-    $syncing = TRUE;
++    $subscriber->setSyncing();
+     // We only process existing accounts.
+     if (!$account->isNew()) {
+       // Update mail, status and language if they are changed.
+@@ -491,7 +489,7 @@ function simplenews_user_presave(UserInterface $account) {
+     }
+ 
+     $subscriber->save();
+-    $syncing = FALSE;
++    $subscriber->setSyncing(FALSE);
+   }
+ }
+ 
+diff --git a/src/Entity/Subscriber.php b/src/Entity/Subscriber.php
+index 485dcff..c815ddb 100644
+--- a/src/Entity/Subscriber.php
++++ b/src/Entity/Subscriber.php
+@@ -175,6 +175,13 @@ class Subscriber extends ContentEntityBase implements SubscriberInterface {
+     return static::$syncing;
+   }
+ 
++  /**
++   * {@inheritdoc}
++   */
++  public function setSyncing($sync = TRUE) {
++    static::$syncing = $sync;
++  }
++
+   /**
+    * {@inheritdoc}
+    */
+@@ -274,7 +281,7 @@ class Subscriber extends ContentEntityBase implements SubscriberInterface {
+     parent::postSave($storage, $update);
+ 
+     // Copy values for shared fields to existing user.
+-    if (\Drupal::config('simplenews.settings')->get('subscriber.sync_fields') && $user = $this->getUser()) {
++    if (!static::$syncing === TRUE && \Drupal::config('simplenews.settings')->get('subscriber.sync_fields') && $user = $this->getUser()) {
+       static::$syncing = TRUE;
+       foreach ($this->getUserSharedFields($user) as $field_name) {
+         $user->set($field_name, $this->get($field_name)->getValue());
+diff --git a/src/SubscriberInterface.php b/src/SubscriberInterface.php
+index 246905a..a4bdec8 100644
+--- a/src/SubscriberInterface.php
++++ b/src/SubscriberInterface.php
+@@ -194,6 +194,14 @@ interface SubscriberInterface extends ContentEntityInterface {
+    */
+   public function isSyncing();
+ 
++  /**
++   * Sets whether the subscriber is syncing from/to the corresponding user.
++   *
++   * @param bool $sync
++   *   (optional) Whether the subscriber is syncing. Defaults to TRUE.
++   */
++  public function setSyncing($sync = TRUE);
++
+   /**
+    * Identifies configurable fields shared with a user.
+    *
+diff --git a/tests/src/Kernel/SimplenewsSynchronizeFieldsTest.php b/tests/src/Kernel/SimplenewsSynchronizeFieldsTest.php
+index 4a43173..47228c3 100644
+--- a/tests/src/Kernel/SimplenewsSynchronizeFieldsTest.php
++++ b/tests/src/Kernel/SimplenewsSynchronizeFieldsTest.php
+@@ -229,6 +229,70 @@ class SimplenewsSynchronizeFieldsTest extends KernelTestBase {
+     $this->assertEqual($subscriber->get('field_on_both')->value, 'foo');
+   }
+ 
++  /**
++   * Tests that recursion is prevented when a user is updated.
++   *
++   * If the synchronization between fields is active, whenever a user gets saved
++   * the related subscriber gets its fields updated and viceversa.
++   *
++   * This test covers a bug that happened when a user gets saved. The checks
++   * to prevent circular updates were not working correctly if the user entity
++   * is the one being saved first.
++   * The bug appeared when trying to use the AddRoleUser or RemoveRoleUser
++   * actions on users with subscriptions.
++   *
++   * @see \Drupal\user\Plugin\Action\AddRoleUser
++   * @see \Drupal\user\Plugin\Action\RemoveRoleUser
++   */
++  public function testUserRecursionPrevention() {
++    // Create a subscriber.
++    /** @var \Drupal\simplenews\Entity\Subscriber $subscriber */
++    $subscriber = Subscriber::create([
++      'mail' => 'user@example.com',
++    ]);
++    $subscriber->save();
++
++    // Create a user with same email.
++    /** @var \Drupal\user\Entity\User $user */
++    $user = User::create([
++      'name' => 'user',
++      'mail' => 'user@example.com',
++      'preferred_langcode' => 'fr',
++    ]);
++    $user->save();
++
++    // Load the user, so that the static cache in the storage gets populated.
++    $user = User::load($user->id());
++
++    // Replicate the behaviour of two actions mentioned. The user entity gets
++    // cloned and set in the original property. This will prevent a call to
++    // ContentEntityStorageBase::loadUnchanged(), so the user entity available
++    // in the static cache is the same object being used here.
++    // @see \Drupal\user\Plugin\Action\AddRoleUser::execute()
++    // @see \Drupal\user\Plugin\Action\RemoveRoleUser::execute()
++    // @see \Drupal\Core\Entity\ContentEntityStorageBase::loadUnchanged()
++    $user->original = clone $user;
++
++    // Make a change to the user.
++    $user->set('preferred_langcode', 'en');
++    // Save the user. This will invoke simplenews_user_presave(), which will
++    // sync the fields on the related subscriber entity and save it.
++    // On post save of the subscriber entity, the user fields should be updated,
++    // but not in this case since the updates are already coming from the user.
++    // If this is not prevented, the user will be loaded (hitting the static
++    // cache) and then saved again. Then, the user object, which is still the
++    // same from the original request, will be modified during the
++    // EntityStorageBase::doPostSave() method.
++    // At this point the initial user presave will continue, but the entity
++    // "original" property has been unset and a critical error will be thrown.
++    // @see \Drupal\Core\Entity\EntityStorageBase::doPostSave()
++    // @see \Drupal\Core\Entity\ContentEntityStorageBase::doPreSave()
++    $user->save();
++
++    // Assert that the field has been synced properly.
++    $this->assertEquals($subscriber->getLangcode(), 'en');
++  }
++
+   /**
+    * Creates and saves a field storage and instance.
+    *

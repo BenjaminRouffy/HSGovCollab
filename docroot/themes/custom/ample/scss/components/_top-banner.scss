@@ -779,6 +779,14 @@
 .group-link-collapsible-wrapper {
   text-align: center;
   box-shadow: 0 3px 4px rgba($black, .07) inset;
+
+  + .top-banner-region {
+    margin-top: 50px;
+
+    @include media-q(min, 768) {
+      margin-top: 100px;
+    }
+  }
 }
 
 .group-link-collapsible {

@@ -114,7 +114,7 @@ class GroupAdminFilter extends FilterPluginBase {
             ->getGroupSubgroups($group_id);
 
           if (!empty($subgroups)) {
-            $member_gids += array_keys($subgroups);
+            $member_gids = array_merge($member_gids,  array_keys($subgroups));
           }
         }
       }

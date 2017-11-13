@@ -1,0 +1,113 @@
+// Slider inside of facet element
+
+.block-facet {
+  .ui-slider,
+  .ui-slider-float {
+    border: 0;
+    background: $grey-medium;
+
+    .ui-slider-tip,
+    .ui-slider-tip-label {
+
+    }
+
+    .ui-slider-range {
+      border: 0;
+      background: $red;
+    }
+
+    // Range line
+
+    // Hide default lines
+    .ui-slider-line {
+      display: none;
+    }
+
+  }
+
+  // Range circles
+  .facet-slider.ui-slider-horizontal {
+    height: .2em;
+    font-family: $oswald;
+
+    .ui-slider-handle {
+      top: -.5em;
+      border-radius: 50%;
+      background: $navy-dark;
+      border: 0;
+
+      + .ui-slider-handle {
+        background: $navy-dark;
+      }
+
+      &.ui-state-focus,
+      &.ui-state-hover,
+      &.ui-state-active {
+        .ui-slider-tip {
+          border: 0;
+          top: auto;
+          bottom: 2.3em;
+          left: 50%;
+          transform: translateX(-50%);
+          box-shadow: 0 0 8px rgba($black, .1);
+        }
+      }
+    }
+
+    .ui-slider-handle:first-of-type {
+      .ui-slider-tip {
+        bottom: -5em;
+
+        &::after {
+          top: -10px;
+          bottom: 0;
+          border-bottom-color: $navy-dark;
+          border-top-color: transparent;
+        }
+      }
+    }
+
+    .ui-slider-tip {
+      background: $navy-dark;
+      color: #fff;
+      height: auto;
+      width: auto;
+      letter-spacing: .05em;
+      border: 0;
+      padding: 10px;
+      font-size: 11px;
+      line-height: 1.2;
+      top: auto;
+      bottom: 2.3em;
+      left: 50%;
+      margin: 0;
+      transform: translateX(-50%);
+
+      &::after {
+        border-top-color: $navy-dark;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .ui-slider-pips {
+      [class*=ui-slider-pip-initial] {
+        color: $navy-dark;
+      }
+    }
+  }
+
+  .ui-slider-pips [class*=ui-slider-pip-initial] {
+    color: #999;
+    font-weight: normal;
+  }
+
+  .ui-slider-pips .ui-slider-pip-selected-2,
+  .ui-slider-pips [class*=ui-slider-pip-selected],
+  .ui-slider-pips:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label {
+    color: $navy-dark;
+    font-weight: normal;
+  }
+}

@@ -11,6 +11,7 @@ dependencies:
     - field.field.group.project.field_geographical_object
     - field.field.group.project.field_join_block
     - field.field.group.project.field_knowledge_vault
+    - field.field.group.project.field_label_date
     - field.field.group.project.field_label_end_date
     - field.field.group.project.field_pin_items
     - field.field.group.project.field_priority
@@ -39,6 +40,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
+  field_date:
+    type: datetime_default
+    weight: 9
+    region: content
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
   field_end_date:
     weight: 7
     label: hidden
@@ -55,6 +65,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_label_date:
+    weight: 8
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_label_end_date:
     weight: 6
@@ -101,7 +119,6 @@ hidden:
   changed: true
   created: true
   field_based_on: true
-  field_date: true
   field_faq: true
   field_geographical_object: true
   field_knowledge_vault: true

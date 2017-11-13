@@ -1,21 +1,21 @@
-uuid: c8f7cd90-08ab-464a-a258-c821ac9cff04
+uuid: 1ac81430-a4cb-47ee-98ea-f7d6d4543150
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group.field_label_end_date
+    - field.storage.group.field_label_date
     - group.type.project
-id: group.project.field_label_end_date
-field_name: field_label_end_date
+id: group.project.field_label_date
+field_name: field_label_date
 entity_type: group
 bundle: project
-label: 'Label end date'
+label: 'Label date'
 description: ''
 required: false
 translatable: true
 default_value:
   -
-    value: 'End date:'
+    value: 'Start date:'
 default_value_callback: ''
 settings: {  }
 field_type: string

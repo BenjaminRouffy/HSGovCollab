@@ -10,6 +10,7 @@ dependencies:
   module:
     - ctools
     - ctools_block
+    - group_customization
     - group_dashboard
     - panels
     - views
@@ -36,7 +37,7 @@ variant_settings:
       label_display: '0'
       view_mode: based_on
       region: dashboard_sidebar
-      weight: 0
+      weight: -2
       uuid: 992afdc3-6d72-40b5-88e2-07ea7ac5137d
       context_mapping:
         entity: group
@@ -48,7 +49,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: dashboard_sidebar
-      weight: -1
+      weight: -3
       uuid: 204fbea1-b82a-4476-9e9b-fbc686364190
       context_mapping: {  }
     1d2e2ef3-c2f2-437c-bab6-a1f3cb3fca08:
@@ -125,6 +126,15 @@ variant_settings:
       uuid: 47e32060-2db6-4527-90c3-e08cec0c1e9e
       context_mapping:
         entity: group
+    ee7feb4d-c077-4271-a69a-d0c9bf3e27aa:
+      id: parent_groups_block
+      label: 'Parent groups block'
+      provider: group_customization
+      label_display: '0'
+      region: dashboard_sidebar
+      weight: -4
+      uuid: ee7feb4d-c077-4271-a69a-d0c9bf3e27aa
+      context_mapping: {  }
   id: panels_variant
   uuid: 3ec12e44-918b-41ea-bf67-738577a6963e
   label: null

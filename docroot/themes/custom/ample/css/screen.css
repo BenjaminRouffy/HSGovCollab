@@ -2722,7 +2722,8 @@ body:not(.group):not(.page-search) .top-banner-region {
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.1) inset, 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
-#block-ample-local-tasks + .custom-bc-wrapper {
+.group-country #block-ample-local-tasks + .custom-bc-wrapper,
+.group-country_protected #block-ample-local-tasks + .custom-bc-wrapper {
   top: 80px;
 }
 

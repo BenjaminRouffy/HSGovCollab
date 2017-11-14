@@ -3419,6 +3419,7 @@ body:not(.group):not(.page-search) .top-banner-region {
 .related-docs li {
   cursor: default;
   position: relative;
+  list-style: none;
 }
 
 .related-docs article {
@@ -5691,6 +5692,29 @@ body:not(.group):not(.page-search) .top-banner-region {
 .group-members a:before {
   content: '';
   display: none;
+}
+
+.content .related-docs {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid #e9ecee;
+}
+
+.content .related-docs li {
+  margin-top: 0;
+}
+
+.content .related-docs h4 {
+  font-size: 1.05rem;
+  letter-spacing: .5px;
+  line-height: 22px;
+  margin: 0 0 10px 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.content .related-docs a {
+  font-size: 0.875rem;
 }
 
 form {

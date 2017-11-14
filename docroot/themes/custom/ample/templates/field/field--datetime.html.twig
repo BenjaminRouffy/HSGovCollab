@@ -1,0 +1,19 @@
+{% spaceless %}
+  {% if multiple %}
+    <div{{ attributes }}>
+      {% if not label_hidden %}
+        {{ label }}
+      {% endif %}
+      {% for item in items %}
+        <div{{ item.attributes }}>{{ item.content }}</div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      {% if not label_hidden %}
+        {{ label }}
+      {% endif %}
+      {{ item.content }}
+    {% endfor %}
+  {% endif %}
+{% endspaceless %}

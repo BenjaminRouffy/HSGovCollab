@@ -604,8 +604,8 @@
 
   Drupal.behaviors.searchFilterAccordion = {
     attach: function (context, settings) {
-      var $facetBox = $('.block-facet--checkbox, .block-facet--datebasic', context);
-      var $facetCheckboxList = $facetBox.children('ul');
+      var $facetBox = $('.block-facet', context);
+      var $facetCheckboxList = $facetBox.children('.facet-items');
 
       $facetBox.on('click', 'h2', function () {
         var $this = $(this);
@@ -614,11 +614,11 @@
           $facetBox.removeAttr('expanded');
           $this.parent().attr('expanded', '');
           $facetCheckboxList.slideUp();
-          $this.siblings('ul').slideDown();
+          $this.siblings('.facet-items').slideDown();
         }
         else {
           $facetBox.removeAttr('expanded');
-          $this.siblings('ul').slideUp();
+          $this.siblings('.facet-items').slideUp();
         }
       });
 
@@ -671,14 +671,14 @@
 
   Drupal.behaviors.contactExpand = {
     attach: function (context) {
-      var $contactCompact = $('.compact-view', context);
-      var $contactCompactMain = $('.compact-view-main', context);
+      var $contactCompact = $('.compact-view', context),
+        $contactCompactMain = $('.compact-view-main', context);
 
       var minHeight = $contactCompactMain.map(function () {
         return $(this).height();
       }).get();
 
-      if (minHeight.length == 1) minHeight.push(100);
+      if (minHeight.length === 1) minHeight.push(100);
 
       var minHeightVal = Math.min.apply(Math, minHeight);
 
@@ -687,7 +687,7 @@
           var $self = $(this);
 
           if ($self.height() > minHeightVal) {
-            var initHeight = $self.height();
+            var initHeight = $self.outerHeight();
 
             $self.css({
               maxHeight: Math.min.apply(this, minHeight)

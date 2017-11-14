@@ -1,3 +1,7 @@
+#block-ample-local-tasks + .custom-bc-wrapper {
+  top: 80px;
+}
+
 .custom-bc-wrapper {
   font-family: $oswald;
 
@@ -23,13 +27,21 @@
     }
   }
 
-  .toolbar-vertical.group-country & {
-    position: static;
-    background: $red;
+  .toolbar-fixed.toolbar-vertical.group-country & {
+    //position: static;
+    //background: $navy;
+  }
+
+  .logged.group-country & {
+    @include media-q(max, 767) {
+      margin-top: 10px;
+      position: static;
+      background: $navy;
+    }
   }
 
   .toolbar-fixed.group-country & {
-    top: 100px;
+    top: 20px;
   }
 
   // News and events

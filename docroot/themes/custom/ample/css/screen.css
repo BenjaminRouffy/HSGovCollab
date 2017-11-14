@@ -2705,6 +2705,10 @@ body:not(.group):not(.page-search) .top-banner-region {
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.1) inset, 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
+#block-ample-local-tasks + .custom-bc-wrapper {
+  top: 80px;
+}
+
 .custom-bc-wrapper {
   font-family: Oswald, sans-serif;
 }
@@ -2733,13 +2737,16 @@ body:not(.group):not(.page-search) .top-banner-region {
   }
 }
 
-.toolbar-vertical.group-country .custom-bc-wrapper {
-  position: static;
-  background: #ea3a32;
+@media only screen and (max-width: 767px) {
+  .logged.group-country .custom-bc-wrapper {
+    margin-top: 10px;
+    position: static;
+    background: #4c7e96;
+  }
 }
 
 .toolbar-fixed.group-country .custom-bc-wrapper {
-  top: 100px;
+  top: 20px;
 }
 
 .node-news .custom-bc-wrapper,

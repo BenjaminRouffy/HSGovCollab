@@ -693,13 +693,19 @@ svg {
 
 .logged .dashboard-menu > div > ul > li:not(.expanded):last-child a {
   font-size: 0;
+  position: relative;
 }
 
-.logged .dashboard-menu > div > ul > li:not(.expanded):last-child a:after {
+.logged .dashboard-menu > div > ul > li:not(.expanded):last-child a::after {
   font-size: 1.75rem;
   content: 't';
   color: #4c7e96;
   text-transform: none;
+  right: 20px;
+}
+
+.logged .dashboard-menu > div > ul > li:not(.expanded):last-child a::before {
+  display: none;
 }
 
 .main-menu {
@@ -1470,6 +1476,8 @@ svg {
 
 .dashboard-sidebar.expanded-menu .dashboard-logo.big {
   display: block;
+  max-width: 80%;
+  margin: 10px auto 0;
 }
 
 .dashboard-sidebar.expanded-menu ul:not(.contextual-links) li a {
@@ -2638,6 +2646,16 @@ body:not(.group):not(.page-search) .top-banner-region {
 .group-link-collapsible-wrapper {
   text-align: center;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.07) inset;
+}
+
+.group-link-collapsible-wrapper + .top-banner-region {
+  margin-top: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+  .group-link-collapsible-wrapper + .top-banner-region {
+    margin-top: 100px;
+  }
 }
 
 .group-link-collapsible {
@@ -7339,6 +7357,10 @@ form .social_login iframe {
   box-shadow: none;
 }
 
+.profile-help .profile-help-collapsed .profile-help-info {
+  display: none;
+}
+
 .profile-help .profile-help-title h1 {
   font-size: 1.125rem;
   padding: 0;
@@ -7372,6 +7394,10 @@ form .social_login iframe {
   position: relative;
   text-align: center;
   overflow: hidden;
+}
+
+.profile-help .profile-help-bottom .ajax-progress {
+  display: none;
 }
 
 .profile-help .toggle-help {
@@ -7924,6 +7950,17 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .field--name-field-job-title,
 .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .paragraph-type-top {
   padding-right: 0;
+}
+
+@media only screen and (max-width: 479px) {
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .paragraph-type-top,
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .field--name-field-job-title,
+  .form-my-settings #edit-field-organisations-wrapper > .ajax-new-content .field--name-field-organisation,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .paragraph-type-top,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .field--name-field-job-title,
+  .form-my-settings #edit-field-skype-or-other-wrapper > .ajax-new-content .field--name-field-organisation {
+    padding: 0;
+  }
 }
 
 .ie9 .form-my-settings #edit-field-skype-or-other-wrapper .paragraphs-subform {
@@ -11121,6 +11158,20 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
       -ms-transform: translateX(50%);
           transform: translateX(50%);
   width: 1029px;
+  transition: margin-right .3s ease;
+  margin-right: -30px;
+}
+
+@media only screen and (min-width: 1281px) {
+  .logged .header-static .social-links {
+    margin-right: 40px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .logged .header-static .social-links {
+    margin-right: -20px;
+  }
 }
 
 .logged .header-static .social-links a {
@@ -11128,15 +11179,14 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   color: #4c7e96;
   display: inline-block;
   font-family: Oswald, sans-serif;
+
   margin-right: 30px;
   padding: 10px 2px 10px 20px;
+
+  padding: 10px 20px;
+
   transition: opacity .2s ease;
   vertical-align: top;
-}
-
-.logged .header-static .social-links a:before {
-  content: "j";
-  font-family: P4h, sans-serif;
 }
 
 .logged .header-static .social-links a:hover {
@@ -11197,8 +11247,15 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 }
 
 .toolbar-vertical .header-fixed .mobile-menu-wrapper {
-  height: calc(100% - 99px);
-  top: 99px;
+  height: calc(100% - 60px);
+  top: 60px;
+}
+
+@media only screen and (min-width: 610px) {
+  .toolbar-vertical .header-fixed .mobile-menu-wrapper {
+    height: calc(100% - 99px);
+    top: 99px;
+  }
 }
 
 .toolbar-vertical .mobile-menu-wrapper {
@@ -11915,6 +11972,11 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 .node-simplenews-issue .content-with-sidebar .content a {
   color: #ea3a32;
   text-decoration: none;
+}
+
+.node-simplenews-issue .content-with-sidebar .content .newsletter-bg a {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .node-simplenews-issue .content-with-sidebar .content article {
@@ -12958,7 +13020,7 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 }
 
 .marker-info .section-info path {
-  fill: #fff;
+  fill: #fff !important;
 }
 
 .marker-info .section-info h2,

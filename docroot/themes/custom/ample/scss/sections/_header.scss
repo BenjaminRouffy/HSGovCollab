@@ -179,21 +179,30 @@ header {
       text-align: right;
       transform: translateX(50%);
       width: 1029px;
+      transition: margin-right .3s ease;
+      margin-right: -30px;
+
+      @include media-q(min, 1281) {
+        margin-right: 40px;
+      }
+
+      @include media-q(min, 1600) {
+        margin-right: -20px;
+      }
 
       a {
         @include font-size(12.6);
         color: $navy;
         display: inline-block;
         font-family: $oswald;
-        margin-right: 30px;
-        padding: 10px 2px 10px 20px;
+        padding: 10px 20px;
         transition: opacity .2s ease;
         vertical-align: top;
 
-        &:before {
-          content: "j";
-          font-family: $p4h;
-        }
+        //&:before {
+        //  content: "j";
+        //  font-family: $p4h;
+        //}
 
         &:hover {
           background: rgba($navy, .08);
@@ -262,8 +271,13 @@ header {
   }
 
   .toolbar-vertical .header-fixed & {
-    height: calc(100% - 99px);
-    top: 99px;
+    height: calc(100% - 60px);
+    top: 60px;
+
+    @include media-q(min, 610) {
+      height: calc(100% - 99px);
+      top: 99px;
+    }
   }
 
   .toolbar-vertical & {

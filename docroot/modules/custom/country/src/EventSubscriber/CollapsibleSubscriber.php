@@ -33,7 +33,7 @@ class CollapsibleSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  static function getSubscribedEvents() {
+  public static function getSubscribedEvents() {
     $events[KernelEvents::RESPONSE] = ['onResponse'];
     return $events;
   }
@@ -43,12 +43,7 @@ class CollapsibleSubscriber implements EventSubscriberInterface {
    * dispatched.
    */
   public function onResponse(FilterResponseEvent $event) {
-    $response = $event->getResponse();
-    if (isset($this->userData->cookiesUpdate) && !empty($this->userData->cookiesUpdate)) {
-      foreach ($this->userData->cookiesUpdate as $item) {
-        $response->headers->setCookie($item);
-      }
-    }
+    // Nothing to do on response.
   }
 
 }

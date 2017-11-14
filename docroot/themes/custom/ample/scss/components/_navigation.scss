@@ -5,12 +5,18 @@
 
     > div > ul > li:not(.expanded):last-child a { // FUCK!!!
       font-size: 0;
+      position: relative;
 
-      &:after {
+      &::after {
         @include font-size(28);
         content: 't';
         color: $navy;
         text-transform: none;
+        right: 20px;
+      }
+
+      &::before {
+        display: none;
       }
     }
   }

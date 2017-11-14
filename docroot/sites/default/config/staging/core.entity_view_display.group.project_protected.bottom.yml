@@ -20,24 +20,14 @@ dependencies:
     - field.field.group.project_protected.field_time_line
     - group.type.project_protected
   module:
-    - entity_reference_revisions
     - timeline
 id: group.project_protected.bottom
 targetEntityType: group
 bundle: project_protected
 mode: bottom
 content:
-  field_pin_items:
-    type: entity_reference_revisions_entity_view
-    weight: 0
-    region: content
-    label: hidden
-    settings:
-      view_mode: private_content
-      link: ''
-    third_party_settings: {  }
   field_time_line:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       view_mode: default
@@ -55,6 +45,7 @@ hidden:
   field_faq: true
   field_join_block: true
   field_knowledge_vault: true
+  field_pin_items: true
   field_priority: true
   field_product: true
   field_project_icon: true

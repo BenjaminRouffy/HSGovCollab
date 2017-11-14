@@ -472,7 +472,7 @@
   .group-country:not(.logged),
   .group-region:not(.logged) {
     .country-content-wrapper {
-      padding-top: 20px;
+      padding-top: 50px;
     }
   }
 }
@@ -676,6 +676,12 @@
   &.collapsed {
     overflow: hidden;
     max-height: 250px;
+
+    .image-text {
+      position: absolute;
+      top: 100%;
+      bottom: 0;
+    }
 
     @media screen and (min-width: 645px) {
       max-height: 120px;

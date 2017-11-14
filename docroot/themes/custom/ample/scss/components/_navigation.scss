@@ -509,8 +509,7 @@
     transition: border .4s ease;
     vertical-align: top;
 
-    .group-country &,
-    .group-country_protected {
+    .group-country & {
       &:first-child {
         a {
           font-weight: 700;
@@ -577,8 +576,7 @@
   }
 }
 
-.group-country,
-.group-country_protected {
+.group-country {
   .anchor-links {
     li:first-child a {
       line-height: 1;

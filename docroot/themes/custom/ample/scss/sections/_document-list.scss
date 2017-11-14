@@ -1,15 +1,18 @@
-.group-country .view-news-and-events {
-  margin-top: 40px;
+.group-country,
+.group-project  {
+  .view-news-and-events {
+    margin-top: 40px;
 
-  h1 {
-    @include font-size(42);
-    line-height: 1.14285714;
-  }
+    h1 {
+      @include font-size(42);
+      line-height: 1.14285714;
+    }
 
-  .document-teaser {
-    &:last-child {
-      border-bottom: 0;
-      margin-bottom: 0;
+    .document-teaser {
+      &:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
     }
   }
 }

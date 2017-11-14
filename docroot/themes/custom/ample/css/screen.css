@@ -11179,7 +11179,12 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   color: #4c7e96;
   display: inline-block;
   font-family: Oswald, sans-serif;
+
+  margin-right: 30px;
+  padding: 10px 2px 10px 20px;
+
   padding: 10px 20px;
+
   transition: opacity .2s ease;
   vertical-align: top;
 }
@@ -14341,6 +14346,23 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   .dashboard .content {
     padding: 0 20px;
   }
+}
+
+.group-country .view-news-and-events,
+.group-project .view-news-and-events {
+  margin-top: 40px;
+}
+
+.group-country .view-news-and-events h1,
+.group-project .view-news-and-events h1 {
+  font-size: 2.625rem;
+  line-height: 1.14285714;
+}
+
+.group-country .view-news-and-events .document-teaser:last-child,
+.group-project .view-news-and-events .document-teaser:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
 }
 
 .document-list {

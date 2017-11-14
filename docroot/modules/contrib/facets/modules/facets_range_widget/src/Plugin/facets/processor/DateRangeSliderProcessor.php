@@ -28,7 +28,10 @@ class DateRangeSliderProcessor extends RangeSliderProcessor {
     $widget = $facet->getWidgetInstance();
     $config = $widget->getConfiguration();
 
-    $results = $facet->getResults();
+    // Nothing to process if no results.
+    if (!$results = $facet->getResults()) {
+      return;
+    }
     ksort($results);
 
     if ($config['min_type'] == 'fixed') {

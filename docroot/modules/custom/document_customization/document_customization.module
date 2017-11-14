@@ -5,12 +5,17 @@
  */
 function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   $route = \Drupal::routeMatch()->getRouteName();
+  $account = Drupal::currentUser();
+  $group_permission_access = \Drupal::getContainer()
+    ->get('group_customization.group.permission');
+
   if ($form_id === 'node_document_form') {
     $current_them = \Drupal::service('theme.manager')->getActiveTheme();
     if ($current_them->getName() === 'ample') {
       // Hide organization field when user is using the ample theme.
       $form['field_organization']['#access'] = FALSE;
       $form['field_content_date']['#access'] = FALSE;
+      $form['field_add_event_in_group']['widget']['#required'] = TRUE;
 
       if (!empty($form['field_add_event_in_group']['widget']['#options'])) {
         foreach ($form['field_add_event_in_group']['widget']['#options'] as $key => $values) {
@@ -22,7 +27,9 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
               foreach ($values as $gid => $group_name) {
                 // Change the grouping for the options in add in group select list.
                 $group = Drupal::entityTypeManager()->getStorage('group')->load($gid);
-                if ($group) {
+                $access = $group_permission_access->checkAccessForFilter($group, $account, ['published']);
+
+                if ($group && $access->isAllowed()) {
                   $geo_object = array();
                   if ($group->hasField('field_geographical_object')) {
                     $geo_object = $group->get('field_geographical_object')->getValue();
@@ -52,7 +59,9 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
 
                         if (!empty($parent_groups)) {
                           $parent_group = $parent_groups[key($parent_groups)];
-                          if (isset($parent_group)) {
+                          $parent_access = $group_permission_access->checkAccessForFilter($parent_group, $account);
+
+                          if (isset($parent_group) && $parent_access->isAllowed()) {
                             $parent_label = $parent_group->get('label')->getValue();
                             if (!empty($parent_label) && isset($parent_label[0])) {
                               $parent_label = $parent_label[0]['value'];
@@ -118,6 +127,13 @@ function document_customization_custom_validate(&$form, \Drupal\Core\Form\FormSt
     }
     else {
       $form_state->setError($form, t('Document link or Document file field shouldn\'t be empty.'));
+    }
+
+    $current_theme = \Drupal::service('theme.manager')->getActiveTheme();
+    $selected_group = $form_state->getValue('field_add_event_in_group');
+
+    if ($current_theme->getName() === 'ample' && empty($selected_group[0]['target_id'])) {
+      $form_state->setError($form, t('P4H Area is required.'));
     }
   }
 }

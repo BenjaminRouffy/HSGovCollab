@@ -14286,16 +14286,19 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   }
 }
 
-.group-country .view-news-and-events {
+.group-country .view-news-and-events,
+.group-project .view-news-and-events {
   margin-top: 40px;
 }
 
-.group-country .view-news-and-events h1 {
+.group-country .view-news-and-events h1,
+.group-project .view-news-and-events h1 {
   font-size: 2.625rem;
   line-height: 1.14285714;
 }
 
-.group-country .view-news-and-events .document-teaser:last-child {
+.group-country .view-news-and-events .document-teaser:last-child,
+.group-project .view-news-and-events .document-teaser:last-child {
   border-bottom: 0;
   margin-bottom: 0;
 }

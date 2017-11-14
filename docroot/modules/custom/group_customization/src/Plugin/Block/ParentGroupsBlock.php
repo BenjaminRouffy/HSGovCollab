@@ -31,6 +31,11 @@ class ParentGroupsBlock extends BlockBase {
   public function build() {
     $class = 'custom-bc-wrapper parent-groups-list-';
 
+    // Don't show block for anon.
+    if (!in_array('authenticated', \Drupal::currentUser()->getRoles())) {
+      return [];
+    }
+
     if ($entity = \Drupal::request()->attributes->get('node')) {
       $class .= $entity->getEntityType()->id(). '-' . $entity->getType();
     }

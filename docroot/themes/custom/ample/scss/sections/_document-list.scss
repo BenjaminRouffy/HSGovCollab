@@ -1,3 +1,22 @@
+.group-country,
+.group-project  {
+  .view-news-and-events {
+    margin-top: 40px;
+
+    h1 {
+      @include font-size(42);
+      line-height: 1.14285714;
+    }
+
+    .document-teaser {
+      &:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
 .document-list {
   background: $white;
   margin: 50px auto 30px;

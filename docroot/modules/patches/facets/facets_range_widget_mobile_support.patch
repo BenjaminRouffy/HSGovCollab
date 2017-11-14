@@ -1,0 +1,12 @@
+diff --git a/modules/facets_range_widget/facets_range_widget.libraries.yml b/modules/facets_range_widget/facets_range_widget.libraries.yml
+index 38cf08c..459fe9b 100644
+--- a/modules/facets_range_widget/facets_range_widget.libraries.yml
++++ b/modules/facets_range_widget/facets_range_widget.libraries.yml
+@@ -12,6 +12,7 @@ jquery.ui.slider.pips:
+       /libraries/jquery-ui-slider-pips/jquery-ui-slider-pips.min.css: { minified: true }
+   dependencies:
+     - core/jquery.ui.slider
++    - core/jquery.ui.touch-punch
+ 
+ slider:
+   version: VERSION

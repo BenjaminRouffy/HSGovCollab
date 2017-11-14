@@ -1,0 +1,12 @@
+diff --git a/src/Plugin/facets/facet_source/SearchApiDisplay.php b/src/Plugin/facets/facet_source/SearchApiDisplay.php
+index 7e99553..5222f98 100644
+--- a/src/Plugin/facets/facet_source/SearchApiDisplay.php
++++ b/src/Plugin/facets/facet_source/SearchApiDisplay.php
+@@ -278,6 +278,7 @@ class SearchApiDisplay extends FacetSourcePluginBase implements SearchApiFacetSo
+     switch ($data_type_plugin_id) {
+       case 'date':
+         $query_types['date'] = 'search_api_date';
++        $query_types['range'] = 'search_api_range';
+         break;
+ 
+       case 'decimal':

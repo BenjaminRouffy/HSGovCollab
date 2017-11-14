@@ -442,8 +442,7 @@
   }
 }
 
-.block-facet--checkbox,
-.block-facet--datebasic {
+.block-facet {
   margin-bottom: 20px;
 
   h2 {
@@ -459,12 +458,16 @@
     }
   }
 
-  > ul {
+  .facet-items {
     background: $white;
     box-shadow: 0 0 6px rgba($black, .09);
     display: none;
-    margin: 0;
     padding: 30px 20px;
+
+    > ul {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   li {
@@ -504,13 +507,12 @@
 }
 
 @media screen and (min-width: 992px) {
-  .block-facet--checkbox,
-  .block-facet--datebasic {
+  .block-facet {
     display: block !important;
   }
 }
 
-@include breakpoint-for('.block-facet--checkbox, .block-facet--datebasic', (to: laptop-small)) {
+@include breakpoint-for('.block-facet', (to: laptop-small)) {
   display: none;
 }
 

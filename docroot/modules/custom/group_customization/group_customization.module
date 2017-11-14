@@ -5,6 +5,7 @@
  * Group customization module main file.
  */
 
+use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\ContentEntityType;
@@ -229,5 +230,28 @@ function group_customization_query_alter(AlterableInterface $query) {
 
     $query->addField('group_content_field_data', 'entity_id');
     $query->groupBy('entity_id');
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Set custom labels for collaboration.
+ */
+function group_customization_preprocess_field(&$variables) {
+  $element = $variables['element'];
+  $entity = $element['#object'];
+  $field_name = $element['#field_name'];
+
+  if (strpos($field_name, 'field_') === 0) {
+    $label_field_name = 'field_label_' .substr($field_name,6);
+
+    if ($entity->hasField($label_field_name)) {
+      $value = $entity->get($label_field_name)->getValue();
+
+      if (!empty($value[0]['value'])) {
+        $variables['label'] = $value[0]['value'];
+      }
+    }
   }
 }

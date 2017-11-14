@@ -28,13 +28,30 @@ variant_settings:
       uuid: 556e3d6d-af8b-47c0-acf6-2b09a583234d
       context_mapping:
         entity: node
+    49af3c98-ca09-41bc-8617-cfa4dee6a35d:
+      id: 'entity_field:node:field_documents'
+      label: 'Related documents'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: default
+        third_party_settings: {  }
+        weight: 0
+      region: left_sidebar
+      weight: -9
+      uuid: 49af3c98-ca09-41bc-8617-cfa4dee6a35d
+      context_mapping:
+        entity: node
     27403746-8d8c-4494-98cb-e1060ed5ad17:
       id: next_previous_access_block
       label: 'Next Previous Access Block'
       provider: prev_next_access
       label_display: '0'
       region: left_sidebar
-      weight: -9
+      weight: -8
       uuid: 27403746-8d8c-4494-98cb-e1060ed5ad17
       context_mapping: {  }
     f178750d-7143-4fcc-8e3f-ecdad06d4168:

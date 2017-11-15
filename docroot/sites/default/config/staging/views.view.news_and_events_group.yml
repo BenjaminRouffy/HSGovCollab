@@ -3001,7 +3001,7 @@ display:
           offset: 0
       use_more: true
       use_more_always: true
-      use_more_text: 'Read more news'
+      use_more_text: 'Read more'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
       block_hide_empty: true
@@ -5720,7 +5720,7 @@ display:
           offset: 0
       use_more: true
       use_more_always: true
-      use_more_text: 'Read more news'
+      use_more_text: 'Read more'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
       block_hide_empty: true
@@ -7797,7 +7797,7 @@ display:
             offset: 0
             offset_label: Offset
       use_more: true
-      use_more_always: false
+      use_more_always: true
       use_more_text: 'Read more'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'

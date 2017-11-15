@@ -18,10 +18,6 @@
           </div>
         {% endif %}
 
-        {% if content.field_country_manager|field_value %}
-          {{ content.field_country_manager }}
-        {% endif %}
-
         {% if content.field_project_manager|field_value %}
           {{ content.field_project_manager }}
         {% endif %}
@@ -32,6 +28,10 @@
 
         {% if content.field_product_manager|field_value %}
           {{ content.field_product_manager }}
+        {% endif %}
+
+        {% if content.field_country_manager|field_value %}
+          {{ content.field_country_manager }}
         {% endif %}
 
         {% if content.field_skype_or_other|field_value %}

@@ -1,19 +1,20 @@
 {% set plainBody %}
   {{ content.body|field_value }}
 {% endset %}
+<a href="{{ url }}" rel="bookmark">
+  <div class="timeline-content-item documents">
+    {{ content.field_content_date|field_value }}
 
-<div class="timeline-content-item documents">
-  {{ content.field_content_date|field_value }}
+    <h4 role="heading">
+      {{ label }}
+    </h4>
 
-  <h4 role="heading">
-    {{ label }}
-  </h4>
+    {% if content.body|field_value %}
+      <p>
+        {{ plainBody|striptags }}
+      </p>
+    {% endif %}
 
-  {% if content.body|field_value %}
-    <p>
-      {{ plainBody|striptags }}
-    </p>
-  {% endif %}
-
-  {{ content.field_document|field_value }}
-</div>
+    {{ content.field_document|field_value }}
+  </div>
+</a>

@@ -39,9 +39,18 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_end_date:
+  field_date:
+    type: datetime_default
     weight: 6
-    label: hidden
+    region: content
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
+  field_end_date:
+    weight: 7
+    label: inline
     settings:
       timezone_override: ''
       format_type: time_line
@@ -57,16 +66,16 @@ content:
     type: entity_reference_label
     region: content
   field_label_date:
-    weight: 7
-    label: above
+    weight: 8
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_label_end_date:
-    weight: 8
-    label: above
+    weight: 9
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -109,7 +118,6 @@ hidden:
   changed: true
   created: true
   field_based_on: true
-  field_date: true
   field_faq: true
   field_knowledge_vault: true
   field_pin_items: true

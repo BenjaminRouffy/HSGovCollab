@@ -14,8 +14,8 @@
   {% endif %}
   <div class="title-wrapper" data-anchor-id="view-{{ dom_id }}">
     <div class="contribute-links">
-      <a href="{{ path('node.add', {'node_type':'news'}) }}">{{ "Contribute news"|t }}</a>
-      <a href="{{ path('node.add', {'node_type':'event'}) }}">{{ "Contribute event"|t }}</a>
+      <a href="{{ path('node.add', {'node_type':'news'}) }}" class="contribute-link">{{ "Contribute news"|t }}</a>
+      <a href="{{ path('node.add', {'node_type':'event'}) }}" class="contribute-link">{{ "Contribute event"|t }}</a>
     </div>
     {{ title_prefix }}
     <h1 role="heading" class="anchor-title" id="small-title">

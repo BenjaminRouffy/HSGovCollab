@@ -1,0 +1,19 @@
+uuid: 569409ca-f591-45f0-951e-8cbeb8dc3a03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_label_end_date
+    - group.type.project_protected
+id: group.project_protected.field_label_end_date
+field_name: field_label_end_date
+entity_type: group
+bundle: project_protected
+label: 'Label end date'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -2861,6 +2861,8 @@ form {
 
       .dropbutton-action {
         text-align: left;
+        display: inline-block;
+        margin: 0 5px;
 
         .form-submit {
           background: $navy;
@@ -2897,6 +2899,24 @@ form {
           }
         }
       }
+    }
+  }
+
+  // update inner indent from the right side of widget
+  .field--widget-entity-reference-paragraphs .dropbutton-widget {
+    padding-right: 10px;
+  }
+
+  // Hide toggle button
+  .dropbutton-toggle {
+    display: none;
+  }
+
+  // Error message for the Link field
+  .js-form-type-url {
+    label.error {
+      top: 5px;
+      right: 40px;
     }
   }
 }

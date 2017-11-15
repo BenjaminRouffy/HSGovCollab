@@ -50,16 +50,16 @@ third_party_settings:
       label: 'Tabs panel'
     group_summary:
       children:
+        - label
+        - field_priority
+        - field_geographical_object
+        - field_project_icon
+        - field_date
         - field_label_end_date
         - field_end_date
         - langcode
         - translation
         - path
-        - field_project_icon
-        - field_priority
-        - field_geographical_object
-        - label
-        - field_date
       parent_name: group_tabs_panel
       weight: 1
       format_type: tab
@@ -177,13 +177,13 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 12
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_end_date:
-    weight: 4
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -201,7 +201,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_geographical_object:
-    weight: 10
+    weight: 13
     settings:
       display_label: true
     third_party_settings: {  }
@@ -223,7 +223,7 @@ content:
     type: group_select
     region: content
   field_label_end_date:
-    weight: 3
+    weight: 16
     settings:
       size: 60
       placeholder: ''
@@ -243,7 +243,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_priority:
-    weight: 9
+    weight: 12
     settings:
       display_label: true
     third_party_settings: {  }
@@ -256,7 +256,7 @@ content:
     type: group_select
     region: content
   field_project_icon:
-    weight: 8
+    weight: 14
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -306,18 +306,18 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 5
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 7
+    weight: 20
     settings: {  }
     third_party_settings: {  }
     region: content
   translation:
-    weight: 6
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }

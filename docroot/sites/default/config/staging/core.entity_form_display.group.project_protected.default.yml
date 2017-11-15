@@ -48,13 +48,13 @@ third_party_settings:
       label: 'Tabs panel'
     group_summary:
       children:
-        - field_priority
         - label
+        - field_priority
+        - field_project_icon
         - field_date
         - field_end_date
         - langcode
         - path
-        - field_project_icon
       parent_name: group_tabs_panel
       weight: 8
       format_type: tab
@@ -171,13 +171,13 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 25
+    weight: 27
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_end_date:
-    weight: 26
+    weight: 28
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -222,7 +222,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_priority:
-    weight: 23
+    weight: 25
     settings:
       display_label: true
     third_party_settings: {  }
@@ -235,7 +235,7 @@ content:
     type: group_select
     region: content
   field_project_icon:
-    weight: 29
+    weight: 26
     settings:
       entity_browser: browse_files
       field_widget_edit: true
@@ -285,13 +285,13 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 27
+    weight: 29
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 28
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -56,7 +56,7 @@ class ParentGroupsBlock extends BlockBase {
       ->condition('gc.type', $plugin_ids, 'IN')
       ->condition('gc.entity_id', $entity->id())
       ->execute()
-      ->fetchAllAssoc('id');
+      ->fetchAll();
 
     $parents = [];
 
@@ -103,21 +103,23 @@ class ParentGroupsBlock extends BlockBase {
           $elements[$id]['#suffix'] = '</div>';
         }
       }
+
+      return $elements + [
+          '#type' => 'container',
+          '#attributes' => [
+            'class' => [
+              $class,
+            ]
+          ],
+          '#cache' => [
+            'contexts' => [
+              'route',
+            ],
+          ],
+        ];
     }
 
-    return $elements + [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => [
-            $class,
-          ]
-        ],
-        '#cache' => [
-          'contexts' => [
-            'route',
-          ],
-        ],
-      ];
+    return [];
   }
 
 }

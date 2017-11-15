@@ -8,6 +8,8 @@
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Url;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\datetime_range\Plugin\Field\FieldType\DateRangeFieldItemList;
@@ -24,11 +26,11 @@ use Drupal\Core\Form\FormStateInterface;
  */
 function events_views_data_alter(array &$data) {
   if (isset($data['node'])) {
-    // Add the current company computed field to Views.
-    $data['node']['color'] = [
-      'title' => t('Random color'),
+    // Add the event color computed field to Views.
+    $data['node']['event_color'] = [
+      'title' => t('Event color'),
       'field' => [
-        'id' => 'events_random_color',
+        'id' => 'events_view_event_color',
       ],
     ];
   }
@@ -93,6 +95,36 @@ function events_node_view_alter(array &$build, EntityInterface $entity, EntityVi
     if (!$check_by_group->check($account, $groups)) {
       $build['like_and_dislike']['#access'] = FALSE;
     }
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ */
+function events_field_formatter_info_alter(array &$info) {
+  $info['color_field_formatter_text']['field_types'][] = 'event_color';
+}
+
+/**
+ * Implements hook_entity_bundle_field_info().
+ */
+function events_entity_bundle_field_info(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
+  if ($entity_type->id() == 'node' && $bundle == 'event') {
+    $fields = [];
+
+    // Add a field that holds parent group color.
+    $fields['event_color'] = BaseFieldDefinition::create('event_color')
+      ->setName('event_color')
+      ->setLabel(t('Event Color'))
+      ->setComputed(TRUE)
+      ->setClass('\Drupal\events\EventColorItemList')
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'region' => 'hidden',
+      ]);
+
+    return $fields;
   }
 }
 

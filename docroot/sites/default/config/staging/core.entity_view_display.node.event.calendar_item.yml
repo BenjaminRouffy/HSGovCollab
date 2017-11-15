@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.event.field_documents
     - field.field.node.event.field_event_author
     - field.field.node.event.field_event_country_content
+    - field.field.node.event.field_event_file
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_slider
     - field.field.node.event.field_image
@@ -26,6 +27,7 @@ dependencies:
     - field.field.node.event.field_timezone
     - node.type.event
   module:
+    - color_field
     - events
     - user
 id: node.event.calendar_item
@@ -33,6 +35,15 @@ targetEntityType: node
 bundle: event
 mode: calendar_item
 content:
+  event_color:
+    type: color_field_formatter_text
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      format: hex
+      opacity: '0'
+    third_party_settings: {  }
   field_date:
     weight: 0
     label: hidden

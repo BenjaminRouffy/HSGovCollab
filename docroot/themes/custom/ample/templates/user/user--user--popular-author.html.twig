@@ -1,21 +1,22 @@
 {% set user_link = url('page_manager.page_view_blog_list_page', {'uid': user.id()}) %}
 <div class="popular-author">
   {% if content %}
-  <a href="{{ user_link }}" class="contact-link"></a>
-    <div class="user-icon">
-      {{ content.field_avatar }}
-    </div>
-    <h2 role="heading">
-      {% if content.field_first_name %}
-        {{ content.field_first_name }}
-      {% endif %}
-      {% if content.field_last_name %}
-        {{ content.field_last_name }}
-      {% endif %}
-      {% if content.field_organisation %}
-        <br>
-        {{ content.field_organisation }}
-      {% endif %}
-    </h2>
+    <a href="{{ user_link }}" class="contact-link">
+      <div class="user-icon">
+        {{ content.field_avatar }}
+      </div>
+      <h2 role="heading">
+        {% if content.field_first_name %}
+          {{ content.field_first_name }}
+        {% endif %}
+        {% if content.field_last_name %}
+          {{ content.field_last_name }}
+        {% endif %}
+        {% if content.field_organisation %}
+          <br>
+          {{ content.field_organisation }}
+        {% endif %}
+      </h2>
+    </a>
   {% endif %}
 </div>

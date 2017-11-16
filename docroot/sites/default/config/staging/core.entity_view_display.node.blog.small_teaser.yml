@@ -13,7 +13,7 @@ dependencies:
     - field.field.node.blog.field_image
     - field.field.node.blog.field_join_block
     - field.field.node.blog.field_tags
-    - image.style.65x65
+    - image.style.blog_list
     - node.type.blog
   module:
     - datetime
@@ -45,7 +45,7 @@ content:
     weight: 2
     label: hidden
     settings:
-      image_style: 65x65
+      image_style: blog_list
       image_link: ''
     third_party_settings: {  }
     type: image

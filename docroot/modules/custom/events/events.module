@@ -299,12 +299,15 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
                       case 'country':
                         $form['field_add_event_in_group']['widget']['#options']['Country'][$gid] = $group_name;
                         break;
+
                       case 'region':
                         $form['field_add_event_in_group']['widget']['#options']['Region'][$gid] = $group_name;
                         break;
+
                       case 'project':
                         $form['field_add_event_in_group']['widget']['#options']['Collaborations'][$gid] = $group_name;
                         break;
+
                       default:
                         break;
                     }
@@ -332,6 +335,7 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
                           }
                         }
                         break;
+
                       default:
                         $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $group_name;
                         break;
@@ -342,6 +346,16 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
             }
           }
         }
+
+        if (isset($form['field_add_event_in_group']['widget']['#options']['P4H Areas'])) {
+          $area_options['P4H Areas'] = $form['field_add_event_in_group']['widget']['#options']['P4H Areas'];
+          $empty_option['_none'] = $form['field_add_event_in_group']['widget']['#options']['_none'];
+          unset($form['field_add_event_in_group']['widget']['#options']['P4H Areas']);
+          unset($form['field_add_event_in_group']['widget']['#options']['_none']);
+          $clear_options = $form['field_add_event_in_group']['widget']['#options'];
+          $form['field_add_event_in_group']['widget']['#options'] = array_merge($empty_option, $area_options, $clear_options);
+        }
+
       }
 
       // Set custom page title.

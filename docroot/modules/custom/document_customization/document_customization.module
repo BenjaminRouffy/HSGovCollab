@@ -87,6 +87,16 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
             }
           }
         }
+
+        if (isset($form['field_add_event_in_group']['widget']['#options']['P4H Areas'])) {
+          $area_options['P4H Areas'] = $form['field_add_event_in_group']['widget']['#options']['P4H Areas'];
+          $empty_option['_none'] = $form['field_add_event_in_group']['widget']['#options']['_none'];
+          unset($form['field_add_event_in_group']['widget']['#options']['P4H Areas']);
+          unset($form['field_add_event_in_group']['widget']['#options']['_none']);
+          $clear_options = $form['field_add_event_in_group']['widget']['#options'];
+          $form['field_add_event_in_group']['widget']['#options'] = array_merge($empty_option, $area_options, $clear_options);
+        }
+
       }
     }
 

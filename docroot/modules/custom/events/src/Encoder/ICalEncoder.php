@@ -67,27 +67,20 @@ class ICalEncoder implements EncoderInterface, DecoderInterface {
         $field = $node->field_date->get($row['delta']);
 
         /** @var \Drupal\Core\Datetime\DrupalDateTime $start_date */
-
-        $start_date = $field->start_date;
-        $start_date = \Drupal::service('date.formatter')->format(
-          $start_date->getTimestamp(), 'custom', 'Y-m-d'
-        );
+        $start_date = new DrupalDateTime($field->start_date, 'UTC');
 
         /** @var \Drupal\Core\Datetime\DrupalDateTime $end_date */
-        $end_date = new DrupalDateTime($field->end_date);
-        $end_date = \Drupal::service('date.formatter')->format(
-          $end_date->getTimestamp(), 'custom', 'Y-m-d'
-        );
+        $end_date = new DrupalDateTime($field->end_date, 'UTC');
 
         $vEvent = new Event();
         $vEvent
           ->setDescription(\Drupal::url('entity.node.canonical', [
             'node' => $node->id(),
           ], ['absolute' => TRUE]))
+          ->setSummary($row['title'])
           ->setDtStart(new \DateTime($start_date))
-          ->setDtEnd(new \DateTime($end_date))
-          ->setNoTime(TRUE)
-          ->setSummary($row['title']);
+          ->setDtEnd((new \DateTime($end_date)))
+          ->setUseTimezone(TRUE);
         $this->vCalendar->addComponent($vEvent);
       }
 

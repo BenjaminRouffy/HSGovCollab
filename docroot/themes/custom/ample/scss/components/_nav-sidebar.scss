@@ -18,6 +18,10 @@
       padding-top: 79px;
     }
   }
+
+  ~ .dashboard-sidebar.expanded-menu .dashboard-logo.big {
+    margin-top: 10px;
+  }
 }
 
 // Sidebar menu
@@ -55,7 +59,7 @@
       padding: 27px 10px;
 
       @include media-q(min, 1201) {
-        height: 150px;
+        height: 151px;
         padding-bottom: 0;
       }
     }
@@ -293,7 +297,7 @@
       &.big {
         display: block;
         max-width: 80%;
-        margin: 10px auto 0;
+        margin: -5px auto 0;
       }
     }
 

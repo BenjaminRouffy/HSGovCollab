@@ -182,6 +182,68 @@
   }
 }
 
+.wrapper-content-tags-cloud {
+  .js-form-type-select.js-form-item-content-tags-cloud {
+    display: none;
+  }
+
+  .content_tags_cloud {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .content-tags-cloud {
+    background: $white-dark;
+    margin-bottom: 40px;
+    overflow: hidden;
+    padding: 20px 15%;
+
+    li {
+      float: left;
+      margin-right: 5px;
+    }
+
+    @for $i from 1 through 5 {
+      .level#{$i} {
+        font-size: 20px + $i;
+      }
+    }
+
+    .level1 {
+      @include font-size(12.6);
+    }
+
+    .level2 {
+      @include font-size(18.2);
+    }
+
+    .level3 {
+      @include font-size(22.4);
+    }
+
+    .level4 {
+      @include font-size(28);
+    }
+
+    .level5 {
+      @include font-size(42);
+    }
+
+    a {
+      color: $navy;
+      display: inline-block;
+      font-family: $fira;
+      line-height: 27px;
+      text-decoration: none;
+      vertical-align: top;
+
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+}
+
 .view-article {
   .title-wrapper {
     text-align: center;

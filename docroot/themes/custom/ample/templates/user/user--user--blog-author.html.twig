@@ -1,20 +1,25 @@
-<div class="teaser corners">
+<div class="corners blog-author">
   {% if content %}
-    <div class="user-icon">
-      {{ content.field_avatar }}
+    <div class="blog-author-content">
+      <div class="user-icon">
+        {{ content.field_avatar }}
+      </div>
+      <div class="blog-author-info">
+        <span class="author-label">{{ 'Author'|t }}:</span>
+        <h2 role="heading">
+          {% if content.field_first_name %}
+            {{ content.field_first_name }}
+          {% endif %}
+          {% if content.field_last_name %}
+            {{ content.field_last_name }}
+          {% endif %}
+        </h2>
+        <div class="blog-author-organization">
+          {% if content.field_organisation %}
+            {{ content.field_organisation }}
+          {% endif %}
+        </div>
+      </div>
     </div>
-    <span>{{ 'Author'|t }}:</span>
-    <h2 role="heading">
-      {% if content.field_first_name %}
-        {{ content.field_first_name }}
-      {% endif %}
-      {% if content.field_last_name %}
-        {{ content.field_last_name }}
-      {% endif %}
-      {% if content.field_organisation %}
-        <br>
-        {{ content.field_organisation }}
-      {% endif %}
-    </h2>
   {% endif %}
 </div>

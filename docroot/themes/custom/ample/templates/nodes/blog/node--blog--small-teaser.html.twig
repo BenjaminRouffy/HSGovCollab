@@ -3,35 +3,38 @@
     {{ title_suffix.contextual_links|render }}
   {% endif %}
 
-  <div class="news-container">
+  <div class="blog-container">
     {% if content.field_image %}
       <div class="image-wrapper">
         {{ content.field_image|field_value }}
       </div>
     {% endif %}
 
-    {% if display_submitted %}
-      <div class="post-info">
-        <time datetime="{{ content.field_content_date|field_value|field_raw }}">
-          {{ content.field_content_date|field_value }}
-        </time>
+    <div class="post-info-wrapper">
 
-        <span class="country">
+      {% if display_submitted %}
+        <div class="post-info">
+          <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+            {{ content.field_content_date|field_value }}
+          </time>
+
+          <span class="country">
           {{ node.uid.entity.field_first_name.value }} {{ node.uid.entity.field_last_name.value }}
         </span>
 
-        {% if content.field_category|field_value %}
-          {% for category in content.field_category|field_value %}
-            <span class="country">
+          {% if content.field_category|field_value %}
+            {% for category in content.field_category|field_value %}
+              <span class="country">
               {{ category }}
             </span>
-          {% endfor %}
-        {% endif %}
-      </div>
-    {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endif %}
 
-    <h2>{{ label }}</h2>
+      <h2>{{ label }} <a href="{{ url }}" rel="bookmark"></a></h2>
+    </div>
   </div>
 
-  <a href="{{ url }}" rel="bookmark"></a>
+
 </div>

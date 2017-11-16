@@ -1,5 +1,32 @@
 # Changelog
 
+## v2.0.18
+- Fix for YouTube .getVideoData() issue (fixes #709)
+
+## v2.0.17
+- Vimeo controls fix (fixes #697)
+- SVG4everybody compatibility fix
+- Allow Plyr.setup event listeners to be set up as separate event listeners (https://github.com/sampotts/plyr/pull/703)
+- Added title to the layer html template (for custom controls) (https://github.com/sampotts/plyr/pull/649)
+- Target is null bug fix (https://github.com/sampotts/plyr/pull/617)
+- fix #684 memory leaks issues after destroy (https://github.com/sampotts/plyr/pull/700)
+
+## v2.0.16
+- Fullscreen bug fix (fixes #664)
+
+## v2.0.15
+- Demo fix
+
+## v2.0.14
+- CDN URL updates. Sorry, still working on V3 as hard as I can...
+
+## v2.0.13
+- Repo moved and Vimeo demo fix
+
+## v2.0.12
+- Ability to set custom `blankUrl` for source changes (https://github.com/sampotts/plyr/pull/504)
+- Ability to set caption button listener (https://github.com/sampotts/plyr/pull/468)
+
 ## v2.0.11
 - Fix for `cleanUp` being called twice (thanks to @sebastiancarlsson)
 - Fix for YouTube controls on iPad (fixes #391)

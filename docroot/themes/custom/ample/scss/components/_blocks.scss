@@ -538,6 +538,7 @@
   li {
     cursor: default;
     position: relative;
+    list-style: none;
   }
 
   article {
@@ -1625,7 +1626,7 @@
     overflow: hidden;
     padding: 30px 20px 50px;
 
-    @media screen  and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       flex-direction: row;
     }
   }
@@ -2142,12 +2143,28 @@
   }
 }
 
-//
-//.contact-list {
-//  display: flex;
-//  flex-wrap: wrap;
-//
-//  .contact-item {
-//    max-width: 33.33%;
-//  }
-//}
+// Related docs inside of main container
+.content {
+  .related-docs {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid $grey-medium;
+
+    li {
+      margin-top: 0;
+    }
+
+    h4 {
+      @include font-size(16.8);
+      letter-spacing: .5px;
+      line-height: 22px;
+      margin: 0 0 10px 40px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    a {
+      @include font-size(14);
+    }
+  }
+}

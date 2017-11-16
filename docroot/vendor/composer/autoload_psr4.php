@@ -51,6 +51,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
+    'Pelago\\' => array($vendorDir . '/pelago/emogrifier/Classes'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
     'League\\Csv\\' => array($vendorDir . '/league/csv/src'),
     'Http\\Promise\\' => array($vendorDir . '/php-http/promise/src'),

@@ -72,6 +72,18 @@ variant_settings:
       uuid: 5c3c88fc-4017-4640-86ba-3bf3262e216e
       pager: view
       context_mapping: {  }
+    13276380-199a-4739-8876-9b9ad35a4fe1:
+      id: 'views_block:news_and_events_group-closed_documents_without_filter'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: '3'
+      region: content
+      weight: -6
+      uuid: 13276380-199a-4739-8876-9b9ad35a4fe1
+      pager: some
+      context_mapping: {  }
     42c4ff01-d90e-46d8-813f-35b41b94916e:
       id: 'entity_view:group'
       label: 'Entity view (Group)'
@@ -79,7 +91,7 @@ variant_settings:
       label_display: '0'
       view_mode: bottom
       region: content
-      weight: -6
+      weight: -5
       uuid: 42c4ff01-d90e-46d8-813f-35b41b94916e
       context_mapping:
         entity: group
@@ -110,6 +122,17 @@ variant_settings:
       uuid: 9485e19d-8f7d-4747-81e6-b6413f61b8f8
       context_mapping:
         group: group
+    d79f2e0d-9b7b-48eb-a3a1-0ae53a8a06d5:
+      id: 'entity_view:group'
+      label: 'Entity view (Group) Pin items'
+      provider: ctools
+      label_display: '0'
+      view_mode: pin_items
+      region: banner
+      weight: 0
+      uuid: d79f2e0d-9b7b-48eb-a3a1-0ae53a8a06d5
+      context_mapping:
+        entity: group
   id: panels_variant
   uuid: 940a744c-930b-4df7-ba15-9ab8150de0d2
   label: null

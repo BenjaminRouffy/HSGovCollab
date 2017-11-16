@@ -35,7 +35,8 @@
     $("#" + facet).slider(defaults)
     .slider("pips", {
       prefix: settings.prefix,
-      suffix: settings.suffix
+      suffix: settings.suffix,
+      labels: {first: Drupal.t('Min'), last: Drupal.t('Max')}
     })
     .slider("float", {
       prefix: settings.prefix,

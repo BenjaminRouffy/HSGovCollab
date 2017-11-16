@@ -2,7 +2,7 @@
 
 namespace Drupal\country\Plugin\Block;
 
-use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultAllowed;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -54,6 +54,13 @@ class CollapsedLinkBlock extends BlockBase implements ContainerFactoryPluginInte
   /**
    * {@inheritdoc}
    */
+  protected function blockAccess(AccountInterface $account) {
+    return AccessResultAllowed::allowedIf($account->isAuthenticated());
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
@@ -98,6 +105,5 @@ class CollapsedLinkBlock extends BlockBase implements ContainerFactoryPluginInte
     ];
     return $build;
   }
-
 
 }

@@ -10,6 +10,7 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
     if ($current_them->getName() === 'ample') {
       // Hide organization field when user is using the ample theme.
       $form['field_organization']['#access'] = FALSE;
+      $form['field_content_date']['#access'] = FALSE;
 
       if (!empty($form['field_add_event_in_group']['widget']['#options'])) {
         foreach ($form['field_add_event_in_group']['widget']['#options'] as $key => $values) {
@@ -91,6 +92,7 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
     if ($current_them->getName() === 'ample') {
       // Hide organization field when user is using the ample theme.
       $form['field_organization']['#access'] = FALSE;
+      $form['field_content_date']['#access'] = FALSE;
     }
 
     $form['field_add_event_in_group']['#access'] = FALSE;

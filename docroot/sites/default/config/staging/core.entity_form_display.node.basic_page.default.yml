@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.basic_page.field_anonymous_bottom_link
     - field.field.node.basic_page.field_anonymous_join_block
     - field.field.node.basic_page.field_author
     - field.field.node.basic_page.field_banner
@@ -96,6 +97,7 @@ third_party_settings:
         - field_join_block
         - field_anonymous_join_block
         - field_bottom_link
+        - field_anonymous_bottom_link
       parent_name: group_t
       weight: 24
       format_type: tab
@@ -124,6 +126,18 @@ targetEntityType: node
 bundle: basic_page
 mode: default
 content:
+  field_anonymous_bottom_link:
+    type: entity_reference_paragraphs
+    weight: 7
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
   field_anonymous_join_block:
     weight: 5
     settings: {  }

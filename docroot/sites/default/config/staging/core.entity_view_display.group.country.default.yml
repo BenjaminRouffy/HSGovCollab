@@ -49,15 +49,6 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  field_pin_items:
-    type: entity_reference_revisions_entity_view
-    weight: 4
-    label: hidden
-    settings:
-      view_mode: private_content
-      link: ''
-    third_party_settings: {  }
-    region: content
   field_summary:
     weight: 0
     label: hidden
@@ -88,6 +79,7 @@ hidden:
   field_group_status: true
   field_join_block: true
   field_location: true
+  field_pin_items: true
   field_priority: true
   field_region_icon: true
   field_time_line: true

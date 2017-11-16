@@ -388,23 +388,25 @@ class SqlGroupGraphStorage implements GroupGraphStorageInterface {
       $child_id = $queue->dequeue();
 
       // Get parents for child in queue.
-      $parent_ids = $this->directAncestors[$child_id];
+      if (isset($this->directAncestors[$child_id])) {
+        $parent_ids = $this->directAncestors[$child_id];
 
-      foreach ($parent_ids as $parent_id) {
-        if ((int) $parent_id === (int) $parent_group_id) {
-          // Add this path to the list of solutions.
-          $solution = $paths[$child_id];
-          $solution[] = $parent_id;
-          $solutions[] = $solution;
-        }
-        else {
-          if (!isset($visited[$parent_id])) {
-            // If not yet visited, enqueue parent id and mark as visited.
-            $queue->enqueue($parent_id);
-            $visited[$parent_id] = TRUE;
-            // Add parent to current path.
-            $paths[$parent_id] = $paths[$child_id];
-            $paths[$parent_id][] = $parent_id;
+        foreach ($parent_ids as $parent_id) {
+          if ((int) $parent_id === (int) $parent_group_id) {
+            // Add this path to the list of solutions.
+            $solution = $paths[$child_id];
+            $solution[] = $parent_id;
+            $solutions[] = $solution;
+          }
+          else {
+            if (!isset($visited[$parent_id])) {
+              // If not yet visited, enqueue parent id and mark as visited.
+              $queue->enqueue($parent_id);
+              $visited[$parent_id] = TRUE;
+              // Add parent to current path.
+              $paths[$parent_id] = $paths[$child_id];
+              $paths[$parent_id][] = $parent_id;
+            }
           }
         }
       }

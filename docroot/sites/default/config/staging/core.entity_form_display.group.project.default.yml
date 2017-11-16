@@ -12,6 +12,7 @@ dependencies:
     - field.field.group.project.field_geographical_object
     - field.field.group.project.field_join_block
     - field.field.group.project.field_knowledge_vault
+    - field.field.group.project.field_label_date
     - field.field.group.project.field_label_end_date
     - field.field.group.project.field_pin_items
     - field.field.group.project.field_priority
@@ -50,8 +51,6 @@ third_party_settings:
       label: 'Tabs panel'
     group_summary:
       children:
-        - field_label_end_date
-        - field_end_date
         - langcode
         - translation
         - path
@@ -59,7 +58,7 @@ third_party_settings:
         - field_priority
         - field_geographical_object
         - label
-        - field_date
+        - group_dates
       parent_name: group_tabs_panel
       weight: 1
       format_type: tab
@@ -153,6 +152,21 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Pin items'
+    group_dates:
+      children:
+        - field_label_date
+        - field_date
+        - field_label_end_date
+        - field_end_date
+      parent_name: group_summary
+      weight: 11
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Dates
 id: group.project.default
 targetEntityType: group
 bundle: project
@@ -177,13 +191,13 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 12
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_end_date:
-    weight: 4
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -201,7 +215,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_geographical_object:
-    weight: 10
+    weight: 9
     settings:
       display_label: true
     third_party_settings: {  }
@@ -222,8 +236,16 @@ content:
     third_party_settings: {  }
     type: group_select
     region: content
+  field_label_date:
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_label_end_date:
-    weight: 3
+    weight: 14
     settings:
       size: 60
       placeholder: ''
@@ -237,13 +259,13 @@ content:
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
-      form_display_mode: private_content
+      form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
   field_priority:
-    weight: 9
+    weight: 8
     settings:
       display_label: true
     third_party_settings: {  }
@@ -256,7 +278,7 @@ content:
     type: group_select
     region: content
   field_project_icon:
-    weight: 8
+    weight: 7
     settings:
       entity_browser: browse_files_modal
       field_widget_edit: true
@@ -298,7 +320,7 @@ content:
     region: content
   label:
     type: string_textfield
-    weight: 11
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -306,18 +328,18 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 5
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 7
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     region: content
   translation:
-    weight: 6
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -151,3 +151,32 @@
     }
   }
 }
+
+// Single document
+.single-document {
+  width: auto !important;
+  padding-bottom: 40px;
+
+  .title-wrapper {
+    word-break: break-all;
+  }
+
+  .page-title {
+
+    @include media-q(min, 768) {
+      @include font-size(42);
+    }
+  }
+
+  .document-download {
+    border-top: 1px solid $grey-medium;
+    padding-top: 40px;
+    margin-top: 40px;
+
+    .font-social-icon {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+

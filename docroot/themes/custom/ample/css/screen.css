@@ -15039,6 +15039,32 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   }
 }
 
+.single-document {
+  width: auto !important;
+  padding-bottom: 40px;
+}
+
+.single-document .title-wrapper {
+  word-break: break-all;
+}
+
+@media only screen and (min-width: 768px) {
+  .single-document .page-title {
+    font-size: 2.625rem;
+  }
+}
+
+.single-document .document-download {
+  border-top: 1px solid #e9ecee;
+  padding-top: 40px;
+  margin-top: 40px;
+}
+
+.single-document .document-download .font-social-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .blog-author {
   margin-bottom: 70px;
   color: #fff;

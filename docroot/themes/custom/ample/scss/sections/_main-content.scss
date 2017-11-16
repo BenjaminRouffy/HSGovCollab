@@ -297,7 +297,10 @@
 
 .header-image {
   margin-bottom: 50px;
-  width: 95%;
+
+  @include media-q(min, 768) {
+    width: 95%;
+  }
 }
 
 .title-wrapper {

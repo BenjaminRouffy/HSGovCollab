@@ -1,0 +1,106 @@
+uuid: 0b35d22e-c11c-48a1-a5dd-eb3f71791eed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.blog
+    - paragraphs.paragraphs_type.content_image
+    - paragraphs.paragraphs_type.content_text
+    - paragraphs.paragraphs_type.slider
+    - paragraphs.paragraphs_type.webform
+  module:
+    - entity_reference_revisions
+id: node.blog.field_content
+field_name: field_content
+entity_type: node
+bundle: blog
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_image: content_image
+      content_text: content_text
+      slider: slider
+      webform: webform
+    target_bundles_drag_drop:
+      cd_user:
+        weight: 25
+        enabled: false
+      content_image:
+        enabled: true
+        weight: 26
+      content_text:
+        enabled: true
+        weight: 27
+      country_and_project:
+        weight: 28
+        enabled: false
+      country_option:
+        weight: 29
+        enabled: false
+      custom_content:
+        weight: 30
+        enabled: false
+      exist_content:
+        weight: 31
+        enabled: false
+      faq_item:
+        weight: 32
+        enabled: false
+      file:
+        weight: 33
+        enabled: false
+      infographic:
+        weight: 34
+        enabled: false
+      infographic_item:
+        weight: 35
+        enabled: false
+      link:
+        weight: 36
+        enabled: false
+      link_to_file:
+        weight: 37
+        enabled: false
+      member_icon:
+        weight: 38
+        enabled: false
+      organisation:
+        weight: 39
+        enabled: false
+      pin_item:
+        weight: 40
+        enabled: false
+      pin_items:
+        weight: 41
+        enabled: false
+      slider:
+        enabled: true
+        weight: 42
+      slider_item:
+        weight: 43
+        enabled: false
+      software_application:
+        weight: 44
+        enabled: false
+      timeline_social:
+        weight: 45
+        enabled: false
+      time_line:
+        weight: 46
+        enabled: false
+      video:
+        weight: 47
+        enabled: false
+      webform:
+        enabled: true
+        weight: 48
+field_type: entity_reference_revisions

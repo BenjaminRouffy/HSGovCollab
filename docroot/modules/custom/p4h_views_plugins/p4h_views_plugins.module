@@ -178,6 +178,16 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
         $form['label']['#prefix'] = '<div class="search-form-wrapper">';
         $form['actions']['#suffix'] = '</div>';
         break;
+
+      case 'views-exposed-form-blog-lists-blog-posts':
+        $form['wrap'] = [
+          '#prefix' => '<div class="wrapper-filters">',
+          '#suffix' => '</div>',
+          '#weight' => -100,
+        ];
+        $form['#attributes']['data-accordion'] = $form['#id'];
+        break;
+
     }
 
     // Set autocomplete attribute
@@ -259,4 +269,20 @@ function p4h_views_plugins_views_data_alter(array &$data) {
       'id' => 'combine_taxonomy_term',
     ),
   );
+
+  $data['node_field_data']['content_author_name'] = [
+    'real field' => 'uid',
+    'filter' => [
+      'title' => t('Node type Author filter'),
+      'id' => 'content_author_name',
+    ],
+  ];
+
+  $data['taxonomy_term_field_data']['content_tags_cloud'] = [
+    'real field' => 'tid',
+    'filter' => [
+      'title' => t('Tags by content'),
+      'id' => 'content_tags_cloud',
+    ],
+  ];
 }

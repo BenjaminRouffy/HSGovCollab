@@ -53,6 +53,7 @@
 
           var times = $(this).find('.event-date time');
           var eventId = $(this).find('.event-id').text().trim();
+          var color = $(this).find('.event-color').text().trim();
           // Attribute datetime holds date in UTC.
           var startDate = calendar.moment($(times).eq(0).attr('datetime'));
           var endDate = calendar.moment($(times).eq(1).attr('datetime')) || startDate;
@@ -72,7 +73,7 @@
             end: endDate,
             url: drupalSettings.path.baseUrl + drupalSettings.path.currentLanguage + '/events/get-event/' + eventId,
             className: 'use-ajax',
-            color: colorCache[eventId],
+            color: color || colorCache[eventId],
             hideTime: true
           };
           events.push(event);

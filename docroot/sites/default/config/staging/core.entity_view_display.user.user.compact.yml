@@ -12,6 +12,7 @@ dependencies:
     - field.field.user.user.field_disclose_your_personal_det
     - field.field.user.user.field_first_name
     - field.field.user.user.field_following_countries
+    - field.field.user.user.field_following_p4h_areas
     - field.field.user.user.field_following_projects
     - field.field.user.user.field_following_regions
     - field.field.user.user.field_job_title
@@ -33,6 +34,7 @@ dependencies:
     - field.field.user.user.field_zip_code
     - image.style.150x150
   module:
+    - computed_group_membership
     - entity_reference_revisions
     - group_content_field
     - taxonomy_image_formatter
@@ -42,6 +44,13 @@ targetEntityType: user
 bundle: user
 mode: compact
 content:
+  computed_group_membership:
+    type: list_computed_group_membership
+    weight: 15
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_avatar:
     weight: 0
     label: hidden
@@ -166,6 +175,7 @@ hidden:
   field_city: true
   field_disclose_your_personal_det: true
   field_following_countries: true
+  field_following_p4h_areas: true
   field_following_projects: true
   field_following_regions: true
   field_last_password_reset: true
@@ -178,3 +188,4 @@ hidden:
   masquerade: true
   member_for: true
   realname: true
+  simplenews: true

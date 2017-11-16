@@ -1,0 +1,25 @@
+uuid: a1db7ffd-117d-4f02-aa92-d621962ac9a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_event_color
+    - group.type.region
+  module:
+    - color_field
+id: group.region.field_event_color
+field_name: field_event_color
+entity_type: group
+bundle: region
+label: 'Event Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    color: '#92E1C0'
+    opacity: null
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

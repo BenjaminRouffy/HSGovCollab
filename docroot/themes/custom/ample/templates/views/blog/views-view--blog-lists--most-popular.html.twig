@@ -1,0 +1,16 @@
+{% if rows is not empty %}
+  <div class="corners popular-authors">
+    <div class="content-container">
+      {% if header %}
+        {% if header_without_wrapper is not defined %}
+          <{{ header_tag|default('h2') }}{{ header_classes }}>
+            {{ header }}
+          </{{ header_tag|default('h2') }}>
+        {% else %}
+          {{ header }}
+        {% endif %}
+      {% endif %}
+      {{ rows }}
+    </div>
+  </div>
+{% endif %}

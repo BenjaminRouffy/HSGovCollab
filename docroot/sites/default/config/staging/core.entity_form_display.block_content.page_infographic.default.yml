@@ -1,0 +1,46 @@
+uuid: da409a55-bbee-4e86-aaa5-966b9f2491cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.page_infographic
+    - field.field.block_content.page_infographic.field_infographic
+  module:
+    - paragraphs
+id: block_content.page_infographic.default
+targetEntityType: block_content
+bundle: page_infographic
+mode: default
+content:
+  field_infographic:
+    type: entity_reference_paragraphs
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: private_content
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,25 @@
+uuid: 0442a688-35a5-45e5-949b-a5d95c5127c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_event_color
+    - group.type.region_protected
+  module:
+    - color_field
+id: group.region_protected.field_event_color
+field_name: field_event_color
+entity_type: group
+bundle: region_protected
+label: 'Event Color'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    color: '#F83A22'
+    opacity: null
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

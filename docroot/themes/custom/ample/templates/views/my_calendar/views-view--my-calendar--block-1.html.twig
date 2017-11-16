@@ -16,11 +16,11 @@
 
   {% if header %}
     {% if header_without_wrapper is not defined %}
-    <{{ header_tag|default('h2') }}{{ header_classes }}>
-      {{ header }}
-    </{{ header_tag|default('h2') }}>
+      <{{ header_tag|default('h2') }}{{ header_classes }}>
+        {{ header }}
+      </{{ header_tag|default('h2') }}>
     {% else %}
-    {{ header }}
+      {{ header }}
     {% endif %}
   {% endif %}
 
@@ -55,10 +55,13 @@
   {% endif %}
 {% endif %}
 
-  <div class="calendar-wrapper">
-    <div id="calendar"></div>
-    <div id="event-response"></div>
+<div class="calendar-wrapper">
+  <div class="contribute-links">
+    <a href="{{ path('node.add', {'node_type':'event'}) }}" class="contribute-link">{{ "Add an item"|t }}</a>
   </div>
+  <div id="calendar"></div>
+  <div id="event-response"></div>
+</div>
 {% if without_wrapper is not defined %}
   </div>
 {% endif %}

@@ -4,6 +4,9 @@
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
   <div class="title-wrapper">
+    <div class="contribute-links">
+      <a href="{{ path('node.add', {'node_type':'document'}) }}" class="contribute-link">{{ "Contribute document"|t }}</a>
+    </div>
     {{ title_prefix }}
     <h1>
       {{ view.getTitle()|raw }}
@@ -13,12 +16,12 @@
   </div>
 
   {% if header %}
-    {% if header_without_wrapper is not defined %}
-      <{{ header_tag|default('h2') }}{{ header_classes }}>
-        {{ header }}
-      </{{ header_tag|default('h2') }}>
-    {% else %}
-      {{ header }}
+  {% if header_without_wrapper is not defined %}
+  <{{ header_tag|default('h2') }}{{ header_classes }}>
+  {{ header }}
+</{{ header_tag|default('h2') }}>
+  {% else %}
+    {{ header }}
     {% endif %}
   {% endif %}
 
@@ -38,19 +41,19 @@
 
   {{ attachment_after }}
 
-  <div class="bottom-link">
-    {{ more }}
-  </div>
+<div class="bottom-link">
+  {{ more }}
+</div>
 
-  {% if footer %}
-    {% if footer_without_wrapper is not defined %}
-      <{{ footer_tag|default('footer') }}{{ footer_classes }}>
-      {{ footer }}
-      </{{ footer_tag|default('footer') }}>
-    {% else %}
-      {{ footer }}
-    {% endif %}
+{% if footer %}
+  {% if footer_without_wrapper is not defined %}
+    <{{ footer_tag|default('footer') }}{{ footer_classes }}>
+    {{ footer }}
+    </{{ footer_tag|default('footer') }}>
+  {% else %}
+    {{ footer }}
   {% endif %}
+{% endif %}
 
 {% if without_wrapper is not defined %}
   </div>

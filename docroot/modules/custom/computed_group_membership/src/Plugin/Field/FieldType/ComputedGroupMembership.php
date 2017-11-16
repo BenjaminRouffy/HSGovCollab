@@ -62,7 +62,7 @@ class ComputedGroupMembership extends FieldItemBase {
 
         foreach([
           'field_country_manager' => t('Country Focal Person'),
-          'field_project_manager' => t('Project manager'),
+          'field_project_manager' => t('Collaboration manager'),
         ] as $field_name => $text){
           $value = $entity->get($field_name)->getValue();
 

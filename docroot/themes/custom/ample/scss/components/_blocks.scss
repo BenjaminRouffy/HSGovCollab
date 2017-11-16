@@ -817,6 +817,16 @@
     width: 33.33%;
   }
 
+  // Separator
+  .vbar {
+    display: inline-block;
+    vertical-align: middle;
+    width: 2px;
+    height: 26px;
+    background: $red;
+    margin: -6px 5px 0;
+  }
+
   .value {
     margin-left: -4px;
     color: $navy;

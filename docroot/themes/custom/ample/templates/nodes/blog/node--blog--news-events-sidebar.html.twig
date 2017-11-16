@@ -1,0 +1,11 @@
+<li>
+  <a href="{{ url }}" rel="bookmark">
+
+    {{ content.field_content_date }}
+
+    <h4>{{ label }}</h4>
+
+    <p>{{ content.body|render|striptags|trim }}</p>
+
+  </a>
+</li>

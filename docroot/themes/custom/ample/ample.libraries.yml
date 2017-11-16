@@ -52,3 +52,10 @@ plyr:
     - ample/global-styling
     - ample/youtube
     - ample/vimeo
+
+tagcloud-filter:
+  js:
+    js/tagcloud-filter.js: {}
+  dependencies:
+      - core/jquery
+      - core/drupalSettings

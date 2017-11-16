@@ -1,0 +1,16 @@
+uuid: 698eff30-7efb-4976-976d-80824a315a8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.page_infographic
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.page_infographic
+target_entity_type_id: block_content
+target_bundle: page_infographic
+default_langcode: site_default
+language_alterable: true

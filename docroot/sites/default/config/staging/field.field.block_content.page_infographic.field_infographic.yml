@@ -1,0 +1,100 @@
+uuid: 62292cf9-279e-4cd0-9928-18279a465c3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.page_infographic
+    - field.storage.block_content.field_infographic
+    - paragraphs.paragraphs_type.infographic
+  module:
+    - entity_reference_revisions
+id: block_content.page_infographic.field_infographic
+field_name: field_infographic
+entity_type: block_content
+bundle: page_infographic
+label: Infographic
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      infographic: infographic
+    target_bundles_drag_drop:
+      cd_user:
+        weight: 25
+        enabled: false
+      content_image:
+        weight: 26
+        enabled: false
+      content_text:
+        weight: 27
+        enabled: false
+      country_and_project:
+        weight: 28
+        enabled: false
+      country_option:
+        weight: 29
+        enabled: false
+      custom_content:
+        weight: 30
+        enabled: false
+      exist_content:
+        weight: 31
+        enabled: false
+      faq_item:
+        weight: 32
+        enabled: false
+      file:
+        weight: 33
+        enabled: false
+      infographic:
+        enabled: true
+        weight: 34
+      infographic_item:
+        weight: 35
+        enabled: false
+      link:
+        weight: 36
+        enabled: false
+      link_to_file:
+        weight: 37
+        enabled: false
+      member_icon:
+        weight: 38
+        enabled: false
+      organisation:
+        weight: 39
+        enabled: false
+      pin_item:
+        weight: 40
+        enabled: false
+      pin_items:
+        weight: 41
+        enabled: false
+      slider:
+        weight: 42
+        enabled: false
+      slider_item:
+        weight: 43
+        enabled: false
+      software_application:
+        weight: 44
+        enabled: false
+      timeline_social:
+        weight: 45
+        enabled: false
+      time_line:
+        weight: 46
+        enabled: false
+      video:
+        weight: 47
+        enabled: false
+      webform:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

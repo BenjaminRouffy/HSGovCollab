@@ -1,0 +1,25 @@
+uuid: b1df5d10-d7ba-462f-92b0-29a2174a9d5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.page_infographic
+    - field.field.block_content.page_infographic.field_infographic
+  module:
+    - entity_reference_revisions
+id: block_content.page_infographic.default
+targetEntityType: block_content
+bundle: page_infographic
+mode: default
+content:
+  field_infographic:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: private_content
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

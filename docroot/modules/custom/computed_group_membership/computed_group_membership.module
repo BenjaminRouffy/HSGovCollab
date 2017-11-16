@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Alter user entity.
+ */
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function computed_group_membership_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if ($entity_type->id() === 'user') {
+    $fields = [];
+
+    $fields['computed_group_membership'] = BaseFieldDefinition::create('computed_group_membership')
+      ->setName('computed_group_membership')
+      ->setLabel(t('Computed group membership'))
+      ->setComputed(TRUE)
+      ->setClass('\Drupal\computed_group_membership\ComputedGroupMembershipList')
+      ->setDisplayConfigurable('view', TRUE);
+
+    return $fields;
+  }
+}

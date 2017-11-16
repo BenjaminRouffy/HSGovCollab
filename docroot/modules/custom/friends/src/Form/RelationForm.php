@@ -78,7 +78,7 @@ class RelationForm extends FormBase {
         }
         else {
           $form['container']['approve_link'] = [
-            '#title' => $this->t('User would like to connect with your. Approve connection'),
+            '#title' => $this->t('User would like to connect with you. Approve connection'),
             '#url' => Url::fromRoute('friends.approve', ['user' => $user->id()]),
             '#type' => 'link',
             '#attributes' => [

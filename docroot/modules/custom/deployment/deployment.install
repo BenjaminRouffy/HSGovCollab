@@ -1162,3 +1162,10 @@ function deployment_update_8096() {
     ])
     ->execute();
 }
+
+/**
+ * Install color_field module.
+ */
+function deployment_update_8097() {
+  \Drupal::service('module_installer')->install(['color_field']);
+}

@@ -5,17 +5,14 @@
  * Group customization module main file.
  */
 
-use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 use Drupal\Core\Database\Query\AlterableInterface;
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Entity\ContentEntityType;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\group\Entity\GroupContent;
 use Drupal\group\Entity\GroupInterface;
-use Drupal\views\Plugin\views\query\QueryPluginBase;
-use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_preprocess_html().
@@ -254,4 +251,70 @@ function group_customization_preprocess_field(&$variables) {
       }
     }
   }
+}
+
+/**
+ * Retrieves region group for the given entity.
+ *
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The entity.
+ *
+ * @return \Drupal\group\Entity\GroupInterface|null
+ *   Region group if found, NULL otherwise.
+ */
+function group_customization_get_node_region(ContentEntityInterface $entity) {
+  // Group list that treat to be parents of the content node.
+  static $group_types = array(
+    'region',
+    'region_protected',
+  );
+
+  /** @var \Drupal\ggroup\GroupHierarchyManager $manager */
+  $manager = \Drupal::service('ggroup.group_hierarchy_manager');
+
+  /** @var \Drupal\group\Entity\GroupContentInterface[] $group_contents */
+  $group_contents = GroupContent::loadByEntity($entity);
+  foreach ($group_contents as $group_content) {
+    $group = $group_content->getGroup();
+
+    if (in_array($group->bundle(), $group_types)) {
+      return $group;
+    }
+
+    /** @var \Drupal\group\Entity\GroupInterface[] $super_groups */
+    $super_groups = $manager->getGroupSupergroups($group->id());
+    foreach ($super_groups as $parent_group) {
+      if (in_array($parent_group->bundle(), $group_types)) {
+        return $parent_group;
+      }
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns event color for the given group.
+ *
+ * @param \Drupal\group\Entity\GroupInterface $group
+ *   Region group to get color from.
+ *
+ * @return mixed
+ *   Color as defined in color_field.
+ */
+function group_customization_get_region_color(GroupInterface $group) {
+  $color = NULL;
+
+  if ($group->hasField('field_event_color')) {
+    $field = $group->get('field_event_color');
+    if (!$field->isEmpty()) {
+      $color = $field->get(0)->getValue();
+    }
+    else {
+      $field_definition = $field->getFieldDefinition();
+      $color = $field_definition->getDefaultValue($group)[0];
+    }
+  }
+
+  return $color;
 }

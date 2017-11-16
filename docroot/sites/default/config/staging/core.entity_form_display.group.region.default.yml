@@ -8,6 +8,7 @@ dependencies:
     - field.field.group.region.field_bottom_link
     - field.field.group.region.field_content
     - field.field.group.region.field_date
+    - field.field.group.region.field_event_color
     - field.field.group.region.field_faq
     - field.field.group.region.field_geographical_object
     - field.field.group.region.field_infographic
@@ -21,6 +22,7 @@ dependencies:
     - field.field.group.region.field_time_line
     - group.type.region
   module:
+    - color_field
     - datetime
     - entity_browser
     - field_group
@@ -181,6 +183,13 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_event_color:
+    type: color_field_widget_box
+    weight: 20
+    region: content
+    settings:
+      default_colors: '#2f434b,#627178,#97a0a4,#e73b39,#ed6867,#f4989a,#f9d6d5,#4e7d93,#7a9daf,#a6bec9,#dce5ea,#a8575b,#c48d91,#e7d1d3,#61a9ba,#89bdcb,#afd4dc'
+    third_party_settings: {  }
   field_faq:
     weight: 14
     settings:

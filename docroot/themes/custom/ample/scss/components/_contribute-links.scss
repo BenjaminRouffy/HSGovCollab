@@ -1,0 +1,54 @@
+.contribute-links {
+  text-align: left;
+  padding: 0 10px;
+
+  //background: rgba($white, .6);
+  //border: solid $grey-medium;
+  //border-width: 1px 0;
+  margin-bottom: 20px;
+
+  @include media-q(min, 1024) {
+    position: absolute;
+    top: 15px;
+  }
+
+  .contribute-link {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  a {
+    display: block;
+    margin-bottom: 10px;
+    color: $grey-dark;
+    text-decoration: none;
+    transition: color .3s ease;
+
+    @include media-q(min, 600) {
+      margin-bottom: 0;
+    }
+
+    &::before {
+      content: '+';
+      background: $red;
+      color: $white;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+      padding: 1px 0 0 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      text-align: center;
+      transition: background .3s ease;
+    }
+
+    &:hover {
+      color: $red;
+
+      &::before {
+        background: $red;
+      }
+    }
+  }
+}

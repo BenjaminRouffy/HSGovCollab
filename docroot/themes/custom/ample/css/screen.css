@@ -11490,6 +11490,61 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   font-weight: normal;
 }
 
+.contribute-links {
+  text-align: left;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .contribute-links {
+    position: absolute;
+    top: 15px;
+  }
+}
+
+.contribute-links .contribute-link {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.contribute-links a {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+@media only screen and (min-width: 600px) {
+  .contribute-links a {
+    margin-bottom: 0;
+  }
+}
+
+.contribute-links a::before {
+  content: '+';
+  background: #ea3a32;
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  padding: 1px 0 0 1px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  text-align: center;
+  transition: background .3s ease;
+}
+
+.contribute-links a:hover {
+  color: #ea3a32;
+}
+
+.contribute-links a:hover::before {
+  background: #ea3a32;
+}
+
 header {
   background: #fff;
   letter-spacing: 1px;

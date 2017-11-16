@@ -1,24 +1,14 @@
-{#
-/**
- * @file
- *
- * This file is also used in:
- * views-view--news-and-events-group--closed-region-news-events-without-filter.html.twig
- */
-#}
-
 {% set classes = [dom_id ? 'js-view-dom-id-' ~ dom_id] %}
 
 {% if without_wrapper is not defined %}
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
-  <div class="title-wrapper" data-anchor-id="view-{{ dom_id }}">
+  <div class="title-wrapper">
     <div class="contribute-links">
-      <a href="{{ path('node.add', {'node_type':'news'}) }}" class="contribute-link">{{ "Contribute news"|t }}</a>
-      <a href="{{ path('node.add', {'node_type':'event'}) }}" class="contribute-link">{{ "Contribute event"|t }}</a>
+      <a href="{{ path('node.add', {'node_type':'document'}) }}" class="contribute-link">{{ "Contribute document"|t }}</a>
     </div>
     {{ title_prefix }}
-    <h1 role="heading" class="anchor-title">
+    <h1>
       {{ view.getTitle()|raw }}
     </h1>
     {{ title_suffix|without('contextual_links') }}
@@ -38,6 +28,8 @@
   {{ exposed }}
   {{ attachment_before }}
 
+  {{ pager }}
+
   {{ rows }}
 
   {% if empty %}
@@ -45,6 +37,7 @@
       {{ empty }}
     </div>
   {% endif %}
+  {{ pager }}
 
   {{ attachment_after }}
 

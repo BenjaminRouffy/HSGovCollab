@@ -9,7 +9,8 @@
       <h3 role="heading">
         {{ label }}
       </h3>
-      {{ content.field_label_end_date }} {{ content.field_end_date }}
+      <div>{{ content.field_date }}</div>
+      <div>{{ content.field_end_date }}</div>
       <div class="summary">
         {% if not logged_in %}
           {{ content.field_summary_public }}

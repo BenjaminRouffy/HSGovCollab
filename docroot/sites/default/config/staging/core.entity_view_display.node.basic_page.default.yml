@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.basic_page.field_anonymous_bottom_link
     - field.field.node.basic_page.field_anonymous_join_block
     - field.field.node.basic_page.field_author
     - field.field.node.basic_page.field_banner
@@ -50,6 +51,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_anonymous_bottom_link: true
   field_anonymous_join_block: true
   field_banner: true
   field_bottom_link: true

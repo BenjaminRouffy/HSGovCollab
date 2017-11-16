@@ -1,9 +1,11 @@
 #block-ample-local-tasks {
   background: $white;
   margin: 0;
-  padding: 0 0 20px;
+  padding: 0 0 5px;
   position: relative;
   z-index: 100;
+  overflow: auto;
+  white-space: nowrap;
 
   > ul {
     @include font-size(0);

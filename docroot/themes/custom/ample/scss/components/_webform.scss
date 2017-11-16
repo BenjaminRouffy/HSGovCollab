@@ -157,6 +157,10 @@ form {
   line-height: 26px;
   margin-bottom: 25px;
   padding: 1px 12px;
+
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
 }
 
 .form-textarea {
@@ -1462,6 +1466,10 @@ form {
   .profile-help-collapsed {
     background: transparent;
     box-shadow: none;
+
+    .profile-help-info {
+      display: none;
+    }
   }
 
   // Title
@@ -1501,6 +1509,10 @@ form {
     position: relative;
     text-align: center;
     overflow: hidden;
+
+    .ajax-progress {
+      display: none;
+    }
   }
 
   .toggle-help {
@@ -1909,6 +1921,14 @@ form {
       .field--name-field-job-title,
       .paragraph-type-top {
         padding-right: 0;
+      }
+
+      .paragraph-type-top,
+      .field--name-field-job-title,
+      .field--name-field-organisation {
+        @include media-q(max, 479) {
+          padding: 0;
+        }
       }
     }
   }
@@ -2705,6 +2725,8 @@ form {
       input[type="time"] {
         padding: 10px;
         width: 100%;
+        border: 1px solid #75a8c0;
+        color: #4c7e96;
 
         @media screen and (min-width: 480px) {
           width: auto;
@@ -2846,6 +2868,8 @@ form {
 
       .dropbutton-action {
         text-align: left;
+        display: inline-block;
+        margin: 0 5px;
 
         .form-submit {
           background: $navy;
@@ -2884,11 +2908,30 @@ form {
       }
     }
   }
+
+  // update inner indent from the right side of widget
+  .field--widget-entity-reference-paragraphs .dropbutton-widget {
+    padding-right: 10px;
+  }
+
+  // Hide toggle button
+  .dropbutton-toggle {
+    display: none;
+  }
+
+  // Error message for the Link field
+  .js-form-type-url {
+    label.error {
+      top: 5px;
+      right: 40px;
+    }
+  }
 }
 
 .article-delete-node {
 
-  .node-news-delete-form {
+  .node-news-delete-form,
+  .node-document-delete-form {
     @include font-size(24);
     text-align: center;
     text-transform: uppercase;

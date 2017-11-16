@@ -1,0 +1,100 @@
+uuid: 1a3b9320-220a-4e97-ad00-bc992ee5a9f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anonymous_bottom_link
+    - node.type.basic_page
+    - paragraphs.paragraphs_type.link
+  module:
+    - entity_reference_revisions
+id: node.basic_page.field_anonymous_bottom_link
+field_name: field_anonymous_bottom_link
+entity_type: node
+bundle: basic_page
+label: 'Anonymous bottom link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      link: link
+    target_bundles_drag_drop:
+      cd_user:
+        weight: 25
+        enabled: false
+      content_image:
+        weight: 26
+        enabled: false
+      content_text:
+        weight: 27
+        enabled: false
+      country_and_project:
+        weight: 28
+        enabled: false
+      country_option:
+        weight: 29
+        enabled: false
+      custom_content:
+        weight: 30
+        enabled: false
+      exist_content:
+        weight: 31
+        enabled: false
+      faq_item:
+        weight: 32
+        enabled: false
+      file:
+        weight: 33
+        enabled: false
+      infographic:
+        weight: 34
+        enabled: false
+      infographic_item:
+        weight: 35
+        enabled: false
+      link:
+        enabled: true
+        weight: 36
+      link_to_file:
+        weight: 37
+        enabled: false
+      member_icon:
+        weight: 38
+        enabled: false
+      organisation:
+        weight: 39
+        enabled: false
+      pin_item:
+        weight: 40
+        enabled: false
+      pin_items:
+        weight: 41
+        enabled: false
+      slider:
+        weight: 42
+        enabled: false
+      slider_item:
+        weight: 43
+        enabled: false
+      software_application:
+        weight: 44
+        enabled: false
+      timeline_social:
+        weight: 45
+        enabled: false
+      time_line:
+        weight: 46
+        enabled: false
+      video:
+        weight: 47
+        enabled: false
+      webform:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

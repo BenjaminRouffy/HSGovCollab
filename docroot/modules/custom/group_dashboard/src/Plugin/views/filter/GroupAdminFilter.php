@@ -103,12 +103,19 @@ class GroupAdminFilter extends FilterPluginBase {
     if (!$user->hasPermission('all access to groups')) {
       /* @var GroupMembershipLoader $membership_loader */
       $membership_loader = \Drupal::service('group.membership_loader');
-
+      $hierarchy_manager = \Drupal::service('ggroup.group_hierarchy_manager');
       /* @var GroupMembership $group_membership */
       foreach ($membership_loader->loadByUser($user, array_keys(array_filter($this->options['roles']))) as $group_membership) {
         if (!empty($group_membership->getGroupContent()->id())) {
+          $group_id = $group_membership->getGroup()->id();
           // Add the groups the user is a member of to use later on.
-          $member_gids[] = $group_membership->getGroup()->id();
+          $member_gids[] = $group_id;
+          $subgroups = $hierarchy_manager
+            ->getGroupSubgroups($group_id);
+
+          if (!empty($subgroups)) {
+            $member_gids = array_merge($member_gids,  array_keys($subgroups));
+          }
         }
       }
 

@@ -33,8 +33,25 @@ variant_settings:
       label_display: '0'
       view_mode: default
       region: content
-      weight: -1
+      weight: -2
       uuid: 40d2ecfb-4de6-4f18-84c8-06319348c53d
+      context_mapping:
+        entity: node
+    e8021dd3-3b31-43bd-86a5-f3abf8e17a0e:
+      id: 'entity_field:node:field_documents'
+      label: 'Related documents'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: hidden
+        type: entity_reference_entity_view
+        settings:
+          view_mode: default
+        third_party_settings: {  }
+        weight: 0
+      region: content
+      weight: -1
+      uuid: e8021dd3-3b31-43bd-86a5-f3abf8e17a0e
       context_mapping:
         entity: node
     6f7b1cb0-7597-411e-b690-ab7813ff7eeb:

@@ -1,0 +1,227 @@
+.group-country,
+.group-country_protected {
+  #block-ample-local-tasks + .custom-bc-wrapper {
+    top: 80px;
+  }
+}
+
+.custom-bc-wrapper {
+  font-family: $oswald;
+
+  // Country
+  .group-country &,
+  .group-country_protected & {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    z-index: 101;
+
+    @include media-q(min, 1024) {
+      top: 20px;
+    }
+  }
+
+  // Project
+  .group-project &,
+  .group-project_protected & {
+    background: $navy-dark;
+    margin: -20px -20px 20px;
+
+    @include media-q(min, 480) {
+      margin: -40px -40px 40px;
+    }
+  }
+
+  .toolbar-fixed.toolbar-vertical.group-country & {
+    //position: static;
+    //background: $navy;
+  }
+
+  .logged.group-country &,
+  .logged.group-country_protected & {
+    @include media-q(max, 767) {
+      margin-top: 10px;
+      position: static;
+      background: $navy;
+    }
+  }
+
+  .toolbar-fixed.group-country &,
+  .toolbar-fixed.group-country_protected & {
+    top: 20px;
+  }
+
+  // News and events
+  .node-news &,
+  .node-event & {
+    background-image: url(../images/dotsmap-grey.svg);
+    background-repeat: repeat-x, repeat-y;
+    background-position: left center, right center;
+    background-size: 100%;
+    border-bottom: 1px solid #dfdfdf;
+
+    @include media-q(min, 768) {
+      background-size: 50%;
+    }
+  }
+
+  // Content wrapper
+  > div {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 15px 20px;
+    font-size: 0;
+    text-align: center;
+
+    .group-project &,
+    .group-project_protected & {
+      text-align: left;
+
+      @include media-q(min, 480) {
+        padding-left: 40px;
+      }
+    }
+
+    .node-news &,
+    .node-event & {
+
+      @include media-q(min, 600) {
+        text-align: left;
+        padding-left: 20%;
+      }
+
+      @include media-q(min, 768) {
+        padding-left: 100px;
+      }
+
+      @include media-q(min, 1201) {
+        padding-left: 120px;
+      }
+
+      @include media-q(min, 1601) {
+        padding-left: 20px;
+      }
+    }
+  }
+
+  .custom-bc-title,
+  .custom-bc-item {
+    @include font-size(13);
+    display: inline-block;
+    vertical-align: middle;
+
+    @include media-q(min, 600) {
+      @include font-size(15.5);
+    }
+  }
+
+  // Title
+  .custom-bc-title {
+    color: $navy-dark;
+    margin: 0 15px 0 0;
+    font-weight: 300;
+
+    .node-news &,
+    .node-event & {
+      display: block;
+
+      @include media-q(min, 480) {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+    }
+
+    @include media-q(min, 480) {
+      margin: 0 15px 0 0;
+      display: inline-block;
+    }
+
+    &::before {
+      content: ' ';
+      background: url(../images/icon-pie.svg) no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 14px;
+      height: 14px;
+      margin: -4px 10px 0 0;
+    }
+
+    // Country / Project
+    .group-project &,
+    .group-country &,
+    .group-project_protected &,
+    .group-country_protected & {
+      color: $white;
+
+      &::before {
+        background: url(../images/icon-pie-w.svg) no-repeat;
+      }
+    }
+  }
+
+  // Items
+  .custom-bc-item {
+    padding-right: 11px;
+    margin-right: 10px;
+    position: relative;
+
+    // Pipe
+    &::after {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 1px;
+      background: $navy-dark;
+
+      .group-project &,
+      .group-project_protected &,
+      .group-country_protected &,
+      .group-country & {
+        background: $white;
+      }
+    }
+
+    &:last-child {
+      padding-right: 0;
+      margin-right: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    // Link
+    a {
+      color: $red;
+      text-decoration: none;
+      display: block;
+      max-width: 85px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: color .3s ease;
+
+      @include media-q(min, 600) {
+        max-width: 135px;
+      }
+
+      &:hover {
+        color: $navy;
+      }
+
+      // Country
+      .group-country &,
+      .group-country_protected & {
+        color: $white;
+        text-decoration: underline;
+
+        &:hover {
+          color: $white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

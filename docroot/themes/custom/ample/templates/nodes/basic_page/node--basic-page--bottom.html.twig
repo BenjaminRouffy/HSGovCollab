@@ -1,0 +1,7 @@
+{% if logged_in %}
+  {{ content.field_bottom_link }}
+{% endif %}
+
+{% if not logged_in %}
+  {{ content.field_anonymous_bottom_link }}
+{% endif %}

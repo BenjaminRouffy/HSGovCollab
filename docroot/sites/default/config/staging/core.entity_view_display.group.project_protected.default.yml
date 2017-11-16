@@ -10,6 +10,8 @@ dependencies:
     - field.field.group.project_protected.field_faq
     - field.field.group.project_protected.field_join_block
     - field.field.group.project_protected.field_knowledge_vault
+    - field.field.group.project_protected.field_label_date
+    - field.field.group.project_protected.field_label_end_date
     - field.field.group.project_protected.field_pin_items
     - field.field.group.project_protected.field_priority
     - field.field.group.project_protected.field_product
@@ -37,9 +39,18 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_end_date:
+  field_date:
+    type: datetime_default
     weight: 6
-    label: hidden
+    region: content
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: time_line
+    third_party_settings: {  }
+  field_end_date:
+    weight: 7
+    label: inline
     settings:
       timezone_override: ''
       format_type: time_line
@@ -53,6 +64,22 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_label_date:
+    weight: 8
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_label_end_date:
+    weight: 9
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_project_icon:
     weight: 5
@@ -91,7 +118,6 @@ hidden:
   changed: true
   created: true
   field_based_on: true
-  field_date: true
   field_faq: true
   field_knowledge_vault: true
   field_pin_items: true

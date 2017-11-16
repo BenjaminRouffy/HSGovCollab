@@ -11,6 +11,8 @@ dependencies:
     - field.field.group.project_protected.field_faq
     - field.field.group.project_protected.field_join_block
     - field.field.group.project_protected.field_knowledge_vault
+    - field.field.group.project_protected.field_label_date
+    - field.field.group.project_protected.field_label_end_date
     - field.field.group.project_protected.field_pin_items
     - field.field.group.project_protected.field_priority
     - field.field.group.project_protected.field_product
@@ -48,13 +50,12 @@ third_party_settings:
       label: 'Tabs panel'
     group_summary:
       children:
-        - field_priority
-        - label
-        - field_date
-        - field_end_date
         - langcode
         - path
         - field_project_icon
+        - field_priority
+        - label
+        - group_dates
       parent_name: group_tabs_panel
       weight: 8
       format_type: tab
@@ -147,6 +148,21 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Pin items'
+    group_dates:
+      children:
+        - field_label_date
+        - field_date
+        - field_label_end_date
+        - field_end_date
+      parent_name: group_summary
+      weight: 32
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Dates
 id: group.project_protected.default
 targetEntityType: group
 bundle: project_protected
@@ -171,13 +187,13 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_date:
-    weight: 25
+    weight: 34
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_end_date:
-    weight: 26
+    weight: 36
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -209,6 +225,22 @@ content:
     third_party_settings: {  }
     type: group_select
     region: content
+  field_label_date:
+    weight: 33
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_label_end_date:
+    weight: 35
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_pin_items:
     weight: 30
     settings:
@@ -216,13 +248,13 @@ content:
       title_plural: Paragraphs
       edit_mode: open
       add_mode: dropdown
-      form_display_mode: private_content
+      form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
   field_priority:
-    weight: 23
+    weight: 30
     settings:
       display_label: true
     third_party_settings: {  }
@@ -277,7 +309,7 @@ content:
     region: content
   label:
     type: string_textfield
-    weight: 24
+    weight: 31
     region: content
     settings:
       size: 60

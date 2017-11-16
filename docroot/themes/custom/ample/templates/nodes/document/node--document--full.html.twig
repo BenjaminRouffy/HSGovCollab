@@ -1,0 +1,30 @@
+<div class="single-document">
+  <article{{ attributes }} role="article">
+    {% if display_submitted %}
+      <div class="post-info">
+        <time datetime="{{ content.field_content_date|field_value|field_raw }}">
+          {{ content.field_content_date|field_value }}
+        </time>
+
+        {% if content.field_author %}
+          <span class="author">
+                {% trans %}By: {% endtrans %} {{ content.field_author }}
+              </span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="title-wrapper">
+      <h1 class="page-title">
+        {{ label }}
+      </h1>
+      <div class="line"></div>
+    </div>
+
+    {{ content.body }}
+
+    <div class="document-download">
+      {{ content.field_document|field_value }}
+    </div>
+  </article>
+</div>

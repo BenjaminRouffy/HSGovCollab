@@ -1,21 +1,22 @@
 {% set plainBody %}
   {{ content.body|field_value }}
 {% endset %}
+<a href="{{ url }}" rel="bookmark">
+  <article{{ attributes.addClass('document-teaser') }}>
+    {{ title_prefix }}
+    <h4 role="heading">
+      {{ label|field_value }}
+    </h4>
+    {% if contextual_link_access %}
+      {{ title_suffix }}
+    {% endif %}
 
-<article{{ attributes.addClass('document-teaser') }}>
-  {{ title_prefix }}
-  <h4 role="heading">
-    {{ label|field_value }}
-  </h4>
-  {% if contextual_link_access %}
-    {{ title_suffix }}
-  {% endif %}
+    {% if content.body|field_value %}
+      <p>
+        {{ plainBody|striptags }}
+      </p>
+    {% endif %}
 
-  {% if content.body|field_value %}
-    <p>
-      {{ plainBody|striptags }}
-    </p>
-  {% endif %}
-
-  {{ content.field_document|field_value }}
-</article>
+    {{ content.field_document|field_value }}
+  </article>
+</a>

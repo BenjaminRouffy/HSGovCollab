@@ -14939,6 +14939,7 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   letter-spacing: .5px;
   line-height: 25px;
   margin: 0 0 5px;
+  transition: opacity .3s ease;
 }
 
 .document-list .font-social-icon:not(.prev):not(.next) {
@@ -14947,6 +14948,7 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   position: absolute;
   top: 27px;
   left: 0;
+  transition: opacity .3s ease;
 }
 
 .document-list p {
@@ -14956,6 +14958,15 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   margin-top: 5px;
 }
 
+.document-list a {
+  text-decoration: none;
+}
+
+.document-list a:hover h4,
+.document-list a:hover .font-social-icon:not(.prev):not(.next) {
+  opacity: .66;
+}
+
 .document-list .download {
   color: #283b44;
   display: inline-block;
@@ -14963,8 +14974,8 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   letter-spacing: .5px;
   margin: 15px 0;
   text-decoration: none;
-  transition: opacity .3s ease;
   vertical-align: top;
+  transition: opacity .3s ease;
 }
 
 .document-list .download:before {

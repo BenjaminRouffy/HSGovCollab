@@ -1,0 +1,14 @@
+uuid: e21163aa-e793-4ba7-a0fa-d06e36d291f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.blog_editor
+  module:
+    - user
+id: user_remove_role_action.blog_editor
+label: 'Remove the Blog editor role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: blog_editor

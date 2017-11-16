@@ -11,8 +11,8 @@ entity_type: node
 bundle: event
 label: 'P4H Areas'
 description: 'P4H Area the event will be added to.'
-required: true
-translatable: false
+required: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -20,6 +20,6 @@ settings:
   handler_settings:
     view:
       view_name: events_group_reference
-      display_name: entity_reference_1
+      display_name: entity_reference_2
       arguments: {  }
 field_type: entity_reference

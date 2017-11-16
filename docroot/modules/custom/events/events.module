@@ -262,6 +262,9 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $route = \Drupal::routeMatch()->getRouteName();
   if ($form_id === 'node_event_form') {
     $account = Drupal::currentUser();
+    $group_permission_access = \Drupal::getContainer()
+      ->get('group_customization.group.permission');
+
     if (!$account->hasPermission('create paragraph content image')
       || !$account->hasPermission('create paragraph content slider')) {
       // Hide slider paragraphas authenticated users doesn't have access
@@ -271,7 +274,12 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
     $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
     if ($active_theme->getName() === 'ample') {
+      $form['field_add_event_in_group']['widget']['#required'] = TRUE;
+
       if (!empty($form['field_add_event_in_group']['widget']['#options'])) {
+        $region_options = [];
+        $area_options = [];
+
         foreach ($form['field_add_event_in_group']['widget']['#options'] as $key => $values) {
           if ($key !== '_none') {
             // Rename select list group names.
@@ -281,7 +289,9 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
               foreach ($values as $gid => $group_name) {
                 // Change the grouping for the options in add in group select list.
                 $group = Drupal::entityTypeManager()->getStorage('group')->load($gid);
-                if ($group) {
+                $access = $group_permission_access->checkAccessForFilter($group, $account, ['published']);
+
+                if ($group && $access->isAllowed()) {
                   $geo_object = array();
                   if ($group->hasField('field_geographical_object')) {
                     $geo_object = $group->get('field_geographical_object')->getValue();
@@ -292,12 +302,15 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
                       case 'country':
                         $form['field_add_event_in_group']['widget']['#options']['Country'][$gid] = $group_name;
                         break;
+
                       case 'region':
-                        $form['field_add_event_in_group']['widget']['#options']['Region'][$gid] = $group_name;
+                        $region_options['Region'][$gid] = $group_name;
                         break;
+
                       case 'project':
                         $form['field_add_event_in_group']['widget']['#options']['Collaborations'][$gid] = $group_name;
                         break;
+
                       default:
                         break;
                     }
@@ -311,20 +324,23 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
                         if (!empty($parent_groups)) {
                           $parent_group = $parent_groups[key($parent_groups)];
-                          if (isset($parent_group)) {
+                          $parent_access = $group_permission_access->checkAccessForFilter($parent_group, $account);
+
+                          if (isset($parent_group) && $parent_access->isAllowed()) {
                             $parent_label = $parent_group->get('label')->getValue();
                             if (!empty($parent_label) && isset($parent_label[0])) {
                               $parent_label = $parent_label[0]['value'];
-                              $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $parent_label . ' - ' . $group_name;
+                              $area_options['P4H Areas'][$gid] = $parent_label . ' - ' . $group_name;
                             }
                             else {
-                              $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $group_name;
+                              $area_options['P4H Areas'][$gid] = $group_name;
                             }
                           }
                         }
                         break;
+
                       default:
-                        $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $group_name;
+                        $area_options['P4H Areas'][$gid] = $group_name;
                         break;
                     }
                   }
@@ -333,6 +349,18 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
             }
           }
         }
+
+        $empty_option['_none'] = $form['field_add_event_in_group']['widget']['#options']['_none'];
+        unset($form['field_add_event_in_group']['widget']['#options']['_none']);
+        $clear_options = $form['field_add_event_in_group']['widget']['#options'];
+
+        $form['field_add_event_in_group']['widget']['#options'] = array_merge(
+          $empty_option,
+          $area_options,
+          $region_options,
+          $clear_options
+        );
+
       }
 
       // Set custom page title.
@@ -462,5 +490,24 @@ function events_add_new_event_custom_submit($form, FormStateInterface $form_stat
     );
 
     $form_state->setRedirectUrl($url);
+  }
+}
+
+/**
+ * Custom validate handler for event create form used by authenticated users.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *
+ * @return bool
+ */
+function events_customization_custom_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  if ($form['#form_id'] === 'node_event_form' || $form['#form_id'] === 'node_event_edit_form') {
+    $current_theme = \Drupal::service('theme.manager')->getActiveTheme();
+    $selected_group = $form_state->getValue('field_add_event_in_group');
+
+    if ($current_theme->getName() === 'ample' && empty($selected_group[0]['target_id'])) {
+      $form_state->setError($form, t('P4H Area is required.'));
+    }
   }
 }

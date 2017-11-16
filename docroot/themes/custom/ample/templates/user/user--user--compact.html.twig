@@ -51,22 +51,7 @@
           </div>
         {% endif %}
 
-        {% if content.field_project_manager|field_value %}
-          {{ content.field_project_manager }}
-        {% endif %}
-
-        {% if content.field_knowledge_vault_manager|field_value %}
-          {{ content.field_knowledge_vault_manager }}
-        {% endif %}
-
-        {% if content.field_product_manager|field_value %}
-          {{ content.field_product_manager }}
-        {% endif %}
-
-        {% if content.field_country_manager|field_value %}
-          {{ content.field_country_manager }}
-        {% endif %}
-
+        {{ content.computed_group_membership }}
 
         {% if elements['#user_mail'] is not empty %}
           <div class="font-social-icon mail-icon">

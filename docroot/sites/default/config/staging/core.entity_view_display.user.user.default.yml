@@ -33,6 +33,7 @@ dependencies:
     - field.field.user.user.field_zip_code
     - image.style.150x150
   module:
+    - computed_group_membership
     - entity_reference_revisions
     - group_content_field
     - taxonomy_image_formatter
@@ -42,6 +43,13 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  computed_group_membership:
+    type: list_computed_group_membership
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_avatar:
     weight: 0
     label: hidden
@@ -52,7 +60,7 @@ content:
     type: taxonomy_image_formatter
     region: content
   field_country:
-    weight: 12
+    weight: 13
     label: hidden
     settings:
       link: false
@@ -67,7 +75,7 @@ content:
     type: group_content_manager_list
     region: content
   field_job_title:
-    weight: 10
+    weight: 11
     label: hidden
     settings:
       link_to_entity: false
@@ -82,7 +90,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_mobilephone:
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       link_to_entity: false
@@ -90,7 +98,7 @@ content:
     type: string
     region: content
   field_non_member_organization:
-    weight: 9
+    weight: 10
     label: hidden
     settings:
       link_to_entity: false
@@ -98,7 +106,7 @@ content:
     type: string
     region: content
   field_organisation:
-    weight: 8
+    weight: 9
     label: hidden
     settings:
       link: false
@@ -107,7 +115,7 @@ content:
     region: content
   field_organisations:
     type: entity_reference_revisions_entity_view
-    weight: 11
+    weight: 12
     region: content
     label: hidden
     settings:
@@ -115,7 +123,7 @@ content:
       link: ''
     third_party_settings: {  }
   field_product_manager:
-    weight: 4
+    weight: 5
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -130,7 +138,7 @@ content:
     region: content
   field_skype_or_other:
     type: entity_reference_revisions_entity_view
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       view_mode: default
@@ -138,7 +146,7 @@ content:
     third_party_settings: {  }
     region: content
   field_telephone:
-    weight: 6
+    weight: 7
     label: hidden
     settings:
       link_to_entity: false

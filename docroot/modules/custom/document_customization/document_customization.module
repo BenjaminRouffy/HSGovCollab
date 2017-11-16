@@ -40,12 +40,15 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
                       case 'country':
                         $form['field_add_event_in_group']['widget']['#options']['Country'][$gid] = $group_name;
                         break;
+
                       case 'region':
                         $form['field_add_event_in_group']['widget']['#options']['Region'][$gid] = $group_name;
                         break;
+
                       case 'project':
                         $form['field_add_event_in_group']['widget']['#options']['Collaborations'][$gid] = $group_name;
                         break;
+
                       default:
                         break;
                     }
@@ -73,6 +76,7 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
                           }
                         }
                         break;
+
                       default:
                         $form['field_add_event_in_group']['widget']['#options']['P4H Areas'][$gid] = $group_name;
                         break;

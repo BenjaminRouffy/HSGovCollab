@@ -93,7 +93,7 @@ class GroupIndexByGroupType extends GroupIndexGid  {
 
 
   protected function valueForm(&$form, FormStateInterface $form_state) {
-    $options = [];
+    $filter_groups = [];
     $account = \Drupal::currentUser();
     $types = [];
     $is_anonymous = \Drupal::currentUser()->isAnonymous();
@@ -146,14 +146,73 @@ class GroupIndexByGroupType extends GroupIndexGid  {
         }
 
         if ($access->isAllowed() && !empty($result)) {
-          $options[$group->id()] = \Drupal::entityManager()
-            ->getTranslationFromContext($group)
-            ->label();
+          $filter_groups[$group->id()] = $group;
         }
       }
     }
 
-    asort($options);
+    $weight_table = [
+      'geographical' => [
+        // Start with non-geographical objects.
+        '0' => 1,
+        '1' => 2,
+      ],
+      'group_type' => [
+        'region' => 1,
+        'country' => 2,
+        'project' => 3,
+      ],
+    ];
+
+    usort($filter_groups, function($group_a, $group_b) use ($weight_table) {
+      $label_a = \Drupal::entityManager()
+        ->getTranslationFromContext($group_a)
+        ->label();
+      $label_b = \Drupal::entityManager()
+        ->getTranslationFromContext($group_b)
+        ->label();
+      $cmp = strnatcmp($label_a, $label_b);
+
+      $workspace = [
+        0 =>[
+          'group' => $group_a,
+          'cmp' => $cmp,
+        ],
+        1 => [
+          'group' => $group_b,
+          'cmp' => -$cmp,
+        ],
+      ];
+
+      foreach ($workspace as $key => $target) {
+        $sum = '';
+        $group_type = $target['group']->getGroupType()->id();
+
+        if ($group_type !== 'project') {
+          $sum .= $weight_table['geographical'][$target['group']->field_geographical_object->getValue()[0]['value']];
+        }
+        else {
+          // Projects not depend on geographical goes to the end.
+          $sum .= 3;
+        }
+
+        $sum .= $weight_table['group_type'][$group_type];
+
+        $sum .= ($target['cmp'] + 1);
+
+        $workspace[$key]['sum'] = $sum;
+      }
+      return $workspace[0]['sum'] - $workspace[1]['sum'];
+    });
+
+    $options = [];
+
+    foreach ($filter_groups as $group) {
+      $options[$group->id()] = \Drupal::entityManager()
+        ->getTranslationFromContext($group)
+        ->label();;
+    }
+
     $form_state->set('filter_options', $options);
 
     parent::valueForm($form, $form_state);

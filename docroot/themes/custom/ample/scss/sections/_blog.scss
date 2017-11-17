@@ -271,6 +271,12 @@
 
       a {
         text-decoration: none;
+
+        &:hover {
+          h2 {
+            color: $navy-light;
+          }
+        }
       }
 
       @include media-q(min, 768) {
@@ -287,6 +293,7 @@
         color: $white;
         line-height: 1.34;
         font-weight: 500;
+        transition: color .3s ease;
 
         @include media-q(min, 768) {
           @include font-size(23);

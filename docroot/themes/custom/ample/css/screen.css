@@ -15388,6 +15388,10 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   text-decoration: none;
 }
 
+.page-blog-list-page .popular-authors .popular-author a:hover h2 {
+  color: #80aabe;
+}
+
 @media only screen and (min-width: 768px) {
   .page-blog-list-page .popular-authors .popular-author {
     display: inline-block;
@@ -15404,6 +15408,7 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   color: #fff;
   line-height: 1.34;
   font-weight: 500;
+  transition: color .3s ease;
 }
 
 @media only screen and (min-width: 768px) {

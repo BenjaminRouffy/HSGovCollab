@@ -2255,7 +2255,7 @@ display:
           entity_type: group_content
           plugin_id: group_content_to_entity
       display_description: ''
-      title: Documents
+      title: 'Latest documents'
       allow:
         pager: pager
         items_per_page: false
@@ -2332,7 +2332,7 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 7
+          items_per_page: 3
           offset: 0
       use_more: true
       use_more_always: true
@@ -4551,7 +4551,7 @@ display:
           entity_type: group_content
           plugin_id: group_content_to_entity
       display_description: ''
-      title: Documents
+      title: 'Latest documents'
       allow:
         pager: pager
         items_per_page: false
@@ -4620,7 +4620,7 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 7
+          items_per_page: 3
           offset: 0
       use_more: true
       use_more_always: true

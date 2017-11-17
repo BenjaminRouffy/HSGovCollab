@@ -2167,6 +2167,7 @@ display:
         link_display: false
         link_url: false
         relationships: false
+        group_by: false
       use_more: true
       use_more_always: true
       use_more_text: 'See all collaborations'
@@ -2335,6 +2336,7 @@ display:
           entity_type: group_content
           plugin_id: group_content_to_entity
       rendering_language: '***LANGUAGE_language_interface***'
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -2965,6 +2967,7 @@ display:
         relationships: false
         query: false
         empty: false
+        group_by: false
       block_hide_empty: false
       link_display: '0'
       link_url: 'group/{{ arguments.gid }}/projects'
@@ -3187,10 +3190,10 @@ display:
         type: views_query
         options:
           disable_sql_rewrite: false
-          distinct: true
+          distinct: false
           replica: false
           query_comment: ''
-          query_tags: null
+          query_tags: {  }
       empty:
         area_text_custom:
           id: area_text_custom
@@ -3204,6 +3207,7 @@ display:
           content: 'Nothing has been found'
           plugin_id: text_custom
       rendering_language: '***LANGUAGE_language_interface***'
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:

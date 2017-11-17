@@ -25,7 +25,8 @@
 
 - name: Making regular backup from {{ local_backup_environment }} environment
   sudo: yes
-  mysql_db: name={{ local_backup_environment }} state=dump target={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql.gz login_host={{ mysql_host }} login_user={{ mysql_user }} login_password={{ mysql_pass }}
+  shell: "{{ php_env_vars }} drush -vvvv --nocolor sql-dump --db-url=mysql://{{ mysql_user }}:{{ mysql_pass }}@{{ mysql_host }}/{{ mysql_db }} --result-file={{ backup_folder }}/{{ local_backup_environment }}_local/{{ backup_name }}-{{ op }}.sql --gzip --structure-tables-key=common"
+  sudo: yes
 
 - name: Chmod
   sudo: yes

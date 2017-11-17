@@ -1,18 +1,18 @@
 (function ($) {
   Drupal.behaviors.linksExposedFilter = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       var $forms = $('[data-links-filter]', context);
 
       $.each($forms, function (i, v) {
-        var $form = $(v);
-        var $form_id = $form.attr('id');
+        var $form = $(v),
+          $form_id = $form.attr('id');
 
-        $form.find('select').each(function() {
-          var $filter = $(this);
-          var name = $filter.attr('name');
-          var className = '.' + name.replace(/_/g, '-');
+        $form.find('select').each(function () {
+          var $filter = $(this),
+            name = $filter.attr('name'),
+            className = '.' + name.replace(/_/g, '-').replace(/\[]/, '');
 
-          $(className + ' .filter-tab a').on('click', function(e) {
+          $(className + ' .filter-tab a').on('click', function (e) {
             e.preventDefault();
 
             // Get ID of clicked item
@@ -27,13 +27,15 @@
             $('#' + $form_id + ' input.form-submit').trigger('click');
           });
 
-          $(document).ajaxComplete(function(event, xhr, settings) {
+          $(document).ajaxComplete(function (event, xhr, settings) {
+            var filter_id;
+
             if (
               typeof(settings.extraData) !== 'undefined' &&
               typeof(settings.extraData.view_name) !== 'undefined' &&
               settings.extraData.view_name == settings.blog_view
             ) {
-              var filter_id = $('select[name="' + name + '"]').find(":selected").val();
+              filter_id = $('select[name="' + name + '"]').find(":selected").val();
 
               $(className + ' .filter-tab a').removeClass('active');
               $(className + ' .filter-tab').find('#' + filter_id).addClass('active');

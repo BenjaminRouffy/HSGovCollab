@@ -151,7 +151,12 @@ class GroupIndexByGroupType extends GroupIndexGid  {
         }
 
         if ($access->isAllowed() && !empty($result)) {
-          $filter_groups[$group->id()] = $group;
+          $filter_groups[$group->id()] = [
+            'group' => $group,
+            'label' =>\Drupal::entityManager()
+              ->getTranslationFromContext($group)
+              ->label(),
+          ];
         }
       }
     }
@@ -169,22 +174,16 @@ class GroupIndexByGroupType extends GroupIndexGid  {
       ],
     ];
 
-    usort($filter_groups, function($group_a, $group_b) use ($weight_table) {
-      $label_a = \Drupal::entityManager()
-        ->getTranslationFromContext($group_a)
-        ->label();
-      $label_b = \Drupal::entityManager()
-        ->getTranslationFromContext($group_b)
-        ->label();
-      $cmp = strnatcmp($label_a, $label_b);
+    usort($filter_groups, function($a, $b) use ($weight_table) {
+      $cmp = strnatcmp($a['label'], $b['label']);
 
       $workspace = [
         0 =>[
-          'group' => $group_a,
+          'group' => $a['group'],
           'cmp' => $cmp,
         ],
         1 => [
-          'group' => $group_b,
+          'group' => $b['group'],
           'cmp' => -$cmp,
         ],
       ];
@@ -212,10 +211,8 @@ class GroupIndexByGroupType extends GroupIndexGid  {
 
     $options = [];
 
-    foreach ($filter_groups as $group) {
-      $options[$group->id()] = \Drupal::entityManager()
-        ->getTranslationFromContext($group)
-        ->label();;
+    foreach ($filter_groups as $group_wrapper) {
+      $options[$group_wrapper['group']->id()] = $group_wrapper['label'];
     }
 
     $form_state->set('filter_options', $options);

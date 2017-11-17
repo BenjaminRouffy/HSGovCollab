@@ -98,6 +98,11 @@ class GroupIndexByGroupType extends GroupIndexGid  {
     $types = [];
     $is_anonymous = \Drupal::currentUser()->isAnonymous();
 
+    if ($is_anonymous) {
+      parent::valueForm($form, $form_state);
+      return;
+    }
+
     if (!empty($this->view->filter['type'])) {
       $types = $this->view->filter['type']->value;
     }

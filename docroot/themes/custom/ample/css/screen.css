@@ -2779,7 +2779,8 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .node-news .custom-bc-wrapper,
-.node-event .custom-bc-wrapper {
+.node-event .custom-bc-wrapper,
+.node-document .custom-bc-wrapper {
   background-image: url(../images/dotsmap-grey.svg);
   background-repeat: repeat-x, repeat-y;
   background-position: left center, right center;
@@ -2789,7 +2790,8 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 @media only screen and (min-width: 768px) {
   .node-news .custom-bc-wrapper,
-  .node-event .custom-bc-wrapper {
+  .node-event .custom-bc-wrapper,
+  .node-document .custom-bc-wrapper {
     background-size: 50%;
   }
 }
@@ -2816,7 +2818,8 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 @media only screen and (min-width: 600px) {
   .node-news .custom-bc-wrapper > div,
-  .node-event .custom-bc-wrapper > div {
+  .node-event .custom-bc-wrapper > div,
+  .node-document .custom-bc-wrapper > div {
     text-align: left;
     padding-left: 20%;
   }
@@ -2824,21 +2827,24 @@ body:not(.group):not(.page-search) .top-banner-region {
 
 @media only screen and (min-width: 768px) {
   .node-news .custom-bc-wrapper > div,
-  .node-event .custom-bc-wrapper > div {
+  .node-event .custom-bc-wrapper > div,
+  .node-document .custom-bc-wrapper > div {
     padding-left: 100px;
   }
 }
 
 @media only screen and (min-width: 1201px) {
   .node-news .custom-bc-wrapper > div,
-  .node-event .custom-bc-wrapper > div {
+  .node-event .custom-bc-wrapper > div,
+  .node-document .custom-bc-wrapper > div {
     padding-left: 120px;
   }
 }
 
 @media only screen and (min-width: 1601px) {
   .node-news .custom-bc-wrapper > div,
-  .node-event .custom-bc-wrapper > div {
+  .node-event .custom-bc-wrapper > div,
+  .node-document .custom-bc-wrapper > div {
     padding-left: 20px;
   }
 }
@@ -2864,13 +2870,15 @@ body:not(.group):not(.page-search) .top-banner-region {
 }
 
 .node-news .custom-bc-wrapper .custom-bc-title,
-.node-event .custom-bc-wrapper .custom-bc-title {
+.node-event .custom-bc-wrapper .custom-bc-title,
+.node-document .custom-bc-wrapper .custom-bc-title {
   display: block;
 }
 
 @media only screen and (min-width: 480px) {
   .node-news .custom-bc-wrapper .custom-bc-title,
-  .node-event .custom-bc-wrapper .custom-bc-title {
+  .node-event .custom-bc-wrapper .custom-bc-title,
+  .node-document .custom-bc-wrapper .custom-bc-title {
     display: inline-block;
     margin-bottom: 0;
   }

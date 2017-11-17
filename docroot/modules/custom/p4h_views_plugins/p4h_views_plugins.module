@@ -10,6 +10,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
 
 /**
  * Implements hook_theme().
@@ -285,4 +286,46 @@ function p4h_views_plugins_views_data_alter(array &$data) {
       'id' => 'content_tags_cloud',
     ],
   ];
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function p4h_views_plugins_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  if (!in_array($view->id(), ['events_group_reference'])) {
+    return;
+  }
+
+  if (in_array($view->current_display, ['entity_reference_2'])) {
+    /** @var \Drupal\Core\Session\AccountInterface $account */
+    $account = \Drupal::currentUser()->getAccount();
+    /** @var \Drupal\group_following\GroupFollowingManagerInterface $manager */
+    $manager = \Drupal::getContainer()->get('group_following.manager');
+    /** @var \Drupal\group\GroupMembershipLoaderInterface $membership_loader */
+    $membership_loader = \Drupal::service('group.membership_loader');
+
+    $group_following = $manager->getFollowedForUser($account);
+    $all_user_memberships = $membership_loader->loadByUser();
+    $group_role_storage = \Drupal::entityTypeManager()->getStorage('group_role');
+
+    $member_groups = [];
+
+    foreach ($all_user_memberships as $membership) {
+      $gid = $membership->getGroup()->id();
+      $group = $membership->getGroup();
+      $role = $group_role_storage->loadByUserAndGroup($account, $group);
+      if (isset($role[$group->getGroupType()->id() . "-attendee"])
+        || isset($role[$group->getGroupType()->id() . "-manager"])
+        || isset($role[$group->getGroupType()->id() . "-stakeholder"])) {
+        $member_groups[$gid] = $gid;
+      }
+    }
+
+    $user_groups = array_unique(array_merge($group_following, $member_groups));
+
+    // Not show any group if user has not any followed group or is not member.
+    $user_groups = empty($user_groups) ? [0] : $user_groups;
+
+    $query->addWhere(2, "groups_field_data.id", $user_groups, 'IN');
+  }
 }

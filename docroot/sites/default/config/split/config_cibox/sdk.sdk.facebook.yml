@@ -1,0 +1,12 @@
+langcode: en
+type: facebook
+label: Facebook
+settings:
+  app_id: fake
+  app_secret: fake
+  api_version: '2.10'
+  scope:
+    public_profile: public_profile
+    user_photos: user_photos
+    publish_actions: publish_actions
+callbackUri: /en/sdk/facebook/callback

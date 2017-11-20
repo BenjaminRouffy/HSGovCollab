@@ -215,13 +215,15 @@ function events_views_pre_render(ViewExecutable $view) {
  * Implements hook_ENTITY_TYPE_access().
  */
 function events_vote_type_access(EntityInterface $entity, $operation, AccountInterface $account) {
-  /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
-  $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
-  if ($check_by_group->check($account, ['governance_area']) && 'view' == $operation) {
-    return AccessResult::allowed();
-  }
+//  /** @var \Drupal\menu_item_visibility_by_group\MenuItemVisibilityCheckByGroup $check_by_group */
+//  $check_by_group = \Drupal::service('menu_item_visibility_by_group.check_by_group');
+//  if ($check_by_group->check($account, ['governance_area']) && 'view' == $operation) {
+//    return AccessResult::allowed();
+//  }
+//
+//  return AccessResult::neutral();
 
-  return AccessResult::neutral();
+  return AccessResult::allowed();
 }
 
 /**

@@ -1,11 +1,15 @@
 {% set classes = [dom_id ? 'js-view-dom-id-' ~ dom_id] %}
-
+{% if view.args is defined and view.args[0] is defined and view.args[0] is not empty %}
+  {% set relate_node_link = path('entity.group_content.create_form', {'group':view.args[0], 'plugin_id':'group_node:document'}) %}
+{% else %}
+  {% set relate_node_link = path('node.add', {'node_type':'document'}) %}
+{% endif %}
 {% if without_wrapper is not defined %}
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
   <div class="title-wrapper">
     <div class="contribute-links">
-      <a href="{{ path('node.add', {'node_type':'document'}) }}" class="contribute-link">{{ "Contribute document"|t }}</a>
+      <a href="{{ relate_node_link }}" class="contribute-link">{{ "Contribute document"|t }}</a>
     </div>
     {{ title_prefix }}
     <h1>

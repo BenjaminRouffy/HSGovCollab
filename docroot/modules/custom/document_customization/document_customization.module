@@ -13,6 +13,7 @@ function document_customization_form_alter(&$form, \Drupal\Core\Form\FormStateIn
       $form['field_organization']['#access'] = FALSE;
       $form['field_content_date']['#access'] = FALSE;
       $form['field_add_event_in_group']['widget']['#required'] = TRUE;
+      unset($form['field_document']['widget']['text']);
 
       if (!empty($form['field_add_event_in_group']['widget']['#options'])) {
         $region_options = [];

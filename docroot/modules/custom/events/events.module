@@ -262,8 +262,6 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $route = \Drupal::routeMatch()->getRouteName();
   if ($form_id === 'node_event_form') {
     $account = Drupal::currentUser();
-    $group_permission_access = \Drupal::getContainer()
-      ->get('group_customization.group.permission');
 
     if (!$account->hasPermission('create paragraph content image')
       || !$account->hasPermission('create paragraph content slider')) {
@@ -283,15 +281,18 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
         foreach ($form['field_add_event_in_group']['widget']['#options'] as $key => $values) {
           if ($key !== '_none') {
             // Rename select list group names.
+            if (!is_array($values)) {
+              $values = [$key => $values];
+            }
+
             unset($form['field_add_event_in_group']['widget']['#options'][$key]);
 
             if (!empty($values)) {
               foreach ($values as $gid => $group_name) {
                 // Change the grouping for the options in add in group select list.
                 $group = Drupal::entityTypeManager()->getStorage('group')->load($gid);
-                $access = $group_permission_access->checkAccessForFilter($group, $account, ['published']);
 
-                if ($group && $access->isAllowed()) {
+                if ($group) {
                   $geo_object = array();
                   if ($group->hasField('field_geographical_object')) {
                     $geo_object = $group->get('field_geographical_object')->getValue();
@@ -324,9 +325,8 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
                         if (!empty($parent_groups)) {
                           $parent_group = $parent_groups[key($parent_groups)];
-                          $parent_access = $group_permission_access->checkAccessForFilter($parent_group, $account);
 
-                          if (isset($parent_group) && $parent_access->isAllowed()) {
+                          if (isset($parent_group)) {
                             $parent_label = $parent_group->get('label')->getValue();
                             if (!empty($parent_label) && isset($parent_label[0])) {
                               $parent_label = $parent_label[0]['value'];

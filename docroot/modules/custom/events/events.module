@@ -281,6 +281,10 @@ function events_form_alter(&$form, FormStateInterface $form_state, $form_id) {
         foreach ($form['field_add_event_in_group']['widget']['#options'] as $key => $values) {
           if ($key !== '_none') {
             // Rename select list group names.
+            if (!is_array($values)) {
+              $values = [$key => $values];
+            }
+
             unset($form['field_add_event_in_group']['widget']['#options'][$key]);
 
             if (!empty($values)) {

@@ -3,6 +3,9 @@ services:
     class: Drupal\p4h_views_plugins\ComputedDateManager
     parent: default_plugin_manager
 
+  p4h_views_plugins.sort_machine:
+    class: Drupal\p4h_views_plugins\Sort\SortMachine
+
   views_exposed_form.product_views:
     class: Drupal\p4h_views_plugins\Form\Alter\ProductViewsFilterAlter
     tags:

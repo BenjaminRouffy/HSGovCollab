@@ -9,6 +9,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group\Entity\GroupTypeInterface;
+use Drupal\p4h_views_plugins\Sort\SortItem;
+use Drupal\p4h_views_plugins\Sort\SortMachine;
 use Drupal\views\Plugin\views\filter\ManyToOne;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -32,12 +34,18 @@ class GroupIndexByGroupType extends GroupIndexGid  {
   public $group;
 
   /**
+   * @var \Drupal\p4h_views_plugins\Sort\SortMachine
+   */
+  public $sortMachine;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigEntityStorageInterface $group_type, SqlEntityStorageInterface $group) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigEntityStorageInterface $group_type, SqlEntityStorageInterface $group, SortMachine $sort_machine) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->groupType = $group_type;
     $this->group = $group;
+    $this->sortMachine = $sort_machine;
   }
 
   /**
@@ -49,7 +57,8 @@ class GroupIndexByGroupType extends GroupIndexGid  {
       $plugin_id,
       $plugin_definition,
       $container->get('entity.manager')->getStorage('group_type'),
-      $container->get('entity.manager')->getStorage('group')
+      $container->get('entity.manager')->getStorage('group'),
+      $container->get('p4h_views_plugins.sort_machine')
     );
   }
 
@@ -151,71 +160,12 @@ class GroupIndexByGroupType extends GroupIndexGid  {
         }
 
         if ($access->isAllowed() && !empty($result)) {
-          $filter_groups[$group->id()] = [
-            'group' => $group,
-            'label' =>\Drupal::entityManager()
-              ->getTranslationFromContext($group)
-              ->label(),
-          ];
+          $filter_groups[] = new SortItem($group);
         }
       }
     }
 
-    $weight_table = [
-      'geographical' => [
-        // Start with non-geographical objects.
-        '0' => 1,
-        '1' => 2,
-      ],
-      'group_type' => [
-        'region' => 1,
-        'country' => 2,
-        'project' => 3,
-      ],
-    ];
-
-    usort($filter_groups, function($a, $b) use ($weight_table) {
-      $cmp = strnatcmp($a['label'], $b['label']);
-
-      $workspace = [
-        0 =>[
-          'group' => $a['group'],
-          'cmp' => $cmp,
-        ],
-        1 => [
-          'group' => $b['group'],
-          'cmp' => -$cmp,
-        ],
-      ];
-
-      foreach ($workspace as $key => $target) {
-        $sum = '';
-        $group_type = $target['group']->getGroupType()->id();
-
-        if ($group_type !== 'project') {
-          $sum .= $weight_table['geographical'][$target['group']->field_geographical_object->getValue()[0]['value']];
-        }
-        else {
-          // Projects not depend on geographical goes to the end.
-          $sum .= 3;
-        }
-
-        $sum .= $weight_table['group_type'][$group_type];
-
-        $sum .= ($target['cmp'] + 1);
-
-        $workspace[$key]['sum'] = $sum;
-      }
-      return $workspace[0]['sum'] - $workspace[1]['sum'];
-    });
-
-    $options = [];
-
-    foreach ($filter_groups as $group_wrapper) {
-      $options[$group_wrapper['group']->id()] = $group_wrapper['label'];
-    }
-
-    $form_state->set('filter_options', $options);
+    $form_state->set('filter_options', $this->sortMachine->sort($filter_groups));
 
     parent::valueForm($form, $form_state);
   }

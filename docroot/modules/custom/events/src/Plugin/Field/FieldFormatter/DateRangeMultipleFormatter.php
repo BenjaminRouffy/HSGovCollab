@@ -82,14 +82,13 @@ class DateRangeMultipleFormatter extends DateRangeDefaultFormatter {
         }
         else {
           $elements[$delta]['start_date'] = $this->buildDateWithIsoAttribute($start_date);
-          $elements[$delta]['separator'] = ['#plain_text' => ' ' . $separator . ' '];
 
           if ($this->getSetting('strict')) {
             $elements[$delta]['end_date'] = $this->buildDateWithIsoAttribute($end_date);
-            $elements[$delta]['time_separator'] = ['#plain_text' => ' ' . $separator . ' '];
           }
-
+          $elements[$delta]['range_separator'] = ['#markup' => '<span class="vbar"></span>'];
           $elements[$delta]['start_time'] = $this->buildTimeWithIsoAttribute($start_date);
+          $elements[$delta]['time_separator'] = ['#plain_text' => ' ' . $separator . ' '];
           $elements[$delta]['end_time'] = $this->buildTimeWithIsoAttribute($end_date);
           $elements[$delta]['#weight'] = $start_date->getTimestamp();
 

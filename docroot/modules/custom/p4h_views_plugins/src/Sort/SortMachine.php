@@ -11,8 +11,11 @@ class SortMachine {
     ],
     'group_type' => [
       'region' => 1,
+      'region_protected' => 1,
       'country' => 2,
+      'country_protected' => 2,
       'project' => 3,
+      'project_protected' => 3,
     ],
   ];
 
@@ -46,7 +49,7 @@ class SortMachine {
         $sum = '';
         $group_type = $target['group']->getGroupType()->id();
 
-        if ($group_type !== 'project') {
+        if (!empty($target['group']->field_geographical_object) && $group_type !== 'project') {
           $sum .= $this->weight_table['geographical'][$target['group']->field_geographical_object->getValue()[0]['value']];
         }
         else {

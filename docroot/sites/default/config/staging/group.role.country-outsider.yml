@@ -12,11 +12,14 @@ audience: outsider
 group_type: country
 permissions_ui: true
 permissions:
-  - 'join group'
-  - 'view group'
-  - 'view group_node:event entity'
-  - 'view group_node:news entity'
-  - 'view group_node:document entity'
-  - 'access to view all group content'
-  - 'view subgroup:project content'
-  - 'view subgroup:project entity'
+  0: 'join group'
+  1: 'view group'
+  2: 'view group_node:event entity'
+  3: 'view group_node:news entity'
+  4: 'view group_node:document entity'
+  5: 'access to view all group content'
+  6: 'view subgroup:project content'
+  7: 'view subgroup:project entity'
+  10: 'create group_node:document entity'
+  12: 'create group_node:event entity'
+  14: 'create group_node:news entity'

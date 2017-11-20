@@ -316,6 +316,7 @@ function p4h_views_plugins_views_query_alter(ViewExecutable $view, QueryPluginBa
       $role = $group_role_storage->loadByUserAndGroup($account, $group);
       if (isset($role[$group->getGroupType()->id() . "-attendee"])
         || isset($role[$group->getGroupType()->id() . "-manager"])
+        || isset($role[$group->getGroupType()->id() . "-admin"])
         || isset($role[$group->getGroupType()->id() . "-stakeholder"])) {
         $member_groups[$gid] = $gid;
       }

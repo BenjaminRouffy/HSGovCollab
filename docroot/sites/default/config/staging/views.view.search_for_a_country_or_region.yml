@@ -4561,6 +4561,45 @@ display:
           entity_type: group
           entity_field: default_langcode
           plugin_id: boolean
+        start_vertex:
+          id: start_vertex
+          table: group_graph
+          field: start_vertex
+          relationship: group_graph_parent_groups
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '404'
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
         field_geographical_object_value:
           id: field_geographical_object_value
           table: group__field_geographical_object
@@ -4606,6 +4645,7 @@ display:
           admin_label: ''
           operator: in
           value:
+            country: country
             country_protected: country_protected
           group: 3
           exposed: false
@@ -4994,12 +5034,13 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
+          break_phrase: false
+          not: false
           glossary: false
           limit: 0
           case: none
           path_case: none
           transform_dash: false
-          break_phrase: false
           plugin_id: string
     cache_metadata:
       max-age: -1
@@ -5313,6 +5354,45 @@ display:
           entity_type: group
           entity_field: default_langcode
           plugin_id: boolean
+        start_vertex:
+          id: start_vertex
+          table: group_graph
+          field: start_vertex
+          relationship: group_graph_parent_groups
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '419'
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
         field_geographical_object_value:
           id: field_geographical_object_value
           table: group__field_geographical_object
@@ -5321,7 +5401,7 @@ display:
           group_type: group
           admin_label: ''
           operator: '='
-          value: '1'
+          value: '0'
           group: 3
           exposed: false
           expose:
@@ -5359,6 +5439,7 @@ display:
           operator: in
           value:
             country: country
+            country_protected: country_protected
           group: 3
           exposed: false
           expose:
@@ -5389,45 +5470,6 @@ display:
           entity_type: group
           entity_field: type
           plugin_id: bundle
-        start_vertex:
-          id: start_vertex
-          table: group_graph
-          field: start_vertex
-          relationship: group_graph_parent_groups
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: '419'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: numeric
       filter_groups:
         operator: AND
         groups:

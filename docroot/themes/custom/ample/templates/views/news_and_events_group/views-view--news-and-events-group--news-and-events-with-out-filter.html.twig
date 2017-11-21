@@ -8,14 +8,21 @@
 #}
 
 {% set classes = [dom_id ? 'js-view-dom-id-' ~ dom_id] %}
+{% if view.args is defined and view.args[0] is defined and view.args[0] is not empty %}
+  {% set relate_news_link = path('entity.group_content.create_form', {'group':view.args[0], 'plugin_id':'group_node:news'}) %}
+  {% set relate_event_link = path('entity.group_content.create_form', {'group':view.args[0], 'plugin_id':'group_node:event'}) %}
+{% else %}
+  {% set relate_news_link = path('node.add', {'node_type':'news'}) %}
+  {% set relate_event_link = path('node.add', {'node_type':'event'}) %}
+{% endif %}
 
 {% if without_wrapper is not defined %}
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
   <div class="title-wrapper" data-anchor-id="view-{{ dom_id }}">
     <div class="contribute-links">
-      <a href="{{ path('node.add', {'node_type':'news'}) }}" class="contribute-link">{{ "Contribute news"|t }}</a>
-      <a href="{{ path('node.add', {'node_type':'event'}) }}" class="contribute-link">{{ "Contribute event"|t }}</a>
+      <a href="{{ relate_news_link }}" class="contribute-link">{{ "Contribute news"|t }}</a>
+      <a href="{{ relate_event_link }}" class="contribute-link">{{ "Contribute event"|t }}</a>
     </div>
     {{ title_prefix }}
     <h1 role="heading" class="anchor-title" id="small-title">

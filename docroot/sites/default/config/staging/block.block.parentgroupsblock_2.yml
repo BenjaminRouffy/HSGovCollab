@@ -7,6 +7,7 @@ dependencies:
     - ctools
     - group
     - group_customization
+    - system
   theme:
     - ample
 id: parentgroupsblock_2
@@ -42,3 +43,8 @@ visibility:
     negate: false
     context_mapping:
       group: '@group.group_route_context:group'
+  request_path:
+    id: request_path
+    pages: '/node/*/edit'
+    negate: true
+    context_mapping: {  }

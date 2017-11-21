@@ -20,20 +20,6 @@ function admin_customizations_form_alter(array &$form, FormStateInterface $form_
     case 'file_document_edit_form':
       unset($form['uid'], $form['replace_upload']);
       break;
-
-    case 'node_document_form':
-    case 'node_document_edit_form':
-      foreach (array_keys($form['actions']) as $action) {
-        if (
-          $action != 'preview' &&
-          isset($form['actions'][$action]['#type']) &&
-          $form['actions'][$action]['#type'] === 'submit'
-        ) {
-          $form['actions'][$action]['#submit'][] = 'admin_customizations_document_form_submit';
-        }
-      }
-      break;
-
   }
 }
 

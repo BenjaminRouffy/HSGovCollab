@@ -306,25 +306,22 @@ function p4h_views_plugins_views_query_alter(ViewExecutable $view, QueryPluginBa
 
     $group_following = $manager->getFollowedForUser($account);
     $all_user_memberships = $membership_loader->loadByUser();
-    $group_role_storage = \Drupal::entityTypeManager()->getStorage('group_role');
 
     $member_groups = [];
 
     foreach ($all_user_memberships as $membership) {
       $gid = $membership->getGroup()->id();
-      $group = $membership->getGroup();
-      $role = $group_role_storage->loadByUserAndGroup($account, $group);
-      if (isset($role[$group->getGroupType()->id() . "-attendee"])
-        || isset($role[$group->getGroupType()->id() . "-manager"])
-        || isset($role[$group->getGroupType()->id() . "-admin"])
-        || isset($role[$group->getGroupType()->id() . "-stakeholder"])) {
+      $roles = $membership->getRoles();
+
+      // User has one role only if he is a follower or member without any role.
+      if (count($roles) > 1) {
         $member_groups[$gid] = $gid;
       }
     }
 
     $user_groups = array_unique(array_merge($group_following, $member_groups));
 
-    // Not show any group if user has not any followed group or is not member.
+    // Show no groups if user has not any followed group or is not member.
     $user_groups = empty($user_groups) ? [0] : $user_groups;
 
     $query->addWhere(2, "groups_field_data.id", $user_groups, 'IN');

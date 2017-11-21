@@ -14,7 +14,6 @@ dependencies:
     - group.content_type.governance_area-subgroup-project
     - group.content_type.group_content_type_69666f89104df
     - group.type.country
-    - group.type.country_protected
     - group.type.product
     - group.type.project
     - group.type.region
@@ -4646,7 +4645,6 @@ display:
           operator: in
           value:
             country: country
-            country_protected: country_protected
           group: 3
           exposed: false
           expose:
@@ -5439,7 +5437,6 @@ display:
           operator: in
           value:
             country: country
-            country_protected: country_protected
           group: 3
           exposed: false
           expose:

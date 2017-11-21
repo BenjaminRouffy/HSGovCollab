@@ -21,9 +21,9 @@ class MyContacts extends NotificationPluginBase {
    */
   public function blockViewAlter(array &$build, BlockPluginInterface $block) {
     $query = \Drupal::entityQuery('relation');
-    $query->condition('uid', $this->currentUser->id());
     $query->condition('relation_type', 'friend');
     $query->condition('field_relation_status', 'pending');
+    $query->condition('endpoints', $this->currentUser->id());
     $query->condition('changed', $this->get(), '>');
     $entity_ids = $query->execute();
     if (count($entity_ids)) {

@@ -180,18 +180,22 @@
     }
   }
 
-  $.fn.showRelated = function (className) {
-    var $this = this;
-
+  $.fn.showRelatedHeight = function () {
+    this.css('height', 'auto');
     var height = Math.round(this.height());
-    if('undefined' === typeof className) {
-      className = 'close';
-    }
-    this.addClass(className);
     this.css({
       height: height,
       bottom: (-1 * height)
     });
+  };
+  $.fn.showRelated = function (className) {
+    var $this = this;
+
+    if('undefined' === typeof className) {
+      className = 'close';
+    }
+    this.addClass(className);
+    this.showRelatedHeight();
     $('.related-content > h3', this).click(function (ev) {
       ev.preventDefault();
       $this.toggleClass('open close');
@@ -211,6 +215,9 @@
 
         $(window).scroll(function () {
           showRelated();
+        });
+        $(window).resize(function () {
+          $relatedContent.showRelatedHeight();
         });
       }
     }

@@ -1658,7 +1658,6 @@ form {
 
   #edit-field-avatar-wrapper {
 
-
     label {
       display: none;
     }
@@ -2448,9 +2447,8 @@ form {
   }
 }
 
-
-@media screen  and (max-width: 991px) {
- .form-my-settings #edit-field-avatar-wrapper {
+@media screen and (max-width: 991px) {
+  .form-my-settings #edit-field-avatar-wrapper {
     margin: 0 auto;
     text-align: center;
     width: 100%;
@@ -2925,6 +2923,59 @@ form {
       top: 5px;
       right: 40px;
     }
+  }
+}
+
+.content-add-form {
+  // Actions for logged users with extended rights
+  .form-actions .dropbutton-wrapper {
+    margin-top: 50px;
+    float: none;
+
+    .dropbutton-widget {
+      padding-right: 0;
+    }
+
+    // Hide toggle and display all actions
+    .dropbutton-toggle {
+      display: none;
+    }
+
+    .dropbutton-action {
+      margin-bottom: 20px;
+      display: block;
+
+      @include media-q(min, 645) {
+        display: inline-block;
+        margin: 0;
+      }
+    }
+
+    .form-submit {
+      border-color: $grey-medium;
+      min-width: 270px;
+
+      &:hover {
+        color: $red;
+        border-color: rgba($red, .6);
+      }
+    }
+
+    // Secondary button
+    .secondary-action {
+      .form-submit {
+        color: $navy;
+
+        &:hover {
+          color: $navy;
+          border-color: rgba($navy-dark, .6);
+        }
+      }
+    }
+  }
+
+  .form-actions .dropbutton-wrapper {
+    margin-top: 0;
   }
 }
 

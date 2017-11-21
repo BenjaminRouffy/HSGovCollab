@@ -1658,7 +1658,6 @@ form {
 
   #edit-field-avatar-wrapper {
 
-
     label {
       display: none;
     }
@@ -2448,9 +2447,8 @@ form {
   }
 }
 
-
-@media screen  and (max-width: 991px) {
- .form-my-settings #edit-field-avatar-wrapper {
+@media screen and (max-width: 991px) {
+  .form-my-settings #edit-field-avatar-wrapper {
     margin: 0 auto;
     text-align: center;
     width: 100%;
@@ -2928,9 +2926,105 @@ form {
   }
 }
 
+.content-add-form {
+
+  .form-submit {
+    @include font-size(15);
+    border-color: $grey-medium;
+    min-width: 270px;
+    padding: 15px 25px;
+
+    @include media-q(min, 767) {
+      min-width: 170px;
+    }
+
+    &:hover {
+      color: $red;
+      border-color: rgba($red, .6);
+    }
+  }
+
+  .form-actions > #edit-submit {
+    margin-top: 50px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // Actions for logged users with extended rights
+  .form-actions .dropbutton-wrapper {
+    margin-top: 50px;
+    float: none;
+
+    @include media-q(min, 767) {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .dropbutton-widget {
+      padding-right: 0;
+    }
+
+    // Hide toggle and display all actions
+    .dropbutton-toggle {
+      display: none;
+    }
+
+    .dropbutton-action {
+      margin-bottom: 20px;
+      display: block;
+
+      @include media-q(min, 767) {
+        display: inline-block;
+        margin: 0;
+      }
+    }
+
+    // Secondary button
+    .secondary-action {
+      .form-submit {
+        color: $navy;
+
+        &:hover {
+          color: $navy;
+          border-color: rgba($navy-dark, .6);
+        }
+      }
+    }
+  }
+
+  .node-news-form .form-actions .dropbutton-wrapper {
+    margin-top: 0;
+  }
+
+  #edit-delete {
+    @include font-size(15);
+    background-color: $red;
+    color: $white;
+    border-color: $red;
+    padding: 15px 25px;
+    max-width: 270px;
+    margin: 0 auto !important;
+    display: block;
+    transition: background-color .3s ease;
+
+    @include media-q(min, 767) {
+      display: inline-block;
+      vertical-align: middle;
+      min-width: 100px;
+      margin-top: 50px !important;
+    }
+
+    &:hover {
+      background-color: $red-dark;
+      color: $white !important;
+    }
+  }
+}
+
 .article-delete-node {
 
   .node-news-delete-form,
+  .node-event-delete-form,
   .node-document-delete-form {
     @include font-size(24);
     text-align: center;

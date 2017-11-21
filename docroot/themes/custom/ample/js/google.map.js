@@ -30,6 +30,11 @@
       zoom: 3,
       center: mapCenter,
       scrollwheel: false,
+      zoomControl: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL,
+        position:google.maps.ControlPosition.RIGHT_CENTER
+      },
       disableDoubleClickZoom: true,
       disableDefaultUI: true,
       mapTypeControlOptions: {

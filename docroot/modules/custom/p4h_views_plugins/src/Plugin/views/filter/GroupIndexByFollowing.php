@@ -8,6 +8,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupTypeInterface;
 use Drupal\group_following\GroupFollowingManagerInterface;
+use Drupal\p4h_views_plugins\Sort\SortItem;
+use Drupal\p4h_views_plugins\Sort\SortMachine;
 use Drupal\views\Annotation\ViewsFilter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -31,12 +33,18 @@ class GroupIndexByFollowing extends GroupIndexGid  {
   public $manager;
 
   /**
+   * @var \Drupal\p4h_views_plugins\Sort\SortMachine
+   */
+  protected $sortMachine;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition,ConfigEntityStorageInterface $group_type, GroupFollowingManagerInterface $manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition,ConfigEntityStorageInterface $group_type, GroupFollowingManagerInterface $manager, SortMachine $sort_machine) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->groupType = $group_type;
     $this->manager = $manager;
+    $this->sortMachine = $sort_machine;
   }
 
   /**
@@ -48,7 +56,8 @@ class GroupIndexByFollowing extends GroupIndexGid  {
       $plugin_id,
       $plugin_definition,
       $container->get('entity.manager')->getStorage('group_type'),
-      $container->get('group_following.manager')
+      $container->get('group_following.manager'),
+      $container->get('p4h_views_plugins.sort_machine')
     );
   }
 
@@ -94,7 +103,7 @@ class GroupIndexByFollowing extends GroupIndexGid  {
    * {@inheritdoc}
    */
   protected function valueForm(&$form, FormStateInterface $form_state) {
-    $options = [];
+    $groups = [];
     $account = \Drupal::currentUser();
     $groupPermissionAccess = \Drupal::getContainer()
       ->get('group_customization.group.permission');
@@ -109,15 +118,12 @@ class GroupIndexByFollowing extends GroupIndexGid  {
         $access = $groupPermissionAccess->checkAccessForFilter($group, $account, ['published', 'content',]);
 
         if ($access->isAllowed()) {
-          $options[$group->id()] = \Drupal::entityManager()
-            ->getTranslationFromContext($group)
-            ->label();
+          $groups[] = new SortItem($group);
         }
       }
     }
 
-    asort($options);
-    $form_state->set('filter_options', $options);
+    $form_state->set('filter_options', $this->sortMachine->sort($groups));
 
     parent::valueForm($form, $form_state);
   }

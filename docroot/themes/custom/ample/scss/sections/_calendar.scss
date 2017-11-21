@@ -406,6 +406,24 @@
     line-height: 24px;
     margin-bottom: 15px;
   }
+
+  .event-popup-read-more {
+    margin-top: 40px;
+    
+    a {
+      display: inline-block;
+      padding: 15px 25px;
+      border: 1px solid $grey-medium;
+      font-family: $oswald;
+      color: $red;
+      transition: all .3s ease;
+
+      &:hover {
+        color: rgba($red, .8);
+        border-color: rgba($red, .5);
+      }
+    }
+  }
 }
 
 @include breakpoint-for('#event-response', (to: laptop-small)) {

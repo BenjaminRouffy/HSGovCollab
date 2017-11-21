@@ -14368,6 +14368,24 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   margin-bottom: 15px;
 }
 
+#event-response .event-popup-read-more {
+  margin-top: 40px;
+}
+
+#event-response .event-popup-read-more a {
+  display: inline-block;
+  padding: 15px 25px;
+  border: 1px solid #e9ecee;
+  font-family: Oswald, sans-serif;
+  color: #ea3a32;
+  transition: all .3s ease;
+}
+
+#event-response .event-popup-read-more a:hover {
+  color: rgba(234, 58, 50, 0.8);
+  border-color: rgba(234, 58, 50, 0.5);
+}
+
 @media (max-width: 991px) {
   #event-response {
     padding: 30px;

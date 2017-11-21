@@ -180,9 +180,31 @@
     }
   }
 
+  $.fn.showRelated = function (className) {
+    var $this = this;
+
+    var height = Math.round(this.height());
+    if('undefined' === typeof className) {
+      className = 'close';
+    }
+    this.addClass(className);
+    this.css({
+      height: height,
+      bottom: (-1 * height)
+    });
+    $('.related-content > h3', this).click(function (ev) {
+      ev.preventDefault();
+      $this.toggleClass('open close');
+    });
+    return this;
+  };
+
+
   Drupal.behaviors.relatedContent = {
     attach: function (context, settings) {
       var $relatedContent = $('.related-wrapper', context);
+
+      $relatedContent.showRelated();
 
       if ($relatedContent.length) {
         showRelated();

@@ -1,0 +1,17 @@
+uuid: bceeb517-5da7-4e1e-adf3-34ec6f4668d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.region_protected
+  enforced:
+    config:
+      - user.role.blog_editor
+id: region_protected-7b3cda5bf
+label: 'Blog editor'
+weight: 12
+internal: true
+audience: outsider
+group_type: region_protected
+permissions_ui: false
+permissions: {  }

@@ -247,6 +247,29 @@ function p4h_views_plugins_views_data_alter(array &$data) {
     ),
   );
 
+  $data['groups_field_data']['group_graph_parent_groups'] = array(
+    'title' => t('Group graph: parents groups (end vertex)'),
+    'help' => t('Join by end_vertex'),
+    'real field' => 'id',
+    'relationship' => array(
+      'base' => 'group_graph',
+      'base field' => 'end_vertex',
+      // Standard plugin.
+      'id' => 'standard',
+      'label' => t('Group graph: parents groups (relationship)'),
+    ),
+  );
+
+  $data['group_graph']['start_vertex'] = array(
+    'title' => t('Start vertex'),
+    'filter' => [
+      'id' => 'numeric',
+    ],
+    'argument' => [
+      'id' => 'numeric',
+    ],
+  );
+
   $data['group_content_field_data']['gid_following'] = array(
     'real field' => 'gid',
     'filter' => array(

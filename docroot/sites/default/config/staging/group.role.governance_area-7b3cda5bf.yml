@@ -1,0 +1,17 @@
+uuid: ae0fd2dd-9268-4949-8b56-ce8dfa6b5693
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.governance_area
+  enforced:
+    config:
+      - user.role.blog_editor
+id: governance_area-7b3cda5bf
+label: 'Blog editor'
+weight: 12
+internal: true
+audience: outsider
+group_type: governance_area
+permissions_ui: false
+permissions: {  }

@@ -75,8 +75,6 @@ class GroupIndexByGroupParent extends GroupIndexGid {
           ->fetchCol();
 
         if (!empty($query)) {
-          $subgroups = [];
-
           foreach ($query as $id) {
             $subgroup = $this->group->load($id);
 

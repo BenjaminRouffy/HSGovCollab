@@ -9,6 +9,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group\Entity\GroupTypeInterface;
+use Drupal\p4h_views_plugins\Sort\SortItem;
+use Drupal\p4h_views_plugins\Sort\SortMachine;
 use Drupal\views\Plugin\views\filter\ManyToOne;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -32,12 +34,18 @@ class GroupIndexByGroupType extends GroupIndexGid  {
   public $group;
 
   /**
+   * @var \Drupal\p4h_views_plugins\Sort\SortMachine
+   */
+  public $sortMachine;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigEntityStorageInterface $group_type, SqlEntityStorageInterface $group) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigEntityStorageInterface $group_type, SqlEntityStorageInterface $group, SortMachine $sort_machine) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->groupType = $group_type;
     $this->group = $group;
+    $this->sortMachine = $sort_machine;
   }
 
   /**
@@ -49,7 +57,8 @@ class GroupIndexByGroupType extends GroupIndexGid  {
       $plugin_id,
       $plugin_definition,
       $container->get('entity.manager')->getStorage('group_type'),
-      $container->get('entity.manager')->getStorage('group')
+      $container->get('entity.manager')->getStorage('group'),
+      $container->get('p4h_views_plugins.sort_machine')
     );
   }
 
@@ -93,10 +102,15 @@ class GroupIndexByGroupType extends GroupIndexGid  {
 
 
   protected function valueForm(&$form, FormStateInterface $form_state) {
-    $options = [];
+    $filter_groups = [];
     $account = \Drupal::currentUser();
     $types = [];
     $is_anonymous = \Drupal::currentUser()->isAnonymous();
+
+    if ($is_anonymous) {
+      parent::valueForm($form, $form_state);
+      return;
+    }
 
     if (!empty($this->view->filter['type'])) {
       $types = $this->view->filter['type']->value;
@@ -146,15 +160,12 @@ class GroupIndexByGroupType extends GroupIndexGid  {
         }
 
         if ($access->isAllowed() && !empty($result)) {
-          $options[$group->id()] = \Drupal::entityManager()
-            ->getTranslationFromContext($group)
-            ->label();
+          $filter_groups[] = new SortItem($group);
         }
       }
     }
 
-    asort($options);
-    $form_state->set('filter_options', $options);
+    $form_state->set('filter_options', $this->sortMachine->sort($filter_groups));
 
     parent::valueForm($form, $form_state);
   }

@@ -2927,6 +2927,29 @@ form {
 }
 
 .content-add-form {
+
+  .form-submit {
+    @include font-size(15);
+    border-color: $grey-medium;
+    min-width: 270px;
+    padding: 15px 25px;
+
+    @include media-q(min, 767) {
+      min-width: 170px;
+    }
+
+    &:hover {
+      color: $red;
+      border-color: rgba($red, .6);
+    }
+  }
+
+  .form-actions > #edit-submit {
+    margin-top: 50px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
   // Actions for logged users with extended rights
   .form-actions .dropbutton-wrapper {
     margin-top: 50px;
@@ -2953,22 +2976,6 @@ form {
       @include media-q(min, 767) {
         display: inline-block;
         margin: 0;
-      }
-    }
-
-    .form-submit {
-      @include font-size(15);
-      border-color: $grey-medium;
-      min-width: 270px;
-      padding: 15px 25px;
-
-      @include media-q(min, 767) {
-        min-width: 170px;
-      }
-
-      &:hover {
-        color: $red;
-        border-color: rgba($red, .6);
       }
     }
 
@@ -3009,7 +3016,7 @@ form {
 
     &:hover {
       background-color: $red-dark;
-      color: $white;
+      color: $white !important;
     }
   }
 }
@@ -3017,6 +3024,7 @@ form {
 .article-delete-node {
 
   .node-news-delete-form,
+  .node-event-delete-form,
   .node-document-delete-form {
     @include font-size(24);
     text-align: center;

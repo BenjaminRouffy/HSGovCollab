@@ -9269,6 +9269,54 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   right: 40px;
 }
 
+.content-add-form .form-submit, .content-add-form .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .content-add-form a, .content-add-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .content-add-form .button, .content-add-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .content-add-form #edit-cancel, .content-add-form
+.article-edit-node .node-article-delete-form #edit-cancel,
+.article-edit-node .node-article-delete-form .content-add-form #edit-cancel, .content-add-form
+.article-delete-node .node-article-delete-form #edit-cancel,
+.article-delete-node .node-article-delete-form .content-add-form #edit-cancel, .content-add-form .article-add-node #edit-delete, .article-add-node .content-add-form #edit-delete, .content-add-form
+.article-edit-node #edit-delete,
+.article-edit-node .content-add-form #edit-delete, .content-add-form
+.article-delete-node #edit-delete,
+.article-delete-node .content-add-form #edit-delete {
+  font-size: 0.9375rem;
+  border-color: #e9ecee;
+  min-width: 270px;
+  padding: 15px 25px;
+}
+
+@media only screen and (min-width: 767px) {
+  .content-add-form .form-submit, .content-add-form .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .content-add-form a, .content-add-form .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .content-add-form .button, .content-add-form .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .content-add-form #edit-cancel, .content-add-form
+  .article-edit-node .node-article-delete-form #edit-cancel,
+  .article-edit-node .node-article-delete-form .content-add-form #edit-cancel, .content-add-form
+  .article-delete-node .node-article-delete-form #edit-cancel,
+  .article-delete-node .node-article-delete-form .content-add-form #edit-cancel, .content-add-form .article-add-node #edit-delete, .article-add-node .content-add-form #edit-delete, .content-add-form
+  .article-edit-node #edit-delete,
+  .article-edit-node .content-add-form #edit-delete, .content-add-form
+  .article-delete-node #edit-delete,
+  .article-delete-node .content-add-form #edit-delete {
+    min-width: 170px;
+  }
+}
+
+.content-add-form .form-submit:hover, .content-add-form .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .content-add-form a:hover, .content-add-form .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .content-add-form .button:hover, .content-add-form .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .content-add-form #edit-cancel:hover, .content-add-form
+.article-edit-node .node-article-delete-form #edit-cancel:hover,
+.article-edit-node .node-article-delete-form .content-add-form #edit-cancel:hover, .content-add-form
+.article-delete-node .node-article-delete-form #edit-cancel:hover,
+.article-delete-node .node-article-delete-form .content-add-form #edit-cancel:hover, .content-add-form .article-add-node #edit-delete:hover, .article-add-node .content-add-form #edit-delete:hover, .content-add-form
+.article-edit-node #edit-delete:hover,
+.article-edit-node .content-add-form #edit-delete:hover, .content-add-form
+.article-delete-node #edit-delete:hover,
+.article-delete-node .content-add-form #edit-delete:hover {
+  color: #ea3a32;
+  border-color: rgba(234, 58, 50, 0.6);
+}
+
+.content-add-form .form-actions > #edit-submit {
+  margin-top: 50px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .content-add-form .form-actions .dropbutton-wrapper {
   margin-top: 50px;
   float: none;
@@ -9299,48 +9347,6 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
     display: inline-block;
     margin: 0;
   }
-}
-
-.content-add-form .form-actions .dropbutton-wrapper .form-submit, .content-add-form .form-actions .dropbutton-wrapper .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .content-add-form .form-actions .dropbutton-wrapper a, .content-add-form .form-actions .dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .content-add-form .form-actions .dropbutton-wrapper .button, .content-add-form .form-actions .dropbutton-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel, .content-add-form .form-actions .dropbutton-wrapper
-.article-edit-node .node-article-delete-form #edit-cancel,
-.article-edit-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel, .content-add-form .form-actions .dropbutton-wrapper
-.article-delete-node .node-article-delete-form #edit-cancel,
-.article-delete-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel, .content-add-form .form-actions .dropbutton-wrapper .article-add-node #edit-delete, .article-add-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete, .content-add-form .form-actions .dropbutton-wrapper
-.article-edit-node #edit-delete,
-.article-edit-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete, .content-add-form .form-actions .dropbutton-wrapper
-.article-delete-node #edit-delete,
-.article-delete-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete {
-  font-size: 0.9375rem;
-  border-color: #e9ecee;
-  min-width: 270px;
-  padding: 15px 25px;
-}
-
-@media only screen and (min-width: 767px) {
-  .content-add-form .form-actions .dropbutton-wrapper .form-submit, .content-add-form .form-actions .dropbutton-wrapper .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .content-add-form .form-actions .dropbutton-wrapper a, .content-add-form .form-actions .dropbutton-wrapper .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .content-add-form .form-actions .dropbutton-wrapper .button, .content-add-form .form-actions .dropbutton-wrapper .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel, .content-add-form .form-actions .dropbutton-wrapper
-  .article-edit-node .node-article-delete-form #edit-cancel,
-  .article-edit-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel, .content-add-form .form-actions .dropbutton-wrapper
-  .article-delete-node .node-article-delete-form #edit-cancel,
-  .article-delete-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel, .content-add-form .form-actions .dropbutton-wrapper .article-add-node #edit-delete, .article-add-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete, .content-add-form .form-actions .dropbutton-wrapper
-  .article-edit-node #edit-delete,
-  .article-edit-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete, .content-add-form .form-actions .dropbutton-wrapper
-  .article-delete-node #edit-delete,
-  .article-delete-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete {
-    min-width: 170px;
-  }
-}
-
-.content-add-form .form-actions .dropbutton-wrapper .form-submit:hover, .content-add-form .form-actions .dropbutton-wrapper .reset-filters ul:not(.contextual-links) a:hover, .reset-filters ul:not(.contextual-links) .content-add-form .form-actions .dropbutton-wrapper a:hover, .content-add-form .form-actions .dropbutton-wrapper .ui-dialog.ui-widget-content .button:hover, .ui-dialog.ui-widget-content .content-add-form .form-actions .dropbutton-wrapper .button:hover, .content-add-form .form-actions .dropbutton-wrapper .article-add-node .node-article-delete-form #edit-cancel:hover, .article-add-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel:hover, .content-add-form .form-actions .dropbutton-wrapper
-.article-edit-node .node-article-delete-form #edit-cancel:hover,
-.article-edit-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel:hover, .content-add-form .form-actions .dropbutton-wrapper
-.article-delete-node .node-article-delete-form #edit-cancel:hover,
-.article-delete-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper #edit-cancel:hover, .content-add-form .form-actions .dropbutton-wrapper .article-add-node #edit-delete:hover, .article-add-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete:hover, .content-add-form .form-actions .dropbutton-wrapper
-.article-edit-node #edit-delete:hover,
-.article-edit-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete:hover, .content-add-form .form-actions .dropbutton-wrapper
-.article-delete-node #edit-delete:hover,
-.article-delete-node .content-add-form .form-actions .dropbutton-wrapper #edit-delete:hover {
-  color: #ea3a32;
-  border-color: rgba(234, 58, 50, 0.6);
 }
 
 .content-add-form .form-actions .dropbutton-wrapper .secondary-action .form-submit, .content-add-form .form-actions .dropbutton-wrapper .secondary-action .reset-filters ul:not(.contextual-links) a, .reset-filters ul:not(.contextual-links) .content-add-form .form-actions .dropbutton-wrapper .secondary-action a, .content-add-form .form-actions .dropbutton-wrapper .secondary-action .ui-dialog.ui-widget-content .button, .ui-dialog.ui-widget-content .content-add-form .form-actions .dropbutton-wrapper .secondary-action .button, .content-add-form .form-actions .dropbutton-wrapper .secondary-action .article-add-node .node-article-delete-form #edit-cancel, .article-add-node .node-article-delete-form .content-add-form .form-actions .dropbutton-wrapper .secondary-action #edit-cancel, .content-add-form .form-actions .dropbutton-wrapper .secondary-action
@@ -9395,10 +9401,11 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .content-add-form #edit-delete:hover {
   background-color: #8c2222;
-  color: #fff;
+  color: #fff !important;
 }
 
 .article-delete-node .node-news-delete-form,
+.article-delete-node .node-event-delete-form,
 .article-delete-node .node-document-delete-form {
   font-size: 1.5rem;
   text-align: center;

@@ -2932,6 +2932,11 @@ form {
     margin-top: 50px;
     float: none;
 
+    @include media-q(min, 767) {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
     .dropbutton-widget {
       padding-right: 0;
     }
@@ -2945,15 +2950,21 @@ form {
       margin-bottom: 20px;
       display: block;
 
-      @include media-q(min, 645) {
+      @include media-q(min, 767) {
         display: inline-block;
         margin: 0;
       }
     }
 
     .form-submit {
+      @include font-size(15);
       border-color: $grey-medium;
       min-width: 270px;
+      padding: 15px 25px;
+
+      @include media-q(min, 767) {
+        min-width: 170px;
+      }
 
       &:hover {
         color: $red;
@@ -2974,8 +2985,32 @@ form {
     }
   }
 
-  .form-actions .dropbutton-wrapper {
+  .node-news-form .form-actions .dropbutton-wrapper {
     margin-top: 0;
+  }
+
+  #edit-delete {
+    @include font-size(15);
+    background-color: $red;
+    color: $white;
+    border-color: $red;
+    padding: 15px 25px;
+    max-width: 270px;
+    margin: 0 auto !important;
+    display: block;
+    transition: background-color .3s ease;
+
+    @include media-q(min, 767) {
+      display: inline-block;
+      vertical-align: middle;
+      min-width: 100px;
+      margin-top: 50px !important;
+    }
+
+    &:hover {
+      background-color: $red-dark;
+      color: $white;
+    }
   }
 }
 

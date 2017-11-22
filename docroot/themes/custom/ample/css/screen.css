@@ -3881,11 +3881,15 @@ body:not(.group):not(.page-search) .top-banner-region {
   -webkit-transform: translateY(150%);
       -ms-transform: translateY(150%);
           transform: translateY(150%);
-  transition: -webkit-transform .6s ease;
-  transition: transform .6s ease;
-  transition: transform .6s ease, -webkit-transform .6s ease;
+  transition: bottom .6s ease, -webkit-transform .6s ease;
+  transition: transform .6s ease, bottom .6s ease;
+  transition: transform .6s ease, bottom .6s ease, -webkit-transform .6s ease;
   width: 100%;
   z-index: 310;
+}
+
+.related-wrapper.open {
+  bottom: 0 !important;
 }
 
 .logged .related-wrapper {
@@ -3910,6 +3914,7 @@ body:not(.group):not(.page-search) .top-banner-region {
   left: 0;
   top: -38px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .related-wrapper .item-list {

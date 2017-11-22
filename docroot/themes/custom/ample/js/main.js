@@ -180,15 +180,44 @@
     }
   }
 
+  $.fn.showRelatedHeight = function () {
+    this.css('height', 'auto');
+    var height = Math.round(this.height());
+    this.css({
+      height: height,
+      bottom: (-1 * height)
+    });
+  };
+  $.fn.showRelated = function (className) {
+    var $this = this;
+
+    if('undefined' === typeof className) {
+      className = 'close';
+    }
+    this.addClass(className);
+    this.showRelatedHeight();
+    $('.related-content > h3', this).click(function (ev) {
+      ev.preventDefault();
+      $this.toggleClass('open close');
+    });
+    return this;
+  };
+
+
   Drupal.behaviors.relatedContent = {
     attach: function (context, settings) {
       var $relatedContent = $('.related-wrapper', context);
+
+      $relatedContent.showRelated();
 
       if ($relatedContent.length) {
         showRelated();
 
         $(window).scroll(function () {
           showRelated();
+        });
+        $(window).resize(function () {
+          $relatedContent.showRelatedHeight();
         });
       }
     }

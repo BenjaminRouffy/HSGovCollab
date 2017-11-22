@@ -201,16 +201,18 @@
       var anchorSettings = {
         'region': []
       };
+
       $anchorLink.each(function (index, element) {
         if (this.hasAttribute('data-region')) {
           anchorSettings.region.push($(this).attr('data-region'));
         }
       });
+
       anchorSettings = $.extend(true, {
         'region': ['.bottom-head']
       }, anchorSettings);
-      var $bottomHead = $(anchorSettings.region.join(','), context);
 
+      var $bottomHead = $(anchorSettings.region.join(','), context);
       var $body = $('body');
 
       if ($('.bottom-head').is('.has-anchor-links')) {
@@ -218,26 +220,26 @@
       }
 
       if (!$body.is('.group.logged')) {
-        if ($anchorLink.length && $anchorLink.length > 1) {
+
+        if ($anchorLink.length > 1) {
           $header.addClass('has-anchors');
           $bottomHead.append('<div class="anchor-links"><ul></ul></div>');
 
-          var headerHeight = $('.header-fixed').height() + 10;
 
-          if ($body.is('.logged')) {
-            headerHeight += 90;
-          }
+          // if ($body.is('.logged')) {
+          //   headerHeight += 90;
+          // }
 
+          // Create anchors links an push them to header
           $anchorLink.each(function (index, element) {
+            var anchorLabel = null, title, id;
 
-            var anchorLabel = false;
             if (this.hasAttribute('data-anchor-label')) {
               anchorLabel = $(this).attr('data-anchor-label');
             }
 
-            var title = anchorLabel || $(element).find('.anchor-title').first().text();
-            var id = title.trim();
-            var lastId;
+            title = anchorLabel || $(element).find('.anchor-title').first().text();
+            id = title.trim();
 
             // Remove  special characters from string.
             id = id.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '_');
@@ -245,11 +247,15 @@
             element.id = id;
 
             $bottomHead.find('.anchor-links ul').append('<li><a href="#' + id + '">' + title + '</a></li>');
+          });
 
-            $(window).on('scroll', function () {
-              var itemExpandeds = $('.anchor-links').find("a");
+          $(window).on('scroll', function () {
+            var headerHeight = 0,
+              itemExpandeds = $('.anchor-links').find('a'),
+              lastId = null,
+              fromTop,// window scroll from top
 
-              var scrollItems = itemExpandeds.map(function () {
+              scrollItems = itemExpandeds.map(function () {
                 var item = $($(this).attr("href"));
 
                 if (item.length) {
@@ -257,31 +263,39 @@
                 }
               });
 
-              var fromTop = $(this).scrollTop() + headerHeight;
-              var cur = scrollItems.map(function () {
-                if ($(this).offset().top < fromTop)
-                  return this;
-              });
+            // If user has an Admin toolbar then update height of Header + Toolbar
+            if($('.toolbar-fixed').length) {
+              headerHeight = $('.header-fixed').outerHeight() + parseInt($('body').css('padding-top')) // header + height of the admin toolbar
+            }
+            else {
+              headerHeight = $('.header-fixed').outerHeight()
+            }
 
-              cur = cur[cur.length - 1];
+            fromTop = $(this).scrollTop() + headerHeight + 10; // 10px - indent between title and fixed header
 
-              var id = cur && cur.length ? cur[0].id : "";
-
-              if (lastId !== id) {
-                lastId = id;
-
-                itemExpandeds
-                  .parent().removeClass("active")
-                  .end().filter("[href='#" + id + "']").parent().addClass("active");
-              }
+            var cur = scrollItems.map(function () {
+              if ($(this).offset().top < fromTop)
+                return this;
             });
+
+            cur = cur[cur.length - 1];
+
+            var id = cur && cur.length ? cur[0].id : "";
+
+            if (lastId !== id) {
+              lastId = id;
+
+              itemExpandeds
+                .parent().removeClass("active")
+                .end().filter("[href='#" + id + "']").parent().addClass('active');
+            }
           });
         }
 
         $('.anchor-links', context).on('click', 'a', function (event) {
-          var headerHeight = $('.header-fixed').height();
-          var adminMenuHeight = parseInt($('body').css('padding-top'));
-          var totalHeaderHegiht = headerHeight + adminMenuHeight;
+          var headerHeight = $('.header-fixed').height(),
+              adminMenuHeight = parseInt($('body').css('padding-top')),
+              totalHeaderHegiht = headerHeight + adminMenuHeight;
 
           event.preventDefault();
 

@@ -347,6 +347,10 @@
   }
 }
 
+.hidden-time .event-time-range {
+  display: none;
+}
+
 #event-response {
   background: $white;
   border: 1px solid #afb7bb;
@@ -385,6 +389,16 @@
 
   .event-info-popup {
     margin-bottom: 20px;
+
+    // Separator
+    .vbar {
+      display: inline-block;
+      vertical-align: middle;
+      width: 2px;
+      height: 26px;
+      background: $red;
+      margin: -6px 5px 0;
+    }
   }
 
   .row {
@@ -409,7 +423,7 @@
 
   .event-popup-read-more {
     margin-top: 40px;
-    
+
     a {
       display: inline-block;
       padding: 15px 25px;

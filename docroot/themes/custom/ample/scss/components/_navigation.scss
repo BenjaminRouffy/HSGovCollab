@@ -277,6 +277,24 @@
 
     li {
       position: relative;
+
+      &:last-child {
+        a {
+          color: $navy-dark;
+
+          &:hover {
+            color: $navy;
+          }
+        }
+
+        .is-active {
+          color: $red;
+        }
+      }
+
+      .is-active {
+        color: $red;
+      }
     }
 
     li a {

@@ -1,3 +1,4 @@
+{% set hideTimes = hide_times ? 'hidden-time' : '' %}
 <article{{ attributes }} role="article">
   {{ title_prefix }}
   <h3 class="event-title">
@@ -12,7 +13,7 @@
   <div class="event-info-popup">
     <div class="row">
       <span class="label">{{ 'Date'|t }}:</span>
-      <span class="value">{{ content.field_date }}</span>
+      <span class="value {{ hideTimes }}">{{ content.field_date }}</span>
     </div>
 
     {% if content.field_timezone|field_value %}

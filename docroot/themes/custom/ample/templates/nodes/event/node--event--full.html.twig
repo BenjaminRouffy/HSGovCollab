@@ -1,3 +1,4 @@
+{% set hideTimes = hide_times ? 'hidden-time' : '' %}
 <div class="content-wrapper">
   <section class="content-container content-with-sidebar">
     <section class="content">
@@ -33,7 +34,7 @@
             <span class="label">
               {{ content.field_date['#title'] }}:
             </span>
-            <span class="value">
+            <span class="value {{ hideTimes }}">
               {{ content.field_date|field_value }}
             </span>
           </div>

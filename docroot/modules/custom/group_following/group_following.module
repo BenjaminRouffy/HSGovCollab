@@ -5,6 +5,9 @@
  * Contains group_following.module.
  */
 
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
@@ -20,5 +23,31 @@ function group_following_help($route_name, RouteMatchInterface $route_match) {
       return $output;
 
     default:
+  }
+}
+
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function group_following_entity_base_field_info(EntityTypeInterface $entity_type) {
+
+  if ('group_content' === $entity_type->id()) {
+    $fields['group_type_id'] = BaseFieldDefinition::create('string');
+    $fields['plugin_id'] = BaseFieldDefinition::create('string');
+    return $fields;
+  }
+
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function group_following_entity_presave(EntityInterface $entity) {
+
+  if ('group_content' === $entity->getEntityTypeId()) {
+    /** @var \Drupal\group\Entity\GroupContent $entity */
+    $entity->group_type_id->set(0, $entity->getGroup()->getGroupType()->id());
+    $entity->plugin_id->set(0, $entity->getContentPlugin()->getPluginId());
   }
 }

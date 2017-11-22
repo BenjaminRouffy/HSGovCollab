@@ -107,6 +107,13 @@ function group_customization_entity_base_field_info(EntityTypeInterface $entity_
 
     return $fields;
   }
+
+  if ('group_content' === $entity_type->id()) {
+    $fields['group_type_id'] = BaseFieldDefinition::create('string');
+    $fields['plugin_id'] = BaseFieldDefinition::create('string');
+    return $fields;
+  }
+
 }
 
 /**
@@ -125,6 +132,12 @@ function group_customization_entity_presave(EntityInterface $entity) {
         $entity->set('group_status', 'published');
       }
     }
+  }
+
+  if ('group_content' === $entity->getEntityTypeId()) {
+    /** @var \Drupal\group\Entity\GroupContent $entity */
+    $entity->group_type_id->set(0, $entity->getGroup()->getGroupType()->id());
+    $entity->plugin_id->set(0, $entity->getContentPlugin()->getPluginId());
   }
 }
 

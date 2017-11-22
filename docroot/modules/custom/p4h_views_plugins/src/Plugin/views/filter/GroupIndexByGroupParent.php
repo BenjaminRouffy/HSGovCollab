@@ -32,6 +32,42 @@ class GroupIndexByGroupParent extends GroupIndexGid {
   /**
    * {@inheritdoc}
    */
+  public function hasExtraOptions() {
+    return TRUE;
+  }
+
+  /**
+   * @inheritdoc
+   */
+  protected function defineOptions() {
+    $options = parent::defineOptions();
+
+    $options['sub_depth'] = ['default' => 0];
+
+    return $options;
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function buildExtraOptionsForm(&$form, FormStateInterface $form_state) {
+    $form['sub_depth'] = [
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Depth'),
+      '#default_value' => $this->options['sub_depth'],
+      '#options' => [
+        '0' => $this->t('Content from target group'),
+        '1' => $this->t('Subgroup 1 level'),
+        '2' => $this->t('Subgroup 2 level'),
+      ],
+      '#description' => $this->t('The depth will match group content with hierarchy. So if you have country group "Germany" with project group "Germany project" as subgroup, and selected "Content from parent group" + "Subgroup 1 level" that will result to filter all group content from "Germany" and "Germany project" groups'),
+    ];
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, SqlEntityStorageInterface $group, SortMachine $sort_machine) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->group = $group;
@@ -69,10 +105,19 @@ class GroupIndexByGroupParent extends GroupIndexGid {
       if (!empty($group)) {
         $query = \Drupal::database()->select('group_graph', 'group_graph')
           ->fields('group_graph', ['end_vertex'])
-          ->condition('start_vertex', $group->id())
-          ->condition('hops', 0)
-          ->execute()
-          ->fetchCol();
+          ->condition('start_vertex', $group->id());
+
+        if (is_array($this->options['sub_depth'])) {
+          $depth = array_filter($this->options['sub_depth'], function ($value) {
+            return $value !== 0;
+          });
+          $query->condition('hops', $depth, 'IN');
+        }
+        else {
+          $query->condition('hops', 0);
+        }
+
+        $query = $query->execute()->fetchCol();
 
         if (!empty($query)) {
           $subgroups = [];

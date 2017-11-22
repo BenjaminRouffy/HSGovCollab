@@ -1,33 +1,37 @@
 <?php
+
 /**
  * @file
  * File contains install, uninstall and update hooks for notifications module.
  */
 
+/**
+ *
+ */
 function notifications_schema() {
-  $schema['notifications_mapping'] = array(
+  $schema['notifications_mapping'] = [
     'description' => 'The table for mapping notifications to users.',
-    'fields' => array(
-      'uid' => array(
+    'fields' => [
+      'uid' => [
         'description' => 'User id',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
-      ),
-      'type' => array(
+      ],
+      'type' => [
         'description' => 'Content that the notifications is for.',
         'type' => 'varchar',
         'length' => 128,
         'not null' => TRUE,
-      ),
-      'notification' => array(
+      ],
+      'notification' => [
         'description' => 'Represents whether there is new content fot the user.',
         'type' => 'int',
         'size' => 'tiny',
         'not null' => TRUE,
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 
   return $schema;
 }

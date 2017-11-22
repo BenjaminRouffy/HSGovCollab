@@ -1,12 +1,31 @@
 (function ($) {
+  'use strict';
+
   Drupal.behaviors.notifications = {
     attach: function (context, settings) {
-      var $newsElement = $('.news', context);
-      if (settings.notifications) {
-        if (settings.notifications['news'] == '1') {
-          $newsElement.once().addClass('notification-icon');
+
+
+      var $element = $('#block-dashboardmenu', context);
+
+      if ($element.length === 0) {
+        return;
+      }
+
+      var conf = settings.notifications;
+
+      if ('undefined' !== typeof conf) {
+        for (var key in conf) {
+          if (conf.hasOwnProperty(key)) {
+            var $link = $(conf[key]['selector'], context);
+            $link.once().addClass('notification-icon');
+            if (typeof conf[key]["args"] === 'string') {
+              var href = $link.attr('href');
+              $link.attr('href', href + "?" + conf[key]["args"]);
+            }
+          }
         }
       }
     }
   }
+
 }(jQuery));

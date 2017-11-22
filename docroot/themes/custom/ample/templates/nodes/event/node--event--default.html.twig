@@ -1,5 +1,6 @@
 {#@todo: add event slider.#}
 {% set isConf = is_conference ? 'event-conference' : '' %}
+{% set hideTimes = hide_times ? 'hidden-time' : '' %}
 
 {% if content.field_event_slider|field_value %}
   <div class="header-image">
@@ -39,7 +40,7 @@
   <div class="event-info">
     <div class="row">
       <span class="label">{{ 'When'|t }}:</span>
-      <span class="value">{{ content.field_date }}</span>
+      <span class="value {{ hideTimes }}">{{ content.field_date }}</span>
     </div>
 
     {% if content.field_timezone|field_value %}

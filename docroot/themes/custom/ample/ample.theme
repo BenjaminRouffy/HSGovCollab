@@ -175,6 +175,7 @@ function ample_preprocess_node(array &$variables) {
 
   if ('event' == $node->bundle()) {
     $variables['is_conference'] = isset($node->field_is_conference->value) ? $node->field_is_conference->value : 0;
+    $variables['hide_times'] = isset($node->field_hide_times->value) ? $node->field_hide_times->value : 0;
   }
 }
 

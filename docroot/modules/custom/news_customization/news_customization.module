@@ -25,6 +25,7 @@ function news_customization_form_alter(&$form, FormStateInterface $form_state, $
       if (!empty($form['field_add_event_in_group']['widget']['#options'])) {
         $region_options = [];
         $area_options = [];
+        $non_geo_regions = [];
 
         foreach ($form['field_add_event_in_group']['widget']['#options'] as $key => $values) {
           if ($key !== '_none') {
@@ -85,6 +86,11 @@ function news_customization_form_alter(&$form, FormStateInterface $form_state, $
                         }
                         break;
 
+                      case 'region':
+                      case 'region_protected':
+                        $non_geo_regions[$gid] = $group_name;
+                        break;
+
                       default:
                         $area_options['P4H Areas'][$gid] = $group_name;
                         break;
@@ -96,14 +102,21 @@ function news_customization_form_alter(&$form, FormStateInterface $form_state, $
           }
         }
 
+        if (isset($area_options['P4H Areas'])) {
+          $area_options['P4H Areas'] = array_merge($non_geo_regions, $area_options['P4H Areas']);
+        }
+        elseif (!empty($non_geo_regions)) {
+          $area_options['P4H Areas'] = $non_geo_regions;
+        }
+
         $empty_option['_none'] = $form['field_add_event_in_group']['widget']['#options']['_none'];
         unset($form['field_add_event_in_group']['widget']['#options']['_none']);
         $clear_options = $form['field_add_event_in_group']['widget']['#options'];
 
         $form['field_add_event_in_group']['widget']['#options'] = array_merge(
           $empty_option,
-          $region_options,
           $area_options,
+          $region_options,
           $clear_options
         );
       }

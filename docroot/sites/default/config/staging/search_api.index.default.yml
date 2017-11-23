@@ -167,8 +167,8 @@ datasource_settings:
     bundles:
       default: false
       selected:
-        - article
         - basic_page
+        - blog
         - document
         - event
         - member
@@ -185,12 +185,12 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  aggregated_field: {  }
   content_access:
     weights:
       preprocess_query: -30
-  rendered_item: {  }
+  aggregated_field: {  }
   entity_status: {  }
+  rendered_item: {  }
   add_url: {  }
   file_attachments:
     excluded_extensions: 'aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv svg'
@@ -198,10 +198,10 @@ processor_settings:
     max_filesize: '0'
     excluded_private: 0
     excluded_mimes: 'audio/x-aiff image/x-jg video/x-msvideo image/x-ms-bmp image/gif image/vnd.microsoft.icon video/quicktime audio/ogg video/ogg image/png image/x-photoshop audio/x-realaudio audio/x-pn-realaudio image/x-rgb video/x-flv image/svg+xml'
-  parent_groups: {  }
   group_access:
     weights:
       preprocess_query: -30
+  parent_groups: {  }
 tracker_settings:
   default: {  }
 options:

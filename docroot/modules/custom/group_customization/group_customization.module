@@ -107,6 +107,7 @@ function group_customization_entity_base_field_info(EntityTypeInterface $entity_
 
     return $fields;
   }
+
 }
 
 /**
@@ -126,6 +127,7 @@ function group_customization_entity_presave(EntityInterface $entity) {
       }
     }
   }
+
 }
 
 /**

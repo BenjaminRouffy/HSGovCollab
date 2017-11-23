@@ -6,10 +6,8 @@
  */
 
 use Drupal\Core\Database\Database;
-use Drupal\Core\Database\Driver\mysql\Schema;
-use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\field\Entity\FieldConfig;
-use \Drupal\user\Entity\User;
+use Drupal\user\Entity\User;
 
 /**
  * Install and configure contrib modules.
@@ -1168,4 +1166,30 @@ function deployment_update_8096() {
  */
 function deployment_update_8097() {
   \Drupal::service('module_installer')->install(['color_field']);
+}
+
+/**
+ * Add two new property of group content entity.
+ */
+function deployment_update_8098() {
+  \Drupal::entityDefinitionUpdateManager()->applyUpdates();
+
+  /** @var \Drupal\Core\Entity\EntityManagerInterface $entity_manager */
+  $entity_manager = \Drupal::service('entity.manager');
+  /** @var \Drupal\Core\Entity\EntityStorageInterface $group_storage */
+  $group_storage = $entity_manager->getStorage('group_content');
+  $group_content_table = $group_storage->getDataTable();
+  foreach ($group_storage->loadMultiple(NULL) as $entity) {
+    $update = db_update($group_content_table);
+    $group = $entity->getGroup();
+    if ($group) {
+      $update->fields([
+        'group_type_id' => $entity->getGroup()->getGroupType()->id(),
+        'plugin_id' => str_replace(':', '-', $entity->getContentPlugin()
+          ->getPluginId()),
+      ])
+        ->condition('id', $entity->id())
+        ->execute();
+    }
+  }
 }

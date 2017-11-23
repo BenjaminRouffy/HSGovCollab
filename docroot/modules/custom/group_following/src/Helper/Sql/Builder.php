@@ -3,7 +3,6 @@
 namespace Drupal\group_following\Helper\Sql;
 
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Session\AccountInterface;
 
 /**
  * Class Builder.
@@ -85,15 +84,23 @@ class Builder {
     $select->addField('gcf', 'id', 'id');
     $select->addField('gcf', 'gid', 'gid');
     $select->addField('gcf', 'entity_id', 'uid');
-    $select->addExpression('substring_index(gcff.bundle, \'-\', 1)', 'bundle');
-    $select->addExpression('concat(\':\', IF(gcff.field_follower_value, if(substring_index(gcff.bundle, \'-\', 1) = \'region\', \'following:following\',
-                                       \'following\'), if(substring_index(gcff.bundle, \'-\', 1) = \'region\', \'unfollowing:following\', \'unfollowing\')))', 'value');
+    $select->addField('gcf', 'group_type_id', 'bundle');
+    // $select->addExpression('substring_index(gcff.bundle, \'-\', 1)', 'bundle');
+    $regions = ['region', 'region_protected'];
+    $regions = array_combine(
+      array_map(function($k){ return ':region_'.$k; }, array_keys($regions)),
+      $regions
+    );
+    $select->addExpression('concat(\':\', IF(gcff.field_follower_value, if(gcf.group_type_id IN (' . implode(', ', array_keys($regions)) . '), \'following:following\',
+                                       \'following\'), if(gcf.group_type_id IN (' . implode(', ', array_keys($regions)) . '), \'unfollowing:following\', \'unfollowing\')))', 'value', $regions);
 
     $select->innerJoin('group_content__field_follower', 'gcff', db_and()
       ->where('gcf.id = gcff.entity_id'));
 
     // @TODO Replace to $account.
-    // $select->condition('gcf.entity_id', $account->id());
+    // $select->condition('gcf.group_type_id', 'region_protected');
+    // $all = $select->execute()->fetchAll();
+
     return $select;
   }
 

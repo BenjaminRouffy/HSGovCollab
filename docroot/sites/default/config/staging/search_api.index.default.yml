@@ -9,6 +9,7 @@ dependencies:
     - field.storage.node.field_category
     - field.storage.node.field_document
     - field.storage.paragraph.field_file
+    - field.storage.node.field_author
     - field.storage.group.field_summary
     - field.storage.group.field_group_status
     - search_api.server.default
@@ -131,6 +132,14 @@ field_settings:
         - field.storage.paragraph.field_file
       module:
         - paragraphs
+  field_author:
+    label: Author
+    datasource_id: 'entity:node'
+    property_path: field_author
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_author
   label:
     label: Title
     datasource_id: 'entity:group'

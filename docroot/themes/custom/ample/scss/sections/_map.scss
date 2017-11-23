@@ -48,6 +48,16 @@
     margin: 15px 0 40px;
     padding: 0;
     overflow: visible;
+
+    a {
+      color: $white;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .country-options {

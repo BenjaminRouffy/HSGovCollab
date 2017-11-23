@@ -13762,6 +13762,16 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   overflow: visible;
 }
 
+.marker-info .country-title a {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.marker-info .country-title a:hover {
+  text-decoration: underline;
+}
+
 .marker-info .country-options {
   font-size: 1.4rem;
   margin-bottom: 30px;
@@ -14534,9 +14544,9 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   display: inline-block;
   vertical-align: middle;
   width: 2px;
-  height: 26px;
+  height: 16px;
   background: #ea3a32;
-  margin: -6px 5px 0;
+  margin: -3px 5px 0;
 }
 
 #event-response .row {

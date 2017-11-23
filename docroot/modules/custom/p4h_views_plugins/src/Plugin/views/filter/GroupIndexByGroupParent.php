@@ -107,10 +107,11 @@ class GroupIndexByGroupParent extends GroupIndexGid {
           ->fields('group_graph', ['end_vertex'])
           ->condition('start_vertex', $group->id());
 
-        if (is_array($this->options['sub_depth'])) {
-          $depth = array_filter($this->options['sub_depth'], function ($value) {
-            return $value !== 0;
-          });
+        $depth = array_filter($this->options['sub_depth'], function ($value) {
+          return $value !== 0;
+        });
+
+        if (is_array($depth) && !empty($depth)) {
           $query->condition('hops', $depth, 'IN');
         }
         else {

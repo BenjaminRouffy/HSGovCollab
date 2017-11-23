@@ -435,11 +435,9 @@ display:
       tags:
         - 'config:core.entity_view_display.group.country.banner'
         - 'config:core.entity_view_display.group.country.bottom'
-        - 'config:core.entity_view_display.group.country.default'
         - 'config:core.entity_view_display.group.country.map'
         - 'config:core.entity_view_display.group.country.pin_items'
         - 'config:core.entity_view_display.group.country.region_search_for_countries'
-        - 'config:core.entity_view_display.group.country.search_country'
         - 'config:core.entity_view_display.group.country.search_result_row'
         - 'config:core.entity_view_display.group.country.single_line_with_icon'
         - 'config:core.entity_view_display.group.country.time_line'
@@ -503,6 +501,8 @@ display:
         - 'config:core.entity_view_display.group.region_protected.search_result_row'
         - 'config:core.entity_view_display.group.region_protected.time_line'
         - 'config:core.entity_view_display.group.region_protected.token'
+        - 'config:core.entity_view_display.group.country.default'
+        - 'config:core.entity_view_display.group.country.search_country'
   block_1:
     display_plugin: block
     id: block_1
@@ -2203,18 +2203,24 @@ display:
             description: ''
             use_operator: false
             operator: combine_op
-            identifier: combine
+            identifier: combine_countries
             required: true
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              conference_oxford: '0'
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
+              closed_country_manager: '0'
+              blog_editor: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -2902,12 +2908,13 @@ display:
             description: ''
             use_operator: false
             operator: combine_op
-            identifier: combine_3
+            identifier: combine_regions
             required: true
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              conference_oxford: '0'
               anonymous: '0'
               country_managers: '0'
               projects_managers: '0'
@@ -2916,6 +2923,9 @@ display:
               specific_users: '0'
               knowledge_vault_manager: '0'
               co_admin: '0'
+              product_manager: '0'
+              closed_country_manager: '0'
+              blog_editor: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -4455,18 +4465,24 @@ display:
             description: ''
             use_operator: false
             operator: combine_op
-            identifier: combine
+            identifier: combine_knowledge
             required: true
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              conference_oxford: '0'
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
+              closed_country_manager: '0'
+              blog_editor: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -5247,18 +5263,24 @@ display:
             description: ''
             use_operator: false
             operator: combine_op
-            identifier: combine
+            identifier: combine_products
             required: true
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              conference_oxford: '0'
               anonymous: '0'
-              administration_users: '0'
               country_managers: '0'
               projects_managers: '0'
               governance_group_users: '0'
               coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
+              closed_country_manager: '0'
+              blog_editor: '0'
           is_grouped: false
           group_info:
             label: ''

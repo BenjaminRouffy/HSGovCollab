@@ -917,6 +917,42 @@
   }
 }
 
+.views-element-container {
+  > header {
+    @include font-size(25.2);
+    font-family: $oswald;
+    background-color: transparent;
+    line-height: 48px;
+    margin: 20px 0 15px;
+    position: relative;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0;
+
+    a {
+      @include font-size(15.4);
+      line-height: 18px;
+      position: absolute;
+      top: 17px;
+      right: 0;
+      text-decoration: none;
+
+      &:before {
+        content: "q";
+        color: $red;
+        font-family: $p4h;
+        margin-right: 4px;
+      }
+
+      &:hover {
+        &:before {
+          color: $red-dark;
+        }
+      }
+    }
+  }
+}
+
 .view-country {
   margin-top: 40px;
 

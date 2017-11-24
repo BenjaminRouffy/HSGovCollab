@@ -1,7 +1,7 @@
 <div class="marker-info" id="country_{{ group.id() }}">
   <div class="close-btn"></div>
   <h2 role="heading" class="country-title">
-    {{ label }}
+    <a  href="{{ path('entity.group.canonical', {'group': group.id()}) }}" >{{ label }}</a>
   </h2>
 
   {% if content.field_country_options|field_value %}

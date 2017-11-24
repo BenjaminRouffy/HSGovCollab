@@ -1756,10 +1756,14 @@ footer > .partners .item-list li {
   margin: 0;
   padding: 20px 40px;
   transition: border .3s ease;
+  display: inline-block;
+  border-bottom: 1px solid transparent;
 }
 
 .contact-us .red-btn-link:hover, .contact-us .event-info .vote-widget--like-and-dislike a:hover, .event-info .vote-widget--like-and-dislike .contact-us a:hover {
   color: #ea3a32;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }
 
 .red-btn-link:hover, .event-info .vote-widget--like-and-dislike a:hover {

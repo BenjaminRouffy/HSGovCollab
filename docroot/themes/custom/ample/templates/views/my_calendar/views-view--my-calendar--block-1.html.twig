@@ -56,9 +56,11 @@
 {% endif %}
 
 <div class="calendar-wrapper">
-  <div class="contribute-links">
-    <a href="{{ path('node.add', {'node_type':'event'}) }}" class="contribute-link">{{ "Add an item"|t }}</a>
-  </div>
+  {% if logged_in %}
+    <div class="contribute-links">
+      <a href="{{ path('node.add', {'node_type':'event'}) }}" class="contribute-link">{{ "Add an item"|t }}</a>
+    </div>
+  {% endif %}
   <div id="calendar"></div>
   <div id="event-response"></div>
 </div>

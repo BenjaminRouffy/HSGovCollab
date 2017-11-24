@@ -20,10 +20,12 @@
 <div{{ attributes.addClass(classes) }}>
   {% endif %}
   <div class="title-wrapper" data-anchor-id="view-{{ dom_id }}">
-    <div class="contribute-links">
-      <a href="{{ relate_news_link }}" class="contribute-link">{{ "Contribute news"|t }}</a>
-      <a href="{{ relate_event_link }}" class="contribute-link">{{ "Contribute event"|t }}</a>
-    </div>
+    {% if logged_in %}
+      <div class="contribute-links">
+        <a href="{{ relate_news_link }}" class="contribute-link">{{ "Contribute news"|t }}</a>
+        <a href="{{ relate_event_link }}" class="contribute-link">{{ "Contribute event"|t }}</a>
+      </div>
+    {% endif %}
     {{ title_prefix }}
     <h1 role="heading" class="anchor-title">
       {{ view.getTitle()|raw }}

@@ -33,14 +33,14 @@ sh reinstall.sh --windows
 By default your site will be accessible by using this url.
 
 ```
-http://drupal.p4h.xip.io/
+http://drupal.hsgc.ffwdev.dev/
 ```
 
 
 If ```xip.io``` not working - create row with
 
 ```hosts
-192.168.56.132 drupal.p4h.xip.io
+192.168.57.31 drupal.hsgc.ffwdev.dev
 ```
 
 in ```/etc/hosts``` or just use another ServerName in apache.yml

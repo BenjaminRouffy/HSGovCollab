@@ -84,9 +84,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision :shell, :path => "provisioning/ansible/run-drupal-playbook.sh"
   end
 
-  config.ssh.username = "vagrant"
-  config.ssh.password = "vagrant"
-  config.ssh.shell = "sh"
-  config.ssh.insert_key = "false"
+  ## @MITEV and @HRISTO: I commented this garbage. It works like this for me.
+  ## PS: Don't forget to start mysql.
+  #config.ssh.username = "vagrant"
+  #config.ssh.password = "vagrant"
+  #config.ssh.shell = "sh"
+  #config.ssh.insert_key = "false"
   config.ssh.forward_agent = true
 end

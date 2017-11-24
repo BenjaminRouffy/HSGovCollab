@@ -3,7 +3,7 @@ vagrantfile-local:
     vm:
         hostname: null
         network:
-            private_network: 192.168.56.132
+            private_network: 192.168.57.31
             forwarded_port:
                 CocLsFE7aIwA:
                     host: '8081'
@@ -17,13 +17,10 @@ vagrantfile-local:
                 box_url: 'http://admin:08212PmskOK4@cibox07.m2.propeople.com.ua:/backup/ubuntu14.04provisionedCIBox.php7-1.box'
                 modifyvm:
                     natdnshostresolver1: on
-                    memory: '2048'
+                    memory: '3500'
                     cpus: 2
                 setextradata:
                     VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
-            lxc:
-                box: 'Ubuntu_14_04__CIBox_VM_provisioned_LXC_version'
-                box_url: 'http://cici.ffwua.com/ubuntu14.04provisionedCIBox.lxc.box'
         synced_folder:
             - id: drupal
               source: ./

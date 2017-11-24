@@ -20,6 +20,13 @@ function admin_customizations_form_alter(array &$form, FormStateInterface $form_
     case 'file_document_edit_form':
       unset($form['uid'], $form['replace_upload']);
       break;
+
+    case 'node_blog_form':
+    case 'node_blog_edit_form':
+      $form['field_author']['#access'] = FALSE;
+      $form['#validate'][] = 'admin_customization_blog_set_author';
+
+      break;
   }
 }
 
@@ -97,4 +104,22 @@ function admin_customizations_field_widget_options_select_form_alter(&$element, 
       $element['#options']['_none'] = t('Select');
     }
   }
+}
+
+/**
+ * Custom validate handler for blog create and update.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *
+ * @return bool
+ */
+function admin_customization_blog_set_author(&$form, FormStateInterface $form_state) {
+  $uid_value = $form_state->getValue('uid');
+  $uid = array_shift($uid_value);
+  $author = Drupal::entityTypeManager()->getStorage('user')->load($uid['target_id']);
+  $author_name[] = [
+    'value' => $author->getDisplayName(),
+  ];
+  $form_state->setValue('field_author', $author_name);
 }

@@ -11963,6 +11963,35 @@ body:not(.toolbar-fixed) header:not(.collapsed) .header-fixed {
   padding-top: 39px;
 }
 
+.header-static .main-menu > div {
+  padding-right: 125px;
+  width: 100%;
+  text-align: right;
+}
+
+.header-static .desktop-service-links {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+
+.header-static .desktop-service-links a {
+  padding-top: 42px;
+  color: #fff;
+}
+
+.header-static .service-links {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100%;
+  background: #005083;
+  background: linear-gradient(90deg, #005083, #449ea5);
+}
+
 @media (max-width: 767px) {
   header.has-anchors ~ .system-messages {
     margin-top: 57px;
@@ -12039,7 +12068,7 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 .header-static .social-links {
   position: absolute;
   top: 22px;
-  right: 20px;
+  right: 115px;
 }
 
 .logged .header-static .social-links {

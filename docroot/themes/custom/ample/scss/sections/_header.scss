@@ -111,6 +111,40 @@ header {
   }
 }
 
+.header-static {
+  
+  .main-menu {
+    & > div {
+      padding-right: 116px;
+      width: 100%;
+      text-align: right;
+    }
+  }
+  
+  .desktop-service-links {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+
+    a {
+      padding-top: 42px;
+      color: $white;
+    }
+  }
+
+  .service-links {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100%;
+    background: $primary-color-dark;
+    background: linear-gradient(90deg, $primary-color-dark, $primary-color-light);
+  }
+}
+
 @include breakpoint-for('header', (to: tablet)) {
   &.has-anchors {
     ~ .system-messages {
@@ -195,7 +229,7 @@ header {
   .social-links {
     position: absolute;
     top: 22px;
-    right: 20px;
+    right: 115px;
 
     .logged & {
       top: 10px;

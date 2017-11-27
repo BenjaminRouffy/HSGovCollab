@@ -44,7 +44,7 @@ body {
 
 #{headings(1,3)} {
   color: $navy-dark;
-  font-family: $oswald;
+  font-family: $primary-font;
   font-weight: 700;
 }
 
@@ -103,7 +103,7 @@ strong {
 }
 
 a {
-  color: $navy-dark;
+  color: $primary-color-dark;
 
   &:focus {
     outline: 0
@@ -163,13 +163,13 @@ svg {
   }
 
   &:before {
-    background: url(../images/CornerUpRight.svg) left top no-repeat;
+    //background: url(../images/CornerUpRight.svg) left top no-repeat;
     left: 0;
     top: 0;
   }
 
   &:after {
-    background: url(../images/CornerDownLeft.svg) left top no-repeat;
+    //background: url(../images/CornerDownLeft.svg) left top no-repeat;
     bottom: 0;
     right: 0;
   }

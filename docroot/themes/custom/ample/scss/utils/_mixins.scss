@@ -316,6 +316,10 @@
   }
 }
 
+@mixin font-icon {
+  font-family: $font-icon;
+}
+
 //------------------------------------------------------------------------------
 // Headings
 @function headings($from: 1, $to: 6) {

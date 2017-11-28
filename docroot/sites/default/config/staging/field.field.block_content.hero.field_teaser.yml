@@ -1,0 +1,21 @@
+uuid: 46fe236b-5586-4a26-a10f-1325ad96f6be
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_teaser
+  module:
+    - text
+id: block_content.hero.field_teaser
+field_name: field_teaser
+entity_type: block_content
+bundle: hero
+label: Teaser
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

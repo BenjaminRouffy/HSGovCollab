@@ -1,0 +1,23 @@
+uuid: 18f7c5ad-b115-41af-afd9-a46c8a0c357c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_share
+  module:
+    - link
+id: block_content.hero.field_share
+field_name: field_share
+entity_type: block_content
+bundle: hero
+label: Share
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

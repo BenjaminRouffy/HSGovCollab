@@ -200,7 +200,7 @@ Configure Stage File Proxy to use the files from the correct source.
 
 Download and import a new box:
 ```
-rsync -avz -e 'ssh -p2207'  root@cibox07.m2.propeople.com.ua:/var/www/backup/ubuntu14.04provisionedCIBox.php7-1.box  ubuntu14.04provisionedCIBox.php7-1.box
+rsync -avz -e 'ssh -p2207'  root@cibox01.m1.ffwdev.com:/var/www/backup/ubuntu14.04provisionedCIBox.php7-1.box  ubuntu14.04provisionedCIBox.php7-1.box
 vagrant box add Ubuntu_14_04__CIBox_VM_provisioned_php71 ubuntu14.04provisionedCIBox.php7-1.box
 rm -rf ubuntu14.04provisionedCIBox.php7-1.box
 ```

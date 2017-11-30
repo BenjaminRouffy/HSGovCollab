@@ -14,7 +14,7 @@ vagrantfile-local:
         provider:
             virtualbox:
                 box: 'Ubuntu_14_04__CIBox_VM_provisioned_php71'
-                box_url: 'http://admin:08212PmskOK4@cibox07.m2.propeople.com.ua:/backup/ubuntu14.04provisionedCIBox.php7-1.box'
+                box_url: 'http://admin:08212PmskOK4@cibox01.m1.ffwdev.com:/backup/ubuntu14.04provisionedCIBox.php7-1.box'
                 modifyvm:
                     natdnshostresolver1: on
                     memory: '3500'

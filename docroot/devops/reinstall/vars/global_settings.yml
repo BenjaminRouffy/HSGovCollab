@@ -33,12 +33,13 @@ local_backup_environment: 'p4h'
 backup_user: p4h
 backup_pass: KzX9ObrdZ7DP
 # Site url to download assets via stage_file_proxy.
-origin_site_url: https://{{ backup_user }}:{{ backup_pass }}@cibox07.m2.propeople.com.ua/stage
+origin_site_url: https://{{ backup_user }}:{{ backup_pass }}@cibox01.m1.ffwdev.com/stage
 # Stage hash_salt key
 hash_salt: ZunPn4qWYDhQ1FEwGWlI2aQNNcAEZ5UdSob7R9Z0IeFIQPW5_pFt7wPVlpbrwEfqdWOLAxcUUA
 sync_stage: sites/default/config/staging
 # Source backup database that will be downloaded to build site.
 # In many cases this is production dump.
+# @TODO - replace this with HSGC Stage DB or Live or something else.
 source_backup_name: latest_local_p4h.sql.gz
 # URL to the source database. Can be overridden by CI server.
 source_database: https://{{ backup_user }}:{{ backup_pass }}@p4h.world/backup/{{ source_backup_name }}

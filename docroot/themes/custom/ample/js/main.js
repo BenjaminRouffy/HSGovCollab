@@ -899,4 +899,32 @@
 
     }
   };
+
+
+  Drupal.behaviors.heroSlider = {
+    attach: function (context) {
+      console.log(context);
+
+      $('.hero__image-slider', context).slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        speed: 500,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        dots: true
+      });
+
+      $('.hero__arrow', context).click(function (e) {
+        e.preventDefault();
+
+        $("html, body")
+          .animate({
+            scrollTop: $('.hero__bottom').offset().top
+          }, 1000);
+      })
+
+    }
+  }
+
 })(jQuery, Drupal);

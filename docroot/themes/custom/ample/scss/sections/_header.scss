@@ -64,7 +64,7 @@ header {
       @include font-size(12.6);
       display: block;
       color: $navy-dark;
-      font-family: $oswald;
+      font-family: $primary-font;
       padding: 32px 5px 15px;
       text-decoration: none;
 
@@ -140,8 +140,25 @@ header {
     bottom: 0;
     width: 100px;
     height: 100%;
-    background: $primary-color-dark;
-    background: linear-gradient(90deg, $primary-color-dark, $primary-color-light);
+    background: $primary-color-light;
+    transition: background 100ms ease-in;
+
+    &:hover {
+      background: $primary-color-dark;
+    }
+
+    a {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      font-size: 16px;
+      line-height: 100px;
+    }
   }
 }
 
@@ -546,7 +563,7 @@ header {
     a {
       @include font-size(14);
       color: $white;
-      font-family: $oswald;
+      font-family: $primary-font;
       font-weight: 200;
       padding: 20px 5px;
       text-decoration: none;

@@ -95,6 +95,10 @@ gulp.task('serve', ['sass', 'browserSync'], () => {
   gulp.watch(PATH.scss, ['sass']);
 });
 
+gulp.task('watch', ['sass'], () => {
+  gulp.watch(PATH.scss, ['sass']);
+});
+
 // Productoin build
 gulp.task('build', ['cssnano']);
 

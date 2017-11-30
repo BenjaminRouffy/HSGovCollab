@@ -30,8 +30,8 @@ rebuild_registry: false
 # Local environment that will be used from backup.
 local_backup_environment: 'p4h'
 # htpasswd protection for securing backups.
-backup_user: p4h
-backup_pass: KzX9ObrdZ7DP
+backup_user: ffwbg-cibox
+backup_pass: Eb8SVEhPr9qQ
 # Site url to download assets via stage_file_proxy.
 origin_site_url: https://{{ backup_user }}:{{ backup_pass }}@cibox01.m1.ffwdev.com/stage
 # Stage hash_salt key
@@ -40,9 +40,9 @@ sync_stage: sites/default/config/staging
 # Source backup database that will be downloaded to build site.
 # In many cases this is production dump.
 # @TODO - replace this with HSGC Stage DB or Live or something else.
-source_backup_name: latest_local_p4h.sql.gz
+source_backup_name: stagebackup.sql.gz
 # URL to the source database. Can be overridden by CI server.
-source_database: https://{{ backup_user }}:{{ backup_pass }}@p4h.world/backup/{{ source_backup_name }}
+source_database: https://{{ backup_user }}:{{ backup_pass }}@cibox01.m1.ffwdev.com/backup/stagebackup.sql.gz
 # Path where settings.php should be placed.
 settings_file_path: sites/default/settings.php
 settings_default_file_path: sites/default/default.settings.php

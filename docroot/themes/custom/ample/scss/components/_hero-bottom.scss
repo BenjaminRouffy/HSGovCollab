@@ -1,0 +1,42 @@
+.hero__bottom {
+  padding: 115px 20px 110px;
+  text-align: center;
+  background: $white;
+  font-family: $primary-font;
+  color: $grey-dark;
+}
+
+.subhero__title,
+.subhero__message {
+  margin: 0 auto;
+  max-width: 780px;
+}
+
+.subhero__title {
+  font-size: 38px;
+  font-weight: normal;
+}
+
+.subhero__message {
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.subhero__link {
+  margin-top: 30px;
+
+  a {
+    text-decoration: none;
+    color: $white;
+    background: $secondary-color-normal;
+    padding: 20px 70px;
+    display: inline-block;
+    border-radius: 100px;
+    min-width: 290px;
+    transition: background 100ms ease-in;
+
+    &:hover {
+      background: $primary-color-dark;
+    }
+  }
+}

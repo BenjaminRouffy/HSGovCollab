@@ -68,8 +68,6 @@
     // Static header
     .header-static & {
       &:hover {
-        background: rgba($navy, .08);
-        opacity: .7;
       }
     }
     // Fixed header
@@ -114,6 +112,7 @@
 
   .expanded > a {
     position: relative;
+    font-size: 16px;
 
     &::before {
       display: none;

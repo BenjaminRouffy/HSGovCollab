@@ -61,18 +61,29 @@
 }
 
 .read-more {
-  @include font-size(14);
+  @include font-size(18);
   border: 1px solid transparent;
-  color: $primary-color-dark;
+  color: $primary-color-light;
   display: inline-block;
-  font-family: $oswald;
+  font-family: $primary-font;
   margin: 10px 0;
   padding: 15px 40px;
   text-decoration: none;
   transition: border .3s ease;
+  text-transform: uppercase;
+  transition: color 100ms ease-in;
+
+  &:before {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background-image: url('../images/arrow.svg');
+    content: "";
+    margin-right: 2px;
+  }
 
   &:hover {
-    border-color: $primary-color-dark;
+    color: $primary-color-dark;
   }
 
   .article-content & {

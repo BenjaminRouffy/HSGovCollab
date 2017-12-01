@@ -33,7 +33,7 @@
   sudo: yes
   when: pp_environment == "default" and ((ansible_env.USER is not defined or ansible_env.USER != "{{ ci_server_username }}") and (ansible_env.SUDO_USER is not defined or ansible_env.SUDO_USER != "{{ ci_server_username }}"))
 
-- name: Removing possible abandoned dump
+- name: Unzip database backup
   shell: gunzip {{ backup_folder }}/stagebackup.sql.gz
   sudo: yes
   when: pp_environment == "default" and ((ansible_env.USER is not defined or ansible_env.USER != "{{ ci_server_username }}") and (ansible_env.SUDO_USER is not defined or ansible_env.SUDO_USER != "{{ ci_server_username }}"))

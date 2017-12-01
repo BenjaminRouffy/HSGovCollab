@@ -33,8 +33,13 @@
   sudo: yes
   when: pp_environment == "default" and ((ansible_env.USER is not defined or ansible_env.USER != "{{ ci_server_username }}") and (ansible_env.SUDO_USER is not defined or ansible_env.SUDO_USER != "{{ ci_server_username }}"))
 
+- name: Removing possible abandoned dump
+  shell: gunzip {{ backup_folder }}/stagebackup.sql.gz
+  sudo: yes
+  when: pp_environment == "default" and ((ansible_env.USER is not defined or ansible_env.USER != "{{ ci_server_username }}") and (ansible_env.SUDO_USER is not defined or ansible_env.SUDO_USER != "{{ ci_server_username }}"))
+
 - name: Importing from remote backup
-  mysql_db: name={{ mysql_db }} state=import target={{ backup_folder }}/{{ source_backup_name }} login_host={{ mysql_host }} login_user={{ mysql_user }} login_password={{ mysql_pass }}
+  mysql_db: name={{ mysql_db }} state=import target={{ backup_folder }}/stagebackup.sql login_host={{ mysql_host }} login_user={{ mysql_user }} login_password={{ mysql_pass }}
   sudo: yes
   when: pp_environment == "default" and ((ansible_env.USER is not defined or ansible_env.USER != "{{ ci_server_username }}") and (ansible_env.SUDO_USER is not defined or ansible_env.SUDO_USER != "{{ ci_server_username }}"))
 

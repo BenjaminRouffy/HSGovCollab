@@ -8,6 +8,7 @@ dependencies:
     - views.view.news_events
     - views.view.social_recent
   content:
+    - 'block_content:hero:dfac22d9-42c2-4c06-9734-cd9447d3faae'
     - 'block_content:social_links:df1384ff-6757-4475-a105-445191f983ec'
   module:
     - block_content
@@ -64,6 +65,18 @@ variant_settings:
       region: bottom
       weight: 0
       uuid: 34ecd067-40ce-4d2c-b4c8-37d69b3d6443
+      context_mapping: {  }
+    441dc333-5044-4358-8a6f-36f97178c538:
+      id: 'block_content:dfac22d9-42c2-4c06-9734-cd9447d3faae'
+      label: aaa
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: banner
+      weight: 0
+      uuid: 441dc333-5044-4358-8a6f-36f97178c538
       context_mapping: {  }
   id: panels_variant
   uuid: 73741361-9a0a-4f97-b5ed-a202074df3b0

@@ -42,7 +42,7 @@ sync_stage: sites/default/config/staging
 # @TODO - replace this with HSGC Stage DB or Live or something else.
 source_backup_name: stagebackup.sql.gz
 # URL to the source database. Can be overridden by CI server.
-source_database: https://{{ backup_user }}:{{ backup_pass }}@cibox01.m1.ffwdev.com/backup/stagebackup.sql.gz
+source_database: https://{{ backup_user }}:{{ backup_pass }}@cibox01.m1.ffwdev.com/backup/stagebackup/stagebackup.sql.gz
 # Path where settings.php should be placed.
 settings_file_path: sites/default/settings.php
 settings_default_file_path: sites/default/default.settings.php

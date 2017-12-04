@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - page_manager.page.node_view
+    - system.menu.footer
     - views.view.news_events_sidebar
     - views.view.social_recent
   module:
     - ctools
     - ctools_block
     - panels
+    - system
     - views
 id: node_view-panels_variant-1
 label: 'Basic page'
@@ -116,6 +118,17 @@ variant_settings:
       uuid: 6a2d7b27-c84d-49fa-9652-8fd893d618d1
       context_mapping:
         entity: node
+    0d3853d2-b31d-4257-b4ff-4ea37e0a9367:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
+      region: bottom
+      weight: 0
+      uuid: 0d3853d2-b31d-4257-b4ff-4ea37e0a9367
+      context_mapping: {  }
   id: panels_variant
   uuid: a4e95dba-bbbc-4daa-86e1-f8c74bfc1868
   label: null

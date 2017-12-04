@@ -19,21 +19,21 @@
 
     a {
       @include font-size(20);
-      border-bottom: 1px solid $navy-light;
-      color: $navy;
+      border-bottom: 1px solid $primary-color-light;
+      color: $primary-color-dark;
       display: block;
-      font-family: $oswald;
+      font-family: $primary-font;
       padding: 20px 30px;
       text-decoration: none;
       transition: background .3s ease;
 
       &:hover {
         background: $white-dark;
-        border-bottom: 2px solid $navy-light;
+        border-bottom: 2px solid $primary-color-light;
       }
 
       &.is-active {
-        border-bottom: 2px solid $red;
+        border-bottom: 2px solid $primary-color-dark;
       }
     }
   }

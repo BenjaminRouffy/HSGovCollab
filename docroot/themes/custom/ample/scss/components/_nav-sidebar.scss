@@ -24,10 +24,14 @@
   }
 }
 
+.menu-icon span:after {
+  color: $white;
+}
+
 // Sidebar menu
 .dashboard-sidebar {
 
-  background: $navy-dark;
+  background: $primary-color-dark;
   height: 100%;
   overflow-y: auto;
   padding: 46px 0 80px;
@@ -128,6 +132,10 @@
       border-radius: 50%;
       background: #EA3A32;
     }
+  }
+
+  .font-social-icon span:after {
+    color: $white;
   }
 
   .sidebar-menu {

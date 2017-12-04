@@ -11,10 +11,6 @@
     padding-top: 120px;
   }
 
-  body:not(.group):not(.page-search) & {
-    border-bottom: 1px solid #e9e6e6;
-    box-shadow: 0 0 8px rgba($black, .11);
-  }
 
   .node-article & {
     background: $white;
@@ -28,64 +24,58 @@
 
   .section-info-wrapper {
     position: relative;
-
-    &:after {
-      background: $white-dark url(../images/site-bg.svg) 100% 50% no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      opacity: .37;
-      z-index: -1;
-
-      .mobile & {
-        background-attachment: scroll;
-        background-position: center;
-        background-size: 400%;
-      }
-
-      .ie & {
-        background-size: 140%;
-        background-position: center;
-      }
-    }
+    background: $white;
   }
 
   .section-info {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 1160px;
-    padding: 100px 0 50px;
+    position: relative;
+    border-bottom-right-radius: 50% 10%;
+    border-bottom-left-radius: 50% 10%;
+    overflow: hidden;
+    font-family: $primary-font;
 
-    .ie9 & {
-      display: block;
-      flex: none;
-      overflow: hidden;
-      text-align: center;
+    .infographic__item {
+      background-size: cover;
+      background-position: center;
 
-      .paragraph {
-        display: inline-block;
-        margin-left: -4px;
-        max-width: 25%;
-        vertical-align: top;
+      &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        z-index: 4;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(-180deg, rgba(68, 158, 165, 0.7) 0%, rgba(1, 81, 131, 0.7) 100%);
       }
     }
 
-    .ie10 & {
-      .paragraph {
-        max-width: 25%;
-      }
-    }
-
-    .paragraph {
-      max-width: 33.33%;
-      text-align: center;
+    .title_desc__wrapper {
+      position: relative;
+      z-index: 5;
+      min-height: 430px;
+      margin: 0 auto;
+      max-width: 1200px;
+      padding: 190px 0 40px;
       width: 100%;
+
+      .heading,
+      .description {
+        font-family: $primary-font;
+        font-weight: normal;
+        color: $white;
+      }
+
+      .heading {
+        font-size: 40px;
+      }
+
+      .description {
+        font-size: 28px;
+      }
     }
 
     a {

@@ -215,6 +215,13 @@
   text-align: center;
   font-family: $primary-font;
 
+  .node-basic-page & {
+    position: relative;
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+  }
+
   li {
     display: inline-block;
   }
@@ -226,6 +233,8 @@
     font-size: 16px;
   }
 }
+
+
 
 // Need to remove relative position in case of
 // first menu level only, because second level menu is not 100% width
@@ -614,7 +623,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      background: $red;
+      background: $primary-color-dark;
     }
   }
 }

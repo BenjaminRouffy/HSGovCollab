@@ -5,9 +5,7 @@
     </div>
 
     {% if content.field_date|field_value %}
-      <time>
-        {{ content.field_date|field_value }}
-      </time>
+      {{ content.field_date|field_value }}
     {% endif %}
 
     {{ content.field_body|field_value }}

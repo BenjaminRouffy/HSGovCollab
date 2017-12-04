@@ -12,9 +12,7 @@
       {{ content.field_date['#period']['start_date'] }}
     {% endif %}
   {% else %}
-    <time datetime="{{ content.field_content_date|field_value|field_raw }}">
-      {{ content.field_content_date|field_value }}
-    </time>
+    {{ content.field_content_date|field_value }}
   {% endif %}
 
   <h4 role="heading">

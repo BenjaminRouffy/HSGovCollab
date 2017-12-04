@@ -96,6 +96,11 @@
   padding: 80px 0 40px;
   width: 100%;
 
+  .node-basic-page & {
+    padding-top: 100px;
+    padding-bottom: 0;
+  }
+
   .front & {
     max-width: 1260px;
   }
@@ -115,6 +120,8 @@
     }
   }
 }
+
+
 
 @include breakpoint-for('.content-container', (to: mobileL)) {
   .page-my-countries-and-regions &,
@@ -346,6 +353,10 @@
     bottom: 0;
     left: 0;
     width: 180px;
+
+    .timeline & {
+      background: $primary-color-light;
+    }
   }
 
   ~ .event-info {
@@ -410,11 +421,11 @@
 .content,
 .more-content,
 .summary-text {
-  @include font-size(18.2);
-  color: $navy-dark;
-  font-family: $fira;
+  @include font-size(18);
+  color: $font-color-dark;
+  font-family: $primary-font;
   font-weight: 300;
-  line-height: 28px;
+  line-height: 32px;
 
   .legal & {
     margin: 0 auto;
@@ -425,14 +436,21 @@
     }
   }
 
+  .title-wrapper .line {
+    background: $primary-color-light;
+  }
+
   h1 {
-    @include font-size(49);
-    line-height: 56px;
+    @include font-size(32);
+    line-height: 40px;
     margin: 20px 0 21px;
     padding: 0;
+    font-family: $primary-font;
+    color: $primary-color-dark;
+    font-weight: normal;
 
     @include mq(mobileL) {
-      @include font-size(36.4);
+      @include font-size(24);
       margin-bottom: 10px;
     }
   }
@@ -458,10 +476,10 @@
   }
 
   figcaption {
-    @include font-size(14);
-    color: $navy;
-    font-family: $fira;
-    font-style: italic;
+    @include font-size(15);
+    color: $primary-color-dark;
+    font-family: $primary-font;
+    font-style: normal;
     line-height: 29px;
     margin-top: 5px;
   }
@@ -554,8 +572,8 @@
   font-size: 14px;
   color: $primary-color-dark;
   font-family: $primary-font;
-  font-weight: 400;
-  margin-bottom: 20px;
+  font-weight: normal;
+  margin-bottom: 25px;
 
   > *:not(:first-child) {
     display: inline-block;
@@ -579,12 +597,10 @@
   time,
   .country {
     display: inline;
-    font-weight: 700;
   }
 
   a {
     color: $primary-color-dark;
-    font-weight: 700;
 
     &:hover {
       color: $primary-color-light;

@@ -54,9 +54,6 @@
   //  min-height: calc(100% - 316px);
   //}
 
-  .logged & {
-    padding-left: 80px;
-  }
 
   .toolbar-vertical.toolbar-tray-open & {
     padding-left: 0;
@@ -138,11 +135,6 @@
     left: 0;
     bottom: 0;
     width: 100%;
-
-    .logged & {
-      left: 80px;
-      width: calc(100% - 80px);
-    }
   }
 }
 
@@ -463,8 +455,8 @@
 
   h4 {
     @include font-size(19.6);
-    color: $navy-dark;
-    font-family: $fira;
+    color: $primary-color-dark;
+    font-family: $primary-font;
     font-weight: 700;
     line-height: 24px;
     margin: 30px 0 10px;
@@ -486,8 +478,8 @@
 
   li {
     @include font-size(18.2);
-    font-family: $fira;
-    color: $navy;
+    font-family: $primary-font;
+    color: $primary-color-dark;
     font-weight: 400;
     line-height: 29px;
     margin-top: 10px;
@@ -505,8 +497,8 @@
     @extend .corners;
     @include font-size(28);
     border: none;
-    color: $navy;
-    font-family: $oswald;
+    color: $primary-color-dark;
+    font-family: $primary-font;
     font-weight: 300;
     line-height: 35px;
     margin: 41px 0 62px;
@@ -521,15 +513,15 @@
 
     p {
       @include font-size(28);
-      color: $navy;
-      font-family: $oswald;
+      color: $primary-color-dark;
+      font-family: $primary-color-dark;
       font-weight: 300;
       line-height: 35px;
     }
   }
 
   a {
-    color: $red;
+    color: $primary-color-light;
     font-weight: 400;
     text-decoration: none;
   }

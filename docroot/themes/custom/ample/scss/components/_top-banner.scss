@@ -56,17 +56,19 @@
     .title_desc__wrapper {
       position: relative;
       z-index: 5;
-      min-height: 430px;
+      min-height: 300px;
       margin: 0 auto;
       max-width: 1200px;
-      padding: 190px 0 40px;
+      padding: 140px 0 40px;
       width: 100%;
+
 
       .heading,
       .description {
         font-family: $primary-font;
         font-weight: normal;
         color: $white;
+        max-width: 760px;
       }
 
       .heading {

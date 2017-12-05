@@ -20,9 +20,7 @@ header {
 
     // According to layout of second level menu
     // we need to remove relative position from wrapper
-    .logged & {
-      position: static;
-    }
+    
   }
 
   .desktop-service-links,
@@ -32,27 +30,7 @@ header {
     right: 20px;
     height: 60px;
 
-    .logged & {
-      float: right;
-      position: static;
 
-      @include media-q(min, 1201) {
-        margin: -70px 40px 0 0;
-      }
-
-      @include media-q(min, 1281) {
-        margin: -70px 140px 0 0;
-      }
-
-      @include media-q(min, 1600) {
-        margin: -70px 115px 0 0;
-      }
-
-      @include media-q(max, 1200) {
-        margin: 0 0 0 30px;
-        float: none;
-      }
-    }
 
     ul:not(.contextual-links),
     ul:not(.contextual-links) li {
@@ -68,13 +46,7 @@ header {
       padding: 32px 5px 15px;
       text-decoration: none;
 
-      .logged & {
-        padding: 0 5px;
 
-        @include media-q(max, 1200) {
-          padding: 10px;
-        }
-      }
 
       &:hover {
         opacity: .7;
@@ -248,46 +220,7 @@ header {
     top: 22px;
     right: 115px;
 
-    .logged & {
-      top: 10px;
-      right: 50%;
-      text-align: right;
-      transform: translateX(50%);
-      width: 1029px;
-      transition: margin-right .3s ease;
-      margin-right: -10px;
 
-      @include media-q(min, 1201) {
-        margin-right: 20px;
-      }
-
-      @include media-q(min, 1281) {
-        margin-right: 90px;
-      }
-
-      @include media-q(min, 1600) {
-        margin-right: 65px;
-      }
-
-      a {
-        @include font-size(12.6);
-        color: $navy;
-        display: inline-block;
-        font-family: $oswald;
-        padding: 3px 10px;
-        transition: opacity .2s ease;
-        vertical-align: top;
-
-        &:hover {
-          background: rgba($navy, .08);
-          opacity: .7;
-        }
-      }
-
-      .theme-switcher {
-        margin-right: 0;
-      }
-    }
 
     .instagram-icon {
       > a {
@@ -341,9 +274,7 @@ header {
 
   z-index: 9;
 
-  .logged & {
-    padding-top: 20px;
-  }
+
   
   .header-fixed & {
     padding-top: 0;
@@ -518,9 +449,7 @@ header {
     box-shadow: 0 1px 8px rgba($black, .16);
     min-height: 60px;
 
-    .logged & {
-      background: $white;
-    }
+
   }
 
   .logo-wrapper {
@@ -529,9 +458,7 @@ header {
     left: 0;
     z-index: 10;
 
-    .logged & {
-      display: none;
-    }
+
 
     .logo {
       background: $white;
@@ -667,25 +594,7 @@ header {
   .social-links {
     padding: 22px 20px;
 
-    .logged & {
-      padding: 0;
-      position: relative;
-      text-align: left;
-      width: auto;
 
-      a {
-        @include font-size(18.2);
-        display: block;
-        margin: 0;
-        padding: 30px;
-
-        &:hover {
-          background: transparent;
-          color: $red;
-          opacity: 1;
-        }
-      }
-    }
 
     li {
       margin-right: 30px;
@@ -764,15 +673,7 @@ header {
     padding-top: 20px;
   }
 
-  .logged & {
-    .mobile-dashboard-menu-btn {
-      display: block;
-    }
 
-    .mobile-menu-btn {
-      right: 80px;
-    }
-  }
 }
 
 @include breakpoint-for('.header-static', (to: tablet)) {
@@ -806,9 +707,7 @@ header {
     height: 60px;
     padding-top: 20px;
 
-    .logged & {
-      color: $navy-dark;
-    }
+
   }
 
   .service-links {
@@ -855,9 +754,7 @@ header {
     //height: 60px;
     //padding-top: 7px;
 
-    .logged & {
-      padding-left: 80px;
-    }
+
 
     a {
       display: block;
@@ -875,9 +772,7 @@ header {
 
 @include breakpoint-for('.header-fixed', (to: tablet)) {
   .logo-wrapper {
-    .logged & {
-      display: block;
-    }
+
   }
 
 }

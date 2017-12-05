@@ -41,7 +41,7 @@
 
   // Single link
   a {
-    @include font-size(14);
+    @include font-size(16);
     color: $primary-color-light;
     display: block;
     font-weight: 400;
@@ -84,30 +84,7 @@
     // ----------------------------------------
     // Logged user
     // Links style update
-    .logged & {
-      @include font-size(12.6);
-      color: $navy-dark;
-      font-weight: 400;
-    }
 
-    // Static header
-    .logged .header-static & {
-      &:hover {
-        background: transparent;
-      }
-    }
-
-    // Fixed header
-    .logged .header-fixed & {
-      color: $navy-dark;
-      font-weight: 400;
-
-      &:hover {
-        background: transparent;
-        color: $navy-dark;
-        opacity: .7;
-      }
-    }
   }
 
   .expanded > a {
@@ -375,47 +352,17 @@
 }
 
 @include media-q(min, 1201) {
-  .logged {
-    .main-menu {
-      a {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-    }
-  }
 
-  .header-static {
-    .logged & {
-      .main-menu {
-        > div {
-          padding-left: 30px;
-        }
-      }
-    }
-  }
+
+
 }
 
 @include media-q(min, 1366) {
-  .header-static {
-    .logged & {
-      .main-menu {
-        > div {
-          padding-left: 0;
-        }
-      }
-    }
-  }
+
 }
 
 @include media-q(min, 1600) {
-  .logged {
-    .main-menu {
-      a {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-  }
+
 }
 
 //@include breakpoint-for('.header-static ', (to: 1281px)) {
@@ -434,30 +381,7 @@
 //}
 
 @media screen and (max-width: 1280px) {
-  .header-static {
-    .logged & {
-      .main-menu {
-        > div {
-          padding-left: 175px;
-        }
-      }
-    }
-  }
 
-  .header-fixed {
-    .logged & {
-      .main-menu {
-        > div {
-          padding-left: 60px;
-        }
-
-        a {
-          padding-left: 15px;
-          padding-right: 15px;
-        }
-      }
-    }
-  }
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: 1200px)) {
@@ -489,41 +413,7 @@
 
   }
 
-  .logged & {
-    .main-menu {
-      text-align: left;
 
-      > div {
-        display: block;
-        padding-left: 0;
-      }
-
-      li {
-        display: block;
-
-        &.active {
-          a {
-            border: none;
-            border-left: 3px solid $red;
-          }
-        }
-      }
-
-      a {
-        @include font-size(18.2);
-        color: $navy-dark;
-        height: auto;
-        padding: 30px;
-
-        &:hover {
-          background: $white-dark;
-          color: $red;
-          opacity: 1;
-        }
-      }
-
-    }
-  }
 }
 
 // ----------------------------------------------------------------------------

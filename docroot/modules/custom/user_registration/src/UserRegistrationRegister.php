@@ -62,20 +62,8 @@ class UserRegistrationRegister extends RegisterForm {
     $notify = !$form_state->isValueEmpty('notify');
 
     $account = $this->getEntity();
-    $config = \Drupal::config('user.settings');
 
-    $register = $account->isAnonymous();
-
-    $mail_match = \Drupal::service("user_registration.email_checker")
-      ->isApprove($form_state->getValue('mail'));
-
-    if ($admin || !$register) {
-      $status = $account->get('status')->value;
-    }
-    else {
-      $status = $config->get('register') == USER_REGISTER_VISITORS && $mail_match ? 1 : 0;
-    }
-    $account->set('status', ['value' => $status]);
+    $account->set('status', ['value' => 1]);
     // Save has no return value so this cannot be tested.
     // Assume save has gone through correctly.
     $account->save();

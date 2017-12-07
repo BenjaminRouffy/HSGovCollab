@@ -34,6 +34,11 @@
     overflow: hidden;
     font-family: $primary-font;
 
+    @include media-q(max, 991) {
+      border-bottom-right-radius: 50% 5%;
+      border-bottom-left-radius: 50% 5%;
+    }
+
     .infographic__item {
       background-size: cover;
       background-position: center;
@@ -59,8 +64,12 @@
       min-height: 300px;
       margin: 0 auto;
       max-width: 1200px;
-      padding: 140px 0 40px;
+      padding: 60px 15px 60px;
       width: 100%;
+
+      @include media-q(min, 1200) {
+        padding: 140px 15px 60px;
+      }
 
 
       .heading,
@@ -72,11 +81,20 @@
       }
 
       .heading {
-        font-size: 40px;
+        font-size: 32px;
+
+        @include media-q(min, 1200) {
+          font-size: 40px;
+        }
       }
 
       .description {
-        font-size: 28px;
+        font-size: 22px;
+        line-height:1.4;
+
+        @include media-q(min, 1200) {
+          font-size: 28px;
+        }
       }
     }
 

@@ -69,21 +69,25 @@
   margin: 10px 0;
   padding: 15px 40px;
   text-decoration: none;
-  transition: border .3s ease;
   text-transform: uppercase;
-  transition: color 100ms ease-in;
 
   &:before {
     display: inline-block;
     width: 8px;
-    height: 14px;
+    height: 15px;
     background-image: url('../images/arrow.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
     content: "";
-    margin-right: 2px;
+    margin-right: 5px;
   }
 
   &:hover {
     color: $primary-color-dark;
+
+    &:before {
+      background-image: url('../images/arrow-active.svg');
+    }
   }
 
   .article-content & {

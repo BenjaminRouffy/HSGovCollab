@@ -14,7 +14,7 @@ header {
   }
 
   .wrapper {
-    max-width: 1260px;
+    max-width: 1348px;
     margin: 0 auto;
     position: relative;
 
@@ -62,7 +62,7 @@ header {
     }
   }
 
-  body:not(.toolbar-fixed) & {
+  body:not(.toolbar-horizontal):not(.toolbar-vertical) & {
     .header-fixed {
       top: 0;
     }
@@ -86,6 +86,7 @@ header {
 .header-static {
   
   .main-menu {
+
     & > div {
       padding-right: 116px;
       width: 100%;
@@ -264,6 +265,50 @@ header {
   right: -60%;
   top: 60px;
   width: 100%;
+  
+  .header-fixed & {
+
+    @include media-q(max, 1200) {
+      padding-top: 30px !important;
+
+      a {
+        text-align: left;
+        color: #5B6871;
+        transition: all 200ms ease-in;
+        font-weight: normal !important;
+
+        &:hover {
+          color: #5B6871 !important;
+        }
+
+        &.is-active {
+          color: $primary-color-dark !important;
+        }
+      }
+
+      .service-links a:hover {
+        background: $primary-color-dark !important;
+        color: $white !important;
+        opacity: 1 !important;
+      }
+
+      .display-second-menu a {
+        background: $white;
+        color: #5B6871;
+      }
+
+      .submenu {
+        width: 100%;
+        background: $white;
+
+        a {
+          background: $white;
+          font-size: 15px;
+          color: $primary-color-dark;
+        }
+      }
+    }
+  }
 
 
   overflow-y: auto;
@@ -286,13 +331,13 @@ header {
 
     @include media-q(min, 610) {
       height: calc(100% - 99px);
-      top: 99px;
+      top: 100px;
     }
   }
 
   .toolbar-vertical & {
     padding-bottom: 100px;
-    top: 99px;
+    top: 100px;
   }
 
   // Tablet
@@ -325,7 +370,7 @@ header {
     }
 
     .toolbar-vertical .header-fixed & {
-      top: 99px;
+      top: 100px;
     }
   }
 
@@ -438,7 +483,13 @@ header {
     top: 39px;
   }
 
-  .toolbar-tray-open.toolbar-horizontal & {
+  .main-menu {
+    text-align: right;
+    padding-right: 115px;
+  }
+
+  .toolbar-tray-open.toolbar-horizontal &,
+  .toolbar-tray-open.toolbar-vertical & {
     top: 79px;
   }
 
@@ -448,8 +499,6 @@ header {
     background-image: linear-gradient(180deg, rgba($primary-color-dark, 0.6), $primary-color-dark);
     box-shadow: 0 1px 8px rgba($black, .16);
     min-height: 60px;
-
-
   }
 
   .logo-wrapper {
@@ -465,9 +514,9 @@ header {
       border-bottom: 2px solid $primary-color-dark;
       box-shadow: 0 1px 3px rgba($black, .25);
       display: inline-block;
-      height: 70px;
-      padding-top: 6px;
-      width: 160px;
+      height: 84px;
+      padding-top: 12px;
+      width: 200px;
     }
 
     img {
@@ -489,14 +538,15 @@ header {
 
     a {
       @include font-size(14);
-      color: $white;
+      color: $white !important;
       font-family: $primary-font;
       font-weight: 200;
-      padding: 20px 5px;
+      padding: 22px 25px;
       text-decoration: none;
+      background: $primary-color-light;
 
       &:hover {
-        opacity: .56;
+        background: $primary-color-dark;
       }
     }
   }
@@ -505,15 +555,21 @@ header {
 @include breakpoint-for('.header-static, .header-fixed', (to: 1200px)) {
   //min-height: 80px;
 
+  .main-menu {
+    padding-right: 0;
+  }
+
   .logo-wrapper {
+    left: 15px;
+
     .logo {
-      height: 107px;
-      width: 145px;
+      height: 85px;
+      width: 200px;
     }
 
     img {
       height: 86px;
-      width: 103px;
+      width: 160px;
     }
   }
 
@@ -654,18 +710,7 @@ header {
     min-height: 60px;
   }
 
-  .logo-wrapper {
-    .logo {
-      padding: 5px 10px 0;
-      height: 80px;
-      width: 100px;
-    }
 
-    img {
-      height: 63px;
-      width: 74px;
-    }
-  }
 
   .mobile-menu-btn,
   .mobile-dashboard-menu-btn {
@@ -687,12 +732,12 @@ header {
   .logo-wrapper {
     .logo {
       padding: 8px 10px 10px 15px;
-      width: 102px;
+      width: 170px;
     }
 
     img {
       height: 60px;
-      width: 72px;
+      width: 170px;
     }
   }
 
@@ -740,6 +785,7 @@ header {
 }
 
 .bottom-head {
+  display: none;
   background: #e9ecee;
   box-shadow: 0 1px 3px rgba($black, .1);
   transition: padding .3s ease;

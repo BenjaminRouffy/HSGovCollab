@@ -90,12 +90,16 @@
 .content-container {
   margin: 0 auto;
   max-width: 1200px;
-  padding: 80px 0 40px;
+  padding: 80px 15px 40px;
   width: 100%;
 
   .node-basic-page & {
     padding-top: 100px;
     padding-bottom: 0;
+
+    @include media-q(max, 1200) {
+      padding-top: 50px;
+    }
   }
 
   .front & {
@@ -128,14 +132,14 @@
 }
 
 .bottom-teaser {
-  padding-bottom: 210px;
+  padding-bottom: 40px;
 
-  ~ .full-width {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-  }
+  //~ .full-width {
+  //  position: absolute;
+  //  left: 0;
+  //  bottom: 0;
+  //  width: 100%;
+  //}
 }
 
 @include breakpoint-for('.bottom-teaser', (to: tablet)) {
@@ -524,6 +528,11 @@
     color: $primary-color-light;
     font-weight: 400;
     text-decoration: none;
+    transition: color 200ms ease-in;
+
+    &:hover {
+      color: $primary-color-dark;
+    }
   }
 }
 

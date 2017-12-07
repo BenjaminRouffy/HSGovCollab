@@ -846,6 +846,9 @@
 
   Drupal.behaviors.dashboardMainMenu = {
     attach: function (context) {
+      var windowSize = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+      if (windowSize > 1200) return;
+
       var $staticMenu = $('.main-menu', context);
 
       // Each time when behavior fire

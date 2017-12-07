@@ -61,13 +61,6 @@ class UserRegistrationRegister extends RegisterForm {
     $admin = $form_state->getValue('administer_users');
     $notify = !$form_state->isValueEmpty('notify');
 
-    $account = $this->getEntity();
-
-    $account->set('status', ['value' => 1]);
-    // Save has no return value so this cannot be tested.
-    // Assume save has gone through correctly.
-    $account->save();
-
     $form_state->set('user', $account);
     $form_state->setValue('uid', $account->id());
 

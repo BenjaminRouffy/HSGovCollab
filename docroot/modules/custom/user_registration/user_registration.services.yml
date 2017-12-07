@@ -9,10 +9,6 @@ services:
     tags:
       - { name: access_check, applies_to: _user_is_onetime_access }
 
-  user_registration.email_checker:
-    class: Drupal\user_registration\EmailChecker
-    arguments: [@config.factory]
-
   user_registration.processor_alias:
     class: Drupal\user_registration\RegisterPathProcessorAlias
     tags:

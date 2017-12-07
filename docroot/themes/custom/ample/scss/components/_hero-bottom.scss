@@ -4,6 +4,10 @@
   background: $white;
   font-family: $primary-font;
   color: $grey-dark;
+
+  @include media-q(max, 768) {
+    padding: 65px 20px 40px;
+  }
 }
 
 .subhero__title,
@@ -15,11 +19,21 @@
 .subhero__title {
   font-size: 38px;
   font-weight: normal;
+
+  @include media-q(max, 768) {
+    font-size: 25px;
+    line-height: 1.2;
+  }
 }
 
 .subhero__message {
   margin-top: 30px;
   font-size: 18px;
+  line-height: 1.7;
+
+  p {
+    margin-bottom: 15px;
+  }
 }
 
 .subhero__link {
@@ -32,8 +46,13 @@
     padding: 20px 70px;
     display: inline-block;
     border-radius: 100px;
+    font-size: 18px;
     min-width: 290px;
     transition: background 100ms ease-in;
+
+    @include media-q(max, 768) {
+      padding: 20px 50px;
+    }
 
     &:hover {
       background: $primary-color-dark;

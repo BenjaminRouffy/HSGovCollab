@@ -651,7 +651,8 @@
 
   .front & {
     .title-wrapper {
-      margin: -40px 0 3px -20px;
+      padding: 0;
+      //margin: -40px 0 3px -20px;
     }
   }
 
@@ -1088,13 +1089,14 @@
 
 .empty-result {
   @include font-size(20);
-  background: #ffdede;
-  font-family: $oswald;
+  background: $primary-color-dark;
+  font-family: $primary-font;
   margin: 30px auto;
   padding: 15px 0;
   text-align: center;
 
   p {
+    color: $white;
     margin: 0;
   }
 }

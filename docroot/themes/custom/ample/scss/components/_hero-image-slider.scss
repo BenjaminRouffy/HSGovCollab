@@ -8,6 +8,16 @@
   font-family: $primary-font;
   max-height: 1170px;
 }
+@include breakpoint-for('.hero__image-slider', (to: desktop)) {
+  max-height: 970px;
+}
+
+@include breakpoint-for('.hero__image-slider', (to: laptop-small)) {
+  max-height: 570px;
+  border-bottom-right-radius: 50% 5%;
+  border-bottom-left-radius: 50% 5%;
+}
+
 
 .hero__top {
   position: relative;
@@ -74,7 +84,11 @@
   } 
 }
 
-@include breakpoint-for('.hero__title h2', (to: tablet)) {
+@include breakpoint-for('.hero__title h2', (to: desktop)) {
+  font-size: 38px;
+}
+
+@include breakpoint-for('.hero__title h2', (to: laptop-small)) {
   font-size: 30px;
 }
 
@@ -89,6 +103,16 @@
   text-decoration: none;
   color: $white;
   font-size: 18px;
+  transition: all 200ms ease-in;
+
+
+  &:hover {
+    background-color: $highlight-color-dark;
+  }
+
+  &:hover:before {
+    border-top: 12px solid $highlight-color-dark;
+  }
 
   &:before {
     position: absolute;
@@ -101,5 +125,6 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 12px solid $highlight-color;
+    transition: all 200ms ease-in;
   }
 }

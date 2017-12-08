@@ -217,11 +217,15 @@
   text-align: center;
   font-family: $primary-font;
 
-  .node-basic-page & {
+  .node-basic-page &,
+  .node-event &,
+  .node-news &,
+  .node-blog & {
     position: relative;
     width: 100vw;
     margin-left: -50vw;
     left: 50%;
+
   }
 
   li {
@@ -516,9 +520,9 @@
     text-decoration: none;
     transition: color .3s ease, padding .3s ease;
     vertical-align: middle;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    //overflow: hidden;
+    white-space: normal;
+    //text-overflow: ellipsis;
     max-width: 250px;
 
     .header-fixed & {

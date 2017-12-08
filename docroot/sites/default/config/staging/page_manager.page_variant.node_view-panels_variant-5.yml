@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - page_manager.page.node_view
+    - system.menu.footer
     - views.view.blog_lists
     - views.view.social_recent
   module:
@@ -11,6 +12,7 @@ dependencies:
     - ctools_block
     - panels
     - prev_next_access
+    - system
     - views
 id: node_view-panels_variant-5
 label: Blog
@@ -23,7 +25,7 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: default
-      region: left_sidebar
+      region: content
       weight: -1
       uuid: 1f8efb16-bb80-473e-a0a5-99db8abb079e
       context_mapping:
@@ -33,7 +35,7 @@ variant_settings:
       label: 'Next Previous Access Block'
       provider: prev_next_access
       label_display: '0'
-      region: left_sidebar
+      region: content
       weight: 0
       uuid: 4d392720-5c18-484d-8af1-ad1439dae667
       context_mapping: {  }
@@ -43,7 +45,7 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: comments
-      region: left_sidebar
+      region: content
       weight: 1
       uuid: 05a45b89-bd67-44e5-a69d-7418bd7d905b
       context_mapping:
@@ -60,7 +62,7 @@ variant_settings:
           view_mode: default
         third_party_settings: {  }
         weight: 0
-      region: right_sidebar
+      region: right
       weight: -2
       uuid: 8703ad78-6e03-40d7-a571-1dd3ce78ea9d
       context_mapping:
@@ -77,7 +79,7 @@ variant_settings:
           view_mode: default
         third_party_settings: {  }
         weight: 0
-      region: right_sidebar
+      region: right
       weight: -1
       uuid: 0192ef89-71ab-47eb-8be3-f2be9918e41a
       context_mapping:
@@ -89,7 +91,7 @@ variant_settings:
       label_display: '0'
       views_label: ''
       items_per_page: none
-      region: right_sidebar
+      region: right
       weight: 0
       uuid: d8c30891-4ffd-4f0a-9a8e-2d544873fe95
       context_mapping: {  }
@@ -105,7 +107,7 @@ variant_settings:
           view_mode: blog_author
         third_party_settings: {  }
         weight: 0
-      region: right_sidebar
+      region: right
       weight: -3
       uuid: 7056d9e8-8c9b-4982-be77-af5447a71ac4
       context_mapping:
@@ -117,15 +119,26 @@ variant_settings:
       label_display: '0'
       views_label: ''
       items_per_page: none
-      region: right_sidebar
+      region: right
       weight: 0
       uuid: 73724bb0-cda0-4c69-925d-eb3109094b2c
+      context_mapping: {  }
+    4d1faa1a-1cc2-4401-9a40-ea1b120e57aa:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
+      region: bottom
+      weight: 0
+      uuid: 4d1faa1a-1cc2-4401-9a40-ea1b120e57aa
       context_mapping: {  }
   id: panels_variant
   uuid: 63f42b1b-4b99-4c30-960f-3b6e3ed42731
   label: null
   weight: 0
-  layout: two_column
+  layout: default_layout
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager

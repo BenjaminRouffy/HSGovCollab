@@ -906,7 +906,10 @@ svg {
   font-family: "Roboto", sans-serif;
 }
 
-.node-basic-page .footer__menu {
+.node-basic-page .footer__menu,
+.node-event .footer__menu,
+.node-news .footer__menu,
+.node-blog .footer__menu {
   position: relative;
   width: 100vw;
   margin-left: -50vw;
@@ -1188,9 +1191,7 @@ svg {
   text-decoration: none;
   transition: color .3s ease, padding .3s ease;
   vertical-align: middle;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  white-space: normal;
   max-width: 250px;
 }
 
@@ -2016,7 +2017,7 @@ footer > .partners .item-list li {
 
 @media only screen and (min-width: 1200px) {
   .top-banner-region .section-info .title_desc__wrapper .heading {
-    font-size: 40px;
+    font-size: 52px;
   }
 }
 
@@ -12857,13 +12858,19 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   width: 100%;
 }
 
-.node-basic-page .content-container {
+.node-basic-page .content-container,
+.node-event .content-container,
+.node-news .content-container,
+.node-blog .content-container {
   padding-top: 100px;
   padding-bottom: 0;
 }
 
 @media only screen and (max-width: 1200px) {
-  .node-basic-page .content-container {
+  .node-basic-page .content-container,
+  .node-event .content-container,
+  .node-news .content-container,
+  .node-blog .content-container {
     padding-top: 50px;
   }
 }

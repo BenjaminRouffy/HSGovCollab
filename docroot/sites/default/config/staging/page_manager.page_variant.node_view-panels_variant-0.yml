@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - page_manager.page.node_view
+    - system.menu.footer
     - views.view.news_events_sidebar
     - views.view.social_recent
   module:
@@ -11,6 +12,7 @@ dependencies:
     - ctools_block
     - panels
     - prev_next_access
+    - system
     - views
 id: node_view-panels_variant-0
 label: News
@@ -23,7 +25,7 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: default
-      region: left_sidebar
+      region: content
       weight: -10
       uuid: 556e3d6d-af8b-47c0-acf6-2b09a583234d
       context_mapping:
@@ -40,7 +42,7 @@ variant_settings:
           view_mode: default
         third_party_settings: {  }
         weight: 0
-      region: left_sidebar
+      region: content
       weight: -9
       uuid: 49af3c98-ca09-41bc-8617-cfa4dee6a35d
       context_mapping:
@@ -50,7 +52,7 @@ variant_settings:
       label: 'Next Previous Access Block'
       provider: prev_next_access
       label_display: '0'
-      region: left_sidebar
+      region: content
       weight: -8
       uuid: 27403746-8d8c-4494-98cb-e1060ed5ad17
       context_mapping: {  }
@@ -66,7 +68,7 @@ variant_settings:
           view_mode: default
         third_party_settings: {  }
         weight: 0
-      region: right_sidebar
+      region: right
       weight: -3
       uuid: f178750d-7143-4fcc-8e3f-ecdad06d4168
       context_mapping:
@@ -78,7 +80,7 @@ variant_settings:
       label_display: '0'
       views_label: ''
       items_per_page: none
-      region: right_sidebar
+      region: right
       weight: 0
       uuid: fdb31b92-9b89-46af-93da-7681ac778130
       context_mapping: {  }
@@ -94,7 +96,7 @@ variant_settings:
           view_mode: default
         third_party_settings: {  }
         weight: 0
-      region: right_sidebar
+      region: right
       weight: -1
       uuid: 3956001c-9f68-4a54-b543-b4eb3c1119f3
       context_mapping:
@@ -106,7 +108,7 @@ variant_settings:
       label_display: '0'
       views_label: ''
       items_per_page: none
-      region: right_sidebar
+      region: right
       weight: 1
       uuid: a7f10f2e-7d10-46a6-9231-a3697b5ffa97
       context_mapping: {  }
@@ -116,7 +118,7 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: comments
-      region: left_sidebar
+      region: content
       weight: 0
       uuid: dec1ac84-2513-422d-a9c1-1dd0ba2055c3
       context_mapping:
@@ -133,16 +135,27 @@ variant_settings:
           view_mode: default
         third_party_settings: {  }
         weight: 0
-      region: right_sidebar
+      region: right
       weight: -2
       uuid: bf010977-d79d-4673-8d0b-c3c39619b685
       context_mapping:
         entity: node
+    a98818d1-e024-4fe8-9350-e8023c2b4545:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
+      region: bottom
+      weight: 0
+      uuid: a98818d1-e024-4fe8-9350-e8023c2b4545
+      context_mapping: {  }
   id: panels_variant
   uuid: ef040892-a3ec-4a3f-acbe-1cbaa357f1e7
   label: null
   weight: 0
-  layout: two_column
+  layout: default_layout
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager

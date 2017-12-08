@@ -93,9 +93,13 @@
   padding: 80px 15px 40px;
   width: 100%;
 
-  .node-basic-page & {
+  .node-basic-page &,
+  .node-event &,
+  .node-news &,
+  .node-blog & {
     padding-top: 100px;
     padding-bottom: 0;
+
 
     @include media-q(max, 1200) {
       padding-top: 50px;

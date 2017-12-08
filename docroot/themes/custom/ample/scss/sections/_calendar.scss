@@ -3,7 +3,7 @@
 }
 
 #calendar {
-  font-family: $oswald;
+  font-family: $primary-font;
   letter-spacing: 1px;
 
   .fc-left {
@@ -396,7 +396,7 @@
       vertical-align: middle;
       width: 2px;
       height: 16px;
-      background: $red;
+      background: $primary-color-dark;
       margin: -3px 5px 0;
     }
   }
@@ -428,7 +428,7 @@
       display: inline-block;
       padding: 15px 25px;
       border: 1px solid $grey-medium;
-      font-family: $oswald;
+      font-family: $primary-font;
       color: $red;
       transition: all .3s ease;
 

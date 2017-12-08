@@ -35,7 +35,7 @@
     a {
       @include font-size(28);
       color: $red;
-      font-family: $oswald;
+      font-family: $primary-font;
       text-decoration: none;
 
       &:hover {
@@ -140,7 +140,7 @@
       @extend .form-submit;
       @include font-size(24);
       border-radius: 0;
-      font-family: $oswald;
+      font-family: $primary-font;
       letter-spacing: .5px;
 
       span {

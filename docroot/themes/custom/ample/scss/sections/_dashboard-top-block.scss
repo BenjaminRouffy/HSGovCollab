@@ -21,7 +21,7 @@
 
     .form-submit {
       background: transparent;
-      border-color: $red;
+      border-color: $primary-color-dark;
       text-transform: none;
     }
 
@@ -32,7 +32,7 @@
 
   .contribute-button {
     display: inline-block;
-    font-family: $oswald;
+    font-family: $primary-font;
     letter-spacing: 0;
     padding: 20px 40px;
     vertical-align: top;
@@ -139,7 +139,7 @@
 
     .name {
       @include font-size(18.2);
-      font-family: $oswald;
+      font-family: $primary-font;
       display: inline-block;
       letter-spacing: .5px;
       margin-top: 8px;
@@ -149,7 +149,7 @@
     .based-on {
       a {
         @include font-size(18.2);
-        font-family: $oswald;
+        font-family: $primary-font;
         letter-spacing: .5px;
         padding-top: 18px;
       }

@@ -485,7 +485,7 @@
     color: $navy-dark;
     cursor: pointer;
     display: block;
-    font-family: $oswald;
+    font-family: $primary-font;
     float: right;
     letter-spacing: .5px;
     margin-top: 25px;
@@ -590,7 +590,7 @@
       @extend .form-submit;
       background: transparent;
       display: inline-block;
-      font-family: $oswald;
+      font-family: $primary-font;
       margin-bottom: 20px;
       text-decoration: none;
       vertical-align: top;
@@ -727,7 +727,7 @@
     @include font-size(20);
     color: $navy;
     display: inline-block;
-    font-family: $oswald;
+    font-family: $primary-font;
     margin: 30px 0 40px;
     text-decoration: none;
     vertical-align: top;
@@ -924,7 +924,7 @@
 .views-element-container {
   > header {
     @include font-size(25.2);
-    font-family: $oswald;
+    font-family: $primary-font;
     background-color: transparent;
     line-height: 48px;
     margin: 20px 0 15px;

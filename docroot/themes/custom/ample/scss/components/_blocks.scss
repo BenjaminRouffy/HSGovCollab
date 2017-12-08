@@ -1,11 +1,11 @@
 .teaser {
-  background: $navy;
+  background: $primary-color-light;
   color: $white;
   margin-bottom: 40px;
   transition: background .3s ease;
 
   &:hover {
-    background: rgba($red, .85);
+    background: $primary-color-dark;
   }
 
   .full-width & {
@@ -22,7 +22,7 @@
     @include font-size(22.4);
     color: $white-dark;
     display: block;
-    font-family: $fira;
+    font-family: $primary-font;
     font-weight: 300;
     padding: 40px 30px;
     text-decoration: none;
@@ -56,7 +56,7 @@
     @include font-size(30.8);
     color: $white-with-rose-shade;
     display: block;
-    font-family: $oswald;
+    font-family: $primary-font;
     font-weight: 400;
     line-height: 40px;
     margin: 0;
@@ -235,11 +235,13 @@
     margin-bottom: 40px;
 
     li {
-      border-color: $navy;
+      border-color: #CCC;
       padding: 20px 15px 10px;
 
       &:hover {
-        background: $white;
+        .tweet {
+          color: $primary-color-dark
+        }
       }
     }
   }
@@ -268,11 +270,6 @@
     cursor: pointer;
     font-family: $primary-font;
     padding: 30px 15px 30px;
-
-    &:hover {
-      background: $white-dark;
-      border-color: $highlight-color;
-    }
   }
 
   a:not(.read-more):not(.download) {
@@ -779,7 +776,7 @@
   .external-link {
     border-bottom: 2px solid transparent;
     color: $navy-dark;
-    font-family: $oswald;
+    font-family: $primary-font;
     letter-spacing: .5px;
     min-height: 50px;
     overflow: hidden;
@@ -935,7 +932,7 @@
   @include font-size(25.2);
   @include clearfix();
   border: 2px solid #e9ecee;
-  font-family: $oswald;
+  font-family: $primary-font;
   line-height: 32px;
   margin-bottom: 40px;
   padding: 40px 40px 20px;
@@ -958,13 +955,13 @@
     vertical-align: middle;
     width: 2px;
     height: 26px;
-    background: $red;
+    background: $primary-color-dark;
     margin: -6px 5px 0;
   }
 
   .value {
     margin-left: -4px;
-    color: $navy;
+    color: $primary-color-light;
     display: inline-block;
     font-weight: 400;
     margin-bottom: 15px;
@@ -1000,20 +997,20 @@
       @include same(auto, height, width);
       @include font-size(21);
       background: transparent;
-      color: #afb7bb;
+      color: $primary-color-light;
       text-indent: 0;
       text-transform: none;
 
+
+
       &:hover {
-        border-color: #afb7bb;
+        border-color: $primary-color-dark;
+        color: $primary-color-dark;
       }
 
       &[class^='voted'] {
-        color: $red;
-
-        &:hover {
-          border-color: $red;
-        }
+        color: $primary-color-dark;
+        border-color: $primary-color-dark;
       }
     }
   }
@@ -1081,14 +1078,24 @@
       width: 33.33%;
     }
 
+    &:hover {
+      h2 {
+        color: $primary-color-dark;
+      }
+
+      .image-wrapper img {
+        filter: brightness(88%);
+      }
+
+      .teaser-text {
+        color: $primary-color-dark;
+      }
+    }
+
     .event-container,
     .news-container {
       border-bottom: 2px solid transparent;
       transition: background .2s ease, border .2s ease;
-
-      &:hover {
-        border-color: $highlight-color;
-      }
     }
 
     &:first-child {
@@ -1109,13 +1116,6 @@
     &:first-child {
       margin-bottom: 20px;
       width: 50%;
-    }
-
-    &:hover {
-      .news-container {
-        background: $white;
-        border-color: $highlight-color;
-      }
     }
 
     .front & {
@@ -1147,22 +1147,19 @@
       border-bottom: 2px solid transparent;
       padding: 20px;
       transition: border .3s ease;
-
-      &:hover {
-        border-color: $red;
-      }
     }
 
     .font-social-icon {
       @include font-size(24);
-      color: $navy-dark;
+      color: $primary-color-dark;
       margin-bottom: 20px;
     }
 
+
     .teaser-text {
       @include font-size(15.4);
-      color: $navy-dark;
-      font-family: $fira;
+      color: $font-color-dark;
+      font-family: $primary-font;
       line-height: 22px;
       margin: 5px 0 10px;
     }
@@ -1172,24 +1169,16 @@
     padding: 10px;
 
     .event-container {
-      background: rgba($red, .09) url(../images/calendar-icon.svg) 20px 40px no-repeat;
-      background-size: 41px 41px;
-      padding: 40px 20px 40px 71px;
-
-      &:hover {
-        background-color: rgba($red, .07);;
-        border-color: $red;
-      }
+      background: url(../images/calendar-icon.svg) 95% 10px no-repeat;
+      background-color: $secondary-color-lighter;
+      background-size: 20px;
+      padding: 45px 20px 20px;
     }
 
     .event-conference {
-      background: rgba($navy-light, .3) url(../images/calendar-conf-icon.svg) 20px 30px no-repeat;
+      background: url(../images/calendar-conf-icon.svg) 95% 10px no-repeat;
+      background-color: $secondary-color-lighter;
       background-size: 40px 48px;
-
-      &:hover {
-        background-color: rgba($navy-light, .1);;
-        border-color: $navy;
-      }
     }
   }
 
@@ -1372,7 +1361,7 @@
       font-weight: 700;
 
       > *:not(:first-child):before {
-        font-family: $oswald;
+        font-family: $primary-font;
         font-weight: 700;
         margin: 0;
       }
@@ -1394,7 +1383,7 @@
   }
 
   .contact-content {
-    font-family: $oswald;
+    font-family: $primary-font;
     padding: 30px 20px;
     height: 100%;
     display: flex;
@@ -1615,7 +1604,7 @@
     @include font-size(14);
     color: $navy-dark;
     border-top: 1px solid #afb7bb;
-    font-family: $oswald;
+    font-family: $primary-font;
     letter-spacing: .5px;
     padding: 14px 20px 0;
     position: relative;
@@ -1664,7 +1653,7 @@
 
     p {
       @include font-size(14);
-      font-family: $oswald;
+      font-family: $primary-font;
       margin: 0;
     }
 
@@ -2244,7 +2233,7 @@
 }
 
 .status-message {
-  font-family: $oswald;
+  font-family: $primary-font;
   padding: 25px 10px;
   position: relative;
   text-align: center;

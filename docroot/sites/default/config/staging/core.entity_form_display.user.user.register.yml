@@ -44,7 +44,6 @@ third_party_settings:
         - field_first_name
         - field_middle_name
         - field_last_name
-        - field_job_title
         - account
         - field_country_manager
         - field_project_manager
@@ -104,14 +103,6 @@ content:
     settings:
       size: 60
       placeholder: 'Please enter your first name'
-    third_party_settings: {  }
-  field_job_title:
-    type: string_textfield
-    weight: 25
-    region: content
-    settings:
-      size: 60
-      placeholder: 'Please enter your job title'
     third_party_settings: {  }
   field_knowledge_vault_manager:
     type: group_select
@@ -185,6 +176,7 @@ hidden:
   field_following_p4h_areas: true
   field_following_projects: true
   field_following_regions: true
+  field_job_title: true
   field_last_password_reset: true
   field_mobilephone: true
   field_organisation: true

@@ -40,14 +40,6 @@ class UserRegistrationRegister extends RegisterForm {
     $form['field_person_titles']['widget']['#options']['_none'] = $this->t('Select title');
     $form['field_organisation']['widget']['#options']['_none'] = $this->t('Select organisation');
 
-    $states = array(
-      'visible' => array(
-        // @TODO Change this logic.
-        'select[name="field_organisation"]' => array('value' => 485),
-      ),
-    );
-    $form['field_non_member_organization']['#states'] = $states;
-
     return $form;
   }
 

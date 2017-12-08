@@ -51,13 +51,6 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
         unset($form['field_organisation']['widget']['#options'][$key]);
       }
     }
-    $states = array(
-      'visible' => array(
-        // @TODO Change this logic.
-        'select[name="field_organisation"]' => array('value' => 485),
-      ),
-    );
-    $form['field_non_member_organization']['#states'] = $states;
 
     unset(
       $form['account']['current_pass']['#description'],

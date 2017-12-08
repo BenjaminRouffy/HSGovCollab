@@ -25,7 +25,7 @@ variant_settings:
       label_display: '0'
       view_mode: default
       region: content
-      weight: 0
+      weight: -4
       uuid: 92764935-e47c-433b-9fd4-0ae17de4ca06
       context_mapping:
         entity: node
@@ -96,8 +96,8 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: comments
-      region: bottom
-      weight: 0
+      region: content
+      weight: -3
       uuid: 43f1223e-7dff-4c93-bed9-866684f32a2a
       context_mapping:
         entity: node
@@ -126,7 +126,7 @@ variant_settings:
       level: 1
       depth: 0
       region: bottom
-      weight: 0
+      weight: -8
       uuid: 0d3853d2-b31d-4257-b4ff-4ea37e0a9367
       context_mapping: {  }
   id: panels_variant

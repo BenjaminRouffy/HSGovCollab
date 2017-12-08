@@ -10,11 +10,6 @@
       <time datetime="{{ content.field_content_date|field_value|field_raw }}">
         {{ content.field_content_date|field_value }}
       </time>
-      {% if content.field_author %}
-        <span class="author">
-        {% trans %}By: {% endtrans %} {{ content.field_author }}
-      </span>
-      {% endif %}
     </div>
   {% endif %}
   {{ title_suffix }}

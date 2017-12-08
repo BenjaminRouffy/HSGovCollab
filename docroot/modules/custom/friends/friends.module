@@ -22,19 +22,7 @@ use Drupal\views\ViewExecutable;
 function friends_user_view(array &$build, EntityInterface $account, EntityViewDisplayInterface $display, $view_mode) {
   $build['#current_user'] = \Drupal::currentUser()->id();
 
-  if ($account->hasField('field_organisation')) {
-    $organisation = $account->get('field_organisation')->getValue();
-
-    if (!empty($organisation)) {
-      $organisation = reset($organisation);
-
-      // @TODO Change this logic.
-      // Non-member organisation.
-      if (485 == $organisation['target_id']) {
-        $build['#organization'] = $account->get('field_non_member_organization')->value;
-      }
-    }
-  }
+  $build['#organization'] = $account->get('field_non_member_organization')->value;
 
   if (FriendsAccess::checkAccess('view', $account, \Drupal::currentUser())) {
     $build['#user_mail'] = $account->getEmail();

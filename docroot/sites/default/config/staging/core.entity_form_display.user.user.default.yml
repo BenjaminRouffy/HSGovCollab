@@ -43,15 +43,14 @@ third_party_settings:
   field_group:
     group_my_profile:
       children:
+        - group_profile_info
         - group_user_details
         - account
         - group_organisation_details
-        - field_organisations
         - group_interests_wrapper
         - group_managers
         - group_contact_details
         - group_address_details
-        - group_profile_info
       parent_name: ''
       weight: 0
       format_type: html_element
@@ -88,9 +87,7 @@ third_party_settings:
       label: 'User details'
     group_organisation_details:
       children:
-        - field_organisation
         - field_non_member_organization
-        - field_job_title
       parent_name: group_my_profile
       weight: 4
       format_type: html_element
@@ -322,7 +319,7 @@ content:
     type: group_select
     region: content
   field_job_title:
-    weight: 7
+    weight: 6
     settings:
       size: 60
       placeholder: 'Please enter your job title'
@@ -375,7 +372,7 @@ content:
     region: content
   field_organisations:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 7
     settings:
       title: Organisation
       title_plural: Organisations
@@ -440,7 +437,7 @@ content:
     type: string_textfield
     region: content
   google_analytics:
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -450,7 +447,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   simplenews:
-    weight: 5
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

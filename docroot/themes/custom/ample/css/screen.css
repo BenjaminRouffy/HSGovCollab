@@ -7303,7 +7303,7 @@ form .social_login iframe {
 .user-register-form .login-wrapper,
 .user-register-form .form-item-social-login-create-account {
   margin-top: 40px;
-  width: 50%;
+  width: 100%;
 }
 
 .user-register-form .social_login {
@@ -13355,6 +13355,10 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   }
 }
 
+.content article {
+  padding-bottom: 35px;
+}
+
 .content,
 .more-content,
 .summary-text {
@@ -13474,10 +13478,9 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   line-height: 35px;
-  margin: 41px 0 62px;
-  padding: 20px 50px;
   position: relative;
-  left: -46px;
+  margin: 41px 0 62px;
+  padding: 0;
   transition: opacity .2s, -webkit-transform .6s;
   transition: opacity .2s, transform .6s;
   transition: opacity .2s, transform .6s, -webkit-transform .6s;
@@ -13486,7 +13489,7 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 .content-with-sidebar .content blockquote, .content-with-sidebar
 .more-content blockquote, .content-with-sidebar
 .summary-text blockquote {
-  width: 70%;
+  width: 100%;
 }
 
 .content blockquote p,

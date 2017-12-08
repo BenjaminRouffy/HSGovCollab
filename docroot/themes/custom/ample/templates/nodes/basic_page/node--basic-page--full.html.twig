@@ -9,11 +9,6 @@
     <section class="content">
       <article{{ attributes }} role="article">
         <div class="post-info">
-          {% if content.field_author %}
-            <span class="author">
-              {% trans %}By: {% endtrans %} {{ content.field_author }}
-            </span>
-          {% endif %}
         </div>
 
         <div class="title-wrapper" data-anchor-id="node-{{ node.id }}">

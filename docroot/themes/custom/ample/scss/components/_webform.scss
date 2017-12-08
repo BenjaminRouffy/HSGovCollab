@@ -1,10 +1,10 @@
 // Form elements
 form {
   @include font-size(18.2);
-  font-family: $oswald;
+  font-family: $primary-font;
 
   label {
-    color: $navy-dark;
+    color: $font-color-dark;
     display: block;
     margin-bottom: 10px;
     letter-spacing: .5px;
@@ -12,8 +12,8 @@ form {
 
   .description {
     @include font-size(14);
-    color: $red;
-    font-family: $fira;
+    color: $primary-color-light;
+    font-family: $primary-font;
     margin: 0 20px 5px 0;
   }
 
@@ -67,9 +67,9 @@ form {
 .form-text,
 .form-url,
 .form-email {
-  border: 1px solid #75a8c0;
-  color: $navy;
-  font-family: $fira;
+  border: 1px solid $primary-color-light;
+  color: $font-color-dark;
+  font-family: $primary-font;
   font-weight: 300;
   height: 50px;
   line-height: 26px;
@@ -80,15 +80,15 @@ form {
   width: 100%;
 
   .ui-widget & {
-    font-family: $fira;
+    font-family: $primary-font;
   }
 
   &:hover {
-    box-shadow: 0 0 6px 0 rgba($navy-dark, .38);
+    box-shadow: 0 0 6px 0 rgba($primary-color-light, .38);
   }
 
   &:focus {
-    border-color: #3898EC;
+    border-color: $primary-color-dark;
     outline: none;
   }
 
@@ -136,22 +136,22 @@ form {
 .choose-file {
   @include font-size(16.8);
   background: #e9ecee;
-  color: $red;
+  color: $primary-color-light;
   cursor: pointer;
   display: inline-block;
-  font-family: $oswald;
+  font-family: $primary-font;
   padding: 15px 40px;
   vertical-align: top;
 
   &:hover {
-    color: $red-dark;
+    color: $primary-color-dark;
   }
 }
 
 .form-date {
-  border: 1px solid #75a8c0;
-  color: $navy;
-  font-family: $fira;
+  border: 1px solid $primary-color-dark;
+  color: $primary-color-dark;
+  font-family: $primary-font;
   font-weight: 300;
   height: 50px;
   line-height: 26px;
@@ -184,17 +184,17 @@ form {
   background-image: url(../images/select-arrows.png), linear-gradient($white 0, #f3f3f3 100%);
   background-position: right center;
   background-repeat: no-repeat;
-  border: 1px solid #75a8c0;
+  border: 1px solid $primary-color-light;
   border-radius: 4px;
   color: $grey-dark;
-  font-family: $fira;
+  font-family: $primary-font;
   height: 50px;
   padding: 1px 12px;
   width: 100%;
 
   .select-wrapper & {
     @include font-size(16.8);
-    font-family: $fira;
+    font-family: $primary-font;
   }
 
   &[disabled] {
@@ -228,12 +228,12 @@ form {
       padding: 10px 12px;
 
       &:hover {
-        box-shadow: 0 0 6px 0 rgba($navy-dark, .38);
+        box-shadow: 0 0 6px 0 rgba($primary-color-light, .38);
       }
 
       input[type="text"] {
         font-size: 18.2px !important;
-        font-family: $fira !important;
+        font-family: $primary-font !important;
         font-weight: 300;
       }
 
@@ -384,16 +384,17 @@ form {
 
 .form-submit {
   background: $white;
-  border: 1px solid $red;
-  color: $red;
+  border: 1px solid $primary-color-light;
+  color: $primary-color-light;
   letter-spacing: 1px;
   padding: 15px 41px;
   text-transform: uppercase;
   transition: border .3s ease;
+  font-family: $primary-font;
 
   &:hover {
-    border-color: $red-dark;
-    color: $red-dark;
+    border-color: $primary-color-dark;
+    color: $primary-color-dark;
     //transform: scale(1.04);
   }
 }
@@ -456,7 +457,7 @@ form {
       &::after {
         opacity: 1;
         transform: scale(.5);
-        background: $red;
+        background: $primary-color-dark;
       }
     }
 
@@ -479,7 +480,7 @@ form {
     &:disabled:checked + label {
       &::after {
         opacity: 1;
-        background: $red;
+        background: $primary-color-dark;
       }
 
       &:hover::after {
@@ -521,7 +522,7 @@ form {
     &::after {
       width: 20px;
       height: 20px;
-      background: rgba($red, .5);
+      background: rgba($primary-color-dark, .5);
       border-radius: 100%;
       position: absolute;
       top: 0;
@@ -572,7 +573,7 @@ form {
       &::after {
         opacity: 1;
         transform: scale(.5);
-        background: $red;
+        background: $primary-color-dark;
       }
     }
 
@@ -595,7 +596,7 @@ form {
     &:disabled:checked + label {
       &::after {
         opacity: 1;
-        background: $red;
+        background: $primary-color-dark;
       }
 
       &:hover::after {
@@ -725,19 +726,21 @@ form {
   .login-wrapper {
     margin-top: 40px;
     width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   a {
     @include font-size(14);
-    color: $red;
+    color: $primary-color-light;
     display: inline-block;
-    font-family: $fira;
+    font-family: $primary-font;
     margin: 0 20px 5px 0;
     text-decoration: none;
     vertical-align: top;
 
     &:hover {
-      color: $red-dark;
+      color: $primary-color-dark;
     }
   }
 
@@ -758,15 +761,7 @@ form {
   }
 
   .form-submit {
-    border-color: $red;
-    font-weight: 700;
-    text-transform: none;
-
-    &:hover {
-      border-color: $red-dark;
-      color: $red-dark;
-      transform: none;
-    }
+    @extend .form-submit;
   }
 }
 
@@ -852,9 +847,10 @@ form {
 
     a {
       transition: color .2s ease;
+      color: $primary-color-light;
 
       &:hover {
-        color: $red;
+        color: $primary-color-dark;
       }
     }
 
@@ -878,9 +874,7 @@ form {
   }
 
   .form-submit {
-    border-color: $red;
-    font-weight: 700;
-    text-transform: none;
+    @extend .form-submit;
   }
 
   label {
@@ -1010,7 +1004,9 @@ form {
   .login-wrapper,
   .form-item-social-login-create-account {
     margin-top: 40px;
-    width: 100%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .social_login {
@@ -1053,11 +1049,11 @@ form {
     }
 
     a {
-      color: $red;
+      color: $primary-color-light;
       text-decoration: none;
 
       &:hover {
-        color: $red-dark;
+        color: $primary-color-dark;
       }
     }
   }
@@ -1096,7 +1092,7 @@ form {
       vertical-align: top;
 
       &.error {
-        font-family: $oswald;
+        font-family: $primary-font;
         right: auto;
         left: 0;
         margin: 0;
@@ -1121,15 +1117,7 @@ form {
   }
 
   .form-submit {
-    border-color: $red;
-    font-weight: 700;
-    text-transform: none;
-
-    &:hover {
-      border-color: $red-dark;
-      color: $red-dark;
-      transform: none;
-    }
+    @extend .form-submit;
   }
 }
 
@@ -1374,15 +1362,7 @@ form {
   }
 
   .form-submit {
-    border-color: $red;
-    font-weight: 700;
-    text-transform: none;
-
-    &:hover {
-      border-color: $red-dark;
-      color: $red-dark;
-      transform: none;
-    }
+    @extend .form-submit;
   }
 }
 
@@ -1691,14 +1671,9 @@ form {
       }
 
       .form-submit {
+        @extend .form-submit;
         @include font-size(14);
-        background: none;
-        border: none;
-        font-family: $fira;
-        font-weight: 400;
-        letter-spacing: normal;
         margin: 10px 0 0;
-        padding: 0;
       }
     }
 
@@ -1881,7 +1856,7 @@ form {
       @include font-size(14);
       background: transparent;
       border: none;
-      font-family: $fira;
+      font-family: $primary-font;
       letter-spacing: 0;
       padding: 0;
       text-transform: none;
@@ -1893,7 +1868,7 @@ form {
 
       &:hover {
         background-position: left bottom;
-        color: $red-dark;
+        color: $primary-color-dark;
         transform: none;
       }
     }
@@ -2089,7 +2064,7 @@ form {
   thead {
     .label {
       @include font-size(18.2);
-      font-family: $oswald;
+      font-family: $primary-font;
       font-weight: 400;
       letter-spacing: .5px;
       line-height: 20px;
@@ -2173,9 +2148,9 @@ form {
   }
 
   .form-submit {
+    @extend .form-submit;
     background: none;
-    border-color: $red;
-    font-weight: 700;
+
     margin: 0 auto 15px;
     text-transform: none;
 
@@ -2183,11 +2158,6 @@ form {
       display: block;
     }
 
-    &:hover {
-      border-color: $red-dark;
-      color: $red-dark;
-      transform: none;
-    }
   }
 
   .ajax-progress-throbber {
@@ -2655,7 +2625,7 @@ form {
       width: 100%;
 
       h4 {
-        font-family: $oswald;
+        font-family: $primary-font;
         margin-top: 18px;
         display: inline-block;
         vertical-align: top;
@@ -2755,7 +2725,7 @@ form {
         color: $red;
         cursor: pointer;
         display: inline-block;
-        font-family: $oswald;
+        font-family: $primary-font;
         padding: 15px 40px;
         vertical-align: top;
 

@@ -33,7 +33,7 @@
 
 .comment-wrapper {
   @include font-size(16.8);
-  font-family: $oswald;
+  font-family: $primary-font;
   font-weight: 400;
   letter-spacing: .5px;
   max-width: 618px;
@@ -180,7 +180,7 @@
 
     &:after {
       content: "H";
-      color: #416170;
+      color: $primary-color-light;
       font-family: $p4h;
       position: absolute;
       top: 0;
@@ -191,7 +191,7 @@
 
   .rate-undo {
     &:after {
-      color: #eb4432;
+      color: $primary-color-dark;
     }
   }
 
@@ -206,7 +206,7 @@
 
   .comment-body {
     @include font-size(15.4);
-    font-family: $fira;
+    font-family: $primary-font;
     letter-spacing: 0;
     line-height: 23px;
     margin-top: 10px;
@@ -224,7 +224,7 @@
 
     li {
       @include font-size(14);
-      font-family: $oswald;
+      font-family: $primary-font;
       color: #416170;
       cursor: pointer;
       display: inline-block;

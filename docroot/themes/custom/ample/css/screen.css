@@ -790,7 +790,7 @@ svg {
 }
 
 .header-fixed .main-menu a.is-active {
-  color: #fff;
+  color: #6690AE;
 }
 
 .header-fixed .main-menu a:hover {
@@ -804,13 +804,13 @@ svg {
 }
 
 @media only screen and (min-width: 1200px) {
-  .main-menu .expanded > a {
+  .header-static .main-menu .expanded > a {
     padding: 20px 20px;
   }
 }
 
 @media only screen and (min-width: 1282px) {
-  .main-menu .expanded > a {
+  .header-static .main-menu .expanded > a {
     padding: 28px 25px 15px;
   }
 }
@@ -819,9 +819,18 @@ svg {
   display: none;
 }
 
-.header-fixed .main-menu .expanded > a:hover {
-  color: #fff;
-  opacity: 1;
+@media only screen and (min-width: 1200px) {
+  .header-fixed .main-menu .expanded > a {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media only screen and (min-width: 1282px) {
+  .header-fixed .main-menu .expanded > a {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
 
 .main-menu .expanded > a::after {
@@ -880,7 +889,7 @@ svg {
 }
 
 .header-fixed .main-menu .display-second-menu > a {
-  color: #fff;
+  color: #6690AE;
 }
 
 .header-fixed .main-menu .display-second-menu > a::after {
@@ -1052,7 +1061,7 @@ svg {
   text-transform: uppercase;
 }
 
-.submenu .submenu-col a:hover {
+.submenu .submenu-col a.is-active, .submenu .submenu-col a:hover {
   color: #152034;
   background: #D0D8DF;
 }

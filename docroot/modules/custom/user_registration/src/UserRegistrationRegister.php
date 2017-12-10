@@ -31,14 +31,18 @@ class UserRegistrationRegister extends RegisterForm {
     $form['account']['mail']['#title_display'] = 'invisible';
     $form['account']['mail']['#required'] = TRUE;
 
-    foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {
-      if (is_array($option)) {
-        $form['field_organisation']['widget']['#options'] += $option;
-        unset($form['field_organisation']['widget']['#options'][$key]);
+    if (!empty($form['field_organisation']['widget']['#options'])) {
+      foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {
+        if (is_array($option)) {
+          $form['field_organisation']['widget']['#options'] += $option;
+          unset($form['field_organisation']['widget']['#options'][$key]);
+        }
       }
+      $form['field_organisation']['widget']['#options']['_none'] = $this->t('Select organisation');
     }
-    $form['field_person_titles']['widget']['#options']['_none'] = $this->t('Select title');
-    $form['field_organisation']['widget']['#options']['_none'] = $this->t('Select organisation');
+    if (!empty($form['field_person_titles']['widget']['#options'])) {
+      $form['field_person_titles']['widget']['#options']['_none'] = $this->t('Select title');
+    }
 
     return $form;
   }

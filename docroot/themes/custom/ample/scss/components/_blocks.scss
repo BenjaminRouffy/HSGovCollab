@@ -300,12 +300,13 @@
   }
 
   .download {
-    color: $red;
+    color: $primary-color-light;
     margin-left: 37px;
     text-decoration: none;
+    transition: color .2s ease-in;
 
     &:hover {
-      color: $red-dark;
+      color: $primary-color-dark;
     }
   }
 

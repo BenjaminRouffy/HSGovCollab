@@ -3533,15 +3533,16 @@ footer > .partners .item-list li {
 .news-events-list .download,
 .related-docs .download,
 .timeline .download {
-  color: #ea3a32;
+  color: #449ea5;
   margin-left: 37px;
   text-decoration: none;
+  transition: color .2s ease-in;
 }
 
 .news-events-list .download:hover,
 .related-docs .download:hover,
 .timeline .download:hover {
-  color: #8c2222;
+  color: #005083;
 }
 
 .news-events-list .facebook-icon,
@@ -11539,11 +11540,11 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   font-weight: 400;
   padding: 20px 20px 0;
   line-height: 1.625;
-  color: #283b44;
+  color: #005083;
 }
 
 .pins-list .pin-item .description a {
-  color: #ea3a32;
+  color: #449ea5;
 }
 
 .pins-list .pin-item .description li {
@@ -11575,7 +11576,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .pins-list .pin-item blockquote p {
   font-size: 1rem;
   margin-bottom: 0;
-  color: #283b44;
+  color: #005083;
   font-weight: normal;
 }
 
@@ -11635,11 +11636,11 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .pins-list .pin-item .font-social-icon span::after {
   font-size: 1.25rem;
-  color: #ea3a32;
+  color: #005083;
 }
 
 .pins-list .pin-item .download {
-  color: #ea3a32;
+  color: #449ea5;
 }
 
 .pins-list .pin-item .link {
@@ -11649,11 +11650,15 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .pins-list .pin-item .link a {
   font-size: 1rem;
-  color: #ea3a32;
+  color: #449ea5;
   padding-right: 20px;
   position: relative;
   display: inline-block;
   line-height: 20px;
+}
+
+.pins-list .pin-item .link a:hover {
+  color: #005083;
 }
 
 .pins-list .pin-item .link a:hover::after {
@@ -11665,7 +11670,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   content: ' ';
   width: 8px;
   height: 8px;
-  border: solid #ea3a32;
+  border: solid #449ea5;
   border-width: 2px 2px 0 0;
   -webkit-transform: rotate(45deg) translateY(-50%);
       -ms-transform: rotate(45deg) translateY(-50%);

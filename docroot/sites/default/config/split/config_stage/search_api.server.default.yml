@@ -13,10 +13,10 @@ backend_config:
   connector: standard
   connector_config:
     scheme: http
-    host: ip-172-31-34-82.eu-central-1.compute.internal
+    host: 172.31.56.225
     port: '8080'
     path: /solr
-    core: tika
+    core: hsgc_new_tika
     timeout: 5
     index_timeout: 5
     optimize_timeout: 10

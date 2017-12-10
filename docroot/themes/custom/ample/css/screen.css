@@ -1023,7 +1023,6 @@ svg {
 
 .submenu .submenu-col li a {
   font-weight: 400 !important;
-  text-transform: none !important;
 }
 
 .submenu .submenu-col a {
@@ -1032,6 +1031,7 @@ svg {
   font-size: 15px;
   color: #808792;
   background: #EBEFF2;
+  text-transform: uppercase;
 }
 
 .submenu .submenu-col a:hover {
@@ -1124,6 +1124,25 @@ svg {
   display: none;
 }
 
+.page-contact-us .anchor-links {
+  text-align: center;
+  display: block;
+}
+
+.page-contact-us .anchor-links a {
+  margin: 20px 0;
+  color: #fff;
+  transition: all 200ms ease-in;
+  background: #449ea5;
+  border-radius: 100px;
+}
+
+.page-contact-us .anchor-links a:hover {
+  background: #005083;
+  border: none;
+  color: #fff;
+}
+
 .submenu ul,
 .anchor-links ul {
   height: 100%;
@@ -1193,13 +1212,14 @@ svg {
   vertical-align: middle;
   white-space: normal;
   max-width: 250px;
+  text-transform: uppercase;
 }
 
 .header-fixed .submenu a, .header-fixed
 .anchor-links a {
   font-size: 1.05rem;
   padding: 15px 30px;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .submenu a:hover,
@@ -6579,7 +6599,7 @@ form textarea ~ label.error:after {
   letter-spacing: 1px;
   padding: 15px 41px;
   text-transform: uppercase;
-  transition: border .3s ease;
+  transition: all .2s ease-in;
   font-family: "Roboto", sans-serif;
 }
 
@@ -13227,9 +13247,32 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 .content h2,
 .more-content h2,
 .summary-text h2 {
-  font-size: 1.575rem;
-  line-height: 48px;
+  font-size: 1.5rem;
+  color: #005083;
+  font-family: "Roboto", sans-serif;
+  line-height: 36px;
   margin: 0 0 21px;
+}
+
+.content h3,
+.more-content h3,
+.summary-text h3 {
+  font-size: 1.25rem;
+  color: #005083;
+  font-family: "Roboto", sans-serif;
+  line-height: 34px;
+  margin: 0 0 21px;
+}
+
+.content h4,
+.more-content h4,
+.summary-text h4 {
+  font-size: 1.225rem;
+  color: #005083;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 30px 0 10px;
 }
 
 .content h4,
@@ -15100,12 +15143,12 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 }
 
 .comment-wrapper a {
-  color: #ea3a32;
-  text-decoration: none;
+  color: #449ea5;
+  transition: all .2s ease-in;
 }
 
 .comment-wrapper a:hover {
-  color: #8c2222;
+  color: #005083;
 }
 
 .comment-wrapper .comment-edit a:before,

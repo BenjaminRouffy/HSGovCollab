@@ -4,7 +4,9 @@
       <a href="{{ author_url }}">
     {% endif %}
 
-    {{ user_picture }}
+      {% if user_picture is not empty %}
+        {{ user_picture }}
+      {% endif %}
 
     {% if logged_in %}
       </a>

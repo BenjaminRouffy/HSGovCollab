@@ -18,7 +18,7 @@ settings:
             - Bold
             - Underline
             - Italic
-            - Styles
+            - Format
         -
           name: Links
           items:
@@ -40,10 +40,10 @@ settings:
             - Blockquote
             - video_embed
   plugins:
-    stylescombo:
-      styles: 'span.hash|Hash Tag'
     language:
       language_list: un
+    stylescombo:
+      styles: 'span.hash|Hash Tag'
     linkit:
       linkit_profile: default
     video_embed:

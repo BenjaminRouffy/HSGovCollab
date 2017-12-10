@@ -456,6 +456,25 @@
 // Anchors menu
 .anchor-links {
   display: none;
+
+  .page-contact-us & {
+    text-align: center;
+    display: block;
+
+    a {
+      margin: 20px 0;
+      color: $white;
+      transition: all 200ms ease-in;
+      background: $primary-color-light;
+      border-radius: 100px;
+
+      &:hover {
+        background: $primary-color-dark;
+        border: none;
+        color: $white;
+      }
+    }
+  }
 }
 
 .submenu,

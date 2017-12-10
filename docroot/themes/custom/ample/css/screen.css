@@ -1124,6 +1124,25 @@ svg {
   display: none;
 }
 
+.page-contact-us .anchor-links {
+  text-align: center;
+  display: block;
+}
+
+.page-contact-us .anchor-links a {
+  margin: 20px 0;
+  color: #fff;
+  transition: all 200ms ease-in;
+  background: #449ea5;
+  border-radius: 100px;
+}
+
+.page-contact-us .anchor-links a:hover {
+  background: #005083;
+  border: none;
+  color: #fff;
+}
+
 .submenu ul,
 .anchor-links ul {
   height: 100%;
@@ -6580,7 +6599,7 @@ form textarea ~ label.error:after {
   letter-spacing: 1px;
   padding: 15px 41px;
   text-transform: uppercase;
-  transition: border .3s ease;
+  transition: all .2s ease-in;
   font-family: "Roboto", sans-serif;
 }
 
@@ -15101,12 +15120,12 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 }
 
 .comment-wrapper a {
-  color: #ea3a32;
-  text-decoration: none;
+  color: #449ea5;
+  transition: all .2s ease-in;
 }
 
 .comment-wrapper a:hover {
-  color: #8c2222;
+  color: #005083;
 }
 
 .comment-wrapper .comment-edit a:before,

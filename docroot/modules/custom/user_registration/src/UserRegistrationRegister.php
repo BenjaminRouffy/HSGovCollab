@@ -57,6 +57,9 @@ class UserRegistrationRegister extends RegisterForm {
     $admin = $form_state->getValue('administer_users');
     $notify = !$form_state->isValueEmpty('notify');
 
+    // Save it now, to have uid and url and all the rest.
+    $account->save();
+
     $form_state->set('user', $account);
     $form_state->setValue('uid', $account->id());
 

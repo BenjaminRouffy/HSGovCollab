@@ -1,0 +1,70 @@
+uuid: bb0dcf9e-9691-4c14-90c9-627102185fc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.tweets
+    - views.view.news_events
+  content:
+    - 'block_content:headline_description:5b9a02c8-1ab5-477f-b12a-e706cbbac419'
+    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
+  module:
+    - block_content
+    - panels
+    - views
+id: tweets-panels_variant-0
+label: Page
+variant: panels_variant
+variant_settings:
+  blocks:
+    b947655b-8ed5-4f8d-aa0b-00fa4d037730:
+      id: 'block_content:5b9a02c8-1ab5-477f-b12a-e706cbbac419'
+      label: 'HSGC news'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle
+      weight: 0
+      uuid: b947655b-8ed5-4f8d-aa0b-00fa4d037730
+      context_mapping: {  }
+    a3655f5c-e37e-4c5c-8725-e60a68f90b15:
+      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
+      label: 'Contact us'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: view_mode_registration_block
+      region: bottom
+      weight: 0
+      uuid: a3655f5c-e37e-4c5c-8725-e60a68f90b15
+      context_mapping: {  }
+    8b5ada93-0276-4888-8ab8-57ea1267a278:
+      id: 'views_block:news_events-block_4'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 8b5ada93-0276-4888-8ab8-57ea1267a278
+      pager: view
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 58ab514f-8b47-4b68-8124-e7e7e9a7d9b0
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: Tweets
+  storage_type: page_manager
+  storage_id: tweets-panels_variant-0
+  builder: standard
+page: tweets
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

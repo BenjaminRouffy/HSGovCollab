@@ -912,8 +912,6 @@
 
   Drupal.behaviors.heroSlider = {
     attach: function (context) {
-      console.log(context);
-
       $('.hero__image-slider', context).slick({
         infinite: true,
         slidesToShow: 1,

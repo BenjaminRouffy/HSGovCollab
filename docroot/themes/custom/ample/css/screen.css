@@ -13247,9 +13247,32 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 .content h2,
 .more-content h2,
 .summary-text h2 {
-  font-size: 1.575rem;
-  line-height: 48px;
+  font-size: 1.5rem;
+  color: #005083;
+  font-family: "Roboto", sans-serif;
+  line-height: 36px;
   margin: 0 0 21px;
+}
+
+.content h3,
+.more-content h3,
+.summary-text h3 {
+  font-size: 1.25rem;
+  color: #005083;
+  font-family: "Roboto", sans-serif;
+  line-height: 34px;
+  margin: 0 0 21px;
+}
+
+.content h4,
+.more-content h4,
+.summary-text h4 {
+  font-size: 1.225rem;
+  color: #005083;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 30px 0 10px;
 }
 
 .content h4,

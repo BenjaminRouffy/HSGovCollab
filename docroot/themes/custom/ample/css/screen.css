@@ -1023,7 +1023,6 @@ svg {
 
 .submenu .submenu-col li a {
   font-weight: 400 !important;
-  text-transform: none !important;
 }
 
 .submenu .submenu-col a {
@@ -1032,6 +1031,7 @@ svg {
   font-size: 15px;
   color: #808792;
   background: #EBEFF2;
+  text-transform: uppercase;
 }
 
 .submenu .submenu-col a:hover {
@@ -1193,13 +1193,14 @@ svg {
   vertical-align: middle;
   white-space: normal;
   max-width: 250px;
+  text-transform: uppercase;
 }
 
 .header-fixed .submenu a, .header-fixed
 .anchor-links a {
   font-size: 1.05rem;
   padding: 15px 30px;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .submenu a:hover,

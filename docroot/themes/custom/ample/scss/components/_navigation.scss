@@ -333,7 +333,6 @@
 
     li a {
       font-weight: 400 !important;
-      text-transform: none !important;
     }
 
     a {
@@ -342,6 +341,7 @@
       font-size: 15px;
       color: #808792;
       background: #EBEFF2;
+      text-transform: uppercase;
 
       &:hover {
         color: #152034;
@@ -524,11 +524,12 @@
     white-space: normal;
     //text-overflow: ellipsis;
     max-width: 250px;
+    text-transform: uppercase;
 
     .header-fixed & {
       @include font-size(16.8);
       padding: 15px 30px;
-      text-transform: none;
+      text-transform: uppercase;
     }
 
     &::after {

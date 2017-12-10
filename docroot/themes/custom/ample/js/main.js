@@ -847,7 +847,13 @@
   Drupal.behaviors.dashboardMainMenu = {
     attach: function (context) {
       var windowSize = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-      if (windowSize > 1200) return;
+      if (windowSize > 1200) {
+        $('.main-menu', context).find('.expanded > a').click(function (e) {
+          e.preventDefault();
+        });
+
+        return;
+      }
 
       var $staticMenu = $('.main-menu', context);
 

@@ -298,6 +298,11 @@ a:focus {
   outline: 0;
 }
 
+hr {
+  border: 1px solid #005083;
+  border-radius: 10px;
+}
+
 blockquote {
   margin: 0 0 10px 0;
   padding: 10px 20px;
@@ -795,6 +800,19 @@ svg {
 .main-menu .expanded > a {
   position: relative;
   font-size: 18px;
+  color: #A1A6AE;
+}
+
+@media only screen and (min-width: 1200px) {
+  .main-menu .expanded > a {
+    padding: 20px 20px;
+  }
+}
+
+@media only screen and (min-width: 1282px) {
+  .main-menu .expanded > a {
+    padding: 28px 25px 15px;
+  }
 }
 
 .main-menu .expanded > a::before {

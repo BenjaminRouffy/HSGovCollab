@@ -1,20 +1,20 @@
 cancel_confirm:
-  body: "[user:display-name],\r\n\r\nA request to cancel your account has been made at [site:name].\r\n\r\nYou may now cancel your account on [site:url-brief] by clicking this link or copying and pasting it into your browser:\r\n\r\n[user:cancel-url]\r\n\r\nNOTE: The cancellation of your account is not reversible.\r\n\r\nThis link expires in one day and nothing will happen if it is not used.\r\n\r\nYours P4H Coordination Desk"
+  body: "[user:display-name],\r\n\r\nA request to cancel your account has been made at [site:name].\r\n\r\nYou may now cancel your account on [site:url-brief] by clicking this link or copying and pasting it into your browser:\r\n\r\n[user:cancel-url]\r\n\r\nNOTE: The cancellation of your account is not reversible.\r\n\r\nThis link expires in one day and nothing will happen if it is not used"
   subject: 'Account cancellation request for [user:display-name] at [site:name]'
 password_reset:
-  body: "Dear [user:display-name], \r\n\r\nTo restore your password, please <a href=\"[user:one-time-login-url]\">click here</a>. \r\n\r\nYours P4H Coordination Desk"
+  body: "Dear [user:display-name], \r\n\r\nTo restore your password, please <a href=\"[user:one-time-login-url]\">click here</a>. "
   subject: 'Replacement login information for [user:display-name] at [site:name]'
 register_admin_created:
-  body: "Dear [user:display-name], \r\n\r\n[current-user:display-name] has invited to join the P4H social health protection network. \r\nTo follow the invitation, please <a href=\"[user:one-time-login-url]\">click here</a> to sign-up or to get more information.\r\n\r\nP4H is the global network for health financing & economics and social health protection. The P4H Network strives to help policy and decision makers committed to Universal Health Coverage (UHC) across health, social and finance sectors.\r\n\r\nSince its inception in 2007, the P4H Network serves as platform to manage products, country activities, connect with your own networks or co-produce and exchange knowledge.\r\n\r\nJoin us on an unprecedented digital work space where you can define your own dashboard, geographical and thematic priorities and engage with a wealth of stakeholders across sectors, all working and progressing towards UHC.\r\n\r\nThank you for your attention. We hope to see you soon on the P4H Network Web Platform !"
+  body: "Dear [user:display-name], \r\n\r\n[current-user:display-name] has invited to join the Collaborative.\r\nTo follow the invitation, please <a href=\"[user:one-time-login-url]\">click here</a> to sign-up or to get more information.\r\n\r\nThank you for your attention. We hope to see you soon!"
   subject: '[current-user:display-name] invited you/you have been invited to join the P4H social health protection network.'
 register_no_approval_required:
   body: "Congratulations, you have been successfully signed-up! \r\n\r\nWe welcome you to the Health Systems Governance Collaborative.\r\nPlease <a href=\"[user:one-time-login-url]\">click here</a> to get started."
   subject: 'Congratulations, you have been successfully signed-up!'
 register_pending_approval:
-  body: "[user:display-name],\r\n\r\nThank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.\r\n\r\n\r\nYours P4H Coordination Desk"
+  body: "[user:display-name],\r\n\r\nThank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details."
   subject: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
 register_pending_approval_admin:
-  body: "[user:display-name] has applied for an account.\r\n\r\n[user:edit-url]\r\n\r\nYours P4H Coordination Desk"
+  body: "[user:display-name] has applied for an account.\r\n\r\n[user:edit-url]"
   subject: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
 status_activated:
   body: "Congratulations, you have been successfully signed-up! \r\n\r\nWe welcome you to the Health Systems Governance Collaborative.\r\nPlease <a href=\"[user:one-time-login-url]\">click here</a> to get started."
@@ -30,7 +30,7 @@ _core:
   default_config_hash: m4J3ROov32OEquRYGLbx3SpdDGuqx9l_zJtNvihqdCg
 friend_approve:
   subject: 'New connection request'
-  body: "<a href=\"[current-user:url:absolute]\">[current-user:display-name]</a> would like to connect with you. \r\nIf you want to connect with the user, please click <a href=\"[current-user:approve-url]\">here</a>. \r\nIf you don't want to connect the user please just ignore the message.\r\n\r\nYours P4H Coordination Desk"
+  body: "<a href=\"[current-user:url:absolute]\">[current-user:display-name]</a> would like to connect with you. \r\nIf you want to connect with the user, please click <a href=\"[current-user:approve-url]\">here</a>. \r\nIf you don't want to connect the user please just ignore the message."
 email_user_init:
-  body: "Dear P4H Web platform user,\r\nYou are now a click away from entering your own personal space on the P4H Web platform.\r\nThe link below will confirm the activation of your secured account.\r\n\r\n<a href=\"[user:one-time-login-url]\">Login</a>. \r\n\r\nYour P4H team awaits you online !"
+  body: "The link below will confirm the activation of your secured account.\r\n\r\n<a href=\"[user:one-time-login-url]\">Login</a>. "
   subject: 'A click away from a unique user''s experience'

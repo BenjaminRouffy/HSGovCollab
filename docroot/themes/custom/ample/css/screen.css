@@ -7440,7 +7440,8 @@ form .social_login iframe {
 }
 
 .form-my-settings.user-form .good-to-know-icon {
-  background: url(../images/light.svg) center no-repeat;
+  background: url(../images/lightbulb.png) center no-repeat;
+  background-size: contain;
   height: 120px;
   margin-bottom: 30px;
 }
@@ -7468,7 +7469,8 @@ form .social_login iframe {
 }
 
 .user-onetime-form .good-to-know-icon {
-  background: url(../images/light.svg) center no-repeat;
+  background: url(../images/lightbulb.png) center no-repeat;
+  background-size: contain;
   height: 120px;
   margin-bottom: 30px;
 }
@@ -7786,7 +7788,7 @@ form .social_login iframe {
 
 .profile-help .profile-help-bottom {
   background: transparent;
-  border-top: 2px solid #ea3a32;
+  border-top: 2px solid #005083;
   position: relative;
   text-align: center;
   overflow: hidden;
@@ -7803,7 +7805,7 @@ form .social_login iframe {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #ea3a32;
+  background: #005083;
   position: relative;
   top: -20px;
   transition: top .3s ease;
@@ -15824,8 +15826,8 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 
 .page-blog-list-page .title-wrapper h1::after {
   content: ' ';
-  background: url(../images/light.svg) no-repeat;
-  background-size: cover;
+  background: url(../images/lightbulb.png) no-repeat;
+  background-size: contain;
   display: inline-block;
   vertical-align: super;
   width: 35px;

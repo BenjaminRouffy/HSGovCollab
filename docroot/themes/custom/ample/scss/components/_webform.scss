@@ -1160,7 +1160,8 @@ form {
 
 .form-my-settings.user-form {
   .good-to-know-icon {
-    background: url(../images/light.svg) center no-repeat;
+    background: url(../images/lightbulb.png) center no-repeat;
+    background-size: contain;
     height: 120px;
     margin-bottom: 30px;
   }
@@ -1192,7 +1193,8 @@ form {
 
 .user-onetime-form {
   .good-to-know-icon {
-    background: url(../images/light.svg) center no-repeat;
+    background: url(../images/lightbulb.png) center no-repeat;
+    background-size: contain;
     height: 120px;
     margin-bottom: 30px;
   }
@@ -1485,7 +1487,7 @@ form {
   // Bottom side
   .profile-help-bottom {
     background: transparent;
-    border-top: 2px solid $red;
+    border-top: 2px solid $primary-color-dark;
     position: relative;
     text-align: center;
     overflow: hidden;
@@ -1502,7 +1504,7 @@ form {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: $red;
+    background: $primary-color-dark;
     position: relative;
     top: -20px;
     transition: top .3s ease;

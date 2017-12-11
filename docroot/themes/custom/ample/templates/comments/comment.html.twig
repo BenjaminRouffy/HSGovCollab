@@ -6,29 +6,14 @@
   #}
   <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
 
-  {% if logged_in %}
-    <a href="{{ author_url }}">
-  {% endif %}
-
-    {{ user_picture }}
-
-  {% if logged_in %}
-    </a>
-  {% endif %}
+  {{ user_picture }}
 
   <div class="comment-container">
     <div class="user-info">
-      {% if logged_in %}
-        <a href="{{ author_url }}">
-      {% endif %}
+      <div class="name">
+        {{ author_name }}
+      </div>
 
-        <div class="name">
-          {{ author_name }}
-        </div>
-
-      {% if logged_in %}
-        </a>
-      {% endif %}
       <span class="commented">{{ submitted }}</span>
 
       {#

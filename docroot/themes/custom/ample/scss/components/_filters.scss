@@ -149,6 +149,41 @@
       width: calc(100% - 25px);
     }
   }
+  
+  .page-tweets & {
+    .views-exposed-form {
+      display: flex;
+      justify-content: center;
+
+      @include media-q(max, 991) {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      & > div {
+        margin-left: 10px;
+        margin-right: 10px;
+        max-width: 20%;
+        width: 100%;
+
+        @include media-q(max, 991) {
+          max-width: calc(33.33% - 20px)
+        }
+
+        @include media-q(max, 767) {
+          max-width: 100%;
+        }
+      }
+
+      label {
+        display: none;
+      }
+
+      .form-actions {
+        display: none;
+      }
+    }
+  }
 }
 
 .view-news-and-events {

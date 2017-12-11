@@ -33,7 +33,6 @@ dependencies:
     - field.field.user.user.field_zip_code
     - image.style.150x150
   module:
-    - country
     - field_group
     - group_content_field
     - paragraphs
@@ -143,11 +142,7 @@ third_party_settings:
         speed: fast
       label: 'Address details'
     group_interests_wrapper:
-      children:
-        - field_following_regions
-        - field_following_countries
-        - field_following_projects
-        - field_following_p4h_areas
+      children: {  }
       parent_name: group_my_profile
       weight: 5
       format_type: html_element
@@ -314,30 +309,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_following_countries:
-    weight: 26
-    settings: {  }
-    third_party_settings: {  }
-    type: group_country_select
-    region: content
-  field_following_p4h_areas:
-    weight: 28
-    settings: {  }
-    third_party_settings: {  }
-    type: group_select
-    region: content
-  field_following_projects:
-    weight: 27
-    settings: {  }
-    third_party_settings: {  }
-    type: group_select
-    region: content
-  field_following_regions:
-    weight: 25
-    settings: {  }
-    third_party_settings: {  }
-    type: group_select
-    region: content
   field_job_title:
     weight: 2
     settings:
@@ -474,6 +445,10 @@ hidden:
   captcha: true
   contact: true
   field_accept_term_conditions: true
+  field_following_countries: true
+  field_following_p4h_areas: true
+  field_following_projects: true
+  field_following_regions: true
   field_last_password_reset: true
   field_password_expiration: true
   field_person_titles: true

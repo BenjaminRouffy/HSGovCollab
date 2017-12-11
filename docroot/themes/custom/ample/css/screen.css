@@ -9965,6 +9965,87 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   width: calc(100% - 25px);
 }
 
+.page-tweets .view-news-and-events .views-exposed-form, .page-tweets
+.view-project .views-exposed-form, .page-tweets
+.view-my-projects .views-exposed-form, .page-tweets
+.view-contacts .views-exposed-form, .page-tweets
+.view-knowledge-vault .views-exposed-form, .page-tweets
+.view-governance-area-calendar .views-exposed-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .page-tweets .view-news-and-events .views-exposed-form, .page-tweets
+  .view-project .views-exposed-form, .page-tweets
+  .view-my-projects .views-exposed-form, .page-tweets
+  .view-contacts .views-exposed-form, .page-tweets
+  .view-knowledge-vault .views-exposed-form, .page-tweets
+  .view-governance-area-calendar .views-exposed-form {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+.page-tweets .view-news-and-events .views-exposed-form > div, .page-tweets
+.view-project .views-exposed-form > div, .page-tweets
+.view-my-projects .views-exposed-form > div, .page-tweets
+.view-contacts .views-exposed-form > div, .page-tweets
+.view-knowledge-vault .views-exposed-form > div, .page-tweets
+.view-governance-area-calendar .views-exposed-form > div {
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 20%;
+  width: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+  .page-tweets .view-news-and-events .views-exposed-form > div, .page-tweets
+  .view-project .views-exposed-form > div, .page-tweets
+  .view-my-projects .views-exposed-form > div, .page-tweets
+  .view-contacts .views-exposed-form > div, .page-tweets
+  .view-knowledge-vault .views-exposed-form > div, .page-tweets
+  .view-governance-area-calendar .views-exposed-form > div {
+    max-width: calc(33.33% - 20px);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .page-tweets .view-news-and-events .views-exposed-form > div, .page-tweets
+  .view-project .views-exposed-form > div, .page-tweets
+  .view-my-projects .views-exposed-form > div, .page-tweets
+  .view-contacts .views-exposed-form > div, .page-tweets
+  .view-knowledge-vault .views-exposed-form > div, .page-tweets
+  .view-governance-area-calendar .views-exposed-form > div {
+    max-width: 100%;
+  }
+}
+
+.page-tweets .view-news-and-events .views-exposed-form label, .page-tweets
+.view-project .views-exposed-form label, .page-tweets
+.view-my-projects .views-exposed-form label, .page-tweets
+.view-contacts .views-exposed-form label, .page-tweets
+.view-knowledge-vault .views-exposed-form label, .page-tweets
+.view-governance-area-calendar .views-exposed-form label {
+  display: none;
+}
+
+.page-tweets .view-news-and-events .views-exposed-form .form-actions, .page-tweets
+.view-project .views-exposed-form .form-actions, .page-tweets
+.view-my-projects .views-exposed-form .form-actions, .page-tweets
+.view-contacts .views-exposed-form .form-actions, .page-tweets
+.view-knowledge-vault .views-exposed-form .form-actions, .page-tweets
+.view-governance-area-calendar .views-exposed-form .form-actions {
+  display: none;
+}
+
 .view-news-and-events .wrapper-filters,
 .view-news-and-events .form-wrapper {
   width: 100%;

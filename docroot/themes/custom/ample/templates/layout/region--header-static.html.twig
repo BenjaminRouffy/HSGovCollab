@@ -12,16 +12,44 @@
     <div class="mobile-menu-wrapper">
       {{ elements.headermenu_3 }}
       {{ elements.headerdashboardmenu }}
-      {% if elements.usermenu_2 %}
-        <div class="mobile-service-links">
-          {{ elements.usermenu_2 }}
+      <div class="mobile-service-links">
+        <div class="service-links">
+          <ul>
+            {% if logged_in %}
+              <li>
+                <a href="{{ url('page_manager.page_view_my_settings') }}">
+                  {{ 'Profile'|t }}
+                </a>
+              </li>
+            {% else %}
+              <li>
+                <a href="{{ url('user.register') }}" class="login-link">
+                  {{ 'Sign Up'|t }}
+                </a>
+              </li>
+            {% endif %}
+          </ul>
         </div>
-      {% endif %}
-      {% if elements.usermenu_2 %}
-        <div class="desktop-service-links">
-          {{ elements.usermenu_2 }}
+      </div>
+      <div class="desktop-service-links">
+        <div class="service-links">
+          <ul>
+            {% if logged_in %}
+              <li>
+                <a href="{{ url('page_manager.page_view_my_settings') }}">
+                  {{ 'Profile'|t }}
+                </a>
+              </li>
+            {% else %}
+              <li>
+                <a href="{{ url('user.register') }}" class="login-link">
+                  {{ 'Sign Up'|t }}
+                </a>
+              </li>
+            {% endif %}
+          </ul>
         </div>
-      {% endif %}
+      </div>
       {{ elements.linktoglobal }}
       {{ elements.sociallinks_2 }}
       {{ elements.membericons_3 }}

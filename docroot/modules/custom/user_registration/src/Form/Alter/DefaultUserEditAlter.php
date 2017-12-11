@@ -33,7 +33,10 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
     $form['field_first_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your first name');
     $form['field_middle_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your middle name');
     $form['field_last_name']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your last name');
-    $form['field_non_member_organization']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your affiliation / organisation');
+
+    if (!empty($form['field_non_member_organization'])) {
+      $form['field_non_member_organization']['widget'][0]['value']['#attributes']['placeholder'] = t('Please enter your affiliation / organisation');
+    }
 
     $form['account']['current_pass']['#weight'] = 10;
     $form['account']['pass']['#weight'] = 11;

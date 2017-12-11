@@ -99,7 +99,9 @@ function admin_customizations_toolbar_alter(&$items) {
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  */
 function admin_customizations_field_widget_options_select_form_alter(&$element, FormStateInterface $form_state, $context) {
-  if ('paragraph' == $context['form']['#entity_type'] && 'field_infographic' == $context['form']['#parents'][0]) {
+  if (!empty($context['form']['#entity_type']) &&
+      'paragraph' == $context['form']['#entity_type'] &&
+      'field_infographic' == $context['form']['#parents'][0]) {
     if (isset($element['#options']['_none']) && '- Select a value -' == $element['#options']['_none']) {
       $element['#options']['_none'] = t('Select');
     }

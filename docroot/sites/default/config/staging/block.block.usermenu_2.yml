@@ -1,11 +1,12 @@
 uuid: 8ab78dcb-9b94-45b1-aea6-7571c1847a49
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.user-menu
   module:
     - admin_customizations
+    - group_dashboard
     - system
   theme:
     - ample
@@ -30,3 +31,11 @@ visibility:
       403: '403'
       404: '404'
     context_mapping: {  }
+  access_by_user_role:
+    id: access_by_user_role
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

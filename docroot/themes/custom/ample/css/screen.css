@@ -2037,16 +2037,26 @@ footer > .partners .item-list li {
 .top-banner-region .section-info .title_desc__wrapper {
   position: relative;
   z-index: 5;
-  min-height: 300px;
   margin: 0 auto;
   max-width: 1200px;
-  padding: 60px 15px 60px;
+  padding: 30px 15px 30px;
   width: 100%;
+  min-height: 100px;
+  margin-top: 56px;
+}
+
+@media only screen and (min-width: 768px) {
+  .top-banner-region .section-info .title_desc__wrapper {
+    min-height: 150px;
+    padding: 60px 15px 60px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   .top-banner-region .section-info .title_desc__wrapper {
-    padding: 140px 15px 60px;
+    margin-top: 0;
+    padding: 100px 15px 60px;
+    min-height: 270px;
   }
 }
 
@@ -9510,6 +9520,12 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   z-index: 100;
   overflow: auto;
   white-space: nowrap;
+}
+
+@media only screen and (max-width: 1281px) {
+  #block-ample-local-tasks {
+    margin-top: 80px;
+  }
 }
 
 #block-ample-local-tasks > ul {

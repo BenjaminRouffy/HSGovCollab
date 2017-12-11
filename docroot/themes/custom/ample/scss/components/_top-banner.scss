@@ -61,14 +61,22 @@
     .title_desc__wrapper {
       position: relative;
       z-index: 5;
-      min-height: 300px;
       margin: 0 auto;
       max-width: 1200px;
-      padding: 60px 15px 60px;
+      padding: 30px 15px 30px;
       width: 100%;
+      min-height: 100px;
+      margin-top: 56px;
+
+      @include media-q(min, 768) {
+        min-height: 150px;
+        padding: 60px 15px 60px;
+      }
 
       @include media-q(min, 1200) {
-        padding: 140px 15px 60px;
+        margin-top: 0;
+        padding: 100px 15px 60px;
+        min-height: 270px;
       }
 
 

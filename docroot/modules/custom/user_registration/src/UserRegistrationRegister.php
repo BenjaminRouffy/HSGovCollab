@@ -107,17 +107,17 @@ class UserRegistrationRegister extends RegisterForm {
           }
           else {
             drupal_set_message($this->t('Thank you for your registration. Please check your email and the text below to finalize your registration.'));
-            $url = NULL;
+            $redirect_url = NULL;
             if ($redirect_uri = $this->config('user_registration.settings')->get('redirect_uri')) {
               try {
-                $url = Url::fromUri($redirect_uri);
+                $redirect_url = Url::fromUri($redirect_uri);
               }
               catch (Exception $e) {
                 watchdog_exception('user_register', $e);
               }
             }
-            if ($url) {
-              $form_state->setRedirectUrl($url);
+            if ($redirect_url) {
+              $form_state->setRedirectUrl($redirect_url);
             }
             else {
               $form_state->setRedirect('<front>');

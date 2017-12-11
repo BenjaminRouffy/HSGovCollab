@@ -40,10 +40,10 @@ third_party_settings:
   field_group:
     group_right:
       children:
-        - field_non_member_organization
         - field_first_name
         - field_middle_name
         - field_last_name
+        - field_non_member_organization
         - account
         - field_country_manager
         - field_project_manager
@@ -128,11 +128,11 @@ content:
     third_party_settings: {  }
   field_non_member_organization:
     type: string_textfield
-    weight: 21
+    weight: 25
     region: content
     settings:
       size: 60
-      placeholder: 'Please enter your organization / affiliation'
+      placeholder: 'Please enter your affiliation / organisation'
     third_party_settings: {  }
   field_product_manager:
     type: group_select

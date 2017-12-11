@@ -1,7 +1,17 @@
 <div class="service-links">
-  <div{{ attributes }}>
-    {{ title_prefix }}
-    {{ content }}
-    {{ title_suffix }}
-  </div>
+  <ul>
+    {% if logged_in %}
+      <li>
+        <a href="{{ url('page_manager.page_view_my_settings') }}">
+          {{ 'Profile'|t }}
+        </a>
+      </li>
+    {% else %}
+      <li>
+        <a href="{{ url('user.register') }}" class="login-link">
+          {{ 'Sign Up'|t }}
+        </a>
+      </li>
+    {% endif %}
+  </ul>
 </div>

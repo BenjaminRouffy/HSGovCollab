@@ -46,11 +46,11 @@ third_party_settings:
         - group_user_details
         - account
         - group_organisation_details
+        - group_organizations
         - group_interests_wrapper
         - group_managers
         - group_contact_details
         - group_address_details
-        - group_organizations
       parent_name: ''
       weight: 0
       format_type: html_element
@@ -88,6 +88,7 @@ third_party_settings:
     group_organisation_details:
       children:
         - field_non_member_organization
+        - field_job_title
       parent_name: group_my_profile
       weight: 4
       format_type: html_element
@@ -108,7 +109,7 @@ third_party_settings:
         - field_mobilephone
         - field_telephone
       parent_name: group_my_profile
-      weight: 7
+      weight: 8
       format_type: html_element
       format_settings:
         id: contact-details
@@ -123,12 +124,10 @@ third_party_settings:
       label: 'Contact details'
     group_address_details:
       children:
-        - field_streetname
         - field_city
-        - field_zip_code
         - field_country
       parent_name: group_my_profile
-      weight: 8
+      weight: 9
       format_type: html_element
       format_settings:
         id: address-details
@@ -144,7 +143,7 @@ third_party_settings:
     group_interests_wrapper:
       children: {  }
       parent_name: group_my_profile
-      weight: 5
+      weight: 6
       format_type: html_element
       format_settings:
         label: 'Interests wrapper'
@@ -165,7 +164,7 @@ third_party_settings:
         - field_knowledge_vault_manager
         - field_product_manager
       parent_name: group_my_profile
-      weight: 6
+      weight: 7
       format_type: html_element
       format_settings:
         id: managers-wrapper
@@ -232,11 +231,9 @@ third_party_settings:
       label: 'Profile Column 2'
     group_organizations:
       children:
-        - field_organisation
-        - field_job_title
         - field_organisations
       parent_name: group_my_profile
-      weight: 9
+      weight: 5
       format_type: html_element
       format_settings:
         label: Organizations
@@ -278,7 +275,7 @@ content:
     weight: 22
     settings:
       size: 60
-      placeholder: 'Please enter your city'
+      placeholder: 'Please enter your city / locality'
     third_party_settings: {  }
     type: string_textfield
     region: content
@@ -310,7 +307,7 @@ content:
     type: string_textfield
     region: content
   field_job_title:
-    weight: 2
+    weight: 7
     settings:
       size: 60
       placeholder: 'Please enter your job title'
@@ -355,12 +352,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_organisation:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_organisations:
     type: entity_reference_paragraphs
     weight: 3
@@ -397,27 +388,11 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
-  field_streetname:
-    weight: 21
-    settings:
-      size: 60
-      placeholder: 'Please enter your streetname'
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_telephone:
     weight: 23
     settings:
       size: 60
       placeholder: +
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_zip_code:
-    weight: 23
-    settings:
-      size: 60
-      placeholder: 'Please enter your ZIP code'
     third_party_settings: {  }
     type: string_textfield
     region: content
@@ -450,8 +425,11 @@ hidden:
   field_following_projects: true
   field_following_regions: true
   field_last_password_reset: true
+  field_organisation: true
   field_password_expiration: true
   field_person_titles: true
+  field_streetname: true
+  field_zip_code: true
   langcode: true
   language: true
   legal_terms_and_conditions: true

@@ -12152,6 +12152,8 @@ body:not(.toolbar-horizontal):not(.toolbar-vertical) header:not(.collapsed) .hea
   height: 100%;
   background: #449ea5;
   transition: background 100ms ease-in;
+  border-right: 1px solid #449ea5;
+  border-left: 1px solid #449ea5;
 }
 
 .header-static .service-links:hover {
@@ -12169,6 +12171,7 @@ body:not(.toolbar-horizontal):not(.toolbar-vertical) header:not(.collapsed) .hea
   padding: 0;
   font-size: 16px;
   line-height: 100px;
+  text-transform: uppercase;
 }
 
 @media (max-width: 767px) {
@@ -12494,7 +12497,7 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 
 .header-fixed .main-menu {
   text-align: right;
-  padding-right: 115px;
+  padding-right: 120px;
 }
 
 .toolbar-tray-open.toolbar-horizontal .header-fixed,
@@ -12547,10 +12550,15 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   font-size: 0.875rem;
   color: #fff !important;
   font-family: "Roboto", sans-serif;
-  font-weight: 200;
-  padding: 22px 25px;
+  font-weight: normal;
+  padding: 21px 25px;
   text-decoration: none;
   background: #449ea5;
+  border-right: 1px solid #449ea5;
+  border-left: 1px solid #449ea5;
+  text-transform: uppercase;
+  font-size: 16px;
+  transition: background .2s ease-in;
 }
 
 .header-fixed .service-links a:hover {

@@ -115,6 +115,8 @@ header {
     height: 100%;
     background: $primary-color-light;
     transition: background 100ms ease-in;
+    border-right: 1px solid $primary-color-light;
+    border-left: 1px solid $primary-color-light;
 
     &:hover {
       background: $primary-color-dark;
@@ -131,6 +133,7 @@ header {
       padding: 0;
       font-size: 16px;
       line-height: 100px;
+      text-transform: uppercase;
     }
   }
 }
@@ -485,7 +488,7 @@ header {
 
   .main-menu {
     text-align: right;
-    padding-right: 115px;
+    padding-right: 120px;
   }
 
   .toolbar-tray-open.toolbar-horizontal &,
@@ -540,10 +543,15 @@ header {
       @include font-size(14);
       color: $white !important;
       font-family: $primary-font;
-      font-weight: 200;
-      padding: 22px 25px;
+      font-weight: normal;
+      padding: 21px 25px;
       text-decoration: none;
       background: $primary-color-light;
+      border-right: 1px solid $primary-color-light;
+      border-left: 1px solid $primary-color-light;
+      text-transform: uppercase;
+      font-size: 16px;
+      transition: background .2s ease-in;
 
       &:hover {
         background: $primary-color-dark;

@@ -129,6 +129,9 @@ class SecondLevelSubmenu extends BlockBase implements ContainerFactoryPluginInte
           ];
           $tree = $this->menuTree->transform($tree, $manipulators);
           $build['the_menu_tree_build'] = $this->menuTree->build($tree);
+          $build['the_menu_tree_build']['#attributes'] = [
+            'class' => ['sidebar-sub-menu']
+          ];
           break;
         }
       }

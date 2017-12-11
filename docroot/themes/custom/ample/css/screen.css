@@ -3445,8 +3445,15 @@ footer > .partners .item-list li {
   text-transform: uppercase;
   text-decoration: none;
   color: #449ea5;
-  transition: color .2s ease-in;
-  margin-left: 14px;
+  transition: all .2s ease-in;
+}
+
+.sidebar-sub-menu li a:before {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  margin-right: 5px;
+  content: "";
 }
 
 .sidebar-sub-menu li a:hover {
@@ -3466,6 +3473,10 @@ footer > .partners .item-list li {
   background-size: contain;
   content: "";
   margin-right: 5px;
+}
+
+.sidebar-sub-menu li.active a:hover:before {
+  background-image: url(../images/arrow-active.svg);
 }
 
 .news-events-list,
@@ -12023,7 +12034,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .subhero__link a {
   text-decoration: none;
   color: #fff;
-  background: #5d98c1;
+  background: #fab74d;
   padding: 20px 70px;
   display: inline-block;
   border-radius: 100px;

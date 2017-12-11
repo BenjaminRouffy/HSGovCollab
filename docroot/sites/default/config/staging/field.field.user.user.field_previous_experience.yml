@@ -1,0 +1,20 @@
+uuid: 57b5ff35-7132-4e2b-b82c-555e77224fad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_previous_experience
+  module:
+    - user
+id: user.user.field_previous_experience
+field_name: field_previous_experience
+entity_type: user
+bundle: user
+label: 'Previous experience'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

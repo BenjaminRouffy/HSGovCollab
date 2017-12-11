@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.user.user.field_accept_term_conditions
+    - field.field.user.user.field_areas_of_interest
     - field.field.user.user.field_avatar
     - field.field.user.user.field_city
     - field.field.user.user.field_country
@@ -25,6 +26,7 @@ dependencies:
     - field.field.user.user.field_organisations
     - field.field.user.user.field_password_expiration
     - field.field.user.user.field_person_titles
+    - field.field.user.user.field_previous_experience
     - field.field.user.user.field_product_manager
     - field.field.user.user.field_project_manager
     - field.field.user.user.field_skype_or_other
@@ -50,6 +52,13 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  field_areas_of_interest:
+    weight: 14
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
   field_avatar:
     weight: 0
     label: hidden
@@ -122,6 +131,13 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+  field_previous_experience:
+    weight: 15
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
   field_product_manager:
     weight: 5
     label: hidden

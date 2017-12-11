@@ -1,0 +1,23 @@
+uuid: 559bec6e-bf64-4b8e-81ca-beb1e4157691
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - user
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: user.field_areas_of_interest
+field_name: field_areas_of_interest
+entity_type: user
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

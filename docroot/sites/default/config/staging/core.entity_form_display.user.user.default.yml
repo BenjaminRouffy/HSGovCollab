@@ -204,7 +204,6 @@ third_party_settings:
     group_profile_column_1:
       children:
         - field_avatar
-        - field_person_titles
       parent_name: group_profile_info
       weight: 0
       format_type: html_element
@@ -302,7 +301,7 @@ content:
     third_party_settings: {  }
   field_disclose_your_personal_det:
     type: boolean_checkbox
-    weight: 5
+    weight: 1
     region: content
     settings:
       display_label: true
@@ -381,7 +380,7 @@ content:
     weight: 6
     settings:
       size: 60
-      placeholder: 'Please enter your organization / affiliation'
+      placeholder: 'Please enter your affiliation / organisation'
     third_party_settings: {  }
     type: string_textfield
     region: content
@@ -402,12 +401,6 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    region: content
-  field_person_titles:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
   field_product_manager:
     weight: 7
@@ -458,7 +451,7 @@ content:
     type: string_textfield
     region: content
   google_analytics:
-    weight: 6
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -468,12 +461,12 @@ content:
     settings: {  }
     third_party_settings: {  }
   simplenews:
-    weight: 7
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   submit3:
-    weight: 8
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -483,6 +476,7 @@ hidden:
   field_accept_term_conditions: true
   field_last_password_reset: true
   field_password_expiration: true
+  field_person_titles: true
   langcode: true
   language: true
   legal_terms_and_conditions: true

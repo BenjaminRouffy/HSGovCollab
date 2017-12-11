@@ -5,7 +5,7 @@ namespace Drupal\user_registration;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\user\RegisterForm;
-use Drupal\user\UserInterface;
+use Drupal\Core\Url;
 
 /**
  * Class ModuleHandlerAlterRegister.
@@ -105,8 +105,13 @@ class UserRegistrationRegister extends RegisterForm {
             )));
           }
           else {
-            drupal_set_message($this->t('We welcome you to the P4H social health protection network and are looking forward to your collaboration.'));
-            $form_state->setRedirect('<front>');
+            drupal_set_message($this->t('Thank you for your registration. Please check your email and the text below to finalize your registration.'));
+            if ($redirect_uri = $this->config('user_registration.settings')->get('redirect_uri')) {
+              $form_state->setRedirectUrl(Url::fromUri($redirect_uri));
+            }
+            else {
+              $form_state->setRedirect('<front>');
+            }
           }
         }
       }
@@ -114,7 +119,7 @@ class UserRegistrationRegister extends RegisterForm {
     // Administrator approval required.
     else {
       _user_mail_notify('register_pending_approval', $account);
-      drupal_set_message($this->t('Thank you for your interest in the P4H social health protection network! We will check your application and will get back to you shortly.'));
+      drupal_set_message($this->t('Thank you for your interest in the network! We will check your application and will get back to you shortly.'));
       $form_state->setRedirect('<front>');
     }
   }

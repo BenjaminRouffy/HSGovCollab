@@ -55,19 +55,8 @@ function p4h_views_plugins_views_pre_build(ViewExecutable $view) {
   }
 
   if (in_array($view->current_display, ['block_frontpage'])) {
-    $account = \Drupal::currentUser();
-
-    // Let front "recent news" list work as "my news" for authenticated users.
-    if ($account->isAuthenticated()) {
-      $view->setArguments([$account->id()]);
-      $view->display_handler->setOption('title', t('My news'));
-      $view->display_handler->setOption('link_url', 'user/my-news');
-    }
-    // Otherwise - show all public items.
-    else {
-      $view->setArguments([]);
-      unset($view->filter['global_content']);
-    }
+    $view->setArguments([]);
+    unset($view->filter['global_content']);
   }
 }
 

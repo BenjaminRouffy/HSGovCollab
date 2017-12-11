@@ -225,6 +225,48 @@
   }
 }
 
+.sidebar-sub-menu {
+  margin-top: 40px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid $primary-color-dark;
+
+  li {
+    a {
+      display: block;
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $primary-color-light;
+      transition: color .2s ease-in;
+      margin-left: 14px;
+
+      &:hover {
+        color: $primary-color-dark;
+      }
+    }
+
+    &.active {
+      a {
+        margin-left: 0;
+
+        &:before {
+          display: inline-block;
+          width: 8px;
+          height: 14px;
+          background-image: url(../images/arrow.svg);
+          background-repeat: no-repeat;
+          background-size: contain;
+          content: "";
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
 .news-events-list,
 .related-docs,
 .timeline {

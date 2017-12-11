@@ -118,21 +118,23 @@ class SecondLevelSubmenu extends BlockBase implements ContainerFactoryPluginInte
       $parameters->setMaxDepth(2);
 
       $tree = $this->menuTree->load($menu_name, $parameters);
-      $active1stlevel = NULL;
       // Iterate over the first level items and get the second level subtree
       // of the first level item that is currently in active trail.
-      foreach ($tree as $key => $element) {
+      foreach ($tree as $element) {
         if ($element->inActiveTrail && $element->depth == 1) {
           $tree = $element->subtree;
+          $manipulators = [
+            ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+            ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+          ];
+          $tree = $this->menuTree->transform($tree, $manipulators);
+          $build['the_menu_tree_build'] = $this->menuTree->build($tree);
+          $build['the_menu_tree_build']['#attributes'] = [
+            'class' => ['sidebar-sub-menu']
+          ];
           break;
         }
       }
-      $manipulators = [
-        ['callable' => 'menu.default_tree_manipulators:checkAccess'],
-        ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
-      ];
-      $tree = $this->menuTree->transform($tree, $manipulators);
-      $build['the_menu_tree_build'] = $this->menuTree->build($tree);
     }
 
     return $build;

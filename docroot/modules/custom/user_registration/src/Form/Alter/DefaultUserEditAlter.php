@@ -44,10 +44,12 @@ class DefaultUserEditAlter implements FormAlterServiceBaseInterface, FormAlterSe
       $form['account']['pass']['#suffix'] = '</div>';
     }
 
-    foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {
-      if (is_array($option)) {
-        $form['field_organisation']['widget']['#options'] += $option;
-        unset($form['field_organisation']['widget']['#options'][$key]);
+    if (!empty($form['field_organisation'])) {
+      foreach ($form['field_organisation']['widget']['#options'] as $key => $option) {
+        if (is_array($option)) {
+          $form['field_organisation']['widget']['#options'] += $option;
+          unset($form['field_organisation']['widget']['#options'][$key]);
+        }
       }
     }
 

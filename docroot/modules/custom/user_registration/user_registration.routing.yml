@@ -1,3 +1,11 @@
+user_registration.admin_settings_form:
+  path: '/admin/config/people/user-registration'
+  defaults:
+    _form: 'Drupal\user_registration\Form\UserRegistrationSettingsForm'
+    _title: 'User Registration settings'
+  requirements:
+    _permission: 'administer user registration'
+
 user_registration.toggle_useful_info:
   path: '/user/{user}/toggle-useful-info/{display}'
   defaults:

@@ -121,6 +121,16 @@ function user_registration_form_alter(&$form, FormStateInterface $form_state, $f
       $form['account']['roles']['#ajax']
     );
 
+    // First login attempt detected in UserController, and it has redirected
+    // to the edit form here. The first time, force a password to be set.
+    if (!empty($_GET['redirected-first-login'])) {
+      if ($form_state->get('user_pass_reset')) {
+        // In this case we have a valid password reset token. Also force a
+        // password to be set at this point.
+        $form['account']['pass']['#required'] = TRUE;
+      }
+    }
+
     if (!$current_user->hasPermission('change main organisation')) {
       $form['field_organisation']['widget']['#disabled'] = 'disabled';
     }

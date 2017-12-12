@@ -118,8 +118,7 @@ class UserController extends ControllerBase {
       return $this->redirect('user.pass');
     }
     elseif ($user->isAuthenticated() && ($timestamp >= $user->getLastLoginTime()) && ($timestamp <= $current) && Crypt::hashEquals($hash, user_pass_rehash($user, $timestamp))) {
-
-      $first_access = $user->getLastLoginTime();
+      $last_login_time = $user->getLastLoginTime();
 
       user_login_finalize($user);
       $this->logger->notice('User %name used one-time login link at time %timestamp.', [
@@ -132,11 +131,11 @@ class UserController extends ControllerBase {
       $token = Crypt::randomBytesBase64(55);
       $_SESSION['pass_reset_' . $user->id()] = $token;
       return $this->redirect(
-      // @TODO Add more complicated condition here.
-        (time() - $user->getLastLoginTime() > 100 && $first_access != 0) ? 'entity.user.edit_form' : 'page_manager.page_view_my_settings',
+        // @TODO Add more complicated condition here.
+        (time() - $last_login_time > 100 && $last_login_time != 0) ? 'entity.user.edit_form' : 'page_manager.page_view_my_settings',
         ['user' => $user->id()],
         [
-          'query' => ['pass-reset-token' => $token],
+          'query' => ['pass-reset-token' => $token, 'redirected-first-login' => $last_login_time == 0],
           'absolute' => TRUE,
         ]
       );

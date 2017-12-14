@@ -4,13 +4,14 @@ status: true
 dependencies:
   config:
     - page_manager.page.news_events
+    - system.menu.footer
     - views.view.news_events
   content:
     - 'block_content:headline_description:5b9a02c8-1ab5-477f-b12a-e706cbbac419'
-    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
   module:
     - block_content
     - panels
+    - system
     - views
 id: news_events-panels_variant-0
 label: Page
@@ -41,17 +42,16 @@ variant_settings:
       weight: -1
       uuid: 7da9eb6b-89de-44d6-9fb2-f34ef50d0bc5
       context_mapping: {  }
-    451b6367-8a80-4a80-93b8-a457c98ffc8c:
-      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
-      label: 'Contact us'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
+    2073603d-9e8e-4f02-98f0-55a8daf595f3:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
       region: bottom
       weight: 0
-      uuid: 451b6367-8a80-4a80-93b8-a457c98ffc8c
+      uuid: 2073603d-9e8e-4f02-98f0-55a8daf595f3
       context_mapping: {  }
   id: panels_variant
   uuid: eaeb3784-5374-4391-be51-155d735587eb

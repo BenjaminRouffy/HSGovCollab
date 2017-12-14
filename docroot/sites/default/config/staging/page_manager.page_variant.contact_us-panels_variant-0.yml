@@ -5,7 +5,7 @@ dependencies:
   config:
     - page_manager.page.contact_us
   content:
-    - 'block_content:cd_user_block:21f5f481-8c07-435b-9aa1-9ecaee4eb2f4'
+    - 'block_content:cd_user_block:f640c9c7-6dc2-4157-9a24-1f72a89a5490'
     - 'block_content:custom_description:3b68a22f-c7b9-43bf-9049-0405b2591ee0'
     - 'block_content:headline_description:c720e9e7-2173-40d7-9183-ad1992e1dbca'
   module:
@@ -40,18 +40,6 @@ variant_settings:
       weight: -1
       uuid: 4fc2faec-a87f-43af-980b-d7bd3e4e359d
       context_mapping: {  }
-    12ecd407-f7f3-4270-ba25-f045cac96ab1:
-      id: 'block_content:21f5f481-8c07-435b-9aa1-9ecaee4eb2f4'
-      label: 'CD user block 1'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: full
-      region: banner
-      weight: 0
-      uuid: 12ecd407-f7f3-4270-ba25-f045cac96ab1
-      context_mapping: {  }
     11b7a0f7-8500-44d1-a366-1aa8a55326bf:
       id: 'block_content:3b68a22f-c7b9-43bf-9049-0405b2591ee0'
       label: 'ContactUs - Custom description block'
@@ -63,6 +51,18 @@ variant_settings:
       region: content
       weight: -1
       uuid: 11b7a0f7-8500-44d1-a366-1aa8a55326bf
+      context_mapping: {  }
+    51307ef3-b38b-4a86-aeac-e331f5de538e:
+      id: 'block_content:f640c9c7-6dc2-4157-9a24-1f72a89a5490'
+      label: 'CD user block'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: banner
+      weight: 0
+      uuid: 51307ef3-b38b-4a86-aeac-e331f5de538e
       context_mapping: {  }
   id: panels_variant
   uuid: 9867eca0-7412-4a3a-b05c-bae4dec7c502

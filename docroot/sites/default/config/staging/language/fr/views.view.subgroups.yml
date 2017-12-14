@@ -1,5 +1,9 @@
-label: 'Sous groupes'
 display:
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: 'Sous groupes'
   default:
     display_title: Master
     display_options:
@@ -26,7 +30,7 @@ display:
           label: Titre
           separator: ', '
         type:
-          label: 'Group type'
+          label: Type
           separator: ', '
         changed:
           label: Updated
@@ -42,8 +46,4 @@ display:
         gid:
           exception:
             title: Tous
-  page_1:
-    display_title: Page
-    display_options:
-      menu:
-        title: 'Sous groupes'
+label: 'Sous groupes'

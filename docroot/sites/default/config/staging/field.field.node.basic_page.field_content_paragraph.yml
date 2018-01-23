@@ -7,6 +7,7 @@ dependencies:
     - node.type.basic_page
     - paragraphs.paragraphs_type.content_image
     - paragraphs.paragraphs_type.content_text
+    - paragraphs.paragraphs_type.image_with_text
     - paragraphs.paragraphs_type.slider
     - paragraphs.paragraphs_type.webform
   module:
@@ -24,11 +25,13 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
+    negate: 0
     target_bundles:
       content_image: content_image
       content_text: content_text
       slider: slider
       webform: webform
+      image_with_text: image_with_text
     target_bundles_drag_drop:
       content_image:
         enabled: true
@@ -72,6 +75,9 @@ settings:
       file:
         weight: 34
         enabled: false
+      image_with_text:
+        enabled: true
+        weight: 35
       infographic_item:
         weight: 36
         enabled: false

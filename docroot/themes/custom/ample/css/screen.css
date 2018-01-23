@@ -6394,6 +6394,24 @@ footer > .partners .item-list li {
   font-size: 0.875rem;
 }
 
+.paragraph--type--image-with-text {
+  margin-bottom: 15px;
+}
+
+.paragraph--type--image-with-text.image-alignment img {
+  margin-bottom: 10px;
+}
+
+.paragraph--type--image-with-text.image-alignment-left img {
+  float: left;
+  margin-right: 15px;
+}
+
+.paragraph--type--image-with-text.image-alignment-right img {
+  float: right;
+  margin-left: 15px;
+}
+
 form {
   font-size: 1.1375rem;
   font-family: "Roboto", sans-serif;
@@ -11235,7 +11253,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 .view-contacts div[id^='edit-combine'] label,
 .view-contacts div[id^='edit-user-name-alf'] label {
   font-size: 0.875rem;
-  color: #449e9b;
+  color: #ea3a32;
   display: inline-block;
   height: 50px;
   line-height: 50px;

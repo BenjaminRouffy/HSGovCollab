@@ -1118,6 +1118,7 @@
 }
 
 .news-and-events-list,
+.videos-list,
 .resources-list {
   @include font-size(0);
   margin-bottom: 30px;
@@ -1149,6 +1150,7 @@
 
     .event-container,
     .news-container,
+    .videos-container,
     .resource-container {
       border-bottom: 2px solid transparent;
       transition: background .2s ease, border .2s ease;
@@ -1222,7 +1224,8 @@
   }
 
   .event,
-  .resource {
+  .resource,
+  .videos {
     padding: 10px;
 
     .event-container,
@@ -1286,6 +1289,21 @@
     }
   }
 }
+.videos-list {
+  .item {
+    &:first-child {
+      margin-bottom: 20px;
+      width: 25%;
+    }
+  }
+  .videos {
+    .videos-container {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
 
 .post-info.event-conference {
   background-image: url(../images/calendar-conf-icon.svg);
@@ -1301,7 +1319,7 @@
   }
 }
 
-@include breakpoint-for('.news-and-events-list, .resources-list', (to: laptop-small)) {
+@include breakpoint-for('.news-and-events-list, .resources-list, .videos-list', (to: laptop-small)) {
   .item {
     &:nth-child(n) {
       width: 33.33%;
@@ -1318,7 +1336,7 @@
     }
   }
 }
-@include breakpoint-for('.resources-list', (to: laptop-small)) {
+@include breakpoint-for('.resources-list, .videos-list', (to: laptop-small)) {
   .item {
     &:first-child {
       width: 33.33%;
@@ -1338,7 +1356,7 @@
   }
 }
 
-@include breakpoint-for('.resources-list', (to: tablet)) {
+@include breakpoint-for('.resources-list, .videos-list', (to: tablet)) {
   .item {
     &:first-child {
       width: 50%;
@@ -1346,7 +1364,7 @@
   }
 }
 
-@include breakpoint-for('.news-and-events-list, .resources-list', (to: mobileL)) {
+@include breakpoint-for('.news-and-events-list, .resources-list, .videos-list', (to: mobileL)) {
   .item {
     &:nth-child(n) {
       width: 100%;

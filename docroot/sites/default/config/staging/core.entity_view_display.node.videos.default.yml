@@ -3,26 +3,43 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.videos.body
+    - field.field.node.videos.field_body
+    - field.field.node.videos.field_video_thumnail
+    - field.field.node.videos.field_video_url
     - node.type.videos
   module:
     - text
     - user
+    - video_embed_field
 id: node.videos.default
 targetEntityType: node
 bundle: videos
 mode: default
 content:
-  body:
+  field_body:
+    weight: 1
     label: hidden
-    type: text_default
-    weight: 101
     settings: {  }
     third_party_settings: {  }
+    type: text_default
+    region: content
+  field_video_url:
+    weight: 2
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: false
+    third_party_settings: {  }
+    type: video_embed_field_video
     region: content
   links:
-    weight: 100
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   addtoany: true
+  field_video_thumnail: true
   langcode: true

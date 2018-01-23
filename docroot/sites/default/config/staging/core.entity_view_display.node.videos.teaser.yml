@@ -4,27 +4,35 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.videos.body
+    - field.field.node.videos.field_body
+    - field.field.node.videos.field_video_thumnail
+    - field.field.node.videos.field_video_url
+    - image.style.250x165
     - node.type.videos
   module:
-    - text
+    - image
     - user
 id: node.videos.teaser
 targetEntityType: node
 bundle: videos
 mode: teaser
 content:
-  body:
+  field_video_thumnail:
+    type: image
+    weight: 1
+    region: content
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
     settings:
-      trim_length: 600
+      image_style: 250x165
+      image_link: ''
     third_party_settings: {  }
-    region: content
   links:
-    weight: 100
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   addtoany: true
+  field_body: true
+  field_video_url: true
   langcode: true

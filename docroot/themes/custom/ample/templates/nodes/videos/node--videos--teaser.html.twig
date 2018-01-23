@@ -1,0 +1,11 @@
+<div{{ attributes.addClass('item').addClass('videos') }}>
+  <a href="{{ url }}" rel="bookmark">
+  <div class="videos-container">
+    {{ content.field_video_thumnail }}
+      <div class="post-info">
+        {% if content.field_date['#period'] %}
+        {% endif %}
+      </div>
+  </div>
+</a>
+</div>

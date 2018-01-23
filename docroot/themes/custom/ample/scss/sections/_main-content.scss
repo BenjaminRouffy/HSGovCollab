@@ -97,10 +97,11 @@
   .node-event &,
   .node-news &,
   .node-blog &,
-  .node-resources & {
+  .node-resources &,
+  .node-videos & {
     padding-top: 100px;
     padding-bottom: 0;
-    
+
 
     @include media-q(max, 1200) {
       padding-top: 50px;
@@ -667,5 +668,11 @@
       margin-right: auto;
       position: static;
     }
+  }
+}
+
+.node-videos {
+  .video-embed-field-responsive-video {
+    margin-bottom: 15px;
   }
 }

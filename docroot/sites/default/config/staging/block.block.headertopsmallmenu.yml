@@ -1,0 +1,30 @@
+uuid: c7bc7ae4-506e-4c34-87ad-07bf2cc1b577
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.header-top-small-menu
+  module:
+    - admin_customizations
+    - system
+  theme:
+    - ample
+id: headertopsmallmenu
+theme: ample
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:header-top-small-menu'
+settings:
+  id: 'system_menu_block:header-top-small-menu'
+  label: 'Header Top Small Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  http_status:
+    id: http_status
+    negate: false
+    code: {  }
+    context_mapping: {  }

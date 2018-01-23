@@ -35,6 +35,7 @@
   }
 }
 
+[id*="block-headertopsmallmenu"],
 .main-menu {
   @include font-size(0);
   text-align: center;
@@ -449,6 +450,7 @@
 }
 
 @include breakpoint-for('.header-static, .header-fixed', (to: 1200px)) {
+  [id*="block-headertopsmallmenu"],
   .main-menu {
     text-align: left;
 

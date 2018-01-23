@@ -12,6 +12,7 @@
       <div class="mobile-menu-wrapper">
         {{ elements.header_menu }}
         {{ elements.headerdashboardmenu_2 }}
+        {{ elements.headertopsmallmenu }}
         <div class="service-links">
           <ul>
             {% if logged_in %}
@@ -24,6 +25,11 @@
               <li>
                 <a href="{{ url('user.register') }}" class="login-link">
                   {{ 'Sign Up'|t }}
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('user.register') }}" class="top-link">
+                  {{ 'login'|t }}
                 </a>
               </li>
             {% endif %}

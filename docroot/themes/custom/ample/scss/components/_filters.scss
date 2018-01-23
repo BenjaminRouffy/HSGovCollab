@@ -1157,7 +1157,9 @@
       vertical-align: top;
 
       &:hover {
-        background: #ffe9e9;
+        label {
+          border-bottom: 2px solid #449e9b;          
+        }
       }
     }
 

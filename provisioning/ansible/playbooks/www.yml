@@ -22,16 +22,16 @@
     apache_remove_default_vhost: true
     apache_vhosts:
       - {
-        servername: "hsgc.ffwdev.dev",
+        servername: "hsgc.ffwdev.local",
         documentroot: "/var/www"
       }
       - {
-        servername: "drupal.hsgc.ffwdev.dev",
+        servername: "drupal.hsgc.ffwdev.local",
         documentroot: "/var/www/docroot"
       }
     apache_vhosts_ssl:
       - {
-        servername: "drupal.hsgc.ffwdev.dev",
+        servername: "drupal.hsgc.ffwdev.local",
         documentroot: "/var/www/docroot",
         certificate_file: "{{ cibox_ssl_folder }}/apache.crt",
         certificate_key_file: "{{ cibox_ssl_folder }}/apache.key",

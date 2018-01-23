@@ -10,7 +10,7 @@ cache_folder: /var/www/cache
 backup_folder: /var/www/backup
 tmp_folder: /tmp
 php_env_vars: 'APP_ENV=dev' # APP_ENV=dev - this varible will be set at PR_BUILDER from CI shell executor.
-site_url: 'http://drupal.hsgc.ffwdev.dev' # No trailing slash!
+site_url: 'http://drupal.hsgc.ffwdev.local' # No trailing slash!
 # This variable will be used for variable_get('environment'). Can be overridden by CI server.
 # development = 'default', demo = 'demo', staging = 'staging', production = 'production'.
 pp_environment: 'default'

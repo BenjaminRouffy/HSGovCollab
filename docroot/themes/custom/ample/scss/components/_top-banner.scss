@@ -54,7 +54,11 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: linear-gradient(-180deg, rgba(68, 158, 165, 0.7) 0%, rgba(1, 81, 131, 0.7) 100%);
+        background-image: url('../images/bg-image.png') ;
+      }
+
+      &--no-bg {
+        background-size: 100%;
       }
     }
 

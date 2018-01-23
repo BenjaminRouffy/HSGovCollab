@@ -229,7 +229,7 @@
   margin-top: 40px;
   padding-bottom: 20px;
   margin-bottom: 20px;
-  border-bottom: 2px solid $primary-color-dark;
+  border-bottom: 2px solid $red;
 
   li {
     a {
@@ -239,7 +239,7 @@
       font-weight: bold;
       text-transform: uppercase;
       text-decoration: none;
-      color: $primary-color-light;
+      color: $font-color-dark;
       transition: all .2s ease-in;
 
       &:before {
@@ -2411,7 +2411,7 @@
 
 .paragraph--type--image-with-text {
   margin-bottom: 15px;
-  
+
   &.image-alignment {
     img {
       margin-bottom: 10px;

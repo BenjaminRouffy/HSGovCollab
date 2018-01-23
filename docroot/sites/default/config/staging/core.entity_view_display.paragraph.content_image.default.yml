@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.content_image.field_description
     - field.field.paragraph.content_image.field_private_content
     - field.field.paragraph.content_image.field_view_mode
+    - image.style.static_page_image
     - paragraphs.paragraphs_type.content_image
   module:
     - image
@@ -19,7 +20,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
+      image_style: static_page_image
       image_link: ''
     third_party_settings: {  }
     type: image

@@ -1,0 +1,60 @@
+uuid: c1e881dc-850b-4e82-9e4c-8be9aa238816
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+    - system.menu.footer
+  module:
+    - ctools
+    - panels
+    - system
+id: node_view-panels_variant-6
+label: Resources
+variant: panels_variant
+variant_settings:
+  blocks:
+    ea57c8a0-c0bc-432e-82ef-c160bdedf697:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: 0
+      uuid: ea57c8a0-c0bc-432e-82ef-c160bdedf697
+      context_mapping:
+        entity: node
+    1dbf6bf8-1f94-4f2a-b0e9-226a89ca5093:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
+      region: bottom
+      weight: 0
+      uuid: 1dbf6bf8-1f94-4f2a-b0e9-226a89ca5093
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 3ee5fcae-3ec4-429b-a01a-985e2c9f3e31
+  label: null
+  weight: 0
+  layout: default_layout
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-6
+  builder: standard
+page: node_view
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      resources: resources
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }

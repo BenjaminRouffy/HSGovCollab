@@ -1,0 +1,28 @@
+uuid: 09d7924a-db0b-4911-9625-ee3c9829ab2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.videos.body
+    - node.type.videos
+  module:
+    - text
+    - user
+id: node.videos.default
+targetEntityType: node
+bundle: videos
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  langcode: true

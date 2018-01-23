@@ -96,10 +96,11 @@
   .node-basic-page &,
   .node-event &,
   .node-news &,
-  .node-blog & {
+  .node-blog &,
+  .node-resources & {
     padding-top: 100px;
     padding-bottom: 0;
-
+    
 
     @include media-q(max, 1200) {
       padding-top: 50px;
@@ -208,7 +209,7 @@
         color: #ea3a32;
         text-decoration: none;
       }
-      
+
       .newsletter-bg {
         a {
           color: #fff;

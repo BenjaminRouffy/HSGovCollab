@@ -1,0 +1,17 @@
+<div{{ attributes.addClass('item').addClass('resource') }}>
+  {% if contextual_link_access %}
+    {{ title_suffix.contextual_links|render }}
+  {% endif %}
+  <div class="resource-container">
+
+    <a href="{{ url }}" rel="bookmark">
+      <div class="post-info">
+        {% if content.field_date['#period'] %}
+          {{ content.field_date['#period'] }}
+        {% endif %}
+      </div>
+
+      <h2>{{ label }}</h2>
+    </a>
+  </div>
+</div>

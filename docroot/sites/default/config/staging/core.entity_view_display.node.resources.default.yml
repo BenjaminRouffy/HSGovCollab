@@ -1,0 +1,41 @@
+uuid: 58cfb175-f569-41ae-b595-000e5e1eeaf9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.resources.field_body
+    - field.field.node.resources.field_file
+    - node.type.resources
+  module:
+    - file_entity
+    - text
+    - user
+id: node.resources.default
+targetEntityType: node
+bundle: resources
+mode: default
+content:
+  field_body:
+    weight: 101
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_file:
+    weight: 102
+    label: hidden
+    settings:
+      access_message: 'You don''t have access to download this file.'
+      text: 'Download '
+    third_party_settings: {  }
+    type: file_download_link
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  langcode: true

@@ -1117,7 +1117,8 @@
   }
 }
 
-.news-and-events-list {
+.news-and-events-list,
+.resources-list {
   @include font-size(0);
   margin-bottom: 30px;
 
@@ -1147,7 +1148,8 @@
     }
 
     .event-container,
-    .news-container {
+    .news-container,
+    .resource-container {
       border-bottom: 2px solid transparent;
       transition: background .2s ease, border .2s ease;
     }
@@ -1219,10 +1221,12 @@
     }
   }
 
-  .event {
+  .event,
+  .resource {
     padding: 10px;
 
-    .event-container {
+    .event-container,
+    .resource-container {
       background: url(../images/calendar-icon.svg) 95% 10px no-repeat;
       background-color: $secondary-color-lighter;
       background-size: 20px;
@@ -1269,6 +1273,20 @@
   }
 }
 
+.resources-list {
+  .item {
+    &:first-child {
+      margin-bottom: 20px;
+      width: 25%;
+    }
+  }
+  .resource {
+    .resource-container {
+      background-image: none;
+    }
+  }
+}
+
 .post-info.event-conference {
   background-image: url(../images/calendar-conf-icon.svg);
   background-repeat: no-repeat;
@@ -1283,7 +1301,7 @@
   }
 }
 
-@include breakpoint-for('.news-and-events-list', (to: laptop-small)) {
+@include breakpoint-for('.news-and-events-list, .resources-list', (to: laptop-small)) {
   .item {
     &:nth-child(n) {
       width: 33.33%;
@@ -1300,8 +1318,15 @@
     }
   }
 }
+@include breakpoint-for('.resources-list', (to: laptop-small)) {
+  .item {
+    &:first-child {
+      width: 33.33%;
+    }
+  }
+}
 
-@include breakpoint-for('.news-and-events-list', (to: tablet)) {
+@include breakpoint-for('.news-and-events-list, .resources-list', (to: tablet)) {
   .item {
     &:nth-child(n) {
       width: 50%;
@@ -1313,7 +1338,15 @@
   }
 }
 
-@include breakpoint-for('.news-and-events-list', (to: mobileL)) {
+@include breakpoint-for('.resources-list', (to: tablet)) {
+  .item {
+    &:first-child {
+      width: 50%;
+    }
+  }
+}
+
+@include breakpoint-for('.news-and-events-list, .resources-list', (to: mobileL)) {
   .item {
     &:nth-child(n) {
       width: 100%;

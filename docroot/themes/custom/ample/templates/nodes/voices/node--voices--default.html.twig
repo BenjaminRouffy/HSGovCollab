@@ -1,0 +1,23 @@
+<article{{ attributes }} role="voices">
+  <div class="post-info">
+  </div>
+
+  {{ title_prefix }}
+  <div class="title-wrapper" data-anchor-id="node-{{ node.id }}">
+    <h1 class="anchor-title page-title" role="heading">
+      {{ label|field_value }}
+    </h1>
+    <div class="line"></div>
+  </div>
+  {{ title_suffix }}
+
+  {% if node.body.summary|raw %}
+    <div class="content-summary">
+      <p>
+        {{ node.body.summary }}
+      </p>
+    </div>
+  {% endif %}
+
+  {{ content|without ('field_author') }}
+</article>

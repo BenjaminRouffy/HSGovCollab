@@ -1,0 +1,263 @@
+uuid: 5f088acc-19d6-45ac-a00b-17f7973de1a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.voices.field_anonymous_bottom_link
+    - field.field.node.voices.field_anonymous_join_block
+    - field.field.node.voices.field_author
+    - field.field.node.voices.field_banner
+    - field.field.node.voices.field_bottom_link
+    - field.field.node.voices.field_comments
+    - field.field.node.voices.field_content_paragraph
+    - field.field.node.voices.field_image
+    - field.field.node.voices.field_join_block
+    - field.field.node.voices.field_social_autopost
+    - field.field.node.voices.field_time_line
+    - image.style.250x165
+    - node.type.voices
+  module:
+    - comment
+    - field_group
+    - image
+    - paragraphs
+    - path
+third_party_settings:
+  field_group:
+    group_t:
+      children:
+        - group_banner
+        - group_brief
+        - group_content
+        - group_timeline
+        - group_bottom
+        - group_publishing_options
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: 'Tabs panel'
+    group_banner:
+      children:
+        - field_banner
+      parent_name: group_t
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Banner
+    group_brief:
+      children:
+        - title
+        - field_author
+        - langcode
+      parent_name: group_t
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Brief
+    group_content:
+      children:
+        - field_image
+        - field_content_paragraph
+      parent_name: group_t
+      weight: 22
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+    group_timeline:
+      children:
+        - field_time_line
+      parent_name: group_t
+      weight: 23
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Timeline
+    group_bottom:
+      children:
+        - field_join_block
+        - field_anonymous_join_block
+        - field_bottom_link
+        - field_anonymous_bottom_link
+      parent_name: group_t
+      weight: 24
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Bottom
+    group_publishing_options:
+      children:
+        - field_social_autopost
+      parent_name: group_t
+      weight: 25
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Publishing options'
+id: node.voices.default
+targetEntityType: node
+bundle: voices
+mode: default
+content:
+  field_anonymous_bottom_link:
+    weight: 21
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_anonymous_join_block:
+    weight: 19
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_author:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_banner:
+    weight: 14
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: banner
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_bottom_link:
+    weight: 20
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_comments:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_content_paragraph:
+    weight: 27
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: with_title
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_image:
+    weight: 26
+    settings:
+      preview_image_style: 250x165
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_join_block:
+    weight: 18
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_social_autopost:
+    weight: 19
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_time_line:
+    weight: 20
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  langcode:
+    type: language_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  global_content: true
+  promote: true
+  public_content: true
+  sticky: true
+  uid: true

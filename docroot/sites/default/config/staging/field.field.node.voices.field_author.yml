@@ -1,0 +1,19 @@
+uuid: 9c324875-14d1-46e9-8079-3bf2802c92c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author
+    - node.type.voices
+id: node.voices.field_author
+field_name: field_author
+entity_type: node
+bundle: voices
+label: Author
+description: 'The text that will be shown under the picture (Author name)'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -15,6 +15,13 @@
         {{ elements.headertopsmallmenu }}
         <div class="service-links">
           <ul>
+            {% if not logged_in %}
+              <li>
+                <a href="{{ url('user.login') }}" class="top-link">
+                  {{ 'Login'|t }}
+                </a>
+              </li>
+            {% endif %}
             {% if logged_in %}
               <li>
                 <a href="{{ url('page_manager.page_view_my_settings') }}">
@@ -25,11 +32,6 @@
               <li>
                 <a href="{{ url('user.register') }}" class="login-link">
                   {{ 'Sign Up'|t }}
-                </a>
-              </li>
-              <li>
-                <a href="{{ url('user.register') }}" class="top-link">
-                  {{ 'login'|t }}
                 </a>
               </li>
             {% endif %}

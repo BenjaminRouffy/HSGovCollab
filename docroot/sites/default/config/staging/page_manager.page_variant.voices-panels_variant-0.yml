@@ -1,22 +1,22 @@
-uuid: 8f51ee50-0b14-4da4-86b0-2efa72ff49cd
+uuid: 8cdf8601-2894-4be5-9de9-0b616731d935
 langcode: en
 status: true
 dependencies:
   config:
-    - page_manager.page.videos
+    - page_manager.page.voices
     - system.menu.footer
-    - views.view.list_videos
+    - views.view.list_voices
   module:
     - panels
     - system
     - views
-id: videos-panels_variant-0
+id: voices-panels_variant-0
 label: Panels
 variant: panels_variant
 variant_settings:
   blocks:
-    c134a986-feaf-400d-84d5-b8b53bb33542:
-      id: 'views_block:list_videos-block_list_videos'
+    1051d503-ec73-4a65-a5af-bab9a8218b08:
+      id: 'views_block:list_voices-block_list_voices'
       label: ''
       provider: views
       label_display: '0'
@@ -24,9 +24,9 @@ variant_settings:
       items_per_page: none
       region: middle
       weight: 0
-      uuid: c134a986-feaf-400d-84d5-b8b53bb33542
+      uuid: 1051d503-ec73-4a65-a5af-bab9a8218b08
       context_mapping: {  }
-    b46b7c92-1284-4f91-a990-45cfca2d598e:
+    a52af1fb-b097-40d2-b49b-4255c6c17f61:
       id: 'system_menu_block:footer'
       label: Footer
       provider: system
@@ -35,19 +35,19 @@ variant_settings:
       depth: 0
       region: bottom
       weight: 0
-      uuid: b46b7c92-1284-4f91-a990-45cfca2d598e
+      uuid: a52af1fb-b097-40d2-b49b-4255c6c17f61
       context_mapping: {  }
   id: panels_variant
-  uuid: f692e044-ed9b-4a5a-a936-910c0e0cdf87
+  uuid: 5a062c08-e4d2-49ed-b52f-f1fc4e3a1417
   label: null
   weight: 0
   layout: separate_column
   layout_settings: {  }
   page_title: ''
   storage_type: page_manager
-  storage_id: videos-panels_variant-0
+  storage_id: voices-panels_variant-0
   builder: standard
-page: videos
+page: voices
 weight: 0
 selection_criteria: {  }
 selection_logic: and

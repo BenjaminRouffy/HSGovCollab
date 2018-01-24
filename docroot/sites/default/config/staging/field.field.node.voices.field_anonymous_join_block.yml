@@ -1,0 +1,25 @@
+uuid: 3e2c32cf-9fc7-436b-9949-cd7b7de8099e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anonymous_join_block
+    - node.type.voices
+id: node.voices.field_anonymous_join_block
+field_name: field_anonymous_join_block
+entity_type: node
+bundle: voices
+label: 'Anonymous join block'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: block_reference
+      display_name: entity_reference_block
+      arguments: {  }
+field_type: entity_reference

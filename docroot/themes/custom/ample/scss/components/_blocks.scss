@@ -239,7 +239,7 @@
       font-weight: bold;
       text-transform: uppercase;
       text-decoration: none;
-      color: $font-color-dark;
+      color: #ccc;
       transition: all .2s ease-in;
 
       &:before {
@@ -248,16 +248,24 @@
         height: 14px;
         margin-right: 5px;
         content: "";
+        position: relative;
+        left: -40px;
       }
 
       &:hover {
-        color: $primary-color-dark;
+        margin-left: 0;
+        color: $primary-color-light;
+
+        &:before {
+          background-image: url(../images/arrow.svg);
+        }
       }
     }
 
     &.active {
       a {
         margin-left: 0;
+        color: $primary-color-light;
 
         &:before {
           display: inline-block;
@@ -268,10 +276,12 @@
           background-size: contain;
           content: "";
           margin-right: 5px;
+          position: relative;
+          left: -40px;
         }
 
         &:hover:before {
-          background-image: url(../images/arrow-active.svg);
+          background-image: url(../images/arrow.svg);
         }
       }
     }
@@ -1118,8 +1128,7 @@
 }
 
 .news-and-events-list,
-.videos-list,
-.resources-list {
+.wrapper-view-list {
   @include font-size(0);
   margin-bottom: 30px;
 
@@ -1150,8 +1159,7 @@
 
     .event-container,
     .news-container,
-    .videos-container,
-    .resource-container {
+    .view-list-container {
       border-bottom: 2px solid transparent;
       transition: background .2s ease, border .2s ease;
     }
@@ -1224,8 +1232,7 @@
   }
 
   .event,
-  .resource,
-  .videos {
+  .list-item {
     padding: 10px;
 
     .event-container,
@@ -1305,6 +1312,15 @@
   }
 }
 
+.voices-list {
+  .voices {
+    &:hover {
+      background: #F5F5F5;
+    }
+
+  }
+}
+
 .post-info.event-conference {
   background-image: url(../images/calendar-conf-icon.svg);
   background-repeat: no-repeat;
@@ -1319,7 +1335,7 @@
   }
 }
 
-@include breakpoint-for('.news-and-events-list, .resources-list, .videos-list', (to: laptop-small)) {
+@include breakpoint-for('.news-and-events-list, .wrapper-view-list', (to: laptop-small)) {
   .item {
     &:nth-child(n) {
       width: 33.33%;
@@ -1336,7 +1352,7 @@
     }
   }
 }
-@include breakpoint-for('.resources-list, .videos-list', (to: laptop-small)) {
+@include breakpoint-for('.wrapper-view-list', (to: laptop-small)) {
   .item {
     &:first-child {
       width: 33.33%;
@@ -1344,7 +1360,7 @@
   }
 }
 
-@include breakpoint-for('.news-and-events-list, .resources-list', (to: tablet)) {
+@include breakpoint-for('.news-and-events-list, .wrapper-view-list', (to: tablet)) {
   .item {
     &:nth-child(n) {
       width: 50%;
@@ -1356,7 +1372,7 @@
   }
 }
 
-@include breakpoint-for('.resources-list, .videos-list', (to: tablet)) {
+@include breakpoint-for('.wrapper-view-list', (to: tablet)) {
   .item {
     &:first-child {
       width: 50%;
@@ -1364,7 +1380,7 @@
   }
 }
 
-@include breakpoint-for('.news-and-events-list, .resources-list, .videos-list', (to: mobileL)) {
+@include breakpoint-for('.news-and-events-list, .wrapper-view-list', (to: mobileL)) {
   .item {
     &:nth-child(n) {
       width: 100%;

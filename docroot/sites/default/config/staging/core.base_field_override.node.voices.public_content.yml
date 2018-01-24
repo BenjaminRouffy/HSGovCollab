@@ -1,0 +1,22 @@
+uuid: b3c2032e-78f7-4737-b101-718764ae19c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.voices
+id: node.voices.public_content
+field_name: public_content
+entity_type: node
+bundle: voices
+label: 'Public content'
+description: 'For making the page public'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

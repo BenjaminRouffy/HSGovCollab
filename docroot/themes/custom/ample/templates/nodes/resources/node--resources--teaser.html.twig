@@ -1,8 +1,8 @@
-<div{{ attributes.addClass('item').addClass('resource') }}>
+<div{{ attributes.addClass('item').addClass('resource').addClass('list-item') }}>
   {% if contextual_link_access %}
     {{ title_suffix.contextual_links|render }}
   {% endif %}
-  <div class="resource-container">
+  <div class="resource-container view-list-container">
 
     <a href="{{ url }}" rel="bookmark">
       <div class="post-info">

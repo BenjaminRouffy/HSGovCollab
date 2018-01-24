@@ -1,0 +1,107 @@
+uuid: 7ddc5e64-6722-4c0e-8199-d6a3aed518fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner
+    - node.type.voices
+    - paragraphs.paragraphs_type.infographic
+    - paragraphs.paragraphs_type.slider
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.voices.field_banner
+field_name: field_banner
+entity_type: node
+bundle: voices
+label: Banner
+description: 'There are: video/infographic/slider'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      infographic: infographic
+      slider: slider
+      video: video
+    target_bundles_drag_drop:
+      cd_user:
+        weight: 26
+        enabled: false
+      content_image:
+        weight: 27
+        enabled: false
+      content_text:
+        weight: 28
+        enabled: false
+      country_and_project:
+        weight: 29
+        enabled: false
+      country_option:
+        weight: 30
+        enabled: false
+      custom_content:
+        weight: 31
+        enabled: false
+      exist_content:
+        weight: 32
+        enabled: false
+      faq_item:
+        weight: 33
+        enabled: false
+      file:
+        weight: 34
+        enabled: false
+      image_with_text:
+        weight: 35
+        enabled: false
+      infographic:
+        enabled: true
+        weight: 36
+      infographic_item:
+        weight: 37
+        enabled: false
+      link:
+        weight: 38
+        enabled: false
+      link_to_file:
+        weight: 39
+        enabled: false
+      member_icon:
+        weight: 40
+        enabled: false
+      organisation:
+        weight: 41
+        enabled: false
+      pin_item:
+        weight: 42
+        enabled: false
+      pin_items:
+        weight: 43
+        enabled: false
+      slider:
+        enabled: true
+        weight: 44
+      slider_item:
+        weight: 45
+        enabled: false
+      software_application:
+        weight: 46
+        enabled: false
+      timeline_social:
+        weight: 47
+        enabled: false
+      time_line:
+        weight: 48
+        enabled: false
+      video:
+        enabled: true
+        weight: 49
+      webform:
+        weight: 50
+        enabled: false
+field_type: entity_reference_revisions

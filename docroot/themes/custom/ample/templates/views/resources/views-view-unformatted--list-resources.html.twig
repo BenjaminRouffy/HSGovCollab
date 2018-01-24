@@ -1,4 +1,10 @@
-<div class="resources-list">
+<div class="wrapper-view-list resources-list">
+  <div class="top-text-region">
+    <div class="title-wrapper">
+      <h1>{{ 'Resources'|t }}</h1>
+      <div class="line"></div>
+    </div>
+  </div>
   {% for row in rows %}
     {{ row.content }}
   {% endfor %}

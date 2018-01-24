@@ -6,10 +6,7 @@ dependencies:
     - page_manager.page.resources
     - system.menu.footer
     - views.view.list_resources
-  content:
-    - 'block_content:headline_description:391a68d3-4942-4c54-8f20-fe2e97bf8c70'
   module:
-    - block_content
     - panels
     - system
     - views
@@ -18,18 +15,6 @@ label: Panels
 variant: panels_variant
 variant_settings:
   blocks:
-    c738cbde-ab11-4d65-8a41-396e12874cde:
-      id: 'block_content:391a68d3-4942-4c54-8f20-fe2e97bf8c70'
-      label: Resources
-      provider: block_content
-      label_display: '0'
-      status: true
-      info: ''
-      view_mode: full
-      region: middle
-      weight: -1
-      uuid: c738cbde-ab11-4d65-8a41-396e12874cde
-      context_mapping: {  }
     5f405c82-a7b8-44c0-b7b6-534b43cb3685:
       id: 'system_menu_block:footer'
       label: Footer

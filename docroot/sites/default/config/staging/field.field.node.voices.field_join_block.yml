@@ -1,0 +1,25 @@
+uuid: d1d0414f-45cd-4d5d-bb75-4b13b80d844d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_join_block
+    - node.type.voices
+id: node.voices.field_join_block
+field_name: field_join_block
+entity_type: node
+bundle: voices
+label: 'Join block'
+description: 'Please choose one of the already created blocks'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: block_reference
+      display_name: entity_reference_block
+      arguments: {  }
+field_type: entity_reference

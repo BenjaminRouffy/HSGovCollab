@@ -1,0 +1,63 @@
+uuid: f825c5ff-6b96-4b02-b874-7288286ef8a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result_row
+    - field.field.node.voices.field_anonymous_bottom_link
+    - field.field.node.voices.field_anonymous_join_block
+    - field.field.node.voices.field_author
+    - field.field.node.voices.field_banner
+    - field.field.node.voices.field_bottom_link
+    - field.field.node.voices.field_comments
+    - field.field.node.voices.field_content_paragraph
+    - field.field.node.voices.field_join_block
+    - field.field.node.voices.field_social_autopost
+    - field.field.node.voices.field_time_line
+    - node.type.voices
+  module:
+    - entity_reference_revisions
+    - events
+    - user
+id: node.voices.search_result_row
+targetEntityType: node
+bundle: voices
+mode: search_result_row
+content:
+  addtoany:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_author:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: author_string
+    region: content
+  field_content_paragraph:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: view_mode_selector
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_anonymous_bottom_link: true
+  field_anonymous_join_block: true
+  field_banner: true
+  field_bottom_link: true
+  field_comments: true
+  field_join_block: true
+  field_social_autopost: true
+  field_time_line: true
+  langcode: true

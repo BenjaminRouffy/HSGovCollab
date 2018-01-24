@@ -1,0 +1,21 @@
+uuid: 82c030bc-fade-4d5b-b782-a6ce38c70d0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_autopost
+    - node.type.voices
+  module:
+    - options
+id: node.voices.field_social_autopost
+field_name: field_social_autopost
+entity_type: node
+bundle: voices
+label: 'Social autopost'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

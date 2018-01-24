@@ -1,0 +1,139 @@
+uuid: dde5d25f-b7ef-450a-b1de-a22c777bf5ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+    - system.menu.footer
+  module:
+    - ctools
+    - ctools_block
+    - custom_menus
+    - panels
+    - system
+id: node_view-panels_variant-10
+label: Voices
+variant: panels_variant
+variant_settings:
+  blocks:
+    89b01ecf-c4f4-4432-aed3-0848d0f64f25:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: 0
+      uuid: 89b01ecf-c4f4-4432-aed3-0848d0f64f25
+      context_mapping:
+        entity: node
+    d037357c-ed95-4dbd-85b3-bc1cdfe898d1:
+      id: 'entity_field:node:field_anonymous_join_block'
+      label: 'Anonymous join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: above
+        type: entity_reference_label
+        settings:
+          link: true
+        third_party_settings: {  }
+        weight: 0
+      region: right
+      weight: 0
+      uuid: d037357c-ed95-4dbd-85b3-bc1cdfe898d1
+      context_mapping:
+        entity: node
+    e8e32459-4413-4d0a-9ec5-9a74ad026bf9:
+      id: 'entity_field:node:field_join_block'
+      label: 'Join block'
+      provider: ctools_block
+      label_display: '0'
+      formatter:
+        label: above
+        type: entity_reference_label
+        settings:
+          link: true
+        third_party_settings: {  }
+        weight: 0
+      region: right
+      weight: 0
+      uuid: e8e32459-4413-4d0a-9ec5-9a74ad026bf9
+      context_mapping:
+        entity: node
+    ffde93a6-7260-4a17-92f4-3f9f28e8a198:
+      id: second_level_submenu
+      label: 'Second level submenu'
+      provider: custom_menus
+      label_display: '0'
+      menu_name: header-menu
+      region: right
+      weight: 0
+      uuid: ffde93a6-7260-4a17-92f4-3f9f28e8a198
+      context_mapping: {  }
+    09a37208-56b5-4f37-a6d2-6c8ff65fdf30:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
+      region: bottom
+      weight: 0
+      uuid: 09a37208-56b5-4f37-a6d2-6c8ff65fdf30
+      context_mapping: {  }
+    a4856d1d-128e-4e20-8ad3-5d1e5d9e7e02:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: banner
+      region: top
+      weight: 0
+      uuid: a4856d1d-128e-4e20-8ad3-5d1e5d9e7e02
+      context_mapping:
+        entity: node
+    715bb208-7d13-4062-9c17-6b684c454b6f:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: comments
+      region: content
+      weight: 0
+      uuid: 715bb208-7d13-4062-9c17-6b684c454b6f
+      context_mapping:
+        entity: node
+    c35a98ac-2d09-4918-bfa7-f01c8644accf:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: bottom
+      region: bottom
+      weight: 0
+      uuid: c35a98ac-2d09-4918-bfa7-f01c8644accf
+      context_mapping:
+        entity: node
+  id: panels_variant
+  uuid: 13ca6f4f-009c-4173-b4cb-414cb3eae74c
+  label: null
+  weight: 0
+  layout: default_layout
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-10
+  builder: standard
+page: node_view
+weight: -8
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      voices: voices
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }

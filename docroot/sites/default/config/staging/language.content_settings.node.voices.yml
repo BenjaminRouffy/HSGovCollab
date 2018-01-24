@@ -1,0 +1,16 @@
+uuid: a10414a6-ca80-49b0-a022-1218bf703998
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.voices
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.voices
+target_entity_type_id: node
+target_bundle: voices
+default_langcode: site_default
+language_alterable: true

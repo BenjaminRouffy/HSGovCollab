@@ -230,6 +230,7 @@
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 2px solid $red;
+  padding-left: 20px;
 
   li {
     a {
@@ -249,7 +250,7 @@
         margin-right: 5px;
         content: "";
         position: relative;
-        left: -40px;
+        left: -20px;
       }
 
       &:hover {
@@ -277,7 +278,7 @@
           content: "";
           margin-right: 5px;
           position: relative;
-          left: -40px;
+          left: -20px;
         }
 
         &:hover:before {
@@ -1314,8 +1315,21 @@
 
 .voices-list {
   .voices {
+    transition: background .2s ease;
+
     &:hover {
       background: #F5F5F5;
+      border-bottom: 2px solid #D99941;
+    }
+
+    img {
+      transform: unset !important;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 18px;
     }
 
   }
@@ -2427,11 +2441,12 @@
 
 .paragraph--type--image-with-text {
   margin-bottom: 15px;
+  img {
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
 
   &.image-alignment {
-    img {
-      margin-bottom: 10px;
-    }
     &-left {
       img {
         float: left;

@@ -5,7 +5,7 @@
   top: 170px;
   text-align: center;
   z-index: 100;
-  padding: 1px 0 0 2px;
+  padding: 0px 0 0 2px;
 
   .toolbar-fixed & {
     top: 210px;
@@ -17,15 +17,25 @@
 
   .toggle-sharing-btn {
     @include font-size(22.4);
-    @include same(40px, height, width);
-    box-shadow: 0 0 3px rgba($black, .15);
-    background: $white;
+    width: 50px;
+    height: 50px;
+    background: #EBEFF2;
     color: $red;
     cursor: pointer;
     display: block;
-    line-height: 40px;
+    line-height: 35px;
     position: relative;
     z-index: 10;
+
+    &:before {
+      content: 'share';
+      font-family: $primary-font;
+      position: absolute;
+      top: 20px;
+      left: 8px;
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
 }
 
@@ -44,20 +54,21 @@
   }
 
   a {
-    @include same(40px, height, width);
+    width: 50px;
+    height: 40px;
     display: block;
     text-decoration: none;
 
     &:after {
       @include font-size(22.4);
-      color: $navy-dark;
+      color: white;
       font-family: $p4h;
       line-height: 40px;
       transition: color .3s ease;
     }
 
     &:hover:after {
-      color: $navy-light;
+      opacity: 0.7;
     }
 
     span {
@@ -66,24 +77,28 @@
   }
 
   .a2a_button_email {
+    background: #F9AE44;
     &:after {
       content: "o";
     }
   }
 
   .a2a_button_facebook {
+    background: #3B5899;
     &:after {
       content: "Q";
     }
   }
 
   .a2a_button_twitter {
+    background: #55ACEE;
     &:after {
       content: "E";
     }
   }
 
   .a2a_button_linkedin {
+    background: #0076B5;
     &:after {
       content: "W";
     }
@@ -102,4 +117,3 @@
     }
   }
 }
-

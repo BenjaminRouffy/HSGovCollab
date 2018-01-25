@@ -177,6 +177,10 @@ function ample_preprocess_node(array &$variables) {
     $variables['is_conference'] = isset($node->field_is_conference->value) ? $node->field_is_conference->value : 0;
     $variables['hide_times'] = isset($node->field_hide_times->value) ? $node->field_hide_times->value : 0;
   }
+
+  if ($node->bundle() == 'voices') {
+    $variables['node_date'] = date('d M Y', $variables['node']->changed->value);
+  }
 }
 
 /**
@@ -387,7 +391,7 @@ function ample_preprocess_paragraph(array &$variables) {
       $variables['is_external'] = $is_external;
     }
   }
-  
+
   if ($variables['paragraph']->bundle() == 'image_with_text') {
     $variables['image_alignment'] = $variables['content']['field_image_alignment']['0']['#markup'];
   }

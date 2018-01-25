@@ -3,6 +3,11 @@
     <div class="voices-container view-list-container">
       {{ content }}
     </div>
+    <div class="post-info">
+      {% if node_date %}
+        {{ node_date }}
+      {% endif %}
+    </div>
     <h2>{{ label }}</h2>
   </a>
 </div>

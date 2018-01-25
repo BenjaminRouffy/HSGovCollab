@@ -985,9 +985,13 @@ svg {
 .footer__menu a {
   display: inline-block;
   margin: 10px 15px;
-  color: #fff;
+  color: #D99941;
   text-decoration: none;
   font-size: 16px;
+}
+
+.footer__menu a:hover {
+  color: white;
 }
 
 .toolbar-fixed #block-headerdashboardmenu {
@@ -3482,6 +3486,7 @@ footer > .partners .item-list li {
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 2px solid #D99941;
+  padding-left: 20px;
 }
 
 .sidebar-sub-menu li a {
@@ -3502,7 +3507,7 @@ footer > .partners .item-list li {
   margin-right: 5px;
   content: "";
   position: relative;
-  left: -40px;
+  left: -20px;
 }
 
 .sidebar-sub-menu li a:hover {
@@ -3529,7 +3534,7 @@ footer > .partners .item-list li {
   content: "";
   margin-right: 5px;
   position: relative;
-  left: -40px;
+  left: -20px;
 }
 
 .sidebar-sub-menu li.active a:hover:before {
@@ -4648,8 +4653,25 @@ footer > .partners .item-list li {
   max-width: 100%;
 }
 
+.voices-list .voices {
+  transition: background .2s ease;
+}
+
 .voices-list .voices:hover {
   background: #F5F5F5;
+  border-bottom: 2px solid #D99941;
+}
+
+.voices-list .voices img {
+  -webkit-transform: unset !important;
+      -ms-transform: unset !important;
+          transform: unset !important;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.voices-list .voices h2 {
+  font-size: 18px;
 }
 
 .post-info.event-conference {
@@ -6409,8 +6431,9 @@ footer > .partners .item-list li {
   margin-bottom: 15px;
 }
 
-.paragraph--type--image-with-text.image-alignment img {
-  margin-bottom: 10px;
+.paragraph--type--image-with-text img {
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .paragraph--type--image-with-text.image-alignment-left img {
@@ -11600,7 +11623,7 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   top: 170px;
   text-align: center;
   z-index: 100;
-  padding: 1px 0 0 2px;
+  padding: 0px 0 0 2px;
 }
 
 .toolbar-fixed .addtoany-wrapper {
@@ -11613,16 +11636,25 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 
 .addtoany-wrapper .toggle-sharing-btn {
   font-size: 1.4rem;
-  height: 40px;
-  width: 40px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-  background: #fff;
+  width: 50px;
+  height: 50px;
+  background: #EBEFF2;
   color: #D99941;
   cursor: pointer;
   display: block;
-  line-height: 40px;
+  line-height: 35px;
   position: relative;
   z-index: 10;
+}
+
+.addtoany-wrapper .toggle-sharing-btn:before {
+  content: 'share';
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  top: 20px;
+  left: 8px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .addtoany_list {
@@ -11647,38 +11679,54 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
 }
 
 .addtoany_list a {
+  width: 50px;
   height: 40px;
-  width: 40px;
   display: block;
   text-decoration: none;
 }
 
 .addtoany_list a:after {
   font-size: 1.4rem;
-  color: #283b44;
+  color: white;
   font-family: P4h, sans-serif;
   line-height: 40px;
   transition: color .3s ease;
 }
 
 .addtoany_list a:hover:after {
-  color: #80aabe;
+  opacity: 0.7;
 }
 
 .addtoany_list a span {
   display: none;
 }
 
+.addtoany_list .a2a_button_email {
+  background: #F9AE44;
+}
+
 .addtoany_list .a2a_button_email:after {
   content: "o";
+}
+
+.addtoany_list .a2a_button_facebook {
+  background: #3B5899;
 }
 
 .addtoany_list .a2a_button_facebook:after {
   content: "Q";
 }
 
+.addtoany_list .a2a_button_twitter {
+  background: #55ACEE;
+}
+
 .addtoany_list .a2a_button_twitter:after {
   content: "E";
+}
+
+.addtoany_list .a2a_button_linkedin {
+  background: #0076B5;
 }
 
 .addtoany_list .a2a_button_linkedin:after {

@@ -261,9 +261,13 @@
   a {
     display: inline-block;
     margin: 10px 15px;
-    color: $white;
+    color: $red;
     text-decoration: none;
     font-size: 16px;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 

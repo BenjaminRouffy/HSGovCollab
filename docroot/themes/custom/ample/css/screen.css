@@ -16103,6 +16103,22 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
   overflow: hidden;
 }
 
+.blog-user-lists {
+  margin-bottom: 55px;
+}
+
+.blog-user-lists .blog-author {
+  margin-bottom: 15px;
+}
+
+.blog-user-lists .blog-author-content:after {
+  content: none;
+}
+
+.blog-user-lists .user-icon img {
+  width: 100%;
+}
+
 .blog-author-organization {
   font-size: 1.125rem;
   font-family: "Roboto", sans-serif;

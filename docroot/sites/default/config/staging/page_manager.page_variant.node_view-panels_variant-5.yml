@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.node_view
     - system.menu.footer
     - views.view.blog_lists
+    - views.view.blog_user_list
     - views.view.social_recent
   module:
     - ctools
@@ -92,7 +93,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: right
-      weight: 0
+      weight: 1
       uuid: d8c30891-4ffd-4f0a-9a8e-2d544873fe95
       context_mapping: {  }
     7056d9e8-8c9b-4982-be77-af5447a71ac4:
@@ -133,6 +134,17 @@ variant_settings:
       region: bottom
       weight: 0
       uuid: 4d1faa1a-1cc2-4401-9a40-ea1b120e57aa
+      context_mapping: {  }
+    9690018c-f853-4317-ba86-72f01992feb2:
+      id: 'views_block:blog_user_list-block_user_list'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: right
+      weight: -4
+      uuid: 9690018c-f853-4317-ba86-72f01992feb2
       context_mapping: {  }
   id: panels_variant
   uuid: 63f42b1b-4b99-4c30-960f-3b6e3ed42731

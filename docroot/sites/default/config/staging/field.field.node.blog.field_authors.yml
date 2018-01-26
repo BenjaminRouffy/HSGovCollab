@@ -1,0 +1,91 @@
+uuid: 11db3017-3a16-48a4-b90d-59d2a30b0fff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_authors
+    - node.type.blog
+  module:
+    - dynamic_entity_reference
+id: node.blog.field_authors
+field_name: field_authors
+entity_type: node
+bundle: blog
+label: Authors
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  user:
+    handler: 'default:user'
+    handler_settings:
+      include_anonymous: false
+      filter:
+        type: _none
+      target_bundles: null
+      sort:
+        field: _none
+      auto_create: false
+  comment:
+    handler: 'default:comment'
+    handler_settings: {  }
+  contact_message:
+    handler: 'default:contact_message'
+    handler_settings: {  }
+  node:
+    handler: 'default:node'
+    handler_settings: {  }
+  crop:
+    handler: 'default:crop'
+    handler_settings: {  }
+  block_content:
+    handler: 'default:block_content'
+    handler_settings: {  }
+  menu_link_content:
+    handler: 'default:menu_link_content'
+    handler_settings: {  }
+  file:
+    handler: 'default:file'
+    handler_settings: {  }
+  group:
+    handler: 'default:group'
+    handler_settings: {  }
+  group_content:
+    handler: 'default:group_content'
+    handler_settings: {  }
+  entity_legal_document_acceptance:
+    handler: 'default:entity_legal_document_acceptance'
+    handler_settings: {  }
+  entity_legal_document_version:
+    handler: 'default:entity_legal_document_version'
+    handler_settings: {  }
+  paragraph:
+    handler: 'default:paragraph'
+    handler_settings: {  }
+  relation:
+    handler: 'default:relation'
+    handler_settings: {  }
+  search_api_task:
+    handler: 'default:search_api_task'
+    handler_settings: {  }
+  shortcut:
+    handler: 'default:shortcut'
+    handler_settings: {  }
+  simplenews_subscriber:
+    handler: 'default:simplenews_subscriber'
+    handler_settings: {  }
+  taxonomy_term:
+    handler: 'default:taxonomy_term'
+    handler_settings: {  }
+  vote:
+    handler: 'default:vote'
+    handler_settings: {  }
+  vote_result:
+    handler: 'default:vote_result'
+    handler_settings: {  }
+  webform_submission:
+    handler: 'default:webform_submission'
+    handler_settings: {  }
+field_type: dynamic_entity_reference

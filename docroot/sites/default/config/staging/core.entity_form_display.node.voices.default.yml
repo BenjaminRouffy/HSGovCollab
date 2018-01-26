@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files_modal
     - field.field.node.voices.field_anonymous_bottom_link
     - field.field.node.voices.field_anonymous_join_block
     - field.field.node.voices.field_author
@@ -14,12 +15,11 @@ dependencies:
     - field.field.node.voices.field_join_block
     - field.field.node.voices.field_social_autopost
     - field.field.node.voices.field_time_line
-    - image.style.250x165
     - node.type.voices
   module:
     - comment
+    - entity_browser
     - field_group
-    - image
     - paragraphs
     - path
 third_party_settings:
@@ -200,10 +200,15 @@ content:
   field_image:
     weight: 26
     settings:
+      entity_browser: browse_files_modal
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      view_mode: default
       preview_image_style: 250x165
-      progress_indicator: throbber
     third_party_settings: {  }
-    type: image_image
+    type: entity_browser_file
     region: content
   field_join_block:
     weight: 18

@@ -11,6 +11,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_theme().
@@ -304,8 +305,26 @@ function p4h_views_plugins_views_data_alter(array &$data) {
  * Implements hook_views_query_alter().
  */
 function p4h_views_plugins_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
-  if (!in_array($view->id(), ['events_group_reference'])) {
+
+
+  if (!in_array($view->id(), ['events_group_reference', 'blog_lists'])) {
     return;
+  }
+
+  if (in_array($view->current_display, ['block_author_posts'])) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $node_id = $node->id();
+
+    $authors = $node->field_authors->getValue();
+
+    if (!empty($authors)) {
+      $group = count($query->where) + 1;
+      $query->setWhereGroup('OR', $group);
+      $query->addWhere(1, 'node_field_data.nid', $node_id, '!=');
+      foreach ($authors as $key => $author) {
+        $query->addWhere($group, 'node__field_authors.field_authors_target_id', $author['target_id']);
+      }
+    }
   }
 
   if (in_array($view->current_display, ['entity_reference_2'])) {

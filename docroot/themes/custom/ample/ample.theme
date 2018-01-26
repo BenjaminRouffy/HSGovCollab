@@ -468,6 +468,18 @@ function ample_preprocess_block(&$variables) {
     $variables['#cache']['contexts'][] = 'user';
     $variables['#cache']['contexts'][] = 'route.menu_active_trails:menu_name';
   }
+
+  if ($variables['base_plugin_id'] == 'views_block'
+    && $variables['derivative_plugin_id'] == 'blog_lists-block_author_posts') {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      $node_id = $node->id();
+
+      $authors = $node->field_authors->getValue();
+
+      if (empty($authors)) {
+        $variables['content'] = [];
+      }
+  }
 }
 
 /**
@@ -477,6 +489,13 @@ function ample_preprocess_blocktabs(&$variables) {
   foreach ($variables['tabs'] as $id => $tab) {
     $variables['tabs'][$id]->title = t($variables['tabs'][$id]->title);
   }
+}
+/**
+ * Implements hook_preprocess_blocktabs().
+ */
+function ample_preprocess_views_view_fields(&$variables) {
+
+
 }
 
 /**
@@ -538,6 +557,25 @@ function ample_preprocess_input(array &$variables) {
   // Set placeholders translatable.
   if (isset($variables['attributes']['placeholder']) && !($variables['attributes']['placeholder'] instanceof TranslatableMarkup)) {
     $variables['attributes']['placeholder'] = new TranslatableMarkup($variables['attributes']['placeholder']);
+  }
+}
+
+/**
+ * Implements template_preprocess_item_list().
+ */
+function ample_preprocess_item_list(&$variables) {
+
+  if (!empty($variables['attributes']['class']) && in_array('content-tags-cloud', $variables['attributes']['class'])) {
+    $reset_link = Url::fromRoute('page_manager.page_view_blog_list_page')->toString();
+    $reset_item = [
+      'value' => [
+        '#type' => "html_tag",
+        '#tag' => "span",
+        "#attributes" => [],
+        '#value' => '<a href="' . $reset_link . '">All</a>'
+      ]
+    ];
+    array_unshift($variables['items'], $reset_item);
   }
 }
 

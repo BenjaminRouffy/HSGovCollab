@@ -71,6 +71,7 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
       case 'views-exposed-form-news-events-block-1':
       case 'views-exposed-form-news-events-block-2':
       case 'views-exposed-form-news-events-block-3':
+      case 'views-exposed-form-news-events-block-5':
         if (!empty($form['type'])) {
           $form['type']['#access'] = Drupal::currentUser()->isAuthenticated();
           unset($form['type']['#options']['All']);

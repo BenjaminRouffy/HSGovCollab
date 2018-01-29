@@ -1,0 +1,55 @@
+uuid: 63be6a5c-14a7-4eaa-a598-5adcc2dd4475
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.news
+    - system.menu.footer
+    - views.view.news_events
+  module:
+    - panels
+    - system
+    - views
+id: news-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    4ae65db1-ae3b-4436-a0f2-d7383eb9da15:
+      id: 'views_block:news_events-block_5'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 4ae65db1-ae3b-4436-a0f2-d7383eb9da15
+      pager: view
+      context_mapping: {  }
+    e761f141-db64-456c-ac1d-c18fe5fbbc44:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
+      region: bottom
+      weight: 0
+      uuid: e761f141-db64-456c-ac1d-c18fe5fbbc44
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 809ed926-6634-4061-b287-5a4560f27adb
+  label: null
+  weight: 0
+  layout: separate_column
+  layout_settings: {  }
+  page_title: News
+  storage_type: page_manager
+  storage_id: news-panels_variant-0
+  builder: standard
+page: news
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

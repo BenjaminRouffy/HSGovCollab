@@ -275,7 +275,7 @@ header {
 
   .header-fixed & {
 
-    @include media-q(max, 1200) {
+    @include media-q(max, $nav-breakpoint) {
       padding-top: 30px !important;
 
       [id*="block-headertopsmallmenu"] {
@@ -397,7 +397,7 @@ header {
   }
 
   // from Laptop to Desktop
-  @include media-q(min, 1201) {
+  @include media-q(min, $nav-min-breakpoint) {
     padding-bottom: 0;
     box-shadow: none;
     background-color: transparent;
@@ -587,7 +587,7 @@ header {
   }
 }
 
-@include breakpoint-for('.header-static, .header-fixed', (to: 1200px)) {
+@include breakpoint-for('.header-static, .header-fixed', (to: #{$nav-breakpoint}px)) {
   //min-height: 80px;
 
   .main-menu {
@@ -723,7 +723,7 @@ header {
   }
 }
 
-@include breakpoint-for('.header-static', (to: 1200px)) {
+@include breakpoint-for('.header-static', (to: #{$nav-breakpoint}px)) {
   min-height: 100px;
 
   .bottom-head {
@@ -782,7 +782,7 @@ header {
   }
 }
 
-@include breakpoint-for('.header-fixed', (to: 1200px)) {
+@include breakpoint-for('.header-fixed', (to: #{$nav-breakpoint}px)) {
   .mobile-menu-btn {
     color: $white;
     height: 60px;

@@ -1,3 +1,11 @@
+{% if content['#page_variant'].id() == 'group-panels_variant-1' %}
+  <div class="top-banner-region">
+    <div class="section-info group-banner-wrapper">
+      {{ content.banner|without('#prefix', '#suffix') }}
+    </div>
+  </div>
+{% endif %}
+
 {% if content.dashboard is not empty %}
   <section class="content-with-sidebar dashboard">
     {% if content.dashboard_sidebar|without('#prefix', '#suffix')|render is not empty %}
@@ -12,11 +20,12 @@
     {% endif %}
   </section>
 {% endif %}
-
-{% if content.banner|without('#prefix', '#suffix') is not empty %}
-  <div class="top-banner-region">
-    {{ content.banner|without('#prefix', '#suffix') }}
-  </div>
+{% if content['#page_variant'].id() != 'group-panels_variant-1' %}
+  {% if content.banner|without('#prefix', '#suffix') is not empty %}
+    <div class="top-banner-region">
+      {{ content.banner|without('#prefix', '#suffix') }}
+    </div>
+  {% endif %}
 {% endif %}
 
 <section class="content-container content-with-sidebar {{ content.bottom ? 'bottom-teaser' : '' }}">

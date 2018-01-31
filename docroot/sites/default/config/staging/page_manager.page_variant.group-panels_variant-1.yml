@@ -65,7 +65,7 @@ variant_settings:
       label_display: '0'
       view_mode: bottom
       region: content
-      weight: 0
+      weight: -4
       uuid: 6ee2d1b4-49d9-452a-8fb9-11f9dfd9fc09
       context_mapping:
         entity: group
@@ -77,7 +77,7 @@ variant_settings:
       views_label: ''
       items_per_page: '3'
       region: content
-      weight: -1
+      weight: 0
       uuid: cbf65a79-45e6-4400-a242-46d0d2a66576
       pager: some
       context_mapping: {  }
@@ -89,7 +89,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: content
-      weight: -2
+      weight: -1
       uuid: 70d2b458-1d4f-44dd-8b97-4b67743d56b0
       pager: view
       context_mapping: {  }
@@ -101,7 +101,7 @@ variant_settings:
       views_label: ''
       items_per_page: none
       region: content
-      weight: -3
+      weight: -2
       uuid: 907fc550-14aa-4079-b8f9-43f7a7691dc9
       context_mapping: {  }
     d33aefc2-c036-4836-9a33-7dde89fc8db0:
@@ -122,7 +122,7 @@ variant_settings:
       label_display: '0'
       view_mode: pin_items
       region: content
-      weight: -4
+      weight: -3
       uuid: 98ef2ce9-a158-4aed-998a-eeceb9037271
       context_mapping:
         entity: group
@@ -135,6 +135,17 @@ variant_settings:
       weight: -4
       uuid: 350f268f-3502-4980-9300-4fb4eec69293
       context_mapping: {  }
+    63950832-38d3-4f2e-9044-ca3b14941aa6:
+      id: 'entity_view:group'
+      label: 'Entity view (Group)'
+      provider: ctools
+      label_display: '0'
+      view_mode: banner
+      region: banner
+      weight: 0
+      uuid: 63950832-38d3-4f2e-9044-ca3b14941aa6
+      context_mapping:
+        entity: group
   id: panels_variant
   uuid: d585427d-2897-4e92-80b4-69d09393c773
   label: null

@@ -6,6 +6,7 @@ dependencies:
     - entity_browser.browser.browse_files_modal
     - field.field.group.project.field_based_on
     - field.field.group.project.field_content
+    - field.field.group.project.field_content_paragraph
     - field.field.group.project.field_date
     - field.field.group.project.field_end_date
     - field.field.group.project.field_faq
@@ -54,6 +55,7 @@ third_party_settings:
         - label
         - field_priority
         - field_project_icon
+        - field_content_paragraph
         - group_dates
         - field_geographical_object
         - langcode
@@ -159,7 +161,7 @@ third_party_settings:
         - field_label_end_date
         - field_end_date
       parent_name: group_summary
-      weight: 13
+      weight: 14
       format_type: fieldset
       format_settings:
         id: ''
@@ -190,6 +192,18 @@ content:
     third_party_settings: {  }
     type: entity_reference_paragraphs
     region: content
+  field_content_paragraph:
+    type: entity_reference_paragraphs
+    weight: 13
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: banner
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
   field_date:
     weight: 13
     settings: {  }
@@ -215,7 +229,7 @@ content:
     type: entity_reference_paragraphs
     region: content
   field_geographical_object:
-    weight: 14
+    weight: 15
     settings:
       display_label: true
     third_party_settings: {  }
@@ -328,18 +342,18 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 15
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 17
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     region: content
   translation:
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }

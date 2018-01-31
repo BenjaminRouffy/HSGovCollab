@@ -554,25 +554,6 @@ function ample_preprocess_input(array &$variables) {
 }
 
 /**
- * Implements template_preprocess_item_list().
- */
-function ample_preprocess_item_list(&$variables) {
-
-  if (!empty($variables['attributes']['class']) && in_array('content-tags-cloud', $variables['attributes']['class'])) {
-    $reset_link = Url::fromRoute('page_manager.page_view_blog_list_page')->toString();
-    $reset_item = [
-      'value' => [
-        '#type' => "html_tag",
-        '#tag' => "span",
-        "#attributes" => [],
-        '#value' => '<a href="' . $reset_link . '">All</a>'
-      ]
-    ];
-    array_unshift($variables['items'], $reset_item);
-  }
-}
-
-/**
  * Implements template_preprocess_simplenews_newsletter_body().
  */
 function ample_preprocess_simplenews_newsletter_body(array &$variables) {

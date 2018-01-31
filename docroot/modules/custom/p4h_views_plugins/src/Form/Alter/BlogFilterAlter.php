@@ -21,7 +21,7 @@ class BlogFilterAlter implements FormAlterServiceBaseInterface, FormAlterService
    * @return bool
    */
   public function hasMatch(&$form, FormStateInterface $form_state, $form_id) {
-    return 'views-exposed-form-blog-lists-blog-posts' == $form['#id'];
+    return ('views-exposed-form-blog-lists-blog-posts' == $form['#id'] || 'views-exposed-form-list-resources-block-list-resources' == $form['#id']);
   }
 
   /**
@@ -43,10 +43,6 @@ class BlogFilterAlter implements FormAlterServiceBaseInterface, FormAlterService
         }
         // Extract the options from the Views Exposed Filter <select>-list
         $links = $form[$name]['#options'];
-
-        if (!empty($form['#tags_styles'][$name])) {
-          unset($links['All']);
-        }
 
         foreach ($links as $tid => $term_name) {
           $classes = ['filter-tab'];

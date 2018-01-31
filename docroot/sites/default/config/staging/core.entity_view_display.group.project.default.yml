@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.group.project.field_based_on
     - field.field.group.project.field_content
-    - field.field.group.project.field_content_paragraph
     - field.field.group.project.field_date
     - field.field.group.project.field_end_date
     - field.field.group.project.field_faq
@@ -41,15 +40,6 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
-    region: content
-  field_content_paragraph:
-    type: entity_reference_revisions_entity_view
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
     region: content
   field_date:
     type: datetime_default

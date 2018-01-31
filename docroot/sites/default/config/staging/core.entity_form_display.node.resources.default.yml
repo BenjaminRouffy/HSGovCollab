@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.resources.field_body
     - field.field.node.resources.field_file
+    - field.field.node.resources.field_tags
     - node.type.resources
   module:
     - file
@@ -35,6 +36,15 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    region: content
+  field_tags:
+    weight: 33
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
     region: content
   global_content:
     type: boolean_checkbox

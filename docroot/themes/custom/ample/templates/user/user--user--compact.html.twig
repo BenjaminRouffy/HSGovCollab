@@ -76,11 +76,12 @@
         <span class="contact-expand">Click to expand</span>
       </div>
     </div>
-    {#
     <div class="contact-items">
+    {#
       <div class="contact-to-user">
         {{ content.relation_form }}
       </div>
+      #}
 
       {% if elements['#current_user'] != user.id() %}
         <div class="contact-to-user">
@@ -90,6 +91,5 @@
         </div>
       {% endif %}
     </div>
-    #}
   </div>
 </div>

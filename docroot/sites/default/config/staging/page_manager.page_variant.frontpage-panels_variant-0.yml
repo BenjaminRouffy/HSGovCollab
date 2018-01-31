@@ -32,18 +32,6 @@ variant_settings:
       weight: 0
       uuid: 75985333-dc66-4756-9083-e160f74c15ed
       context_mapping: {  }
-    8541392a-5791-4d60-9dbc-64b79df10dd1:
-      id: 'views_block:news_events-block_frontpage'
-      label: ''
-      provider: views
-      label_display: '0'
-      views_label: ''
-      items_per_page: none
-      region: content
-      weight: -10
-      uuid: 8541392a-5791-4d60-9dbc-64b79df10dd1
-      pager: view
-      context_mapping: {  }
     d0518fbb-863a-4d06-b635-e6e218e0bc62:
       id: 'views_block:social_recent-block_1'
       label: ''
@@ -77,6 +65,30 @@ variant_settings:
       region: banner
       weight: 0
       uuid: 441dc333-5044-4358-8a6f-36f97178c538
+      context_mapping: {  }
+    5769e6e9-cdb9-409a-b89b-9a40f426f5ae:
+      id: 'views_block:news_events-block_frontpage_news'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -2
+      uuid: 5769e6e9-cdb9-409a-b89b-9a40f426f5ae
+      pager: view
+      context_mapping: {  }
+    b1b6492d-a15d-4905-8ac1-ca7fbe5820a4:
+      id: 'views_block:news_events-block_frontpage_events'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -1
+      uuid: b1b6492d-a15d-4905-8ac1-ca7fbe5820a4
+      pager: view
       context_mapping: {  }
   id: panels_variant
   uuid: 73741361-9a0a-4f97-b5ed-a202074df3b0

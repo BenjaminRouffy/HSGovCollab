@@ -6,7 +6,6 @@ dependencies:
     - entity_browser.browser.browse_files_modal
     - field.field.group.project.field_based_on
     - field.field.group.project.field_content
-    - field.field.group.project.field_content_paragraph
     - field.field.group.project.field_date
     - field.field.group.project.field_end_date
     - field.field.group.project.field_faq
@@ -191,18 +190,6 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     type: entity_reference_paragraphs
-    region: content
-  field_content_paragraph:
-    type: entity_reference_paragraphs
-    weight: 13
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed
-      add_mode: dropdown
-      form_display_mode: banner
-      default_paragraph_type: _none
-    third_party_settings: {  }
     region: content
   field_date:
     weight: 13

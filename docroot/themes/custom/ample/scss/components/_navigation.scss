@@ -446,8 +446,75 @@
 
 }
 
-@include breakpoint-for('.header-static ', (to: 1281px)) {
-  display: none;
+@include breakpoint-for('.header-static ', (to: 768px)) {
+  display: none!important;
+}
+
+@include breakpoint-for('.header-static ', (to: 1300px)) {
+  .main-menu {
+    li {
+      a {
+        padding: 20px 15px !important;
+      }
+      &.expanded {
+        a {
+          &:after {
+            margin-top: -3px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint-for('.header-static ', (to: 1100px)) {
+  .main-menu {
+    li {
+      a {
+        font-size: 14px !important;
+      }
+    }
+  }
+
+  .logo {
+    width: 110px;
+    margin-top: -25px;
+    padding-left: 10px;
+  }
+}
+
+@include breakpoint-for('.header-static ', (to: 800px)) {
+  .main-menu {
+    li {
+      a {
+        font-size: 13px !important;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1300px) {
+  .header-fixed {
+    .main-menu {
+      li {
+        a {
+          padding: 20px 15px !important;
+          font-size: 13px !important;
+        }
+
+        &.expanded {
+          a {
+            &:after {
+              right: 4px;
+            }
+          }
+        }
+      }
+    }
+    .logo {
+      display: none!important;
+    }
+  }
 }
 
 @media screen and (max-width: 1280px) {

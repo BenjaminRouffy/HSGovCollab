@@ -15,13 +15,14 @@ entity_type: group
 bundle: country
 label: Banner
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
+    negate: 0
     target_bundles:
       content_image: content_image
       slider: slider
@@ -64,5 +65,41 @@ settings:
         enabled: false
       country_option:
         weight: 16
+        enabled: false
+      cd_user:
+        weight: 26
+        enabled: false
+      country_and_project:
+        weight: 29
+        enabled: false
+      faq_item:
+        weight: 33
+        enabled: false
+      file:
+        weight: 34
+        enabled: false
+      image_with_text:
+        weight: 35
+        enabled: false
+      link_to_file:
+        weight: 39
+        enabled: false
+      organisation:
+        weight: 41
+        enabled: false
+      pin_item:
+        weight: 42
+        enabled: false
+      pin_items:
+        weight: 43
+        enabled: false
+      software_application:
+        weight: 46
+        enabled: false
+      timeline_social:
+        weight: 48
+        enabled: false
+      webform:
+        weight: 50
         enabled: false
 field_type: entity_reference_revisions

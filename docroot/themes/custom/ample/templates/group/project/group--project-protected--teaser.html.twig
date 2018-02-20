@@ -4,7 +4,11 @@
         {{ title_suffix }}
         <div class="project-title">
             <div class="project-icon-wrapper">
+              {% if (content.field_project_icon['0']) %}
                 {{ content.field_project_icon }}
+              {% else %}
+                <img src="{{ site_base_url }}/themes/custom/ample/images/project-icon.svg" alt="project logo">
+              {% endif %}
             </div>
             <h3 role="heading">
                 {{ label }}

@@ -421,18 +421,6 @@ svg {
   filter: alpha(opacity=90);
 }
 
-@-webkit-keyframes blink {
-  0% {
-    box-shadow: 0 0 5px #D99941;
-  }
-  50% {
-    box-shadow: 0 0 0 #D99941;
-  }
-  100% {
-    box-shadow: 0 0 5px #D99941;
-  }
-}
-
 @keyframes blink {
   0% {
     box-shadow: 0 0 5px #D99941;
@@ -4649,6 +4637,10 @@ footer > .partners .item-list li {
 .videos-list .item:first-child {
   margin-bottom: 20px;
   width: 25%;
+}
+
+.videos-list .videos .videos-container {
+  margin-bottom: 15px;
 }
 
 .videos-list .videos .videos-container img {

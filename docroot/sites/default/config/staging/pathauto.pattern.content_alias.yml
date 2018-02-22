@@ -9,18 +9,21 @@ label: 'Content alias'
 type: 'canonical_entities:node'
 pattern: '[node:content-type:name]/[node:title]'
 selection_criteria:
-  eb0f6f88-d7fe-4a84-be16-c53c7073841a:
+  2b28d9f1-ea0b-4387-9028-834a1ad1395b:
     id: node_type
     bundles:
       article: article
+      blog: blog
       event: event
       member: member
       news: news
       simplenews_issue: simplenews_issue
+      videos: videos
+      voices: voices
     negate: false
     context_mapping:
       node: node
-    uuid: eb0f6f88-d7fe-4a84-be16-c53c7073841a
+    uuid: 2b28d9f1-ea0b-4387-9028-834a1ad1395b
 selection_logic: and
 weight: -5
 relationships: {  }

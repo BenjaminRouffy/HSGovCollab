@@ -4,12 +4,11 @@ status: true
 dependencies:
   config:
     - page_manager.page.contacts
+    - system.menu.footer
     - views.view.cd_user_view
-  content:
-    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
   module:
-    - block_content
     - panels
+    - system
     - views
 id: contacts-panels_variant-0
 label: Panels
@@ -27,17 +26,16 @@ variant_settings:
       weight: 0
       uuid: fe050d71-e81d-40fa-8fd3-f686805ea805
       context_mapping: {  }
-    fae0aa30-6a5e-4363-a590-47fcdb475814:
-      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
-      label: 'Contact us'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
+    011e47d9-affa-46e9-8bd3-0d91739f8409:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
       region: bottom
       weight: 0
-      uuid: fae0aa30-6a5e-4363-a590-47fcdb475814
+      uuid: 011e47d9-affa-46e9-8bd3-0d91739f8409
       context_mapping: {  }
   id: panels_variant
   uuid: a56bc1be-9f30-40b1-96af-3eb2f2b2cafc

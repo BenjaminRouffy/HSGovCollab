@@ -329,21 +329,6 @@
 
     .h-with-anchors & {
       z-index: 1;
-      top: 100%;
-      transition: none;
-      transform: none;
-
-      li a {
-        @include font-size(12.6);
-        padding: 10px 15px;
-      }
-    }
-
-    .h-with-anchors:not(.header-fixed) & {
-      transition: none;
-      transform: none;
-      bottom: auto;
-      z-index: 1;
     }
   }
 

@@ -786,57 +786,6 @@ display:
           entity_type: node
           entity_field: default_langcode
           plugin_id: boolean
-        content_author_name:
-          id: content_author_name
-          table: node_field_data
-          field: content_author_name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: content_author_name_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: content_author_name_op
-            identifier: uid
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              conference_oxford: '0'
-              anonymous: '0'
-              country_managers: '0'
-              projects_managers: '0'
-              governance_group_users: '0'
-              coordination_desk_users: '0'
-              specific_users: '0'
-              knowledge_vault_manager: '0'
-              co_admin: '0'
-              product_manager: '0'
-              closed_country_manager: '0'
-            reduce: 0
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: 0
-          type: blog
-          entity_type: node
-          plugin_id: content_author_name
         field_category_target_id:
           id: field_category_target_id
           table: node__field_category
@@ -945,6 +894,57 @@ display:
           view_display_selection: ''
           entity_type: taxonomy_term
           plugin_id: content_tags_cloud
+        field_authors_target_id:
+          id: field_authors_target_id
+          table: node__field_authors
+          field: field_authors_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_authors_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_authors_target_id_op
+            identifier: field_authors_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              conference_oxford: '0'
+              anonymous: '0'
+              country_managers: '0'
+              projects_managers: '0'
+              governance_group_users: '0'
+              coordination_desk_users: '0'
+              specific_users: '0'
+              knowledge_vault_manager: '0'
+              co_admin: '0'
+              product_manager: '0'
+              closed_country_manager: '0'
+              blog_editor: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
       filter_groups:
         operator: AND
         groups:

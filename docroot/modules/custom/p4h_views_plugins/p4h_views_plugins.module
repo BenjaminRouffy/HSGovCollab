@@ -178,6 +178,29 @@ function p4h_views_plugins_form_alter(&$form, FormStateInterface $form_state, $f
           '#weight' => -100,
         ];
         $form['#attributes']['data-accordion'] = $form['#id'];
+
+        $query = \Drupal::database()->select('users_field_data', 'uf');
+        $query->innerJoin('node__field_authors', 'a', 'a.field_authors_target_id = uf.uid');
+        $query->fields('uf', ['uid', 'name']);
+        $query->orderBy('name');
+        $users = $query->execute();
+
+        // Start building out the options for our select list
+        $options = [];
+
+        // Push titles into select list
+        foreach ($users as $user) {
+          $options[$user->uid] = $user->name;
+        }
+
+        // Start building out our new form element
+        $authors_field = 'field_authors_target_id';
+        unset($form[$authors_field]['#size']);
+        $form[$authors_field]['#type'] = 'select';
+        $form[$authors_field]['#multiple'] = FALSE;
+        $form[$authors_field]['#empty_option'] = t('Select author');
+        $form[$authors_field]['#options'] = $options;
+
         break;
 
     }

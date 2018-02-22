@@ -10191,6 +10191,15 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   text-align: left;
 }
 
+.view-news-and-events .bottom-link {
+  display: none;
+}
+
+.view-news-and-events .document-list + .bottom-link,
+.view-news-and-events .news-and-events-list + .bottom-link {
+  display: block;
+}
+
 .view-contacts .wrapper-filters > div {
   max-width: 25%;
 }

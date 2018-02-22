@@ -25,13 +25,13 @@
         <a href="{{ relate_news_link }}" class="contribute-link">{{ "Contribute news"|t }}</a>
         <a href="{{ relate_event_link }}" class="contribute-link">{{ "Contribute event"|t }}</a>
       </div>
+      {{ title_prefix }}
+      <h1 role="heading" class="anchor-title" id="small-title">
+        {{ view.getTitle()|raw }}
+      </h1>
+      {{ title_suffix|without('contextual_links') }}
+      <div class="line"></div>
     {% endif %}
-    {{ title_prefix }}
-    <h1 role="heading" class="anchor-title" id="small-title">
-      {{ view.getTitle()|raw }}
-    </h1>
-    {{ title_suffix|without('contextual_links') }}
-    <div class="line"></div>
   </div>
 
   {% if header %}

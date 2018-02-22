@@ -4,11 +4,13 @@ status: true
 dependencies:
   config:
     - page_manager.page.sign_up
+    - system.menu.footer
   content:
     - 'block_content:headline_description:d2761cbe-44cd-4f2d-9d67-ab130cb27db9'
   module:
     - block_content
     - panels
+    - system
     - user
 id: sign_up-panels_variant-0
 label: Panels
@@ -35,6 +37,17 @@ variant_settings:
       region: content
       weight: 0
       uuid: a3c62184-a2f2-4dbe-ba44-67472c4e546a
+      context_mapping: {  }
+    748a7a37-e999-478d-a86d-e4493ef39c60:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
+      region: bottom
+      weight: 0
+      uuid: 748a7a37-e999-478d-a86d-e4493ef39c60
       context_mapping: {  }
   id: panels_variant
   uuid: ab830694-550b-4261-abe1-7841ac106900

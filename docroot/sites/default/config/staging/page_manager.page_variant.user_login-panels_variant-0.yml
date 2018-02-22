@@ -4,12 +4,13 @@ status: true
 dependencies:
   config:
     - page_manager.page.user_login
+    - system.menu.footer
   content:
     - 'block_content:headline_description:218a77a4-abdd-4a87-a72a-b6e15920460c'
-    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
   module:
     - block_content
     - panels
+    - system
     - user
 id: user_login-panels_variant-0
 label: Panels
@@ -37,17 +38,16 @@ variant_settings:
       weight: 0
       uuid: ab444ed8-2dd4-4d84-ab49-ec9d522a5187
       context_mapping: {  }
-    74f7e224-97dc-45f4-a9cd-1e3d41d5bc6e:
-      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
-      label: 'Interested in becoming a member?/full horizontal'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
+    9fea837f-9eaa-4505-88c7-64978f2241f1:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
       region: bottom
       weight: 0
-      uuid: 74f7e224-97dc-45f4-a9cd-1e3d41d5bc6e
+      uuid: 9fea837f-9eaa-4505-88c7-64978f2241f1
       context_mapping: {  }
   id: panels_variant
   uuid: d1bb8de6-b2b6-403d-954f-965018d95649

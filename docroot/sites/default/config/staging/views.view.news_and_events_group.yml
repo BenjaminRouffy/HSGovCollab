@@ -4618,7 +4618,7 @@ display:
           entity_type: node
           entity_field: computed_date
           plugin_id: standard
-      block_hide_empty: true
+      block_hide_empty: false
       header: {  }
       empty: {  }
       pager:
@@ -5727,7 +5727,7 @@ display:
       use_more_text: 'Read more'
       link_display: custom_url
       link_url: 'group/{{ raw_arguments.group_id_depth }}/news-and-events'
-      block_hide_empty: true
+      block_hide_empty: false
       access:
         type: perm
         options:

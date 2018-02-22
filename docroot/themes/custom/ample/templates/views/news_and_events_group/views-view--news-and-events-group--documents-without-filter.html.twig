@@ -12,13 +12,13 @@
       <div class="contribute-links">
         <a href="{{ relate_node_link }}" class="contribute-link">{{ "Contribute document"|t }}</a>
       </div>
+      {{ title_prefix }}
+      <h1>
+        {{ view.getTitle()|raw }}
+      </h1>
+      {{ title_suffix|without('contextual_links') }}
+      <div class="line"></div>
     {% endif %}
-    {{ title_prefix }}
-    <h1>
-      {{ view.getTitle()|raw }}
-    </h1>
-    {{ title_suffix|without('contextual_links') }}
-    <div class="line"></div>
   </div>
 
   {% if header %}

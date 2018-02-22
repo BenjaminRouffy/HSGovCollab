@@ -17,10 +17,13 @@
           <time datetime="{{ content.field_content_date|field_value|field_raw }}">
             {{ content.field_content_date|field_value }}
           </time>
-
-          <span class="country">
-          {{ node.uid.entity.field_first_name.value }} {{ node.uid.entity.field_last_name.value }}
-        </span>
+          {% if content.field_authors|field_value %}
+            {% for authors in content.field_authors|field_value %}
+              <span class="country">
+                {{ authors }}
+              </span>
+            {% endfor %}
+          {% endif %}
 
           {% if content.field_category|field_value %}
             {% for category in content.field_category|field_value %}

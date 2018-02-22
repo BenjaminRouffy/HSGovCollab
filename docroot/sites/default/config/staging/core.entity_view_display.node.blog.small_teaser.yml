@@ -19,6 +19,7 @@ dependencies:
     - node.type.blog
   module:
     - datetime
+    - dynamic_entity_reference
     - image
     - text
     - user
@@ -34,6 +35,14 @@ content:
     label: hidden
     settings:
       trim_length: 600
+    third_party_settings: {  }
+  field_authors:
+    type: dynamic_entity_reference_label
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      link: false
     third_party_settings: {  }
   field_category:
     weight: 0
@@ -65,7 +74,6 @@ hidden:
   addtoany: true
   field_anonymous_join_block: true
   field_author: true
-  field_authors: true
   field_comments: true
   field_content: true
   field_join_block: true

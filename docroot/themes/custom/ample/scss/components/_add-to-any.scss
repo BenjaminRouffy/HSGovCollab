@@ -112,3 +112,11 @@
     }
   }
 }
+
+@include breakpoint-for('.addtoany_list', (to: mobileL)) {
+  display: none;
+
+  &.expanded {
+    display: block;
+  }
+}

@@ -2056,19 +2056,6 @@ footer > .partners .item-list li {
 .top-banner-region .section-info .infographic__item {
   background-size: cover;
   background-position: center;
-}
-
-.top-banner-region .section-info .infographic__item:before {
-  content: "";
-  position: absolute;
-  display: block;
-  z-index: 4;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-image: url("../images/bg-image.png");
 }
 
@@ -11609,6 +11596,15 @@ body.fr .form-my-settings #edit-mail .form-item-mail-mail2 .email-suffix label.e
   content: none;
 }
 
+@media (max-width: 479px) {
+  .addtoany_list {
+    display: none;
+  }
+  .addtoany_list.expanded {
+    display: block;
+  }
+}
+
 .can-add-event {
   cursor: pointer;
 }
@@ -15945,19 +15941,6 @@ body:not(.who):not(.news-and-events):not(.where):not(.group-country):not(.group-
 
 .page-blog-list-page .title-wrapper {
   text-align: center;
-}
-
-.page-blog-list-page .title-wrapper h1::after {
-  content: ' ';
-  background: url(../images/lightbulb.png) no-repeat;
-  background-size: contain;
-  display: inline-block;
-  vertical-align: super;
-  width: 35px;
-  height: 40px;
-  position: relative;
-  top: -20px;
-  left: 10px;
 }
 
 .page-blog-list-page .title-wrapper .line {

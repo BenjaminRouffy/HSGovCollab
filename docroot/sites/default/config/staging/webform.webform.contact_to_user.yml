@@ -111,8 +111,8 @@ handlers:
       bcc_mail: ''
       from_mail: default
       from_name: ''
-      subject: 'Contact through the Collaborative'
-      body: "User [current-user:field_first_name]&nbsp;[current-user:field_last_name] has written you an email. If you would like to answer please click here&nbsp;<a href=\"[current-user:url]\">user&nbsp;profile</a>.<br />\n<br />\n[webform_submission:values:message:value].<br />\n<br />\nYours The Collaborative Coordination Desk"
+      subject: 'Contact through Health Systems Governance Collborative'
+      body: "User [current-user:field_first_name]&nbsp;[current-user:field_last_name] has written you an email. If you would like to answer please click here&nbsp;<a href=\"[current-user:url]\">user&nbsp;profile</a>.<br />\n<br />\n[webform_submission:values:message:value].<br />\n<br />\nYours The Health Systems Governance Collborative Coordination Desk"
       excluded_elements: {  }
       html: true
       attachments: 0

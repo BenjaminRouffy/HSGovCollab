@@ -101,22 +101,6 @@
   .title-wrapper {
     text-align: center;
 
-    h1 {
-
-      &::after {
-        content: ' ';
-        background: url(../images/lightbulb.png) no-repeat;
-        background-size: contain;
-        display: inline-block;
-        vertical-align: super;
-        width: 35px;
-        height: 40px;
-        position: relative;
-        top: -20px;
-        left: 10px;
-      }
-    }
-
     .line {
       left: 50%;
       transform: translateX(-50%);

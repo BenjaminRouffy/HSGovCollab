@@ -3,12 +3,8 @@
     {% if group_icon is not empty %}
       <div class="country-icon-wrapper">
         <img src="{{ file_url(group_icon) }}">
-      </div>  
+      </div>
     {% endif %}
-
-    <h1 role="heading">
-      {{ group_label|t|upper }}
-    </h1>
 
     {% if logged_in %}
         {# following_form #}

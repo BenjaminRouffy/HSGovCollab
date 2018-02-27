@@ -65,6 +65,17 @@
           content: none;
         }
       }
+
+      .node-voices & {
+
+        &--no-bg {
+          background-image: none;
+          &:before {
+            content: '';
+            background-image: linear-gradient(-180deg, rgba(#449EA5, .7) 0%, rgba(#015183, .7) 100%);
+          }
+        }
+      }
     }
 
     .title_desc__wrapper {

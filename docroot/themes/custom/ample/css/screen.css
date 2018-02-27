@@ -2086,6 +2086,15 @@ footer > .partners .item-list li {
   content: none;
 }
 
+.node-voices .top-banner-region .section-info .infographic__item--no-bg {
+  background-image: none;
+}
+
+.node-voices .top-banner-region .section-info .infographic__item--no-bg:before {
+  content: '';
+  background-image: linear-gradient(-180deg, rgba(68, 158, 165, 0.7) 0%, rgba(1, 81, 131, 0.7) 100%);
+}
+
 .top-banner-region .section-info .title_desc__wrapper {
   position: relative;
   z-index: 5;

@@ -2282,7 +2282,7 @@ footer > .partners .item-list li {
   width: 100%;
 }
 
-.firefox .resource-view .resource-banner {
+.logged .resource-view .resource-banner {
   width: calc(100% + 30px);
   left: -15px;
   top: -80px;
@@ -2305,10 +2305,10 @@ footer > .partners .item-list li {
     position: absolute;
     width: 100vw !important;
     left: 0 !important;
-    top: 0;
+    top: 0 !important;
   }
-  .firefox .resource-view .resource-banner {
-    top: -80px;
+  .logged .resource-view .resource-banner {
+    top: -80px !important;
     margin-left: calc((1170px - 100vw)/2);
   }
 }

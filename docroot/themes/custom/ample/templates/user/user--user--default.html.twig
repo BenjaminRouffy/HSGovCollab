@@ -10,13 +10,6 @@
       {% endif %}
 
       <div class="user-contacts">
-        {% if elements['#user_mail'] is not empty %}
-          <div class="font-social-icon mail-icon">
-            <span>
-              <a href="mailto:{{ elements['#user_mail'] }}">{{ elements['#user_mail'] }}</a>
-            </span>
-          </div>
-        {% endif %}
 
         {{ content.computed_group_membership }}
 

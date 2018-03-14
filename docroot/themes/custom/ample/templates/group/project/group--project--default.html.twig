@@ -26,6 +26,10 @@
   </div>
   {{ title_suffix }}
 
+  {% if logged_in %}
+    {{ following_form }}
+  {% endif %}
+
   <div class="summary-text">
     {{ content.field_summary }}
   </div>

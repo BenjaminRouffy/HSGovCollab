@@ -1200,8 +1200,14 @@ svg {
   }
 }
 
-.anchor-links {
-  display: none;
+.anchor-links li {
+  display: inline-block !important;
+}
+
+.anchor-links li a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
 }
 
 .page-contact-us .anchor-links {
@@ -12983,6 +12989,12 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
   }
 }
 
+@media (max-width: 767px) {
+  .header-fixed .bottom-head {
+    display: none;
+  }
+}
+
 @media (max-width: 479px) {
   .header-static .logo-wrapper .logo, .header-fixed .logo-wrapper .logo {
     padding: 8px 10px 10px 15px;
@@ -13015,7 +13027,6 @@ body.toolbar-vertical:not(.toolbar-fixed) .header-static {
 }
 
 .bottom-head {
-  display: none;
   background: #e9ecee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: padding .3s ease;
@@ -13129,6 +13140,10 @@ footer a:hover {
 .page-page-403 .main-wrapper,
 .page-page-404 .main-wrapper {
   margin-bottom: 0;
+}
+
+.logged .main-wrapper {
+  padding-left: 80px;
 }
 
 .main-wrapper:before {

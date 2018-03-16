@@ -536,8 +536,16 @@
 
 // Anchors menu
 .anchor-links {
-  display: none;
+  // display: none;
+  li {
+    display: inline-block !important;
 
+    a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap !important;      
+    }
+  }
   .page-contact-us & {
     text-align: center;
     display: block;

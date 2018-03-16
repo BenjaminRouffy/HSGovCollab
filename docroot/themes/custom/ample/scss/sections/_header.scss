@@ -763,6 +763,12 @@ header {
   }
 
 }
+@include breakpoint-for('.header-fixed', (to: tablet)) {
+  .bottom-head {
+    display: none;
+  }
+
+}
 
 @include breakpoint-for('.header-static, .header-fixed', (to: mobileL)) {
   .logo-wrapper {
@@ -821,7 +827,7 @@ header {
 }
 
 .bottom-head {
-  display: none;
+  // display: none;
   background: #e9ecee;
   box-shadow: 0 1px 3px rgba($black, .1);
   transition: padding .3s ease;

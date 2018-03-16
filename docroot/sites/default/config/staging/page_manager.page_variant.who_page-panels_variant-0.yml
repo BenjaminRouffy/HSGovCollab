@@ -7,8 +7,6 @@ dependencies:
     - views.view.members_list
   content:
     - 'block_content:headline_description:a4ec2eaf-d92e-4662-8a8c-8ca43d787750'
-    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
-    - 'block_content:link:8ce1a4b3-b3d1-4275-95aa-470d5232ff69'
   module:
     - block_content
     - panels
@@ -40,30 +38,6 @@ variant_settings:
       region: middle
       weight: -1
       uuid: 11982faa-0392-4c13-a23b-e9e9b9ce72bc
-      context_mapping: {  }
-    551d78af-a39b-4776-83e6-ce5f168c5267:
-      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
-      label: 'Interested in becoming a member???'
-      provider: block_content
-      label_display: '0'
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
-      region: bottom
-      weight: -9
-      uuid: 551d78af-a39b-4776-83e6-ce5f168c5267
-      context_mapping: {  }
-    ee23313e-4e59-4715-9e03-61caad094c6d:
-      id: 'block_content:8ce1a4b3-b3d1-4275-95aa-470d5232ff69'
-      label: 'Contact P4H'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: link
-      region: middle
-      weight: 1
-      uuid: ee23313e-4e59-4715-9e03-61caad094c6d
       context_mapping: {  }
   id: panels_variant
   uuid: 4dfa2c41-d7e8-4a1f-a9ab-2c5b327fcaee

@@ -4,31 +4,20 @@ status: true
 dependencies:
   config:
     - page_manager.page.tweets
+    - system.menu.footer
     - views.view.news_events
   content:
     - 'block_content:headline_description:4c7e2066-d613-4f64-a86a-89f5147a171d'
-    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
   module:
     - block_content
     - panels
+    - system
     - views
 id: tweets-panels_variant-0
 label: Page
 variant: panels_variant
 variant_settings:
   blocks:
-    a3655f5c-e37e-4c5c-8725-e60a68f90b15:
-      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
-      label: 'Contact us'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
-      region: bottom
-      weight: 0
-      uuid: a3655f5c-e37e-4c5c-8725-e60a68f90b15
-      context_mapping: {  }
     8b5ada93-0276-4888-8ab8-57ea1267a278:
       id: 'views_block:news_events-block_4'
       label: ''
@@ -52,6 +41,17 @@ variant_settings:
       region: middle
       weight: 0
       uuid: dc274975-ce54-437f-8d41-1561537caa2c
+      context_mapping: {  }
+    c6769de8-c053-42fc-b3b5-fef4b861c988:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
+      region: bottom
+      weight: 0
+      uuid: c6769de8-c053-42fc-b3b5-fef4b861c988
       context_mapping: {  }
   id: panels_variant
   uuid: 58ab514f-8b47-4b68-8124-e7e7e9a7d9b0

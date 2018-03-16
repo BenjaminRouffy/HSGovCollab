@@ -216,7 +216,7 @@ display:
     position: 2
     display_options:
       display_extenders: {  }
-      title: Contacts
+      title: 'Our community'
       defaults:
         title: false
         filters: false
@@ -243,63 +243,6 @@ display:
           expose:
             operator: ''
           group: 1
-        combine_taxonomy_term:
-          id: combine_taxonomy_term
-          table: taxonomy_term_field_data
-          field: combine_taxonomy_term
-          relationship: field_organisation
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: combine_taxonomy_term_op
-            label: Organization
-            description: ''
-            use_operator: false
-            operator: combine_taxonomy_term_op
-            identifier: combine_taxonomy_term
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              country_managers: '0'
-              projects_managers: '0'
-              governance_group_users: '0'
-              coordination_desk_users: '0'
-              specific_users: '0'
-            reduce: 0
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: 0
-          vid:
-            non_member_organisation: non_member_organisation
-            organizations: organizations
-            categories: 0
-            countries: 0
-            country_icon: 0
-            file_category: 0
-            infographic_icons: 0
-            members_category: 0
-            person_titles: 0
-            regions: 0
-            software_application: 0
-          entity_type: taxonomy_term
-          plugin_id: combine_taxonomy_term
         field_country_target_id:
           id: field_country_target_id
           table: user__field_country
@@ -882,12 +825,14 @@ display:
         - user
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.user.user.blog_author'
         - 'config:core.entity_view_display.user.user.cd_user_block'
         - 'config:core.entity_view_display.user.user.comment_author'
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.popular_author'
         - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
@@ -1731,12 +1676,14 @@ display:
         - user
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.user.user.blog_author'
         - 'config:core.entity_view_display.user.user.cd_user_block'
         - 'config:core.entity_view_display.user.user.comment_author'
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.popular_author'
         - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
@@ -2437,12 +2384,14 @@ display:
         - user
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.user.user.blog_author'
         - 'config:core.entity_view_display.user.user.cd_user_block'
         - 'config:core.entity_view_display.user.user.comment_author'
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.popular_author'
         - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
@@ -3250,12 +3199,14 @@ display:
         - user
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.user.user.blog_author'
         - 'config:core.entity_view_display.user.user.cd_user_block'
         - 'config:core.entity_view_display.user.user.comment_author'
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.popular_author'
         - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
@@ -4082,12 +4033,14 @@ display:
         - user
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.user.user.blog_author'
         - 'config:core.entity_view_display.user.user.cd_user_block'
         - 'config:core.entity_view_display.user.user.comment_author'
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.popular_author'
         - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'
         - 'config:field.storage.user.field_first_name'
@@ -4363,11 +4316,13 @@ display:
         - url
         - user.permissions
       tags:
+        - 'config:core.entity_view_display.user.user.blog_author'
         - 'config:core.entity_view_display.user.user.cd_user_block'
         - 'config:core.entity_view_display.user.user.comment_author'
         - 'config:core.entity_view_display.user.user.compact'
         - 'config:core.entity_view_display.user.user.default'
         - 'config:core.entity_view_display.user.user.kv_manager'
         - 'config:core.entity_view_display.user.user.name'
+        - 'config:core.entity_view_display.user.user.popular_author'
         - 'config:core.entity_view_display.user.user.sea'
         - 'config:core.entity_view_display.user.user.small_teaser'

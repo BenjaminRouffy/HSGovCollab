@@ -6,9 +6,6 @@ dependencies:
     - page_manager.page.where
     - views.view.search_for_a_country_or_region
   content:
-    - 'block_content:headline_description:b1a69eb0-294e-4599-bb30-4c0c817b615a'
-    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
-    - 'block_content:link:a1771701-eceb-40f1-bc27-f4c5a8ed6b47'
     - 'block_content:map:88f5fb11-3c7b-4152-a2c0-5a7ba2d6b7d7'
   module:
     - block_content
@@ -35,11 +32,11 @@ variant_settings:
       label: 'Countries in P4H'
       provider: block_content
       label_display: visible
+      region: content
+      weight: -9
       status: true
       info: ''
       view_mode: full
-      region: content
-      weight: -9
       uuid: bf006474-142e-485f-a15b-03f08970425c
       context_mapping: {  }
     57f803bb-8dd2-4268-8604-fe5fae7c538a:
@@ -47,24 +44,12 @@ variant_settings:
       label: 'Get in touch with P4H'
       provider: block_content
       label_display: visible
+      region: content
+      weight: -8
       status: true
       info: ''
       view_mode: link
-      region: content
-      weight: -8
       uuid: 57f803bb-8dd2-4268-8604-fe5fae7c538a
-      context_mapping: {  }
-    fa994fb9-a406-42e5-8d14-d6eb2705dc3e:
-      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
-      label: 'Interested in becoming a member?'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
-      region: bottom
-      weight: 0
-      uuid: fa994fb9-a406-42e5-8d14-d6eb2705dc3e
       context_mapping: {  }
     ba5d49d3-041e-4cdf-9e7d-7626e411384d:
       id: 'block_content:88f5fb11-3c7b-4152-a2c0-5a7ba2d6b7d7'

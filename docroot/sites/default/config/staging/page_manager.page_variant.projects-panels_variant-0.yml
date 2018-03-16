@@ -4,12 +4,11 @@ status: true
 dependencies:
   config:
     - page_manager.page.projects
+    - system.menu.footer
     - views.view.search_for_a_country_or_region
-  content:
-    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
   module:
-    - block_content
     - panels
+    - system
     - views
 id: projects-panels_variant-0
 label: Panels
@@ -27,17 +26,16 @@ variant_settings:
       weight: 0
       uuid: a667c72c-1231-4a47-99d1-90feaa845088
       context_mapping: {  }
-    c7c89c88-b9dd-464b-906f-8ae7f5743f6d:
-      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
-      label: 'Contact us'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
+    111247fd-008f-4437-a6e9-863a9044b805:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
+      label_display: '0'
+      level: 1
+      depth: 0
       region: bottom
       weight: 0
-      uuid: c7c89c88-b9dd-464b-906f-8ae7f5743f6d
+      uuid: 111247fd-008f-4437-a6e9-863a9044b805
       context_mapping: {  }
   id: panels_variant
   uuid: 128d2cc4-d47b-426b-a874-2265cea69b9a

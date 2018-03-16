@@ -6,11 +6,7 @@ dependencies:
     - page_manager.page.knowledge_vault
     - views.view.comments_recent
     - views.view.knowledge_vault
-  content:
-    - 'block_content:advanced_descriptions:ee793894-85b3-413b-a52d-9a4d472a2adb'
-    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
   module:
-    - block_content
     - panels
     - views
 id: knowledge_vault-panels_variant-0
@@ -45,24 +41,12 @@ variant_settings:
       label: 'Knowledge vault header'
       provider: block_content
       label_display: '0'
+      region: dashboard
+      weight: 0
       status: true
       info: ''
       view_mode: full
-      region: dashboard
-      weight: 0
       uuid: 3f904b07-9b4c-4cf2-921e-943e5e7cc9d1
-      context_mapping: {  }
-    62e3a888-9017-4dad-be8c-47aa91612bca:
-      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
-      label: 'Contact us'
-      provider: block_content
-      label_display: visible
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
-      region: bottom
-      weight: 0
-      uuid: 62e3a888-9017-4dad-be8c-47aa91612bca
       context_mapping: {  }
   id: panels_variant
   uuid: 6c5e3c65-3add-418c-a252-a0ad561454e2

@@ -60,6 +60,7 @@ third_party_settings:
         - field_content_date
         - field_author
         - body
+        - field_category
       parent_name: group_tabs_panel
       weight: 20
       format_type: tab
@@ -103,7 +104,6 @@ third_party_settings:
       children:
         - field_join_block
         - field_anonymous_join_block
-        - field_category
         - field_organization
       parent_name: group_tabs_panel
       weight: 23
@@ -177,7 +177,7 @@ content:
     type: string_textfield
     region: content
   field_category:
-    weight: 11
+    weight: 35
     settings: {  }
     third_party_settings: {  }
     type: options_select

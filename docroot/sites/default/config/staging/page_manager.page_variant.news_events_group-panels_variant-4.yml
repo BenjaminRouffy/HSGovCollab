@@ -4,13 +4,12 @@ status: true
 dependencies:
   config:
     - page_manager.page.news_events_group
+    - system.menu.footer
     - views.view.news_and_events_group
-  content:
-    - 'block_content:link:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
   module:
-    - block_content
     - group
     - panels
+    - system
     - views
 id: news_events_group-panels_variant-4
 label: Product
@@ -29,17 +28,17 @@ variant_settings:
       uuid: a0ea2714-2721-4f7e-a2ec-fba1f95c7843
       pager: view
       context_mapping: {  }
-    70973be5-93ef-42da-b645-a891711e734c:
-      id: 'block_content:3e107ee4-9c1d-4f46-bc51-1c031307aaa7'
-      label: 'Contact us'
-      provider: block_content
+    966d8ef0-72ca-4424-ad01-9f69a5ad93c7:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
       label_display: '0'
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
-      uuid: 70973be5-93ef-42da-b645-a891711e734c
-      context_mapping: {  }
+      level: 1
+      depth: 0
       region: bottom
+      weight: 0
+      uuid: 966d8ef0-72ca-4424-ad01-9f69a5ad93c7
+      context_mapping: {  }
   id: panels_variant
   uuid: b46e6b68-f1e0-459a-9dfe-577a786a238a
   label: null

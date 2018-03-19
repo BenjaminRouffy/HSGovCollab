@@ -4,15 +4,14 @@ status: true
 dependencies:
   config:
     - page_manager.page.news_events_group
+    - system.menu.footer
     - views.view.news_and_events_group
-  content:
-    - 'block_content:link:285084d2-d182-4fc0-ab97-b644c33e108a'
   module:
-    - block_content
     - ctools
     - group_customization
     - group_dashboard
     - panels
+    - system
     - views
 id: news_events_group-panels_variant-7
 label: 'Collaboration - Closed'
@@ -31,17 +30,16 @@ variant_settings:
       uuid: 53b64a30-4b2f-4500-844c-873ec0f94dad
       pager: view
       context_mapping: {  }
-    7f346ce4-2bcd-4b27-bcff-9c8a338eef21:
-      id: 'block_content:285084d2-d182-4fc0-ab97-b644c33e108a'
-      label: 'Interested in becoming a member?'
-      provider: block_content
+    78d26f04-4be2-487d-bf5f-6eb921d1ab56:
+      id: 'system_menu_block:footer'
+      label: Footer
+      provider: system
       label_display: '0'
-      status: true
-      info: ''
-      view_mode: view_mode_registration_block
+      level: 1
+      depth: 0
       region: bottom
       weight: 0
-      uuid: 7f346ce4-2bcd-4b27-bcff-9c8a338eef21
+      uuid: 78d26f04-4be2-487d-bf5f-6eb921d1ab56
       context_mapping: {  }
   id: panels_variant
   uuid: 063d2326-d834-4e5a-9bc0-3bc6906c4313
